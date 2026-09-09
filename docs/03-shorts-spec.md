@@ -68,3 +68,12 @@ ffmpeg -i video.mp4 -i narration.mp3 -i music.mp3 -filter_complex "\
 - Ship it — 배포/릴리즈. 샘플 완료.
 - 오늘의 삽질 — 버그 스토리 1개. Before/After 카드 구조는 Ship it의 삽질 장면을 확장.
 - Before / After — 화면 비교, 말 최소.
+
+## 재생성 (덮어쓰기)
+
+자막 규칙·프레임 디자인·대본 프롬프트를 고친 뒤에는 이미 발행된 글의 영상을 다시 만들어야 한다. 꽤 빈번하므로 전용 진입점이 있다.
+
+- **GitHub → Actions → devlog → Run workflow**, `regen` 입력에 `vibelog/2026-09-10` 형식으로 쓰고 실행. 날짜를 빼고 `vibelog`만 쓰면 그 레포의 최신 글.
+- 대본→음성→녹화→렌더→업로드 전 단계를 다시 돌고, 같은 Blob 키에 덮어쓴다(`allowOverwrite`). 글(md)은 건드리지 않는다.
+- 로컬: `npx tsx scripts/shorts.ts vibelog/2026-09-10`.
+- 대본도 다시 생성되므로 프롬프트가 바뀌었으면 문장 자체가 달라질 수 있다 — 의도된 동작.
