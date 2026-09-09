@@ -137,7 +137,12 @@ export const ShipIt: React.FC<ShipItProps> = ({
         return (
           <AbsoluteFill key={i} style={{ opacity }}>
             {seg.kind === "hook" && (
-              <HookCard script={script} lang={lang} artFile={artFiles?.hook} />
+              <HookCard
+                script={script}
+                lang={lang}
+                timing={timing}
+                artFile={artFiles?.hook}
+              />
             )}
             {seg.kind === "art" && artFiles?.next && (
               <ArtCard file={artFiles.next} />
