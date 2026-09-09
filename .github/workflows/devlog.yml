@@ -70,7 +70,7 @@ jobs:
         run: |
           git config user.name "vibelog-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add content/
+          git add content/ public/devlog-shots/
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋 생략"
           else
