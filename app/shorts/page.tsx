@@ -23,11 +23,8 @@ export default function ShortsPage() {
       <section className="flex flex-col gap-3.5">
         <SectionHeader
           title={<T ko="쇼츠" en="Shorts" />}
-          aside={
-            shorts.length ? (
-              <T ko={`${shorts.length}편 · 30~45초`} en={`${shorts.length} videos · 30–45s`} />
-            ) : undefined
-          }
+          // 개수는 메뉴 옆 숫자가 이미 말한다
+          aside={shorts.length ? <T ko="30~45초" en="30–45s" /> : undefined}
         />
         {shorts.length === 0 ? (
           <EmptyState
