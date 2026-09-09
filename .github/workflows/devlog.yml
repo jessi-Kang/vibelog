@@ -1,0 +1,47 @@
+name: devlog
+
+on:
+  schedule:
+    - cron: "0 14 * * *" # 23:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: devlog
+  cancel-in-progress: false
+
+jobs:
+  devlog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Collect & generate devlogs
+        run: npx tsx scripts/run.ts
+        env:
+          # GH_PAT: fine-grained PAT (Contents/Metadata read, 모든 내 레포).
+          # 없으면 GITHUB_TOKEN으로 폴백 — public 레포만 읽힌다.
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit content changes
+        run: |
+          git config user.name "vibelog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git commit -m "chore: 데브로그 자동 발행 ($(TZ=Asia/Seoul date +%F))"
+            git push
+          fi

@@ -22,8 +22,10 @@ export interface DevlogEntry {
   repo: string;
   date: string; // YYYY-MM-DD
   title: string;
+  titleEn?: string;
   manual: boolean;
   body: string; // 마크다운 본문 (KR)
+  bodyEn?: string; // 영어 번역 — <!-- en --> 구분자 뒤. /en 라우트(4단계)에서 사용
 }
 
 export function getProjects(): Project[] {
@@ -59,12 +61,15 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       const raw = fs.readFileSync(path.join(dir, f), "utf8");
       const { data, content } = matter(raw);
       const date = String(data.date ?? f.replace(/\.mdx?$/, ""));
+      const [ko, en] = content.split(/<!--\s*en\s*-->/);
       entries.push({
         repo: r,
         date,
         title: String(data.title ?? date),
+        ...(data.titleEn ? { titleEn: String(data.titleEn) } : {}),
         manual: data.manual === true,
-        body: content.trim(),
+        body: ko.trim(),
+        ...(en ? { bodyEn: en.trim() } : {}),
       });
     }
   }
