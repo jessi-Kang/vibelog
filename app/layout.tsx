@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
 import { LangProvider, T } from "@/components/lang";
-import { getDevlogs, getProjects } from "@/lib/content";
+import { getDevlogs, getProjects, getShorts } from "@/lib/content";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -37,6 +37,8 @@ export default function RootLayout({
           counts={{
             projects: getProjects().length,
             devlogs: getDevlogs().length,
+            // 쇼츠 페이지 그리드와 같은 수 — 쇼츠 전부 + 인트로 카드 1
+            shorts: getShorts().length + 1,
           }}
         />
         {children}
