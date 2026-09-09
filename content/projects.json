@@ -11,6 +11,7 @@
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
     "lastActivity": "2026-09-10",
-    "weekCommits": 64
+    "weekCommits": 64,
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects"
   }
 ]

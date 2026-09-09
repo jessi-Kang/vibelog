@@ -40,7 +40,9 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
       {project.description && (
         <p className="m-0 text-base leading-[1.55] text-muted [text-wrap:pretty]">
-          {project.description}
+          {lang === "en"
+            ? (project.descriptionEn ?? project.description)
+            : project.description}
         </p>
       )}
       <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-mono text-2xs text-muted">

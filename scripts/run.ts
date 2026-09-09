@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { collect, type RepoActivity, type State } from "./collect";
-import { generateDevlog } from "./generate";
+import { generateDevlog, translateLine } from "./generate";
 import { runShorts } from "./shorts";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -35,11 +35,41 @@ function autoStatus(a: RepoActivity): "building" | "live" | "paused" {
   return days <= 30 ? "building" : "paused";
 }
 
-function updateProjects(activities: RepoActivity[]): void {
+async function updateProjects(activities: RepoActivity[]): Promise<void> {
+  // 설명 번역 캐시 — 원문이 안 바뀐 레포는 이전 번역을 재사용한다 (API 절약)
+  const prev = new Map<string, { description?: string; descriptionEn?: string }>();
+  try {
+    for (const p of JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"))) {
+      prev.set(p.slug, p);
+    }
+  } catch {
+    // 첫 실행 — 캐시 없음
+  }
+  const descriptionEn = new Map<string, string>();
+  for (const a of activities) {
+    if (!a.description) continue;
+    const cached = prev.get(a.repo);
+    if (cached?.description === a.description && cached.descriptionEn) {
+      descriptionEn.set(a.repo, cached.descriptionEn);
+      continue;
+    }
+    // 사이트가 EN 모드일 때 카드 설명도 영어로 (Jessi 지시). 번역 실패가
+    // 발행을 막지 않게 격리 — 없으면 UI가 ko로 폴백한다.
+    try {
+      descriptionEn.set(a.repo, await translateLine(a.description));
+    } catch (err) {
+      console.warn(`- ${a.repo} 설명 번역 실패 (ko로 폴백):`, err);
+      if (cached?.descriptionEn) descriptionEn.set(a.repo, cached.descriptionEn);
+    }
+  }
+
   const projects = activities.map((a) => ({
     slug: a.repo,
     name: a.vibelogJson?.name ?? a.repo,
     description: a.description,
+    ...(descriptionEn.has(a.repo)
+      ? { descriptionEn: descriptionEn.get(a.repo) }
+      : {}),
     status: a.vibelogJson?.status ?? autoStatus(a),
     stack: a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
     repoUrl: a.repoUrl,
@@ -186,7 +216,7 @@ async function main(): Promise<void> {
     }
   }
 
-  updateProjects(activities);
+  await updateProjects(activities);
   runLines.push({ text: "publish  · content 커밋 → vercel 자동 배포" });
   writeRunLog(runLines);
   fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2) + "\n");

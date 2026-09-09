@@ -10,6 +10,8 @@ export interface Project {
   slug: string; // 레포 이름
   name: string;
   description: string;
+  /** 파이프라인이 만든 영어 번역 — 없으면 UI가 ko로 폴백 */
+  descriptionEn?: string;
   status: ProjectStatus;
   stack: string[];
   repoUrl: string;
