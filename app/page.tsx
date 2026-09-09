@@ -15,9 +15,9 @@ const RECENT_MAX = 5;
 function Fact({ n, label }: { n: number | string; label: string }) {
   const zero = n === 0 || n === "—";
   return (
-    <span className="inline-flex items-baseline gap-1.5 lg:flex-col lg:items-end lg:gap-0.5">
+    <span className="inline-flex items-baseline gap-1.5">
       <b
-        className={`font-sans text-md font-bold tabular-nums tracking-[-.01em] lg:text-xl ${
+        className={`font-sans text-md font-bold tabular-nums tracking-[-.01em] ${
           zero ? "text-muted" : "text-accent"
         }`}
       >
@@ -122,7 +122,8 @@ export default function Home() {
   return (
     <PageContainer>
       {/* 마스트헤드 */}
-      <section className="grid items-end gap-4 pt-1 md:gap-5 md:pt-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10 lg:pb-2 lg:pt-5">
+      {/* 통계 줄은 전 구간 동일 — 제목 아래 왼쪽 정렬 + 위 구분선 (Jessi 지시) */}
+      <section className="grid items-end gap-4 pt-1 md:gap-5 md:pt-3 lg:pb-2 lg:pt-5">
         <div className="flex flex-col gap-2 md:gap-3">
           <h1 className="m-0 max-w-[22ch] text-[24px] font-bold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
             만들고 있는 것들의 <span className="text-accent">기록</span>
@@ -132,7 +133,7 @@ export default function Home() {
             자동으로 만들어집니다.
           </p>
         </div>
-        <div className="flex flex-wrap gap-5 border-t border-line pt-3.5 font-mono text-xs leading-snug text-muted lg:justify-end lg:gap-7 lg:border-t-0 lg:pt-0">
+        <div className="flex flex-wrap gap-5 border-t border-line pt-3.5 font-mono text-xs leading-snug text-muted">
           {facts.map(([n, l]) => (
             <Fact key={l} n={n} label={l} />
           ))}
@@ -142,7 +143,8 @@ export default function Home() {
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
         <HomeProjects projects={projects} />
-        <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-6 lg:flex lg:flex-col lg:gap-12">
+        {/* md:items-start는 md 2열 그리드용 — lg 세로 flex에서는 stretch로 되돌려야 카드 폭이 열에 맞는다 */}
+        <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-6 lg:flex lg:flex-col lg:items-stretch lg:gap-12">
           {runSection}
           {recentSection}
         </div>
