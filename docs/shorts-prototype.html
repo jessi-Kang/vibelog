@@ -1,0 +1,292 @@
+<title>Vibelog Short Sample</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{
+    --bg:#0A0E14; --panel:#141B24; --panel2:#1B2430; --line:#26313F;
+    --ink:#F3EFE6; --muted:#8C98A8; --accent:#5EE1C3; --accent-ink:#06261F; --warn:#FFB454;
+    --display:'Noto Sans KR','Noto Sans CJK KR',sans-serif;
+    --body:'Noto Sans KR','Noto Sans CJK KR',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  }
+  html,body{height:100%;margin:0;background:#05080C;color:var(--ink);font-family:var(--body);overflow:hidden}
+  #wrap{position:fixed;inset:0;display:grid;place-items:center;background:#05080C}
+  /* 9:16 stage, scaled to fit */
+  #stage{position:relative;width:1080px;height:1920px;background:var(--bg);overflow:hidden;transform-origin:center;border-radius:0}
+  #stage::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(60% 40% at 50% 0%, rgba(94,225,195,.10), transparent 70%);pointer-events:none}
+
+  /* eyebrow */
+  .eyebrow{position:absolute;top:88px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:30px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .eyebrow b{color:var(--accent)}
+  .eyebrow .pill{border:2px solid var(--line);border-radius:999px;padding:10px 24px;color:var(--ink)}
+
+  /* scenes */
+  .scene{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;pointer-events:none}
+  .scene.on{opacity:1}
+  .prefers-none .scene{transition:none}
+
+  /* hook / end cards */
+  .card{position:absolute;left:80px;right:80px;top:50%;transform:translateY(-52%)}
+  .hook h1{font-family:var(--display);font-weight:900;font-size:132px;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+  .hook h1 em{font-style:normal;color:var(--accent)}
+  .hook p{margin:56px 0 0;font-size:40px;color:var(--muted);font-weight:500}
+  .end h1{font-family:var(--display);font-weight:900;font-size:120px;line-height:1.05;margin:0}
+  .end .meta{margin-top:48px;font-family:var(--mono);font-size:34px;color:var(--muted);display:flex;gap:28px;flex-wrap:wrap}
+  .end .meta b{color:var(--accent);font-weight:700}
+  .end .handle{margin-top:120px;display:inline-flex;align-items:center;gap:20px;background:var(--accent);color:var(--accent-ink);font-weight:900;font-size:40px;padding:22px 40px;border-radius:18px}
+
+  /* phone */
+  .phone{position:absolute;left:50%;top:260px;transform:translateX(-50%);width:760px;height:1250px;border-radius:70px;background:#000;border:6px solid #2A3442;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 2px #0A0E14}
+  .phone .notch{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:240px;height:52px;background:#000;border-radius:999px;z-index:3}
+  .screen{position:absolute;inset:14px;border-radius:56px;overflow:hidden;background:var(--panel)}
+  .app{position:absolute;left:0;right:0;top:0;padding:100px 36px 40px;transition:transform 1.4s cubic-bezier(.4,0,.2,1)}
+  .prefers-none .app{transition:none}
+  .app .brand{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:34px}
+  .app .brand h2{font-family:var(--display);font-weight:900;font-size:56px;margin:0;letter-spacing:.01em}
+  .app .brand span{font-family:var(--mono);font-size:22px;color:var(--muted)}
+  .pcard{background:var(--panel2);border:2px solid var(--line);border-radius:28px;padding:30px 32px;margin-bottom:22px}
+  .pcard .row{display:flex;justify-content:space-between;align-items:center}
+  .pcard h3{margin:0;font-size:36px;font-weight:900}
+  .status{font-family:var(--mono);font-size:20px;font-weight:700;letter-spacing:.06em;padding:8px 16px;border-radius:999px;text-transform:uppercase}
+  .status.live{background:rgba(94,225,195,.15);color:var(--accent)}
+  .status.building{background:rgba(255,180,84,.15);color:var(--warn)}
+  .status.paused{background:rgba(140,152,168,.15);color:var(--muted)}
+  .pcard p{margin:14px 0 0;font-size:26px;color:var(--muted);line-height:1.4}
+  .pcard .last{margin-top:18px;font-family:var(--mono);font-size:20px;color:var(--muted)}
+  .pcard.hl{border-color:var(--accent);box-shadow:0 0 0 6px rgba(94,225,195,.12)}
+
+  /* devlog detail inside app */
+  .detail{margin-top:40px;padding-top:36px;border-top:2px dashed var(--line)}
+  .detail h4{margin:0 0 26px;font-family:var(--mono);font-size:22px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .tl{position:relative;padding-left:44px}
+  .tl::before{content:"";position:absolute;left:12px;top:8px;bottom:8px;width:3px;background:var(--line)}
+  .entry{position:relative;margin-bottom:34px;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+  .entry.show{opacity:1;transform:none}
+  .entry::before{content:"";position:absolute;left:-40px;top:12px;width:20px;height:20px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px var(--panel)}
+  .entry .d{font-family:var(--mono);font-size:22px;color:var(--accent);font-weight:700}
+  .entry h5{margin:8px 0 8px;font-size:32px;font-weight:900;line-height:1.25}
+  .entry p{margin:0;font-size:25px;color:var(--muted);line-height:1.45}
+  .entry .auto{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:18px;color:var(--muted);border:1.5px solid var(--line);border-radius:8px;padding:4px 10px}
+
+  /* commit list scene */
+  .commits{position:absolute;left:0;right:0;top:0;padding:100px 36px}
+  .commits h2{font-family:var(--mono);font-size:24px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin:0 0 28px}
+  .commit{display:flex;gap:20px;padding:22px 0;border-bottom:1.5px solid var(--line);opacity:0;transform:translateX(-14px);transition:opacity .4s,transform .4s}
+  .commit.show{opacity:1;transform:none}
+  .commit .sha{font-family:var(--mono);font-size:22px;color:var(--accent);font-weight:700;flex:0 0 auto;padding-top:4px}
+  .commit .m{font-size:27px;font-weight:700;line-height:1.35}
+  .commit .m small{display:block;font-weight:500;color:var(--muted);font-size:23px;margin-top:6px}
+  .runner{margin-top:36px;background:#0A0E14;border:2px solid var(--line);border-radius:20px;padding:26px;font-family:var(--mono);font-size:23px;line-height:1.7;color:var(--muted)}
+  .runner .ok{color:var(--accent)}
+  .runner .cur::after{content:"▍";color:var(--accent);animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* 삽질 scene */
+  .fail{position:absolute;left:80px;right:80px;top:300px}
+  .fail .tag{font-family:var(--mono);font-size:30px;letter-spacing:.1em;color:var(--warn);text-transform:uppercase}
+  .fail h2{font-family:var(--display);font-weight:900;letter-spacing:-.02em;font-size:110px;line-height:1.05;margin:20px 0 60px;text-wrap:balance}
+  .compare{display:grid;gap:28px}
+  .cbox{background:var(--panel);border:2px solid var(--line);border-radius:28px;padding:34px 38px;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+  .cbox.show{opacity:1;transform:none}
+  .cbox .lab{font-family:var(--mono);font-size:24px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .cbox .lab.good{color:var(--accent)}
+  .cbox pre{margin:0;font-family:var(--mono);font-size:30px;line-height:1.5;white-space:pre-wrap;color:var(--ink)}
+  .cbox pre .dim{color:var(--muted)}
+  .cbox .verdict{margin-top:18px;font-size:30px;font-weight:700}
+
+  /* captions */
+  .captions{position:absolute;left:70px;right:70px;bottom:190px;text-align:center;min-height:200px;display:flex;align-items:flex-end;justify-content:center}
+  .cap{font-size:62px;font-weight:900;line-height:1.3;text-wrap:balance;word-break:keep-all;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+  .cap .w{opacity:.3;transition:opacity .28s ease-out, color .28s ease-out}
+  .cap .w.on{opacity:1}
+  .cap .w.k.on{color:var(--accent)}
+
+  /* progress + template tag */
+  .progress{position:absolute;left:80px;right:80px;bottom:110px;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+  .progress i{display:block;height:100%;width:0;background:var(--accent)}
+  .foot{position:absolute;left:80px;right:80px;bottom:44px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:24px;color:var(--muted);letter-spacing:.06em}
+
+  /* play overlay (artifact view only) */
+  #play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,8,12,.55);cursor:pointer;z-index:10}
+  #play button{font:inherit;font-family:var(--body);font-weight:900;font-size:44px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:24px;padding:30px 60px;cursor:pointer}
+  #play button:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
+  #play small{display:block;margin-top:22px;font-size:26px;color:var(--ink);font-weight:500;text-align:center}
+  #play[hidden]{display:none}
+</style>
+
+<div id="wrap">
+<div id="stage">
+  <div class="eyebrow"><span><b>vibelog</b> · day 01</span><span class="pill">SHIP IT</span></div>
+
+  <!-- S0 hook -->
+  <section class="scene hook" data-scene="0">
+    <div class="card">
+      <h1>블로그를<br>만들었는데<br><em>글은 제가<br>안 씁니다</em></h1>
+      <p>바이브 코딩 제작기 자동 발행 실험</p>
+    </div>
+  </section>
+
+  <!-- S1 phone: home + detail (shared) -->
+  <section class="scene" data-scene="1">
+    <div class="phone"><div class="notch"></div><div class="screen">
+      <div class="app" id="app">
+        <div class="brand"><h2>vibelog</h2><span>3 projects</span></div>
+        <div class="pcard hl"><div class="row"><h3>vibelog</h3><span class="status building">building</span></div>
+          <p>바이브 코딩 프로젝트 제작기를 자동으로 쓰는 블로그. 이 사이트 자체.</p><div class="last">Next.js · Vercel · 오늘 커밋 7개</div></div>
+        <div class="pcard"><div class="row"><h3>job-board</h3><span class="status live">live</span></div>
+          <p>채용 공고 모아서 매일 아침 브리핑해주는 개인용 보드.</p><div class="last">Python · 3일 전</div></div>
+        <div class="pcard"><div class="row"><h3>wallet-notes</h3><span class="status paused">paused</span></div>
+          <p>가계부 메모를 음성으로 남기면 정리해주는 실험.</p><div class="last">Swift · 6주 전</div></div>
+        <div class="detail">
+          <h4>devlog · vibelog</h4>
+          <div class="tl">
+            <div class="entry" id="e1"><div class="d">2026-09-13 · SAT</div><h5>블로그 뼈대 배포. 카드 + 타임라인까지</h5><p>Next.js 앱 라우터에 MDX 붙이고 Vercel에 올렸다. 프로젝트 카드는 레포 메타데이터로 자동 생성.</p><span class="auto">AI가 커밋 7개로 작성</span></div>
+            <div class="entry" id="e2"><div class="d">2026-09-14 · SUN</div><h5>GitHub 액션으로 데브로그 자동 생성</h5><p>topic이 vibelog인 레포를 밤 11시에 훑어서 하루치 글을 쓴다. 이 글이 첫 자동 생성 글.</p><span class="auto">AI가 커밋 4개 + PR 1개로 작성</span></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- S2 phone: commits + action -->
+  <section class="scene" data-scene="2">
+    <div class="phone"><div class="notch"></div><div class="screen">
+      <div class="commits">
+        <h2>git log · today</h2>
+        <div class="commit" id="c1"><span class="sha">a41f2c</span><div class="m">프로젝트 카드 그리드 추가<small>레포 description/homepage를 그대로 써서 등록 손품 제거</small></div></div>
+        <div class="commit" id="c2"><span class="sha">c09d81</span><div class="m">데브로그 타임라인 페이지<small>날짜 역순, frontmatter manual:true면 파이프라인이 안 건드림</small></div></div>
+        <div class="commit" id="c3"><span class="sha">e7b330</span><div class="m">collect.ts: topic vibelog 레포 수집<small>체크포인트 이후 커밋·PR·devlog/*.md만 가져옴</small></div></div>
+        <div class="commit" id="c4"><span class="sha">f12a9e</span><div class="m">devlog.yml cron 23:00 KST<small>workflow_dispatch로 수동 실행도 가능</small></div></div>
+        <div class="runner" id="runner">
+          <div id="r1">$ gh workflow run devlog.yml</div>
+          <div id="r2"><span class="ok">✓</span> collect  · 3 repos, 1 active</div>
+          <div id="r3"><span class="ok">✓</span> generate · vibelog/2026-09-13.md (ko, en)</div>
+          <div id="r4"><span class="ok">✓</span> commit   · "devlog: vibelog 2026-09-13"</div>
+          <div id="r5" class="cur">→ vercel deploy</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- S3 삽질 -->
+  <section class="scene" data-scene="3">
+    <div class="fail">
+      <div class="tag">오늘의 삽질</div>
+      <h2>AI가 쓴 글이<br>밍밍했어요</h2>
+      <div class="compare">
+        <div class="cbox" id="b1"><div class="lab">before · 커밋 메시지</div><pre>fix layout</pre><div class="verdict">→ "레이아웃을 고쳤다." 끝.</div></div>
+        <div class="cbox" id="b2"><div class="lab good">after · CLAUDE.md 규칙 하나</div><pre>카드 높이 통일<span class="dim">
+
+왜: 설명 길이가 다르면 그리드가
+들쭉날쭉해서 모바일에서 산만함</span></pre><div class="verdict">→ 글에 "왜"가 생겼어요</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 end -->
+  <section class="scene end" data-scene="4">
+    <div class="card">
+      <h1>다음 편에는<br>이 영상도<br>자동으로</h1>
+      <div class="meta"><span>vibelog</span><span><b>day 01</b></span><span>ship it</span></div>
+      <div class="handle">vibelog.vercel.app →</div>
+    </div>
+  </section>
+
+  <div class="captions"><div class="cap" id="cap"></div></div>
+  <div class="progress"><i id="bar"></i></div>
+  <div class="foot"><span>© 2026 vibelog · Jessi</span><span id="clock">00:00 / 00:39</span></div>
+
+  <div id="play"><div><button type="button" id="playBtn">▶ 샘플 재생 (39초)</button><small>소리 없음 — 실제 버전은 클론 보이스 내레이션이 붙음</small></div></div>
+</div>
+</div>
+
+<script>
+(function(){
+  // ---------- timeline (seconds) ----------
+  // each caption: [start, end, text]; words highlight evenly across the span
+  const CAPS = [
+    [0.50,4.00,3.60,"블로그를 만들었는데, 글은 제가 ^안 ^씁니다"],
+    [4.15,8.15,7.75,"바이브 코딩으로 만든 서비스 제작기를 올리는 블로그,"],
+    [8.25,9.65,9.20,"^바이브 ^로그예요"],
+    [9.80,14.70,14.30,"저는 ^커밋만 ^하면, 밤 11시에 깃헙 액션이 돌아서"],
+    [14.40,17.50,17.10,"^AI가 그날 데브로그를 ^대신 ^써줍니다"],
+    [17.55,20.15,19.75,"그런데 첫 글이 밍밍했어요"],
+    [20.15,22.95,22.55,"커밋 메시지에 ^'왜'가 없었거든요"],
+    [23.05,25.40,24.98,"그래서 규칙을 하나 넣었어요"],
+    [25.55,27.90,27.50,"커밋 본문엔 ^꼭 ^이유 ^쓰기"],
+    [27.90,31.70,31.30,"다음은 ^이 ^영상도 ^자동으로 만드는 단계예요"],
+    [31.85,34.30,33.90,"지금 보시는 게 ^첫 ^샘플입니다"],
+    [34.30,38.05,36.00,"다음 편에서 ^이어갈게요"]
+  ];
+  const TOTAL = 39;
+  // scene switches
+  const SCENES = [[0,0],[4.0,1],[9.7,2],[14.3,1],[17.4,3],[27.8,1],[34.2,4]];
+  // discrete events: [time, fn]
+  const q = s => document.querySelector(s);
+  const app = q('#app');
+  const EVENTS = [
+    [4.4,  ()=>{ app.style.transform='translateY(0)'; }],
+    [10.0, ()=>{ q('#c1').classList.add('show'); }],
+    [10.6, ()=>{ q('#c2').classList.add('show'); }],
+    [11.2, ()=>{ q('#c3').classList.add('show'); }],
+    [11.8, ()=>{ q('#c4').classList.add('show'); }],
+    [12.3, ()=>{ q('#runner').style.opacity=1; ['r1','r2','r3','r4','r5'].forEach((id,i)=>setTimeout(()=>q('#'+id).style.opacity=1, i*380)); }],
+    [14.5, ()=>{ app.style.transform='translateY(-720px)'; }],
+    [15.3, ()=>{ q('#e1').classList.add('show'); }],
+    [16.3, ()=>{ q('#e2').classList.add('show'); }],
+    [18.2, ()=>{ q('#b1').classList.add('show'); }],
+    [23.2, ()=>{ q('#b2').classList.add('show'); }],
+    [28.0, ()=>{ app.style.transform='translateY(-1180px)'; }],
+  ];
+  function resetState(){
+    app.style.transform='translateY(0)';
+    document.querySelectorAll('.show').forEach(e=>e.classList.remove('show'));
+    q('#runner').style.opacity=0; ['r1','r2','r3','r4','r5'].forEach(id=>q('#'+id).style.opacity=0);
+  }
+
+  // ---------- render ----------
+  const cap = q('#cap'), bar = q('#bar'), clock = q('#clock');
+  const scenes = document.querySelectorAll('.scene');
+  let capIdx=-1, firedEv=new Set(), curScene=-1, lastK=-1;
+  function fmt(t){ t=Math.max(0,Math.floor(t)); return '00:'+String(t).padStart(2,'0'); }
+  function setScene(i){ if(i===curScene) return; curScene=i; scenes.forEach(s=>s.classList.toggle('on', +s.dataset.scene===i)); }
+  function render(t){
+    // scene
+    let sc=0; for(const [st,i] of SCENES){ if(t>=st) sc=i; } setScene(sc);
+    // events
+    EVENTS.forEach((e,i)=>{ if(t>=e[0] && !firedEv.has(i)){ firedEv.add(i); e[1](); } });
+    // caption
+    let ci=-1; for(let i=0;i<CAPS.length;i++){ if(t>=CAPS[i][0] && t<CAPS[i][1]) ci=i; }
+    if(ci!==capIdx){ capIdx=ci; lastK=-1; cap.innerHTML = ci<0?'' : CAPS[ci][3].split(' ').map(w=>w.startsWith('^')?'<span class="w k">'+w.slice(1)+'</span>':'<span class="w">'+w+'</span>').join(' '); }
+    if(ci>=0){
+      const [s,,e]=CAPS[ci]; const ws=cap.querySelectorAll('.w'); const n=ws.length;
+      const p=(t-s)/(e-s); const k=Math.min(n-1, Math.floor(p*n*1.1));
+      if(k!==lastK){ lastK=k; ws.forEach((w,i)=>{ if(i<=k) w.classList.add('on'); }); }
+    }
+    bar.style.width=(Math.min(t,TOTAL)/TOTAL*100)+'%';
+    clock.textContent=fmt(t)+' / 00:39';
+  }
+
+  // ---------- clock ----------
+  let t0=null, raf=null, playing=false;
+  function start(){
+    resetState(); firedEv.clear(); capIdx=-1; curScene=-1;
+    t0=performance.now(); playing=true; console.log('START '+Date.now());
+    const tick=()=>{ const t=(performance.now()-t0)/1000; render(t);
+      if(t<TOTAL+0.6) raf=requestAnimationFrame(tick); else { playing=false; setTimeout(start, 900); } };
+    raf=requestAnimationFrame(tick);
+  }
+  q('#playBtn').addEventListener('click', ()=>{ q('#play').hidden=true; start(); });
+
+  // ---------- fit stage ----------
+  const stage=q('#stage');
+  function fit(){ const s=Math.min(innerWidth/1080, innerHeight/1920); stage.style.transform='scale('+s+')'; }
+  addEventListener('resize', fit); fit();
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) document.body.classList.add('prefers-none');
+
+  // first frame at rest: show hook + first caption
+  render(0.6);
+  // autoplay for recording
+  if(new URLSearchParams(location.search).get('autoplay')==='1'){ q('#play').hidden=true; document.fonts.ready.then(()=>setTimeout(start,300)); }
+})();
+</script>
