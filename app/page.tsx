@@ -12,6 +12,13 @@ import {
 
 const RECENT_MAX = 5;
 
+/** ISO 시각 → "09.10 02:21" (KST) */
+function fmtKstStamp(iso: string): string {
+  const d = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${p(d.getUTCMonth() + 1)}.${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
+}
+
 function Fact({ n, label }: { n: number | string; label: string }) {
   const zero = n === 0 || n === "—";
   return (
@@ -57,11 +64,8 @@ export default function Home() {
     <section className="flex flex-col gap-3.5">
       <SectionHeader
         title="지난 실행"
-        aside={
-          run
-            ? `${fmtShort(run.at.slice(0, 10))} ${new Date(run.at).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Seoul" })}`
-            : undefined
-        }
+        // 날짜·시각을 같은 KST 시계로 — UTC 날짜 + KST 시각이 섞여 하루 어긋나 보였다
+        aside={run ? fmtKstStamp(run.at) : undefined}
       />
       {run ? (
         <RunLog lines={run.lines} />

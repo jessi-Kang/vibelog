@@ -15,9 +15,32 @@ export interface ThumbData {
   hookKeywords: string[];
   template: string;
   duration?: number;
+  /** 영상 첫 프레임 이미지 URL — 있으면 CSS 재현 대신 이걸 쓴다 (Jessi 지시) */
+  poster?: string;
+}
+
+/** 호버 시 재생 표시 — "이건 영상"이라는 신호. 정지 상태에선 조용히 */
+function PlayOverlay() {
+  return (
+    <div className="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+      <span className="grid h-12 w-12 place-items-center rounded-full border border-line-strong bg-bg-deep/80 pl-1 font-mono text-sm text-accent">
+        ▶
+      </span>
+    </div>
+  );
 }
 
 export function Thumb({ s }: { s: ThumbData }) {
+  // 진짜 포스터(영상 첫 프레임)가 있으면 그대로 — 훅 문장·길이가 이미 프레임에 있다
+  if (s.poster) {
+    return (
+      <div className="relative aspect-[9/16] overflow-hidden rounded-lg border border-line bg-bg-deep transition-colors duration-150 group-hover:border-line-strong">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={s.poster} alt="" className="h-full w-full object-cover" />
+        <PlayOverlay />
+      </div>
+    );
+  }
   return (
     <div
       className="relative aspect-[9/16] overflow-hidden rounded-lg border border-line bg-bg-deep transition-colors duration-150 group-hover:border-line-strong"
@@ -37,12 +60,7 @@ export function Thumb({ s }: { s: ThumbData }) {
           </span>
         ))}
       </div>
-      {/* 호버 시 재생 표시 — "이건 영상"이라는 신호. 정지 상태에선 조용히 */}
-      <div className="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100">
-        <span className="grid h-12 w-12 place-items-center rounded-full border border-line-strong bg-bg-deep/80 pl-1 font-mono text-sm text-accent">
-          ▶
-        </span>
-      </div>
+      <PlayOverlay />
       <div className="absolute bottom-3 left-3 right-3 flex justify-between font-mono text-[9px] uppercase tracking-[.06em] text-muted">
         <span>{s.template}</span>
         <span>
@@ -67,6 +85,7 @@ export function ShortsGrid({
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
         {shorts.map((s) => {
           const href = `/log/${s.repo}/${s.date}`;
+          const data = { ...s, poster: s.media?.poster };
           return (
             <div key={`${s.repo}/${s.date}`} className="flex flex-col gap-2">
               {s.media?.ko ? (
@@ -83,22 +102,20 @@ export function ShortsGrid({
                   }
                   className="group cursor-pointer p-0 text-left"
                 >
-                  <Thumb s={s} />
+                  <Thumb s={data} />
                 </button>
               ) : (
                 <Link href={href} className="group">
-                  <Thumb s={s} />
+                  <Thumb s={data} />
                 </Link>
               )}
+              {/* 제목은 썸네일(훅 문장)과 중복이라 뺀다 — 메타 줄이 글로 가는 링크 */}
               <Link
                 href={href}
-                className="text-sm font-bold leading-snug text-accent transition-opacity duration-150 [text-wrap:pretty] hover:opacity-85"
+                className="font-mono text-2xs text-muted transition-colors duration-150 hover:text-ink-soft"
               >
-                {s.title}
+                {s.repo} · {fmtShort(s.date)} · 글 보기 →
               </Link>
-              <div className="font-mono text-2xs text-muted">
-                {s.repo} · {fmtShort(s.date)}
-              </div>
             </div>
           );
         })}
@@ -124,12 +141,10 @@ export function ShortsGrid({
                   hookKeywords: ["기록"],
                   template: "intro",
                   duration: 37,
+                  poster: "/shorts/intro.jpg",
                 }}
               />
             </button>
-            <div className="text-sm font-bold leading-snug text-accent [text-wrap:pretty]">
-              vibelog 인트로
-            </div>
             <div className="font-mono text-2xs text-muted">채널 소개 · 37초</div>
           </div>
         )}

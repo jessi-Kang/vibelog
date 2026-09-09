@@ -26,3 +26,4 @@ video/public/
 # impeccable 런타임 상태 (critique/ 스냅샷은 커밋함)
 .impeccable/live/
 content/shorts/**/*.art/
+content/shorts/**/*.jpg
