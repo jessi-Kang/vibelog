@@ -19,6 +19,7 @@ export interface Project {
   language?: string;
   lastActivity: string; // ISO date
   weekCommits?: number; // collect 단계에서 계산
+  todayCommits?: number; // 오늘(KST) 커밋 수 — 홈 "오늘 움직임"
 }
 
 /** 데브로그 본문의 고정 구조 — "뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것" */

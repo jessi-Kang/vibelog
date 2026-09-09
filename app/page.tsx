@@ -3,13 +3,7 @@ import { HomeProjects } from "@/components/home-projects";
 import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader } from "@/components/ui";
 import { DevlogCompactEntry, RunLog } from "@/components/vibelog";
-import {
-  fmtShort,
-  getDevlogs,
-  getProjects,
-  getRunLog,
-  humanizeLastActive,
-} from "@/lib/content";
+import { fmtShort, getDevlogs, getProjects, getRunLog } from "@/lib/content";
 import type { ReactNode } from "react";
 
 const RECENT_MAX = 5;
@@ -45,9 +39,17 @@ export default function Home() {
   const active = projects.filter(
     (p) => p.status === "building" || p.status === "live",
   ).length;
-  const today = projects.filter(
-    (p) => humanizeLastActive(p.lastActivity) === "오늘",
-  ).length;
+  // "오늘 움직임"은 커밋 수 (Jessi 지시 — 프로젝트 수는 1에서 안 움직인다).
+  // 아직 todayCommits가 없는 옛 데이터는 오늘 글의 원료 커밋 수로 폴백.
+  const todayKst = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+  const today = projects.reduce(
+    (n, p) =>
+      n +
+      (p.todayCommits ??
+        devlogs.find((d) => d.repo === p.slug && d.date === todayKst)?.commits ??
+        0),
+    0,
+  );
 
   const facts: [string, number | string, ReactNode][] =
     projects.length === 0
@@ -58,7 +60,7 @@ export default function Home() {
       : [
           ["p", projects.length, "projects"],
           ["a", active, <T key="a" ko="만드는 중" en="building" />],
-          ["t", today, <T key="t" ko="오늘 움직임" en="active today" />],
+          ["t", today, <T key="t" ko="오늘 커밋" en="commits today" />],
           ["d", devlogs.length, <T key="d" ko="데브로그" en="devlogs" />],
         ];
 

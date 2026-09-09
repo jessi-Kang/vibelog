@@ -52,6 +52,8 @@ export interface RepoActivity {
   latestSha: string | null;
   /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
   weekCommits: number;
+  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (Jessi 지시: 개수 말고 커밋 수) */
+  todayCommits: number;
 }
 
 export interface RepoState {
@@ -250,16 +252,21 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     if (vibelogJson?.hide) continue;
 
     const weekAgo = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
-    const [allCommits, mergedPRs, devlogFiles, readme, weekCommits] =
+    // KST 자정 — 오늘 커밋 수의 창 시작
+    const kstMidnight = `${new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10)}T00:00:00+09:00`;
+    const countCommits = (sinceIso: string) =>
+      octokit.rest.repos
+        .listCommits({ owner, repo, since: sinceIso, per_page: 100 })
+        .then((r) => r.data.length)
+        .catch(() => 0);
+    const [allCommits, mergedPRs, devlogFiles, readme, weekCommits, todayCommits] =
       await Promise.all([
         getCommits(octokit, owner, repo, since),
         getMergedPRs(octokit, owner, repo, since),
         getDevlogFiles(octokit, owner, repo, since),
         getReadme(octokit, owner, repo),
-        octokit.rest.repos
-          .listCommits({ owner, repo, since: weekAgo, per_page: 100 })
-          .then((r) => r.data.length)
-          .catch(() => 0),
+        countCommits(weekAgo),
+        countCommits(new Date(kstMidnight).toISOString()),
       ]);
 
     // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
@@ -296,6 +303,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
         newCommits.length > 0 || newPRs.length > 0 || devlogFiles.length > 0,
       latestSha: commits[0]?.sha ?? prev?.lastSha ?? null,
       weekCommits,
+      todayCommits,
     });
   }
   return results;

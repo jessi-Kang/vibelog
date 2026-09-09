@@ -82,6 +82,7 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
       .toISOString()
       .slice(0, 10),
     weekCommits: a.weekCommits,
+    todayCommits: a.todayCommits,
   }));
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
 }
