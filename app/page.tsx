@@ -1,5 +1,6 @@
 import { PageContainer } from "@/components/page-container";
 import { HomeProjects } from "@/components/home-projects";
+import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader } from "@/components/ui";
 import { DevlogCompactEntry, RunLog } from "@/components/vibelog";
 import {
@@ -9,6 +10,7 @@ import {
   getRunLog,
   humanizeLastActive,
 } from "@/lib/content";
+import type { ReactNode } from "react";
 
 const RECENT_MAX = 5;
 
@@ -19,7 +21,7 @@ function fmtKstStamp(iso: string): string {
   return `${p(d.getUTCMonth() + 1)}.${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
 }
 
-function Fact({ n, label }: { n: number | string; label: string }) {
+function Fact({ n, label }: { n: number | string; label: ReactNode }) {
   const zero = n === 0 || n === "—";
   return (
     <span className="inline-flex items-baseline gap-1.5">
@@ -47,23 +49,23 @@ export default function Home() {
     (p) => humanizeLastActive(p.lastActivity) === "오늘",
   ).length;
 
-  const facts: [number | string, string][] =
+  const facts: [string, number | string, ReactNode][] =
     projects.length === 0
       ? [
-          [0, "projects"],
-          ["—", "첫 실행 대기"],
+          ["p", 0, "projects"],
+          ["w", "—", <T key="w" ko="첫 실행 대기" en="waiting for first run" />],
         ]
       : [
-          [projects.length, "projects"],
-          [active, "만드는 중"],
-          [today, "오늘 움직임"],
-          [devlogs.length, "데브로그"],
+          ["p", projects.length, "projects"],
+          ["a", active, <T key="a" ko="만드는 중" en="building" />],
+          ["t", today, <T key="t" ko="오늘 움직임" en="active today" />],
+          ["d", devlogs.length, <T key="d" ko="데브로그" en="devlogs" />],
         ];
 
   const runSection = (
     <section className="flex flex-col gap-3.5">
       <SectionHeader
-        title="지난 실행"
+        title={<T ko="지난 실행" en="Last run" />}
         // 날짜·시각을 같은 KST 시계로 — UTC 날짜 + KST 시각이 섞여 하루 어긋나 보였다
         aside={run ? fmtKstStamp(run.at) : undefined}
       />
@@ -73,14 +75,31 @@ export default function Home() {
         // 글은 있는데 실행 로그가 없는 과도기 — "기록 없음"이라고 하면 자기모순이 된다
         <EmptyState
           compact
-          title="실행 기록은 다음 자동 실행부터 남습니다"
-          body={`지금 있는 글 ${devlogs.length}편은 파이프라인을 만드는 동안 발행됐습니다. 매일 23:00 KST 실행부터 여기에 기록이 쌓입니다.`}
+          title={
+            <T
+              ko="실행 기록은 다음 자동 실행부터 남습니다"
+              en="Run logs start with the next automatic run"
+            />
+          }
+          body={
+            <T
+              ko={`지금 있는 글 ${devlogs.length}편은 파이프라인을 만드는 동안 발행됐습니다. 매일 23:00 KST 실행부터 여기에 기록이 쌓입니다.`}
+              en={`The ${devlogs.length} posts here were published while the pipeline was being built. Records accumulate from the nightly 23:00 KST run.`}
+            />
+          }
         />
       ) : (
         <EmptyState
           compact
-          title="아직 실행 기록이 없습니다"
-          body="매일 23:00 KST에 자동으로 돌고, 지금 바로 돌릴 수도 있습니다."
+          title={
+            <T ko="아직 실행 기록이 없습니다" en="No run records yet" />
+          }
+          body={
+            <T
+              ko="매일 23:00 KST에 자동으로 돌고, 지금 바로 돌릴 수도 있습니다."
+              en="Runs automatically at 23:00 KST daily — or trigger one right now."
+            />
+          }
           hint="gh workflow run devlog.yml"
         />
       )}
@@ -90,15 +109,20 @@ export default function Home() {
   const recentSection = (
     <section className="flex flex-col gap-3.5">
       <SectionHeader
-        title="최근 데브로그"
-        aside={devlogs.length ? "전체 →" : undefined}
+        title={<T ko="최근 데브로그" en="Recent devlogs" />}
+        aside={devlogs.length ? <T ko="전체 →" en="all →" /> : undefined}
         href="/log"
       />
       {devlogs.length === 0 ? (
         <EmptyState
           compact
-          title="아직 글이 없습니다"
-          body="topic이 달린 레포에 커밋이 생기면 그날 밤 첫 글이 올라옵니다. 활동 없는 날은 건너뜁니다."
+          title={<T ko="아직 글이 없습니다" en="No posts yet" />}
+          body={
+            <T
+              ko="topic이 달린 레포에 커밋이 생기면 그날 밤 첫 글이 올라옵니다. 활동 없는 날은 건너뜁니다."
+              en="Commit to a repo with the topic, and the first post goes up that night. Quiet days are skipped."
+            />
+          }
         />
       ) : (
         <Card className="p-0">
@@ -108,13 +132,29 @@ export default function Home() {
               href={`/log/${d.repo}/${d.date}`}
               date={fmtShort(d.date)}
               repo={d.repo}
-              title={d.title}
+              title={<T ko={d.title} en={d.titleEn ?? d.title} />}
               last={i === a.length - 1}
               meta={[
                 ...(d.commits
-                  ? [`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`]
+                  ? [
+                      {
+                        text: (
+                          <T
+                            ko={`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`}
+                            en={`${d.commits} commits${d.prs ? ` · ${d.prs} PRs` : ""}`}
+                          />
+                        ),
+                      },
+                    ]
                   : []),
-                ...(d.hasFail ? [{ text: "삽질", tone: "warn" as const }] : []),
+                ...(d.hasFail
+                  ? [
+                      {
+                        text: <T ko="삽질" en="rabbit hole" />,
+                        tone: "warn" as const,
+                      },
+                    ]
+                  : []),
               ]}
             />
           ))}
@@ -130,16 +170,30 @@ export default function Home() {
       <section className="grid items-end gap-4 pt-1 md:gap-5 md:pt-3 lg:pb-2 lg:pt-5">
         <div className="flex flex-col gap-2 md:gap-3">
           <h1 className="m-0 max-w-[22ch] text-[24px] font-bold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
-            만들고 있는 것들의 <span className="text-accent">기록</span>
+            <T
+              ko={
+                <>
+                  만들고 있는 것들의 <span className="text-accent">기록</span>
+                </>
+              }
+              en={
+                <>
+                  A <span className="text-accent">record</span> of things being
+                  built
+                </>
+              }
+            />
           </h1>
           <p className="m-0 text-md leading-relaxed text-muted [text-wrap:pretty] md:whitespace-nowrap md:text-[16px]">
-            바이브 코딩으로 만드는 서비스들의 제작기. 데브로그는 매일 밤 커밋에서
-            자동으로 만들어집니다.
+            <T
+              ko="바이브 코딩으로 만드는 서비스들의 제작기. 데브로그는 매일 밤 커밋에서 자동으로 만들어집니다."
+              en="Build logs of vibe-coded services. Devlogs are generated automatically from commits, every night."
+            />
           </p>
         </div>
         <div className="flex flex-wrap gap-5 border-t border-line pt-3.5 font-mono text-xs leading-snug text-muted">
-          {facts.map(([n, l]) => (
-            <Fact key={l} n={n} label={l} />
+          {facts.map(([k, n, l]) => (
+            <Fact key={k} n={n} label={l} />
           ))}
         </div>
       </section>

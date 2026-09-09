@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Project } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
+import { useLang } from "./lang";
 import { Card, SectionHeader, StatusBadge, EmptyState } from "./ui";
 import { ProjectCard } from "./vibelog";
 
 export function HomeProjects({ projects }: { projects: Project[] }) {
+  const { lang } = useLang();
   const [showRest, setShowRest] = useState(false);
   const active = projects.filter(
     (p) => p.status === "building" || p.status === "live",
@@ -21,13 +23,23 @@ export function HomeProjects({ projects }: { projects: Project[] }) {
   return (
     <section className="flex flex-col gap-3.5">
       <SectionHeader
-        title="프로젝트"
-        aside={projects.length > 4 ? `최근 활동순 · ${projects.length}` : undefined}
+        title={lang === "ko" ? "프로젝트" : "Projects"}
+        aside={
+          projects.length > 4
+            ? lang === "ko"
+              ? `최근 활동순 · ${projects.length}`
+              : `by recent activity · ${projects.length}`
+            : undefined
+        }
       />
       {projects.length === 0 ? (
         <EmptyState
-          title="아직 등록된 프로젝트가 없습니다"
-          body="GitHub 레포에 topic 하나를 달면 다음 23:00 실행에 카드가 생깁니다. 설명과 홈페이지는 레포 정보를 그대로 씁니다."
+          title={lang === "ko" ? "아직 등록된 프로젝트가 없습니다" : "No projects registered yet"}
+          body={
+            lang === "ko"
+              ? "GitHub 레포에 topic 하나를 달면 다음 23:00 실행에 카드가 생깁니다. 설명과 홈페이지는 레포 정보를 그대로 씁니다."
+              : "Add one topic to a GitHub repo and a card appears on the next 23:00 run. Description and homepage come straight from the repo."
+          }
           hint="gh repo edit --add-topic vibelog"
         />
       ) : (
@@ -54,7 +66,7 @@ export function HomeProjects({ projects }: { projects: Project[] }) {
               </span>
               <StatusBadge status={p.status} />
               <span className="w-[52px] text-right">
-                {humanizeLastActive(p.lastActivity)}
+                {humanizeLastActive(p.lastActivity, lang)}
               </span>
             </Link>
           ))}
@@ -64,7 +76,9 @@ export function HomeProjects({ projects }: { projects: Project[] }) {
               onClick={() => setShowRest(true)}
               className="h-8 cursor-pointer rounded-sm px-3 text-sm font-bold text-muted transition-opacity duration-150 hover:opacity-85 active:scale-[.98]"
             >
-              쉬는 프로젝트 {rest.length}개 카드로 펼치기
+              {lang === "ko"
+                ? `쉬는 프로젝트 ${rest.length}개 카드로 펼치기`
+                : `Show ${rest.length} paused ${rest.length === 1 ? "project" : "projects"} as cards`}
             </button>
           </div>
         </Card>

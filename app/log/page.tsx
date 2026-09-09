@@ -15,8 +15,11 @@ export default function LogPage() {
     repo: d.repo,
     date: d.date,
     dateLabel: fmtDate(d.date),
+    dateLabelEn: fmtDate(d.date, "en"),
     title: d.title,
+    titleEn: d.titleEn,
     summary: d.summary,
+    summaryEn: d.summaryEn,
     commits: d.commits,
     prs: d.prs,
     hasFail: d.hasFail,
@@ -27,6 +30,7 @@ export default function LogPage() {
     name: p.name,
     status: p.status,
     lastActive: humanizeLastActive(p.lastActivity),
+    lastActiveEn: humanizeLastActive(p.lastActivity, "en"),
   }));
 
   return (

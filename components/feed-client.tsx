@@ -1,6 +1,7 @@
 "use client";
 /** 데브로그 피드 — ProjectFilter(≤8 칩 / >8 Select) + 10편 페이지네이션 */
 import { useState } from "react";
+import { useLang } from "./lang";
 import { EmptyState, SectionHeader } from "./ui";
 import { DevlogTimelineEntry } from "./vibelog";
 
@@ -8,8 +9,11 @@ export interface FeedItem {
   repo: string;
   date: string;
   dateLabel: string; // "2026-09-14 · 일"
+  dateLabelEn?: string;
   title: string;
+  titleEn?: string;
   summary?: string;
+  summaryEn?: string;
   commits?: number;
   prs?: number;
   hasFail: boolean;
@@ -21,6 +25,7 @@ export interface FeedProject {
   name: string;
   status: string;
   lastActive: string;
+  lastActiveEn?: string;
 }
 
 const PAGE = 10;
@@ -33,6 +38,8 @@ export function FeedClient({
   items: FeedItem[];
   projects: FeedProject[];
 }) {
+  const { lang } = useLang();
+  const en = lang === "en";
   const [filter, setFilter] = useState("all");
   const [n, setN] = useState(PAGE);
 
@@ -44,7 +51,7 @@ export function FeedClient({
   const all = items.filter((d) => filter === "all" || d.repo === filter);
   const list = all.slice(0, n);
   const proj = projects.find((p) => p.slug === filter);
-  const options = [{ slug: "all", name: "전체" }, ...sorted];
+  const options = [{ slug: "all", name: en ? "All" : "전체" }, ...sorted];
 
   const pick = (v: string) => {
     setFilter(v);
@@ -55,8 +62,14 @@ export function FeedClient({
     <>
       <section className="flex flex-col gap-3.5">
         <SectionHeader
-          title="데브로그"
-          aside={all.length ? `${all.length}편 · 하루 한 글` : undefined}
+          title={en ? "Devlog" : "데브로그"}
+          aside={
+            all.length
+              ? en
+                ? `${all.length} posts · one per day`
+                : `${all.length}편 · 하루 한 글`
+              : undefined
+          }
         />
         {projects.length > MAX_CHIPS ? (
           <label className="relative block max-w-[320px]">
@@ -106,12 +119,22 @@ export function FeedClient({
       {list.length === 0 ? (
         <EmptyState
           title={
-            proj ? `${proj.name}에는 아직 글이 없습니다` : "아직 글이 없습니다"
+            proj
+              ? en
+                ? `No posts for ${proj.name} yet`
+                : `${proj.name}에는 아직 글이 없습니다`
+              : en
+                ? "No posts yet"
+                : "아직 글이 없습니다"
           }
           body={
             proj && proj.status === "paused"
-              ? `${proj.lastActive}부터 커밋이 없습니다. 다시 움직이면 그날 밤 글이 올라옵니다.`
-              : "커밋이 생기면 다음 23:00 실행에 올라옵니다."
+              ? en
+                ? `No commits since ${proj.lastActiveEn ?? proj.lastActive}. When it moves again, a post goes up that night.`
+                : `${proj.lastActive}부터 커밋이 없습니다. 다시 움직이면 그날 밤 글이 올라옵니다.`
+              : en
+                ? "New commits appear here after the next 23:00 run."
+                : "커밋이 생기면 다음 23:00 실행에 올라옵니다."
           }
           action={
             <button
@@ -119,7 +142,7 @@ export function FeedClient({
               onClick={() => pick("all")}
               className="h-8 cursor-pointer rounded-sm border border-line bg-panel2 px-3 text-sm font-bold text-ink transition-opacity duration-150 hover:opacity-85 active:scale-[.98]"
             >
-              전체 보기
+              {en ? "Show all" : "전체 보기"}
             </button>
           }
         />
@@ -129,18 +152,24 @@ export function FeedClient({
             <DevlogTimelineEntry
               key={`${d.repo}/${d.date}`}
               href={`/log/${d.repo}/${d.date}`}
-              date={d.dateLabel}
+              date={en ? (d.dateLabelEn ?? d.dateLabel) : d.dateLabel}
               repo={d.repo}
-              title={d.title}
-              summary={d.summary}
+              title={en ? (d.titleEn ?? d.title) : d.title}
+              summary={en ? (d.summaryEn ?? d.summary) : d.summary}
               last={i === list.length - 1}
               meta={[
                 ...(d.commits
-                  ? [`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`]
+                  ? [
+                      en
+                        ? `${d.commits} commits${d.prs ? ` · ${d.prs} PRs` : ""}`
+                        : `커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`,
+                    ]
                   : []),
-                ...(d.hasFail ? [{ text: "삽질", tone: "warn" as const }] : []),
+                ...(d.hasFail
+                  ? [{ text: en ? "rabbit hole" : "삽질", tone: "warn" as const }]
+                  : []),
                 ...(d.hasShort
-                  ? [{ text: "쇼츠 ▶", tone: "accent" as const }]
+                  ? [{ text: en ? "short ▶" : "쇼츠 ▶", tone: "accent" as const }]
                   : []),
               ]}
             />
@@ -153,7 +182,9 @@ export function FeedClient({
           onClick={() => setN(n + PAGE)}
           className="h-11 w-full cursor-pointer rounded-md border border-line bg-panel2 text-base font-bold text-ink transition-opacity duration-150 hover:opacity-85 active:scale-[.98]"
         >
-          이전 글 {Math.min(PAGE, all.length - n)}편 더
+          {en
+            ? `${Math.min(PAGE, all.length - n)} older posts`
+            : `이전 글 ${Math.min(PAGE, all.length - n)}편 더`}
         </button>
       )}
     </>

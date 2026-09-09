@@ -50,13 +50,19 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   console.log(`[shorts] 내레이션·음악 생성`);
   await generateAudio(repo, date, ["ko", "en"]);
 
-  const timing: ShortsTiming = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), timingJsonPath(repo, date, "ko")), "utf8"),
-  );
-
   if (script.demo.url) {
-    console.log(`[shorts] 화면 녹화 (${script.demo.url})`);
-    await record(repo, date, Math.ceil(timing.duration) + 2);
+    // 언어별로 따로 녹화 — 사이트를 그 언어 모드로 켜서, 영어 영상에
+    // 한국어 화면이 나오지 않게 한다 (Jessi 지시)
+    for (const lang of ["ko", "en"] as const) {
+      const timing: ShortsTiming = JSON.parse(
+        fs.readFileSync(
+          path.join(process.cwd(), timingJsonPath(repo, date, lang)),
+          "utf8",
+        ),
+      );
+      console.log(`[shorts] 화면 녹화 (${script.demo.url}, ${lang})`);
+      await record(repo, date, Math.ceil(timing.duration) + 2, lang);
+    }
   } else {
     console.warn("[shorts] demo.url 없음 — 플레이스홀더로 렌더");
   }

@@ -2,6 +2,7 @@
 /** 쇼츠 그리드 — 영상이 있으면 카드가 레이어 팝업으로 재생, 없으면 글로 이동 */
 import Link from "next/link";
 import { useState } from "react";
+import { useLang } from "./lang";
 import type { ShortsMeta } from "@/lib/content";
 import { fmtShort } from "@/lib/format";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
@@ -81,6 +82,8 @@ export function ShortsGrid({
   /** 인트로 영어판 — 있으면 팝업에 KO/EN 토글이 뜬다 */
   introEnSrc?: string;
 }) {
+  const { lang } = useLang(); // 전역 설정 — 재생 언어·썸네일·라벨이 따라간다
+  const en = lang === "en";
   const [media, setMedia] = useState<LightboxMedia | null>(null);
 
   return (
@@ -88,20 +91,26 @@ export function ShortsGrid({
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
         {shorts.map((s) => {
           const href = `/log/${s.repo}/${s.date}`;
-          const data = { ...s, poster: s.media?.poster };
+          // EN이면 영어 훅 프레임 썸네일 — 아직 없으면(구버전) ko 폴백
+          const data = {
+            ...s,
+            poster: en
+              ? (s.media?.posterEn ?? s.media?.poster)
+              : s.media?.poster,
+          };
           return (
             <div key={`${s.repo}/${s.date}`} className="flex flex-col gap-2">
               {/* 한쪽 언어 업로드만 성공해도 재생은 가능해야 한다 — 팝업이 있는 쪽으로 폴백 */}
               {s.media?.ko || s.media?.en ? (
                 <button
                   type="button"
-                  aria-label={`${s.title} 쇼츠 재생`}
+                  aria-label={en ? `Play short: ${s.title}` : `${s.title} 쇼츠 재생`}
                   onClick={() =>
                     setMedia({
                       kind: "video",
                       sources: s.media ?? {},
-                      lang: "ko",
-                      label: `${s.title} 쇼츠`,
+                      lang,
+                      label: en ? `Short: ${s.title}` : `${s.title} 쇼츠`,
                     })
                   }
                   className="group cursor-pointer p-0 text-left"
@@ -118,7 +127,7 @@ export function ShortsGrid({
                 href={href}
                 className="font-mono text-2xs text-muted transition-colors duration-150 hover:text-ink-soft"
               >
-                {s.repo} · {fmtShort(s.date)} · 글 보기 →
+                {s.repo} · {fmtShort(s.date)} · {en ? "read the post →" : "글 보기 →"}
               </Link>
             </div>
           );
@@ -128,13 +137,13 @@ export function ShortsGrid({
           <div className="flex flex-col gap-2">
             <button
               type="button"
-              aria-label="vibelog 인트로 재생"
+              aria-label={en ? "Play vibelog intro" : "vibelog 인트로 재생"}
               onClick={() =>
                 setMedia({
                   kind: "video",
                   sources: { ko: introSrc, ...(introEnSrc ? { en: introEnSrc } : {}) },
-                  lang: "ko",
-                  label: "vibelog 인트로",
+                  lang,
+                  label: en ? "vibelog intro" : "vibelog 인트로",
                 })
               }
               className="group cursor-pointer p-0 text-left"
@@ -142,15 +151,18 @@ export function ShortsGrid({
               <Thumb
                 s={{
                   tag: "intro",
-                  hook: "만들고 있는 것들의 기록",
-                  hookKeywords: ["기록"],
+                  hook: en ? "A record of things being built" : "만들고 있는 것들의 기록",
+                  hookKeywords: en ? ["record"] : ["기록"],
                   template: "intro",
-                  duration: 36,
-                  poster: "/shorts/intro.jpg",
+                  duration: en ? 33 : 36,
+                  // EN이면 영어판 첫 프레임
+                  poster: en && introEnSrc ? "/shorts/intro.en.jpg" : "/shorts/intro.jpg",
                 }}
               />
             </button>
-            <div className="font-mono text-2xs text-muted">채널 소개 · 36초</div>
+            <div className="font-mono text-2xs text-muted">
+              {en ? "channel intro · 33s" : "채널 소개 · 36초"}
+            </div>
           </div>
         )}
       </div>

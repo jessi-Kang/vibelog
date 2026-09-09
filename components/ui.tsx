@@ -54,8 +54,8 @@ export function SectionHeader({
   aside,
   href,
 }: {
-  title: string;
-  aside?: string;
+  title: ReactNode;
+  aside?: ReactNode;
   href?: string;
 }) {
   return (
@@ -83,8 +83,8 @@ export function EmptyState({
   action,
   compact,
 }: {
-  title: string;
-  body?: string;
+  title: ReactNode;
+  body?: ReactNode;
   hint?: string;
   action?: ReactNode;
   compact?: boolean;
@@ -141,7 +141,7 @@ export function MonoMeta({
   items,
   className = "",
 }: {
-  items: (string | { text: string; tone?: "warn" | "accent" | "soft" })[];
+  items: (string | { text: ReactNode; tone?: "warn" | "accent" | "soft" })[];
   className?: string;
 }) {
   return (
