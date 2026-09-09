@@ -6,9 +6,10 @@ import Link from "next/link";
 import type { ReactNode, CSSProperties } from "react";
 
 export function Wordmark({ size = 18 }: { size?: number }) {
+  // 헤더 로고는 모노 — 터미널 톤과 맞춘다 (Jessi 지시)
   return (
     <span
-      className="font-sans font-black leading-none tracking-[.01em] text-ink"
+      className="font-mono font-bold leading-none tracking-[.01em] text-ink"
       style={{ fontSize: size }}
     >
       vibelog

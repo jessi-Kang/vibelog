@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: Props) {
   const head = (
     <section className="flex flex-col items-start gap-4 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-10 md:gap-y-4 lg:flex lg:flex-col">
       <div className="flex flex-col gap-3">
-        <h1 className="m-0 text-xl font-bold tracking-[-.01em] lg:text-[26px]">
+        <h1 className="m-0 text-xl font-bold tracking-[-.01em] text-accent lg:text-[26px]">
           {project.name}
         </h1>
         <p className="m-0 text-md leading-[1.6] text-ink-soft [text-wrap:pretty]">
