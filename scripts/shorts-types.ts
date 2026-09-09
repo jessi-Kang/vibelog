@@ -7,6 +7,19 @@
 
 export type ShortsTemplate = "ship-it" | "fail" | "before-after";
 
+/**
+ * 배경음악 톤 5종 — video/assets/music/<mood>.mp3 로 미리 만들어 둔 고정
+ * 트랙. 대본이 그날 이야기의 분위기에 맞는 톤을 고른다 (Jessi 지시).
+ */
+export const MUSIC_MOODS = [
+  "ship-it", // 기본 — 담담한 전진
+  "upbeat", // 배포·성공
+  "tense", // 큰 삽질
+  "calm", // 문서·정리
+  "playful", // 실험·장난기
+] as const;
+export type MusicMood = (typeof MUSIC_MOODS)[number];
+
 /** 대본 한 문장이 속하는 장면. Remotion 템플릿이 장면 전환에 사용 */
 export type ShortsScene = "hook" | "build" | "demo" | "fail" | "next" | "end";
 
@@ -32,6 +45,8 @@ export interface ShortsFailCard {
 
 export interface ShortsScript {
   template: ShortsTemplate;
+  /** 대본이 고른 배경음악 톤 — 없으면 template 트랙 → 아무 트랙 순 폴백 */
+  music?: string;
   repo: string;
   date: string; // YYYY-MM-DD
   /** eyebrow의 DAY NN — 이 레포의 몇 번째 데브로그인지 */

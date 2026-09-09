@@ -100,7 +100,7 @@ export async function renderShort(
     silent,
     path.join(process.cwd(), narrationPath(repo, date, lang)),
     // 템플릿 트랙이 없으면 audio.ts와 같은 규칙으로 다른 고정 트랙을 재사용
-    resolveMusic(script.template) ?? musicPath(script.template),
+    resolveMusic(script) ?? musicPath(script.template),
     out,
     durationSec,
   );

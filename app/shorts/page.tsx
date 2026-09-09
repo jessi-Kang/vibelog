@@ -31,7 +31,7 @@ export default function ShortsPage() {
             hint="content/shorts/<repo>/<date>.json"
           />
         ) : (
-          <ShortsGrid shorts={shorts} introSrc="/shorts/intro.mp4" />
+          <ShortsGrid shorts={shorts} introSrc="/shorts/intro.mp4" introEnSrc="/shorts/intro.en.mp4" />
         )}
       </section>
 
