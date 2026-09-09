@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* 쇼츠 스펙(docs/03-shorts-spec.md)과 같은 팔레트 — 블로그와 영상의 톤을 통일 */
+@theme {
+  --color-bg: #0a0e14;
+  --color-panel: #141b24;
+  --color-panel2: #1b2430;
+  --color-line: #26313f;
+  --color-ink: #f3efe6;
+  --color-muted: #8c98a8;
+  --color-accent: #5ee1c3;
+  --color-accent-ink: #06261f;
+  --color-warn: #ffb454;
+
+  --font-sans: "Noto Sans KR", "Noto Sans CJK KR", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  word-break: keep-all;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+/* 데브로그 본문(마크다운) 스타일 */
+.prose-devlog {
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.prose-devlog h1,
+.prose-devlog h2,
+.prose-devlog h3 {
+  font-weight: 800;
+  margin: 1.6em 0 0.6em;
+  line-height: 1.3;
+}
+.prose-devlog h2 {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+.prose-devlog h3 {
+  font-size: 1rem;
+}
+.prose-devlog p {
+  margin: 0.7em 0;
+}
+.prose-devlog ul,
+.prose-devlog ol {
+  margin: 0.7em 0;
+  padding-left: 1.4em;
+}
+.prose-devlog ul {
+  list-style: disc;
+}
+.prose-devlog ol {
+  list-style: decimal;
+}
+.prose-devlog li {
+  margin: 0.3em 0;
+}
+.prose-devlog a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-devlog code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-panel2);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+}
+.prose-devlog pre {
+  background: var(--color-panel2);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+.prose-devlog pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.prose-devlog blockquote {
+  border-left: 3px solid var(--color-line);
+  padding-left: 1em;
+  color: var(--color-muted);
+  margin: 0.8em 0;
+}
+.prose-devlog img {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--color-line);
+}
+.prose-devlog hr {
+  border: none;
+  border-top: 1px dashed var(--color-line);
+  margin: 1.5em 0;
+}
