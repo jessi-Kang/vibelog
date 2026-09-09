@@ -97,13 +97,14 @@ export const PhoneFrame: React.FC<{
   return (
     <div
       style={{
+        // 자막 구역(하단 ~1530부터)과 안 겹치게 프레임을 줄였다 — 폰 하단 1370
         position: "absolute",
         left: "50%",
-        top: 260,
+        top: 240,
         transform: "translateX(-50%)",
-        width: 760,
-        height: 1250,
-        borderRadius: 70,
+        width: 690,
+        height: 1130,
+        borderRadius: 64,
         background: "#000",
         border: "6px solid #2A3442",
         boxShadow: "0 40px 120px rgba(0,0,0,.6), 0 0 0 2px #0A0E14",
@@ -114,7 +115,7 @@ export const PhoneFrame: React.FC<{
         style={{
           position: "absolute",
           inset: 14,
-          borderRadius: 56,
+          borderRadius: 50,
           overflow: "hidden",
           background: COLORS.panel,
         }}
