@@ -23,8 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
         className="absolute inset-0 z-0 rounded-lg"
       />
       <div className="flex items-baseline justify-between gap-3">
-        {/* 프로젝트명은 키컬러로 — 목록에서 이름이 먼저 잡히게 (Jessi 지시) */}
-        <h3 className="min-w-0 truncate text-lg font-bold text-accent">
+        <h3 className="min-w-0 truncate text-lg font-bold text-ink">
           {project.name}
         </h3>
         <StatusBadge status={project.status} />
@@ -108,7 +107,7 @@ export function DevlogTimelineEntry({
           <span>{date}</span>
           {repo && <span className="text-ink-soft">{repo}</span>}
         </div>
-        <h3 className="m-0 text-lg font-bold leading-[1.35] text-accent transition-opacity duration-150 [text-wrap:pretty] group-hover:opacity-85">
+        <h3 className="m-0 text-lg font-bold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
           {title}
         </h3>
         {summary && (
@@ -149,7 +148,7 @@ export function DevlogCompactEntry({
         {date}
       </div>
       <div className="flex min-w-0 flex-col gap-1">
-        <div className="text-md font-bold leading-snug text-accent [text-wrap:pretty]">
+        <div className="text-md font-bold leading-snug text-ink [text-wrap:pretty]">
           {title}
         </div>
         <MonoMeta
