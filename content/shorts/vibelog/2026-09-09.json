@@ -1,6 +1,6 @@
 {
-  "template": "ship-it",
-  "music": "ship-it",
+  "template": "fail",
+  "music": "tense",
   "repo": "vibelog",
   "date": "2026-09-09",
   "day": 2,
@@ -10,80 +10,72 @@
       "ko": "이 블로그의 글은 사람이 쓰지 않습니다.",
       "en": "Nobody writes the posts on this blog.",
       "keywords": [
-        "글은",
-        "사람이"
+        "사람이",
+        "쓰지"
       ],
       "keywordsEn": [
         "Nobody",
-        "posts"
+        "writes"
       ]
     },
     {
       "scene": "hook",
-      "ko": "대신 기계 2대를 앉혔습니다.",
-      "en": "Instead I installed 2 machines.",
+      "ko": "그 기계를 하루 만에 세웠습니다.",
+      "en": "I built that machine in one day.",
       "keywords": [
-        "기계",
-        "2대를"
-      ],
-      "keywordsEn": [
-        "2"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "낮에는 블로그 화면 3개를 만들었습니다.",
-      "en": "During the day I built 3 screens.",
-      "keywords": [
-        "화면",
-        "3개를"
-      ],
-      "keywordsEn": [
-        "3"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "밤에는 코드 기록을 글로 바꾸는 장치를 붙였습니다.",
-      "en": "At night I added a machine that turns code records into a post.",
-      "keywords": [
-        "글로",
-        "장치를"
+        "기계를",
+        "하루"
       ],
       "keywordsEn": [
         "machine"
       ]
     },
     {
-      "scene": "demo",
-      "ko": "그 글은 30초짜리 세로 영상이 됩니다.",
-      "en": "That post becomes a 30 second vertical video.",
+      "scene": "build",
+      "ko": "낮에는 블로그 화면 3개를 만들었습니다.",
+      "en": "By day I built 3 screens for the blog.",
       "keywords": [
-        "30초짜리",
-        "영상이"
+        "화면",
+        "3개를"
       ],
-      "keywordsEn": [
-        "30"
-      ]
+      "keywordsEn": []
+    },
+    {
+      "scene": "build",
+      "ko": "밤에는 글 쓰는 기계 2대를 붙였습니다.",
+      "en": "By night I hooked up 2 machines that write.",
+      "keywords": [
+        "기계",
+        "2대를"
+      ],
+      "keywordsEn": []
     },
     {
       "scene": "demo",
-      "ko": "제 목소리로 읽고 자막이 한 단어씩 켜집니다.",
-      "en": "It reads in my voice, and subtitles light up word by word.",
+      "ko": "매일 밤 그날 작업이 글이 됩니다.",
+      "en": "Every night the day's work becomes a post.",
+      "keywords": [
+        "매일",
+        "글이"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "demo",
+      "ko": "제 목소리로 읽는 30초 영상까지 나옵니다.",
+      "en": "Then a 30 second video read in my own voice.",
       "keywords": [
         "목소리로",
-        "자막이"
+        "30초"
       ],
-      "keywordsEn": [
-        "subtitles"
-      ]
+      "keywordsEn": []
     },
     {
       "scene": "fail",
-      "ko": "그런데 밤에 처음 돌렸더니 시동조차 걸리지 않았습니다.",
-      "en": "But the first night run never even started.",
+      "ko": "그런데 첫 실행에 시동이 걸리지 않았습니다.",
+      "en": "But on the first run it never even started.",
       "keywords": [
-        "시동조차"
+        "시동이"
       ],
       "keywordsEn": [
         "never"
@@ -91,44 +83,34 @@
     },
     {
       "scene": "fail",
-      "ko": "설정 파일의 한 줄 때문에 파일 전체가 무효였습니다.",
-      "en": "One line in the config made the whole file invalid.",
+      "ko": "잘못 적은 한 줄에 파일 전체가 무시됐습니다.",
+      "en": "One wrong line made the whole file invalid.",
       "keywords": [
-        "한",
-        "줄",
-        "전체가"
+        "줄에"
       ],
-      "keywordsEn": [
-        "One",
-        "line",
-        "whole"
-      ]
+      "keywordsEn": []
     },
     {
       "scene": "next",
-      "ko": "이제 밤마다 글과 영상이 끝까지 나오는지 지켜봅니다.",
-      "en": "Now I watch each night to see if the post and video make it all the way.",
+      "ko": "밤 자동 발행이 끝까지 도는지 지켜봅니다.",
+      "en": "Now I watch the nightly publish run all the way through.",
       "keywords": [
-        "밤마다",
+        "자동",
         "끝까지"
       ],
       "keywordsEn": [
-        "night",
-        "all"
+        "nightly"
       ],
-      "art": "a small night lamp watching over a conveyor belt carrying a single glowing page"
+      "art": "a small lighthouse blinking over a sleeping town at night"
     },
     {
       "scene": "end",
-      "ko": "디자인은 아직 임시라 곧 손봅니다.",
-      "en": "The design is still provisional, so it gets a pass soon.",
+      "ko": "화면과 기계, 첫날에 둘 다 세웠습니다.",
+      "en": "Pages and machine, both standing on day one.",
       "keywords": [
-        "디자인은",
-        "임시라"
+        "첫날에"
       ],
-      "keywordsEn": [
-        "design"
-      ]
+      "keywordsEn": []
     }
   ],
   "demo": {
@@ -136,30 +118,31 @@
     "steps": []
   },
   "failCard": {
-    "title": "한 줄이 파일을 죽였다",
-    "titleEn": "One line killed the file",
-    "before": "자동 실행이 흔적도 없이 안 돌아감",
-    "after": "문제의 한 줄을 빼니 바로 시동",
-    "beforeEn": "The nightly run left no trace at all",
-    "afterEn": "Removed that one line and it started"
+    "title": "한 줄이 파일을 통째로 날렸다",
+    "titleEn": "One line voided the whole file",
+    "before": "기계가 시동조차 걸리지 않음",
+    "after": "그 한 줄을 걷어내니 바로 돌아감",
+    "beforeEn": "The machine would not start at all",
+    "afterEn": "Removed that line and it ran"
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "블로그 화면 3개와 글·영상을 만드는 기계 2대를 하루에 세웠습니다. 첫 실행은 설정 파일 한 줄 때문에 시동도 안 걸렸습니다.",
-    "en": "In one day I built 3 blog screens and 2 machines that write the posts and make the videos. The first run never started, because of a single line in a config file."
+    "ko": "블로그 화면 3개와 글·영상을 만드는 기계 2대를 하루에 세웠습니다. 첫 실행이 안 된 이유는 설정에 잘못 적은 한 줄이었습니다.",
+    "en": "In one day: 3 blog screens and 2 machines that turn the day's work into a post and a video. The first run failed because of one wrong line in the config."
   },
   "hashtags": [
-    "#vibelog",
     "#개발일지",
     "#자동화",
     "#devlog",
-    "#automation",
+    "#buildinpublic",
     "#사이드프로젝트",
-    "#buildinpublic"
+    "#automation",
+    "#vibelog"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtuhgf7q",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtuhgh3q",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtuhi4vk"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtui90s1",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtui92ny",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtuiakcw",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtuiam3g"
   }
 }
