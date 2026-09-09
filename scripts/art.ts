@@ -63,9 +63,8 @@ export async function generateArt(repo: string, date: string): Promise<void> {
   const script: ShortsScript = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), shortsJsonPath(repo, date)), "utf8"),
   );
-  const targets = script.lines.filter(
-    (l) => l.art && (l.scene === "hook" || l.scene === "next"),
-  );
+  // 타이틀(훅)에는 그래픽을 넣지 않는다 (Jessi 지시) — next 장면 전용
+  const targets = script.lines.filter((l) => l.art && l.scene === "next");
   if (targets.length === 0) {
     console.log("[art] 대본에 art 묘사가 없음 — 건너뜀");
     return;

@@ -47,9 +47,10 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 - fail 장면이 있으면 failCard도 채운다: before(문제 상황 한 줄), after(해결 한 줄), title(카드 제목, 짧게).
 - captions: 유튜브/인스타 설명문 (ko/en 각 1~2문장 + 줄바꿈 없이).
 - hashtags: 5~8개, # 포함, 한국어·영어 섞어서.
-- art: hook과 next 문장에만, 그 장면을 은유하는 일러스트를 영어 한 문장으로
+- art: next 문장에만, 그 장면을 은유하는 일러스트를 영어 한 문장으로
   묘사한다 (예: "a tiny robot stacking glowing building blocks into a tower").
   구체적 사물 하나 중심, 은유는 문장 내용에서. 글자·로고·UI 스크린샷 묘사 금지.
+  hook 등 다른 장면에는 art를 쓰지 않는다.
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
 {"template":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"art":"..."}],
