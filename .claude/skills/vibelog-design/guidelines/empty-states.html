@@ -1,0 +1,12 @@
+<!-- @dsCard group="Patterns" viewport="700x300" subtitle="비어 있으면 세 줄: 무엇이 없고 왜 / 언제 채워지나 / 할 수 있는 한 가지(모노). 일러스트·이모지 없음" name="Empty states" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:16px 20px;box-sizing:border-box;width:700px;height:300px;overflow:hidden}
+.e{border:1px dashed var(--line-strong);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:7px}.e b{font-size:15px;font-weight:700;word-break:keep-all}.e p{margin:0;font-size:14px;color:var(--muted);line-height:1.6;word-break:keep-all}.e code{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);background:var(--panel-2);border-radius:6px;padding:4px 8px;align-self:flex-start}
+.m{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}</style></head><body>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+ <div class="e"><b>아직 등록된 프로젝트가 없습니다</b><p>GitHub 레포에 topic 하나를 달면 다음 23:00 실행에 카드가 생깁니다.</p><code>gh repo edit --add-topic vibelog</code></div>
+ <div class="e"><b>6주 전부터 조용해서 글이 없습니다</b><p>커밋이 생기면 다음 23:00 실행에 첫 글이 올라옵니다. 커밋 본문에 '왜'를 쓰면 글이 덜 밍밍해집니다.</p><code>git log --since=today wallet-notes</code></div>
+ <div class="e" style="padding:14px 16px"><b>스크린샷이 없습니다</b><p>레포에 homepage가 없어 캡처를 건너뛰었습니다.</p><code>gh repo edit --homepage https://…</code></div>
+ <div class="e" style="padding:14px 16px"><b>대기 중인 글이 없습니다</b><p>오늘 밤 23:00에 다시 옵니다. 반려한 글은 다음 실행에 다시 생성합니다.</p></div>
+</div>
+<div class="m" style="margin-top:12px">EmptyState · dashed line-strong · 제목 15/700 · 본문 muted · hint 모노 · action은 손품 안 느는 것만</div></body></html>

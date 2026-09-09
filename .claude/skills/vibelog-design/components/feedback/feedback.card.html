@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="700x470" name="Feedback — Toast · Dialog · Tooltip · ProgressBar · EmptyState" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../tools/ds-loader.js"></script>
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:20px}</style></head><body><div id="root"></div>
+<script>
+loadDS(['../core/Button.jsx','../core/Badge.jsx','../feedback/Toast.jsx','../feedback/Dialog.jsx','../feedback/Tooltip.jsx','../feedback/ProgressBar.jsx','../feedback/EmptyState.jsx']).then(({Button,Badge,Toast,Dialog,Tooltip,ProgressBar,EmptyState}) => {
+  const h = React.createElement;
+  function Demo(){ const [o,setO]=React.useState(false);
+    return h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'12px 24px',alignItems:'start'}},
+      h('div',{style:{display:'flex',flexDirection:'column',gap:8}},
+        h(Toast,{tone:'accent',action:'보기'},'devlog: vibelog 2026-09-14 게시됨'),
+        h(Toast,{tone:'warn'},'wallet-notes · 30일 활동 없음 → paused'),
+        h(Toast,{tone:'danger',action:'재시도'},'ElevenLabs 렌더 실패 (429)'),
+        h(Toast,null,'다음 실행 23:00 KST')),
+      h('div',{style:{display:'flex',flexDirection:'column',gap:18}},
+        h(ProgressBar,{value:.78,label:'이번 주 커밋',valueText:'23'}),
+        h(ProgressBar,{value:.18,label:'job-board',valueText:'4'}),
+        h(ProgressBar,{value:0,label:'wallet-notes',valueText:'0',tone:'muted'}),
+        h('div',{style:{display:'flex',gap:12,alignItems:'center',paddingTop:8}},
+          h(Tooltip,{label:'cron 0 14 * * *'},h(Badge,{tone:'accent'},'hover me')),
+          h(Button,{variant:'secondary',size:'sm',onClick:()=>setO(true)},'Dialog 열기'))),
+      h('div',{style:{gridColumn:'1 / -1',display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}},h(EmptyState,{title:'아직 등록된 프로젝트가 없습니다',body:'GitHub 레포에 topic 하나를 달면 다음 23:00 실행에 카드가 생깁니다.',hint:'gh repo edit --add-topic vibelog'}),h(EmptyState,{compact:true,title:'이 필터에 해당하는 글이 없습니다',body:'커밋이 생기면 다음 23:00 실행에 올라옵니다.',action:h(Button,{variant:'secondary',size:'sm'},'전체 보기')})),
+      h(Dialog,{open:o,onClose:()=>setO(false),eyebrow:'approve · vibelog',title:'이 데브로그를 게시할까요?',actions:[h(Button,{key:'c',variant:'ghost',onClick:()=>setO(false)},'취소'),h(Button,{key:'ok',onClick:()=>setO(false)},'게시')]},'블로그 배포와 쇼츠 업로드(KO/EN)가 함께 나갑니다.'));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+});
+</script></body></html>

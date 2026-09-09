@@ -1,0 +1,37 @@
+:root {
+  --font-sans: 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* web scale (mobile-first, px) */
+  --text-2xs: 11px;   /* mono eyebrow / meta */
+  --text-xs: 12px;    /* mono meta, footer */
+  --text-sm: 13px;    /* nav, mono log */
+  --text-base: 14px;  /* body */
+  --text-md: 15px;    /* list title, section h2 */
+  --text-lg: 18px;    /* card title, wordmark */
+  --text-xl: 22px;    /* page title */
+  --text-2xl: 34px;   /* stat number */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --weight-black: 900;  /* 워드마크 · 쇼츠 디스플레이만. 웹 제목은 700 */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.35;
+  --leading-body: 1.55;
+  --leading-relaxed: 1.65;
+  --leading-log: 1.9;
+
+  --tracking-tight: -.02em;
+  --tracking-eyebrow: .08em;
+  --tracking-mono: .04em;
+
+  /* shorts scale (1080×1920) */
+  --shorts-hook: 132px;
+  --shorts-end: 120px;
+  --shorts-fail: 110px;
+  --shorts-caption: 62px;
+  --shorts-eyebrow: 30px;
+  --shorts-footer: 24px;
+}

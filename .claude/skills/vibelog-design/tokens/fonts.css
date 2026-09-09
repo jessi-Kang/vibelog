@@ -1,0 +1,2 @@
+/* Webfonts via Google Fonts. 렌더 환경(Remotion/Playwright)에는 Noto Sans CJK KR을 로컬 설치해 폴백. */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap");

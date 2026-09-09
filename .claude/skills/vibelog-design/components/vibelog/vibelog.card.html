@@ -1,0 +1,20 @@
+<!-- @dsCard group="Components" viewport="700x560" name="Vibelog — StatusBadge · StatPanel · ProjectCard · RunLog · DevlogEntry · Eyebrow · Caption" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../tools/ds-loader.js"></script>
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:20px}</style></head><body><div id="root"></div>
+<script>
+loadDS(['../core/Badge.jsx','../core/Tag.jsx','../core/Card.jsx','../feedback/ProgressBar.jsx','../vibelog/StatusBadge.jsx','../vibelog/StatPanel.jsx','../vibelog/ProjectCard.jsx','../vibelog/RunLog.jsx','../vibelog/DevlogEntry.jsx','../vibelog/Eyebrow.jsx','../vibelog/Caption.jsx']).then(({StatusBadge,StatPanel,ProjectCard,RunLog,DevlogEntry,Eyebrow,Caption}) => {
+  const h = React.createElement;
+  const lab = t => h('div',{style:{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--muted)',margin:'0 0 8px'}},t);
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'20px 24px',alignItems:'start'}},
+    h('div',null,lab('status badge'),h('div',{style:{display:'flex',gap:16,alignItems:'center',flexWrap:'wrap'}},h(StatusBadge,{status:'live'}),h(StatusBadge,{status:'building'}),h(StatusBadge,{status:'paused'}),h(StatusBadge,{status:'idea'}),h(StatusBadge,{status:'live',variant:'pill'}),h(StatusBadge,{status:'building',variant:'pill'}))),
+    h('div',null,lab('stat panel · 드물게'),h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:8}},h(StatPanel,{label:'projects',value:3}),h(StatPanel,{label:'active today',value:1,accent:true}),h(StatPanel,{label:'devlogs',value:12}))),
+    h('div',null,lab('project card'),h(ProjectCard,{name:'vibelog',status:'building',description:'바이브 코딩 프로젝트 제작기를 자동으로 쓰는 블로그. 이 사이트 자체입니다.',stack:['next.js','vercel'],commits:23,lastActive:'오늘'})),
+    h('div',null,lab('run log'),h(RunLog,{lines:[{cmd:true,text:'gh workflow run devlog.yml'},{text:'collect  · 3 repos, 1 active'},{text:'generate · vibelog/2026-09-14.md (ko, en)'},{fail:true,text:'tts      · 429 rate limit'},{cur:true,text:'retry in 30s'}]})),
+    h('div',null,lab('devlog entry · compact'),h('div',{style:{background:'var(--panel)',border:'1px solid var(--line)',borderRadius:12}},h(DevlogEntry,{compact:true,date:'09.14',repo:'vibelog',title:'GitHub 액션으로 데브로그 자동 생성',meta:['커밋 4 · PR 1','ko · en']}),h(DevlogEntry,{compact:true,last:true,date:'09.13',repo:'vibelog',title:'블로그 뼈대 배포. 카드 + 타임라인까지',meta:['커밋 7',{text:'삽질 1',tone:'warn'}]}))),
+    h('div',null,lab('devlog entry · timeline'),h(DevlogEntry,{date:'2026-09-14 · SUN',title:'GitHub 액션으로 데브로그 자동 생성',summary:'topic이 vibelog인 레포를 밤 11시에 훑어서 하루치 글을 씁니다.',meta:['커밋 4 · PR 1',{text:'삽질 1',tone:'warn'}],last:true})),
+    h('div',{style:{gridColumn:'1 / -1',background:'var(--bg-deep)',borderRadius:16,padding:'18px 24px',display:'flex',flexDirection:'column',gap:18}},lab('shorts · eyebrow + caption (scaled)'),h(Eyebrow,{size:12,left:h('span',null,h('b',{style:{color:'var(--accent)'}},'vibelog'),' · day 01'),right:'ship it'}),h(Caption,{size:22,text:'저는 ^커밋만 ^하면, 밤 11시에 깃헙 액션이 돌아서',progress:.6}))
+  ));
+});
+</script></body></html>

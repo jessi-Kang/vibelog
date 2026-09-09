@@ -1,0 +1,41 @@
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;   /* 카드 · 패널 (웹) */
+  --radius-xl: 28px;   /* shorts 카드 */
+  --radius-phone: 70px;
+  --radius-pill: 999px;
+
+  --stripe: 3px;       /* 프로젝트 카드 상단 상태 스트라이프 */
+  --border-w: 1px;
+  --border-w-shorts: 2px;
+
+  --hit-min: 44px;
+
+  --section-gap: 40px;          /* 페이지 안 섹션 사이 (모바일) */
+  --section-gap-desktop: 48px;
+  --section-head-gap: 14px;     /* 섹션 제목 ↔ 내용 */
+
+  --shadow-focus: 0 0 0 6px var(--accent-glow);
+  --shadow-dot: 0 0 10px var(--accent);
+  --shadow-phone: 0 40px 120px rgba(0, 0, 0, .6);
+
+  --content-max: 1120px;      /* desktop */
+  --content-max-mobile: 430px;
+  --content-max-reading: 680px; /* 데브로그 본문 */
+  --page-pad: 20px;
+  --bp-tablet: 720px;
+  --bp-desktop: 1024px;
+}
