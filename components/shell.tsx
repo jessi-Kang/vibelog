@@ -30,12 +30,11 @@ function useRoute() {
 }
 
 function Tabs({ active }: { active: string }) {
-  // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다
+  // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다.
+  // 박스 안에 박스(세그먼트 컨트롤)는 무겁다 — 텍스트 + 민트 언더라인의
+  // 조용한 탭으로 (Jessi 지시, taste 패스)
   return (
-    <nav
-      aria-label="주요 메뉴"
-      className="flex w-full gap-1 rounded-md border border-line bg-panel p-1 md:w-fit"
-    >
+    <nav aria-label="주요 메뉴" className="flex w-full items-center md:w-auto md:gap-7">
       {TABS.map((t) => {
         const on = t.href === active;
         return (
@@ -43,9 +42,14 @@ function Tabs({ active }: { active: string }) {
             key={t.href}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`flex min-h-9 flex-1 items-center justify-center rounded-[7px] px-3 py-1.5 text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "bg-panel2 text-ink" : "text-muted hover:text-ink-soft"}`}
+            className={`hit flex min-h-9 flex-1 items-center justify-center text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "text-ink" : "text-muted hover:text-ink-soft"}`}
           >
-            {t.label}
+            <span className="relative py-1">
+              {t.label}
+              {on && (
+                <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-accent" />
+              )}
+            </span>
           </Link>
         );
       })}
