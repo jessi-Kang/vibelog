@@ -10,7 +10,7 @@
 ## 2단계 — 쇼츠 파이프라인 (영상은 나오지만 업로드는 수동)
 
 ### 사전 준비 (Jessi)
-- ElevenLabs에서 보이스 클론 등록 → `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID`를 레포 Secrets에
+- ElevenLabs 보이스 클론은 이미 있음: `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`. `ELEVENLABS_API_KEY`와 함께 레포 Secrets에
 - (선택) 음악을 매번 생성하지 않을 거면 템플릿별 mp3 3개를 `video/assets/music/`에 넣기
 
 ### 세션 4 — 대본 생성

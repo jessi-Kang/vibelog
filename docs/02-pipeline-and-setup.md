@@ -34,7 +34,7 @@
   - `GH_PAT` — fine-grained PAT (Contents: read, Metadata: read, 대상: 모든 내 레포). private 프로젝트 레포까지 읽으려면 필수. public만이면 생략 가능하나 rate limit 때문에 권장.
 
 2단계 이후 (지금은 안 해도 됨):
-- ElevenLabs: 보이스 클론용 음성 샘플 (Instant: 조용한 곳에서 1~2분, 평소 말투) → voice_id
+- ElevenLabs: 보이스 클론 **완료** → `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N` (설정값은 docs/03-shorts-spec.md)
 - 텔레그램: BotFather로 봇 생성 → 토큰 + 내 chat_id
 - YouTube: Google Cloud 프로젝트 → YouTube Data API v3 → OAuth 클라이언트 → refresh token 1회
 - Instagram: 비즈니스/크리에이터 전환 → Facebook 페이지 연결 → Meta 개발자 앱 → 장기 토큰
