@@ -102,6 +102,8 @@ function validateLines(raw: unknown): ShortsLine[] {
         .filter((k: unknown): k is string => typeof k === "string")
         .filter((k: string) => enTokens.has(k))
         .slice(0, 3),
+      // +알파 그래픽용 장면 은유 묘사 — 여기서 떨어뜨리면 art.ts가 만들 게 없다
+      ...(typeof l.art === "string" && l.art.trim() ? { art: l.art.trim() } : {}),
     };
   });
 }
