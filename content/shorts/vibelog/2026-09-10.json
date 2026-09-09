@@ -7,93 +7,93 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "같은 날 두 번 돌렸더니 그날 글이 사라졌습니다.",
-      "en": "I ran the job twice in one day, and that day's post vanished.",
+      "ko": "그날 쓴 글이 통째로 사라졌습니다.",
+      "en": "A whole day's post just vanished from the site.",
       "keywords": [
-        "돌렸더니",
+        "통째로",
         "글이"
       ],
       "keywordsEn": [
+        "whole",
+        "vanished"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "같은 날 작업을 두 번 돌린 게 원인이었습니다.",
+      "en": "Running the same day's job twice caused it.",
+      "keywords": [
+        "두",
+        "원인이었습니다."
+      ],
+      "keywordsEn": [
         "twice",
-        "post"
+        "caused"
       ]
     },
     {
       "scene": "build",
-      "ko": "두 번째 실행이 그날 글을 통째로 덮어썼습니다.",
-      "en": "The second run overwrote the whole post.",
+      "ko": "이 사이트는 하루에 한 번, 그날 한 일을 모아 글을 씁니다.",
+      "en": "This site gathers each day's work once a day and writes a post.",
       "keywords": [
-        "실행이",
-        "통째로"
+        "하루에",
+        "모아"
       ],
       "keywordsEn": [
-        "second",
-        "overwrote"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "마지막 실행 이후 생긴 것만 모아서 하루를 대신했기 때문입니다.",
-      "en": "It gathered only what happened since the last run, then used that as the whole day.",
-      "keywords": [
-        "마지막",
-        "하루를"
-      ],
-      "keywordsEn": [
-        "last",
-        "whole"
+        "gathers",
+        "once"
       ]
     },
     {
       "scene": "demo",
-      "ko": "이제는 같은 날 다시 돌려도 첫 실행이 정한 구간을 그대로 읽습니다.",
-      "en": "Now a repeat run reuses the time window the first run set.",
+      "ko": "지워졌던 9월 9일 글은 다시 살려 놨습니다.",
+      "en": "The lost September 9 post is restored now.",
       "keywords": [
-        "구간을",
+        "9월",
+        "다시"
+      ],
+      "keywordsEn": [
+        "lost",
+        "September"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "이제는 몇 번을 돌려도 하루치가 그대로 남습니다.",
+      "en": "Now the full day stays, no matter how many runs.",
+      "keywords": [
+        "하루치가",
         "그대로"
       ],
       "keywordsEn": [
-        "window",
-        "reuses"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "지워졌던 9월 9일 글도 되살렸습니다.",
-      "en": "The lost September 9 post is back.",
-      "keywords": [
-        "9월",
-        "9일"
-      ],
-      "keywordsEn": [
-        "September",
-        "back."
+        "full",
+        "day"
       ]
     },
     {
       "scene": "fail",
-      "ko": "자동 실행이 두 번 연속 멈춘 일도 있었습니다.",
-      "en": "The automatic run also died twice in a row.",
+      "ko": "두 번째 실행은 마지막 실행 이후 생긴 것만 모았습니다.",
+      "en": "The second run only gathered what happened since the last run.",
       "keywords": [
-        "연속",
-        "멈춘"
+        "마지막",
+        "이후"
       ],
       "keywordsEn": [
-        "died",
-        "row."
+        "second",
+        "since"
       ]
     },
     {
       "scene": "fail",
-      "ko": "쓰지도 않는 프로그램 목록을 확인하다 실패한 거라, 목록에서 빼 버렸습니다.",
-      "en": "It kept checking a software list we never use, so I removed the check.",
+      "ko": "그 조각이 하루 전체를 덮어썼습니다.",
+      "en": "That fragment overwrote the entire day.",
       "keywords": [
-        "목록을",
-        "빼"
+        "조각이",
+        "전체를"
       ],
       "keywordsEn": [
-        "list",
-        "removed"
+        "fragment",
+        "overwrote"
       ]
     },
     {
@@ -106,21 +106,21 @@
       ],
       "keywordsEn": [
         "Illustrations",
-        "off"
+        "reference"
       ],
-      "art": "a paintbrush resting in a closed jar beside an empty easel, soft morning light"
+      "art": "a paintbrush resting inside a closed glass jar on a quiet desk"
     },
     {
       "scene": "end",
-      "ko": "소개 페이지도 열었습니다. 이제 여기가 뭐 하는 곳인지 적혀 있습니다.",
-      "en": "I also opened an About page. Now it says what this place is.",
+      "ko": "지운 건 되돌렸고 같은 실수는 막아 뒀습니다.",
+      "en": "What was erased is back, and the bug is fixed.",
       "keywords": [
-        "소개",
-        "적혀"
+        "지운",
+        "실수는"
       ],
       "keywordsEn": [
-        "About",
-        "says"
+        "erased",
+        "bug"
       ]
     }
   ],
@@ -129,30 +129,31 @@
     "steps": []
   },
   "failCard": {
-    "title": "하루가 조각으로 덮인 사고",
-    "titleEn": "A day overwritten by a fragment",
-    "before": "같은 날 다시 돌리면 그날 글이 통째로 덮였다",
-    "after": "첫 실행이 정한 구간을 그대로 다시 읽는다",
-    "beforeEn": "A second run the same day overwrote the whole post",
+    "title": "하루치 글 덮어쓰기",
+    "titleEn": "Overwritten day",
+    "before": "같은 날 두 번 돌리면 그날 글이 사라짐",
+    "after": "첫 실행이 정한 구간을 그대로 다시 읽음",
+    "beforeEn": "A second run the same day wiped that day's post",
     "afterEn": "Repeat runs reuse the window the first run set"
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "같은 날 작업을 두 번 돌렸더니 그날 글이 통째로 사라졌습니다. 원인은 마지막 실행 이후만 모으던 방식이었고, 지워진 9월 9일 글은 복원했습니다.",
-    "en": "Running the day's job twice wiped that day's post. The cause was gathering only what happened since the last run, and the lost September 9 post is restored."
+    "ko": "같은 날 두 번 돌렸더니 그날 글이 통째로 사라졌습니다. 원인을 찾아 고치고 9월 9일 글은 다시 살려 놨습니다.",
+    "en": "Running the same day's job twice wiped that day's post. I found the cause, fixed it, and restored the lost September 9 post."
   },
   "hashtags": [
-    "#vibelog",
-    "#데브로그",
     "#개발일지",
     "#삽질",
     "#자동화",
     "#devlog",
-    "#buildinpublic"
+    "#buildinpublic",
+    "#vibelog",
+    "#bugfix"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg?v=mtuh77t9",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4?v=mtuh79vb",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4?v=mtuh8yyi"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg?v=mtuhslly",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4?v=mtuhsnqz",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.poster.jpg?v=mtuhtpjm",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4?v=mtuhtroz"
   }
 }
