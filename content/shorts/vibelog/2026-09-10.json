@@ -6,125 +6,90 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "사이트를 고쳐도 인터넷에 올라가지 않았습니다.",
-      "en": "I kept fixing the site, but nothing reached the internet.",
+      "ko": "밤마다 알아서 글을 올리는 장치가 이틀 연속 멈췄습니다.",
+      "en": "The thing that posts by itself every night died twice in a row.",
       "keywords": [
-        "인터넷에",
-        "올라가지"
-      ],
-      "keywordsEn": [
-        "nothing",
-        "reached"
-      ],
-      "art": "a lone suitcase halted at a closed gate beneath a sweeping clock hand"
-    },
-    {
-      "scene": "hook",
-      "ko": "3시간 동안 매번 22초 만에 실패했습니다.",
-      "en": "For 3 hours every attempt died after 22 seconds.",
-      "keywords": [
-        "3시간",
-        "22초"
+        "이틀",
+        "연속",
+        "장치가"
       ],
       "keywordsEn": [
         "died",
-        "22"
-      ],
-      "art": "a stopwatch frozen mid-tick on an empty desk"
+        "twice"
+      ]
     },
     {
       "scene": "build",
-      "ko": "원인을 찾고 나서야 오늘 만든 것들이 세상에 보였습니다.",
-      "en": "Only after finding the cause did the rest of the work become visible.",
+      "ko": "원인은 프로그램을 받아오는 단골 가게 목록이었습니다. 쓰지도 않는 가게가 하나 끼어 있었습니다.",
+      "en": "The cause was the list of regular shops we fetch tools from. One shop on it we never even use.",
       "keywords": [
-        "원인을"
+        "원인은",
+        "단골",
+        "가게"
       ],
       "keywordsEn": [
-        "cause"
+        "cause",
+        "shops",
+        "never"
       ]
     },
     {
       "scene": "demo",
-      "ko": "짧은 영상이 목록에서 세로 화면 그대로 보입니다.",
-      "en": "Short videos now appear in the list as full vertical previews.",
+      "ko": "하필 그 가게가 진열을 바꾸는 중이라 문 앞에서 작업 전체가 멈춰 섰습니다.",
+      "en": "That shop happened to be rearranging its shelves, so the whole job stopped at its door.",
       "keywords": [
-        "목록에서",
-        "세로"
+        "진열을",
+        "전체가",
+        "멈춰"
       ],
       "keywordsEn": [
-        "list",
-        "vertical"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "누르면 그 자리에서 팝업으로 재생됩니다.",
-      "en": "Tap one and it plays right there in a popup.",
-      "keywords": [
-        "팝업으로"
-      ],
-      "keywordsEn": [
-        "plays"
+        "rearranging",
+        "whole",
+        "job"
       ]
     },
     {
       "scene": "fail",
-      "ko": "며칠 전에 영상 만드는 폴더를 새로 넣었습니다.",
-      "en": "A few days ago I added a folder for making videos.",
+      "ko": "어제 뺐다고 생각했는데 그 가게 명함이 두 장이었습니다. 이번엔 이름이 들어간 건 전부 지웠습니다.",
+      "en": "I thought I removed it yesterday, but the shop had two business cards and I tossed only one. This time I deleted everything with its name on it.",
       "keywords": [
-        "폴더를"
+        "명함이",
+        "두",
+        "전부"
       ],
       "keywordsEn": [
-        "folder"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "챙기지도 않은 짐을 세관에서 찾으니 통과가 안 됐습니다.",
-      "en": "Customs was looking for a bag nobody had packed.",
-      "keywords": [
-        "세관에서",
-        "통과가"
-      ],
-      "keywordsEn": [
-        "Customs",
-        "bag"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "검사 목록에서 영상 폴더를 빼자 바로 통과했습니다.",
-      "en": "Removing that folder from the checklist fixed it instantly.",
-      "keywords": [
-        "검사",
-        "빼자"
-      ],
-      "keywordsEn": [
-        "checklist"
+        "two",
+        "cards",
+        "everything"
       ]
     },
     {
       "scene": "next",
-      "ko": "새 지침으로 쓴 글이 정말 쉬운지 확인해 보려고 합니다.",
-      "en": "Next I check whether posts written under the new rules are actually easy to read.",
+      "ko": "이제 목록 확인이 실패해도 전체가 멈추지는 않습니다. 오늘 밤 끝까지 도는지 지켜봅니다.",
+      "en": "Now a failed check no longer stops everything. Tonight I watch the run go all the way through.",
       "keywords": [
-        "쉬운지"
+        "실패해도",
+        "오늘",
+        "밤"
       ],
       "keywordsEn": [
-        "rules",
-        "easy"
+        "failed",
+        "Tonight"
       ],
-      "art": "a magnifying glass resting on an open blank page beside a short pencil"
+      "art": "a small robot sitting on a rooftop at night, watching a single glowing lantern stay lit until dawn"
     },
     {
       "scene": "end",
-      "ko": "배포부터 뚫려야 하루가 남습니다.",
-      "en": "Unless publishing works, the day just stays in a drawer.",
+      "ko": "고친 다음에는 한 번 더 확인합니다.",
+      "en": "After a fix I check one more time.",
       "keywords": [
-        "배포부터"
+        "다음에는",
+        "한",
+        "번"
       ],
       "keywordsEn": [
-        "publishing"
+        "fix",
+        "check"
       ]
     }
   ],
@@ -133,26 +98,27 @@
     "steps": []
   },
   "failCard": {
-    "title": "22초 만에 멈춘 배포",
-    "titleEn": "The deploy that died at 22 seconds",
-    "before": "챙기지도 않은 폴더를 검사 목록이 계속 찾고 있었습니다",
-    "after": "검사 대상에서 영상 폴더를 빼자 바로 통과했습니다"
+    "title": "명함이 두 장",
+    "titleEn": "Two business cards",
+    "before": "쓰지도 않는 가게 하나 때문에 밤마다 도는 자동 발행이 멈췄습니다.",
+    "after": "이름이 들어간 항목을 전부 지우고, 확인에 실패해도 넘어가게 했습니다."
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "사이트를 고쳐도 3시간 동안 배포가 22초 만에 실패했습니다. 원인은 챙기지도 않은 폴더를 검사 목록이 찾고 있었던 것이었습니다.",
-    "en": "For 3 hours every deploy died after 22 seconds. The checklist was looking for a folder that was never packed."
+    "ko": "밤마다 스스로 글을 올리는 장치가 이틀 연속 멈춘 이유는, 쓰지도 않는 목록 하나였습니다. 명함이 두 장이라 한 장만 버린 게 문제였습니다.",
+    "en": "The nightly auto-publish died twice in a row because of one list entry we never use. The shop had two business cards and I had only tossed one."
   },
   "hashtags": [
-    "#개발일지",
-    "#삽질",
-    "#배포",
     "#vibelog",
+    "#데브로그",
+    "#자동화",
+    "#삽질",
     "#devlog",
     "#buildinpublic",
-    "#shipit"
+    "#automation"
   ],
   "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg",
     "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4",
     "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4"
   }
