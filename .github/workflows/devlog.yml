@@ -15,6 +15,7 @@ concurrency:
 jobs:
   devlog:
     runs-on: ubuntu-latest
+    timeout-minutes: 45 # Remotion 렌더(ko/en 두 편) 여유 포함
     steps:
       - uses: actions/checkout@v4
 
@@ -25,7 +26,20 @@ jobs:
 
       - run: npm ci
 
-      - name: Collect & generate devlogs
+      # ---- 쇼츠 툴체인 (ELEVENLABS 키가 있을 때만 — 없으면 run.ts가 쇼츠를 건너뜀) ----
+      - name: Install shorts toolchain (ffmpeg, CJK fonts, Chromium)
+        if: ${{ secrets.ELEVENLABS_API_KEY != '' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+          npx playwright install --with-deps chromium
+
+      - name: Install video (Remotion) deps
+        if: ${{ secrets.ELEVENLABS_API_KEY != '' }}
+        working-directory: video
+        run: npm ci
+
+      - name: Collect, generate devlogs & shorts
         run: npx tsx scripts/run.ts
         env:
           # GH_PAT: fine-grained PAT (Contents/Metadata read, 모든 내 레포).
@@ -33,6 +47,21 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 쇼츠 (2단계) — 비어 있으면 쇼츠 단계는 자동으로 건너뛴다
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          # 최종 mp4 업로드 (없으면 업로드 생략 — Actions 아티팩트로만 남음)
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+
+      # Blob 토큰이 없어도 mp4를 받아볼 수 있게 아티팩트로 업로드
+      - name: Upload shorts artifacts
+        if: ${{ always() && secrets.ELEVENLABS_API_KEY != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: shorts-${{ github.run_id }}
+          path: content/shorts/**/*.mp4
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Commit content changes
         run: |

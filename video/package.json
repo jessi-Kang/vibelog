@@ -1,0 +1,19 @@
+{
+  "name": "vibelog-video",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.245",
+    "@remotion/google-fonts": "^4.0.245",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "remotion": "^4.0.245"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.11",
+    "typescript": "^5.9.2"
+  }
+}

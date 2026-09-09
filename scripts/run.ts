@@ -10,6 +10,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { collect, type RepoActivity, type State } from "./collect";
 import { generateDevlog } from "./generate";
+import { runShorts } from "./shorts";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
@@ -103,27 +104,48 @@ async function main(): Promise<void> {
   }
 
   let failed = 0;
+  const published: string[] = [];
   for (const a of activities) {
     if (!a.hasActivity) continue;
     const file = devlogPath(a.repo, date);
     if (isProtected(file)) {
       console.log(`- ${a.repo}/${date}.md: manual 보호 — 건너뜀`);
-      continue;
-    }
-    try {
-      const devlog = await generateDevlog(a, date);
-      writeDevlog(a.repo, date, devlog);
-      console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
-    } catch (err) {
-      // 한 레포의 실패가 나머지 발행을 막지 않게 한다
-      failed++;
-      console.error(`- ${a.repo} 생성 실패:`, err);
-      continue;
+      published.push(a.repo); // 글은 이미 있으므로 쇼츠는 시도한다
+    } else {
+      try {
+        const devlog = await generateDevlog(a, date);
+        writeDevlog(a.repo, date, devlog);
+        console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
+        published.push(a.repo);
+      } catch (err) {
+        // 한 레포의 실패가 나머지 발행을 막지 않게 한다
+        failed++;
+        console.error(`- ${a.repo} 생성 실패:`, err);
+        continue;
+      }
     }
     state[a.repo] = {
       lastSha: a.latestSha ?? state[a.repo]?.lastSha,
       lastRun: new Date().toISOString(),
     };
+  }
+
+  // 쇼츠 단계 (2단계) — 실패해도 데브로그 발행은 막지 않는다
+  if (process.env.SKIP_SHORTS === "1") {
+    console.log("쇼츠: SKIP_SHORTS=1 — 건너뜀");
+  } else if (
+    !process.env.ELEVENLABS_API_KEY ||
+    !process.env.ELEVENLABS_VOICE_ID
+  ) {
+    console.log("쇼츠: ELEVENLABS_API_KEY/VOICE_ID 없음 — 건너뜀");
+  } else {
+    for (const repo of published) {
+      try {
+        await runShorts(repo, date);
+      } catch (err) {
+        console.error(`- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`, err);
+      }
+    }
   }
 
   updateProjects(activities);
