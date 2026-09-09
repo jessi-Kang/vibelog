@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.124.0",
+    "@octokit/rest": "^22.0.1",
     "gray-matter": "^4.0.3",
     "next": "^15.5.2",
     "react": "^19.1.1",
@@ -21,6 +23,7 @@
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.8",
     "tailwindcss": "^4.1.12",
+    "tsx": "^4.23.13",
     "typescript": "^5.9.2"
   }
 }
