@@ -23,6 +23,7 @@ export interface PostData {
   commits?: number;
   prs?: number;
   shas?: [string, string][];
+  shasEn?: [string, string][];
   sections: { did?: string; why?: string; fail?: string; next?: string };
   sectionsEn: { did?: string; why?: string; fail?: string; next?: string };
   hasEn: boolean;
@@ -222,7 +223,11 @@ export function PostClient({ post }: { post: PostData }) {
                 <span className="flex-none pt-0.5 font-mono text-xs text-muted">
                   {sha}
                 </span>
-                <span className="text-ink-soft">{msg}</span>
+                <span className="text-ink-soft">
+                  {en
+                    ? (post.shasEn?.find(([x]) => x === sha)?.[1] ?? msg)
+                    : msg}
+                </span>
               </div>
             ))}
           </Card>

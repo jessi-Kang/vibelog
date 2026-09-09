@@ -141,3 +141,33 @@ export async function translateLine(ko: string): Promise<string> {
     .join("")
     .trim();
 }
+
+/**
+ * 커밋 한 줄 메시지들의 일괄 번역 — 글의 "원료 · git log"를 EN 모드에서도
+ * 읽을 수 있게. 접두어(feat:/fix: 등)와 기술 용어는 그대로 둔다.
+ */
+export async function translateCommitLines(lines: string[]): Promise<string[]> {
+  if (lines.length === 0) return [];
+  const client = new Anthropic();
+  const response = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 2000,
+    system:
+      "Translate each Korean git commit message to concise natural English. " +
+      "Keep conventional-commit prefixes (feat:, fix:, chore:, …), code terms " +
+      "and proper nouns as-is. Output ONLY a JSON array of strings, same " +
+      "order and length as the input array.",
+    messages: [{ role: "user", content: JSON.stringify(lines) }],
+  });
+  const text = response.content
+    .filter((b) => b.type === "text")
+    .map((b) => b.text)
+    .join("");
+  const start = text.indexOf("[");
+  const end = text.lastIndexOf("]");
+  const parsed = JSON.parse(text.slice(start, end + 1));
+  if (!Array.isArray(parsed) || parsed.length !== lines.length) {
+    throw new Error("커밋 메시지 번역 결과가 입력과 길이가 다릅니다");
+  }
+  return parsed.map(String);
+}

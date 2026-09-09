@@ -35,6 +35,7 @@ export default async function DevlogPostPage({ params }: Props) {
           commits: d.commits,
           prs: d.prs,
           shas: d.shas,
+          shasEn: d.shasEn,
           sections: d.sections,
           sectionsEn: d.sectionsEn,
           hasEn: Boolean(d.bodyEn),

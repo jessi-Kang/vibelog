@@ -46,6 +46,7 @@ export interface DevlogEntry {
   commits?: number; // 원료 커밋 수 (frontmatter)
   prs?: number;
   shas?: [string, string][]; // 원료 git log [sha, 한 줄 메시지]
+  shasEn?: [string, string][]; // 커밋 메시지 영어 번역 (파이프라인 생성)
   day: number; // 이 레포의 몇 번째 글
   short?: ShortsMeta; // 이 글의 쇼츠 (있으면)
 }
@@ -168,14 +169,17 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       const bodyEn = en?.trim();
       const sections = parseSections(body);
       const sectionsEn = bodyEn ? parseSections(bodyEn) : {};
-      const shas = Array.isArray(data.shas)
-        ? (data.shas
-            .filter((s: unknown) => Array.isArray(s) && s.length >= 2)
-            .map((s: unknown[]) => [String(s[0]), String(s[1])]) as [
-            string,
-            string,
-          ][])
-        : undefined;
+      const parseShas = (v: unknown): [string, string][] | undefined =>
+        Array.isArray(v)
+          ? (v
+              .filter((s: unknown) => Array.isArray(s) && s.length >= 2)
+              .map((s: unknown[]) => [String(s[0]), String(s[1])]) as [
+              string,
+              string,
+            ][])
+          : undefined;
+      const shas = parseShas(data.shas);
+      const shasEn = parseShas(data.shasEn);
       entries.push({
         repo: r,
         date,
@@ -192,6 +196,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(typeof data.commits === "number" ? { commits: data.commits } : {}),
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
         ...(shas ? { shas } : {}),
+        ...(shasEn ? { shasEn } : {}),
         day: i + 1,
       });
     });
