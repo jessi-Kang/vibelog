@@ -41,6 +41,9 @@ export interface ShortsFailCard {
   titleEn: string;
   before: string;
   after: string;
+  /** en 렌더용 — 없으면(구버전 대본) ko로 폴백 */
+  beforeEn?: string;
+  afterEn?: string;
 }
 
 export interface ShortsScript {
