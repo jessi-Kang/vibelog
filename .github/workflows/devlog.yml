@@ -16,6 +16,9 @@ jobs:
   devlog:
     runs-on: ubuntu-latest
     timeout-minutes: 45 # Remotion 렌더(ko/en 두 편) 여유 포함
+    env:
+      # secrets 컨텍스트는 if: 조건에서 직접 못 쓴다 — env로 우회
+      HAS_ELEVENLABS: ${{ secrets.ELEVENLABS_API_KEY != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,14 +31,14 @@ jobs:
 
       # ---- 쇼츠 툴체인 (ELEVENLABS 키가 있을 때만 — 없으면 run.ts가 쇼츠를 건너뜀) ----
       - name: Install shorts toolchain (ffmpeg, CJK fonts, Chromium)
-        if: ${{ secrets.ELEVENLABS_API_KEY != '' }}
+        if: ${{ env.HAS_ELEVENLABS == 'true' }}
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg fonts-noto-cjk
           npx playwright install --with-deps chromium
 
       - name: Install video (Remotion) deps
-        if: ${{ secrets.ELEVENLABS_API_KEY != '' }}
+        if: ${{ env.HAS_ELEVENLABS == 'true' }}
         working-directory: video
         run: npm ci
 
@@ -55,7 +58,7 @@ jobs:
 
       # Blob 토큰이 없어도 mp4를 받아볼 수 있게 아티팩트로 업로드
       - name: Upload shorts artifacts
-        if: ${{ always() && secrets.ELEVENLABS_API_KEY != '' }}
+        if: ${{ always() && env.HAS_ELEVENLABS == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: shorts-${{ github.run_id }}
