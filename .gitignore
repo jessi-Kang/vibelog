@@ -15,3 +15,10 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# shorts media (재생성 가능한 대용량 소재 — JSON/타이밍만 커밋)
+content/shorts/**/*.mp3
+content/shorts/**/*.webm
+content/shorts/**/*.mp4
+content/shorts/**/*.shots/
+video/assets/music/*.mp3
