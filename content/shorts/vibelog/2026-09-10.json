@@ -1,0 +1,183 @@
+{
+  "template": "ship-it",
+  "repo": "vibelog",
+  "date": "2026-09-10",
+  "day": 3,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "커밋이 곧 콘텐츠가 되는 블로그를 만들었습니다.",
+      "en": "I built a blog where commits become the content.",
+      "keywords": [
+        "커밋이",
+        "콘텐츠가"
+      ],
+      "keywordsEn": [
+        "commits",
+        "become"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "하루에 5화면과 쇼츠 파이프라인을 붙였습니다.",
+      "en": "Five screens and a shorts pipeline in one day.",
+      "keywords": [
+        "5화면과",
+        "파이프라인을"
+      ],
+      "keywordsEn": [
+        "Five",
+        "pipeline"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "Next.js App Router와 Tailwind로 뼈대를 세웠습니다.",
+      "en": "The skeleton is Next.js App Router and Tailwind.",
+      "keywords": [
+        "Tailwind로",
+        "뼈대를"
+      ],
+      "keywordsEn": [
+        "skeleton",
+        "Router"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "콘텐츠 로더와 프로젝트 카드, 데브로그 피드를 붙였습니다.",
+      "en": "Then the content loader, project cards, and devlog feed.",
+      "keywords": [
+        "로더와",
+        "피드를"
+      ],
+      "keywordsEn": [
+        "content"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "화면이 쓸 데이터 형식을 먼저 고정했습니다.",
+      "en": "I fixed the data contract the screens consume first.",
+      "keywords": [
+        "데이터",
+        "형식을"
+      ],
+      "keywordsEn": [
+        "data",
+        "contract"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "쇼츠는 자막과 음성이 한 시계를 씁니다.",
+      "en": "In shorts, captions and voice share one clock.",
+      "keywords": [
+        "자막과",
+        "시계를"
+      ],
+      "keywordsEn": [
+        "captions",
+        "share"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "타이밍은 항상 생성된 음성 타임스탬프에서 가져옵니다.",
+      "en": "Timing always comes from the generated audio timestamps.",
+      "keywords": [
+        "타임스탬프에서"
+      ],
+      "keywordsEn": [
+        "Timing",
+        "generated"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "Actions의 if에서는 secrets를 못 씁니다.",
+      "en": "Actions doesn't allow the secrets context in if.",
+      "keywords": [
+        "secrets를"
+      ],
+      "keywordsEn": [
+        "secrets"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "워크플로가 무효 판정, 모든 실행이 1초 만에 죽었습니다.",
+      "en": "The workflow was invalid and every run died in one second.",
+      "keywords": [
+        "무효",
+        "1초"
+      ],
+      "keywordsEn": [
+        "invalid",
+        "died"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "잡 레벨 env로 우회했습니다.",
+      "en": "A job-level env worked around it.",
+      "keywords": [
+        "env로"
+      ],
+      "keywordsEn": [
+        "job-level",
+        "env"
+      ]
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 실키로 쇼츠 첫 실행을 끝까지 통과시키는 겁니다.",
+      "en": "Next is getting the first real-key shorts run to pass end to end.",
+      "keywords": [
+        "실키로",
+        "끝까지"
+      ],
+      "keywordsEn": [
+        "real-key",
+        "end"
+      ]
+    },
+    {
+      "scene": "end",
+      "ko": "커밋이 쌓이면 영상이 나옵니다.",
+      "en": "Commits pile up, videos come out.",
+      "keywords": [
+        "커밋이",
+        "영상이"
+      ],
+      "keywordsEn": [
+        "Commits",
+        "videos"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog-orcin.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "1초 만에 죽은 워크플로",
+    "titleEn": "The one-second failure",
+    "before": "if에서 secrets를 써서 워크플로 파일 자체가 무효",
+    "after": "잡 레벨 env로 우회해 정상 실행"
+  },
+  "handle": "vibelog-orcin.vercel.app",
+  "captions": {
+    "ko": "블로그 5화면과 수집·생성 파이프라인, 쇼츠 합성까지 하루에 붙였습니다. Actions의 if에서 secrets를 못 쓰는 문제는 잡 레벨 env로 우회했습니다.",
+    "en": "Built the five blog screens, the collect-generate pipeline, and the shorts composition in one day. The secrets-in-if problem on Actions was worked around with a job-level env."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발로그",
+    "#devlog",
+    "#NextJS",
+    "#GitHubActions",
+    "#Remotion",
+    "#쇼츠자동화"
+  ]
+}
