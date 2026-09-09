@@ -200,7 +200,8 @@ export function PostClient({ post }: { post: PostData }) {
         <button
           type="button"
           aria-label="쇼츠 재생"
-          onClick={() => openShort(post.short?.media?.ko ? "ko" : "en")}
+          // 글을 EN으로 읽고 있으면 쇼츠도 EN으로 — 없는 언어는 팝업이 알아서 폴백
+          onClick={() => openShort(lang)}
           className="group w-full max-w-[340px] cursor-pointer p-0 text-left"
         >
           {thumb}
