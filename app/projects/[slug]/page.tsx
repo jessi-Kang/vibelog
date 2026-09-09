@@ -50,7 +50,14 @@ export default async function ProjectPage({ params }: Props) {
           {project.name}
         </h1>
         <p className="m-0 text-md leading-[1.6] text-ink-soft [text-wrap:pretty]">
-          {project.description || <T ko="설명이 아직 없습니다." en="No description yet." />}
+          {project.description ? (
+            <T
+              ko={project.description}
+              en={project.descriptionEn ?? project.description}
+            />
+          ) : (
+            <T ko="설명이 아직 없습니다." en="No description yet." />
+          )}
         </p>
         {project.homepage && (
           <a

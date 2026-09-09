@@ -120,3 +120,24 @@ export async function generateDevlog(
     .join("");
   return parseJson(text);
 }
+
+/**
+ * 프로젝트 카드용 한 줄 텍스트 번역 (레포 description 등).
+ * 매 실행 재번역하지 않도록 호출부(run.ts)가 원문 기준으로 캐시한다.
+ */
+export async function translateLine(ko: string): Promise<string> {
+  const client = new Anthropic();
+  const response = await client.messages.create({
+    model: "claude-haiku-4-5-20251001", // 한 줄 번역 — 큰 모델이 필요 없다
+    max_tokens: 300,
+    system:
+      "Translate the given Korean text to natural, concise English. " +
+      "It is a one-line project description. Output only the translation.",
+    messages: [{ role: "user", content: ko }],
+  });
+  return response.content
+    .filter((b) => b.type === "text")
+    .map((b) => b.text)
+    .join("")
+    .trim();
+}
