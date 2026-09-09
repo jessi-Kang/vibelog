@@ -65,15 +65,18 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   for (const lang of ["ko", "en"] as const) {
     console.log(`[shorts] 렌더 (${lang})`);
     const mp4 = await renderShort(repo, date, lang);
-    // 썸네일 = ko 영상의 첫 프레임 (Jessi 지시 — CSS 재현 대신 진짜 프레임)
-    if (lang === "ko") {
-      const poster = mp4.replace(/\.ko\.mp4$/, ".poster.jpg");
+    // 썸네일 = 각 언어 영상의 첫 프레임 (Jessi 지시 — CSS 재현 대신 진짜 프레임.
+    // 훅 헤드라인이 언어별로 다르므로 en도 따로 뽑는다)
+    {
+      const posterKey =
+        lang === "ko" ? `${date}.poster.jpg` : `${date}.en.poster.jpg`;
+      const poster = mp4.replace(/\.mp4$/, ".poster.jpg");
       try {
         execFileSync("ffmpeg", ["-v", "error", "-y", "-i", mp4, "-frames:v", "1", "-q:v", "3", poster]);
-        const url = await upload(poster, `shorts/${repo}/${date}.poster.jpg`);
-        if (url) media.poster = url;
+        const url = await upload(poster, `shorts/${repo}/${posterKey}`);
+        if (url) media[lang === "ko" ? "poster" : "posterEn"] = url;
       } catch (err) {
-        console.warn("[shorts] 포스터 추출·업로드 실패 — 썸네일은 CSS 폴백:", err);
+        console.warn(`[shorts] 포스터 추출·업로드 실패(${lang}) — 썸네일은 CSS 폴백:`, err);
       }
     }
     // 업로드 실패(스토어 설정 등)가 나머지 언어 렌더를 막지 않게 격리 —
