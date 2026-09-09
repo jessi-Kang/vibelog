@@ -38,7 +38,11 @@ jobs:
       - name: Install shorts toolchain (ffmpeg, CJK fonts, Chromium)
         if: ${{ env.HAS_ELEVENLABS == 'true' }}
         run: |
-          sudo apt-get update
+          # 러너에 기본 등록된 크롬·엣지 저장소는 쓰지 않는데, 갱신 경합
+          # (Hash Sum mismatch)으로 실행 전체를 죽인 적이 있다 — 빼고 간다.
+          # apt-get update는 일시 오류 대비 한 번 재시도.
+          sudo rm -f /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/microsoft-edge.list
+          sudo apt-get update || (sleep 15 && sudo apt-get update)
           sudo apt-get install -y ffmpeg fonts-noto-cjk
           npx playwright install --with-deps chromium
 
