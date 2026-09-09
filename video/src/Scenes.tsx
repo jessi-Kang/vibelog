@@ -13,7 +13,7 @@ import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
 import { COLORS, FONT_MONO, FONT_SANS, NARRATION_DELAY } from "./theme";
 
 /**
- * hook 문장에서 키워드를 민트로 강조한 큰 타이틀. 일러스트가 있으면 위에 인셋.
+ * hook 문장에서 키워드를 민트로 강조한 큰 타이틀. 타이포만 — 그래픽 금지 (Jessi 지시).
  * 훅 장면에서는 하단 자막을 끄므로(중복), 훅이 2문장이면 헤드라인이
  * 지금 말하는 문장으로 갱신된다 — 화면에 안 보이는 말이 없게.
  */
@@ -21,9 +21,7 @@ export const HookCard: React.FC<{
   script: ShortsScript;
   lang: "ko" | "en";
   timing?: ShortsTiming;
-  /** +알파 그래픽 (public/ 밑 파일명) — 없으면 타이포만 */
-  artFile?: string | null;
-}> = ({ script, lang, timing, artFile }) => {
+}> = ({ script, lang, timing }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const hookLines = script.lines
@@ -50,20 +48,6 @@ export const HookCard: React.FC<{
         transform: "translateY(-52%)",
       }}
     >
-      {artFile && (
-        <Img
-          src={staticFile(artFile)}
-          style={{
-            display: "block",
-            width: 480,
-            height: 480,
-            objectFit: "cover",
-            borderRadius: 48,
-            border: `2px solid ${COLORS.line}`,
-            marginBottom: 56,
-          }}
-        />
-      )}
       <h1
         style={{
           fontFamily: FONT_SANS,
