@@ -48,6 +48,8 @@ export interface RepoActivity {
   devlogFiles: RepoDevlogFile[];
   hasActivity: boolean;
   latestSha: string | null;
+  /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
+  weekCommits: number;
 }
 
 export interface RepoState {
@@ -234,12 +236,18 @@ export async function collect(state: State): Promise<RepoActivity[]> {
     const vibelogJson = await getVibelogJson(octokit, owner, repo);
     if (vibelogJson?.hide) continue;
 
-    const [commits, mergedPRs, devlogFiles, readme] = await Promise.all([
-      getCommits(octokit, owner, repo, since),
-      getMergedPRs(octokit, owner, repo, since),
-      getDevlogFiles(octokit, owner, repo, since),
-      getReadme(octokit, owner, repo),
-    ]);
+    const weekAgo = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
+    const [commits, mergedPRs, devlogFiles, readme, weekCommits] =
+      await Promise.all([
+        getCommits(octokit, owner, repo, since),
+        getMergedPRs(octokit, owner, repo, since),
+        getDevlogFiles(octokit, owner, repo, since),
+        getReadme(octokit, owner, repo),
+        octokit.rest.repos
+          .listCommits({ owner, repo, since: weekAgo, per_page: 100 })
+          .then((r) => r.data.length)
+          .catch(() => 0),
+      ]);
 
     // 체크포인트 sha와 같은 커밋만 있으면 활동 없음으로 본다
     const newCommits = commits.filter((c) => c.sha !== state[repo]?.lastSha);
@@ -260,6 +268,7 @@ export async function collect(state: State): Promise<RepoActivity[]> {
       hasActivity:
         newCommits.length > 0 || mergedPRs.length > 0 || devlogFiles.length > 0,
       latestSha: commits[0]?.sha ?? state[repo]?.lastSha ?? null,
+      weekCommits,
     });
   }
   return results;

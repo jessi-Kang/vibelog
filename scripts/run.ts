@@ -46,8 +46,19 @@ function updateProjects(activities: RepoActivity[]): void {
     ...(a.homepage ? { homepage: a.homepage } : {}),
     ...(a.language ? { language: a.language } : {}),
     lastActivity: (a.pushedAt || new Date().toISOString()).slice(0, 10),
+    weekCommits: a.weekCommits,
   }));
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
+}
+
+/** 홈 "지난 실행" 패널이 읽는 실행 로그 */
+function writeRunLog(
+  lines: { text: string; kind?: "cmd" | "ok" | "fail" }[],
+): void {
+  fs.writeFileSync(
+    path.join(CONTENT_DIR, "run.json"),
+    JSON.stringify({ at: new Date().toISOString(), lines }, null, 2) + "\n",
+  );
 }
 
 function devlogPath(repo: string, date: string): string {
@@ -68,15 +79,23 @@ function writeDevlog(
   repo: string,
   date: string,
   d: { title: string; titleEn: string; ko: string; en: string },
+  a: RepoActivity,
 ): void {
   const file = devlogPath(repo, date);
   fs.mkdirSync(path.dirname(file), { recursive: true });
+  // 원료 메타 — "AI가 커밋 N개로 작성" 표기와 본문의 "원료 · git log"에 쓰인다
+  const shas = a.commits
+    .slice(0, 8)
+    .map((c) => [c.sha.slice(0, 7), c.message.split("\n")[0]]);
   const frontmatter = [
     "---",
     `title: ${JSON.stringify(d.title)}`,
     `titleEn: ${JSON.stringify(d.titleEn)}`,
     `date: "${date}"`,
     `repo: ${JSON.stringify(repo)}`,
+    `commits: ${a.commits.length}`,
+    `prs: ${a.mergedPRs.length}`,
+    `shas: ${JSON.stringify(shas)}`,
     "---",
   ].join("\n");
   fs.writeFileSync(
@@ -90,7 +109,14 @@ async function main(): Promise<void> {
   const state = loadState();
   const date = todayKST();
 
+  const runLines: { text: string; kind?: "cmd" | "ok" | "fail" }[] = [
+    { text: "npx tsx scripts/run.ts", kind: "cmd" },
+  ];
+
   const activities = await collect(state);
+  runLines.push({
+    text: `collect  · ${activities.length} repos, ${activities.filter((a) => a.hasActivity).length} active`,
+  });
   console.log(`수집: 레포 ${activities.length}개`);
   for (const a of activities) {
     console.log(
@@ -114,13 +140,15 @@ async function main(): Promise<void> {
     } else {
       try {
         const devlog = await generateDevlog(a, date);
-        writeDevlog(a.repo, date, devlog);
+        writeDevlog(a.repo, date, devlog, a);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
+        runLines.push({ text: `generate · ${a.repo}/${date}.md (ko, en)` });
         published.push(a.repo);
       } catch (err) {
         // 한 레포의 실패가 나머지 발행을 막지 않게 한다
         failed++;
         console.error(`- ${a.repo} 생성 실패:`, err);
+        runLines.push({ text: `generate · ${a.repo} 실패`, kind: "fail" });
         continue;
       }
     }
@@ -142,15 +170,19 @@ async function main(): Promise<void> {
     for (const repo of published) {
       try {
         await runShorts(repo, date);
+        runLines.push({ text: `shorts   · ${repo}/${date} (ko, en)` });
       } catch (err) {
         console.error(`- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`, err);
+        runLines.push({ text: `shorts   · ${repo} 실패 — 글 발행은 계속`, kind: "fail" });
       }
     }
   }
 
   updateProjects(activities);
+  runLines.push({ text: "publish  · content 커밋 → vercel 자동 배포" });
+  writeRunLog(runLines);
   fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2) + "\n");
-  console.log("projects.json / state.json 갱신 완료");
+  console.log("projects.json / state.json / run.json 갱신 완료");
   if (failed > 0) process.exitCode = 1;
 }
 
