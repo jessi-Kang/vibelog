@@ -29,7 +29,7 @@ export interface PostData {
   short?: {
     template: string;
     duration?: number;
-    media?: { ko?: string; en?: string };
+    media?: { ko?: string; en?: string; poster?: string };
     hook?: string;
     hookKeywords?: string[];
   };
@@ -187,6 +187,7 @@ export function PostClient({ post }: { post: PostData }) {
         hookKeywords: post.short.hookKeywords ?? [],
         template: post.short.template,
         duration: post.short.duration,
+        poster: post.short.media?.poster,
       }}
     />
   );
