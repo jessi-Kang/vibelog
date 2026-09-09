@@ -96,14 +96,60 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   }
 }
 
+/** 단독 실행(=재생성)일 때만 홈 "지난 실행" 패널에 기록을 남긴다 */
+function writeRegenRunLog(repo: string, date: string): void {
+  fs.writeFileSync(
+    path.join(process.cwd(), "content", "run.json"),
+    JSON.stringify(
+      {
+        at: new Date().toISOString(),
+        lines: [
+          { text: `npx tsx scripts/shorts.ts ${repo}/${date}`, kind: "cmd" },
+          { text: `shorts   · ${repo}/${date} 다시 만듦 (ko, en)` },
+          { text: "publish  · content 커밋 → vercel 자동 배포" },
+        ],
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+}
+
 if (process.argv[1]?.endsWith("shorts.ts")) {
-  const [repo, date] = process.argv.slice(2);
-  if (!repo || !date) {
-    console.error("사용: npx tsx scripts/shorts.ts <repo> <date>");
+  // 자막 규칙·프레임 디자인처럼 영상 쪽 수정이 잦아서, 이미 발행된 글의
+  // 영상을 통째로 다시 만드는 재생성 진입점을 CLI에 둔다.
+  // 사용: npx tsx scripts/shorts.ts <repo>[/<date>]  (날짜 생략 = 최신 글)
+  const args = process.argv.slice(2).join("/").split("/").filter(Boolean);
+  const repo = args[0];
+  let date = args[1];
+  if (!repo) {
+    console.error("사용: npx tsx scripts/shorts.ts <repo>[/<date>]");
     process.exit(1);
   }
-  runShorts(repo, date).catch((err) => {
-    console.error(err);
+  if (!date) {
+    const dir = path.join(process.cwd(), "content", "devlog", repo);
+    const dates = fs.existsSync(dir)
+      ? fs
+          .readdirSync(dir)
+          .filter((f) => f.endsWith(".md"))
+          .map((f) => f.slice(0, -3))
+          .sort()
+      : [];
+    if (dates.length === 0) {
+      console.error(`글이 없습니다: content/devlog/${repo}/`);
+      process.exit(1);
+    }
+    date = dates[dates.length - 1];
+    console.log(`[shorts] 날짜 생략 — 최신 글 사용: ${date}`);
+  }
+  if (!fs.existsSync(path.join(process.cwd(), "content", "devlog", repo, `${date}.md`))) {
+    console.error(`글이 없습니다: content/devlog/${repo}/${date}.md`);
     process.exit(1);
-  });
+  }
+  runShorts(repo, date)
+    .then(() => writeRegenRunLog(repo, date))
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
 }
