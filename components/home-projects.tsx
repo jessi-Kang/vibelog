@@ -83,6 +83,14 @@ export function HomeProjects({ projects }: { projects: Project[] }) {
           </div>
         </Card>
       )}
+      {/* 핵심 동작 안내 — 카드가 어떻게 늘어나는지 사이트 안에서 알 수 있게 (Jessi 지시) */}
+      {projects.length > 0 && (
+        <p className="m-0 px-1 font-mono text-2xs leading-relaxed text-muted">
+          {lang === "ko"
+            ? "새 프로젝트 등록은 레포에 topic ‘vibelog’ 하나가 전부입니다. 커밋하면 그날 밤 글과 영상이 자동으로 올라오고, 배포 주소를 채우면 live로 표시됩니다."
+            : "Registering a project takes one repo topic: ‘vibelog’. Commit, and a post and video go up that night. Add a deploy URL and it shows as live."}
+        </p>
+      )}
     </section>
   );
 }

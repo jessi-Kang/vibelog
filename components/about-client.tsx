@@ -42,6 +42,10 @@ const SECTIONS: Section[] = [
         ko: "글도 영상도 사람이 만들지 않습니다. 품질이 마음에 안 드는 날만 버튼 하나로 다시 만들게 합니다.",
         en: "No human makes the posts or the videos. Only on days when the quality isn't right do I press one button to have them remade.",
       },
+      {
+        ko: "새 프로젝트를 등록하는 데 필요한 건 레포에 붙이는 표식(topic) 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. 표식이 붙은 레포에 커밋이 생기면, 그날 밤 카드가 생기고 제작기가 쌓이기 시작합니다.",
+        en: "Registering a new project takes one label (a repo topic) — nothing gets installed in the project itself. Once a labeled repo has commits, a card appears that night and its build log starts piling up.",
+      },
     ],
   },
   {
