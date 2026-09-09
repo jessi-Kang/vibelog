@@ -63,7 +63,7 @@ export function FeedClient({
             <select
               value={filter}
               onChange={(e) => pick(e.target.value)}
-              className="h-11 w-full cursor-pointer appearance-none rounded-md border border-line bg-bg px-3.5 pr-10 font-mono text-base text-ink outline-none focus:border-accent"
+              className="h-11 w-full cursor-pointer appearance-none rounded-md border border-line bg-bg px-3.5 pr-10 font-mono text-base text-ink focus:border-accent"
             >
               {options.map((p) => (
                 <option key={p.slug} value={p.slug}>
@@ -77,20 +77,16 @@ export function FeedClient({
             </span>
           </label>
         ) : (
-          <div
-            role="tablist"
-            className="-mx-1 flex gap-1.5 overflow-x-auto px-1 py-0.5 [scrollbar-width:none]"
-          >
+          <div className="-mx-1 flex gap-1.5 overflow-x-auto px-1 py-1.5 [scrollbar-width:none]">
             {options.map((p) => {
               const on = p.slug === filter;
               return (
                 <button
                   key={p.slug}
                   type="button"
-                  role="tab"
-                  aria-selected={on}
+                  aria-pressed={on}
                   onClick={() => pick(p.slug)}
-                  className={`min-h-8 flex-none cursor-pointer whitespace-nowrap rounded-full border px-3 font-mono text-xs transition-colors duration-150 ${
+                  className={`hit min-h-8 flex-none cursor-pointer whitespace-nowrap rounded-full border px-3 font-mono text-xs transition-colors duration-150 ${
                     on
                       ? "border-line-strong bg-panel2 font-bold text-ink"
                       : "border-line bg-transparent font-medium text-muted"
@@ -98,9 +94,7 @@ export function FeedClient({
                 >
                   {p.name}
                   {counts[p.slug] != null && (
-                    <span className={`ml-1.5 ${on ? "text-muted" : "text-line-strong"}`}>
-                      {counts[p.slug]}
-                    </span>
+                    <span className="ml-1.5 text-muted">{counts[p.slug]}</span>
                   )}
                 </button>
               );

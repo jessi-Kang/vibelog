@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: Props) {
     ["이번 주 커밋", String(project.weekCommits ?? 0)],
     ["마지막 활동", lastActive],
     ["데브로그", `${logs.length}편`],
-    ["시작", `day ${String(Math.max(logs.length, 1)).padStart(2, "0")}`],
+    ["시작일", logs.length ? logs[logs.length - 1].date : "—"],
   ];
 
   const head = (
@@ -110,10 +110,7 @@ export default async function ProjectPage({ params }: Props) {
                 ...(d.commits
                   ? [`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`]
                   : []),
-                ...(d.sections.fail &&
-                !d.sections.fail.startsWith("특별한 삽질은")
-                  ? [{ text: "삽질", tone: "warn" as const }]
-                  : []),
+                ...(d.hasFail ? [{ text: "삽질", tone: "warn" as const }] : []),
                 ...(d.short ? [{ text: "쇼츠 ▶", tone: "accent" as const }] : []),
               ]}
             />

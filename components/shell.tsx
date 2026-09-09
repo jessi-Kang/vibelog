@@ -29,9 +29,10 @@ function useRoute() {
 }
 
 function Tabs({ active }: { active: string }) {
+  // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다
   return (
     <nav
-      role="tablist"
+      aria-label="주요 메뉴"
       className="flex w-full gap-1 rounded-md border border-line bg-panel p-1 md:w-fit"
     >
       {TABS.map((t) => {
@@ -40,8 +41,7 @@ function Tabs({ active }: { active: string }) {
           <Link
             key={t.href}
             href={t.href}
-            role="tab"
-            aria-selected={on}
+            aria-current={on ? "page" : undefined}
             className={`flex min-h-9 flex-1 items-center justify-center rounded-[7px] px-3 py-1.5 text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "bg-panel2 text-ink" : "text-muted hover:text-ink-soft"}`}
           >
             {t.label}
@@ -60,7 +60,7 @@ function BackRow({ crumb }: { crumb: string }) {
         type="button"
         aria-label="뒤로"
         onClick={() => router.back()}
-        className="grid h-8 w-8 cursor-pointer place-items-center rounded-md font-mono text-sm font-bold text-muted transition-colors duration-150 hover:bg-panel2"
+        className="hit grid h-8 w-8 cursor-pointer place-items-center rounded-md font-mono text-sm font-bold text-muted transition-colors duration-150 hover:bg-panel2"
       >
         ←
       </button>
@@ -91,7 +91,7 @@ export function SiteHeader() {
               </Link>
             )}
             <span className="whitespace-nowrap font-mono text-xs text-muted md:hidden">
-              다음 실행 23:00
+              다음 실행 23:00 KST
             </span>
           </div>
           <div className={`${detail ? "hidden md:flex" : "flex"} items-center gap-4`}>

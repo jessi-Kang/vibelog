@@ -19,9 +19,7 @@ export default function LogPage() {
     summary: d.summary,
     commits: d.commits,
     prs: d.prs,
-    hasFail: Boolean(
-      d.sections.fail && !d.sections.fail.startsWith("특별한 삽질은"),
-    ),
+    hasFail: d.hasFail,
     hasShort: Boolean(d.short),
   }));
   const projects = getProjects().map((p) => ({

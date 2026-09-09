@@ -97,6 +97,36 @@ body {
   color: var(--color-accent-ink);
 }
 
+html {
+  caret-color: var(--color-accent);
+}
+
+/* 키보드 포커스 — 핸드오프 --shadow-focus(0 0 0 6px accent-glow) + 식별용 민트 외곽선 */
+:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 6px rgba(94, 225, 195, 0.12);
+}
+
+/* 시각 크기는 그대로 두고 터치·클릭 영역만 44px급으로 넓히는 유틸 */
+.hit {
+  position: relative;
+}
+.hit::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+
+.vl-blink {
+  animation: vl-blink 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vl-blink {
+    animation: none;
+  }
+}
+
 /* 데브로그 본문 (마크다운 폴백 렌더용) — 섹션 구조 파싱이 실패했을 때만 쓰인다 */
 .prose-devlog {
   line-height: 1.75;

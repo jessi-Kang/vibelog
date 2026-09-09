@@ -37,6 +37,8 @@ export interface DevlogEntry {
   bodyEn?: string; // 영어 번역 — <!-- en --> 구분자 뒤
   sections: DevlogSections; // KR 본문의 섹션 파싱 (실패 시 빈 객체 → body 폴백)
   sectionsEn: DevlogSections;
+  /** 실제 삽질이 있는 글인지 — "특별한 삽질은 없었습니다" 류는 false */
+  hasFail: boolean;
   summary?: string; // 목록용 — "뭘 했다" 첫 문장
   commits?: number; // 원료 커밋 수 (frontmatter)
   prs?: number;
@@ -112,6 +114,12 @@ function parseSections(markdown: string): DevlogSections {
   return sections;
 }
 
+function computeHasFail(fail?: string): boolean {
+  const t = fail?.trim();
+  if (!t) return false;
+  return !/^(특별한 삽질은 없|오늘은 없었습니다|없었습니다|없음)/.test(t);
+}
+
 function firstSentence(text?: string): string | undefined {
   if (!text) return undefined;
   const plain = text.replace(/\s+/g, " ").trim();
@@ -169,6 +177,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(bodyEn ? { bodyEn } : {}),
         sections,
         sectionsEn: bodyEn ? parseSections(bodyEn) : {},
+        hasFail: computeHasFail(sections.fail),
         summary: firstSentence(sections.did),
         ...(typeof data.commits === "number" ? { commits: data.commits } : {}),
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
