@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "vibelog",
+    "name": "vibelog",
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그 + 쇼츠 파이프라인. 이 레포 자체가 첫 번째 프로젝트.",
+    "status": "building",
+    "stack": ["Next.js", "TypeScript", "Tailwind", "MDX"],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-09"
+  }
+]
