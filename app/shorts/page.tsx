@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageContainer } from "@/components/page-container";
+import { ShortsGrid } from "@/components/shorts-grid";
 import { EmptyState, SectionHeader } from "@/components/ui";
-import { fmtShort, getDevlogs, getShorts } from "@/lib/content";
+import { getDevlogs, getShorts } from "@/lib/content";
 
 export const metadata: Metadata = { title: "쇼츠" };
 
@@ -42,53 +43,7 @@ export default function ShortsPage() {
             hint="content/shorts/<repo>/<date>.json"
           />
         ) : (
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
-            {shorts.map((s) => (
-              <Link
-                key={`${s.repo}/${s.date}`}
-                href={`/log/${s.repo}/${s.date}`}
-                className="flex flex-col gap-2"
-              >
-                <div
-                  className="relative aspect-[9/16] overflow-hidden rounded-lg border border-line bg-bg-deep"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(60% 40% at 50% 0%, rgba(94,225,195,.10), transparent 70%)",
-                  }}
-                >
-                  <div className="absolute left-3 right-3 top-3 font-mono text-[8px] font-bold uppercase tracking-[.08em] text-muted">
-                    <b className="text-accent">vibelog</b> · day{" "}
-                    {String(s.day).padStart(2, "0")}
-                  </div>
-                  <div className="absolute left-3.5 right-3.5 top-[38%] text-[17px] font-black leading-[1.15] tracking-[-.01em] [text-wrap:balance]">
-                    {s.hook.split(/\s+/).map((w, i) => (
-                      <span
-                        key={i}
-                        className={s.hookKeywords.includes(w) ? "text-accent" : ""}
-                      >
-                        {w}{" "}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="absolute bottom-3 left-3 right-3 flex justify-between font-mono text-[9px] uppercase tracking-[.06em] text-muted">
-                    <span>{s.template}</span>
-                    <span>
-                      ▶{" "}
-                      {s.duration
-                        ? `0:${String(s.duration).padStart(2, "0")}`
-                        : "—"}
-                    </span>
-                  </div>
-                </div>
-                <div className="text-sm font-bold leading-snug [text-wrap:pretty]">
-                  {s.title}
-                </div>
-                <div className="font-mono text-2xs text-muted">
-                  {s.repo} · {fmtShort(s.date)}
-                </div>
-              </Link>
-            ))}
-          </div>
+          <ShortsGrid shorts={shorts} introSrc="/shorts/intro.mp4" />
         )}
       </section>
 

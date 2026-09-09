@@ -24,7 +24,7 @@ export default async function DevlogPostPage({ params }: Props) {
   const project = getProject(repo);
 
   return (
-    <PageContainer reading>
+    <PageContainer>
       <PostClient
         post={{
           repo: d.repo,

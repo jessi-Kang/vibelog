@@ -1,9 +1,14 @@
 "use client";
-/** 데브로그 본문 — KO/EN 탭, 고정 섹션 구조, 원료 git log */
+/**
+ * 데브로그 본문 — KO/EN 탭, 고정 섹션 구조, 원료 git log.
+ * 데스크톱(lg): 본문은 왼쪽 읽기 컬럼(≈680), 스크린샷·쇼츠는 오른쪽 340px
+ * 고정 레일 — 남는 좌우 여백을 미디어에 쓴다. 모바일·태블릿: 기존 세로 순서.
+ */
 import Link from "next/link";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Card, EmptyState } from "./ui";
 
 export interface PostData {
@@ -47,6 +52,7 @@ function H({ warn, children }: { warn?: boolean; children: string }) {
 
 export function PostClient({ post }: { post: PostData }) {
   const [lang, setLang] = useState<"ko" | "en">("ko");
+  const [media, setMedia] = useState<LightboxMedia | null>(null);
   const en = lang === "en";
   const s = en ? post.sectionsEn : post.sections;
   const parsed = Boolean(post.sections.did || post.sections.why);
@@ -56,46 +62,58 @@ export function PostClient({ post }: { post: PostData }) {
     ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up", shot: "Screenshot" }
     : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것", shot: "스크린샷" };
 
-  return (
-    <>
-      <section className="flex flex-col gap-3">
-        <div className="flex items-center justify-between gap-3 font-mono text-xs text-muted">
-          <span>
-            {post.dateLabel}{" "}
-            <Link href={`/projects/${post.repo}`} className="text-ink-soft">
-              {post.repo} →
-            </Link>
-          </span>
-          <div
-            className="flex gap-1 rounded-md border border-line bg-panel p-1"
-            aria-label="글 언어"
-          >
-            {(["ko", "en"] as const).map((v) => (
-              <button
-                key={v}
-                type="button"
-                aria-pressed={lang === v}
-                onClick={() => setLang(v)}
-                className={`hit min-h-8 cursor-pointer rounded-[7px] px-3 font-sans text-sm font-bold transition-colors duration-150 ${
-                  lang === v ? "bg-panel2 text-ink" : "text-muted"
-                }`}
-              >
-                {v.toUpperCase()}
-              </button>
-            ))}
-          </div>
+  const openShort = (v: "ko" | "en") =>
+    setMedia({
+      kind: "video",
+      sources: post.short?.media ?? {},
+      lang: v,
+      label: `${post.title} 쇼츠`,
+    });
+
+  const head = (
+    <section className="flex flex-col gap-3">
+      <div className="flex items-center justify-between gap-3 font-mono text-xs text-muted">
+        <span>
+          {post.dateLabel}{" "}
+          <Link href={`/projects/${post.repo}`} className="text-ink-soft">
+            {post.repo} →
+          </Link>
+        </span>
+        <div
+          className="flex gap-1 rounded-md border border-line bg-panel p-1"
+          aria-label="글 언어"
+        >
+          {(["ko", "en"] as const).map((v) => (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={lang === v}
+              onClick={() => setLang(v)}
+              className={`hit min-h-8 cursor-pointer rounded-[7px] px-3 font-sans text-sm font-bold transition-colors duration-150 ${
+                lang === v ? "bg-panel2 text-ink" : "text-muted"
+              }`}
+            >
+              {v.toUpperCase()}
+            </button>
+          ))}
         </div>
-        <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
-          {en && post.titleEn ? post.titleEn : post.title}
-        </h1>
-        <div className="font-mono text-xs text-muted">
-          {post.commits != null
-            ? `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
-            : ""}
-          day {String(post.day).padStart(2, "0")}
-          {post.short ? " · 쇼츠 있음" : ""}
-        </div>
-      </section>
+      </div>
+      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
+        {en && post.titleEn ? post.titleEn : post.title}
+      </h1>
+      <div className="font-mono text-xs text-muted">
+        {post.commits != null
+          ? `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
+          : ""}
+        day {String(post.day).padStart(2, "0")}
+        {post.short ? " · 쇼츠 있음" : ""}
+      </div>
+    </section>
+  );
+
+  const article = (
+    <div className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:mx-0 lg:max-w-none">
+      {head}
 
       {en && !post.hasEn && (
         <EmptyState
@@ -150,37 +168,6 @@ export function PostClient({ post }: { post: PostData }) {
                   <Md>{s.next}</Md>
                 </div>
               )}
-              <div>
-                <H>{headings.shot}</H>
-                {post.screenshot ? (
-                  // 원본은 폰 풀페이지 캡처(세로로 매우 김) — 규격 비율로 상단만 보여주고
-                  // 클릭하면 원본을 연다. 본문 읽기 흐름을 끊지 않기 위해서다.
-                  <a
-                    href={post.screenshot}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block overflow-hidden rounded-lg border border-line"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={post.screenshot}
-                      alt={`${post.repo} · ${post.date} 화면 캡처 — 클릭하면 전체 보기`}
-                      className="aspect-[390/260] w-full object-cover object-top"
-                    />
-                  </a>
-                ) : post.homepage ? (
-                  <div className="grid aspect-[390/260] place-items-center rounded-lg border border-line bg-panel p-4 text-center font-mono text-2xs text-muted">
-                    playwright 캡처 · {post.repo} · {post.date}
-                  </div>
-                ) : (
-                  <EmptyState
-                    compact
-                    title="스크린샷이 없습니다"
-                    body="레포에 homepage(배포 URL)가 없어 캡처를 건너뛰었습니다. URL을 채우면 다음 실행부터 매일 찍습니다."
-                    hint="gh repo edit --homepage https://…"
-                  />
-                )}
-              </div>
             </section>
           ) : (
             <div className="prose-devlog">
@@ -189,80 +176,139 @@ export function PostClient({ post }: { post: PostData }) {
               </ReactMarkdown>
             </div>
           )}
-
-          {post.short ? (
-            <Card className="flex items-center gap-3.5 px-[18px] py-3.5">
-              <div className="grid h-[84px] w-12 flex-none place-items-center rounded-sm border border-line bg-bg-deep font-mono text-sm text-accent">
-                ▶
-              </div>
-              <div className="flex min-w-0 flex-col gap-1">
-                <div className="text-md font-bold">
-                  이 글의 쇼츠{post.short.duration ? ` · ${post.short.duration}초` : ""}
-                </div>
-                <div className="font-mono text-2xs text-muted">
-                  {post.short.template}
-                  {post.short.media?.ko && (
-                    <>
-                      {" · "}
-                      <a
-                        href={post.short.media.ko}
-                        className="text-accent transition-opacity duration-150 hover:opacity-85"
-                      >
-                        ko ▶
-                      </a>
-                    </>
-                  )}
-                  {post.short.media?.en && (
-                    <>
-                      {" · "}
-                      <a
-                        href={post.short.media.en}
-                        className="text-accent transition-opacity duration-150 hover:opacity-85"
-                      >
-                        en ▶
-                      </a>
-                    </>
-                  )}
-                </div>
-              </div>
-            </Card>
-          ) : (
-            <EmptyState
-              compact
-              title="이 글의 쇼츠는 아직 없습니다"
-              body="쇼츠는 배포 커밋이 있거나 삽질이 뚜렷한 날만 만듭니다. 이 날은 조건에 걸리지 않았습니다."
-            />
-          )}
-
-          {post.shas && post.shas.length > 0 && (
-            <section className="flex flex-col gap-3.5">
-              <h2 className="m-0 px-1 text-md font-bold text-ink">원료 · git log</h2>
-              <Card inset className="px-[18px] py-1">
-                {post.shas.map(([sha, msg], i) => (
-                  <div
-                    key={`${sha}-${i}`}
-                    className={`flex gap-3 py-2.5 text-sm leading-normal ${
-                      i < (post.shas?.length ?? 0) - 1 ? "border-b border-line" : ""
-                    }`}
-                  >
-                    <span className="flex-none pt-0.5 font-mono text-xs text-muted">
-                      {sha}
-                    </span>
-                    <span className="text-ink-soft">{msg}</span>
-                  </div>
-                ))}
-              </Card>
-            </section>
-          )}
         </>
       )}
+    </div>
+  );
 
+  // 스크린샷·쇼츠가 없으면 빈 자리 채우기용 박스를 그리지 않는다 — 영역 자체를 뺀다 (Jessi 지시)
+  const aside = (
+    <aside className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:sticky lg:top-[90px] lg:mx-0 lg:max-w-none lg:gap-6">
+      {post.screenshot && (
+        <div>
+          <H>{headings.shot}</H>
+          {/* 원본은 폰 풀페이지 캡처(세로로 매우 김) — 규격 비율로 상단만 보여주고
+              클릭하면 레이어 팝업으로 전체를 본다. 본문 읽기 흐름을 끊지 않기 위해서다. */}
+          <button
+            type="button"
+            onClick={() =>
+              setMedia({
+                kind: "image",
+                src: post.screenshot as string,
+                label: `${post.repo} · ${post.date} 화면 캡처`,
+              })
+            }
+            className="block w-full cursor-pointer overflow-hidden rounded-lg border border-line p-0 transition-colors duration-150 hover:border-line-strong"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={post.screenshot}
+              alt={`${post.repo} · ${post.date} 화면 캡처 — 클릭하면 전체 보기`}
+              className="aspect-[390/260] w-full object-cover object-top"
+            />
+          </button>
+        </div>
+      )}
+
+      {post.short && (
+        <Card className="flex items-center gap-3.5 px-[18px] py-3.5">
+          {post.short.media?.ko || post.short.media?.en ? (
+            <button
+              type="button"
+              aria-label="쇼츠 재생"
+              onClick={() => openShort(post.short?.media?.ko ? "ko" : "en")}
+              className="grid h-[84px] w-12 flex-none cursor-pointer place-items-center rounded-sm border border-line bg-bg-deep font-mono text-sm text-accent transition-colors duration-150 hover:border-line-strong"
+            >
+              ▶
+            </button>
+          ) : (
+            <div className="grid h-[84px] w-12 flex-none place-items-center rounded-sm border border-line bg-bg-deep font-mono text-sm text-muted">
+              ▶
+            </div>
+          )}
+          <div className="flex min-w-0 flex-col gap-1">
+            <div className="text-md font-bold">
+              이 글의 쇼츠{post.short.duration ? ` · ${post.short.duration}초` : ""}
+            </div>
+            <div className="font-mono text-2xs text-muted">
+              {post.short.template}
+              {post.short.media?.ko && (
+                <>
+                  {" · "}
+                  <button
+                    type="button"
+                    onClick={() => openShort("ko")}
+                    className="hit cursor-pointer text-accent transition-opacity duration-150 hover:opacity-85"
+                  >
+                    ko ▶
+                  </button>
+                </>
+              )}
+              {post.short.media?.en && (
+                <>
+                  {" · "}
+                  <button
+                    type="button"
+                    onClick={() => openShort("en")}
+                    className="hit cursor-pointer text-accent transition-opacity duration-150 hover:opacity-85"
+                  >
+                    en ▶
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </Card>
+      )}
+    </aside>
+  );
+  const hasAside = Boolean(post.screenshot || post.short);
+
+  const footer = (
+    <div className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:col-start-1 lg:mx-0 lg:max-w-none">
+      {post.shas && post.shas.length > 0 && (
+        <section className="flex flex-col gap-3.5">
+          <h2 className="m-0 px-1 text-md font-bold text-ink">원료 · git log</h2>
+          <Card inset className="px-[18px] py-1">
+            {post.shas.map(([sha, msg], i) => (
+              <div
+                key={`${sha}-${i}`}
+                className={`flex gap-3 py-2.5 text-sm leading-normal ${
+                  i < (post.shas?.length ?? 0) - 1 ? "border-b border-line" : ""
+                }`}
+              >
+                <span className="flex-none pt-0.5 font-mono text-xs text-muted">
+                  {sha}
+                </span>
+                <span className="text-ink-soft">{msg}</span>
+              </div>
+            ))}
+          </Card>
+        </section>
+      )}
       <Link
         href={`/projects/${post.repo}`}
         className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
       >
         {post.repo}의 다른 날 →
       </Link>
+      {!post.short && (
+        <p className="m-0 font-mono text-2xs text-muted">
+          쇼츠는 배포 커밋이 있거나 삽질이 뚜렷한 날만 만듭니다.
+        </p>
+      )}
+    </div>
+  );
+
+  return (
+    <>
+      <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-x-12 lg:gap-y-12">
+        {article}
+        {hasAside && aside}
+        {footer}
+      </div>
+
+      {media && <MediaLightbox media={media} onClose={() => setMedia(null)} />}
     </>
   );
 }
