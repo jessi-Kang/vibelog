@@ -77,7 +77,9 @@ export function PostClient({ post }: { post: PostData }) {
       <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
         {en && post.titleEn ? post.titleEn : post.title}
       </h1>
-      <div className="flex items-center justify-between gap-3">
+      {/* 좁은 화면에서 토글이 메타를 밀어 단어 하나가 고아로 떨어지지 않게 —
+          안 맞으면 토글이 통째로 다음 줄로 내려간다 */}
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
         <div className="font-mono text-xs text-muted">
           {post.commits != null
             ? `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `

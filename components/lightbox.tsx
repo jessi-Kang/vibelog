@@ -61,7 +61,7 @@ export function MediaLightbox({
         <div
           aria-label="영상 언어"
           onClick={(e) => e.stopPropagation()}
-          className="absolute left-4 top-4 z-10 flex gap-1 rounded-md border border-line bg-panel p-1"
+          className="absolute left-4 top-[max(1rem,env(safe-area-inset-top))] z-10 flex gap-1 rounded-md border border-line bg-panel p-1"
         >
           {(["ko", "en"] as const).map((v) => (
             <button
@@ -83,7 +83,8 @@ export function MediaLightbox({
         type="button"
         aria-label="닫기"
         onClick={onClose}
-        className="absolute right-4 top-4 z-10 grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2"
+        // 노치 폰 풀스크린에서 상태바 밑에 깔리지 않게 safe-area만큼 내린다
+        className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-10 grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2"
       >
         ✕
       </button>
