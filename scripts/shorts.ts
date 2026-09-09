@@ -72,12 +72,18 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   for (const lang of ["ko", "en"] as const) {
     console.log(`[shorts] 렌더 (${lang})`);
     const mp4 = await renderShort(repo, date, lang);
-    const url = await upload(mp4, `shorts/${repo}/${date}.${lang}.mp4`);
-    if (url) {
-      media[lang] = url;
-      console.log(`[shorts] 업로드: ${url}`);
-    } else {
-      console.log(`[shorts] BLOB_READ_WRITE_TOKEN 없음 — 로컬 파일만: ${mp4}`);
+    // 업로드 실패(스토어 설정 등)가 나머지 언어 렌더를 막지 않게 격리 —
+    // mp4는 어차피 Actions 아티팩트로도 올라간다
+    try {
+      const url = await upload(mp4, `shorts/${repo}/${date}.${lang}.mp4`);
+      if (url) {
+        media[lang] = url;
+        console.log(`[shorts] 업로드: ${url}`);
+      } else {
+        console.log(`[shorts] BLOB_READ_WRITE_TOKEN 없음 — 로컬 파일만: ${mp4}`);
+      }
+    } catch (err) {
+      console.error(`[shorts] 업로드 실패(${lang}) — 아티팩트로만 제공:`, err);
     }
   }
 
