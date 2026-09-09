@@ -24,6 +24,12 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-dvh flex-col bg-bg font-sans text-ink">
+        <a
+          href="#main"
+          className="sr-only z-50 rounded-md bg-panel2 font-mono text-xs text-ink focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:px-3 focus:py-2"
+        >
+          본문으로 건너뛰기
+        </a>
         <SiteHeader />
         {children}
         <footer className="border-t border-line">
@@ -33,7 +39,7 @@ export default function RootLayout({
               href="https://github.com/jessi-Kang/vibelog"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted transition-colors duration-150 hover:text-ink"
+              className="hit text-muted transition-colors duration-150 hover:text-ink"
             >
               github ↗
             </a>

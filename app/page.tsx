@@ -65,6 +65,13 @@ export default function Home() {
       />
       {run ? (
         <RunLog lines={run.lines} />
+      ) : devlogs.length > 0 ? (
+        // 글은 있는데 실행 로그가 없는 과도기 — "기록 없음"이라고 하면 자기모순이 된다
+        <EmptyState
+          compact
+          title="실행 기록은 다음 자동 실행부터 남습니다"
+          body={`지금 있는 글 ${devlogs.length}편은 파이프라인을 만드는 동안 발행됐습니다. 매일 23:00 KST 실행부터 여기에 기록이 쌓입니다.`}
+        />
       ) : (
         <EmptyState
           compact
@@ -103,10 +110,7 @@ export default function Home() {
                 ...(d.commits
                   ? [`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`]
                   : []),
-                ...(d.sections.fail &&
-                !d.sections.fail.startsWith("특별한 삽질은")
-                  ? [{ text: "삽질", tone: "warn" as const }]
-                  : []),
+                ...(d.hasFail ? [{ text: "삽질", tone: "warn" as const }] : []),
               ]}
             />
           ))}

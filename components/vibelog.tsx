@@ -11,32 +11,42 @@ export function ProjectCard({ project }: { project: Project }) {
     humanizeLastActive(project.lastActivity),
   ].filter(Boolean) as string[];
   return (
-    <Link href={`/projects/${project.slug}`} className="block">
-      <Card
-        stripe={statusStripe(project.status)}
-        dim={project.status === "paused"}
-        interactive
-        className="flex h-full flex-col gap-2.5 px-5 py-[18px]"
-      >
-        <div className="flex items-baseline justify-between gap-3">
-          <h3 className="min-w-0 truncate text-lg font-bold text-ink">
-            {project.name}
-          </h3>
-          <StatusBadge status={project.status} />
-        </div>
-        {project.description && (
-          <p className="m-0 text-base leading-[1.55] text-muted [text-wrap:pretty]">
-            {project.description}
-          </p>
+    <Card
+      stripe={statusStripe(project.status)}
+      dim={project.status === "paused"}
+      className="relative flex h-full flex-col gap-2.5 px-5 py-[18px] transition-colors duration-150 hover:border-line-strong"
+    >
+      {/* 카드 전체 = 상세 링크(스트레치). "열기 ↗"만 z-10으로 위에 떠서 실제 외부 링크 */}
+      <Link
+        href={`/projects/${project.slug}`}
+        aria-label={`${project.name} 상세 보기`}
+        className="absolute inset-0 z-0 rounded-lg"
+      />
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="min-w-0 truncate text-lg font-bold text-ink">
+          {project.name}
+        </h3>
+        <StatusBadge status={project.status} />
+      </div>
+      {project.description && (
+        <p className="m-0 text-base leading-[1.55] text-muted [text-wrap:pretty]">
+          {project.description}
+        </p>
+      )}
+      <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-mono text-2xs text-muted">
+        <span className="min-w-0 flex-1 truncate">{meta.join(" · ")}</span>
+        {project.homepage && (
+          <a
+            href={project.homepage}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hit relative z-10 whitespace-nowrap text-accent"
+          >
+            열기 ↗
+          </a>
         )}
-        <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-mono text-2xs text-muted">
-          <span className="min-w-0 flex-1 truncate">{meta.join(" · ")}</span>
-          {project.homepage && (
-            <span className="whitespace-nowrap text-accent">열기 ↗</span>
-          )}
-        </div>
-      </Card>
-    </Link>
+      </div>
+    </Card>
   );
 }
 
@@ -55,7 +65,7 @@ export function RunLog({ lines }: { lines: RunLogLine[] }) {
           return (
             <div key={i} className="text-accent">
               → {l.text}
-              <span className="animate-[vl-blink_1s_steps(1)_infinite]">▍</span>
+              <span className="vl-blink">▍</span>
             </div>
           );
         return (

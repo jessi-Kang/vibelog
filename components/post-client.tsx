@@ -66,22 +66,24 @@ export function PostClient({ post }: { post: PostData }) {
               {post.repo} →
             </Link>
           </span>
-          <nav className="flex gap-1 rounded-md border border-line bg-panel p-1">
+          <div
+            className="flex gap-1 rounded-md border border-line bg-panel p-1"
+            aria-label="글 언어"
+          >
             {(["ko", "en"] as const).map((v) => (
               <button
                 key={v}
                 type="button"
-                role="tab"
-                aria-selected={lang === v}
+                aria-pressed={lang === v}
                 onClick={() => setLang(v)}
-                className={`min-h-8 cursor-pointer rounded-[7px] px-3 font-sans text-sm font-bold transition-colors duration-150 ${
+                className={`hit min-h-8 cursor-pointer rounded-[7px] px-3 font-sans text-sm font-bold transition-colors duration-150 ${
                   lang === v ? "bg-panel2 text-ink" : "text-muted"
                 }`}
               >
                 {v.toUpperCase()}
               </button>
             ))}
-          </nav>
+          </div>
         </div>
         <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
           {en && post.titleEn ? post.titleEn : post.title}
@@ -151,12 +153,21 @@ export function PostClient({ post }: { post: PostData }) {
               <div>
                 <H>{headings.shot}</H>
                 {post.screenshot ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={post.screenshot}
-                    alt={`${post.repo} · ${post.date} 스크린샷`}
-                    className="w-full rounded-lg border border-line"
-                  />
+                  // 원본은 폰 풀페이지 캡처(세로로 매우 김) — 규격 비율로 상단만 보여주고
+                  // 클릭하면 원본을 연다. 본문 읽기 흐름을 끊지 않기 위해서다.
+                  <a
+                    href={post.screenshot}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block overflow-hidden rounded-lg border border-line"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={post.screenshot}
+                      alt={`${post.repo} · ${post.date} 화면 캡처 — 클릭하면 전체 보기`}
+                      className="aspect-[390/260] w-full object-cover object-top"
+                    />
+                  </a>
                 ) : post.homepage ? (
                   <div className="grid aspect-[390/260] place-items-center rounded-lg border border-line bg-panel p-4 text-center font-mono text-2xs text-muted">
                     playwright 캡처 · {post.repo} · {post.date}
