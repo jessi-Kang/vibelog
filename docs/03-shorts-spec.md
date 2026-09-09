@@ -39,8 +39,10 @@
   - 확정 설정(승인된 샘플 기준): speed 1.00 / stability 0.50 / similarity_boost 0.75 / style 0 / speaker_boost on. 모델 eleven_multilingual_v2.
   - 같은 설정이라도 테이크마다 길이가 ±1초 정도 달라진다 → 타이밍은 항상 생성된 음성의 타임스탬프로 잡는다. 텍스트를 미리 자막에 박아두고 음성을 맞추지 않는다.
   - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
-- 배경음악: ElevenLabs Music (eleven_music_v2), 45초, 인스트루멘탈. 프롬프트 요지: "minimal lo-fi electronic, soft synth pad, muted plucked melody, light percussion ~90 BPM, sits under narration, no vocals/no drops, beat enters at 8s, fade out last 3s". API에 instrumental 옵션 있으면 반드시 켤 것.
-  - 대안: 템플릿별 고정 트랙 3개를 레포에 두고 재사용 (사운드 일관성 면에서 오히려 추천)
+- 배경음악: `video/assets/music/`의 고정 트랙 5종을 재사용한다 (API 미사용 — 크레딧·일관성).
+  톤: `ship-it`(기본, 담담한 전진) / `upbeat`(배포·성공) / `tense`(큰 삽질) / `calm`(문서·정리) / `playful`(실험·장난기).
+  대본(script.ts)이 그날 이야기 분위기로 `music` 톤을 고르고, 없으면 템플릿 트랙 → 아무 트랙 순 폴백.
+  트랙 생성 프롬프트 계보: "minimal lo-fi electronic ~90 BPM, instrumental, 45s" 계열에서 톤별 변주 (eleven_music_v2).
 - 믹스: 음악 volume 0.20, 내레이션 사이드체인 더킹(threshold .03, ratio 5, attack 40ms, release 500ms), 음악은 끝 3.5초 페이드아웃. amix normalize=0.
 
 ```

@@ -161,15 +161,17 @@ export function musicPath(template: string): string {
 }
 
 /**
- * 템플릿 트랙이 없으면 레포에 있는 다른 고정 트랙을 재사용한다.
- * 배경음악은 분위기 깔개일 뿐이라 템플릿 전용일 필요가 없고, 이 폴백 덕에
- * 음악 API(크레딧) 의존 없이 파이프라인이 항상 돈다 (run #11: fail.mp3가
- * 없어 API 폴백을 탔다가 크레딧 부족 401로 전체가 죽었다).
+ * 대본이 고른 무드 트랙 → 템플릿 트랙 → 아무 고정 트랙 순으로 고른다.
+ * 무드 트랙 5종(ship-it/upbeat/tense/calm/playful)은 미리 만들어 커밋해
+ * 둔다 (Jessi 지시 — 상황에 맞는 톤). 이 폴백 사슬 덕에 음악 API(크레딧)
+ * 의존 없이 파이프라인이 항상 돈다 (run #11: fail.mp3가 없어 API 폴백을
+ * 탔다가 크레딧 부족 401로 전체가 죽었다).
  */
-export function resolveMusic(template: string): string | null {
-  const file = musicPath(template);
-  if (fs.existsSync(file)) return file;
-  const dir = path.dirname(file);
+export function resolveMusic(s: { music?: string; template: string }): string | null {
+  for (const name of [s.music, s.template]) {
+    if (name && fs.existsSync(musicPath(name))) return musicPath(name);
+  }
+  const dir = path.dirname(musicPath(s.template));
   if (!fs.existsSync(dir)) return null;
   const any = fs
     .readdirSync(dir)
@@ -178,16 +180,14 @@ export function resolveMusic(template: string): string | null {
   return any.length > 0 ? path.join(dir, any[0]) : null;
 }
 
-/** 고정 트랙(템플릿 → 아무거나) 우선, 정말 하나도 없을 때만 API 생성 */
-export async function ensureMusic(template: string): Promise<string> {
-  const resolved = resolveMusic(template);
+/** 고정 트랙(무드 → 템플릿 → 아무거나) 우선, 정말 하나도 없을 때만 API 생성 */
+export async function ensureMusic(s: { music?: string; template: string }): Promise<string> {
+  const resolved = resolveMusic(s);
   if (resolved) {
-    if (resolved !== musicPath(template)) {
-      console.log(`음악: ${template}.mp3 없음 — ${path.basename(resolved)} 재사용`);
-    }
+    console.log(`음악: ${path.basename(resolved)}`);
     return resolved;
   }
-  const file = musicPath(template);
+  const file = musicPath(s.template);
 
   // ElevenLabs Music API 폴백 — 기본 경로는 레포에 커밋된 고정 트랙이다.
   // model_id는 명시하지 않는다: REST API의 모델명이 문서와 달라 422를 냈다
@@ -225,7 +225,7 @@ export async function generateAudio(
   for (const lang of langs) {
     await generateNarration(script, lang);
   }
-  await ensureMusic(script.template);
+  await ensureMusic(script);
 }
 
 if (process.argv[1]?.endsWith("audio.ts")) {

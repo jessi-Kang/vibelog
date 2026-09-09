@@ -74,9 +74,12 @@ export function Thumb({ s }: { s: ThumbData }) {
 export function ShortsGrid({
   shorts,
   introSrc,
+  introEnSrc,
 }: {
   shorts: ShortsMeta[];
   introSrc?: string;
+  /** 인트로 영어판 — 있으면 팝업에 KO/EN 토글이 뜬다 */
+  introEnSrc?: string;
 }) {
   const [media, setMedia] = useState<LightboxMedia | null>(null);
 
@@ -129,7 +132,8 @@ export function ShortsGrid({
               onClick={() =>
                 setMedia({
                   kind: "video",
-                  sources: { ko: introSrc },
+                  sources: { ko: introSrc, ...(introEnSrc ? { en: introEnSrc } : {}) },
+                  lang: "ko",
                   label: "vibelog 인트로",
                 })
               }

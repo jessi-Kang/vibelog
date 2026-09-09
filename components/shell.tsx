@@ -13,6 +13,7 @@ const TABS = [
   { href: "/", label: "프로젝트" },
   { href: "/log", label: "데브로그" },
   { href: "/shorts", label: "쇼츠" },
+  { href: "/about", label: "소개" },
 ];
 
 function useRoute() {
@@ -25,7 +26,14 @@ function useRoute() {
     : post
       ? `log / ${decodeURIComponent(post[1])} / ${post[2]}`
       : "";
-  const tab = post || pathname.startsWith("/log") ? "/log" : pathname.startsWith("/shorts") ? "/shorts" : "/";
+  const tab =
+    post || pathname.startsWith("/log")
+      ? "/log"
+      : pathname.startsWith("/shorts")
+        ? "/shorts"
+        : pathname.startsWith("/about")
+          ? "/about"
+          : "/";
   return { detail, crumb, tab: project ? "/" : tab };
 }
 

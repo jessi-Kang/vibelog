@@ -11,6 +11,7 @@ import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import matter from "gray-matter";
 import {
+  MUSIC_MOODS,
   shortsJsonPath,
   type ShortsLine,
   type ShortsScript,
@@ -45,6 +46,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 - keywords: 각 ko 문장에서 강조할 단어 1~3개. 문장에 실제로 등장하는 단어(공백 단위 토큰)와 정확히 일치해야 한다. keywordsEn도 en 문장에 대해 동일.
 - en은 같은 내용의 자연스러운 영어. 존댓말 뉘앙스는 평서체로.
 - template: 배포·릴리즈가 핵심이면 "ship-it", 삽질 이야기가 제일 강하면 "fail", 둘 다 아니면 "ship-it".
+- music: 이야기의 분위기에 맞는 배경음악 톤 하나 — "ship-it"(기본, 담담한 전진),
+  "upbeat"(배포·성공으로 기분 좋은 날), "tense"(큰 삽질과 씨름한 날),
+  "calm"(문서·정리처럼 잔잔한 날), "playful"(실험·장난기 있는 날) 중에서 고른다.
 - fail 장면이 있으면 failCard도 채운다: before(문제 상황 한 줄), after(해결 한 줄), title(카드 제목, 짧게).
 - captions: 유튜브/인스타 설명문 (ko/en 각 1~2문장 + 줄바꿈 없이).
 - hashtags: 5~8개, # 포함, 한국어·영어 섞어서.
@@ -54,7 +58,7 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   hook 등 다른 장면에는 art를 쓰지 않는다.
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"art":"..."}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"art":"..."}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -183,6 +187,10 @@ export async function generateScript(
     ? (parsed.template as ShortsTemplate)
     : "ship-it";
 
+  const music = MUSIC_MOODS.includes(parsed.music as (typeof MUSIC_MOODS)[number])
+    ? (parsed.music as string)
+    : "ship-it";
+
   const failCard =
     parsed.failCard &&
     typeof (parsed.failCard as Record<string, unknown>).title === "string"
@@ -193,6 +201,7 @@ export async function generateScript(
 
   const script: ShortsScript = {
     template,
+    music,
     repo,
     date,
     day: dayNumber(repo, date),
