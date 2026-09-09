@@ -165,15 +165,15 @@ export async function ensureMusic(template: string): Promise<string> {
   const file = musicPath(template);
   if (fs.existsSync(file)) return file;
 
-  // ElevenLabs Music API. 미지원 계정/엔드포인트 변경 시 아래 에러를 보고
-  // video/assets/music/<template>.mp3를 직접 넣는 것으로 대체한다 (스펙 문서 권장안).
+  // ElevenLabs Music API 폴백 — 기본 경로는 레포에 커밋된 고정 트랙이다.
+  // model_id는 명시하지 않는다: REST API의 모델명이 문서와 달라 422를 냈다
+  // ("Invalid model id: eleven_music_v2"). 기본 모델에 맡긴다.
   const res = await fetch(`${API}/music?output_format=mp3_44100_128`, {
     method: "POST",
     headers: { "xi-api-key": apiKey(), "content-type": "application/json" },
     body: JSON.stringify({
       prompt: MUSIC_PROMPT,
       music_length_ms: 45000,
-      model_id: "eleven_music_v2",
       force_instrumental: true,
     }),
   });
