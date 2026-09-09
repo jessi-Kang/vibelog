@@ -39,10 +39,12 @@ jobs:
         if: ${{ env.HAS_ELEVENLABS == 'true' }}
         run: |
           # 러너에 기본 등록된 크롬·엣지 저장소는 쓰지 않는데, 갱신 경합
-          # (Hash Sum mismatch)으로 실행 전체를 죽인 적이 있다 — 빼고 간다.
-          # apt-get update는 일시 오류 대비 한 번 재시도.
-          sudo rm -f /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/microsoft-edge.list
-          sudo apt-get update || (sleep 15 && sudo apt-get update)
+          # (Hash Sum mismatch)으로 실행을 두 번 죽였다(run #14·#15 — .list만
+          # 지웠더니 노블 러너는 .sources 형식이라 빗나감). 와일드카드로 빼고,
+          # 그래도 남는 서드파티 저장소 오류는 실행을 죽이지 않는다 — ffmpeg·
+          # 폰트는 우분투 기본 저장소에서 오므로 진짜 문제면 install에서 잡힌다.
+          sudo rm -f /etc/apt/sources.list.d/google-chrome* /etc/apt/sources.list.d/microsoft-edge*
+          sudo apt-get update || (sleep 15 && sudo apt-get update) || true
           sudo apt-get install -y ffmpeg fonts-noto-cjk
           npx playwright install --with-deps chromium
 
