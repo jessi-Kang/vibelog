@@ -46,6 +46,8 @@ export interface RepoActivity {
   commits: RepoCommit[];
   mergedPRs: RepoPR[];
   devlogFiles: RepoDevlogFile[];
+  /** 이번 수집이 실제로 쓴 창의 시작 — run.ts가 state.daySince로 저장한다 */
+  since: string;
   hasActivity: boolean;
   latestSha: string | null;
   /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
@@ -55,6 +57,10 @@ export interface RepoActivity {
 export interface RepoState {
   lastSha?: string;
   lastRun?: string; // ISO
+  /** 마지막으로 발행한 글의 날짜 버킷 (KST YYYY-MM-DD) */
+  lastDate?: string;
+  /** lastDate 글이 다루는 수집 창의 시작 (ISO) — 같은 날 재실행이 이 창을 다시 쓴다 */
+  daySince?: string;
 }
 
 export type State = Record<string, RepoState>;
@@ -215,7 +221,7 @@ async function getDevlogFiles(
   }
 }
 
-export async function collect(state: State): Promise<RepoActivity[]> {
+export async function collect(state: State, date?: string): Promise<RepoActivity[]> {
   const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
   const octokit = new Octokit({ auth });
   const owner = await getOwner(octokit);
@@ -231,13 +237,20 @@ export async function collect(state: State): Promise<RepoActivity[]> {
     const fallbackSince = new Date(
       Date.now() - FIRST_RUN_LOOKBACK_DAYS * 24 * 3600 * 1000,
     ).toISOString();
-    const since = state[repo]?.lastRun ?? fallbackSince;
+    // 글은 날짜 버킷당 하나이므로, 같은 날의 재실행은 그날 첫 실행이 쓴 수집 창을
+    // 그대로 다시 쓴다. lastRun만 기준으로 하면 재실행마다 "그 사이 커밋" 조각으로
+    // 하루치 글을 통째로 덮어써 이전 내용이 지워진다.
+    const prev = state[repo];
+    const since =
+      date && prev?.lastDate === date && prev.daySince
+        ? prev.daySince
+        : (prev?.lastRun ?? fallbackSince);
 
     const vibelogJson = await getVibelogJson(octokit, owner, repo);
     if (vibelogJson?.hide) continue;
 
     const weekAgo = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
-    const [commits, mergedPRs, devlogFiles, readme, weekCommits] =
+    const [allCommits, mergedPRs, devlogFiles, readme, weekCommits] =
       await Promise.all([
         getCommits(octokit, owner, repo, since),
         getMergedPRs(octokit, owner, repo, since),
@@ -249,8 +262,21 @@ export async function collect(state: State): Promise<RepoActivity[]> {
           .catch(() => 0),
       ]);
 
-    // 체크포인트 sha와 같은 커밋만 있으면 활동 없음으로 본다
-    const newCommits = commits.filter((c) => c.sha !== state[repo]?.lastSha);
+    // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
+    // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
+    const commits = allCommits.filter(
+      (c) => !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦)/.test(c.message),
+    );
+
+    // 활동 판정은 체크포인트 sha "이후" 커밋만 센다 (목록은 최신순).
+    // 글 재료는 창 전체(commits) — 재실행에도 하루치가 통째로 들어간다.
+    const idx = prev?.lastSha
+      ? commits.findIndex((c) => c.sha === prev.lastSha)
+      : -1;
+    const newCommits = idx === -1 ? commits : commits.slice(0, idx);
+    const newPRs = prev?.lastRun
+      ? mergedPRs.filter((p) => p.mergedAt > prev.lastRun!)
+      : mergedPRs;
 
     results.push({
       repo,
@@ -262,12 +288,13 @@ export async function collect(state: State): Promise<RepoActivity[]> {
       pushedAt: r.pushed_at ?? "",
       vibelogJson,
       readme,
-      commits: newCommits,
+      commits,
       mergedPRs,
       devlogFiles,
+      since,
       hasActivity:
-        newCommits.length > 0 || mergedPRs.length > 0 || devlogFiles.length > 0,
-      latestSha: commits[0]?.sha ?? state[repo]?.lastSha ?? null,
+        newCommits.length > 0 || newPRs.length > 0 || devlogFiles.length > 0,
+      latestSha: commits[0]?.sha ?? prev?.lastSha ?? null,
       weekCommits,
     });
   }

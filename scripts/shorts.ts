@@ -24,12 +24,18 @@ import {
 async function upload(file: string, key: string): Promise<string | null> {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return null;
   const { put } = await import("@vercel/blob");
-  const { url } = await put(key, fs.createReadStream(file), {
+  // 스트림을 넘기면 SDK가 일시 오류로 재시도할 때 이미 소진된 스트림을
+  // 다시 못 읽고 "Response body ... disturbed or locked"로 죽는다.
+  // 파일이 수 MB라 버퍼로 읽어 재시도를 안전하게 한다.
+  const { url } = await put(key, fs.readFileSync(file), {
     access: "public",
     addRandomSuffix: false,
     allowOverwrite: true,
+    // 재생성이 같은 키를 덮어쓴다 — 기본 캐시(1년)면 시청자가 이전 영상을
+    // 계속 본다. 엣지 캐시는 짧게 잡고, 브라우저 캐시는 URL 버전 쿼리로 깬다.
+    cacheControlMaxAge: 60,
   });
-  return url;
+  return `${url}?v=${Date.now().toString(36)}`;
 }
 
 export async function runShorts(repo: string, date: string): Promise<void> {
