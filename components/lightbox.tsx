@@ -6,6 +6,7 @@
  * 닫기: ✕ 버튼 · ESC · 스크림 클릭. 열려 있는 동안 페이지 스크롤 잠금.
  */
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "./lang";
 
 export type LightboxMedia =
   | { kind: "image"; src: string; label: string }
@@ -24,6 +25,7 @@ export function MediaLightbox({
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const site = useLang(); // aria 라벨용 — 재생 언어와는 별개
   const [lang, setLang] = useState<"ko" | "en">(
     media.kind === "video" ? (media.lang ?? "ko") : "ko",
   );
@@ -59,7 +61,7 @@ export function MediaLightbox({
     >
       {bothLangs && (
         <div
-          aria-label="영상 언어"
+          aria-label={site.lang === "en" ? "Video language" : "영상 언어"}
           onClick={(e) => e.stopPropagation()}
           className="absolute left-4 top-[max(1rem,env(safe-area-inset-top))] z-10 flex gap-1 rounded-md border border-line bg-panel p-1"
         >
@@ -81,7 +83,7 @@ export function MediaLightbox({
       <button
         ref={closeRef}
         type="button"
-        aria-label="닫기"
+        aria-label={site.lang === "en" ? "Close" : "닫기"}
         onClick={onClose}
         // 노치 폰 풀스크린에서 상태바 밑에 깔리지 않게 safe-area만큼 내린다
         className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-10 grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2"

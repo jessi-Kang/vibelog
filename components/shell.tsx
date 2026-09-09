@@ -7,13 +7,14 @@
  */
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { LangSwitch, useLang } from "./lang";
 import { Wordmark } from "./ui";
 
 const TABS = [
-  { href: "/", label: "프로젝트" },
-  { href: "/log", label: "데브로그" },
-  { href: "/shorts", label: "쇼츠" },
-  { href: "/about", label: "소개" },
+  { href: "/", ko: "프로젝트", en: "Projects" },
+  { href: "/log", ko: "데브로그", en: "Devlog" },
+  { href: "/shorts", ko: "쇼츠", en: "Shorts" },
+  { href: "/about", ko: "소개", en: "About" },
 ];
 
 function useRoute() {
@@ -38,6 +39,7 @@ function useRoute() {
 }
 
 function Tabs({ active }: { active: string }) {
+  const { lang } = useLang();
   // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다.
   // 박스 안에 박스(세그먼트 컨트롤)는 무겁다 — 텍스트 + 민트 언더라인의
   // 조용한 탭으로 (Jessi 지시, taste 패스)
@@ -53,7 +55,7 @@ function Tabs({ active }: { active: string }) {
             className={`hit flex min-h-9 flex-1 items-center justify-center text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "text-ink" : "text-muted hover:text-ink-soft"}`}
           >
             <span className="relative py-1">
-              {t.label}
+              {lang === "ko" ? t.ko : t.en}
               {on && (
                 <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-accent" />
               )}
@@ -103,9 +105,16 @@ export function SiteHeader() {
                 <Wordmark />
               </Link>
             )}
+            {/* 전역 KO/EN — 모바일은 첫 줄 우측(상세에서도 보인다) */}
+            <span className="md:hidden">
+              <LangSwitch />
+            </span>
           </div>
-          <div className={`${detail ? "hidden md:flex" : "flex"} items-center gap-4`}>
+          <div className={`${detail ? "hidden md:flex" : "flex"} items-center gap-4 md:gap-5`}>
             <Tabs active={tab} />
+            <span className="hidden md:block">
+              <LangSwitch />
+            </span>
           </div>
         </div>
       </header>

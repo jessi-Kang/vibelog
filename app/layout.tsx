@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
+import { LangProvider, T } from "@/components/lang";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,11 +25,12 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-dvh flex-col bg-bg font-sans text-ink">
+        <LangProvider>
         <a
           href="#main"
           className="sr-only z-50 rounded-md bg-panel2 font-mono text-xs text-ink focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:px-3 focus:py-2"
         >
-          본문으로 건너뛰기
+          <T ko="본문으로 건너뛰기" en="Skip to content" />
         </a>
         <SiteHeader />
         {children}
@@ -45,6 +47,7 @@ export default function RootLayout({
             </a>
           </div>
         </footer>
+        </LangProvider>
       </body>
     </html>
   );

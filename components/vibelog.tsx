@@ -1,14 +1,24 @@
-/** vibelog 도메인 컴포넌트 — 핸드오프 components/vibelog/ 재구현 */
+"use client";
+/** vibelog 도메인 컴포넌트 — 핸드오프 components/vibelog/ 재구현.
+ * 라벨은 전역 언어 설정을 따르고, 데이터 텍스트(제목 등)는 호출부가
+ * <T>로 언어별 값을 넘긴다 (props가 ReactNode인 이유). */
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { Project, RunLogLine } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
+import { useLang } from "./lang";
 import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { lang } = useLang();
   const meta = [
     project.stack.join(" · ").toLowerCase(),
-    project.weekCommits ? `이번 주 커밋 ${project.weekCommits}` : null,
-    humanizeLastActive(project.lastActivity),
+    project.weekCommits
+      ? lang === "ko"
+        ? `이번 주 커밋 ${project.weekCommits}`
+        : `${project.weekCommits} commits this week`
+      : null,
+    humanizeLastActive(project.lastActivity, lang),
   ].filter(Boolean) as string[];
   return (
     <Card
@@ -42,7 +52,7 @@ export function ProjectCard({ project }: { project: Project }) {
             rel="noopener noreferrer"
             className="hit relative z-10 whitespace-nowrap text-accent transition-opacity duration-150 hover:opacity-85"
           >
-            열기 ↗
+            {lang === "ko" ? "열기 ↗" : "open ↗"}
           </a>
         )}
       </div>
@@ -89,11 +99,11 @@ export function DevlogTimelineEntry({
   last,
 }: {
   href: string;
-  date: string;
+  date: ReactNode;
   repo?: string;
-  title: string;
-  summary?: string;
-  meta: (string | { text: string; tone?: "warn" | "accent" | "soft" })[];
+  title: ReactNode;
+  summary?: ReactNode;
+  meta: (string | { text: ReactNode; tone?: "warn" | "accent" | "soft" })[];
   last?: boolean;
 }) {
   return (
@@ -131,10 +141,10 @@ export function DevlogCompactEntry({
   last,
 }: {
   href: string;
-  date: string;
+  date: ReactNode;
   repo?: string;
-  title: string;
-  meta: (string | { text: string; tone?: "warn" | "accent" | "soft" })[];
+  title: ReactNode;
+  meta: (string | { text: ReactNode; tone?: "warn" | "accent" | "soft" })[];
   last?: boolean;
 }) {
   return (

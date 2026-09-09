@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
+import { T } from "@/components/lang";
 import { EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
 import { DevlogTimelineEntry } from "@/components/vibelog";
 import {
@@ -31,14 +32,15 @@ export default async function ProjectPage({ params }: Props) {
 
   const logs = getDevlogs(project.slug);
   const lastActive = humanizeLastActive(project.lastActivity);
+  const lastActiveEn = humanizeLastActive(project.lastActivity, "en");
 
-  const facts: [string, React.ReactNode][] = [
-    ["상태", <StatusBadge key="s" status={project.status} />],
-    ["스택", project.stack.join(" · ").toLowerCase() || "—"],
-    ["이번 주 커밋", String(project.weekCommits ?? 0)],
-    ["마지막 활동", lastActive],
-    ["데브로그", `${logs.length}편`],
-    ["시작일", logs.length ? logs[logs.length - 1].date : "—"],
+  const facts: [string, React.ReactNode, React.ReactNode][] = [
+    ["s", <T key="k1" ko="상태" en="status" />, <StatusBadge key="s" status={project.status} />],
+    ["t", <T key="k2" ko="스택" en="stack" />, project.stack.join(" · ").toLowerCase() || "—"],
+    ["w", <T key="k3" ko="이번 주 커밋" en="commits this week" />, String(project.weekCommits ?? 0)],
+    ["l", <T key="k4" ko="마지막 활동" en="last active" />, <T key="v4" ko={lastActive} en={lastActiveEn} />],
+    ["d", <T key="k5" ko="데브로그" en="devlogs" />, <T key="v5" ko={`${logs.length}편`} en={String(logs.length)} />],
+    ["b", <T key="k6" ko="시작일" en="started" />, logs.length ? logs[logs.length - 1].date : "—"],
   ];
 
   const head = (
@@ -48,7 +50,7 @@ export default async function ProjectPage({ params }: Props) {
           {project.name}
         </h1>
         <p className="m-0 text-md leading-[1.6] text-ink-soft [text-wrap:pretty]">
-          {project.description || "설명이 아직 없습니다."}
+          {project.description || <T ko="설명이 아직 없습니다." en="No description yet." />}
         </p>
         {project.homepage && (
           <a
@@ -62,8 +64,8 @@ export default async function ProjectPage({ params }: Props) {
         )}
       </div>
       <dl className="m-0 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 font-mono text-xs">
-        {facts.map(([k, v]) => (
-          <div key={k} className="contents">
+        {facts.map(([key, k, v]) => (
+          <div key={key} className="contents">
             <dt className="text-muted">{k}</dt>
             <dd className="m-0 text-ink">{v}</dd>
           </div>
@@ -72,8 +74,8 @@ export default async function ProjectPage({ params }: Props) {
       {project.stack.length === 0 && project.status === "idea" && (
         <EmptyState
           compact
-          title="아직 레포 정보가 비어 있습니다"
-          body="description · homepage · language를 채우면 다음 실행에 카드가 채워집니다."
+          title={<T ko="아직 레포 정보가 비어 있습니다" en="Repo info is still empty" />}
+          body={<T ko="description · homepage · language를 채우면 다음 실행에 카드가 채워집니다." en="Fill in description · homepage · language and the card fills in on the next run." />}
           hint={`gh repo edit ${project.slug} --description "…"`}
         />
       )}
@@ -83,17 +85,31 @@ export default async function ProjectPage({ params }: Props) {
   const timeline = (
     <section className="flex flex-col gap-3.5">
       <SectionHeader
-        title="데브로그"
-        aside={logs.length ? `${logs.length}편 · 하루 한 글` : undefined}
+        title={<T ko="데브로그" en="Devlog" />}
+        aside={
+          logs.length ? (
+            <T ko={`${logs.length}편 · 하루 한 글`} en={`${logs.length} posts · one per day`} />
+          ) : undefined
+        }
       />
       {logs.length === 0 ? (
         <EmptyState
           title={
-            project.status === "paused"
-              ? `${lastActive}부터 조용해서 글이 없습니다`
-              : "아직 이 프로젝트의 글이 없습니다"
+            project.status === "paused" ? (
+              <T
+                ko={`${lastActive}부터 조용해서 글이 없습니다`}
+                en={`Quiet since ${lastActiveEn} — no posts`}
+              />
+            ) : (
+              <T ko="아직 이 프로젝트의 글이 없습니다" en="No posts for this project yet" />
+            )
           }
-          body="활동이 없는 날은 건너뜁니다. 커밋이 생기면 다음 23:00 실행에 첫 글이 올라옵니다. 커밋 본문에 '왜'를 쓰면 글이 덜 밍밍해집니다."
+          body={
+            <T
+              ko="활동이 없는 날은 건너뜁니다. 커밋이 생기면 다음 23:00 실행에 첫 글이 올라옵니다. 커밋 본문에 '왜'를 쓰면 글이 덜 밍밍해집니다."
+              en="Quiet days are skipped. Commit, and the first post goes up on the next 23:00 run. Writing the why in commit bodies makes posts less bland."
+            />
+          }
           hint={`git log --since=today ${project.slug}`}
         />
       ) : (
@@ -102,16 +118,33 @@ export default async function ProjectPage({ params }: Props) {
             <DevlogTimelineEntry
               key={d.date}
               href={`/log/${d.repo}/${d.date}`}
-              date={fmtDate(d.date)}
-              title={d.title}
-              summary={d.summary}
+              date={<T ko={fmtDate(d.date)} en={fmtDate(d.date, "en")} />}
+              title={<T ko={d.title} en={d.titleEn ?? d.title} />}
+              summary={
+                d.summary ? (
+                  <T ko={d.summary} en={d.summaryEn ?? d.summary} />
+                ) : undefined
+              }
               last={i === logs.length - 1}
               meta={[
                 ...(d.commits
-                  ? [`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`]
+                  ? [
+                      {
+                        text: (
+                          <T
+                            ko={`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`}
+                            en={`${d.commits} commits${d.prs ? ` · ${d.prs} PRs` : ""}`}
+                          />
+                        ),
+                      },
+                    ]
                   : []),
-                ...(d.hasFail ? [{ text: "삽질", tone: "warn" as const }] : []),
-                ...(d.short ? [{ text: "쇼츠 ▶", tone: "accent" as const }] : []),
+                ...(d.hasFail
+                  ? [{ text: <T ko="삽질" en="rabbit hole" />, tone: "warn" as const }]
+                  : []),
+                ...(d.short
+                  ? [{ text: <T ko="쇼츠 ▶" en="short ▶" />, tone: "accent" as const }]
+                  : []),
               ]}
             />
           ))}

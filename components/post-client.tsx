@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
@@ -52,7 +53,7 @@ function H({ warn, children }: { warn?: boolean; children: string }) {
 }
 
 export function PostClient({ post }: { post: PostData }) {
-  const [lang, setLang] = useState<"ko" | "en">("ko");
+  const { lang, setLang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치
   const [media, setMedia] = useState<LightboxMedia | null>(null);
   const en = lang === "en";
   const s = en ? post.sectionsEn : post.sections;
@@ -77,34 +78,15 @@ export function PostClient({ post }: { post: PostData }) {
       <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
         {en && post.titleEn ? post.titleEn : post.title}
       </h1>
-      {/* 좁은 화면에서 토글이 메타를 밀어 단어 하나가 고아로 떨어지지 않게 —
-          안 맞으면 토글이 통째로 다음 줄로 내려간다 */}
-      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
-        <div className="font-mono text-xs text-muted">
-          {post.commits != null
-            ? `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
-            : ""}
-          day {String(post.day).padStart(2, "0")}
-          {post.short ? " · 쇼츠 있음" : ""}
-        </div>
-        <div
-          className="flex gap-1 rounded-md border border-line bg-panel p-1"
-          aria-label="글 언어"
-        >
-          {(["ko", "en"] as const).map((v) => (
-            <button
-              key={v}
-              type="button"
-              aria-pressed={lang === v}
-              onClick={() => setLang(v)}
-              className={`hit min-h-8 cursor-pointer rounded-[7px] px-3 font-sans text-sm font-bold transition-colors duration-150 ${
-                lang === v ? "bg-panel2 text-ink" : "text-muted"
-              }`}
-            >
-              {v.toUpperCase()}
-            </button>
-          ))}
-        </div>
+      {/* 언어 토글은 헤더의 전역 스위치로 올라갔다 (Jessi 지시) */}
+      <div className="font-mono text-xs text-muted">
+        {post.commits != null
+          ? en
+            ? `Written by AI from ${post.commits} commits${post.prs ? ` · ${post.prs} PRs` : ""} · `
+            : `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
+          : ""}
+        day {String(post.day).padStart(2, "0")}
+        {post.short ? (en ? " · has short" : " · 쇼츠 있음") : ""}
       </div>
     </section>
   );
@@ -116,15 +98,15 @@ export function PostClient({ post }: { post: PostData }) {
       {en && !post.hasEn && (
         <EmptyState
           compact
-          title="영어 번역이 아직 없습니다"
-          body="번역은 한국어 글이 만들어질 때 같은 실행에서 붙습니다. 이 글은 수동 작성분이라 번역이 없습니다."
+          title="No English translation yet"
+          body="Translations are attached in the same run that writes the Korean post. This one was written manually, so it has none."
           action={
             <button
               type="button"
               onClick={() => setLang("ko")}
               className="cursor-pointer font-mono text-xs text-accent transition-opacity duration-150 hover:opacity-85"
             >
-              한국어로 읽기 →
+              Read in Korean →
             </button>
           }
         />
@@ -133,7 +115,7 @@ export function PostClient({ post }: { post: PostData }) {
       {(!en || post.hasEn) && (
         <>
           {en && (
-            <p className="m-0 font-mono text-xs text-muted">자동 번역본입니다.</p>
+            <p className="m-0 font-mono text-xs text-muted">Automatically translated.</p>
           )}
           {parsed ? (
             <section className="flex flex-col gap-8">
@@ -153,8 +135,12 @@ export function PostClient({ post }: { post: PostData }) {
                 <H warn>{headings.fail}</H>
                 {noFail ? (
                   <p className="m-0 text-md leading-[1.75] text-muted">
-                    오늘은 없었습니다.
-                    {post.commits ? ` 커밋 ${post.commits}개가 한 번에 붙었습니다.` : ""}
+                    {en ? "None today." : "오늘은 없었습니다."}
+                    {post.commits
+                      ? en
+                        ? ` ${post.commits} commits landed in one go.`
+                        : ` 커밋 ${post.commits}개가 한 번에 붙었습니다.`
+                      : ""}
                   </p>
                 ) : (
                   <Md>{s.fail as string}</Md>
@@ -198,11 +184,13 @@ export function PostClient({ post }: { post: PostData }) {
   );
   const aside = post.short && (
     <aside className="mx-auto flex w-full max-w-[680px] flex-col gap-3.5 lg:sticky lg:top-[90px] lg:mx-0 lg:max-w-none">
-      <h2 className="m-0 px-1 text-md font-bold text-ink">이 글의 쇼츠</h2>
+      <h2 className="m-0 px-1 text-md font-bold text-ink">
+        {en ? "This post's short" : "이 글의 쇼츠"}
+      </h2>
       {post.short.media?.ko || post.short.media?.en ? (
         <button
           type="button"
-          aria-label="쇼츠 재생"
+          aria-label={en ? "Play short" : "쇼츠 재생"}
           // 글을 EN으로 읽고 있으면 쇼츠도 EN으로 — 없는 언어는 팝업이 알아서 폴백
           onClick={() => openShort(lang)}
           className="group w-full max-w-[340px] cursor-pointer p-0 text-left"
@@ -220,7 +208,9 @@ export function PostClient({ post }: { post: PostData }) {
     <div className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:col-start-1 lg:mx-0 lg:max-w-none">
       {post.shas && post.shas.length > 0 && (
         <section className="flex flex-col gap-3.5">
-          <h2 className="m-0 px-1 text-md font-bold text-ink">원료 · git log</h2>
+          <h2 className="m-0 px-1 text-md font-bold text-ink">
+            {en ? "Raw material · git log" : "원료 · git log"}
+          </h2>
           <Card inset className="px-[18px] py-1">
             {post.shas.map(([sha, msg], i) => (
               <div
@@ -240,14 +230,16 @@ export function PostClient({ post }: { post: PostData }) {
       )}
       {!post.short && (
         <p className="m-0 font-mono text-2xs text-muted">
-          쇼츠는 배포 커밋이 있거나 삽질이 뚜렷한 날만 만듭니다.
+          {en
+            ? "Shorts are made only on days with a deploy commit or a clear rabbit hole."
+            : "쇼츠는 배포 커밋이 있거나 삽질이 뚜렷한 날만 만듭니다."}
         </p>
       )}
       <Link
         href={`/projects/${post.repo}`}
         className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
       >
-        {post.repo}의 다른 날 →
+        {en ? `More days of ${post.repo} →` : `${post.repo}의 다른 날 →`}
       </Link>
     </div>
   );

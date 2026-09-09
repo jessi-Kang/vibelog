@@ -94,6 +94,7 @@ export async function record(
   repo: string,
   date: string,
   durationSec = 20,
+  lang: "ko" | "en" = "ko",
 ): Promise<string> {
   const script: ShortsScript = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), shortsJsonPath(repo, date)), "utf8"),
@@ -105,7 +106,9 @@ export async function record(
   const outDir = path.join(process.cwd(), shortsDir(repo));
   const shotsDir = path.join(outDir, `${date}.shots`);
   fs.mkdirSync(shotsDir, { recursive: true });
-  const webm = path.join(outDir, `${date}.webm`);
+  // en 데모는 사이트를 영어 모드로 켜고 따로 찍는다 — 영어 영상에 한국어
+  // 화면이 나오지 않게 (Jessi 지시). ko는 기존 파일명 유지.
+  const webm = path.join(outDir, lang === "ko" ? `${date}.webm` : `${date}.en.webm`);
 
   // 설치된 브라우저 빌드가 playwright 기대 버전과 다른 환경(샌드박스 등)용 오버라이드
   const browser = await chromium.launch({
@@ -127,6 +130,14 @@ export async function record(
     // 매달려 페이지 로드를 지연시킨다. 소재 녹화에는 폴백 폰트로 충분.
     await context.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
   }
+  if (lang === "en") {
+    // 사이트의 전역 언어 설정(components/lang.tsx)과 같은 키
+    await context.addInitScript(() => {
+      try {
+        localStorage.setItem("vibelog-lang", "en");
+      } catch {}
+    });
+  }
   // 워밍업: 서버 콜드스타트·캐시를 미리 데워 녹화 초반의 흰 화면을 줄인다
   const warm = await browser.newContext({
     viewport: VIEWPORT,
@@ -147,7 +158,7 @@ export async function record(
   // 재생하도록 메타로 남긴다 (프레임 단위 합성이라 여기서 정확히 잘린다).
   const readyAt = (Date.now() - started) / 1000;
   fs.writeFileSync(
-    path.join(outDir, `${date}.webm.meta.json`),
+    `${webm}.meta.json`,
     JSON.stringify({ readyAt: Number(readyAt.toFixed(2)) }) + "\n",
   );
   const ready = Date.now();
@@ -171,12 +182,12 @@ export async function record(
 }
 
 if (process.argv[1]?.endsWith("record.ts")) {
-  const [repo, date, dur] = process.argv.slice(2);
+  const [repo, date, dur, langArg] = process.argv.slice(2);
   if (!repo || !date) {
-    console.error("사용: npx tsx scripts/record.ts <repo> <date> [durationSec]");
+    console.error("사용: npx tsx scripts/record.ts <repo> <date> [durationSec] [ko|en]");
     process.exit(1);
   }
-  record(repo, date, dur ? Number(dur) : undefined).catch((err) => {
+  record(repo, date, dur ? Number(dur) : undefined, langArg === "en" ? "en" : "ko").catch((err) => {
     console.error(err);
     process.exit(1);
   });

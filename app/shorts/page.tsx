@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageContainer } from "@/components/page-container";
+import { T } from "@/components/lang";
 import { ShortsGrid } from "@/components/shorts-grid";
 import { EmptyState, SectionHeader } from "@/components/ui";
 import { getDevlogs, getShorts } from "@/lib/content";
@@ -21,13 +22,22 @@ export default function ShortsPage() {
     <PageContainer>
       <section className="flex flex-col gap-3.5">
         <SectionHeader
-          title="쇼츠"
-          aside={shorts.length ? `${shorts.length}편 · 30~45초` : undefined}
+          title={<T ko="쇼츠" en="Shorts" />}
+          aside={
+            shorts.length ? (
+              <T ko={`${shorts.length}편 · 30~45초`} en={`${shorts.length} videos · 30–45s`} />
+            ) : undefined
+          }
         />
         {shorts.length === 0 ? (
           <EmptyState
-            title="아직 쇼츠가 없습니다"
-            body="쇼츠는 데브로그가 만들어진 같은 밤에 렌더됩니다(ElevenLabs 내레이션 + Remotion). 첫 편은 배포 커밋이 있는 날에 나옵니다."
+            title={<T ko="아직 쇼츠가 없습니다" en="No shorts yet" />}
+            body={
+              <T
+                ko="쇼츠는 데브로그가 만들어진 같은 밤에 렌더됩니다(ElevenLabs 내레이션 + Remotion). 첫 편은 배포 커밋이 있는 날에 나옵니다."
+                en="Shorts render the same night a devlog is written (ElevenLabs narration + Remotion). The first one comes on a day with a deploy commit."
+              />
+            }
             hint="content/shorts/<repo>/<date>.json"
           />
         ) : (

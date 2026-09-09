@@ -43,14 +43,19 @@ export async function renderShort(
   );
   const durationSec = NARRATION_DELAY + timing.duration + END_TAIL;
 
-  // 데모 녹화를 Remotion의 public/으로 (staticFile 접근용)
-  const webm = path.join(process.cwd(), shortsDir(repo), `${date}.webm`);
+  // 데모 녹화를 Remotion의 public/으로 (staticFile 접근용).
+  // en 렌더는 영어 모드로 찍은 en.webm을 우선 쓴다 — 없으면(구버전) ko 녹화 폴백
+  const enWebm = path.join(process.cwd(), shortsDir(repo), `${date}.en.webm`);
+  const webm =
+    lang === "en" && fs.existsSync(enWebm)
+      ? enWebm
+      : path.join(process.cwd(), shortsDir(repo), `${date}.webm`);
   const publicDir = path.join(VIDEO_DIR, "public");
   fs.mkdirSync(publicDir, { recursive: true });
   let videoFile: string | null = null;
   let videoStartSec = 0;
   if (fs.existsSync(webm)) {
-    videoFile = "demo.webm";
+    videoFile = `demo.${lang}.webm`;
     fs.copyFileSync(webm, path.join(publicDir, videoFile));
     try {
       videoStartSec = JSON.parse(

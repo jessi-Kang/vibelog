@@ -1,6 +1,6 @@
 "use client";
-/** 소개 — 이 사이트에서 유일하게 사람이 쓴 글. KO/EN 토글은 데브로그와 같은 문법 */
-import { useState } from "react";
+/** 소개 — 이 사이트에서 유일하게 사람이 쓴 글. 언어는 헤더의 전역 설정을 따른다 */
+import { useLang } from "@/components/lang";
 import { PageContainer } from "@/components/page-container";
 import { SectionHeader } from "@/components/ui";
 
@@ -11,8 +11,8 @@ interface Section {
 }
 
 const INTRO = {
-  ko: "만들고 있는 것들의 기록. 글은 제가 쓰지 않습니다 — 커밋이 곧 콘텐츠가 되도록, 파이프라인이 매일 밤 대신 씁니다. 이 소개만 사람이 쓴 예외입니다.",
-  en: "A record of the things I'm building. I don't write the posts — a pipeline writes them every night, so that commits become the content. This page is the one human-written exception.",
+  ko: "안녕하세요. 저는 제시, 바이브 코딩을 즐기는 바이브 코더입니다. 여기는 제가 만들고 있는 것들의 기록이죠. 여기 올라오는 글은 제가 쓰지 않습니다. 커밋이 곧 콘텐츠가 되도록, 파이프라인이 매일 밤 대신 씁니다. 단, 이 소개만은 예외입니다. 부디 같이 즐겨주세요.",
+  en: "Hi, I'm Jessi — a vibe coder who enjoys vibe coding. This is a record of the things I'm building. I don't write the posts here: so that commits become the content, a pipeline writes them for me every night. Only this introduction is the exception. I hope you'll enjoy it with me.",
 };
 
 const SECTIONS: Section[] = [
@@ -61,33 +61,12 @@ const SECTIONS: Section[] = [
 ];
 
 export function AboutClient() {
-  const [lang, setLang] = useState<"ko" | "en">("ko");
+  const { lang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치가 바꾼다
   return (
     <PageContainer>
       <section className="mx-auto flex w-full max-w-[680px] flex-col gap-10">
         <div className="flex flex-col gap-3.5">
-          {/* 좁은 화면에서 토글이 제목을 밀지 않게 — 안 맞으면 통째로 다음 줄 */}
-          <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
-            <SectionHeader title={lang === "ko" ? "소개" : "About"} />
-            <div
-              className="flex gap-1 rounded-md border border-line bg-panel p-1"
-              aria-label="글 언어"
-            >
-              {(["ko", "en"] as const).map((v) => (
-                <button
-                  key={v}
-                  type="button"
-                  aria-pressed={lang === v}
-                  onClick={() => setLang(v)}
-                  className={`hit min-h-8 cursor-pointer rounded-[7px] px-3 font-sans text-sm font-bold transition-colors duration-150 ${
-                    lang === v ? "bg-panel2 text-ink" : "text-muted"
-                  }`}
-                >
-                  {v.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
+          <SectionHeader title={lang === "ko" ? "소개" : "About"} />
           <p className="text-[15px] leading-relaxed text-ink-soft">{INTRO[lang]}</p>
         </div>
         {SECTIONS.map((s) => (

@@ -40,6 +40,7 @@ export interface DevlogEntry {
   /** 실제 삽질이 있는 글인지 — "특별한 삽질은 없었습니다" 류는 false */
   hasFail: boolean;
   summary?: string; // 목록용 — "뭘 했다" 첫 문장
+  summaryEn?: string; // 목록용 — EN 본문 "What I did" 첫 문장
   commits?: number; // 원료 커밋 수 (frontmatter)
   prs?: number;
   shas?: [string, string][]; // 원료 git log [sha, 한 줄 메시지]
@@ -164,6 +165,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       const body = ko.trim();
       const bodyEn = en?.trim();
       const sections = parseSections(body);
+      const sectionsEn = bodyEn ? parseSections(bodyEn) : {};
       const shas = Array.isArray(data.shas)
         ? (data.shas
             .filter((s: unknown) => Array.isArray(s) && s.length >= 2)
@@ -181,9 +183,10 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         body,
         ...(bodyEn ? { bodyEn } : {}),
         sections,
-        sectionsEn: bodyEn ? parseSections(bodyEn) : {},
+        sectionsEn,
         hasFail: computeHasFail(sections.fail),
         summary: firstSentence(sections.did),
+        ...(sectionsEn.did ? { summaryEn: firstSentence(sectionsEn.did) } : {}),
         ...(typeof data.commits === "number" ? { commits: data.commits } : {}),
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
         ...(shas ? { shas } : {}),
