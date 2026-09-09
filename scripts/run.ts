@@ -45,7 +45,12 @@ function updateProjects(activities: RepoActivity[]): void {
     repoUrl: a.repoUrl,
     ...(a.homepage ? { homepage: a.homepage } : {}),
     ...(a.language ? { language: a.language } : {}),
-    lastActivity: (a.pushedAt || new Date().toISOString()).slice(0, 10),
+    // 마지막 활동 날짜는 KST 기준 — UTC로 자르면 밤 커밋이 "어제"로 밀린다
+    lastActivity: new Date(
+      new Date(a.pushedAt || Date.now()).getTime() + 9 * 3600 * 1000,
+    )
+      .toISOString()
+      .slice(0, 10),
     weekCommits: a.weekCommits,
   }));
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
