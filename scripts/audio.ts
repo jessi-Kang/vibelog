@@ -49,6 +49,35 @@ interface Alignment {
   character_end_times_seconds: number[];
 }
 
+/**
+ * 고유어로 읽는 수량 단위의 발음 교정 — TTS가 "2대"를 "이대"로 읽는다
+ * (Jessi 지적). 자막·글은 규칙대로 아라비아 숫자를 유지하고, TTS에 보내는
+ * 발음용 텍스트만 한글 수사로 바꾼다. "52초"처럼 한자어로 읽는 단위(초·분·
+ * 픽셀·개월 등)는 아라비아 숫자 그대로가 맞으므로 건드리지 않는다.
+ */
+const NATIVE_NUM = [
+  "", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열",
+  "열한", "열두", "열세", "열네", "열다섯", "열여섯", "열일곱", "열여덟",
+  "열아홉", "스무",
+];
+const NATIVE_UNIT =
+  /^(\d{1,2})(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데)(.*)$/u;
+
+export function speakToken(tok: string): string {
+  const m = tok.match(NATIVE_UNIT);
+  if (!m) return tok;
+  const n = Number(m[1]);
+  // 20 초과는 한자어 독음("삼십 개")도 자연스럽다 — 고유어 수사 표는 20까지만
+  if (n < 1 || n > 20) return tok;
+  return `${NATIVE_NUM[n]} ${m[2]}${m[3]}`;
+}
+
+/** 문장 전체의 발음용 변환 — 토큰 순서·공백 구분은 유지된다 (타이밍 정렬용) */
+function speakable(sentence: string, lang: "ko" | "en"): string {
+  if (lang !== "ko") return sentence;
+  return sentence.split(/\s+/).filter(Boolean).map(speakToken).join(" ");
+}
+
 async function tts(
   text: string,
 ): Promise<{ audio: Buffer; alignment: Alignment }> {
@@ -106,8 +135,11 @@ function toTiming(
       // 단어의 첫 문자에 도달할 때까지 공백을 소비
       while (cursor < chars.length && /\s/.test(chars[cursor])) cursor++;
       const wStartIdx = cursor;
+      // TTS에는 발음 교정된 텍스트가 갔다("2대"→"두 대") — alignment의 문자
+      // 소비 길이는 표시 단어가 아니라 발음 형태 기준이어야 정렬이 안 밀린다
+      const spokenLen = speakable(word, lang).replace(/\s/g, "").length;
       let consumed = 0;
-      while (cursor < chars.length && consumed < word.length) {
+      while (cursor < chars.length && consumed < spokenLen) {
         // TTS가 문자를 그대로 돌려주므로 순서대로 소비한다
         if (!/\s/.test(chars[cursor])) consumed++;
         cursor++;
@@ -141,7 +173,10 @@ async function generateNarration(
 ): Promise<void> {
   const sentences = script.lines.map((l) => l[lang]);
   const lineIndexes = script.lines.map((_, i) => i);
-  const { audio, alignment } = await tts(sentences.join(SENTENCE_GAP));
+  // 발음 교정본으로 녹음하고, 자막(timing.words)은 표시용 원문을 유지한다
+  const { audio, alignment } = await tts(
+    sentences.map((s) => speakable(s, lang)).join(SENTENCE_GAP),
+  );
   const timing = toTiming(sentences, lineIndexes, alignment, lang);
 
   const mp3 = path.join(process.cwd(), narrationPath(script.repo, script.date, lang));
