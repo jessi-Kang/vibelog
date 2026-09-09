@@ -1,0 +1,610 @@
+{
+  "lang": "en",
+  "duration": 37.755,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.183,
+      "words": [
+        {
+          "text": "I",
+          "start": 0,
+          "end": 0.081
+        },
+        {
+          "text": "built",
+          "start": 0.163,
+          "end": 0.348
+        },
+        {
+          "text": "a",
+          "start": 0.383,
+          "end": 0.406
+        },
+        {
+          "text": "blog",
+          "start": 0.441,
+          "end": 0.673
+        },
+        {
+          "text": "where",
+          "start": 0.72,
+          "end": 0.859
+        },
+        {
+          "text": "commits",
+          "start": 0.894,
+          "end": 1.173
+        },
+        {
+          "text": "become",
+          "start": 1.219,
+          "end": 1.474
+        },
+        {
+          "text": "the",
+          "start": 1.498,
+          "end": 1.567
+        },
+        {
+          "text": "content.",
+          "start": 1.602,
+          "end": 2.183
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.566,
+      "end": 4.923,
+      "words": [
+        {
+          "text": "Five",
+          "start": 2.566,
+          "end": 2.844
+        },
+        {
+          "text": "screens",
+          "start": 2.868,
+          "end": 3.239
+        },
+        {
+          "text": "and",
+          "start": 3.274,
+          "end": 3.344
+        },
+        {
+          "text": "a",
+          "start": 3.39,
+          "end": 3.413
+        },
+        {
+          "text": "shorts",
+          "start": 3.46,
+          "end": 3.727
+        },
+        {
+          "text": "pipeline",
+          "start": 3.773,
+          "end": 4.18
+        },
+        {
+          "text": "in",
+          "start": 4.214,
+          "end": 4.272
+        },
+        {
+          "text": "one",
+          "start": 4.342,
+          "end": 4.481
+        },
+        {
+          "text": "day.",
+          "start": 4.516,
+          "end": 4.923
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.364,
+      "end": 7.895,
+      "words": [
+        {
+          "text": "The",
+          "start": 5.364,
+          "end": 5.48
+        },
+        {
+          "text": "skeleton",
+          "start": 5.526,
+          "end": 5.956
+        },
+        {
+          "text": "is",
+          "start": 6.014,
+          "end": 6.084
+        },
+        {
+          "text": "Next.js",
+          "start": 6.165,
+          "end": 6.676
+        },
+        {
+          "text": "App",
+          "start": 6.769,
+          "end": 6.92
+        },
+        {
+          "text": "Router",
+          "start": 6.978,
+          "end": 7.221
+        },
+        {
+          "text": "and",
+          "start": 7.268,
+          "end": 7.338
+        },
+        {
+          "text": "Tailwind.",
+          "start": 7.372,
+          "end": 7.895
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.336,
+      "end": 11.761,
+      "words": [
+        {
+          "text": "Then",
+          "start": 8.336,
+          "end": 8.51
+        },
+        {
+          "text": "the",
+          "start": 8.545,
+          "end": 8.615
+        },
+        {
+          "text": "content",
+          "start": 8.661,
+          "end": 9.033
+        },
+        {
+          "text": "loader,",
+          "start": 9.067,
+          "end": 9.474
+        },
+        {
+          "text": "project",
+          "start": 9.625,
+          "end": 10.019
+        },
+        {
+          "text": "cards,",
+          "start": 10.066,
+          "end": 10.542
+        },
+        {
+          "text": "and",
+          "start": 10.693,
+          "end": 10.855
+        },
+        {
+          "text": "devlog",
+          "start": 10.913,
+          "end": 11.285
+        },
+        {
+          "text": "feed.",
+          "start": 11.343,
+          "end": 11.761
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 12.574,
+      "end": 15.314,
+      "words": [
+        {
+          "text": "I",
+          "start": 12.574,
+          "end": 12.62
+        },
+        {
+          "text": "fixed",
+          "start": 12.748,
+          "end": 12.98
+        },
+        {
+          "text": "the",
+          "start": 13.003,
+          "end": 13.073
+        },
+        {
+          "text": "data",
+          "start": 13.119,
+          "end": 13.351
+        },
+        {
+          "text": "contract",
+          "start": 13.41,
+          "end": 13.816
+        },
+        {
+          "text": "the",
+          "start": 13.851,
+          "end": 13.921
+        },
+        {
+          "text": "screens",
+          "start": 13.967,
+          "end": 14.292
+        },
+        {
+          "text": "consume",
+          "start": 14.338,
+          "end": 14.733
+        },
+        {
+          "text": "first.",
+          "start": 14.78,
+          "end": 15.314
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 15.755,
+      "end": 18.089,
+      "words": [
+        {
+          "text": "In",
+          "start": 15.755,
+          "end": 15.894
+        },
+        {
+          "text": "shorts,",
+          "start": 15.941,
+          "end": 16.266
+        },
+        {
+          "text": "captions",
+          "start": 16.301,
+          "end": 16.672
+        },
+        {
+          "text": "and",
+          "start": 16.707,
+          "end": 16.788
+        },
+        {
+          "text": "voice",
+          "start": 16.846,
+          "end": 17.137
+        },
+        {
+          "text": "share",
+          "start": 17.171,
+          "end": 17.415
+        },
+        {
+          "text": "one",
+          "start": 17.462,
+          "end": 17.589
+        },
+        {
+          "text": "clock.",
+          "start": 17.624,
+          "end": 18.089
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 18.692,
+      "end": 21.421,
+      "words": [
+        {
+          "text": "Timing",
+          "start": 18.692,
+          "end": 19.052
+        },
+        {
+          "text": "always",
+          "start": 19.099,
+          "end": 19.331
+        },
+        {
+          "text": "comes",
+          "start": 19.377,
+          "end": 19.575
+        },
+        {
+          "text": "from",
+          "start": 19.598,
+          "end": 19.714
+        },
+        {
+          "text": "the",
+          "start": 19.749,
+          "end": 19.818
+        },
+        {
+          "text": "generated",
+          "start": 19.853,
+          "end": 20.318
+        },
+        {
+          "text": "audio",
+          "start": 20.364,
+          "end": 20.643
+        },
+        {
+          "text": "timestamps.",
+          "start": 20.689,
+          "end": 21.421
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 22.024,
+      "end": 24.381,
+      "words": [
+        {
+          "text": "Actions",
+          "start": 22.024,
+          "end": 22.384
+        },
+        {
+          "text": "doesn't",
+          "start": 22.419,
+          "end": 22.64
+        },
+        {
+          "text": "allow",
+          "start": 22.663,
+          "end": 22.849
+        },
+        {
+          "text": "the",
+          "start": 22.895,
+          "end": 22.965
+        },
+        {
+          "text": "secrets",
+          "start": 23.011,
+          "end": 23.348
+        },
+        {
+          "text": "context",
+          "start": 23.394,
+          "end": 23.859
+        },
+        {
+          "text": "in",
+          "start": 23.905,
+          "end": 23.986
+        },
+        {
+          "text": "if.",
+          "start": 24.056,
+          "end": 24.381
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 24.985,
+      "end": 28.444,
+      "words": [
+        {
+          "text": "The",
+          "start": 24.985,
+          "end": 25.101
+        },
+        {
+          "text": "workflow",
+          "start": 25.159,
+          "end": 25.612
+        },
+        {
+          "text": "was",
+          "start": 25.658,
+          "end": 25.774
+        },
+        {
+          "text": "invalid",
+          "start": 25.844,
+          "end": 26.343
+        },
+        {
+          "text": "and",
+          "start": 26.587,
+          "end": 26.796
+        },
+        {
+          "text": "every",
+          "start": 26.854,
+          "end": 27.017
+        },
+        {
+          "text": "run",
+          "start": 27.075,
+          "end": 27.249
+        },
+        {
+          "text": "died",
+          "start": 27.307,
+          "end": 27.516
+        },
+        {
+          "text": "in",
+          "start": 27.551,
+          "end": 27.608
+        },
+        {
+          "text": "one",
+          "start": 27.678,
+          "end": 27.817
+        },
+        {
+          "text": "second.",
+          "start": 27.852,
+          "end": 28.444
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 28.955,
+      "end": 31.08,
+      "words": [
+        {
+          "text": "A",
+          "start": 28.955,
+          "end": 29.036
+        },
+        {
+          "text": "job-level",
+          "start": 29.106,
+          "end": 29.582
+        },
+        {
+          "text": "env",
+          "start": 29.675,
+          "end": 29.977
+        },
+        {
+          "text": "worked",
+          "start": 30.151,
+          "end": 30.406
+        },
+        {
+          "text": "around",
+          "start": 30.441,
+          "end": 30.685
+        },
+        {
+          "text": "it.",
+          "start": 30.743,
+          "end": 31.08
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "start": 31.59,
+      "end": 34.83,
+      "words": [
+        {
+          "text": "Next",
+          "start": 31.59,
+          "end": 31.823
+        },
+        {
+          "text": "is",
+          "start": 31.869,
+          "end": 31.939
+        },
+        {
+          "text": "getting",
+          "start": 31.985,
+          "end": 32.229
+        },
+        {
+          "text": "the",
+          "start": 32.264,
+          "end": 32.333
+        },
+        {
+          "text": "first",
+          "start": 32.392,
+          "end": 32.659
+        },
+        {
+          "text": "real-key",
+          "start": 32.751,
+          "end": 33.123
+        },
+        {
+          "text": "shorts",
+          "start": 33.181,
+          "end": 33.506
+        },
+        {
+          "text": "run",
+          "start": 33.564,
+          "end": 33.703
+        },
+        {
+          "text": "to",
+          "start": 33.762,
+          "end": 33.82
+        },
+        {
+          "text": "pass",
+          "start": 33.878,
+          "end": 34.098
+        },
+        {
+          "text": "end",
+          "start": 34.156,
+          "end": 34.272
+        },
+        {
+          "text": "to",
+          "start": 34.319,
+          "end": 34.377
+        },
+        {
+          "text": "end.",
+          "start": 34.458,
+          "end": 34.83
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "start": 35.526,
+      "end": 37.755,
+      "words": [
+        {
+          "text": "Commits",
+          "start": 35.526,
+          "end": 35.875
+        },
+        {
+          "text": "pile",
+          "start": 35.933,
+          "end": 36.165
+        },
+        {
+          "text": "up,",
+          "start": 36.2,
+          "end": 36.467
+        },
+        {
+          "text": "videos",
+          "start": 36.618,
+          "end": 36.943
+        },
+        {
+          "text": "come",
+          "start": 37.001,
+          "end": 37.152
+        },
+        {
+          "text": "out.",
+          "start": 37.175,
+          "end": 37.755
+        }
+      ]
+    }
+  ]
+}
