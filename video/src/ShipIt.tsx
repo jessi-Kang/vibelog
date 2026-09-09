@@ -109,6 +109,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const total = totalSeconds(timing.duration);
   const segs = buildSegments(script, timing, total, Boolean(artFiles?.next));
 
+  // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은
+  // 경계부터 뜬다. 크로스페이드는 레이아웃이 다른 장면끼리 애매하게
+  // 겹쳐 보였다 (Jessi 지적).
   const opacityOf = (seg: Seg): number => {
     const fadeIn =
       seg.from === 0
@@ -120,7 +123,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
     const fadeOut =
       seg.to >= total
         ? 1
-        : interpolate(t, [seg.to, seg.to + SCENE_FADE], [1, 0], {
+        : interpolate(t, [seg.to - SCENE_FADE, seg.to], [1, 0], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           });

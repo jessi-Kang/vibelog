@@ -59,13 +59,15 @@ export const Captions: React.FC<{
   const keywords = new Set(lang === "ko" ? line.keywords : line.keywordsEn);
 
   return (
+    // 자막 안전 구역: 폰 프레임 하단(1390) 아래에서만 논다 — 데모 화면을
+    // 가리지 않게 크기도 62→52로 (Jessi 지적)
     <div
       style={{
         position: "absolute",
         left: 70,
         right: 70,
         bottom: 190,
-        minHeight: 200,
+        minHeight: 160,
         display: "flex",
         alignItems: "flex-end",
         justifyContent: "center",
@@ -75,7 +77,7 @@ export const Captions: React.FC<{
       <div
         style={{
           fontFamily: FONT_SANS,
-          fontSize: 62,
+          fontSize: 52,
           fontWeight: 900,
           lineHeight: 1.3,
           wordBreak: "keep-all",
