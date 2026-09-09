@@ -21,6 +21,5 @@ content/shorts/**/*.mp3
 content/shorts/**/*.webm
 content/shorts/**/*.mp4
 content/shorts/**/*.shots/
-video/assets/music/*.mp3
 content/shorts/**/*.webm.meta.json
 video/public/
