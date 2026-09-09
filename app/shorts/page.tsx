@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageContainer } from "@/components/page-container";
 import { ShortsGrid } from "@/components/shorts-grid";
 import { EmptyState, SectionHeader } from "@/components/ui";
@@ -15,19 +14,8 @@ export default function ShortsPage() {
       devlogs.find((d) => d.repo === s.repo && d.date === s.date)?.title ??
       `${s.repo} · ${s.date}`,
   }));
-  // 렌더 대기 — 쇼츠가 아직 없는 최근 데브로그
-  const pending = devlogs
-    .filter((d) => !d.short)
-    .slice(0, 5)
-    .map((d) => ({
-      repo: d.repo,
-      date: d.date,
-      title: d.title,
-      template:
-        d.sections.fail && !d.sections.fail.startsWith("특별한 삽질은")
-          ? "오늘의 삽질"
-          : "ship it",
-    }));
+  // "렌더 대기" 섹션은 삭제했다 — 쇼츠는 글이 만들어진 그날 밤에만 생성되므로
+  // 옛 글이 "대기"처럼 보이는 건 거짓말이었다 (Jessi 점검 지시)
 
   return (
     <PageContainer>
@@ -47,25 +35,6 @@ export default function ShortsPage() {
         )}
       </section>
 
-      {pending.length > 0 && (
-        <section className="flex flex-col gap-3.5">
-          <SectionHeader title="렌더 대기" aside={`${pending.length}편`} />
-          <div className="flex flex-col font-mono text-xs text-muted">
-            {pending.map((d) => (
-              <Link
-                key={`${d.repo}/${d.date}`}
-                href={`/log/${d.repo}/${d.date}`}
-                className="flex justify-between gap-3 border-b border-line px-1 py-2.5 transition-colors duration-150 hover:text-ink-soft"
-              >
-                <span className="min-w-0 truncate font-sans text-sm text-ink-soft">
-                  {d.title}
-                </span>
-                <span className="whitespace-nowrap">{d.template} · 대본 대기</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
     </PageContainer>
   );
 }

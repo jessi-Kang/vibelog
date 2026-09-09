@@ -1,8 +1,9 @@
 "use client";
 /**
  * Shell — 핸드오프 ui_kits/blog/Shell.jsx 재구현.
- * 모바일(<720): 헤더 2줄(워드마크·다음 실행 / 풀폭 탭), 상세에서는 1줄이 ← 경로로.
- * 태블릿·데스크톱: 한 줄(워드마크 | 탭 + 다음 실행 23:00 KST), 상세 뒤로는 헤더 아래 줄.
+ * 모바일(<720): 헤더 2줄(워드마크 / 풀폭 탭), 상세에서는 1줄이 ← 경로로.
+ * 태블릿·데스크톱: 한 줄(워드마크 | 탭), 상세 뒤로는 헤더 아래 줄.
+ * "다음 실행 23:00" 표시는 제거 — 경로와 붙어 헷갈리고 꼭 필요하지 않다 (Jessi 지시).
  */
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -90,15 +91,9 @@ export function SiteHeader() {
                 <Wordmark />
               </Link>
             )}
-            <span className="whitespace-nowrap font-mono text-xs text-muted md:hidden">
-              다음 실행 23:00 KST
-            </span>
           </div>
           <div className={`${detail ? "hidden md:flex" : "flex"} items-center gap-4`}>
             <Tabs active={tab} />
-            <span className="hidden whitespace-nowrap font-mono text-xs text-muted md:inline">
-              다음 실행 23:00 KST
-            </span>
           </div>
         </div>
       </header>
