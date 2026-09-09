@@ -1,0 +1,140 @@
+{
+  "template": "ship-it",
+  "repo": "vibelog",
+  "date": "2026-09-09",
+  "day": 1,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "블로그를 만들었는데, 글은 제가 안 씁니다",
+      "en": "블로그를 만들었는데, 글은 제가 안 씁니다",
+      "keywords": [
+        "안",
+        "씁니다"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "build",
+      "ko": "바이브 코딩으로 만든 서비스 제작기를 올리는 블로그,",
+      "en": "바이브 코딩으로 만든 서비스 제작기를 올리는 블로그,",
+      "keywords": [],
+      "keywordsEn": []
+    },
+    {
+      "scene": "build",
+      "ko": "바이브 로그예요",
+      "en": "바이브 로그예요",
+      "keywords": [
+        "바이브",
+        "로그예요"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "demo",
+      "ko": "저는 커밋만 하면, 밤 11시에 깃헙 액션이 돌아서",
+      "en": "저는 커밋만 하면, 밤 11시에 깃헙 액션이 돌아서",
+      "keywords": [
+        "커밋만",
+        "하면,"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "demo",
+      "ko": "AI가 그날 데브로그를 대신 써줍니다",
+      "en": "AI가 그날 데브로그를 대신 써줍니다",
+      "keywords": [
+        "AI가",
+        "대신",
+        "써줍니다"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 첫 글이 밍밍했어요",
+      "en": "그런데 첫 글이 밍밍했어요",
+      "keywords": [],
+      "keywordsEn": []
+    },
+    {
+      "scene": "fail",
+      "ko": "커밋 메시지에 '왜'가 없었거든요",
+      "en": "커밋 메시지에 '왜'가 없었거든요",
+      "keywords": [
+        "'왜'가"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "fail",
+      "ko": "그래서 규칙을 하나 넣었어요",
+      "en": "그래서 규칙을 하나 넣었어요",
+      "keywords": [],
+      "keywordsEn": []
+    },
+    {
+      "scene": "fail",
+      "ko": "커밋 본문엔 꼭 이유 쓰기",
+      "en": "커밋 본문엔 꼭 이유 쓰기",
+      "keywords": [
+        "꼭",
+        "이유",
+        "쓰기"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 이 영상도 자동으로 만드는 단계예요",
+      "en": "다음은 이 영상도 자동으로 만드는 단계예요",
+      "keywords": [
+        "이",
+        "영상도",
+        "자동으로"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "next",
+      "ko": "지금 보시는 게 첫 샘플입니다",
+      "en": "지금 보시는 게 첫 샘플입니다",
+      "keywords": [
+        "첫",
+        "샘플입니다"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "end",
+      "ko": "다음 편에서 이어갈게요",
+      "en": "다음 편에서 이어갈게요",
+      "keywords": [
+        "이어갈게요"
+      ],
+      "keywordsEn": []
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog-orcin.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "AI가 쓴 글이 밍밍했어요",
+    "titleEn": "The AI posts fell flat",
+    "before": "fix layout — \"레이아웃을 고쳤다.\" 끝.",
+    "after": "커밋 본문에 '왜'를 쓰니 글에 이유가 생겼어요"
+  },
+  "handle": "vibelog-orcin.vercel.app",
+  "captions": {
+    "ko": "커밋이 곧 콘텐츠. 데브로그를 AI가 대신 씁니다.",
+    "en": "Commits become content."
+  },
+  "hashtags": [
+    "#바이브코딩",
+    "#devlog",
+    "#buildinpublic"
+  ]
+}

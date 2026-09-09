@@ -49,7 +49,7 @@ async function defaultTour(page: Page, shotsDir: string): Promise<void> {
     );
   for (const href of links.slice(0, 2)) {
     await page.goto(new URL(href, page.url()).toString(), {
-      waitUntil: "networkidle",
+      waitUntil: "domcontentloaded",
     });
     await page.waitForTimeout(1000);
     n = await shot(page, shotsDir, n);
@@ -71,14 +71,14 @@ async function runSteps(
     try {
       if (cmd === "goto") {
         await page.goto(new URL(arg, baseUrl).toString(), {
-          waitUntil: "networkidle",
+          waitUntil: "domcontentloaded",
         });
         n = await shot(page, shotsDir, n);
       } else if (cmd === "scroll") {
         await slowScroll(page, Number(arg) || 600);
       } else if (cmd === "click") {
         await page.locator(arg).first().click();
-        await page.waitForTimeout(800);
+        await page.waitForTimeout(1200);
         n = await shot(page, shotsDir, n);
       } else if (cmd === "wait") {
         await page.waitForTimeout(Number(arg) || 500);
@@ -107,28 +107,57 @@ export async function record(
   fs.mkdirSync(shotsDir, { recursive: true });
   const webm = path.join(outDir, `${date}.webm`);
 
-  const browser = await chromium.launch();
+  // 설치된 브라우저 빌드가 playwright 기대 버전과 다른 환경(샌드박스 등)용 오버라이드
+  const browser = await chromium.launch({
+    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined,
+  });
   const context = await browser.newContext({
     viewport: VIEWPORT,
     deviceScaleFactor: SCALE,
     isMobile: true,
     hasTouch: true,
-    recordVideo: {
-      dir: shotsDir,
-      size: { width: VIEWPORT.width * 2, height: VIEWPORT.height * 2 },
-    },
+    ignoreHTTPSErrors: process.env.RECORD_IGNORE_HTTPS === "1", // TLS 인터셉트 환경(샌드박스)용
+
+    // 주의: recordVideo 크기가 뷰포트보다 크면 Playwright는 확대하지 않고
+    // 좌상단 배치 + 회색 패딩을 넣는다. 반드시 뷰포트와 동일하게.
+    recordVideo: { dir: shotsDir, size: VIEWPORT },
   });
+  if (process.env.RECORD_IGNORE_HTTPS === "1") {
+    // 브라우저의 외부 호스트 접근이 막힌 환경에서는 폰트 CDN 요청이 타임아웃까지
+    // 매달려 페이지 로드를 지연시킨다. 소재 녹화에는 폴백 폰트로 충분.
+    await context.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  }
+  // 워밍업: 서버 콜드스타트·캐시를 미리 데워 녹화 초반의 흰 화면을 줄인다
+  const warm = await browser.newContext({
+    viewport: VIEWPORT,
+    ignoreHTTPSErrors: process.env.RECORD_IGNORE_HTTPS === "1",
+  });
+  const warmPage = await warm.newPage();
+  await warmPage.goto(script.demo.url, { waitUntil: "domcontentloaded" }).catch(() => {});
+  await warm.close();
+
   const page = await context.newPage();
 
+  // networkidle은 서드파티 요청(폰트 등)이 하나만 막혀도 수십 초를 기다린다.
+  // load + 짧은 안정화 대기가 소재 녹화에는 충분하다.
   const started = Date.now();
-  await page.goto(script.demo.url, { waitUntil: "networkidle" });
+  await page.goto(script.demo.url, { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(1200);
+  // 녹화 시작~페이지 준비까지의 구간은 로딩 화면이다. Remotion이 이 지점부터
+  // 재생하도록 메타로 남긴다 (프레임 단위 합성이라 여기서 정확히 잘린다).
+  const readyAt = (Date.now() - started) / 1000;
+  fs.writeFileSync(
+    path.join(outDir, `${date}.webm.meta.json`),
+    JSON.stringify({ readyAt: Number(readyAt.toFixed(2)) }) + "\n",
+  );
+  const ready = Date.now();
   if (script.demo.steps.length > 0) {
     await runSteps(page, script.demo.steps, script.demo.url, shotsDir);
   } else {
     await defaultTour(page, shotsDir);
   }
-  // 데모 구간 길이만큼은 채운다 (내레이션보다 짧으면 마지막 화면에서 대기)
-  const remain = durationSec * 1000 - (Date.now() - started);
+  // 데모 구간 길이는 준비 시점(readyAt) 이후 기준으로 채운다
+  const remain = durationSec * 1000 - (Date.now() - ready);
   if (remain > 0) await page.waitForTimeout(remain);
 
   const video = page.video();
