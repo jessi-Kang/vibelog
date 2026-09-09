@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { collect, type RepoActivity, type State } from "./collect";
-import { generateDevlog, translateLine } from "./generate";
+import { generateDevlog, translateCommitLines, translateLine } from "./generate";
 import { runShorts } from "./shorts";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -110,18 +110,43 @@ function isProtected(file: string): boolean {
   }
 }
 
-function writeDevlog(
+async function writeDevlog(
   repo: string,
   date: string,
   d: { title: string; titleEn: string; ko: string; en: string },
   a: RepoActivity,
-): void {
+): Promise<void> {
   const file = devlogPath(repo, date);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   // 원료 메타 — "AI가 커밋 N개로 작성" 표기와 본문의 "원료 · git log"에 쓰인다
   const shas = a.commits
     .slice(0, 8)
     .map((c) => [c.sha.slice(0, 7), c.message.split("\n")[0]]);
+
+  // EN 모드용 커밋 메시지 번역 — 같은 날 재실행에서 이미 번역된 sha는
+  // 기존 파일에서 재사용하고, 새 것만 번역한다. 실패해도 발행은 계속.
+  const cached = new Map<string, string>();
+  try {
+    const old = matter(fs.readFileSync(file, "utf8")).data;
+    if (Array.isArray(old.shasEn)) {
+      for (const s of old.shasEn) {
+        if (Array.isArray(s) && s.length >= 2) cached.set(String(s[0]), String(s[1]));
+      }
+    }
+  } catch {
+    // 파일 없음 — 캐시 없음
+  }
+  const missing = shas.filter(([sha]) => !cached.has(sha));
+  try {
+    const translated = await translateCommitLines(missing.map(([, msg]) => msg));
+    missing.forEach(([sha], i) => cached.set(sha, translated[i]));
+  } catch (err) {
+    console.warn(`- ${repo}/${date} 커밋 메시지 번역 실패 (ko로 폴백):`, err);
+  }
+  const shasEn = shas
+    .filter(([sha]) => cached.has(sha))
+    .map(([sha]) => [sha, cached.get(sha)]);
+
   const frontmatter = [
     "---",
     `title: ${JSON.stringify(d.title)}`,
@@ -131,6 +156,7 @@ function writeDevlog(
     `commits: ${a.commits.length}`,
     `prs: ${a.mergedPRs.length}`,
     `shas: ${JSON.stringify(shas)}`,
+    ...(shasEn.length > 0 ? [`shasEn: ${JSON.stringify(shasEn)}`] : []),
     "---",
   ].join("\n");
   fs.writeFileSync(
@@ -175,7 +201,7 @@ async function main(): Promise<void> {
     } else {
       try {
         const devlog = await generateDevlog(a, date);
-        writeDevlog(a.repo, date, devlog, a);
+        await writeDevlog(a.repo, date, devlog, a);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
         runLines.push({ text: `generate · ${a.repo}/${date}.md (ko, en)` });
         published.push(a.repo);
