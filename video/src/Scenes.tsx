@@ -91,19 +91,7 @@ export const PhoneFrame: React.FC<{
         boxShadow: "0 40px 120px rgba(0,0,0,.6), 0 0 0 2px #0A0E14",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 22,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: 240,
-          height: 52,
-          background: "#000",
-          borderRadius: 999,
-          zIndex: 3,
-        }}
-      />
+      {/* 노치 없음 — 화면 콘텐츠를 가리지 않는다 (Jessi 지시) */}
       <div
         style={{
           position: "absolute",
