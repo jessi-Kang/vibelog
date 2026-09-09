@@ -1,0 +1,19 @@
+<!-- @dsCard group="Components" viewport="700x330" name="Navigation — Tabs · ProjectFilter · SectionHeader · Wordmark" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../tools/ds-loader.js"></script>
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:20px}</style></head><body><div id="root"></div>
+<script>
+loadDS(['../forms/Select.jsx','../navigation/Tabs.jsx','../navigation/SectionHeader.jsx','../navigation/Wordmark.jsx','../navigation/ProjectFilter.jsx']).then(({Tabs,SectionHeader,Wordmark,ProjectFilter}) => {
+  const h = React.createElement;
+  const P8=['vibelog','job-board','wallet-notes','recipe-radar','kanban-lite','subway-alarm'].map(s=>({slug:s,name:s})); const P13=[...P8,...['pdf-diet','tone-check','gym-log','ko-en-lint','plant-cam','expense-ocr','dotfiles-ui'].map(s=>({slug:s,name:s}))];
+  function Demo(){ const [t,setT]=React.useState('프로젝트'); const [f,setF]=React.useState('all'); const [g,setG]=React.useState('all');
+    return h('div',{style:{display:'flex',flexDirection:'column',gap:20}},
+      h('div',{style:{display:'flex',gap:28,alignItems:'center',flexWrap:'wrap'}},h(Wordmark,{sub:'status board'}),h(Wordmark,{accent:true,size:24}),h(Wordmark,{size:14,sub:'3 projects'})),
+      h('div',{style:{display:'flex',gap:16,alignItems:'center',flexWrap:'wrap'}},h(Tabs,{items:['프로젝트','데브로그','쇼츠'],value:t,onChange:setT}),h('div',{style:{width:300}},h(Tabs,{full:true,items:['KO','EN'],value:'KO'}))),
+      h('div',{style:{display:'flex',flexDirection:'column',gap:10}},h(ProjectFilter,{projects:P8,value:f,onChange:setF,counts:{all:31,vibelog:9,'job-board':6}}),h(ProjectFilter,{projects:P13,value:g,onChange:setG,counts:{all:87,vibelog:9}})),
+      h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:24}},h(SectionHeader,{title:'최근 데브로그',aside:'전체 →',href:'#'}),h(SectionHeader,{title:'프로젝트',aside:'최근 활동순'})));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+});
+</script></body></html>

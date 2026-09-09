@@ -1,0 +1,9 @@
+<!-- @dsCard group="Spacing" viewport="700x170" subtitle="패널 + 1px 라인 + 12 라운드 + 상단 3px 띠. 그림자·진행바 없음, 숫자는 글자로" name="Card anatomy" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:16px 20px;box-sizing:border-box;width:700px;height:170px;overflow:hidden}
+.m{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--muted)}
+.sw{display:flex;flex-direction:column;gap:6px;min-width:0}.sw i{display:block;height:56px;border-radius:10px;border:1px solid var(--line)}
+.sw b{font-size:12px;font-weight:700}.sw span{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);letter-spacing:.02em}
+.g{display:grid;gap:12px}</style></head><body><div style="display:flex;gap:20px;align-items:flex-start">
+ <div style="flex:1;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--status-building);border-radius:12px;padding:18px 20px;position:relative"><div style="display:flex;justify-content:space-between"><b style="font-size:18px;font-weight:700">vibelog</b><span class="m" style="color:var(--warn);font-weight:700">● BUILDING</span></div><div style="font-size:14px;color:var(--muted);margin-top:10px;line-height:1.55">padding 18 / 20 · gap 10</div><div class="m" style="margin-top:12px">next.js · vercel · 이번 주 커밋 23 · 오늘</div></div>
+ <div style="flex:.8;display:flex;flex-direction:column;gap:10px" class="m"><div><b style="color:var(--ink)">stripe</b> 3px, 상태색</div><div><b style="color:var(--ink)">border</b> 1px line → hover line-strong</div><div><b style="color:var(--ink)">shadow</b> 없음 (그림자 대신 배경 단차)</div><div><b style="color:var(--ink)">focus</b> 0 0 0 6px accent-glow</div><div><b style="color:var(--ink)">paused</b> opacity .8 + 회색 띠</div></div></div></body></html>

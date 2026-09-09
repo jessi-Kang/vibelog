@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Forms — Input · Select · Checkbox · Radio · Switch" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../tools/ds-loader.js"></script>
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:20px}</style></head><body><div id="root"></div>
+<script>
+loadDS(['../forms/Input.jsx','../forms/Select.jsx','../forms/Checkbox.jsx','../forms/Radio.jsx','../forms/Switch.jsx']).then(({Input,Select,Checkbox,Radio,Switch}) => {
+  const h = React.createElement;
+  function Demo(){ const [s,setS]=React.useState('live'); const [c,setC]=React.useState(true); const [r,setR]=React.useState('Ship it'); const [w,setW]=React.useState(false);
+    return h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'12px 24px'}},
+      h(Input,{label:'homepage',mono:true,placeholder:'https://vibelog.vercel.app',defaultValue:'https://vibelog.vercel.app'}),
+      h(Select,{label:'status',mono:true,value:s,onChange:setS,options:['idea','building','live','paused']}),
+      h(Input,{label:'수정 요청',multiline:true,placeholder:'✏️ 대신 텍스트로 보내주세요',hint:'존댓말로 다시 씁니다'}),
+      h('div',{style:{display:'flex',flexDirection:'column'}},
+        h(Checkbox,{label:'영어 버전도 렌더',checked:c,onChange:setC}),
+        h(Switch,{label:'자동 게시',checked:w,onChange:setW,style:{width:'100%'}}),
+        h(Radio,{name:'tpl',value:r,onChange:setR,options:['Ship it','오늘의 삽질','Before / After']})));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+});
+</script></body></html>

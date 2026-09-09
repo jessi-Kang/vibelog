@@ -1,0 +1,48 @@
+:root {
+  /* base — shorts-spec 확정값 */
+  --bg-deep: #05080C;
+  --bg: #0A0E14;
+  --panel: #141B24;
+  --panel-2: #1B2430;
+  --line: #26313F;
+  --line-strong: #3A4656;
+  --ink: #F3EFE6;
+  --ink-soft: #C9CFD8;
+  --muted: #8C98A8;
+  --accent: #5EE1C3;
+  --accent-ink: #06261F;
+  --accent-soft: rgba(94, 225, 195, .15);
+  --accent-glow: rgba(94, 225, 195, .12);
+  --accent-line: rgba(94, 225, 195, .35);
+  --warn: #FFB454;
+  --warn-soft: rgba(255, 180, 84, .15);
+  --danger: #FF6B6B;
+  --danger-soft: rgba(255, 107, 107, .15);
+
+  /* semantic */
+  --surface-page: var(--bg);
+  --surface-card: var(--panel);
+  --surface-raised: var(--panel-2);
+  --surface-inset: var(--bg);
+  --surface-overlay: rgba(5, 8, 12, .72);
+  --border-default: var(--line);
+  --border-strong: var(--line-strong);
+  --border-focus: var(--accent);
+  --text-body: var(--ink);
+  --text-soft: var(--ink-soft);
+  --text-muted: var(--muted);
+  --text-accent: var(--accent);
+  --text-on-accent: var(--accent-ink);
+
+  /* project status */
+  --status-idea: var(--ink-soft);
+  --status-building: var(--warn);
+  --status-live: var(--accent);
+  --status-paused: var(--muted);
+  --status-paused-stripe: var(--line-strong);
+
+  /* shorts */
+  --phone-bezel: #2A3442;
+  --caption-dim: .3;
+  --stage-halo: radial-gradient(60% 40% at 50% 0%, rgba(94, 225, 195, .10), transparent 70%);
+}

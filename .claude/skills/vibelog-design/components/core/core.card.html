@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Core — Button · IconButton · Badge · Tag · Card" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../tools/ds-loader.js"></script>
+<style>body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);padding:20px}</style></head><body><div id="root"></div>
+<script>
+loadDS(['../core/Button.jsx','../core/IconButton.jsx','../core/Badge.jsx','../core/Tag.jsx','../core/Card.jsx']).then(({Button,IconButton,Badge,Tag,Card}) => {
+  const h = React.createElement;
+  const row = (...c) => h('div',{style:{display:'flex',gap:10,alignItems:'center',flexWrap:'wrap'}},...c);
+  const lab = t => h('div',{style:{fontFamily:'var(--font-mono)',fontSize:11,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--muted)',margin:'14px 0 8px'}},t);
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',null,
+    lab('button'), row(h(Button,null,'승인'),h(Button,{variant:'secondary'},'수정'),h(Button,{variant:'ghost'},'건너뛰기'),h(Button,{variant:'danger'},'반려'),h(Button,{disabled:true},'대기 중'),h(Button,{mono:true,variant:'secondary',size:'sm'},'$ run devlog.yml'),h(Button,{size:'lg'},'vibelog.vercel.app →')),
+    lab('icon button'), row(h(IconButton,{label:'닫기'},'×'),h(IconButton,{label:'열기',tone:'accent'},'↗'),h(IconButton,{label:'다음',active:true},'→'),h(IconButton,{label:'더보기',size:'sm'},'⋯'),h(IconButton,{label:'삭제',tone:'danger'},'✕')),
+    lab('badge · tag'), row(h(Badge,{tone:'accent'},'live'),h(Badge,{tone:'warn'},'building'),h(Badge,null,'paused'),h(Badge,{tone:'danger'},'failed'),h(Badge,{tone:'outline'},'ship it'),h('span',{style:{width:12}}),h(Tag,null,'next.js'),h(Tag,null,'vercel'),h(Tag,{tone:'accent'},'↗ live'),h(Tag,{tone:'warn'},'삽질 1')),
+    lab('card'), h('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12}},
+      h(Card,{stripe:'var(--status-live)'},h('b',null,'stripe'),h('div',{style:{color:'var(--muted)',fontSize:13}},'상단 3px 상태 띠')),
+      h(Card,{inset:true},h('span',{style:{fontFamily:'var(--font-mono)',fontSize:12,color:'var(--muted)'}},h('span',{style:{color:'var(--accent)'}},'✓'),' inset · 로그용')),
+      h(Card,{dim:true,stripe:'var(--status-paused-stripe)'},h('b',null,'dim'),h('div',{style:{color:'var(--muted)',fontSize:13}},'paused 카드'))))
+  ));
+});
+</script></body></html>

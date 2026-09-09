@@ -1,0 +1,11 @@
+:root {
+  --ease: cubic-bezier(.4, 0, .2, 1);
+  --ease-out: ease-out;
+  --dur-fast: 150ms;    /* hover, press */
+  --dur: 280ms;         /* caption word fade, reveal */
+  --dur-slow: 450ms;    /* shorts scene cross-fade */
+  --dur-scroll: 1400ms; /* shorts phone auto-scroll */
+}
+@keyframes vl-blink { 50% { opacity: 0 } }
+@keyframes vl-rise { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
+@keyframes vl-pulse { 0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow) } 50% { box-shadow: 0 0 0 6px var(--accent-glow) } }
