@@ -12,7 +12,7 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { mux } from "./mux";
-import { musicPath } from "./audio";
+import { musicPath, resolveMusic } from "./audio";
 import {
   narrationPath,
   shortsDir,
@@ -99,7 +99,8 @@ export async function renderShort(
   mux(
     silent,
     path.join(process.cwd(), narrationPath(repo, date, lang)),
-    musicPath(script.template),
+    // 템플릿 트랙이 없으면 audio.ts와 같은 규칙으로 다른 고정 트랙을 재사용
+    resolveMusic(script.template) ?? musicPath(script.template),
     out,
     durationSec,
   );

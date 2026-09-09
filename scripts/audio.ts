@@ -160,10 +160,34 @@ export function musicPath(template: string): string {
   return path.join(process.cwd(), "video", "assets", "music", `${template}.mp3`);
 }
 
-/** 템플릿 고정 트랙이 있으면 그대로 쓰고, 없으면 생성해서 캐시한다 */
-export async function ensureMusic(template: string): Promise<string> {
+/**
+ * 템플릿 트랙이 없으면 레포에 있는 다른 고정 트랙을 재사용한다.
+ * 배경음악은 분위기 깔개일 뿐이라 템플릿 전용일 필요가 없고, 이 폴백 덕에
+ * 음악 API(크레딧) 의존 없이 파이프라인이 항상 돈다 (run #11: fail.mp3가
+ * 없어 API 폴백을 탔다가 크레딧 부족 401로 전체가 죽었다).
+ */
+export function resolveMusic(template: string): string | null {
   const file = musicPath(template);
   if (fs.existsSync(file)) return file;
+  const dir = path.dirname(file);
+  if (!fs.existsSync(dir)) return null;
+  const any = fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".mp3"))
+    .sort(); // 결정론적 선택
+  return any.length > 0 ? path.join(dir, any[0]) : null;
+}
+
+/** 고정 트랙(템플릿 → 아무거나) 우선, 정말 하나도 없을 때만 API 생성 */
+export async function ensureMusic(template: string): Promise<string> {
+  const resolved = resolveMusic(template);
+  if (resolved) {
+    if (resolved !== musicPath(template)) {
+      console.log(`음악: ${template}.mp3 없음 — ${path.basename(resolved)} 재사용`);
+    }
+    return resolved;
+  }
+  const file = musicPath(template);
 
   // ElevenLabs Music API 폴백 — 기본 경로는 레포에 커밋된 고정 트랙이다.
   // model_id는 명시하지 않는다: REST API의 모델명이 문서와 달라 422를 냈다
