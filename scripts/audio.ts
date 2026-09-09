@@ -23,13 +23,13 @@ import {
 
 const API = "https://api.elevenlabs.io/v1";
 const MODEL_ID = "eleven_multilingual_v2";
-// docs/03-shorts-spec.md 승인 샘플 기준 확정값
+// docs/03-shorts-spec.md 승인 샘플 기준 확정값 (2026-09-09 갱신)
 const VOICE_SETTINGS = {
-  stability: 0.54,
-  similarity_boost: 1.0,
-  style: 0.26,
+  stability: 0.5,
+  similarity_boost: 0.75,
+  style: 0,
   use_speaker_boost: true,
-  speed: 0.95,
+  speed: 1.0,
 };
 const MUSIC_PROMPT =
   "minimal lo-fi electronic, soft synth pad, muted plucked melody, " +
