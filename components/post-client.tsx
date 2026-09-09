@@ -70,15 +70,20 @@ export function PostClient({ post }: { post: PostData }) {
       label: `${post.title} 쇼츠`,
     });
 
+  // 날짜·레포는 상단 경로(← log / repo / date)가 이미 말한다 — 여기서 반복하지 않는다
   const head = (
     <section className="flex flex-col gap-3">
-      <div className="flex items-center justify-between gap-3 font-mono text-xs text-muted">
-        <span>
-          {post.dateLabel}{" "}
-          <Link href={`/projects/${post.repo}`} className="text-ink-soft">
-            {post.repo} →
-          </Link>
-        </span>
+      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
+        {en && post.titleEn ? post.titleEn : post.title}
+      </h1>
+      <div className="flex items-center justify-between gap-3">
+        <div className="font-mono text-xs text-muted">
+          {post.commits != null
+            ? `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
+            : ""}
+          day {String(post.day).padStart(2, "0")}
+          {post.short ? " · 쇼츠 있음" : ""}
+        </div>
         <div
           className="flex gap-1 rounded-md border border-line bg-panel p-1"
           aria-label="글 언어"
@@ -97,16 +102,6 @@ export function PostClient({ post }: { post: PostData }) {
             </button>
           ))}
         </div>
-      </div>
-      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
-        {en && post.titleEn ? post.titleEn : post.title}
-      </h1>
-      <div className="font-mono text-xs text-muted">
-        {post.commits != null
-          ? `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
-          : ""}
-        day {String(post.day).padStart(2, "0")}
-        {post.short ? " · 쇼츠 있음" : ""}
       </div>
     </section>
   );
