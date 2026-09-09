@@ -87,8 +87,6 @@ jobs:
           git config user.name "vibelog-bot"
           git config user.email "actions@users.noreply.github.com"
           git add content/
-          # 쇼츠가 안 돈 날은 폴더 자체가 없다 — 있을 때만 add
-          if [ -d public/devlog-shots ]; then git add public/devlog-shots/; fi
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋 생략"
           else
