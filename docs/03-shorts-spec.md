@@ -35,7 +35,10 @@
 
 ## 오디오
 
-- 내레이션: ElevenLabs TTS, Jessi 클론 보이스 (샘플은 "Dahye - Clear Korean Explainer" `zXNMXSB7uul4lbmpaVAn`, eleven_multilingual_v2). 영상 시작 0.5초 뒤부터.
+- 내레이션: ElevenLabs TTS, **Jessi 클론 보이스 `pwjMkbtUbj1hBa0RkN5N`** ("Jessi · Calm Low and Steady", Professional Voice Clone). 영상 시작 0.5초 뒤부터.
+  - 확정 설정(승인된 샘플 기준): speed 0.95 / stability 0.54 / similarity_boost 1.00 / style 0.26 / speaker_boost on. 모델 eleven_multilingual_v2.
+  - 같은 설정이라도 테이크마다 길이가 ±1초 정도 달라진다 → 타이밍은 항상 생성된 음성의 타임스탬프로 잡는다. 텍스트를 미리 자막에 박아두고 음성을 맞추지 않는다.
+  - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
 - 배경음악: ElevenLabs Music (eleven_music_v2), 45초, 인스트루멘탈. 프롬프트 요지: "minimal lo-fi electronic, soft synth pad, muted plucked melody, light percussion ~90 BPM, sits under narration, no vocals/no drops, beat enters at 8s, fade out last 3s". API에 instrumental 옵션 있으면 반드시 켤 것.
   - 대안: 템플릿별 고정 트랙 3개를 레포에 두고 재사용 (사운드 일관성 면에서 오히려 추천)
 - 믹스: 음악 volume 0.20, 내레이션 사이드체인 더킹(threshold .03, ratio 5, attack 40ms, release 500ms), 음악은 끝 3.5초 페이드아웃. amix normalize=0.
