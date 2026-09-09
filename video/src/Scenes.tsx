@@ -218,7 +218,8 @@ export const FailCard: React.FC<{
             before
           </div>
           <div style={{ fontFamily: FONT_SANS, fontSize: 34, lineHeight: 1.5, color: COLORS.ink }}>
-            {card.before}
+            {/* 구버전 대본에는 beforeEn이 없다 — ko 폴백 */}
+            {lang === "ko" ? card.before : (card.beforeEn ?? card.before)}
           </div>
         </div>
         <div style={box(local > afterAt, afterAt)}>
@@ -235,7 +236,7 @@ export const FailCard: React.FC<{
             after
           </div>
           <div style={{ fontFamily: FONT_SANS, fontSize: 34, lineHeight: 1.5, color: COLORS.ink }}>
-            {card.after}
+            {lang === "ko" ? card.after : (card.afterEn ?? card.after)}
           </div>
         </div>
       </div>
