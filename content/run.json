@@ -1,12 +1,18 @@
 {
-  "at": "2026-09-09T17:21:33.621Z",
+  "at": "2026-09-09T17:56:42.963Z",
   "lines": [
     {
-      "text": "npx tsx scripts/shorts.ts vibelog/2026-09-10",
+      "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "shorts   · vibelog/2026-09-10 다시 만듦 (ko, en)"
+      "text": "collect  · 1 repos, 1 active"
+    },
+    {
+      "text": "generate · vibelog/2026-09-10.md (ko, en)"
+    },
+    {
+      "text": "shorts   · vibelog/2026-09-10 (ko, en)"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포"
