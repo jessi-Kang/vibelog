@@ -17,6 +17,12 @@ const TABS = [
   { href: "/about", ko: "소개", en: "About" },
 ];
 
+/** 메뉴 옆 개수 — 프로젝트·데브로그 (Jessi 지시). layout이 서버에서 세서 넘긴다 */
+export interface TabCounts {
+  projects?: number;
+  devlogs?: number;
+}
+
 function useRoute() {
   const pathname = usePathname();
   const project = pathname.match(/^\/projects\/([^/]+)/);
@@ -38,8 +44,10 @@ function useRoute() {
   return { detail, crumb, tab: project ? "/" : tab };
 }
 
-function Tabs({ active }: { active: string }) {
+function Tabs({ active, counts }: { active: string; counts?: TabCounts }) {
   const { lang } = useLang();
+  const countOf = (href: string) =>
+    href === "/" ? counts?.projects : href === "/log" ? counts?.devlogs : undefined;
   // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다.
   // 박스 안에 박스(세그먼트 컨트롤)는 무겁다 — 텍스트 + 민트 언더라인의
   // 조용한 탭으로 (Jessi 지시, taste 패스)
@@ -56,6 +64,11 @@ function Tabs({ active }: { active: string }) {
           >
             <span className="relative py-1">
               {lang === "ko" ? t.ko : t.en}
+              {countOf(t.href) != null && (
+                <span className="ml-1 align-[2px] font-mono text-2xs font-medium text-muted">
+                  {countOf(t.href)}
+                </span>
+              )}
               {on && (
                 <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-accent" />
               )}
@@ -84,7 +97,7 @@ function BackRow({ crumb }: { crumb: string }) {
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({ counts }: { counts?: TabCounts }) {
   const { detail, crumb, tab } = useRoute();
   return (
     <>
@@ -111,7 +124,7 @@ export function SiteHeader() {
             </span>
           </div>
           <div className={`${detail ? "hidden md:flex" : "flex"} items-center gap-4 md:gap-5`}>
-            <Tabs active={tab} />
+            <Tabs active={tab} counts={counts} />
             <span className="hidden md:block">
               <LangSwitch />
             </span>

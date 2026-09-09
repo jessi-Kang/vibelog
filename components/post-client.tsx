@@ -83,7 +83,7 @@ export function PostClient({ post }: { post: PostData }) {
       <div className="font-mono text-xs text-muted">
         {post.commits != null
           ? en
-            ? `Written by AI from ${post.commits} commits${post.prs ? ` · ${post.prs} PRs` : ""} · `
+            ? `Written by AI from ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `
             : `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
           : ""}
         day {String(post.day).padStart(2, "0")}

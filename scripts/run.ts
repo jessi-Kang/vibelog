@@ -83,13 +83,14 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
       .slice(0, 10),
     weekCommits: a.weekCommits,
     todayCommits: a.todayCommits,
+    totalCommits: a.totalCommits,
   }));
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
 }
 
 /** 홈 "지난 실행" 패널이 읽는 실행 로그 */
 function writeRunLog(
-  lines: { text: string; kind?: "cmd" | "ok" | "fail" }[],
+  lines: { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" }[],
 ): void {
   fs.writeFileSync(
     path.join(CONTENT_DIR, "run.json"),
@@ -171,7 +172,7 @@ async function main(): Promise<void> {
   const state = loadState();
   const date = todayKST();
 
-  const runLines: { text: string; kind?: "cmd" | "ok" | "fail" }[] = [
+  const runLines: { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" }[] = [
     { text: "npx tsx scripts/run.ts", kind: "cmd" },
   ];
 
@@ -210,7 +211,11 @@ async function main(): Promise<void> {
         // 한 레포의 실패가 나머지 발행을 막지 않게 한다
         failed++;
         console.error(`- ${a.repo} 생성 실패:`, err);
-        runLines.push({ text: `generate · ${a.repo} 실패`, kind: "fail" });
+        runLines.push({
+          text: `generate · ${a.repo} 실패`,
+          textEn: `generate · ${a.repo} failed`,
+          kind: "fail",
+        });
         continue;
       }
     }
@@ -238,13 +243,20 @@ async function main(): Promise<void> {
         runLines.push({ text: `shorts   · ${repo}/${date} (ko, en)` });
       } catch (err) {
         console.error(`- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`, err);
-        runLines.push({ text: `shorts   · ${repo} 실패 — 글 발행은 계속`, kind: "fail" });
+        runLines.push({
+          text: `shorts   · ${repo} 실패 — 글 발행은 계속`,
+          textEn: `shorts   · ${repo} failed — post still published`,
+          kind: "fail",
+        });
       }
     }
   }
 
   await updateProjects(activities);
-  runLines.push({ text: "publish  · content 커밋 → vercel 자동 배포" });
+  runLines.push({
+    text: "publish  · content 커밋 → vercel 자동 배포",
+    textEn: "publish  · commit content → vercel auto-deploy",
+  });
   writeRunLog(runLines);
   fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2) + "\n");
   console.log("projects.json / state.json / run.json 갱신 완료");

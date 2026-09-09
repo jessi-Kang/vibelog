@@ -11,13 +11,9 @@ import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
 
 export function ProjectCard({ project }: { project: Project }) {
   const { lang } = useLang();
+  // 이번 주 커밋은 홈 통계 줄과 인접 중복이라 뺐다 — 상세의 사실 목록에 있다
   const meta = [
     project.stack.join(" · ").toLowerCase(),
-    project.weekCommits
-      ? lang === "ko"
-        ? `이번 주 커밋 ${project.weekCommits}`
-        : `${project.weekCommits} commits this week`
-      : null,
     humanizeLastActive(project.lastActivity, lang),
   ].filter(Boolean) as string[];
   return (
@@ -63,26 +59,28 @@ export function ProjectCard({ project }: { project: Project }) {
 }
 
 export function RunLog({ lines }: { lines: RunLogLine[] }) {
+  const { lang } = useLang();
+  const pick = (l: RunLogLine) => (lang === "en" ? (l.textEn ?? l.text) : l.text);
   return (
     <Card inset className="flex flex-col px-5 py-[18px] font-mono text-[12.5px] leading-[1.9] text-muted">
       {lines.map((l, i) => {
-        if (l.kind === "cmd") return <div key={i} className="text-ink">$ {l.text}</div>;
+        if (l.kind === "cmd") return <div key={i} className="text-ink">$ {pick(l)}</div>;
         if (l.kind === "fail")
           return (
             <div key={i}>
-              <span className="text-danger">✗</span> {l.text}
+              <span className="text-danger">✗</span> {pick(l)}
             </div>
           );
         if (l.kind === "cur")
           return (
             <div key={i} className="text-accent">
-              → {l.text}
+              → {pick(l)}
               <span className="vl-blink">▍</span>
             </div>
           );
         return (
           <div key={i}>
-            <span className="text-accent">✓</span> {l.text}
+            <span className="text-accent">✓</span> {pick(l)}
           </div>
         );
       })}

@@ -37,6 +37,7 @@ export default async function ProjectPage({ params }: Props) {
   const facts: [string, React.ReactNode, React.ReactNode][] = [
     ["s", <T key="k1" ko="상태" en="status" />, <StatusBadge key="s" status={project.status} />],
     ["t", <T key="k2" ko="스택" en="stack" />, project.stack.join(" · ").toLowerCase() || "—"],
+    ["c", <T key="k7" ko="누적 커밋" en="total commits" />, project.totalCommits != null ? String(project.totalCommits) : "—"],
     ["w", <T key="k3" ko="이번 주 커밋" en="commits this week" />, String(project.weekCommits ?? 0)],
     ["l", <T key="k4" ko="마지막 활동" en="last active" />, <T key="v4" ko={lastActive} en={lastActiveEn} />],
     ["d", <T key="k5" ko="데브로그" en="devlogs" />, <T key="v5" ko={`${logs.length}편`} en={String(logs.length)} />],
@@ -93,11 +94,8 @@ export default async function ProjectPage({ params }: Props) {
     <section className="flex flex-col gap-3.5">
       <SectionHeader
         title={<T ko="데브로그" en="Devlog" />}
-        aside={
-          logs.length ? (
-            <T ko={`${logs.length}편 · 하루 한 글`} en={`${logs.length} posts · one per day`} />
-          ) : undefined
-        }
+        // 개수는 위 사실 목록의 "데브로그"가 이미 말한다
+        aside={logs.length ? <T ko="하루 한 글" en="one per day" /> : undefined}
       />
       {logs.length === 0 ? (
         <EmptyState
@@ -140,7 +138,7 @@ export default async function ProjectPage({ params }: Props) {
                         text: (
                           <T
                             ko={`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`}
-                            en={`${d.commits} commits${d.prs ? ` · ${d.prs} PRs` : ""}`}
+                            en={`${d.commits} commit${d.commits === 1 ? "" : "s"}${d.prs ? ` · ${d.prs} PR${d.prs === 1 ? "" : "s"}` : ""}`}
                           />
                         ),
                       },

@@ -51,17 +51,15 @@ export default function Home() {
     0,
   );
 
+  const week = projects.reduce((n, p) => n + (p.weekCommits ?? 0), 0);
+  // 프로젝트 수·데브로그 수는 메뉴 옆으로 옮겼다 (Jessi 지시) — 홈은 활동량만
   const facts: [string, number | string, ReactNode][] =
     projects.length === 0
-      ? [
-          ["p", 0, "projects"],
-          ["w", "—", <T key="w" ko="첫 실행 대기" en="waiting for first run" />],
-        ]
+      ? [["w", "—", <T key="w" ko="첫 실행 대기" en="waiting for first run" />]]
       : [
-          ["p", projects.length, "projects"],
-          ["a", active, <T key="a" ko="만드는 중" en="building" />],
           ["t", today, <T key="t" ko="오늘 커밋" en="commits today" />],
-          ["d", devlogs.length, <T key="d" ko="데브로그" en="devlogs" />],
+          ["k", week, <T key="k" ko="이번 주 커밋" en="commits this week" />],
+          ["a", active, <T key="a" ko="만드는 중" en="building" />],
         ];
 
   const runSection = (
@@ -143,7 +141,7 @@ export default function Home() {
                         text: (
                           <T
                             ko={`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`}
-                            en={`${d.commits} commits${d.prs ? ` · ${d.prs} PRs` : ""}`}
+                            en={`${d.commits} commit${d.commits === 1 ? "" : "s"}${d.prs ? ` · ${d.prs} PR${d.prs === 1 ? "" : "s"}` : ""}`}
                           />
                         ),
                       },
