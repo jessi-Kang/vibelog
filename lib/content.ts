@@ -75,6 +75,17 @@ export function getProjects(): Project[] {
   const file = path.join(CONTENT_DIR, "projects.json");
   if (!fs.existsSync(file)) return [];
   const projects: Project[] = JSON.parse(fs.readFileSync(file, "utf8"));
+  // 마지막 활동은 저장값과 최신 데브로그 날짜 중 더 최근 것 — 오늘 글이
+  // 나왔으면 밤 실행을 기다리지 않고도 "오늘 움직임"으로 잡힌다
+  const latestPost = new Map<string, string>();
+  for (const d of getDevlogs()) {
+    const cur = latestPost.get(d.repo);
+    if (!cur || d.date > cur) latestPost.set(d.repo, d.date);
+  }
+  for (const p of projects) {
+    const post = latestPost.get(p.slug);
+    if (post && post > p.lastActivity) p.lastActivity = post;
+  }
   return [...projects].sort((a, b) =>
     b.lastActivity.localeCompare(a.lastActivity),
   );
