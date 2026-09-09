@@ -1,158 +1,122 @@
 {
-  "template": "ship-it",
+  "template": "fail",
   "repo": "vibelog",
   "date": "2026-09-10",
   "day": 3,
   "lines": [
     {
       "scene": "hook",
-      "ko": "커밋이 곧 콘텐츠가 되는 블로그를 만들었습니다.",
-      "en": "I built a blog where commits become the content.",
+      "ko": "매일 돌리는 자동화가 1초 만에 실패했습니다.",
+      "en": "My daily automation failed in 1 second.",
       "keywords": [
-        "커밋이",
-        "콘텐츠가"
+        "자동화가",
+        "1초"
       ],
       "keywordsEn": [
-        "commits",
-        "become"
+        "automation"
       ]
     },
     {
       "scene": "hook",
-      "ko": "하루에 5화면과 쇼츠 파이프라인을 붙였습니다.",
-      "en": "Five screens and a shorts pipeline in one day.",
+      "ko": "원인은 코드가 아니었습니다.",
+      "en": "The cause wasn't the code.",
       "keywords": [
-        "5화면과",
-        "파이프라인을"
+        "원인은",
+        "코드가"
       ],
       "keywordsEn": [
-        "Five",
-        "pipeline"
+        "cause"
       ]
     },
     {
       "scene": "build",
-      "ko": "Next.js App Router와 Tailwind로 뼈대를 세웠습니다.",
-      "en": "The skeleton is Next.js App Router and Tailwind.",
+      "ko": "커밋을 모아 글을 쓰고, 그 글로 쇼츠를 만듭니다.",
+      "en": "It gathers commits, writes a post, and turns it into a short.",
       "keywords": [
-        "Tailwind로",
-        "뼈대를"
+        "커밋을",
+        "쇼츠를"
       ],
-      "keywordsEn": [
-        "skeleton",
-        "Router"
-      ]
+      "keywordsEn": []
     },
     {
       "scene": "build",
-      "ko": "콘텐츠 로더와 프로젝트 카드, 데브로그 피드를 붙였습니다.",
-      "en": "Then the content loader, project cards, and devlog feed.",
+      "ko": "블로그 화면 5개도 같은 날 다시 만들었습니다.",
+      "en": "I also rebuilt 5 blog screens the same day.",
       "keywords": [
-        "로더와",
-        "피드를"
+        "블로그",
+        "5개도"
       ],
       "keywordsEn": [
-        "content"
+        "5",
+        "screens"
       ]
     },
     {
       "scene": "demo",
-      "ko": "화면이 쓸 데이터 형식을 먼저 고정했습니다.",
-      "en": "I fixed the data contract the screens consume first.",
+      "ko": "지금 보시는 이 영상이 그 결과물입니다.",
+      "en": "The video you're watching is the result.",
       "keywords": [
-        "데이터",
-        "형식을"
+        "영상이"
       ],
       "keywordsEn": [
-        "data",
-        "contract"
+        "video"
       ]
     },
     {
       "scene": "demo",
-      "ko": "쇼츠는 자막과 음성이 한 시계를 씁니다.",
-      "en": "In shorts, captions and voice share one clock.",
+      "ko": "자막과 음성이 같은 시계를 씁니다.",
+      "en": "Captions and voice share one clock.",
       "keywords": [
         "자막과",
-        "시계를"
+        "음성이"
       ],
       "keywordsEn": [
-        "captions",
-        "share"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "타이밍은 항상 생성된 음성 타임스탬프에서 가져옵니다.",
-      "en": "Timing always comes from the generated audio timestamps.",
-      "keywords": [
-        "타임스탬프에서"
-      ],
-      "keywordsEn": [
-        "Timing",
-        "generated"
+        "Captions",
+        "voice"
       ]
     },
     {
       "scene": "fail",
-      "ko": "Actions의 if에서는 secrets를 못 씁니다.",
-      "en": "Actions doesn't allow the secrets context in if.",
+      "ko": "설정 파일에 비밀 키를 조건으로 쓸 수 없었습니다.",
+      "en": "The config file can't use secret keys in a condition.",
       "keywords": [
-        "secrets를"
+        "비밀",
+        "조건으로"
       ],
       "keywordsEn": [
-        "secrets"
+        "secret"
       ]
     },
     {
       "scene": "fail",
-      "ko": "워크플로가 무효 판정, 모든 실행이 1초 만에 죽었습니다.",
-      "en": "The workflow was invalid and every run died in one second.",
+      "ko": "그래서 파일 전체가 무효 처리됐습니다.",
+      "en": "So the whole file was ruled invalid.",
       "keywords": [
-        "무효",
-        "1초"
+        "무효"
       ],
-      "keywordsEn": [
-        "invalid",
-        "died"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "잡 레벨 env로 우회했습니다.",
-      "en": "A job-level env worked around it.",
-      "keywords": [
-        "env로"
-      ],
-      "keywordsEn": [
-        "job-level",
-        "env"
-      ]
+      "keywordsEn": []
     },
     {
       "scene": "next",
-      "ko": "다음은 실키로 쇼츠 첫 실행을 끝까지 통과시키는 겁니다.",
-      "en": "Next is getting the first real-key shorts run to pass end to end.",
+      "ko": "다음은 실제 키로 첫 실행을 끝까지 통과시키기입니다.",
+      "en": "Next is passing the first real run end to end.",
       "keywords": [
-        "실키로",
+        "실제",
         "끝까지"
       ],
       "keywordsEn": [
-        "real-key",
-        "end"
+        "real"
       ]
     },
     {
       "scene": "end",
-      "ko": "커밋이 쌓이면 영상이 나옵니다.",
-      "en": "Commits pile up, videos come out.",
+      "ko": "커밋이 곧 콘텐츠입니다.",
+      "en": "Commits are the content.",
       "keywords": [
-        "커밋이",
-        "영상이"
+        "커밋이"
       ],
       "keywordsEn": [
-        "Commits",
-        "videos"
+        "Commits"
       ]
     }
   ],
@@ -161,23 +125,27 @@
     "steps": []
   },
   "failCard": {
-    "title": "1초 만에 죽은 워크플로",
-    "titleEn": "The one-second failure",
-    "before": "if에서 secrets를 써서 워크플로 파일 자체가 무효",
-    "after": "잡 레벨 env로 우회해 정상 실행"
+    "title": "1초 만에 실패",
+    "titleEn": "Failed in 1 second",
+    "before": "비밀 키를 조건문에 써서 설정 파일 전체가 무효 판정",
+    "after": "잡 레벨 환경변수로 우회해서 정상 실행"
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "블로그 5화면과 수집·생성 파이프라인, 쇼츠 합성까지 하루에 붙였습니다. Actions의 if에서 secrets를 못 쓰는 문제는 잡 레벨 env로 우회했습니다.",
-    "en": "Built the five blog screens, the collect-generate pipeline, and the shorts composition in one day. The secrets-in-if problem on Actions was worked around with a job-level env."
+    "ko": "커밋을 모아 글과 쇼츠를 만드는 파이프라인을 붙였고, 블로그 화면 5개도 같은 날 다시 만들었습니다. 자동화가 1초 만에 실패한 이유는 코드가 아니었습니다.",
+    "en": "Wired up a pipeline that turns commits into posts and shorts, and rebuilt 5 blog screens the same day. The automation failing in 1 second had nothing to do with the code."
   },
   "hashtags": [
     "#vibelog",
-    "#개발로그",
+    "#개발일지",
     "#devlog",
-    "#NextJS",
-    "#GitHubActions",
-    "#Remotion",
-    "#쇼츠자동화"
-  ]
+    "#자동화",
+    "#automation",
+    "#nextjs",
+    "#쇼츠"
+  ],
+  "media": {
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4"
+  }
 }
