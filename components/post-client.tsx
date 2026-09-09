@@ -29,7 +29,7 @@ export interface PostData {
   short?: {
     template: string;
     duration?: number;
-    media?: { ko?: string; en?: string; poster?: string };
+    media?: { ko?: string; en?: string; poster?: string; posterEn?: string };
     hook?: string;
     hookKeywords?: string[];
   };
@@ -189,7 +189,10 @@ export function PostClient({ post }: { post: PostData }) {
         hookKeywords: post.short.hookKeywords ?? [],
         template: post.short.template,
         duration: post.short.duration,
-        poster: post.short.media?.poster,
+        // EN으로 읽는 중이면 영어 훅 프레임 — 아직 없으면(구버전) ko 폴백
+        poster: en
+          ? (post.short.media?.posterEn ?? post.short.media?.poster)
+          : post.short.media?.poster,
       }}
     />
   );

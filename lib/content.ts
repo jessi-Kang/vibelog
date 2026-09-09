@@ -56,7 +56,7 @@ export interface ShortsMeta {
   title: string; // 데브로그 제목
   day: number;
   duration?: number; // 초
-  media?: { ko?: string; en?: string; poster?: string };
+  media?: { ko?: string; en?: string; poster?: string; posterEn?: string };
 }
 
 export interface RunLogLine {

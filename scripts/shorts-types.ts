@@ -62,8 +62,8 @@ export interface ShortsScript {
   handle: string;
   captions: { ko: string; en: string };
   hashtags: string[];
-  /** 8단계에서 업로드 후 기록. poster = ko 영상 첫 프레임(썸네일용) */
-  media?: { ko?: string; en?: string; poster?: string };
+  /** 8단계에서 업로드 후 기록. poster/posterEn = 각 언어 영상의 첫 프레임(썸네일용) */
+  media?: { ko?: string; en?: string; poster?: string; posterEn?: string };
 }
 
 export interface TimedWord {
