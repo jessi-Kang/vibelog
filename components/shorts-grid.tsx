@@ -140,12 +140,12 @@ export function ShortsGrid({
                   hook: "만들고 있는 것들의 기록",
                   hookKeywords: ["기록"],
                   template: "intro",
-                  duration: 37,
+                  duration: 36,
                   poster: "/shorts/intro.jpg",
                 }}
               />
             </button>
-            <div className="font-mono text-2xs text-muted">채널 소개 · 37초</div>
+            <div className="font-mono text-2xs text-muted">채널 소개 · 36초</div>
           </div>
         )}
       </div>
