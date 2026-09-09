@@ -13,6 +13,7 @@
     "lastActivity": "2026-09-10",
     "weekCommits": 64,
     "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "todayCommits": 60
+    "todayCommits": 60,
+    "totalCommits": 75
   }
 ]

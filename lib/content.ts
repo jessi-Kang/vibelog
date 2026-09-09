@@ -19,7 +19,8 @@ export interface Project {
   language?: string;
   lastActivity: string; // ISO date
   weekCommits?: number; // collect 단계에서 계산
-  todayCommits?: number; // 오늘(KST) 커밋 수 — 홈 "오늘 움직임"
+  todayCommits?: number; // 오늘(KST) 커밋 수 — 홈 "오늘 커밋"
+  totalCommits?: number; // 레포 전체 누적 커밋 — 프로젝트 상세
 }
 
 /** 데브로그 본문의 고정 구조 — "뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것" */
@@ -66,6 +67,8 @@ export interface ShortsMeta {
 
 export interface RunLogLine {
   text: string;
+  /** EN 모드 표기 — 없으면 text(ko) 폴백 */
+  textEn?: string;
   kind?: "cmd" | "ok" | "fail" | "cur";
 }
 

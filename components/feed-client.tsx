@@ -63,13 +63,8 @@ export function FeedClient({
       <section className="flex flex-col gap-3.5">
         <SectionHeader
           title={en ? "Devlog" : "데브로그"}
-          aside={
-            all.length
-              ? en
-                ? `${all.length} posts · one per day`
-                : `${all.length}편 · 하루 한 글`
-              : undefined
-          }
+          // 개수는 메뉴 옆 숫자가 이미 말한다 — 규칙만 남긴다
+          aside={all.length ? (en ? "one per day" : "하루 한 글") : undefined}
         />
         {projects.length > MAX_CHIPS ? (
           <label className="relative block max-w-[320px]">
@@ -161,7 +156,7 @@ export function FeedClient({
                 ...(d.commits
                   ? [
                       en
-                        ? `${d.commits} commits${d.prs ? ` · ${d.prs} PRs` : ""}`
+                        ? `${d.commits} commit${d.commits === 1 ? "" : "s"}${d.prs ? ` · ${d.prs} PR${d.prs === 1 ? "" : "s"}` : ""}`
                         : `커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`,
                     ]
                   : []),

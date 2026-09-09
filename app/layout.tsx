@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
 import { LangProvider, T } from "@/components/lang";
+import { getDevlogs, getProjects } from "@/lib/content";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,7 +33,12 @@ export default function RootLayout({
         >
           <T ko="본문으로 건너뛰기" en="Skip to content" />
         </a>
-        <SiteHeader />
+        <SiteHeader
+          counts={{
+            projects: getProjects().length,
+            devlogs: getDevlogs().length,
+          }}
+        />
         {children}
         <footer className="border-t border-line">
           <div className="mx-auto flex max-w-[430px] justify-between gap-3 px-5 pb-6 pt-4 font-mono text-xs text-muted md:max-w-[1120px] md:px-6 md:pb-7 md:pt-5 lg:px-8">

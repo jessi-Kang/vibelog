@@ -118,8 +118,14 @@ function writeRegenRunLog(repo: string, date: string): void {
         at: new Date().toISOString(),
         lines: [
           { text: `npx tsx scripts/shorts.ts ${repo}/${date}`, kind: "cmd" },
-          { text: `shorts   · ${repo}/${date} 다시 만듦 (ko, en)` },
-          { text: "publish  · content 커밋 → vercel 자동 배포" },
+          {
+            text: `shorts   · ${repo}/${date} 다시 만듦 (ko, en)`,
+            textEn: `shorts   · ${repo}/${date} remade (ko, en)`,
+          },
+          {
+            text: "publish  · content 커밋 → vercel 자동 배포",
+            textEn: "publish  · commit content → vercel auto-deploy",
+          },
         ],
       },
       null,

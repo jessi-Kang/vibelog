@@ -54,6 +54,8 @@ export interface RepoActivity {
   weekCommits: number;
   /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (Jessi 지시: 개수 말고 커밋 수) */
   todayCommits: number;
+  /** 레포 전체 누적 커밋 수 — 프로젝트 상세의 "누적 커밋" */
+  totalCommits: number;
 }
 
 export interface RepoState {
@@ -259,15 +261,32 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
         .listCommits({ owner, repo, since: sinceIso, per_page: 100 })
         .then((r) => r.data.length)
         .catch(() => 0);
-    const [allCommits, mergedPRs, devlogFiles, readme, weekCommits, todayCommits] =
-      await Promise.all([
-        getCommits(octokit, owner, repo, since),
-        getMergedPRs(octokit, owner, repo, since),
-        getDevlogFiles(octokit, owner, repo, since),
-        getReadme(octokit, owner, repo),
-        countCommits(weekAgo),
-        countCommits(new Date(kstMidnight).toISOString()),
-      ]);
+    // 누적 커밋: per_page=1로 요청하면 Link 헤더의 마지막 페이지 번호가 총 개수다
+    const countAllCommits = () =>
+      octokit.rest.repos
+        .listCommits({ owner, repo, per_page: 1 })
+        .then((r) => {
+          const m = r.headers.link?.match(/[?&]page=(\d+)>; rel="last"/);
+          return m ? Number(m[1]) : r.data.length;
+        })
+        .catch(() => 0);
+    const [
+      allCommits,
+      mergedPRs,
+      devlogFiles,
+      readme,
+      weekCommits,
+      todayCommits,
+      totalCommits,
+    ] = await Promise.all([
+      getCommits(octokit, owner, repo, since),
+      getMergedPRs(octokit, owner, repo, since),
+      getDevlogFiles(octokit, owner, repo, since),
+      getReadme(octokit, owner, repo),
+      countCommits(weekAgo),
+      countCommits(new Date(kstMidnight).toISOString()),
+      countAllCommits(),
+    ]);
 
     // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
     // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
@@ -304,6 +323,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       latestSha: commits[0]?.sha ?? prev?.lastSha ?? null,
       weekCommits,
       todayCommits,
+      totalCommits,
     });
   }
   return results;
