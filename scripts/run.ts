@@ -118,7 +118,7 @@ async function main(): Promise<void> {
     { text: "npx tsx scripts/run.ts", kind: "cmd" },
   ];
 
-  const activities = await collect(state);
+  const activities = await collect(state, date);
   runLines.push({
     text: `collect  · ${activities.length} repos, ${activities.filter((a) => a.hasActivity).length} active`,
   });
@@ -160,6 +160,9 @@ async function main(): Promise<void> {
     state[a.repo] = {
       lastSha: a.latestSha ?? state[a.repo]?.lastSha,
       lastRun: new Date().toISOString(),
+      // 같은 날 재실행이 같은 창을 다시 쓰도록 날짜 버킷과 창 시작을 남긴다
+      lastDate: date,
+      daySince: a.since,
     };
   }
 

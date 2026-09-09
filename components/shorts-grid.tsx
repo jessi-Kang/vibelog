@@ -88,7 +88,8 @@ export function ShortsGrid({
           const data = { ...s, poster: s.media?.poster };
           return (
             <div key={`${s.repo}/${s.date}`} className="flex flex-col gap-2">
-              {s.media?.ko ? (
+              {/* 한쪽 언어 업로드만 성공해도 재생은 가능해야 한다 — 팝업이 있는 쪽으로 폴백 */}
+              {s.media?.ko || s.media?.en ? (
                 <button
                   type="button"
                   aria-label={`${s.title} 쇼츠 재생`}
