@@ -1,95 +1,123 @@
 {
-  "template": "fail",
+  "template": "ship-it",
   "repo": "vibelog",
   "date": "2026-09-10",
   "day": 3,
   "lines": [
     {
       "scene": "hook",
-      "ko": "밤마다 알아서 글을 올리는 장치가 이틀 연속 멈췄습니다.",
-      "en": "The thing that posts by itself every night died twice in a row.",
+      "ko": "소개 영상을 틀었는데, 정작 보여줄 화면이 안 보였습니다.",
+      "en": "I played my intro video, and the thing I wanted to show was invisible.",
       "keywords": [
-        "이틀",
-        "연속",
-        "장치가"
+        "보여줄",
+        "화면이"
       ],
       "keywordsEn": [
-        "died",
-        "twice"
+        "show"
       ]
     },
     {
       "scene": "build",
-      "ko": "원인은 프로그램을 받아오는 단골 가게 목록이었습니다. 쓰지도 않는 가게가 하나 끼어 있었습니다.",
-      "en": "The cause was the list of regular shops we fetch tools from. One shop on it we never even use.",
+      "ko": "자막이 화면을 통째로 덮고 있었습니다.",
+      "en": "The subtitles were covering the whole screen.",
       "keywords": [
-        "원인은",
-        "단골",
-        "가게"
+        "자막이",
+        "덮고"
       ],
       "keywordsEn": [
-        "cause",
-        "shops",
-        "never"
+        "subtitles",
+        "covering"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "글자 크기를 62픽셀에서 52픽셀로 줄였습니다.",
+      "en": "I shrank the text from 62 pixels to 52 pixels.",
+      "keywords": [
+        "62픽셀에서",
+        "52픽셀로"
+      ],
+      "keywordsEn": [
+        "62",
+        "52"
       ]
     },
     {
       "scene": "demo",
-      "ko": "하필 그 가게가 진열을 바꾸는 중이라 문 앞에서 작업 전체가 멈춰 섰습니다.",
-      "en": "That shop happened to be rearranging its shelves, so the whole job stopped at its door.",
+      "ko": "화면은 위, 자막은 아래로 완전히 갈라놨습니다.",
+      "en": "Screen on top, subtitles on the bottom, cleanly split.",
       "keywords": [
-        "진열을",
-        "전체가",
-        "멈춰"
+        "위,",
+        "아래로"
       ],
       "keywordsEn": [
-        "rearranging",
-        "whole",
-        "job"
+        "top,",
+        "bottom,"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "정지 화면을 하나씩 넘겨 보며 확인했습니다.",
+      "en": "I checked it frame by frame on paused stills.",
+      "keywords": [
+        "하나씩"
+      ],
+      "keywordsEn": [
+        "frame",
+        "checked"
       ]
     },
     {
       "scene": "fail",
-      "ko": "어제 뺐다고 생각했는데 그 가게 명함이 두 장이었습니다. 이번엔 이름이 들어간 건 전부 지웠습니다.",
-      "en": "I thought I removed it yesterday, but the shop had two business cards and I tossed only one. This time I deleted everything with its name on it.",
+      "ko": "영상에 넣으려던 삽화 시안 3종은 전부 반려됐습니다.",
+      "en": "All 3 illustration drafts for the video were rejected.",
       "keywords": [
-        "명함이",
-        "두",
-        "전부"
+        "삽화",
+        "3종은"
       ],
       "keywordsEn": [
-        "two",
-        "cards",
-        "everything"
+        "3",
+        "illustration"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "당분간 글자와 화면 녹화만으로 만듭니다.",
+      "en": "For now I make it with text and screen recordings only.",
+      "keywords": [
+        "글자와",
+        "녹화만으로"
+      ],
+      "keywordsEn": [
+        "text",
+        "recordings"
       ]
     },
     {
       "scene": "next",
-      "ko": "이제 목록 확인이 실패해도 전체가 멈추지는 않습니다. 오늘 밤 끝까지 도는지 지켜봅니다.",
-      "en": "Now a failed check no longer stops everything. Tonight I watch the run go all the way through.",
+      "ko": "방향이 정해지면 꺼 둔 부분을 다시 켭니다.",
+      "en": "Once the direction is set, I switch that part back on.",
       "keywords": [
-        "실패해도",
-        "오늘",
-        "밤"
+        "방향이",
+        "다시"
       ],
       "keywordsEn": [
-        "failed",
-        "Tonight"
+        "direction",
+        "back"
       ],
-      "art": "a small robot sitting on a rooftop at night, watching a single glowing lantern stay lit until dawn"
+      "art": "a small hand flipping a brass toggle switch on a dusty wooden panel, warm light spilling out"
     },
     {
       "scene": "end",
-      "ko": "고친 다음에는 한 번 더 확인합니다.",
-      "en": "After a fix I check one more time.",
+      "ko": "자막은 화면을 도우라고 있는 겁니다.",
+      "en": "Subtitles are there to help the screen, not hide it.",
       "keywords": [
-        "다음에는",
-        "한",
-        "번"
+        "자막은",
+        "도우라고"
       ],
       "keywordsEn": [
-        "fix",
-        "check"
+        "Subtitles",
+        "help"
       ]
     }
   ],
@@ -98,28 +126,27 @@
     "steps": []
   },
   "failCard": {
-    "title": "명함이 두 장",
-    "titleEn": "Two business cards",
-    "before": "쓰지도 않는 가게 하나 때문에 밤마다 도는 자동 발행이 멈췄습니다.",
-    "after": "이름이 들어간 항목을 전부 지우고, 확인에 실패해도 넘어가게 했습니다."
+    "title": "삽화는 잠시 꺼둠",
+    "titleEn": "Illustrations, switched off",
+    "before": "삽화 시안 3종이 전부 반려됐습니다",
+    "after": "지우지 않고 꺼 두기만 했습니다"
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "밤마다 스스로 글을 올리는 장치가 이틀 연속 멈춘 이유는, 쓰지도 않는 목록 하나였습니다. 명함이 두 장이라 한 장만 버린 게 문제였습니다.",
-    "en": "The nightly auto-publish died twice in a row because of one list entry we never use. The shop had two business cards and I had only tossed one."
+    "ko": "소개 영상의 자막이 정작 보여줄 화면을 가리고 있었습니다. 글자를 52픽셀로 줄이고 화면과 자막 자리를 위아래로 갈라놨습니다.",
+    "en": "The subtitles in my intro video were covering the very screen I wanted to show. I shrank the text to 52 pixels and split the screen and subtitle areas top and bottom."
   },
   "hashtags": [
     "#vibelog",
-    "#데브로그",
-    "#자동화",
-    "#삽질",
+    "#개발일지",
+    "#자막",
+    "#영상제작",
     "#devlog",
     "#buildinpublic",
-    "#automation"
+    "#UI"
   ],
   "media": {
     "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4",
     "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4"
   }
 }
