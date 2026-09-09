@@ -6,117 +6,118 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "매일 돌리는 자동화가 1초 만에 실패했습니다.",
-      "en": "My daily automation failed in 1 second.",
+      "ko": "고쳐도 새 버전이 인터넷에 올라가지 않았습니다.",
+      "en": "I kept fixing the site, but no new version reached the internet.",
       "keywords": [
-        "자동화가",
-        "1초"
+        "인터넷에"
       ],
-      "keywordsEn": [
-        "automation"
-      ]
+      "keywordsEn": [],
+      "art": "a paper airplane bouncing off an invisible glass wall over and over"
     },
     {
       "scene": "hook",
-      "ko": "원인은 코드가 아니었습니다.",
-      "en": "The cause wasn't the code.",
+      "ko": "3시간 내내 그랬습니다.",
+      "en": "For 3 hours straight.",
       "keywords": [
-        "원인은",
-        "코드가"
+        "3시간"
       ],
       "keywordsEn": [
-        "cause"
+        "3",
+        "hours"
       ]
     },
     {
       "scene": "build",
-      "ko": "커밋을 모아 글을 쓰고, 그 글로 쇼츠를 만듭니다.",
-      "en": "It gathers commits, writes a post, and turns it into a short.",
+      "ko": "올릴 때마다 22초 만에 실패했습니다.",
+      "en": "Every attempt died after 22 seconds flat.",
       "keywords": [
-        "커밋을",
-        "쇼츠를"
-      ],
-      "keywordsEn": []
-    },
-    {
-      "scene": "build",
-      "ko": "블로그 화면 5개도 같은 날 다시 만들었습니다.",
-      "en": "I also rebuilt 5 blog screens the same day.",
-      "keywords": [
-        "블로그",
-        "5개도"
+        "22초"
       ],
       "keywordsEn": [
-        "5",
-        "screens"
+        "22",
+        "seconds"
       ]
     },
     {
       "scene": "demo",
-      "ko": "지금 보시는 이 영상이 그 결과물입니다.",
-      "en": "The video you're watching is the result.",
+      "ko": "원인을 잡고 나니 오늘 작업이 드디어 보입니다.",
+      "en": "Once it was fixed, the rest of the day finally showed up.",
       "keywords": [
-        "영상이"
+        "원인을"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "demo",
+      "ko": "목록에서 세로 영상이 바로 재생됩니다.",
+      "en": "Short videos now play right inside the list, in a popup.",
+      "keywords": [
+        "세로"
       ],
       "keywordsEn": [
+        "play",
+        "inside"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "범인은 며칠 전 넣은 영상 폴더였습니다.",
+      "en": "The culprit was a video folder I added days ago.",
+      "keywords": [
+        "범인은",
+        "영상"
+      ],
+      "keywordsEn": [
+        "culprit",
         "video"
       ]
     },
     {
-      "scene": "demo",
-      "ko": "자막과 음성이 같은 시계를 씁니다.",
-      "en": "Captions and voice share one clock.",
+      "scene": "fail",
+      "ko": "챙기지도 않은 짐을 세관에서 찾고 있던 셈입니다.",
+      "en": "Customs was searching for a bag nobody had packed.",
       "keywords": [
-        "자막과",
-        "음성이"
+        "세관에서"
       ],
       "keywordsEn": [
-        "Captions",
-        "voice"
+        "Customs",
+        "bag"
       ]
     },
     {
       "scene": "fail",
-      "ko": "설정 파일에 비밀 키를 조건으로 쓸 수 없었습니다.",
-      "en": "The config file can't use secret keys in a condition.",
+      "ko": "검사 목록에서 빼자 바로 통과했습니다.",
+      "en": "It passed instantly once I removed it from the list.",
       "keywords": [
-        "비밀",
-        "조건으로"
+        "바로"
       ],
       "keywordsEn": [
-        "secret"
+        "passed",
+        "instantly"
       ]
-    },
-    {
-      "scene": "fail",
-      "ko": "그래서 파일 전체가 무효 처리됐습니다.",
-      "en": "So the whole file was ruled invalid.",
-      "keywords": [
-        "무효"
-      ],
-      "keywordsEn": []
     },
     {
       "scene": "next",
-      "ko": "다음은 실제 키로 첫 실행을 끝까지 통과시키기입니다.",
-      "en": "Next is passing the first real run end to end.",
+      "ko": "새 글이 정말 쉽게 읽히는지 확인해 보겠습니다.",
+      "en": "Next I check whether the new posts are actually easy to read for anyone.",
       "keywords": [
-        "실제",
-        "끝까지"
+        "쉽게"
       ],
       "keywordsEn": [
-        "real"
-      ]
+        "easy",
+        "read"
+      ],
+      "art": "a tiny robot holding a magnifying glass over an open book"
     },
     {
       "scene": "end",
-      "ko": "커밋이 곧 콘텐츠입니다.",
-      "en": "Commits are the content.",
+      "ko": "막힌 길부터 뚫어야 나머지가 보입니다.",
+      "en": "Unblock the road first, then the rest becomes visible.",
       "keywords": [
-        "커밋이"
+        "막힌"
       ],
       "keywordsEn": [
-        "Commits"
+        "Unblock"
       ]
     }
   ],
@@ -125,24 +126,25 @@
     "steps": []
   },
   "failCard": {
-    "title": "1초 만에 실패",
-    "titleEn": "Failed in 1 second",
-    "before": "비밀 키를 조건문에 써서 설정 파일 전체가 무효 판정",
-    "after": "잡 레벨 환경변수로 우회해서 정상 실행"
+    "title": "안 챙긴 짐을 찾는 세관",
+    "titleEn": "Customs hunting a bag nobody packed",
+    "before": "검사 목록에 영상 폴더가 남아 배포가 22초 만에 실패",
+    "after": "검사 대상에서 영상 폴더를 빼자 바로 통과"
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "커밋을 모아 글과 쇼츠를 만드는 파이프라인을 붙였고, 블로그 화면 5개도 같은 날 다시 만들었습니다. 자동화가 1초 만에 실패한 이유는 코드가 아니었습니다.",
-    "en": "Wired up a pipeline that turns commits into posts and shorts, and rebuilt 5 blog screens the same day. The automation failing in 1 second had nothing to do with the code."
+    "ko": "사이트를 고쳐도 3시간 동안 새 버전이 올라가지 않았습니다. 원인은 챙기지도 않은 짐을 찾던 검사 목록이었습니다.",
+    "en": "For 3 hours no new version of the site reached the internet. The cause: an inspection list hunting for a bag nobody packed."
   },
   "hashtags": [
     "#vibelog",
+    "#데브로그",
+    "#배포",
+    "#삽질",
     "#개발일지",
     "#devlog",
-    "#자동화",
-    "#automation",
-    "#nextjs",
-    "#쇼츠"
+    "#buildinpublic",
+    "#shipit"
   ],
   "media": {
     "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4",

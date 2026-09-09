@@ -5,12 +5,12 @@
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
     "status": "live",
     "stack": [
-      "TypeScript"
+      "JavaScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
     "homepage": "https://vibelog-orcin.vercel.app",
-    "language": "TypeScript",
+    "language": "JavaScript",
     "lastActivity": "2026-09-09",
-    "weekCommits": 16
+    "weekCommits": 37
   }
 ]
