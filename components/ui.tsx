@@ -62,7 +62,10 @@ export function SectionHeader({
       <h2 className="text-md font-bold text-ink">{title}</h2>
       {aside &&
         (href ? (
-          <Link href={href} className="font-mono text-2xs text-accent">
+          <Link
+            href={href}
+            className="font-mono text-2xs text-accent transition-opacity duration-150 hover:opacity-85"
+          >
             {aside}
           </Link>
         ) : (

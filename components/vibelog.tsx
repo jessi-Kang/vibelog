@@ -40,7 +40,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="hit relative z-10 whitespace-nowrap text-accent"
+            className="hit relative z-10 whitespace-nowrap text-accent transition-opacity duration-150 hover:opacity-85"
           >
             열기 ↗
           </a>

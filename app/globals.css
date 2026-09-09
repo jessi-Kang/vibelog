@@ -69,18 +69,11 @@
     opacity: 0;
   }
 }
-@keyframes vl-rise {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
 
 html {
+  /* 다크 전용 사이트 — 스크롤바·셀렉트 팝업 등 브라우저 기본 부품도 다크로 */
+  color-scheme: dark;
+  scrollbar-color: var(--color-line-strong) transparent;
   background: var(--color-bg);
   color: var(--color-ink);
   word-break: keep-all;
