@@ -127,7 +127,8 @@ export function ShortsGrid({
                 href={href}
                 className="font-mono text-2xs text-muted transition-colors duration-150 hover:text-ink-soft"
               >
-                {s.repo} · {fmtShort(s.date)} · {en ? "read the post →" : "글 보기 →"}
+                {/* 레포명은 썸네일 상단(vibelog · day NN)이 이미 말한다 */}
+                {fmtShort(s.date)} · {en ? "read the post →" : "글 보기 →"}
               </Link>
             </div>
           );
@@ -160,8 +161,9 @@ export function ShortsGrid({
                 }}
               />
             </button>
+            {/* 길이는 썸네일 하단 타이머가 이미 말한다 */}
             <div className="font-mono text-2xs text-muted">
-              {en ? "channel intro · 33s" : "채널 소개 · 36초"}
+              {en ? "channel intro" : "채널 소개"}
             </div>
           </div>
         )}
