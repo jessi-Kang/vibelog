@@ -1,123 +1,90 @@
 {
-  "template": "ship-it",
+  "template": "fail",
+  "music": "tense",
   "repo": "vibelog",
   "date": "2026-09-10",
   "day": 3,
   "lines": [
     {
       "scene": "hook",
-      "ko": "소개 영상을 틀었는데, 정작 보여줄 화면이 안 보였습니다.",
-      "en": "I played my intro video, and the thing I wanted to show was invisible.",
+      "ko": "오늘 가장 큰 사고입니다. 작업을 다시 돌릴 때마다 그날 글이 지워졌습니다.",
+      "en": "Today's biggest incident. Every rerun erased that day's post.",
       "keywords": [
-        "보여줄",
-        "화면이"
+        "다시",
+        "그날",
+        "글이"
       ],
       "keywordsEn": [
-        "show"
+        "rerun",
+        "erased"
       ]
     },
     {
       "scene": "build",
-      "ko": "자막이 화면을 통째로 덮고 있었습니다.",
-      "en": "The subtitles were covering the whole screen.",
+      "ko": "이제 같은 날 다시 돌려도 첫 실행이 정한 범위를 그대로 씁니다. 지난 날짜 글은 건드리지 않습니다.",
+      "en": "Now a rerun on the same day reuses the window the first run set. Older posts stay untouched.",
       "keywords": [
-        "자막이",
-        "덮고"
+        "실행이",
+        "범위를",
+        "그대로"
       ],
       "keywordsEn": [
-        "subtitles",
-        "covering"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "글자 크기를 62픽셀에서 52픽셀로 줄였습니다.",
-      "en": "I shrank the text from 62 pixels to 52 pixels.",
-      "keywords": [
-        "62픽셀에서",
-        "52픽셀로"
-      ],
-      "keywordsEn": [
-        "62",
-        "52"
+        "reuses",
+        "window"
       ]
     },
     {
       "scene": "demo",
-      "ko": "화면은 위, 자막은 아래로 완전히 갈라놨습니다.",
-      "en": "Screen on top, subtitles on the bottom, cleanly split.",
+      "ko": "지워졌던 어제 글도 하루 전체로 되살렸습니다. 0으로 멈춰 있던 오늘 움직임도 한국 시간 기준으로 고쳤습니다.",
+      "en": "Yesterday's erased post came back in full. The activity counter stuck at 0 now follows Korean time.",
       "keywords": [
-        "위,",
-        "아래로"
+        "어제",
+        "하루",
+        "0으로"
       ],
       "keywordsEn": [
-        "top,",
-        "bottom,"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "정지 화면을 하나씩 넘겨 보며 확인했습니다.",
-      "en": "I checked it frame by frame on paused stills.",
-      "keywords": [
-        "하나씩"
-      ],
-      "keywordsEn": [
-        "frame",
-        "checked"
+        "Yesterday's",
+        "0"
       ]
     },
     {
       "scene": "fail",
-      "ko": "영상에 넣으려던 삽화 시안 3종은 전부 반려됐습니다.",
-      "en": "All 3 illustration drafts for the video were rejected.",
+      "ko": "원인은 모으는 구간이었습니다. 직전 실행 이후 조각만 모아서 하루치를 통째로 덮어썼습니다.",
+      "en": "The cause was the collection window. A rerun gathered only the newest fragment and overwrote the whole day.",
       "keywords": [
-        "삽화",
-        "3종은"
+        "조각만",
+        "통째로"
       ],
       "keywordsEn": [
-        "3",
-        "illustration"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "당분간 글자와 화면 녹화만으로 만듭니다.",
-      "en": "For now I make it with text and screen recordings only.",
-      "keywords": [
-        "글자와",
-        "녹화만으로"
-      ],
-      "keywordsEn": [
-        "text",
-        "recordings"
+        "fragment",
+        "overwrote"
       ]
     },
     {
       "scene": "next",
-      "ko": "방향이 정해지면 꺼 둔 부분을 다시 켭니다.",
-      "en": "Once the direction is set, I switch that part back on.",
+      "ko": "영상 속 그림은 참고할 스타일이 정해질 때까지 끕니다.",
+      "en": "Generated artwork stays off until a reference style is chosen.",
       "keywords": [
-        "방향이",
-        "다시"
+        "그림은",
+        "스타일이"
       ],
       "keywordsEn": [
-        "direction",
-        "back"
+        "artwork",
+        "style"
       ],
-      "art": "a small hand flipping a brass toggle switch on a dusty wooden panel, warm light spilling out"
+      "art": "a paintbrush resting inside a closed glass jar beside an empty wooden easel"
     },
     {
       "scene": "end",
-      "ko": "자막은 화면을 도우라고 있는 겁니다.",
-      "en": "Subtitles are there to help the screen, not hide it.",
+      "ko": "하루 기록은 몇 번을 돌려도 온전해야 하니까요.",
+      "en": "The day's record has to stay whole no matter how many runs.",
       "keywords": [
-        "자막은",
-        "도우라고"
+        "기록은",
+        "온전해야"
       ],
       "keywordsEn": [
-        "Subtitles",
-        "help"
+        "record",
+        "whole"
       ]
     }
   ],
@@ -126,27 +93,28 @@
     "steps": []
   },
   "failCard": {
-    "title": "삽화는 잠시 꺼둠",
-    "titleEn": "Illustrations, switched off",
-    "before": "삽화 시안 3종이 전부 반려됐습니다",
-    "after": "지우지 않고 꺼 두기만 했습니다"
+    "title": "덮어쓰기 사고",
+    "titleEn": "The overwrite bug",
+    "before": "다시 돌리면 그날 글이 조각으로 덮였습니다",
+    "after": "첫 실행이 정한 범위를 그대로 다시 씁니다"
   },
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "소개 영상의 자막이 정작 보여줄 화면을 가리고 있었습니다. 글자를 52픽셀로 줄이고 화면과 자막 자리를 위아래로 갈라놨습니다.",
-    "en": "The subtitles in my intro video were covering the very screen I wanted to show. I shrank the text to 52 pixels and split the screen and subtitle areas top and bottom."
+    "ko": "다시 돌릴 때마다 그날 기록이 사라지던 문제를 잡았습니다. 지워졌던 어제 글도 하루 전체로 되살렸습니다.",
+    "en": "Fixed the bug where every rerun wiped that day's record. Yesterday's erased post came back in full."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
-    "#자막",
-    "#영상제작",
     "#devlog",
-    "#buildinpublic",
-    "#UI"
+    "#삽질",
+    "#버그수정",
+    "#자동화",
+    "#indiedev"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg?v=mtugmndx",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4?v=mtugmpkq",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4?v=mtugo2bd"
   }
 }
