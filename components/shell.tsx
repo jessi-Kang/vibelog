@@ -21,6 +21,7 @@ const TABS = [
 export interface TabCounts {
   projects?: number;
   devlogs?: number;
+  shorts?: number;
 }
 
 function useRoute() {
@@ -47,7 +48,13 @@ function useRoute() {
 function Tabs({ active, counts }: { active: string; counts?: TabCounts }) {
   const { lang } = useLang();
   const countOf = (href: string) =>
-    href === "/" ? counts?.projects : href === "/log" ? counts?.devlogs : undefined;
+    href === "/"
+      ? counts?.projects
+      : href === "/log"
+        ? counts?.devlogs
+        : href === "/shorts"
+          ? counts?.shorts
+          : undefined;
   // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다.
   // 박스 안에 박스(세그먼트 컨트롤)는 무겁다 — 텍스트 + 민트 언더라인의
   // 조용한 탭으로 (Jessi 지시, taste 패스)
