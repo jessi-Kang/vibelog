@@ -6,7 +6,16 @@ import type { ShortsMeta } from "@/lib/content";
 import { fmtShort } from "@/lib/format";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 
-function Thumb({ s }: { s: ShortsMeta }) {
+/** 9:16 쇼츠 썸네일 — 쇼츠 페이지와 글 상세가 같은 문법을 쓴다 */
+export interface ThumbData {
+  day: number;
+  hook: string;
+  hookKeywords: string[];
+  template: string;
+  duration?: number;
+}
+
+export function Thumb({ s }: { s: ThumbData }) {
   return (
     <div
       className="relative aspect-[9/16] overflow-hidden rounded-lg border border-line bg-bg-deep transition-colors duration-150 group-hover:border-line-strong"

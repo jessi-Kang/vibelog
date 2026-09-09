@@ -52,26 +52,6 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   if (script.demo.url) {
     console.log(`[shorts] 화면 녹화 (${script.demo.url})`);
     await record(repo, date, Math.ceil(timing.duration) + 2);
-    // 첫 스크린샷을 데브로그 "스크린샷" 섹션용으로 공개 경로에 복사
-    const shot = path.join(
-      process.cwd(),
-      "content",
-      "shorts",
-      repo,
-      `${date}.shots`,
-      "00.png",
-    );
-    if (fs.existsSync(shot)) {
-      const dest = path.join(
-        process.cwd(),
-        "public",
-        "devlog-shots",
-        repo,
-        `${date}.png`,
-      );
-      fs.mkdirSync(path.dirname(dest), { recursive: true });
-      fs.copyFileSync(shot, dest);
-    }
   } else {
     console.warn("[shorts] demo.url 없음 — 플레이스홀더로 렌더");
   }

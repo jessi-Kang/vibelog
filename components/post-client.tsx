@@ -1,7 +1,7 @@
 "use client";
 /**
  * 데브로그 본문 — KO/EN 탭, 고정 섹션 구조, 원료 git log.
- * 데스크톱(lg): 본문은 왼쪽 읽기 컬럼(≈680), 스크린샷·쇼츠는 오른쪽 340px
+ * 데스크톱(lg): 본문은 왼쪽 읽기 컬럼(≈680), 쇼츠 썸네일은 오른쪽 340px
  * 고정 레일 — 남는 좌우 여백을 미디어에 쓴다. 모바일·태블릿: 기존 세로 순서.
  */
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
+import { Thumb } from "./shorts-grid";
 import { Card, EmptyState } from "./ui";
 
 export interface PostData {
@@ -25,12 +26,12 @@ export interface PostData {
   sectionsEn: { did?: string; why?: string; fail?: string; next?: string };
   hasEn: boolean;
   body: string; // 섹션 파싱 실패 시 폴백
-  screenshot?: string;
-  homepage?: string;
   short?: {
     template: string;
     duration?: number;
     media?: { ko?: string; en?: string };
+    hook?: string;
+    hookKeywords?: string[];
   };
 }
 
@@ -59,8 +60,8 @@ export function PostClient({ post }: { post: PostData }) {
   const noFail = !s.fail || s.fail.startsWith("특별한 삽질은") || s.fail === "None.";
 
   const headings = en
-    ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up", shot: "Screenshot" }
-    : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것", shot: "스크린샷" };
+    ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up" }
+    : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것" };
 
   const openShort = (v: "ko" | "en") =>
     setMedia({
@@ -176,88 +177,37 @@ export function PostClient({ post }: { post: PostData }) {
     </div>
   );
 
-  // 스크린샷·쇼츠가 없으면 빈 자리 채우기용 박스를 그리지 않는다 — 영역 자체를 뺀다 (Jessi 지시)
-  const aside = (
-    <aside className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:sticky lg:top-[90px] lg:mx-0 lg:max-w-none lg:gap-6">
-      {post.screenshot && (
-        <div>
-          <H>{headings.shot}</H>
-          {/* 원본은 폰 풀페이지 캡처(세로로 매우 김) — 규격 비율로 상단만 보여주고
-              클릭하면 레이어 팝업으로 전체를 본다. 본문 읽기 흐름을 끊지 않기 위해서다. */}
-          <button
-            type="button"
-            onClick={() =>
-              setMedia({
-                kind: "image",
-                src: post.screenshot as string,
-                label: `${post.repo} · ${post.date} 화면 캡처`,
-              })
-            }
-            className="block w-full cursor-pointer overflow-hidden rounded-lg border border-line p-0 transition-colors duration-150 hover:border-line-strong"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={post.screenshot}
-              alt={`${post.repo} · ${post.date} 화면 캡처 — 클릭하면 전체 보기`}
-              className="aspect-[390/260] w-full object-cover object-top"
-            />
-          </button>
-        </div>
-      )}
-
-      {post.short && (
-        <Card className="flex items-center gap-3.5 px-[18px] py-3.5">
-          {post.short.media?.ko || post.short.media?.en ? (
-            <button
-              type="button"
-              aria-label="쇼츠 재생"
-              onClick={() => openShort(post.short?.media?.ko ? "ko" : "en")}
-              className="grid h-[84px] w-12 flex-none cursor-pointer place-items-center rounded-sm border border-line bg-bg-deep font-mono text-sm text-accent transition-colors duration-150 hover:border-line-strong"
-            >
-              ▶
-            </button>
-          ) : (
-            <div className="grid h-[84px] w-12 flex-none place-items-center rounded-sm border border-line bg-bg-deep font-mono text-sm text-muted">
-              ▶
-            </div>
-          )}
-          <div className="flex min-w-0 flex-col gap-1">
-            <div className="text-md font-bold">
-              이 글의 쇼츠{post.short.duration ? ` · ${post.short.duration}초` : ""}
-            </div>
-            <div className="font-mono text-2xs text-muted">
-              {post.short.template}
-              {post.short.media?.ko && (
-                <>
-                  {" · "}
-                  <button
-                    type="button"
-                    onClick={() => openShort("ko")}
-                    className="hit cursor-pointer text-accent transition-opacity duration-150 hover:opacity-85"
-                  >
-                    ko ▶
-                  </button>
-                </>
-              )}
-              {post.short.media?.en && (
-                <>
-                  {" · "}
-                  <button
-                    type="button"
-                    onClick={() => openShort("en")}
-                    className="hit cursor-pointer text-accent transition-opacity duration-150 hover:opacity-85"
-                  >
-                    en ▶
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
-        </Card>
+  // 쇼츠가 없으면 영역 자체를 뺀다 (Jessi 지시). 스크린샷 섹션은 삭제 —
+  // 정보가 얇았고(어제의 이 사이트 모습), 실제 화면은 쇼츠 데모가 보여준다.
+  const thumb = post.short && (
+    <Thumb
+      s={{
+        day: post.day,
+        hook: post.short.hook ?? post.title,
+        hookKeywords: post.short.hookKeywords ?? [],
+        template: post.short.template,
+        duration: post.short.duration,
+      }}
+    />
+  );
+  const aside = post.short && (
+    <aside className="mx-auto flex w-full max-w-[680px] flex-col gap-3.5 lg:sticky lg:top-[90px] lg:mx-0 lg:max-w-none">
+      <h2 className="m-0 px-1 text-md font-bold text-ink">이 글의 쇼츠</h2>
+      {post.short.media?.ko || post.short.media?.en ? (
+        <button
+          type="button"
+          aria-label="쇼츠 재생"
+          onClick={() => openShort(post.short?.media?.ko ? "ko" : "en")}
+          className="group w-full max-w-[340px] cursor-pointer p-0 text-left"
+        >
+          {thumb}
+        </button>
+      ) : (
+        // 대본만 있고 영상은 아직 — 썸네일로 예고만 한다
+        <div className="w-full max-w-[340px]">{thumb}</div>
       )}
     </aside>
   );
-  const hasAside = Boolean(post.screenshot || post.short);
 
   const footer = (
     <div className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:col-start-1 lg:mx-0 lg:max-w-none">
@@ -299,7 +249,7 @@ export function PostClient({ post }: { post: PostData }) {
     <>
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-x-12 lg:gap-y-12">
         {article}
-        {hasAside && aside}
+        {aside}
         {footer}
       </div>
 

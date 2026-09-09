@@ -44,7 +44,6 @@ export interface DevlogEntry {
   prs?: number;
   shas?: [string, string][]; // 원료 git log [sha, 한 줄 메시지]
   day: number; // 이 레포의 몇 번째 글
-  screenshot?: string; // /devlog-shots/… 공개 경로 (있으면)
   short?: ShortsMeta; // 이 글의 쇼츠 (있으면)
 }
 
@@ -127,11 +126,6 @@ function firstSentence(text?: string): string | undefined {
   return (m ? m[0] : plain.slice(0, 90)).trim();
 }
 
-function screenshotPath(repo: string, date: string): string | undefined {
-  const file = path.join(process.cwd(), "public", "devlog-shots", repo, `${date}.png`);
-  return fs.existsSync(file) ? `/devlog-shots/${repo}/${date}.png` : undefined;
-}
-
 export function getDevlogs(repo?: string): DevlogEntry[] {
   const devlogDir = path.join(CONTENT_DIR, "devlog");
   if (!fs.existsSync(devlogDir)) return [];
@@ -183,9 +177,6 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
         ...(shas ? { shas } : {}),
         day: i + 1,
-        ...(screenshotPath(r, date)
-          ? { screenshot: screenshotPath(r, date) }
-          : {}),
       });
     });
   }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
 import { PostClient } from "@/components/post-client";
-import { fmtDate, getDevlog, getDevlogs, getProject } from "@/lib/content";
+import { fmtDate, getDevlog, getDevlogs } from "@/lib/content";
 
 interface Props {
   params: Promise<{ repo: string; date: string }>;
@@ -21,7 +21,6 @@ export default async function DevlogPostPage({ params }: Props) {
   const { repo, date } = await params;
   const d = getDevlog(repo, date);
   if (!d) notFound();
-  const project = getProject(repo);
 
   return (
     <PageContainer>
@@ -40,13 +39,13 @@ export default async function DevlogPostPage({ params }: Props) {
           sectionsEn: d.sectionsEn,
           hasEn: Boolean(d.bodyEn),
           body: d.body,
-          screenshot: d.screenshot,
-          homepage: project?.homepage,
           short: d.short
             ? {
                 template: d.short.template,
                 duration: d.short.duration,
                 media: d.short.media,
+                hook: d.short.hook,
+                hookKeywords: d.short.hookKeywords,
               }
             : undefined,
         }}
