@@ -1,0 +1,156 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "repo": "vibelog",
+  "date": "2026-09-09",
+  "day": 2,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "밤에 기계를 처음 돌렸는데, 시동이 아예 안 걸렸습니다.",
+      "en": "That night I started the machine for the first time. It didn't even turn over.",
+      "keywords": [
+        "시동이"
+      ],
+      "keywordsEn": [
+        "machine"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "오류 표시조차 없었습니다.",
+      "en": "There wasn't even an error message.",
+      "keywords": [
+        "오류"
+      ],
+      "keywordsEn": [
+        "error"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "낮에는 블로그 화면 3개를 만들었습니다.",
+      "en": "During the day I built the blog's 3 screens.",
+      "keywords": [
+        "화면",
+        "3개를"
+      ],
+      "keywordsEn": [
+        "3",
+        "screens."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "밤에는 글과 영상을 만드는 기계 2대를 붙였습니다.",
+      "en": "At night I added 2 machines that write posts and make videos.",
+      "keywords": [
+        "기계",
+        "2대를"
+      ],
+      "keywordsEn": [
+        "2",
+        "machines"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "지금 보시는 목록과 타임라인이 그 화면입니다.",
+      "en": "The list and timeline you're seeing are those screens.",
+      "keywords": [
+        "타임라인이"
+      ],
+      "keywordsEn": [
+        "timeline"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "이 영상도 그 기계가 만들었습니다.",
+      "en": "This video was made by that machine too.",
+      "keywords": [
+        "기계가"
+      ],
+      "keywordsEn": [
+        "machine"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "원인은 자동 실행 설정의 한 줄이었습니다.",
+      "en": "The cause was one line in the auto-run settings.",
+      "keywords": [
+        "설정의"
+      ],
+      "keywordsEn": [
+        "line"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "지원하지 않는 자리에 조건을 써서 파일 전체가 무효가 됐습니다.",
+      "en": "I put a condition where it isn't supported, so the whole file was rejected.",
+      "keywords": [
+        "무효가"
+      ],
+      "keywordsEn": [
+        "whole",
+        "rejected."
+      ]
+    },
+    {
+      "scene": "next",
+      "ko": "밤마다 글과 영상이 끝까지 나오는지 지켜봅니다.",
+      "en": "Now I watch whether the post and video make it all the way through, night after night.",
+      "keywords": [
+        "밤마다",
+        "끝까지"
+      ],
+      "keywordsEn": [
+        "night",
+        "video"
+      ],
+      "art": "a small wind-up clockwork machine on a desk at night, slowly turning its gears under a lamp"
+    },
+    {
+      "scene": "end",
+      "ko": "첫날 치고는 여기까지.",
+      "en": "Not bad for day one.",
+      "keywords": [
+        "첫날"
+      ],
+      "keywordsEn": [
+        "day"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog-orcin.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "설정 한 줄",
+    "titleEn": "One config line",
+    "before": "시동조차 걸리지 않았습니다",
+    "after": "그 줄을 지우니 돌아갔습니다"
+  },
+  "handle": "vibelog-orcin.vercel.app",
+  "captions": {
+    "ko": "블로그 화면 3개를 만들고, 밤에는 글과 영상을 만드는 기계 2대를 붙였습니다. 설정 파일 한 줄 때문에 시동이 안 걸린 이야기.",
+    "en": "Built the blog's 3 screens, then added 2 machines that turn each day's code into a post and a video. One line in a config file kept it from ever starting."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#devlog",
+    "#사이드프로젝트",
+    "#자동화",
+    "#automation",
+    "#빌드실패",
+    "#vibelog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtugud78",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtugufnp",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtugvgxa"
+  }
+}

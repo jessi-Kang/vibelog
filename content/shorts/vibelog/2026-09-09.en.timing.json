@@ -1,0 +1,596 @@
+{
+  "lang": "en",
+  "duration": 30.65,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 4.052,
+      "words": [
+        {
+          "text": "That",
+          "start": 0,
+          "end": 0.209
+        },
+        {
+          "text": "night",
+          "start": 0.279,
+          "end": 0.511
+        },
+        {
+          "text": "I",
+          "start": 0.557,
+          "end": 0.58
+        },
+        {
+          "text": "started",
+          "start": 0.65,
+          "end": 0.952
+        },
+        {
+          "text": "the",
+          "start": 0.987,
+          "end": 1.057
+        },
+        {
+          "text": "machine",
+          "start": 1.103,
+          "end": 1.44
+        },
+        {
+          "text": "for",
+          "start": 1.474,
+          "end": 1.579
+        },
+        {
+          "text": "the",
+          "start": 1.614,
+          "end": 1.683
+        },
+        {
+          "text": "first",
+          "start": 1.73,
+          "end": 1.962
+        },
+        {
+          "text": "time.",
+          "start": 1.997,
+          "end": 2.403
+        },
+        {
+          "text": "It",
+          "start": 2.786,
+          "end": 2.914
+        },
+        {
+          "text": "didn't",
+          "start": 2.949,
+          "end": 3.146
+        },
+        {
+          "text": "even",
+          "start": 3.181,
+          "end": 3.355
+        },
+        {
+          "text": "turn",
+          "start": 3.402,
+          "end": 3.576
+        },
+        {
+          "text": "over.",
+          "start": 3.634,
+          "end": 4.052
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 4.226,
+      "end": 5.921,
+      "words": [
+        {
+          "text": "There",
+          "start": 4.226,
+          "end": 4.423
+        },
+        {
+          "text": "wasn't",
+          "start": 4.458,
+          "end": 4.702
+        },
+        {
+          "text": "even",
+          "start": 4.748,
+          "end": 4.923
+        },
+        {
+          "text": "an",
+          "start": 4.957,
+          "end": 5.016
+        },
+        {
+          "text": "error",
+          "start": 5.074,
+          "end": 5.294
+        },
+        {
+          "text": "message.",
+          "start": 5.341,
+          "end": 5.921
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 6.873,
+      "end": 9.195,
+      "words": [
+        {
+          "text": "During",
+          "start": 6.873,
+          "end": 7.14
+        },
+        {
+          "text": "the",
+          "start": 7.187,
+          "end": 7.256
+        },
+        {
+          "text": "day",
+          "start": 7.303,
+          "end": 7.465
+        },
+        {
+          "text": "I",
+          "start": 7.512,
+          "end": 7.535
+        },
+        {
+          "text": "built",
+          "start": 7.605,
+          "end": 7.814
+        },
+        {
+          "text": "the",
+          "start": 7.848,
+          "end": 7.918
+        },
+        {
+          "text": "blog's",
+          "start": 7.964,
+          "end": 8.243
+        },
+        {
+          "text": "3",
+          "start": 8.324,
+          "end": 8.499
+        },
+        {
+          "text": "screens.",
+          "start": 8.557,
+          "end": 9.195
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 9.474,
+      "end": 12.725,
+      "words": [
+        {
+          "text": "At",
+          "start": 9.474,
+          "end": 9.636
+        },
+        {
+          "text": "night",
+          "start": 9.706,
+          "end": 9.903
+        },
+        {
+          "text": "I",
+          "start": 9.938,
+          "end": 9.961
+        },
+        {
+          "text": "added",
+          "start": 10.031,
+          "end": 10.252
+        },
+        {
+          "text": "2",
+          "start": 10.298,
+          "end": 10.414
+        },
+        {
+          "text": "machines",
+          "start": 10.495,
+          "end": 10.879
+        },
+        {
+          "text": "that",
+          "start": 10.902,
+          "end": 11.018
+        },
+        {
+          "text": "write",
+          "start": 11.053,
+          "end": 11.25
+        },
+        {
+          "text": "posts",
+          "start": 11.285,
+          "end": 11.656
+        },
+        {
+          "text": "and",
+          "start": 11.703,
+          "end": 11.819
+        },
+        {
+          "text": "make",
+          "start": 11.877,
+          "end": 12.028
+        },
+        {
+          "text": "videos.",
+          "start": 12.063,
+          "end": 12.725
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 13.108,
+      "end": 15.464,
+      "words": [
+        {
+          "text": "The",
+          "start": 13.108,
+          "end": 13.224
+        },
+        {
+          "text": "list",
+          "start": 13.293,
+          "end": 13.467
+        },
+        {
+          "text": "and",
+          "start": 13.514,
+          "end": 13.584
+        },
+        {
+          "text": "timeline",
+          "start": 13.618,
+          "end": 14.002
+        },
+        {
+          "text": "you're",
+          "start": 14.025,
+          "end": 14.164
+        },
+        {
+          "text": "seeing",
+          "start": 14.187,
+          "end": 14.454
+        },
+        {
+          "text": "are",
+          "start": 14.524,
+          "end": 14.617
+        },
+        {
+          "text": "those",
+          "start": 14.64,
+          "end": 14.814
+        },
+        {
+          "text": "screens.",
+          "start": 14.837,
+          "end": 15.464
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 15.975,
+      "end": 17.902,
+      "words": [
+        {
+          "text": "This",
+          "start": 15.975,
+          "end": 16.161
+        },
+        {
+          "text": "video",
+          "start": 16.231,
+          "end": 16.463
+        },
+        {
+          "text": "was",
+          "start": 16.486,
+          "end": 16.602
+        },
+        {
+          "text": "made",
+          "start": 16.672,
+          "end": 16.846
+        },
+        {
+          "text": "by",
+          "start": 16.881,
+          "end": 16.962
+        },
+        {
+          "text": "that",
+          "start": 17.009,
+          "end": 17.125
+        },
+        {
+          "text": "machine",
+          "start": 17.171,
+          "end": 17.485
+        },
+        {
+          "text": "too.",
+          "start": 17.519,
+          "end": 17.902
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 18.413,
+      "end": 20.817,
+      "words": [
+        {
+          "text": "The",
+          "start": 18.413,
+          "end": 18.518
+        },
+        {
+          "text": "cause",
+          "start": 18.576,
+          "end": 18.808
+        },
+        {
+          "text": "was",
+          "start": 18.831,
+          "end": 18.947
+        },
+        {
+          "text": "one",
+          "start": 19.017,
+          "end": 19.168
+        },
+        {
+          "text": "line",
+          "start": 19.214,
+          "end": 19.435
+        },
+        {
+          "text": "in",
+          "start": 19.47,
+          "end": 19.528
+        },
+        {
+          "text": "the",
+          "start": 19.563,
+          "end": 19.632
+        },
+        {
+          "text": "auto-run",
+          "start": 19.69,
+          "end": 20.085
+        },
+        {
+          "text": "settings.",
+          "start": 20.143,
+          "end": 20.817
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 21.258,
+      "end": 25.101,
+      "words": [
+        {
+          "text": "I",
+          "start": 21.258,
+          "end": 21.316
+        },
+        {
+          "text": "put",
+          "start": 21.409,
+          "end": 21.525
+        },
+        {
+          "text": "a",
+          "start": 21.56,
+          "end": 21.583
+        },
+        {
+          "text": "condition",
+          "start": 21.629,
+          "end": 22.036
+        },
+        {
+          "text": "where",
+          "start": 22.082,
+          "end": 22.221
+        },
+        {
+          "text": "it",
+          "start": 22.245,
+          "end": 22.303
+        },
+        {
+          "text": "isn't",
+          "start": 22.349,
+          "end": 22.523
+        },
+        {
+          "text": "supported,",
+          "start": 22.558,
+          "end": 23.22
+        },
+        {
+          "text": "so",
+          "start": 23.545,
+          "end": 23.661
+        },
+        {
+          "text": "the",
+          "start": 23.707,
+          "end": 23.777
+        },
+        {
+          "text": "whole",
+          "start": 23.8,
+          "end": 23.963
+        },
+        {
+          "text": "file",
+          "start": 23.998,
+          "end": 24.23
+        },
+        {
+          "text": "was",
+          "start": 24.265,
+          "end": 24.369
+        },
+        {
+          "text": "rejected.",
+          "start": 24.416,
+          "end": 25.101
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 25.797,
+      "end": 29.384,
+      "words": [
+        {
+          "text": "Now",
+          "start": 25.797,
+          "end": 25.937
+        },
+        {
+          "text": "I",
+          "start": 25.983,
+          "end": 26.006
+        },
+        {
+          "text": "watch",
+          "start": 26.076,
+          "end": 26.261
+        },
+        {
+          "text": "whether",
+          "start": 26.296,
+          "end": 26.505
+        },
+        {
+          "text": "the",
+          "start": 26.551,
+          "end": 26.621
+        },
+        {
+          "text": "post",
+          "start": 26.668,
+          "end": 26.923
+        },
+        {
+          "text": "and",
+          "start": 26.958,
+          "end": 27.027
+        },
+        {
+          "text": "video",
+          "start": 27.062,
+          "end": 27.364
+        },
+        {
+          "text": "make",
+          "start": 27.434,
+          "end": 27.608
+        },
+        {
+          "text": "it",
+          "start": 27.643,
+          "end": 27.689
+        },
+        {
+          "text": "all",
+          "start": 27.724,
+          "end": 27.84
+        },
+        {
+          "text": "the",
+          "start": 27.875,
+          "end": 27.945
+        },
+        {
+          "text": "way",
+          "start": 27.991,
+          "end": 28.107
+        },
+        {
+          "text": "through,",
+          "start": 28.154,
+          "end": 28.479
+        },
+        {
+          "text": "night",
+          "start": 28.606,
+          "end": 28.839
+        },
+        {
+          "text": "after",
+          "start": 28.862,
+          "end": 29.059
+        },
+        {
+          "text": "night.",
+          "start": 29.117,
+          "end": 29.384
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 29.5,
+      "end": 30.65,
+      "words": [
+        {
+          "text": "Not",
+          "start": 29.5,
+          "end": 29.663
+        },
+        {
+          "text": "bad",
+          "start": 29.698,
+          "end": 29.837
+        },
+        {
+          "text": "for",
+          "start": 29.872,
+          "end": 29.953
+        },
+        {
+          "text": "day",
+          "start": 30,
+          "end": 30.116
+        },
+        {
+          "text": "one.",
+          "start": 30.185,
+          "end": 30.65
+        }
+      ]
+    }
+  ]
+}
