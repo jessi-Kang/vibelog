@@ -74,7 +74,7 @@ export function PostClient({ post }: { post: PostData }) {
   // 날짜·레포는 상단 경로(← log / repo / date)가 이미 말한다 — 여기서 반복하지 않는다
   const head = (
     <section className="flex flex-col gap-3">
-      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] text-accent [text-wrap:balance] md:text-[28px]">
+      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
         {en && post.titleEn ? post.titleEn : post.title}
       </h1>
       <div className="flex items-center justify-between gap-3">
