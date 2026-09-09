@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: Props) {
             href={project.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-accent"
+            className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
           >
             {project.homepage.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
           </a>

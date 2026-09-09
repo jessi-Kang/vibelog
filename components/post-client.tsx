@@ -106,7 +106,7 @@ export function PostClient({ post }: { post: PostData }) {
             <button
               type="button"
               onClick={() => setLang("ko")}
-              className="cursor-pointer font-mono text-xs text-accent"
+              className="cursor-pointer font-mono text-xs text-accent transition-opacity duration-150 hover:opacity-85"
             >
               한국어로 읽기 →
             </button>
@@ -204,7 +204,10 @@ export function PostClient({ post }: { post: PostData }) {
                   {post.short.media?.ko && (
                     <>
                       {" · "}
-                      <a href={post.short.media.ko} className="text-accent">
+                      <a
+                        href={post.short.media.ko}
+                        className="text-accent transition-opacity duration-150 hover:opacity-85"
+                      >
                         ko ▶
                       </a>
                     </>
@@ -212,7 +215,10 @@ export function PostClient({ post }: { post: PostData }) {
                   {post.short.media?.en && (
                     <>
                       {" · "}
-                      <a href={post.short.media.en} className="text-accent">
+                      <a
+                        href={post.short.media.en}
+                        className="text-accent transition-opacity duration-150 hover:opacity-85"
+                      >
                         en ▶
                       </a>
                     </>
@@ -253,7 +259,7 @@ export function PostClient({ post }: { post: PostData }) {
 
       <Link
         href={`/projects/${post.repo}`}
-        className="font-mono text-sm text-accent"
+        className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
       >
         {post.repo}의 다른 날 →
       </Link>

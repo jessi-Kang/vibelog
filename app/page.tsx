@@ -17,7 +17,7 @@ function Fact({ n, label }: { n: number | string; label: string }) {
   return (
     <span className="inline-flex items-baseline gap-1.5 lg:flex-col lg:items-end lg:gap-0.5">
       <b
-        className={`font-sans text-md font-bold tracking-[-.01em] lg:text-xl ${
+        className={`font-sans text-md font-bold tabular-nums tracking-[-.01em] lg:text-xl ${
           zero ? "text-muted" : "text-accent"
         }`}
       >

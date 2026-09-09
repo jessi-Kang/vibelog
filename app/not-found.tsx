@@ -12,7 +12,7 @@ export default function NotFound() {
         action={
           <Link
             href="/log"
-            className="flex h-8 items-center rounded-sm border border-line bg-panel2 px-3 text-sm font-bold text-ink transition-opacity duration-150 hover:opacity-85"
+            className="flex h-8 items-center rounded-sm border border-line bg-panel2 px-3 text-sm font-bold text-ink transition-opacity duration-150 hover:opacity-85 active:scale-[.98]"
           >
             전체 데브로그 →
           </Link>
