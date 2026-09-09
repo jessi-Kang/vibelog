@@ -9,18 +9,35 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import type { ShortsScript } from "../../scripts/shorts-types";
-import { COLORS, FONT_MONO, FONT_SANS } from "./theme";
+import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
+import { COLORS, FONT_MONO, FONT_SANS, NARRATION_DELAY } from "./theme";
 
-/** hook 문장에서 키워드를 민트로 강조한 큰 타이틀. 일러스트가 있으면 위에 인셋 */
+/**
+ * hook 문장에서 키워드를 민트로 강조한 큰 타이틀. 일러스트가 있으면 위에 인셋.
+ * 훅 장면에서는 하단 자막을 끄므로(중복), 훅이 2문장이면 헤드라인이
+ * 지금 말하는 문장으로 갱신된다 — 화면에 안 보이는 말이 없게.
+ */
 export const HookCard: React.FC<{
   script: ShortsScript;
   lang: "ko" | "en";
+  timing?: ShortsTiming;
   /** +알파 그래픽 (public/ 밑 파일명) — 없으면 타이포만 */
   artFile?: string | null;
-}> = ({ script, lang, artFile }) => {
-  const hook = script.lines.find((l) => l.scene === "hook");
+}> = ({ script, lang, timing, artFile }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const hookLines = script.lines
+    .map((l, i) => ({ l, i }))
+    .filter((x) => x.l.scene === "hook");
+  let hook = hookLines[0]?.l;
   if (!hook) return null;
+  if (timing) {
+    const t = frame / fps - NARRATION_DELAY;
+    for (const s of timing.sentences) {
+      const x = hookLines.find((h) => h.i === s.index);
+      if (x && t >= s.start) hook = x.l;
+    }
+  }
   const keywords = new Set(lang === "ko" ? hook.keywords : hook.keywordsEn);
   const words = hook[lang].split(/\s+/);
   return (

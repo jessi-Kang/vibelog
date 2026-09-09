@@ -53,6 +53,9 @@ export const Captions: React.FC<{
 
   const line = script.lines[win.sentence.index];
   if (!line) return null;
+  // 훅 문장은 자막을 끈다 — 같은 문장이 화면 중앙 헤드라인으로 이미 크게
+  // 떠 있어 중복된다 (Jessi 지시). 헤드라인은 HookCard가 말 따라 갱신.
+  if (line.scene === "hook") return null;
   const keywords = new Set(lang === "ko" ? line.keywords : line.keywordsEn);
 
   return (
