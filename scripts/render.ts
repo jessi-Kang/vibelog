@@ -63,10 +63,21 @@ export async function renderShort(
     console.warn("데모 녹화(webm)가 없어 플레이스홀더로 렌더합니다");
   }
 
+  // +알파 그래픽(art.ts 산출물)도 public/으로 — 장면별 {scene: 파일명}
+  const artFiles: Record<string, string> = {};
+  const artSrc = path.join(process.cwd(), shortsDir(repo), `${date}.art`);
+  if (fs.existsSync(artSrc)) {
+    for (const f of fs.readdirSync(artSrc).filter((f) => f.endsWith(".png"))) {
+      const name = `art.${f}`;
+      fs.copyFileSync(path.join(artSrc, f), path.join(publicDir, name));
+      artFiles[f.replace(/\.png$/, "")] = name;
+    }
+  }
+
   const propsFile = path.join(publicDir, `props.${lang}.json`);
   fs.writeFileSync(
     propsFile,
-    JSON.stringify({ script, timing, lang, videoFile, videoStartSec }),
+    JSON.stringify({ script, timing, lang, videoFile, videoStartSec, artFiles }),
   );
 
   const silent = path.join(

@@ -2,6 +2,7 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Img,
   OffthreadVideo,
   Sequence,
   staticFile,
@@ -11,11 +12,13 @@ import {
 import type { ShortsScript } from "../../scripts/shorts-types";
 import { COLORS, FONT_MONO, FONT_SANS } from "./theme";
 
-/** hook 문장에서 키워드를 민트로 강조한 큰 타이틀 */
-export const HookCard: React.FC<{ script: ShortsScript; lang: "ko" | "en" }> = ({
-  script,
-  lang,
-}) => {
+/** hook 문장에서 키워드를 민트로 강조한 큰 타이틀. 일러스트가 있으면 위에 인셋 */
+export const HookCard: React.FC<{
+  script: ShortsScript;
+  lang: "ko" | "en";
+  /** +알파 그래픽 (public/ 밑 파일명) — 없으면 타이포만 */
+  artFile?: string | null;
+}> = ({ script, lang, artFile }) => {
   const hook = script.lines.find((l) => l.scene === "hook");
   if (!hook) return null;
   const keywords = new Set(lang === "ko" ? hook.keywords : hook.keywordsEn);
@@ -30,6 +33,20 @@ export const HookCard: React.FC<{ script: ShortsScript; lang: "ko" | "en" }> = (
         transform: "translateY(-52%)",
       }}
     >
+      {artFile && (
+        <Img
+          src={staticFile(artFile)}
+          style={{
+            display: "block",
+            width: 480,
+            height: 480,
+            objectFit: "cover",
+            borderRadius: 48,
+            border: `2px solid ${COLORS.line}`,
+            marginBottom: 56,
+          }}
+        />
+      )}
       <h1
         style={{
           fontFamily: FONT_SANS,
@@ -280,6 +297,30 @@ export const EndCard: React.FC<{ script: ShortsScript }> = ({ script }) => (
     >
       {script.handle} →
     </div>
+  </div>
+);
+
+/** +알파 그래픽 장면 — 생성 일러스트 하나가 화면을 차지한다. 문장은 자막이 말한다 */
+export const ArtCard: React.FC<{ file: string }> = ({ file }) => (
+  <div
+    style={{
+      position: "absolute",
+      left: "50%",
+      top: "46%",
+      transform: "translate(-50%, -50%)",
+      width: 860,
+      height: 860,
+      borderRadius: 70,
+      overflow: "hidden",
+      border: `2px solid ${COLORS.line}`,
+      boxShadow: "0 40px 120px rgba(0,0,0,.6)",
+      background: COLORS.panel,
+    }}
+  >
+    <Img
+      src={staticFile(file)}
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    />
   </div>
 );
 

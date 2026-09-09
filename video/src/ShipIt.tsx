@@ -11,7 +11,14 @@ import {
 } from "remotion";
 import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
-import { Background, EndCard, FailCard, HookCard, PhoneFrame } from "./Scenes";
+import {
+  ArtCard,
+  Background,
+  EndCard,
+  FailCard,
+  HookCard,
+  PhoneFrame,
+} from "./Scenes";
 import {
   COLORS,
   FONT_MONO,
@@ -29,9 +36,11 @@ export type ShipItProps = {
   videoFile: string | null;
   /** 소스 영상에서 로딩 화면을 건너뛰고 재생을 시작할 지점(초) */
   videoStartSec?: number;
+  /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
+  artFiles?: Record<string, string> | null;
 };
 
-type Kind = "hook" | "phone" | "fail" | "end";
+type Kind = "hook" | "phone" | "fail" | "end" | "art";
 
 interface Seg {
   kind: Kind;
@@ -41,10 +50,12 @@ interface Seg {
   sourceOffset: number;
 }
 
-function kindOf(scene: string): Kind {
+function kindOf(scene: string, hasNextArt: boolean): Kind {
   if (scene === "hook") return "hook";
   if (scene === "fail") return "fail";
   if (scene === "end") return "end";
+  // "다음 할 것"은 데모 화면 대신 생성 일러스트 장면으로 — 그래픽이 있을 때만
+  if (scene === "next" && hasNextArt) return "art";
   return "phone";
 }
 
@@ -52,10 +63,11 @@ function buildSegments(
   script: ShortsScript,
   timing: ShortsTiming,
   total: number,
+  hasNextArt: boolean,
 ): Seg[] {
   const raw: { kind: Kind; from: number }[] = [];
   for (const s of timing.sentences) {
-    const kind = kindOf(script.lines[s.index]?.scene ?? "build");
+    const kind = kindOf(script.lines[s.index]?.scene ?? "build", hasNextArt);
     const from = s.start + NARRATION_DELAY;
     if (raw.length === 0) {
       raw.push({ kind, from: 0 }); // 첫 장면은 0초부터
@@ -89,12 +101,13 @@ export const ShipIt: React.FC<ShipItProps> = ({
   lang,
   videoFile,
   videoStartSec = 0,
+  artFiles = null,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const total = totalSeconds(timing.duration);
-  const segs = buildSegments(script, timing, total);
+  const segs = buildSegments(script, timing, total, Boolean(artFiles?.next));
 
   const opacityOf = (seg: Seg): number => {
     const fadeIn =
@@ -123,7 +136,12 @@ export const ShipIt: React.FC<ShipItProps> = ({
         if (opacity <= 0) return null;
         return (
           <AbsoluteFill key={i} style={{ opacity }}>
-            {seg.kind === "hook" && <HookCard script={script} lang={lang} />}
+            {seg.kind === "hook" && (
+              <HookCard script={script} lang={lang} artFile={artFiles?.hook} />
+            )}
+            {seg.kind === "art" && artFiles?.next && (
+              <ArtCard file={artFiles.next} />
+            )}
             {seg.kind === "phone" && (
               <PhoneFrame
                 videoFile={videoFile}

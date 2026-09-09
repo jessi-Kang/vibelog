@@ -18,6 +18,8 @@ export interface ShortsLine {
   keywords: string[];
   /** en 문장에서 강조할 단어 */
   keywordsEn: string[];
+  /** 이 장면을 은유하는 일러스트 묘사(영어) — art.ts가 이미지로 만든다. hook·next만 */
+  art?: string;
 }
 
 export interface ShortsFailCard {

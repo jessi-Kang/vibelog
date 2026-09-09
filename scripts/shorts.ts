@@ -8,6 +8,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { generateArt } from "./art";
 import { generateScript } from "./script";
 import { generateAudio } from "./audio";
 import { record } from "./record";
@@ -33,6 +34,13 @@ async function upload(file: string, key: string): Promise<string | null> {
 export async function runShorts(repo: string, date: string): Promise<void> {
   console.log(`[shorts] ${repo}/${date} 대본 생성`);
   const script = await generateScript(repo, date);
+
+  // +알파 그래픽 (GEMINI_API_KEY 있을 때만) — 실패해도 쇼츠는 그래픽 없이 계속
+  try {
+    await generateArt(repo, date);
+  } catch (err) {
+    console.warn("[shorts] 그래픽 생성 실패 — 그래픽 없이 계속:", err);
+  }
 
   console.log(`[shorts] 내레이션·음악 생성`);
   await generateAudio(repo, date, ["ko", "en"]);
