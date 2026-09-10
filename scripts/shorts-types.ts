@@ -52,6 +52,20 @@ export interface ShortsLine {
   stat?: string;
   /** en 문장 표기의 숫자+단위("16 commits","36-second") — 없으면(구버전) ko 폴백 */
   statEn?: string;
+  /**
+   * 이 문장 동안 데모에 보여줄 사이트 경로 ("/", "/play" 등) — 대본이 실제
+   * 사이트의 링크 목록에서 문장 내용과 맞는 화면을 고른다. 녹화가 화면별
+   * 구간을 찍고(segments), 렌더가 문장↔구간을 매칭한다. 없으면 투어를
+   * 시간순으로 자르는 기존 방식 (내용과 화면이 어긋난다는 Jessi 지적의 해법)
+   */
+  screen?: string;
+}
+
+/** 화면별 녹화 구간 — readyAt 기준 상대 시각(초) */
+export interface DemoSegment {
+  path: string;
+  start: number;
+  end: number;
 }
 
 export interface ShortsFailCard {
@@ -145,6 +159,14 @@ export function timingJsonPath(
   lang: "ko" | "en",
 ): string {
   return `${shortsDir(repo)}/${date}.${lang}.timing.json`;
+}
+
+export function segmentsJsonPath(
+  repo: string,
+  date: string,
+  lang: "ko" | "en",
+): string {
+  return `${shortsDir(repo)}/${date}.${lang}.segments.json`;
 }
 
 export function narrationPath(
