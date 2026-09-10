@@ -30,6 +30,12 @@ export function LangProvider({ children }: { children: ReactNode }) {
       // 저장소가 막힌 환경 — ko 유지
     }
   }, []);
+  useEffect(() => {
+    // <html lang>에 반영 — 스크린리더·검색엔진용이자, 쇼츠 녹화(record.ts)가
+    // "영어 전환이 끝났다"를 확인하는 신호. SSR은 ko라 전환 전 화면이 영문
+    // 녹화에 섞이는 문제가 있었다 (Jessi 지적).
+    document.documentElement.lang = lang;
+  }, [lang]);
   const setLang = (v: Lang) => {
     setLangState(v);
     try {
