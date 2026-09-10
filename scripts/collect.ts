@@ -229,18 +229,44 @@ async function getDevlogFiles(
   }
 }
 
+/**
+ * topic `vibelog` 레포 목록. search API를 쓰지 않는다 — search는 새 레포·새
+ * topic이 인덱스에 반영되기까지 지연이 있고, fork를 기본 제외하고, fine-grained
+ * PAT에서 불완전해서 "topic을 달았는데 안 잡히는" 사고가 난다 (apart 레포가
+ * 실제로 그랬다). 인증 사용자의 레포를 직접 나열하고 topics로 거른다.
+ */
+async function listVibelogRepos(octokit: Octokit, owner: string) {
+  try {
+    // GH_PAT 경로 — private 포함 내 레포 전부, topic이 달리는 즉시 보인다
+    const repos = await octokit.paginate(octokit.rest.repos.listForAuthenticatedUser, {
+      per_page: 100,
+      sort: "pushed",
+    });
+    return repos.filter(
+      (r) =>
+        r.owner.login.toLowerCase() === owner.toLowerCase() &&
+        (r.topics ?? []).includes("vibelog"),
+    );
+  } catch {
+    // GITHUB_TOKEN 폴백 — 설치 토큰은 /user 엔드포인트가 안 되므로 search로.
+    // fork:true — search는 fork를 기본 제외한다.
+    const { data } = await octokit.rest.search.repos({
+      q: `topic:vibelog user:${owner} fork:true`,
+      per_page: 100,
+    });
+    return data.items;
+  }
+}
+
 export async function collect(state: State, date?: string): Promise<RepoActivity[]> {
   const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
   const octokit = new Octokit({ auth });
   const owner = await getOwner(octokit);
 
-  const { data: search } = await octokit.rest.search.repos({
-    q: `topic:vibelog user:${owner}`,
-    per_page: 100,
-  });
+  const repos = await listVibelogRepos(octokit, owner);
 
   const results: RepoActivity[] = [];
-  for (const r of search.items) {
+  for (const r of repos) {
     const repo = r.name;
     const fallbackSince = new Date(
       Date.now() - FIRST_RUN_LOOKBACK_DAYS * 24 * 3600 * 1000,

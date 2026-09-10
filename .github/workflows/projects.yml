@@ -1,0 +1,56 @@
+name: projects
+
+# 새 프로젝트 인식 전용 배치 — topic `vibelog`를 단 레포가 밤 23:00 일반 실행을
+# 기다리지 않고 30분 안에 카드로 뜨게 한다. 프로젝트 목록(slug 집합)이 바뀔 때만
+# projects.json을 다시 쓰고 커밋한다. 글·쇼츠·state.json은 devlog.yml 몫.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# devlog와 다른 그룹 — 같은 그룹에 넣으면 대기 중인 devlog 실행이 이 배치에
+# 밀려 취소될 수 있다. 커밋 경합은 커밋 단계의 rebase가 푼다.
+concurrency:
+  group: projects
+  cancel-in-progress: false
+
+jobs:
+  projects:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Detect new vibelog projects
+        run: npx tsx scripts/run.ts --projects-only
+        env:
+          # GH_PAT: fine-grained PAT (Contents/Metadata read, 모든 내 레포).
+          # 없으면 GITHUB_TOKEN 폴백 — public 레포만 잡힌다.
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 새 프로젝트 카드의 설명 영어 번역용 — 없거나 실패해도 ko로 발행된다
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit projects.json
+        run: |
+          git config user.name "vibelog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/projects.json
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git commit -m "chore: 새 프로젝트 인식"
+            # devlog 실행·세션 푸시와의 경합 대비 — 리베이스 후 푸시
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+            git push
+          fi
