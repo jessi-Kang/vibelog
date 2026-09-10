@@ -582,10 +582,22 @@ export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => {
 export const ColdOpen: React.FC<{
   variant: "log" | "error" | "diff";
   commits?: [string, string][];
+  /** 그날 커밋 수 — ×N 카운터. shas는 일부만 실리므로 별도 값 */
+  commitCount?: number;
   before?: string;
   after?: string;
+  /** DAY NN — log 스타일 로테이션의 시드. 에피소드마다 다른 오프닝이 나온다 */
+  day?: number;
   th: ShortsTheme;
-}> = ({ variant, commits = [], before = "", after = "", th }) => {
+}> = ({
+  variant,
+  commits = [],
+  commitCount = 0,
+  before = "",
+  after = "",
+  day = 1,
+  th,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -698,29 +710,206 @@ export const ColdOpen: React.FC<{
     );
   }
 
+  // log 변형 — 같은 오프닝이 연속되면 안 된다 (Jessi 지시). 스타일 3종을
+  // day로 돌린다: graph(커밋 레일) / list(텍스트 나열) / count(대형 카운터).
+  // 재료는 전부 실물 — 타입(feat/fix)은 실제 커밋 메시지 prefix에서 파싱,
+  // 색은 테마 토큰이라 5테마에 자동으로 맞는다.
   const rows = commits.slice(0, 5);
-  return (
-    <div style={panel}>
-      <div style={{ color: th.ink, fontWeight: 700 }}>
+  const typeColor = (msg: string): string => {
+    const prefix = msg.match(/^(\w+):/)?.[1];
+    if (prefix === "feat") return th.accent;
+    if (prefix === "fix") return th.warn;
+    return th.muted;
+  };
+  const shown = Math.round(
+    interpolate(t, [0.65, 1.5], [0, commitCount], clamp),
+  );
+  const logStyle = (["graph", "list", "count"] as const)[
+    Math.max(0, day - 1) % 3
+  ];
+
+  const header = (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "baseline",
+      }}
+    >
+      <span style={{ color: th.ink, fontWeight: 700 }}>
         {typed("$ git log --oneline")}
-      </div>
-      {rows.map(([sha, msg], i) => {
-        const at = 0.72 + i * 0.16;
-        return (
-          <div
-            key={sha}
+      </span>
+      {commitCount > 0 && logStyle !== "count" && (
+        <span
+          style={{
+            color: th.accent,
+            fontWeight: 700,
+            fontSize: 54,
+            lineHeight: 1,
+            ...appearAt(0.65),
+          }}
+        >
+          ×{shown}
+        </span>
+      )}
+    </div>
+  );
+
+  if (logStyle === "count") {
+    // 대형 카운터 컷 — 그날의 양을 숫자 하나로. 아래 점 줄은 커밋 타입들
+    const pop = interpolate(t, [0.65, 1.0], [0.8, 1], {
+      ...clamp,
+      easing: Easing.out(Easing.back(1.6)),
+    });
+    return (
+      <div style={{ ...panel, paddingBottom: 64 }}>
+        {header}
+        <div style={{ textAlign: "center", marginTop: 30 }}>
+          <span
             style={{
-              ...appearAt(at),
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
+              display: "inline-block",
+              color: th.accent,
+              fontWeight: 700,
+              fontSize: 190,
+              lineHeight: 1.1,
+              transform: `scale(${pop})`,
+              ...appearAt(0.65),
             }}
           >
-            <span style={{ color: th.accent, fontWeight: 700 }}>{sha}</span>{" "}
-            {msg}
+            ×{shown}
+          </span>
+          <div
+            style={{
+              marginTop: 26,
+              display: "flex",
+              justifyContent: "center",
+              gap: 18,
+            }}
+          >
+            {rows.map(([sha, msg], i) => (
+              <div
+                key={sha}
+                style={{
+                  width: 22,
+                  height: 22,
+                  borderRadius: 11,
+                  background: typeColor(msg),
+                  ...appearAt(1.1 + i * 0.1),
+                }}
+              />
+            ))}
           </div>
-        );
-      })}
+        </div>
+      </div>
+    );
+  }
+
+  if (logStyle === "list") {
+    // 텍스트 나열 컷 — 터미널에 커밋이 촤르륵 (원형)
+    return (
+      <div style={panel}>
+        {header}
+        {rows.map(([sha, msg], i) => {
+          const at = 0.72 + i * 0.16;
+          return (
+            <div
+              key={sha}
+              style={{
+                ...appearAt(at),
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              <span style={{ color: th.accent, fontWeight: 700 }}>{sha}</span>{" "}
+              {msg}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // 커밋 레일 그래프 컷 — git log --graph 은유. 레일이 아래로 자라며 노드가 팝
+  const ROW_H = 76;
+  const lastOn = rows.reduce((n, _, i) => (t >= 0.72 + i * 0.16 ? i : n), 0);
+  const railH = interpolate(
+    t,
+    [0.72, 0.72 + Math.max(1, rows.length - 1) * 0.16],
+    [0, lastOn * ROW_H],
+    clamp,
+  );
+  return (
+    <div style={panel}>
+      {header}
+      <div style={{ position: "relative", marginTop: 34, paddingLeft: 58 }}>
+        <div
+          style={{
+            position: "absolute",
+            left: 13,
+            top: 20,
+            width: 4,
+            height: railH,
+            background: th.line,
+            borderRadius: 2,
+          }}
+        />
+        {rows.map(([sha, msg], i) => {
+          const at = 0.72 + i * 0.16;
+          const pop = interpolate(t, [at, at + 0.3], [0.3, 1], {
+            ...clamp,
+            easing: Easing.out(Easing.back(2)),
+          });
+          const color = typeColor(msg);
+          const m = msg.match(/^(\w+:)\s*(.*)$/);
+          return (
+            <div
+              key={sha}
+              style={{
+                position: "relative",
+                height: ROW_H,
+                display: "flex",
+                alignItems: "center",
+                gap: 20,
+                ...appearAt(at),
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  left: -58 + 4,
+                  width: 22,
+                  height: 22,
+                  borderRadius: 11,
+                  background: color,
+                  transform: `scale(${t >= at ? pop : 0})`,
+                }}
+              />
+              <span style={{ color: th.accent, fontWeight: 700, fontSize: 28 }}>
+                {sha}
+              </span>
+              <span
+                style={{
+                  flex: 1,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  fontSize: 30,
+                }}
+              >
+                {m ? (
+                  <>
+                    <span style={{ color, fontWeight: 700 }}>{m[1]}</span>{" "}
+                    <span style={{ color: th.muted }}>{m[2]}</span>
+                  </>
+                ) : (
+                  <span style={{ color: th.muted }}>{msg}</span>
+                )}
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
