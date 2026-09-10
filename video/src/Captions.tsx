@@ -16,7 +16,13 @@ import type {
   ShortsTiming,
   TimedSentence,
 } from "../../scripts/shorts-types";
-import { FONT_SANS, keywordStyle, NARRATION_DELAY, type ShortsTheme } from "./theme";
+import {
+  FONT_SANS,
+  keywordIndices,
+  keywordStyle,
+  NARRATION_DELAY,
+  type ShortsTheme,
+} from "./theme";
 
 const WORD_FADE = 0.28;
 const LINGER_BEFORE_NEXT = 0.15;
@@ -59,7 +65,11 @@ export const Captions: React.FC<{
   // 훅 문장은 자막을 끈다 — 같은 문장이 화면 중앙 헤드라인으로 이미 크게
   // 떠 있어 중복된다 (Jessi 지시). 헤드라인은 HookCard가 말 따라 갱신.
   if (line.scene === "hook") return null;
-  const keywords = new Set(lang === "ko" ? line.keywords : line.keywordsEn);
+  // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다 (Jessi 지적)
+  const kwOn = keywordIndices(
+    win.sentence.words.map((w) => w.text),
+    lang === "ko" ? line.keywords : line.keywordsEn,
+  );
 
   return (
     // 자막 안전 구역: 폰 프레임 하단(1390) 아래에서만 논다 — 데모 화면을
@@ -96,7 +106,7 @@ export const Captions: React.FC<{
           // 켜진 뒤에는 꺼지지 않는다 — 문장이 끝날 때까지 유지 (규칙 3)
           const progress = Math.min(1, Math.max(0, (t - w.start) / WORD_FADE));
           const on = progress > 0;
-          const isKeyword = keywords.has(w.text);
+          const isKeyword = kwOn.has(i);
           return (
             <React.Fragment key={i}>
               <span

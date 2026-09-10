@@ -48,7 +48,7 @@ video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 
 ## 쇼츠 (2단계) — 요약. 상세는 docs/03-shorts-spec.md
 
-- 1080×1920, 30fps, 30~45초. 훅 → 뭘 만들었나 → 화면 데모 → 삽질 → 다음 할 것 → 엔드카드.
+- 1080×1920, 30fps, 30~45초. **구성 템플릿 3종**(ship-it/fail/before-after) — 서사 순서·콜드오픈 문법이 다르고, 대본 생성이 직전 편과 다른 것을 골라 자동 로테이션한다 (docs/03-shorts-spec.md 표).
 - **테마 5종**(terminal 기본/blueprint/signal/paper/highlighter) — 레포가 topic `vibelog-theme-<이름>` 하나로 고른다 (`vibelog.json`의 `"theme"`이 있으면 그게 우선). 채널 문법은 공유, 팔레트·키워드 강조·카드 형태만 바뀐다 (`video/src/theme.ts`).
 - 자막: 문장 단위, 최대 두 줄. 단어가 말하는 속도에 맞춰 흐림→또렷. 문장당 키워드 1~3개 민트색, **켜지면 유지**(단어별 색 반전 금지). 음성 끝나도 다음 문장 직전까지 잔류.
 - 워터마크 없음. 푸터에 `© {year} vibelog · Jessi`만.

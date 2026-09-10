@@ -31,8 +31,14 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 중학생이 들어도 따라올 수 있는 말로. 비유는 한 문장으로 끝나는 것 하나만 —
 여러 문장에 걸쳐 소품이 늘어나는 비유(가게→명함처럼)는 금지, 직설이 낫다.
 
-구조 (scene 순서): hook(1~2문장, 3~4초짜리 강한 첫 마디) → build(뭘 만들었나)
-→ demo(화면을 보여주며 하는 말) → fail(삽질 이야기) → next(다음 할 것) → end(마무리 한 마디).
+구조(scene 순서)는 template이 정한다 — 매편 같은 구성이면 채널이 단조로워진다:
+- "ship-it" (만든 것·배포가 그날의 이야기): hook(강한 첫 마디) → build(뭘 만들었나)
+  → demo(화면을 보여주며) → fail(삽질) → next(다음 할 것) → end(마무리 한 마디)
+- "fail" (삽질이 그날의 이야기): hook(사고 선언 — 무엇이 어떻게 터졌나) → fail(원인)
+  → build(어떻게 고쳤나) → demo(멀쩡해진 화면 증명) → next → end
+- "before-after" (어제와 오늘의 차이가 또렷한 날): hook(어제까지는 이랬다)
+  → build(오늘 바뀐 것) → demo(달라진 화면) → fail → next → end.
+  문장을 더 짧게 — 화면이 말하게 한다.
 장면당 1~2문장. 전체 8~10문장, 말했을 때 30~40초 분량 (상한 45초 — 넘길 바엔 문장을 뺀다).
 문장은 짧게 — 화면 자막 두 줄(공백 포함 ~24자)을 넘기지 않는다.
 
@@ -47,9 +53,13 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 - stat: 문장에 이야기의 핵심이 되는 숫자가 있으면 그 문장에만 stat으로 숫자+단위를
   적는다 (예: "16개", "52초", "11시"). 문장에 실제로 등장하는 표기 그대로.
   편당 최대 2문장 — 곁가지 숫자엔 붙이지 않는다. 없으면 생략.
-- keywords: 각 ko 문장에서 강조할 단어 1~3개. 문장에 실제로 등장하는 단어(공백 단위 토큰)와 정확히 일치해야 한다. keywordsEn도 en 문장에 대해 동일.
+- keywords: 각 ko 문장에서 강조할 곳 1~3개. 문장에 실제로 등장하는 단어(공백 단위
+  토큰) 또는 연속된 단어 구("두 번", "밤 11시에")와 정확히 일치해야 한다.
+  의미 단위를 통째로 — "두 번"에서 "번"만 강조하면 어색하다. keywordsEn도 en 문장에 대해 동일.
 - en은 같은 내용의 자연스러운 영어. 존댓말 뉘앙스는 평서체로.
-- template: 배포·릴리즈가 핵심이면 "ship-it", 삽질 이야기가 제일 강하면 "fail", 둘 다 아니면 "ship-it".
+- template: 위 셋 중 이야기에 맞는 것을 고른다. 직전 편과 같은 템플릿은 이야기가
+  강하게 요구할 때만 — 애매하면 직전 편과 다른 것을 골라 구성을 돌린다.
+  "fail"과 "before-after"는 failCard가 콜드오픈 재료가 되므로 반드시 failCard를 채운다.
 - music: 이야기의 분위기에 맞는 배경음악 톤 하나 — "ship-it"(기본, 담담한 전진),
   "upbeat"(배포·성공으로 기분 좋은 날), "tense"(큰 삽질과 씨름한 날),
   "calm"(문서·정리처럼 잔잔한 날), "playful"(실험·장난기 있는 날) 중에서 고른다.
@@ -99,20 +109,29 @@ function validateLines(raw: unknown): ShortsLine[] {
     ) {
       throw new Error(`lines[${i}] 형식 오류`);
     }
-    // 키워드는 문장에 실제로 있는 토큰만 남긴다 — 자막 강조 매칭이 어긋나지 않게
-    const koTokens = new Set(l.ko.split(/\s+/));
-    const enTokens = new Set(l.en.split(/\s+/));
+    // 키워드는 문장에 실제로 있는 것만 남긴다 — 자막 강조 매칭이 어긋나지 않게.
+    // "두 번" 같은 연속된 단어 구도 허용 (한 단어만 허용하면 "번"만 켜진다)
+    const koTokens = l.ko.split(/\s+/);
+    const enTokens = l.en.split(/\s+/);
+    const inSentence = (tokens: string[]) => (k: string): boolean => {
+      const toks = k.split(/\s+/).filter(Boolean);
+      if (!toks.length) return false;
+      for (let i = 0; i + toks.length <= tokens.length; i++) {
+        if (toks.every((tok, j) => tokens[i + j] === tok)) return true;
+      }
+      return false;
+    };
     return {
       scene: l.scene,
       ko: l.ko,
       en: l.en,
       keywords: (Array.isArray(l.keywords) ? l.keywords : [])
         .filter((k: unknown): k is string => typeof k === "string")
-        .filter((k: string) => koTokens.has(k))
+        .filter(inSentence(koTokens))
         .slice(0, 3),
       keywordsEn: (Array.isArray(l.keywordsEn) ? l.keywordsEn : [])
         .filter((k: unknown): k is string => typeof k === "string")
-        .filter((k: string) => enTokens.has(k))
+        .filter(inSentence(enTokens))
         .slice(0, 3),
       // +알파 그래픽용 장면 은유 묘사 — 여기서 떨어뜨리면 art.ts가 만들 게 없다
       ...(typeof l.art === "string" && l.art.trim() ? { art: l.art.trim() } : {}),
@@ -120,6 +139,31 @@ function validateLines(raw: unknown): ShortsLine[] {
       ...(typeof l.stat === "string" && /\d/.test(l.stat) ? { stat: l.stat } : {}),
     };
   });
+}
+
+/**
+ * 직전 편이 쓴 템플릿 — 로테이션 재료. 같은 레포의 이전 대본 JSON에서 읽는다.
+ * LLM에게 "직전 편과 다르게"를 시키려면 직전 편이 뭐였는지 알려줘야 한다.
+ */
+function prevTemplate(repo: string, date: string): string | null {
+  const dir = path.join(process.cwd(), "content", "shorts", repo);
+  if (!fs.existsSync(dir)) return null;
+  const prev = fs
+    .readdirSync(dir)
+    .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+    .map((f) => f.slice(0, 10))
+    .filter((d) => d < date)
+    .sort()
+    .pop();
+  if (!prev) return null;
+  try {
+    const s = JSON.parse(
+      fs.readFileSync(path.join(dir, `${prev}.json`), "utf8"),
+    );
+    return typeof s.template === "string" ? s.template : null;
+  } catch {
+    return null;
+  }
 }
 
 /** 이 레포의 몇 번째 데브로그인지 (DAY NN) */
@@ -179,6 +223,7 @@ export async function generateScript(
         content: [
           `레포: ${repo}`,
           `날짜: ${date}`,
+          `직전 편 템플릿: ${prevTemplate(repo, date) ?? "(첫 편)"}`,
           `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
           `데브로그 제목: ${data.title ?? ""}`,
           "데브로그 본문:",

@@ -1,5 +1,6 @@
 import React from "react";
 import { Composition } from "remotion";
+import { coldOpenKind } from "../../scripts/shorts-types";
 import { ShipIt, type ShipItProps } from "./ShipIt";
 import { COLD_OPEN_SEC, totalSeconds } from "./theme";
 import sampleScript from "../fixtures/sample.json";
@@ -27,7 +28,7 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames: Math.ceil(
           totalSeconds(
             props.timing.duration,
-            props.script.commits?.length ? COLD_OPEN_SEC : 0,
+            coldOpenKind(props.script) ? COLD_OPEN_SEC : 0,
           ) * FPS,
         ),
       })}

@@ -19,9 +19,9 @@
 
 ## 구성 인서트 3종 (2026-09 추가)
 
-- **커밋 콜드오픈(2초)**: 대본 JSON의 `commits`(데브로그 frontmatter `shas` 원료)가
-  있으면 내레이션 전에 터미널 `git log --oneline` 타이핑 + 커밋 5줄 스태거로 연다.
-  영문 영상은 `commitsEn`(`shasEn`) 사용. 내레이션·자막·훅의 시간 오프셋이
+- **콜드오픈(2초)**: 내레이션 전 2초를 템플릿의 문법으로 연다 (위 템플릿 표).
+  ship-it은 `commits`(데브로그 frontmatter `shas` 원료)로 터미널 `git log --oneline`
+  타이핑 + 커밋 5줄 스태거. 영문 영상은 `commitsEn`(`shasEn`) 사용. 내레이션·자막·훅의 시간 오프셋이
   콜드오픈 길이만큼 같이 밀린다 (`video/src/theme.ts COLD_OPEN_SEC`).
 - **숫자 모먼트**: 대본 문장의 `stat`("11시", "커밋 16개"의 "16개")을 말하는 순간,
   단어 타임스탬프 기점으로 1.5초 카운터 인서트가 화면 중앙에 박힌다.
@@ -90,11 +90,22 @@ ffmpeg -i video.mp4 -i narration.mp3 -i music.mp3 -filter_complex "\
 - 프로젝트별 동선은 레포 루트 `vibelog.json`의 `demo` 배열로 지정 가능.
 - 같은 세션에서 스크린샷도 뽑아 데브로그에 첨부. 매일 찍어두면 나중에 Before/After 템플릿 소재가 됨.
 
-## 템플릿 3종 (Ship it 외는 미제작)
+## 템플릿 3종 (2026-09 전부 구현) + 자동 로테이션
 
-- Ship it — 배포/릴리즈. 샘플 완료.
-- 오늘의 삽질 — 버그 스토리 1개. Before/After 카드 구조는 Ship it의 삽질 장면을 확장.
-- Before / After — 화면 비교, 말 최소.
+같은 구성이 반복되면 채널이 단조롭다 (Jessi 지시). 템플릿 = 서사 구조 + 콜드오픈 문법 + 톤.
+장면 컴포넌트(훅·폰·삽질 카드·자막·푸터)는 셋이 공유한다.
+
+| | ship-it | fail (오늘의 삽질) | before-after |
+|---|---|---|---|
+| 서사 | 만든 것 → 데모 → 삽질 | 사고 선언 → 원인 → 고침 → 증명 | 어제는 이랬다 → 오늘 바뀐 것 → 화면 |
+| 콜드오픈 | `git log` 커밋 5줄 | ✗ 사고 한 줄 (warn색) | `git diff` — before / + after |
+| 컷 차이 | 기본 | 훅 키워드 warn색 | 삽질 카드 좌우 2열 대비 |
+
+- 대본 생성(script.ts)이 이야기에 맞는 템플릿을 고른다. **직전 편 템플릿을 프롬프트로
+  받아, 이야기가 강하게 요구하지 않는 한 직전 편과 다른 것을 고른다** — 자동 로테이션.
+- fail·before-after의 콜드오픈 재료는 failCard(before/after)라 해당 템플릿이면 필수.
+  재료가 없으면 log 콜드오픈으로, 커밋도 없으면 콜드오픈 없이 폴백 (`coldOpenKind`,
+  scripts/shorts-types.ts — scripts와 video가 같은 판정을 써야 영상 길이가 맞는다).
 
 ## 재생성 (덮어쓰기)
 

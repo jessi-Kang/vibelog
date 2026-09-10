@@ -9,7 +9,11 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
+import {
+  coldOpenKind,
+  type ShortsScript,
+  type ShortsTiming,
+} from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
 import {
   ArtCard,
@@ -117,8 +121,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
-  const coldOpen = script.commits?.length ? COLD_OPEN_SEC : 0;
+  const cold = coldOpenKind(script); // 템플릿별 콜드오픈 문법 (없으면 null)
+  const coldOpen = cold ? COLD_OPEN_SEC : 0;
   const offset = NARRATION_DELAY + coldOpen; // 화면 시간 = 오디오 시간 + offset
+  // fail 템플릿은 사고 리포트 톤 — 훅 키워드가 accent 대신 warn으로 켜진다
+  const hookTh =
+    script.template === "fail" && th.warn !== th.accent
+      ? { ...th, accent: th.warn }
+      : th;
   const total = totalSeconds(timing.duration, coldOpen);
   const segs = buildSegments(
     script, timing, total, Boolean(artFiles?.next), offset, coldOpen,
@@ -154,13 +164,24 @@ export const ShipIt: React.FC<ShipItProps> = ({
         if (opacity <= 0) return null;
         return (
           <AbsoluteFill key={i} style={{ opacity }}>
-            {seg.kind === "cold" && script.commits && (
+            {seg.kind === "cold" && cold && (
               <ColdOpen
+                variant={cold}
                 // 영문 영상엔 번역된 커밋 메시지 (없으면 ko 폴백 — 구버전 대본)
                 commits={
                   lang === "en" && script.commitsEn?.length
                     ? script.commitsEn
                     : script.commits
+                }
+                before={
+                  lang === "ko"
+                    ? script.failCard?.before
+                    : (script.failCard?.beforeEn ?? script.failCard?.before)
+                }
+                after={
+                  lang === "ko"
+                    ? script.failCard?.after
+                    : (script.failCard?.afterEn ?? script.failCard?.after)
                 }
                 th={th}
               />
@@ -170,7 +191,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 script={script}
                 lang={lang}
                 timing={timing}
-                th={th}
+                th={hookTh}
                 offsetSec={offset}
               />
             )}
@@ -196,6 +217,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 sceneStartSec={seg.from}
                 sceneEndSec={seg.to}
                 th={th}
+                split={script.template === "before-after"}
               />
             )}
             {seg.kind === "end" && <EndCard script={script} th={th} />}

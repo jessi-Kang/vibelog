@@ -109,6 +109,23 @@ export interface ShortsTiming {
   sentences: TimedSentence[];
 }
 
+/**
+ * 템플릿별 콜드오픈 문법 — 내레이션 전 2초를 무엇으로 여는지.
+ *   log(ship-it): git log 커밋 타이핑 / error(fail): ✗ 사고 한 줄 /
+ *   diff(before-after): git diff의 -before +after
+ * 재료(failCard)가 없으면 log로, 커밋도 없으면 콜드오픈 없음.
+ * scripts와 video 양쪽이 같은 판정을 써야 영상 길이가 어긋나지 않는다.
+ */
+export type ColdOpenKind = "log" | "error" | "diff";
+
+export function coldOpenKind(s: ShortsScript): ColdOpenKind | null {
+  if (s.template === "fail" && s.failCard?.before) return "error";
+  if (s.template === "before-after" && s.failCard?.before && s.failCard?.after) {
+    return "diff";
+  }
+  return s.commits?.length ? "log" : null;
+}
+
 export function shortsDir(repo: string): string {
   return `content/shorts/${repo}`;
 }
