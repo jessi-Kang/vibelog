@@ -76,7 +76,13 @@ export function MediaLightbox({
       role="dialog"
       aria-modal="true"
       aria-label={media.label}
-      onClick={onClose}
+      // 모바일: 탭이 네이티브 플레이어 컨트롤에 먹혀 클릭 핸들러가 안 올 수
+      // 있다 — pointerdown 캡처 단계에서 어디를 눌러도 컨트롤을 소환한다.
+      // 스크림 탭 닫기는 데스크톱만 (풀스크린에선 오작동 닫힘이 된다).
+      onPointerDownCapture={pokeUi}
+      onClick={() => {
+        if (window.matchMedia("(min-width: 768px)").matches) onClose();
+      }}
       className="fixed inset-0 z-50 flex items-stretch justify-center bg-bg-deep/90 md:items-center md:p-8"
     >
       {bothLangs && (
@@ -120,20 +126,13 @@ export function MediaLightbox({
           controls
           autoPlay
           playsInline
-          onClick={(e) => {
-            e.stopPropagation();
-            // 탭 = 컨트롤 다시 소환 (사라진 상태) / 이미 보이면 타이머만 연장
-            pokeUi();
-          }}
+          onClick={(e) => e.stopPropagation()}
           className="h-full w-full bg-bg-deep object-contain md:aspect-[9/16] md:h-[85dvh] md:w-auto md:rounded-lg md:border md:border-line"
         />
       ) : (
         // 폰 풀페이지 캡처는 세로로 매우 길다 — 팝업 안에서 세로 스크롤로 전체를 본다
         <div
-          onClick={(e) => {
-            e.stopPropagation();
-            pokeUi();
-          }}
+          onClick={(e) => e.stopPropagation()}
           className="h-full w-full overflow-y-auto overscroll-contain bg-bg md:h-auto md:max-h-[85dvh] md:w-[390px] md:rounded-lg md:border md:border-line"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
