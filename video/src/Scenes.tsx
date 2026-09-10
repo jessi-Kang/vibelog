@@ -82,7 +82,9 @@ export const HookCard: React.FC<{
         style={{
           fontFamily: FONT_SANS,
           fontWeight: 900,
-          fontSize: 132,
+          // 긴 훅은 줄여서 — 132px 고정이면 25자 넘는 문장이 글자 벽이 된다
+          // (Jessi 지적). 대본 규칙은 20자 안팎이지만 렌더도 방어한다.
+          fontSize: hook[lang].length > 24 ? 104 : 132,
           // 마커칠 키워드는 배경 상자가 글자 박스만큼 높다 — 줄간이 좁으면
           // 이웃 줄 글자를 덮는다 (Jessi 지적). 마커 테마만 줄간을 벌린다.
           lineHeight: th.keyword === "marker" ? 1.3 : 1.14,
