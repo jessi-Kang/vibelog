@@ -47,8 +47,11 @@ export interface ShortsLine {
   keywordsEn: string[];
   /** 이 장면을 은유하는 일러스트 묘사(영어) — art.ts가 이미지로 만든다. hook·next만 */
   art?: string;
-  /** 숫자 모먼트 — 문장 속 숫자+단위("16개","52초"). 말하는 순간 카운터로 박힌다 */
+  /** 숫자 모먼트 — 문장 속 숫자+단위("16개","52초"). 말하는 순간 카운터로 박힌다.
+   *  hook·end 장면에는 안 띄운다 — 헤드라인·엔드카드 위에 겹친다 */
   stat?: string;
+  /** en 문장 표기의 숫자+단위("16 commits","36-second") — 없으면(구버전) ko 폴백 */
+  statEn?: string;
 }
 
 export interface ShortsFailCard {

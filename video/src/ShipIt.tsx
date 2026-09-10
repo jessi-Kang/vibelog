@@ -285,19 +285,22 @@ export const ShipIt: React.FC<ShipItProps> = ({
         </span>
       </div>
 
-      {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트 */}
+      {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트.
+          hook·end 장면에는 안 띄운다 — 헤드라인·엔드카드 위에 겹쳐
+          어색하다 (Jessi 지적) */}
       {script.lines.map((l, i) => {
-        if (!l.stat) return null;
+        if (!l.stat || l.scene === "hook" || l.scene === "end") return null;
+        const stat = lang === "en" ? (l.statEn ?? l.stat) : l.stat;
         const sent = timing.sentences.find((x) => x.index === i);
         if (!sent) return null;
-        const digits = l.stat.match(/\d+/)?.[0];
+        const digits = stat.match(/\d+/)?.[0];
         const w = digits
           ? sent.words.find((x) => x.text.includes(digits))
           : undefined;
         return (
           <StatPunch
             key={`stat-${i}`}
-            stat={l.stat}
+            stat={stat}
             startSec={(w?.start ?? sent.start) + offset}
             th={th}
           />

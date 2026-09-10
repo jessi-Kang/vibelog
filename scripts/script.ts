@@ -56,7 +56,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 - 데브로그에 없는 사실을 지어내지 않는다. 과장·이모지 금지.
 - stat: 문장에 이야기의 핵심이 되는 숫자가 있으면 그 문장에만 stat으로 숫자+단위를
   적는다 (예: "16개", "52초", "11시"). 문장에 실제로 등장하는 표기 그대로.
+  statEn도 같은 규칙으로 en 문장의 표기 그대로 ("16 commits", "36-second").
   편당 최대 2문장 — 곁가지 숫자엔 붙이지 않는다. 없으면 생략.
+  hook·end 장면 문장에는 붙이지 않는다 — 카운터 그래픽이 헤드라인·엔드카드와 겹친다.
 - keywords: 각 ko 문장에서 강조할 곳 1~3개. 문장에 실제로 등장하는 단어(공백 단위
   토큰) 또는 연속된 단어 구("두 번", "밤 11시에")와 정확히 일치해야 한다.
   의미 단위를 통째로 — "두 번"에서 "번"만 강조하면 어색하다. keywordsEn도 en 문장에 대해 동일.
@@ -143,6 +145,9 @@ function validateLines(raw: unknown): ShortsLine[] {
       ...(typeof l.art === "string" && l.art.trim() ? { art: l.art.trim() } : {}),
       // 숫자 모먼트 — 숫자가 없는 stat은 카운터를 만들 수 없다
       ...(typeof l.stat === "string" && /\d/.test(l.stat) ? { stat: l.stat } : {}),
+      ...(typeof l.statEn === "string" && /\d/.test(l.statEn)
+        ? { statEn: l.statEn }
+        : {}),
     };
   });
 }
