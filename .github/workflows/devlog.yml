@@ -3,6 +3,11 @@ name: devlog
 on:
   schedule:
     - cron: "0 14 * * *" # 23:00 KST
+    # 백업 회차 — GitHub cron은 회차를 건너뛰기도 한다 (정각 직전 워크플로
+    # 수정, 공유 러너 부하). 23:00이 빠지면 이 회차가 대신 돈다. 이미 돌았으면
+    # run.ts의 SCHEDULE_GUARD가 바로 종료해 이중 발행·TTS 중복 비용이 없다.
+    # KST 자정(15:00 UTC) 전이어야 날짜 버킷이 안 밀린다.
+    - cron: "45 14 * * *" # 23:45 KST
   workflow_dispatch:
     inputs:
       regen:
@@ -71,6 +76,9 @@ jobs:
         env:
           REGEN: ${{ inputs.regen }}
           POSTER: ${{ inputs.poster }}
+          # 정기(cron) 회차에만 켠다 — 최근 100분 내 일반 실행이 있었으면
+          # 조용히 종료 (백업 회차의 중복 방지). 수동 Run workflow는 가드 없음.
+          SCHEDULE_GUARD: ${{ github.event_name == 'schedule' && '1' || '' }}
           # GH_PAT: fine-grained PAT (Contents/Metadata read, 모든 내 레포).
           # 없으면 GITHUB_TOKEN으로 폴백 — public 레포만 읽힌다.
           GH_PAT: ${{ secrets.GH_PAT }}

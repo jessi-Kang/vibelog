@@ -183,6 +183,22 @@ async function main(): Promise<void> {
   const state = loadState();
   const date = todayKST();
 
+  // 정기(cron) 회차 중복 가드 — 23:00과 23:45(백업) 두 회차가 걸려 있다.
+  // 최근 100분 안에 오늘 날짜의 일반 실행이 끝났으면 이 회차는 할 일이 없다.
+  // 수동 Run workflow에는 이 env가 없어서 같은 날 재실행이 그대로 된다.
+  if (process.env.SCHEDULE_GUARD === "1" && !collectOnly && !projectsOnly) {
+    const recentRun = Object.values(state).some(
+      (s) =>
+        s.lastDate === date &&
+        s.lastRun &&
+        Date.now() - new Date(s.lastRun).getTime() < 100 * 60 * 1000,
+    );
+    if (recentRun) {
+      console.log("오늘 밤 일반 실행이 이미 완료됨 — 백업 회차 종료");
+      return;
+    }
+  }
+
   if (projectsOnly) {
     // 짧은 주기 인식 배치 (projects.yml) — 새 프로젝트가 밤 23:00까지 기다리지
     // 않고 카드로 뜨게 한다. 카드의 "얼굴" 메타(목록·설명·홈페이지·상태·스택·

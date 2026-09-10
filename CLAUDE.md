@@ -33,7 +33,7 @@ content/state.json          레포별 마지막 처리 커밋 SHA / 시각
 scripts/collect.ts          GitHub API → 레포별 활동 수집
 scripts/generate.ts         수집 결과 → Claude API → MDX (KR/EN)
 scripts/run.ts              collect → generate → 파일 쓰기
-.github/workflows/devlog.yml   cron '0 14 * * *' (=23:00 KST) + workflow_dispatch
+.github/workflows/devlog.yml   cron 23:00 KST + 백업 23:45 (중복은 SCHEDULE_GUARD가 차단) + workflow_dispatch
 .github/workflows/projects.yml cron 30분 — 새 프로젝트 인식만 (run.ts --projects-only)
 video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 ```
