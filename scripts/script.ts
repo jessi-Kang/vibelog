@@ -77,8 +77,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   의미 단위를 통째로 — "두 번"에서 "번"만 강조하면 어색하다. keywordsEn도 en 문장에 대해 동일.
 - en은 같은 내용의 자연스러운 영어. 존댓말 뉘앙스는 평서체로.
   en 훅도 같은 규칙 — 짧게(6~9단어 안팎), 배경 설명 없이 사건부터, 뜻은 통하게.
-- template: 위 셋 중 이야기에 맞는 것을 고른다. 직전 편과 같은 템플릿은 이야기가
-  강하게 요구할 때만 — 애매하면 직전 편과 다른 것을 골라 구성을 돌린다.
+- template: 위 셋 중 이야기에 맞는 것을 고른다. 이웃 편(직전·다음)과 같은
+  템플릿은 이야기가 강하게 요구할 때만 — 애매하면 이웃과 다른 것을 골라
+  구성을 돌린다. 나란히 놓였을 때 같은 배지가 연달아 보이면 안 된다.
   "fail"과 "before-after"는 failCard가 콜드오픈 재료가 되므로 반드시 failCard를 채운다.
 - music: 이야기의 분위기에 맞는 배경음악 톤 하나 — "ship-it"(기본, 담담한 전진),
   "upbeat"(배포·성공으로 기분 좋은 날), "tense"(큰 삽질과 씨름한 날),
@@ -172,28 +173,35 @@ function validateLines(raw: unknown): ShortsLine[] {
 }
 
 /**
- * 직전 편이 쓴 템플릿 — 로테이션 재료. 같은 레포의 이전 대본 JSON에서 읽는다.
- * LLM에게 "직전 편과 다르게"를 시키려면 직전 편이 뭐였는지 알려줘야 한다.
+ * 이웃 편들이 쓴 템플릿 — 로테이션 재료. 같은 레포의 직전 편과 다음 편
+ * 대본 JSON에서 읽는다. 다음 편까지 보는 이유: 지난 날짜를 나중에 다시
+ * 생성하면(regen) "직전만 회피"로는 이미 발행된 다음 편과 겹칠 수 있다
+ * (9/9·9/10이 나란히 같은 템플릿이 된 사고).
  */
-function prevTemplate(repo: string, date: string): string | null {
+function neighborTemplates(
+  repo: string,
+  date: string,
+): { prev: string | null; next: string | null } {
   const dir = path.join(process.cwd(), "content", "shorts", repo);
-  if (!fs.existsSync(dir)) return null;
-  const prev = fs
+  if (!fs.existsSync(dir)) return { prev: null, next: null };
+  const dates = fs
     .readdirSync(dir)
     .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
     .map((f) => f.slice(0, 10))
-    .filter((d) => d < date)
-    .sort()
-    .pop();
-  if (!prev) return null;
-  try {
-    const s = JSON.parse(
-      fs.readFileSync(path.join(dir, `${prev}.json`), "utf8"),
-    );
-    return typeof s.template === "string" ? s.template : null;
-  } catch {
-    return null;
-  }
+    .sort();
+  const read = (d: string | undefined): string | null => {
+    if (!d) return null;
+    try {
+      const s = JSON.parse(fs.readFileSync(path.join(dir, `${d}.json`), "utf8"));
+      return typeof s.template === "string" ? s.template : null;
+    } catch {
+      return null;
+    }
+  };
+  return {
+    prev: read(dates.filter((d) => d < date).pop()),
+    next: read(dates.find((d) => d > date)),
+  };
 }
 
 /** 이 레포의 몇 번째 데브로그인지 (DAY NN) */
@@ -253,7 +261,10 @@ export async function generateScript(
         content: [
           `레포: ${repo}`,
           `날짜: ${date}`,
-          `직전 편 템플릿: ${prevTemplate(repo, date) ?? "(첫 편)"}`,
+          (() => {
+            const n = neighborTemplates(repo, date);
+            return `이웃 편 템플릿 — 직전: ${n.prev ?? "(없음)"}, 다음: ${n.next ?? "(없음)"}`;
+          })(),
           `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
           `데브로그 제목: ${data.title ?? ""}`,
           "데브로그 본문:",
