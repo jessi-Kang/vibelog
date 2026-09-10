@@ -23,6 +23,22 @@ async function shot(page: Page, dir: string, n: number): Promise<number> {
   return n + 1;
 }
 
+/**
+ * 언어 전환 완료 대기 — SSR은 항상 ko로 그려지고 마운트 후 저장값으로
+ * 전환된다(components/lang.tsx). en 녹화에서 이 전환을 기다리지 않으면
+ * 한국어 화면이 소재에 섞인다 (Jessi 지적). lang.tsx가 <html lang>을
+ * 갱신하므로 그걸 신호로 쓴다. 구버전 배포(신호 없음)면 타임아웃 후 진행.
+ */
+async function waitForLang(page: Page, lang: "ko" | "en"): Promise<void> {
+  await page
+    .waitForFunction((l) => document.documentElement.lang === l, lang, {
+      timeout: 8000,
+    })
+    .catch(() => {
+      console.warn(`<html lang="${lang}"> 신호 없음 — 구버전 배포일 수 있음`);
+    });
+}
+
 async function slowScroll(page: Page, px: number): Promise<void> {
   const step = 8;
   for (let y = 0; y < px; y += step) {
@@ -31,7 +47,11 @@ async function slowScroll(page: Page, px: number): Promise<void> {
   }
 }
 
-async function defaultTour(page: Page, shotsDir: string): Promise<void> {
+async function defaultTour(
+  page: Page,
+  shotsDir: string,
+  lang: "ko" | "en",
+): Promise<void> {
   let n = 0;
   await page.waitForTimeout(1200);
   n = await shot(page, shotsDir, n);
@@ -39,7 +59,10 @@ async function defaultTour(page: Page, shotsDir: string): Promise<void> {
   await page.waitForTimeout(600);
   n = await shot(page, shotsDir, n);
 
-  // 상위 내부 링크 1~2개 방문
+  // 상위 내부 링크 1~2개 방문 — 링크를 "클릭"해서 클라이언트 네비게이션으로
+  // 이동한다. page.goto(풀 리로드)는 페이지마다 SSR 한국어가 다시 그려져
+  // en 녹화 중간에 한국어가 번쩍인다 (Jessi 지적). 클릭이면 React 상태가
+  // 유지되어 언어가 흔들리지 않는다.
   const links = await page
     .locator("a[href^='/']")
     .evaluateAll((as) =>
@@ -48,9 +71,15 @@ async function defaultTour(page: Page, shotsDir: string): Promise<void> {
       ),
     );
   for (const href of links.slice(0, 2)) {
-    await page.goto(new URL(href, page.url()).toString(), {
-      waitUntil: "domcontentloaded",
-    });
+    try {
+      await page.locator(`a[href="${href}"]`).first().click({ timeout: 3000 });
+    } catch {
+      // 클릭 실패(화면 밖·가림)만 풀 리로드로 폴백 — 이때는 전환을 기다린다
+      await page.goto(new URL(href, page.url()).toString(), {
+        waitUntil: "domcontentloaded",
+      });
+      await waitForLang(page, lang);
+    }
     await page.waitForTimeout(1000);
     n = await shot(page, shotsDir, n);
     await slowScroll(page, 700);
@@ -63,6 +92,7 @@ async function runSteps(
   steps: string[],
   baseUrl: string,
   shotsDir: string,
+  lang: "ko" | "en",
 ): Promise<void> {
   let n = 0;
   for (const step of steps) {
@@ -73,6 +103,8 @@ async function runSteps(
         await page.goto(new URL(arg, baseUrl).toString(), {
           waitUntil: "domcontentloaded",
         });
+        // 풀 리로드는 SSR ko부터 다시 그린다 — 전환이 끝난 뒤 진행
+        await waitForLang(page, lang);
         n = await shot(page, shotsDir, n);
       } else if (cmd === "scroll") {
         await slowScroll(page, Number(arg) || 600);
@@ -154,6 +186,10 @@ export async function record(
   const started = Date.now();
   await page.goto(script.demo.url, { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(1200);
+  // en이면 언어 전환(SSR ko → 저장값 en)이 끝날 때까지 기다린 뒤에야
+  // "준비됨"이다 — 안 기다리면 한국어 화면이 readyAt 뒤에 남는다 (Jessi 지적)
+  await waitForLang(page, lang);
+  await page.waitForTimeout(300);
   // 녹화 시작~페이지 준비까지의 구간은 로딩 화면이다. Remotion이 이 지점부터
   // 재생하도록 메타로 남긴다 (프레임 단위 합성이라 여기서 정확히 잘린다).
   const readyAt = (Date.now() - started) / 1000;
@@ -163,9 +199,9 @@ export async function record(
   );
   const ready = Date.now();
   if (script.demo.steps.length > 0) {
-    await runSteps(page, script.demo.steps, script.demo.url, shotsDir);
+    await runSteps(page, script.demo.steps, script.demo.url, shotsDir, lang);
   } else {
-    await defaultTour(page, shotsDir);
+    await defaultTour(page, shotsDir, lang);
   }
   // 데모 구간 길이는 준비 시점(readyAt) 이후 기준으로 채운다
   const remain = durationSec * 1000 - (Date.now() - ready);
