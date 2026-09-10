@@ -84,10 +84,9 @@ export const Captions: React.FC<{
           lineHeight: th.keyword === "marker" ? 1.42 : 1.3,
           wordBreak: "keep-all",
           textWrap: "balance",
-          // 라이트 테마는 어두운 그림자가 지저분하다 — 밝은 글로우로
-          textShadow: th.light
-            ? "0 2px 18px rgba(255,255,255,.7)"
-            : "0 4px 24px rgba(0,0,0,.6)",
+          // 글자 그림자(다크 검은 그림자·라이트 흰 글로우)는 하이라이트 상자
+          // 주변이 뿌옇게 번져 보여 제거 (Jessi 지시). 자막은 폰 프레임 아래
+          // 안전 구역에만 놓이므로 그림자 없이도 배경과 안 겹친다.
           color: th.ink,
         }}
       >
