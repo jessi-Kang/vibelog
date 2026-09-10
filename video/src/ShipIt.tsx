@@ -134,6 +134,16 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const segs = buildSegments(
     script, timing, total, Boolean(artFiles?.next), offset, coldOpen,
   );
+  // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
+  // 같은 데모 연출이 연속되지 않는다 (Jessi 지시)
+  const demoOrdinal = new Map<number, number>();
+  segs.forEach((s, i) => {
+    if (s.kind === "phone") demoOrdinal.set(i, demoOrdinal.size);
+  });
+  const shotOf = (i: number) =>
+    (["phone", "band", "duo"] as const)[
+      (Math.max(0, script.day - 1) + (demoOrdinal.get(i) ?? 0)) % 3
+    ];
 
   // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은
   // 경계부터 뜬다. 크로스페이드는 레이아웃이 다른 장면끼리 애매하게
@@ -224,6 +234,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 fromSec={seg.from}
                 toSec={seg.to}
                 segIndex={i}
+                shot={shotOf(i)}
               />
             )}
             {seg.kind === "fail" && (
