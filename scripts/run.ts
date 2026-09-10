@@ -32,8 +32,10 @@ function loadState(): State {
   }
 }
 
-function autoStatus(a: RepoActivity): "building" | "live" | "paused" {
-  if (a.homepage) return "live";
+function autoStatus(a: RepoActivity): "building" | "preview" | "live" | "paused" {
+  // 배포 주소가 있어도 릴리즈 선언(About Website 직접 채움 또는 GitHub
+  // Release 발행) 전이면 preview — 가배포와 정식 공개를 구분한다.
+  if (a.homepage) return a.released ? "live" : "preview";
   const days = (Date.now() - new Date(a.pushedAt).getTime()) / 86400000;
   return days <= 30 ? "building" : "paused";
 }

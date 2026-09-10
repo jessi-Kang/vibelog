@@ -118,6 +118,8 @@ const STATUS_META: Record<
 > = {
   idea: { label: "idea", text: "text-ink-soft", stripe: "#c9cfd8" },
   building: { label: "building", text: "text-warn", stripe: "#ffb454" },
+  // 배포는 됐지만 아직 릴리즈 선언 전 — live(민트)와 구분되는 블루
+  preview: { label: "preview", text: "text-[#7fb0ff]", stripe: "#7fb0ff" },
   live: { label: "live", text: "text-accent", stripe: "#5ee1c3" },
   paused: { label: "paused", text: "text-muted", stripe: "#3a4656" },
 };

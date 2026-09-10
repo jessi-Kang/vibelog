@@ -5,7 +5,7 @@
  * 고정 레일 — 남는 좌우 여백을 미디어에 쓴다. 모바일·태블릿: 기존 세로 순서.
  */
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
@@ -37,10 +37,19 @@ export interface PostData {
   };
 }
 
+// 본문 속 링크는 전부 외부(레포·문서 등)라 새 창으로 — 읽던 글을 잃지 않게 (Jessi 지시)
+const mdComponents = {
+  a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a {...props} target="_blank" rel="noopener noreferrer" />
+  ),
+};
+
 function Md({ children }: { children: string }) {
   return (
     <div className="text-md leading-[1.75] text-ink-soft [text-wrap:pretty] [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+        {children}
+      </ReactMarkdown>
     </div>
   );
 }
@@ -158,7 +167,7 @@ export function PostClient({ post }: { post: PostData }) {
             </section>
           ) : (
             <div className="prose-devlog">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
                 {post.body}
               </ReactMarkdown>
             </div>

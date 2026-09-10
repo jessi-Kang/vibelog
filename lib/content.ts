@@ -4,7 +4,7 @@ import matter from "gray-matter";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
-export type ProjectStatus = "idea" | "building" | "live" | "paused";
+export type ProjectStatus = "idea" | "building" | "preview" | "live" | "paused";
 
 export interface Project {
   slug: string; // 레포 이름
