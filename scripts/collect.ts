@@ -284,7 +284,10 @@ async function getVercelProjectMap(): Promise<Map<string, string>> {
     };
     for (const p of data.projects ?? []) {
       if (p.link?.type === "github" && p.link.repo) {
-        map.set(p.link.repo.toLowerCase(), p.id);
+        // 같은 레포에 프로젝트가 둘 연결된 경우(signalConsole이 실제 그렇다):
+        // API가 최근 활동순으로 주므로 첫 것(활발한 쪽)을 지킨다
+        const key = p.link.repo.toLowerCase();
+        if (!map.has(key)) map.set(key, p.id);
       }
     }
   } catch {
@@ -434,7 +437,10 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
     // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
     const commits = allCommits.filter(
-      (c) => !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦)/.test(c.message),
+      (c) =>
+        !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦|쇼츠 썸네일 재추출|새 프로젝트 인식)/.test(
+          c.message,
+        ),
     );
 
     // 활동 판정은 체크포인트 sha "이후" 커밋만 센다 (목록은 최신순).
