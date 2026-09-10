@@ -21,6 +21,7 @@ import {
   keywordIndices,
   keywordStyle,
   NARRATION_DELAY,
+  visualLen,
   type ShortsTheme,
 } from "./theme";
 
@@ -84,7 +85,8 @@ export const HookCard: React.FC<{
           fontWeight: 900,
           // 긴 훅은 줄여서 — 132px 고정이면 25자 넘는 문장이 글자 벽이 된다
           // (Jessi 지적). 대본 규칙은 20자 안팎이지만 렌더도 방어한다.
-          fontSize: hook[lang].length > 24 ? 104 : 132,
+          // 기준은 시각 폭(한글 1·영문 0.5) — 영어가 억울하게 줄지 않게.
+          fontSize: visualLen(hook[lang]) > 24 ? 104 : 132,
           // 마커칠 키워드는 배경 상자가 글자 박스만큼 높다 — 줄간이 좁으면
           // 이웃 줄 글자를 덮는다 (Jessi 지적). 마커 테마만 줄간을 벌린다.
           lineHeight: th.keyword === "marker" ? 1.3 : 1.14,
@@ -100,14 +102,17 @@ export const HookCard: React.FC<{
           const at = starts ? starts[i] : -Infinity;
           const p = Math.min(1, Math.max(0, (t - at) / 0.3));
           const isKw = kwOn.has(i);
-          // 키워드 점화 팝 — 켜지는 순간 살짝 튀었다 자리잡는다
-          const pop = isKw && starts
-            ? interpolate(t, [at, at + 0.32], [1.12, 1], {
-                extrapolateLeft: "clamp",
-                extrapolateRight: "clamp",
-                easing: Easing.out(Easing.back(1.4)),
-              })
-            : 1;
+          // 키워드 점화 팝 — 켜지는 순간 살짝 튀었다 자리잡는다.
+          // 켜지기 전엔 1 — clamp가 시작값(1.12)을 미리 적용하면 아직 안
+          // 말한 키워드가 커진 채 이웃 단어 간격을 먹는다 (영문 검증에서 발견)
+          const pop =
+            isKw && starts && t >= at
+              ? interpolate(t, [at, at + 0.32], [1.12, 1], {
+                  extrapolateLeft: "clamp",
+                  extrapolateRight: "clamp",
+                  easing: Easing.out(Easing.back(1.4)),
+                })
+              : 1;
           return (
             <React.Fragment key={i}>
               <span
@@ -490,8 +495,8 @@ export const FailCard: React.FC<{
           letterSpacing: "-0.02em",
           // 긴 제목은 줄여서 — 110px 고정이면 "두 번" 같은 의미 단위
           // 한가운데서 줄이 꺾인다 (Jessi 지적). 작아지면 쉼표·어절
-          // 경계에서 자연스럽게 나뉜다.
-          fontSize: title.length > 10 ? 88 : 110,
+          // 경계에서 자연스럽게 나뉜다. 기준은 시각 폭(한글 1·영문 0.5).
+          fontSize: visualLen(title) > 10 ? 88 : 110,
           lineHeight: 1.08,
           margin: "20px 0 60px",
           wordBreak: "keep-all",
