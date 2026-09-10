@@ -131,6 +131,21 @@ export function keywordIndices(
   return on;
 }
 
+/**
+ * 시각 폭 기준 글자 수 — 한글(전각)은 1, 영문·숫자(반각)는 0.5로 센다.
+ * "긴 문장은 글자를 줄인다" 기준을 글자 수로 재면 영어가 억울해진다:
+ * 같은 폭에 라틴 글자가 두 배쯤 들어가기 때문 (Jessi 확인 질문에서 발견).
+ */
+export function visualLen(text: string): number {
+  let n = 0;
+  for (const ch of text) {
+    n += /[ᄀ-ᇿ　-鿿가-힯豈-﫿]/.test(ch)
+      ? 1
+      : 0.5;
+  }
+  return n;
+}
+
 /** 하위 호환 — 기존 코드가 쓰던 기본 팔레트 (terminal과 동일) */
 export const COLORS = THEMES.terminal;
 
