@@ -139,6 +139,11 @@ export const HookCard: React.FC<{
   );
 };
 
+/** 데모 샷 종류 — 매 데모 장면이 같은 폰 컷이면 중반이 늘어진다 (Jessi 지시).
+ *  phone(베젤+켄 번스) / band(와이드 밴드 크롭+세로 팬) / duo(두 시점 겹치기).
+ *  녹화가 390×844라 1080 풀블리드는 화질이 무너진다 — 셋 다 업스케일 ~2배 이내. */
+export type DemoShot = "phone" | "band" | "duo";
+
 /** 폰 프레임 + 데모 녹화. videoFile이 없으면 플레이스홀더 패널 */
 export const PhoneFrame: React.FC<{
   videoFile: string | null;
@@ -151,6 +156,8 @@ export const PhoneFrame: React.FC<{
   fromSec?: number;
   toSec?: number;
   segIndex?: number;
+  /** 데모 연출 — day+장면 순번으로 로테이션. 녹화 없으면 phone 플레이스홀더 */
+  shot?: DemoShot;
 }> = ({
   videoFile,
   sourceOffsetSec,
@@ -160,10 +167,121 @@ export const PhoneFrame: React.FC<{
   fromSec,
   toSec,
   segIndex = 0,
+  shot = "phone",
 }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const t = frame / fps;
+  const clamp0 = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const span =
+    fromSec != null && toSec != null && toSec > fromSec
+      ? ([fromSec, toSec] as const)
+      : null;
+
+  if (videoFile && shot === "band") {
+    // 와이드 밴드 크롭 — 베젤 없이 화면 중앙을 크게. 안에서 천천히 아래로 팬
+    const panY = span ? interpolate(t, [...span], [18, 46], clamp0) : 30;
+    const zoom = span ? interpolate(t, [...span], [1.0, 1.07], clamp0) : 1;
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 460,
+          transform: `translateX(-50%) scale(${zoom})`,
+          width: 830,
+          height: 740,
+          borderRadius: Math.max(20, th.radius),
+          overflow: "hidden",
+          border: `2px solid ${th.line}`,
+          background: th.panel,
+          boxShadow: th.light
+            ? "0 30px 90px rgba(23,26,31,.16)"
+            : "0 40px 120px rgba(0,0,0,.55)",
+        }}
+      >
+        <Sequence from={fromFrame} durationInFrames={durationInFrames} layout="none">
+          <OffthreadVideo
+            src={staticFile(videoFile)}
+            muted
+            startFrom={Math.round(sourceOffsetSec * fps)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: `50% ${panY}%`,
+            }}
+          />
+        </Sequence>
+      </div>
+    );
+  }
+
+  if (videoFile && shot === "duo") {
+    // 두 시점 겹치기 — 같은 녹화의 다른 순간 두 장면을 작은 폰 두 대로.
+    // 작게 그려서 오히려 선명하다 (업스케일 1.2배)
+    const lift = span ? interpolate(t, [...span], [8, -8], clamp0) : 0;
+    const phones: {
+      left?: number;
+      right?: number;
+      top: number;
+      rot: number;
+      offset: number;
+      dy: number;
+      z: number;
+    }[] = [
+      { right: 108, top: 420, rot: 2.5, offset: 3, dy: -lift, z: 1 },
+      { left: 108, top: 300, rot: -2.5, offset: 0, dy: lift, z: 2 },
+    ];
+    return (
+      <>
+        {phones.map((p, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: p.left,
+              right: p.right,
+              top: p.top,
+              zIndex: p.z,
+              transform: `translateY(${p.dy}px) rotate(${p.rot}deg)`,
+              width: 470,
+              height: 800,
+              borderRadius: Math.max(20, th.radius * 1.8),
+              background: th.light ? "#fff" : "#000",
+              border: `4px solid ${th.light ? "#D5DAE0" : th.line}`,
+              boxShadow: th.light
+                ? "0 24px 70px rgba(23,26,31,.18)"
+                : `0 30px 90px rgba(0,0,0,.6), 0 0 0 2px ${th.bg}`,
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                inset: 10,
+                borderRadius: Math.max(14, th.radius * 1.4),
+                overflow: "hidden",
+                background: th.panel,
+              }}
+            >
+              <Sequence
+                from={fromFrame}
+                durationInFrames={durationInFrames}
+                layout="none"
+              >
+                <OffthreadVideo
+                  src={staticFile(videoFile)}
+                  muted
+                  startFrom={Math.round((sourceOffsetSec + p.offset) * fps)}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </Sequence>
+            </div>
+          </div>
+        ))}
+      </>
+    );
+  }
   // 정지된 폰은 3초만 지나도 밋밋하다 — 장면마다 방향을 바꾸는 느린 줌
   // (1.0↔1.12)에 수직 드리프트를 겹쳐 켄 번스식 촬영감을 준다.
   // 1.05는 전혀 안 느껴졌다 (Jessi 지적) — 줌 폭과 틸트를 키웠다.
