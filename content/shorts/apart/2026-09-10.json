@@ -8,60 +8,59 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "닮지도 않은 이름에 경고가 222건 떴습니다.",
-      "en": "222 warnings on names that look nothing alike.",
+      "ko": "닮지도 않은 이름 222건에 경고가 떴습니다.",
+      "en": "222 unlike names got flagged as too similar.",
       "keywords": [
-        "222건"
+        "222건에",
+        "경고가"
       ],
       "keywordsEn": [
-        "222 warnings"
+        "222",
+        "flagged"
       ]
     },
     {
       "scene": "fail",
-      "ko": "두 이름이 얼마나 다른지 점수로 잽니다.",
-      "en": "There is a routine that scores how different two names are.",
+      "ko": "차이 점수를 세다 일찍 멈추면 3점을 줬습니다.",
+      "en": "The difference score returned 3 when it exited early.",
       "keywords": [
-        "점수로"
+        "차이 점수를",
+        "3점을"
       ],
       "keywordsEn": [
-        "scores"
+        "difference score",
+        "3"
       ]
     },
     {
       "scene": "fail",
-      "ko": "확실히 다르면 임시 점수 3점을 주고 멈추게 했습니다.",
-      "en": "When they were clearly far apart, it stopped early with a placeholder score of 3.",
-      "keywords": [],
-      "keywordsEn": [
-        "placeholder score of 3"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "그 3점이 하필 비슷한 이름 판정 범위 안이었습니다.",
-      "en": "But 3 sat right inside the too-similar range.",
+      "ko": "그 3점이 비슷하다는 판정 범위 안이었습니다.",
+      "en": "And 3 fell inside the too-similar range.",
       "keywords": [
         "3점이",
-        "비슷한 이름"
+        "판정 범위"
       ],
       "keywordsEn": [
+        "3",
         "too-similar range"
       ]
     },
     {
       "scene": "build",
-      "ko": "임시 점수를 판정 범위 밖 큰 수로 바꿨습니다.",
-      "en": "I swapped the placeholder for a large number outside that range.",
-      "keywords": [],
+      "ko": "임시 점수를 범위 밖 큰 수로 바꿨습니다.",
+      "en": "I moved the placeholder outside that range.",
+      "keywords": [
+        "범위 밖 큰 수로"
+      ],
       "keywordsEn": [
-        "large number"
-      ]
+        "outside that range"
+      ],
+      "screen": "/findreal"
     },
     {
       "scene": "build",
-      "ko": "경고는 222건에서 0건이 됐습니다.",
-      "en": "That brought 222 warnings down to 0 across the board.",
+      "ko": "경고는 0건이 됐습니다.",
+      "en": "Warnings dropped to 0.",
       "keywords": [
         "0건이"
       ],
@@ -69,53 +68,66 @@
         "0"
       ],
       "stat": "0건",
-      "statEn": "0 warnings"
+      "statEn": "0 warnings",
+      "screen": "/findreal"
     },
     {
       "scene": "demo",
-      "ko": "하루 10문제, 전국이 같은 문제를 받습니다.",
-      "en": "10 questions a day, the same ones nationwide.",
+      "ko": "하루 10문제를 전국 누구나 똑같이 받습니다.",
+      "en": "Everyone gets the same 10 questions each day.",
       "keywords": [
-        "10문제"
+        "10문제를",
+        "전국"
       ],
       "keywordsEn": [
-        "10 questions",
-        "the same ones"
+        "10 questions"
       ],
       "stat": "10문제",
-      "statEn": "10 questions"
+      "statEn": "10 questions",
+      "screen": "/findreal"
     },
     {
       "scene": "demo",
-      "ko": "다 풀면 등급이 나오고, 결과는 링크로 공유됩니다.",
-      "en": "Finish and you get a grade you can share as a link.",
+      "ko": "정답은 서버만 알아서 미리 볼 수 없습니다.",
+      "en": "Answers live only on the server, so no peeking.",
       "keywords": [
-        "등급이",
-        "링크로 공유됩니다"
+        "서버만"
       ],
       "keywordsEn": [
-        "a grade",
-        "as a link"
-      ]
+        "only on the server"
+      ],
+      "screen": "/findreal"
     },
     {
       "scene": "next",
-      "ko": "실제 단지 자료는 사람이 검토한 뒤에만 문제로 올립니다.",
-      "en": "Real complex records only go into the pool after a person reviews them.",
+      "ko": "지금 문제의 단지 정보는 샘플입니다.",
+      "en": "The complex data in the questions is still sample material.",
       "keywords": [
-        "사람이 검토한 뒤에만"
+        "샘플입니다"
       ],
       "keywordsEn": [
-        "after a person reviews them"
+        "sample material"
       ],
-      "art": "a person holding a magnifying glass over a single paper card before dropping it into a wooden box"
+      "art": "a stack of blank paper forms on a wooden counter, the top one still unstamped"
+    },
+    {
+      "scene": "next",
+      "ko": "실제 자료는 사람이 검토한 뒤에만 올립니다.",
+      "en": "Real records go live only after a person reviews them.",
+      "keywords": [
+        "사람이 검토한"
+      ],
+      "keywordsEn": [
+        "after a person reviews"
+      ],
+      "art": "a magnifying glass hovering over a single index card resting in a small tray"
     },
     {
       "scene": "end",
-      "ko": "기획서에서 돌아가는 게임까지, 하루 걸렸습니다.",
-      "en": "From a planning document to a working game in one day.",
+      "ko": "하루 만에 기획서에서 돌아가는 게임까지 갔습니다.",
+      "en": "From a planning doc to a working game in one day.",
       "keywords": [
-        "하루"
+        "하루 만에"
       ],
       "keywordsEn": [
         "one day"
@@ -127,12 +139,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "닮지 않은 이름에 경고 222건",
-    "titleEn": "222 warnings on unlike names",
-    "before": "계산을 일찍 끝낼 때 준 임시 점수가 비슷한 이름 범위에 들어갔습니다.",
-    "after": "임시 점수를 범위 밖 큰 수로 바꾸니 경고가 0건이 됐습니다.",
-    "beforeEn": "The placeholder score for early exits fell inside the too-similar range.",
-    "afterEn": "A large placeholder outside that range brought the warnings to 0."
+    "title": "임시 점수 3점의 함정",
+    "titleEn": "The placeholder score of 3",
+    "before": "닮지도 않은 이름 222건에 경고가 떴습니다.",
+    "after": "임시 점수를 판정 범위 밖으로 옮기니 경고가 0건이 됐습니다.",
+    "beforeEn": "222 pairs that look nothing alike got flagged.",
+    "afterEn": "Moving the placeholder outside the range brought warnings to 0."
   },
   "commits": [
     [
@@ -277,22 +289,22 @@
   "commitCount": 17,
   "handle": "apt-gam.vercel.app",
   "captions": {
-    "ko": "아파트 이름이 진짜인지 가짜인지 맞히는 퀴즈를 하루 만에 만들었고, 닮지도 않은 이름에 경고 222건이 뜬 이유를 찾았습니다.",
-    "en": "Built a real-or-fake apartment name quiz in a single day, and tracked down why 222 warnings fired on names that look nothing alike."
+    "ko": "아파트 이름이 진짜인지 맞히는 하루 10문제 퀴즈를 하루 만에 만들었습니다. 이름 검사에서 경고 222건이 뜬 이유는 계산을 일찍 멈출 때 준 임시 점수 3점이었습니다.",
+    "en": "Built a ten-questions-a-day quiz about real versus made-up apartment names in a single day. The 222 bogus warnings came from a placeholder score of 3 handed back on early exits."
   },
   "hashtags": [
     "#개발",
-    "#디버깅",
-    "#사이드프로젝트",
-    "#퀴즈게임",
+    "#삽질",
     "#devlog",
-    "#debugging",
-    "#buildinpublic"
+    "#buildinpublic",
+    "#퀴즈게임",
+    "#indiedev",
+    "#vibelog"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvorinf",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvorlds",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvoswqx",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvosy7r"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvphfgf",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvphio8",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvpiumx",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvpix2l"
   }
 }
