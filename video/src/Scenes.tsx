@@ -60,7 +60,9 @@ export const HookCard: React.FC<{
           fontFamily: FONT_SANS,
           fontWeight: 900,
           fontSize: 132,
-          lineHeight: 1.14,
+          // 마커칠 키워드는 배경 상자가 글자 박스만큼 높다 — 줄간이 좁으면
+          // 이웃 줄 글자를 덮는다 (Jessi 지적). 마커 테마만 줄간을 벌린다.
+          lineHeight: th.keyword === "marker" ? 1.3 : 1.14,
           letterSpacing: "-0.01em",
           margin: 0,
           wordBreak: "keep-all",
