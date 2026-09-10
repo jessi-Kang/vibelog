@@ -20,6 +20,7 @@ export interface Project {
   lastActivity: string; // ISO date
   weekCommits?: number; // collect 단계에서 계산
   todayCommits?: number; // 오늘(KST) 커밋 수 — 홈 "오늘 커밋"
+  countsDate?: string; // 위 카운트들의 기준 날짜(KST) — 자정 지나면 화면이 0으로 판정
   totalCommits?: number; // 레포 전체 누적 커밋 — 프로젝트 상세
 }
 

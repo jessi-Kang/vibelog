@@ -89,6 +89,9 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     weekCommits: a.weekCommits,
     todayCommits: a.todayCommits,
     totalCommits: a.totalCommits,
+    // 이 카운트들이 어느 날(KST) 기준인지 — 화면이 "오늘 커밋"을 보여줄 때
+    // 방문 시점의 오늘과 비교해, 자정이 지났으면 0부터 다시 센다 (Jessi 지시)
+    countsDate: todayKST(),
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
     ...(a.theme ? { theme: a.theme } : {}),
   }));
@@ -234,8 +237,14 @@ async function main(): Promise<void> {
         p.stack ?? [],
         p.theme ?? "",
       ]);
+    // 자정이 지나 카운트 기준 날짜가 어제가 됐으면 하루 1번 재계산해 쓴다 —
+    // "오늘 커밋"이 0으로 리셋된 뒤 이른 아침 커밋도 첫 배치에서 잡힌다.
+    const countsStale = activities.some(
+      (a) => prev.get(a.repo)?.countsDate !== date,
+    );
     const changed =
       prev.size !== activities.length ||
+      countsStale ||
       activities.some((a) => meta(a) !== prevMeta(prev.get(a.repo)));
     if (!changed) {
       console.log(`프로젝트 변화 없음 (${activities.length}개) — 쓰기 생략`);

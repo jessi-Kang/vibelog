@@ -72,6 +72,15 @@ function emphasizeRepo(text: string): ReactNode {
   );
 }
 
+/** "오늘/어제/N일 전"을 방문 시점 기준으로 — 정적 빌드 값은 자정이 지나면
+ * 어긋난다 ("오늘 커밋"과 같은 문제). 서버 렌더 값과 다를 수 있어 경고 억제. */
+export function LastActive({ iso }: { iso: string }) {
+  const { lang } = useLang();
+  return (
+    <span suppressHydrationWarning>{humanizeLastActive(iso, lang)}</span>
+  );
+}
+
 export function RunLog({ lines }: { lines: RunLogLine[] }) {
   const { lang } = useLang();
   const pick = (l: RunLogLine) =>
