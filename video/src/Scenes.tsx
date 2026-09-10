@@ -9,7 +9,11 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
+import type {
+  ShortsScript,
+  ShortsTiming,
+  TimedSentence,
+} from "../../scripts/shorts-types";
 import { interpolate, Easing } from "remotion";
 import {
   FONT_MONO,
@@ -35,17 +39,22 @@ export const HookCard: React.FC<{
 }> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const t = frame / fps - offsetSec; // 오디오 시간
   const hookLines = script.lines
     .map((l, i) => ({ l, i }))
     .filter((x) => x.l.scene === "hook");
   let hook = hookLines[0]?.l;
+  let sent: TimedSentence | undefined;
   if (!hook) return null;
   if (timing) {
-    const t = frame / fps - offsetSec;
     for (const s of timing.sentences) {
       const x = hookLines.find((h) => h.i === s.index);
-      if (x && t >= s.start) hook = x.l;
+      if (x && t >= s.start) {
+        hook = x.l;
+        sent = s;
+      }
     }
+    sent ??= timing.sentences.find((s) => s.index === hookLines[0].i);
   }
   const words = hook[lang].split(/\s+/);
   // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다
@@ -53,6 +62,12 @@ export const HookCard: React.FC<{
     words,
     lang === "ko" ? hook.keywords : hook.keywordsEn,
   );
+  // 단어별 발화 시각 — ElevenLabs 토큰 수가 표기 단어 수와 같을 때만
+  // (다르면 정적 표시 폴백). 말하는 순간 떠오르는 모션의 기준.
+  const starts =
+    sent && sent.words.length === words.length
+      ? sent.words.map((w) => w.start)
+      : null;
   return (
     <div
       style={{
@@ -78,14 +93,36 @@ export const HookCard: React.FC<{
           color: th.ink,
         }}
       >
-        {words.map((w, i) => (
-          <React.Fragment key={i}>
-            <span style={kwOn.has(i) ? keywordStyle(th, 1) : undefined}>
-              {w}
-            </span>
-            {i < words.length - 1 ? " " : null}
-          </React.Fragment>
-        ))}
+        {words.map((w, i) => {
+          // 말하는 순간 14px 아래서 떠오르며 켜진다 — 자막과 같은 문법
+          const at = starts ? starts[i] : -Infinity;
+          const p = Math.min(1, Math.max(0, (t - at) / 0.3));
+          const isKw = kwOn.has(i);
+          // 키워드 점화 팝 — 켜지는 순간 살짝 튀었다 자리잡는다
+          const pop = isKw && starts
+            ? interpolate(t, [at, at + 0.32], [1.12, 1], {
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+                easing: Easing.out(Easing.back(1.4)),
+              })
+            : 1;
+          return (
+            <React.Fragment key={i}>
+              <span
+                style={{
+                  display: "inline-block",
+                  opacity: 0.25 + 0.75 * p,
+                  transform: `translateY(${14 * (1 - p)}px) scale(${pop})`,
+                  transformOrigin: "50% 80%",
+                  ...(isKw && p > 0 ? keywordStyle(th, 1) : {}),
+                }}
+              >
+                {w}
+              </span>
+              {i < words.length - 1 ? " " : null}
+            </React.Fragment>
+          );
+        })}
       </h1>
       <p
         style={{
@@ -376,67 +413,96 @@ export const FailCard: React.FC<{
   );
 };
 
-export const EndCard: React.FC<{ script: ShortsScript; th: ShortsTheme }> = ({
-  script,
-  th,
-}) => (
-  <div
-    style={{
-      position: "absolute",
-      left: 80,
-      right: 80,
-      top: "50%",
-      transform: "translateY(-52%)",
-    }}
-  >
-    <h1
-      style={{
-        fontFamily: FONT_SANS,
-        fontWeight: 900,
-        fontSize: 120,
-        lineHeight: 1.05,
-        margin: 0,
-        color: th.ink,
-      }}
-    >
-      vibe<span style={{ color: th.accent }}>log</span>
-    </h1>
+export const EndCard: React.FC<{
+  script: ShortsScript;
+  th: ShortsTheme;
+  /** 장면 시작(화면 시간) — 스태거 등장의 기준. 없으면 정적 표시 */
+  sceneStartSec?: number;
+}> = ({ script, th, sceneStartSec }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  // 타이틀 → 메타 → CTA 순서로 떠오른다. 마지막 장면이 정지화면이 되지 않게.
+  const rise = (delay: number): React.CSSProperties => {
+    if (sceneStartSec == null) return {};
+    const at = sceneStartSec + delay;
+    const p = interpolate(t, [at, at + 0.5], [0, 1], {
+      ...clamp,
+      easing: Easing.out(Easing.cubic),
+    });
+    return { opacity: p, transform: `translateY(${24 * (1 - p)}px)` };
+  };
+  // CTA 화살표가 주기적으로 까딱인다 — "여기로 오라"는 유일한 반복 모션
+  const nudge =
+    sceneStartSec == null
+      ? 0
+      : Math.max(0, Math.sin((t - sceneStartSec) * Math.PI * 1.25)) * 8;
+  return (
     <div
       style={{
-        marginTop: 48,
-        fontFamily: FONT_MONO,
-        fontSize: 34,
-        color: th.muted,
-        display: "flex",
-        gap: 28,
-        flexWrap: "wrap",
+        position: "absolute",
+        left: 80,
+        right: 80,
+        top: "50%",
+        transform: "translateY(-52%)",
       }}
     >
-      <span>{script.repo}</span>
-      <span style={{ color: th.accent, fontWeight: 700 }}>
-        day {String(script.day).padStart(2, "0")}
-      </span>
-      <span>{script.template.replace("-", " ")}</span>
+      <h1
+        style={{
+          fontFamily: FONT_SANS,
+          fontWeight: 900,
+          fontSize: 120,
+          lineHeight: 1.05,
+          margin: 0,
+          color: th.ink,
+          ...rise(0.05),
+        }}
+      >
+        vibe<span style={{ color: th.accent }}>log</span>
+      </h1>
+      <div
+        style={{
+          marginTop: 48,
+          fontFamily: FONT_MONO,
+          fontSize: 34,
+          color: th.muted,
+          display: "flex",
+          gap: 28,
+          flexWrap: "wrap",
+          ...rise(0.28),
+        }}
+      >
+        <span>{script.repo}</span>
+        <span style={{ color: th.accent, fontWeight: 700 }}>
+          day {String(script.day).padStart(2, "0")}
+        </span>
+        <span>{script.template.replace("-", " ")}</span>
+      </div>
+      <div
+        style={{
+          marginTop: 120,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 20,
+          background: th.accent,
+          color: th.accentInk,
+          fontFamily: FONT_SANS,
+          fontWeight: 900,
+          fontSize: 40,
+          padding: "22px 40px",
+          borderRadius: Math.min(18, th.radius),
+          ...rise(0.5),
+        }}
+      >
+        {script.handle}{" "}
+        <span style={{ display: "inline-block", transform: `translateX(${nudge}px)` }}>
+          →
+        </span>
+      </div>
     </div>
-    <div
-      style={{
-        marginTop: 120,
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 20,
-        background: th.accent,
-        color: th.accentInk,
-        fontFamily: FONT_SANS,
-        fontWeight: 900,
-        fontSize: 40,
-        padding: "22px 40px",
-        borderRadius: Math.min(18, th.radius),
-      }}
-    >
-      {script.handle} →
-    </div>
-  </div>
-);
+  );
+};
 
 /** +알파 그래픽 장면 — 생성 일러스트 (현재 보류, 레퍼런스 확정 시 재개) */
 export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({ file, th }) => (
@@ -462,38 +528,49 @@ export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({ file, th 
   </div>
 );
 
-/** 배경 — 테마의 backdrop 변형: 글로우 / 격자 / 상단 엣지 / 무지 */
-export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => (
-  <AbsoluteFill style={{ background: th.bg }}>
-    {th.backdrop === "glow" && (
-      <AbsoluteFill
-        style={{
-          background: `radial-gradient(60% 40% at 50% 0%, ${th.accent}1a, transparent 70%)`,
-        }}
-      />
-    )}
-    {th.backdrop === "grid" && (
-      <AbsoluteFill
-        style={{
-          backgroundImage: `linear-gradient(${th.accent}0d 2px, transparent 2px), linear-gradient(90deg, ${th.accent}0d 2px, transparent 2px)`,
-          backgroundSize: "108px 108px",
-        }}
-      />
-    )}
-    {th.backdrop === "edge" && (
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 0,
-          height: 20,
-          background: th.accent,
-        }}
-      />
-    )}
-  </AbsoluteFill>
-);
+/**
+ * 배경 — 테마의 backdrop 변형: 글로우 / 격자 / 상단 엣지 / 무지.
+ * 정지 배경은 30초를 못 버틴다 — 글로우는 숨쉬듯 밝기가 순환하고(7초 주기),
+ * 격자는 아주 느리게 흐른다. 눈에 겨우 걸리는 앰비언트 모션.
+ */
+export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  return (
+    <AbsoluteFill style={{ background: th.bg }}>
+      {th.backdrop === "glow" && (
+        <AbsoluteFill
+          style={{
+            background: `radial-gradient(60% 40% at 50% 0%, ${th.accent}1a, transparent 70%)`,
+            opacity: 0.72 + 0.28 * Math.sin((t / 7) * Math.PI * 2),
+          }}
+        />
+      )}
+      {th.backdrop === "grid" && (
+        <AbsoluteFill
+          style={{
+            backgroundImage: `linear-gradient(${th.accent}0d 2px, transparent 2px), linear-gradient(90deg, ${th.accent}0d 2px, transparent 2px)`,
+            backgroundSize: "108px 108px",
+            backgroundPosition: `${t * 3.5}px ${t * 3.5}px`,
+          }}
+        />
+      )}
+      {th.backdrop === "edge" && (
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            height: 20,
+            background: th.accent,
+          }}
+        />
+      )}
+    </AbsoluteFill>
+  );
+};
 
 /**
  * 콜드오픈 — 내레이션 전 2초를 템플릿의 문법으로 연다 (Jessi 승인 A안 + 템플릿 3종).

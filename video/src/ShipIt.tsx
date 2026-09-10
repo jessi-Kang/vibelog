@@ -5,6 +5,7 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Easing,
   interpolate,
   useCurrentFrame,
   useVideoConfig,
@@ -162,8 +163,21 @@ export const ShipIt: React.FC<ShipItProps> = ({
       {segs.map((seg, i) => {
         const opacity = opacityOf(seg);
         if (opacity <= 0) return null;
+        // 장면 입장 라이즈 — 페이드에 20px 상승을 더해 컷마다 방향감을 준다.
+        // 폰 프레임은 자체 카메라워크(틸트·줌)가 있어 제외.
+        const rise =
+          seg.from > 0 && seg.kind !== "phone"
+            ? interpolate(t, [seg.from, seg.from + SCENE_FADE + 0.1], [20, 0], {
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+                easing: Easing.out(Easing.cubic),
+              })
+            : 0;
         return (
-          <AbsoluteFill key={i} style={{ opacity }}>
+          <AbsoluteFill
+            key={i}
+            style={{ opacity, transform: `translateY(${rise}px)` }}
+          >
             {seg.kind === "cold" && cold && (
               <ColdOpen
                 variant={cold}
@@ -220,7 +234,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 split={script.template === "before-after"}
               />
             )}
-            {seg.kind === "end" && <EndCard script={script} th={th} />}
+            {seg.kind === "end" && (
+              <EndCard script={script} th={th} sceneStartSec={seg.from} />
+            )}
           </AbsoluteFill>
         );
       })}
