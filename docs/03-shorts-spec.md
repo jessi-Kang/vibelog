@@ -41,7 +41,7 @@
   - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
 ## 테마 — 레포마다 다른 얼굴, 같은 문법
 
-레포는 `vibelog.json`에 `"theme": "<이름>"` 한 줄로 영상 테마를 고른다. 안 고르면 terminal.
+레포는 **topic `vibelog-theme-<이름>`** 하나(예: `vibelog-theme-signal`)로 영상 테마를 고른다. `vibelog.json`의 `"theme"`도 되고, 둘 다 있으면 json이 우선. 안 고르면 terminal.
 채널 아이덴티티(장면 구조·자막 규칙·푸터·진행 바)는 모든 테마 공유 — 팔레트·키워드 강조 방식·카드/배지 형태·배경 처리만 바뀐다. 토큰은 `video/src/theme.ts`.
 
 | 이름 | 톤 | 키워드 강조 | 어울림 |

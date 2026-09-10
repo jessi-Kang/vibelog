@@ -85,7 +85,7 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     todayCommits: a.todayCommits,
     totalCommits: a.totalCommits,
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
-    ...(a.vibelogJson?.theme ? { theme: a.vibelogJson.theme } : {}),
+    ...(a.theme ? { theme: a.theme } : {}),
   }));
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
 }

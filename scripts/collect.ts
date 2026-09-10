@@ -58,6 +58,8 @@ export interface RepoActivity {
   todayCommits: number;
   /** 레포 전체 누적 커밋 수 — 프로젝트 상세의 "누적 커밋" */
   totalCommits: number;
+  /** 쇼츠 테마 — vibelog.json "theme" 우선, 없으면 topic "vibelog-theme-<이름>" */
+  theme?: string;
 }
 
 export interface RepoState {
@@ -255,6 +257,13 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     const vibelogJson = await getVibelogJson(octokit, owner, repo);
     if (vibelogJson?.hide) continue;
 
+    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (Jessi 지시:
+    // 파일 만들기보다 topic이 손품이 덜하다). vibelog.json이 있으면 그게 우선.
+    const topicTheme = (r.topics ?? [])
+      .find((t) => t.startsWith("vibelog-theme-"))
+      ?.slice("vibelog-theme-".length);
+    const theme = vibelogJson?.theme ?? topicTheme;
+
     const weekAgo = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
     // KST 자정 — 오늘 커밋 수의 창 시작
     const kstMidnight = `${new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10)}T00:00:00+09:00`;
@@ -326,6 +335,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       weekCommits,
       todayCommits,
       totalCommits,
+      ...(theme ? { theme } : {}),
     });
   }
   return results;
