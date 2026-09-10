@@ -8,59 +8,75 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "밤에 첫 자동 실행이 안 됐습니다.",
-      "en": "The first nightly run never started.",
+      "ko": "자동 실행이 아예 안 됐습니다.",
+      "en": "The automated run never started.",
       "keywords": [
-        "첫 자동 실행이"
+        "아예",
+        "안 됐습니다"
       ],
-      "keywordsEn": []
+      "keywordsEn": [
+        "never started"
+      ]
     },
     {
       "scene": "fail",
       "ko": "오류도, 실행된 흔적도 없었습니다.",
-      "en": "No error, no trace, just silence.",
-      "keywords": [],
-      "keywordsEn": []
+      "en": "No error, no trace of it running.",
+      "keywords": [
+        "오류도",
+        "흔적도"
+      ],
+      "keywordsEn": [
+        "No error",
+        "no trace"
+      ]
     },
     {
       "scene": "fail",
-      "ko": "설정 파일의 한 줄이 파일 전체를 무효로 만들었습니다.",
-      "en": "One line in a config file made the whole file invalid.",
+      "ko": "원인은 설정 파일의 줄 하나였습니다. 그 줄 때문에 파일 전체가 무효였습니다.",
+      "en": "The cause was a single line in the setup file. That one line made the whole file invalid.",
       "keywords": [
-        "한 줄이",
-        "파일 전체를"
+        "줄 하나였습니다",
+        "파일 전체가"
       ],
       "keywordsEn": [
-        "One line",
+        "a single line",
         "the whole file"
       ]
     },
     {
       "scene": "build",
-      "ko": "그 조건 한 줄을 걷어내고 확인 방식을 바꿨습니다.",
-      "en": "I removed that line and checked it another way.",
+      "ko": "그 줄을 걷어내고 확인 방식을 바꿨습니다. 그제야 돌기 시작했습니다.",
+      "en": "I removed the line and checked a different way. Then it finally ran.",
       "keywords": [
-        "걷어내고"
+        "걷어내고",
+        "그제야"
       ],
       "keywordsEn": [
-        "removed that line"
+        "removed the line",
+        "finally ran"
       ]
     },
     {
-      "scene": "build",
-      "ko": "그제야 밤마다 글이 자동으로 올라옵니다.",
-      "en": "Then the posts started going up every night.",
+      "scene": "demo",
+      "ko": "이제 밤마다 그날의 코드 기록이 글 한 편이 됩니다.",
+      "en": "Now every night the day's code records turn into a post.",
       "keywords": [
         "밤마다",
-        "자동으로"
+        "글 한 편이"
       ],
-      "keywordsEn": []
+      "keywordsEn": [
+        "every night",
+        "a post"
+      ]
     },
     {
       "scene": "demo",
-      "ko": "낮에 만든 화면은 3개입니다.",
-      "en": "I built 3 screens during the day.",
-      "keywords": [],
+      "ko": "낮에 만든 화면 3개도 올라갔습니다.",
+      "en": "The 3 screens I built during the day went up too.",
+      "keywords": [
+        "화면 3개도"
+      ],
       "keywordsEn": [
         "3 screens"
       ],
@@ -68,36 +84,28 @@
       "statEn": "3 screens"
     },
     {
-      "scene": "demo",
-      "ko": "이 영상도 그 글에서 만들어졌습니다.",
-      "en": "This video was made from that post.",
-      "keywords": [
-        "이 영상도"
-      ],
-      "keywordsEn": [
-        "This video"
-      ]
-    },
-    {
       "scene": "next",
-      "ko": "이제 밤새 끝까지 도는지 지켜봅니다.",
-      "en": "Now I watch whether it runs end to end overnight.",
+      "ko": "밤새 글과 영상이 끝까지 나오는지 지켜보겠습니다.",
+      "en": "I'll watch whether the post and the video make it all the way through overnight.",
       "keywords": [
-        "밤새 끝까지"
+        "끝까지",
+        "지켜보겠습니다"
       ],
       "keywordsEn": [
-        "end to end"
+        "all the way through"
       ],
-      "art": "a small robot sitting awake at night beside a glass jar slowly filling with glowing light"
+      "art": "a small robot sitting alone in a dark room, watching a conveyor belt carry a single glowing paper scroll"
     },
     {
       "scene": "end",
-      "ko": "첫날치고는 나쁘지 않습니다.",
-      "en": "Not bad for day one.",
+      "ko": "화면 디자인은 아직 임시입니다.",
+      "en": "The screen design is still provisional.",
       "keywords": [
-        "첫날치고는"
+        "임시입니다"
       ],
-      "keywordsEn": []
+      "keywordsEn": [
+        "still provisional"
+      ]
     }
   ],
   "demo": {
@@ -105,12 +113,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "자동 실행이 시작되지 않았다",
-    "titleEn": "The nightly run never started",
-    "before": "설정 파일의 한 줄 때문에 파일 전체가 무시됐습니다.",
-    "after": "그 줄을 걷어내니 밤마다 정상으로 돌았습니다.",
-    "beforeEn": "One line made the whole config file get ignored.",
-    "afterEn": "With that line gone, it ran every night."
+    "title": "시작조차 안 된 자동 실행",
+    "titleEn": "The run that never started",
+    "before": "밤에 걸어둔 자동 실행이 시작조차 안 됐습니다.",
+    "after": "설정 파일의 줄 하나를 걷어내니 돌기 시작했습니다.",
+    "beforeEn": "The run I scheduled at night never even started.",
+    "afterEn": "Removing one line from the setup file got it running."
   },
   "commits": [
     [
@@ -183,22 +191,22 @@
   "commitCount": 11,
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "블로그 화면 3개를 만든 첫날, 밤에 걸어둔 자동 실행이 설정 파일 한 줄 때문에 아예 시작되지 않았습니다. 그 줄을 걷어내고 나서야 글과 영상이 저절로 나오기 시작했습니다.",
-    "en": "Day one: 3 blog screens built, and the nightly automation that never even started because of one line in a config file. Removing it is what finally got the posts and videos making themselves."
+    "ko": "블로그 화면 3개를 만들고, 밤마다 글이 저절로 만들어지게 했습니다. 첫 자동 실행은 설정 파일의 줄 하나 때문에 시작조차 못 했습니다.",
+    "en": "I built the blog's 3 screens and made the posts write themselves every night. The first automated run never even started, because of one line in the setup file."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
     "#자동화",
+    "#삽질",
     "#devlog",
     "#buildinpublic",
-    "#coding",
-    "#shorts"
+    "#automation"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtv93heg",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtv93k3s",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtv94hl4",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtv94jxd"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtv9zngo",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtv9zpuz",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtva18tp",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtva1b12"
   }
 }
