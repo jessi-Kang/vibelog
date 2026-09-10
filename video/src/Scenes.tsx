@@ -10,6 +10,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
+import { interpolate, Easing } from "remotion";
 import {
   FONT_MONO,
   FONT_SANS,
@@ -28,7 +29,9 @@ export const HookCard: React.FC<{
   lang: "ko" | "en";
   timing?: ShortsTiming;
   th: ShortsTheme;
-}> = ({ script, lang, timing, th }) => {
+  /** 화면 시간 → 오디오 시간 변환 오프셋 (콜드오픈 포함) */
+  offsetSec?: number;
+}> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const hookLines = script.lines
@@ -37,7 +40,7 @@ export const HookCard: React.FC<{
   let hook = hookLines[0]?.l;
   if (!hook) return null;
   if (timing) {
-    const t = frame / fps - NARRATION_DELAY;
+    const t = frame / fps - offsetSec;
     for (const s of timing.sentences) {
       const x = hookLines.find((h) => h.i === s.index);
       if (x && t >= s.start) hook = x.l;
@@ -102,8 +105,42 @@ export const PhoneFrame: React.FC<{
   fromFrame: number;
   durationInFrames: number;
   th: ShortsTheme;
-}> = ({ videoFile, sourceOffsetSec, fromFrame, durationInFrames, th }) => {
+  /** 카메라워크(느린 줌 + 입장 틸트)용 장면 구간(초)과 순번 */
+  fromSec?: number;
+  toSec?: number;
+  segIndex?: number;
+}> = ({
+  videoFile,
+  sourceOffsetSec,
+  fromFrame,
+  durationInFrames,
+  th,
+  fromSec,
+  toSec,
+  segIndex = 0,
+}) => {
   const { fps } = useVideoConfig();
+  const frame = useCurrentFrame();
+  const t = frame / fps;
+  // 정지된 폰은 3초만 지나도 밋밋하다 — 장면마다 방향을 바꾸는 아주 느린
+  // 줌(1.0↔1.05)과 입장 때 살짝 기울었다 돌아오는 틸트로 촬영감을 준다
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const zoom =
+    fromSec != null && toSec != null && toSec > fromSec
+      ? interpolate(
+          t,
+          [fromSec, toSec],
+          segIndex % 2 === 0 ? [1.0, 1.05] : [1.05, 1.0],
+          clamp,
+        )
+      : 1;
+  const tilt =
+    fromSec != null
+      ? interpolate(t, [fromSec, fromSec + 0.7], [2.2, 0], {
+          ...clamp,
+          easing: Easing.out(Easing.cubic),
+        })
+      : 0;
   return (
     <div
       style={{
@@ -111,7 +148,8 @@ export const PhoneFrame: React.FC<{
         position: "absolute",
         left: "50%",
         top: 240,
-        transform: "translateX(-50%)",
+        transformOrigin: "50% 42%",
+        transform: `translateX(-50%) perspective(1400px) rotateY(${tilt}deg) scale(${zoom})`,
         width: 690,
         height: 1130,
         borderRadius: Math.max(24, th.radius * 2.3),
@@ -431,3 +469,120 @@ export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => (
     )}
   </AbsoluteFill>
 );
+
+/**
+ * 커밋 콜드오픈 — 훅 전에 그날의 실제 커밋 로그가 터미널에 촤르륵 올라온다.
+ * "커밋이 곧 콘텐츠"를 영상 문법으로 (Jessi 승인 A안). 재료는 frontmatter shas.
+ */
+export const ColdOpen: React.FC<{
+  commits: [string, string][];
+  th: ShortsTheme;
+}> = ({ commits, th }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const CMD = "$ git log --oneline";
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const typedLen = Math.floor(
+    interpolate(t, [0.08, 0.6], [0, CMD.length], clamp),
+  );
+  const rows = commits.slice(0, 5);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 80,
+        right: 80,
+        top: "50%",
+        transform: "translateY(-50%)",
+        background: th.panel,
+        border: `2px solid ${th.line}`,
+        borderRadius: th.radius,
+        padding: "52px 56px",
+        fontFamily: FONT_MONO,
+        fontSize: 33,
+        lineHeight: 1.9,
+        color: th.muted,
+        boxShadow: th.light
+          ? "0 20px 70px rgba(23,26,31,.12)"
+          : "0 30px 100px rgba(0,0,0,.5)",
+      }}
+    >
+      <div style={{ color: th.ink, fontWeight: 700 }}>
+        {CMD.slice(0, typedLen)}
+        {t < 0.7 && Math.floor(t * 3) % 2 === 0 ? "▍" : ""}
+      </div>
+      {rows.map(([sha, msg], i) => {
+        const at = 0.72 + i * 0.16;
+        const on = t >= at;
+        return (
+          <div
+            key={sha}
+            style={{
+              opacity: on ? Math.min(1, (t - at) / 0.2) : 0,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            <span style={{ color: th.accent, fontWeight: 700 }}>{sha}</span>{" "}
+            {msg}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+/**
+ * 숫자 모먼트 — 내레이션이 숫자를 말하는 순간, 카운터가 탁 박히는 1.5초
+ * 인서트 (Jessi 승인 B안). stat은 대본이 마킹한 "숫자+단위" 문자열.
+ */
+export const StatPunch: React.FC<{
+  stat: string;
+  startSec: number;
+  th: ShortsTheme;
+}> = ({ stat, startSec, th }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const END = startSec + 1.5;
+  if (t < startSec || t > END) return null;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const num = Number(stat.match(/\d+/)?.[0] ?? 0);
+  const suffix = stat.replace(/^[\d,.]+/, "");
+  const shown = Math.round(
+    interpolate(t, [startSec + 0.05, startSec + 0.6], [0, num], clamp),
+  );
+  const scale = interpolate(t, [startSec, startSec + 0.35], [0.72, 1], {
+    ...clamp,
+    easing: Easing.out(Easing.back(1.6)),
+  });
+  const fade =
+    interpolate(t, [startSec, startSec + 0.15], [0, 1], clamp) *
+    interpolate(t, [END - 0.25, END], [1, 0], clamp);
+  return (
+    <AbsoluteFill style={{ opacity: fade }}>
+      {/* 잠깐 화면을 가져가는 인서트 — 옅은 스크림으로 초점 이동 */}
+      <AbsoluteFill style={{ background: `${th.bg}b3` }} />
+      <div
+        style={{
+          position: "absolute",
+          left: 80,
+          right: 80,
+          top: "50%",
+          transform: `translateY(-54%) scale(${scale})`,
+          textAlign: "center",
+          fontFamily: FONT_SANS,
+          fontWeight: 900,
+          color: th.ink,
+        }}
+      >
+        <span style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent }}>
+          {shown.toLocaleString()}
+        </span>
+        <span style={{ fontSize: 100 }}>{suffix}</span>
+      </div>
+    </AbsoluteFill>
+  );
+};

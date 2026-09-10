@@ -18,10 +18,13 @@ export function mux(
   music: string,
   out: string,
   durationSec: number,
+  /** 내레이션 시작 지연(초) — 기본 0.5, 커밋 콜드오픈이 있으면 +2.0 */
+  narrationDelaySec = 0.5,
 ): void {
   const DUR = durationSec.toFixed(3);
+  const DELAY = Math.round(narrationDelaySec * 1000);
   const filter =
-    `[1:a]adelay=500|500,apad=whole_dur=${DUR},asplit=2[n1][n2];` +
+    `[1:a]adelay=${DELAY}|${DELAY},apad=whole_dur=${DUR},asplit=2[n1][n2];` +
     `[2:a]atrim=0:${DUR},volume=0.20,afade=t=out:st=${(durationSec - 3.5).toFixed(3)}:d=3.5[m];` +
     `[m][n1]sidechaincompress=threshold=0.03:ratio=5:attack=40:release=500:makeup=1[d];` +
     `[d][n2]amix=inputs=2:duration=first:normalize=0[a]`;

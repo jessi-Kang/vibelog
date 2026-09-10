@@ -122,7 +122,9 @@ export const NARRATION_DELAY = 0.5;
 export const END_TAIL = 3.0;
 /** 장면 크로스페이드 (프로토타입 .scene transition .45s) */
 export const SCENE_FADE = 0.45;
+/** 커밋 콜드오픈 길이 — script.commits가 있을 때만. scripts/render.ts와 같은 값 */
+export const COLD_OPEN_SEC = 2.0;
 
-export function totalSeconds(narrationDuration: number): number {
-  return NARRATION_DELAY + narrationDuration + END_TAIL;
+export function totalSeconds(narrationDuration: number, coldOpenSec = 0): number {
+  return coldOpenSec + NARRATION_DELAY + narrationDuration + END_TAIL;
 }

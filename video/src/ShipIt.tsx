@@ -14,12 +14,15 @@ import { Captions } from "./Captions";
 import {
   ArtCard,
   Background,
+  ColdOpen,
   EndCard,
   FailCard,
   HookCard,
   PhoneFrame,
+  StatPunch,
 } from "./Scenes";
 import {
+  COLD_OPEN_SEC,
   FONT_MONO,
   getTheme,
   NARRATION_DELAY,
@@ -42,7 +45,7 @@ export type ShipItProps = {
   theme?: string | null;
 };
 
-type Kind = "hook" | "phone" | "fail" | "end" | "art";
+type Kind = "cold" | "hook" | "phone" | "fail" | "end" | "art";
 
 interface Seg {
   kind: Kind;
@@ -66,11 +69,15 @@ function buildSegments(
   timing: ShortsTiming,
   total: number,
   hasNextArt: boolean,
+  offset: number,
+  coldOpen: number,
 ): Seg[] {
   const raw: { kind: Kind; from: number }[] = [];
+  // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
+  if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
     const kind = kindOf(script.lines[s.index]?.scene ?? "build", hasNextArt);
-    const from = s.start + NARRATION_DELAY;
+    const from = s.start + offset;
     if (raw.length === 0) {
       raw.push({ kind, from: 0 }); // 첫 장면은 0초부터
     } else if (raw[raw.length - 1].kind !== kind) {
@@ -110,8 +117,12 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
-  const total = totalSeconds(timing.duration);
-  const segs = buildSegments(script, timing, total, Boolean(artFiles?.next));
+  const coldOpen = script.commits?.length ? COLD_OPEN_SEC : 0;
+  const offset = NARRATION_DELAY + coldOpen; // 화면 시간 = 오디오 시간 + offset
+  const total = totalSeconds(timing.duration, coldOpen);
+  const segs = buildSegments(
+    script, timing, total, Boolean(artFiles?.next), offset, coldOpen,
+  );
 
   // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은
   // 경계부터 뜬다. 크로스페이드는 레이아웃이 다른 장면끼리 애매하게
@@ -143,8 +154,25 @@ export const ShipIt: React.FC<ShipItProps> = ({
         if (opacity <= 0) return null;
         return (
           <AbsoluteFill key={i} style={{ opacity }}>
+            {seg.kind === "cold" && script.commits && (
+              <ColdOpen
+                // 영문 영상엔 번역된 커밋 메시지 (없으면 ko 폴백 — 구버전 대본)
+                commits={
+                  lang === "en" && script.commitsEn?.length
+                    ? script.commitsEn
+                    : script.commits
+                }
+                th={th}
+              />
+            )}
             {seg.kind === "hook" && (
-              <HookCard script={script} lang={lang} timing={timing} th={th} />
+              <HookCard
+                script={script}
+                lang={lang}
+                timing={timing}
+                th={th}
+                offsetSec={offset}
+              />
             )}
             {seg.kind === "art" && artFiles?.next && (
               <ArtCard file={artFiles.next} th={th} />
@@ -156,6 +184,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 fromFrame={Math.floor(seg.from * fps)}
                 durationInFrames={Math.ceil((seg.to - seg.from + SCENE_FADE) * fps)}
                 th={th}
+                fromSec={seg.from}
+                toSec={seg.to}
+                segIndex={i}
               />
             )}
             {seg.kind === "fail" && (
@@ -208,7 +239,32 @@ export const ShipIt: React.FC<ShipItProps> = ({
         </span>
       </div>
 
-      <Captions script={script} timing={timing} lang={lang} th={th} />
+      {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트 */}
+      {script.lines.map((l, i) => {
+        if (!l.stat) return null;
+        const sent = timing.sentences.find((x) => x.index === i);
+        if (!sent) return null;
+        const digits = l.stat.match(/\d+/)?.[0];
+        const w = digits
+          ? sent.words.find((x) => x.text.includes(digits))
+          : undefined;
+        return (
+          <StatPunch
+            key={`stat-${i}`}
+            stat={l.stat}
+            startSec={(w?.start ?? sent.start) + offset}
+            th={th}
+          />
+        );
+      })}
+
+      <Captions
+        script={script}
+        timing={timing}
+        lang={lang}
+        th={th}
+        offsetSec={offset}
+      />
 
       {/* progress */}
       <div

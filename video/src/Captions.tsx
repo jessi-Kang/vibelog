@@ -44,10 +44,12 @@ export const Captions: React.FC<{
   timing: ShortsTiming;
   lang: "ko" | "en";
   th: ShortsTheme;
-}> = ({ script, timing, lang, th }) => {
+  /** 화면 시간 → 오디오 시간 오프셋 (콜드오픈 포함) */
+  offsetSec?: number;
+}> = ({ script, timing, lang, th, offsetSec = NARRATION_DELAY }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const t = frame / fps - NARRATION_DELAY; // 오디오 시간
+  const t = frame / fps - offsetSec; // 오디오 시간
 
   const win = displayWindows(timing).find((w) => t >= w.from && t < w.to);
   if (!win) return null;
