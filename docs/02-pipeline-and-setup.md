@@ -64,7 +64,10 @@ vibelog/
 ## 3. 각 프로젝트 레포 쪽 규약 (최소)
 
 - topic `vibelog` (필수)
-- description, homepage 채우기 (카드에 그대로 씀)
+- description 채우기 (카드에 그대로 씀)
+- homepage(About Website)는 **안 채워도 된다** — Vercel·GitHub Pages 연동이 남기는
+  GitHub Deployments 기록에서 배포 주소를 자동 감지한다 (production 계열 성공 배포의
+  environment_url). 채우면 그게 우선 — 커스텀 도메인·깔끔한 주소를 쓰고 싶을 때만.
 - (선택) `vibelog.json` — `{ "name": "...", "status": "live", "stack": ["Next.js"], "hide": false }`
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 

@@ -43,7 +43,7 @@ video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 Jessi가 새 프로젝트를 시작하면 (또는 "새 프로젝트" 얘기가 나오면) 아래를 안내한다:
 
 1. 레포에 topic `vibelog` 달기 — 등록의 전부. 30분 안에 projects.yml이 카드로 올린다.
-2. description·homepage 채우기 — 카드에 그대로 쓴다. 나중에 채워도 인식 배치가 반영한다.
+2. description 채우기 — 카드에 그대로 쓴다. 나중에 채워도 인식 배치가 반영한다. homepage는 자동 — 배포(Vercel 등)가 GitHub Deployments에 남긴 주소를 감지한다. About Website를 채우면 그게 우선(커스텀 도메인용).
 3. **그 레포 CLAUDE.md에 커밋 규칙 블록 복붙** — 문구는 `docs/02-pipeline-and-setup.md` §3 "커밋 메시지 규약 문구". 커밋 메시지가 글·쇼츠의 원료라서 이게 품질을 결정한다.
 4. (선택) 테마 고르기 — topic `vibelog-theme-<이름>` 하나 추가. (선택) `vibelog.json`.
 

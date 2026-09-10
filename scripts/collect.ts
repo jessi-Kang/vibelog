@@ -258,6 +258,45 @@ async function listVibelogRepos(octokit: Octokit, owner: string) {
   }
 }
 
+/**
+ * About의 Website(homepage)가 비어 있을 때 배포 주소를 자동 감지한다 — 손품 제로.
+ * Vercel·GitHub Pages 연동은 배포마다 GitHub Deployments에 기록을 남기므로,
+ * 최신 production 계열 배포의 성공 상태에서 environment_url을 읽는다.
+ * Website 칸을 채우면 그게 우선 (커스텀 도메인·깔끔한 주소용).
+ * preview 배포는 건너뛴다 — 브랜치 미리보기가 대표 주소가 되면 안 된다.
+ */
+async function getDeployedUrl(
+  octokit: Octokit,
+  owner: string,
+  repo: string,
+): Promise<string | null> {
+  try {
+    const { data: deployments } = await octokit.rest.repos.listDeployments({
+      owner,
+      repo,
+      per_page: 10,
+    });
+    for (const d of deployments) {
+      // 최신순
+      if ((d.environment ?? "").toLowerCase().includes("preview")) continue;
+      const { data: statuses } =
+        await octokit.rest.repos.listDeploymentStatuses({
+          owner,
+          repo,
+          deployment_id: d.id,
+          per_page: 5,
+        });
+      const ok = statuses.find(
+        (s) => s.state === "success" && s.environment_url,
+      );
+      if (ok?.environment_url) return ok.environment_url;
+    }
+  } catch {
+    // Deployments 기록 없음 — homepage 없이 진행 (building 판정)
+  }
+  return null;
+}
+
 export async function collect(state: State, date?: string): Promise<RepoActivity[]> {
   const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
   const octokit = new Octokit({ auth });
@@ -282,6 +321,11 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
 
     const vibelogJson = await getVibelogJson(octokit, owner, repo);
     if (vibelogJson?.hide) continue;
+
+    // 배포 주소: About Website 우선, 없으면 Deployments 기록에서 자동 감지 —
+    // Jessi가 아무것도 안 채워도 배포되는 순간 live 판정·카드 링크·쇼츠 데모
+    // URL이 생긴다 ("수동이네" 지적).
+    const homepage = r.homepage || (await getDeployedUrl(octokit, owner, repo));
 
     // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (Jessi 지시:
     // 파일 만들기보다 topic이 손품이 덜하다). vibelog.json이 있으면 그게 우선.
@@ -343,7 +387,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       repo,
       owner,
       description: r.description ?? "",
-      homepage: r.homepage || null,
+      homepage,
       language: r.language ?? null,
       repoUrl: r.html_url,
       pushedAt: r.pushed_at ?? "",
