@@ -1,5 +1,5 @@
 {
-  "template": "ship-it",
+  "template": "before-after",
   "music": "ship-it",
   "theme": "terminal",
   "repo": "vibelog",
@@ -8,125 +8,104 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "이 사이트에 사람이 쓴 글은 하나입니다.",
-      "en": "Only one page here was written by a human.",
+      "ko": "새 프로젝트가 목록에 안 떴습니다.",
+      "en": "My new project never showed up in the list.",
       "keywords": [
-        "사람이 쓴 글은",
-        "하나입니다"
+        "안 떴습니다"
       ],
       "keywordsEn": [
-        "one page",
-        "by a human"
+        "never showed up"
       ]
     },
     {
       "scene": "build",
-      "ko": "소개 페이지를 열었습니다.",
-      "en": "I opened an About page.",
-      "keywords": [],
+      "ko": "이제 제 프로젝트 목록을 직접 훑습니다.",
+      "en": "Now it walks through my own project list directly.",
+      "keywords": [
+        "직접 훑습니다"
+      ],
       "keywordsEn": [
-        "About page"
+        "directly"
       ]
     },
     {
       "scene": "build",
-      "ko": "왜 만들었고 어떻게 돌아가는지 적어 뒀습니다.",
-      "en": "It says why this exists and how it runs.",
+      "ko": "표시만 달아 두면 30분 안에 올라옵니다.",
+      "en": "Once I tag a project, it appears within 30 minutes.",
       "keywords": [
-        "왜 만들었고",
-        "어떻게 돌아가는지"
+        "30분 안에"
       ],
       "keywordsEn": [
-        "why this exists",
-        "how it runs"
+        "within 30 minutes"
+      ],
+      "stat": "30분",
+      "statEn": "30 minutes"
+    },
+    {
+      "scene": "demo",
+      "ko": "공개 주소도 제가 적지 않습니다.",
+      "en": "I do not type in the public address either.",
+      "keywords": [
+        "공개 주소도"
+      ],
+      "keywordsEn": [
+        "public address"
       ]
     },
     {
       "scene": "demo",
-      "ko": "36초짜리 소개 영상도 새로 만들었습니다.",
-      "en": "I remade the intro video at 36 seconds.",
+      "ko": "알아서 찾아와 붙습니다.",
+      "en": "It gets found and attached on its own.",
       "keywords": [
-        "36초짜리"
+        "알아서"
       ],
       "keywordsEn": [
-        "intro video",
-        "36 seconds"
-      ],
-      "stat": "36초",
-      "statEn": "36 seconds"
-    },
-    {
-      "scene": "demo",
-      "ko": "한국어와 영어, 팝업에서 바로 바꿉니다.",
-      "en": "Korean and English, switchable right in the popup.",
-      "keywords": [
-        "한국어와 영어",
-        "바로 바꿉니다"
-      ],
-      "keywordsEn": [
-        "Korean and English",
-        "in the popup"
+        "on its own"
       ]
     },
     {
       "scene": "fail",
-      "ko": "하루에 두 번 돌리면 그날 글이 사라졌습니다.",
-      "en": "Running the job twice in a day erased that day's post.",
+      "ko": "원인은 검색이었습니다.",
+      "en": "The cause was search.",
       "keywords": [
-        "두 번",
-        "사라졌습니다"
+        "검색이었습니다"
       ],
       "keywordsEn": [
-        "twice in a day",
-        "erased"
+        "search"
       ]
     },
     {
       "scene": "fail",
-      "ko": "지워진 9월 9일 글은 되살렸습니다.",
-      "en": "The lost September 9 post is restored.",
+      "ko": "방금 만든 프로젝트는 검색에 늦게 뜹니다.",
+      "en": "A freshly created project takes a while to show up in search.",
       "keywords": [
-        "되살렸습니다"
+        "늦게 뜹니다"
       ],
       "keywordsEn": [
-        "restored"
+        "takes a while"
       ]
     },
     {
       "scene": "next",
-      "ko": "영상에 넣을 그림은 당분간 끕니다.",
-      "en": "Illustrations are off for now.",
+      "ko": "오늘 밤 자동 실행 기록을 확인합니다.",
+      "en": "Tonight I will check the record of the automatic run.",
       "keywords": [
-        "그림은",
-        "당분간 끕니다"
+        "기록을 확인합니다"
       ],
       "keywordsEn": [
-        "Illustrations",
-        "off for now"
+        "check the record"
       ],
-      "art": "a paintbrush resting inside a closed glass jar beside an empty easel"
-    },
-    {
-      "scene": "next",
-      "ko": "어울리는 그림체를 찾으면 다시 켭니다.",
-      "en": "They come back once I settle on a style.",
-      "keywords": [
-        "다시 켭니다"
-      ],
-      "keywordsEn": [
-        "come back",
-        "a style"
-      ]
+      "art": "a small flashlight beam sweeping across a dark shelf of sealed boxes at night"
     },
     {
       "scene": "end",
-      "ko": "이제 처음 온 사람도 여기가 뭐 하는 곳인지 압니다.",
-      "en": "Now a first-time visitor can tell what this place is.",
+      "ko": "손댈 곳이 하나 줄었습니다.",
+      "en": "One spot I had to touch by hand is gone.",
       "keywords": [
-        "처음 온 사람도"
+        "하나 줄었습니다"
       ],
       "keywordsEn": [
-        "first-time visitor"
+        "is gone"
       ]
     }
   ],
@@ -135,100 +114,140 @@
     "steps": []
   },
   "failCard": {
-    "title": "그날 글이 사라졌다",
-    "titleEn": "The day's post vanished",
-    "before": "같은 날 두 번째 실행이 그날 글을 통째로 덮어썼습니다",
-    "after": "다시 돌려도 첫 실행이 정한 구간을 그대로 읽습니다",
-    "beforeEn": "A second run on the same day overwrote that day's post entirely",
-    "afterEn": "A repeat run now reuses the window the first run set"
+    "title": "목록에 안 뜬 프로젝트",
+    "titleEn": "The project that never appeared",
+    "before": "새 프로젝트가 목록에 나타나지 않았습니다.",
+    "after": "검색을 버리고 제 프로젝트 목록을 직접 훑습니다.",
+    "beforeEn": "The new project never appeared in the list.",
+    "afterEn": "Dropped search and now walk my own project list."
   },
   "commits": [
     [
-      "03e7f36",
-      "fix: 삽질 카드 before/after에 영어판 — 영문 영상에 한국어가 나왔다"
+      "964979a",
+      "feat: preview 상태 — 배포됐지만 릴리즈 전인 프로젝트를 구분 + 본문 링크 새 창"
     ],
     [
-      "441f112",
-      "fix: day 1·2 글에도 원료 표기 — 커밋 수와 git log 채움"
+      "1443676",
+      "chore: 배포 주소 자동 감지에 진단 로그"
     ],
     [
-      "94b3a7e",
-      "feat: 소개 페이지·인트로 영어판·배경음악 5종 무드 선곡"
+      "b0bfb18",
+      "fix: 다음 프로젝트 온보딩 검증에서 나온 구멍 4개"
     ],
     [
-      "0d04ea7",
-      "fix: 재실행이 그날 기록을 지우던 치명 버그 + ko 업로드 실패 + 캐시 스테일"
+      "738008b",
+      "feat: 배포 주소 감지에 Vercel API 경로 추가 — CLI 배포도 잡는다"
     ],
     [
-      "5579570",
-      "feat: 인트로 영상 재제작 — 새 내레이션 + 현행 렌더 규칙 + 실사이트 데모"
+      "42598f0",
+      "feat: 배포 주소 자동 감지 — About Website 안 채워도 live가 된다"
     ],
     [
-      "b2f9642",
-      "asset: 인트로 내레이션 음성 (Jessi 클론 보이스, 확정 설정)"
+      "fedd009",
+      "feat: 천 단위 콤마(fmtNum) + 지난 실행 줄에 프로젝트 이름 강조"
     ],
     [
-      "ed0778f",
-      "chore: 생성 그래픽 보류 — 레퍼런스 확정 전까지 사용 중지"
+      "2650fc7",
+      "fix: 이번 주·오늘 커밋 수가 100에서 포화 — Link 헤더로 정확히 센다"
     ],
     [
-      "b5f1301",
-      "fix: 영상 자막 안전 구역·순차 전환 + 비유 절제 규칙 + 인트로 썸네일"
+      "fb50ea3",
+      "docs: CLAUDE.md에 새 프로젝트 등록 체크리스트"
+    ],
+    [
+      "c8590a9",
+      "docs: 프로젝트 레포용 커밋 메시지 규약 문구 추가 (복붙 블록)"
+    ],
+    [
+      "95d504a",
+      "fix: 인식 배치가 프로젝트 메타 변경도 감지 — slug만 비교하던 구멍"
+    ],
+    [
+      "85f9e30",
+      "feat: 새 프로젝트 인식을 search에서 직접 나열로 + 30분 주기 인식 배치"
+    ],
+    [
+      "8975cfa",
+      "Merge branch 'claude/file-analysis-dpnhw1' of https://github.com/jessi-Kang/vibelog into claude/file-analysis-dpnhw1"
+    ],
+    [
+      "95439e0",
+      "fix: 원료 git log에 그날 커밋 전부 — 8개 상한 제거"
     ]
   ],
   "commitsEn": [
     [
-      "03e7f36",
-      "fix: English versions for fail-card before/after — Korean showed up in the English video"
+      "964979a",
+      "feat: preview state — distinguish deployed but unreleased projects + open body links in new tab"
     ],
     [
-      "441f112",
-      "fix: raw-material info on day 1–2 posts — commit counts and git log filled in"
+      "1443676",
+      "chore: add diagnostic logging to deployment address auto-detection"
     ],
     [
-      "94b3a7e",
-      "feat: About page, English intro, and 5 mood-picked background tracks"
+      "b0bfb18",
+      "fix: fix 4 holes found in next project onboarding validation"
     ],
     [
-      "0d04ea7",
-      "fix: critical bug where reruns erased the day's record + ko upload failure + stale cache"
+      "738008b",
+      "feat: add Vercel API path to deployment address detection — catches CLI deployments too"
     ],
     [
-      "5579570",
-      "feat: intro video remade — new narration, current render rules, live-site demo"
+      "42598f0",
+      "feat: auto-detect deployment address — live without filling in About Website"
     ],
     [
-      "b2f9642",
-      "asset: intro narration audio (Jessi's cloned voice, final settings)"
+      "fedd009",
+      "feat: thousand separator formatting (fmtNum) + highlight project name in last run line"
     ],
     [
-      "ed0778f",
-      "chore: generated art on hold — disabled until a style reference is set"
+      "2650fc7",
+      "fix: this week/today commit count saturates at 100 — count accurately with Link header"
     ],
     [
-      "b5f1301",
-      "fix: subtitle safe zone and sequential scene transitions + metaphor restraint rule + intro thumbnail"
+      "fb50ea3",
+      "docs: add new project registration checklist to CLAUDE.md"
+    ],
+    [
+      "c8590a9",
+      "docs: add commit message convention guidelines for project repo (copy-paste block)"
+    ],
+    [
+      "95d504a",
+      "fix: recognition batch detects project meta changes — holes from only comparing slug"
+    ],
+    [
+      "85f9e30",
+      "feat: new project recognition from search to direct listing + 30-minute recognition batch cycle"
+    ],
+    [
+      "8975cfa",
+      "Merge branch 'claude/file-analysis-dpnhw1' of https://github.com/jessi-Kang/vibelog into claude/file-analysis-dpnhw1"
+    ],
+    [
+      "95439e0",
+      "fix: include all commits from that day in raw git log — remove 8-item limit"
     ]
   ],
-  "commitCount": 16,
+  "commitCount": 13,
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "소개 페이지와 36초짜리 소개 영상을 열었습니다. 같은 날 두 번 돌리면 그날 글이 사라지던 문제도 고쳤습니다.",
-    "en": "Opened an About page and a 36-second intro video. Also fixed the bug where a second run on the same day erased that day's post."
+    "ko": "새 프로젝트가 목록에 안 뜬 이유를 하루 만에 찾았습니다. 이제 표시만 달아 두면 30분 안에 올라오고, 공개 주소도 알아서 찾아옵니다.",
+    "en": "Spent a day finding out why my new project never appeared in the list. Now tagging it is enough: it shows up within 30 minutes and the public address is found automatically."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
-    "#devlog",
     "#자동화",
-    "#automation",
+    "#devlog",
     "#buildinpublic",
-    "#사이드프로젝트"
+    "#사이드프로젝트",
+    "#automation"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg?v=mtvax1pn",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4?v=mtva7upe",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.poster.jpg?v=mtvax4ln",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4?v=mtva9b79"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.poster.jpg?v=mtvn17sj",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.ko.mp4?v=mtvn1al0",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.poster.jpg?v=mtvn35ix",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-10.en.mp4?v=mtvn38bo"
   }
 }
