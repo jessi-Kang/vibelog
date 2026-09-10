@@ -4,16 +4,17 @@
     "name": "apart",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "building",
+    "status": "live",
     "stack": [
       "HTML"
     ],
     "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-gam.vercel.app",
     "language": "HTML",
     "lastActivity": "2026-09-10",
-    "weekCommits": 10,
-    "todayCommits": 10,
-    "totalCommits": 10,
+    "weekCommits": 16,
+    "todayCommits": 16,
+    "totalCommits": 16,
     "theme": "paper"
   },
   {
@@ -29,8 +30,8 @@
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
     "lastActivity": "2026-09-10",
-    "weekCommits": 139,
-    "todayCommits": 126,
-    "totalCommits": 139
+    "weekCommits": 144,
+    "todayCommits": 131,
+    "totalCommits": 144
   }
 ]
