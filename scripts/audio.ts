@@ -61,7 +61,7 @@ const NATIVE_NUM = [
   "열아홉", "스무",
 ];
 const NATIVE_UNIT =
-  /^(\d{1,2})(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데)(.*)$/u;
+  /^(\d{1,2})(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데|문제|판|곡|잔)(.*)$/u;
 
 export function speakToken(tok: string): string {
   const m = tok.match(NATIVE_UNIT);
