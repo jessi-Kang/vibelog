@@ -40,6 +40,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # 새 프로젝트 카드의 설명 영어 번역용 — 없거나 실패해도 ko로 발행된다
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 배포 주소 자동 감지 (vercel.com/account/settings/tokens에서 발급).
+          # 없으면 GitHub Deployments 기록 → About Website 순으로 폴백
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
 
       - name: Commit projects.json
         run: |

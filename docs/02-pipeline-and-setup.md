@@ -65,9 +65,13 @@ vibelog/
 
 - topic `vibelog` (필수)
 - description 채우기 (카드에 그대로 씀)
-- homepage(About Website)는 **안 채워도 된다** — Vercel·GitHub Pages 연동이 남기는
-  GitHub Deployments 기록에서 배포 주소를 자동 감지한다 (production 계열 성공 배포의
-  environment_url). 채우면 그게 우선 — 커스텀 도메인·깔끔한 주소를 쓰고 싶을 때만.
+- homepage(About Website)는 **안 채워도 된다** — 자동 감지 순서:
+  ① About Website (채우면 언제나 우선 — 커스텀 도메인 의도용)
+  ② Vercel API — 시크릿 `VERCEL_TOKEN`(+`VERCEL_TEAM_ID`)이 있으면, GitHub 연결이
+     걸린 Vercel 프로젝트의 고정 production 도메인을 읽는다. **CLI로 올린 배포까지
+     잡히는 유일한 경로**라 이게 기본. 토큰 발급: vercel.com/account/settings/tokens
+  ③ GitHub Deployments 기록 — Vercel git 연동 배포가 남기는 기록의 environment_url
+     (배포별 해시 주소라 배포마다 바뀌는 게 흠, 토큰 없을 때의 폴백)
 - (선택) `vibelog.json` — `{ "name": "...", "status": "live", "stack": ["Next.js"], "hide": false }`
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 

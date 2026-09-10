@@ -259,6 +259,66 @@ async function listVibelogRepos(octokit: Octokit, owner: string) {
 }
 
 /**
+ * Vercel API로 "GitHub 레포 → Vercel 프로젝트" 지도를 만든다 (VERCEL_TOKEN 필요).
+ * GitHub Deployments 기록보다 이 경로가 우선인 이유: CLI로 올린 배포는 GitHub에
+ * 기록이 안 남고(apart가 실제로 그랬다), 기록의 URL은 배포별 해시 주소라 배포마다
+ * 바뀐다. 여기선 프로젝트의 고정 production 도메인(커스텀 도메인 우선)이 나온다.
+ * 실패·토큰 없음은 조용히 GitHub Deployments 폴백으로.
+ */
+function vercelTeamQuery(): string {
+  return process.env.VERCEL_TEAM_ID ? `&teamId=${process.env.VERCEL_TEAM_ID}` : "";
+}
+
+async function getVercelProjectMap(): Promise<Map<string, string>> {
+  const map = new Map<string, string>(); // repo명(소문자) → projectId
+  const token = process.env.VERCEL_TOKEN;
+  if (!token) return map;
+  try {
+    const res = await fetch(
+      `https://api.vercel.com/v9/projects?limit=100${vercelTeamQuery()}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+    if (!res.ok) return map;
+    const data = (await res.json()) as {
+      projects?: { id: string; link?: { type?: string; repo?: string } }[];
+    };
+    for (const p of data.projects ?? []) {
+      if (p.link?.type === "github" && p.link.repo) {
+        map.set(p.link.repo.toLowerCase(), p.id);
+      }
+    }
+  } catch {
+    // 네트워크 문제 — GitHub Deployments 폴백
+  }
+  return map;
+}
+
+async function getVercelUrl(projectId?: string): Promise<string | null> {
+  const token = process.env.VERCEL_TOKEN;
+  if (!token || !projectId) return null;
+  try {
+    const res = await fetch(
+      `https://api.vercel.com/v9/projects/${projectId}/domains?limit=50${vercelTeamQuery()}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      domains?: { name: string; verified?: boolean }[];
+    };
+    const names = (data.domains ?? [])
+      .filter((d) => d.verified !== false)
+      .map((d) => d.name);
+    const pick =
+      names.find((n) => !n.endsWith(".vercel.app")) ?? // 커스텀 도메인 우선
+      names.find((n) => n.endsWith(".vercel.app") && !n.includes("-git-")) ?? // 브랜치 별칭 제외
+      names[0];
+    return pick ? `https://${pick}` : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * About의 Website(homepage)가 비어 있을 때 배포 주소를 자동 감지한다 — 손품 제로.
  * Vercel·GitHub Pages 연동은 배포마다 GitHub Deployments에 기록을 남기므로,
  * 최신 production 계열 배포의 성공 상태에서 environment_url을 읽는다.
@@ -303,6 +363,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
   const owner = await getOwner(octokit);
 
   const repos = await listVibelogRepos(octokit, owner);
+  const vercelProjects = await getVercelProjectMap();
 
   const results: RepoActivity[] = [];
   for (const r of repos) {
@@ -322,10 +383,13 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     const vibelogJson = await getVibelogJson(octokit, owner, repo);
     if (vibelogJson?.hide) continue;
 
-    // 배포 주소: About Website 우선, 없으면 Deployments 기록에서 자동 감지 —
-    // Jessi가 아무것도 안 채워도 배포되는 순간 live 판정·카드 링크·쇼츠 데모
-    // URL이 생긴다 ("수동이네" 지적).
-    const homepage = r.homepage || (await getDeployedUrl(octokit, owner, repo));
+    // 배포 주소 우선순위: About Website(커스텀 의도) → Vercel API(고정 도메인)
+    // → GitHub Deployments 기록. Jessi가 아무것도 안 채워도 배포되는 순간
+    // live 판정·카드 링크·쇼츠 데모 URL이 생긴다 ("수동이네" 지적).
+    const homepage =
+      r.homepage ||
+      (await getVercelUrl(vercelProjects.get(repo.toLowerCase()))) ||
+      (await getDeployedUrl(octokit, owner, repo));
 
     // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (Jessi 지시:
     // 파일 만들기보다 topic이 손품이 덜하다). vibelog.json이 있으면 그게 우선.
