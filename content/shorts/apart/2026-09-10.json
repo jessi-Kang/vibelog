@@ -1,0 +1,304 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-10",
+  "day": 1,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "닮지도 않은 이름에 경고가 떴습니다.",
+      "en": "Names that look nothing alike got flagged.",
+      "keywords": [
+        "닮지도 않은",
+        "경고가"
+      ],
+      "keywordsEn": [
+        "nothing alike"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "가짜 아파트 이름을 걸러 내는 검사입니다.",
+      "en": "It is a check that catches fake apartment names.",
+      "keywords": [
+        "가짜 아파트 이름을"
+      ],
+      "keywordsEn": [
+        "fake apartment"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "안 닮은 이름끼리 222건이 걸렸습니다.",
+      "en": "222 unrelated pairs got flagged.",
+      "keywords": [
+        "222건이"
+      ],
+      "keywordsEn": [
+        "222 unrelated pairs"
+      ],
+      "stat": "222건",
+      "statEn": "222 pairs"
+    },
+    {
+      "scene": "build",
+      "ko": "두 이름이 다르면 3을 주고 멈추게 했습니다.",
+      "en": "If two names differed, it returned 3 and stopped early.",
+      "keywords": [
+        "3을",
+        "멈추게"
+      ],
+      "keywordsEn": [
+        "returned 3",
+        "stopped early"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "그 3이 비슷함 기준 안쪽이었습니다.",
+      "en": "But 3 sat inside the too-similar range.",
+      "keywords": [
+        "비슷함 기준"
+      ],
+      "keywordsEn": [
+        "too-similar range"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "멈춤 신호를 바꾸니 경고가 0건이 됐습니다.",
+      "en": "I changed the stop signal, and warnings dropped to 0.",
+      "keywords": [
+        "멈춤 신호를",
+        "0건이"
+      ],
+      "keywordsEn": [
+        "stop signal",
+        "dropped to 0"
+      ],
+      "stat": "0건",
+      "statEn": "0 warnings"
+    },
+    {
+      "scene": "demo",
+      "ko": "실제 단지일까요, 지어낸 이름일까요.",
+      "en": "Real complex, or a made-up name?",
+      "keywords": [
+        "실제",
+        "지어낸"
+      ],
+      "keywordsEn": [
+        "made-up"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "기획서에서 게임까지 하루 걸렸습니다.",
+      "en": "From plan to working game in one day.",
+      "keywords": [
+        "하루"
+      ],
+      "keywordsEn": [
+        "one day"
+      ]
+    },
+    {
+      "scene": "next",
+      "ko": "실제 자료는 사람이 검토한 뒤에 올립니다.",
+      "en": "Real data goes live only after a human review.",
+      "keywords": [
+        "사람이 검토한"
+      ],
+      "keywordsEn": [
+        "human review"
+      ],
+      "art": "a person holding a magnifying glass over a single paper form before stamping it"
+    },
+    {
+      "scene": "end",
+      "ko": "다음은 공유 카드 그림입니다.",
+      "en": "Next up is the shared result card artwork.",
+      "keywords": [
+        "공유 카드"
+      ],
+      "keywordsEn": [
+        "shared result card"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-gam.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "멈춤 신호가 3이었습니다",
+    "titleEn": "The stop signal was 3",
+    "before": "안 닮은 이름 222건에 경고",
+    "after": "신호를 바꾸니 경고 0건",
+    "beforeEn": "222 warnings on names that look nothing alike",
+    "afterEn": "Changed the signal, 0 warnings left"
+  },
+  "commits": [
+    [
+      "7372933",
+      "docs: 배포 방식을 Git 자동 배포로 전환 기록"
+    ],
+    [
+      "bd296a4",
+      "docs: 집계 DB와 배포 정보를 CLAUDE.md에 기록"
+    ],
+    [
+      "d3518fc",
+      "feat: 이름 조립 모드 — 두 번째 데일리 게임"
+    ],
+    [
+      "fbd941f",
+      "feat: 전국 정답률 집계를 Neon Postgres로 전환"
+    ],
+    [
+      "5bf7580",
+      "feat: 어제의 정답 대장과 공유 결과 페이지(OG 카드)"
+    ],
+    [
+      "ced63f4",
+      "design: 등급 도장을 진짜 찍힌 도장처럼"
+    ],
+    [
+      "a799c1f",
+      "asset: 파비콘 추가 — 잉크 아파트에 붉은 판정 소인"
+    ],
+    [
+      "67f6531",
+      "fix: 검증 스크립트가 무관한 이름끼리 222건의 유사 경고를 내던 문제"
+    ],
+    [
+      "2a0d1ce",
+      "feat: K-apt 수집 스크립트와 출제 풀 자동 검증 추가"
+    ],
+    [
+      "f6b3586",
+      "docs: 커밋 규칙과 개발 가이드를 CLAUDE.md에 기록"
+    ],
+    [
+      "18becef",
+      "feat: 감별 O/X 본편 코어 루프 웹 앱 (M1 시작)"
+    ],
+    [
+      "3b3461e",
+      "디자인 확정 방향을 A(접수 서류)로 전환"
+    ],
+    [
+      "3abd3e4",
+      "시안 A 확장판, 복귀 루프 원칙, README 리포 소개 갱신"
+    ],
+    [
+      "4a7c14f",
+      "공유 카드 시안 보류, 시안 B 디벨롭 중단 기록"
+    ],
+    [
+      "1fb747a",
+      "시안 C 확정: 게임 모드 확장, 서브 모드·공유 카드 시안, 계정·기록 기획"
+    ],
+    [
+      "4c4b0db",
+      "디자인 시안 3종 추가 (taste-skill 적용, impeccable 검증 완료)"
+    ],
+    [
+      "04865c9",
+      "아파트 감별사 서비스 기획서 작성"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "7372933",
+      "docs: Record deployment method switch to Git auto-deploy"
+    ],
+    [
+      "bd296a4",
+      "docs: Record aggregation DB and deployment info in CLAUDE.md"
+    ],
+    [
+      "d3518fc",
+      "feat: Name assembly mode — second daily game"
+    ],
+    [
+      "fbd941f",
+      "feat: Switch nationwide correct answer rate aggregation to Neon Postgres"
+    ],
+    [
+      "5bf7580",
+      "feat: Yesterday's answer ledger and share result page (OG card)"
+    ],
+    [
+      "ced63f4",
+      "design: Style rank badges like real stamped stamps"
+    ],
+    [
+      "a799c1f",
+      "asset: Add favicon — red judgment stamp on Ink Apartment"
+    ],
+    [
+      "67f6531",
+      "fix: Validation script producing 222 spurious similarity warnings between unrelated names"
+    ],
+    [
+      "2a0d1ce",
+      "feat: Add K-apt collection script and question pool auto-validation"
+    ],
+    [
+      "f6b3586",
+      "docs: Record commit rules and development guide in CLAUDE.md"
+    ],
+    [
+      "18becef",
+      "feat: Identification O/X main episode core loop web app (M1 start)"
+    ],
+    [
+      "3b3461e",
+      "Switch design direction to option A (application document)"
+    ],
+    [
+      "3abd3e4",
+      "Expand design A, return loop principle, update README repo introduction"
+    ],
+    [
+      "4a7c14f",
+      "Defer share card design, halt design B development"
+    ],
+    [
+      "1fb747a",
+      "Confirm design C: game mode expansion, sub mode and share card design, account and record planning"
+    ],
+    [
+      "4c4b0db",
+      "Add 3 design concepts (taste-skill applied, impeccable validation complete)"
+    ],
+    [
+      "04865c9",
+      "Write service planning document for Apartment Identifier"
+    ]
+  ],
+  "commitCount": 17,
+  "handle": "apt-gam.vercel.app",
+  "captions": {
+    "ko": "아파트 이름이 진짜인지 지어낸 건지 맞히는 퀴즈를 하루 만에 만들었습니다. 가짜 이름을 걸러 내는 검사가 엉뚱하게 222건을 경고한 이유는 멈춤 신호로 쓴 숫자 3이었습니다.",
+    "en": "Built a quiz about real versus made-up apartment names in a single day. The check meant to catch look-alike fakes threw 222 false alarms, all because the early-stop signal was the number 3."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#사이드프로젝트",
+    "#디버깅",
+    "#퀴즈게임",
+    "#devlog",
+    "#buildinpublic",
+    "#webdev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvn7qf3",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvn7st6",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvn93z7",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvn962q"
+  }
+}
