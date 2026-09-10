@@ -38,7 +38,8 @@ export default function Home() {
   const run = getRunLog();
 
   const active = projects.filter(
-    (p) => p.status === "building" || p.status === "live",
+    (p) =>
+      p.status === "building" || p.status === "preview" || p.status === "live",
   ).length;
   // "오늘 움직임"은 커밋 수 (Jessi 지시 — 프로젝트 수는 1에서 안 움직인다).
   // 아직 todayCommits가 없는 옛 데이터는 오늘 글의 원료 커밋 수로 폴백.
