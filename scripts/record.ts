@@ -27,15 +27,24 @@ async function shot(page: Page, dir: string, n: number): Promise<number> {
  * 언어 전환 완료 대기 — SSR은 항상 ko로 그려지고 마운트 후 저장값으로
  * 전환된다(components/lang.tsx). en 녹화에서 이 전환을 기다리지 않으면
  * 한국어 화면이 소재에 섞인다 (Jessi 지적). lang.tsx가 <html lang>을
- * 갱신하므로 그걸 신호로 쓴다. 구버전 배포(신호 없음)면 타임아웃 후 진행.
+ * 갱신하므로 그걸 신호로 쓴다.
+ *
+ * 신호는 vibelog 사이트 것이다 — 다른 프로젝트 사이트(apart 등)는 이 신호가
+ * 없으므로, 첫 타임아웃 후에는 그 사이트가 신호를 안 낸다고 보고 이후
+ * 대기를 건너뛴다. 안 그러면 페이지 이동마다 8초씩 헛기다린다.
  */
+let langSignalAbsent = false;
 async function waitForLang(page: Page, lang: "ko" | "en"): Promise<void> {
+  if (langSignalAbsent) return;
   await page
     .waitForFunction((l) => document.documentElement.lang === l, lang, {
       timeout: 8000,
     })
     .catch(() => {
-      console.warn(`<html lang="${lang}"> 신호 없음 — 구버전 배포일 수 있음`);
+      langSignalAbsent = true;
+      console.warn(
+        `<html lang="${lang}"> 신호 없음 — 이 사이트엔 언어 신호가 없다고 보고 이후 대기 생략`,
+      );
     });
 }
 
@@ -147,6 +156,8 @@ export async function record(
   if (!script.demo.url) {
     throw new Error(`demo.url이 없습니다 — 레포 homepage를 채워주세요 (${repo})`);
   }
+  // 녹화 대상 사이트가 바뀔 수 있다(한 실행이 여러 레포를 돈다) — 판정 리셋
+  langSignalAbsent = false;
 
   const outDir = path.join(process.cwd(), shortsDir(repo));
   const shotsDir = path.join(outDir, `${date}.shots`);

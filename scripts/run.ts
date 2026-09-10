@@ -287,6 +287,11 @@ async function main(): Promise<void> {
     };
   }
 
+  // 쇼츠보다 먼저 projects.json을 갱신한다 — 쇼츠(script.ts)가 여기서
+  // homepage(데모 URL)·theme을 읽으므로, 이 실행에서 처음 감지된 배포
+  // 주소가 그날 쇼츠에 바로 쓰여야 한다. 뒤에 두면 하루 밀린다.
+  await updateProjects(activities);
+
   // 쇼츠 단계 (2단계) — 실패해도 데브로그 발행은 막지 않는다
   if (process.env.SKIP_SHORTS === "1") {
     console.log("쇼츠: SKIP_SHORTS=1 — 건너뜀");
@@ -311,7 +316,6 @@ async function main(): Promise<void> {
     }
   }
 
-  await updateProjects(activities);
   runLines.push({
     text: "publish  · content 커밋 → vercel 자동 배포",
     textEn: "publish  · commit content → vercel auto-deploy",
