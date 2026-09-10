@@ -1,20 +1,5 @@
 [
   {
-    "slug": "apart",
-    "name": "apart",
-    "description": "",
-    "status": "building",
-    "stack": [
-      "HTML"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "language": "HTML",
-    "lastActivity": "2026-09-10",
-    "weekCommits": 4,
-    "todayCommits": 4,
-    "totalCommits": 4
-  },
-  {
     "slug": "vibelog",
     "name": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
@@ -29,6 +14,22 @@
     "lastActivity": "2026-09-10",
     "weekCommits": 100,
     "todayCommits": 100,
-    "totalCommits": 132
+    "totalCommits": 134
+  },
+  {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" — 하루 10문제 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or did AI create it?\" — Daily Quiz Game 'Apartment Detective' with 10 Questions a Day",
+    "status": "building",
+    "stack": [
+      "HTML"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "language": "HTML",
+    "lastActivity": "2026-09-10",
+    "weekCommits": 6,
+    "todayCommits": 6,
+    "totalCommits": 6
   }
 ]
