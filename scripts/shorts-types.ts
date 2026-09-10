@@ -47,6 +47,8 @@ export interface ShortsLine {
   keywordsEn: string[];
   /** 이 장면을 은유하는 일러스트 묘사(영어) — art.ts가 이미지로 만든다. hook·next만 */
   art?: string;
+  /** 숫자 모먼트 — 문장 속 숫자+단위("16개","52초"). 말하는 순간 카운터로 박힌다 */
+  stat?: string;
 }
 
 export interface ShortsFailCard {
@@ -78,6 +80,10 @@ export interface ShortsScript {
   handle: string;
   captions: { ko: string; en: string };
   hashtags: string[];
+  /** 커밋 콜드오픈 재료 — 데브로그 frontmatter shas [sha7, 한 줄 메시지] */
+  commits?: [string, string][];
+  /** 영문 영상용 커밋 메시지 (frontmatter shasEn) — 없으면 ko로 폴백 */
+  commitsEn?: [string, string][];
   /** 8단계에서 업로드 후 기록. poster/posterEn = 각 언어 영상의 첫 프레임(썸네일용) */
   media?: { ko?: string; en?: string; poster?: string; posterEn?: string };
 }

@@ -44,6 +44,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   축약, ② "쉰두 초", "다섯 화면"처럼 숫자를 한글 수사로 풀어 쓰는 것.
   모든 문장은 소리 내어 읽었을 때 자연스러운 말이어야 한다 (내레이션이 된다).
 - 데브로그에 없는 사실을 지어내지 않는다. 과장·이모지 금지.
+- stat: 문장에 이야기의 핵심이 되는 숫자가 있으면 그 문장에만 stat으로 숫자+단위를
+  적는다 (예: "16개", "52초", "11시"). 문장에 실제로 등장하는 표기 그대로.
+  편당 최대 2문장 — 곁가지 숫자엔 붙이지 않는다. 없으면 생략.
 - keywords: 각 ko 문장에서 강조할 단어 1~3개. 문장에 실제로 등장하는 단어(공백 단위 토큰)와 정확히 일치해야 한다. keywordsEn도 en 문장에 대해 동일.
 - en은 같은 내용의 자연스러운 영어. 존댓말 뉘앙스는 평서체로.
 - template: 배포·릴리즈가 핵심이면 "ship-it", 삽질 이야기가 제일 강하면 "fail", 둘 다 아니면 "ship-it".
@@ -59,7 +62,7 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   hook 등 다른 장면에는 art를 쓰지 않는다.
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"art":"..."}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"..."}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -113,6 +116,8 @@ function validateLines(raw: unknown): ShortsLine[] {
         .slice(0, 3),
       // +알파 그래픽용 장면 은유 묘사 — 여기서 떨어뜨리면 art.ts가 만들 게 없다
       ...(typeof l.art === "string" && l.art.trim() ? { art: l.art.trim() } : {}),
+      // 숫자 모먼트 — 숫자가 없는 stat은 카운터를 만들 수 없다
+      ...(typeof l.stat === "string" && /\d/.test(l.stat) ? { stat: l.stat } : {}),
     };
   });
 }
@@ -206,6 +211,18 @@ export async function generateScript(
 
   const captions = (parsed.captions ?? {}) as Record<string, unknown>;
 
+  // 커밋 콜드오픈 재료 — 데브로그 frontmatter의 shas/shasEn을 그대로 싣는다.
+  // 대본이 아니라 원료에서 오므로 LLM 출력 검증이 필요 없다.
+  const shaPairs = (raw: unknown): [string, string][] =>
+    (Array.isArray(raw) ? raw : []).filter(
+      (p): p is [string, string] =>
+        Array.isArray(p) &&
+        typeof p[0] === "string" &&
+        typeof p[1] === "string",
+    );
+  const commits = shaPairs(data.shas);
+  const commitsEn = shaPairs(data.shasEn);
+
   const script: ShortsScript = {
     template,
     music,
@@ -216,6 +233,8 @@ export async function generateScript(
     lines: validateLines(parsed.lines),
     demo: { url: demoUrl, steps: [] },
     ...(failCard ? { failCard } : {}),
+    ...(commits.length ? { commits } : {}),
+    ...(commitsEn.length ? { commitsEn } : {}),
     handle: demoUrl.replace(/^https?:\/\//, "").replace(/\/$/, "") || repo,
     captions: {
       ko: typeof captions.ko === "string" ? captions.ko : "",

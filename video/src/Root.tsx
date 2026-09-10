@@ -1,7 +1,7 @@
 import React from "react";
 import { Composition } from "remotion";
 import { ShipIt, type ShipItProps } from "./ShipIt";
-import { totalSeconds } from "./theme";
+import { COLD_OPEN_SEC, totalSeconds } from "./theme";
 import sampleScript from "../fixtures/sample.json";
 import sampleTiming from "../fixtures/sample.ko.timing.json";
 
@@ -24,7 +24,12 @@ export const RemotionRoot: React.FC = () => {
       durationInFrames={Math.ceil(totalSeconds(defaults.timing.duration) * FPS)}
       defaultProps={defaults}
       calculateMetadata={({ props }) => ({
-        durationInFrames: Math.ceil(totalSeconds(props.timing.duration) * FPS),
+        durationInFrames: Math.ceil(
+          totalSeconds(
+            props.timing.duration,
+            props.script.commits?.length ? COLD_OPEN_SEC : 0,
+          ) * FPS,
+        ),
       })}
     />
   );
