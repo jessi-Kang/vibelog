@@ -12,16 +12,17 @@
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
     "lastActivity": "2026-09-11",
-    "weekCommits": 151,
-    "todayCommits": 2,
-    "totalCommits": 151
+    "weekCommits": 167,
+    "todayCommits": 18,
+    "totalCommits": 167,
+    "countsDate": "2026-09-11"
   },
   {
     "slug": "apart",
     "name": "apart",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
+    "status": "live",
     "stack": [
       "HTML"
     ],
@@ -29,9 +30,10 @@
     "homepage": "https://apt-gam.vercel.app",
     "language": "HTML",
     "lastActivity": "2026-09-11",
-    "weekCommits": 22,
-    "todayCommits": 4,
-    "totalCommits": 22,
+    "weekCommits": 39,
+    "todayCommits": 21,
+    "totalCommits": 39,
+    "countsDate": "2026-09-11",
     "theme": "paper"
   }
 ]
