@@ -110,6 +110,15 @@ export function keywordStyle(th: ShortsTheme, scale = 1): CSSProperties {
 }
 
 /**
+ * 토큰 비교용 정규화 — 양끝 문장부호를 뗀다. "never started"를 강조하려는데
+ * 문장 토큰이 "started."라서 못 켜지던 문제 (영문 훅 하이라이트 누락 —
+ * Jessi 지적). scripts/script.ts의 검증과 같은 규칙이어야 한다.
+ */
+export function stripPunct(w: string): string {
+  return w.replace(/^[.,!?…:;"'“”‘’()[\]]+|[.,!?…:;"'“”‘’()[\]]+$/g, "");
+}
+
+/**
  * 키워드가 켜지는 단어 인덱스 — "두 번"처럼 연속된 여러 단어 구도 키워드가
  * 될 수 있다 (한 단어만 허용하면 "번"만 켜져 어색하다 — Jessi 지적).
  * 구의 모든 토큰이 문장에 연속으로 나타나는 자리를 전부 켠다.
@@ -120,10 +129,10 @@ export function keywordIndices(
 ): Set<number> {
   const on = new Set<number>();
   for (const k of keywords) {
-    const toks = k.split(/\s+/).filter(Boolean);
+    const toks = k.split(/\s+/).map(stripPunct).filter(Boolean);
     if (!toks.length) continue;
     for (let i = 0; i + toks.length <= words.length; i++) {
-      if (toks.every((tok, j) => words[i + j] === tok)) {
+      if (toks.every((tok, j) => stripPunct(words[i + j]) === tok)) {
         for (let j = 0; j < toks.length; j++) on.add(i + j);
       }
     }

@@ -132,11 +132,16 @@ function validateLines(raw: unknown): ShortsLine[] {
       throw new Error(`lines[${i}] 형식 오류`);
     }
     // 키워드는 문장에 실제로 있는 것만 남긴다 — 자막 강조 매칭이 어긋나지 않게.
-    // "두 번" 같은 연속된 단어 구도 허용 (한 단어만 허용하면 "번"만 켜진다)
-    const koTokens = l.ko.split(/\s+/);
-    const enTokens = l.en.split(/\s+/);
+    // "두 번" 같은 연속된 단어 구도 허용 (한 단어만 허용하면 "번"만 켜진다).
+    // 비교는 양끝 문장부호를 떼고 — "never started"가 문장 끝 "started."와
+    // 못 맞아 통째로 걸러졌다 (영문 훅 하이라이트 누락, Jessi 지적).
+    // video/src/theme.ts의 stripPunct와 같은 규칙.
+    const strip = (w: string): string =>
+      w.replace(/^[.,!?…:;"'“”‘’()[\]]+|[.,!?…:;"'“”‘’()[\]]+$/g, "");
+    const koTokens = l.ko.split(/\s+/).map(strip);
+    const enTokens = l.en.split(/\s+/).map(strip);
     const inSentence = (tokens: string[]) => (k: string): boolean => {
-      const toks = k.split(/\s+/).filter(Boolean);
+      const toks = k.split(/\s+/).map(strip).filter(Boolean);
       if (!toks.length) return false;
       for (let i = 0; i + toks.length <= tokens.length; i++) {
         if (toks.every((tok, j) => tokens[i + j] === tok)) return true;
