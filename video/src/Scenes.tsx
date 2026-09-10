@@ -1,4 +1,4 @@
-/** 장면 컴포넌트 4종 — 프로토타입(docs/shorts-prototype.html)의 레이아웃을 그대로 옮김 */
+/** 장면 컴포넌트 — 프로토타입 레이아웃 + 테마 토큰(팔레트·형태·키워드 규칙) */
 import React from "react";
 import {
   AbsoluteFill,
@@ -10,10 +10,16 @@ import {
   useVideoConfig,
 } from "remotion";
 import type { ShortsScript, ShortsTiming } from "../../scripts/shorts-types";
-import { COLORS, FONT_MONO, FONT_SANS, NARRATION_DELAY } from "./theme";
+import {
+  FONT_MONO,
+  FONT_SANS,
+  keywordStyle,
+  NARRATION_DELAY,
+  type ShortsTheme,
+} from "./theme";
 
 /**
- * hook 문장에서 키워드를 민트로 강조한 큰 타이틀. 타이포만 — 그래픽 금지 (Jessi 지시).
+ * hook 문장에서 키워드를 강조한 큰 타이틀. 타이포만 — 그래픽 금지 (Jessi 지시).
  * 훅 장면에서는 하단 자막을 끄므로(중복), 훅이 2문장이면 헤드라인이
  * 지금 말하는 문장으로 갱신된다 — 화면에 안 보이는 말이 없게.
  */
@@ -21,7 +27,8 @@ export const HookCard: React.FC<{
   script: ShortsScript;
   lang: "ko" | "en";
   timing?: ShortsTiming;
-}> = ({ script, lang, timing }) => {
+  th: ShortsTheme;
+}> = ({ script, lang, timing, th }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const hookLines = script.lines
@@ -53,17 +60,17 @@ export const HookCard: React.FC<{
           fontFamily: FONT_SANS,
           fontWeight: 900,
           fontSize: 132,
-          lineHeight: 1.08,
+          lineHeight: 1.14,
           letterSpacing: "-0.01em",
           margin: 0,
           wordBreak: "keep-all",
           textWrap: "balance",
-          color: COLORS.ink,
+          color: th.ink,
         }}
       >
         {words.map((w, i) => (
           <React.Fragment key={i}>
-            <span style={{ color: keywords.has(w) ? COLORS.accent : undefined }}>
+            <span style={keywords.has(w) ? keywordStyle(th, 1) : undefined}>
               {w}
             </span>
             {i < words.length - 1 ? " " : null}
@@ -76,7 +83,7 @@ export const HookCard: React.FC<{
           fontFamily: FONT_SANS,
           fontSize: 40,
           fontWeight: 500,
-          color: COLORS.muted,
+          color: th.muted,
         }}
       >
         {script.repo} · devlog day {String(script.day).padStart(2, "0")}
@@ -92,7 +99,8 @@ export const PhoneFrame: React.FC<{
   sourceOffsetSec: number;
   fromFrame: number;
   durationInFrames: number;
-}> = ({ videoFile, sourceOffsetSec, fromFrame, durationInFrames }) => {
+  th: ShortsTheme;
+}> = ({ videoFile, sourceOffsetSec, fromFrame, durationInFrames, th }) => {
   const { fps } = useVideoConfig();
   return (
     <div
@@ -104,10 +112,12 @@ export const PhoneFrame: React.FC<{
         transform: "translateX(-50%)",
         width: 690,
         height: 1130,
-        borderRadius: 64,
-        background: "#000",
-        border: "6px solid #2A3442",
-        boxShadow: "0 40px 120px rgba(0,0,0,.6), 0 0 0 2px #0A0E14",
+        borderRadius: Math.max(24, th.radius * 2.3),
+        background: th.light ? "#fff" : "#000",
+        border: `6px solid ${th.light ? "#D5DAE0" : th.line}`,
+        boxShadow: th.light
+          ? "0 30px 90px rgba(23,26,31,.18)"
+          : `0 40px 120px rgba(0,0,0,.6), 0 0 0 2px ${th.bg}`,
       }}
     >
       {/* 노치 없음 — 화면 콘텐츠를 가리지 않는다 (Jessi 지시) */}
@@ -115,9 +125,9 @@ export const PhoneFrame: React.FC<{
         style={{
           position: "absolute",
           inset: 14,
-          borderRadius: 50,
+          borderRadius: Math.max(16, th.radius * 1.8),
           overflow: "hidden",
-          background: COLORS.panel,
+          background: th.panel,
         }}
       >
         {videoFile ? (
@@ -135,7 +145,7 @@ export const PhoneFrame: React.FC<{
               padding: "120px 40px",
               fontFamily: FONT_MONO,
               fontSize: 28,
-              color: COLORS.muted,
+              color: th.muted,
               lineHeight: 1.7,
             }}
           >
@@ -149,13 +159,14 @@ export const PhoneFrame: React.FC<{
   );
 };
 
-/** 삽질 카드 — before/after 비교. 장면 시작 후 순차 등장 */
+/** 삽질 카드 — before/after 비교. 테마별 변형 5종. 장면 시작 후 순차 등장 */
 export const FailCard: React.FC<{
   script: ShortsScript;
   lang: "ko" | "en";
   sceneStartSec: number;
   sceneEndSec: number;
-}> = ({ script, lang, sceneStartSec, sceneEndSec }) => {
+  th: ShortsTheme;
+}> = ({ script, lang, sceneStartSec, sceneEndSec, th }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -163,17 +174,74 @@ export const FailCard: React.FC<{
   if (!card) return null;
   const local = t - sceneStartSec;
   const afterAt = (sceneEndSec - sceneStartSec) * 0.45;
+  const before = lang === "ko" ? card.before : (card.beforeEn ?? card.before);
+  const after = lang === "ko" ? card.after : (card.afterEn ?? card.after);
 
-  const box = (visible: boolean, delay: number): React.CSSProperties => ({
-    background: COLORS.panel,
-    border: `2px solid ${COLORS.line}`,
-    borderRadius: 28,
-    padding: "34px 38px",
+  const appear = (visible: boolean, delay: number): React.CSSProperties => ({
     opacity: visible ? Math.min(1, (local - delay) / 0.5) : 0,
     transform: visible
       ? `translateY(${Math.max(0, 20 - ((local - delay) / 0.5) * 20)}px)`
       : "translateY(20px)",
   });
+
+  // 테마별 박스 스타일
+  const boxBase: React.CSSProperties =
+    th.fail === "marker"
+      ? { padding: "8px 0" } // 패널 없이 텍스트만
+      : th.fail === "paper"
+        ? {
+            background: th.panel,
+            border: `2px solid ${th.line}`,
+            borderRadius: th.radius,
+            padding: "34px 38px",
+            boxShadow: "0 10px 44px rgba(23,26,31,.10)",
+          }
+        : {
+            background: th.panel,
+            border: `2px solid ${th.line}`,
+            borderRadius: th.radius,
+            padding: "34px 38px",
+          };
+  const afterBox: React.CSSProperties =
+    th.fail === "annotation"
+      ? { borderColor: th.accent }
+      : th.fail === "strike"
+        ? { background: th.panel2 }
+        : {};
+
+  const bodyStyle = (isAfter: boolean): React.CSSProperties => {
+    const base: React.CSSProperties = {
+      fontFamily: FONT_SANS,
+      fontSize: 34,
+      lineHeight: 1.5,
+      color: th.ink,
+    };
+    if (th.fail === "strike" && !isAfter) {
+      return {
+        ...base,
+        color: th.muted,
+        textDecoration: "line-through",
+        textDecorationColor: th.accent,
+        textDecorationThickness: 4,
+      };
+    }
+    if (th.fail === "marker") {
+      if (isAfter) {
+        return {
+          ...base,
+          fontWeight: 700,
+          color: th.accentInk,
+          background: th.accent,
+          padding: "2px 10px",
+          borderRadius: 6,
+          boxDecorationBreak: "clone",
+          WebkitBoxDecorationBreak: "clone",
+        } as React.CSSProperties;
+      }
+      return { ...base, color: th.muted };
+    }
+    return base;
+  };
 
   return (
     <div style={{ position: "absolute", left: 80, right: 80, top: 300 }}>
@@ -182,7 +250,7 @@ export const FailCard: React.FC<{
           fontFamily: FONT_MONO,
           fontSize: 30,
           letterSpacing: "0.1em",
-          color: COLORS.warn,
+          color: th.warn,
           textTransform: "uppercase",
         }}
       >
@@ -198,45 +266,44 @@ export const FailCard: React.FC<{
           margin: "20px 0 60px",
           wordBreak: "keep-all",
           textWrap: "balance",
-          color: COLORS.ink,
+          color: th.ink,
         }}
       >
         {lang === "ko" ? card.title : card.titleEn}
       </h2>
       <div style={{ display: "grid", gap: 28 }}>
-        <div style={box(local > 0.3, 0.3)}>
+        <div style={{ ...boxBase, ...appear(local > 0.3, 0.3) }}>
           <div
             style={{
               fontFamily: FONT_MONO,
               fontSize: 24,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: COLORS.muted,
+              color: th.muted,
               marginBottom: 16,
             }}
           >
             before
           </div>
-          <div style={{ fontFamily: FONT_SANS, fontSize: 34, lineHeight: 1.5, color: COLORS.ink }}>
-            {/* 구버전 대본에는 beforeEn이 없다 — ko 폴백 */}
-            {lang === "ko" ? card.before : (card.beforeEn ?? card.before)}
+          <div style={{ fontFamily: FONT_SANS, fontSize: 34, lineHeight: 1.5 }}>
+            <span style={bodyStyle(false)}>{before}</span>
           </div>
         </div>
-        <div style={box(local > afterAt, afterAt)}>
+        <div style={{ ...boxBase, ...afterBox, ...appear(local > afterAt, afterAt) }}>
           <div
             style={{
               fontFamily: FONT_MONO,
               fontSize: 24,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: COLORS.accent,
+              color: th.accent,
               marginBottom: 16,
             }}
           >
             after
           </div>
-          <div style={{ fontFamily: FONT_SANS, fontSize: 34, lineHeight: 1.5, color: COLORS.ink }}>
-            {lang === "ko" ? card.after : (card.afterEn ?? card.after)}
+          <div style={{ fontFamily: FONT_SANS, fontSize: 34, lineHeight: 1.5 }}>
+            <span style={bodyStyle(true)}>{after}</span>
           </div>
         </div>
       </div>
@@ -244,7 +311,10 @@ export const FailCard: React.FC<{
   );
 };
 
-export const EndCard: React.FC<{ script: ShortsScript }> = ({ script }) => (
+export const EndCard: React.FC<{ script: ShortsScript; th: ShortsTheme }> = ({
+  script,
+  th,
+}) => (
   <div
     style={{
       position: "absolute",
@@ -261,24 +331,24 @@ export const EndCard: React.FC<{ script: ShortsScript }> = ({ script }) => (
         fontSize: 120,
         lineHeight: 1.05,
         margin: 0,
-        color: COLORS.ink,
+        color: th.ink,
       }}
     >
-      vibe<span style={{ color: COLORS.accent }}>log</span>
+      vibe<span style={{ color: th.accent }}>log</span>
     </h1>
     <div
       style={{
         marginTop: 48,
         fontFamily: FONT_MONO,
         fontSize: 34,
-        color: COLORS.muted,
+        color: th.muted,
         display: "flex",
         gap: 28,
         flexWrap: "wrap",
       }}
     >
       <span>{script.repo}</span>
-      <span style={{ color: COLORS.accent, fontWeight: 700 }}>
+      <span style={{ color: th.accent, fontWeight: 700 }}>
         day {String(script.day).padStart(2, "0")}
       </span>
       <span>{script.template.replace("-", " ")}</span>
@@ -289,13 +359,13 @@ export const EndCard: React.FC<{ script: ShortsScript }> = ({ script }) => (
         display: "inline-flex",
         alignItems: "center",
         gap: 20,
-        background: COLORS.accent,
-        color: COLORS.accentInk,
+        background: th.accent,
+        color: th.accentInk,
         fontFamily: FONT_SANS,
         fontWeight: 900,
         fontSize: 40,
         padding: "22px 40px",
-        borderRadius: 18,
+        borderRadius: Math.min(18, th.radius),
       }}
     >
       {script.handle} →
@@ -303,8 +373,8 @@ export const EndCard: React.FC<{ script: ShortsScript }> = ({ script }) => (
   </div>
 );
 
-/** +알파 그래픽 장면 — 생성 일러스트 하나가 화면을 차지한다. 문장은 자막이 말한다 */
-export const ArtCard: React.FC<{ file: string }> = ({ file }) => (
+/** +알파 그래픽 장면 — 생성 일러스트 (현재 보류, 레퍼런스 확정 시 재개) */
+export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({ file, th }) => (
   <div
     style={{
       position: "absolute",
@@ -315,9 +385,9 @@ export const ArtCard: React.FC<{ file: string }> = ({ file }) => (
       height: 860,
       borderRadius: 70,
       overflow: "hidden",
-      border: `2px solid ${COLORS.line}`,
+      border: `2px solid ${th.line}`,
       boxShadow: "0 40px 120px rgba(0,0,0,.6)",
-      background: COLORS.panel,
+      background: th.panel,
     }}
   >
     <Img
@@ -327,13 +397,35 @@ export const ArtCard: React.FC<{ file: string }> = ({ file }) => (
   </div>
 );
 
-export const Background: React.FC = () => (
-  <AbsoluteFill style={{ background: COLORS.bg }}>
-    <AbsoluteFill
-      style={{
-        background:
-          "radial-gradient(60% 40% at 50% 0%, rgba(94,225,195,.10), transparent 70%)",
-      }}
-    />
+/** 배경 — 테마의 backdrop 변형: 글로우 / 격자 / 상단 엣지 / 무지 */
+export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => (
+  <AbsoluteFill style={{ background: th.bg }}>
+    {th.backdrop === "glow" && (
+      <AbsoluteFill
+        style={{
+          background: `radial-gradient(60% 40% at 50% 0%, ${th.accent}1a, transparent 70%)`,
+        }}
+      />
+    )}
+    {th.backdrop === "grid" && (
+      <AbsoluteFill
+        style={{
+          backgroundImage: `linear-gradient(${th.accent}0d 2px, transparent 2px), linear-gradient(90deg, ${th.accent}0d 2px, transparent 2px)`,
+          backgroundSize: "108px 108px",
+        }}
+      />
+    )}
+    {th.backdrop === "edge" && (
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 20,
+          background: th.accent,
+        }}
+      />
+    )}
   </AbsoluteFill>
 );

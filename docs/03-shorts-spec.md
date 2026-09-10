@@ -39,6 +39,19 @@
   - 확정 설정(승인된 샘플 기준): speed 1.00 / stability 0.50 / similarity_boost 0.75 / style 0 / speaker_boost on. 모델 eleven_multilingual_v2.
   - 같은 설정이라도 테이크마다 길이가 ±1초 정도 달라진다 → 타이밍은 항상 생성된 음성의 타임스탬프로 잡는다. 텍스트를 미리 자막에 박아두고 음성을 맞추지 않는다.
   - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
+## 테마 — 레포마다 다른 얼굴, 같은 문법
+
+레포는 `vibelog.json`에 `"theme": "<이름>"` 한 줄로 영상 테마를 고른다. 안 고르면 terminal.
+채널 아이덴티티(장면 구조·자막 규칙·푸터·진행 바)는 모든 테마 공유 — 팔레트·키워드 강조 방식·카드/배지 형태·배경 처리만 바뀐다. 토큰은 `video/src/theme.ts`.
+
+| 이름 | 톤 | 키워드 강조 | 어울림 |
+|---|---|---|---|
+| `terminal` | 다크 + 민트 글로우 (기본) | 민트 컬러 | 도구·자동화 |
+| `blueprint` | 딥 네이비 + 격자, 각진 모서리 | 블루 + 밑줄 | 인프라·API |
+| `signal` | 웜 블랙 + 상단 오렌지 엣지 | 오렌지 (before 취소선) | 소비자 앱·운동 |
+| `paper` | 라이트 (유일), 종이 카드 | 그린 형광펜 | 글쓰기·정리 |
+| `highlighter` | 흑백 브루탈리스트 | 노랑 마커칠 | 실험작·장난감 |
+
 - 배경음악: `video/assets/music/`의 고정 트랙 5종을 재사용한다 (API 미사용 — 크레딧·일관성).
   톤: `ship-it`(기본, 담담한 전진) / `upbeat`(배포·성공) / `tense`(큰 삽질) / `calm`(문서·정리) / `playful`(실험·장난기).
   대본(script.ts)이 그날 이야기 분위기로 `music` 톤을 고르고, 없으면 템플릿 트랙 → 아무 트랙 순 폴백.

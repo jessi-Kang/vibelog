@@ -20,8 +20,8 @@ import {
   PhoneFrame,
 } from "./Scenes";
 import {
-  COLORS,
   FONT_MONO,
+  getTheme,
   NARRATION_DELAY,
   SCENE_FADE,
   totalSeconds,
@@ -38,6 +38,8 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
+  /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
+  theme?: string | null;
 };
 
 type Kind = "hook" | "phone" | "fail" | "end" | "art";
@@ -102,7 +104,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoFile,
   videoStartSec = 0,
   artFiles = null,
+  theme = null,
 }) => {
+  const th = getTheme(theme);
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -131,8 +135,8 @@ export const ShipIt: React.FC<ShipItProps> = ({
   };
 
   return (
-    <AbsoluteFill style={{ background: COLORS.bg }}>
-      <Background />
+    <AbsoluteFill style={{ background: th.bg }}>
+      <Background th={th} />
 
       {segs.map((seg, i) => {
         const opacity = opacityOf(seg);
@@ -140,10 +144,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
         return (
           <AbsoluteFill key={i} style={{ opacity }}>
             {seg.kind === "hook" && (
-              <HookCard script={script} lang={lang} timing={timing} />
+              <HookCard script={script} lang={lang} timing={timing} th={th} />
             )}
             {seg.kind === "art" && artFiles?.next && (
-              <ArtCard file={artFiles.next} />
+              <ArtCard file={artFiles.next} th={th} />
             )}
             {seg.kind === "phone" && (
               <PhoneFrame
@@ -151,6 +155,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 sourceOffsetSec={videoStartSec + seg.sourceOffset}
                 fromFrame={Math.floor(seg.from * fps)}
                 durationInFrames={Math.ceil((seg.to - seg.from + SCENE_FADE) * fps)}
+                th={th}
               />
             )}
             {seg.kind === "fail" && (
@@ -159,9 +164,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 lang={lang}
                 sceneStartSec={seg.from}
                 sceneEndSec={seg.to}
+                th={th}
               />
             )}
-            {seg.kind === "end" && <EndCard script={script} />}
+            {seg.kind === "end" && <EndCard script={script} th={th} />}
           </AbsoluteFill>
         );
       })}
@@ -180,27 +186,29 @@ export const ShipIt: React.FC<ShipItProps> = ({
           fontSize: 30,
           fontWeight: 700,
           letterSpacing: "0.08em",
-          color: COLORS.muted,
+          color: th.muted,
           textTransform: "uppercase",
         }}
       >
         <span>
-          <span style={{ color: COLORS.accent }}>vibelog</span> · day{" "}
+          <span style={{ color: th.accent }}>vibelog</span> · day{" "}
           {String(script.day).padStart(2, "0")}
         </span>
         <span
           style={{
-            border: `2px solid ${COLORS.line}`,
-            borderRadius: 999,
+            border: `2px solid ${th.badgeFill ? th.accent : th.line}`,
+            borderRadius: th.badgeRadius,
             padding: "10px 24px",
-            color: COLORS.ink,
+            color: th.badgeFill ? th.accentInk : th.ink,
+            background: th.badgeFill ? th.accent : "transparent",
+            fontWeight: 700,
           }}
         >
           {script.template.replace("-", " ")}
         </span>
       </div>
 
-      <Captions script={script} timing={timing} lang={lang} />
+      <Captions script={script} timing={timing} lang={lang} th={th} />
 
       {/* progress */}
       <div
@@ -210,7 +218,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
           right: 80,
           bottom: 110,
           height: 8,
-          background: COLORS.line,
+          background: th.light ? th.panel2 : th.line,
           borderRadius: 99,
           overflow: "hidden",
         }}
@@ -219,7 +227,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
           style={{
             height: "100%",
             width: `${Math.min(100, (t / total) * 100)}%`,
-            background: COLORS.accent,
+            background: th.accent,
           }}
         />
       </div>
@@ -235,7 +243,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
           justifyContent: "space-between",
           fontFamily: FONT_MONO,
           fontSize: 24,
-          color: COLORS.muted,
+          color: th.muted,
           letterSpacing: "0.06em",
         }}
       >

@@ -20,6 +20,20 @@ export const MUSIC_MOODS = [
 ] as const;
 export type MusicMood = (typeof MUSIC_MOODS)[number];
 
+/**
+ * 쇼츠 영상 테마 5종 (Jessi 승인 시안) — 레포가 vibelog.json의 "theme"
+ * 한 줄로 고른다. 채널 문법(장면·자막·푸터)은 공유, 팔레트·키워드 강조·
+ * 카드 형태만 바뀐다. 토큰 정의는 video/src/theme.ts.
+ */
+export const SHORTS_THEMES = [
+  "terminal", // 01 터미널 민트 — 기본. 도구·자동화
+  "blueprint", // 02 블루프린트 — 인프라·API
+  "signal", // 03 시그널 오렌지 — 소비자 앱·운동
+  "paper", // 04 페이퍼(라이트) — 글쓰기·정리
+  "highlighter", // 05 하이라이터 — 실험작·장난감
+] as const;
+export type ShortsThemeName = (typeof SHORTS_THEMES)[number];
+
 /** 대본 한 문장이 속하는 장면. Remotion 템플릿이 장면 전환에 사용 */
 export type ShortsScene = "hook" | "build" | "demo" | "fail" | "next" | "end";
 
@@ -50,6 +64,8 @@ export interface ShortsScript {
   template: ShortsTemplate;
   /** 대본이 고른 배경음악 톤 — 없으면 template 트랙 → 아무 트랙 순 폴백 */
   music?: string;
+  /** 레포가 고른 영상 테마 (vibelog.json "theme") — 없으면 terminal */
+  theme?: string;
   repo: string;
   date: string; // YYYY-MM-DD
   /** eyebrow의 DAY NN — 이 레포의 몇 번째 데브로그인지 */

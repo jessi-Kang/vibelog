@@ -31,6 +31,8 @@ export interface VibelogJson {
   stack?: string[];
   hide?: boolean;
   demo?: unknown;
+  /** 쇼츠 영상 테마 — terminal(기본)/blueprint/signal/paper/highlighter */
+  theme?: string;
 }
 
 export interface RepoActivity {

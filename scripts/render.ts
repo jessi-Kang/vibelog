@@ -82,7 +82,16 @@ export async function renderShort(
   const propsFile = path.join(publicDir, `props.${lang}.json`);
   fs.writeFileSync(
     propsFile,
-    JSON.stringify({ script, timing, lang, videoFile, videoStartSec, artFiles }),
+    JSON.stringify({
+      script,
+      timing,
+      lang,
+      videoFile,
+      videoStartSec,
+      artFiles,
+      // 레포가 고른 영상 테마 — 대본 JSON에 박혀 있어 재생성에도 유지된다
+      theme: script.theme ?? null,
+    }),
   );
 
   const silent = path.join(
