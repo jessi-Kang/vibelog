@@ -24,12 +24,13 @@ export default function Home() {
     (p) =>
       p.status === "building" || p.status === "preview" || p.status === "live",
   ).length;
-  const week = projects.reduce((n, p) => n + (p.weekCommits ?? 0), 0);
-  // "오늘 커밋"의 자정 리셋 판정은 클라이언트(HomeFacts)에서 — 정적 빌드라
-  // 서버에서 계산하면 다음 배포까지 어제 값이 남는다 (Jessi 지시).
-  const todayItems = projects.map((p) => ({
-    date: p.countsDate,
-    n: p.todayCommits ?? 0,
+  // 오늘·이번 주 커밋은 방문자 브라우저가 GitHub API로 실시간으로 센다
+  // (HomeFacts) — 낮 커밋도 바로 오른다 (Jessi 지시). 실패 시 저장값 폴백.
+  const factSources = projects.map((p) => ({
+    repoUrl: p.repoUrl,
+    countsDate: p.countsDate,
+    todayCommits: p.todayCommits,
+    weekCommits: p.weekCommits,
   }));
 
   const runSection = (
@@ -161,7 +162,7 @@ export default function Home() {
             />
           </p>
         </div>
-        <HomeFacts today={todayItems} week={week} active={active} />
+        <HomeFacts sources={factSources} active={active} />
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
