@@ -67,7 +67,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 - music: 이야기의 분위기에 맞는 배경음악 톤 하나 — "ship-it"(기본, 담담한 전진),
   "upbeat"(배포·성공으로 기분 좋은 날), "tense"(큰 삽질과 씨름한 날),
   "calm"(문서·정리처럼 잔잔한 날), "playful"(실험·장난기 있는 날) 중에서 고른다.
-- fail 장면이 있으면 failCard도 채운다: before(문제 상황 한 줄), after(해결 한 줄), title(카드 제목, 짧게). 각각의 영어판 beforeEn·afterEn·titleEn도 반드시 채운다 — 영문 영상에 그대로 표시된다.
+- fail 장면이 있으면 failCard도 채운다: before(문제 상황 한 줄), after(해결 한 줄),
+  title(카드 제목, 짧게 — 단 짧게 하려고 조어를 만들지 않는다. "글 증발" 금지,
+  "글이 사라졌다"처럼 짧아도 자연스러운 구로). 각각의 영어판 beforeEn·afterEn·titleEn도 반드시 채운다 — 영문 영상에 그대로 표시된다.
 - captions: 유튜브/인스타 설명문 (ko/en 각 1~2문장 + 줄바꿈 없이).
 - hashtags: 5~8개, # 포함, 한국어·영어 섞어서.
 - art: next 문장에만, 그 장면을 은유하는 일러스트를 영어 한 문장으로
