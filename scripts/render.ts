@@ -24,10 +24,15 @@ import {
 
 const VIDEO_DIR = path.join(process.cwd(), "video");
 // video/src/theme.ts의 totalSeconds와 같은 식 — 영상 길이의 단일 진실
-const NARRATION_DELAY = 0.5;
+export const NARRATION_DELAY = 0.5;
 const END_TAIL = 3.0;
 // 커밋 콜드오픈 — script.commits가 있을 때만. video/src/theme.ts COLD_OPEN_SEC와 같은 값
-const COLD_OPEN_SEC = 2.0;
+export const COLD_OPEN_SEC = 2.0;
+
+/** 화면 시간에서 내레이션이 시작되는 지점 — 포스터 추출 등 후속 단계가 쓴다 */
+export function narrationOffsetSec(script: ShortsScript): number {
+  return NARRATION_DELAY + (script.commits?.length ? COLD_OPEN_SEC : 0);
+}
 
 export async function renderShort(
   repo: string,
@@ -43,8 +48,8 @@ export async function renderShort(
       "utf8",
     ),
   );
-  const coldOpen = script.commits?.length ? COLD_OPEN_SEC : 0;
-  const durationSec = coldOpen + NARRATION_DELAY + timing.duration + END_TAIL;
+  const offset = narrationOffsetSec(script);
+  const durationSec = offset + timing.duration + END_TAIL;
 
   // 데모 녹화를 Remotion의 public/으로 (staticFile 접근용).
   // en 렌더는 영어 모드로 찍은 en.webm을 우선 쓴다 — 없으면(구버전) ko 녹화 폴백
@@ -121,7 +126,7 @@ export async function renderShort(
     out,
     durationSec,
     // 콜드오픈만큼 내레이션 시작을 늦춘다 — 화면과 오디오의 오프셋을 맞추는 단일 지점
-    NARRATION_DELAY + coldOpen,
+    offset,
   );
   fs.rmSync(silent, { force: true });
   return out;

@@ -13,7 +13,7 @@ import path from "node:path";
 import { generateScript } from "./script";
 import { generateAudio } from "./audio";
 import { record } from "./record";
-import { renderShort } from "./render";
+import { narrationOffsetSec, renderShort } from "./render";
 import {
   shortsJsonPath,
   timingJsonPath,
@@ -71,14 +71,25 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   for (const lang of ["ko", "en"] as const) {
     console.log(`[shorts] 렌더 (${lang})`);
     const mp4 = await renderShort(repo, date, lang);
-    // 썸네일 = 각 언어 영상의 첫 프레임 (Jessi 지시 — CSS 재현 대신 진짜 프레임.
-    // 훅 헤드라인이 언어별로 다르므로 en도 따로 뽑는다)
+    // 썸네일 = 훅 헤드라인이 다 켜진 순간의 프레임 (CSS 재현 대신 진짜 프레임 —
+    // Jessi 지시. 훅이 언어별로 다르므로 en도 따로 뽑는다).
+    // 첫 프레임은 안 된다: 콜드오픈이 있으면 타이핑이 막 시작된 빈 터미널이다.
     {
       const posterKey =
         lang === "ko" ? `${date}.poster.jpg` : `${date}.en.poster.jpg`;
       const poster = mp4.replace(/\.mp4$/, ".poster.jpg");
       try {
-        execFileSync("ffmpeg", ["-v", "error", "-y", "-i", mp4, "-frames:v", "1", "-q:v", "3", poster]);
+        const posterTiming: ShortsTiming = JSON.parse(
+          fs.readFileSync(
+            path.join(process.cwd(), timingJsonPath(repo, date, lang)),
+            "utf8",
+          ),
+        );
+        // 첫 문장(훅)이 끝나는 오디오 시각 + 화면 오프셋 = 헤드라인 완성 순간
+        const posterAt =
+          narrationOffsetSec(script) +
+          (posterTiming.sentences[0]?.end ?? 1.5);
+        execFileSync("ffmpeg", ["-v", "error", "-y", "-ss", posterAt.toFixed(2), "-i", mp4, "-frames:v", "1", "-q:v", "3", poster]);
         const url = await upload(poster, `shorts/${repo}/${posterKey}`);
         if (url) media[lang === "ko" ? "poster" : "posterEn"] = url;
       } catch (err) {

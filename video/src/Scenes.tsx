@@ -122,21 +122,31 @@ export const PhoneFrame: React.FC<{
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const t = frame / fps;
-  // 정지된 폰은 3초만 지나도 밋밋하다 — 장면마다 방향을 바꾸는 아주 느린
-  // 줌(1.0↔1.05)과 입장 때 살짝 기울었다 돌아오는 틸트로 촬영감을 준다
+  // 정지된 폰은 3초만 지나도 밋밋하다 — 장면마다 방향을 바꾸는 느린 줌
+  // (1.0↔1.12)에 수직 드리프트를 겹쳐 켄 번스식 촬영감을 준다.
+  // 1.05는 전혀 안 느껴졌다 (Jessi 지적) — 줌 폭과 틸트를 키웠다.
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const zoom =
     fromSec != null && toSec != null && toSec > fromSec
       ? interpolate(
           t,
           [fromSec, toSec],
-          segIndex % 2 === 0 ? [1.0, 1.05] : [1.05, 1.0],
+          segIndex % 2 === 0 ? [1.0, 1.12] : [1.12, 1.0],
           clamp,
         )
       : 1;
+  const drift =
+    fromSec != null && toSec != null && toSec > fromSec
+      ? interpolate(
+          t,
+          [fromSec, toSec],
+          segIndex % 2 === 0 ? [10, -10] : [-10, 10],
+          clamp,
+        )
+      : 0;
   const tilt =
     fromSec != null
-      ? interpolate(t, [fromSec, fromSec + 0.7], [2.2, 0], {
+      ? interpolate(t, [fromSec, fromSec + 1.1], [5, 0], {
           ...clamp,
           easing: Easing.out(Easing.cubic),
         })
@@ -149,7 +159,7 @@ export const PhoneFrame: React.FC<{
         left: "50%",
         top: 240,
         transformOrigin: "50% 42%",
-        transform: `translateX(-50%) perspective(1400px) rotateY(${tilt}deg) scale(${zoom})`,
+        transform: `translateX(-50%) translateY(${drift}px) perspective(1400px) rotateY(${tilt}deg) scale(${zoom})`,
         width: 690,
         height: 1130,
         borderRadius: Math.max(24, th.radius * 2.3),
