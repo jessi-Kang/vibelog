@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
 import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
-import { DevlogTimelineEntry } from "@/components/vibelog";
+import { DevlogTimelineEntry, LastActive } from "@/components/vibelog";
 import {
   fmtDate,
   getDevlogs,
@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: Props) {
     ["t", <T key="k2" ko="스택" en="stack" />, project.stack.join(" · ").toLowerCase() || "—"],
     ["c", <T key="k7" ko="누적 커밋" en="total commits" />, project.totalCommits != null ? fmtNum(project.totalCommits) : "—"],
     ["w", <T key="k3" ko="이번 주 커밋" en="commits this week" />, fmtNum(project.weekCommits ?? 0)],
-    ["l", <T key="k4" ko="마지막 활동" en="last active" />, <T key="v4" ko={lastActive} en={lastActiveEn} />],
+    ["l", <T key="k4" ko="마지막 활동" en="last active" />, <LastActive key="v4" iso={project.lastActivity} />],
     ["d", <T key="k5" ko="데브로그" en="devlogs" />, <T key="v5" ko={`${logs.length}편`} en={String(logs.length)} />],
     ["b", <T key="k6" ko="시작일" en="started" />, logs.length ? logs[logs.length - 1].date : "—"],
   ];

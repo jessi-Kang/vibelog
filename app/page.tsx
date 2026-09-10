@@ -1,11 +1,10 @@
 import { PageContainer } from "@/components/page-container";
+import { HomeFacts } from "@/components/home-facts";
 import { HomeProjects } from "@/components/home-projects";
 import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader } from "@/components/ui";
 import { DevlogCompactEntry, RunLog } from "@/components/vibelog";
 import { fmtShort, getDevlogs, getProjects, getRunLog } from "@/lib/content";
-import { fmtNum } from "@/lib/format";
-import type { ReactNode } from "react";
 
 const RECENT_MAX = 5;
 
@@ -14,22 +13,6 @@ function fmtKstStamp(iso: string): string {
   const d = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
   const p = (n: number) => String(n).padStart(2, "0");
   return `${p(d.getUTCMonth() + 1)}.${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`;
-}
-
-function Fact({ n, label }: { n: number | string; label: ReactNode }) {
-  const zero = n === 0 || n === "—";
-  return (
-    <span className="inline-flex items-baseline gap-1.5">
-      <b
-        className={`font-sans text-md font-bold tabular-nums tracking-[-.01em] ${
-          zero ? "text-muted" : "text-accent"
-        }`}
-      >
-        {typeof n === "number" ? fmtNum(n) : n}
-      </b>
-      <span>{label}</span>
-    </span>
-  );
 }
 
 export default function Home() {
@@ -41,28 +24,13 @@ export default function Home() {
     (p) =>
       p.status === "building" || p.status === "preview" || p.status === "live",
   ).length;
-  // "오늘 움직임"은 커밋 수 (Jessi 지시 — 프로젝트 수는 1에서 안 움직인다).
-  // 아직 todayCommits가 없는 옛 데이터는 오늘 글의 원료 커밋 수로 폴백.
-  const todayKst = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
-  const today = projects.reduce(
-    (n, p) =>
-      n +
-      (p.todayCommits ??
-        devlogs.find((d) => d.repo === p.slug && d.date === todayKst)?.commits ??
-        0),
-    0,
-  );
-
   const week = projects.reduce((n, p) => n + (p.weekCommits ?? 0), 0);
-  // 프로젝트 수·데브로그 수는 메뉴 옆으로 옮겼다 (Jessi 지시) — 홈은 활동량만
-  const facts: [string, number | string, ReactNode][] =
-    projects.length === 0
-      ? [["w", "—", <T key="w" ko="첫 실행 대기" en="waiting for first run" />]]
-      : [
-          ["t", today, <T key="t" ko="오늘 커밋" en="commits today" />],
-          ["k", week, <T key="k" ko="이번 주 커밋" en="commits this week" />],
-          ["a", active, <T key="a" ko="만드는 중" en="building" />],
-        ];
+  // "오늘 커밋"의 자정 리셋 판정은 클라이언트(HomeFacts)에서 — 정적 빌드라
+  // 서버에서 계산하면 다음 배포까지 어제 값이 남는다 (Jessi 지시).
+  const todayItems = projects.map((p) => ({
+    date: p.countsDate,
+    n: p.todayCommits ?? 0,
+  }));
 
   const runSection = (
     <section className="flex flex-col gap-3.5">
@@ -193,11 +161,7 @@ export default function Home() {
             />
           </p>
         </div>
-        <div className="flex flex-wrap gap-5 border-t border-line pt-3.5 font-mono text-xs leading-snug text-muted">
-          {facts.map(([k, n, l]) => (
-            <Fact key={k} n={n} label={l} />
-          ))}
-        </div>
+        <HomeFacts today={todayItems} week={week} active={active} />
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
