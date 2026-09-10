@@ -122,10 +122,13 @@ async function writeDevlog(
 ): Promise<void> {
   const file = devlogPath(repo, date);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  // 원료 메타 — "AI가 커밋 N개로 작성" 표기와 본문의 "원료 · git log"에 쓰인다
-  const shas = a.commits
-    .slice(0, 8)
-    .map((c) => [c.sha.slice(0, 7), c.message.split("\n")[0]]);
+  // 원료 메타 — "AI가 커밋 N개로 작성" 표기와 본문의 "원료 · git log"에 쓰인다.
+  // 자르지 않는다: "커밋 16개로 썼다"면서 원료에 8개만 보이면 말이 안 맞는다
+  // (Jessi 지적). 화면 쪽이 10개 이상은 접어서 보여준다.
+  const shas = a.commits.map((c) => [
+    c.sha.slice(0, 7),
+    c.message.split("\n")[0],
+  ]);
 
   // EN 모드용 커밋 메시지 번역 — 같은 날 재실행에서 이미 번역된 sha는
   // 기존 파일에서 재사용하고, 새 것만 번역한다. 실패해도 발행은 계속.
