@@ -125,11 +125,6 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const cold = coldOpenKind(script); // 템플릿별 콜드오픈 문법 (없으면 null)
   const coldOpen = cold ? COLD_OPEN_SEC : 0;
   const offset = NARRATION_DELAY + coldOpen; // 화면 시간 = 오디오 시간 + offset
-  // fail 템플릿은 사고 리포트 톤 — 훅 키워드가 accent 대신 warn으로 켜진다
-  const hookTh =
-    script.template === "fail" && th.warn !== th.accent
-      ? { ...th, accent: th.warn }
-      : th;
   const total = totalSeconds(timing.duration, coldOpen);
   const segs = buildSegments(
     script, timing, total, Boolean(artFiles?.next), offset, coldOpen,
@@ -217,7 +212,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 script={script}
                 lang={lang}
                 timing={timing}
-                th={hookTh}
+                th={th}
                 offsetSec={offset}
               />
             )}
