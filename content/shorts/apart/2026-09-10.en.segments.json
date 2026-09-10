@@ -1,9 +1,14 @@
 {
   "screens": [
     {
+      "path": "/",
+      "start": 0.59,
+      "end": 17.29
+    },
+    {
       "path": "/findreal",
-      "start": 0.43,
-      "end": 41.59
+      "start": 17.75,
+      "end": 34.49
     }
   ]
 }

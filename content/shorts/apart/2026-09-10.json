@@ -8,44 +8,42 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "닮지도 않은 이름 222개가 걸렸습니다.",
-      "en": "222 names got flagged that look nothing alike.",
+      "ko": "닮지도 않은 이름에 경고가 222건 떴습니다.",
+      "en": "222 warnings on names that look nothing alike.",
       "keywords": [
-        "222개가"
+        "222건"
       ],
       "keywordsEn": [
-        "222",
-        "nothing alike"
+        "222 warnings"
       ]
     },
     {
       "scene": "fail",
-      "ko": "이름이 얼마나 다른지 점수로 세는데, 충분히 다르면 계산을 일찍 멈추게 했습니다.",
-      "en": "A routine scores how different two names are, and it stops early when they are clearly far apart.",
+      "ko": "비교를 일찍 끝낼 때 임시 점수 3점을 돌려줬습니다.",
+      "en": "When the comparison stopped early, it handed back a placeholder score of 3.",
       "keywords": [
-        "점수로",
-        "일찍 멈추게"
+        "임시 점수",
+        "3점을"
       ],
       "keywordsEn": [
-        "scores",
-        "stops early"
+        "placeholder score of 3"
       ]
     },
     {
       "scene": "fail",
-      "ko": "그때 돌려준 임시 점수 3점이 하필 비슷함 판정 범위 안이었습니다.",
-      "en": "The placeholder score it handed back was 3 points, right inside the too-similar range.",
+      "ko": "그 3점이 하필 비슷하다고 보는 범위 안이었습니다.",
+      "en": "That 3 happened to sit inside the \"too similar\" range.",
       "keywords": [
-        "임시 점수 3점이"
+        "하필",
+        "범위 안이었습니다"
       ],
       "keywordsEn": [
-        "3 points",
-        "too-similar range"
+        "too similar"
       ]
     },
     {
       "scene": "build",
-      "ko": "임시 점수를 판정 범위 밖의 큰 수로 바꿨습니다.",
+      "ko": "임시 점수를 범위 밖의 큰 수로 바꿨습니다.",
       "en": "I swapped the placeholder for a large number outside that range.",
       "keywords": [
         "범위 밖의"
@@ -53,12 +51,12 @@
       "keywordsEn": [
         "outside that range"
       ],
-      "screen": "/findreal"
+      "screen": "/"
     },
     {
       "scene": "build",
       "ko": "경고는 0건이 됐습니다.",
-      "en": "Warnings dropped to 0.",
+      "en": "The warnings dropped to 0.",
       "keywords": [
         "0건이"
       ],
@@ -71,14 +69,13 @@
     },
     {
       "scene": "demo",
-      "ko": "전국 누구나 같은 날 같은 10문제를 받습니다.",
-      "en": "Everyone in the country gets the same 10 questions on the same day.",
+      "ko": "이제 하루 10문제가 정상으로 돌아갑니다.",
+      "en": "Now the 10 questions a day run clean.",
       "keywords": [
-        "전국 누구나",
-        "10문제를"
+        "10문제가"
       ],
       "keywordsEn": [
-        "same 10 questions"
+        "10 questions"
       ],
       "stat": "10문제",
       "statEn": "10 questions",
@@ -86,37 +83,37 @@
     },
     {
       "scene": "demo",
-      "ko": "아파트 이름을 보고 실제로 있는 단지인지 맞히면 됩니다.",
-      "en": "You read an apartment complex name and guess whether it is real.",
+      "ko": "진짜 단지인지 지어낸 이름인지 맞히면 됩니다.",
+      "en": "You guess whether the complex is real or made up.",
       "keywords": [
-        "실제로 있는 단지인지"
+        "진짜 단지인지"
       ],
       "keywordsEn": [
-        "whether it is real"
+        "real or made up"
       ],
       "screen": "/findreal"
     },
     {
       "scene": "next",
-      "ko": "다음은 샘플 대신 실제 단지 자료를 넣는 일입니다.",
-      "en": "Next up is putting real complex records in place of the sample data.",
+      "ko": "실제 자료는 사람이 검토한 뒤에만 문제로 올립니다.",
+      "en": "Real records only become questions after a person reviews them.",
       "keywords": [
-        "실제 단지 자료를"
+        "사람이 검토한"
       ],
       "keywordsEn": [
-        "real complex records"
+        "a person reviews them"
       ],
-      "art": "a single hand placing a stamped paper card into a wooden filing tray"
+      "art": "a single paper form on a wooden desk being stamped by a small hand-held seal"
     },
     {
       "scene": "end",
-      "ko": "기획 문서에서 돌아가는 게임까지, 하루 걸렸습니다.",
-      "en": "From a planning document to a working game, in one day.",
+      "ko": "하루 만에 기획서에서 돌아가는 게임까지 갔습니다.",
+      "en": "One day, from a planning document to a working game.",
       "keywords": [
-        "하루"
+        "하루 만에"
       ],
       "keywordsEn": [
-        "one day"
+        "One day"
       ]
     }
   ],
@@ -125,12 +122,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "닮지 않은 이름이 걸렸다",
-    "titleEn": "Names that look nothing alike got flagged",
-    "before": "닮지도 않은 이름 222개에 비슷하다는 경고가 떴습니다.",
-    "after": "임시 점수를 판정 범위 밖으로 바꾸니 경고가 0건이 됐습니다.",
-    "beforeEn": "222 pairs that look nothing alike were flagged as too similar.",
-    "afterEn": "Moving the placeholder score outside that range brought warnings to 0."
+    "title": "경고가 222건",
+    "titleEn": "222 warnings",
+    "before": "닮지도 않은 이름끼리 경고가 222건 떴습니다.",
+    "after": "임시 점수를 바꾸니 경고가 0건이 됐습니다.",
+    "beforeEn": "222 warnings fired on names that look nothing alike.",
+    "afterEn": "Swapping the placeholder score brought them to 0."
   },
   "commits": [
     [
@@ -275,22 +272,22 @@
   "commitCount": 17,
   "handle": "apt-gam.vercel.app",
   "captions": {
-    "ko": "닮지도 않은 아파트 이름 222개에 비슷하다는 경고가 떴습니다. 원인은 계산을 일찍 멈출 때 돌려준 임시 점수였고, 고치자 경고가 0건이 됐습니다.",
-    "en": "222 apartment names that look nothing alike got flagged as too similar. The culprit was the placeholder score handed back on an early exit, and fixing it brought warnings to 0."
+    "ko": "닮지도 않은 아파트 이름끼리 경고가 222건 떴습니다. 원인은 비교를 일찍 끝낼 때 돌려주던 임시 점수 3점이었습니다.",
+    "en": "222 warnings fired on apartment names that look nothing alike. The culprit was a placeholder score of 3 returned on early exits."
   },
   "hashtags": [
-    "#개발로그",
-    "#devlog",
-    "#사이드프로젝트",
-    "#디버깅",
+    "#개발일지",
+    "#삽질",
+    "#버그수정",
     "#아파트퀴즈",
-    "#indiedev",
+    "#devlog",
+    "#debugging",
     "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvr28c9",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvr2aqa",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvr3w69",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvr3z0b"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvrg74o",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvrg8ki",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvrhmtm",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvrhpog"
   }
 }
