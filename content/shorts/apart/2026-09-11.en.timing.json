@@ -1,0 +1,479 @@
+{
+  "lang": "en",
+  "duration": 29.628,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.67,
+      "words": [
+        {
+          "text": "A",
+          "start": 0,
+          "end": 0.081
+        },
+        {
+          "text": "new",
+          "start": 0.163,
+          "end": 0.29
+        },
+        {
+          "text": "game:",
+          "start": 0.337,
+          "end": 0.801
+        },
+        {
+          "text": "pick",
+          "start": 1.01,
+          "end": 1.184
+        },
+        {
+          "text": "the",
+          "start": 1.231,
+          "end": 1.3
+        },
+        {
+          "text": "one",
+          "start": 1.358,
+          "end": 1.509
+        },
+        {
+          "text": "real",
+          "start": 1.544,
+          "end": 1.73
+        },
+        {
+          "text": "name",
+          "start": 1.788,
+          "end": 1.962
+        },
+        {
+          "text": "out",
+          "start": 1.985,
+          "end": 2.078
+        },
+        {
+          "text": "of",
+          "start": 2.113,
+          "end": 2.159
+        },
+        {
+          "text": "four.",
+          "start": 2.206,
+          "end": 2.67
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.949,
+      "end": 7.245,
+      "words": [
+        {
+          "text": "I",
+          "start": 2.949,
+          "end": 3.007
+        },
+        {
+          "text": "loaded",
+          "start": 3.1,
+          "end": 3.344
+        },
+        {
+          "text": "2,889",
+          "start": 3.379,
+          "end": 5.108
+        },
+        {
+          "text": "real",
+          "start": 5.224,
+          "end": 5.445
+        },
+        {
+          "text": "apartment",
+          "start": 5.492,
+          "end": 5.886
+        },
+        {
+          "text": "complexes",
+          "start": 5.921,
+          "end": 6.397
+        },
+        {
+          "text": "across",
+          "start": 6.444,
+          "end": 6.722
+        },
+        {
+          "text": "Seoul.",
+          "start": 6.769,
+          "end": 7.245
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 7.755,
+      "end": 10.054,
+      "words": [
+        {
+          "text": "A",
+          "start": 7.755,
+          "end": 7.837
+        },
+        {
+          "text": "day's",
+          "start": 7.906,
+          "end": 8.127
+        },
+        {
+          "text": "round",
+          "start": 8.185,
+          "end": 8.382
+        },
+        {
+          "text": "grew",
+          "start": 8.44,
+          "end": 8.58
+        },
+        {
+          "text": "from",
+          "start": 8.626,
+          "end": 8.754
+        },
+        {
+          "text": "3",
+          "start": 8.847,
+          "end": 8.998
+        },
+        {
+          "text": "questions",
+          "start": 9.056,
+          "end": 9.451
+        },
+        {
+          "text": "to",
+          "start": 9.497,
+          "end": 9.567
+        },
+        {
+          "text": "10.",
+          "start": 9.636,
+          "end": 10.054
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 10.565,
+      "end": 14.362,
+      "words": [
+        {
+          "text": "Every",
+          "start": 10.565,
+          "end": 10.82
+        },
+        {
+          "text": "question",
+          "start": 10.867,
+          "end": 11.204
+        },
+        {
+          "text": "now",
+          "start": 11.25,
+          "end": 11.378
+        },
+        {
+          "text": "has",
+          "start": 11.436,
+          "end": 11.552
+        },
+        {
+          "text": "a",
+          "start": 11.598,
+          "end": 11.622
+        },
+        {
+          "text": "clock.",
+          "start": 11.668,
+          "end": 12.156
+        },
+        {
+          "text": "Fifteen",
+          "start": 12.597,
+          "end": 12.945
+        },
+        {
+          "text": "seconds",
+          "start": 12.992,
+          "end": 13.293
+        },
+        {
+          "text": "to",
+          "start": 13.328,
+          "end": 13.386
+        },
+        {
+          "text": "pick",
+          "start": 13.444,
+          "end": 13.595
+        },
+        {
+          "text": "one",
+          "start": 13.665,
+          "end": 13.793
+        },
+        {
+          "text": "of",
+          "start": 13.827,
+          "end": 13.874
+        },
+        {
+          "text": "four.",
+          "start": 13.92,
+          "end": 14.362
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 14.745,
+      "end": 17.206,
+      "words": [
+        {
+          "text": "Finish",
+          "start": 14.745,
+          "end": 15.047
+        },
+        {
+          "text": "them",
+          "start": 15.093,
+          "end": 15.209
+        },
+        {
+          "text": "all",
+          "start": 15.255,
+          "end": 15.429
+        },
+        {
+          "text": "and",
+          "start": 15.522,
+          "end": 15.662
+        },
+        {
+          "text": "questions",
+          "start": 15.731,
+          "end": 16.091
+        },
+        {
+          "text": "keep",
+          "start": 16.149,
+          "end": 16.289
+        },
+        {
+          "text": "coming",
+          "start": 16.358,
+          "end": 16.59
+        },
+        {
+          "text": "if",
+          "start": 16.637,
+          "end": 16.707
+        },
+        {
+          "text": "you",
+          "start": 16.741,
+          "end": 16.811
+        },
+        {
+          "text": "want.",
+          "start": 16.857,
+          "end": 17.206
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 18.018,
+      "end": 20.41,
+      "words": [
+        {
+          "text": "Seven",
+          "start": 18.018,
+          "end": 18.367
+        },
+        {
+          "text": "of",
+          "start": 18.413,
+          "end": 18.471
+        },
+        {
+          "text": "my",
+          "start": 18.529,
+          "end": 18.611
+        },
+        {
+          "text": "made-up",
+          "start": 18.669,
+          "end": 18.936
+        },
+        {
+          "text": "names",
+          "start": 19.005,
+          "end": 19.272
+        },
+        {
+          "text": "turned",
+          "start": 19.33,
+          "end": 19.563
+        },
+        {
+          "text": "out",
+          "start": 19.586,
+          "end": 19.69
+        },
+        {
+          "text": "to",
+          "start": 19.725,
+          "end": 19.772
+        },
+        {
+          "text": "be",
+          "start": 19.83,
+          "end": 19.899
+        },
+        {
+          "text": "real.",
+          "start": 19.969,
+          "end": 20.41
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 21.014,
+      "end": 24.369,
+      "words": [
+        {
+          "text": "I",
+          "start": 21.014,
+          "end": 21.06
+        },
+        {
+          "text": "was",
+          "start": 21.142,
+          "end": 21.246
+        },
+        {
+          "text": "sure",
+          "start": 21.304,
+          "end": 21.501
+        },
+        {
+          "text": "I",
+          "start": 21.536,
+          "end": 21.559
+        },
+        {
+          "text": "had",
+          "start": 21.618,
+          "end": 21.722
+        },
+        {
+          "text": "invented",
+          "start": 21.768,
+          "end": 22.14
+        },
+        {
+          "text": "them.",
+          "start": 22.163,
+          "end": 22.453
+        },
+        {
+          "text": "Seoul",
+          "start": 23.405,
+          "end": 23.649
+        },
+        {
+          "text": "disagreed.",
+          "start": 23.719,
+          "end": 24.369
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 25.066,
+      "end": 28.2,
+      "words": [
+        {
+          "text": "Next:",
+          "start": 25.066,
+          "end": 25.658
+        },
+        {
+          "text": "shareable",
+          "start": 25.936,
+          "end": 26.366
+        },
+        {
+          "text": "result",
+          "start": 26.401,
+          "end": 26.691
+        },
+        {
+          "text": "images",
+          "start": 26.738,
+          "end": 27.051
+        },
+        {
+          "text": "for",
+          "start": 27.097,
+          "end": 27.202
+        },
+        {
+          "text": "the",
+          "start": 27.237,
+          "end": 27.306
+        },
+        {
+          "text": "other",
+          "start": 27.341,
+          "end": 27.481
+        },
+        {
+          "text": "two",
+          "start": 27.515,
+          "end": 27.62
+        },
+        {
+          "text": "games.",
+          "start": 27.678,
+          "end": 28.2
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 28.642,
+      "end": 29.628,
+      "words": [
+        {
+          "text": "Go",
+          "start": 28.642,
+          "end": 28.792
+        },
+        {
+          "text": "try",
+          "start": 28.851,
+          "end": 29.071
+        },
+        {
+          "text": "it.",
+          "start": 29.141,
+          "end": 29.628
+        }
+      ]
+    }
+  ]
+}

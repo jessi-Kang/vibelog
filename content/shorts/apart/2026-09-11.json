@@ -1,0 +1,323 @@
+{
+  "template": "ship-it",
+  "music": "playful",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-11",
+  "day": 2,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "넷 중 진짜를 고르는 게임을 열었습니다.",
+      "en": "A new game: pick the one real name out of four.",
+      "keywords": [
+        "진짜를",
+        "게임을"
+      ],
+      "keywordsEn": [
+        "one real name",
+        "four"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "서울 전역 실제 아파트 2,889곳을 넣었습니다.",
+      "en": "I loaded 2,889 real apartment complexes across Seoul.",
+      "keywords": [
+        "2,889곳을"
+      ],
+      "keywordsEn": [
+        "2,889"
+      ],
+      "stat": "2,889곳",
+      "statEn": "2,889 complexes",
+      "screen": "/findreal"
+    },
+    {
+      "scene": "build",
+      "ko": "하루 분량은 3문제에서 10문제로 늘렸습니다.",
+      "en": "A day's round grew from 3 questions to 10.",
+      "keywords": [
+        "10문제로"
+      ],
+      "keywordsEn": [
+        "10"
+      ],
+      "screen": "/findreal"
+    },
+    {
+      "scene": "demo",
+      "ko": "문제마다 제한시간이 붙었습니다. 넷 중 고르기는 15초입니다.",
+      "en": "Every question now has a clock. Fifteen seconds to pick one of four.",
+      "keywords": [
+        "제한시간이",
+        "15초입니다"
+      ],
+      "keywordsEn": [
+        "a clock",
+        "Fifteen seconds"
+      ],
+      "screen": "/findreal"
+    },
+    {
+      "scene": "demo",
+      "ko": "다 풀어도 문제가 계속 나오는 모드도 있습니다.",
+      "en": "Finish them all and questions keep coming if you want.",
+      "keywords": [
+        "계속 나오는"
+      ],
+      "keywordsEn": [
+        "keep coming"
+      ],
+      "screen": "/findreal"
+    },
+    {
+      "scene": "fail",
+      "ko": "지어낸 가짜 이름 7개가 실제로 있었습니다.",
+      "en": "Seven of my made-up names turned out to be real.",
+      "keywords": [
+        "가짜 이름",
+        "7개가"
+      ],
+      "keywordsEn": [
+        "Seven",
+        "made-up names"
+      ],
+      "stat": "7개",
+      "statEn": "7 names"
+    },
+    {
+      "scene": "fail",
+      "ko": "완전히 만들어낸 줄 알았는데 서울에 있더군요.",
+      "en": "I was sure I had invented them. Seoul disagreed.",
+      "keywords": [
+        "만들어낸 줄"
+      ],
+      "keywordsEn": [
+        "invented"
+      ]
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 나머지 두 게임의 결과 그림입니다.",
+      "en": "Next: shareable result images for the other two games.",
+      "keywords": [
+        "두 게임의",
+        "결과 그림입니다"
+      ],
+      "keywordsEn": [
+        "result images",
+        "two games"
+      ],
+      "art": "a small hand-cranked printing press pushing out two glossy picture cards"
+    },
+    {
+      "scene": "end",
+      "ko": "직접 해보세요.",
+      "en": "Go try it.",
+      "keywords": [
+        "직접"
+      ],
+      "keywordsEn": [
+        "try"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-gam.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "지어낸 이름이 실제로 있었다",
+    "titleEn": "The fake name was real",
+    "before": "가짜 아파트 이름 104개를 새로 지었습니다.",
+    "after": "실제 목록과 대조해 7개를 걸러내고 다시 지었습니다.",
+    "beforeEn": "I wrote 104 new fake apartment names.",
+    "afterEn": "Checked against the real list, dropped 7, wrote replacements."
+  },
+  "commits": [
+    [
+      "bada909",
+      "docs: 게임 모드 문서를 10문제·무한 모드·제한시간 체제로 현행화"
+    ],
+    [
+      "e8d03f2",
+      "fix: 타임바를 width 대신 transform으로 — 레이아웃 재계산 제거"
+    ],
+    [
+      "67ea74e",
+      "feat: 조립·진짜 찾기 10문제 확장, 제한시간, 무한 모드 시간 기록"
+    ],
+    [
+      "f81fe63",
+      "feat: 무한 모드 — 데일리가 끝나도 게임은 안 끝난다"
+    ],
+    [
+      "f55cb57",
+      "design: 도장 품질 통일 — 공유 이미지도 웹과 같은 SVG 필터로 찍는다"
+    ],
+    [
+      "37fbcad",
+      "design: 카피라이트 표기 추가, 본편 텍스트 복사 버튼 제거"
+    ],
+    [
+      "7b5f000",
+      "design: 공유 통지서의 등급 도장에 웹과 같은 거친 질감"
+    ],
+    [
+      "a84b725",
+      "feat: 판정 효과음과 게임 닫기 버튼"
+    ],
+    [
+      "774935f",
+      "fix: 관인 링 텍스트를 필터 밖으로 — 실기기 깨짐 2차 수정"
+    ],
+    [
+      "d800e4f",
+      "feat: 다시 하기 — 세 게임 전부 연습 재도전 추가"
+    ],
+    [
+      "2345053",
+      "feat: 결과 통지서 공유 이미지 — 갤러리에 저장되는 감별 결과"
+    ],
+    [
+      "f061fd8",
+      "fix: 관인 링 텍스트가 휴대폰에서 깨지는 문제 — textPath를 버렸다"
+    ],
+    [
+      "b5c7503",
+      "design: 창구 홈 리디자인 — 관인·이중 괘선·창구 번호판"
+    ],
+    [
+      "56d214b",
+      "fix: 모바일 줄바꿈·오버플로 정리 — 푸터 스택, 긴 단지명 래핑, 그리드 한 줄"
+    ],
+    [
+      "7bd65f4",
+      "design: 게임 중 모션 — 서류가 놓이고 도장이 내리찍힌다"
+    ],
+    [
+      "02fb2bb",
+      "feat: 어제 전국 정답률 노출 — 홈 하이라이트와 정답 대장"
+    ],
+    [
+      "06c54c7",
+      "feat: 진짜 찾기 4지선다 — 세 번째 데일리 게임"
+    ],
+    [
+      "c19538f",
+      "docs: 데이터 파이프라인 현행화 — 실데이터·가짜 풀 절차를 가이드에 반영"
+    ],
+    [
+      "ff09f58",
+      "feat: 가짜 이름 풀을 16개에서 120개로 확장"
+    ],
+    [
+      "8efac41",
+      "feat: 출제 풀을 K-apt 실데이터 서울 2,889개 단지로 교체"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "bada909",
+      "docs: Update game mode documentation to 10-question, infinite, and timed modes"
+    ],
+    [
+      "e8d03f2",
+      "fix: Replace timebar width with transform — remove layout recalculation"
+    ],
+    [
+      "67ea74e",
+      "feat: Expand assembly and real-find 10-question modes, add timed and infinite mode time recording"
+    ],
+    [
+      "f81fe63",
+      "feat: Infinite mode — game continues after daily ends"
+    ],
+    [
+      "f55cb57",
+      "design: Unify seal quality — capture shared images with same SVG filter as web"
+    ],
+    [
+      "37fbcad",
+      "design: Add copyright notice, remove main text copy button"
+    ],
+    [
+      "7b5f000",
+      "design: Add same rough texture to rank seal in shared notification"
+    ],
+    [
+      "a84b725",
+      "feat: Judgment sound effects and game close button"
+    ],
+    [
+      "774935f",
+      "fix: Move seal ring text outside filter — secondary fix for device rendering"
+    ],
+    [
+      "d800e4f",
+      "feat: Retry — add practice reattempt for all three games"
+    ],
+    [
+      "2345053",
+      "feat: Result notification shared image — authentication result saved to gallery"
+    ],
+    [
+      "f061fd8",
+      "fix: Fix seal ring text breaking on mobile — removed textPath"
+    ],
+    [
+      "b5c7503",
+      "design: Redesign counter home — seal, double lines, counter number plate"
+    ],
+    [
+      "56d214b",
+      "fix: Clean up mobile line breaks and overflow — footer stack, long complex name wrapping, single-row grid"
+    ],
+    [
+      "7bd65f4",
+      "design: In-game motion — document placed and seal stamped"
+    ],
+    [
+      "02fb2bb",
+      "feat: Expose yesterday national correct rate — home highlight and answer ledger"
+    ],
+    [
+      "06c54c7",
+      "feat: Real-find multiple choice — third daily game"
+    ],
+    [
+      "c19538f",
+      "docs: Update data pipeline — reflect real data and fake pool procedures in guide"
+    ],
+    [
+      "ff09f58",
+      "feat: Expand fake name pool from 16 to 120"
+    ],
+    [
+      "8efac41",
+      "feat: Replace question pool with K-apt real data Seoul 2,889 complexes"
+    ]
+  ],
+  "commitCount": 20,
+  "handle": "apt-gam.vercel.app",
+  "captions": {
+    "ko": "넷 중 진짜 아파트 하나를 고르는 게임을 열었습니다. 서울 실제 단지 2,889곳을 넣었고, 지어낸 가짜 이름 7개는 실제로 존재해서 걸러냈습니다.",
+    "en": "A new game: pick the one real apartment out of four. It runs on 2,889 real Seoul complexes, and 7 of my made-up names turned out to actually exist."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#사이드프로젝트",
+    "#아파트",
+    "#퀴즈게임",
+    "#devlog",
+    "#buildinpublic",
+    "#webgame"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtvtal00",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtvtanel",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtvtc5wi",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtvtc84o"
+  }
+}

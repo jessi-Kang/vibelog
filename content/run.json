@@ -1,13 +1,24 @@
 {
-  "at": "2026-09-10T16:48:45.377Z",
+  "at": "2026-09-10T17:40:28.585Z",
   "lines": [
     {
-      "text": "npx tsx scripts/shorts.ts apart/2026-09-10",
+      "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "shorts   · apart/2026-09-10 다시 만듦 (ko, en)",
-      "textEn": "shorts   · apart/2026-09-10 remade (ko, en)"
+      "text": "collect  · 2 repos, 2 active"
+    },
+    {
+      "text": "generate · vibelog/2026-09-11.md (ko, en)"
+    },
+    {
+      "text": "generate · apart/2026-09-11.md (ko, en)"
+    },
+    {
+      "text": "shorts   · vibelog/2026-09-11 (ko, en)"
+    },
+    {
+      "text": "shorts   · apart/2026-09-11 (ko, en)"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
