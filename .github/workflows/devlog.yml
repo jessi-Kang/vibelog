@@ -101,7 +101,11 @@ jobs:
             else
               git commit -m "chore: 데브로그 자동 발행 ($(TZ=Asia/Seoul date +%F))"
             fi
-            # 실행 중 브랜치에 새 커밋이 올라왔을 수 있다(세션과의 경합) — 리베이스 후 푸시
-            git pull --rebase origin "${GITHUB_REF_NAME}"
+            # 실행 중 브랜치에 새 커밋이 올라왔을 수 있다(세션·연속 실행과의 경합) —
+            # 리베이스 후 푸시. -X theirs: 충돌 시 이 실행의 결과가 이긴다.
+            # run.json은 "가장 최근 실행" 스냅샷이라 연속 regen이 둘 다 다시 쓰면
+            # 반드시 충돌하는데, 최신 실행 것이 맞다 (run #34가 여기서 죽어
+            # 영상은 업로드되고 json은 옛것인 불일치가 났었다).
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
             git push
           fi
