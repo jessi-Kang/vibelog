@@ -4,6 +4,7 @@ import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader } from "@/components/ui";
 import { DevlogCompactEntry, RunLog } from "@/components/vibelog";
 import { fmtShort, getDevlogs, getProjects, getRunLog } from "@/lib/content";
+import { fmtNum } from "@/lib/format";
 import type { ReactNode } from "react";
 
 const RECENT_MAX = 5;
@@ -24,7 +25,7 @@ function Fact({ n, label }: { n: number | string; label: ReactNode }) {
           zero ? "text-muted" : "text-accent"
         }`}
       >
-        {n}
+        {typeof n === "number" ? fmtNum(n) : n}
       </b>
       <span>{label}</span>
     </span>
