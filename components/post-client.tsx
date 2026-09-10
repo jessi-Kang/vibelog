@@ -56,6 +56,8 @@ function H({ warn, children }: { warn?: boolean; children: string }) {
 export function PostClient({ post }: { post: PostData }) {
   const { lang, setLang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치
   const [media, setMedia] = useState<LightboxMedia | null>(null);
+  // 원료 git log — 10개 넘는 날은 접어서 시작 (frontmatter엔 전부 실려 있다)
+  const [showAllShas, setShowAllShas] = useState(false);
   const en = lang === "en";
   const s = en ? post.sectionsEn : post.sections;
   const parsed = Boolean(post.sections.did || post.sections.why);
@@ -213,23 +215,39 @@ export function PostClient({ post }: { post: PostData }) {
             {en ? "Raw material · git log" : "원료 · git log"}
           </h2>
           <Card inset className="px-[18px] py-1">
-            {post.shas.map(([sha, msg], i) => (
-              <div
-                key={`${sha}-${i}`}
-                className={`flex gap-3 py-2.5 text-sm leading-normal ${
-                  i < (post.shas?.length ?? 0) - 1 ? "border-b border-line" : ""
-                }`}
+            {/* 그날 커밋 전부가 원료다 — 다만 많은 날은 10개까지만 펼치고 접는다 */}
+            {(showAllShas ? post.shas : post.shas.slice(0, 10)).map(
+              ([sha, msg], i, visible) => (
+                <div
+                  key={`${sha}-${i}`}
+                  className={`flex gap-3 py-2.5 text-sm leading-normal ${
+                    i < visible.length - 1 || !showAllShas
+                      ? "border-b border-line"
+                      : ""
+                  }`}
+                >
+                  <span className="flex-none pt-0.5 font-mono text-xs text-muted">
+                    {sha}
+                  </span>
+                  <span className="text-ink-soft">
+                    {en
+                      ? (post.shasEn?.find(([x]) => x === sha)?.[1] ?? msg)
+                      : msg}
+                  </span>
+                </div>
+              ),
+            )}
+            {post.shas.length > 10 && !showAllShas && (
+              <button
+                type="button"
+                onClick={() => setShowAllShas(true)}
+                className="w-full cursor-pointer py-2.5 text-left font-mono text-xs text-accent transition-opacity duration-150 hover:opacity-85"
               >
-                <span className="flex-none pt-0.5 font-mono text-xs text-muted">
-                  {sha}
-                </span>
-                <span className="text-ink-soft">
-                  {en
-                    ? (post.shasEn?.find(([x]) => x === sha)?.[1] ?? msg)
-                    : msg}
-                </span>
-              </div>
-            ))}
+                {en
+                  ? `+ show all ${post.shas.length} commits`
+                  : `+ 커밋 ${post.shas.length}개 전부 보기`}
+              </button>
+            )}
           </Card>
         </section>
       )}
