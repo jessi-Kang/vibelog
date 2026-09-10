@@ -63,7 +63,18 @@ const NATIVE_NUM = [
 const NATIVE_UNIT =
   /^(\d{1,2})(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데|문제|판|곡|잔)(.*)$/u;
 
+/**
+ * 숫자 뒤에서 된소리로 굳은 한자어 단위 — "222건"은 [이백이십이 껀]인데
+ * TTS가 문맥 따라 평음 [건]으로 읽어 어색했다 (Jessi 지적. "0건"은 맞게
+ * 읽으면서 "222건"은 틀리는 식). 발음용 텍스트만 "껀"으로 고정한다 —
+ * 글자 수가 같아 타이밍 정렬에도 영향 없다.
+ */
+const TENSE_UNIT: [RegExp, string][] = [[/^(\d+)건/u, "$1껀"]];
+
 export function speakToken(tok: string): string {
+  for (const [re, sub] of TENSE_UNIT) {
+    if (re.test(tok)) return tok.replace(re, sub);
+  }
   const m = tok.match(NATIVE_UNIT);
   if (!m) return tok;
   const n = Number(m[1]);
