@@ -14,6 +14,7 @@ import {
   coldOpenKind,
   type ShortsScript,
   type ShortsTiming,
+  type TimedSentence,
 } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
 import {
@@ -69,6 +70,24 @@ function kindOf(scene: string, hasNextArt: boolean): Kind {
   return "phone";
 }
 
+/** 이 문장의 stat 카운터가 시작되는 오디오 시각 (없으면 null) */
+function statStartOf(
+  script: ShortsScript,
+  s: TimedSentence,
+  lang: "ko" | "en",
+): number | null {
+  const line = script.lines[s.index];
+  if (!line?.stat) return null;
+  const stat = (lang === "en" ? (line.statEn ?? line.stat) : line.stat)!;
+  const digits = stat.match(/\d+/)?.[0];
+  const w = digits ? s.words.find((x) => x.text.includes(digits)) : undefined;
+  return w?.start ?? s.start;
+}
+
+/** 카운터 인서트 길이 + 숨 고르기 — 엔드카드는 이게 끝난 뒤 들어온다 */
+const STAT_PUNCH_SEC = 1.5;
+const STAT_BREATH_SEC = 0.2;
+
 function buildSegments(
   script: ShortsScript,
   timing: ShortsTiming,
@@ -76,13 +95,22 @@ function buildSegments(
   hasNextArt: boolean,
   offset: number,
   coldOpen: number,
+  lang: "ko" | "en",
 ): Seg[] {
   const raw: { kind: Kind; from: number }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
     const kind = kindOf(script.lines[s.index]?.scene ?? "build", hasNextArt);
-    const from = s.start + offset;
+    let from = s.start + offset;
+    // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
+    // 들어온다 — 겹치면 마무리 화면이 어색하다 (Jessi 지시)
+    if (kind === "end") {
+      const statAt = statStartOf(script, s, lang);
+      if (statAt != null) {
+        from = Math.max(from, statAt + offset + STAT_PUNCH_SEC + STAT_BREATH_SEC);
+      }
+    }
     if (raw.length === 0) {
       raw.push({ kind, from: 0 }); // 첫 장면은 0초부터
     } else if (raw[raw.length - 1].kind !== kind) {
@@ -127,7 +155,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const offset = NARRATION_DELAY + coldOpen; // 화면 시간 = 오디오 시간 + offset
   const total = totalSeconds(timing.duration, coldOpen);
   const segs = buildSegments(
-    script, timing, total, Boolean(artFiles?.next), offset, coldOpen,
+    script, timing, total, Boolean(artFiles?.next), offset, coldOpen, lang,
   );
   // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
   // 같은 데모 연출이 연속되지 않는다 (Jessi 지시)
@@ -286,22 +314,19 @@ export const ShipIt: React.FC<ShipItProps> = ({
       </div>
 
       {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트.
-          hook·end 장면에는 안 띄운다 — 헤드라인·엔드카드 위에 겹쳐
-          어색하다 (Jessi 지적) */}
+          hook 장면에는 안 띄운다(헤드라인과 겹침). end 문장의 stat은
+          카운터가 먼저 나오고 엔드카드가 그 뒤에 들어온다 (buildSegments) */}
       {script.lines.map((l, i) => {
-        if (!l.stat || l.scene === "hook" || l.scene === "end") return null;
-        const stat = lang === "en" ? (l.statEn ?? l.stat) : l.stat;
+        if (!l.stat || l.scene === "hook") return null;
         const sent = timing.sentences.find((x) => x.index === i);
         if (!sent) return null;
-        const digits = stat.match(/\d+/)?.[0];
-        const w = digits
-          ? sent.words.find((x) => x.text.includes(digits))
-          : undefined;
+        const statAt = statStartOf(script, sent, lang);
+        if (statAt == null) return null;
         return (
           <StatPunch
             key={`stat-${i}`}
-            stat={stat}
-            startSec={(w?.start ?? sent.start) + offset}
+            stat={lang === "en" ? (l.statEn ?? l.stat) : l.stat}
+            startSec={statAt + offset}
             th={th}
           />
         );
