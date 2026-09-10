@@ -12,6 +12,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import matter from "gray-matter";
 import {
   MUSIC_MOODS,
+  SHORTS_THEMES,
   shortsJsonPath,
   type ShortsLine,
   type ShortsScript,
@@ -65,6 +66,8 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 interface ProjectMeta {
   slug: string;
   homepage?: string;
+  /** 레포가 vibelog.json으로 고른 쇼츠 테마 */
+  theme?: string;
 }
 
 function parseJson(text: string): Record<string, unknown> {
@@ -155,6 +158,10 @@ export async function generateScript(
   const { data, content } = matter(fs.readFileSync(devlogFile, "utf8"));
   const meta = getProjectMeta(repo);
   const demoUrl = meta.homepage ?? "";
+  // 레포가 고른 테마 — 알 수 없는 값은 기본(terminal)으로
+  const theme = SHORTS_THEMES.includes(meta.theme as (typeof SHORTS_THEMES)[number])
+    ? (meta.theme as string)
+    : "terminal";
 
   const client = new Anthropic();
   const response = await client.messages.create({
@@ -202,6 +209,7 @@ export async function generateScript(
   const script: ShortsScript = {
     template,
     music,
+    theme,
     repo,
     date,
     day: dayNumber(repo, date),

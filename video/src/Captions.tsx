@@ -16,7 +16,7 @@ import type {
   ShortsTiming,
   TimedSentence,
 } from "../../scripts/shorts-types";
-import { COLORS, FONT_SANS, NARRATION_DELAY } from "./theme";
+import { FONT_SANS, keywordStyle, NARRATION_DELAY, type ShortsTheme } from "./theme";
 
 const WORD_FADE = 0.28;
 const LINGER_BEFORE_NEXT = 0.15;
@@ -43,7 +43,8 @@ export const Captions: React.FC<{
   script: ShortsScript;
   timing: ShortsTiming;
   lang: "ko" | "en";
-}> = ({ script, timing, lang }) => {
+  th: ShortsTheme;
+}> = ({ script, timing, lang, th }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps - NARRATION_DELAY; // 오디오 시간
@@ -82,8 +83,11 @@ export const Captions: React.FC<{
           lineHeight: 1.3,
           wordBreak: "keep-all",
           textWrap: "balance",
-          textShadow: "0 4px 24px rgba(0,0,0,.6)",
-          color: COLORS.ink,
+          // 라이트 테마는 어두운 그림자가 지저분하다 — 밝은 글로우로
+          textShadow: th.light
+            ? "0 2px 18px rgba(255,255,255,.7)"
+            : "0 4px 24px rgba(0,0,0,.6)",
+          color: th.ink,
         }}
       >
         {win.sentence.words.map((w, i) => {
@@ -96,7 +100,8 @@ export const Captions: React.FC<{
               <span
                 style={{
                   opacity: 0.3 + 0.7 * progress,
-                  color: isKeyword && on ? COLORS.accent : undefined,
+                  // 켜지는 순간부터 테마의 키워드 규칙(컬러/밑줄/마커) 적용
+                  ...(isKeyword && on ? keywordStyle(th, 0.5) : {}),
                   transition: `color ${WORD_FADE}s ease-out`,
                 }}
               >
