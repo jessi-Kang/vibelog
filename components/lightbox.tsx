@@ -57,59 +57,67 @@ export function MediaLightbox({
       aria-modal="true"
       aria-label={media.label}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-stretch justify-center bg-bg-deep/90 md:items-center md:p-8"
+      className="fixed inset-0 z-50 flex flex-col bg-bg-deep/90"
     >
-      {bothLangs && (
-        <div
-          aria-label={site.lang === "en" ? "Video language" : "영상 언어"}
-          onClick={(e) => e.stopPropagation()}
-          className="absolute left-4 top-[max(1rem,env(safe-area-inset-top))] z-10 flex gap-1 rounded-md border border-line bg-panel p-1"
+      {/* 컨트롤은 영상 위에 띄우지 않는다 — 상단 전용 바로 분리해서
+          쇼츠 상단(VIBELOG · DAY 배지)을 가리지 않는다 (Jessi 지시) */}
+      <div className="flex flex-none items-center justify-between px-4 pb-2 pt-[max(0.75rem,env(safe-area-inset-top))]">
+        {bothLangs ? (
+          <div
+            aria-label={site.lang === "en" ? "Video language" : "영상 언어"}
+            onClick={(e) => e.stopPropagation()}
+            className="flex gap-1 rounded-md border border-line bg-panel p-1"
+          >
+            {(["ko", "en"] as const).map((v) => (
+              <button
+                key={v}
+                type="button"
+                aria-pressed={lang === v}
+                onClick={() => setLang(v)}
+                className={`min-h-7 cursor-pointer rounded-[7px] px-2.5 font-sans text-sm font-bold transition-colors duration-150 ${
+                  lang === v ? "bg-panel2 text-ink" : "text-muted hover:text-ink-soft"
+                }`}
+              >
+                {v.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <span />
+        )}
+        <button
+          ref={closeRef}
+          type="button"
+          aria-label={site.lang === "en" ? "Close" : "닫기"}
+          onClick={onClose}
+          className="grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2"
         >
-          {(["ko", "en"] as const).map((v) => (
-            <button
-              key={v}
-              type="button"
-              aria-pressed={lang === v}
-              onClick={() => setLang(v)}
-              className={`min-h-7 cursor-pointer rounded-[7px] px-2.5 font-sans text-sm font-bold transition-colors duration-150 ${
-                lang === v ? "bg-panel2 text-ink" : "text-muted hover:text-ink-soft"
-              }`}
-            >
-              {v.toUpperCase()}
-            </button>
-          ))}
-        </div>
-      )}
-      <button
-        ref={closeRef}
-        type="button"
-        aria-label={site.lang === "en" ? "Close" : "닫기"}
-        onClick={onClose}
-        // 노치 폰 풀스크린에서 상태바 밑에 깔리지 않게 safe-area만큼 내린다
-        className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-10 grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2"
-      >
-        ✕
-      </button>
-      {media.kind === "video" ? (
-        <video
-          key={videoSrc}
-          src={videoSrc}
-          controls
-          autoPlay
-          playsInline
-          onClick={(e) => e.stopPropagation()}
-          className="h-full w-full bg-bg-deep object-contain md:aspect-[9/16] md:h-[85dvh] md:w-auto md:rounded-lg md:border md:border-line"
-        />
-      ) : (
-        // 폰 풀페이지 캡처는 세로로 매우 길다 — 팝업 안에서 세로 스크롤로 전체를 본다
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className="h-full w-full overflow-y-auto overscroll-contain bg-bg md:h-auto md:max-h-[85dvh] md:w-[390px] md:rounded-lg md:border md:border-line"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={media.src} alt={media.label} className="w-full" />
-        </div>
-      )}
+          ✕
+        </button>
+      </div>
+      {/* 영상 영역 = 바 아래 남은 공간 전부 — 어떤 화면 비율에서도 겹침 없음 */}
+      <div className="flex min-h-0 flex-1 items-center justify-center pb-[max(0.5rem,env(safe-area-inset-bottom))] md:p-6 md:pt-2">
+        {media.kind === "video" ? (
+          <video
+            key={videoSrc}
+            src={videoSrc}
+            controls
+            autoPlay
+            playsInline
+            onClick={(e) => e.stopPropagation()}
+            className="h-full max-h-full w-full bg-bg-deep object-contain md:aspect-[9/16] md:w-auto md:rounded-lg md:border md:border-line"
+          />
+        ) : (
+          // 폰 풀페이지 캡처는 세로로 매우 길다 — 팝업 안에서 세로 스크롤로 전체를 본다
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="h-full w-full overflow-y-auto overscroll-contain bg-bg md:max-h-full md:w-[390px] md:rounded-lg md:border md:border-line"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={media.src} alt={media.label} className="w-full" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
