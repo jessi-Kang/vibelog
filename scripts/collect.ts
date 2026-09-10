@@ -464,7 +464,10 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       (c) =>
         !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦|쇼츠 썸네일 재추출|새 프로젝트 인식)/.test(
           c.message,
-        ),
+        ) &&
+        // 머지 커밋은 git 자동 메시지라 재료가 아니다 — 글 원료에 브랜치
+        // 주소가 그대로 노출되기도 한다 (Jessi 지적)
+        !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message),
     );
 
     // 활동 판정은 체크포인트 sha "이후" 커밋만 센다 (목록은 최신순).
