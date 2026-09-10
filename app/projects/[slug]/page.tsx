@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
 import { T } from "@/components/lang";
-import { EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
+import { Card, EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
 import { DevlogTimelineEntry } from "@/components/vibelog";
 import {
   fmtDate,
@@ -45,7 +45,9 @@ export default async function ProjectPage({ params }: Props) {
   ];
 
   const head = (
-    <section className="flex flex-col items-start gap-4 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-10 md:gap-y-4 lg:flex lg:flex-col">
+    // 프로젝트 정보 블록은 카드로 — 아래 데브로그 타임라인과 딱 구분되게 (Jessi 지시)
+    <Card className="p-5 lg:p-6">
+      <section className="flex flex-col items-start gap-4 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-10 md:gap-y-4 lg:flex lg:flex-col">
       <div className="flex flex-col gap-3">
         <h1 className="m-0 text-xl font-bold tracking-[-.01em] text-accent lg:text-[26px]">
           {project.name}
@@ -71,7 +73,7 @@ export default async function ProjectPage({ params }: Props) {
           </a>
         )}
       </div>
-      <dl className="m-0 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 font-mono text-xs">
+      <dl className="m-0 grid w-full grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 border-t border-line pt-4 font-mono text-xs md:border-t-0 md:pt-0 lg:border-t lg:pt-4">
         {facts.map(([key, k, v]) => (
           <div key={key} className="contents">
             <dt className="text-muted">{k}</dt>
@@ -87,7 +89,8 @@ export default async function ProjectPage({ params }: Props) {
           hint={`gh repo edit ${project.slug} --description "…"`}
         />
       )}
-    </section>
+      </section>
+    </Card>
   );
 
   const timeline = (
