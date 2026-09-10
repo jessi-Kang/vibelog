@@ -47,6 +47,19 @@ async function slowScroll(page: Page, px: number): Promise<void> {
   }
 }
 
+/** 투어가 방문할 내부 링크 (defaultTour와 같은 규칙) */
+async function tourLinks(page: Page): Promise<string[]> {
+  return (
+    await page
+      .locator("a[href^='/']")
+      .evaluateAll((as) =>
+        [...new Set(as.map((a) => a.getAttribute("href")))].filter(
+          (h): h is string => !!h && h !== "/",
+        ),
+      )
+  ).slice(0, 2);
+}
+
 async function defaultTour(
   page: Page,
   shotsDir: string,
@@ -186,6 +199,34 @@ export async function record(
   const started = Date.now();
   await page.goto(script.demo.url, { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(1200);
+
+  // 프리워밍: 투어가 방문할 페이지를 미리 한 바퀴 돌아 이미지·라우트 캐시를
+  // 데운다 — 쇼츠 페이지 썸네일(원격 Blob 이미지)이 투어 중 카메라 앞에서
+  // 뒤늦게 하나씩 뜨는 번쩍임 방지 (Jessi 지적). readyAt 이전 구간이라
+  // 최종 영상에서는 통째로 잘려 나간다.
+  const prewarmTargets = script.demo.steps.length
+    ? script.demo.steps
+        .filter((s) => s.startsWith("goto "))
+        .map((s) => s.slice(5))
+    : await tourLinks(page);
+  for (const href of prewarmTargets.slice(0, 3)) {
+    try {
+      await page.goto(new URL(href, script.demo.url).toString(), {
+        waitUntil: "domcontentloaded",
+      });
+      // 이미지가 다 내려올 때까지 (썸네일 캐시가 목적이므로)
+      await page.waitForFunction(
+        () => [...document.images].every((i) => i.complete),
+        undefined,
+        { timeout: 6000 },
+      );
+    } catch {
+      // 프리워밍 실패는 치명적이지 않다 — 그 페이지만 덜 데워질 뿐
+    }
+  }
+  await page.goto(script.demo.url, { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(800);
+
   // en이면 언어 전환(SSR ko → 저장값 en)이 끝날 때까지 기다린 뒤에야
   // "준비됨"이다 — 안 기다리면 한국어 화면이 readyAt 뒤에 남는다 (Jessi 지적)
   await waitForLang(page, lang);
