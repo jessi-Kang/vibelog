@@ -51,6 +51,7 @@ Jessi가 새 프로젝트를 시작하면 (또는 "새 프로젝트" 얘기가 �
 
 ## 컨벤션
 
+- 숫자 표기: 1,000 이상은 천 단위 콤마. UI의 카운트·통계는 `lib/format.ts`의 `fmtNum`을 쓴다 (로케일 고정 — 서버·클라이언트가 갈리면 hydration이 깨진다).
 - 커밋 메시지는 데브로그 원료다. 한 줄 요약 + 본문에 **"왜"**를 반드시 쓴다. 각 단계가 끝날 때마다 커밋한다.
 - `content/` 밑 파일은 파이프라인이 덮어쓴다. 손수정은 frontmatter `manual: true`로 보호.
 - 프로젝트 상태값: `idea | building | live | paused`. 자동 판정: homepage 있으면 live, 없고 30일 내 커밋이면 building, 넘으면 paused. 레포의 `vibelog.json`이 있으면 그게 우선.

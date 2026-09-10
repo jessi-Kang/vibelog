@@ -58,9 +58,24 @@ export function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+/** "generate · vibelog/2026-09-10.md" — 여러 프로젝트가 섞이는 실행에서
+ * 어느 프로젝트의 줄인지 한눈에 갈리게, "· 레포/" 의 레포 이름만 띄운다 */
+function emphasizeRepo(text: string): ReactNode {
+  const m = text.match(/^(.*· )([A-Za-z0-9._-]+)(\/.*)$/);
+  if (!m) return text;
+  return (
+    <>
+      {m[1]}
+      <span className="font-bold text-ink">{m[2]}</span>
+      {m[3]}
+    </>
+  );
+}
+
 export function RunLog({ lines }: { lines: RunLogLine[] }) {
   const { lang } = useLang();
-  const pick = (l: RunLogLine) => (lang === "en" ? (l.textEn ?? l.text) : l.text);
+  const pick = (l: RunLogLine) =>
+    emphasizeRepo(lang === "en" ? (l.textEn ?? l.text) : l.text);
   return (
     <Card inset className="flex flex-col px-5 py-[18px] font-mono text-[12.5px] leading-[1.9] text-muted">
       {lines.map((l, i) => {
