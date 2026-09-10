@@ -35,6 +35,21 @@ export function narrationOffsetSec(script: ShortsScript): number {
   return NARRATION_DELAY + (coldOpenKind(script) ? COLD_OPEN_SEC : 0);
 }
 
+/**
+ * 썸네일(포스터) 추출 시각 — 훅이 다 켜진 뒤, 장면 페이드 전의 밝은 창.
+ * 훅 끝 시각 그대로 쓰면 다음 장면과 간격이 짧은 대본에서 페이드 구간에
+ * 걸려 어두운 썸네일이 나온다 (Jessi 지적). shorts.ts·poster.ts 공용.
+ */
+export function posterAtSec(script: ShortsScript, timing: ShortsTiming): number {
+  const s0 = timing.sentences[0];
+  const s1 = timing.sentences[1];
+  const cand = Math.min(
+    s0?.end ?? 1.5,
+    s1 ? s1.start - 0.5 : Number.POSITIVE_INFINITY,
+  );
+  return narrationOffsetSec(script) + Math.max(cand, (s0?.start ?? 0) + 0.6);
+}
+
 export async function renderShort(
   repo: string,
   date: string,
