@@ -1,6 +1,6 @@
 {
-  "template": "fail",
-  "music": "tense",
+  "template": "ship-it",
+  "music": "upbeat",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-09-10",
@@ -8,123 +8,108 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "닮지도 않은 이름에 경고가 떴습니다.",
-      "en": "Names that look nothing alike got flagged.",
+      "ko": "하루 만에 게임이 돌아갔습니다.",
+      "en": "A game went live in one day.",
       "keywords": [
-        "닮지도 않은",
-        "경고가"
-      ],
-      "keywordsEn": [
-        "nothing alike"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "가짜 아파트 이름을 걸러 내는 검사입니다.",
-      "en": "It is a check that catches fake apartment names.",
-      "keywords": [
-        "가짜 아파트 이름을"
-      ],
-      "keywordsEn": [
-        "fake apartment"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "안 닮은 이름끼리 222건이 걸렸습니다.",
-      "en": "222 unrelated pairs got flagged.",
-      "keywords": [
-        "222건이"
-      ],
-      "keywordsEn": [
-        "222 unrelated pairs"
-      ],
-      "stat": "222건",
-      "statEn": "222 pairs"
-    },
-    {
-      "scene": "build",
-      "ko": "두 이름이 다르면 3을 주고 멈추게 했습니다.",
-      "en": "If two names differed, it returned 3 and stopped early.",
-      "keywords": [
-        "3을",
-        "멈추게"
-      ],
-      "keywordsEn": [
-        "returned 3",
-        "stopped early"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "그 3이 비슷함 기준 안쪽이었습니다.",
-      "en": "But 3 sat inside the too-similar range.",
-      "keywords": [
-        "비슷함 기준"
-      ],
-      "keywordsEn": [
-        "too-similar range"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "멈춤 신호를 바꾸니 경고가 0건이 됐습니다.",
-      "en": "I changed the stop signal, and warnings dropped to 0.",
-      "keywords": [
-        "멈춤 신호를",
-        "0건이"
-      ],
-      "keywordsEn": [
-        "stop signal",
-        "dropped to 0"
-      ],
-      "stat": "0건",
-      "statEn": "0 warnings"
-    },
-    {
-      "scene": "demo",
-      "ko": "실제 단지일까요, 지어낸 이름일까요.",
-      "en": "Real complex, or a made-up name?",
-      "keywords": [
-        "실제",
-        "지어낸"
-      ],
-      "keywordsEn": [
-        "made-up"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "기획서에서 게임까지 하루 걸렸습니다.",
-      "en": "From plan to working game in one day.",
-      "keywords": [
-        "하루"
+        "하루 만에"
       ],
       "keywordsEn": [
         "one day"
       ]
     },
     {
+      "scene": "build",
+      "ko": "아파트 이름이 진짜인지 가짜인지 맞히는 퀴즈입니다.",
+      "en": "You see an apartment name and guess if it is real or made up.",
+      "keywords": [
+        "진짜인지",
+        "가짜인지"
+      ],
+      "keywordsEn": [
+        "real",
+        "made up"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "전국이 같은 날 같은 10문제를 풉니다.",
+      "en": "Everyone in the country gets the same 10 questions each day.",
+      "keywords": [
+        "같은 날"
+      ],
+      "keywordsEn": [
+        "same 10 questions"
+      ],
+      "stat": "10문제",
+      "statEn": "10 questions"
+    },
+    {
+      "scene": "demo",
+      "ko": "다 풀면 등급이 나오고 링크로 공유됩니다.",
+      "en": "Finish them all and you get a grade and a link to share.",
+      "keywords": [
+        "등급이",
+        "링크로"
+      ],
+      "keywordsEn": [
+        "grade",
+        "link to share"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "정답은 서버만 알아서 미리 볼 수 없습니다.",
+      "en": "The answers live only on the server, so no peeking.",
+      "keywords": [
+        "정답은 서버만"
+      ],
+      "keywordsEn": [
+        "only on the server"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "가짜 이름 검사에 경고가 222건 떴습니다.",
+      "en": "The fake-name check threw 222 warnings.",
+      "keywords": [
+        "222건"
+      ],
+      "keywordsEn": [
+        "222 warnings"
+      ],
+      "stat": "222건",
+      "statEn": "222 warnings"
+    },
+    {
+      "scene": "fail",
+      "ko": "시간을 아끼려 넣은 임시 점수 3점이 범인이었습니다.",
+      "en": "A placeholder score of 3, added to save time, was the culprit.",
+      "keywords": [],
+      "keywordsEn": [
+        "placeholder score of 3"
+      ]
+    },
+    {
       "scene": "next",
-      "ko": "실제 자료는 사람이 검토한 뒤에 올립니다.",
-      "en": "Real data goes live only after a human review.",
+      "ko": "다음은 진짜 단지 자료를 사람이 검토한 뒤에 넣습니다.",
+      "en": "Next, real complex records go in only after a person reviews them.",
       "keywords": [
         "사람이 검토한"
       ],
       "keywordsEn": [
-        "human review"
+        "a person reviews them"
       ],
-      "art": "a person holding a magnifying glass over a single paper form before stamping it"
+      "art": "a magnifying glass hovering over a neat stack of paper forms on a wooden desk"
     },
     {
       "scene": "end",
-      "ko": "다음은 공유 카드 그림입니다.",
-      "en": "Next up is the shared result card artwork.",
+      "ko": "오늘 문제, 풀어보러 오세요.",
+      "en": "Today's questions are waiting.",
       "keywords": [
-        "공유 카드"
+        "풀어보러 오세요"
       ],
       "keywordsEn": [
-        "shared result card"
+        "waiting"
       ]
     }
   ],
@@ -133,12 +118,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "멈춤 신호가 3이었습니다",
-    "titleEn": "The stop signal was 3",
-    "before": "안 닮은 이름 222건에 경고",
-    "after": "신호를 바꾸니 경고 0건",
-    "beforeEn": "222 warnings on names that look nothing alike",
-    "afterEn": "Changed the signal, 0 warnings left"
+    "title": "닮지 않은 이름이 걸렸다",
+    "titleEn": "Names that look nothing alike got flagged",
+    "before": "전혀 닮지 않은 이름끼리 경고가 222건 떴습니다.",
+    "after": "임시 점수를 판정 범위 밖 큰 수로 바꾸니 경고가 0건이 됐습니다.",
+    "beforeEn": "222 name pairs that look nothing alike were flagged as too similar.",
+    "afterEn": "Moving the placeholder score outside the match range dropped the warnings to 0."
   },
   "commits": [
     [
@@ -283,22 +268,22 @@
   "commitCount": 17,
   "handle": "apt-gam.vercel.app",
   "captions": {
-    "ko": "아파트 이름이 진짜인지 지어낸 건지 맞히는 퀴즈를 하루 만에 만들었습니다. 가짜 이름을 걸러 내는 검사가 엉뚱하게 222건을 경고한 이유는 멈춤 신호로 쓴 숫자 3이었습니다.",
-    "en": "Built a quiz about real versus made-up apartment names in a single day. The check meant to catch look-alike fakes threw 222 false alarms, all because the early-stop signal was the number 3."
+    "ko": "기획 문서에서 시작해 하루 만에 돌아가는 아파트 이름 퀴즈까지 갔습니다. 전국이 같은 날 같은 10문제를 풀고, 결과는 링크로 공유됩니다.",
+    "en": "From a planning doc to a working apartment-name quiz in a single day. Everyone gets the same 10 questions each day, and results are shareable by link."
   },
   "hashtags": [
-    "#개발일지",
-    "#사이드프로젝트",
-    "#디버깅",
-    "#퀴즈게임",
-    "#devlog",
+    "#개발",
+    "#데브로그",
+    "#아파트퀴즈",
+    "#웹게임",
+    "#vibelog",
     "#buildinpublic",
-    "#webdev"
+    "#indiedev"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvn7qf3",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvn7st6",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvn93z7",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvn962q"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtvodov2",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtvodquz",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtvof5lm",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtvof7cz"
   }
 }
