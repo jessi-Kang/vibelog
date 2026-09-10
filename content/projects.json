@@ -1,8 +1,24 @@
 [
   {
+    "slug": "apart",
+    "name": "apart",
+    "description": "",
+    "status": "building",
+    "stack": [
+      "HTML"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "language": "HTML",
+    "lastActivity": "2026-09-10",
+    "weekCommits": 4,
+    "todayCommits": 4,
+    "totalCommits": 4
+  },
+  {
     "slug": "vibelog",
     "name": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
     "status": "live",
     "stack": [
       "JavaScript"
@@ -11,9 +27,8 @@
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
     "lastActivity": "2026-09-10",
-    "weekCommits": 64,
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "todayCommits": 60,
-    "totalCommits": 75
+    "weekCommits": 100,
+    "todayCommits": 100,
+    "totalCommits": 132
   }
 ]
