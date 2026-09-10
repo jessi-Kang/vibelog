@@ -82,6 +82,8 @@ export interface ShortsScript {
   hashtags: string[];
   /** 커밋 콜드오픈 재료 — 데브로그 frontmatter shas [sha7, 한 줄 메시지] */
   commits?: [string, string][];
+  /** 그날 커밋 수 (frontmatter commits) — 콜드오픈 ×N 카운터. shas는 일부만 싣는다 */
+  commitCount?: number;
   /** 영문 영상용 커밋 메시지 (frontmatter shasEn) — 없으면 ko로 폴백 */
   commitsEn?: [string, string][];
   /** 8단계에서 업로드 후 기록. poster/posterEn = 훅 헤드라인이 다 켜진 순간의 프레임(썸네일용) */

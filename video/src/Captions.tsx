@@ -10,7 +10,7 @@
  * 6. 타이밍은 ElevenLabs 단어 타임스탬프 (timing.json)
  */
 import React from "react";
-import { Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { useCurrentFrame, useVideoConfig } from "remotion";
 import type {
   ShortsScript,
   ShortsTiming,
@@ -107,24 +107,13 @@ export const Captions: React.FC<{
           const progress = Math.min(1, Math.max(0, (t - w.start) / WORD_FADE));
           const on = progress > 0;
           const isKeyword = kwOn.has(i);
-          // 키워드 점화 팝 — 켜지는 순간 살짝 튀었다 자리잡는다 (훅과 동일)
-          const pop =
-            isKeyword && on
-              ? interpolate(t, [w.start, w.start + 0.3], [1.1, 1], {
-                  extrapolateLeft: "clamp",
-                  extrapolateRight: "clamp",
-                  easing: Easing.out(Easing.back(1.4)),
-                })
-              : 1;
+          // 자막은 정적으로 — 흐림→또렷 페이드만, 상승·팝 금지 (Jessi 지시).
+          // 움직임은 훅·콜드오픈·인서트 등 다른 영역이 맡는다.
           return (
             <React.Fragment key={i}>
               <span
                 style={{
-                  display: "inline-block",
                   opacity: 0.3 + 0.7 * progress,
-                  // 말하는 순간 살짝 떠오른다 — 흐림→또렷에 상승을 더한 것뿐
-                  transform: `translateY(${8 * (1 - progress)}px) scale(${pop})`,
-                  transformOrigin: "50% 80%",
                   // 켜지는 순간부터 테마의 키워드 규칙(컬러/밑줄/마커) 적용
                   ...(isKeyword && on ? keywordStyle(th, 0.5) : {}),
                 }}

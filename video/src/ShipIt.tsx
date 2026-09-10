@@ -187,6 +187,8 @@ export const ShipIt: React.FC<ShipItProps> = ({
                     ? script.commitsEn
                     : script.commits
                 }
+                commitCount={script.commitCount ?? script.commits?.length ?? 0}
+                day={script.day}
                 before={
                   lang === "ko"
                     ? script.failCard?.before

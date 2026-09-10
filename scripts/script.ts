@@ -267,6 +267,8 @@ export async function generateScript(
     );
   const commits = shaPairs(data.shas);
   const commitsEn = shaPairs(data.shasEn);
+  const commitCount =
+    typeof data.commits === "number" && data.commits > 0 ? data.commits : 0;
 
   const script: ShortsScript = {
     template,
@@ -280,6 +282,7 @@ export async function generateScript(
     ...(failCard ? { failCard } : {}),
     ...(commits.length ? { commits } : {}),
     ...(commitsEn.length ? { commitsEn } : {}),
+    ...(commitCount ? { commitCount } : {}),
     handle: demoUrl.replace(/^https?:\/\//, "").replace(/\/$/, "") || repo,
     captions: {
       ko: typeof captions.ko === "string" ? captions.ko : "",
