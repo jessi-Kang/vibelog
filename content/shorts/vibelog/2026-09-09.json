@@ -1,6 +1,6 @@
 {
-  "template": "fail",
-  "music": "tense",
+  "template": "ship-it",
+  "music": "ship-it",
   "theme": "terminal",
   "repo": "vibelog",
   "date": "2026-09-09",
@@ -8,109 +8,106 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "밤에 걸어둔 첫 자동 실행이 안 됐습니다.",
-      "en": "The first automated run I scheduled at night never happened.",
+      "ko": "이 블로그의 글은 제가 쓰지 않습니다.",
+      "en": "I don't write the posts on this blog.",
       "keywords": [
-        "자동 실행이"
+        "글은",
+        "제가"
       ],
       "keywordsEn": [
-        "automated run"
-      ]
-    },
-    {
-      "scene": "hook",
-      "ko": "오류 표시조차 없었습니다.",
-      "en": "There wasn't even an error message.",
-      "keywords": [
-        "오류 표시조차"
-      ],
-      "keywordsEn": []
-    },
-    {
-      "scene": "fail",
-      "ko": "원인은 설정 파일에 적어둔 조건이었습니다.",
-      "en": "The cause was a condition I had written in the settings file.",
-      "keywords": [],
-      "keywordsEn": [
-        "condition"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "지원되지 않는 자리에 써서 파일이 통째로 무시됐습니다.",
-      "en": "I put it in a spot that doesn't support it, so the whole file was ignored.",
-      "keywords": [],
-      "keywordsEn": [
-        "whole file"
+        "don't write",
+        "posts"
       ]
     },
     {
       "scene": "build",
-      "ko": "그 조건을 걷어내고 확인 방식을 바꿨습니다.",
-      "en": "I removed the condition and checked it a different way.",
+      "ko": "낮에는 화면 3개를 만들었습니다.",
+      "en": "During the day I built 3 screens.",
       "keywords": [
-        "걷어내고"
+        "화면 3개를"
       ],
-      "keywordsEn": [
-        "removed"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "그제야 밤마다 자동으로 글이 올라갑니다.",
-      "en": "Only then did posts start going up automatically every night.",
-      "keywords": [
-        "밤마다",
-        "자동으로"
-      ],
-      "keywordsEn": [
-        "automatically"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "낮에 만든 화면 3개는 이렇게 채워집니다.",
-      "en": "The 3 screens I built during the day fill up like this.",
-      "keywords": [
-        "화면 3개는"
-      ],
-      "keywordsEn": [
-        "3 screens"
-      ],
+      "keywordsEn": [],
       "stat": "3개",
       "statEn": "3 screens"
     },
     {
-      "scene": "demo",
-      "ko": "지금 보시는 이 영상도 그 글에서 나왔습니다.",
-      "en": "Even this video came out of one of those posts.",
+      "scene": "build",
+      "ko": "목록, 타임라인, 전체 글 목록입니다.",
+      "en": "A project list, a timeline, and a full feed.",
+      "keywords": [],
+      "keywordsEn": []
+    },
+    {
+      "scene": "build",
+      "ko": "밤에는 그 화면이 저절로 채워지게 했습니다.",
+      "en": "At night I made those pages fill themselves.",
       "keywords": [
-        "이 영상도",
-        "그 글에서"
+        "저절로 채워지게"
+      ],
+      "keywordsEn": []
+    },
+    {
+      "scene": "demo",
+      "ko": "그날의 코드 기록이 모여 글 한 편이 됩니다.",
+      "en": "The day's code records get gathered into one post.",
+      "keywords": [
+        "코드 기록이"
       ],
       "keywordsEn": [
-        "this video"
+        "code records"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "그 글은 다시 30초 영상이 됩니다.",
+      "en": "That post then becomes a 30-second video.",
+      "keywords": [
+        "30초 영상이"
+      ],
+      "keywordsEn": [],
+      "stat": "30초",
+      "statEn": "30-second"
+    },
+    {
+      "scene": "fail",
+      "ko": "첫 자동 실행은 시작조차 안 됐습니다.",
+      "en": "The first automatic run never even started.",
+      "keywords": [],
+      "keywordsEn": []
+    },
+    {
+      "scene": "fail",
+      "ko": "잘못 쓴 한 줄 때문에 설정 전체가 무효였습니다.",
+      "en": "One wrong line made the whole setup invalid.",
+      "keywords": [
+        "한 줄"
+      ],
+      "keywordsEn": [
+        "One wrong line"
       ]
     },
     {
       "scene": "next",
-      "ko": "밤새 글과 영상이 끝까지 만들어지는지 지켜봅니다.",
-      "en": "Next I watch whether the post and the video really finish overnight.",
+      "ko": "밤에 글과 영상이 끝까지 나오는지 지켜봅니다.",
+      "en": "Now I watch whether the post and video make it end to end overnight.",
       "keywords": [
         "끝까지"
       ],
       "keywordsEn": [
-        "really finish"
+        "end to end",
+        "watch"
       ],
-      "art": "a small owl perched on a stack of gears, watching a dark conveyor belt carry glowing parcels"
+      "art": "a small robot keeping watch beside a conveyor belt carrying a glowing film reel through the night"
     },
     {
       "scene": "end",
-      "ko": "글은 제가 쓰지 않습니다.",
-      "en": "I don't write the posts myself.",
-      "keywords": [],
+      "ko": "지금 보시는 이 영상이 그 결과입니다.",
+      "en": "This video you're watching is the result.",
+      "keywords": [
+        "이 영상이"
+      ],
       "keywordsEn": [
-        "don't write"
+        "This video"
       ]
     }
   ],
@@ -119,12 +116,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "자동 실행이 시작되지 않았다",
-    "titleEn": "The automated run never started",
-    "before": "오류도 없이 아무것도 실행되지 않았습니다",
-    "after": "잘못된 조건을 걷어내니 밤마다 돌기 시작했습니다",
-    "beforeEn": "Nothing ran at all, and there was no error",
-    "afterEn": "Removing the wrong condition got it running every night"
+    "title": "자동 실행이 안 돌았다",
+    "titleEn": "The automatic run never ran",
+    "before": "오류도 흔적도 없이 밤 작업이 시작되지 않았습니다.",
+    "after": "문제의 한 줄을 걷어내니 그제야 돌기 시작했습니다.",
+    "beforeEn": "The nightly job never started, with no error and no trace.",
+    "afterEn": "Removing that one line finally got it running."
   },
   "commits": [
     [
@@ -197,8 +194,8 @@
   "commitCount": 11,
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "블로그 화면 3개를 만들고, 밤마다 글이 자동으로 올라가게 했습니다. 첫 자동 실행은 설정 파일의 조건 하나 때문에 아예 시작되지 않았습니다.",
-    "en": "I built the blog's 3 screens and made posts go up automatically every night. The first run never even started, because of one condition in the settings file."
+    "ko": "블로그 화면 3개를 만들고, 밤마다 그날의 코드 기록이 글과 영상으로 자동으로 만들어지게 했습니다. 첫 자동 실행은 잘못 쓴 한 줄 때문에 아예 시작되지 않았습니다.",
+    "en": "I built 3 blog screens and made the day's code records turn into a post and a video automatically every night. The first automatic run never started because of one wrong line."
   },
   "hashtags": [
     "#vibelog",
@@ -206,13 +203,13 @@
     "#자동화",
     "#devlog",
     "#buildinpublic",
-    "#사이드프로젝트",
-    "#automation"
+    "#automation",
+    "#쇼츠"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtv8aw15",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtv8ayqp",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtv8ck8y",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtv8cnzj"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtv8jhl1",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtv8jkcc",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtv8ldd8",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtv8lfxt"
   }
 }
