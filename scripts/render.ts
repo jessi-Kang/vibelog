@@ -14,6 +14,7 @@ import path from "node:path";
 import { mux } from "./mux";
 import { musicPath, resolveMusic } from "./audio";
 import {
+  coldOpenKind,
   narrationPath,
   shortsDir,
   shortsJsonPath,
@@ -31,7 +32,7 @@ export const COLD_OPEN_SEC = 2.0;
 
 /** 화면 시간에서 내레이션이 시작되는 지점 — 포스터 추출 등 후속 단계가 쓴다 */
 export function narrationOffsetSec(script: ShortsScript): number {
-  return NARRATION_DELAY + (script.commits?.length ? COLD_OPEN_SEC : 0);
+  return NARRATION_DELAY + (coldOpenKind(script) ? COLD_OPEN_SEC : 0);
 }
 
 export async function renderShort(

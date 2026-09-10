@@ -14,6 +14,7 @@ import { interpolate, Easing } from "remotion";
 import {
   FONT_MONO,
   FONT_SANS,
+  keywordIndices,
   keywordStyle,
   NARRATION_DELAY,
   type ShortsTheme,
@@ -46,8 +47,12 @@ export const HookCard: React.FC<{
       if (x && t >= s.start) hook = x.l;
     }
   }
-  const keywords = new Set(lang === "ko" ? hook.keywords : hook.keywordsEn);
   const words = hook[lang].split(/\s+/);
+  // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다
+  const kwOn = keywordIndices(
+    words,
+    lang === "ko" ? hook.keywords : hook.keywordsEn,
+  );
   return (
     <div
       style={{
@@ -75,7 +80,7 @@ export const HookCard: React.FC<{
       >
         {words.map((w, i) => (
           <React.Fragment key={i}>
-            <span style={keywords.has(w) ? keywordStyle(th, 1) : undefined}>
+            <span style={kwOn.has(i) ? keywordStyle(th, 1) : undefined}>
               {w}
             </span>
             {i < words.length - 1 ? " " : null}
@@ -216,7 +221,9 @@ export const FailCard: React.FC<{
   sceneStartSec: number;
   sceneEndSec: number;
   th: ShortsTheme;
-}> = ({ script, lang, sceneStartSec, sceneEndSec, th }) => {
+  /** before-after 템플릿: 상하 나열 대신 좌우 대비 2열 */
+  split?: boolean;
+}> = ({ script, lang, sceneStartSec, sceneEndSec, th, split = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -265,6 +272,8 @@ export const FailCard: React.FC<{
       fontSize: 34,
       lineHeight: 1.5,
       color: th.ink,
+      // split 2열처럼 좁은 칸에서 음절 중간이 잘리지 않게
+      wordBreak: "keep-all",
     };
     if (th.fail === "strike" && !isAfter) {
       return {
@@ -321,7 +330,13 @@ export const FailCard: React.FC<{
       >
         {lang === "ko" ? card.title : card.titleEn}
       </h2>
-      <div style={{ display: "grid", gap: 28 }}>
+      <div
+        style={{
+          display: "grid",
+          gap: 28,
+          ...(split ? { gridTemplateColumns: "1fr 1fr", alignItems: "stretch" } : {}),
+        }}
+      >
         <div style={{ ...boxBase, ...appear(local > 0.3, 0.3) }}>
           <div
             style={{
@@ -481,55 +496,144 @@ export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => (
 );
 
 /**
- * 커밋 콜드오픈 — 훅 전에 그날의 실제 커밋 로그가 터미널에 촤르륵 올라온다.
- * "커밋이 곧 콘텐츠"를 영상 문법으로 (Jessi 승인 A안). 재료는 frontmatter shas.
+ * 콜드오픈 — 내레이션 전 2초를 템플릿의 문법으로 연다 (Jessi 승인 A안 + 템플릿 3종).
+ *   log(ship-it): 그날의 실제 커밋 로그가 터미널에 촤르륵 — "커밋이 곧 콘텐츠"
+ *   error(fail): ✗ 와 사고 한 줄이 탁 박힌다 — 사고 리포트의 첫 컷
+ *   diff(before-after): git diff의 -어제 +오늘 두 줄 — 변화 대비의 첫 컷
+ * 재료는 전부 실물(frontmatter shas / failCard) — 지어내지 않는다.
  */
 export const ColdOpen: React.FC<{
-  commits: [string, string][];
+  variant: "log" | "error" | "diff";
+  commits?: [string, string][];
+  before?: string;
+  after?: string;
   th: ShortsTheme;
-}> = ({ commits, th }) => {
+}> = ({ variant, commits = [], before = "", after = "", th }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
-  const CMD = "$ git log --oneline";
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-  const typedLen = Math.floor(
-    interpolate(t, [0.08, 0.6], [0, CMD.length], clamp),
-  );
+  const panel: React.CSSProperties = {
+    position: "absolute",
+    left: 80,
+    right: 80,
+    top: "50%",
+    transform: "translateY(-50%)",
+    background: th.panel,
+    border: `2px solid ${th.line}`,
+    borderRadius: th.radius,
+    padding: "52px 56px",
+    fontFamily: FONT_MONO,
+    fontSize: 33,
+    lineHeight: 1.9,
+    color: th.muted,
+    boxShadow: th.light
+      ? "0 20px 70px rgba(23,26,31,.12)"
+      : "0 30px 100px rgba(0,0,0,.5)",
+  };
+  const typed = (cmd: string): string => {
+    const len = Math.floor(interpolate(t, [0.08, 0.6], [0, cmd.length], clamp));
+    return cmd.slice(0, len) + (t < 0.7 && Math.floor(t * 3) % 2 === 0 ? "▍" : "");
+  };
+  const appearAt = (at: number): React.CSSProperties => ({
+    opacity: t >= at ? Math.min(1, (t - at) / 0.2) : 0,
+  });
+
+  if (variant === "error") {
+    // 사고 리포트 컷 — ✗가 튀어오르고 사고 한 줄이 박힌다
+    const pop = interpolate(t, [0.12, 0.5], [0.5, 1], {
+      ...clamp,
+      easing: Easing.out(Easing.back(1.8)),
+    });
+    return (
+      <div style={{ ...panel, lineHeight: 1.5 }}>
+        <div
+          style={{
+            fontSize: 26,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: th.warn,
+            ...appearAt(0.1),
+          }}
+        >
+          fail
+        </div>
+        <div style={{ display: "flex", gap: 28, marginTop: 24, alignItems: "flex-start" }}>
+          <span
+            style={{
+              color: th.warn,
+              fontWeight: 700,
+              fontSize: 76,
+              lineHeight: 1,
+              opacity: t >= 0.12 ? 1 : 0,
+              transform: `scale(${pop})`,
+              transformOrigin: "50% 50%",
+            }}
+          >
+            ✗
+          </span>
+          <span
+            style={{
+              fontFamily: FONT_SANS,
+              fontSize: 44,
+              fontWeight: 700,
+              lineHeight: 1.4,
+              color: th.ink,
+              wordBreak: "keep-all",
+              ...appearAt(0.55),
+            }}
+          >
+            {before}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "diff") {
+    // 변화 대비 컷 — -어제 +오늘. before는 muted, after는 accent로
+    return (
+      <div style={{ ...panel, lineHeight: 1.6 }}>
+        <div style={{ color: th.ink, fontWeight: 700 }}>{typed("$ git diff")}</div>
+        <div
+          style={{
+            marginTop: 20,
+            color: th.warn,
+            wordBreak: "keep-all",
+            ...appearAt(0.75),
+          }}
+        >
+          <span style={{ fontWeight: 700 }}>-</span>{" "}
+          <span style={{ opacity: 0.75 }}>{before}</span>
+        </div>
+        <div
+          style={{
+            marginTop: 12,
+            color: th.accent,
+            fontWeight: 700,
+            wordBreak: "keep-all",
+            ...appearAt(1.15),
+          }}
+        >
+          + {after}
+        </div>
+      </div>
+    );
+  }
+
   const rows = commits.slice(0, 5);
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: 80,
-        right: 80,
-        top: "50%",
-        transform: "translateY(-50%)",
-        background: th.panel,
-        border: `2px solid ${th.line}`,
-        borderRadius: th.radius,
-        padding: "52px 56px",
-        fontFamily: FONT_MONO,
-        fontSize: 33,
-        lineHeight: 1.9,
-        color: th.muted,
-        boxShadow: th.light
-          ? "0 20px 70px rgba(23,26,31,.12)"
-          : "0 30px 100px rgba(0,0,0,.5)",
-      }}
-    >
+    <div style={panel}>
       <div style={{ color: th.ink, fontWeight: 700 }}>
-        {CMD.slice(0, typedLen)}
-        {t < 0.7 && Math.floor(t * 3) % 2 === 0 ? "▍" : ""}
+        {typed("$ git log --oneline")}
       </div>
       {rows.map(([sha, msg], i) => {
         const at = 0.72 + i * 0.16;
-        const on = t >= at;
         return (
           <div
             key={sha}
             style={{
-              opacity: on ? Math.min(1, (t - at) / 0.2) : 0,
+              ...appearAt(at),
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
