@@ -123,7 +123,34 @@ function parseJson(text: string): Record<string, unknown> {
   return JSON.parse(cleaned.slice(start, end + 1));
 }
 
-function validateLines(raw: unknown): ShortsLine[] {
+/**
+ * 배포 사이트의 내부 링크 목록 — 대본이 데모 문장마다 내용에 맞는 화면을
+ * 고를 후보. 홈("/")은 항상 포함. 실패하면 빈 배열 (기존 투어 방식 폴백).
+ */
+async function siteScreens(
+  url: string,
+): Promise<{ path: string; label: string }[]> {
+  if (!url) return [];
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return [];
+    const html = await res.text();
+    const seen = new Map<string, string>([["/", "홈"]]);
+    for (const m of html.matchAll(
+      /<a[^>]+href="(\/[^"#?]*)"[^>]*>([\s\S]*?)<\/a>/g,
+    )) {
+      const p = m[1].replace(/\/$/, "") || "/";
+      const label = m[2].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+      if (!seen.has(p) && label && label.length <= 30) seen.set(p, label);
+      if (seen.size >= 7) break;
+    }
+    return [...seen].map(([path, label]) => ({ path, label }));
+  } catch {
+    return [];
+  }
+}
+
+function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
   if (!Array.isArray(raw) || raw.length < 4) {
     throw new Error("lines가 너무 적습니다");
   }
@@ -171,6 +198,12 @@ function validateLines(raw: unknown): ShortsLine[] {
       ...(typeof l.stat === "string" && /\d/.test(l.stat) ? { stat: l.stat } : {}),
       ...(typeof l.statEn === "string" && /\d/.test(l.statEn)
         ? { statEn: l.statEn }
+        : {}),
+      // 데모 화면 지정 — 실존 화면 목록에 있는 경로만 통과 (없는 경로를
+      // 녹화하러 가면 404가 소재가 된다)
+      ...(typeof l.screen === "string" &&
+      screenPaths.has(l.screen.replace(/\/$/, "") || "/")
+        ? { screen: l.screen.replace(/\/$/, "") || "/" }
         : {}),
     };
   });
@@ -254,6 +287,10 @@ export async function generateScript(
     ? (meta.theme as string)
     : "terminal";
 
+  // 실제 사이트의 화면 목록 — 대본이 데모 문장마다 내용에 맞는 화면(screen)을
+  // 고르게 한다. 없으면 기존 방식(투어를 시간순으로 자름)으로 폴백.
+  const screens = await siteScreens(demoUrl);
+
   const client = new Anthropic();
   const response = await client.messages.create({
     model: MODEL,
@@ -270,6 +307,17 @@ export async function generateScript(
             return `이웃 편 템플릿 — 직전: ${n.prev ?? "(없음)"}, 다음: ${n.next ?? "(없음)"}`;
           })(),
           `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
+          ...(screens.length >= 2
+            ? [
+                [
+                  "데모로 보여줄 수 있는 실제 화면 목록 (경로 — 링크 이름):",
+                  ...screens.map((s) => `  ${s.path} — ${s.label}`),
+                  "화면을 보여주는 장면(build·demo)의 각 문장에 screen 필드로 위",
+                  "경로 중 문장 내용과 맞는 것을 넣어라. 문장이 말하는 기능이 있는",
+                  '화면을 고르고, 마땅한 게 없으면 "/"(홈). 목록에 없는 경로 금지.',
+                ].join("\n"),
+              ]
+            : []),
           `데브로그 제목: ${data.title ?? ""}`,
           "데브로그 본문:",
           content,
@@ -322,7 +370,7 @@ export async function generateScript(
     repo,
     date,
     day: dayNumber(repo, date),
-    lines: validateLines(parsed.lines),
+    lines: validateLines(parsed.lines, new Set(screens.map((s) => s.path))),
     demo: { url: demoUrl, steps: [] },
     ...(failCard ? { failCard } : {}),
     ...(commits.length ? { commits } : {}),

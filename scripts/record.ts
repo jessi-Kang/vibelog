@@ -13,7 +13,13 @@
 import fs from "node:fs";
 import path from "node:path";
 import { chromium, type Page } from "playwright";
-import { shortsDir, shortsJsonPath, type ShortsScript } from "./shorts-types";
+import {
+  segmentsJsonPath,
+  shortsDir,
+  shortsJsonPath,
+  type DemoSegment,
+  type ShortsScript,
+} from "./shorts-types";
 
 const VIEWPORT = { width: 390, height: 844 };
 const SCALE = 3;
@@ -215,11 +221,22 @@ export async function record(
   // 데운다 — 쇼츠 페이지 썸네일(원격 Blob 이미지)이 투어 중 카메라 앞에서
   // 뒤늦게 하나씩 뜨는 번쩍임 방지 (Jessi 지적). readyAt 이전 구간이라
   // 최종 영상에서는 통째로 잘려 나간다.
+  // 대본이 문장마다 지정한 화면 목록 (내레이션 등장 순서, 중복 제거) —
+  // 있으면 투어가 이 순서대로 돌고 구간 시각을 남긴다 (내용↔화면 매칭)
+  const screenList = [
+    ...new Set(
+      script.lines
+        .map((l) => l.screen)
+        .filter((s): s is string => typeof s === "string" && s.length > 0),
+    ),
+  ];
   const prewarmTargets = script.demo.steps.length
     ? script.demo.steps
         .filter((s) => s.startsWith("goto "))
         .map((s) => s.slice(5))
-    : await tourLinks(page);
+    : screenList.length
+      ? screenList
+      : await tourLinks(page);
   for (const href of prewarmTargets.slice(0, 3)) {
     try {
       await page.goto(new URL(href, script.demo.url).toString(), {
@@ -251,7 +268,46 @@ export async function record(
   );
   const ready = Date.now();
   if (script.demo.steps.length > 0) {
+    // vibelog.json의 명시 스텝이 언제나 우선
     await runSteps(page, script.demo.steps, script.demo.url, shotsDir, lang);
+  } else if (screenList.length > 0) {
+    // 대본 지정 화면 투어 — 화면별 구간 시각을 남겨 렌더가 문장과 매칭한다
+    const perMs = Math.max(
+      6000,
+      Math.floor((durationSec * 1000) / screenList.length),
+    );
+    const segs: DemoSegment[] = [];
+    let n = 0;
+    for (const p of screenList) {
+      try {
+        await page.goto(new URL(p, script.demo.url).toString(), {
+          waitUntil: "domcontentloaded",
+        });
+        await waitForLang(page, lang);
+        await page.waitForTimeout(400);
+      } catch {
+        // 이동 실패 — 이 구간은 직전 화면이 이어진다 (녹화는 계속)
+      }
+      const start = (Date.now() - started) / 1000 - readyAt;
+      n = await shot(page, shotsDir, n);
+      const until = Date.now() + perMs;
+      while (Date.now() < until) {
+        await slowScroll(page, 240);
+        await page.waitForTimeout(400);
+      }
+      segs.push({
+        path: p,
+        start: Number(start.toFixed(2)),
+        end: Number(((Date.now() - started) / 1000 - readyAt).toFixed(2)),
+      });
+    }
+    fs.writeFileSync(
+      path.join(process.cwd(), segmentsJsonPath(repo, date, lang)),
+      JSON.stringify({ screens: segs }, null, 2) + "\n",
+    );
+    console.log(
+      `[record] 화면 투어: ${segs.map((s) => `${s.path}(${s.start}~${s.end}s)`).join(" → ")}`,
+    );
   } else {
     await defaultTour(page, shotsDir, lang);
   }

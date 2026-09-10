@@ -16,6 +16,7 @@ import { musicPath, resolveMusic } from "./audio";
 import {
   coldOpenKind,
   narrationPath,
+  segmentsJsonPath,
   shortsDir,
   shortsJsonPath,
   timingJsonPath,
@@ -92,6 +93,19 @@ export async function renderShort(
     console.warn("데모 녹화(webm)가 없어 플레이스홀더로 렌더합니다");
   }
 
+  // 화면별 녹화 구간 — 있으면 렌더가 문장의 screen과 구간을 매칭한다
+  let segments: unknown = null;
+  try {
+    segments = JSON.parse(
+      fs.readFileSync(
+        path.join(process.cwd(), segmentsJsonPath(repo, date, lang)),
+        "utf8",
+      ),
+    ).screens;
+  } catch {
+    // 구버전 녹화 — 시간순 자르기 폴백
+  }
+
   // +알파 그래픽(art.ts 산출물)도 public/으로 — 장면별 {scene: 파일명}
   const artFiles: Record<string, string> = {};
   const artSrc = path.join(process.cwd(), shortsDir(repo), `${date}.art`);
@@ -112,6 +126,7 @@ export async function renderShort(
       lang,
       videoFile,
       videoStartSec,
+      segments,
       artFiles,
       // 레포가 고른 영상 테마 — 대본 JSON에 박혀 있어 재생성에도 유지된다
       theme: script.theme ?? null,

@@ -49,6 +49,8 @@ export type ShipItProps = {
   artFiles?: Record<string, string> | null;
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
   theme?: string | null;
+  /** 화면별 녹화 구간 (readyAt 기준 초) — 문장의 screen과 매칭. 없으면 시간순 */
+  segments?: { path: string; start: number; end: number }[] | null;
 };
 
 type Kind = "cold" | "hook" | "phone" | "fail" | "end" | "art";
@@ -59,6 +61,8 @@ interface Seg {
   to: number;
   /** phone 장면: 소스 영상에서 몇 초 지점부터 재생할지 */
   sourceOffset: number;
+  /** 이 블록이 보여줄 화면 경로 (대본 line.screen) — 구간 매칭용 */
+  screen?: string;
 }
 
 function kindOf(scene: string, hasNextArt: boolean): Kind {
@@ -96,12 +100,14 @@ function buildSegments(
   offset: number,
   coldOpen: number,
   lang: "ko" | "en",
+  segMap?: Map<string, { start: number; end: number }>,
 ): Seg[] {
-  const raw: { kind: Kind; from: number }[] = [];
+  const raw: { kind: Kind; from: number; screen?: string }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
-    const kind = kindOf(script.lines[s.index]?.scene ?? "build", hasNextArt);
+    const line = script.lines[s.index];
+    const kind = kindOf(line?.scene ?? "build", hasNextArt);
     let from = s.start + offset;
     // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
     // 들어온다 — 겹치면 마무리 화면이 어색하다 (Jessi 지시)
@@ -112,9 +118,12 @@ function buildSegments(
       }
     }
     if (raw.length === 0) {
-      raw.push({ kind, from: 0 }); // 첫 장면은 0초부터
+      raw.push({ kind, from: 0, screen: line?.screen }); // 첫 장면은 0초부터
     } else if (raw[raw.length - 1].kind !== kind) {
-      raw.push({ kind, from });
+      raw.push({ kind, from, screen: line?.screen });
+    } else if (!raw[raw.length - 1].screen && line?.screen) {
+      // 같은 phone 블록에서 화면 지정이 있는 첫 문장을 대표로 쓴다
+      raw[raw.length - 1].screen = line.screen;
     }
   }
   if (raw.length === 0) raw.push({ kind: "end", from: 0 });
@@ -123,10 +132,22 @@ function buildSegments(
   }
   const segs: Seg[] = [];
   let phoneTime = 0;
+  // 같은 화면을 여러 블록이 쓰면 구간 안에서 이어서 재생 — 같은 프레임 반복 방지
+  const usedInScreen = new Map<string, number>();
   for (let i = 0; i < raw.length; i++) {
     const to = raw[i + 1]?.from ?? total;
     const seg: Seg = { ...raw[i], to, sourceOffset: phoneTime };
-    if (seg.kind === "phone") phoneTime += to - seg.from;
+    if (seg.kind === "phone") {
+      // 문장이 화면을 지정했고 녹화가 그 구간을 남겼으면 거기서 재생 —
+      // 내레이션 내용과 화면이 맞는다. 아니면 기존 시간순 자르기.
+      const m = seg.screen ? segMap?.get(seg.screen) : undefined;
+      if (m) {
+        const used = usedInScreen.get(seg.screen as string) ?? 0;
+        seg.sourceOffset = m.start + used;
+        usedInScreen.set(seg.screen as string, used + (to - seg.from));
+      }
+      phoneTime += to - seg.from;
+    }
     segs.push(seg);
   }
   return segs;
@@ -145,6 +166,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoStartSec = 0,
   artFiles = null,
   theme = null,
+  segments = null,
 }) => {
   const th = getTheme(theme);
   const frame = useCurrentFrame();
@@ -154,8 +176,11 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const coldOpen = cold ? COLD_OPEN_SEC : 0;
   const offset = NARRATION_DELAY + coldOpen; // 화면 시간 = 오디오 시간 + offset
   const total = totalSeconds(timing.duration, coldOpen);
+  const segMap = new Map(
+    (segments ?? []).map((s) => [s.path, { start: s.start, end: s.end }]),
+  );
   const segs = buildSegments(
-    script, timing, total, Boolean(artFiles?.next), offset, coldOpen, lang,
+    script, timing, total, Boolean(artFiles?.next), offset, coldOpen, lang, segMap,
   );
   // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
   // 같은 데모 연출이 연속되지 않는다 (Jessi 지시)
