@@ -272,13 +272,19 @@ function vercelTeamQuery(): string {
 async function getVercelProjectMap(): Promise<Map<string, string>> {
   const map = new Map<string, string>(); // repo명(소문자) → projectId
   const token = process.env.VERCEL_TOKEN;
-  if (!token) return map;
+  if (!token) {
+    console.log("vercel: VERCEL_TOKEN 없음 — 배포 주소 자동 감지 생략");
+    return map;
+  }
   try {
     const res = await fetch(
       `https://api.vercel.com/v9/projects?limit=100${vercelTeamQuery()}`,
       { headers: { Authorization: `Bearer ${token}` } },
     );
-    if (!res.ok) return map;
+    if (!res.ok) {
+      console.warn(`vercel: 프로젝트 조회 실패 (HTTP ${res.status}) — 토큰/팀 ID 확인`);
+      return map;
+    }
     const data = (await res.json()) as {
       projects?: { id: string; link?: { type?: string; repo?: string } }[];
     };
@@ -291,8 +297,10 @@ async function getVercelProjectMap(): Promise<Map<string, string>> {
       }
     }
   } catch {
-    // 네트워크 문제 — GitHub Deployments 폴백
+    console.warn("vercel: 프로젝트 조회 중 네트워크 오류 — GitHub Deployments 폴백");
+    return map;
   }
+  console.log(`vercel: GitHub 연결된 프로젝트 ${map.size}개 확인`);
   return map;
 }
 
@@ -393,6 +401,9 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       r.homepage ||
       (await getVercelUrl(vercelProjects.get(repo.toLowerCase()))) ||
       (await getDeployedUrl(octokit, owner, repo));
+    if (!r.homepage && homepage) {
+      console.log(`- ${repo}: 배포 주소 자동 감지 → ${homepage}`);
+    }
 
     // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (Jessi 지시:
     // 파일 만들기보다 topic이 손품이 덜하다). vibelog.json이 있으면 그게 우선.
