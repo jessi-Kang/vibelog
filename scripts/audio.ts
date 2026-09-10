@@ -64,23 +64,46 @@ const NATIVE_UNIT =
   /^(\d{1,2})(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데|문제|판|곡|잔)(.*)$/u;
 
 /**
- * 숫자 뒤에서 된소리로 굳은 한자어 단위 — "222건"은 [이백이십이 껀]인데
- * TTS가 문맥 따라 평음 [건]으로 읽어 어색했다 (Jessi 지적. "0건"은 맞게
- * 읽으면서 "222건"은 틀리는 식). 발음용 텍스트만 "껀"으로 고정한다 —
- * 글자 수가 같아 타이밍 정렬에도 영향 없다.
+ * 한자어 수사 풀어쓰기 — TTS가 아라비아 숫자+단위를 스스로 한국어로 푸는
+ * 과정이 불안정하다: "222개"를 "22엉개", "0껀"을 "영엉건"처럼 음절을
+ * 뭉갠 사고 (Jessi 지적). 숫자 해석을 TTS에 맡기지 않고 발음용 텍스트에서
+ * 한글로 전부 풀어 보낸다 — "222" → "이백이십이", "0" → "영".
  */
-const TENSE_UNIT: [RegExp, string][] = [[/^(\d+)건/u, "$1껀"]];
+const SINO_DIGIT = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
+export function sinoRead(n: number): string {
+  if (n === 0) return "영";
+  if (!Number.isInteger(n) || n < 0 || n >= 100000) return String(n);
+  let s = "";
+  let rest = n;
+  for (const [u, name] of [[10000, "만"], [1000, "천"], [100, "백"], [10, "십"]] as const) {
+    const d = Math.floor(rest / u);
+    if (d > 0) s += (d === 1 ? "" : SINO_DIGIT[d]) + name;
+    rest %= u;
+  }
+  return s + SINO_DIGIT[rest];
+}
+
+/** 숫자 뒤에서 된소리로 굳은 한자어 단위 — "N건"은 [껀]으로 읽는다 */
+const TENSE_UNIT = /^(\d+)(건)(.*)$/u;
 
 export function speakToken(tok: string): string {
-  for (const [re, sub] of TENSE_UNIT) {
-    if (re.test(tok)) return tok.replace(re, sub);
-  }
+  // 1) 된소리 단위: 숫자도 한글로 풀고 표기도 된소리로 — "222건" → "이백이십이 껀"
+  const t = tok.match(TENSE_UNIT);
+  if (t) return `${sinoRead(Number(t[1]))} 껀${t[3]}`;
+  // 2) 고유어 단위: 20까지는 고유어 수사 — "10문제" → "열 문제"
   const m = tok.match(NATIVE_UNIT);
-  if (!m) return tok;
-  const n = Number(m[1]);
-  // 20 초과는 한자어 독음("삼십 개")도 자연스럽다 — 고유어 수사 표는 20까지만
-  if (n < 1 || n > 20) return tok;
-  return `${NATIVE_NUM[n]} ${m[2]}${m[3]}`;
+  if (m) {
+    const n = Number(m[1]);
+    if (n >= 1 && n <= 20) return `${NATIVE_NUM[n]} ${m[2]}${m[3]}`;
+    // 20 초과는 한자어 독음이 자연스럽다 — 역시 한글로 풀어 보낸다 ("삼십 개")
+    return `${sinoRead(n)} ${m[2]}${m[3]}`;
+  }
+  // 3) 그 외 세 자리 이상 숫자+한글 단위: TTS가 특히 잘 뭉개는 구간이라
+  //    한자어 독음으로 풀어 보낸다 ("222회" → "이백이십이 회"). 두 자리
+  //    이하("52초")는 지금까지 문제없어 건드리지 않는다.
+  const big = tok.match(/^(\d{3,})([가-힣].*)$/u);
+  if (big) return `${sinoRead(Number(big[1]))} ${big[2]}`;
+  return tok;
 }
 
 /** 문장 전체의 발음용 변환 — 토큰 순서·공백 구분은 유지된다 (타이밍 정렬용) */
