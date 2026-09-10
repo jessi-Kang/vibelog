@@ -11,27 +11,27 @@
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
-    "lastActivity": "2026-09-10",
-    "weekCommits": 147,
-    "todayCommits": 134,
-    "totalCommits": 147
+    "lastActivity": "2026-09-11",
+    "weekCommits": 151,
+    "todayCommits": 2,
+    "totalCommits": 151
   },
   {
     "slug": "apart",
     "name": "apart",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "live",
+    "status": "preview",
     "stack": [
       "HTML"
     ],
     "repoUrl": "https://github.com/jessi-Kang/apart",
     "homepage": "https://apt-gam.vercel.app",
     "language": "HTML",
-    "lastActivity": "2026-09-10",
-    "weekCommits": 17,
-    "todayCommits": 17,
-    "totalCommits": 17,
+    "lastActivity": "2026-09-11",
+    "weekCommits": 22,
+    "todayCommits": 4,
+    "totalCommits": 22,
     "theme": "paper"
   }
 ]
