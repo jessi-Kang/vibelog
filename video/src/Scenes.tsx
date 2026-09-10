@@ -457,8 +457,19 @@ export const FailCard: React.FC<{
     return base;
   };
 
+  const title = lang === "ko" ? card.title : card.titleEn;
   return (
-    <div style={{ position: "absolute", left: 80, right: 80, top: 300 }}>
+    // 세로 중앙 정렬 — top 고정이면 내용이 짧을 때(특히 split 2열) 화면
+    // 하단이 통째로 비어 보인다 (Jessi 지적)
+    <div
+      style={{
+        position: "absolute",
+        left: 80,
+        right: 80,
+        top: "46%",
+        transform: "translateY(-50%)",
+      }}
+    >
       <div
         style={{
           fontFamily: FONT_MONO,
@@ -475,15 +486,18 @@ export const FailCard: React.FC<{
           fontFamily: FONT_SANS,
           fontWeight: 900,
           letterSpacing: "-0.02em",
-          fontSize: 110,
-          lineHeight: 1.05,
+          // 긴 제목은 줄여서 — 110px 고정이면 "두 번" 같은 의미 단위
+          // 한가운데서 줄이 꺾인다 (Jessi 지적). 작아지면 쉼표·어절
+          // 경계에서 자연스럽게 나뉜다.
+          fontSize: title.length > 10 ? 88 : 110,
+          lineHeight: 1.08,
           margin: "20px 0 60px",
           wordBreak: "keep-all",
           textWrap: "balance",
           color: th.ink,
         }}
       >
-        {lang === "ko" ? card.title : card.titleEn}
+        {title}
       </h2>
       <div
         style={{
