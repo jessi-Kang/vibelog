@@ -85,10 +85,18 @@ export async function runShorts(repo: string, date: string): Promise<void> {
             "utf8",
           ),
         );
-        // 첫 문장(훅)이 끝나는 오디오 시각 + 화면 오프셋 = 헤드라인 완성 순간
+        // 훅 완성 순간이되, 장면 페이드 구간은 피한다 — 훅 끝과 다음 장면
+        // 시작 간격이 짧은 대본에서 포스터가 어둡게 뽑혔다 (Jessi 지적).
+        // 밝은 창 = [훅 다 켜진 뒤, 다음 문장 시작 - 페이드(0.45)와 여유]
+        const s0 = posterTiming.sentences[0];
+        const s1 = posterTiming.sentences[1];
+        const cand = Math.min(
+          s0?.end ?? 1.5,
+          s1 ? s1.start - 0.5 : Number.POSITIVE_INFINITY,
+        );
         const posterAt =
           narrationOffsetSec(script) +
-          (posterTiming.sentences[0]?.end ?? 1.5);
+          Math.max(cand, (s0?.start ?? 0) + 0.6);
         execFileSync("ffmpeg", ["-v", "error", "-y", "-ss", posterAt.toFixed(2), "-i", mp4, "-frames:v", "1", "-q:v", "3", poster]);
         const url = await upload(poster, `shorts/${repo}/${posterKey}`);
         if (url) media[lang === "ko" ? "poster" : "posterEn"] = url;
