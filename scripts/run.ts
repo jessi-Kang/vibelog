@@ -2,8 +2,11 @@
  * run.ts — collect → generate → content/ 파일 쓰기.
  *
  * 사용:
- *   npx tsx scripts/run.ts                # 전체 실행 (ANTHROPIC_API_KEY 필요)
- *   npx tsx scripts/run.ts --collect-only # 수집 결과만 출력 (생성·쓰기 없음, 디버깅용)
+ *   npx tsx scripts/run.ts                 # 전체 실행 (ANTHROPIC_API_KEY 필요)
+ *   npx tsx scripts/run.ts --collect-only  # 수집 결과만 출력 (생성·쓰기 없음, 디버깅용)
+ *   npx tsx scripts/run.ts --projects-only # 새 프로젝트 인식만 — 프로젝트 목록이
+ *                                          # 바뀌었을 때만 projects.json을 다시 쓴다.
+ *                                          # 글·쇼츠·state는 건드리지 않는다 (짧은 주기 배치용)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -174,8 +177,36 @@ async function writeDevlog(
 
 async function main(): Promise<void> {
   const collectOnly = process.argv.includes("--collect-only");
+  const projectsOnly = process.argv.includes("--projects-only");
   const state = loadState();
   const date = todayKST();
+
+  if (projectsOnly) {
+    // 짧은 주기 인식 배치 (projects.yml) — 새 프로젝트가 밤 23:00까지 기다리지
+    // 않고 카드로 뜨게 한다. 목록(slug 집합)이 안 바뀌면 아무것도 쓰지 않아서
+    // 30분마다 커밋·배포가 나는 것을 막는다. 숫자·글 갱신은 밤 일반 실행 몫.
+    const activities = await collect(state, date);
+    let prevSlugs: string[] = [];
+    try {
+      prevSlugs = JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8")).map(
+        (p: { slug: string }) => p.slug,
+      );
+    } catch {
+      // 첫 실행 — 파일 없음
+    }
+    const nowSlugs = activities.map((a) => a.repo);
+    const same =
+      prevSlugs.length === nowSlugs.length &&
+      [...prevSlugs].sort().join(",") === [...nowSlugs].sort().join(",");
+    if (same) {
+      console.log(`프로젝트 변화 없음 (${nowSlugs.length}개) — 쓰기 생략`);
+      return;
+    }
+    console.log(`프로젝트 목록 변경: [${prevSlugs.join(", ")}] → [${nowSlugs.join(", ")}]`);
+    await updateProjects(activities);
+    console.log("projects.json 갱신 완료");
+    return;
+  }
 
   const runLines: { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" }[] = [
     { text: "npx tsx scripts/run.ts", kind: "cmd" },
