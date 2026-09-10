@@ -1,118 +1,102 @@
 {
   "template": "fail",
   "music": "tense",
+  "theme": "terminal",
   "repo": "vibelog",
   "date": "2026-09-09",
   "day": 2,
   "lines": [
     {
       "scene": "hook",
-      "ko": "글을 사람이 쓰지 않는 블로그를 만들었습니다.",
-      "en": "I built a blog where no human writes the posts.",
+      "ko": "첫날 밤, 글 쓰는 기계를 처음 돌렸습니다.",
+      "en": "First night, I ran the machine that writes the posts.",
       "keywords": [
-        "사람이",
-        "않는"
+        "글 쓰는 기계를"
       ],
       "keywordsEn": [
-        "no",
-        "human"
+        "the machine"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "오류도, 실행된 흔적도 없었습니다.",
+      "en": "No error, no trace that it ever ran.",
+      "keywords": [
+        "실행된 흔적도"
+      ],
+      "keywordsEn": [
+        "no trace"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "원인은 자동 실행 설정 파일의 한 줄이었습니다.",
+      "en": "The cause was one line in the auto-run config.",
+      "keywords": [],
+      "keywordsEn": [
+        "one line"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "조건을 쓸 수 없는 자리에 써서, 파일 전체가 무효였습니다.",
+      "en": "It sat in a spot that can't take it, so the whole file was invalid.",
+      "keywords": [
+        "파일 전체가"
+      ],
+      "keywordsEn": [
+        "the whole file"
       ]
     },
     {
       "scene": "build",
-      "ko": "낮에는 화면 3개를 만들었습니다.",
-      "en": "During the day I built 3 screens.",
-      "keywords": [
-        "화면"
-      ],
-      "keywordsEn": [
-        "3"
-      ]
+      "ko": "그 줄을 걷어내고 확인 방식을 바꾸니 시동이 걸렸습니다.",
+      "en": "I dropped that line, changed the check, and it started.",
+      "keywords": [],
+      "keywordsEn": []
     },
     {
       "scene": "build",
-      "ko": "밤에는 글과 영상을 자동으로 만드는 기계 2대를 붙였습니다.",
-      "en": "At night I added 2 machines that make the post and the video.",
+      "ko": "낮에 만든 화면 3개 위에, 밤에 기계 2대를 올렸습니다.",
+      "en": "3 screens by day, 2 machines by night.",
       "keywords": [
-        "기계"
+        "화면 3개",
+        "기계 2대를"
       ],
       "keywordsEn": [
-        "2",
-        "machines"
-      ]
+        "3 screens",
+        "2 machines"
+      ],
+      "stat": "3개"
     },
     {
       "scene": "demo",
-      "ko": "제 목소리로 읽고, 자막이 말하는 속도에 맞춰 또렷해집니다.",
-      "en": "It reads in my own voice, and subtitles sharpen in step with it.",
+      "ko": "이 글도 이 영상도, 그 기계가 만들었습니다.",
+      "en": "This post and this video were both made by that machine.",
       "keywords": [
-        "목소리로",
-        "자막이"
+        "그 기계가"
       ],
-      "keywordsEn": [
-        "subtitles"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "그런데 첫 실행에서 시동이 아예 걸리지 않았습니다.",
-      "en": "But on the first run it wouldn't start at all.",
-      "keywords": [
-        "시동이"
-      ],
-      "keywordsEn": [
-        "wouldn't",
-        "start"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "에러도 없었습니다. 실행된 흔적조차 없었습니다.",
-      "en": "No error. Not even a trace of it running.",
-      "keywords": [
-        "에러도",
-        "흔적조차"
-      ],
-      "keywordsEn": [
-        "No"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "설정 파일에 쓸 수 없는 조건을 한 줄 적었더니, 파일 전체가 무효가 된 거였습니다.",
-      "en": "One unsupported condition in the config made the whole file invalid.",
-      "keywords": [
-        "한",
-        "줄",
-        "전체가"
-      ],
-      "keywordsEn": [
-        "whole"
-      ]
+      "keywordsEn": []
     },
     {
       "scene": "next",
-      "ko": "오늘 밤 자동 발행이 끝까지 가는지 지켜보겠습니다.",
-      "en": "Tonight I'll watch the automatic publish run all the way through.",
+      "ko": "밤 발행이 끝까지 굴러가는지 지켜봅니다.",
+      "en": "Now I watch the nightly publish run all the way through.",
       "keywords": [
-        "자동",
-        "발행이"
+        "끝까지"
       ],
-      "keywordsEn": [
-        "automatic",
-        "publish"
-      ],
-      "art": "a small wind-up machine on a workbench at night, gears finally turning after a long stall"
+      "keywordsEn": [],
+      "art": "a small robot night watchman holding a lantern beside a slowly turning conveyor belt"
     },
     {
       "scene": "end",
-      "ko": "이 영상도 그 기계가 만들었습니다.",
-      "en": "This video was made by that machine too.",
+      "ko": "글은 사람이 쓰지 않습니다.",
+      "en": "No human writes these posts.",
       "keywords": [
-        "기계가"
+        "사람이"
       ],
       "keywordsEn": [
-        "machine"
+        "No human"
       ]
     }
   ],
@@ -121,31 +105,100 @@
     "steps": []
   },
   "failCard": {
-    "title": "한 줄 때문에 전체가 무효",
-    "titleEn": "One line, whole file void",
-    "before": "실행 흔적조차 없이 시동 실패",
-    "after": "조건 한 줄 제거 후 정상 실행",
-    "beforeEn": "No error, no trace, never ran",
-    "afterEn": "Removed the line, it started"
+    "title": "한 줄이 파일 전체를 무효로",
+    "titleEn": "One line voided the whole file",
+    "before": "기계가 시동조차 걸리지 않음",
+    "after": "그 줄을 걷어내니 바로 실행",
+    "beforeEn": "The machine wouldn't even turn over",
+    "afterEn": "Removed that line, and it ran"
   },
+  "commits": [
+    [
+      "6adfd31",
+      "design: 디자인 핸드오프를 스킬로 설치 (.claude/skills/vibelog-design)"
+    ],
+    [
+      "6201cd4",
+      "fix: 워크플로 if 조건의 secrets 컨텍스트 제거 — 파일 무효로 실행 불가였음"
+    ],
+    [
+      "434b9bf",
+      "docs+feat: 보이스 설정 확정값 갱신 반영 (speed 1.00, stability 0.50, similarity 0.75, style 0)"
+    ],
+    [
+      "93b689c",
+      "feat: 쇼츠 파이프라인 2/2 — Remotion 템플릿·믹스·파이프라인 연결 (세션 7~8)"
+    ],
+    [
+      "45c7d6a",
+      "feat: 쇼츠 파이프라인 1/2 — 대본·오디오·화면 녹화 (세션 4~6)"
+    ],
+    [
+      "b801221",
+      "docs: ElevenLabs 보이스 클론 확정값 반영"
+    ],
+    [
+      "39ba8b1",
+      "feat: 데브로그 수집·생성 파이프라인 (collect → generate → run)"
+    ],
+    [
+      "5315b8f",
+      "feat: 샘플 데이터 — vibelog 프로젝트 카드와 데브로그 2편"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6adfd31",
+      "design: install the design handoff as a skill (.claude/skills/vibelog-design)"
+    ],
+    [
+      "6201cd4",
+      "fix: remove secrets context from workflow if-condition — it invalidated the file and blocked runs"
+    ],
+    [
+      "434b9bf",
+      "docs+feat: apply updated final voice settings (speed 1.00, stability 0.50, similarity 0.75, style 0)"
+    ],
+    [
+      "93b689c",
+      "feat: shorts pipeline 2/2 — Remotion template, audio mix, pipeline wiring (sessions 7–8)"
+    ],
+    [
+      "45c7d6a",
+      "feat: shorts pipeline 1/2 — script, audio, screen recording (sessions 4–6)"
+    ],
+    [
+      "b801221",
+      "docs: record final ElevenLabs voice-clone settings"
+    ],
+    [
+      "39ba8b1",
+      "feat: devlog collect-and-generate pipeline (collect → generate → run)"
+    ],
+    [
+      "5315b8f",
+      "feat: sample data — vibelog project card and 2 devlogs"
+    ]
+  ],
+  "commitCount": 11,
   "handle": "vibelog-orcin.vercel.app",
   "captions": {
-    "ko": "블로그 화면 3개와 글·영상을 만드는 기계 2대를 하루에 세웠습니다. 첫 실행은 설정 파일 한 줄 때문에 시동조차 걸리지 않았습니다.",
-    "en": "3 blog screens and 2 machines that write posts and make videos, all in one day. The first run never started because of a single line in the config."
+    "ko": "블로그 화면 3개와 글·영상을 만드는 기계 2대를 하루에 세웠습니다. 첫 실행이 설정 한 줄 때문에 시동조차 걸리지 않은 이야기입니다.",
+    "en": "3 blog screens and 2 machines that write posts and videos, all in one day. The first run wouldn't even start, because of one line in a config file."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
     "#자동화",
-    "#사이드프로젝트",
     "#devlog",
     "#automation",
+    "#사이드프로젝트",
     "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtuis1qq",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtuis4rx",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtuitbie",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtuitdq5"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.poster.jpg?v=mtv6z592",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.ko.mp4?v=mtv6z6vz",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.poster.jpg?v=mtv70nzp",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-09.en.mp4?v=mtv70pm0"
   }
 }
