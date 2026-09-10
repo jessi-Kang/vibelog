@@ -80,7 +80,8 @@ export const Captions: React.FC<{
           fontFamily: FONT_SANS,
           fontSize: 52,
           fontWeight: 900,
-          lineHeight: 1.3,
+          // 마커칠 테마는 상자 겹침 방지로 줄간을 조금 더 (훅과 같은 이유)
+          lineHeight: th.keyword === "marker" ? 1.42 : 1.3,
           wordBreak: "keep-all",
           textWrap: "balance",
           // 라이트 테마는 어두운 그림자가 지저분하다 — 밝은 글로우로
