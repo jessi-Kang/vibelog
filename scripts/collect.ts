@@ -293,20 +293,18 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     const weekAgo = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
     // KST 자정 — 오늘 커밋 수의 창 시작
     const kstMidnight = `${new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10)}T00:00:00+09:00`;
-    const countCommits = (sinceIso: string) =>
+    // per_page=1로 요청하면 Link 헤더의 마지막 페이지 번호가 총 개수다.
+    // 한 페이지(100개)를 받아 length를 세면 100에서 포화한다 — 이번 주 커밋이
+    // 100개를 넘던 날 "이번 주"와 "오늘"이 똑같이 100으로 잘렸다.
+    const countCommits = (since?: string) =>
       octokit.rest.repos
-        .listCommits({ owner, repo, since: sinceIso, per_page: 100 })
-        .then((r) => r.data.length)
-        .catch(() => 0);
-    // 누적 커밋: per_page=1로 요청하면 Link 헤더의 마지막 페이지 번호가 총 개수다
-    const countAllCommits = () =>
-      octokit.rest.repos
-        .listCommits({ owner, repo, per_page: 1 })
+        .listCommits({ owner, repo, ...(since ? { since } : {}), per_page: 1 })
         .then((r) => {
           const m = r.headers.link?.match(/[?&]page=(\d+)>; rel="last"/);
           return m ? Number(m[1]) : r.data.length;
         })
         .catch(() => 0);
+    const countAllCommits = () => countCommits();
     const [
       allCommits,
       mergedPRs,
