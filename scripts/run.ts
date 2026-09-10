@@ -183,26 +183,49 @@ async function main(): Promise<void> {
 
   if (projectsOnly) {
     // 짧은 주기 인식 배치 (projects.yml) — 새 프로젝트가 밤 23:00까지 기다리지
-    // 않고 카드로 뜨게 한다. 목록(slug 집합)이 안 바뀌면 아무것도 쓰지 않아서
-    // 30분마다 커밋·배포가 나는 것을 막는다. 숫자·글 갱신은 밤 일반 실행 몫.
+    // 않고 카드로 뜨게 한다. 카드의 "얼굴" 메타(목록·설명·홈페이지·상태·스택·
+    // 테마·이름)가 바뀐 경우에만 다시 쓴다. 커밋 수·마지막 활동 같은 매번
+    // 바뀌는 숫자는 비교에서 빼서 30분마다 커밋·배포가 나는 것을 막는다 —
+    // 그 숫자들 갱신은 밤 일반 실행 몫. (slug만 비교했더니 레포 설명을 나중에
+    // 채운 게 반영되지 않았다 — apart가 실제로 그랬다.)
     const activities = await collect(state, date);
-    let prevSlugs: string[] = [];
+    const prev = new Map<string, Record<string, unknown>>();
     try {
-      prevSlugs = JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8")).map(
-        (p: { slug: string }) => p.slug,
-      );
+      for (const p of JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"))) {
+        prev.set(p.slug, p);
+      }
     } catch {
       // 첫 실행 — 파일 없음
     }
-    const nowSlugs = activities.map((a) => a.repo);
-    const same =
-      prevSlugs.length === nowSlugs.length &&
-      [...prevSlugs].sort().join(",") === [...nowSlugs].sort().join(",");
-    if (same) {
-      console.log(`프로젝트 변화 없음 (${nowSlugs.length}개) — 쓰기 생략`);
+    const meta = (a: RepoActivity) =>
+      JSON.stringify([
+        a.vibelogJson?.name ?? a.repo,
+        a.description,
+        a.homepage ?? "",
+        a.vibelogJson?.status ?? autoStatus(a),
+        a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
+        a.theme ?? "",
+      ]);
+    const prevMeta = (p: Record<string, unknown> | undefined) =>
+      p &&
+      JSON.stringify([
+        p.name,
+        p.description ?? "",
+        p.homepage ?? "",
+        p.status,
+        p.stack ?? [],
+        p.theme ?? "",
+      ]);
+    const changed =
+      prev.size !== activities.length ||
+      activities.some((a) => meta(a) !== prevMeta(prev.get(a.repo)));
+    if (!changed) {
+      console.log(`프로젝트 변화 없음 (${activities.length}개) — 쓰기 생략`);
       return;
     }
-    console.log(`프로젝트 목록 변경: [${prevSlugs.join(", ")}] → [${nowSlugs.join(", ")}]`);
+    console.log(
+      `프로젝트 목록/메타 변경 감지: [${activities.map((a) => a.repo).join(", ")}]`,
+    );
     await updateProjects(activities);
     console.log("projects.json 갱신 완료");
     return;
