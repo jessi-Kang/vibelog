@@ -79,10 +79,15 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   카운터 단독 표기는 복수 명사형 — 하이픈 형태를 그대로 옮기지 않는다.
   편당 최대 2문장 — 곁가지 숫자엔 붙이지 않는다. 없으면 생략.
   hook 장면 문장에는 붙이지 않는다 — 카운터가 헤드라인과 겹친다.
+  diagram을 붙인 문장에도 붙이지 않는다 — 그림이 화면 가운데를 쓰고 있어
+  카운터가 그 위에 겹친다. 숫자는 다이어그램 라벨로 보여준다.
   날짜("9월 9일")는 stat이 아니다 — 세거나 잴 수 있는 양·시간·횟수만.
 - keywords: 각 ko 문장에서 강조할 곳 1~3개. 문장에 실제로 등장하는 단어(공백 단위
   토큰) 또는 연속된 단어 구("두 번", "밤 11시에")와 정확히 일치해야 한다.
   의미 단위를 통째로 — "두 번"에서 "번"만 강조하면 어색하다. keywordsEn도 en 문장에 대해 동일.
+  **강조는 문장의 일부다 — 켜지는 단어가 문장 단어 수의 절반을 넘으면 안 된다.**
+  문장 전체가 칠해지면 강조가 아니라 그냥 배경이 된다. hook처럼 3~5단어짜리
+  짧은 문장은 **딱 하나**, 그중에서도 이야기의 반전이 걸린 한 곳만 고른다.
 - en은 같은 내용의 자연스러운 영어. 존댓말 뉘앙스는 평서체로.
   en 훅도 같은 규칙 — 짧게(6~9단어 안팎), 배경 설명 없이 사건부터, 뜻은 통하게.
 - template: 위 셋 중 이야기에 맞는 것을 고른다. 이웃 편(직전·다음)과 같은
@@ -204,18 +209,29 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       }
       return false;
     };
+    // hook은 화면 가득 찬 헤드라인이라 강조를 하나로 — 두 개만 돼도
+    // 짧은 문장이 통째로 칠해진다 (Jessi 지적: "훅 메시지가 전체 하이라이트")
+    const maxSpans = l.scene === "hook" ? 1 : 3;
     return {
       scene: l.scene,
       ko: l.ko,
       en: l.en,
-      keywords: (Array.isArray(l.keywords) ? l.keywords : [])
-        .filter((k: unknown): k is string => typeof k === "string")
-        .filter(inSentence(koTokens))
-        .slice(0, 3),
-      keywordsEn: (Array.isArray(l.keywordsEn) ? l.keywordsEn : [])
-        .filter((k: unknown): k is string => typeof k === "string")
-        .filter(inSentence(enTokens))
-        .slice(0, 3),
+      keywords: capCoverage(
+        koTokens,
+        (Array.isArray(l.keywords) ? l.keywords : []).filter(
+          (k: unknown): k is string => typeof k === "string",
+        ),
+        maxSpans,
+        strip,
+      ),
+      keywordsEn: capCoverage(
+        enTokens,
+        (Array.isArray(l.keywordsEn) ? l.keywordsEn : []).filter(
+          (k: unknown): k is string => typeof k === "string",
+        ),
+        maxSpans,
+        strip,
+      ),
       // +알파 그래픽용 장면 은유 묘사 — 여기서 떨어뜨리면 art.ts가 만들 게 없다
       ...(typeof l.art === "string" && l.art.trim() ? { art: l.art.trim() } : {}),
       // 숫자 모먼트 — 숫자가 없는 stat은 카운터를 만들 수 없다
@@ -236,6 +252,55 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       })(),
     };
   });
+}
+
+/**
+ * 강조 분량 제한 — 켜지는 단어가 문장의 절반을 넘지 않게 앞에서부터 담는다.
+ *
+ * 개수만 1~3개로 막아 뒀더니, 한국어 훅은 애초에 서너 단어라 두 개만 걸려도
+ * 문장이 통째로 칠해졌다 ("지어낸 이름이 진짜 아파트였습니다."가 전부 하이라이트 —
+ * Jessi 지적). 강조가 배경이 되면 강조가 아니다.
+ *
+ * 단어 매칭 규칙은 video/src/theme.ts의 keywordIndices와 같아야 한다 —
+ * 여기서 통과시킨 것이 저기서 켜지는 것과 달라지면 계산이 어긋난다.
+ */
+export function capCoverage(
+  tokens: string[],
+  list: string[],
+  maxSpans: number,
+  strip: (w: string) => string,
+): string[] {
+  const litOf = (k: string): number[] => {
+    const toks = k.split(/\s+/).map(strip).filter(Boolean);
+    const out: number[] = [];
+    if (!toks.length) return out;
+    for (let i = 0; i + toks.length <= tokens.length; i++) {
+      if (toks.every((tok, j) => tokens[i + j] === tok)) {
+        for (let j = 0; j < toks.length; j++) out.push(i + j);
+      }
+    }
+    return out;
+  };
+  const cap = Math.max(1, Math.floor(tokens.length / 2));
+  const on = new Set<number>();
+  const kept: string[] = [];
+  for (const k of list) {
+    if (kept.length >= maxSpans) break;
+    const lit = litOf(k);
+    if (!lit.length) continue; // 문장에 없는 말 — 켤 수 없다
+    const merged = new Set([...on, ...lit]);
+    if (merged.size > cap) continue;
+    lit.forEach((i) => on.add(i));
+    kept.push(k);
+  }
+  if (kept.length) return kept;
+  // 전부 한도를 넘겼다 — 가장 적게 켜지는 하나만 살린다. 강조가 하나도
+  // 없는 문장보다는 낫고, 문장 전체가 켜지는 것만은 막는다.
+  const best = list
+    .map((k) => ({ k, n: litOf(k).length }))
+    .filter((x) => x.n > 0 && x.n < tokens.length)
+    .sort((a, b) => a.n - b.n)[0];
+  return best ? [best.k] : [];
 }
 
 /** 편당 다이어그램 상한 — 넘치면 영상이 도식만 남는다. 뒤쪽 것을 버린다 */
