@@ -75,10 +75,11 @@ vibelog/
 - (선택) `vibelog.json` — `{ "name": "...", "status": "live", "stack": ["Next.js"], "hide": false }`
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 
-상태 자동 판정 기본값: 배포 주소가 있으면 **preview**(가배포), 거기에 릴리즈 선언 —
-GitHub **Release를 1개 이상 발행**했거나 About Website를 직접 채웠거나 — 이 있으면
-**live**. 배포가 없으면 30일 내 커밋 building, 넘으면 paused. `vibelog.json`의
-status가 있으면 언제나 그게 우선. 즉 "정식 공개"는 GitHub Release 발행 하나로 선언한다.
+상태 자동 판정 기본값: 배포 주소가 있으면 **preview**(가배포), GitHub **Release를
+1개 이상 발행**하면 **live** — "정식 공개" 선언은 Release 발행 하나뿐이다.
+About Website는 주소 지정용일 뿐 상태와 무관 (주소만 채워도 live가 되던 사고의 교훈).
+배포가 없으면 30일 내 커밋 building, 넘으면 paused. `vibelog.json`의 status가
+있으면 언제나 그게 우선 — 예외적 강제 지정용 (vibelog 자신이 이걸로 live 고정).
 
 ### 커밋 메시지 규약 문구 (프로젝트 레포 CLAUDE.md에 복붙)
 

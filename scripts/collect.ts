@@ -61,9 +61,9 @@ export interface RepoActivity {
   /** 쇼츠 테마 — vibelog.json "theme" 우선, 없으면 topic "vibelog-theme-<이름>" */
   theme?: string;
   /**
-   * 릴리즈 선언 여부 — About Website를 직접 채웠거나 GitHub Release가 하나라도
-   * 있으면 true. 배포 주소가 자동 감지로만 잡힌 프로젝트(가배포)는 false —
-   * 상태가 live 대신 preview로 표시된다 (Jessi: "라이브인데 릴리즈 전인 경우").
+   * 릴리즈 선언 여부 — GitHub Release가 하나라도 있으면 true. 없으면 배포돼
+   * 있어도 preview (Jessi: "라이브인데 릴리즈 전인 경우"). About Website는
+   * 주소 지정용일 뿐 상태와 무관 — 강제 지정은 vibelog.json status로.
    */
   released: boolean;
 }
@@ -410,13 +410,14 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     if (!r.homepage && homepage) {
       console.log(`- ${repo}: 배포 주소 자동 감지 → ${homepage}`);
     }
-    // 릴리즈 선언: About Website 직접 채움 또는 GitHub Release 존재.
-    // 릴리즈 = 개발자의 자연스러운 행위(Release 발행) 하나로 선언되게 한다.
-    const hasRelease = await octokit.rest.repos
+    // 릴리즈 선언은 GitHub Release 발행 하나뿐. 처음엔 About Website 채움도
+    // 선언으로 쳤는데, Website는 "주소 지정"과 겸직이라 다른 세션이 레포를
+    // 정리하며 주소만 채워도 live로 승격되는 사고가 났다 (apart — Jessi가
+    // 비웠는데 다시 채워져 live 복귀). 강제 지정은 vibelog.json status로.
+    const released = await octokit.rest.repos
       .listReleases({ owner, repo, per_page: 1 })
       .then((res) => res.data.length > 0)
       .catch(() => false);
-    const released = Boolean(r.homepage) || hasRelease;
 
     // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (Jessi 지시:
     // 파일 만들기보다 topic이 손품이 덜하다). vibelog.json이 있으면 그게 우선.
