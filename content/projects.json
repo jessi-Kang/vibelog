@@ -1,5 +1,24 @@
 [
   {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "preview",
+    "stack": [
+      "HTML"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-gam.vercel.app",
+    "language": "HTML",
+    "lastActivity": "2026-09-11",
+    "weekCommits": 80,
+    "todayCommits": 62,
+    "totalCommits": 80,
+    "countsDate": "2026-09-11",
+    "theme": "paper"
+  },
+  {
     "slug": "vibelog",
     "name": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
@@ -12,28 +31,9 @@
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
     "lastActivity": "2026-09-11",
-    "weekCommits": 186,
-    "todayCommits": 37,
-    "totalCommits": 186,
+    "weekCommits": 199,
+    "todayCommits": 50,
+    "totalCommits": 199,
     "countsDate": "2026-09-11"
-  },
-  {
-    "slug": "apart",
-    "name": "apart",
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-gam.vercel.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-09-11",
-    "weekCommits": 66,
-    "todayCommits": 48,
-    "totalCommits": 66,
-    "countsDate": "2026-09-11",
-    "theme": "paper"
   }
 ]
