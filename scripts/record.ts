@@ -292,8 +292,13 @@ export async function record(
       } catch {
         // 이동 실패 — 이 구간은 직전 화면이 이어진다 (녹화는 계속)
       }
-      const start = (Date.now() - started) / 1000 - readyAt;
+      // 구간 시작은 스크린샷을 찍은 "뒤"다. 앞에 두면 캡처가 끝날 때까지
+      // 화면이 완전히 정지한 구간이 구간 머리에 들어가는데, 데모 블록은
+      // 내레이션 두어 문장(2~5초)뿐이라 그 정지 구간만 보여 주고 끝난다
+      // ("계속 멈춰 있다가 마지막에 휙 스크롤 되다가 사라져" — Jessi).
+      // 캡처 뒤로 옮기면 블록이 화면 맨 위에서 시작해 곧바로 움직인다.
       n = await shot(page, shotsDir, n);
+      const start = (Date.now() - started) / 1000 - readyAt;
       const until = Date.now() + perMs;
       while (Date.now() < until) {
         await slowScroll(page, 240);
