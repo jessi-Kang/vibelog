@@ -1,0 +1,326 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-12",
+  "day": 3,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "설치한 앱에서 로그인이 막혔습니다.",
+      "en": "Sign-in was blocked inside the installed app.",
+      "keywords": [
+        "막혔습니다"
+      ],
+      "keywordsEn": [
+        "blocked"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "사이트 주소가 두 개 있었습니다.",
+      "en": "The site had two addresses.",
+      "keywords": [
+        "주소가"
+      ],
+      "keywordsEn": [
+        "two addresses"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "같은 사이트",
+          "옛 주소",
+          "새 주소",
+          "설치한 앱",
+          "브라우저"
+        ],
+        "labelsEn": [
+          "same site",
+          "old address",
+          "new address",
+          "installed app",
+          "browser"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "앱은 옛 주소에 계속 붙어 있었습니다.",
+      "en": "The installed app was still stuck on the old one.",
+      "keywords": [],
+      "keywordsEn": [
+        "stuck",
+        "old one"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "주소를 하나로 모았습니다.",
+      "en": "I folded everything into one address.",
+      "keywords": [
+        "하나로"
+      ],
+      "keywordsEn": [
+        "one address"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "주소가 둘이면 같은 사람 기록도 둘로 갈라지니까요.",
+      "en": "Two addresses would split one person's records in two.",
+      "keywords": [
+        "둘로 갈라지니까요"
+      ],
+      "keywordsEn": [
+        "split",
+        "in two"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 설치한 앱에서도 로그인이 됩니다.",
+      "en": "Now sign-in works in the installed app too.",
+      "keywords": [
+        "로그인이 됩니다"
+      ],
+      "keywordsEn": [
+        "works"
+      ],
+      "screen": "/"
+    },
+    {
+      "scene": "demo",
+      "ko": "내 기록도 한 계정에 모입니다.",
+      "en": "My records land in one account.",
+      "keywords": [
+        "한 계정에"
+      ],
+      "keywordsEn": [
+        "one account"
+      ],
+      "screen": "/record"
+    },
+    {
+      "scene": "next",
+      "ko": "공개 순위표는 점수 검사를 서버로 옮긴 다음입니다.",
+      "en": "A public leaderboard comes after score checks move to the server.",
+      "keywords": [
+        "서버로"
+      ],
+      "keywordsEn": [
+        "the server"
+      ],
+      "art": "a tiny robot on a podium inspecting stacked medals with a magnifying glass"
+    },
+    {
+      "scene": "end",
+      "ko": "주소는 하나여야 합니다.",
+      "en": "An app should have one address.",
+      "keywords": [
+        "하나여야"
+      ],
+      "keywordsEn": [
+        "one address"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "로그인이 막혔다",
+    "titleEn": "Sign-in was blocked",
+    "before": "설치한 앱에서 구글 로그인이 차단됐습니다",
+    "after": "주소를 하나로 합쳐 해결했습니다",
+    "beforeEn": "Google sign-in was blocked in the installed app",
+    "afterEn": "Folded the two addresses into one"
+  },
+  "commits": [
+    [
+      "f21581c",
+      "fix: 결과 이미지 저장·관인·괘선 정렬·터치 잔상 네 건"
+    ],
+    [
+      "c4f4c47",
+      "fix: 푸터 '앱 설치'가 폰에서 없는 버튼을 찾으라고 하던 것"
+    ],
+    [
+      "3e5405b",
+      "fix: 설치한 앱에서 구글 로그인이 막히던 것 (주소를 하나로 모음)"
+    ],
+    [
+      "ec0ca19",
+      "feat: 담당 구역을 골라 우리 동네 단지만 감별할 수 있게"
+    ],
+    [
+      "a9e4720",
+      "fix: 배경음이 안 들리고 음소거 아이콘이 안 보이던 것"
+    ],
+    [
+      "fee744c",
+      "design: 홈 신분증을 한 줄로 줄이고 계정 동작은 기록 열람실로 옮겼다"
+    ],
+    [
+      "704087f",
+      "fix: 서비스워커 no-op fetch 핸들러 제거, 모바일 세로 여백 리듬 정리"
+    ],
+    [
+      "2f4a779",
+      "design: 지금 무한인지 공식전인지 화면이 말하게 했다"
+    ],
+    [
+      "8fddc73",
+      "fix: 첫 방문 규칙 한 줄이 못 맞히는 사람에게 영원히 따라다니던 문제"
+    ],
+    [
+      "849904f",
+      "fix: 큰 폰에서 빡빡하던 레이아웃과 어긋난 정렬, 서비스워커 콘솔 오류"
+    ],
+    [
+      "2188ec1",
+      "asset: 단순·그럴싸한 가짜 이름 74건 추가 + 유사도 임계를 길이 비례로"
+    ],
+    [
+      "1da69a1",
+      "design: 결과 화면 관인 제거, 버튼 폭·배치 정리, 문제 이름 줄바꿈 fix"
+    ],
+    [
+      "e398857",
+      "design: 화면 용어 통일 + 용어집, 게임 배경음과 효과음 보강"
+    ],
+    [
+      "8b5d29b",
+      "feat: 기록 열람실 — 내 기록과 남들 사이 내 위치를 한 장에"
+    ],
+    [
+      "9c62ac1",
+      "design: 결과 화면 관인·버튼 정리, 세션 종료 동선 일원화"
+    ],
+    [
+      "8d444ed",
+      "feat: 접수 창구 배경음 — 약하게 깔리는 36초 루프"
+    ],
+    [
+      "76a9143",
+      "docs: 기획 문서를 현재 구현에 맞게 현행화 + 도메인 apt-game.app 반영"
+    ],
+    [
+      "48c3c42",
+      "fix: UX 플로우 점검 — 길 잃는 지점과 기록이 증발하는 경로를 막았다"
+    ],
+    [
+      "96836c6",
+      "feat: 공식전 성적표 다시 보기 + 초성 힌트를 정답 칸 안으로"
+    ],
+    [
+      "87e8415",
+      "chore: 배포 워크플로에 수동 실행 버튼 추가"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "f21581c",
+      "fix: result image save, seal mark, and line alignment, touch ghosting issues (four fixes)"
+    ],
+    [
+      "c4f4c47",
+      "fix: footer 'install app' button not found on mobile phones"
+    ],
+    [
+      "3e5405b",
+      "fix: Google login blocked in installed app (unified addresses)"
+    ],
+    [
+      "ec0ca19",
+      "feat: select coverage area to identify only our apartment complex"
+    ],
+    [
+      "a9e4720",
+      "fix: background sound not playing and mute icon not visible"
+    ],
+    [
+      "fee744c",
+      "design: condense home ID card to single line, move account actions to history archive"
+    ],
+    [
+      "704087f",
+      "fix: remove service worker no-op fetch handler, clean up mobile portrait spacing"
+    ],
+    [
+      "2f4a779",
+      "design: make screen clearly indicate infinite or official game mode"
+    ],
+    [
+      "8fddc73",
+      "fix: first visit rule misalignment that persisted forever for some users"
+    ],
+    [
+      "849904f",
+      "fix: tight layout and misaligned spacing on large phones, service worker console error"
+    ],
+    [
+      "2188ec1",
+      "asset: add 74 simple and plausible fake names + similarity threshold scaled by length"
+    ],
+    [
+      "1da69a1",
+      "design: remove seal mark from result screen, refine button width and layout, fix problem name wrapping"
+    ],
+    [
+      "e398857",
+      "design: unify screen terminology + glossary, enhance game background and effect sounds"
+    ],
+    [
+      "8b5d29b",
+      "feat: history archive — show my position between my records and others at a glance"
+    ],
+    [
+      "9c62ac1",
+      "design: clean up result screen seal mark and buttons, unify session end flow"
+    ],
+    [
+      "8d444ed",
+      "feat: reception lobby background sound — subtle 36-second loop"
+    ],
+    [
+      "76a9143",
+      "docs: update planning document to match current implementation + reflect apt-game.app domain"
+    ],
+    [
+      "48c3c42",
+      "fix: UX flow check — blocked navigation dead ends and record loss paths"
+    ],
+    [
+      "96836c6",
+      "feat: official game result sheet replay + initial consonant hints inside answer field"
+    ],
+    [
+      "87e8415",
+      "chore: add manual trigger button to deployment workflow"
+    ]
+  ],
+  "commitCount": 20,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "설치한 앱에서만 로그인이 막힌 이유는 사이트 주소가 두 개였기 때문입니다. 주소를 하나로 모아 기록도 한 계정에 모이게 했습니다.",
+    "en": "Sign-in only failed inside the installed app because the site had two addresses. Folding them into one also keeps every record in a single account."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#apart",
+    "#로그인",
+    "#PWA",
+    "#devlog",
+    "#sideproject",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtx3url9",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtx3uu64",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtx3wac3",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtx3wcrz"
+  }
+}

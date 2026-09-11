@@ -1,0 +1,14 @@
+{
+  "screens": [
+    {
+      "path": "/shorts",
+      "start": 0.52,
+      "end": 16.46
+    },
+    {
+      "path": "/log",
+      "start": 16.96,
+      "end": 31.71
+    }
+  ]
+}
