@@ -87,6 +87,10 @@ export function sinoRead(n: number): string {
 const TENSE_UNIT = /^(\d+)(건)(.*)$/u;
 
 export function speakToken(tok: string): string {
+  // 0) 천 단위 콤마 제거 — "2,889곳"은 콤마 때문에 아래 규칙이 하나도 안
+  //    걸려 원문이 그대로 TTS로 가 뭉개졌다. 표기(자막·카드)는 콤마를
+  //    유지하고 발음용 토큰만 편다.
+  tok = tok.replace(/(\d),(?=\d{3})/g, "$1");
   // 1) 된소리 단위: 숫자도 한글로 풀고 표기도 된소리로 — "222건" → "이백이십이 껀"
   const t = tok.match(TENSE_UNIT);
   if (t) return `${sinoRead(Number(t[1]))} 껀${t[3]}`;

@@ -83,8 +83,11 @@ function statStartOf(
   const line = script.lines[s.index];
   if (!line?.stat) return null;
   const stat = (lang === "en" ? (line.statEn ?? line.stat) : line.stat)!;
-  const digits = stat.match(/\d+/)?.[0];
-  const w = digits ? s.words.find((x) => x.text.includes(digits)) : undefined;
+  // 콤마 표기 대응 — "2,889곳"에서 \d+는 "2"만 잡아 앵커가 흔들린다
+  const digits = stat.replace(/,/g, "").match(/\d+/)?.[0];
+  const w = digits
+    ? s.words.find((x) => x.text.replace(/,/g, "").includes(digits))
+    : undefined;
   return w?.start ?? s.start;
 }
 
