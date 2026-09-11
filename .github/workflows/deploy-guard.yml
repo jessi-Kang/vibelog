@@ -34,8 +34,11 @@ jobs:
             echo "배포 확인됨 ($GITHUB_SHA) — 정상"; exit 0
           fi
           echo "배포 누락 — Vercel API로 직접 생성 (브랜치 최신 커밋 기준)"
-          curl -sf -X POST -H "Authorization: Bearer $VERCEL_TOKEN" \
+          # -f 를 쓰지 않는다: 실패해도 본문을 봐야 원인을 안다 (첫 판이 조용히 죽었다)
+          code=$(curl -s -o /tmp/resp.json -w '%{http_code}' \
+            -X POST -H "Authorization: Bearer $VERCEL_TOKEN" \
             -H "content-type: application/json" \
-            "https://api.vercel.com/v13/deployments?teamId=$VERCEL_TEAM_ID&forceNew=1" \
-            -d "{\"name\":\"vibelog\",\"target\":\"production\",\"gitSource\":{\"type\":\"github\",\"repoId\":$REPO_ID,\"ref\":\"$GITHUB_REF_NAME\"}}" \
-            | head -c 400
+            "https://api.vercel.com/v13/deployments?teamId=$VERCEL_TEAM_ID&forceNew=1&skipAutoDetectionConfirmation=1" \
+            -d "{\"name\":\"vibelog\",\"project\":\"$PROJECT_ID\",\"target\":\"production\",\"gitSource\":{\"type\":\"github\",\"repoId\":\"$REPO_ID\",\"ref\":\"$GITHUB_REF_NAME\"}}")
+          echo "HTTP $code"; head -c 600 /tmp/resp.json; echo
+          case "$code" in 2*) echo "배포 생성됨";; *) echo "배포 생성 실패 — 위 응답 확인"; exit 1;; esac
