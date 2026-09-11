@@ -17,8 +17,13 @@ import { FONT_MONO, FONT_SANS, visualLen, type ShortsTheme } from "./theme";
 
 /** 무대 — 자막 위, 헤드라인 아래의 가운데 띠 */
 const CY = 1020;
-/** 숫자선 값 라벨의 아랫변과 축 사이 간격 — 점(r=34)을 덮지 않을 만큼 */
-const VALUE_GAP = 62;
+/**
+ * 숫자선 값 라벨의 아랫변과 축 사이 간격.
+ * 점(r=34)만 피하면 되는 줄 알고 62로 뒀다가 범위 밴드(축 기준 ±74)의
+ * 윗변에 글자가 걸쳤다 (Jessi 지적). 밴드 밖으로 완전히 빼낸다.
+ */
+const BAND_HALF = 74;
+const VALUE_GAP = BAND_HALF + 18;
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const ease = (p: number): number => 1 - Math.pow(1 - Math.min(1, Math.max(0, p)), 3);
 /** 장면 시작 s초부터 d초 동안 0→1 */
@@ -169,9 +174,9 @@ export const DiagramScene: React.FC<{
           />
           <rect
             x={120}
-            y={CY - 74}
+            y={CY - BAND_HALF}
             width={420 * band}
-            height={148}
+            height={BAND_HALF * 2}
             rx={th.radius}
             fill={tint(th, 0.1)}
             stroke={th.accent}
