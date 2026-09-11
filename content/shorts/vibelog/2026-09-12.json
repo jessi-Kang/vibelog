@@ -1,0 +1,298 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-12",
+  "day": 5,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "영상이 45초에서 끊겼습니다.",
+      "en": "The video cut off at 45 seconds.",
+      "keywords": [
+        "45초에서"
+      ],
+      "keywordsEn": [
+        "45 seconds"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "배경 음악 파일이 모두 45초였습니다.",
+      "en": "Every background music file was exactly 45 seconds.",
+      "keywords": [
+        "45초였습니다"
+      ],
+      "keywordsEn": [
+        "exactly 45 seconds"
+      ],
+      "stat": "45초",
+      "statEn": "45 seconds"
+    },
+    {
+      "scene": "build",
+      "ko": "짧은 쪽에 맞춰 자르게 해 둔 게 원인이었습니다.",
+      "en": "The mix trimmed to the shorter track.",
+      "keywords": [
+        "짧은 쪽에",
+        "원인이었습니다"
+      ],
+      "keywordsEn": [
+        "the shorter track"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "이제 음악을 필요한 만큼 반복해 잇습니다.",
+      "en": "Now the music loops as long as the video needs.",
+      "keywords": [
+        "반복해 잇습니다"
+      ],
+      "keywordsEn": [
+        "loops"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "45초 음악",
+          "45초에서 끊김",
+          "반복해 이은 음악",
+          "끝까지 재생"
+        ],
+        "labelsEn": [
+          "45s music",
+          "cut at 45s",
+          "looped music",
+          "plays to the end"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 50초 영상도 끝인사까지 나옵니다.",
+      "en": "A 50-second video now reaches its closing screen.",
+      "keywords": [
+        "끝인사까지"
+      ],
+      "keywordsEn": [
+        "closing screen"
+      ],
+      "stat": "50초",
+      "statEn": "50 seconds",
+      "screen": "/shorts"
+    },
+    {
+      "scene": "fail",
+      "ko": "숫자 읽기에서 두 번 헛짚었습니다.",
+      "en": "I got number pronunciation wrong twice.",
+      "keywords": [
+        "두 번"
+      ],
+      "keywordsEn": [
+        "twice"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "단위에만 특별 규칙을 둔 게 원인이었습니다.",
+      "en": "The real cause was a special rule for one unit word.",
+      "keywords": [
+        "특별 규칙을"
+      ],
+      "keywordsEn": [
+        "a special rule"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "222건",
+          "매끄럽게 읽힘",
+          "단위만 튀어나옴",
+          "일반 규칙",
+          "특별 규칙"
+        ],
+        "labelsEn": [
+          "222 items",
+          "reads smoothly",
+          "unit pops out",
+          "general rule",
+          "special rule"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "앞으로 나올 숫자 표현도 미리 넣어 뒀습니다.",
+      "en": "I already added the number forms likely to come up next.",
+      "keywords": [
+        "미리 넣어 뒀습니다"
+      ],
+      "keywordsEn": [
+        "already added"
+      ],
+      "art": "a tiny robot lining up numbered wooden blocks on a shelf"
+    },
+    {
+      "scene": "end",
+      "ko": "글도 영상도 매일 밤 자동으로 올라갑니다.",
+      "en": "Both posts and videos publish automatically every night.",
+      "keywords": [
+        "매일 밤"
+      ],
+      "keywordsEn": [
+        "every night"
+      ],
+      "screen": "/log"
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "단위만 튀어나왔다",
+    "titleEn": "Only the unit popped out",
+    "before": "숫자 대신 뒤의 단위를 세게 발음하게 고쳤습니다.",
+    "after": "특별 규칙을 지우니 일반 규칙이 알아서 맞게 읽었습니다.",
+    "beforeEn": "I made the unit word after the number sound harder.",
+    "afterEn": "Deleting the special rule let the general rule read it right."
+  },
+  "commits": [
+    [
+      "aca34bc",
+      "쇼츠: 발음 교정에 시각·복합 수사 케이스 추가"
+    ],
+    [
+      "0b14ae5",
+      "쇼츠: 발음용 텍스트를 소리 나는 대로 — 숫자 전부 풀고, 된소리·연음 반영"
+    ],
+    [
+      "49d4ae3",
+      "쇼츠: 다이어그램 위에 숫자 카운터가 겹쳐 찍히던 것"
+    ],
+    [
+      "1cc1472",
+      "쇼츠: 훅이 통째로 하이라이트되던 것 — 강조 분량에 상한"
+    ],
+    [
+      "a8f6fe9",
+      "쇼츠: 한글로 푼 숫자와 단위를 붙여 쓴다"
+    ],
+    [
+      "0c37d85",
+      "쇼츠: \"건\"의 특별 대우를 없앤다 — 두 번 헛짚은 발음 교정"
+    ],
+    [
+      "eb488c1",
+      "쇼츠: 숫자선 값 라벨이 범위 밴드에 걸치던 것 — 밴드 밖으로 뺀다"
+    ],
+    [
+      "c39768f",
+      "PWA: 서비스 워커 추가 — 설치한 앱이 브라우저 탭으로 열리던 문제"
+    ],
+    [
+      "38f75a1",
+      "쇼츠: \"N건\"의 된소리 강제를 뺀다 — 읽을 때 어색했다"
+    ],
+    [
+      "074f370",
+      "쇼츠: 다이어그램 라벨 줄바꿈 규칙 — 한 글자가 떨어져 나가던 문제"
+    ],
+    [
+      "da49005",
+      "쇼츠: 다이어그램 모서리를 테마 값으로 — 템플릿마다 형태가 따로 놀던 문제"
+    ],
+    [
+      "9d91729",
+      "쇼츠: 내레이션 예산을 26~34초로 — 완성 길이가 규격을 넘지 않게"
+    ],
+    [
+      "5bfad36",
+      "쇼츠: 음악이 짧으면 영상이 잘리던 믹스 버그 수정"
+    ],
+    [
+      "cfdc925",
+      "쇼츠: 다이어그램 라벨을 본문 폰트로 — 한글이 대체 글꼴로 떨어지던 문제"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "aca34bc",
+      "shorts: add visual and complex number cases to pronunciation correction"
+    ],
+    [
+      "0b14ae5",
+      "shorts: pronunciation text as spoken — expand all numbers, reflect tensification and liaison"
+    ],
+    [
+      "49d4ae3",
+      "shorts: fix number counter overlapping on diagram"
+    ],
+    [
+      "1cc1472",
+      "shorts: fix hook being fully highlighted — cap emphasis range"
+    ],
+    [
+      "a8f6fe9",
+      "shorts: concatenate Korean-written numbers and units"
+    ],
+    [
+      "0c37d85",
+      "shorts: remove special treatment of \"건\" — pronunciation correction from double miss"
+    ],
+    [
+      "eb488c1",
+      "shorts: move number line value labels outside range band — fix overlap"
+    ],
+    [
+      "c39768f",
+      "PWA: add service worker — fix installed app opening in browser tab"
+    ],
+    [
+      "38f75a1",
+      "shorts: remove forced tensification of \"N건\" — felt awkward when read"
+    ],
+    [
+      "074f370",
+      "shorts: fix diagram label line-break rule — single character separating"
+    ],
+    [
+      "da49005",
+      "shorts: use theme values for diagram corners — fix inconsistent shapes across templates"
+    ],
+    [
+      "9d91729",
+      "shorts: set narration budget to 26-34 seconds — ensure final length stays within spec"
+    ],
+    [
+      "5bfad36",
+      "shorts: fix mix bug where video cuts when music is short"
+    ],
+    [
+      "cfdc925",
+      "shorts: use body font for diagram labels — fix Korean falling back to fallback font"
+    ]
+  ],
+  "commitCount": 14,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "50초 영상이 45초에서 끊기던 이유는 배경 음악 길이였습니다. 음악을 반복해 이어 붙이고 남는 끝을 조용하게 메워, 이제 끝인사까지 나옵니다.",
+    "en": "A 50-second video stopped at 45 because every music file was 45 seconds long. Now the music loops and the tail is padded with silence, so the closing screen survives."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#쇼츠제작",
+    "#자동화",
+    "#devlog",
+    "#ffmpeg",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtx419uw",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtx41bph",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtx42v4o",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtx42y1l"
+  }
+}

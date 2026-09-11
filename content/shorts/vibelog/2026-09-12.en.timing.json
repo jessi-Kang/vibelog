@@ -1,0 +1,449 @@
+{
+  "lang": "en",
+  "duration": 26.517,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.171,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.151
+        },
+        {
+          "text": "video",
+          "start": 0.197,
+          "end": 0.464
+        },
+        {
+          "text": "cut",
+          "start": 0.511,
+          "end": 0.65
+        },
+        {
+          "text": "off",
+          "start": 0.697,
+          "end": 0.801
+        },
+        {
+          "text": "at",
+          "start": 0.848,
+          "end": 0.929
+        },
+        {
+          "text": "45",
+          "start": 0.998,
+          "end": 1.498
+        },
+        {
+          "text": "seconds.",
+          "start": 1.544,
+          "end": 2.171
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.682,
+      "end": 5.828,
+      "words": [
+        {
+          "text": "Every",
+          "start": 2.682,
+          "end": 2.961
+        },
+        {
+          "text": "background",
+          "start": 3.007,
+          "end": 3.367
+        },
+        {
+          "text": "music",
+          "start": 3.402,
+          "end": 3.657
+        },
+        {
+          "text": "file",
+          "start": 3.715,
+          "end": 4.029
+        },
+        {
+          "text": "was",
+          "start": 4.063,
+          "end": 4.191
+        },
+        {
+          "text": "exactly",
+          "start": 4.261,
+          "end": 4.644
+        },
+        {
+          "text": "45",
+          "start": 4.702,
+          "end": 5.155
+        },
+        {
+          "text": "seconds.",
+          "start": 5.201,
+          "end": 5.828
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 6.269,
+      "end": 8.022,
+      "words": [
+        {
+          "text": "The",
+          "start": 6.269,
+          "end": 6.397
+        },
+        {
+          "text": "mix",
+          "start": 6.455,
+          "end": 6.629
+        },
+        {
+          "text": "trimmed",
+          "start": 6.687,
+          "end": 6.943
+        },
+        {
+          "text": "to",
+          "start": 6.966,
+          "end": 7.024
+        },
+        {
+          "text": "the",
+          "start": 7.082,
+          "end": 7.152
+        },
+        {
+          "text": "shorter",
+          "start": 7.187,
+          "end": 7.477
+        },
+        {
+          "text": "track.",
+          "start": 7.523,
+          "end": 8.022
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.533,
+      "end": 10.867,
+      "words": [
+        {
+          "text": "Now",
+          "start": 8.533,
+          "end": 8.696
+        },
+        {
+          "text": "the",
+          "start": 8.742,
+          "end": 8.812
+        },
+        {
+          "text": "music",
+          "start": 8.87,
+          "end": 9.16
+        },
+        {
+          "text": "loops",
+          "start": 9.23,
+          "end": 9.485
+        },
+        {
+          "text": "as",
+          "start": 9.532,
+          "end": 9.625
+        },
+        {
+          "text": "long",
+          "start": 9.694,
+          "end": 9.845
+        },
+        {
+          "text": "as",
+          "start": 9.88,
+          "end": 9.95
+        },
+        {
+          "text": "the",
+          "start": 9.985,
+          "end": 10.054
+        },
+        {
+          "text": "video",
+          "start": 10.101,
+          "end": 10.344
+        },
+        {
+          "text": "needs.",
+          "start": 10.403,
+          "end": 10.867
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 11.378,
+      "end": 13.944,
+      "words": [
+        {
+          "text": "A",
+          "start": 11.378,
+          "end": 11.459
+        },
+        {
+          "text": "50-second",
+          "start": 11.552,
+          "end": 12.109
+        },
+        {
+          "text": "video",
+          "start": 12.156,
+          "end": 12.399
+        },
+        {
+          "text": "now",
+          "start": 12.469,
+          "end": 12.608
+        },
+        {
+          "text": "reaches",
+          "start": 12.678,
+          "end": 12.968
+        },
+        {
+          "text": "its",
+          "start": 13.015,
+          "end": 13.108
+        },
+        {
+          "text": "closing",
+          "start": 13.154,
+          "end": 13.468
+        },
+        {
+          "text": "screen.",
+          "start": 13.502,
+          "end": 13.944
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 14.547,
+      "end": 16.591,
+      "words": [
+        {
+          "text": "I",
+          "start": 14.547,
+          "end": 14.605
+        },
+        {
+          "text": "got",
+          "start": 14.698,
+          "end": 14.837
+        },
+        {
+          "text": "number",
+          "start": 14.884,
+          "end": 15.104
+        },
+        {
+          "text": "pronunciation",
+          "start": 15.151,
+          "end": 15.755
+        },
+        {
+          "text": "wrong",
+          "start": 15.789,
+          "end": 16.01
+        },
+        {
+          "text": "twice.",
+          "start": 16.056,
+          "end": 16.591
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 16.916,
+      "end": 19.598,
+      "words": [
+        {
+          "text": "The",
+          "start": 16.916,
+          "end": 17.032
+        },
+        {
+          "text": "real",
+          "start": 17.09,
+          "end": 17.252
+        },
+        {
+          "text": "cause",
+          "start": 17.322,
+          "end": 17.589
+        },
+        {
+          "text": "was",
+          "start": 17.624,
+          "end": 17.728
+        },
+        {
+          "text": "a",
+          "start": 17.786,
+          "end": 17.81
+        },
+        {
+          "text": "special",
+          "start": 17.844,
+          "end": 18.216
+        },
+        {
+          "text": "rule",
+          "start": 18.262,
+          "end": 18.471
+        },
+        {
+          "text": "for",
+          "start": 18.506,
+          "end": 18.611
+        },
+        {
+          "text": "one",
+          "start": 18.68,
+          "end": 18.831
+        },
+        {
+          "text": "unit",
+          "start": 18.889,
+          "end": 19.11
+        },
+        {
+          "text": "word.",
+          "start": 19.156,
+          "end": 19.598
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 20.201,
+      "end": 23.034,
+      "words": [
+        {
+          "text": "I",
+          "start": 20.201,
+          "end": 20.259
+        },
+        {
+          "text": "already",
+          "start": 20.341,
+          "end": 20.619
+        },
+        {
+          "text": "added",
+          "start": 20.666,
+          "end": 20.886
+        },
+        {
+          "text": "the",
+          "start": 20.921,
+          "end": 20.991
+        },
+        {
+          "text": "number",
+          "start": 21.049,
+          "end": 21.293
+        },
+        {
+          "text": "forms",
+          "start": 21.362,
+          "end": 21.676
+        },
+        {
+          "text": "likely",
+          "start": 21.722,
+          "end": 21.989
+        },
+        {
+          "text": "to",
+          "start": 22.036,
+          "end": 22.082
+        },
+        {
+          "text": "come",
+          "start": 22.14,
+          "end": 22.291
+        },
+        {
+          "text": "up",
+          "start": 22.326,
+          "end": 22.419
+        },
+        {
+          "text": "next.",
+          "start": 22.5,
+          "end": 23.034
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 23.545,
+      "end": 26.517,
+      "words": [
+        {
+          "text": "Both",
+          "start": 23.545,
+          "end": 23.789
+        },
+        {
+          "text": "posts",
+          "start": 23.847,
+          "end": 24.114
+        },
+        {
+          "text": "and",
+          "start": 24.149,
+          "end": 24.23
+        },
+        {
+          "text": "videos",
+          "start": 24.276,
+          "end": 24.601
+        },
+        {
+          "text": "publish",
+          "start": 24.659,
+          "end": 24.961
+        },
+        {
+          "text": "automatically",
+          "start": 25.008,
+          "end": 25.635
+        },
+        {
+          "text": "every",
+          "start": 25.693,
+          "end": 25.879
+        },
+        {
+          "text": "night.",
+          "start": 25.925,
+          "end": 26.517
+        }
+      ]
+    }
+  ]
+}
