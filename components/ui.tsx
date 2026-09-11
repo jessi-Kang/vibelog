@@ -78,12 +78,15 @@ export function SectionHeader({
 
 export function EmptyState({
   title,
+  titleAs: TitleTag = "div",
   body,
   hint,
   action,
   compact,
 }: {
   title: ReactNode;
+  /** 이 상태가 페이지의 본문 전부일 때는 h1으로 — 페이지에 제목이 하나는 있어야 한다 */
+  titleAs?: "div" | "h1";
   body?: ReactNode;
   hint?: string;
   action?: ReactNode;
@@ -96,7 +99,7 @@ export function EmptyState({
         compact ? "px-[18px] py-4" : "px-[22px] py-7"
       }`}
     >
-      <div className="text-md font-bold leading-snug">{title}</div>
+      <TitleTag className="m-0 text-md font-bold leading-snug">{title}</TitleTag>
       {body && (
         <p className="m-0 max-w-[48ch] text-base leading-relaxed text-muted [text-wrap:pretty]">
           {body}
