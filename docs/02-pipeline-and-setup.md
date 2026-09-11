@@ -129,7 +129,7 @@ Next.js (App Router) + TypeScript + Tailwind + MDX. 배포 Vercel. Octokit으로
 ## 컨벤션
 - 커밋 메시지는 데브로그 원료다. 한 줄 요약 + 본문에 "왜"를 쓴다.
 - content/ 밑 파일은 파이프라인이 덮어쓴다. 손수정은 frontmatter `manual: true`로 보호.
-- 프로젝트 상태값: idea | building | live | paused
+- 프로젝트 상태값: idea | building | preview | live | paused
 - 데브로그 톤: 존댓말 (쇼츠 내레이션과 통일)
 ```
 
