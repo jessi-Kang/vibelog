@@ -7,9 +7,11 @@ import { getDevlogs, getProjects, getShorts } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-// 설치된 앱 창·모바일 상태바 색을 사이트 배경과 맞춘다
+// 설치된 앱 창·모바일 상태바 색을 사이트 배경과 맞춘다.
+// viewportFit cover — 하단 탭바가 iPhone 홈 인디케이터 영역(safe-area)을 읽으려면 필요
 export const viewport: Viewport = {
   themeColor: "#0A0E14",
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -51,7 +53,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
         />
       </head>
-      <body className="flex min-h-dvh flex-col bg-bg font-sans text-ink">
+      {/* 모바일 하단 여백 = 고정 탭바 높이 + safe-area — 푸터가 탭바에 안 가리게 */}
+      <body className="flex min-h-dvh flex-col bg-bg pb-[calc(48px+env(safe-area-inset-bottom))] font-sans text-ink md:pb-0">
         <LangProvider>
         <a
           href="#main"
