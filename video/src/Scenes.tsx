@@ -1068,7 +1068,9 @@ export const StatPunch: React.FC<{
   const END = startSec + 1.5;
   if (t < startSec || t > END) return null;
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-  const num = Number(stat.match(/\d+/)?.[0] ?? 0);
+  // 콤마 표기("2,889곳")는 콤마를 걷어내고 숫자를 읽는다 — \d+만 잡으면
+  // 콤마 앞 "2"에서 끊겨 카운터가 2에서 멈추던 버그
+  const num = Number(stat.replace(/,/g, "").match(/\d+/)?.[0] ?? 0);
   const suffix = stat.replace(/^[\d,.]+/, "");
   const shown = Math.round(
     interpolate(t, [startSec + 0.05, startSec + 0.6], [0, num], clamp),
@@ -1098,7 +1100,7 @@ export const StatPunch: React.FC<{
         }}
       >
         <span style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent }}>
-          {shown.toLocaleString()}
+          {shown.toLocaleString("en-US") /* 천 단위 콤마 — 렌더 환경 로케일에 안 흔들리게 고정 */}
         </span>
         <span style={{ fontSize: 100 }}>{suffix}</span>
       </div>
