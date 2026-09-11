@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
 import { InstallAppLink, InstallToast } from "@/components/install-app";
 import { LangProvider, T } from "@/components/lang";
+import { ServiceWorker } from "@/components/service-worker";
 import { getDevlogs, getProjects, getShorts } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -93,6 +94,7 @@ export default function RootLayout({
           </div>
         </footer>
         <InstallToast />
+        <ServiceWorker />
         </LangProvider>
         <script
           type="application/ld+json"
