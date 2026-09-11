@@ -2,13 +2,13 @@
   "vibelog": {
     "lastSha": "aca34bce052610b0c9657ff95835d228704b9a83",
     "lastRun": "2026-09-11T15:18:49.905Z",
-    "lastDate": "2026-09-12",
+    "lastDate": "2026-09-11",
     "daySince": "2026-09-10T17:29:51.398Z"
   },
   "apart": {
     "lastSha": "f21581cd2917962d6e8b97a73f9218d8801e7575",
     "lastRun": "2026-09-11T15:17:51.426Z",
-    "lastDate": "2026-09-12",
+    "lastDate": "2026-09-11",
     "daySince": "2026-09-10T17:30:39.358Z"
   }
 }
