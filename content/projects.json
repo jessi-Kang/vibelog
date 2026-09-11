@@ -12,9 +12,9 @@
     "homepage": "https://vibelog-orcin.vercel.app",
     "language": "JavaScript",
     "lastActivity": "2026-09-11",
-    "weekCommits": 170,
-    "todayCommits": 21,
-    "totalCommits": 170,
+    "weekCommits": 186,
+    "todayCommits": 37,
+    "totalCommits": 186,
     "countsDate": "2026-09-11"
   },
   {
@@ -24,15 +24,15 @@
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
     "status": "preview",
     "stack": [
-      "HTML"
+      "TypeScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/apart",
     "homepage": "https://apt-gam.vercel.app",
-    "language": "HTML",
+    "language": "TypeScript",
     "lastActivity": "2026-09-11",
-    "weekCommits": 40,
-    "todayCommits": 22,
-    "totalCommits": 40,
+    "weekCommits": 66,
+    "todayCommits": 48,
+    "totalCommits": 66,
     "countsDate": "2026-09-11",
     "theme": "paper"
   }
