@@ -8,8 +8,8 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "닮지도 않은 이름에 경고가 222건 떴습니다.",
-      "en": "222 warnings on names that look nothing alike.",
+      "ko": "안 닮은 이름끼리 경고가 222건 떴습니다.",
+      "en": "222 warnings fired on names that look nothing alike.",
       "keywords": [
         "경고가",
         "222건"
@@ -20,37 +20,23 @@
     },
     {
       "scene": "fail",
-      "ko": "두 이름이 얼마나 다른지 점수를 매기는 계산이 있습니다.",
-      "en": "There is a routine that scores how different two names are.",
+      "ko": "두 이름의 차이를 세는 계산이 일찍 멈출 때, 임시 점수 3점을 돌려줬습니다.",
+      "en": "A routine scores how different two names are, stopping early and handing back a placeholder 3.",
       "keywords": [
-        "얼마나 다른지",
-        "점수를"
+        "차이를 세는"
       ],
       "keywordsEn": [
-        "scores",
-        "how different"
+        "placeholder 3"
       ]
     },
     {
       "scene": "fail",
-      "ko": "충분히 다르면 시간을 아끼려고 계산을 일찍 멈추게 해 뒀습니다.",
-      "en": "To save time, it stops early when they are clearly far apart.",
+      "ko": "그런데 3점은 비슷한 이름 판정 범위 안이었습니다.",
+      "en": "But 3 landed inside the near-match range.",
       "keywords": [
-        "일찍 멈추게"
+        "비슷한 이름 판정 범위"
       ],
       "keywordsEn": [
-        "stops early"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "그때 돌려주는 임시 점수 3점이 하필 비슷하다고 보는 범위 안이었습니다.",
-      "en": "The placeholder score it returned, 3, sat inside the near-match range.",
-      "keywords": [
-        "비슷하다고 보는"
-      ],
-      "keywordsEn": [
-        "placeholder score",
         "near-match range"
       ],
       "diagram": {
@@ -58,89 +44,69 @@
         "labels": [
           "비슷하다고 보는 범위",
           "임시 점수 3점",
-          "범위 밖 큰 수"
+          "범위 밖의 큰 수"
         ],
         "labelsEn": [
           "near-match range",
-          "placeholder score 3",
-          "outside the range"
+          "placeholder 3",
+          "large number outside"
         ]
       }
     },
     {
       "scene": "build",
-      "ko": "임시 점수를 범위 밖의 큰 수로 바꾸니 경고가 0건이 됐습니다.",
-      "en": "Swapping in a large number outside that range dropped the warnings to zero.",
-      "keywords": [
-        "큰 수로",
-        "0건이"
-      ],
+      "ko": "임시 점수를 판정 범위 밖의 큰 수로 바꾸니 경고가 0건이 됐습니다.",
+      "en": "Swapping it for a large number outside that range dropped warnings to 0.",
+      "keywords": [],
       "keywordsEn": [
-        "large number",
-        "zero"
+        "outside that range"
       ],
       "stat": "0건",
-      "statEn": "0 warnings",
-      "diagram": {
-        "kind": "beforeafter",
-        "labels": [
-          "임시 점수 3점",
-          "경고 222건",
-          "범위 밖 큰 수",
-          "경고 0건"
-        ],
-        "labelsEn": [
-          "placeholder 3",
-          "222 warnings",
-          "number outside range",
-          "0 warnings"
-        ]
-      }
+      "statEn": "0 warnings"
     },
     {
       "scene": "demo",
-      "ko": "아파트 이름이 진짜인지 지어낸 건지 맞히는 게임입니다.",
-      "en": "The game shows an apartment name and you guess if it is real.",
+      "ko": "아파트 이름을 보고 진짜인지 지어낸 이름인지 맞히는 하루 10문제 퀴즈입니다.",
+      "en": "You see an apartment name and guess if it is real or made up, 10 questions a day.",
       "keywords": [
         "진짜인지",
-        "지어낸"
+        "10문제"
       ],
       "keywordsEn": [
-        "apartment name",
-        "real"
+        "10 questions"
       ],
+      "stat": "10문제",
+      "statEn": "10 questions",
       "screen": "/play"
     },
     {
       "scene": "demo",
-      "ko": "넷 중 진짜 하나를 찾는 게임도 같이 붙였습니다.",
-      "en": "I added a second game: find the one real name out of four.",
+      "ko": "결이 다른 두 번째 게임도 같이 붙였습니다.",
+      "en": "A second game with a different feel went in too.",
       "keywords": [],
       "keywordsEn": [
-        "one real name"
+        "second game"
       ],
       "screen": "/findreal"
     },
     {
       "scene": "next",
-      "ko": "지금 문제는 샘플 자료라, 실제 자료는 사람이 검토한 뒤에만 올립니다.",
-      "en": "The questions still use sample data, and real records go in only after a person reviews them.",
+      "ko": "실제 단지 자료는 사람이 한 번 검토한 뒤에만 문제로 올라갑니다.",
+      "en": "Real complex records only enter the question pool after a person reviews them.",
       "keywords": [
-        "샘플 자료라",
-        "사람이 검토한"
+        "사람이 한 번 검토한"
       ],
       "keywordsEn": [
-        "sample data",
-        "a person reviews"
+        "a person reviews them"
       ],
-      "art": "a small robot inspecting a stack of paper forms with a magnifying glass before stamping one"
+      "art": "a single lantern held above a stack of paper cards on a wooden desk"
     },
     {
       "scene": "end",
-      "ko": "기획서에서 돌아가는 게임까지, 하루 걸렸습니다.",
-      "en": "From a planning doc to a working game in one day.",
+      "ko": "기획서에서 돌아가는 게임까지, 하루였습니다.",
+      "en": "From a planning doc to a playable game, in one day.",
       "keywords": [
-        "하루"
+        "하루였습니다"
       ],
       "keywordsEn": [
         "one day"
@@ -152,12 +118,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "임시 점수가 문제였습니다",
-    "titleEn": "The placeholder score was the problem",
-    "before": "닮지도 않은 이름에 경고 222건",
-    "after": "임시 점수를 범위 밖 값으로 바꾸니 0건",
-    "beforeEn": "222 warnings on names that look nothing alike",
-    "afterEn": "A placeholder outside the range brought it to 0"
+    "title": "닮지 않은 이름에 경고가 떴다",
+    "titleEn": "Warnings on names that don't match",
+    "before": "안 닮은 이름끼리 경고가 222건 떴습니다.",
+    "after": "임시 점수를 판정 범위 밖으로 바꾸니 0건이 됐습니다.",
+    "beforeEn": "222 warnings on names that look nothing alike.",
+    "afterEn": "Moving the placeholder outside the range brought it to 0."
   },
   "commits": [
     [
@@ -302,22 +268,22 @@
   "commitCount": 17,
   "handle": "apt-gam.vercel.app",
   "captions": {
-    "ko": "아파트 이름이 진짜인지 맞히는 퀴즈를 하루 만에 만들었는데, 닮지도 않은 이름에 경고가 222건 떴습니다. 원인은 계산을 일찍 멈출 때 돌려주던 임시 점수였습니다.",
-    "en": "Built a real-or-fake apartment name quiz in one day, then got 222 warnings on names that look nothing alike. The culprit was the placeholder score returned by an early exit."
+    "ko": "아파트 이름이 진짜인지 맞히는 퀴즈를 기획서부터 하루 만에 만들었습니다. 이름 검사에서 경고 222건이 뜬 이유는 계산을 일찍 멈출 때 돌려준 임시 점수 3점이었습니다.",
+    "en": "Went from a planning doc to a working apartment-name quiz in one day. The 222 bogus warnings came from a placeholder score of 3 handed back on early exits."
   },
   "hashtags": [
     "#개발",
+    "#사이드프로젝트",
     "#삽질",
-    "#디버깅",
-    "#웹개발",
+    "#퀴즈게임",
     "#devlog",
     "#buildinpublic",
-    "#sidequest"
+    "#webdev"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtwxatmh",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtwxaw9s",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtwxciyo",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtwxckkg"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtwyc2jj",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtwyc4ul",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtwydjjz",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtwydlyo"
   }
 }
