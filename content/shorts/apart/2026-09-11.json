@@ -1,6 +1,6 @@
 {
-  "template": "ship-it",
-  "music": "upbeat",
+  "template": "fail",
+  "music": "tense",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-09-11",
@@ -8,125 +8,121 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "넷 중 진짜를 고르는 게임을 열었습니다.",
-      "en": "A new game: find the one real name out of four.",
+      "ko": "설치한 앱에서 로그인이 막혔습니다.",
+      "en": "Sign-in was blocked inside the installed app.",
       "keywords": [
-        "진짜를"
+        "막혔습니다"
       ],
       "keywordsEn": [
-        "real"
-      ],
-      "screen": "/findreal"
-    },
-    {
-      "scene": "build",
-      "ko": "진짜 아파트를 서울 2,889곳으로 늘렸습니다.",
-      "en": "The real apartments now come from 2,889 complexes in Seoul.",
-      "keywords": [
-        "2,889곳으로"
-      ],
-      "keywordsEn": [
-        "2,889"
-      ],
-      "stat": "2,889곳",
-      "statEn": "2,889 complexes",
-      "screen": "/findreal"
-    },
-    {
-      "scene": "build",
-      "ko": "하루 분량도 3문제에서 10문제로 늘렸습니다.",
-      "en": "A daily round grew from 3 to 10 questions.",
-      "keywords": [
-        "10문제로"
-      ],
-      "keywordsEn": [
-        "10 questions"
-      ],
-      "stat": "10문제",
-      "statEn": "10 questions",
-      "screen": "/"
-    },
-    {
-      "scene": "demo",
-      "ko": "문제마다 제한시간이 붙어서 15초 안에 골라야 합니다.",
-      "en": "Each question has a clock; you pick within 15 seconds.",
-      "keywords": [
-        "15초 안에"
-      ],
-      "keywordsEn": [
-        "15 seconds"
-      ],
-      "screen": "/findreal"
-    },
-    {
-      "scene": "demo",
-      "ko": "다 풀어도 문제가 계속 나옵니다.",
-      "en": "Even after you finish, more questions keep coming.",
-      "keywords": [
-        "계속"
-      ],
-      "keywordsEn": [
-        "keep coming"
-      ],
-      "screen": "/assemble"
-    },
-    {
-      "scene": "fail",
-      "ko": "지어낸 가짜 이름 104개를 실제 목록과 대조했습니다.",
-      "en": "I checked my 104 invented fake names against the real list.",
-      "keywords": [
-        "104개를",
-        "실제 목록과"
-      ],
-      "keywordsEn": [
-        "104 invented"
+        "blocked"
       ]
     },
     {
       "scene": "fail",
-      "ko": "그중 7개가 서울에 실제로 있는 아파트였습니다.",
-      "en": "Seven of them were actual apartments in Seoul.",
+      "ko": "사이트 주소가 두 개 있었습니다.",
+      "en": "The site had two addresses.",
       "keywords": [
-        "7개가"
+        "주소가"
       ],
       "keywordsEn": [
-        "Seven"
+        "two addresses"
       ],
       "diagram": {
-        "kind": "sets",
+        "kind": "fork",
         "labels": [
-          "지어낸 이름 104개",
-          "서울 실제 2,889곳",
-          "7개"
+          "같은 사이트",
+          "옛 주소",
+          "새 주소",
+          "설치한 앱",
+          "브라우저"
         ],
         "labelsEn": [
-          "104 fake names",
-          "2,889 real in Seoul",
-          "7"
+          "same site",
+          "old address",
+          "new address",
+          "installed app",
+          "browser"
         ]
       }
     },
     {
-      "scene": "next",
-      "ko": "나머지 두 게임도 결과 그림을 만들 차례입니다.",
-      "en": "Next: shareable result images for the other two games.",
+      "scene": "fail",
+      "ko": "앱은 옛 주소에 계속 붙어 있었습니다.",
+      "en": "The installed app was still stuck on the old one.",
+      "keywords": [],
+      "keywordsEn": [
+        "stuck",
+        "old one"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "주소를 하나로 모았습니다.",
+      "en": "I folded everything into one address.",
       "keywords": [
-        "나머지 두 게임도"
+        "하나로"
       ],
       "keywordsEn": [
-        "other two games"
+        "one address"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "주소가 둘이면 같은 사람 기록도 둘로 갈라지니까요.",
+      "en": "Two addresses would split one person's records in two.",
+      "keywords": [
+        "둘로 갈라지니까요"
       ],
-      "art": "a tiny robot pressing a red ink stamp onto two blank paper cards"
+      "keywordsEn": [
+        "split",
+        "in two"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 설치한 앱에서도 로그인이 됩니다.",
+      "en": "Now sign-in works in the installed app too.",
+      "keywords": [
+        "로그인이 됩니다"
+      ],
+      "keywordsEn": [
+        "works"
+      ],
+      "screen": "/"
+    },
+    {
+      "scene": "demo",
+      "ko": "내 기록도 한 계정에 모입니다.",
+      "en": "My records land in one account.",
+      "keywords": [
+        "한 계정에"
+      ],
+      "keywordsEn": [
+        "one account"
+      ],
+      "screen": "/record"
+    },
+    {
+      "scene": "next",
+      "ko": "공개 순위표는 점수 검사를 서버로 옮긴 다음입니다.",
+      "en": "A public leaderboard comes after score checks move to the server.",
+      "keywords": [
+        "서버로"
+      ],
+      "keywordsEn": [
+        "the server"
+      ],
+      "art": "a tiny robot on a podium inspecting stacked medals with a magnifying glass"
     },
     {
       "scene": "end",
-      "ko": "가짜를 지어내다 진짜를 만났습니다.",
-      "en": "I invented fakes and ran into the real thing.",
+      "ko": "주소는 하나여야 합니다.",
+      "en": "An app should have one address.",
       "keywords": [
-        "진짜를"
+        "하나여야"
       ],
       "keywordsEn": [
-        "the real thing"
+        "one address"
       ]
     }
   ],
@@ -135,196 +131,196 @@
     "steps": []
   },
   "failCard": {
-    "title": "지어낸 이름이 실제로 있었다",
-    "titleEn": "The invented names were real",
-    "before": "완전히 지어낸 줄 알았던 이름 104개",
-    "after": "7개를 걸러내고 다른 이름으로 채웠습니다",
-    "beforeEn": "104 names I was sure I had invented",
-    "afterEn": "Dropped 7 of them and wrote replacements"
+    "title": "로그인이 막혔다",
+    "titleEn": "Sign-in was blocked",
+    "before": "설치한 앱에서 구글 로그인이 차단됐습니다",
+    "after": "주소를 하나로 합쳐 해결했습니다",
+    "beforeEn": "Google sign-in was blocked in the installed app",
+    "afterEn": "Folded the two addresses into one"
   },
   "commits": [
     [
-      "bada909",
-      "docs: 게임 모드 문서를 10문제·무한 모드·제한시간 체제로 현행화"
+      "f21581c",
+      "fix: 결과 이미지 저장·관인·괘선 정렬·터치 잔상 네 건"
     ],
     [
-      "e8d03f2",
-      "fix: 타임바를 width 대신 transform으로 — 레이아웃 재계산 제거"
+      "c4f4c47",
+      "fix: 푸터 '앱 설치'가 폰에서 없는 버튼을 찾으라고 하던 것"
     ],
     [
-      "67ea74e",
-      "feat: 조립·진짜 찾기 10문제 확장, 제한시간, 무한 모드 시간 기록"
+      "3e5405b",
+      "fix: 설치한 앱에서 구글 로그인이 막히던 것 (주소를 하나로 모음)"
     ],
     [
-      "f81fe63",
-      "feat: 무한 모드 — 데일리가 끝나도 게임은 안 끝난다"
+      "ec0ca19",
+      "feat: 담당 구역을 골라 우리 동네 단지만 감별할 수 있게"
     ],
     [
-      "f55cb57",
-      "design: 도장 품질 통일 — 공유 이미지도 웹과 같은 SVG 필터로 찍는다"
+      "a9e4720",
+      "fix: 배경음이 안 들리고 음소거 아이콘이 안 보이던 것"
     ],
     [
-      "37fbcad",
-      "design: 카피라이트 표기 추가, 본편 텍스트 복사 버튼 제거"
+      "fee744c",
+      "design: 홈 신분증을 한 줄로 줄이고 계정 동작은 기록 열람실로 옮겼다"
     ],
     [
-      "7b5f000",
-      "design: 공유 통지서의 등급 도장에 웹과 같은 거친 질감"
+      "704087f",
+      "fix: 서비스워커 no-op fetch 핸들러 제거, 모바일 세로 여백 리듬 정리"
     ],
     [
-      "a84b725",
-      "feat: 판정 효과음과 게임 닫기 버튼"
+      "2f4a779",
+      "design: 지금 무한인지 공식전인지 화면이 말하게 했다"
     ],
     [
-      "774935f",
-      "fix: 관인 링 텍스트를 필터 밖으로 — 실기기 깨짐 2차 수정"
+      "8fddc73",
+      "fix: 첫 방문 규칙 한 줄이 못 맞히는 사람에게 영원히 따라다니던 문제"
     ],
     [
-      "d800e4f",
-      "feat: 다시 하기 — 세 게임 전부 연습 재도전 추가"
+      "849904f",
+      "fix: 큰 폰에서 빡빡하던 레이아웃과 어긋난 정렬, 서비스워커 콘솔 오류"
     ],
     [
-      "2345053",
-      "feat: 결과 통지서 공유 이미지 — 갤러리에 저장되는 감별 결과"
+      "2188ec1",
+      "asset: 단순·그럴싸한 가짜 이름 74건 추가 + 유사도 임계를 길이 비례로"
     ],
     [
-      "f061fd8",
-      "fix: 관인 링 텍스트가 휴대폰에서 깨지는 문제 — textPath를 버렸다"
+      "1da69a1",
+      "design: 결과 화면 관인 제거, 버튼 폭·배치 정리, 문제 이름 줄바꿈 fix"
     ],
     [
-      "b5c7503",
-      "design: 창구 홈 리디자인 — 관인·이중 괘선·창구 번호판"
+      "e398857",
+      "design: 화면 용어 통일 + 용어집, 게임 배경음과 효과음 보강"
     ],
     [
-      "56d214b",
-      "fix: 모바일 줄바꿈·오버플로 정리 — 푸터 스택, 긴 단지명 래핑, 그리드 한 줄"
+      "8b5d29b",
+      "feat: 기록 열람실 — 내 기록과 남들 사이 내 위치를 한 장에"
     ],
     [
-      "7bd65f4",
-      "design: 게임 중 모션 — 서류가 놓이고 도장이 내리찍힌다"
+      "9c62ac1",
+      "design: 결과 화면 관인·버튼 정리, 세션 종료 동선 일원화"
     ],
     [
-      "02fb2bb",
-      "feat: 어제 전국 정답률 노출 — 홈 하이라이트와 정답 대장"
+      "8d444ed",
+      "feat: 접수 창구 배경음 — 약하게 깔리는 36초 루프"
     ],
     [
-      "06c54c7",
-      "feat: 진짜 찾기 4지선다 — 세 번째 데일리 게임"
+      "76a9143",
+      "docs: 기획 문서를 현재 구현에 맞게 현행화 + 도메인 apt-game.app 반영"
     ],
     [
-      "c19538f",
-      "docs: 데이터 파이프라인 현행화 — 실데이터·가짜 풀 절차를 가이드에 반영"
+      "48c3c42",
+      "fix: UX 플로우 점검 — 길 잃는 지점과 기록이 증발하는 경로를 막았다"
     ],
     [
-      "ff09f58",
-      "feat: 가짜 이름 풀을 16개에서 120개로 확장"
+      "96836c6",
+      "feat: 공식전 성적표 다시 보기 + 초성 힌트를 정답 칸 안으로"
     ],
     [
-      "8efac41",
-      "feat: 출제 풀을 K-apt 실데이터 서울 2,889개 단지로 교체"
+      "87e8415",
+      "chore: 배포 워크플로에 수동 실행 버튼 추가"
     ]
   ],
   "commitsEn": [
     [
-      "bada909",
-      "docs: Update game mode documentation to 10-question, infinite, and timed modes"
+      "f21581c",
+      "fix: result image save, seal mark, and line alignment, touch ghosting issues (four fixes)"
     ],
     [
-      "e8d03f2",
-      "fix: Replace timebar width with transform — remove layout recalculation"
+      "c4f4c47",
+      "fix: footer 'install app' button not found on mobile phones"
     ],
     [
-      "67ea74e",
-      "feat: Expand assembly and real-find 10-question modes, add timed and infinite mode time recording"
+      "3e5405b",
+      "fix: Google login blocked in installed app (unified addresses)"
     ],
     [
-      "f81fe63",
-      "feat: Infinite mode — game continues after daily ends"
+      "ec0ca19",
+      "feat: select coverage area to identify only our apartment complex"
     ],
     [
-      "f55cb57",
-      "design: Unify seal quality — capture shared images with same SVG filter as web"
+      "a9e4720",
+      "fix: background sound not playing and mute icon not visible"
     ],
     [
-      "37fbcad",
-      "design: Add copyright notice, remove main text copy button"
+      "fee744c",
+      "design: condense home ID card to single line, move account actions to history archive"
     ],
     [
-      "7b5f000",
-      "design: Add same rough texture to rank seal in shared notification"
+      "704087f",
+      "fix: remove service worker no-op fetch handler, clean up mobile portrait spacing"
     ],
     [
-      "a84b725",
-      "feat: Judgment sound effects and game close button"
+      "2f4a779",
+      "design: make screen clearly indicate infinite or official game mode"
     ],
     [
-      "774935f",
-      "fix: Move seal ring text outside filter — secondary fix for device rendering"
+      "8fddc73",
+      "fix: first visit rule misalignment that persisted forever for some users"
     ],
     [
-      "d800e4f",
-      "feat: Retry — add practice reattempt for all three games"
+      "849904f",
+      "fix: tight layout and misaligned spacing on large phones, service worker console error"
     ],
     [
-      "2345053",
-      "feat: Result notification shared image — authentication result saved to gallery"
+      "2188ec1",
+      "asset: add 74 simple and plausible fake names + similarity threshold scaled by length"
     ],
     [
-      "f061fd8",
-      "fix: Fix seal ring text breaking on mobile — removed textPath"
+      "1da69a1",
+      "design: remove seal mark from result screen, refine button width and layout, fix problem name wrapping"
     ],
     [
-      "b5c7503",
-      "design: Redesign counter home — seal, double lines, counter number plate"
+      "e398857",
+      "design: unify screen terminology + glossary, enhance game background and effect sounds"
     ],
     [
-      "56d214b",
-      "fix: Clean up mobile line breaks and overflow — footer stack, long complex name wrapping, single-row grid"
+      "8b5d29b",
+      "feat: history archive — show my position between my records and others at a glance"
     ],
     [
-      "7bd65f4",
-      "design: In-game motion — document placed and seal stamped"
+      "9c62ac1",
+      "design: clean up result screen seal mark and buttons, unify session end flow"
     ],
     [
-      "02fb2bb",
-      "feat: Expose yesterday national correct rate — home highlight and answer ledger"
+      "8d444ed",
+      "feat: reception lobby background sound — subtle 36-second loop"
     ],
     [
-      "06c54c7",
-      "feat: Real-find multiple choice — third daily game"
+      "76a9143",
+      "docs: update planning document to match current implementation + reflect apt-game.app domain"
     ],
     [
-      "c19538f",
-      "docs: Update data pipeline — reflect real data and fake pool procedures in guide"
+      "48c3c42",
+      "fix: UX flow check — blocked navigation dead ends and record loss paths"
     ],
     [
-      "ff09f58",
-      "feat: Expand fake name pool from 16 to 120"
+      "96836c6",
+      "feat: official game result sheet replay + initial consonant hints inside answer field"
     ],
     [
-      "8efac41",
-      "feat: Replace question pool with K-apt real data Seoul 2,889 complexes"
+      "87e8415",
+      "chore: add manual trigger button to deployment workflow"
     ]
   ],
   "commitCount": 20,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "넷 중 진짜 아파트를 고르는 게임을 열었습니다. 지어낸 가짜 이름 104개를 서울 실제 목록과 대조했더니 7개가 정말 있는 아파트였습니다.",
-    "en": "Opened a new game: find the one real apartment out of four. I checked 104 invented fake names against Seoul's real list, and seven of them actually exist."
+    "ko": "설치한 앱에서만 로그인이 막힌 이유는 사이트 주소가 두 개였기 때문입니다. 주소를 하나로 모아 기록도 한 계정에 모이게 했습니다.",
+    "en": "Sign-in only failed inside the installed app because the site had two addresses. Folding them into one also keeps every record in a single account."
   },
   "hashtags": [
-    "#개발",
-    "#데브로그",
-    "#아파트",
-    "#게임개발",
+    "#개발일지",
+    "#apart",
+    "#로그인",
+    "#PWA",
     "#devlog",
-    "#buildinpublic",
-    "#sidep roject"
+    "#sideproject",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtx1nokk",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtx1nq34",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtx1p9um",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtx1pccr"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtx3url9",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtx3uu64",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtx3wac3",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtx3wcrz"
   }
 }

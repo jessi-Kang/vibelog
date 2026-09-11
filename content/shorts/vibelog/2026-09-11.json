@@ -1,6 +1,6 @@
 {
-  "template": "fail",
-  "music": "tense",
+  "template": "before-after",
+  "music": "ship-it",
   "theme": "terminal",
   "repo": "vibelog",
   "date": "2026-09-11",
@@ -8,241 +8,291 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "영상 목소리가 숫자를 뭉갰습니다.",
-      "en": "The narration voice mangled the numbers.",
+      "ko": "영상이 45초에서 끊겼습니다.",
+      "en": "The video cut off at 45 seconds.",
       "keywords": [
-        "숫자를",
-        "뭉갰습니다"
+        "45초에서"
       ],
       "keywordsEn": [
-        "mangled",
-        "numbers"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "222건을 어색하게 읽었습니다.",
-      "en": "It read \"222 cases\" all wrong.",
-      "keywords": [
-        "222건을",
-        "어색하게"
-      ],
-      "keywordsEn": [
-        "222 cases",
-        "wrong"
-      ],
-      "stat": "222건",
-      "statEn": "222 cases"
-    },
-    {
-      "scene": "fail",
-      "ko": "발음을 손봤더니 이번엔 음절이 뭉개졌습니다.",
-      "en": "I nudged the spelling, and the syllables came out mashed up.",
-      "keywords": [
-        "발음을 손봤더니",
-        "음절이 뭉개졌습니다"
-      ],
-      "keywordsEn": [
-        "nudged the spelling",
-        "mashed up"
+        "45 seconds"
       ]
     },
     {
       "scene": "build",
-      "ko": "결국 숫자 해석을 맡기지 않기로 했습니다.",
-      "en": "So I stopped leaving the numbers up to it.",
+      "ko": "배경 음악 파일이 모두 45초였습니다.",
+      "en": "Every background music file was exactly 45 seconds.",
       "keywords": [
-        "맡기지 않기로"
+        "45초였습니다"
       ],
       "keywordsEn": [
-        "stopped leaving"
+        "exactly 45 seconds"
+      ],
+      "stat": "45초",
+      "statEn": "45 seconds"
+    },
+    {
+      "scene": "build",
+      "ko": "짧은 쪽에 맞춰 자르게 해 둔 게 원인이었습니다.",
+      "en": "The mix trimmed to the shorter track.",
+      "keywords": [
+        "짧은 쪽에",
+        "원인이었습니다"
+      ],
+      "keywordsEn": [
+        "the shorter track"
       ]
     },
     {
       "scene": "build",
-      "ko": "세 자리 넘는 숫자는 한글로 풀어서 넘깁니다.",
-      "en": "Numbers of three digits or more get spelled out in Korean letters first.",
+      "ko": "이제 음악을 필요한 만큼 반복해 잇습니다.",
+      "en": "Now the music loops as long as the video needs.",
       "keywords": [
-        "한글로 풀어서"
+        "반복해 잇습니다"
       ],
       "keywordsEn": [
-        "spelled out"
+        "loops"
       ],
-      "screen": "/shorts"
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "45초 음악",
+          "45초에서 끊김",
+          "반복해 이은 음악",
+          "끝까지 재생"
+        ],
+        "labelsEn": [
+          "45s music",
+          "cut at 45s",
+          "looped music",
+          "plays to the end"
+        ]
+      }
     },
     {
       "scene": "demo",
-      "ko": "이제 목소리가 숫자를 또박또박 읽습니다.",
-      "en": "Now the voice reads every number clearly.",
+      "ko": "이제 50초 영상도 끝인사까지 나옵니다.",
+      "en": "A 50-second video now reaches its closing screen.",
       "keywords": [
-        "또박또박"
+        "끝인사까지"
       ],
       "keywordsEn": [
-        "clearly"
+        "closing screen"
       ],
+      "stat": "50초",
+      "statEn": "50 seconds",
       "screen": "/shorts"
     },
     {
-      "scene": "demo",
-      "ko": "화면 자막은 그대로 숫자로 나옵니다.",
-      "en": "The on-screen captions still show plain digits.",
+      "scene": "fail",
+      "ko": "숫자 읽기에서 두 번 헛짚었습니다.",
+      "en": "I got number pronunciation wrong twice.",
       "keywords": [
-        "자막은",
-        "숫자로"
+        "두 번"
       ],
       "keywordsEn": [
-        "captions",
-        "plain digits"
+        "twice"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "단위에만 특별 규칙을 둔 게 원인이었습니다.",
+      "en": "The real cause was a special rule for one unit word.",
+      "keywords": [
+        "특별 규칙을"
       ],
-      "screen": "/shorts"
+      "keywordsEn": [
+        "a special rule"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "222건",
+          "매끄럽게 읽힘",
+          "단위만 튀어나옴",
+          "일반 규칙",
+          "특별 규칙"
+        ],
+        "labelsEn": [
+          "222 items",
+          "reads smoothly",
+          "unit pops out",
+          "general rule",
+          "special rule"
+        ]
+      }
     },
     {
       "scene": "next",
-      "ko": "다음엔 그림을 선과 도형으로 짜 맞춰 볼 생각입니다.",
-      "en": "Next I want to build the pictures out of lines and shapes.",
+      "ko": "앞으로 나올 숫자 표현도 미리 넣어 뒀습니다.",
+      "en": "I already added the number forms likely to come up next.",
       "keywords": [
-        "선과 도형으로"
+        "미리 넣어 뒀습니다"
       ],
       "keywordsEn": [
-        "lines and shapes"
+        "already added"
       ],
-      "art": "a tiny robot assembling a picture out of straight lines and simple shapes"
+      "art": "a tiny robot lining up numbered wooden blocks on a shelf"
     },
     {
       "scene": "end",
-      "ko": "숫자 읽는 법은 사람이 정해 주기로 했습니다.",
-      "en": "How to read a number is something I decide myself now.",
+      "ko": "글도 영상도 매일 밤 자동으로 올라갑니다.",
+      "en": "Both posts and videos publish automatically every night.",
       "keywords": [
-        "사람이 정해"
+        "매일 밤"
       ],
       "keywordsEn": [
-        "I decide myself"
-      ]
+        "every night"
+      ],
+      "screen": "/log"
     }
   ],
   "demo": {
-    "url": "https://vibelog-orcin.vercel.app",
+    "url": "https://vibelog.space",
     "steps": []
   },
   "failCard": {
-    "title": "목소리가 숫자를 뭉갰다",
-    "titleEn": "The voice mangled numbers",
-    "before": "숫자 읽는 법이 오락가락했습니다",
-    "after": "숫자를 한글로 다 풀어서 넘깁니다",
-    "beforeEn": "The voice kept flip-flopping on how to read numbers",
-    "afterEn": "Numbers are spelled out in Korean letters before handoff"
+    "title": "단위만 튀어나왔다",
+    "titleEn": "Only the unit popped out",
+    "before": "숫자 대신 뒤의 단위를 세게 발음하게 고쳤습니다.",
+    "after": "특별 규칙을 지우니 일반 규칙이 알아서 맞게 읽었습니다.",
+    "beforeEn": "I made the unit word after the number sound harder.",
+    "afterEn": "Deleting the special rule let the general rule read it right."
   },
   "commits": [
     [
-      "11609cf",
-      "fix: TTS 숫자 발음을 한글로 전부 풀어 보낸다 — \"22엉개\"·\"영엉건\" 사고"
+      "aca34bc",
+      "쇼츠: 발음 교정에 시각·복합 수사 케이스 추가"
     ],
     [
-      "6ba3091",
-      "feat: 프로젝트 상세 수치도 실시간 — 누적·주간 커밋, 마지막 활동"
+      "0b14ae5",
+      "쇼츠: 발음용 텍스트를 소리 나는 대로 — 숫자 전부 풀고, 된소리·연음 반영"
     ],
     [
-      "abb679e",
-      "feat: 홈 오늘·이번 주 커밋을 방문 시점 실시간으로 — 브라우저가 직접 센다"
+      "49d4ae3",
+      "쇼츠: 다이어그램 위에 숫자 카운터가 겹쳐 찍히던 것"
     ],
     [
-      "f63c25b",
-      "fix: TTS가 \"222건\"을 평음 [건]으로 읽던 것 — 발음용 텍스트를 \"껀\"으로"
+      "1cc1472",
+      "쇼츠: 훅이 통째로 하이라이트되던 것 — 강조 분량에 상한"
     ],
     [
-      "ffba373",
-      "feat: svg-creator 스킬 설치 — 벡터 그래픽 제작 (upbrew-tech, Apache 2.0)"
+      "a8f6fe9",
+      "쇼츠: 한글로 푼 숫자와 단위를 붙여 쓴다"
     ],
     [
-      "157b315",
-      "feat: 데모 화면을 내레이션 내용과 매칭 — screen 지정·구간 녹화·구간 렌더"
+      "0c37d85",
+      "쇼츠: \"건\"의 특별 대우를 없앤다 — 두 번 헛짚은 발음 교정"
     ],
     [
-      "02d5c49",
-      "fix: TTS가 \"10문제\"를 \"십 문제\"로 읽던 것 — 고유어 단위에 문제 추가"
+      "eb488c1",
+      "쇼츠: 숫자선 값 라벨이 범위 밴드에 걸치던 것 — 밴드 밖으로 뺀다"
     ],
     [
-      "5e3c4d5",
-      "fix: 머지 커밋을 데브로그 원료에서 제외"
+      "c39768f",
+      "PWA: 서비스 워커 추가 — 설치한 앱이 브라우저 탭으로 열리던 문제"
     ],
     [
-      "f775bf4",
-      "feat: \"오늘\" 지표를 KST 자정 기준으로 리셋 — countsDate + 클라이언트 판정"
+      "38f75a1",
+      "쇼츠: \"N건\"의 된소리 강제를 뺀다 — 읽을 때 어색했다"
     ],
     [
-      "a6afc2e",
-      "fix: 쇼츠 대본에도 정체불명 숫자 금지 — \"3을 주고 멈추게\" 재발 방지"
+      "074f370",
+      "쇼츠: 다이어그램 라벨 줄바꿈 규칙 — 한 글자가 떨어져 나가던 문제"
     ],
     [
-      "75bb2a1",
-      "fix: \"3을 돌려주게\" 문장 손질 + 정체불명 숫자 금지 규칙"
+      "da49005",
+      "쇼츠: 다이어그램 모서리를 테마 값으로 — 템플릿마다 형태가 따로 놀던 문제"
+    ],
+    [
+      "9d91729",
+      "쇼츠: 내레이션 예산을 26~34초로 — 완성 길이가 규격을 넘지 않게"
+    ],
+    [
+      "5bfad36",
+      "쇼츠: 음악이 짧으면 영상이 잘리던 믹스 버그 수정"
+    ],
+    [
+      "cfdc925",
+      "쇼츠: 다이어그램 라벨을 본문 폰트로 — 한글이 대체 글꼴로 떨어지던 문제"
     ]
   ],
   "commitsEn": [
     [
-      "11609cf",
-      "fix: TTS number pronunciation fully expanded to Hangul — \"22엉개\"·\"영엉건\" accidents"
+      "aca34bc",
+      "shorts: add visual and complex number cases to pronunciation correction"
     ],
     [
-      "6ba3091",
-      "feat: project detailed metrics in real-time — cumulative·weekly commits, last activity"
+      "0b14ae5",
+      "shorts: pronunciation text as spoken — expand all numbers, reflect tensification and liaison"
     ],
     [
-      "abb679e",
-      "feat: home today·this week commits in real-time on visit — browser counts directly"
+      "49d4ae3",
+      "shorts: fix number counter overlapping on diagram"
     ],
     [
-      "f63c25b",
-      "fix: TTS reading \"222건\" with flat tone [건] — pronunciation text changed to \"껀\""
+      "1cc1472",
+      "shorts: fix hook being fully highlighted — cap emphasis range"
     ],
     [
-      "ffba373",
-      "feat: svg-creator skill installation — vector graphics creation (upbrew-tech, Apache 2.0)"
+      "a8f6fe9",
+      "shorts: concatenate Korean-written numbers and units"
     ],
     [
-      "157b315",
-      "feat: demo screen matching with narration content — screen specification·segment recording·segment render"
+      "0c37d85",
+      "shorts: remove special treatment of \"건\" — pronunciation correction from double miss"
     ],
     [
-      "02d5c49",
-      "fix: TTS reading \"10문제\" as \"십 문제\" — added native word unit to 문제"
+      "eb488c1",
+      "shorts: move number line value labels outside range band — fix overlap"
     ],
     [
-      "5e3c4d5",
-      "fix: merge commits excluded from devlog source"
+      "c39768f",
+      "PWA: add service worker — fix installed app opening in browser tab"
     ],
     [
-      "f775bf4",
-      "feat: \"today\" metric reset based on KST midnight — countsDate + client judgment"
+      "38f75a1",
+      "shorts: remove forced tensification of \"N건\" — felt awkward when read"
     ],
     [
-      "a6afc2e",
-      "fix: unidentified numbers banned in shorts scripts — \"3을 주고 멈추게\" recurrence prevention"
+      "074f370",
+      "shorts: fix diagram label line-break rule — single character separating"
     ],
     [
-      "75bb2a1",
-      "fix: \"3을 돌려주게\" sentence refinement + unidentified numbers ban rule"
+      "da49005",
+      "shorts: use theme values for diagram corners — fix inconsistent shapes across templates"
+    ],
+    [
+      "9d91729",
+      "shorts: set narration budget to 26-34 seconds — ensure final length stays within spec"
+    ],
+    [
+      "5bfad36",
+      "shorts: fix mix bug where video cuts when music is short"
+    ],
+    [
+      "cfdc925",
+      "shorts: use body font for diagram labels — fix Korean falling back to fallback font"
     ]
   ],
-  "commitCount": 11,
-  "handle": "vibelog-orcin.vercel.app",
+  "commitCount": 14,
+  "handle": "vibelog.space",
   "captions": {
-    "ko": "영상 내레이션이 숫자를 엉뚱하게 읽어서, 세 자리 넘는 숫자는 아예 한글로 풀어 넘기도록 바꿨습니다. 화면 자막은 그대로 숫자입니다.",
-    "en": "The video narration kept butchering numbers, so now anything three digits or more gets spelled out in Korean letters before it reaches the voice. Captions still show plain digits."
+    "ko": "50초 영상이 45초에서 끊기던 이유는 배경 음악 길이였습니다. 음악을 반복해 이어 붙이고 남는 끝을 조용하게 메워, 이제 끝인사까지 나옵니다.",
+    "en": "A 50-second video stopped at 45 because every music file was 45 seconds long. Now the music loops and the tail is padded with silence, so the closing screen survives."
   },
   "hashtags": [
     "#vibelog",
-    "#데브로그",
-    "#TTS",
-    "#음성합성",
     "#개발일지",
-    "#buildinpublic",
-    "#devlog"
+    "#쇼츠제작",
+    "#자동화",
+    "#devlog",
+    "#ffmpeg",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.poster.jpg?v=mtvt485d",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.ko.mp4?v=mtvt4atb",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.en.poster.jpg?v=mtvt5vds",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.en.mp4?v=mtvt5y4o"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtx419uw",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtx41bph",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtx42v4o",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtx42y1l"
   }
 }
