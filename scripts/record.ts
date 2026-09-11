@@ -230,6 +230,10 @@ export async function record(
         .filter((s): s is string => typeof s === "string" && s.length > 0),
     ),
   ];
+  // 대본이 화면을 하나만 골랐으면 홈을 상비로 함께 녹화 — 폰 데모 블록이
+  // 두 번 나올 때 같은 화면만 반복되지 않게 렌더에 고를 여지를 남긴다
+  // (apart 9/11: 전 문장이 /findreal → 두 블록이 똑같은 화면, Jessi 지적)
+  if (screenList.length === 1 && screenList[0] !== "/") screenList.push("/");
   const prewarmTargets = script.demo.steps.length
     ? script.demo.steps
         .filter((s) => s.startsWith("goto "))

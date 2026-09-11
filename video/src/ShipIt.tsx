@@ -143,11 +143,26 @@ function buildSegments(
     if (seg.kind === "phone") {
       // 문장이 화면을 지정했고 녹화가 그 구간을 남겼으면 거기서 재생 —
       // 내레이션 내용과 화면이 맞는다. 아니면 기존 시간순 자르기.
-      const m = seg.screen ? segMap?.get(seg.screen) : undefined;
-      if (m) {
-        const used = usedInScreen.get(seg.screen as string) ?? 0;
-        seg.sourceOffset = m.start + used;
-        usedInScreen.set(seg.screen as string, used + (to - seg.from));
+      let key = seg.screen;
+      let m = key ? segMap?.get(key) : undefined;
+      if (!m && segMap?.size) {
+        // 화면 미지정 블록: 아직 가장 덜 쓴 녹화 화면을 골라 앞 블록과
+        // 같은 화면만 반복되는 것을 피한다 (Jessi: 같은 화면 두 번은 의미 없다)
+        for (const [p, cand] of segMap) {
+          if (!m || (usedInScreen.get(p) ?? 0) < (usedInScreen.get(key!) ?? 0)) {
+            key = p;
+            m = cand;
+          }
+        }
+      }
+      if (m && key) {
+        const used = usedInScreen.get(key) ?? 0;
+        // 블록이 녹화 구간보다 길면 시작점을 당겨 구간 밖(다른 화면)으로
+        // 넘어가지 않게 한다 — 반복 프레임보다 엉뚱한 화면이 더 나쁘다
+        const blockLen = to - seg.from;
+        const segLen = m.end - m.start;
+        seg.sourceOffset = m.start + Math.min(used, Math.max(0, segLen - blockLen));
+        usedInScreen.set(key, used + blockLen);
       }
       phoneTime += to - seg.from;
     }
