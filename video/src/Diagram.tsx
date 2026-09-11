@@ -45,7 +45,10 @@ const boxStyle = (
   justifyContent: "center",
   textAlign: "center",
   padding: "0 18px",
-  borderRadius: 20,
+  // 모서리는 테마를 따른다 — 카드·배지가 테마마다 둥글기가 다른데(터미널 28,
+  // 블루프린트 8, 하이라이터 4) 다이어그램만 20으로 고정이라 혼자 다른 형태로
+  // 보였다 ("템플릿마다 달라지는데 같이 적용되어야 해" — Jessi).
+  borderRadius: th.radius,
   // 본문 폰트로 — JetBrains Mono에는 한글이 없어 대체 글꼴로 떨어졌다
   // (다이어그램만 딴 폰트로 놀던 문제, Jessi 지적). 삽질 카드 본문과 같은 계열.
   fontFamily: FONT_SANS,
@@ -144,7 +147,7 @@ export const DiagramScene: React.FC<{
             y={CY - 74}
             width={420 * band}
             height={148}
-            rx={24}
+            rx={th.radius}
             fill={tint(th, 0.1)}
             stroke={th.accent}
             strokeWidth={5}
