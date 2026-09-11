@@ -8,64 +8,51 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "지어낸 이름이 진짜였습니다.",
-      "en": "A name I made up turned out to be real.",
+      "ko": "지어낸 이름이 실제로 있었습니다.",
+      "en": "The names I made up actually exist.",
       "keywords": [
-        "지어낸",
-        "진짜였습니다"
+        "실제로"
       ],
       "keywordsEn": [
-        "made up",
-        "real"
+        "made up"
       ]
     },
     {
       "scene": "build",
-      "ko": "넷 중 진짜를 고르는 게임을 새로 열었습니다.",
-      "en": "I opened a new game: pick the real one out of four.",
+      "ko": "문제에 나오는 진짜 아파트를 서울 2,889곳으로 늘렸습니다.",
+      "en": "The real apartments now come from 2,889 complexes in Seoul.",
       "keywords": [
-        "넷 중 진짜를",
-        "새로 열었습니다"
+        "2,889곳으로"
       ],
-      "keywordsEn": [
-        "pick the real one",
-        "new game"
-      ],
-      "screen": "/findreal"
-    },
-    {
-      "scene": "build",
-      "ko": "진짜 아파트는 서울 2,889곳에서 가져옵니다.",
-      "en": "The real apartments come from 2,889 complexes in Seoul.",
-      "keywords": [],
       "keywordsEn": [
         "2,889 complexes"
       ],
       "stat": "2,889곳",
       "statEn": "2,889 complexes",
-      "screen": "/play"
+      "screen": "/"
     },
     {
-      "scene": "demo",
-      "ko": "위치, 연도, 세대 수가 전부 실제 값입니다.",
-      "en": "Location, build year, and unit count are all real.",
+      "scene": "build",
+      "ko": "넷 중 진짜 하나를 고르는 게임도 새로 열었습니다.",
+      "en": "I also opened a game where you pick the one real name out of four.",
       "keywords": [
-        "전부 실제 값입니다"
+        "넷 중 진짜 하나를",
+        "새로"
       ],
       "keywordsEn": [
-        "all real"
-      ],
-      "screen": "/play"
+        "one real name",
+        "out of four"
+      ]
     },
     {
       "scene": "demo",
-      "ko": "하루 분량은 10문제로 늘었습니다.",
-      "en": "A day's round grew to 10 questions.",
+      "ko": "하루 분량은 3문제에서 10문제로 늘었습니다.",
+      "en": "A day's round grew from 3 questions to 10.",
       "keywords": [
         "10문제로"
       ],
       "keywordsEn": [
-        "10 questions"
+        "10"
       ],
       "screen": "/play"
     },
@@ -79,56 +66,55 @@
       "keywordsEn": [
         "a clock"
       ],
-      "screen": "/assemble"
+      "screen": "/findreal"
     },
     {
       "scene": "fail",
-      "ko": "가짜 이름 104개를 새로 지었습니다.",
-      "en": "I wrote 104 new fake names.",
+      "ko": "가짜 이름 104개를 지어 실제 목록과 맞춰봤습니다.",
+      "en": "I wrote 104 fake names and checked them against the real list.",
       "keywords": [
-        "가짜 이름"
+        "104개를"
       ],
       "keywordsEn": [
-        "104 new fake names"
+        "104 fake names"
       ]
     },
     {
       "scene": "fail",
-      "ko": "대조해 보니 7개가 실제로 있는 아파트였습니다.",
-      "en": "Checking the list, 7 of them actually exist.",
+      "ko": "그중 7개가 서울에 정말 있는 아파트였습니다.",
+      "en": "Seven of them were real apartments in Seoul.",
       "keywords": [
         "7개가",
-        "실제로 있는"
+        "정말 있는"
       ],
       "keywordsEn": [
-        "7 of them",
-        "actually exist"
+        "Seven of them",
+        "real apartments"
       ],
       "stat": "7개",
       "statEn": "7 names"
     },
     {
       "scene": "next",
-      "ko": "남은 두 게임도 결과 그림을 만들 차례입니다.",
-      "en": "Next, result images for the other two games.",
+      "ko": "다음은 나머지 게임 결과도 그림으로 저장하게 만들 차례입니다.",
+      "en": "Next up: shareable result images for the other games too.",
       "keywords": [
-        "남은 두 게임도"
+        "그림으로 저장하게"
       ],
       "keywordsEn": [
-        "result images",
-        "other two games"
+        "result images"
       ],
-      "art": "a tiny printing press pressing a fresh picture card onto paper"
+      "art": "a small robot pressing a red ink stamp onto a glowing paper card"
     },
     {
       "scene": "end",
-      "ko": "가짜를 짓는 게 제일 어렵습니다.",
-      "en": "Inventing the fakes is the hardest part.",
+      "ko": "가짜를 지어내는 게 더 어렵습니다.",
+      "en": "Making something up is the hard part.",
       "keywords": [
-        "가짜를 짓는 게"
+        "더 어렵습니다"
       ],
       "keywordsEn": [
-        "Inventing the fakes"
+        "the hard part"
       ]
     }
   ],
@@ -137,12 +123,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "지어낸 이름이 실존했다",
-    "titleEn": "The invented name existed",
-    "before": "가짜로 지은 이름 7개가 진짜 아파트였습니다",
-    "after": "걸러내고 다른 이름으로 채웠습니다",
-    "beforeEn": "7 names I invented were real apartments",
-    "afterEn": "I dropped them and wrote replacements"
+    "title": "지어낸 이름이 진짜였다",
+    "titleEn": "The fake name was real",
+    "before": "가짜로 지은 이름 104개를 문제에 넣었습니다",
+    "after": "실제 목록과 대조해 7개를 걸러내고 다시 지었습니다",
+    "beforeEn": "104 invented names went straight into the quiz",
+    "afterEn": "Checked against the real list, dropped 7, wrote replacements"
   },
   "commits": [
     [
@@ -311,22 +297,22 @@
   "commitCount": 20,
   "handle": "apt-gam.vercel.app",
   "captions": {
-    "ko": "서울 실제 단지 2,889곳으로 문제를 만들고, 넷 중 진짜 하나를 고르는 게임을 새로 열었습니다. 지어낸 가짜 이름 중 7개가 실제로 존재해서 다시 썼습니다.",
-    "en": "Quiz questions now come from 2,889 real Seoul complexes, and a new game asks you to pick the real name out of four. Seven names I invented turned out to exist, so I rewrote them."
+    "ko": "서울 아파트 2,889곳을 문제에 넣고, 가짜 이름 104개를 새로 지었는데 그중 7개가 실제로 있는 아파트였습니다. 넷 중 진짜 하나를 고르는 게임도 새로 열었습니다.",
+    "en": "I loaded 2,889 real Seoul apartment complexes into the quiz and wrote 104 fake names — seven of them turned out to be real. Also opened a new game: pick the one real name out of four."
   },
   "hashtags": [
+    "#개발일지",
+    "#vibelog",
     "#아파트",
-    "#퀴즈게임",
-    "#데브로그",
-    "#서울",
+    "#게임개발",
     "#devlog",
-    "#buildinpublic",
-    "#indiedev"
+    "#indiedev",
+    "#seoul"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtwow7bn",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtwow9fl",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtwoxsh0",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtwoxwal"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtwq3pu1",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtwq3riq",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtwq4zx8",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtwq5199"
   }
 }
