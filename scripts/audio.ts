@@ -72,15 +72,38 @@ const NATIVE_UNIT =
 const SINO_DIGIT = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
 export function sinoRead(n: number): string {
   if (n === 0) return "영";
-  if (!Number.isInteger(n) || n < 0 || n >= 100000) return String(n);
+  if (!Number.isInteger(n) || n < 0 || n >= 1e12) return String(n);
+  // 만·억은 재귀로 — 예전엔 10만부터 포기하고 숫자를 그대로 돌려줘
+  // 뭉갬이 재발할 지점이었다 ("123,456건" 등)
+  if (n >= 1e8) {
+    const rest = n % 1e8;
+    return sinoRead(Math.floor(n / 1e8)) + "억" + (rest ? sinoRead(rest) : "");
+  }
+  if (n >= 10000) {
+    const head = Math.floor(n / 10000);
+    const rest = n % 10000;
+    return (head === 1 ? "만" : sinoRead(head) + "만") + (rest ? sinoRead(rest) : "");
+  }
   let s = "";
   let rest = n;
-  for (const [u, name] of [[10000, "만"], [1000, "천"], [100, "백"], [10, "십"]] as const) {
+  for (const [u, name] of [[1000, "천"], [100, "백"], [10, "십"]] as const) {
     const d = Math.floor(rest / u);
     if (d > 0) s += (d === 1 ? "" : SINO_DIGIT[d]) + name;
     rest %= u;
   }
   return s + SINO_DIGIT[rest];
+}
+
+/** "3.5" 같은 소수 표기까지 읽는 숫자 독음 — "삼점오". 정수면 sinoRead 그대로 */
+function readNum(s: string): string {
+  const [int, frac] = s.split(".");
+  const head = sinoRead(Number(int));
+  if (frac == null || frac === "") return head;
+  // 소수부는 자릿수를 하나씩 읽는다 — "3.14" → "삼점일사"
+  const tail = [...frac]
+    .map((c) => (c === "0" ? "영" : SINO_DIGIT[Number(c)]))
+    .join("");
+  return `${head}점${tail}`;
 }
 
 /** 숫자 뒤에서 된소리로 굳은 한자어 단위 — "N건"은 [껀]으로 읽는다 */
@@ -91,6 +114,30 @@ export function speakToken(tok: string): string {
   //    걸려 원문이 그대로 TTS로 가 뭉개졌다. 표기(자막·카드)는 콤마를
   //    유지하고 발음용 토큰만 편다.
   tok = tok.replace(/(\d),(?=\d{3})/g, "$1");
+  // 0.5) 범위 "30~45초" — 물결표는 TTS가 아예 못 읽는다. 왼쪽은 숫자 독음,
+  //      오른쪽은 단위까지 통째로 재귀 처리한 뒤 여전히 숫자로 시작하면
+  //      ("45초"처럼 평소엔 안 건드리는 꼴) 강제로 풀어 좌우 읽기를 맞춘다
+  const r = tok.match(/^(\d+(?:\.\d+)?)[~∼–](\d.*)$/u);
+  if (r) {
+    let right = speakToken(r[2]);
+    const rd = right.match(/^(\d+(?:\.\d+)?)(.*)$/u);
+    if (rd) right = `${readNum(rd[1])}${rd[2] ? ` ${rd[2].replace(/^\s+/, "")}` : ""}`;
+    return `${readNum(r[1])}에서 ${right}`;
+  }
+  // 0.6) 퍼센트 — "%" 기호 해석을 TTS에 맡기지 않는다. "50%" → "오십 퍼센트"
+  const p = tok.match(/^(\d+(?:\.\d+)?)%(.*)$/u);
+  if (p) return `${readNum(p[1])} 퍼센트${p[2]}`;
+  // 0.7) 만·억 접미 — "3만개" → "삼만 개" (뒤에 또 숫자가 오는 "3만5천" 꼴은
+  //      섣불리 쪼개면 더 이상해지니 건드리지 않는다)
+  const w = tok.match(/^(\d{1,4})(만|억)(?!\d)(.*)$/u);
+  if (w) {
+    const v = Number(w[1]) * (w[2] === "만" ? 1e4 : 1e8);
+    const rest = w[3].replace(/^건/, "껀");
+    return `${sinoRead(v)}${rest ? ` ${rest}` : ""}`;
+  }
+  // 0.8) 소수점 — "3.5초"는 정수 규칙 어디에도 안 걸린다. "삼점오 초"
+  const d = tok.match(/^(\d+\.\d+)([가-힣].*)?$/u);
+  if (d) return `${readNum(d[1])}${d[2] ? ` ${d[2]}` : ""}`;
   // 1) 된소리 단위: 숫자도 한글로 풀고 표기도 된소리로 — "222건" → "이백이십이 껀"
   const t = tok.match(TENSE_UNIT);
   if (t) return `${sinoRead(Number(t[1]))} 껀${t[3]}`;
@@ -107,6 +154,11 @@ export function speakToken(tok: string): string {
   //    이하("52초")는 지금까지 문제없어 건드리지 않는다.
   const big = tok.match(/^(\d{3,})([가-힣].*)$/u);
   if (big) return `${sinoRead(Number(big[1]))} ${big[2]}`;
+  // 4) 단위 없이 홀로 선 세 자리 이상 숫자 (뒤는 문장부호만) — "2,889"가
+  //    단독 토큰이면 콤마만 벗겨 숫자 그대로 가던 구멍. 연도 "2026"도
+  //    "이천이십육"으로 맞다. 숫자·한글이 더 붙은 꼴(1080×1920 등)은 제외
+  const bare = tok.match(/^(\d{3,})([^\d가-힣a-zA-Z]*)$/u);
+  if (bare) return `${sinoRead(Number(bare[1]))}${bare[2]}`;
   return tok;
 }
 
