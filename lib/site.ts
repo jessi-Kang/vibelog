@@ -1,6 +1,6 @@
-// 사이트 공개 주소의 단일 소스 — vibelog.blog 등 커스텀 도메인으로 옮기면 여기만 바꾼다.
+// 사이트 공개 주소의 단일 소스 — 커스텀 도메인으로 옮기면 여기만 바꾼다.
 // sitemap · robots · RSS · canonical · OG가 전부 이 값을 쓴다.
-export const SITE_URL = "https://vibelog-orcin.vercel.app";
+export const SITE_URL = "https://vibelog.space";
 
 export const SITE_NAME = "vibelog";
 
