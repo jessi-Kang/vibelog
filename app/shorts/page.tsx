@@ -5,7 +5,11 @@ import { ShortsGrid } from "@/components/shorts-grid";
 import { EmptyState, SectionHeader } from "@/components/ui";
 import { getDevlogs, getShorts } from "@/lib/content";
 
-export const metadata: Metadata = { title: "쇼츠" };
+export const metadata: Metadata = {
+  title: "쇼츠",
+  description: "데브로그를 30~45초 세로 영상으로 — 대본·음성·화면까지 자동 생성한 쇼츠 모음.",
+  alternates: { canonical: "/shorts" },
+};
 
 export default function ShortsPage() {
   const devlogs = getDevlogs();
