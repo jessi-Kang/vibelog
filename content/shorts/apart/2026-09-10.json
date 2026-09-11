@@ -8,105 +8,109 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "안 닮은 이름끼리 경고가 222건 떴습니다.",
-      "en": "222 warnings fired on names that look nothing alike.",
+      "ko": "가짜 이름 검사가 222건을 잘못 잡았습니다.",
+      "en": "A fake-name check flagged 222 pairs wrongly.",
       "keywords": [
-        "경고가",
-        "222건"
+        "잘못"
       ],
       "keywordsEn": [
-        "222 warnings"
+        "222 pairs",
+        "wrongly"
       ]
     },
     {
       "scene": "fail",
-      "ko": "두 이름의 차이를 세는 계산이 일찍 멈출 때, 임시 점수 3점을 돌려줬습니다.",
-      "en": "A routine scores how different two names are, stopping early and handing back a placeholder 3.",
+      "ko": "임시 점수 3점을 주고 계산을 일찍 멈췄습니다.",
+      "en": "It stopped early and handed back a placeholder score of 3.",
       "keywords": [
-        "차이를 세는"
+        "일찍"
       ],
       "keywordsEn": [
-        "placeholder 3"
+        "placeholder score of 3",
+        "early"
       ]
     },
     {
       "scene": "fail",
-      "ko": "그런데 3점은 비슷한 이름 판정 범위 안이었습니다.",
-      "en": "But 3 landed inside the near-match range.",
-      "keywords": [
-        "비슷한 이름 판정 범위"
-      ],
+      "ko": "3점은 비슷하다고 보는 범위 안이었습니다.",
+      "en": "But 3 sat inside the too-similar range.",
+      "keywords": [],
       "keywordsEn": [
-        "near-match range"
+        "too-similar range"
       ],
       "diagram": {
         "kind": "numberline",
         "labels": [
           "비슷하다고 보는 범위",
-          "임시 점수 3점",
-          "범위 밖의 큰 수"
+          "3점",
+          "범위 밖"
         ],
         "labelsEn": [
-          "near-match range",
-          "placeholder 3",
-          "large number outside"
+          "too-similar range",
+          "3",
+          "outside"
         ]
       }
     },
     {
       "scene": "build",
-      "ko": "임시 점수를 판정 범위 밖의 큰 수로 바꾸니 경고가 0건이 됐습니다.",
-      "en": "Swapping it for a large number outside that range dropped warnings to 0.",
+      "ko": "임시 점수를 범위 밖의 큰 수로 바꿨습니다.",
+      "en": "I swapped it for a big number outside that range.",
       "keywords": [],
       "keywordsEn": [
-        "outside that range"
+        "outside that range",
+        "big number"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "경고가 0건이 됐습니다.",
+      "en": "The warnings dropped to 0.",
+      "keywords": [],
+      "keywordsEn": [
+        "0"
       ],
       "stat": "0건",
       "statEn": "0 warnings"
     },
     {
       "scene": "demo",
-      "ko": "아파트 이름을 보고 진짜인지 지어낸 이름인지 맞히는 하루 10문제 퀴즈입니다.",
-      "en": "You see an apartment name and guess if it is real or made up, 10 questions a day.",
-      "keywords": [
-        "진짜인지",
-        "10문제"
-      ],
-      "keywordsEn": [
-        "10 questions"
-      ],
-      "stat": "10문제",
-      "statEn": "10 questions",
-      "screen": "/play"
-    },
-    {
-      "scene": "demo",
-      "ko": "결이 다른 두 번째 게임도 같이 붙였습니다.",
-      "en": "A second game with a different feel went in too.",
+      "ko": "이 검사를 통과한 이름으로 넷 중 진짜를 고릅니다.",
+      "en": "With names that passed the check, you pick the real one out of four.",
       "keywords": [],
       "keywordsEn": [
-        "second game"
+        "real one out of four"
       ],
       "screen": "/findreal"
     },
     {
+      "scene": "demo",
+      "ko": "힌트로 이름을 조립하는 게임도 붙였습니다.",
+      "en": "I added a second game where hints help you assemble a name.",
+      "keywords": [],
+      "keywordsEn": [
+        "assemble a name"
+      ],
+      "screen": "/assemble"
+    },
+    {
       "scene": "next",
-      "ko": "실제 단지 자료는 사람이 한 번 검토한 뒤에만 문제로 올라갑니다.",
-      "en": "Real complex records only enter the question pool after a person reviews them.",
+      "ko": "실제 단지 자료는 사람이 검토한 뒤에만 올립니다.",
+      "en": "Real complex data goes in only after a person reviews it.",
       "keywords": [
-        "사람이 한 번 검토한"
+        "사람이 검토한"
       ],
       "keywordsEn": [
-        "a person reviews them"
+        "a person reviews it"
       ],
-      "art": "a single lantern held above a stack of paper cards on a wooden desk"
+      "art": "a small hand holding a magnifying glass over a single paper card on a wide empty desk"
     },
     {
       "scene": "end",
-      "ko": "기획서에서 돌아가는 게임까지, 하루였습니다.",
-      "en": "From a planning doc to a playable game, in one day.",
+      "ko": "기획서에서 돌아가는 게임까지, 하루 걸렸습니다.",
+      "en": "From a planning doc to a working game in one day.",
       "keywords": [
-        "하루였습니다"
+        "하루"
       ],
       "keywordsEn": [
         "one day"
@@ -114,16 +118,16 @@
     }
   ],
   "demo": {
-    "url": "https://apt-gam.vercel.app",
+    "url": "https://apt-game.app",
     "steps": []
   },
   "failCard": {
-    "title": "닮지 않은 이름에 경고가 떴다",
-    "titleEn": "Warnings on names that don't match",
-    "before": "안 닮은 이름끼리 경고가 222건 떴습니다.",
-    "after": "임시 점수를 판정 범위 밖으로 바꾸니 0건이 됐습니다.",
-    "beforeEn": "222 warnings on names that look nothing alike.",
-    "afterEn": "Moving the placeholder outside the range brought it to 0."
+    "title": "임시 점수가 문제였습니다",
+    "titleEn": "The placeholder score was the bug",
+    "before": "닮지도 않은 이름 222건에 경고가 떴습니다",
+    "after": "임시 점수를 범위 밖으로 바꿔 0건이 됐습니다",
+    "beforeEn": "222 pairs that look nothing alike got flagged",
+    "afterEn": "Moving the placeholder outside the range brought it to 0"
   },
   "commits": [
     [
@@ -266,24 +270,24 @@
     ]
   ],
   "commitCount": 17,
-  "handle": "apt-gam.vercel.app",
+  "handle": "apt-game.app",
   "captions": {
-    "ko": "아파트 이름이 진짜인지 맞히는 퀴즈를 기획서부터 하루 만에 만들었습니다. 이름 검사에서 경고 222건이 뜬 이유는 계산을 일찍 멈출 때 돌려준 임시 점수 3점이었습니다.",
-    "en": "Went from a planning doc to a working apartment-name quiz in one day. The 222 bogus warnings came from a placeholder score of 3 handed back on early exits."
+    "ko": "닮지도 않은 아파트 이름 222건에 경고가 뜬 이유는 계산을 일찍 멈출 때 돌려준 임시 점수였습니다. 하루 만에 기획서에서 돌아가는 아파트 이름 퀴즈까지 갔습니다.",
+    "en": "222 pairs of apartment names that look nothing alike got flagged, all because of the placeholder score used when the check stopped early. From planning doc to a working name quiz in one day."
   },
   "hashtags": [
-    "#개발",
-    "#사이드프로젝트",
+    "#개발일지",
     "#삽질",
-    "#퀴즈게임",
-    "#devlog",
+    "#아파트",
     "#buildinpublic",
-    "#webdev"
+    "#devlog",
+    "#webgame",
+    "#사이드프로젝트"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtwyc2jj",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtwyc4ul",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtwydjjz",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtwydlyo"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.poster.jpg?v=mtwzhqz8",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.ko.mp4?v=mtwzhsk7",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.poster.jpg?v=mtwzj337",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-10.en.mp4?v=mtwzj4zl"
   }
 }
