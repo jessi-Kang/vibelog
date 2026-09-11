@@ -78,10 +78,13 @@ function Tabs({
             href={t.href}
             aria-current={on ? "page" : undefined}
             onClick={(e) => {
-              // 앱 표준: 현재 탭을 다시 탭하면 맨 위로
+              // 앱 표준: 현재 탭을 다시 탭하면 맨 위로 (모션 축소 설정이면 즉시 점프)
               if (bottom && on) {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                const reduce = window.matchMedia(
+                  "(prefers-reduced-motion: reduce)",
+                ).matches;
+                window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
               }
             }}
             className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
