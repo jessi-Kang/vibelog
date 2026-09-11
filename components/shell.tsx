@@ -1,7 +1,8 @@
 "use client";
 /**
  * Shell — 핸드오프 ui_kits/blog/Shell.jsx 재구현.
- * 모바일(<720): 헤더 2줄(워드마크 / 풀폭 탭), 상세에서는 1줄이 ← 경로로.
+ * 모바일(<720): 헤더 1줄(워드마크 — 상세에서는 ← 경로) + 하단 고정 탭바.
+ *   앱처럼 엄지 닿는 곳에 메뉴를 (Jessi 지시). 상세에서도 탭바는 유지.
  * 태블릿·데스크톱: 한 줄(워드마크 | 탭), 상세 뒤로는 헤더 아래 줄.
  * "다음 실행 23:00" 표시는 제거 — 경로와 붙어 헷갈리고 꼭 필요하지 않다 (Jessi 지시).
  */
@@ -45,7 +46,16 @@ function useRoute() {
   return { detail, crumb, tab: project ? "/" : tab };
 }
 
-function Tabs({ active, counts }: { active: string; counts?: TabCounts }) {
+function Tabs({
+  active,
+  counts,
+  bottom,
+}: {
+  active: string;
+  counts?: TabCounts;
+  /** 모바일 하단 탭바 안 — 터치 타깃을 키운다 */
+  bottom?: boolean;
+}) {
   const { lang } = useLang();
   const countOf = (href: string) =>
     href === "/"
@@ -67,7 +77,7 @@ function Tabs({ active, counts }: { active: string; counts?: TabCounts }) {
             key={t.href}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`hit flex min-h-9 flex-1 items-center justify-center text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "text-ink" : "text-muted hover:text-ink-soft"}`}
+            className={`hit flex ${bottom ? "min-h-12" : "min-h-9"} flex-1 items-center justify-center text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "text-ink" : "text-muted hover:text-ink-soft"}`}
           >
             <span className="relative py-1">
               {lang === "ko" ? t.ko : t.en}
@@ -130,7 +140,8 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
               <LangSwitch />
             </span>
           </div>
-          <div className={`${detail ? "hidden md:flex" : "flex"} items-center gap-4 md:gap-5`}>
+          {/* 상단 탭은 데스크톱만 — 모바일은 아래 고정 탭바가 담당 */}
+          <div className="hidden items-center gap-4 md:flex md:gap-5">
             <Tabs active={tab} counts={counts} />
             <span className="hidden md:block">
               <LangSwitch />
@@ -138,6 +149,12 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
           </div>
         </div>
       </header>
+      {/* 모바일 하단 탭바 — 홈 인디케이터 영역(safe-area)만큼 아래 여백 */}
+      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg pb-[env(safe-area-inset-bottom)] md:hidden">
+        <div className="mx-auto max-w-[430px] px-2">
+          <Tabs active={tab} counts={counts} bottom />
+        </div>
+      </div>
       {detail && (
         <div className="mx-auto hidden w-full max-w-[1120px] px-6 pt-[18px] md:block lg:px-8">
           <BackRow crumb={crumb} />
