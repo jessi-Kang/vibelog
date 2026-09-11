@@ -165,6 +165,8 @@ export const PhoneFrame: React.FC<{
   segIndex?: number;
   /** 데모 연출 — day+장면 순번으로 로테이션. 녹화 없으면 phone 플레이스홀더 */
   shot?: DemoShot;
+  /** duo 보조 폰이 틀 다른 화면의 소스 시각 — 없으면 같은 화면 +3초 폴백 */
+  duoAltOffsetSec?: number;
 }> = ({
   videoFile,
   sourceOffsetSec,
@@ -175,6 +177,7 @@ export const PhoneFrame: React.FC<{
   toSec,
   segIndex = 0,
   shot = "phone",
+  duoAltOffsetSec,
 }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
@@ -225,20 +228,23 @@ export const PhoneFrame: React.FC<{
   }
 
   if (videoFile && shot === "duo") {
-    // 두 시점 겹치기 — 같은 녹화의 다른 순간 두 장면을 작은 폰 두 대로.
-    // 작게 그려서 오히려 선명하다 (업스케일 1.2배)
+    // 두 시점 겹치기 — 폰 두 대. 앞(왼쪽) 폰은 내레이션과 매칭된 주 화면,
+    // 뒤(오른쪽) 폰은 녹화된 '다른' 화면(duoAltOffsetSec) — 같은 화면이
+    // 좌우에 반복되면 의미가 없다 (Jessi 지적). 다른 화면 녹화가 없는
+    // 옛 영상만 같은 화면 +3초 폴백. 작게 그려서 오히려 선명하다 (~1.2배)
     const lift = span ? interpolate(t, [...span], [8, -8], clamp0) : 0;
+    const altStart = duoAltOffsetSec ?? sourceOffsetSec + 3;
     const phones: {
       left?: number;
       right?: number;
       top: number;
       rot: number;
-      offset: number;
+      start: number;
       dy: number;
       z: number;
     }[] = [
-      { right: 108, top: 420, rot: 2.5, offset: 3, dy: -lift, z: 1 },
-      { left: 108, top: 300, rot: -2.5, offset: 0, dy: lift, z: 2 },
+      { right: 108, top: 420, rot: 2.5, start: altStart, dy: -lift, z: 1 },
+      { left: 108, top: 300, rot: -2.5, start: sourceOffsetSec, dy: lift, z: 2 },
     ];
     return (
       <>
@@ -279,7 +285,7 @@ export const PhoneFrame: React.FC<{
                 <OffthreadVideo
                   src={staticFile(videoFile)}
                   muted
-                  startFrom={Math.round((sourceOffsetSec + p.offset) * fps)}
+                  startFrom={Math.round(p.start * fps)}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </Sequence>

@@ -63,6 +63,9 @@ interface Seg {
   sourceOffset: number;
   /** 이 블록이 보여줄 화면 경로 (대본 line.screen) — 구간 매칭용 */
   screen?: string;
+  /** duo 샷의 보조 폰이 틀 다른 화면의 시작 시각 — 주 화면과 같은
+   *  화면이 좌우에 반복되지 않게 (Jessi 지적). 녹화가 한 화면뿐이면 없음 */
+  duoAltOffset?: number;
 }
 
 function kindOf(scene: string, hasNextArt: boolean): Kind {
@@ -95,7 +98,7 @@ function statStartOf(
 const STAT_PUNCH_SEC = 1.5;
 const STAT_BREATH_SEC = 0.2;
 
-function buildSegments(
+export function buildSegments(
   script: ShortsScript,
   timing: ShortsTiming,
   total: number,
@@ -163,6 +166,16 @@ function buildSegments(
         const segLen = m.end - m.start;
         seg.sourceOffset = m.start + Math.min(used, Math.max(0, segLen - blockLen));
         usedInScreen.set(key, used + blockLen);
+      }
+      // duo 샷의 보조 폰: 주 화면과 '다른' 화면의 구간 시작을 미리 골라 둔다
+      // (내레이션 순서상 첫 번째 다른 화면 — 내용 관련 화면이 홈보다 먼저 잡힘)
+      if (segMap?.size) {
+        for (const [p, cand] of segMap) {
+          if (p !== key) {
+            seg.duoAltOffset = cand.start;
+            break;
+          }
+        }
       }
       phoneTime += to - seg.from;
     }
@@ -301,6 +314,11 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 toSec={seg.to}
                 segIndex={i}
                 shot={shotOf(i)}
+                duoAltOffsetSec={
+                  seg.duoAltOffset != null
+                    ? videoStartSec + seg.duoAltOffset
+                    : undefined
+                }
               />
             )}
             {seg.kind === "fail" && (
