@@ -54,7 +54,7 @@ export default function RootLayout({
         />
       </head>
       {/* 모바일 하단 여백 = 고정 탭바 높이 + safe-area — 푸터가 탭바에 안 가리게 */}
-      <body className="flex min-h-dvh flex-col bg-bg pb-[calc(48px+env(safe-area-inset-bottom))] font-sans text-ink md:pb-0">
+      <body className="flex min-h-dvh flex-col bg-bg pb-[calc(60px+env(safe-area-inset-bottom))] font-sans text-ink md:pb-0">
         <LangProvider>
         <a
           href="#main"
