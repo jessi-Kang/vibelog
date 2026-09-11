@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Project, RunLogLine } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
+import { projectColor, withAlpha } from "@/lib/project-color";
 import { useLang } from "./lang";
 import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
 
@@ -143,9 +144,15 @@ export function DevlogTimelineEntry({
         />
       )}
       {repo ? (
+        // 프로젝트 식별색 — 이니셜 마커·이름이 같은 색이라 색만 봐도 구분된다 (Jessi 지시)
         <div
           aria-hidden
-          className="absolute left-0 top-0 grid h-[22px] w-[22px] place-items-center rounded-md border border-line bg-panel font-mono text-2xs font-bold text-ink-soft"
+          className="absolute left-0 top-0 grid h-[22px] w-[22px] place-items-center rounded-md border font-mono text-2xs font-bold"
+          style={{
+            color: projectColor(repo),
+            borderColor: withAlpha(projectColor(repo), 0.4),
+            background: withAlpha(projectColor(repo), 0.12),
+          }}
         >
           {repo[0]}
         </div>
@@ -154,7 +161,11 @@ export function DevlogTimelineEntry({
       )}
       <div className="flex flex-col gap-1.5">
         <div className="flex gap-2.5 font-mono text-xs text-muted">
-          {repo && <span className="font-bold text-ink-soft">{repo}</span>}
+          {repo && (
+            <span className="font-bold" style={{ color: projectColor(repo) }}>
+              {repo}
+            </span>
+          )}
           <span>{date}</span>
         </div>
         <h3 className="m-0 text-lg font-bold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
