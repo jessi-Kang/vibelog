@@ -6,15 +6,15 @@
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
     "status": "preview",
     "stack": [
-      "HTML"
+      "TypeScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-gam.vercel.app",
-    "language": "HTML",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
     "lastActivity": "2026-09-11",
-    "weekCommits": 80,
-    "todayCommits": 62,
-    "totalCommits": 80,
+    "weekCommits": 103,
+    "todayCommits": 85,
+    "totalCommits": 103,
     "countsDate": "2026-09-11",
     "theme": "paper"
   },
@@ -28,12 +28,12 @@
       "JavaScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog-orcin.vercel.app",
+    "homepage": "https://vibelog.space",
     "language": "JavaScript",
     "lastActivity": "2026-09-11",
-    "weekCommits": 199,
-    "todayCommits": 50,
-    "totalCommits": 199,
+    "weekCommits": 221,
+    "todayCommits": 72,
+    "totalCommits": 221,
     "countsDate": "2026-09-11"
   }
 ]
