@@ -403,12 +403,19 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     // 배포 주소 우선순위: About Website(커스텀 의도) → Vercel API(고정 도메인)
     // → GitHub Deployments 기록. Jessi가 아무것도 안 채워도 배포되는 순간
     // live 판정·카드 링크·쇼츠 데모 URL이 생긴다 ("수동이네" 지적).
+    // 단, About Website가 *.vercel.app이면 "커스텀 도메인 의도"가 아니라
+    // 예전에 적어 둔 기본 주소다 — 커스텀 도메인을 붙인 뒤에도 옛 주소가
+    // 카드·녹화에 남는다 (vibelog.space 전환 때 확인). 이때는 자동 감지가
+    // 이긴다. 사람이 손으로 고칠 일을 만들지 않는다.
+    const vercelUrl = await getVercelUrl(vercelProjects.get(repo.toLowerCase()));
+    const stalePreset = /^https?:\/\/[^/]+\.vercel\.app\/?$/i.test(r.homepage ?? "");
+    const preferred = stalePreset && vercelUrl ? vercelUrl : r.homepage;
     const homepage =
-      r.homepage ||
-      (await getVercelUrl(vercelProjects.get(repo.toLowerCase()))) ||
-      (await getDeployedUrl(octokit, owner, repo));
+      preferred || vercelUrl || (await getDeployedUrl(octokit, owner, repo));
     if (!r.homepage && homepage) {
       console.log(`- ${repo}: 배포 주소 자동 감지 → ${homepage}`);
+    } else if (stalePreset && vercelUrl && vercelUrl !== r.homepage) {
+      console.log(`- ${repo}: About Website가 기본 주소라 커스텀 도메인 우선 → ${homepage}`);
     }
     // 릴리즈 선언은 GitHub Release 발행 하나뿐. 처음엔 About Website 채움도
     // 선언으로 쳤는데, Website는 "주소 지정"과 겸직이라 다른 세션이 레포를
