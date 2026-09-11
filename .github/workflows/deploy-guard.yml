@@ -1,0 +1,41 @@
+# Vercel 웹훅 누락 자가 복구 — 푸시 후에도 배포가 생성되지 않으면
+# (오늘만 3회 관측된 Vercel GitHub 연동 유실) Vercel API로 직접 배포를
+# 만든다. 정상일 때는 아무것도 하지 않는다. 배경: docs/02 "운영 노트".
+name: deploy-guard
+
+on:
+  push:
+    branches: [claude/file-analysis-dpnhw1]
+
+concurrency:
+  group: deploy-guard
+  cancel-in-progress: true # 연속 푸시면 마지막 것만 검사하면 된다
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 웹훅이 정상 동작할 시간을 준다
+        run: sleep 180
+      - name: 이 커밋의 배포가 생겼는지 확인, 없으면 직접 생성
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          PROJECT_ID: prj_ubrM0rNN7smlErMNulJDPVBwJrS1
+          REPO_ID: "1362228228"
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "VERCEL_TOKEN 시크릿 없음 — 가드 건너뜀"; exit 0
+          fi
+          found=$(curl -sf -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v6/deployments?projectId=$PROJECT_ID&teamId=$VERCEL_TEAM_ID&limit=25" \
+            | grep -c "$GITHUB_SHA" || true)
+          if [ "$found" != "0" ]; then
+            echo "배포 확인됨 ($GITHUB_SHA) — 정상"; exit 0
+          fi
+          echo "배포 누락 — Vercel API로 직접 생성 (브랜치 최신 커밋 기준)"
+          curl -sf -X POST -H "Authorization: Bearer $VERCEL_TOKEN" \
+            -H "content-type: application/json" \
+            "https://api.vercel.com/v13/deployments?teamId=$VERCEL_TEAM_ID&forceNew=1" \
+            -d "{\"name\":\"vibelog\",\"target\":\"production\",\"gitSource\":{\"type\":\"github\",\"repoId\":$REPO_ID,\"ref\":\"$GITHUB_REF_NAME\"}}" \
+            | head -c 400
