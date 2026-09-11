@@ -46,7 +46,9 @@ const boxStyle = (
   textAlign: "center",
   padding: "0 18px",
   borderRadius: 20,
-  fontFamily: FONT_MONO,
+  // 본문 폰트로 — JetBrains Mono에는 한글이 없어 대체 글꼴로 떨어졌다
+  // (다이어그램만 딴 폰트로 놀던 문제, Jessi 지적). 삽질 카드 본문과 같은 계열.
+  fontFamily: FONT_SANS,
   fontWeight: 700,
   fontSize: 38,
   background: on ? tint(th) : th.panel,
@@ -56,8 +58,8 @@ const boxStyle = (
 
 const labelStyle = (th: ShortsTheme, color?: string): React.CSSProperties => ({
   position: "absolute",
-  fontFamily: FONT_MONO,
-  fontWeight: 500,
+  fontFamily: FONT_SANS,
+  fontWeight: 700,
   fontSize: 30,
   color: color ?? th.muted,
 });
@@ -278,8 +280,19 @@ export const DiagramScene: React.FC<{
           </g>
           <Arrow x0={452} x1={556} y={BOT + 55} p={ar2} color={th.accent} />
         </svg>
-        <div style={{ ...labelStyle(th), left: 96, top: TOP - 48, opacity: a * dim }}>
-          {lang === "en" ? "before" : "전"}
+        <div
+          style={{
+            ...labelStyle(th),
+            fontFamily: FONT_MONO,
+            fontWeight: 500,
+            fontSize: 26,
+            letterSpacing: "0.1em",
+            left: 96,
+            top: TOP - 44,
+            opacity: a * dim,
+          }}
+        >
+          {lang === "en" ? "BEFORE" : "전"}
         </div>
         <div style={{ ...boxStyle(th, false), left: 96, top: TOP, width: 340, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
           {l(0)}
@@ -287,8 +300,19 @@ export const DiagramScene: React.FC<{
         <div style={{ ...boxStyle(th, false), left: 610, top: TOP, width: 374, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
           {l(1)}
         </div>
-        <div style={{ ...labelStyle(th, th.accent), left: 96, top: BOT - 48, fontWeight: 700, opacity: b }}>
-          {lang === "en" ? "after" : "후"}
+        <div
+          style={{
+            ...labelStyle(th, th.accent),
+            fontFamily: FONT_MONO,
+            fontWeight: 700,
+            fontSize: 26,
+            letterSpacing: "0.1em",
+            left: 96,
+            top: BOT - 44,
+            opacity: b,
+          }}
+        >
+          {lang === "en" ? "AFTER" : "후"}
         </div>
         <div style={{ ...boxStyle(th, false), left: 96, top: BOT, width: 340, height: 110, borderColor: th.accent, ...rise(b) }}>
           {l(2)}
