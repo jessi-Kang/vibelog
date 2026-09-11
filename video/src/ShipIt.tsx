@@ -12,11 +12,13 @@ import {
 } from "remotion";
 import {
   coldOpenKind,
+  type DiagramSpec,
   type ShortsScript,
   type ShortsTiming,
   type TimedSentence,
 } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
+import { DiagramScene } from "./Diagram";
 import {
   ArtCard,
   Background,
@@ -53,7 +55,7 @@ export type ShipItProps = {
   segments?: { path: string; start: number; end: number }[] | null;
 };
 
-type Kind = "cold" | "hook" | "phone" | "fail" | "end" | "art";
+type Kind = "cold" | "hook" | "phone" | "fail" | "end" | "art" | "diagram";
 
 interface Seg {
   kind: Kind;
@@ -66,6 +68,8 @@ interface Seg {
   /** duo 샷의 보조 폰이 틀 다른 화면의 시작 시각 — 주 화면과 같은
    *  화면이 좌우에 반복되지 않게 (Jessi 지적). 녹화가 한 화면뿐이면 없음 */
   duoAltOffset?: number;
+  /** diagram 장면이 그릴 그림 — 대본이 고른 종류와 라벨 */
+  diagram?: DiagramSpec;
 }
 
 function kindOf(scene: string, hasNextArt: boolean): Kind {
@@ -108,7 +112,7 @@ export function buildSegments(
   lang: "ko" | "en",
   segMap?: Map<string, { start: number; end: number }>,
 ): Seg[] {
-  const raw: { kind: Kind; from: number; screen?: string }[] = [];
+  const raw: { kind: Kind; from: number; screen?: string; diagram?: DiagramSpec }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
@@ -123,9 +127,15 @@ export function buildSegments(
         from = Math.max(from, statAt + offset + STAT_PUNCH_SEC + STAT_BREATH_SEC);
       }
     }
-    if (raw.length === 0) {
+    // 다이어그램이 붙은 문장은 화면 녹화 대신 그림이 뜬다 — 원리를 말하는
+    // 문장이라 녹화로는 보여줄 게 없다 (Jessi 지시). 그림은 문장마다 달라서
+    // 앞 블록과 합치지 않고 항상 제 블록을 갖는다.
+    const dia = line?.diagram;
+    if (dia) {
+      raw.push({ kind: "diagram", from: raw.length === 0 ? 0 : from, diagram: dia });
+    } else if (raw.length === 0) {
       raw.push({ kind, from: 0, screen: line?.screen }); // 첫 장면은 0초부터
-    } else if (raw[raw.length - 1].kind !== kind) {
+    } else if (raw[raw.length - 1].kind !== kind || raw[raw.length - 1].diagram) {
       raw.push({ kind, from, screen: line?.screen });
     } else if (!raw[raw.length - 1].screen && line?.screen) {
       // 같은 phone 블록에서 화면 지정이 있는 첫 문장을 대표로 쓴다
@@ -298,6 +308,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 timing={timing}
                 th={th}
                 offsetSec={offset}
+              />
+            )}
+            {seg.kind === "diagram" && seg.diagram && (
+              <DiagramScene
+                spec={seg.diagram}
+                th={th}
+                lang={lang}
+                fromSec={seg.from}
               />
             )}
             {seg.kind === "art" && artFiles?.next && (

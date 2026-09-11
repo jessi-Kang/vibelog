@@ -11,12 +11,14 @@ import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import matter from "gray-matter";
 import {
+  type DiagramSpec,
   MUSIC_MOODS,
   SHORTS_THEMES,
   shortsJsonPath,
   type ShortsLine,
   type ShortsScript,
   type ShortsTemplate,
+  validDiagram,
 } from "./shorts-types";
 
 const MODEL = "claude-opus-5";
@@ -97,9 +99,27 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   묘사한다 (예: "a tiny robot stacking glowing building blocks into a tower").
   구체적 사물 하나 중심, 은유는 문장 내용에서. 글자·로고·UI 스크린샷 묘사 금지.
   hook 등 다른 장면에는 art를 쓰지 않는다.
+- **diagram: 화면으로는 못 보여주는 "원리"를 그림으로.** 원인·구조·전후를
+  말로만 설명하는 문장(주로 fail의 원인, build의 해결 방식)에 붙인다.
+  화면 녹화로 보여줄 수 있는 것(기능·동작)에는 붙이지 않는다 — 그건 demo다.
+  **편당 최대 2개**, 그림이 문장보다 많으면 영상이 도식만 남는다.
+  자유 작도는 없다. 아래 다섯 종류 중에서 고르고 labels만 채운다:
+  · numberline — 임계값·범위가 문제였을 때.
+    labels: [범위 이름, 문제였던 값, 고친 값] 예: ["비슷하다고 보는 범위","3점","범위 밖"]
+  · fork — 하나가 둘로 갈릴 때 (같은 값을 다르게 쓰는 구조).
+    labels: [출발, 왼쪽 결과, 오른쪽 결과, 왼쪽 이름, 오른쪽 이름]
+    예: ["222건","이백이십이 껀","222건","음성","자막"]
+  · beforeafter — 방식을 갈아치웠을 때.
+    labels: [전-시작, 전-결과, 후-시작, 후-결과] 예: ["검색 API","늦게 뜸","내 레포 목록","30분 안에"]
+  · sets — 전체 중 일부가 겹칠 때.
+    labels: [왼쪽 집합, 오른쪽 집합, 겹친 값] 예: ["지어낸 이름 104개","서울 실제 2,889곳","7"]
+  · pipeline — 단계가 순서대로 흐를 때. labels: [단계 2~5개]
+    예: ["커밋을 읽고","글을 쓰고","영상으로 만들고","올린다"]
+  labelsEn도 같은 순서로 채운다. 라벨은 짧게 — 한 칸에 한글 10자 안팎.
+  같은 종류를 이웃 편과 연달아 쓰지 않는다 (아래 이웃 정보 참고).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"..."}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."]}}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -205,7 +225,27 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       screenPaths.has(l.screen.replace(/\/$/, "") || "/")
         ? { screen: l.screen.replace(/\/$/, "") || "/" }
         : {}),
+      // 다이어그램 — 어휘에 있고 라벨 수가 맞는 것만 (자유 작도 금지)
+      ...((): { diagram?: DiagramSpec } => {
+        const d = validDiagram(l.diagram);
+        return d ? { diagram: d } : {};
+      })(),
     };
+  });
+}
+
+/** 편당 다이어그램 상한 — 넘치면 영상이 도식만 남는다. 뒤쪽 것을 버린다 */
+const MAX_DIAGRAMS = 2;
+function capDiagrams(lines: ShortsLine[]): ShortsLine[] {
+  let used = 0;
+  return lines.map((l) => {
+    if (!l.diagram) return l;
+    if (used >= MAX_DIAGRAMS) {
+      const { diagram: _drop, ...rest } = l;
+      return rest;
+    }
+    used++;
+    return l;
   });
 }
 
@@ -239,6 +279,33 @@ function neighborTemplates(
     prev: read(dates.filter((d) => d < date).pop()),
     next: read(dates.find((d) => d > date)),
   };
+}
+
+/** 이웃 편(직전·다음)이 쓴 다이어그램 종류 — 연달아 같은 그림이 나오지 않게 */
+function neighborDiagrams(repo: string, date: string): string[] {
+  const dir = path.dirname(shortsJsonPath(repo, date));
+  if (!fs.existsSync(dir)) return [];
+  const days = fs
+    .readdirSync(dir)
+    .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+    .map((f) => f.replace(/\.json$/, ""))
+    .sort();
+  const i = days.indexOf(date);
+  const neighbors = (i === -1 ? days.slice(-1) : [days[i - 1], days[i + 1]]).filter(
+    (d): d is string => Boolean(d),
+  );
+  const kinds = new Set<string>();
+  for (const d of neighbors) {
+    try {
+      const j = JSON.parse(fs.readFileSync(shortsJsonPath(repo, d), "utf8"));
+      for (const l of j.lines ?? []) {
+        if (l?.diagram?.kind) kinds.add(l.diagram.kind);
+      }
+    } catch {
+      // 이웃 편이 없거나 깨졌으면 로테이션 정보 없이 진행한다
+    }
+  }
+  return [...kinds];
 }
 
 /** 이 레포의 몇 번째 데브로그인지 (DAY NN) */
@@ -305,6 +372,12 @@ export async function generateScript(
           (() => {
             const n = neighborTemplates(repo, date);
             return `이웃 편 템플릿 — 직전: ${n.prev ?? "(없음)"}, 다음: ${n.next ?? "(없음)"}`;
+          })(),
+          (() => {
+            const d = neighborDiagrams(repo, date);
+            return `이웃 편이 쓴 다이어그램 — ${d.length ? d.join(", ") : "(없음)"}${
+              d.length ? " (가급적 다른 종류로)" : ""
+            }`;
           })(),
           `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
           ...(screens.length >= 2
@@ -376,7 +449,9 @@ export async function generateScript(
     repo,
     date,
     day: dayNumber(repo, date),
-    lines: validateLines(parsed.lines, new Set(screens.map((s) => s.path))),
+    lines: capDiagrams(
+      validateLines(parsed.lines, new Set(screens.map((s) => s.path))),
+    ),
     demo: { url: demoUrl, steps: [] },
     ...(failCard ? { failCard } : {}),
     ...(commits.length ? { commits } : {}),

@@ -59,6 +59,63 @@ export interface ShortsLine {
    * 시간순으로 자르는 기존 방식 (내용과 화면이 어긋난다는 Jessi 지적의 해법)
    */
   screen?: string;
+  /**
+   * 이 문장 동안 띄울 다이어그램 — 화면 녹화로는 보여줄 수 없는 "원리"를
+   * 그림으로 설명한다 (Jessi 지시). 자유 작도가 아니라 아래 5종 어휘에서
+   * 고르고 라벨만 채운다 — 그림 품질을 고정하기 위해서다.
+   * 종류별 labels 순서:
+   *   numberline  [범위 이름, 문제였던 값, 고친 값]
+   *   fork        [출발, 왼쪽 결과, 오른쪽 결과, 왼쪽 이름, 오른쪽 이름]
+   *   beforeafter [전-시작, 전-결과, 후-시작, 후-결과]
+   *   sets        [왼쪽 집합, 오른쪽 집합, 겹친 값]
+   *   pipeline    [단계 2~5개]
+   */
+  diagram?: DiagramSpec;
+}
+
+/** 다이어그램 어휘 — 새 종류를 늘리기 전에 이 다섯으로 되는지 먼저 본다 */
+export type DiagramKind =
+  | "numberline"
+  | "fork"
+  | "beforeafter"
+  | "sets"
+  | "pipeline";
+
+export interface DiagramSpec {
+  kind: DiagramKind;
+  /** 한국어 라벨 (종류별 개수·순서는 ShortsLine.diagram 주석 참고) */
+  labels: string[];
+  /** 영어 라벨 — 없으면 ko 폴백 */
+  labelsEn?: string[];
+}
+
+/** 종류별 [최소, 최대] 라벨 수 — 대본 검증과 렌더가 같은 표를 본다 */
+export const DIAGRAM_LABELS: Record<DiagramKind, [number, number]> = {
+  numberline: [3, 3],
+  fork: [3, 5],
+  beforeafter: [4, 4],
+  sets: [3, 3],
+  pipeline: [2, 5],
+};
+
+/** 대본이 넘긴 값이 쓸 수 있는 다이어그램인지 — 아니면 조용히 버린다 */
+export function validDiagram(v: unknown): DiagramSpec | undefined {
+  const d = v as DiagramSpec | undefined;
+  if (!d || typeof d !== "object") return undefined;
+  const range = DIAGRAM_LABELS[d.kind];
+  if (!range) return undefined;
+  const labels = Array.isArray(d.labels)
+    ? d.labels.filter((x): x is string => typeof x === "string" && !!x.trim())
+    : [];
+  if (labels.length < range[0]) return undefined;
+  const labelsEn = Array.isArray(d.labelsEn)
+    ? d.labelsEn.filter((x): x is string => typeof x === "string" && !!x.trim())
+    : [];
+  return {
+    kind: d.kind,
+    labels: labels.slice(0, range[1]),
+    ...(labelsEn.length >= range[0] ? { labelsEn: labelsEn.slice(0, range[1]) } : {}),
+  };
 }
 
 /** 화면별 녹화 구간 — readyAt 기준 상대 시각(초) */
