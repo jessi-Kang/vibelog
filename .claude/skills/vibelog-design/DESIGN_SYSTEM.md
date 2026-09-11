@@ -15,7 +15,7 @@
 - `uploads/vibelog-docs/docs/shorts-prototype.html` — 승인된 Ship it 샘플 (컴포넌트 치수의 원본)
 - `samples/A · B · C` — 이 세션에서 제안한 블로그 방향 3종. **C(현황판)** 채택. A(로그형)·B(에디토리얼)는 참고용으로 남김.
 
-로고 없음 — 제공된 소스에 마크가 없어 만들지 않았다. 워드마크(소문자 `vibelog`, **JetBrains Mono 700** — 코드 느낌, Jessi 지시)가 마크 역할. 파비콘은 터미널 프롬프트 `v_` 글리프(app/icon.svg).
+로고 없음 — 제공된 소스에 마크가 없어 만들지 않았다. 워드마크(소문자 `vibelog`, **JetBrains Mono 700** — 코드 느낌, Jessi 지시)가 마크 역할. 파비콘·앱 아이콘은 커밋 로그 심볼(app/icon.svg — 커밋 점+메시지 줄, 최신 민트). 레터마크 v_는 폐기.
 
 ## 손맛 규칙 (AI 생성 티 빼기)
 

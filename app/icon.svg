@@ -1,8 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- 파비콘: 워드마크와 같은 JetBrains Mono Bold "v_" 글리프(패스 내장).
-       커서는 광학 커닝으로 v에 붙였다 — 원간격은 아이콘에서 균형이 깨진다 (Jessi 피드백) -->
+  <!-- 파비콘: 커밋 로그 심볼 — 커밋 점 + 메시지 줄 4개, 최신(아래)이 민트.
+       레터마크(v_)는 못생겼다는 피드백으로 폐기 (Jessi 선택: I-3 git log 정렬).
+       상하좌우 여백 11px 통일 정렬. -->
   <rect width="64" height="64" rx="14" fill="#0A0E14"/>
   <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#26313F" stroke-width="2"/>
-  <path transform="translate(9.463999999999999 41.888000000000005) scale(0.048 -0.048)" fill="#F3EFE6" d="M220 0 39 550H167L272 216Q281 186 289.5 154.0Q298 122 302 103Q307 122 315.0 154.0Q323 186 331 215L434 550H561L381 0Z"/>
-  <path transform="translate(26.744 41.888000000000005) scale(0.048 -0.048)" fill="#5EE1C3" d="M60 -138V-25H540V-138Z"/>
+  <circle cx="15" cy="14.0" r="3" fill="#3A4656"/>
+  <rect x="23" y="11.0" width="21" height="6" rx="3" fill="#3A4656"/>
+  <circle cx="15" cy="25.7" r="3" fill="#8C98A8"/>
+  <rect x="23" y="22.7" width="30" height="6" rx="3" fill="#8C98A8"/>
+  <circle cx="15" cy="37.3" r="3" fill="#C9CFD8"/>
+  <rect x="23" y="34.3" width="17" height="6" rx="3" fill="#C9CFD8"/>
+  <circle cx="15" cy="49.0" r="4" fill="#5EE1C3"/>
+  <rect x="23" y="46.0" width="26" height="6" rx="3" fill="#5EE1C3"/>
 </svg>
