@@ -55,7 +55,7 @@ Jessi가 새 프로젝트를 시작하면 (또는 "새 프로젝트" 얘기가 �
 - 숫자 표기: 1,000 이상은 천 단위 콤마. UI의 카운트·통계는 `lib/format.ts`의 `fmtNum`을 쓴다 (로케일 고정 — 서버·클라이언트가 갈리면 hydration이 깨진다).
 - 커밋 메시지는 데브로그 원료다. 한 줄 요약 + 본문에 **"왜"**를 반드시 쓴다. 각 단계가 끝날 때마다 커밋한다.
 - `content/` 밑 파일은 파이프라인이 덮어쓴다. 손수정은 frontmatter `manual: true`로 보호.
-- 프로젝트 상태값: `idea | building | preview | live | paused`. 자동 판정: 배포 주소 있으면 preview, 거기에 **릴리즈 선언**(GitHub Release 1개 이상 또는 About Website 직접 채움)까지 있으면 live. 배포 없으면 30일 내 커밋 building / 넘으면 paused. 레포의 `vibelog.json` status가 있으면 그게 우선.
+- 프로젝트 상태값: `idea | building | preview | live | paused`. 자동 판정: 배포 주소 있으면 preview, **GitHub Release가 1개 이상**이면 live. About Website는 주소 지정용일 뿐 상태와 무관 (다른 세션이 주소만 채워도 live로 승격되던 사고의 교훈). 배포 없으면 30일 내 커밋 building / 넘으면 paused. `vibelog.json` status가 언제나 우선 (vibelog 자신은 이걸로 live 고정).
 - 데브로그 형식: 뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것. (스크린샷 섹션은 삭제했다 — 글에선 정보가 얇았고, 실제 화면은 쇼츠 데모가 보여준다. 캡처는 쇼츠 소재로만 쓴다.)
 - 하루 단위로 묶어 레포당 글 하나. 활동 없는 레포는 건너뛴다.
 - **재실행이 기록을 지우면 안 된다.** 같은 날 재실행은 그날 수집 창 전체(state.json의 `daySince`)로 글을 다시 생성한다 — 마지막 조각만으로 덮어쓰기 금지. 지난 날짜 글·쇼츠는 파이프라인이 절대 다시 만들지 않는다. 품질이 나쁠 때만 Run workflow의 `regen` 입력으로 명시 재생성한다.
