@@ -2,13 +2,13 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.55,
-      "end": 15.61
+      "start": 0.92,
+      "end": 16.14
     },
     {
       "path": "/record",
-      "start": 16.13,
-      "end": 31.02
+      "start": 16.81,
+      "end": 32.02
     }
   ]
 }
