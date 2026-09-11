@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Project, RunLogLine } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
-import { projectColor, withAlpha } from "@/lib/project-color";
+import { projectColor } from "@/lib/project-color";
 import { useLang } from "./lang";
 import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
 
@@ -132,33 +132,17 @@ export function DevlogTimelineEntry({
   last?: boolean;
 }) {
   return (
-    // repo가 있으면(전체 피드) 이니셜 마커 + 프로젝트명 선행으로 프로젝트를
-    // 구분한다 (Jessi 지시). 프로젝트 상세 타임라인(repo 없음)은 기존 민트 점.
-    <Link
-      href={href}
-      className={`group relative block ${repo ? "pl-[34px]" : "pl-[22px]"}`}
-    >
+    // 전체 피드(repo 있음)는 타임라인 점을 프로젝트 식별색으로 — 이름도 같은
+    // 색이라 점만 봐도 구분된다 (Jessi 지시: 이니셜 대신 색 점).
+    // 프로젝트 상세 타임라인(repo 없음)은 기존 민트 점.
+    <Link href={href} className="group relative block pl-[22px]">
       {!last && (
-        <div
-          className={`absolute bottom-[-28px] w-px bg-line ${repo ? "left-[10.5px] top-7" : "left-[3.5px] top-4"}`}
-        />
+        <div className="absolute bottom-[-28px] left-[3.5px] top-4 w-px bg-line" />
       )}
-      {repo ? (
-        // 프로젝트 식별색 — 이니셜 마커·이름이 같은 색이라 색만 봐도 구분된다 (Jessi 지시)
-        <div
-          aria-hidden
-          className="absolute left-0 top-0 grid h-[22px] w-[22px] place-items-center rounded-md border font-mono text-2xs font-bold"
-          style={{
-            color: projectColor(repo),
-            borderColor: withAlpha(projectColor(repo), 0.4),
-            background: withAlpha(projectColor(repo), 0.12),
-          }}
-        >
-          {repo[0]}
-        </div>
-      ) : (
-        <div className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-accent" />
-      )}
+      <div
+        className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-accent"
+        style={repo ? { background: projectColor(repo) } : undefined}
+      />
       <div className="flex flex-col gap-1.5">
         <div className="flex gap-2.5 font-mono text-xs text-muted">
           {repo && (
