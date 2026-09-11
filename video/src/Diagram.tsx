@@ -13,10 +13,12 @@
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import type { DiagramSpec } from "../../scripts/shorts-types";
-import { FONT_MONO, FONT_SANS, type ShortsTheme } from "./theme";
+import { FONT_MONO, FONT_SANS, visualLen, type ShortsTheme } from "./theme";
 
 /** 무대 — 자막 위, 헤드라인 아래의 가운데 띠 */
 const CY = 1020;
+/** 숫자선 값 라벨의 아랫변과 축 사이 간격 — 점(r=34)을 덮지 않을 만큼 */
+const VALUE_GAP = 62;
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const ease = (p: number): number => 1 - Math.pow(1 - Math.min(1, Math.max(0, p)), 3);
 /** 장면 시작 s초부터 d초 동안 0→1 */
@@ -35,10 +37,32 @@ function tint(th: ShortsTheme, ratio = 0.14): string {
   return `rgb(${mix(br, ar)}, ${mix(bg, ag)}, ${mix(bb, ab)})`;
 }
 
+/**
+ * 두 줄을 넘길 만큼 긴 라벨은 글자를 줄인다 — "범위 밖의 큰 수"가 마지막
+ * 한 글자만 떨어져 나가 원 위에 얹히던 문제 (Jessi 지적). 줄바꿈 자체는
+ * wrap 규칙(아래 balance·keep-all)이 고르게 나누고, 그래도 넘칠 때만 줄인다.
+ */
+function fitFont(text: string, base: number, width: number, lines = 2): number {
+  const len = visualLen(text);
+  const perLine = width / base; // 한 줄에 들어가는 전각 글자 수(근사)
+  if (len <= perLine * lines) return base;
+  return Math.max(Math.round(base * 0.6), Math.floor((width * lines) / len));
+}
+
+/** 줄바꿈은 두 줄로 고르게 — 단어 중간에서 끊지 않고, 한 글자 고아를 막는다 */
+const WRAP: React.CSSProperties = {
+  wordBreak: "keep-all",
+  textWrap: "balance",
+  lineHeight: 1.2,
+} as React.CSSProperties;
+
 const boxStyle = (
   th: ShortsTheme,
   on: boolean,
+  text = "",
+  width = 400,
 ): React.CSSProperties => ({
+  ...WRAP,
   position: "absolute",
   display: "flex",
   alignItems: "center",
@@ -53,13 +77,14 @@ const boxStyle = (
   // (다이어그램만 딴 폰트로 놀던 문제, Jessi 지적). 삽질 카드 본문과 같은 계열.
   fontFamily: FONT_SANS,
   fontWeight: 700,
-  fontSize: 38,
+  fontSize: fitFont(text, 38, width),
   background: on ? tint(th) : th.panel,
   border: `4px solid ${on ? th.accent : th.line}`,
   color: on ? th.accent : th.ink,
 });
 
 const labelStyle = (th: ShortsTheme, color?: string): React.CSSProperties => ({
+  ...WRAP,
   position: "absolute",
   fontFamily: FONT_SANS,
   fontWeight: 700,
@@ -172,21 +197,24 @@ export const DiagramScene: React.FC<{
             top: CY + 96,
             textAlign: "center",
             fontWeight: 700,
+            fontSize: fitFont(l(0), 30, 420),
             ...rise(seg(t, 0.7, 0.4), 16),
           }}
         >
           {l(0)}
         </div>
+        {/* 값 라벨은 아래를 축에 맞춘다 — 위로 자라야 두 줄이 되어도 점을
+            덮지 않는다 (한 글자가 원 위에 얹히던 문제, Jessi 지적) */}
         <div
           style={{
             ...labelStyle(th, th.ink),
-            left: 180,
-            width: 300,
-            top: CY - 148,
+            left: 130,
+            width: 400,
+            bottom: 1920 - (CY - VALUE_GAP),
             textAlign: "center",
             fontWeight: 700,
-            fontSize: 42,
-            ...rise(seg(t, 1.1, 0.4), 16),
+            fontSize: fitFont(l(1), 42, 400),
+            ...rise(seg(t, 1.45, 0.4), 16),
           }}
         >
           {l(1)}
@@ -194,12 +222,12 @@ export const DiagramScene: React.FC<{
         <div
           style={{
             ...labelStyle(th, th.accent),
-            left: 660,
-            width: 260,
-            top: CY - 148,
+            left: 590,
+            width: 400,
+            bottom: 1920 - (CY - VALUE_GAP),
             textAlign: "center",
             fontWeight: 700,
-            fontSize: 42,
+            fontSize: fitFont(l(2), 42, 400),
             ...rise(seg(t, 2.3, 0.4), 16),
           }}
         >
@@ -247,19 +275,19 @@ export const DiagramScene: React.FC<{
           <path d="M256 1078 L280 1122 L304 1078 Z" fill={th.accent} opacity={arrow} />
           <path d="M776 1078 L800 1122 L824 1078 Z" fill={th.line} opacity={arrow} />
         </svg>
-        <div style={{ ...boxStyle(th, false), left: 340, top: 696, width: 400, height: 104, ...popIn(src) }}>
+        <div style={{ ...boxStyle(th, false, l(0), 400), left: 340, top: 696, width: 400, height: 104, ...popIn(src) }}>
           {l(0)}
         </div>
-        <div style={{ ...boxStyle(th, true), left: 60, top: 1140, width: 440, height: 120, ...popIn(b1) }}>
+        <div style={{ ...boxStyle(th, true, l(1), 440), left: 60, top: 1140, width: 440, height: 120, ...popIn(b1) }}>
           {l(1)}
         </div>
-        <div style={{ ...boxStyle(th, false), left: 600, top: 1140, width: 420, height: 120, ...popIn(b2) }}>
+        <div style={{ ...boxStyle(th, false, l(2), 420), left: 600, top: 1140, width: 420, height: 120, ...popIn(b2) }}>
           {l(2)}
         </div>
-        <div style={{ ...labelStyle(th), left: 60, width: 440, top: 1284, textAlign: "center", opacity: b1 }}>
+        <div style={{ ...labelStyle(th), left: 60, width: 440, top: 1284, textAlign: "center", fontSize: fitFont(l(3), 30, 440), opacity: b1 }}>
           {l(3)}
         </div>
-        <div style={{ ...labelStyle(th), left: 600, width: 420, top: 1284, textAlign: "center", opacity: b2 }}>
+        <div style={{ ...labelStyle(th), left: 600, width: 420, top: 1284, textAlign: "center", fontSize: fitFont(l(4), 30, 420), opacity: b2 }}>
           {l(4)}
         </div>
       </>
@@ -297,10 +325,10 @@ export const DiagramScene: React.FC<{
         >
           {lang === "en" ? "BEFORE" : "전"}
         </div>
-        <div style={{ ...boxStyle(th, false), left: 96, top: TOP, width: 340, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
+        <div style={{ ...boxStyle(th, false, l(0), 340), left: 96, top: TOP, width: 340, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
           {l(0)}
         </div>
-        <div style={{ ...boxStyle(th, false), left: 610, top: TOP, width: 374, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
+        <div style={{ ...boxStyle(th, false, l(1), 374), left: 610, top: TOP, width: 374, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
           {l(1)}
         </div>
         <div
@@ -317,10 +345,10 @@ export const DiagramScene: React.FC<{
         >
           {lang === "en" ? "AFTER" : "후"}
         </div>
-        <div style={{ ...boxStyle(th, false), left: 96, top: BOT, width: 340, height: 110, borderColor: th.accent, ...rise(b) }}>
+        <div style={{ ...boxStyle(th, false, l(2), 340), left: 96, top: BOT, width: 340, height: 110, borderColor: th.accent, ...rise(b) }}>
           {l(2)}
         </div>
-        <div style={{ ...boxStyle(th, true), left: 610, top: BOT, width: 374, height: 110, ...rise(b) }}>
+        <div style={{ ...boxStyle(th, true, l(3), 374), left: 610, top: BOT, width: 374, height: 110, ...rise(b) }}>
           {l(3)}
         </div>
       </>
@@ -354,10 +382,10 @@ export const DiagramScene: React.FC<{
           <circle cx={700} cy={CY} r={R} fill="none" stroke={th.accent} strokeWidth={5}
             pathLength={1} transform={`rotate(-90 700 ${CY})`} style={ring(b)} />
         </svg>
-        <div style={{ ...labelStyle(th, th.ink), left: 96, top: CY - 300, fontWeight: 700, ...rise(seg(t, 0.5, 0.4), 16) }}>
+        <div style={{ ...labelStyle(th, th.ink), left: 96, width: 520, top: CY - 316, fontWeight: 700, fontSize: fitFont(l(0), 30, 520), ...rise(seg(t, 0.5, 0.4), 16) }}>
           {l(0)}
         </div>
-        <div style={{ ...labelStyle(th, th.accent), right: 96, top: CY + 270, fontWeight: 700, textAlign: "right", ...rise(seg(t, 0.9, 0.4), 16) }}>
+        <div style={{ ...labelStyle(th, th.accent), right: 96, width: 520, top: CY + 270, fontWeight: 700, textAlign: "right", fontSize: fitFont(l(1), 30, 520), ...rise(seg(t, 0.9, 0.4), 16) }}>
           {l(1)}
         </div>
         <div
@@ -369,7 +397,7 @@ export const DiagramScene: React.FC<{
             textAlign: "center",
             fontFamily: FONT_SANS,
             fontWeight: 900,
-            fontSize: 86,
+            fontSize: fitFont(l(2), 86, 180, 1),
             color: th.accent,
             ...popIn(num),
           }}
@@ -407,7 +435,7 @@ export const DiagramScene: React.FC<{
           <div
             key={i}
             style={{
-              ...boxStyle(th, last),
+              ...boxStyle(th, last, label, 540),
               left: 270,
               top: ys[i],
               width: 540,
