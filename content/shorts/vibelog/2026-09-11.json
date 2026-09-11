@@ -1,6 +1,6 @@
 {
-  "template": "before-after",
-  "music": "ship-it",
+  "template": "fail",
+  "music": "tense",
   "theme": "terminal",
   "repo": "vibelog",
   "date": "2026-09-11",
@@ -8,142 +8,123 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "영상이 45초에서 끊겼습니다.",
-      "en": "The video cut off at 45 seconds.",
+      "ko": "영상이 5초 일찍 끊겼습니다.",
+      "en": "The video cut off 5 seconds early.",
       "keywords": [
-        "45초에서"
+        "끊겼습니다"
       ],
       "keywordsEn": [
-        "45 seconds"
+        "cut off"
       ]
     },
     {
-      "scene": "build",
-      "ko": "배경 음악 파일이 모두 45초였습니다.",
+      "scene": "fail",
+      "ko": "배경 음악 파일이 전부 45초였습니다.",
       "en": "Every background music file was exactly 45 seconds.",
       "keywords": [
+        "전부",
         "45초였습니다"
       ],
       "keywordsEn": [
-        "exactly 45 seconds"
+        "45 seconds"
       ],
       "stat": "45초",
       "statEn": "45 seconds"
     },
     {
-      "scene": "build",
-      "ko": "짧은 쪽에 맞춰 자르게 해 둔 게 원인이었습니다.",
-      "en": "The mix trimmed to the shorter track.",
+      "scene": "fail",
+      "ko": "소리와 화면 중 짧은 쪽에 맞춰 잘리고 있었습니다.",
+      "en": "The merge trimmed everything to the shorter of the two.",
       "keywords": [
-        "짧은 쪽에",
-        "원인이었습니다"
+        "짧은 쪽에 맞춰"
       ],
       "keywordsEn": [
-        "the shorter track"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "이제 음악을 필요한 만큼 반복해 잇습니다.",
-      "en": "Now the music loops as long as the video needs.",
-      "keywords": [
-        "반복해 잇습니다"
-      ],
-      "keywordsEn": [
-        "loops"
+        "shorter"
       ],
       "diagram": {
         "kind": "beforeafter",
         "labels": [
           "45초 음악",
-          "45초에서 끊김",
-          "반복해 이은 음악",
+          "영상도 45초",
+          "음악 반복",
           "끝까지 재생"
         ],
         "labelsEn": [
           "45s music",
-          "cut at 45s",
-          "looped music",
+          "video ends at 45s",
+          "music loops",
           "plays to the end"
         ]
       }
     },
     {
-      "scene": "demo",
-      "ko": "이제 50초 영상도 끝인사까지 나옵니다.",
-      "en": "A 50-second video now reaches its closing screen.",
+      "scene": "build",
+      "ko": "이제 음악을 필요한 만큼 반복해 이어 붙입니다.",
+      "en": "Now the music repeats as many times as needed.",
       "keywords": [
-        "끝인사까지"
+        "반복해 이어 붙입니다"
+      ],
+      "keywordsEn": [
+        "repeats"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "영상이 길어져도 소리가 끝까지 따라옵니다.",
+      "en": "However long the video runs, the sound follows to the end.",
+      "keywords": [
+        "끝까지 따라옵니다"
+      ],
+      "keywordsEn": [
+        "follows to the end"
+      ]
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 마지막 인사 화면까지 나옵니다.",
+      "en": "The closing screen shows up again.",
+      "keywords": [
+        "마지막 인사 화면까지"
       ],
       "keywordsEn": [
         "closing screen"
       ],
-      "stat": "50초",
-      "statEn": "50 seconds",
       "screen": "/shorts"
     },
     {
-      "scene": "fail",
-      "ko": "숫자 읽기에서 두 번 헛짚었습니다.",
-      "en": "I got number pronunciation wrong twice.",
-      "keywords": [
-        "두 번"
-      ],
-      "keywordsEn": [
-        "twice"
-      ]
-    },
-    {
-      "scene": "fail",
-      "ko": "단위에만 특별 규칙을 둔 게 원인이었습니다.",
-      "en": "The real cause was a special rule for one unit word.",
-      "keywords": [
-        "특별 규칙을"
-      ],
-      "keywordsEn": [
-        "a special rule"
-      ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "222건",
-          "매끄럽게 읽힘",
-          "단위만 튀어나옴",
-          "일반 규칙",
-          "특별 규칙"
-        ],
-        "labelsEn": [
-          "222 items",
-          "reads smoothly",
-          "unit pops out",
-          "general rule",
-          "special rule"
-        ]
-      }
-    },
-    {
-      "scene": "next",
-      "ko": "앞으로 나올 숫자 표현도 미리 넣어 뒀습니다.",
-      "en": "I already added the number forms likely to come up next.",
-      "keywords": [
-        "미리 넣어 뒀습니다"
-      ],
-      "keywordsEn": [
-        "already added"
-      ],
-      "art": "a tiny robot lining up numbered wooden blocks on a shelf"
-    },
-    {
-      "scene": "end",
-      "ko": "글도 영상도 매일 밤 자동으로 올라갑니다.",
-      "en": "Both posts and videos publish automatically every night.",
+      "scene": "demo",
+      "ko": "영상은 매일 밤 자동으로 올라갑니다.",
+      "en": "The videos publish automatically every night.",
       "keywords": [
         "매일 밤"
       ],
       "keywordsEn": [
         "every night"
       ],
-      "screen": "/log"
+      "screen": "/"
+    },
+    {
+      "scene": "next",
+      "ko": "숫자 읽는 방식도 계속 다듬겠습니다.",
+      "en": "I'll keep refining how numbers get read aloud.",
+      "keywords": [
+        "다듬겠습니다"
+      ],
+      "keywordsEn": [
+        "read aloud"
+      ],
+      "art": "a small robot polishing a row of wooden number blocks on a workbench"
+    },
+    {
+      "scene": "end",
+      "ko": "내일 밤에도 한 편 올라갑니다.",
+      "en": "Another one goes up tomorrow night.",
+      "keywords": [
+        "내일 밤에도"
+      ],
+      "keywordsEn": [
+        "tomorrow night"
+      ]
     }
   ],
   "demo": {
@@ -151,12 +132,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "단위만 튀어나왔다",
-    "titleEn": "Only the unit popped out",
-    "before": "숫자 대신 뒤의 단위를 세게 발음하게 고쳤습니다.",
-    "after": "특별 규칙을 지우니 일반 규칙이 알아서 맞게 읽었습니다.",
-    "beforeEn": "I made the unit word after the number sound harder.",
-    "afterEn": "Deleting the special rule let the general rule read it right."
+    "title": "영상이 일찍 끝났다",
+    "titleEn": "The video ended early",
+    "before": "50초 영상이 45초에서 끊겼습니다",
+    "after": "음악을 이어 붙여 끝까지 재생됩니다",
+    "beforeEn": "A 50-second video stopped at 45",
+    "afterEn": "The music now loops to the full length"
   },
   "commits": [
     [
@@ -277,22 +258,22 @@
   "commitCount": 14,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "50초 영상이 45초에서 끊기던 이유는 배경 음악 길이였습니다. 음악을 반복해 이어 붙이고 남는 끝을 조용하게 메워, 이제 끝인사까지 나옵니다.",
-    "en": "A 50-second video stopped at 45 because every music file was 45 seconds long. Now the music loops and the tail is padded with silence, so the closing screen survives."
+    "ko": "50초 영상이 45초에서 끊기던 이유는 배경 음악 길이였습니다. 음악을 필요한 만큼 이어 붙여 끝까지 재생되게 고쳤습니다.",
+    "en": "A 50-second video kept stopping at 45 because every music file was 45 seconds. Now the music loops to match the video length."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
-    "#쇼츠제작",
     "#자동화",
+    "#숏폼",
     "#devlog",
-    "#ffmpeg",
-    "#buildinpublic"
+    "#buildinpublic",
+    "#ffmpeg"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtx419uw",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtx41bph",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtx42v4o",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtx42y1l"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.poster.jpg?v=mtx55oal",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.ko.mp4?v=mtx55qaj",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.en.poster.jpg?v=mtx574sj",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-11.en.mp4?v=mtx5787p"
   }
 }
