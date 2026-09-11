@@ -8,118 +8,127 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "넷 중 진짜를 고르는 게임을 열었습니다.",
-      "en": "A new game: pick the one real name out of four.",
+      "ko": "지어낸 이름이 진짜였습니다.",
+      "en": "A name I made up turned out to be real.",
       "keywords": [
-        "진짜를",
-        "게임을"
+        "지어낸",
+        "진짜였습니다"
       ],
       "keywordsEn": [
-        "one real name",
-        "four"
+        "made up",
+        "real"
       ]
     },
     {
       "scene": "build",
-      "ko": "서울 전역 실제 아파트 2,889곳을 넣었습니다.",
-      "en": "I loaded 2,889 real apartment complexes across Seoul.",
+      "ko": "넷 중 진짜를 고르는 게임을 새로 열었습니다.",
+      "en": "I opened a new game: pick the real one out of four.",
       "keywords": [
-        "2,889곳을"
+        "넷 중 진짜를",
+        "새로 열었습니다"
       ],
       "keywordsEn": [
-        "2,889"
+        "pick the real one",
+        "new game"
       ],
-      "stat": "2,889곳",
-      "statEn": "2,889 complexes",
       "screen": "/findreal"
     },
     {
       "scene": "build",
-      "ko": "하루 분량은 3문제에서 10문제로 늘렸습니다.",
-      "en": "A day's round grew from 3 questions to 10.",
+      "ko": "진짜 아파트는 서울 2,889곳에서 가져옵니다.",
+      "en": "The real apartments come from 2,889 complexes in Seoul.",
+      "keywords": [],
+      "keywordsEn": [
+        "2,889 complexes"
+      ],
+      "stat": "2,889곳",
+      "statEn": "2,889 complexes",
+      "screen": "/play"
+    },
+    {
+      "scene": "demo",
+      "ko": "위치, 연도, 세대 수가 전부 실제 값입니다.",
+      "en": "Location, build year, and unit count are all real.",
+      "keywords": [
+        "전부 실제 값입니다"
+      ],
+      "keywordsEn": [
+        "all real"
+      ],
+      "screen": "/play"
+    },
+    {
+      "scene": "demo",
+      "ko": "하루 분량은 10문제로 늘었습니다.",
+      "en": "A day's round grew to 10 questions.",
       "keywords": [
         "10문제로"
       ],
       "keywordsEn": [
-        "10"
+        "10 questions"
       ],
-      "screen": "/findreal"
+      "screen": "/play"
     },
     {
       "scene": "demo",
-      "ko": "문제마다 제한시간이 붙었습니다. 넷 중 고르기는 15초입니다.",
-      "en": "Every question now has a clock. Fifteen seconds to pick one of four.",
+      "ko": "문제마다 제한시간도 생겼습니다.",
+      "en": "Every question now has a clock.",
       "keywords": [
-        "제한시간이",
-        "15초입니다"
+        "제한시간도"
       ],
       "keywordsEn": [
-        "a clock",
-        "Fifteen seconds"
+        "a clock"
       ],
-      "screen": "/findreal"
-    },
-    {
-      "scene": "demo",
-      "ko": "다 풀어도 문제가 계속 나오는 모드도 있습니다.",
-      "en": "Finish them all and questions keep coming if you want.",
-      "keywords": [
-        "계속 나오는"
-      ],
-      "keywordsEn": [
-        "keep coming"
-      ],
-      "screen": "/findreal"
+      "screen": "/assemble"
     },
     {
       "scene": "fail",
-      "ko": "지어낸 가짜 이름 7개가 실제로 있었습니다.",
-      "en": "Seven of my made-up names turned out to be real.",
+      "ko": "가짜 이름 104개를 새로 지었습니다.",
+      "en": "I wrote 104 new fake names.",
       "keywords": [
-        "가짜 이름",
-        "7개가"
+        "가짜 이름"
       ],
       "keywordsEn": [
-        "Seven",
-        "made-up names"
+        "104 new fake names"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "대조해 보니 7개가 실제로 있는 아파트였습니다.",
+      "en": "Checking the list, 7 of them actually exist.",
+      "keywords": [
+        "7개가",
+        "실제로 있는"
+      ],
+      "keywordsEn": [
+        "7 of them",
+        "actually exist"
       ],
       "stat": "7개",
       "statEn": "7 names"
     },
     {
-      "scene": "fail",
-      "ko": "완전히 만들어낸 줄 알았는데 서울에 있더군요.",
-      "en": "I was sure I had invented them. Seoul disagreed.",
-      "keywords": [
-        "만들어낸 줄"
-      ],
-      "keywordsEn": [
-        "invented"
-      ]
-    },
-    {
       "scene": "next",
-      "ko": "다음은 나머지 두 게임의 결과 그림입니다.",
-      "en": "Next: shareable result images for the other two games.",
+      "ko": "남은 두 게임도 결과 그림을 만들 차례입니다.",
+      "en": "Next, result images for the other two games.",
       "keywords": [
-        "두 게임의",
-        "결과 그림입니다"
+        "남은 두 게임도"
       ],
       "keywordsEn": [
         "result images",
-        "two games"
+        "other two games"
       ],
-      "art": "a small hand-cranked printing press pushing out two glossy picture cards"
+      "art": "a tiny printing press pressing a fresh picture card onto paper"
     },
     {
       "scene": "end",
-      "ko": "직접 해보세요.",
-      "en": "Go try it.",
+      "ko": "가짜를 짓는 게 제일 어렵습니다.",
+      "en": "Inventing the fakes is the hardest part.",
       "keywords": [
-        "직접"
+        "가짜를 짓는 게"
       ],
       "keywordsEn": [
-        "try"
+        "Inventing the fakes"
       ]
     }
   ],
@@ -128,12 +137,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "지어낸 이름이 실제로 있었다",
-    "titleEn": "The fake name was real",
-    "before": "가짜 아파트 이름 104개를 새로 지었습니다.",
-    "after": "실제 목록과 대조해 7개를 걸러내고 다시 지었습니다.",
-    "beforeEn": "I wrote 104 new fake apartment names.",
-    "afterEn": "Checked against the real list, dropped 7, wrote replacements."
+    "title": "지어낸 이름이 실존했다",
+    "titleEn": "The invented name existed",
+    "before": "가짜로 지은 이름 7개가 진짜 아파트였습니다",
+    "after": "걸러내고 다른 이름으로 채웠습니다",
+    "beforeEn": "7 names I invented were real apartments",
+    "afterEn": "I dropped them and wrote replacements"
   },
   "commits": [
     [
@@ -302,22 +311,22 @@
   "commitCount": 20,
   "handle": "apt-gam.vercel.app",
   "captions": {
-    "ko": "넷 중 진짜 아파트 하나를 고르는 게임을 열었습니다. 서울 실제 단지 2,889곳을 넣었고, 지어낸 가짜 이름 7개는 실제로 존재해서 걸러냈습니다.",
-    "en": "A new game: pick the one real apartment out of four. It runs on 2,889 real Seoul complexes, and 7 of my made-up names turned out to actually exist."
+    "ko": "서울 실제 단지 2,889곳으로 문제를 만들고, 넷 중 진짜 하나를 고르는 게임을 새로 열었습니다. 지어낸 가짜 이름 중 7개가 실제로 존재해서 다시 썼습니다.",
+    "en": "Quiz questions now come from 2,889 real Seoul complexes, and a new game asks you to pick the real name out of four. Seven names I invented turned out to exist, so I rewrote them."
   },
   "hashtags": [
-    "#개발일지",
-    "#사이드프로젝트",
     "#아파트",
     "#퀴즈게임",
+    "#데브로그",
+    "#서울",
     "#devlog",
     "#buildinpublic",
-    "#webgame"
+    "#indiedev"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtvtal00",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtvtanel",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtvtc5wi",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtvtc84o"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtwow7bn",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtwow9fl",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtwoxsh0",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtwoxwal"
   }
 }
