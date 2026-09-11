@@ -77,7 +77,13 @@ function Tabs({
             key={t.href}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`hit flex ${bottom ? "min-h-12" : "min-h-9"} flex-1 items-center justify-center text-sm font-bold transition-colors duration-150 md:flex-none ${on ? "text-ink" : "text-muted hover:text-ink-soft"}`}
+            className={`hit flex ${bottom ? "min-h-[60px] text-[15px]" : "min-h-9 text-sm"} flex-1 items-center justify-center font-bold transition-colors duration-150 md:flex-none ${
+              on
+                ? bottom
+                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (Jessi: 잘 안 띈다)
+                  : "text-ink"
+                : "text-muted hover:text-ink-soft"
+            }`}
           >
             <span className="relative py-1">
               {lang === "ko" ? t.ko : t.en}
@@ -87,7 +93,9 @@ function Tabs({
                 </span>
               )}
               {on && (
-                <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-accent" />
+                <span
+                  className={`absolute left-0 right-0 rounded-full bg-accent ${bottom ? "-bottom-1 h-[3px]" : "-bottom-0.5 h-[2px]"}`}
+                />
               )}
             </span>
           </Link>
@@ -149,8 +157,9 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
           </div>
         </div>
       </header>
-      {/* 모바일 하단 탭바 — 홈 인디케이터 영역(safe-area)만큼 아래 여백 */}
-      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg pb-[env(safe-area-inset-bottom)] md:hidden">
+      {/* 모바일 하단 탭바 — 홈 인디케이터 영역(safe-area)만큼 아래 여백.
+          본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리 (Jessi 피드백) */}
+      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line-strong bg-panel pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] md:hidden">
         <div className="mx-auto max-w-[430px] px-2">
           <Tabs active={tab} counts={counts} bottom />
         </div>
