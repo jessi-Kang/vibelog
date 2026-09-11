@@ -69,6 +69,13 @@ const NATIVE_NUM = [
   "열한", "열두", "열세", "열네", "열다섯", "열여섯", "열일곱", "열여덟",
   "열아홉", "스무",
 ];
+/** 시각의 "시"는 고유어 — "11시"는 [열한시]. 24시까지 (스물네시) */
+function hourRead(n: number): string | null {
+  if (n >= 1 && n <= 20) return NATIVE_NUM[n] || null;
+  if (n >= 21 && n <= 24) return `스물${NATIVE_NUM[n - 20]}`;
+  return null;
+}
+
 const NATIVE_UNIT =
   /^(\d+)(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데|문제|판|곡|잔)(.*)$/u;
 
@@ -167,6 +174,25 @@ export function speakToken(tok: string): string {
   //    걸려 원문이 그대로 TTS로 가 뭉개졌다. 표기(자막·카드)는 콤마를
   //    유지하고 발음용 토큰만 편다.
   tok = tok.replace(/(\d),(?=\d{3})/g, "$1");
+  // 0.45) 시각·시간 — "시"는 고유어, "분·초"는 한자어라 한 토큰 안에서
+  //       읽는 법이 갈린다. 통째로 쪼개지 않으면 앞만 풀리고 뒤는 아라비아
+  //       숫자로 남는다 ("11시30분에" → "십일시30부네"). 시는 [열한시].
+  const hm = tok.match(/^(\d{1,2})시(?!간)(?:(\d{1,2})분)?(?:(\d{1,2})초)?([가-힣].*)?$/u);
+  if (hm && hourRead(Number(hm[1]))) {
+    const parts = [`${hourRead(Number(hm[1]))}시`];
+    if (hm[2]) parts.push(`${sinoRead(Number(hm[2]))}분`);
+    if (hm[3]) parts.push(`${sinoRead(Number(hm[3]))}초`);
+    return parts.join("") + unitSay(hm[4] ?? "");
+  }
+  // 0.46) "2시간30분" — 시간은 고유어, 뒤의 분·초는 한자어
+  const hs = tok.match(/^(\d{1,2})시간(?:(\d{1,2})분)?(?:(\d{1,2})초)?([가-힣].*)?$/u);
+  if (hs) {
+    const n = Number(hs[1]);
+    const parts = [`${n >= 1 && n <= 20 ? NATIVE_NUM[n] : sinoRead(n)}시간`];
+    if (hs[2]) parts.push(`${sinoRead(Number(hs[2]))}분`);
+    if (hs[3]) parts.push(`${sinoRead(Number(hs[3]))}초`);
+    return parts.join("") + unitSay(hs[4] ?? "");
+  }
   // 0.5) 범위 "30~45초" — 물결표는 TTS가 아예 못 읽는다. 왼쪽은 숫자 독음,
   //      오른쪽은 단위까지 통째로 재귀 처리한 뒤 여전히 숫자로 시작하면
   //      ("45초"처럼 평소엔 안 건드리는 꼴) 강제로 풀어 좌우 읽기를 맞춘다
@@ -178,10 +204,18 @@ export function speakToken(tok: string): string {
     return `${readNum(r[1])}에서 ${right}`;
   }
   // 0.6) 퍼센트 — "%" 기호 해석을 TTS에 맡기지 않는다. "50%" → "오십퍼센트"
-  const p = tok.match(/^(\d+(?:\.\d+)?)%(.*)$/u);
-  if (p) return `${readNum(p[1])}퍼센트${p[2]}`;
+  const p = tok.match(/^(\d+(?:\.\d+)?)%(p\b|포인트)?(.*)$/iu);
+  if (p) return `${readNum(p[1])}퍼센트${p[2] ? "포인트" : ""}${unitSay(p[3])}`;
   // 0.7) 만·억 접미 — "3만개" → "삼만개" (뒤에 또 숫자가 오는 "3만5천" 꼴은
   //      섣불리 쪼개면 더 이상해지니 건드리지 않는다)
+  //      "3만5천"처럼 뒤에 자릿수가 더 붙는 꼴도 합쳐서 푼다 — 앞만 풀면
+  //      "삼만5천"이 되어 아라비아 숫자가 그대로 남는다
+  const wm = tok.match(/^(\d{1,4})만(\d{1,4})(천|백|십)?([가-힣].*)?$/u);
+  if (wm) {
+    const mul = wm[3] === "천" ? 1e3 : wm[3] === "백" ? 100 : wm[3] === "십" ? 10 : 1;
+    const v = Number(wm[1]) * 1e4 + Number(wm[2]) * mul;
+    return `${sinoRead(v)}${unitSay(wm[4] ?? "")}`;
+  }
   const w = tok.match(/^(\d{1,4})(만|억)(?!\d)(.*)$/u);
   if (w) {
     const v = Number(w[1]) * (w[2] === "만" ? 1e4 : 1e8);
