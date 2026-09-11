@@ -2,6 +2,7 @@
 /** 데브로그 피드 — ProjectFilter(≤8 칩 / >8 Select) + 10편 페이지네이션 */
 import { useState } from "react";
 import { useLang } from "./lang";
+import { projectColor } from "@/lib/project-color";
 import { EmptyState, SectionHeader } from "./ui";
 import { DevlogTimelineEntry } from "./vibelog";
 
@@ -100,6 +101,16 @@ export function FeedClient({
                       : "border-line bg-transparent font-medium text-muted"
                   }`}
                 >
+                  {p.slug !== "all" && (
+                    // 칩에도 프로젝트 식별색 점 — 피드 마커와 색으로 이어진다
+                    <span
+                      aria-hidden
+                      className="mr-1.5 text-[8px] align-[1px]"
+                      style={{ color: projectColor(p.slug) }}
+                    >
+                      ●
+                    </span>
+                  )}
                   {p.name}
                   {counts[p.slug] != null && (
                     <span className="ml-1.5 text-muted">{counts[p.slug]}</span>

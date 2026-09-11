@@ -70,16 +70,27 @@ export default async function ProjectPage({ params }: Props) {
             <T ko="설명이 아직 없습니다." en="No description yet." />
           )}
         </p>
-        {project.homepage && (
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          {project.homepage && (
+            <a
+              href={project.homepage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
+            >
+              {project.homepage.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
+            </a>
+          )}
+          {/* 레포 링크는 주소 대신 간결하게 (Jessi 지시) — 배포 주소보다 한 톤 낮게 */}
           <a
-            href={project.homepage}
+            href={project.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
+            className="hit font-mono text-sm text-muted transition-colors duration-150 hover:text-ink"
           >
-            {project.homepage.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
+            github ↗
           </a>
-        )}
+        </div>
       </div>
       <dl className="m-0 grid w-full grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 border-t border-line pt-4 font-mono text-xs md:border-t-0 md:pt-0 lg:border-t lg:pt-4">
         {facts.map(([key, k, v]) => (
