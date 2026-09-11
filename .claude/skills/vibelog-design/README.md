@@ -84,7 +84,7 @@ Vibelog(바이브 로그) — 바이브 코딩 프로젝트들의 제작기·현
 폰트: Google Fonts `Noto Sans KR 400 500 700 900` + `JetBrains Mono 500 700` (`tokens/fonts.css`). 렌더 환경(Remotion/Playwright)에는 Noto Sans CJK KR 로컬 설치.
 
 ## Assets
-- 로고 없음. 워드마크는 텍스트(`vibelog` **JetBrains Mono 700** — 코드 느낌, Jessi 지시. 쇼츠 타이포의 Noto Sans KR 900은 별개). 파비콘·앱 아이콘은 **커밋 로그 심볼**(커밋 점+메시지 줄 4개, 최신이 민트 — app/icon.svg). 레터마크 v_는 폐기(Jessi). OG 카드는 모노 워드마크.
+- 로고 없음. 워드마크는 텍스트(`vibelog` **JetBrains Mono 700** — 코드 느낌, Jessi 지시. 쇼츠 타이포의 Noto Sans KR 900은 별개). 파비콘·앱 아이콘은 **`v_` 레터마크**(JetBrains Mono Bold, 자연 모노 간격 그대로 — 커닝 등 변형 금지, Jessi 확정. app/icon.svg). OG 카드는 모노 워드마크.
 - 아이콘 세트 없음. 모노 유니코드 글리프만: ● ✓ ✗ → ↗ × ⋯ ▾ ▍ $ ▶ ·
 - **프로젝트 식별색** — "민트 하나" 규칙의 유일한 예외 (Jessi 지시). `lib/project-color.ts`가 레포 이름 해시로 파스텔 5색을 배정, vibelog 자신은 민트 고정. 피드 이니셜 마커·프로젝트명·필터 칩 점에 쓴다. 난색(오렌지·레드)은 의미색과 겹쳐 팔레트에서 제외.
 - 이모지는 텔레그램 인라인 키보드 ✅ ✏️ ❌ 에서만.
