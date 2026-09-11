@@ -131,15 +131,31 @@ export function DevlogTimelineEntry({
   last?: boolean;
 }) {
   return (
-    <Link href={href} className="group relative block pl-[22px]">
+    // repo가 있으면(전체 피드) 이니셜 마커 + 프로젝트명 선행으로 프로젝트를
+    // 구분한다 (Jessi 지시). 프로젝트 상세 타임라인(repo 없음)은 기존 민트 점.
+    <Link
+      href={href}
+      className={`group relative block ${repo ? "pl-[34px]" : "pl-[22px]"}`}
+    >
       {!last && (
-        <div className="absolute bottom-[-28px] left-[3.5px] top-4 w-px bg-line" />
+        <div
+          className={`absolute bottom-[-28px] w-px bg-line ${repo ? "left-[10.5px] top-7" : "left-[3.5px] top-4"}`}
+        />
       )}
-      <div className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-accent" />
+      {repo ? (
+        <div
+          aria-hidden
+          className="absolute left-0 top-0 grid h-[22px] w-[22px] place-items-center rounded-md border border-line bg-panel font-mono text-2xs font-bold text-ink-soft"
+        >
+          {repo[0]}
+        </div>
+      ) : (
+        <div className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-accent" />
+      )}
       <div className="flex flex-col gap-1.5">
         <div className="flex gap-2.5 font-mono text-xs text-muted">
+          {repo && <span className="font-bold text-ink-soft">{repo}</span>}
           <span>{date}</span>
-          {repo && <span className="text-ink-soft">{repo}</span>}
         </div>
         <h3 className="m-0 text-lg font-bold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
           {title}
