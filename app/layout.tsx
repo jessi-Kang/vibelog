@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
-import { InstallAppLink } from "@/components/install-app";
+import { InstallAppLink, InstallToast } from "@/components/install-app";
 import { LangProvider, T } from "@/components/lang";
 import { getDevlogs, getProjects, getShorts } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -92,6 +92,7 @@ export default function RootLayout({
             </span>
           </div>
         </footer>
+        <InstallToast />
         </LangProvider>
         <script
           type="application/ld+json"
