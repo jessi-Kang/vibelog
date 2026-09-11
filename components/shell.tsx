@@ -8,6 +8,7 @@
  */
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { LangSwitch, useLang } from "./lang";
 import { Wordmark } from "./ui";
 
@@ -132,8 +133,38 @@ function BackRow({ crumb }: { crumb: string }) {
   );
 }
 
+/** 스크롤 내리면 true, 올리거나 상단 근처면 false — 하단 탭바 숨김용 */
+function useScrollingDown() {
+  const [down, setDown] = useState(false);
+  const pathname = usePathname();
+  // 페이지를 이동하면 스크롤이 리셋되므로 바도 다시 보여준다
+  useEffect(() => setDown(false), [pathname]);
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const dy = y - lastY;
+        // 6px 임계 — 러버밴드·미세 떨림에 바가 깜빡이지 않게
+        if (y < 80) setDown(false);
+        else if (dy > 6) setDown(true);
+        else if (dy < -6) setDown(false);
+        lastY = y;
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return down;
+}
+
 export function SiteHeader({ counts }: { counts?: TabCounts }) {
   const { detail, crumb, tab } = useRoute();
+  const scrollingDown = useScrollingDown();
   return (
     <>
       <header className="sticky top-0 z-10 border-b border-line bg-bg">
@@ -168,8 +199,13 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
         </div>
       </header>
       {/* 모바일 하단 탭바 — 홈 인디케이터 영역(safe-area)만큼 아래 여백.
-          본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리 (Jessi 피드백) */}
-      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line-strong bg-panel/85 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] backdrop-blur-md md:hidden">
+          본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리 (Jessi 피드백).
+          스크롤 내리면 아래로 내려가 숨고, 올리면 복귀 (Jessi 지시). 모션 축소 설정은 즉시 전환 */}
+      <div
+        className={`fixed inset-x-0 bottom-0 z-10 border-t border-line-strong bg-panel/85 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] backdrop-blur-md transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
+          scrollingDown ? "translate-y-full" : "translate-y-0"
+        }`}
+      >
         <div className="mx-auto max-w-[430px] px-2">
           <Tabs active={tab} counts={counts} bottom />
         </div>
