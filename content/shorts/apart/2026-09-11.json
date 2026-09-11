@@ -1,6 +1,6 @@
 {
-  "template": "fail",
-  "music": "tense",
+  "template": "before-after",
+  "music": "ship-it",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-09-11",
@@ -9,7 +9,7 @@
     {
       "scene": "hook",
       "ko": "설치한 앱에서 로그인이 막혔습니다.",
-      "en": "Sign-in was blocked inside the installed app.",
+      "en": "Sign-in was blocked in the installed app.",
       "keywords": [
         "막혔습니다"
       ],
@@ -18,49 +18,12 @@
       ]
     },
     {
-      "scene": "fail",
-      "ko": "사이트 주소가 두 개 있었습니다.",
-      "en": "The site had two addresses.",
-      "keywords": [
-        "주소가"
-      ],
-      "keywordsEn": [
-        "two addresses"
-      ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "같은 사이트",
-          "옛 주소",
-          "새 주소",
-          "설치한 앱",
-          "브라우저"
-        ],
-        "labelsEn": [
-          "same site",
-          "old address",
-          "new address",
-          "installed app",
-          "browser"
-        ]
-      }
-    },
-    {
-      "scene": "fail",
-      "ko": "앱은 옛 주소에 계속 붙어 있었습니다.",
-      "en": "The installed app was still stuck on the old one.",
-      "keywords": [],
-      "keywordsEn": [
-        "stuck",
-        "old one"
-      ]
-    },
-    {
       "scene": "build",
-      "ko": "주소를 하나로 모았습니다.",
-      "en": "I folded everything into one address.",
+      "ko": "주소를 하나로 합쳤더니 바로 풀렸습니다.",
+      "en": "I merged everything into one address and it worked.",
       "keywords": [
-        "하나로"
+        "하나로",
+        "풀렸습니다"
       ],
       "keywordsEn": [
         "one address"
@@ -68,22 +31,10 @@
     },
     {
       "scene": "build",
-      "ko": "주소가 둘이면 같은 사람 기록도 둘로 갈라지니까요.",
-      "en": "Two addresses would split one person's records in two.",
+      "ko": "이제 앱에서도 구글 로그인이 됩니다.",
+      "en": "Now sign-in works inside the installed app too.",
       "keywords": [
-        "둘로 갈라지니까요"
-      ],
-      "keywordsEn": [
-        "split",
-        "in two"
-      ]
-    },
-    {
-      "scene": "demo",
-      "ko": "이제 설치한 앱에서도 로그인이 됩니다.",
-      "en": "Now sign-in works in the installed app too.",
-      "keywords": [
-        "로그인이 됩니다"
+        "앱에서도"
       ],
       "keywordsEn": [
         "works"
@@ -92,37 +43,76 @@
     },
     {
       "scene": "demo",
-      "ko": "내 기록도 한 계정에 모입니다.",
-      "en": "My records land in one account.",
+      "ko": "로그인하면 내 기록과 순위가 한 화면에 보입니다.",
+      "en": "Once signed in, your records and ranking sit on one page.",
       "keywords": [
-        "한 계정에"
+        "기록과 순위가"
       ],
       "keywordsEn": [
-        "one account"
+        "records and ranking"
       ],
       "screen": "/record"
     },
     {
-      "scene": "next",
-      "ko": "공개 순위표는 점수 검사를 서버로 옮긴 다음입니다.",
-      "en": "A public leaderboard comes after score checks move to the server.",
+      "scene": "fail",
+      "ko": "원인은 사이트 주소가 두 개였던 겁니다.",
+      "en": "The cause: the site had two addresses.",
       "keywords": [
-        "서버로"
+        "두 개였던"
       ],
       "keywordsEn": [
-        "the server"
+        "two addresses"
       ],
-      "art": "a tiny robot on a podium inspecting stacked medals with a magnifying glass"
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "같은 사이트",
+          "로그인 막힘",
+          "로그인 됨",
+          "옛 주소",
+          "새 주소"
+        ],
+        "labelsEn": [
+          "Same site",
+          "Sign-in blocked",
+          "Sign-in works",
+          "Old address",
+          "New address"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "먼저 설치한 앱은 옛 주소를 붙잡고 있었습니다.",
+      "en": "Apps installed earlier were still holding the old address.",
+      "keywords": [
+        "옛 주소를"
+      ],
+      "keywordsEn": [
+        "old address"
+      ]
+    },
+    {
+      "scene": "next",
+      "ko": "공개 순위표 전에, 점수를 서버에서 검사하게 만들 차례입니다.",
+      "en": "Before a public leaderboard, scores need checking on the server.",
+      "keywords": [
+        "서버에서"
+      ],
+      "keywordsEn": [
+        "on the server"
+      ],
+      "art": "a small guard robot inspecting glowing score tokens on a conveyor belt"
     },
     {
       "scene": "end",
-      "ko": "주소는 하나여야 합니다.",
-      "en": "An app should have one address.",
+      "ko": "주소가 하나여야 기록도 하나로 남습니다.",
+      "en": "One address, one set of records.",
       "keywords": [
         "하나여야"
       ],
       "keywordsEn": [
-        "one address"
+        "One address"
       ]
     }
   ],
@@ -131,12 +121,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "로그인이 막혔다",
-    "titleEn": "Sign-in was blocked",
-    "before": "설치한 앱에서 구글 로그인이 차단됐습니다",
-    "after": "주소를 하나로 합쳐 해결했습니다",
-    "beforeEn": "Google sign-in was blocked in the installed app",
-    "afterEn": "Folded the two addresses into one"
+    "title": "주소가 둘이었습니다",
+    "titleEn": "There were two addresses",
+    "before": "설치한 앱에서 구글 로그인이 차단됐습니다.",
+    "after": "주소를 하나로 모으니 로그인이 풀렸습니다.",
+    "beforeEn": "Google sign-in was blocked inside the installed app.",
+    "afterEn": "Folding the site into one address fixed sign-in."
   },
   "commits": [
     [
@@ -305,22 +295,22 @@
   "commitCount": 20,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "설치한 앱에서만 로그인이 막힌 이유는 사이트 주소가 두 개였기 때문입니다. 주소를 하나로 모아 기록도 한 계정에 모이게 했습니다.",
-    "en": "Sign-in only failed inside the installed app because the site had two addresses. Folding them into one also keeps every record in a single account."
+    "ko": "설치한 앱에서만 구글 로그인이 막혔습니다. 사이트 주소가 두 개였고, 하나로 모으니 풀렸습니다.",
+    "en": "Google sign-in failed only inside the installed app. The site had two addresses; folding them into one fixed it."
   },
   "hashtags": [
     "#개발일지",
-    "#apart",
     "#로그인",
     "#PWA",
     "#devlog",
-    "#sideproject",
-    "#buildinpublic"
+    "#buildinpublic",
+    "#아파트게임",
+    "#webdev"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtx3url9",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtx3uu64",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtx3wac3",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtx3wcrz"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtx4yh1q",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtx4yjno",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtx4zv9j",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtx4zx3t"
   }
 }
