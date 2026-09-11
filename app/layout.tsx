@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
 import { LangProvider, T } from "@/components/lang";
 import { getDevlogs, getProjects, getShorts } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+// 설치된 앱 창·모바일 상태바 색을 사이트 배경과 맞춘다
+export const viewport: Viewport = {
+  themeColor: "#0A0E14",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
