@@ -4,8 +4,9 @@
  * 설치 확인창 자체는 브라우저(OS) 영역이라 꾸밀 수 없어서, 그 창을 부르는
  * 초대만 사이트 톤으로 만든다 (Jessi 요청).
  *
- * - InstallToast: 하단 슬림 토스트. 첫 방문 즉시 (Jessi 지시). "나중에"를
- *   누르면 30일간 다시 뜨지 않는다.
+ * - InstallToast: 하단 슬림 토스트. 첫 방문 즉시 (Jessi 지시).
+ *   "나중에"를 누르면 일주일 쉬고, 그다음 노출에는 "다시 보지 않기"를 준다
+ *   — 두 번 거절한 사람에게 계속 묻지 않는다 (Jessi 지시).
  * - InstallAppLink: 푸터의 조용한 상시 진입점.
  * 둘 다 같은 이벤트를 쓰므로 모듈 단위로 한 번만 잡아 공유한다.
  */
@@ -18,7 +19,9 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 const LATER_KEY = "vibelog-install-later";
-const LATER_DAYS = 30;
+/** "나중에" 한 번 뒤 쉬는 기간 — 그다음엔 "다시 보지 않기"를 띄운다 */
+const LATER_DAYS = 7;
+const NEVER = Number.MAX_SAFE_INTEGER;
 
 let deferred: BeforeInstallPromptEvent | null = null;
 let wired = false;
@@ -68,24 +71,45 @@ async function promptInstall(): Promise<"accepted" | "dismissed" | "error"> {
   }
 }
 
-function laterUntil(): number {
-  if (typeof window === "undefined") return 0;
+/** 미룬 기록 — until: 이때까지 안 띄운다, n: "나중에"를 누른 횟수 */
+interface LaterState {
+  until: number;
+  n: number;
+}
+
+function readLater(): LaterState {
+  if (typeof window === "undefined") return { until: 0, n: 0 };
   try {
-    return Number(window.localStorage.getItem(LATER_KEY) ?? 0);
+    const raw = window.localStorage.getItem(LATER_KEY);
+    if (!raw) return { until: 0, n: 0 };
+    // 구버전은 타임스탬프 숫자 하나만 저장했다 — 한 번 미룬 것으로 친다
+    if (/^\d+$/.test(raw)) return { until: Number(raw), n: 1 };
+    const v = JSON.parse(raw) as Partial<LaterState>;
+    return { until: Number(v.until) || 0, n: Number(v.n) || 0 };
   } catch {
-    return 0; // 프라이빗 모드 등 — 저장 못 해도 동작에는 지장 없다
+    return { until: 0, n: 0 }; // 프라이빗 모드 등 — 저장 못 해도 동작에는 지장 없다
   }
+}
+
+function writeLater(v: LaterState): void {
+  try {
+    window.localStorage.setItem(LATER_KEY, JSON.stringify(v));
+  } catch {}
 }
 
 export function InstallToast() {
   const ev = useInstallEvent();
   const [installing, setInstalling] = useState(false);
   const [hidden, setHidden] = useState(true);
+  // 이미 한 번 미뤘으면 이번엔 "다시 보지 않기"를 준다
+  const [askedOnce, setAskedOnce] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // "나중에" 기록은 클라이언트에서만 읽는다 (하이드레이션 불일치 방지)
+  // 미룬 기록은 클라이언트에서만 읽는다 (하이드레이션 불일치 방지)
   useEffect(() => {
-    setHidden(Date.now() < laterUntil());
+    const { until, n } = readLater();
+    setHidden(Date.now() < until);
+    setAskedOnce(n >= 1);
     return () => {
       if (timer.current) clearTimeout(timer.current);
     };
@@ -94,12 +118,12 @@ export function InstallToast() {
   if (hidden || (!ev && !installing)) return null;
 
   const later = () => {
-    try {
-      window.localStorage.setItem(
-        LATER_KEY,
-        String(Date.now() + LATER_DAYS * 864e5),
-      );
-    } catch {}
+    // 첫 거절은 일주일만 쉰다. 두 번째(= "다시 보지 않기")는 영구.
+    writeLater(
+      askedOnce
+        ? { until: NEVER, n: 2 }
+        : { until: Date.now() + LATER_DAYS * 864e5, n: 1 },
+    );
     setHidden(true);
   };
 
@@ -137,7 +161,11 @@ export function InstallToast() {
             onClick={later}
             className="hit h-8 flex-none cursor-pointer rounded-md px-2 text-xs font-bold text-muted transition-colors duration-150 hover:text-ink-soft"
           >
-            <T ko="나중에" en="Later" />
+            {askedOnce ? (
+              <T ko="다시 보지 않기" en="Don't show again" />
+            ) : (
+              <T ko="나중에" en="Later" />
+            )}
           </button>
           <button
             type="button"
