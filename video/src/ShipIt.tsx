@@ -394,9 +394,13 @@ export const ShipIt: React.FC<ShipItProps> = ({
 
       {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트.
           hook 장면에는 안 띄운다(헤드라인과 겹침). end 문장의 stat은
-          카운터가 먼저 나오고 엔드카드가 그 뒤에 들어온다 (buildSegments) */}
+          카운터가 먼저 나오고 엔드카드가 그 뒤에 들어온다 (buildSegments).
+          다이어그램이 붙은 문장에도 안 띄운다 — 그림이 이미 화면 가운데를
+          쓰고 있어 카운터가 그 위에 겹쳐 찍힌다. 집합 다이어그램은 겹친
+          값을 제 안에 크게 적기까지 해서 숫자가 두 번 나왔다 ("7"과 "개"가
+          겹쳐 에러처럼 보임 — Jessi 지적). 숫자는 그림이 말하게 둔다. */}
       {script.lines.map((l, i) => {
-        if (!l.stat || l.scene === "hook") return null;
+        if (!l.stat || l.scene === "hook" || l.diagram) return null;
         const sent = timing.sentences.find((x) => x.index === i);
         if (!sent) return null;
         const statAt = statStartOf(script, sent, lang);
