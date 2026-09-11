@@ -106,8 +106,13 @@ function readNum(s: string): string {
   return `${head}점${tail}`;
 }
 
-/** 숫자 뒤에서 된소리로 굳은 한자어 단위 — "N건"은 [껀]으로 읽는다 */
-const TENSE_UNIT = /^(\d+)(건)(.*)$/u;
+/**
+ * 숫자 뒤 "건" — 숫자만 한글로 풀고 단위는 붙여 쓴다.
+ * 한때 "이백이십이 껀"으로 된소리를 강제했는데, 실제로 들어 보니 단위가
+ * 툭 튀어나와 어색했다 ("222껀! 떴습니다" — Jessi). 뭉갬의 원인은 아라비아
+ * 숫자였지 "건"이 아니었으므로, 숫자만 풀고 읽기는 TTS에 맡긴다.
+ */
+const COUNT_UNIT = /^(\d+)(건)(.*)$/u;
 
 export function speakToken(tok: string): string {
   // 0) 천 단위 콤마 제거 — "2,889곳"은 콤마 때문에 아래 규칙이 하나도 안
@@ -132,15 +137,16 @@ export function speakToken(tok: string): string {
   const w = tok.match(/^(\d{1,4})(만|억)(?!\d)(.*)$/u);
   if (w) {
     const v = Number(w[1]) * (w[2] === "만" ? 1e4 : 1e8);
-    const rest = w[3].replace(/^건/, "껀");
-    return `${sinoRead(v)}${rest ? ` ${rest}` : ""}`;
+    const rest = w[3];
+    // "건"만 붙여 쓴다 (위 1번과 같은 이유) — "3만건" → "삼만건", "3만개" → "삼만 개"
+    return `${sinoRead(v)}${rest ? (rest.startsWith("건") ? rest : ` ${rest}`) : ""}`;
   }
   // 0.8) 소수점 — "3.5초"는 정수 규칙 어디에도 안 걸린다. "삼점오 초"
   const d = tok.match(/^(\d+\.\d+)([가-힣].*)?$/u);
   if (d) return `${readNum(d[1])}${d[2] ? ` ${d[2]}` : ""}`;
-  // 1) 된소리 단위: 숫자도 한글로 풀고 표기도 된소리로 — "222건" → "이백이십이 껀"
-  const t = tok.match(TENSE_UNIT);
-  if (t) return `${sinoRead(Number(t[1]))} 껀${t[3]}`;
+  // 1) "건": 숫자만 풀고 단위는 붙여 쓴다 — "222건" → "이백이십이건"
+  const t = tok.match(COUNT_UNIT);
+  if (t) return `${sinoRead(Number(t[1]))}${t[2]}${t[3]}`;
   // 2) 고유어 단위: 20까지는 고유어 수사 — "10문제" → "열 문제"
   const m = tok.match(NATIVE_UNIT);
   if (m) {
