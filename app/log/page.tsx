@@ -8,7 +8,11 @@ import {
   humanizeLastActive,
 } from "@/lib/content";
 
-export const metadata: Metadata = { title: "데브로그" };
+export const metadata: Metadata = {
+  title: "데브로그",
+  description: "모든 프로젝트의 데브로그 전체 피드 — 매일 밤 커밋에서 자동으로 만들어집니다.",
+  alternates: { canonical: "/log" },
+};
 
 export default function LogPage() {
   const items = getDevlogs().map((d) => ({

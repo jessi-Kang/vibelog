@@ -14,7 +14,22 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { repo, date } = await params;
-  return { title: getDevlog(repo, date)?.title ?? `${repo} · ${date}` };
+  const d = getDevlog(repo, date);
+  if (!d) return { title: `${repo} · ${date}` };
+  const description = d.summary ?? `${repo} 데브로그 — ${d.title}`;
+  const path = `/log/${repo}/${date}`;
+  return {
+    title: d.title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      url: path,
+      title: d.title,
+      description,
+      publishedTime: `${date}T14:00:00Z`, // 밤 실행 23:00 KST 커밋 근사
+    },
+  };
 }
 
 export default async function DevlogPostPage({ params }: Props) {
@@ -24,6 +39,21 @@ export default async function DevlogPostPage({ params }: Props) {
 
   return (
     <PageContainer>
+      <script
+        type="application/ld+json"
+        // 검색엔진용 글 정보 — 발행일·작성 주체를 구조화해 노출
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: d.title,
+            datePublished: `${d.date}T14:00:00Z`,
+            inLanguage: "ko",
+            author: { "@type": "Person", name: "Jessi" },
+            ...(d.summary ? { description: d.summary } : {}),
+          }),
+        }}
+      />
       <PostClient
         post={{
           repo: d.repo,

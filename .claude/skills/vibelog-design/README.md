@@ -84,7 +84,7 @@ Vibelog(바이브 로그) — 바이브 코딩 프로젝트들의 제작기·현
 폰트: Google Fonts `Noto Sans KR 400 500 700 900` + `JetBrains Mono 500 700` (`tokens/fonts.css`). 렌더 환경(Remotion/Playwright)에는 Noto Sans CJK KR 로컬 설치.
 
 ## Assets
-- 로고 없음. 워드마크는 텍스트(`vibelog` Noto Sans KR 900).
+- 로고 없음. 워드마크는 텍스트(`vibelog` **JetBrains Mono 700** — 코드 느낌, Jessi 지시. 쇼츠 타이포의 Noto Sans KR 900은 별개). 파비콘·OG도 같은 터미널 톤(`v_` 글리프 / 모노 워드마크).
 - 아이콘 세트 없음. 모노 유니코드 글리프만: ● ✓ ✗ → ↗ × ⋯ ▾ ▍ $ ▶ ·
 - 이모지는 텔레그램 인라인 키보드 ✅ ✏️ ❌ 에서만.
 - 이미지는 Playwright 캡처만. 자리표시는 EmptyState.

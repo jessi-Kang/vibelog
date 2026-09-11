@@ -3,15 +3,35 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
 import { LangProvider, T } from "@/components/lang";
 import { getDevlogs, getProjects, getShorts } from "@/lib/content";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "vibelog",
-    template: "%s · vibelog",
+    default: SITE_NAME,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    "바이브 코딩으로 만드는 서비스들의 제작기. 데브로그는 매일 밤 커밋에서 자동으로 만들어집니다.",
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "/feed.xml" },
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    locale: "ko_KR",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
@@ -61,6 +81,22 @@ export default function RootLayout({
           </div>
         </footer>
         </LangProvider>
+        <script
+          type="application/ld+json"
+          // 검색엔진용 사이트 요약 — 사람 눈에는 안 보인다
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "vibelog",
+              url: SITE_URL,
+              description:
+                "바이브 코딩으로 만드는 서비스들의 제작기를 자동 발행하는 블로그",
+              inLanguage: "ko",
+              author: { "@type": "Person", name: "Jessi" },
+            }),
+          }}
+        />
       </body>
     </html>
   );
