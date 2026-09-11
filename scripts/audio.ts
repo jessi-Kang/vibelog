@@ -50,10 +50,19 @@ interface Alignment {
 }
 
 /**
- * 고유어로 읽는 수량 단위의 발음 교정 — TTS가 "2대"를 "이대"로 읽는다
- * (Jessi 지적). 자막·글은 규칙대로 아라비아 숫자를 유지하고, TTS에 보내는
- * 발음용 텍스트만 한글 수사로 바꾼다. "52초"처럼 한자어로 읽는 단위(초·분·
- * 픽셀·개월 등)는 아라비아 숫자 그대로가 맞으므로 건드리지 않는다.
+ * ── 발음용 텍스트의 원칙 (Jessi 결정, 여러 번 헛짚고 정리된 것) ──
+ *
+ * **맞춤법이 아니라 소리 나는 대로 적는다.** TTS에 아라비아 숫자를 맡기면
+ * 음절을 뭉개고("222개"→"22엉개"), 맞춤법대로 적으면 읽기가 뻣뻣해진다
+ * ("이백이십이 건"). 그래서 발음용 텍스트는 한글 받아쓰기처럼 쓴다 —
+ * 숫자는 자릿수 가리지 않고 전부 풀고, 단위는 붙여 쓰고, 된소리와
+ * 연음까지 미리 반영한다.
+ *
+ *   222건이  → 이백이십이꺼니     3.5초  → 삼쩜오초
+ *   0건이    → 영꺼니             3점을  → 삼쩌믈
+ *
+ * 표기(자막·카드·글)는 아라비아 숫자 그대로다 — 바뀌는 건 TTS로 가는
+ * 텍스트뿐이다. 음절 수는 보존되므로 자막 정렬(alignment)에도 영향이 없다.
  */
 const NATIVE_NUM = [
   "", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열",
@@ -61,14 +70,9 @@ const NATIVE_NUM = [
   "열아홉", "스무",
 ];
 const NATIVE_UNIT =
-  /^(\d{1,2})(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데|문제|판|곡|잔)(.*)$/u;
+  /^(\d+)(시간|개(?!월)|대|명|번(?!지|호)|편|줄|장|가지|마리|권|벌|곳|칸|살|군데|문제|판|곡|잔)(.*)$/u;
 
-/**
- * 한자어 수사 풀어쓰기 — TTS가 아라비아 숫자+단위를 스스로 한국어로 푸는
- * 과정이 불안정하다: "222개"를 "22엉개", "0껀"을 "영엉건"처럼 음절을
- * 뭉갠 사고 (Jessi 지적). 숫자 해석을 TTS에 맡기지 않고 발음용 텍스트에서
- * 한글로 전부 풀어 보낸다 — "222" → "이백이십이", "0" → "영".
- */
+/** 한자어 수사 풀어쓰기 — "222" → "이백이십이", "0" → "영" */
 const SINO_DIGIT = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
 export function sinoRead(n: number): string {
   if (n === 0) return "영";
@@ -94,7 +98,59 @@ export function sinoRead(n: number): string {
   return s + SINO_DIGIT[rest];
 }
 
-/** "3.5" 같은 소수 표기까지 읽는 숫자 독음 — "삼점오". 정수면 sinoRead 그대로 */
+/**
+ * 수사 뒤에서 된소리로 굳는 한자어 단위 — 소리대로 적는다.
+ * 件은 [껀](사건[사껀]과 같은 이치), 點은 [쩜](초점[초쩜]).
+ * 여기 없는 단위는 표기 그대로가 곧 소리다.
+ */
+const TENSE: Record<string, string> = { 건: "껀", 점: "쩜" };
+
+/**
+ * 단위와 그 뒤 조사를 소리대로 — 된소리를 적고, 그 안에서 연음까지 잇는다.
+ *   건이 → 껀이 → 꺼니   ·   점을 → 쩜을 → 쩌믈   ·   곳에 → 고세
+ *
+ * 연음은 여기(단위+조사)에만 건다. 숫자 읽기 안쪽까지 이으면
+ * "이백이십이"가 "이배기시비"가 되어 낱말 꼴이 사라지고, 고유어에서는
+ * ㄴ첨가를 놓쳐 "열여섯"이 "여려섯"으로 틀리기까지 한다. Jessi가 준
+ * 예시("삼쩜오", "이백이십이껀")도 숫자 읽기는 그대로 둔 형태다.
+ */
+function unitSay(unit: string): string {
+  const t = TENSE[unit[0]];
+  return liaise(t ? t + unit.slice(1) : unit);
+}
+
+/**
+ * 연음 — 받침이 뒤 음절의 빈 초성(ㅇ)으로 넘어가는 것을 미리 적는다.
+ * "이백이십이껀이"를 그대로 보내면 TTS가 음절을 또박또박 끊어 읽는다
+ * (Jessi: "뭔가 연음이 안되는 것 같네"). "이백이십이꺼니"로 적어 보낸다.
+ *
+ * 홑받침만 옮긴다. 겹받침은 앞뒤를 쪼개야 해서 규칙이 커지고, 숫자+단위
+ * 조합에서는 나오지 않는다. ㅇ 받침은 넘어가지 않고(영이→영이), ㄷ·ㅌ은
+ * 구개음화까지 얽혀 있어 건드리지 않는다.
+ */
+const BASE = 0xac00;
+const T_TO_L: Record<number, number> = {
+  1: 0, 2: 1, 4: 2, 8: 5, 16: 6, 17: 7, 19: 9, 20: 10, 22: 12, 23: 14,
+  24: 15, 26: 17, 27: 18,
+};
+export function liaise(text: string): string {
+  const ch = [...text];
+  for (let i = 0; i < ch.length - 1; i++) {
+    const a = ch[i].codePointAt(0)! - BASE;
+    const b = ch[i + 1].codePointAt(0)! - BASE;
+    if (a < 0 || a > 11171 || b < 0 || b > 11171) continue;
+    const t = a % 28;
+    const nextL = Math.floor(b / 588);
+    if (!t || nextL !== 11) continue; // 받침이 없거나, 뒤가 빈 초성이 아니다
+    const L = T_TO_L[t];
+    if (L === undefined) continue; // 겹받침·ㅇ·ㄷ·ㅌ — 그대로 둔다
+    ch[i] = String.fromCodePoint(BASE + (a - t));
+    ch[i + 1] = String.fromCodePoint(BASE + L * 588 + (b % 588));
+  }
+  return ch.join("");
+}
+
+/** "3.5" 같은 소수 표기까지 읽는 숫자 독음 — "삼쩜오". 정수면 sinoRead 그대로 */
 function readNum(s: string): string {
   const [int, frac] = s.split(".");
   const head = sinoRead(Number(int));
@@ -103,7 +159,7 @@ function readNum(s: string): string {
   const tail = [...frac]
     .map((c) => (c === "0" ? "영" : SINO_DIGIT[Number(c)]))
     .join("");
-  return `${head}점${tail}`;
+  return `${head}쩜${tail}`;
 }
 
 export function speakToken(tok: string): string {
@@ -121,40 +177,35 @@ export function speakToken(tok: string): string {
     if (rd) right = `${readNum(rd[1])}${rd[2].replace(/^\s+/, "")}`;
     return `${readNum(r[1])}에서 ${right}`;
   }
-  // 0.6) 퍼센트 — "%" 기호 해석을 TTS에 맡기지 않는다. "50%" → "오십 퍼센트"
+  // 0.6) 퍼센트 — "%" 기호 해석을 TTS에 맡기지 않는다. "50%" → "오십퍼센트"
   const p = tok.match(/^(\d+(?:\.\d+)?)%(.*)$/u);
-  if (p) return `${readNum(p[1])} 퍼센트${p[2]}`;
+  if (p) return `${readNum(p[1])}퍼센트${p[2]}`;
   // 0.7) 만·억 접미 — "3만개" → "삼만개" (뒤에 또 숫자가 오는 "3만5천" 꼴은
   //      섣불리 쪼개면 더 이상해지니 건드리지 않는다)
   const w = tok.match(/^(\d{1,4})(만|억)(?!\d)(.*)$/u);
   if (w) {
     const v = Number(w[1]) * (w[2] === "만" ? 1e4 : 1e8);
-    return `${sinoRead(v)}${w[3]}`;
+    return `${sinoRead(v)}${unitSay(w[3])}`;
   }
   // 0.8) 소수점 — "3.5초"는 정수 규칙 어디에도 안 걸린다. "삼점오초"
   const d = tok.match(/^(\d+\.\d+)([가-힣].*)?$/u);
-  if (d) return `${readNum(d[1])}${d[2] ?? ""}`;
-  // 2) 고유어 단위: 20까지는 고유어 수사 — "10문제" → "열 문제"
+  if (d) return `${readNum(d[1])}${unitSay(d[2] ?? "")}`;
+  // 2) 고유어 단위: 20까지는 고유어 수사 — "10문제" → "열문제"
   const m = tok.match(NATIVE_UNIT);
   if (m) {
     const n = Number(m[1]);
-    if (n >= 1 && n <= 20) return `${NATIVE_NUM[n]} ${m[2]}${m[3]}`;
-    // 20 초과는 한자어 독음이 자연스럽다 — 역시 한글로 풀어 보낸다 ("삼십개")
-    return `${sinoRead(n)}${m[2]}${m[3]}`;
+    const head = n >= 1 && n <= 20 ? NATIVE_NUM[n] : sinoRead(n);
+    return `${head}${unitSay(m[2] + m[3])}`;
   }
-  // 3) 그 외 세 자리 이상 숫자+한글 단위: TTS가 특히 잘 뭉개는 구간이라
-  //    한자어 독음으로 풀어 보낸다 ("222회" → "이백이십이회"). 두 자리
-  //    이하("52초")는 지금까지 문제없어 건드리지 않는다.
-  //    "건"도 여기서 처리된다. 한때 따로 규칙을 뒀다가 두 번 헛짚었다 —
-  //    된소리 강제("이백이십이 껀")도, "영건" 같은 한 자리 강제 풀이도
-  //    어색했다 (Jessi). 특별 대우를 없애니 세 자리 이상만 풀리고,
-  //    "0건"·"3건"은 손대지 않은 채 TTS가 읽는다 — 뭉개진 적 없는 구간이다.
-  const big = tok.match(/^(\d{3,})([가-힣].*)$/u);
-  if (big) return `${sinoRead(Number(big[1]))}${big[2]}`;
-  // 4) 단위 없이 홀로 선 세 자리 이상 숫자 (뒤는 문장부호만) — "2,889"가
-  //    단독 토큰이면 콤마만 벗겨 숫자 그대로 가던 구멍. 연도 "2026"도
+  // 3) 그 외 숫자+한글 단위 — 자릿수를 가리지 않고 전부 푼다.
+  //    한때 "두 자리 이하는 TTS가 알아서 읽는다"고 뒀는데, 실제로 들어 보니
+  //    아라비아 숫자는 자릿수와 무관하게 읽기가 불안했다 (Jessi 테스트).
+  //    "222건" → "이백이십이껀", "0건" → "영껀", "3점" → "삼쩜".
+  const big = tok.match(/^(\d+)([가-힣].*)$/u);
+  if (big) return `${sinoRead(Number(big[1]))}${unitSay(big[2])}`;
+  // 4) 단위 없이 홀로 선 숫자 (뒤는 문장부호만). 연도 "2026"도
   //    "이천이십육"으로 맞다. 숫자·한글이 더 붙은 꼴(1080×1920 등)은 제외
-  const bare = tok.match(/^(\d{3,})([^\d가-힣a-zA-Z]*)$/u);
+  const bare = tok.match(/^(\d+)([^\d가-힣a-zA-Z]*)$/u);
   if (bare) return `${sinoRead(Number(bare[1]))}${bare[2]}`;
   return tok;
 }

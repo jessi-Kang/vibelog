@@ -77,6 +77,12 @@
 ## 오디오
 
 - 내레이션: ElevenLabs TTS, **Jessi 클론 보이스 `pwjMkbtUbj1hBa0RkN5N`** ("Jessi · Calm Low and Steady", Professional Voice Clone). 영상 시작 0.5초 뒤부터.
+- **발음용 텍스트는 맞춤법이 아니라 소리 나는 대로.** TTS에 보내는 문장만 바꾼다 (자막·글·카드는 아라비아 숫자 그대로). 목소리를 바꾸지 않고 읽기를 고치는 유일한 손잡이라, 규칙을 여기에 모은다 — `scripts/audio.ts`.
+  - 숫자는 자릿수를 가리지 않고 전부 한글로 푼다. 아라비아 숫자를 넘기면 음절을 뭉갠다 ("222개"→"22엉개").
+  - 단위는 붙여 쓰고, 수사 뒤에서 된소리로 굳는 것은 된소리로 적는다 — 件 `건`→`껀`, 點 `점`→`쩜`(소수점 포함).
+  - 단위·조사 경계의 연음을 미리 잇는다 — `222건이` → `이백이십이꺼니`.
+  - 연음은 거기까지만. 숫자 읽기 안쪽까지 이으면 (`이배기시비`) 낱말 꼴이 사라지고, 고유어는 ㄴ첨가를 놓쳐 `열여섯`이 `여려섯`으로 틀린다.
+  - 음절 수는 보존되므로 자막 정렬(alignment)에는 영향이 없다.
   - 확정 설정(승인된 샘플 기준): speed 1.00 / stability 0.50 / similarity_boost 0.75 / style 0 / speaker_boost on. 모델 eleven_multilingual_v2.
   - 같은 설정이라도 테이크마다 길이가 ±1초 정도 달라진다 → 타이밍은 항상 생성된 음성의 타임스탬프로 잡는다. 텍스트를 미리 자막에 박아두고 음성을 맞추지 않는다.
   - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
