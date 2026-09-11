@@ -25,7 +25,13 @@ export function mux(
   const DELAY = Math.round(narrationDelaySec * 1000);
   const filter =
     `[1:a]adelay=${DELAY}|${DELAY},apad=whole_dur=${DUR},asplit=2[n1][n2];` +
-    `[2:a]atrim=0:${DUR},volume=0.20,afade=t=out:st=${(durationSec - 3.5).toFixed(3)}:d=3.5[m];` +
+    // 음악은 45초짜리 고정 트랙이라 영상이 더 길면 거기서 끊긴다 — 그러면
+    // -shortest가 영상까지 잘라 엔드카드가 통째로 날아간다 (apart 9/10에서
+    // 50초 영상이 45초로 잘림, Jessi 지적). 루프로 이어 붙이고, 그래도 모자라면
+    // 무음으로 채워 오디오 길이가 항상 영상 길이와 같게 만든다.
+    `[2:a]aloop=loop=-1:size=2147483647,atrim=0:${DUR},asetpts=N/SR/TB,` +
+    `apad=whole_dur=${DUR},volume=0.20,` +
+    `afade=t=out:st=${(durationSec - 3.5).toFixed(3)}:d=3.5[m];` +
     `[m][n1]sidechaincompress=threshold=0.03:ratio=5:attack=40:release=500:makeup=1[d];` +
     `[d][n2]amix=inputs=2:duration=first:normalize=0[a]`;
   execFileSync(
