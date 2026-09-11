@@ -2,13 +2,13 @@
   "screens": [
     {
       "path": "/play",
-      "start": 0.54,
-      "end": 22.73
+      "start": 0.5,
+      "end": 24.17
     },
     {
       "path": "/findreal",
-      "start": 23.27,
-      "end": 45.53
+      "start": 24.65,
+      "end": 48.48
     }
   ]
 }
