@@ -19,9 +19,28 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
 const PROJECTS_FILE = path.join(CONTENT_DIR, "projects.json");
 
-/** cron이 14:00 UTC(23:00 KST)에 돌므로 날짜 버킷은 KST 기준으로 잡는다 */
+/** 화면의 "오늘" — countsDate·오늘 커밋 창. 벽시계 KST 날짜 그대로다 */
 function todayKST(): string {
   return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+}
+
+/**
+ * 글·쇼츠의 날짜 버킷 — "그 밤의 날짜".
+ *
+ * 벽시계 KST 날짜를 쓰다가 하루가 밀렸다. GitHub cron이 제때 안 돈다:
+ * 실측으로 14:00 UTC 예정 회차가 17:27에 돌았고(+3시간 27분), 아예 건너뛴
+ * 날도 있었다. 23:00 회차가 KST 자정을 넘겨 돌면 그날 글이 다음 날짜로
+ * 찍힌다 — 2026-09-11 글이 02:52에 발행돼 그날 낮 작업이 통째로 빠진 사고.
+ *
+ * 6시간을 빼서 "새벽에 돈 회차는 어젯밤 회차"로 친다. 23:00 정시 실행도,
+ * 03:00까지 밀린 실행도 같은 날짜 글로 들어간다. 낮에 수동으로 돌리면
+ * 그날 날짜 그대로다 (경계는 KST 06:00).
+ */
+const NIGHT_SHIFT_HOURS = 6;
+export function publishDateKST(now = Date.now()): string {
+  return new Date(now + (9 - NIGHT_SHIFT_HOURS) * 3600 * 1000)
+    .toISOString()
+    .slice(0, 10);
 }
 
 function loadState(): State {
@@ -184,20 +203,23 @@ async function main(): Promise<void> {
   const collectOnly = process.argv.includes("--collect-only");
   const projectsOnly = process.argv.includes("--projects-only");
   const state = loadState();
-  const date = todayKST();
+  const date = publishDateKST();
 
-  // 정기(cron) 회차 중복 가드 — 23:00과 23:45(백업) 두 회차가 걸려 있다.
-  // 최근 100분 안에 오늘 날짜의 일반 실행이 끝났으면 이 회차는 할 일이 없다.
-  // 수동 Run workflow에는 이 env가 없어서 같은 날 재실행이 그대로 된다.
+  // 정기(cron) 회차 중복 가드 — 백업 회차가 여러 개 걸려 있다.
+  // 이 밤의 발행이 이미 끝났으면 뒤따르는 회차는 할 일이 없다.
+  // 예전엔 "최근 100분"으로 봤는데, cron이 3시간씩 밀리면서 백업 회차가
+  // 그 창을 벗어나 이중 발행·TTS 중복 비용이 났다. 12시간을 보는 이유는
+  // 한 밤 안의 회차들(23:00~03:00)은 다 덮으면서, 어제 남은 기록에는
+  // 걸리지 않기 위해서다. 수동 Run workflow에는 이 env가 없어 항상 돈다.
   if (process.env.SCHEDULE_GUARD === "1" && !collectOnly && !projectsOnly) {
-    const recentRun = Object.values(state).some(
+    const publishedTonight = Object.values(state).some(
       (s) =>
         s.lastDate === date &&
         s.lastRun &&
-        Date.now() - new Date(s.lastRun).getTime() < 100 * 60 * 1000,
+        Date.now() - new Date(s.lastRun).getTime() < 12 * 3600 * 1000,
     );
-    if (recentRun) {
-      console.log("오늘 밤 일반 실행이 이미 완료됨 — 백업 회차 종료");
+    if (publishedTonight) {
+      console.log(`${date} 회차는 이미 발행됨 — 백업 회차 종료`);
       return;
     }
   }
