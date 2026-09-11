@@ -77,7 +77,14 @@ function Tabs({
             key={t.href}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`hit flex ${bottom ? "min-h-[60px] text-[15px]" : "min-h-9 text-sm"} flex-1 items-center justify-center font-bold transition-colors duration-150 md:flex-none ${
+            onClick={(e) => {
+              // 앱 표준: 현재 탭을 다시 탭하면 맨 위로
+              if (bottom && on) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
               on
                 ? bottom
                   ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (Jessi: 잘 안 띈다)
@@ -159,7 +166,7 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
       </header>
       {/* 모바일 하단 탭바 — 홈 인디케이터 영역(safe-area)만큼 아래 여백.
           본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리 (Jessi 피드백) */}
-      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line-strong bg-panel pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line-strong bg-panel/85 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] backdrop-blur-md md:hidden">
         <div className="mx-auto max-w-[430px] px-2">
           <Tabs active={tab} counts={counts} bottom />
         </div>
