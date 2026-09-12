@@ -89,6 +89,42 @@ export function checkMarkdown(file: string, source: string): MarkdownFinding[] {
   return out;
 }
 
+/**
+ * 문서(`docs/*.md`·`README.md`·`CLAUDE.md`)는 GitHub가 렌더한다. 여기도 물결표
+ * 하나가 취소선 구분자로 먹는다 — 스펙 문서의 "길이 30~45초 … 훅(3~4초)" 줄이
+ * 화면에서 "길이 30~~45초. 구성: … 훅(3~~4초)"처럼 가운데가 통째로 그어져
+ * 나갔다. 파서 설정은 우리 것이 아니므로(GitHub가 읽는다) 여기서는 **표기**를
+ * 바꾼다 — 숫자 범위는 물결표 대신 en dash(`–`)로 쓴다.
+ *
+ * 검사는 GitHub와 같은 눈으로 본다 (`singleTilde: true`). 문서에 취소선을 쓸
+ * 일은 없으므로, `delete`가 나왔다면 범위 표기가 서식으로 먹힌 것이다.
+ * 문서는 글과 달리 굵게·표·raw HTML을 정상적으로 쓰므로 그것들은 보지 않는다.
+ */
+export function checkDocMarkdown(
+  file: string,
+  source: string,
+): MarkdownFinding[] {
+  const tree = fromMarkdown(bodyOf(source), {
+    extensions: [gfm({ singleTilde: true })],
+    mdastExtensions: [gfmFromMarkdown()],
+  });
+  const out: MarkdownFinding[] = [];
+  const walk = (node: Node) => {
+    if (node.type === "delete") {
+      const text = textOf(node).replace(/\s+/g, " ").trim();
+      out.push({
+        file,
+        type: "delete",
+        snippet: text.length > 60 ? `${text.slice(0, 60)}…` : text,
+      });
+      return;
+    }
+    for (const kid of ((node as Parent).children ?? []) as Node[]) walk(kid);
+  };
+  walk(tree);
+  return out;
+}
+
 function listFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
   return fs
@@ -109,18 +145,31 @@ export function checkDevlogs(root = "content/devlog"): MarkdownFinding[] {
   );
 }
 
+/** 파이프라인·QA용 — 문서 쪽 검사 (GitHub가 렌더하는 것들) */
+export function checkDocs(): MarkdownFinding[] {
+  const files = [
+    ...listFiles("docs"),
+    ...["README.md", "CLAUDE.md"].filter((f) => fs.existsSync(f)),
+  ];
+  return files.flatMap((f) => checkDocMarkdown(f, fs.readFileSync(f, "utf8")));
+}
+
 if (process.argv[1]?.endsWith("check-markdown.ts")) {
-  const args = process.argv.slice(2);
-  const files = args.length > 0 ? args : listFiles("content/devlog");
-  const findings = files.flatMap((f) =>
-    checkMarkdown(f, fs.readFileSync(f, "utf8")),
-  );
-  console.log(`검사한 글 ${files.length}편`);
-  if (findings.length === 0) {
+  const args = process.argv.slice(2).filter((a) => a !== "--docs");
+  const docsOnly = process.argv.includes("--docs");
+  const files =
+    args.length > 0 ? args : docsOnly ? [] : listFiles("content/devlog");
+  const findings = docsOnly
+    ? checkDocs()
+    : files.flatMap((f) => checkMarkdown(f, fs.readFileSync(f, "utf8")));
+  // 글 검사에서도 문서는 같이 본다 (인자 없이 돌릴 때) — 취소선만
+  const docs = args.length > 0 || docsOnly ? [] : checkDocs();
+  const all = [...findings, ...docs];
+  console.log(docsOnly ? "문서 검사" : `검사한 글 ${files.length}편 + 문서`);
+  if (all.length === 0) {
     console.log("의도 없는 서식 없음");
   } else {
-    for (const f of findings)
-      console.log(`  ${f.file}  [${f.type}]  ${f.snippet}`);
+    for (const f of all) console.log(`  ${f.file}  [${f.type}]  ${f.snippet}`);
     process.exitCode = 1;
   }
 }

@@ -1,6 +1,6 @@
 # 완성까지의 로드맵 — 단계별 세션 프롬프트
 
-1단계 세션 1~3은 `02-pipeline-and-setup.md` 7번 항목. 이 문서는 그 다음부터 완성(4단계)까지.
+1단계 세션 1–3은 `02-pipeline-and-setup.md` 7번 항목. 이 문서는 그 다음부터 완성(4단계)까지.
 각 세션은 "Claude Code 한 번 앉아서 끝낼 크기"로 쪼갰다. 세션 시작 시 CLAUDE.md와 해당 단계 문서를 읽게 한다.
 
 "완성"의 정의: Jessi가 코딩만 하면 → 다음 날 아침 블로그 글 + 쇼츠 영상이 승인 큐에 와 있고 → 텔레그램에서 ✅ 누르면 블로그·유튜브·인스타에 올라가고 → 블로그 현황판에 조회수까지 자동으로 붙는 상태.
@@ -10,14 +10,16 @@
 ## 2단계 — 쇼츠 파이프라인 (영상은 나오지만 업로드는 수동)
 
 ### 사전 준비 (Jessi)
+
 - ElevenLabs 보이스 클론은 이미 있음: `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`. `ELEVENLABS_API_KEY`와 함께 레포 Secrets에
 - (선택) 음악을 매번 생성하지 않을 거면 템플릿별 mp3 3개를 `video/assets/music/`에 넣기
 
 ### 세션 4 — 대본 생성
+
 ```
 docs/03-shorts-spec.md를 읽어. scripts/script.ts를 만들자.
 입력: content/devlog/<repo>/<date>.md 하나.
-출력: content/shorts/<repo>/<date>.json — 
+출력: content/shorts/<repo>/<date>.json —
   { template: "ship-it" | "fail" | "before-after",
     lines: [{ ko: "...", en: "...", keywords: ["..."] }],   // 문장 단위, 8~12줄, 30~45초 분량
     demo: { url, steps: [...] },                            // 화면 녹화 동선
@@ -28,6 +30,7 @@ Claude API로 생성. 존댓말. 구조: 훅 → 뭘 만들었나 → 데모 →
 ```
 
 ### 세션 5 — 오디오
+
 ```
 scripts/audio.ts: content/shorts/<repo>/<date>.json의 lines를 이어붙여
 ElevenLabs TTS API로 ko/en 내레이션 mp3를 만들고, 단어별 타임스탬프를 같이 받아
@@ -38,6 +41,7 @@ content/shorts/<repo>/<date>.timing.json에 문장별 start/end로 저장해.
 ```
 
 ### 세션 6 — 화면 녹화
+
 ```
 scripts/record.ts: Playwright로 demo.url을 폰 뷰포트(390×844, deviceScaleFactor 3)로 열어
 demo.steps(없으면 기본 투어: 홈 → 천천히 스크롤 → 상위 링크 1~2개 클릭)를 실행하며
@@ -46,6 +50,7 @@ webm으로 녹화하고, 각 스텝에서 스크린샷도 찍어 content/devlog 
 ```
 
 ### 세션 7 — Remotion 템플릿 (핵심)
+
 ```
 video/에 Remotion 프로젝트를 만들자. docs/shorts-prototype.html을 열어보고
 그 레이아웃·색·타이포·자막 동작을 React 컴포넌트로 옮겨.
@@ -58,6 +63,7 @@ npx remotion render로 로컬에서 한 편 뽑아 확인.
 ```
 
 ### 세션 8 — 파이프라인 연결
+
 ```
 scripts/run.ts에 shorts 단계를 붙여: devlog 생성 후 → script → audio → record → render → mux.
 결과 mp4는 Vercel Blob(또는 Neon 스토리지)에 올리고 URL을 content/shorts/<repo>/<date>.json에 기록.
@@ -72,12 +78,14 @@ devlog.yml에 ffmpeg, Chromium 설치 스텝 추가. 렌더 시간 측정해서 
 ## 3단계 — 승인 큐 + 자동 게시
 
 ### 사전 준비 (Jessi)
+
 - 텔레그램 봇 토큰 + 내 chat_id → Secrets `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 - YouTube Data API OAuth → refresh token → Secrets `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`
 - Instagram 비즈니스 계정 + Meta 앱 → 장기 토큰 → Secrets `IG_USER_ID`, `IG_ACCESS_TOKEN`
 - Neon 프로젝트 → `DATABASE_URL`
 
 ### 세션 9 — 승인 큐 (DB)
+
 ```
 Neon에 테이블 posts(id, repo, date, kind: 'devlog'|'short_ko'|'short_en', status: 'pending'|'approved'|'rejected'|'published',
 preview_url, media_url, caption, created_at, decided_at, published_at, platform_ids jsonb)를 만들어.
@@ -86,6 +94,7 @@ scripts/run.ts 끝에서 생성물마다 pending row를 넣어. content/ 커밋�
 ```
 
 ### 세션 10 — 텔레그램 봇
+
 ```
 Vercel 서버리스 함수 api/telegram/webhook으로 봇을 만들자.
 run.ts가 pending row를 만들 때마다 봇이 Jessi에게 메시지: 글 요약 + 영상 파일 + 인라인 버튼 [✅ 게시] [✏️ 수정] [❌ 버림].
@@ -94,10 +103,11 @@ setWebhook은 스크립트로. 봇 토큰은 환경변수.
 ```
 
 ### 세션 11 — 게시 워커
+
 ```
 Vercel Cron(10분마다) 또는 텔레그램 ✅ 직후에 도는 api/publish:
 - devlog approved → 이미 content/에 있으니 status만 published로 (블로그는 즉시 반영)
-- short_ko/short_en approved → YouTube Data API videos.insert (shorts: 세로 + #Shorts 태그), 
+- short_ko/short_en approved → YouTube Data API videos.insert (shorts: 세로 + #Shorts 태그),
   Instagram Graph API: media(REELS, video_url=공개 mp4 URL) → media_publish. 처리 상태 폴링.
 - 성공 시 platform_ids에 video id 저장, 실패 시 텔레그램으로 에러 알림 + status 유지(재시도 가능).
 ```
@@ -109,6 +119,7 @@ Vercel Cron(10분마다) 또는 텔레그램 ✅ 직후에 도는 api/publish:
 ## 4단계 — 현황판 (완성)
 
 ### 세션 12 — 지표 수집
+
 ```
 scripts/metrics.ts: YouTube Analytics/Data API로 영상별 조회수·좋아요, Instagram Insights로 릴스 재생수,
 Vercel Web Analytics로 블로그 페이지뷰를 하루 한 번 가져와 Neon의 metrics(post_id, date, views, likes, ...)에 적재.
@@ -116,6 +127,7 @@ devlog.yml에 스텝 추가.
 ```
 
 ### 세션 13 — 블로그 현황판
+
 ```
 메인 페이지 상단에 현황판: 프로젝트 수(상태별), 누적 데브로그 수, 이번 주 쇼츠 조회수, 가장 반응 좋은 영상.
 프로젝트 상세에는 그 프로젝트 쇼츠들의 조회수 추이(작은 스파크라인).
@@ -123,6 +135,7 @@ devlog.yml에 스텝 추가.
 ```
 
 ### 세션 14 — 마무리
+
 ```
 - 영어 버전 블로그 라우트(/en) — devlog의 en 본문으로 렌더
 - OG 이미지 자동 생성(@vercel/og)로 공유 카드
@@ -134,13 +147,13 @@ devlog.yml에 스텝 추가.
 
 ## 전체 체크리스트
 
-- [x] 1단계: 블로그 + 데브로그 자동 생성 (세션 1~3)
-- [x] 2단계: 쇼츠 자동 렌더 (세션 4~8) — 밤 실행에 붙어 매일 자동으로 나온다
-- [ ] 3단계: 텔레그램 승인 + 유튜브/인스타 자동 게시 (세션 9~11) — **시크릿 대기 중**
-- [ ] 4단계: 지표 수집 + 현황판 + 영어 라우트 (세션 12~14)
+- [x] 1단계: 블로그 + 데브로그 자동 생성 (세션 1–3)
+- [x] 2단계: 쇼츠 자동 렌더 (세션 4–8) — 밤 실행에 붙어 매일 자동으로 나온다
+- [ ] 3단계: 텔레그램 승인 + 유튜브/인스타 자동 게시 (세션 9–11) — **시크릿 대기 중**
+- [ ] 4단계: 지표 수집 + 현황판 + 영어 라우트 (세션 12–14)
 
 2단계 이후 스펙이 꽤 늘었다 (템플릿 3종 · 테마 5종 · 다이어그램 5종 · 콜드오픈
-로테이션 · 데모 화면 매칭 · 발음 교정). 세션 4~8 프롬프트는 당시 기록으로 남기고,
+로테이션 · 데모 화면 매칭 · 발음 교정). 세션 4–8 프롬프트는 당시 기록으로 남기고,
 **현재 동작은 `docs/03-shorts-spec.md`가 기준**이다.
 
 3단계를 시작하려면 Jessi가 먼저 채울 것: 텔레그램 봇 토큰·chat_id, YouTube OAuth
