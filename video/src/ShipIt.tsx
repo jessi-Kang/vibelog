@@ -75,6 +75,10 @@ interface Seg {
   sourceOffset: number;
   /** 이 블록이 보여줄 화면 경로 (대본 line.screen) — 구간 매칭용 */
   screen?: string;
+  /** 그 화면에서 가리킨 글자 (대본 line.find) — 정류장 매칭용 */
+  find?: string;
+  /** 이 블록의 연출 — 대본이 문장에서 고른 것 (없으면 find 유무로 유추) */
+  shot?: "whole" | "focus" | "compare";
   /** duo 샷의 보조 폰이 틀 다른 화면의 시작 시각 — 주 화면과 같은
    *  화면이 좌우에 반복되지 않게 (Jessi 지적). 녹화가 한 화면뿐이면 없음 */
   duoAltOffset?: number;
@@ -143,6 +147,8 @@ export function buildSegments(
     kind: Kind;
     from: number;
     screen?: string;
+    find?: string;
+    shot?: "whole" | "focus" | "compare";
     diagram?: DiagramSpec;
   }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
@@ -194,11 +200,18 @@ export function buildSegments(
         (line.screen !== raw[raw.length - 1].screen ||
           findOf(line, lang) !== raw[raw.length - 1].find))
     ) {
-      raw.push({ kind, from, screen: line?.screen, find: findOf(line, lang) });
+      raw.push({
+        kind,
+        from,
+        screen: line?.screen,
+        find: findOf(line, lang),
+        shot: line?.shot,
+      });
     } else if (!raw[raw.length - 1].screen && line?.screen) {
       // 화면 지정이 없던 블록은 뒤 문장의 지정을 받아 쓴다
       raw[raw.length - 1].screen = line.screen;
       raw[raw.length - 1].find = findOf(line, lang);
+      raw[raw.length - 1].shot = line.shot;
     }
   }
   if (raw.length === 0) raw.push({ kind: "end", from: 0 });
@@ -310,19 +323,24 @@ export const ShipIt: React.FC<ShipItProps> = ({
   );
   // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
   // 같은 데모 연출이 연속되지 않는다 (Jessi 지시)
-  const demoOrdinal = new Map<number, number>();
-  segs.forEach((s, i) => {
-    if (s.kind === "phone") demoOrdinal.set(i, demoOrdinal.size);
-  });
-  // 샷 로테이션 — 같은 편에서 폰/밴드/듀오가 돌아간다. 다만 **duo는 서로 다른
-  // 화면이 실제로 둘 있을 때만** 쓴다. 하나뿐인데 duo를 쓰면 두 폰에 똑같은
-  // 화면이 겹쳐 나온다 (Jessi 지적: "화면을 1개밖에 쓸 게 없으면 이 포맷을
-  // 쓰면 안 되잖아"). 그때는 로테이션에서 한 칸 물러나 band로 간다.
+  /**
+   * 이 데모 블록을 어떻게 보여줄지. **내용이 정한다** — 대본이 문장마다 고른
+   * shot을 그대로 쓴다 (focus/whole/compare).
+   *
+   * 전에는 (day + 장면 순번) % 3으로 폰/밴드/듀오를 돌렸다. 내용과 무관한
+   * 로테이션이라 격자를 가리키는 문장에 전체 화면이 붙고, 녹화 화면이 하나뿐인
+   * 편에 두 폰이 겹쳐 나왔다 (Jessi: "정해놓은 걸 돌리거나 짜맞추는 게 아니라
+   * 내용에 맞춘 구성"). 로테이션은 없앴다.
+   *
+   * 대본이 안 골랐으면 데이터로 유추한다 — 가리킨 것(find)이 있으면 그것을
+   * 크게(focus), 없으면 화면 전체(whole).
+   */
   const shotOf = (i: number): "phone" | "band" | "duo" => {
-    const pick = (Math.max(0, script.day - 1) + (demoOrdinal.get(i) ?? 0)) % 3;
-    const shot = (["phone", "band", "duo"] as const)[pick];
-    if (shot === "duo" && segs[i]?.duoAltOffset == null) return "band";
-    return shot;
+    const seg = segs[i];
+    const want = seg?.shot ?? (seg?.find ? "focus" : "whole");
+    // 견주려면 다른 화면이 실제로 녹화돼 있어야 한다 — 없으면 크게 보여준다
+    if (want === "compare") return seg?.duoAltOffset != null ? "duo" : "band";
+    return want === "focus" ? "band" : "phone";
   };
 
   // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은

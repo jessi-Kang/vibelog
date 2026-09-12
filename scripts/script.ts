@@ -130,7 +130,7 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   같은 종류를 이웃 편과 연달아 쓰지 않는다 (아래 이웃 정보 참고).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -267,6 +267,11 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       typeof l.findEn === "string" &&
       l.findEn.trim()
         ? { findEn: l.findEn.trim().slice(0, 30) }
+        : {}),
+      // 연출은 내용이 정한다 (로테이션 폐지)
+      ...(typeof l.screen === "string" &&
+      (l.shot === "whole" || l.shot === "focus" || l.shot === "compare")
+        ? { shot: l.shot }
         : {}),
       // 다이어그램 — 어휘에 있고 라벨 수가 맞는 것만 (자유 작도 금지)
       ...((): { diagram?: DiagramSpec } => {
@@ -506,7 +511,14 @@ export async function generateScript(
                   "   findEn에는 영어 화면에서 보일 글자를 같은 식으로 적는다.",
                   "6) 화면이 나오는 문장이 둘뿐이고 둘 다 같은 페이지라면, 한쪽은",
                   "   그 페이지의 다른 곳을 가리키게 find를 다르게 준다.",
-                  "7) **마지막 \"다음 할 것\" 문장도 매 편 같은 마무리가 되지 않게 한다.**",
+                  "7) **screen을 넣은 문장에는 shot도 정해라 — 연출을 내용이 정한다.**",
+                  '   "focus" = 화면의 한 곳을 이야기할 때 (find와 함께. 베젤 없이 크게),',
+                  '   "whole" = 화면 전체의 인상·흐름을 이야기할 때 (폰 프레임 그대로),',
+                  '   "compare" = 두 화면을 견주는 문장일 때 (폰 두 대).',
+                  "   compare는 서로 다른 화면을 실제로 견주는 문장에만 쓴다 — 그냥",
+                  "   두 대를 띄우고 싶어서 쓰면 같은 화면이 겹쳐 나온다.",
+                  "   매 편 같은 순서로 돌리지 마라. 문장이 무엇을 말하는지로만 고른다.",
+                  '8) **마지막 "다음 할 것" 문장도 매 편 같은 마무리가 되지 않게 한다.**',
                   "   그 문장이 화면으로 보여줄 만한 것을 말하면 screen+find를, 원리를",
                   "   말하면 diagram을 붙인다. 둘 다 아니면 비워 둔다 — 비면 배경과",
                   "   자막만 나온다(아무 화면이나 붙는 것보다 낫다).",
