@@ -1,4 +1,5 @@
 import { PageContainer } from "@/components/page-container";
+import { CommitHeatmap } from "@/components/commit-heatmap";
 import { HomeFacts } from "@/components/home-facts";
 import { HomeProjects } from "@/components/home-projects";
 import { T } from "@/components/lang";
@@ -8,6 +9,11 @@ import { fmtShort, getDevlogs, getProjects, getRunLog } from "@/lib/content";
 import { postPath } from "@/lib/post-id";
 
 const RECENT_MAX = 5;
+
+/** 빌드 시점의 오늘(KST) — 잔디의 첫 렌더 기준. 마운트 뒤엔 방문자 시계로 */
+function todayKST(): string {
+  return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+}
 
 /** ISO 시각 → "09.10 02:21" (KST) */
 function fmtKstStamp(iso: string): string {
@@ -20,6 +26,14 @@ export default function Home() {
   const projects = getProjects();
   const devlogs = getDevlogs();
   const run = getRunLog();
+
+  // 날짜별 커밋 수 — 레포를 합친다. 글이 없는 날은 활동이 없던 날이라 0이다.
+  const byDate = new Map<string, number>();
+  for (const d of devlogs) {
+    if (typeof d.commits !== "number") continue;
+    byDate.set(d.date, (byDate.get(d.date) ?? 0) + d.commits);
+  }
+  const commitDays = [...byDate].map(([date, count]) => ({ date, count }));
 
   const active = projects.filter(
     (p) =>
@@ -164,6 +178,8 @@ export default function Home() {
           </p>
         </div>
         <HomeFacts sources={factSources} active={active} />
+        {/* 커밋 잔디 — 날짜별 커밋 수는 데브로그 frontmatter에 이미 있다 */}
+        <CommitHeatmap days={commitDays} buildDate={todayKST()} />
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
