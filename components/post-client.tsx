@@ -9,6 +9,7 @@ import { useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
+import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
 import { Card, EmptyState } from "./ui";
@@ -44,10 +45,22 @@ const mdComponents = {
   ),
 };
 
+/**
+ * 물결표 하나짜리 취소선을 끈다.
+ *
+ * remark-gfm은 `~단어~`도 취소선으로 먹는데, 우리 글은 물결표를 **범위**에
+ * 쓴다 — "둘 중 하나는 6~12점, 넷 중 하나는 9~16점"이 "6[12점, 넷 중 하나는
+ * 9]16점"으로 가운데가 통째로 그어져 나갔다 (Jessi가 9/12 apart 글에서 잡았다).
+ * 글은 사람이 고칠 수 없다 — 파이프라인이 매일 쓰는 문장이고, 범위 표기가
+ * 잘못된 것도 아니다. 그래서 문장을 escape하는 대신 파서에서 끈다.
+ * `~~두 개~~`는 그대로 취소선이라, 정말 그을 일이 생기면 그때 쓴다.
+ */
+const REMARK: PluggableList = [[remarkGfm, { singleTilde: false }]];
+
 function Md({ children }: { children: string }) {
   return (
     <div className="text-md leading-[1.75] text-ink-soft [text-wrap:pretty] [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+      <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
         {children}
       </ReactMarkdown>
     </div>
@@ -167,7 +180,7 @@ export function PostClient({ post }: { post: PostData }) {
             </section>
           ) : (
             <div className="prose-devlog">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+              <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
                 {post.body}
               </ReactMarkdown>
             </div>

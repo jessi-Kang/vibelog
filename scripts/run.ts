@@ -8,6 +8,7 @@
  *                                          # 바뀌었을 때만 projects.json을 다시 쓴다.
  *                                          # 글·쇼츠·state는 건드리지 않는다 (짧은 주기 배치용)
  */
+import { checkDevlogs } from "./check-markdown";
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
@@ -410,6 +411,19 @@ async function main(): Promise<void> {
         });
       }
     }
+  }
+
+  // 글이 쓴 대로 보이는지 — 의도 없는 서식(취소선·굵게·표)이 먹혔으면 여기
+  // 남긴다. 글은 사람이 읽기 전에 발행되므로 조용히 지나가는 부류다 (apart
+  // 9/12 글에서 "6~12점"의 물결표가 취소선으로 먹혀 문장 가운데가 그어졌다).
+  for (const f of checkDevlogs()) {
+    const where = f.file.replace(/^content\/devlog\//, "");
+    runLines.push({
+      text: `warn     · ${where} 의도 없는 서식(${f.type}) — "${f.snippet}"`,
+      textEn: `warn     · ${where} unintended markup (${f.type}) — "${f.snippet}"`,
+      kind: "fail",
+    });
+    console.warn(`의도 없는 서식: ${f.file} [${f.type}] ${f.snippet}`);
   }
 
   runLines.push({
