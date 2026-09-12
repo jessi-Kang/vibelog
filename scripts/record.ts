@@ -95,18 +95,23 @@ export async function locateOnPage(
    * 글자·이름을 찾는 데 실패한 **뒤에만** 쓴다.
    */
   allowGraphic = false,
-): Promise<{ kind: "text" | "name" | "graphic" } | null> {
-  const text = page
-    .getByText(find, { exact: false })
-    .filter({ visible: true })
-    .first();
-  if (
-    await text
-      .count()
-      .then((n) => n > 0)
-      .catch(() => false)
-  ) {
-    if (await text.isVisible().catch(() => false)) return { kind: "text" };
+): Promise<{
+  kind: "text" | "name" | "graphic";
+  /** 같은 말이 화면에 여러 곳 있다 — 화면은 맞지만 **가리킬 수는 없다** */
+  ambiguous?: boolean;
+} | null> {
+  const all = page.getByText(find, { exact: false }).filter({ visible: true });
+  const text = all.first();
+  const n = await all
+    .count()
+    .then((c) => c)
+    .catch(() => 0);
+  if (n > 0) {
+    if (await text.isVisible().catch(() => false))
+      // 여러 곳에 있으면 아무 하나(첫 번째)에 테두리를 얹게 되고, 그건 문장이
+      // 말한 그것일 이유가 없다. 대본 후보 목록에서 걸러 두지만(script.ts의
+      // seesOf) 대본이 목록 밖의 말을 적을 수도 있어 여기서도 막는다.
+      return n > 1 ? { kind: "text", ambiguous: true } : { kind: "text" };
   }
   const esc = find.replace(/"/g, '\\"');
   const named = page
@@ -421,10 +426,16 @@ export async function record(
   // 있으면 투어가 이 순서대로 돌고 구간 시각을 남긴다 (내용↔화면 매칭)
   // 대본이 문장마다 지정한 **정류장**(화면 + 가리킬 글자), 내레이션 순서대로.
   // 화면만 모으면 "같은 페이지의 다른 곳"을 구분할 수 없어, 격자 이야기에
-  // 엉뚱한 스크롤 위치가 붙었다 (Jessi 지적)
+  // 엉뚱한 스크롤 위치가 붙었다
   // 정류장 = 대본이 말한 것(find) + 화면 힌트(screen, 없을 수 있다).
   // find가 주다 — 어느 화면에 있는지는 아래 투어가 찾아낸다.
-  const stops: { path?: string; find?: string }[] = [];
+  //
+  // `point`는 **가리킬지**다. 문장이 화면 전체를 말하면(shot "whole") find는
+  // 화면을 찾는 힌트로만 쓰고 테두리를 얹지 않는다 — "링크를 받은 사람은 이
+  // 화면으로 들어옵니다"에 `출전하기` 버튼 하나가 민트 테두리로 칠해져,
+  // 문장은 화면 전체를 말하는데 그림은 버튼 하나를 가리켰다. 표시는 한 곳을
+  // 이야기할 때만 뜻이 있다.
+  const stops: { path?: string; find?: string; point?: boolean }[] = [];
   for (const l of script.lines) {
     const find = (lang === "en" ? l.findEn || l.find : l.find) || undefined;
     if (!l.screen && !find) continue;
@@ -433,6 +444,7 @@ export async function record(
       stops.push({
         ...(l.screen ? { path: l.screen } : {}),
         ...(find ? { find } : {}),
+        ...(find && l.shot !== "whole" ? { point: true } : {}),
       });
     }
   }
@@ -545,6 +557,7 @@ export async function record(
           if (hit) {
             path = cand;
             kind = hit.kind;
+            if (hit.ambiguous) stop.point = false;
             break;
           }
         }
@@ -557,6 +570,7 @@ export async function record(
             if (hit) {
               path = fallback;
               kind = hit.kind;
+              if (hit.ambiguous) stop.point = false;
             }
           }
         }
@@ -565,7 +579,13 @@ export async function record(
       }
 
       let focusY: number | undefined;
-      if (kind && stop.find) {
+      if (kind && stop.find && !stop.point) {
+        // 화면은 find로 찾았지만 문장이 말하는 건 화면 전체다 — 맨 위에서
+        // 시작해 아래 루프가 훑는다 (kind를 지워 아래 분기를 그쪽으로 보낸다)
+        kind = null;
+        await page.evaluate(() => window.scrollTo({ top: 0 }));
+        await page.waitForTimeout(200);
+      } else if (kind && stop.find) {
         focusY = await focusOn(page, stop.find, kind).catch(() => {
           kind = null;
           return undefined;

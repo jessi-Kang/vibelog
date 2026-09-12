@@ -59,3 +59,7 @@ GitHub Action
 ## 연결된 도구 활용
 
 Vercel(배포), Neon(승인 큐·게시 이력 DB), ElevenLabs(TTS/보이스 클론), Notion(선택: 아이디어 백로그).
+
+---
+
+© 2026 vibelog · Jessi
