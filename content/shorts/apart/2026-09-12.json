@@ -1,0 +1,327 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-12",
+  "day": 3,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "주소를 붙여도 아무것도 안 떴습니다.",
+      "en": "Pasting the link showed nothing.",
+      "keywords": [
+        "아무것도"
+      ],
+      "keywordsEn": [
+        "nothing"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "이제 이름과 설명, 미리보기 그림이 같이 뜹니다.",
+      "en": "Now the name, description, and a preview image come with it.",
+      "keywords": [
+        "미리보기 그림이"
+      ],
+      "keywordsEn": [
+        "preview image"
+      ],
+      "screen": "/"
+    },
+    {
+      "scene": "demo",
+      "ko": "판이 끝나면 결과를 글 한 줄로 공유합니다.",
+      "en": "After a round, you share your result as one line of text.",
+      "keywords": [
+        "글 한 줄로"
+      ],
+      "keywordsEn": [
+        "one line of text"
+      ],
+      "screen": "/o"
+    },
+    {
+      "scene": "demo",
+      "ko": "그 글 안에 사이트 주소도 같이 들어갑니다.",
+      "en": "The site address rides along inside that line.",
+      "keywords": [
+        "사이트 주소도"
+      ],
+      "keywordsEn": [
+        "site address"
+      ],
+      "screen": "/me"
+    },
+    {
+      "scene": "fail",
+      "ko": "미리보기에 찍은 도장이 글자 없는 동그라미로 번졌습니다.",
+      "en": "The stamp on the preview came out as a letterless circle.",
+      "keywords": [
+        "글자 없는"
+      ],
+      "keywordsEn": [
+        "letterless circle"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "그림을 그려 주는 쪽에 한글 글꼴이 없었습니다.",
+      "en": "The tool drawing the image had no Korean font.",
+      "keywords": [
+        "한글 글꼴이"
+      ],
+      "keywordsEn": [
+        "no Korean font"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "도장을 통째로 그림",
+          "글자가 깨짐",
+          "동그라미만 그림",
+          "글자는 따로 얹음"
+        ],
+        "labelsEn": [
+          "stamp as one image",
+          "letters broke",
+          "circle image only",
+          "letters on top"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "동그라미만 그림으로 깔고, 글자는 따로 얹었습니다.",
+      "en": "I drew the circle as an image and added the letters separately.",
+      "keywords": [
+        "따로 얹었습니다"
+      ],
+      "keywordsEn": [
+        "separately"
+      ]
+    },
+    {
+      "scene": "next",
+      "ko": "어떤 이름에 많이 속는지 모으고 있고, 30번 넘게 나온 이름만 순위로 공개합니다.",
+      "en": "I'm collecting which names fool people most, and only names seen over 30 times get ranked.",
+      "keywords": [
+        "30번 넘게"
+      ],
+      "keywordsEn": [
+        "over 30 times"
+      ],
+      "art": "a stack of small paper name tags on a wooden desk, one tag lifted above the rest",
+      "stat": "30번",
+      "statEn": "30 times"
+    },
+    {
+      "scene": "end",
+      "ko": "밖에서 먼저 보이는 부분부터 채웠습니다.",
+      "en": "I filled in the parts strangers see first.",
+      "keywords": [
+        "먼저 보이는"
+      ],
+      "keywordsEn": [
+        "see first"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "글자 없는 도장",
+    "titleEn": "A stamp with no letters",
+    "before": "도장이 얼룩처럼 번져 나왔습니다",
+    "after": "동그라미와 글자를 따로 그렸습니다",
+    "beforeEn": "The stamp came out as a smudge",
+    "afterEn": "Circle and letters drawn separately"
+  },
+  "commits": [
+    [
+      "bd35637",
+      "feat: 대장 행의 여백을 줄이고, 화면 경로를 한 글자로 줄인다"
+    ],
+    [
+      "9c4c38b",
+      "feat: 공유 글의 표제를 줄바꿈하고, 구역 명부를 운영자에게 먼저 연다"
+    ],
+    [
+      "f717a28",
+      "feat: 홈 대장 아래에 운영자만 보이는 내부 열람 줄을 둔다"
+    ],
+    [
+      "acc84c0",
+      "fix: 결과 화면 단추를 두 줄로 나누고, 본인 확인이 무엇인지 말해 준다"
+    ],
+    [
+      "3391299",
+      "fix: 조립 힌트 시간표를 칸 수에 맞추고, 기록 열람실의 표를 셋으로 나눈다"
+    ],
+    [
+      "0be5ddd",
+      "fix: 미리보기 카드의 관인에 글자를 되찾고, 공유·접수 창구를 서류 세계관에 맞춘다"
+    ],
+    [
+      "01ccdb9",
+      "docs: \"문서 업데이트 하자\" 한 마디로 문서를 최신화하는 규칙을 적어 둔다"
+    ],
+    [
+      "b7f894f",
+      "fix: 공유 주소 중복·문구·버튼 위치 세 가지를 고친다"
+    ],
+    [
+      "a97e017",
+      "feat: 버그 제보 창구를 열고, 나가는 문이 둘이던 것을 고쳤다"
+    ],
+    [
+      "8aaf32a",
+      "feat: 어떤 이름에 사람들이 속는지 쌓기 시작하고 리포트를 만들었다"
+    ],
+    [
+      "c0a7b0e",
+      "feat: 머리글을 스크롤에 붙이고 내 구역 순위를 공유할 수 있게 했다"
+    ],
+    [
+      "705788b",
+      "design: 링크 미리보기 카드에 관인을 찍었다"
+    ],
+    [
+      "ff80325",
+      "fix: 조립 힌트를 제한 시간 안에 받을 몫까지 다 준다"
+    ],
+    [
+      "f79c97b",
+      "fix: 명부가 잠겨 있으면 들어가는 문도 없앴다"
+    ],
+    [
+      "c3f9694",
+      "feat: 명부를 구역별 기록 기준으로 바꾸고 문턱과 비회원 처리를 넣었다"
+    ],
+    [
+      "17e3bbd",
+      "chore: 운영자 설정이 배포에 들어갔는지 본인이 확인할 수 있게 했다"
+    ],
+    [
+      "3e07f99",
+      "feat: 점수를 창구별·속도별로 갈라 변별력을 만들었다"
+    ],
+    [
+      "33c3419",
+      "feat: 새 창구를 내 계정에만 먼저 여는 전개 장치를 넣었다"
+    ],
+    [
+      "7ad1316",
+      "feat: 판이 끝나면 가벼운 공유 한 줄을 둔다"
+    ],
+    [
+      "091c216",
+      "feat: 링크를 붙이면 이름과 그림이 제대로 뜨게 했다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "bd35637",
+      "feat: reduce spacing in master row and shorten screen path to single character"
+    ],
+    [
+      "9c4c38b",
+      "feat: wrap title of shared post and open zone list to admin first"
+    ],
+    [
+      "f717a28",
+      "feat: add admin-only internal viewing row below home master"
+    ],
+    [
+      "acc84c0",
+      "fix: split result screen button into two lines and explain what verification is"
+    ],
+    [
+      "3391299",
+      "fix: align assembly hint schedule to column count and split archive viewing table into three"
+    ],
+    [
+      "0be5ddd",
+      "fix: restore text in preview card stamp and align sharing/intake window to document worldview"
+    ],
+    [
+      "01ccdb9",
+      "docs: update documentation rule with single phrase \"update document\""
+    ],
+    [
+      "b7f894f",
+      "fix: fix three issues in shared address: duplication, wording, and button position"
+    ],
+    [
+      "a97e017",
+      "feat: open bug report window and fix dual exit doors"
+    ],
+    [
+      "8aaf32a",
+      "feat: start tracking which names people belong to and created report"
+    ],
+    [
+      "c0a7b0e",
+      "feat: stick header to scroll and enable sharing my zone ranking"
+    ],
+    [
+      "705788b",
+      "design: add stamp to link preview card"
+    ],
+    [
+      "ff80325",
+      "fix: provide full assembly hints within time limit"
+    ],
+    [
+      "f79c97b",
+      "fix: remove entry when list is locked"
+    ],
+    [
+      "c3f9694",
+      "feat: change list by zone record criteria and add threshold and non-member handling"
+    ],
+    [
+      "17e3bbd",
+      "chore: allow admin to verify if settings are included in deployment"
+    ],
+    [
+      "3e07f99",
+      "feat: divide scores by window and speed to create differentiation"
+    ],
+    [
+      "33c3419",
+      "feat: add rollout feature to open new window to my account first"
+    ],
+    [
+      "7ad1316",
+      "feat: add light sharing line when game ends"
+    ],
+    [
+      "091c216",
+      "feat: properly display name and image when pasting link"
+    ]
+  ],
+  "commitCount": 20,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "게임 주소를 붙여 넣으면 이름과 설명, 미리보기 그림이 함께 뜨도록 고쳤습니다. 도장에 한글이 깨지던 문제도 잡았습니다.",
+    "en": "Pasting the game link now shows a name, a description, and a preview image. Also fixed the Korean letters breaking on the stamp."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#사이드프로젝트",
+    "#링크미리보기",
+    "#devlog",
+    "#buildinpublic",
+    "#indiedev",
+    "#아파트게임"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtyikrwz",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtyikuaj",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtyimp1s",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtyimqxr"
+  }
+}
