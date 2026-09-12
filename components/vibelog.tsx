@@ -23,7 +23,11 @@ export function ProjectCard({ project }: { project: Project }) {
       dim={project.status === "paused"}
       className="relative flex h-full flex-col gap-2.5 px-5 py-[18px] transition-colors duration-150 hover:border-line-strong"
     >
-      {/* 카드 전체 = 상세 링크(스트레치). "열기 ↗"만 z-10으로 위에 떠서 실제 외부 링크 */}
+      {/* 카드 전체 = 상세 링크(스트레치). "열기 ↗"만 그 위로 떠서 실제 외부 링크.
+          **z는 카드 안에서만 다투는 값이다 (z-[1])** — z-10으로 뒀더니 고정
+          탭바(같은 z-10)와 같은 층에서 DOM 순서로 이겨, 카드가 탭바 위로
+          올라와 "소개" 자리에 "열기 ↗"가 겹쳐 찍혔다. 층 순서는
+          components/shell.tsx 위쪽 주석에 적어 뒀다 */}
       <Link
         href={`/projects/${project.slug}`}
         aria-label={`${project.name} 상세 보기`}
@@ -49,7 +53,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="hit relative z-10 whitespace-nowrap text-accent transition-opacity duration-150 hover:opacity-85"
+            className="hit relative z-[1] whitespace-nowrap text-accent transition-opacity duration-150 hover:opacity-85"
           >
             {lang === "ko" ? "열기 ↗" : "open ↗"}
           </a>

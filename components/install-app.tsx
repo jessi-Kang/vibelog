@@ -142,7 +142,7 @@ export function InstallToast() {
     <div
       role="region"
       aria-label="앱 설치"
-      className="fixed inset-x-3 bottom-[calc(72px+env(safe-area-inset-bottom))] z-20 flex items-center gap-2 rounded-xl border border-line bg-panel/95 px-3 py-2.5 shadow-[0_10px_30px_rgba(5,8,12,0.55)] backdrop-blur-md motion-safe:animate-[vl-toast-in_220ms_ease-out] md:inset-x-auto md:bottom-4 md:right-4 md:w-[380px]"
+      className="fixed inset-x-3 bottom-[calc(72px+env(safe-area-inset-bottom))] z-40 flex items-center gap-2 rounded-xl border border-line bg-panel/95 px-3 py-2.5 shadow-[0_10px_30px_rgba(5,8,12,0.55)] backdrop-blur-md motion-safe:animate-[vl-toast-in_220ms_ease-out] md:inset-x-auto md:bottom-4 md:right-4 md:w-[380px]"
     >
       <span aria-hidden className="flex-none font-mono text-sm font-bold text-ink">
         v<span className="text-accent">_</span>
