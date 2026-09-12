@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       publishedTime: `${date}T14:00:00Z`, // 밤 실행 23:00 KST 커밋 근사
     },
+    // twitter는 부모(layout)에서 안 물려받는다 — 안 적으면 글 제목 대신
+    // 사이트 이름이 미리보기에 뜬다. 이미지는 opengraph-image.tsx가 채운다.
+    twitter: { card: "summary_large_image", title: d.title, description },
   };
 }
 
