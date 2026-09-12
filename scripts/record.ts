@@ -315,6 +315,14 @@ export async function record(
     for (const stop of stops) {
       const p = stop.path;
       try {
+        // 앞 정류장의 표시를 지운다 (같은 페이지에 머무는 경우도 있다)
+        await page
+          .evaluate(() =>
+            document
+              .querySelectorAll("[data-vl-ring]")
+              .forEach((el) => el.remove()),
+          )
+          .catch(() => {});
         if (p !== at) {
           await page.goto(new URL(p, script.demo.url).toString(), {
             waitUntil: "domcontentloaded",
@@ -335,6 +343,28 @@ export async function record(
           await target.evaluate((el) =>
             el.scrollIntoView({ block: "center", behavior: "instant" }),
           );
+          // **가리킨 것을 화면에 표시한다.** 요소를 가운데로 올려 놔도 보는
+          // 사람은 어디를 보라는 건지 모른다 (Jessi: "화면에 해당 부분을
+          // 표시한다고도 했잖아. 그런 것도 없어"). 사이트를 건드리는 게 아니라
+          // 녹화용 브라우저에서만 테두리를 얹는다 — 다음 정류장에서 지운다.
+          await target.evaluate((el) => {
+            const box = el.getBoundingClientRect();
+            const ring = document.createElement("div");
+            ring.dataset.vlRing = "1";
+            Object.assign(ring.style, {
+              position: "fixed",
+              left: `${Math.max(4, box.left - 8)}px`,
+              top: `${Math.max(4, box.top - 6)}px`,
+              width: `${Math.min(window.innerWidth - 8, box.width + 16)}px`,
+              height: `${box.height + 12}px`,
+              border: "3px solid #5EE1C3",
+              borderRadius: "8px",
+              boxShadow: "0 0 0 9999px rgba(6,10,16,.34)",
+              pointerEvents: "none",
+              zIndex: "2147483647",
+            });
+            document.body.appendChild(ring);
+          });
           await page.waitForTimeout(300);
         } else {
           await page.evaluate(() => window.scrollTo({ top: 0 }));
@@ -354,9 +384,27 @@ export async function record(
       n = await shot(page, shotsDir, n);
       const start = (Date.now() - started) / 1000 - readyAt;
       const until = Date.now() + perMs;
-      while (Date.now() < until) {
-        await slowScroll(page, 240);
-        await page.waitForTimeout(400);
+      if (stop.find) {
+        // **가리킨 것을 붙잡고 있는다.** 시작점만 맞추고 계속 스크롤하면 문장이
+        // 말하는 동안 화면이 그 요소를 지나쳐 흘러간다 — "보여줘야 할 부분이
+        // 있는데 그걸 휙 넘겨버려" (Jessi). 이 정류장은 그 자리에 머문다.
+        // 완전 정지가 아니라 아주 조금만 흔들어 둔다 (프레임이 죽어 보이지 않게).
+        const anchor = await page.evaluate(() => window.scrollY);
+        let drift = 0;
+        while (Date.now() < until) {
+          drift = (drift + 1) % 4;
+          await page.evaluate(
+            (y) => window.scrollTo({ top: y, behavior: "instant" }),
+            anchor + drift * 6,
+          );
+          await page.waitForTimeout(500);
+        }
+      } else {
+        // 가리킨 것이 없는 정류장은 화면 전체를 훑는다 (whole 샷의 재료)
+        while (Date.now() < until) {
+          await slowScroll(page, 240);
+          await page.waitForTimeout(400);
+        }
       }
       segs.push({
         path: p,

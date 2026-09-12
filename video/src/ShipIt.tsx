@@ -107,7 +107,12 @@ function kindOf(scene: string, hasNextArt: boolean, hasScreen = false): Kind {
   if (scene === "next" && hasNextArt) return "art";
   // 그래픽이 보류인 동안 next가 폰으로 떨어져, 아무 화면이나 붙어 돌았다
   // ("꼭 마지막엔 이 화면을 쓰기로 한 거야?" — Jessi). 대본이 화면을 고르지
-  // 않았으면 화면을 쓰지 않는다 — 배경과 자막만 (타이포 + 실제 녹화 원칙).
+  // 않았으면 화면을 쓰지 않는다.
+  //
+  // plain은 **마지막 수단**이다 — 자막만 뜬 빈 화면이 된다 (Jessi 지적).
+  // 채울 것은 내용에서 나와야 하므로(콜드오픈 모양을 그대로 재사용하는 것은
+  // 짜맞추기다) 대본이 그런 문장에 diagram을 붙이게 한다 — 그럼 이 분기까지
+  // 오지 않는다. 그래도 비면 배경과 자막만 (엉뚱한 화면보다는 낫다).
   if (scene === "next" && !hasScreen) return "plain";
   return "phone";
 }
@@ -443,6 +448,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 toSec={seg.to}
                 segIndex={i}
                 shot={shotOf(i)}
+                held={!!seg.find}
                 duoAltOffsetSec={
                   seg.duoAltOffset != null
                     ? videoStartSec + seg.duoAltOffset

@@ -165,6 +165,8 @@ export const PhoneFrame: React.FC<{
   segIndex?: number;
   /** 데모 연출 — day+장면 순번으로 로테이션. 녹화 없으면 phone 플레이스홀더 */
   shot?: DemoShot;
+  /** 이 블록이 화면의 한 곳을 붙잡고 있는지 (대본 find) — 프레임 팬을 끈다 */
+  held?: boolean;
   /** duo 보조 폰이 틀 다른 화면의 소스 시각 — 없으면 같은 화면 +3초 폴백 */
   duoAltOffsetSec?: number;
 }> = ({
@@ -177,20 +179,31 @@ export const PhoneFrame: React.FC<{
   toSec,
   segIndex = 0,
   shot = "phone",
+  held = false,
   duoAltOffsetSec,
 }) => {
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const t = frame / fps;
-  const clamp0 = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const clamp0 = {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  } as const;
   const span =
     fromSec != null && toSec != null && toSec > fromSec
       ? ([fromSec, toSec] as const)
       : null;
 
   if (videoFile && shot === "band") {
-    // 와이드 밴드 크롭 — 베젤 없이 화면 중앙을 크게. 안에서 천천히 아래로 팬
-    const panY = span ? interpolate(t, [...span], [18, 46], clamp0) : 30;
+    // 와이드 밴드 크롭 — 베젤 없이 화면 중앙을 크게.
+    // **가리킨 것이 있으면 프레임 안에서도 팬하지 않는다** — 녹화가 그 자리에
+    // 머물러 있는데 크롭이 위아래로 움직이면 결국 요소가 프레임에서 빠져나간다
+    // (Jessi: "보여줘야 할 부분을 휙 넘겨버려"). 움직임은 미세한 줌만 남긴다.
+    const panY = held
+      ? 50
+      : span
+        ? interpolate(t, [...span], [18, 46], clamp0)
+        : 30;
     const zoom = span ? interpolate(t, [...span], [1.0, 1.07], clamp0) : 1;
     return (
       <div
@@ -210,7 +223,11 @@ export const PhoneFrame: React.FC<{
             : "0 40px 120px rgba(0,0,0,.55)",
         }}
       >
-        <Sequence from={fromFrame} durationInFrames={durationInFrames} layout="none">
+        <Sequence
+          from={fromFrame}
+          durationInFrames={durationInFrames}
+          layout="none"
+        >
           <OffthreadVideo
             src={staticFile(videoFile)}
             muted
@@ -244,7 +261,14 @@ export const PhoneFrame: React.FC<{
       z: number;
     }[] = [
       { right: 108, top: 420, rot: 2.5, start: altStart, dy: -lift, z: 1 },
-      { left: 108, top: 300, rot: -2.5, start: sourceOffsetSec, dy: lift, z: 2 },
+      {
+        left: 108,
+        top: 300,
+        rot: -2.5,
+        start: sourceOffsetSec,
+        dy: lift,
+        z: 2,
+      },
     ];
     return (
       <>
@@ -298,7 +322,10 @@ export const PhoneFrame: React.FC<{
   // 정지된 폰은 3초만 지나도 밋밋하다 — 장면마다 방향을 바꾸는 느린 줌
   // (1.0↔1.12)에 수직 드리프트를 겹쳐 켄 번스식 촬영감을 준다.
   // 1.05는 전혀 안 느껴졌다 (Jessi 지적) — 줌 폭과 틸트를 키웠다.
-  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const clamp = {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  } as const;
   const zoom =
     fromSec != null && toSec != null && toSec > fromSec
       ? interpolate(
@@ -354,7 +381,11 @@ export const PhoneFrame: React.FC<{
         }}
       >
         {videoFile ? (
-          <Sequence from={fromFrame} durationInFrames={durationInFrames} layout="none">
+          <Sequence
+            from={fromFrame}
+            durationInFrames={durationInFrames}
+            layout="none"
+          >
             <OffthreadVideo
               src={staticFile(videoFile)}
               muted
@@ -516,7 +547,9 @@ export const FailCard: React.FC<{
         style={{
           display: "grid",
           gap: 28,
-          ...(split ? { gridTemplateColumns: "1fr 1fr", alignItems: "stretch" } : {}),
+          ...(split
+            ? { gridTemplateColumns: "1fr 1fr", alignItems: "stretch" }
+            : {}),
         }}
       >
         <div style={{ ...boxBase, ...appear(local > 0.3, 0.3) }}>
@@ -536,7 +569,13 @@ export const FailCard: React.FC<{
             <span style={bodyStyle(false)}>{before}</span>
           </div>
         </div>
-        <div style={{ ...boxBase, ...afterBox, ...appear(local > afterAt, afterAt) }}>
+        <div
+          style={{
+            ...boxBase,
+            ...afterBox,
+            ...appear(local > afterAt, afterAt),
+          }}
+        >
           <div
             style={{
               fontFamily: FONT_MONO,
@@ -567,7 +606,10 @@ export const EndCard: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
-  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const clamp = {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  } as const;
   // 타이틀 → 메타 → CTA 순서로 떠오른다. 마지막 장면이 정지화면이 되지 않게.
   const rise = (delay: number): React.CSSProperties => {
     if (sceneStartSec == null) return {};
@@ -641,7 +683,12 @@ export const EndCard: React.FC<{
         }}
       >
         {script.handle}{" "}
-        <span style={{ display: "inline-block", transform: `translateX(${nudge}px)` }}>
+        <span
+          style={{
+            display: "inline-block",
+            transform: `translateX(${nudge}px)`,
+          }}
+        >
           →
         </span>
       </div>
@@ -650,7 +697,10 @@ export const EndCard: React.FC<{
 };
 
 /** +알파 그래픽 장면 — 생성 일러스트 (현재 보류, 레퍼런스 확정 시 재개) */
-export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({ file, th }) => (
+export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({
+  file,
+  th,
+}) => (
   <div
     style={{
       position: "absolute",
@@ -746,7 +796,10 @@ export const ColdOpen: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
-  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const clamp = {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  } as const;
   const panel: React.CSSProperties = {
     position: "absolute",
     left: 80,
@@ -767,7 +820,9 @@ export const ColdOpen: React.FC<{
   };
   const typed = (cmd: string): string => {
     const len = Math.floor(interpolate(t, [0.08, 0.6], [0, cmd.length], clamp));
-    return cmd.slice(0, len) + (t < 0.7 && Math.floor(t * 3) % 2 === 0 ? "▍" : "");
+    return (
+      cmd.slice(0, len) + (t < 0.7 && Math.floor(t * 3) % 2 === 0 ? "▍" : "")
+    );
   };
   const appearAt = (at: number): React.CSSProperties => ({
     opacity: t >= at ? Math.min(1, (t - at) / 0.2) : 0,
@@ -792,7 +847,14 @@ export const ColdOpen: React.FC<{
         >
           fail
         </div>
-        <div style={{ display: "flex", gap: 28, marginTop: 24, alignItems: "flex-start" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 28,
+            marginTop: 24,
+            alignItems: "flex-start",
+          }}
+        >
           <span
             style={{
               color: th.warn,
@@ -828,7 +890,9 @@ export const ColdOpen: React.FC<{
     // 변화 대비 컷 — -어제 +오늘. before는 muted, after는 accent로
     return (
       <div style={{ ...panel, lineHeight: 1.6 }}>
-        <div style={{ color: th.ink, fontWeight: 700 }}>{typed("$ git diff")}</div>
+        <div style={{ color: th.ink, fontWeight: 700 }}>
+          {typed("$ git diff")}
+        </div>
         <div
           style={{
             marginTop: 20,
@@ -1073,7 +1137,10 @@ export const StatPunch: React.FC<{
   const t = frame / fps;
   const END = startSec + 1.5;
   if (t < startSec || t > END) return null;
-  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const clamp = {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  } as const;
   // 콤마 표기("2,889곳")는 콤마를 걷어내고 숫자를 읽는다 — \d+만 잡으면
   // 콤마 앞 "2"에서 끊겨 카운터가 2에서 멈추던 버그
   const num = Number(stat.replace(/,/g, "").match(/\d+/)?.[0] ?? 0);
@@ -1105,8 +1172,14 @@ export const StatPunch: React.FC<{
           color: th.ink,
         }}
       >
-        <span style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent }}>
-          {shown.toLocaleString("en-US") /* 천 단위 콤마 — 렌더 환경 로케일에 안 흔들리게 고정 */}
+        <span
+          style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent }}
+        >
+          {
+            shown.toLocaleString(
+              "en-US",
+            ) /* 천 단위 콤마 — 렌더 환경 로케일에 안 흔들리게 고정 */
+          }
         </span>
         <span style={{ fontSize: 100 }}>{suffix}</span>
       </div>
