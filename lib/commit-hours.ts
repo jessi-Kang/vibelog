@@ -12,6 +12,16 @@ export const HEATMAP_DAYS = 7;
 /** 날짜(KST) → 0~23시 커밋 수 */
 export type CommitHours = Record<string, number[]>;
 
+/** /api/commits 응답 — 서버가 센 실시간 값 (화면과 격자가 같이 쓴다) */
+export interface LiveCounts {
+  /** 센 기준 날짜(KST) — 방문자 자정을 넘겼는지 가린다 */
+  date: string;
+  today: number;
+  week: number;
+  /** 오늘 0~23시 커밋 수 */
+  row: number[];
+}
+
 export interface HourCell {
   date: string;
   hour: number;

@@ -3,15 +3,19 @@
  * 홈 통계 줄 + 잔디 — 한 덩어리다. 둘 다 "커밋이 몇 번"을 말한다.
  *
  * 수치는 방문 시점 실시간이다 (Jessi 지시: 낮에 커밋해도 카운트가 올라야
- * 한다). 페이지는 정적 빌드라 서버 값이 굳으므로, 방문자 브라우저가 GitHub
- * 공개 API로 직접 센다 — 파이프라인 쓰기·커밋·배포 없이 항상 최신.
- * 실패(레이트 리밋·오프라인·private)하면 파이프라인이 밤에 정산해 둔
- * 저장값으로 폴백하되, countsDate가 어제 것이면 "오늘"은 0으로 본다.
+ * 한다). 페이지는 정적 빌드라 서버 값이 굳으므로 숫자만 따로 받아 온다.
  *
- * 받아 오는 것은 레포당 두 번뿐이다 — 오늘 커밋 **시각 목록**과 이번 주
- * 커밋 **수**. 오늘 숫자와 잔디의 오늘 줄이 같은 목록에서 나오므로 둘이
- * 어긋날 수가 없다 (Jessi 지적: "지난 실행, 커밋 수, 잔디가 모두 같은걸
- * 보고 갱신해야지").
+ * 받아 오는 곳은 우리 `/api/commits`다. 전에는 여기서 GitHub 공개 API를 직접
+ * 불렀는데 그게 IP당 시간당 60회라 새로고침 몇 번에 403이 떨어지고 화면이
+ * 조용히 저장값으로 되돌아갔다 (Jessi가 콘솔에서 잡았다). 서버가 5분에 한 번
+ * 세서 나눠주면 요청 수가 방문자 수와 무관해진다.
+ *
+ * 한 응답에 오늘 수·이번 주 수·오늘의 시간별 줄이 함께 온다. 숫자와 잔디의
+ * 오늘 줄이 같은 목록에서 나오므로 둘이 어긋날 수가 없다 (Jessi 지적:
+ * "지난 실행, 커밋 수, 잔디가 모두 같은걸 보고 갱신해야지").
+ *
+ * 못 받으면(오프라인·GitHub 장애) 파이프라인이 밤에 정산해 둔 저장값으로
+ * 폴백하되, countsDate가 어제 것이면 "오늘"은 0으로 본다 (KST 자정 리셋).
  *
  * 배치: 좁은 화면에선 통계가 한 줄로 흐르고 잔디가 아래. md부터는 통계가
  * 2×2 격자로 서고 잔디가 옆에 선다 (Jessi 선택) — 넓은 화면에서 왼쪽이
@@ -20,11 +24,10 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   HEATMAP_DAYS,
-  addDays,
-  hourHistogram,
   hourRows,
   todayKst,
   type CommitHours,
+  type LiveCounts,
 } from "@/lib/commit-hours";
 import { fmtNum } from "@/lib/format";
 import { CommitHeatmap } from "./commit-heatmap";
@@ -36,50 +39,6 @@ export interface FactSource {
   countsDate?: string;
   todayCommits?: number;
   weekCommits?: number;
-}
-
-function repoOf(repoUrl: string): string | null {
-  return repoUrl.match(/github\.com\/([^/]+\/[^/]+)/)?.[1] ?? null;
-}
-
-/** 커밋 수 세기 — per_page=1 요청의 Link 헤더 마지막 페이지 번호가 총 개수
- *  (collect.ts countCommits와 같은 기법. GitHub가 CORS로 Link를 노출한다) */
-async function countSince(repoUrl: string, since: string): Promise<number> {
-  const repo = repoOf(repoUrl);
-  if (!repo) return 0;
-  const res = await fetch(
-    `https://api.github.com/repos/${repo}/commits?since=${encodeURIComponent(since)}&per_page=1`,
-  );
-  if (!res.ok) throw new Error(String(res.status));
-  const link = res.headers.get("link");
-  const last = link?.match(/[?&]page=(\d+)>; rel="last"/);
-  if (last) return Number(last[1]);
-  return ((await res.json()) as unknown[]).length;
-}
-
-/** 오늘 0시(KST) 이후 커밋 시각. 보통 요청 한 번이면 끝난다 (최대 300개) */
-async function commitTimesSince(
-  repoUrl: string,
-  since: string,
-): Promise<string[]> {
-  const repo = repoOf(repoUrl);
-  if (!repo) return [];
-  const out: string[] = [];
-  for (let page = 1; page <= 3; page++) {
-    const res = await fetch(
-      `https://api.github.com/repos/${repo}/commits?since=${encodeURIComponent(since)}&per_page=100&page=${page}`,
-    );
-    if (!res.ok) throw new Error(String(res.status));
-    const data = (await res.json()) as {
-      commit: { committer?: { date?: string }; author?: { date?: string } };
-    }[];
-    for (const c of data) {
-      const t = c.commit.committer?.date ?? c.commit.author?.date;
-      if (t) out.push(t);
-    }
-    if (data.length < 100) break;
-  }
-  return out;
 }
 
 function Fact({ n, label }: { n: number | string; label: ReactNode }) {
@@ -112,52 +71,32 @@ export function HomeStats({
   buildDate: string;
 }) {
   const [today, setToday] = useState(buildDate);
-  const [live, setLive] = useState<{
-    today: number;
-    week: number;
-    row: number[];
-  } | null>(null);
+  const [live, setLive] = useState<LiveCounts | null>(null);
 
   useEffect(() => setToday(todayKst()), []);
-
-  const urls = useMemo(() => sources.map((s) => s.repoUrl), [sources]);
 
   useEffect(() => {
     let dead = false;
     const load = async () => {
       try {
-        const midnight = `${todayKst()}T00:00:00+09:00`;
-        // "이번 주"는 잔디가 그리는 것과 같은 창이다 — 오늘 포함 7일치.
-        // 굴러가는 168시간으로 세면 격자엔 399개가 그려졌는데 숫자는 365라고
-        // 적히는 식으로 둘이 갈린다 (Jessi 지시: 같은 걸 보고 갱신한다).
-        const weekAgo = `${addDays(todayKst(), -(HEATMAP_DAYS - 1))}T00:00:00+09:00`;
-        const pairs = await Promise.all(
-          urls.map(async (url) =>
-            Promise.all([
-              commitTimesSince(url, midnight),
-              countSince(url, weekAgo),
-            ]),
-          ),
-        );
-        if (dead) return;
-        const times = pairs.flatMap(([t]) => t);
-        setLive({
-          today: times.length,
-          week: pairs.reduce((n, [, w]) => n + w, 0),
-          row: hourHistogram(times),
-        });
+        const res = await fetch("/api/commits");
+        if (!res.ok) return;
+        const data = (await res.json()) as LiveCounts | { error: string };
+        // 서버가 못 셌으면 error만 온다 — 그때는 저장값을 그대로 쓴다
+        if (dead || !("today" in data)) return;
+        setLive(data);
       } catch {
-        // 레이트 리밋·오프라인 — 저장값 폴백 유지
+        // 오프라인 — 저장값 폴백 유지
       }
     };
     void load();
-    // 열어 둔 화면도 따라오게 5분마다 재조회 (방문자당 시간당 요청 ~48개 — 한도 60 안)
+    // 열어 둔 화면도 따라오게 5분마다 (서버 캐시와 같은 주기라 GitHub엔 더 안 간다)
     const id = setInterval(() => void load(), 5 * 60_000);
     return () => {
       dead = true;
       clearInterval(id);
     };
-  }, [urls]);
+  }, []);
 
   // 폴백(저장값): 오늘은 countsDate가 오늘일 때만, 주간은 그대로
   const storedToday = sources.reduce(
@@ -166,9 +105,13 @@ export function HomeStats({
   );
   const storedWeek = sources.reduce((n, s) => n + (s.weekCommits ?? 0), 0);
 
+  // 열어 둔 화면이 자정을 넘기면 서버가 센 날짜가 어제 것이 된다 — 그때는
+  // 오늘 값으로 쓰지 않는다 (다음 재조회가 새 날짜로 채운다)
+  const fresh = live && live.date === today ? live : null;
+
   const grid = useMemo(
-    () => hourRows(hours, today, live?.row ?? null),
-    [hours, today, live],
+    () => hourRows(hours, today, fresh?.row ?? null),
+    [hours, today, fresh],
   );
 
   const facts: [string, number | string, ReactNode][] =
@@ -177,12 +120,12 @@ export function HomeStats({
       : [
           [
             "t",
-            live?.today ?? storedToday,
+            fresh?.today ?? storedToday,
             <T key="t" ko="오늘 커밋" en="commits today" />,
           ],
           [
             "k",
-            live?.week ?? storedWeek,
+            fresh?.week ?? storedWeek,
             <T key="k" ko="이번 주 커밋" en="commits this week" />,
           ],
           [
