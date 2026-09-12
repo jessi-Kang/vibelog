@@ -7,11 +7,11 @@
  * 두 경로 다 막힌 환경(권한 차단·비보안 컨텍스트)에서는 조용히 실패하지 않고
  * "복사 실패"를 보여 준다 — 눌렀는데 아무 일도 안 나는 게 제일 나쁘다.
  *
- * 공유 대상은 **지금 보고 있는 페이지**다. 글을 읽다 누르면 그 글이,
- * 홈에서 누르면 사이트가 공유된다. 글마다 미리보기 카드가 따로 있으므로
- * (lib/og.tsx) 그 편이 링크를 받는 쪽에 더 쓸모 있다.
+ * 공유 대상은 어느 페이지에서 누르든 **사이트 메인**이다 (Jessi 지시).
+ * 푸터는 모든 페이지에 있으니 "이 사이트를 알린다"는 뜻으로 고정한다.
  */
 import { useEffect, useRef, useState } from "react";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { T } from "./lang";
 
 type State = "idle" | "copied" | "failed";
@@ -34,10 +34,10 @@ export function ShareLink() {
   };
 
   const share = async () => {
-    const url = window.location.href;
+    const url = SITE_URL;
     if (navigator.share) {
       try {
-        await navigator.share({ title: document.title, url });
+        await navigator.share({ title: SITE_NAME, text: SITE_DESCRIPTION, url });
       } catch {
         // 사용자가 시트를 닫은 것도 여기로 온다 — 실패로 취급하지 않는다
       }
