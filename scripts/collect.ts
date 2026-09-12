@@ -58,6 +58,8 @@ export interface RepoActivity {
   todayCommits: number;
   /** 레포 전체 누적 커밋 수 — 프로젝트 상세의 "누적 커밋" */
   totalCommits: number;
+  /** 최근 HOURS_DAYS일 커밋 시각(ISO) — 홈 잔디 재료. 글 재료(commits)와 달리 안 자른다 */
+  commitTimes: string[];
   /** 쇼츠 테마 — vibelog.json "theme" 우선, 없으면 topic "vibelog-theme-<이름>" */
   theme?: string;
   /**
@@ -165,6 +167,41 @@ async function getCommits(
     });
   }
   return commits;
+}
+
+/**
+ * 커밋 시각만 훑어 온다 — 홈의 커밋 잔디(시간 × 날) 재료.
+ *
+ * 글 재료를 가져오는 getCommits는 MAX_COMMITS(20)로 자른다. 그건 글을 쓰기에
+ * 충분한 분량이라는 뜻이지 그날 커밋 수가 아니다 — 실제로는 하루 150개도
+ * 넘는다. 잔디는 진짜 밀도를 보여 줘야 하므로 여기서 따로, 파일 목록 없이
+ * 시각만 모두 받는다 (페이지당 100개, 최대 HOURS_PAGES장).
+ */
+const HOURS_PAGES = 4;
+/** 잔디가 다시 채우는 기간 — 매 실행이 이 기간을 통째로 새로 계산해 덮는다 */
+export const HOURS_DAYS = 14;
+export async function getCommitTimes(
+  octokit: Octokit,
+  owner: string,
+  repo: string,
+  since: string,
+): Promise<string[]> {
+  const out: string[] = [];
+  for (let page = 1; page <= HOURS_PAGES; page++) {
+    const { data } = await octokit.rest.repos.listCommits({
+      owner,
+      repo,
+      since,
+      per_page: 100,
+      page,
+    });
+    for (const c of data) {
+      const t = c.commit.committer?.date ?? c.commit.author?.date;
+      if (t) out.push(t);
+    }
+    if (data.length < 100) break; // 마지막 장
+  }
+  return out;
 }
 
 async function getMergedPRs(
@@ -456,6 +493,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       weekCommits,
       todayCommits,
       totalCommits,
+      commitTimes,
     ] = await Promise.all([
       getCommits(octokit, owner, repo, since),
       getMergedPRs(octokit, owner, repo, since),
@@ -464,6 +502,12 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       countCommits(weekAgo),
       countCommits(new Date(kstMidnight).toISOString()),
       countAllCommits(),
+      getCommitTimes(
+        octokit,
+        owner,
+        repo,
+        new Date(Date.now() - HOURS_DAYS * 24 * 3600 * 1000).toISOString(),
+      ).catch(() => [] as string[]),
     ]);
 
     // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
@@ -508,6 +552,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       weekCommits,
       todayCommits,
       totalCommits,
+      commitTimes,
       ...(theme ? { theme } : {}),
       released,
     });

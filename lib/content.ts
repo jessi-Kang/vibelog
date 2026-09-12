@@ -146,6 +146,17 @@ function firstSentence(text?: string): string | undefined {
   return (m ? m[0] : plain.slice(0, 90)).trim();
 }
 
+/** 홈 잔디 재료 — 날짜(KST)별 0~23시 커밋 수. 파이프라인이 매일 밤 쌓는다 */
+export function getCommitHours(): Record<string, number[]> {
+  try {
+    return JSON.parse(
+      fs.readFileSync(path.join(CONTENT_DIR, "commit-hours.json"), "utf8"),
+    );
+  } catch {
+    return {}; // 아직 없으면 빈 격자 — 첫 실행 뒤 채워진다
+  }
+}
+
 export function getDevlogs(repo?: string): DevlogEntry[] {
   const devlogDir = path.join(CONTENT_DIR, "devlog");
   if (!fs.existsSync(devlogDir)) return [];
