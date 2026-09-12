@@ -137,7 +137,10 @@ jobs:
             elif [ -n "$REGEN" ]; then
               git commit -m "chore: 쇼츠 다시 만듦 ($REGEN)"
             else
-              git commit -m "chore: 데브로그 자동 발행 ($(TZ=Asia/Seoul date +%F))"
+              # 날짜는 글과 같은 "그 밤" 기준이어야 한다 (run.ts publishDateKST과
+              # 같은 식: KST에서 6시간 뺀 날짜). 벽시계로 찍었더니 23:49에 시작한
+              # 실행이 자정을 넘겨 커밋해 글은 09-12인데 메시지만 09-13이었다.
+              git commit -m "chore: 데브로그 자동 발행 ($(TZ=Asia/Seoul date -d '-6 hours' +%F))"
             fi
             # 실행 중 브랜치에 새 커밋이 올라왔을 수 있다(세션·연속 실행과의 경합) —
             # 리베이스 후 푸시. -X theirs: 충돌 시 이 실행의 결과가 이긴다.
