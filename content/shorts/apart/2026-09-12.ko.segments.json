@@ -2,18 +2,21 @@
   "screens": [
     {
       "path": "/",
-      "start": 1.12,
-      "end": 16
+      "find": "진짜 찾기",
+      "start": 1.01,
+      "end": 11.95
     },
     {
       "path": "/o",
-      "start": 16.8,
-      "end": 32.17
+      "find": "감별 O/X",
+      "start": 16.6,
+      "end": 27.7
     },
     {
-      "path": "/me",
-      "start": 32.85,
-      "end": 47.85
+      "path": "/f",
+      "find": "진짜 찾기",
+      "start": 32.33,
+      "end": 43.52
     }
   ]
 }

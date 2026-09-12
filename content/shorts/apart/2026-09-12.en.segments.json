@@ -2,18 +2,21 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.84,
-      "end": 13.14
+      "find": "Find the real one",
+      "start": 4.67,
+      "end": 14.11
     },
     {
       "path": "/o",
-      "start": 13.85,
-      "end": 26.45
+      "find": "Real or Fake",
+      "start": 18.73,
+      "end": 28.34
     },
     {
-      "path": "/me",
-      "start": 27.08,
-      "end": 39.42
+      "path": "/f",
+      "find": "Find the real one",
+      "start": 32.95,
+      "end": 41.3
     }
   ]
 }
