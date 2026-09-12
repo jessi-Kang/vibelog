@@ -70,7 +70,10 @@ function Tabs({
   // 박스 안에 박스(세그먼트 컨트롤)는 무겁다 — 텍스트 + 민트 언더라인의
   // 조용한 탭으로 (Jessi 지시, taste 패스)
   return (
-    <nav aria-label="주요 메뉴" className="flex w-full items-center md:w-auto md:gap-7">
+    <nav
+      aria-label="주요 메뉴"
+      className="flex w-full items-center md:w-auto md:gap-7"
+    >
       {TABS.map((t) => {
         const on = t.href === active;
         return (
@@ -85,7 +88,10 @@ function Tabs({
                 const reduce = window.matchMedia(
                   "(prefers-reduced-motion: reduce)",
                 ).matches;
-                window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+                window.scrollTo({
+                  top: 0,
+                  behavior: reduce ? "auto" : "smooth",
+                });
               }
             }}
             className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
@@ -128,7 +134,9 @@ function BackRow({ crumb }: { crumb: string }) {
       >
         ←
       </button>
-      <span className="whitespace-nowrap font-mono text-xs text-muted">{crumb}</span>
+      <span className="whitespace-nowrap font-mono text-xs text-muted">
+        {crumb}
+      </span>
     </div>
   );
 }
@@ -190,7 +198,9 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
             </span>
           </div>
           {/* 상단 탭은 데스크톱만 — 모바일은 아래 고정 탭바가 담당 */}
-          <div className="hidden items-center gap-4 md:flex md:gap-5">
+          {/* 탭 사이(28px)보다 탭↔토글 간격이 더 넓어야 한다 — 20px였더니
+              토글이 "소개"에 붙어 한 묶음처럼 보였다 (Jessi 지적) */}
+          <div className="hidden items-center gap-4 md:flex md:gap-10">
             <Tabs active={tab} counts={counts} />
             <span className="hidden md:block">
               <LangSwitch />

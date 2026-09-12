@@ -89,7 +89,7 @@ export function MediaLightbox({
         <div
           aria-label={site.lang === "en" ? "Video language" : "영상 언어"}
           onClick={(e) => e.stopPropagation()}
-          className={`absolute left-4 top-[max(1rem,env(safe-area-inset-top))] z-10 flex gap-1 rounded-md border border-line bg-panel/95 p-1 ${overlayCls}`}
+          className={`absolute left-4 top-[max(1rem,env(safe-area-inset-top))] z-10 flex gap-1 rounded-md border border-line bg-panel/95 p-1 md:left-8 md:top-8 md:gap-1.5 md:rounded-lg md:p-1.5 ${overlayCls}`}
         >
           {(["ko", "en"] as const).map((v) => (
             <button
@@ -100,8 +100,12 @@ export function MediaLightbox({
                 setLang(v);
                 pokeUi();
               }}
-              className={`min-h-7 cursor-pointer rounded-[7px] px-2.5 font-sans text-sm font-bold transition-colors duration-150 ${
-                lang === v ? "bg-panel2 text-ink" : "text-muted hover:text-ink-soft"
+              // 태블릿·데스크탑에서는 크게 — 큰 화면에 폰만큼 작은 버튼이
+              // 떠 있어 눌러야 할 것으로 안 읽혔다 (Jessi 지적. 모바일은 그대로)
+              className={`min-h-7 cursor-pointer rounded-[7px] px-2.5 font-sans text-sm font-bold transition-colors duration-150 md:min-h-13 md:px-4 md:text-md ${
+                lang === v
+                  ? "bg-panel2 text-ink"
+                  : "text-muted hover:text-ink-soft"
               }`}
             >
               {v.toUpperCase()}
@@ -115,7 +119,7 @@ export function MediaLightbox({
         aria-label={site.lang === "en" ? "Close" : "닫기"}
         onClick={onClose}
         // 노치 폰 풀스크린에서 상태바 밑에 깔리지 않게 safe-area만큼 내린다
-        className={`absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-10 grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel/95 font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2 ${overlayCls}`}
+        className={`absolute right-4 top-[max(1rem,env(safe-area-inset-top))] z-10 grid h-9 w-9 cursor-pointer place-items-center rounded-md border border-line bg-panel/95 font-mono text-sm font-bold text-ink-soft transition-colors duration-150 hover:bg-panel2 md:right-8 md:top-8 md:h-13 md:w-13 md:rounded-lg md:text-lg ${overlayCls}`}
       >
         ✕
       </button>
