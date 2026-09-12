@@ -186,7 +186,10 @@ export default function Home() {
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
-      <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
+      {/* 마스트헤드와 본문 사이에 점선 하나 (Jessi 선택 C안) — 통계·잔디가
+          아래 목록으로 흘러 붙어 보였다. 실선은 위 구분선과 같은 무게라
+          화면에 선이 두 줄로 겹쳐 보이고, 점선은 "여기서 끊긴다"만 말한다 */}
+      <div className="flex flex-col gap-10 border-t border-dashed border-line pt-7 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
         <HomeProjects projects={projects} />
         {/* md:items-start는 md 2열 그리드용 — lg 세로 flex에서는 stretch로 되돌려야 카드 폭이 열에 맞는다 */}
         <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-6 lg:flex lg:flex-col lg:items-stretch lg:gap-12">
