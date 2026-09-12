@@ -2,14 +2,26 @@
   "screens": [
     {
       "path": "/",
-      "start": 1,
-      "end": 17.28
+      "find": "judge by the name",
+      "start": 1.71,
+      "end": 10.26
     },
     {
-      "path": "/o",
-      "find": "감별",
-      "start": 18.45,
-      "end": 35.15
+      "path": "/",
+      "find": "only one is real",
+      "start": 11.94,
+      "end": 20.48
+    },
+    {
+      "path": "/me",
+      "find": "records",
+      "start": 21.46,
+      "end": 30.01
+    },
+    {
+      "path": "/",
+      "start": 30.95,
+      "end": 39.21
     }
   ]
 }
