@@ -170,12 +170,24 @@ function useScrollingDown() {
   return down;
 }
 
+/**
+ * 층 순서 (z-index). 본문과 크롬이 같은 값을 쓰면 DOM 순서로 승부가 나서,
+ * 아래쪽에 있는 카드가 고정 탭바 위로 올라온다 — 실제로 홈 카드의 "열기 ↗"가
+ * 탭바의 "소개" 자리에 겹쳐 찍혔다. 그래서 값을 여기서 한 줄로 정한다.
+ *
+ *   z-[1]  본문 안에서만 다투는 것 (카드의 스트레치 링크 위에 뜨는 실제 링크)
+ *   z-30   사이트 크롬 (상단 헤더, 하단 탭바)
+ *   z-40   알림 (앱 설치 안내 — 탭바 위에 떠야 한다)
+ *   z-50   라이트박스 (전체를 덮는다)
+ *
+ * 본문에는 10·20을 쓰지 않는다. 크롬을 넘어야 할 일이 생기면 이 목록을 고친다.
+ */
 export function SiteHeader({ counts }: { counts?: TabCounts }) {
   const { detail, crumb, tab } = useRoute();
   const scrollingDown = useScrollingDown();
   return (
     <>
-      <header className="sticky top-0 z-10 border-b border-line bg-bg">
+      <header className="sticky top-0 z-30 border-b border-line bg-bg">
         <div className="mx-auto flex max-w-[430px] flex-col gap-3 px-5 py-3 max-[359px]:px-4 md:max-w-[1120px] md:flex-row md:items-center md:justify-between md:px-6 md:py-3.5 lg:px-8">
           <div className="flex min-h-8 items-center justify-between gap-4">
             {detail ? (
@@ -212,7 +224,7 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
           본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리 (Jessi 피드백).
           스크롤 내리면 아래로 내려가 숨고, 올리면 복귀 (Jessi 지시). 모션 축소 설정은 즉시 전환 */}
       <div
-        className={`fixed inset-x-0 bottom-0 z-10 border-t border-line-strong bg-panel/85 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] backdrop-blur-md transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
+        className={`fixed inset-x-0 bottom-0 z-30 border-t border-line-strong bg-panel/85 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] backdrop-blur-md transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
           scrollingDown ? "translate-y-full" : "translate-y-0"
         }`}
       >
