@@ -82,7 +82,7 @@ async function slowScroll(page: Page, px: number): Promise<void> {
  *   3) 그래도 없으면 그 화면에서 **가장 큰 그림**(svg·img·canvas) —
  *      글자로 설명되지 않는 것을 말하는 문장은 대개 그림을 말한다
  */
-async function locateOnPage(
+export async function locateOnPage(
   page: Page,
   find: string,
 ): Promise<{ kind: "text" | "name" | "graphic" } | null> {
@@ -127,7 +127,7 @@ async function locateOnPage(
 }
 
 /** 그 화면에서 대본이 말한 것을 화면 가운데로 올리고 표시를 얹는다 */
-async function focusOn(page: Page, find: string, kind: string): Promise<void> {
+export async function focusOn(page: Page, find: string, kind: string): Promise<void> {
   const esc = find.replace(/"/g, '\\"');
   const target =
     kind === "text"
