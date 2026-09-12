@@ -72,7 +72,7 @@ export default function RootLayout({
         />
         {children}
         <footer className="border-t border-line">
-          <div className="mx-auto flex max-w-[430px] justify-between gap-3 px-5 pb-6 pt-4 font-mono text-xs text-muted md:max-w-[1120px] md:px-6 md:pb-7 md:pt-5 lg:px-8">
+          <div className="mx-auto flex max-w-[430px] justify-between gap-3 px-5 pb-6 pt-4 max-[359px]:px-4 font-mono text-xs text-muted md:max-w-[1120px] md:px-6 md:pb-7 md:pt-5 lg:px-8">
             <a
               href="mailto:jihyun.kang@me.com"
               className="hit text-muted transition-colors duration-150 hover:text-ink"

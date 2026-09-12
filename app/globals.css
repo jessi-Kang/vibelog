@@ -64,6 +64,25 @@
   --dur: 280ms;
 }
 
+/*
+ * 좁은 화면 — 글자와 간격을 한 단계 줄인다 (Jessi 지시: 작은 해상도에서도
+ * 어그러지지 않게). Tailwind v4의 크기 유틸은 전부 --text-* 변수를 참조하므로
+ * 여기서 변수만 줄이면 사이트 전체가 같이 작아진다. 320px에서 홈 통계 줄이
+ * 두 줄로 깨지던 것이 기준점이었다.
+ */
+@media (max-width: 359px) {
+  :root {
+    --text-2xs: 10px;
+    --text-xs: 11px;
+    --text-sm: 12px;
+    --text-base: 13px;
+    --text-md: 14px;
+    --text-lg: 16px;
+    --text-xl: 20px;
+    --text-2xl: 27px;
+  }
+}
+
 @keyframes vl-blink {
   50% {
     opacity: 0;
