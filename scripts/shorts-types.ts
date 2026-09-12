@@ -87,6 +87,15 @@ export interface DiagramSpec {
   labels: string[];
   /** 영어 라벨 — 없으면 ko 폴백 */
   labelsEn?: string[];
+  /**
+   * fork에서 **강조할 결과** (1=왼쪽, 2=오른쪽). 기본 2.
+   *
+   * 강조가 왼쪽에 못 박혀 있었다. 이야기의 답이 오른쪽인 편에서 엉뚱한 쪽이
+   * 켜졌다 — "방문자가 백 명이어도 요청은 한 번"인데 "요청 백 번"이 민트색이라
+   * 그림이 반대로 읽혔다 (Jessi 지적). 기본을 2로 둔 건 다른 종류도 해결을
+   * 마지막에 두기 때문이다 (numberline의 고친 값, beforeafter의 후).
+   */
+  pick?: 1 | 2;
 }
 
 /** 종류별 [최소, 최대] 라벨 수 — 대본 검증과 렌더가 같은 표를 본다 */
@@ -114,7 +123,10 @@ export function validDiagram(v: unknown): DiagramSpec | undefined {
   return {
     kind: d.kind,
     labels: labels.slice(0, range[1]),
-    ...(labelsEn.length >= range[0] ? { labelsEn: labelsEn.slice(0, range[1]) } : {}),
+    ...(labelsEn.length >= range[0]
+      ? { labelsEn: labelsEn.slice(0, range[1]) }
+      : {}),
+    ...(d.pick === 1 || d.pick === 2 ? { pick: d.pick } : {}),
   };
 }
 
@@ -196,7 +208,11 @@ export type ColdOpenKind = "log" | "error" | "diff";
 
 export function coldOpenKind(s: ShortsScript): ColdOpenKind | null {
   if (s.template === "fail" && s.failCard?.before) return "error";
-  if (s.template === "before-after" && s.failCard?.before && s.failCard?.after) {
+  if (
+    s.template === "before-after" &&
+    s.failCard?.before &&
+    s.failCard?.after
+  ) {
     return "diff";
   }
   return s.commits?.length ? "log" : null;
