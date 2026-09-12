@@ -1,6 +1,5 @@
 import { PageContainer } from "@/components/page-container";
-import { CommitHeatmap } from "@/components/commit-heatmap";
-import { HomeFacts } from "@/components/home-facts";
+import { HomeStats } from "@/components/home-stats";
 import { HomeProjects } from "@/components/home-projects";
 import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader } from "@/components/ui";
@@ -39,7 +38,7 @@ export default function Home() {
       p.status === "building" || p.status === "preview" || p.status === "live",
   ).length;
   // 오늘·이번 주 커밋은 방문자 브라우저가 GitHub API로 실시간으로 센다
-  // (HomeFacts) — 낮 커밋도 바로 오른다 (Jessi 지시). 실패 시 저장값 폴백.
+  // (HomeStats) — 낮 커밋도 바로 오른다 (Jessi 지시). 실패 시 저장값 폴백.
   const factSources = projects.map((p) => ({
     repoUrl: p.repoUrl,
     countsDate: p.countsDate,
@@ -76,9 +75,7 @@ export default function Home() {
       ) : (
         <EmptyState
           compact
-          title={
-            <T ko="아직 실행 기록이 없습니다" en="No run records yet" />
-          }
+          title={<T ko="아직 실행 기록이 없습니다" en="No run records yet" />}
           body={
             <T
               ko="매일 23:00 KST에 자동으로 돌고, 지금 바로 돌릴 수도 있습니다."
@@ -180,14 +177,12 @@ export default function Home() {
             좁은 화면에서는 위아래로, md부터는 나란히 둔다. 잔디를 혼자
             아래에 두면 넓은 화면에서 오른쪽이 통째로 비어 화면이 깨져
             보였다 (Jessi 지적) */}
-        <div className="flex flex-col gap-3 border-t border-line pt-3.5 md:flex-row md:items-center md:gap-8">
-          <div className="md:flex-1">
-            <HomeFacts sources={factSources} active={active} />
-          </div>
-          <div className="md:w-[56%] md:flex-none lg:w-[552px]">
-            <CommitHeatmap hours={commitHours} buildDate={todayKST()} />
-          </div>
-        </div>
+        <HomeStats
+          sources={factSources}
+          active={active}
+          hours={commitHours}
+          buildDate={todayKST()}
+        />
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
