@@ -1,6 +1,6 @@
 {
-  "template": "fail",
-  "music": "tense",
+  "template": "ship-it",
+  "music": "ship-it",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-09-12",
@@ -8,19 +8,63 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "미리보기 도장이 얼룩처럼 번졌습니다.",
-      "en": "The preview stamp came out as a smudge.",
+      "ko": "링크를 붙이면 주소만 떴습니다.",
+      "en": "Paste the link and only the address showed up.",
       "keywords": [
-        "얼룩처럼"
+        "주소만"
       ],
       "keywordsEn": [
-        "smudge"
-      ]
+        "only the address"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "이제 이름과 설명, 그림까지 함께 뜹니다.",
+      "en": "Now the name, the description, and a picture come along.",
+      "keywords": [
+        "그림까지"
+      ],
+      "keywordsEn": [
+        "a picture"
+      ],
+      "screen": "/opengraph-image?f2c0039925850c95",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "서류 모양의 미리보기 카드입니다.",
+      "en": "It's a preview card shaped like a document.",
+      "keywords": [
+        "서류 모양의"
+      ],
+      "keywordsEn": [
+        "like a document"
+      ],
+      "screen": "/opengraph-image?f2c0039925850c95",
+      "find": "아파트 감별사",
+      "shot": "focus"
     },
     {
       "scene": "fail",
-      "ko": "그림을 그려 주는 쪽에 한글 글꼴이 없었습니다.",
-      "en": "The tool drawing the image had no Korean font.",
+      "ko": "그런데 카드의 도장이 얼룩처럼 번졌습니다.",
+      "en": "But the stamp on the card came out as a smudge.",
+      "keywords": [
+        "도장이",
+        "얼룩처럼"
+      ],
+      "keywordsEn": [
+        "as a smudge"
+      ],
+      "screen": "/opengraph-image?f2c0039925850c95",
+      "find": "도장",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "그림 만드는 쪽에 한글 글꼴이 없었습니다.",
+      "en": "The tool drawing the picture had no Korean font.",
       "keywords": [
         "한글 글꼴이"
       ],
@@ -28,119 +72,82 @@
         "no Korean font"
       ],
       "diagram": {
-        "kind": "pipeline",
-        "labels": [
-          "한글 글꼴 없음",
-          "글자가 네모로",
-          "글자를 뺌",
-          "얼룩만 남음"
-        ],
-        "labelsEn": [
-          "No Korean font",
-          "Letters become boxes",
-          "Letters removed",
-          "Only a smudge"
-        ]
-      }
-    },
-    {
-      "scene": "build",
-      "ko": "동그라미와 글자를 따로 그려 붙였습니다.",
-      "en": "I drew the circle and the letters separately.",
-      "keywords": [
-        "따로 그려"
-      ],
-      "keywordsEn": [
-        "separately"
-      ],
-      "diagram": {
         "kind": "beforeafter",
         "labels": [
-          "도장을 통째로",
-          "글자가 깨짐",
-          "동그라미와 글자 따로",
-          "도장다운 도장"
+          "도장 글자",
+          "네모로 깨짐",
+          "동그라미에 글자",
+          "제대로 찍힘"
         ],
         "labelsEn": [
-          "Whole stamp as image",
-          "Broken letters",
-          "Circle and letters apart",
-          "A real seal"
+          "stamp letters",
+          "broken boxes",
+          "circle + letters",
+          "clean seal"
         ]
       }
     },
     {
       "scene": "build",
-      "ko": "이제 링크를 붙이면 이름과 설명, 미리보기가 뜹니다.",
-      "en": "Now pasting the link shows a name, a description, and a preview.",
+      "ko": "동그라미만 그림으로 깔고 글자는 따로 얹었습니다.",
+      "en": "I laid the circle down and added the letters separately.",
       "keywords": [
-        "미리보기가"
+        "글자는 따로"
       ],
       "keywordsEn": [
-        "preview"
+        "the letters separately"
       ],
       "diagram": {
         "kind": "pipeline",
         "labels": [
-          "링크를 붙이면",
-          "이름과 설명",
-          "미리보기 그림"
+          "동그라미를 깔고",
+          "한글 글꼴로",
+          "글자를 얹고",
+          "도장 완성"
         ],
         "labelsEn": [
-          "Paste the link",
-          "Name and description",
-          "Preview picture"
+          "lay the circle",
+          "use Korean font",
+          "add the letters",
+          "stamp done"
         ]
       }
-    },
-    {
-      "scene": "demo",
-      "ko": "링크를 받은 사람은 이 화면으로 들어옵니다.",
-      "en": "Whoever gets the link lands on this screen.",
-      "keywords": [
-        "이 화면으로"
-      ],
-      "keywordsEn": [
-        "this screen"
-      ],
-      "screen": "/",
-      "find": "출전하기",
-      "findEn": "Enter the match",
-      "shot": "whole"
     },
     {
       "scene": "next",
-      "ko": "사람들이 자주 속는 이름도 모으기 시작했습니다.",
-      "en": "I also started collecting the names that fool people most.",
-      "keywords": [],
+      "ko": "30번 넘게 나온 이름만 모아 순위로 냅니다.",
+      "en": "Only names seen more than 30 times make the ranking.",
+      "keywords": [
+        "30번 넘게"
+      ],
       "keywordsEn": [
-        "fool people most"
+        "more than 30 times"
       ],
       "diagram": {
         "kind": "numberline",
         "labels": [
           "순위에 싣는 기준",
-          "30번",
-          "제외"
+          "30번 미만",
+          "30번 넘음"
         ],
         "labelsEn": [
-          "Ranking cutoff",
-          "30 times",
-          "Excluded"
+          "ranking cutoff",
+          "under 30",
+          "over 30"
         ]
       }
     },
     {
       "scene": "end",
-      "ko": "제일 먼저 보이는 쪽이 가장 늦게 정리됐습니다.",
-      "en": "The part people see first got fixed last.",
+      "ko": "남에게 먼저 보이는 곳이 제일 허술했습니다.",
+      "en": "The part strangers see first was the weakest.",
       "keywords": [
-        "가장 늦게"
+        "먼저 보이는"
       ],
       "keywordsEn": [
-        "last"
+        "strangers see first"
       ],
-      "art": "a freshly painted signboard being hung on an already tidy little shop"
+      "art": "a hand polishing the outward face of a paper card on a desk"
     }
   ],
   "demo": {
@@ -148,12 +155,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "도장에 글자가 없었다",
+    "title": "글자 없는 도장",
     "titleEn": "A stamp with no letters",
-    "before": "미리보기 도장이 얼룩처럼 번졌습니다",
-    "after": "동그라미와 글자를 따로 그려 해결했습니다",
-    "beforeEn": "The preview stamp came out as a blurry smudge",
-    "afterEn": "Drew the circle and the letters separately"
+    "before": "도장이 글자 없는 동그라미로 번졌습니다",
+    "after": "동그라미를 깔고 글자를 따로 얹었습니다",
+    "beforeEn": "The stamp smeared into a letterless circle",
+    "afterEn": "Laid the circle down, added letters on top"
   },
   "commits": [
     [
@@ -322,22 +329,22 @@
   "commitCount": 20,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "링크를 붙여도 주소만 덜렁 나오던 걸 고쳤습니다. 미리보기 도장에 글자가 없던 이유는 그림 쪽에 한글 글꼴이 없어서였습니다.",
-    "en": "Pasting the game link used to show nothing but the bare address. The preview stamp had no letters because the image tool had no Korean font."
+    "ko": "게임 주소를 붙여도 주소 글자만 나오던 걸 고쳤습니다. 미리보기 카드에 찍은 도장이 얼룩처럼 번진 이유는 글꼴이었습니다.",
+    "en": "Pasting the game link used to show nothing but the address. Fixed the preview card, and found out why its stamp came out as a smudge."
   },
   "hashtags": [
     "#개발일지",
-    "#인디개발",
-    "#링크미리보기",
     "#devlog",
-    "#buildinpublic",
-    "#webdev",
-    "#한글폰트"
+    "#인디게임",
+    "#opengraph",
+    "#버그수정",
+    "#vibecoding",
+    "#아파트감별사"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtyob7ys",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtyob9te",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtyoc2p7",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtyoc4n5"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtyphdt0",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtyphgjk",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtypik56",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtypilwl"
   }
 }

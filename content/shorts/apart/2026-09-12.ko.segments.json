@@ -2,15 +2,26 @@
   "screens": [
     {
       "path": "/",
-      "find": "출전하기",
-      "focusY": 0.48,
-      "start": 1.32,
-      "end": 14.85
+      "start": 0.97,
+      "end": 9.27
+    },
+    {
+      "path": "/opengraph-image?f2c0039925850c95",
+      "start": 17.99,
+      "end": 26.3
+    },
+    {
+      "path": "/",
+      "find": "아파트 감별사",
+      "focusY": 0.055,
+      "start": 27.4,
+      "end": 34.93
     },
     {
       "path": "/me",
-      "start": 15.65,
-      "end": 29.32
+      "find": "도장",
+      "start": 36.72,
+      "end": 45.02
     }
   ]
 }
