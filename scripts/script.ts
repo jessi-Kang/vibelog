@@ -130,7 +130,7 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   같은 종류를 이웃 편과 연달아 쓰지 않는다 (아래 이웃 정보 참고).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."]}}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -255,6 +255,18 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       ...(typeof l.screen === "string" &&
       screenPaths.has(l.screen.replace(/\/$/, "") || "/")
         ? { screen: l.screen.replace(/\/$/, "") || "/" }
+        : {}),
+      // 화면의 어디를 보여줄지 — 화면에 보이는 글자. 화면 지정이 있을 때만
+      // 의미가 있다 (녹화기가 그 글자를 찾아 올려 둔 뒤 구간을 시작한다)
+      ...(typeof l.screen === "string" &&
+      typeof l.find === "string" &&
+      l.find.trim()
+        ? { find: l.find.trim().slice(0, 30) }
+        : {}),
+      ...(typeof l.screen === "string" &&
+      typeof l.findEn === "string" &&
+      l.findEn.trim()
+        ? { findEn: l.findEn.trim().slice(0, 30) }
         : {}),
       // 다이어그램 — 어휘에 있고 라벨 수가 맞는 것만 (자유 작도 금지)
       ...((): { diagram?: DiagramSpec } => {
@@ -481,6 +493,13 @@ export async function generateScript(
                   '   보여줬다면 그 기능으로 들어가는 목록·홈 "/"이 차선이다)',
                   "3) 내용과 조금이라도 관련 있는 다른 화면이 정말 없을 때만 같은",
                   "   화면을 반복하라 — 엉뚱한 화면을 억지로 넣는 건 반복보다 나쁘다.",
+                  "4) **screen을 넣은 문장에는 find도 넣어라.** 그 화면에서 이 문장이",
+                  "   말하는 것이 **화면에 글자로 보이는 그대로** 짧게 적는다 —",
+                  "   녹화기가 그 글자를 찾아 화면에 올린 뒤 그 지점부터 보여준다.",
+                  "   없으면 페이지 맨 위만 나와서, 격자 이야기에 엉뚱한 데가 돌아간다.",
+                  '   예: screen "/" + find "오늘 커밋" / screen "/log" + find "전체".',
+                  "   추측한 글자는 넣지 마라 — 확실하지 않으면 find를 비운다.",
+                  "   findEn에는 영어 화면에서 보일 글자를 같은 식으로 적는다.",
                 ].join("\n"),
               ]
             : []),

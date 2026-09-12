@@ -15,6 +15,7 @@ import path from "node:path";
 import { chromium, type Page } from "playwright";
 import {
   segmentsJsonPath,
+  stopKey,
   shortsDir,
   shortsJsonPath,
   type DemoSegment,
@@ -25,7 +26,9 @@ const VIEWPORT = { width: 390, height: 844 };
 const SCALE = 3;
 
 async function shot(page: Page, dir: string, n: number): Promise<number> {
-  await page.screenshot({ path: path.join(dir, `${String(n).padStart(2, "0")}.png`) });
+  await page.screenshot({
+    path: path.join(dir, `${String(n).padStart(2, "0")}.png`),
+  });
   return n + 1;
 }
 
@@ -157,10 +160,15 @@ export async function record(
   lang: "ko" | "en" = "ko",
 ): Promise<string> {
   const script: ShortsScript = JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), shortsJsonPath(repo, date)), "utf8"),
+    fs.readFileSync(
+      path.join(process.cwd(), shortsJsonPath(repo, date)),
+      "utf8",
+    ),
   );
   if (!script.demo.url) {
-    throw new Error(`demo.url이 없습니다 — 레포 homepage를 채워주세요 (${repo})`);
+    throw new Error(
+      `demo.url이 없습니다 — 레포 homepage를 채워주세요 (${repo})`,
+    );
   }
   // 녹화 대상 사이트가 바뀔 수 있다(한 실행이 여러 레포를 돈다) — 판정 리셋
   langSignalAbsent = false;
@@ -170,7 +178,10 @@ export async function record(
   fs.mkdirSync(shotsDir, { recursive: true });
   // en 데모는 사이트를 영어 모드로 켜고 따로 찍는다 — 영어 영상에 한국어
   // 화면이 나오지 않게 (Jessi 지시). ko는 기존 파일명 유지.
-  const webm = path.join(outDir, lang === "ko" ? `${date}.webm` : `${date}.en.webm`);
+  const webm = path.join(
+    outDir,
+    lang === "ko" ? `${date}.webm` : `${date}.en.webm`,
+  );
 
   // 설치된 브라우저 빌드가 playwright 기대 버전과 다른 환경(샌드박스 등)용 오버라이드
   const browser = await chromium.launch({
@@ -206,7 +217,9 @@ export async function record(
     ignoreHTTPSErrors: process.env.RECORD_IGNORE_HTTPS === "1",
   });
   const warmPage = await warm.newPage();
-  await warmPage.goto(script.demo.url, { waitUntil: "domcontentloaded" }).catch(() => {});
+  await warmPage
+    .goto(script.demo.url, { waitUntil: "domcontentloaded" })
+    .catch(() => {});
   await warm.close();
 
   const page = await context.newPage();
@@ -223,17 +236,23 @@ export async function record(
   // 최종 영상에서는 통째로 잘려 나간다.
   // 대본이 문장마다 지정한 화면 목록 (내레이션 등장 순서, 중복 제거) —
   // 있으면 투어가 이 순서대로 돌고 구간 시각을 남긴다 (내용↔화면 매칭)
-  const screenList = [
-    ...new Set(
-      script.lines
-        .map((l) => l.screen)
-        .filter((s): s is string => typeof s === "string" && s.length > 0),
-    ),
-  ];
-  // 대본이 화면을 하나만 골랐으면 홈을 상비로 함께 녹화 — 폰 데모 블록이
-  // 두 번 나올 때 같은 화면만 반복되지 않게 렌더에 고를 여지를 남긴다
+  // 대본이 문장마다 지정한 **정류장**(화면 + 가리킬 글자), 내레이션 순서대로.
+  // 화면만 모으면 "같은 페이지의 다른 곳"을 구분할 수 없어, 격자 이야기에
+  // 엉뚱한 스크롤 위치가 붙었다 (Jessi 지적)
+  const stops: { path: string; find?: string }[] = [];
+  for (const l of script.lines) {
+    if (!l.screen) continue;
+    const find = (lang === "en" ? l.findEn || l.find : l.find) || undefined;
+    const key = stopKey(l.screen, find);
+    if (!stops.some((st) => stopKey(st.path, st.find) === key)) {
+      stops.push({ path: l.screen, ...(find ? { find } : {}) });
+    }
+  }
+  // 정류장이 하나면 홈을 상비로 함께 녹화 — 폰 데모 블록이 두 번 나올 때
+  // 같은 화면만 반복되지 않게 렌더에 고를 여지를 남긴다
   // (apart 9/11: 전 문장이 /findreal → 두 블록이 똑같은 화면, Jessi 지적)
-  if (screenList.length === 1 && screenList[0] !== "/") screenList.push("/");
+  if (stops.length === 1 && stops[0].path !== "/") stops.push({ path: "/" });
+  const screenList = [...new Set(stops.map((st) => st.path))];
   const prewarmTargets = script.demo.steps.length
     ? script.demo.steps
         .filter((s) => s.startsWith("goto "))
@@ -274,23 +293,48 @@ export async function record(
   if (script.demo.steps.length > 0) {
     // vibelog.json의 명시 스텝이 언제나 우선
     await runSteps(page, script.demo.steps, script.demo.url, shotsDir, lang);
-  } else if (screenList.length > 0) {
-    // 대본 지정 화면 투어 — 화면별 구간 시각을 남겨 렌더가 문장과 매칭한다
+  } else if (stops.length > 0) {
+    // 대본 지정 정류장 투어 — 구간 시각을 남겨 렌더가 문장과 매칭한다
     const perMs = Math.max(
       6000,
-      Math.floor((durationSec * 1000) / screenList.length),
+      Math.floor((durationSec * 1000) / stops.length),
     );
     const segs: DemoSegment[] = [];
     let n = 0;
-    for (const p of screenList) {
+    let at = ""; // 지금 열려 있는 경로 — 같은 페이지의 다른 곳이면 다시 안 띄운다
+    for (const stop of stops) {
+      const p = stop.path;
       try {
-        await page.goto(new URL(p, script.demo.url).toString(), {
-          waitUntil: "domcontentloaded",
-        });
-        await waitForLang(page, lang);
-        await page.waitForTimeout(400);
+        if (p !== at) {
+          await page.goto(new URL(p, script.demo.url).toString(), {
+            waitUntil: "domcontentloaded",
+          });
+          await waitForLang(page, lang);
+          await page.waitForTimeout(400);
+          at = p;
+        }
+        // 문장이 가리킨 것을 화면에 올린다. 이게 이 변경의 핵심 —
+        // 구간이 "그것이 보이는 상태"에서 시작해야 말과 화면이 맞는다.
+        if (stop.find) {
+          const target = page
+            .getByText(stop.find, { exact: false })
+            .filter({ visible: true })
+            .first();
+          await target.scrollIntoViewIfNeeded({ timeout: 4000 });
+          // 화면 가운데로 — 맨 아래에 걸쳐 있으면 폰 프레임에서 잘린다
+          await target.evaluate((el) =>
+            el.scrollIntoView({ block: "center", behavior: "instant" }),
+          );
+          await page.waitForTimeout(300);
+        } else {
+          await page.evaluate(() => window.scrollTo({ top: 0 }));
+          await page.waitForTimeout(200);
+        }
       } catch {
-        // 이동 실패 — 이 구간은 직전 화면이 이어진다 (녹화는 계속)
+        // 이동·검색 실패 — 화면 맨 위에서 시작한다 (녹화는 계속)
+        console.log(
+          `[record] 정류장 실패: ${p}${stop.find ? ` (${stop.find} 못 찾음)` : ""}`,
+        );
       }
       // 구간 시작은 스크린샷을 찍은 "뒤"다. 앞에 두면 캡처가 끝날 때까지
       // 화면이 완전히 정지한 구간이 구간 머리에 들어가는데, 데모 블록은
@@ -306,6 +350,7 @@ export async function record(
       }
       segs.push({
         path: p,
+        ...(stop.find ? { find: stop.find } : {}),
         start: Number(start.toFixed(2)),
         end: Number(((Date.now() - started) / 1000 - readyAt).toFixed(2)),
       });
@@ -315,7 +360,12 @@ export async function record(
       JSON.stringify({ screens: segs }, null, 2) + "\n",
     );
     console.log(
-      `[record] 화면 투어: ${segs.map((s) => `${s.path}(${s.start}~${s.end}s)`).join(" → ")}`,
+      `[record] 화면 투어: ${segs
+        .map(
+          (s) =>
+            `${s.path}${s.find ? `[${s.find}]` : ""}(${s.start}~${s.end}s)`,
+        )
+        .join(" → ")}`,
     );
   } else {
     await defaultTour(page, shotsDir, lang);
@@ -337,10 +387,17 @@ export async function record(
 if (process.argv[1]?.endsWith("record.ts")) {
   const [repo, date, dur, langArg] = process.argv.slice(2);
   if (!repo || !date) {
-    console.error("사용: npx tsx scripts/record.ts <repo> <date> [durationSec] [ko|en]");
+    console.error(
+      "사용: npx tsx scripts/record.ts <repo> <date> [durationSec] [ko|en]",
+    );
     process.exit(1);
   }
-  record(repo, date, dur ? Number(dur) : undefined, langArg === "en" ? "en" : "ko").catch((err) => {
+  record(
+    repo,
+    date,
+    dur ? Number(dur) : undefined,
+    langArg === "en" ? "en" : "ko",
+  ).catch((err) => {
     console.error(err);
     process.exit(1);
   });

@@ -139,11 +139,31 @@ function computeHasFail(fail?: string): boolean {
   return !/^(특별한 삽질은 없|오늘은 없었습니다|없었습니다|없음)/.test(t);
 }
 
+/**
+ * 목록·카드의 요약 — 본문 "뭘 했나"의 첫 문장을 쓴다.
+ *
+ * 첫 문장이 길면 목록이 들쭉날쭉해진다. 실제로 한 편만 86자라 다른 줄(17~48자)
+ * 사이에서 통째로 튀었다 (Jessi 지적: "하나만 너무 길지? 적당한 중간 길이로").
+ * 그래서 넘치면 절(節) 경계에서 끊고 줄임표를 붙인다 — 목록의 요약은 완결된
+ * 문장이 아니라 미끼다. 본문은 건드리지 않는다 (파이프라인이 쓴 글이다).
+ *
+ * 근본은 첫 문장을 짧게 쓰게 하는 것이고 그건 프롬프트에 넣었다 (generate.ts).
+ * 여기는 이미 발행된 글과 앞으로의 예외를 받아 내는 자리다.
+ */
+const SUMMARY_MAX = 55;
+const SUMMARY_CUT = 50;
+
 function firstSentence(text?: string): string | undefined {
   if (!text) return undefined;
   const plain = text.replace(/\s+/g, " ").trim();
   const m = plain.match(/^.{10,}?\.(?=\s|$)/);
-  return (m ? m[0] : plain.slice(0, 90)).trim();
+  const one = (m ? m[0] : plain.slice(0, 90)).trim();
+  if (one.length <= SUMMARY_MAX) return one;
+  const head = one.slice(0, SUMMARY_CUT);
+  // 쉼표·줄표 같은 절 경계가 있으면 거기서, 없으면 낱말 경계에서 끊는다
+  const clause = Math.max(head.lastIndexOf(", "), head.lastIndexOf(" — "));
+  const at = clause > 20 ? clause : head.lastIndexOf(" ");
+  return `${(at > 20 ? head.slice(0, at) : head).trimEnd()}…`;
 }
 
 /** 홈 잔디 재료 — 날짜(KST)별 0~23시 커밋 수. 파이프라인이 매일 밤 쌓는다 */
@@ -250,7 +270,10 @@ export function getShorts(): ShortsMeta[] {
           (l: { scene: string }) => l.scene === "hook",
         );
         let duration: number | undefined;
-        const timingFile = path.join(rdir, f.replace(".json", ".ko.timing.json"));
+        const timingFile = path.join(
+          rdir,
+          f.replace(".json", ".ko.timing.json"),
+        );
         if (fs.existsSync(timingFile)) {
           duration = Math.round(
             JSON.parse(fs.readFileSync(timingFile, "utf8")).duration + 3.5,

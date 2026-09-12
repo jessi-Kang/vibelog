@@ -52,7 +52,9 @@ export type ShipItProps = {
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
   theme?: string | null;
   /** 화면별 녹화 구간 (readyAt 기준 초) — 문장의 screen과 매칭. 없으면 시간순 */
-  segments?: { path: string; start: number; end: number }[] | null;
+  segments?:
+    | { path: string; find?: string; start: number; end: number }[]
+    | null;
 };
 
 type Kind = "cold" | "hook" | "phone" | "fail" | "end" | "art" | "diagram";
@@ -72,9 +74,22 @@ interface Seg {
   diagram?: DiagramSpec;
 }
 
-function kindOf(scene: string, hasNextArt: boolean): Kind {
+/** 이 문장이 가리킨 글자 (en은 findEn 우선) */
+function findOf(
+  line: { find?: string; findEn?: string } | undefined,
+  lang: "ko" | "en",
+): string | undefined {
+  if (!line) return undefined;
+  return (lang === "en" ? line.findEn || line.find : line.find) || undefined;
+}
+
+function kindOf(scene: string, hasNextArt: boolean, hasScreen = false): Kind {
   if (scene === "hook") return "hook";
-  if (scene === "fail") return "fail";
+  // 삽질 문장도 화면을 지정했으면 폰을 보여준다. 카드·다이어그램만 띄우던
+  // 탓에 "스탬프 이야기를 하는데 스탬프 화면이 하나도 안 나오는" 편이
+  // 구조적으로 보장돼 있었다 (Jessi: 치명적인 문제). 화면을 안 고른 삽질
+  // 문장은 그대로 카드다 — 원인 설명은 카드가 낫다.
+  if (scene === "fail") return hasScreen ? "phone" : "fail";
   if (scene === "end") return "end";
   // "다음 할 것"은 데모 화면 대신 생성 일러스트 장면으로 — 그래픽이 있을 때만
   if (scene === "next" && hasNextArt) return "art";
@@ -122,7 +137,7 @@ export function buildSegments(
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
     const line = script.lines[s.index];
-    const kind = kindOf(line?.scene ?? "build", hasNextArt);
+    const kind = kindOf(line?.scene ?? "build", hasNextArt, !!line?.screen);
     let from = s.start + offset;
     // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
     // 들어온다 — 겹치면 마무리 화면이 어색하다 (Jessi 지시)
@@ -146,7 +161,13 @@ export function buildSegments(
         diagram: dia,
       });
     } else if (raw.length === 0) {
-      raw.push({ kind, from: 0, screen: line?.screen }); // 첫 장면은 0초부터
+      // 첫 장면은 0초부터
+      raw.push({
+        kind,
+        from: 0,
+        screen: line?.screen,
+        find: findOf(line, lang),
+      });
     } else if (
       raw[raw.length - 1].kind !== kind ||
       raw[raw.length - 1].diagram ||
@@ -158,12 +179,14 @@ export function buildSegments(
       (kind === "phone" &&
         !!line?.screen &&
         !!raw[raw.length - 1].screen &&
-        line.screen !== raw[raw.length - 1].screen)
+        (line.screen !== raw[raw.length - 1].screen ||
+          findOf(line, lang) !== raw[raw.length - 1].find))
     ) {
-      raw.push({ kind, from, screen: line?.screen });
+      raw.push({ kind, from, screen: line?.screen, find: findOf(line, lang) });
     } else if (!raw[raw.length - 1].screen && line?.screen) {
       // 화면 지정이 없던 블록은 뒤 문장의 지정을 받아 쓴다
       raw[raw.length - 1].screen = line.screen;
+      raw[raw.length - 1].find = findOf(line, lang);
     }
   }
   if (raw.length === 0) raw.push({ kind: "end", from: 0 });
@@ -180,8 +203,17 @@ export function buildSegments(
     if (seg.kind === "phone") {
       // 문장이 화면을 지정했고 녹화가 그 구간을 남겼으면 거기서 재생 —
       // 내레이션 내용과 화면이 맞는다. 아니면 기존 시간순 자르기.
-      let key = seg.screen;
+      // 정류장 키(화면 + 가리킨 글자)로 먼저 찾고, 없으면 화면만으로
+      let key = seg.screen
+        ? seg.find
+          ? `${seg.screen}\u0000${seg.find}`
+          : seg.screen
+        : undefined;
       let m = key ? segMap?.get(key) : undefined;
+      if (!m && seg.screen && segMap?.get(seg.screen)) {
+        key = seg.screen;
+        m = segMap.get(seg.screen);
+      }
       if (!m && segMap?.size) {
         // 화면 미지정 블록: 아직 가장 덜 쓴 녹화 화면을 골라 앞 블록과
         // 같은 화면만 반복되는 것을 피한다 (Jessi: 같은 화면 두 번은 의미 없다)
@@ -246,7 +278,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const offset = NARRATION_DELAY + coldOpen; // 화면 시간 = 오디오 시간 + offset
   const total = totalSeconds(timing.duration, coldOpen);
   const segMap = new Map(
-    (segments ?? []).map((s) => [s.path, { start: s.start, end: s.end }]),
+    (segments ?? []).map((s) => [
+      s.find ? `${s.path}\u0000${s.find}` : s.path,
+      { start: s.start, end: s.end },
+    ]),
   );
   const segs = buildSegments(
     script,

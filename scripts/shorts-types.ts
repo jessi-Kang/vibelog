@@ -60,6 +60,21 @@ export interface ShortsLine {
    */
   screen?: string;
   /**
+   * 그 화면에서 **이 문장이 말하는 것이 보이게** 올려 둘 글자.
+   *
+   * screen은 페이지만 고른다. 녹화는 그 페이지를 위에서 아래로 훑으므로,
+   * "커밋 격자" 이야기를 하는 순간 화면이 격자에 있을 이유가 없었다
+   * (Jessi 지적: "격자 이야기하는데 화면은 다른 데가 돌아가"). 그래서 문장이
+   * 화면의 **어디**를 가리킬 수 있게 한다.
+   *
+   * 선택자(selector)가 아니라 **화면에 보이는 글자**다 — 대본은 DOM을 모르지만
+   * 자기가 무슨 이야기를 하는지는 안다. 녹화기가 그 글자를 찾아 화면에 올린
+   * 뒤부터 구간을 시작한다. 못 찾으면 화면 맨 위에서 시작한다(전과 동일).
+   */
+  find?: string;
+  /** en 녹화에서 찾을 글자 — 없으면 find 폴백 */
+  findEn?: string;
+  /**
    * 이 문장 동안 띄울 다이어그램 — 화면 녹화로는 보여줄 수 없는 "원리"를
    * 그림으로 설명한다 (Jessi 지시). 자유 작도가 아니라 아래 5종 어휘에서
    * 고르고 라벨만 채운다 — 그림 품질을 고정하기 위해서다.
@@ -130,11 +145,21 @@ export function validDiagram(v: unknown): DiagramSpec | undefined {
   };
 }
 
-/** 화면별 녹화 구간 — readyAt 기준 상대 시각(초) */
+/**
+ * 녹화의 한 정류장 — readyAt 기준 상대 시각(초).
+ * 화면(path)만이 아니라 "무엇이 보이게 올려 뒀는지"(find)까지가 키다.
+ * 같은 페이지를 두 문장이 각자 다른 곳을 가리키며 쓸 수 있다.
+ */
 export interface DemoSegment {
   path: string;
+  find?: string;
   start: number;
   end: number;
+}
+
+/** 구간 매칭 키 — 렌더와 녹화가 같은 식을 써야 짝이 맞는다 */
+export function stopKey(path: string, find?: string): string {
+  return find ? `${path}\u0000${find}` : path;
 }
 
 export interface ShortsFailCard {
