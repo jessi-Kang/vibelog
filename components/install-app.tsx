@@ -11,7 +11,7 @@
  * 둘 다 같은 이벤트를 쓰므로 모듈 단위로 한 번만 잡아 공유한다.
  */
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { T } from "./lang";
+import { T, useLang } from "./lang";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -182,14 +182,33 @@ export function InstallToast() {
 
 export function InstallAppLink() {
   const ev = useInstallEvent();
+  const { lang } = useLang();
   if (!ev) return null;
   return (
     <button
       type="button"
       onClick={() => void promptInstall()}
-      className="hit cursor-pointer font-mono text-xs text-muted transition-colors duration-150 hover:text-ink"
+      // 푸터의 세 링크는 같은 문법이어야 한다 — 하나만 글자면 이질적으로
+      // 보이고, 설치 링크는 자격이 있을 때만 나타나서 줄이 들썩인다
+      // (Jessi 지적). 아이콘으로 맞추면 나타나도 폭이 거의 안 변한다.
+      aria-label={lang === "ko" ? "앱으로 설치" : "Install as an app"}
+      className="hit -my-2.5 flex cursor-pointer p-2.5 text-muted transition-colors duration-150 hover:text-ink"
     >
-      <T ko="앱 설치" en="install app" />
+      <svg
+        aria-hidden
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 3v12" />
+        <path d="M7.5 10.5 12 15l4.5-4.5" />
+        <path d="M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17" />
+      </svg>
     </button>
   );
 }
