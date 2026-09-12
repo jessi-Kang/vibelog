@@ -16,6 +16,7 @@
                          ③ 제작   목소리·화면을 얹고        프로젝트 현황 카드
                          ④ 발행   커밋 → 자동 배포
                           매일 밤 23:00 (KST) · 놓치면 03:00까지 백업 회차
+                          (시계는 Vercel Cron — GitHub 예약은 예비)
 ```
 
 수집은 **pull 방식**입니다. vibelog가 GitHub API로 topic `vibelog`가 달린
@@ -51,6 +52,7 @@ video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종 
 .github/workflows/
   devlog.yml            밤 23:00 발행 (백업 23:45 · 01:00 · 03:00)
   projects.yml          30분마다 새 프로젝트 인식
+vercel.json             crons — 위 둘을 제때 띄운다 (GitHub 예약은 예비)
   deploy-guard.yml      배포 누락 자가 복구
 ```
 
