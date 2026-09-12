@@ -34,13 +34,11 @@ export const metadata: Metadata = {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
     locale: "ko_KR",
-    images: ["/og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ["/og.png"],
   },
 };
 

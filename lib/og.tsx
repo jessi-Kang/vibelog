@@ -78,11 +78,21 @@ export async function ogCard({
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          padding: "72px 76px",
+          padding: "76px 88px",
           background: BG,
           backgroundImage: `radial-gradient(900px 460px at 88% -12%, rgba(94,225,195,0.18), rgba(10,14,20,0) 62%)`,
         }}
       >
+        {/* 본문 블록 — 남는 공간을 위아래로 나눠 갖는다. 예전엔 위에 붙여 두고
+            아래를 전부 빈 칸으로 뒀더니 카드 가운데가 텅 비어 보였다 (Jessi) */}
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
         <div
           style={{
             display: "flex",
@@ -125,7 +135,7 @@ export async function ogCard({
             {line}
           </div>
         ) : null}
-        <div style={{ display: "flex", flex: 1 }} />
+        </div>
         <div style={{ display: "flex", height: 1, background: LINE }} />
         <div
           style={{
