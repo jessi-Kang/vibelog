@@ -3,11 +3,12 @@
  * 백업 세 번). `guard: true`로 넣으므로 먼저 돈 회차가 이미 발행했으면
  * 워크플로가 조용히 끝난다 — 이중 발행·TTS 중복 비용이 없다.
  */
-import { dispatch, fromCron } from "@/lib/dispatch";
+import { dispatch, guardCron } from "@/lib/dispatch";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
-  if (!fromCron(req)) return new Response("forbidden", { status: 403 });
+  const blocked = guardCron(req);
+  if (blocked) return blocked;
   return dispatch("devlog.yml", { guard: "true" });
 }

@@ -13,17 +13,36 @@
  * 필요한 환경변수 둘 (Vercel 프로젝트에):
  * - `GH_PAT` — Actions: write 권한. 없으면 띄울 수 없다.
  * - `CRON_SECRET` — Vercel이 cron 호출에 `Authorization: Bearer`로 실어 보낸다.
- *   없으면 아무나 부를 수 있으므로 라우트가 아예 거절한다.
+ *   없으면 아무나 부를 수 있으므로 라우트가 아예 거절한다. 그냥 막지 않는
+ *   이유는 아래 guardCron 주석에 적었다 — 설정이 들어갔는지 보여야 한다.
  */
 
 const REPO = "jessi-Kang/vibelog";
 const REF = "claude/file-analysis-dpnhw1";
 
-/** 이 요청이 정말 Vercel Cron인지 */
-export function fromCron(req: Request): boolean {
+/**
+ * 호출자 확인. 막을 때 **왜** 막았는지 구분해서 알려 준다 — 설정이 안 된 것과
+ * 인증이 없는 것이 똑같이 403으로 보이면, 환경변수를 넣고도 들어갔는지 알 수
+ * 없다. `curl https://vibelog.space/api/cron/devlog` 하나로 어디까지 됐는지
+ * 보이게 하는 게 목적이다:
+ *
+ * - 503 `CRON_SECRET 미설정` → Vercel 환경변수가 아직 없다
+ * - 503 `GH_PAT 없음`        → 시크릿은 됐고 토큰이 없다
+ * - 403 `forbidden`          → 둘 다 됐다. 인증만 없는 것이니 설정은 끝
+ */
+export function guardCron(req: Request): Response | null {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return false;
-  return req.headers.get("authorization") === `Bearer ${secret}`;
+  if (!secret)
+    return Response.json(
+      {
+        error:
+          "CRON_SECRET 미설정 — Vercel 환경변수에 넣어야 예약 호출을 받습니다",
+      },
+      { status: 503 },
+    );
+  if (req.headers.get("authorization") !== `Bearer ${secret}`)
+    return new Response("forbidden", { status: 403 });
+  return null;
 }
 
 export async function dispatch(
