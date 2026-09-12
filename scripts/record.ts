@@ -541,17 +541,33 @@ export async function record(
         )
         .catch(() => {});
 
-      // **대본이 말한 것을 사이트에서 찾는다.** screen은 힌트로 먼저 보고,
-      // 없으면 화면들을 돌며 찾는다. 찾은 화면이 이 정류장의 화면이 된다.
+      // **대본이 화면을 지정했으면 그 화면이 이긴다.** 사이트를 돌며 찾는 것은
+      // 대본이 경로를 고르지 못했을 때의 일이다 — 지정한 화면에서 글자를 못
+      // 찾았다고 다른 페이지로 사냥을 가면 대본의 선택이 조용히 버려진다.
+      // 실제로 링크 미리보기 카드(`/opengraph-image`)를 고른 문장 둘이 홈과
+      // `/me`로 끌려갔다: 카드는 PNG라 글자가 DOM에 없는데 그 말이 홈에는
+      // 있었던 것이다. 네 정류장 중 둘이 홈이 되어 **같은 화면이 비율만 달리**
+      // 두 번 나왔다.
+      //
+      // 지정 화면에서 못 찾으면 그 화면에 머물고 가리키기만 포기한다.
       let path = stop.path ?? "/";
       let kind: string | null = null;
-      if (stop.find) {
-        const order = [
-          ...(stop.path ? [stop.path] : []),
-          ...candidates.filter((c) => c !== stop.path),
-        ];
-        // 1차: 화면들을 돌며 **글자·이름으로만** 찾는다
-        for (const cand of order) {
+      if (stop.find && stop.path) {
+        // 지정된 화면에서만 찾는다 (글자·이름 → 그림)
+        if (await go(stop.path)) {
+          const hit =
+            (await locateOnPage(page, stop.find)) ??
+            (await locateOnPage(page, stop.find, true));
+          if (hit) {
+            kind = hit.kind;
+            if (hit.ambiguous) stop.point = false;
+          }
+        }
+      } else if (stop.find) {
+        // 경로를 안 고른 문장 — 사이트를 돌며 찾는다.
+        // 1차: **글자·이름으로만.** 큰 그림까지 한 바퀴에 허용하면 그림이 있는
+        // 첫 화면에서 순회가 멈춰 엉뚱한 요소에 테두리가 간다.
+        for (const cand of candidates) {
           if (!(await go(cand))) continue;
           const hit = await locateOnPage(page, stop.find);
           if (hit) {
@@ -561,17 +577,13 @@ export async function record(
             break;
           }
         }
-        // 2차: 어디에도 글자가 없다 — 그때만 힌트 화면(또는 홈)의 가장 큰
-        // 그림으로 떨어진다. 글자 없는 도장·그래프를 말하는 문장이 이 경우다.
-        if (!kind) {
-          const fallback = stop.path ?? "/";
-          if (await go(fallback)) {
-            const hit = await locateOnPage(page, stop.find, true);
-            if (hit) {
-              path = fallback;
-              kind = hit.kind;
-              if (hit.ambiguous) stop.point = false;
-            }
+        // 2차: 어디에도 글자가 없다 — 그때만 홈의 가장 큰 그림으로 떨어진다.
+        if (!kind && (await go("/"))) {
+          const hit = await locateOnPage(page, stop.find, true);
+          if (hit) {
+            path = "/";
+            kind = hit.kind;
+            if (hit.ambiguous) stop.point = false;
           }
         }
       } else {
@@ -636,6 +648,28 @@ export async function record(
         )
         .join(" → ")}`,
     );
+    // 같은 화면이 되풀이되면 로그에 남긴다. 판정은 checkDemoScreens가
+    // 한다 (실행 기록에도 같은 기준으로 올라간다)
+    const dupOf = new Map<string, number>();
+    for (const sg of segs) {
+      const k = `${sg.path.split("?")[0]}\u0000${sg.find ?? ""}`;
+      dupOf.set(k, (dupOf.get(k) ?? 0) + 1);
+    }
+    const whole = segs
+      .filter((sg) => !sg.find)
+      .map((sg) => sg.path.split("?")[0]);
+    const repeat = [...dupOf]
+      .filter(([, c]) => c > 1)
+      .map(([k]) => k.split("\u0000")[0]);
+    const overlap = segs
+      .filter((sg) => sg.find && whole.includes(sg.path.split("?")[0]))
+      .map((sg) => sg.path.split("?")[0]);
+    const bad = [...new Set([...repeat, ...overlap])];
+    if (bad.length > 0) {
+      console.log(
+        `[record] warn 같은 화면을 두 번 보여줍니다: ${bad.join(", ")} — 화면 전체와 그 안의 한 곳을 같이 쓰면 비율만 다른 같은 컷이 됩니다`,
+      );
+    }
   } else {
     await defaultTour(page, shotsDir, lang);
   }
