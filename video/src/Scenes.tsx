@@ -167,6 +167,8 @@ export const PhoneFrame: React.FC<{
   shot?: DemoShot;
   /** 이 블록이 화면의 한 곳을 붙잡고 있는지 (대본 find) — 프레임 팬을 끈다 */
   held?: boolean;
+  /** 붙잡은 요소가 녹화 화면에서 세로로 어디였는지 (0~1) — band 크롭의 기준 */
+  focusY?: number;
   /** duo 보조 폰이 틀 다른 화면의 소스 시각 — 없으면 같은 화면 +3초 폴백 */
   duoAltOffsetSec?: number;
 }> = ({
@@ -180,6 +182,7 @@ export const PhoneFrame: React.FC<{
   segIndex = 0,
   shot = "phone",
   held = false,
+  focusY,
   duoAltOffsetSec,
 }) => {
   const { fps } = useVideoConfig();
@@ -199,8 +202,13 @@ export const PhoneFrame: React.FC<{
     // **가리킨 것이 있으면 프레임 안에서도 팬하지 않는다** — 녹화가 그 자리에
     // 머물러 있는데 크롭이 위아래로 움직이면 결국 요소가 프레임에서 빠져나간다
     // (Jessi: "보여줘야 할 부분을 휙 넘겨버려"). 움직임은 미세한 줌만 남긴다.
+    // 붙잡은 요소가 있으면 그 세로 위치를 크롭의 기준점으로 삼는다. 가운데
+    // (50%)로 고정하면 화면 위쪽·아래쪽에 있는 요소가 띠 밖으로 잘려 나간다
+    // (Jessi: "제대로 표시했는데 영상에서 보여줄 때 짤렸잖아").
     const panY = held
-      ? 50
+      ? focusY != null
+        ? Math.min(88, Math.max(12, focusY * 100))
+        : 50
       : span
         ? interpolate(t, [...span], [18, 46], clamp0)
         : 30;

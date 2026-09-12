@@ -53,7 +53,14 @@ export type ShipItProps = {
   theme?: string | null;
   /** 화면별 녹화 구간 (readyAt 기준 초) — 문장의 screen과 매칭. 없으면 시간순 */
   segments?:
-    | { path: string; find?: string; start: number; end: number }[]
+    | {
+        path: string;
+        find?: string;
+        start: number;
+        end: number;
+        /** 가리킨 요소의 세로 위치(0~1) — band 크롭이 이걸 기준으로 잡는다 */
+        focusY?: number;
+      }[]
     | null;
 };
 
@@ -79,6 +86,11 @@ interface Seg {
   find?: string;
   /** 이 블록의 연출 — 대본이 문장에서 고른 것 (없으면 find 유무로 유추) */
   shot?: "whole" | "focus" | "compare";
+  /** 가리킨 요소가 녹화 화면에서 세로로 어디였는지 (0~1). band 크롭은
+   *  가운데 띠만 보이므로 이 지점을 크롭의 기준으로 잡는다 — 안 그러면
+   *  제대로 표시한 요소가 영상에서 잘린다 (Jessi: "스탬프를 제대로
+   *  표시했는데 영상에서 보여줄 때 짤렸잖아") */
+  focusY?: number;
   /** duo 샷의 보조 폰이 틀 다른 화면의 시작 시각 — 주 화면과 같은
    *  화면이 좌우에 반복되지 않게 (Jessi 지적). 녹화가 한 화면뿐이면 없음 */
   duoAltOffset?: number;
@@ -95,6 +107,12 @@ function findOf(
   return (lang === "en" ? line.findEn || line.find : line.find) || undefined;
 }
 
+/**
+ * hasScreen은 "이 문장이 볼 것을 골랐는가"다 — **screen과 find 둘 중 하나면
+ * 참이다.** 경로(screen)는 힌트일 뿐이고 녹화기는 find만으로도 사이트를 돌며
+ * 그 화면을 찾아낸다(scripts/record.ts). screen만 봤을 때는, find만 있는
+ * 문장이 카드로 떨어져 정작 찾아 놓은 화면을 버렸다.
+ */
 function kindOf(scene: string, hasNextArt: boolean, hasScreen = false): Kind {
   if (scene === "hook") return "hook";
   // 삽질 문장도 화면을 지정했으면 폰을 보여준다. 카드·다이어그램만 띄우던
@@ -146,7 +164,7 @@ export function buildSegments(
   offset: number,
   coldOpen: number,
   lang: "ko" | "en",
-  segMap?: Map<string, { start: number; end: number }>,
+  segMap?: Map<string, { start: number; end: number; focusY?: number }>,
 ): Seg[] {
   const raw: {
     kind: Kind;
@@ -160,7 +178,11 @@ export function buildSegments(
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
     const line = script.lines[s.index];
-    const kind = kindOf(line?.scene ?? "build", hasNextArt, !!line?.screen);
+    const kind = kindOf(
+      line?.scene ?? "build",
+      hasNextArt,
+      !!(line?.screen || findOf(line, lang)),
+    );
     let from = s.start + offset;
     // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
     // 들어온다 — 겹치면 마무리 화면이 어색하다 (Jessi 지시)
@@ -200,9 +222,9 @@ export function buildSegments(
       // 합쳐져 둘 다 홈만 돌았다. 대본이 문장마다 화면을 고르는 의미가 없어진다
       // (Jessi 지적: "이야기하는데 화면은 다른 데가 돌아간다")
       (kind === "phone" &&
-        !!line?.screen &&
-        !!raw[raw.length - 1].screen &&
-        (line.screen !== raw[raw.length - 1].screen ||
+        !!(line?.screen || findOf(line, lang)) &&
+        !!(raw[raw.length - 1].screen || raw[raw.length - 1].find) &&
+        (line?.screen !== raw[raw.length - 1].screen ||
           findOf(line, lang) !== raw[raw.length - 1].find))
     ) {
       raw.push({
@@ -212,11 +234,15 @@ export function buildSegments(
         find: findOf(line, lang),
         shot: line?.shot,
       });
-    } else if (!raw[raw.length - 1].screen && line?.screen) {
+    } else if (
+      !raw[raw.length - 1].screen &&
+      !raw[raw.length - 1].find &&
+      (line?.screen || findOf(line, lang))
+    ) {
       // 화면 지정이 없던 블록은 뒤 문장의 지정을 받아 쓴다
-      raw[raw.length - 1].screen = line.screen;
+      raw[raw.length - 1].screen = line?.screen;
       raw[raw.length - 1].find = findOf(line, lang);
-      raw[raw.length - 1].shot = line.shot;
+      raw[raw.length - 1].shot = line?.shot;
     }
   }
   if (raw.length === 0) raw.push({ kind: "end", from: 0 });
@@ -240,6 +266,17 @@ export function buildSegments(
           : seg.screen
         : undefined;
       let m = key ? segMap?.get(key) : undefined;
+      // 경로 없이 find만 고른 문장 — 녹화기가 사이트를 돌며 찾아 놓은
+      // 정류장이 있다. 가리킨 말이 같은 정류장을 키에서 찾아 쓴다
+      if (!m && !seg.screen && seg.find && segMap?.size) {
+        for (const [p, cand] of segMap) {
+          if (p.split("\u0000")[1] === seg.find) {
+            key = p;
+            m = cand;
+            break;
+          }
+        }
+      }
       if (!m && seg.screen && segMap?.get(seg.screen)) {
         key = seg.screen;
         m = segMap.get(seg.screen);
@@ -266,6 +303,8 @@ export function buildSegments(
         seg.sourceOffset =
           m.start + Math.min(used, Math.max(0, segLen - blockLen));
         usedInScreen.set(key, used + blockLen);
+        // 그 정류장에서 가리킨 요소의 세로 위치 — 크롭이 이걸 기준으로 잡는다
+        seg.focusY = m.focusY;
       }
       // duo 샷의 보조 폰: 주 화면과 '다른' 화면의 구간 시작을 미리 골라 둔다
       // (내레이션 순서상 첫 번째 다른 화면 — 내용 관련 화면이 홈보다 먼저 잡힘)
@@ -313,7 +352,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const segMap = new Map(
     (segments ?? []).map((s) => [
       s.find ? `${s.path}\u0000${s.find}` : s.path,
-      { start: s.start, end: s.end },
+      { start: s.start, end: s.end, focusY: s.focusY },
     ]),
   );
   const segs = buildSegments(
@@ -449,6 +488,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 segIndex={i}
                 shot={shotOf(i)}
                 held={!!seg.find}
+                focusY={seg.focusY}
                 duoAltOffsetSec={
                   seg.duoAltOffset != null
                     ? videoStartSec + seg.duoAltOffset

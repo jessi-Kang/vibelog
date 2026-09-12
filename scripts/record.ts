@@ -85,6 +85,16 @@ async function slowScroll(page: Page, px: number): Promise<void> {
 export async function locateOnPage(
   page: Page,
   find: string,
+  /**
+   * 글자로도 이름으로도 못 찾았을 때 "가장 큰 그림"으로 떨어질지.
+   *
+   * **화면들을 훑는 동안은 반드시 false다.** 켜 두면 글자를 못 찾아도 큰 그림이
+   * 있는 첫 화면에서 "찾았다"가 되어 탐색이 거기서 멈춘다 — 실제로 그 때문에
+   * `/o`의 제목("이름만 보고")을 찾으러 갔는데 홈의 엉뚱한 요소에 테두리가
+   * 그려졌다 (Jessi: "이건 뭘 보여주고 싶었던 거지?"). 그림 폴백은 모든 화면에서
+   * 글자·이름을 찾는 데 실패한 **뒤에만** 쓴다.
+   */
+  allowGraphic = false,
 ): Promise<{ kind: "text" | "name" | "graphic" } | null> {
   const text = page
     .getByText(find, { exact: false })
@@ -111,6 +121,7 @@ export async function locateOnPage(
   ) {
     if (await named.isVisible().catch(() => false)) return { kind: "name" };
   }
+  if (!allowGraphic) return null;
   const big = await page
     .evaluate(() => {
       let best: { area: number } | null = null;
@@ -131,7 +142,7 @@ export async function focusOn(
   page: Page,
   find: string,
   kind: string,
-): Promise<void> {
+): Promise<number | undefined> {
   const esc = find.replace(/"/g, '\\"');
   const target =
     kind === "text"
@@ -158,7 +169,6 @@ export async function focusOn(
         }
       }
       best?.scrollIntoView({ block: "center", behavior: "instant" });
-      window.scrollBy({ top: -Math.round(window.innerHeight * 0.14) });
       if (best) {
         const box = best.getBoundingClientRect();
         const ring = document.createElement("div");
@@ -178,14 +188,20 @@ export async function focusOn(
         document.body.appendChild(ring);
       }
     });
-    return;
+    return page
+      .evaluate(() => {
+        const r = document
+          .querySelector("[data-vl-ring]")
+          ?.getBoundingClientRect();
+        return r ? (r.top + r.bottom) / 2 / window.innerHeight : undefined;
+      })
+      .catch(() => undefined);
   }
   await target.scrollIntoViewIfNeeded({ timeout: 4000 });
   await target.evaluate((el) => {
+    // 화면 가운데에 둔다. 렌더가 이 지점을 크롭의 가운데로 잡으므로(focusY),
+    // 여기서 위아래로 밀 필요가 없다 — 밀면 크롭 경계에 걸려 잘린다
     el.scrollIntoView({ block: "center", behavior: "instant" });
-    // 정가운데에 두면 위가 잘려 문맥이 안 보인다 ("더 위를 보여주면 좋았겠지만"
-    // — Jessi). 살짝 위로 더 올려 요소를 화면 아래쪽에 두고 머리 위를 보여준다
-    window.scrollBy({ top: -Math.round(window.innerHeight * 0.14) });
     const box = el.getBoundingClientRect();
     const ring = document.createElement("div");
     ring.dataset.vlRing = "1";
@@ -203,6 +219,14 @@ export async function focusOn(
     });
     document.body.appendChild(ring);
   });
+  return page
+    .evaluate(() => {
+      const r = document
+        .querySelector("[data-vl-ring]")
+        ?.getBoundingClientRect();
+      return r ? (r.top + r.bottom) / 2 / window.innerHeight : undefined;
+    })
+    .catch(() => undefined);
 }
 
 /** 사이트의 화면 후보 — 내부 링크를 훑는다 (대본이 말한 것을 여기서 찾는다) */
@@ -514,6 +538,7 @@ export async function record(
           ...(stop.path ? [stop.path] : []),
           ...candidates.filter((c) => c !== stop.path),
         ];
+        // 1차: 화면들을 돌며 **글자·이름으로만** 찾는다
         for (const cand of order) {
           if (!(await go(cand))) continue;
           const hit = await locateOnPage(page, stop.find);
@@ -523,17 +548,27 @@ export async function record(
             break;
           }
         }
+        // 2차: 어디에도 글자가 없다 — 그때만 힌트 화면(또는 홈)의 가장 큰
+        // 그림으로 떨어진다. 글자 없는 도장·그래프를 말하는 문장이 이 경우다.
         if (!kind) {
-          // 어디에도 없다 — 힌트 화면(또는 홈) 맨 위에서 시작한다
-          await go(stop.path ?? "/");
+          const fallback = stop.path ?? "/";
+          if (await go(fallback)) {
+            const hit = await locateOnPage(page, stop.find, true);
+            if (hit) {
+              path = fallback;
+              kind = hit.kind;
+            }
+          }
         }
       } else {
         await go(path);
       }
 
+      let focusY: number | undefined;
       if (kind && stop.find) {
-        await focusOn(page, stop.find, kind).catch(() => {
+        focusY = await focusOn(page, stop.find, kind).catch(() => {
           kind = null;
+          return undefined;
         });
         await page.waitForTimeout(300);
       } else {
@@ -564,6 +599,7 @@ export async function record(
       segs.push({
         path,
         ...(stop.find ? { find: stop.find } : {}),
+        ...(focusY != null ? { focusY: Number(focusY.toFixed(3)) } : {}),
         start: Number(start.toFixed(2)),
         end: Number(((Date.now() - started) / 1000 - readyAt).toFixed(2)),
       });
