@@ -160,8 +160,15 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
                   └─▶ /api/cron/projects ──▶ workflow_dispatch projects.yml
 ```
 
-- Vercel 환경변수 둘: `GH_PAT`(Actions: write)와 `CRON_SECRET`. 시크릿이 없으면
-  라우트가 403으로 거절한다 — 아무나 부르면 Actions 분을 태울 수 있다.
+- Vercel 환경변수 둘: [`GH_PAT`·`CRON_SECRET`](https://vercel.com/jessikang/vibelog/settings/environment-variables).
+  `GH_PAT`는 [fine-grained PAT](https://github.com/settings/personal-access-tokens/new)에
+  `jessi-Kang/vibelog`의 **Actions: Read and write**. `CRON_SECRET`은 임의 문자열
+  (`openssl rand -hex 32`).
+- 설정이 들어갔는지는 라우트를 그냥 불러 보면 안다 —
+  `curl -i https://vibelog.space/api/cron/devlog`:
+  503 `CRON_SECRET 미설정` → 시크릿 없음 / 503 `GH_PAT 없음` → 토큰 없음 /
+  **403 `forbidden` → 둘 다 됐다**(인증만 없는 것이니 설정은 끝).
+  아무나 부르면 Actions 분을 태울 수 있으니 시크릿 없이는 아예 띄우지 않는다.
 - `guard: true`는 워크플로의 `SCHEDULE_GUARD`를 켠다. 이 밤에 이미 발행했으면
   조용히 끝나므로 백업 회차가 겹쳐도 이중 발행·TTS 중복 비용이 없다. Jessi가
   손으로 돌리는 Run workflow는 가드가 없다 (일부러 다시 돌리는 경우다).
