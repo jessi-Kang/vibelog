@@ -120,7 +120,7 @@ export function HomeFacts({
         ];
 
   return (
-    <div className="flex flex-wrap gap-5 border-t border-line pt-3.5 font-mono text-xs leading-snug text-muted">
+    <div className="flex flex-wrap gap-5 font-mono text-xs leading-snug text-muted">
       {facts.map(([k, n, l]) => (
         <Fact key={k} n={n} label={l} />
       ))}

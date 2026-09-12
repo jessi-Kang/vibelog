@@ -105,25 +105,13 @@ export function CommitHeatmap({
 
   return (
     <figure
-      // 넓은 화면에서 칸이 커지면 잔디가 아니라 벽돌이 된다 — 폭을 묶어
-      // 칸을 20px 안쪽으로 (24칸 × 20 + 간격 23 × 3 ≈ 550)
-      className="m-0 flex max-w-[552px] flex-col gap-2"
+      className="m-0 flex flex-col gap-1.5"
       aria-label={
         lang === "ko"
           ? `${summary}. 한 시간 최대 ${fmtNum(peak)}개.`
           : `${summary}. Peak ${fmtNum(peak)} in an hour.`
       }
     >
-      <figcaption className="flex items-baseline justify-between gap-3 font-mono text-2xs text-muted">
-        {/* 고른 칸이 있으면 그 칸을 말한다 — 툴팁 대신 캡션을 쓰면 터치에서도 같다 */}
-        <span aria-hidden>{picked ? label(picked) : summary}</span>
-        <span aria-hidden className="tabular-nums">
-          {lang === "ko"
-            ? `한 시간 최대 ${fmtNum(peak)}`
-            : `peak ${fmtNum(peak)}/h`}
-        </span>
-      </figcaption>
-
       <div aria-hidden className="flex flex-col gap-[3px]">
         {rows.map((row) => (
           <div key={row[0].date} className="flex gap-[3px]">
@@ -136,6 +124,8 @@ export function CommitHeatmap({
                 onClick={() => setPicked(c)}
                 onMouseEnter={() => setPicked(c)}
                 onMouseLeave={() => setPicked(null)}
+                // 칸은 늘 정사각 — 가로로 늘이면 잔디가 아니라 막대가 된다.
+                // 폭은 컨테이너가 준 만큼 쓴다 (md부터는 통계 줄 옆자리다).
                 className="aspect-square flex-1 cursor-pointer rounded-[2px] transition-opacity duration-150 hover:opacity-75"
                 style={{ background: FILL[level(c.count)] }}
               />
@@ -144,17 +134,26 @@ export function CommitHeatmap({
         ))}
       </div>
 
-      {/* 축은 눈금 네 개면 충분하다 — 6시간마다 */}
-      <div
-        aria-hidden
-        className="flex font-mono text-[9px] leading-none text-muted"
-      >
-        {[0, 6, 12, 18].map((h) => (
-          <span key={h} className="flex-1">
-            {lang === "ko" ? `${h}시` : `${h}:00`}
-          </span>
-        ))}
-      </div>
+      {/* 축 눈금과 고른 칸을 한 줄에 — 위에 요약 줄을 따로 두면 바로 위
+          통계 줄("오늘 커밋 / 이번 주 커밋")과 두 줄이 겹쳐 보였고, 무엇보다
+          거기 적히는 합계가 통계 줄의 숫자와 달라(집계 출처가 다르다)
+          읽는 사람을 헷갈리게 했다 (Jessi 지적). 숫자는 통계 줄이 맡는다. */}
+      <figcaption className="flex items-baseline justify-between gap-3 font-mono text-[9px] leading-none text-muted">
+        <span aria-hidden className="flex flex-1">
+          {[0, 6, 12, 18].map((h) => (
+            <span key={h} className="flex-1">
+              {lang === "ko" ? `${h}시` : `${h}:00`}
+            </span>
+          ))}
+        </span>
+        <span aria-hidden className="flex-none tabular-nums">
+          {picked
+            ? label(picked)
+            : lang === "ko"
+              ? `한 시간 최대 ${fmtNum(peak)}`
+              : `peak ${fmtNum(peak)}/h`}
+        </span>
+      </figcaption>
     </figure>
   );
 }
