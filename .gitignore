@@ -27,3 +27,5 @@ video/public/
 .impeccable/live/
 content/shorts/**/*.art/
 content/shorts/**/*.jpg
+
+.qa/
