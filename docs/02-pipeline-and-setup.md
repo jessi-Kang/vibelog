@@ -145,6 +145,28 @@ Vercel의 GitHub 웹훅이 드물게 푸시를 놓쳐 배포가 아예 생성되
 **자가 복구 워크플로를 붙였다** — `deploy-guard.yml`이 푸시 3분 뒤 Vercel API로
 배포 존재를 확인하고, 없으면 배포를 직접 만든다.
 
+### 시계는 Vercel Cron이 쥔다
+
+GitHub 예약은 못 믿는다. 30분 주기인 `projects.yml`이 실제로는 4시간 간격으로
+돌았고(2026-09-12 실측: 22:21 → 00:26 → 04:51 → 08:59 → 12:47 UTC),
+`devlog.yml`의 23:00 KST 회차는 통째로 안 떴다. 백업 회차를 더 깔아도 같이
+밀리므로 슬롯으로는 못 이긴다.
+
+그래서 **시각은 Vercel Cron이 재고, 실행은 그대로 Actions에서** 한다 —
+ffmpeg·Playwright·Remotion을 45분까지 돌리는 일이라 서버리스로 옮길 것이 아니다.
+
+```
+vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlog.yml (guard: true)
+                  └─▶ /api/cron/projects ──▶ workflow_dispatch projects.yml
+```
+
+- Vercel 환경변수 둘: `GH_PAT`(Actions: write)와 `CRON_SECRET`. 시크릿이 없으면
+  라우트가 403으로 거절한다 — 아무나 부르면 Actions 분을 태울 수 있다.
+- `guard: true`는 워크플로의 `SCHEDULE_GUARD`를 켠다. 이 밤에 이미 발행했으면
+  조용히 끝나므로 백업 회차가 겹쳐도 이중 발행·TTS 중복 비용이 없다. Jessi가
+  손으로 돌리는 Run workflow는 가드가 없다 (일부러 다시 돌리는 경우다).
+- 워크플로의 `schedule:`은 지우지 않았다 — Vercel 쪽이 죽었을 때의 예비다.
+
 ### 운영 노트 — GitHub cron이 안 돌 때
 
 정기 회차가 제때 안 도는 일이 잦다 (2026-09 관측: 예정 14:00 UTC → 실행 17:27,

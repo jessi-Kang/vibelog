@@ -33,8 +33,11 @@ content/state.json          레포별 마지막 처리 커밋 SHA / 시각
 scripts/collect.ts          GitHub API → 레포별 활동 수집
 scripts/generate.ts         수집 결과 → Claude API → MDX (KR/EN)
 scripts/run.ts              collect → generate → 파일 쓰기
-.github/workflows/devlog.yml   cron 23:00 KST + 백업 23:45/01:00/03:00 (중복은 SCHEDULE_GUARD가 차단) + workflow_dispatch
-.github/workflows/projects.yml cron 30분 — 새 프로젝트 인식만 (run.ts --projects-only)
+.github/workflows/devlog.yml   밤 발행 23:00 KST + 백업 23:45/01:00/03:00 (중복은 SCHEDULE_GUARD가 차단) + workflow_dispatch
+.github/workflows/projects.yml 30분 — 새 프로젝트 인식만 (run.ts --projects-only)
+vercel.json                 crons — 위 둘을 제때 띄우는 진짜 시계
+app/api/cron/{devlog,projects}  Vercel Cron이 부르는 띄우기 라우트 (lib/dispatch.ts)
+app/api/commits             홈 통계·잔디의 실시간 값 (5분 캐시)
 video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 ```
 
@@ -64,7 +67,8 @@ Jessi가 새 프로젝트를 시작하면 (또는 "새 프로젝트" 얘기가 �
 - **모르는 값은 추측하지 않는다** — 외부 주소·계정 같은 건 물어본다. 그럴듯하게 지어내면 엉뚱한 곳으로 간다.
 - **"문서 업데이트 하자"는 정해진 작업이다** (Jessi 지시): `README.md` · `docs/*.md` · `CLAUDE.md`를 지금 코드에 맞게 최신화한다. 구조·워크플로·규칙이 바뀐 자리를 찾아 고치고, 끝난 단계는 완료로 표시하고, 사본이 갈라진 곳은 실물을 가리키게 한다.
 
-- **홈의 통계 줄과 잔디는 한 덩어리다** (`components/home-stats.tsx`). 오늘·이번 주 커밋은 방문 시점 실시간 — 방문자 브라우저가 GitHub 공개 API로 레포당 두 번만 받아 온다(오늘 커밋 **시각 목록** + 이번 주 **수**: per_page=1 Link 헤더 기법, 5분 재조회). 오늘 숫자와 잔디의 오늘 줄이 같은 목록에서 나오므로 둘이 어긋날 수 없다. "이번 주"는 잔디와 같은 창(오늘 포함 7일, KST 자정 기준)이다. 셈은 `lib/commit-hours.ts`에 모으고 `components/commit-heatmap.tsx`는 그리기만 한다. 실패하면 파이프라인 저장값 폴백 — 이때 "오늘"은 `countsDate`가 오늘일 때만 (KST 자정 리셋). "마지막 활동"의 오늘/어제도 클라이언트 판정(`LastActive`).
+- **자동 실행의 시계는 Vercel Cron이다** (`vercel.json` → `app/api/cron/*` → `workflow_dispatch`). GitHub 예약은 못 믿는다 — 30분 주기 projects.yml이 실제로 4시간 간격으로 돌았고(9/12 실측) devlog의 23:00 회차는 통째로 안 떴다. 워크플로의 `schedule:`은 그 시계가 죽었을 때의 예비로 남겨 둔다. 실행 자체는 그대로 Actions에서 한다 (ffmpeg·Playwright·Remotion을 45분까지 돌린다). Vercel 환경변수 둘이 필요하다 — `GH_PAT`(Actions: write)와 `CRON_SECRET`(없으면 라우트가 403으로 거절). 예약을 대신 부르는 호출은 `guard: true`를 넣어 이중 발행을 막는다.
+- **홈의 통계 줄과 잔디는 한 덩어리다** (`components/home-stats.tsx`). 오늘·이번 주 커밋은 방문 시점 실시간 — **우리 `/api/commits`**가 센다(서버에서 5분 캐시. 레포당 두 번: 오늘 커밋 **시각 목록** + 이번 주 **수**, per_page=1 Link 헤더 기법). 방문자 브라우저가 GitHub를 직접 부르던 때는 IP당 시간당 60회 한도에 걸려 403이 났다. 오늘 숫자와 잔디의 오늘 줄이 같은 목록에서 나오므로 둘이 어긋날 수 없다. "이번 주"는 잔디와 같은 창(오늘 포함 7일, KST 자정 기준)이다. 셈은 `lib/commit-hours.ts`에 모으고 `components/commit-heatmap.tsx`는 그리기만 한다. 실패하면 파이프라인 저장값 폴백 — 이때 "오늘"은 `countsDate`가 오늘일 때만 (KST 자정 리셋). "마지막 활동"의 오늘/어제도 클라이언트 판정(`LastActive`).
 - 숫자 표기: 1,000 이상은 천 단위 콤마. UI의 카운트·통계는 `lib/format.ts`의 `fmtNum`을 쓴다 (로케일 고정 — 서버·클라이언트가 갈리면 hydration이 깨진다).
 - 커밋 메시지는 데브로그 원료다. 한 줄 요약 + 본문에 **"왜"**를 반드시 쓴다. 각 단계가 끝날 때마다 커밋한다.
 - `content/` 밑 파일은 파이프라인이 덮어쓴다. 손수정은 frontmatter `manual: true`로 보호.
