@@ -127,7 +127,11 @@ export async function locateOnPage(
 }
 
 /** 그 화면에서 대본이 말한 것을 화면 가운데로 올리고 표시를 얹는다 */
-export async function focusOn(page: Page, find: string, kind: string): Promise<void> {
+export async function focusOn(
+  page: Page,
+  find: string,
+  kind: string,
+): Promise<void> {
   const esc = find.replace(/"/g, '\\"');
   const target =
     kind === "text"
@@ -154,6 +158,7 @@ export async function focusOn(page: Page, find: string, kind: string): Promise<v
         }
       }
       best?.scrollIntoView({ block: "center", behavior: "instant" });
+      window.scrollBy({ top: -Math.round(window.innerHeight * 0.14) });
       if (best) {
         const box = best.getBoundingClientRect();
         const ring = document.createElement("div");
@@ -178,6 +183,9 @@ export async function focusOn(page: Page, find: string, kind: string): Promise<v
   await target.scrollIntoViewIfNeeded({ timeout: 4000 });
   await target.evaluate((el) => {
     el.scrollIntoView({ block: "center", behavior: "instant" });
+    // 정가운데에 두면 위가 잘려 문맥이 안 보인다 ("더 위를 보여주면 좋았겠지만"
+    // — Jessi). 살짝 위로 더 올려 요소를 화면 아래쪽에 두고 머리 위를 보여준다
+    window.scrollBy({ top: -Math.round(window.innerHeight * 0.14) });
     const box = el.getBoundingClientRect();
     const ring = document.createElement("div");
     ring.dataset.vlRing = "1";
@@ -541,18 +549,12 @@ export async function record(
       const start = (Date.now() - started) / 1000 - readyAt;
       const until = Date.now() + perMs;
       if (kind) {
-        // 가리킨 것을 붙잡고 있는다 — 계속 스크롤하면 문장이 말하는 동안
-        // 화면이 그 요소를 지나쳐 흘러간다 (Jessi: "휙 넘겨버려")
-        const anchor = await page.evaluate(() => window.scrollY);
-        let drift = 0;
-        while (Date.now() < until) {
-          drift = (drift + 1) % 4;
-          await page.evaluate(
-            (y) => window.scrollTo({ top: y, behavior: "instant" }),
-            anchor + drift * 6,
-          );
-          await page.waitForTimeout(500);
-        }
+        // 가리킨 것을 붙잡고 **완전히 멈춘다.** 계속 스크롤하면 문장이 말하는
+        // 동안 화면이 그 요소를 지나쳐 흘러간다 (Jessi: "휙 넘겨버려").
+        // 프레임이 죽어 보이지 않게 6px씩 흔들어 봤는데 그게 "주춤주춤
+        // 스크롤하는 애매한 부분"으로 읽혔다 (Jessi) — 움직임은 렌더가 주는
+        // 느린 줌으로 충분하다. 여기서는 아무것도 하지 않는다.
+        while (Date.now() < until) await page.waitForTimeout(500);
       } else {
         while (Date.now() < until) {
           await slowScroll(page, 240);
