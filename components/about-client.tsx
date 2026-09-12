@@ -95,7 +95,7 @@ export function AboutClient() {
           {/* 아이콘만 (Jessi 지시). 이름이 글자로 안 보이니 aria-label로 남기고,
               탭 영역은 음수 마진으로 레이아웃을 안 밀면서 넓힌다 */}
           <a
-            href="https://www.linkedin.com/in/jihyun-kang-44a869429"
+            href="https://www.linkedin.com/in/ji-hyun-kang-53276696"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
