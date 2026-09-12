@@ -1,0 +1,330 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-12",
+  "day": 5,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "첫 화면의 커밋 숫자가 멈춰 있었습니다.",
+      "en": "The commit count on the front page was frozen.",
+      "keywords": [
+        "멈춰"
+      ],
+      "keywordsEn": [
+        "frozen"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "이제는 서버가 5분에 한 번 대신 셉니다.",
+      "en": "Now the server counts once every 5 minutes.",
+      "keywords": [
+        "서버가"
+      ],
+      "keywordsEn": [
+        "the server"
+      ],
+      "stat": "5분",
+      "statEn": "5 minutes"
+    },
+    {
+      "scene": "build",
+      "ko": "방문자가 늘어도 요청은 한 번뿐입니다.",
+      "en": "More visitors, still just one request.",
+      "keywords": [
+        "한 번뿐입니다"
+      ],
+      "keywordsEn": [
+        "one request"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "방문자 100명",
+          "요청 100번",
+          "요청 1번",
+          "브라우저가 직접",
+          "서버가 대신"
+        ],
+        "labelsEn": [
+          "100 visitors",
+          "100 requests",
+          "1 request",
+          "browser asks",
+          "server asks"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "첫 화면의 숫자가 실제로 움직입니다.",
+      "en": "The number on the front page actually moves.",
+      "keywords": [
+        "실제로 움직입니다"
+      ],
+      "keywordsEn": [
+        "actually moves"
+      ],
+      "screen": "/"
+    },
+    {
+      "scene": "demo",
+      "ko": "글 주소도 7자리로 짧아졌습니다.",
+      "en": "Post addresses are now just 7 characters.",
+      "keywords": [
+        "7자리로"
+      ],
+      "keywordsEn": [
+        "7 characters"
+      ],
+      "screen": "/log"
+    },
+    {
+      "scene": "fail",
+      "ko": "전에는 방문자 브라우저가 저마다 직접 물어봤습니다.",
+      "en": "Before, every visitor's browser asked on its own.",
+      "keywords": [
+        "직접 물어봤습니다"
+      ],
+      "keywordsEn": [
+        "asked on its own"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "같은 주소에서는 1시간에 60번까지만 답해 줍니다.",
+      "en": "One address only gets 60 answers per hour.",
+      "keywords": [
+        "60번까지만"
+      ],
+      "keywordsEn": [
+        "60 answers"
+      ],
+      "stat": "60번",
+      "statEn": "60 answers"
+    },
+    {
+      "scene": "next",
+      "ko": "실제 사이트에서 숫자가 진짜 움직이는지 확인해야 합니다.",
+      "en": "I need to see the number really move on the live site.",
+      "keywords": [
+        "진짜 움직이는지"
+      ],
+      "keywordsEn": [
+        "really move"
+      ],
+      "art": "a small gauge needle trembling awake on a dusty dashboard"
+    },
+    {
+      "scene": "end",
+      "ko": "올렸으면 올라갔는지 확인하기로 했습니다.",
+      "en": "Push it, then check that it actually went live.",
+      "keywords": [
+        "확인하기로"
+      ],
+      "keywordsEn": [
+        "check"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "숫자가 멈춰 있었다",
+    "titleEn": "The number was frozen",
+    "before": "방문자마다 직접 물어보다 거절당했습니다",
+    "after": "서버가 5분에 한 번 세서 모두에게 같은 숫자를 줍니다",
+    "beforeEn": "Every visitor asked directly and got refused",
+    "afterEn": "The server counts every 5 minutes and shares one number"
+  },
+  "commits": [
+    [
+      "6a3fd11",
+      "실시간 커밋 수를 서버가 세서 나눠준다 — 403으로 죽던 것"
+    ],
+    [
+      "19cef4d",
+      "QA 스킬: 이 대화에서 되돌아온 지적들을 절차로 만든다"
+    ],
+    [
+      "4aef5b1",
+      "OG 카드 폰트 받기가 배포를 죽이지 않게 한다"
+    ],
+    [
+      "0d689d7",
+      "홈 통계를 2×2로 세우고, 숫자와 잔디를 한 곳에서 센다"
+    ],
+    [
+      "ce39829",
+      "푸터: 세 링크를 아이콘으로 통일하고, 끝에서 삐져나가던 것 수정"
+    ],
+    [
+      "0fe8384",
+      "홈: 통계 줄과 잔디를 한 덩어리로, 넓은 화면에서는 나란히"
+    ],
+    [
+      "0e2d801",
+      "소개: 어려운 말에 용어 주석을 단다"
+    ],
+    [
+      "0822682",
+      "좁은 화면(320px)에서 글자·여백을 한 단계 줄인다"
+    ],
+    [
+      "9a88e4c",
+      "홈 잔디를 시간 단위 타일로 — 커밋 밀도가 보이게"
+    ],
+    [
+      "b3465c4",
+      "홈에 커밋 잔디 + 검증 규칙을 CLAUDE.md에 최신화"
+    ],
+    [
+      "a75d72b",
+      "OG 카드: 여백 기준을 하나로, 홈도 같은 카드로 그린다"
+    ],
+    [
+      "0514f31",
+      "공유 버튼: 아이콘만, 그리고 주소만 보낸다"
+    ],
+    [
+      "0eb702d",
+      "글 주소를 /p/<id>로 — 경로에서 레포명·날짜가 읽히지 않게"
+    ],
+    [
+      "b57de95",
+      "소개: 링크드인 아이콘을 이름 옆에 작게"
+    ],
+    [
+      "0e4f636",
+      "푸터 공유는 사이트 메인을 가리킨다"
+    ],
+    [
+      "eff367e",
+      "소개: 만든 사람 줄을 소개 문구 바로 아래로"
+    ],
+    [
+      "4a18781",
+      "푸터에 공유 버튼"
+    ],
+    [
+      "ec928d9",
+      "소개: 링크드인 주소 정정"
+    ],
+    [
+      "4013264",
+      "소개: 링크드인 링크를 아이콘으로 넣는다"
+    ],
+    [
+      "86c4ebd",
+      "링크 미리보기: 글·프로젝트마다 OG 카드를 그린다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6a3fd11",
+      "fix: Server counts and shares real-time commit count — fixes 403 errors"
+    ],
+    [
+      "19cef4d",
+      "chore: QA skill: turn feedback from this conversation into procedures"
+    ],
+    [
+      "4aef5b1",
+      "fix: OG card font fetching doesn't kill deployment"
+    ],
+    [
+      "0d689d7",
+      "feat: Home stats in 2×2 layout, numbers and grass counted together"
+    ],
+    [
+      "ce39829",
+      "fix: Footer: unify three links as icons, fix overflow at the end"
+    ],
+    [
+      "0fe8384",
+      "feat: Home: stats row and grass as one block, side-by-side on wide screens"
+    ],
+    [
+      "0e2d801",
+      "docs: Intro: add glossary annotations to difficult terms"
+    ],
+    [
+      "0822682",
+      "feat: Narrow screens (320px): reduce text and spacing by one step"
+    ],
+    [
+      "9a88e4c",
+      "feat: Home grass as hourly tiles — show commit density"
+    ],
+    [
+      "b3465c4",
+      "feat: Home commit grass + update validation rules in CLAUDE.md"
+    ],
+    [
+      "a75d72b",
+      "feat: OG card: unify spacing standards, draw home with same card"
+    ],
+    [
+      "0514f31",
+      "feat: Share button: icon only, send URL only"
+    ],
+    [
+      "0eb702d",
+      "feat: Post URL as /p/<id> — hide repo name and date from path"
+    ],
+    [
+      "b57de95",
+      "feat: Intro: LinkedIn icon small next to name"
+    ],
+    [
+      "0e4f636",
+      "feat: Footer share points to site main"
+    ],
+    [
+      "eff367e",
+      "feat: Intro: move creator line directly below intro text"
+    ],
+    [
+      "4a18781",
+      "feat: Add share button to footer"
+    ],
+    [
+      "ec928d9",
+      "fix: Intro: correct LinkedIn URL"
+    ],
+    [
+      "4013264",
+      "feat: Intro: add LinkedIn link as icon"
+    ],
+    [
+      "86c4ebd",
+      "feat: Link preview: draw OG card for each post and project"
+    ]
+  ],
+  "commitCount": 20,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "첫 화면의 커밋 숫자가 멈춰 있던 이유와, 서버가 5분에 한 번 대신 세게 만든 과정입니다.",
+    "en": "Why the commit count on the front page was frozen, and how the server now counts once every 5 minutes for everyone."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#devlog",
+    "#사이드프로젝트",
+    "#웹개발",
+    "#buildinpublic",
+    "#쇼츠"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtyidezj",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtyidgwq",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtyif3c2",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtyif6db"
+  }
+}
