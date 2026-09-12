@@ -487,7 +487,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 toSec={seg.to}
                 segIndex={i}
                 shot={shotOf(i)}
-                held={!!seg.find}
+                // 붙잡은 것은 **한 곳을 이야기하는 문장**일 때만이다.
+                // find가 있어도 화면 전체를 말하는 문장이면 녹화가 훑고
+                // 있으므로, 프레임까지 멈추면 크롭이 엉뚱한 데서 굳는다
+                held={!!seg.find && seg.shot !== "whole"}
                 focusY={seg.focusY}
                 duoAltOffsetSec={
                   seg.duoAltOffset != null

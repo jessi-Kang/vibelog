@@ -227,3 +227,7 @@ curl -s "https://vibelog.space/?cb=$RANDOM" | grep -o "<바뀐 마크업의 표�
 - 검증하지 **못한** 것은 못했다고 적는다 — 이 샌드박스 브라우저는
   `api.github.com`을 못 나가서 실시간 경로는 폴백 상태로만 확인된다.
 - 배포 상태(READY/ERROR)와 라이브에서 확인한 표식.
+
+---
+
+© 2026 vibelog · Jessi

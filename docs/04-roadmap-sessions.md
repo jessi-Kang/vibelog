@@ -166,3 +166,7 @@ refresh token, Instagram 장기 토큰. Neon은 이미 연결돼 있다.
 - ElevenLabs Music API 제공 여부는 구현 시점에 문서로 확인. 없으면 고정 트랙 3개로 간다 (스펙 문서 참고).
 - GitHub Actions에서 Remotion 렌더는 45초 영상 기준 수 분. ubuntu-latest 6시간 제한 안에서 충분하나, 프로젝트가 많아지면 병렬화 고려.
 - Claude API 비용: 데브로그 + 대본 + 번역 합쳐 프로젝트당 하루 몇 센트 수준. 무시 가능.
+
+---
+
+© 2026 vibelog · Jessi

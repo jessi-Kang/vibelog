@@ -28,6 +28,7 @@
 ## 1. 계정 · 키
 
 1단계(블로그)에 당장 필요한 것:
+
 - GitHub 레포 `vibelog` (public 추천 — 도그푸딩 콘텐츠)
 - Vercel 계정 + GitHub 연동
 - 레포 Secrets:
@@ -35,6 +36,7 @@
   - `GH_PAT` — fine-grained PAT (Contents: read, Metadata: read, 대상: 모든 내 레포). private 프로젝트 레포까지 읽으려면 필수. public만이면 생략 가능하나 rate limit 때문에 권장.
 
 2단계 이후 (지금은 안 해도 됨):
+
 - ElevenLabs: 보이스 클론 **완료** → `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N` (설정값은 docs/03-shorts-spec.md)
 - 텔레그램: BotFather로 봇 생성 → 토큰 + 내 chat_id
 - YouTube: Google Cloud 프로젝트 → YouTube Data API v3 → OAuth 클라이언트 → refresh token 1회
@@ -96,10 +98,10 @@ vibelog/
 - homepage(About Website)는 **안 채워도 된다** — 자동 감지 순서:
   ① About Website (채우면 언제나 우선 — 커스텀 도메인 의도용)
   ② Vercel API — 시크릿 `VERCEL_TOKEN`(+`VERCEL_TEAM_ID`)이 있으면, GitHub 연결이
-     걸린 Vercel 프로젝트의 고정 production 도메인을 읽는다. **CLI로 올린 배포까지
-     잡히는 유일한 경로**라 이게 기본. 토큰 발급: vercel.com/account/settings/tokens
+  걸린 Vercel 프로젝트의 고정 production 도메인을 읽는다. **CLI로 올린 배포까지
+  잡히는 유일한 경로**라 이게 기본. 토큰 발급: vercel.com/account/settings/tokens
   ③ GitHub Deployments 기록 — Vercel git 연동 배포가 남기는 기록의 environment_url
-     (배포별 해시 주소라 배포마다 바뀌는 게 흠, 토큰 없을 때의 폴백)
+  (배포별 해시 주소라 배포마다 바뀌는 게 흠, 토큰 없을 때의 폴백)
 - (선택) `vibelog.json` — `{ "name": "...", "status": "live", "stack": ["Next.js"], "hide": false }`
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 
@@ -185,6 +187,7 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
 ## 4. 전역 Stop 훅 (`~/.claude/settings.json`)
 
 한 번만 설치. 모든 Claude Code 세션 종료 시 실행되어 **현재 레포의** `devlog/YYYY-MM-DD.md`에 세션 요약을 append. 형식: 뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것.
+
 - 현재 폴더가 git 레포가 아니거나 topic이 없어도 그냥 파일만 남김 (해가 없음)
 - 커밋은 안 함. 다음 push 때 코드와 같이 올라감.
 - 첫 vibelog 세션에서 Claude Code에게 이 훅 스크립트를 만들게 하면 됨.
@@ -211,6 +214,7 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
 ## 7. 첫 세션 프롬프트 (복붙용)
 
 세션 1 — 블로그 뼈대:
+
 ```
 vibelog 레포를 초기화하자. CLAUDE.md를 먼저 읽어.
 1. Next.js App Router + TS + Tailwind + MDX 셋업
@@ -221,6 +225,7 @@ vibelog 레포를 초기화하자. CLAUDE.md를 먼저 읽어.
 ```
 
 세션 2 — 수집·생성 파이프라인:
+
 ```
 scripts/collect.ts: Octokit으로 내 계정에서 topic "vibelog" 레포를 모두 찾고,
 content/state.json의 체크포인트 이후 커밋(메시지·변경 파일), 머지된 PR, devlog/*.md,
@@ -233,6 +238,7 @@ Secrets: ANTHROPIC_API_KEY, GH_PAT.
 ```
 
 세션 3 — 전역 Stop 훅:
+
 ```
 ~/.claude/settings.json에 Stop 훅을 추가해. 세션 종료 시 현재 폴더가 git 레포면
 devlog/YYYY-MM-DD.md에 "뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것" 요약을 append.
@@ -241,6 +247,10 @@ devlog/YYYY-MM-DD.md에 "뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것" �
 
 ## 8. 시작 전 소소한 결정
 
-- 도메인: 처음엔 vibelog.vercel.app으로 충분. 나중에 vibelog.* 가용 확인.
+- 도메인: 처음엔 vibelog.vercel.app으로 충분. 나중에 vibelog.\* 가용 확인.
 - 데브로그 톤: 존댓말 (확정)
 - 하루 단위 묶음 vs push 단위: 하루 단위로 시작 (글 수가 적당하고 cron 하나로 끝남)
+
+---
+
+© 2026 vibelog · Jessi

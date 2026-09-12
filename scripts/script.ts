@@ -183,7 +183,7 @@ export interface SiteScreen {
  *
  * 글자가 없는 그림(도장·그래프 같은 것)은 여기 안 나온다. 그건 사이트마다
  * 이름이 달라 목록으로 만들 수 없다 — 손으로 클래스 사전을 만들면 그 사이트에만
- * 맞는다 (Jessi: "이렇게 매번 커스텀할 게 아니야"). 그림은 녹화기가 웹 표준과
+ * 맞는다. 그림은 녹화기가 웹 표준과
  * 크기로 찾는다 (scripts/record.ts) — 대본은 문장의 말을 그대로 find에 적으면 된다.
  */
 async function siteScreens(url: string): Promise<SiteScreen[]> {
@@ -205,27 +205,44 @@ async function siteScreens(url: string): Promise<SiteScreen[]> {
   )) {
     const p = m[1].replace(/\/$/, "") || "/";
     const label = m[2]
-      .replace(/<[^>]+>/g, "")
+      .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ")
       .trim();
     if (!seen.has(p) && label && label.length <= 30) seen.set(p, label);
     if (seen.size >= 6) break;
   }
 
-  /** 제목·표머리·버튼 글자 — 화면에서 큰 글자들이다 */
+  /**
+   * 제목·표머리·버튼·링크 글자 — 화면에서 큰 글자들이다. 대본은 여기서만
+   * find를 고른다.
+   *
+   * 두 가지를 걸러야 가리킬 수 있는 말만 남는다.
+   *
+   * ① **잎만 쓴다.** 안쪽에 다른 요소가 든 덩어리를 태그만 지워 이으면 화면에
+   *    없는 문자열이 된다 — 표의 한 줄이 "1 감별 O/X 이름 하나를 보고
+   *    진짜/가짜"로 합쳐져 나왔다. 녹화기는 그런 말을 화면에서 못 찾는다.
+   * ② **그 화면에 한 번만 나오는 말만.** 여러 번 나오는 말을 후보로 주면
+   *    대본이 그걸 고르고 녹화기는 그중 첫 번째에 테두리를 얹는다 — apart 표의
+   *    `출전하기`는 줄마다 있어서 첫 줄 버튼이 칠해졌고, 문장은 화면 전체를
+   *    말하는데 그림은 버튼 하나를 가리켰다. 셈은 페이지 글자 전체에서 한다
+   *    (후보 목록 안에서만 세면 같은 말이 본문에 또 있는 것을 놓친다).
+   */
   const seesOf = (html: string): string[] => {
-    const out: string[] = [];
+    const pageText = html
+      .replace(/<(script|style)[\s\S]*?<\/\1>/g, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ");
+    const cand: string[] = [];
     for (const m of html.matchAll(
-      /<(h1|h2|h3|th|strong|b|button|summary)[^>]*>([\s\S]*?)<\/\1>/g,
+      /<(h1|h2|h3|th|strong|b|button|summary|a)[^>]*>([\s\S]*?)<\/\1>/g,
     )) {
-      const text = m[2]
-        .replace(/<[^>]+>/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
-      if (text && text.length <= 24 && !out.includes(text)) out.push(text);
-      if (out.length >= 7) break;
+      if (m[2].includes("<")) continue; // ①
+      const text = m[2].replace(/\s+/g, " ").trim();
+      if (text && text.length <= 24 && !cand.includes(text)) cand.push(text);
     }
-    return out;
+    return cand
+      .filter((t) => pageText.split(t).length - 1 === 1) // ②
+      .slice(0, 7);
   };
 
   const screens: SiteScreen[] = [];
@@ -234,7 +251,55 @@ async function siteScreens(url: string): Promise<SiteScreen[]> {
       path === "/" ? home : await fetchHtml(new URL(path, url).toString());
     screens.push({ path, label, sees: html ? seesOf(html) : [] });
   }
+
+  // 링크 미리보기 카드도 화면이다. 사이트가 제 주소로 서비스하는 그림이므로
+  // (Next.js면 /opengraph-image) 녹화기가 열어 찍을 수 있다.
+  //
+  // 이게 없으면 "미리보기 도장이 얼룩으로 나왔습니다" 같은 문장이 가리킬 곳이
+  // 아예 없다 — 그 도장은 사이트 페이지 어디에도 없고 공유할 때만 보이는
+  // 그림이라, 대본이 아무 화면도 못 고르고 넘어갔다. 그러면 파이프라인이
+  // 엉뚱한 화면을 붙이거나(옆 문장의 화면이 딸려 나온다) 문장이 카드로 떨어진다.
+  //
+  // 사이트별 설정이 아니다 — og:image는 웹 표준이고 주소는 홈의 meta에서
+  // 그대로 읽는다. 그림이 없는 사이트면 이 화면이 목록에 안 생긴다.
+  const og = home.match(
+    /<meta[^>]+property="og:image"[^>]+content="([^"]+)"/,
+  )?.[1];
+  if (og) {
+    try {
+      const u = new URL(og, url);
+      if (u.origin === new URL(url).origin) {
+        const alt = home.match(
+          /<meta[^>]+property="og:image:alt"[^>]+content="([^"]+)"/,
+        )?.[1];
+        screens.push({
+          path: u.pathname + u.search,
+          label: "링크 미리보기 카드 (공유할 때 뜨는 그림)",
+          sees: alt ? [alt.slice(0, 24)] : [],
+        });
+      }
+    } catch {
+      // 주소가 이상하면 그냥 이 화면 없이 간다
+    }
+  }
   return screens;
+}
+
+/**
+ * 대본이 적은 경로를 실존 화면 목록의 경로로 맞춘다. 없으면 null —
+ * 없는 경로를 녹화하러 가면 404가 소재가 된다.
+ *
+ * 물음표 뒤는 떼고 비교한다. 링크 미리보기 카드 주소에는 캐시 해시가 붙어 있어
+ * (`/opengraph-image?f2c0039925850c95`) 대본이 그 뒤를 흘리면 통째로 버려졌다.
+ * 맞으면 **목록에 있는 전체 주소**를 쓴다 — 해시를 떼고 열면 다른 그림이 나올
+ * 수 있다.
+ */
+function resolveScreen(raw: string, screenPaths: Set<string>): string | null {
+  const norm = (p: string): string => p.split("?")[0].replace(/\/$/, "") || "/";
+  const want = norm(raw);
+  if (screenPaths.has(want)) return want;
+  for (const p of screenPaths) if (norm(p) === want) return p;
+  return null;
 }
 
 function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
@@ -253,7 +318,7 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
     // 키워드는 문장에 실제로 있는 것만 남긴다 — 자막 강조 매칭이 어긋나지 않게.
     // "두 번" 같은 연속된 단어 구도 허용 (한 단어만 허용하면 "번"만 켜진다).
     // 비교는 양끝 문장부호를 떼고 — "never started"가 문장 끝 "started."와
-    // 못 맞아 통째로 걸러졌다 (영문 훅 하이라이트 누락, Jessi 지적).
+    // 못 맞아 통째로 걸러졌다 (영문 훅 하이라이트 누락).
     // video/src/theme.ts의 stripPunct와 같은 규칙.
     const strip = (w: string): string =>
       w.replace(/^[.,!?…:;"'“”‘’()[\]]+|[.,!?…:;"'“”‘’()[\]]+$/g, "");
@@ -303,27 +368,22 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       ...(typeof l.statEn === "string" && /\d/.test(l.statEn)
         ? { statEn: l.statEn }
         : {}),
-      // 데모 화면 지정 — 실존 화면 목록에 있는 경로만 통과 (없는 경로를
-      // 녹화하러 가면 404가 소재가 된다)
-      ...(typeof l.screen === "string" &&
-      screenPaths.has(l.screen.replace(/\/$/, "") || "/")
-        ? { screen: l.screen.replace(/\/$/, "") || "/" }
+      // 데모 화면 지정 — 실존 화면 목록에 있는 경로만 통과
+      ...(typeof l.screen === "string" && resolveScreen(l.screen, screenPaths)
+        ? { screen: resolveScreen(l.screen, screenPaths)! }
         : {}),
-      // 화면의 어디를 보여줄지 — 화면에 보이는 글자. 화면 지정이 있을 때만
-      // 의미가 있다 (녹화기가 그 글자를 찾아 올려 둔 뒤 구간을 시작한다)
-      ...(typeof l.screen === "string" &&
-      typeof l.find === "string" &&
-      l.find.trim()
+      // 화면의 어디를 보여줄지 — 문장이 말하는 것. **screen과 독립이다.**
+      // 경로는 힌트일 뿐이고 녹화기가 find만으로 사이트를 돌며 그 화면을
+      // 찾아낸다 (record.ts). screen이 있을 때만 통과시키던 탓에, 경로를 적지
+      // 않고 find만 고른 문장은 가리킬 것을 잃고 카드로 떨어졌다.
+      ...(typeof l.find === "string" && l.find.trim()
         ? { find: l.find.trim().slice(0, 30) }
         : {}),
-      ...(typeof l.screen === "string" &&
-      typeof l.findEn === "string" &&
-      l.findEn.trim()
+      ...(typeof l.findEn === "string" && l.findEn.trim()
         ? { findEn: l.findEn.trim().slice(0, 30) }
         : {}),
       // 연출은 내용이 정한다 (로테이션 폐지)
-      ...(typeof l.screen === "string" &&
-      (l.shot === "whole" || l.shot === "focus" || l.shot === "compare")
+      ...(l.shot === "whole" || l.shot === "focus" || l.shot === "compare"
         ? { shot: l.shot }
         : {}),
       // 다이어그램 — 어휘에 있고 라벨 수가 맞는 것만 (자유 작도 금지)
@@ -557,7 +617,12 @@ export async function generateScript(
             "화면에서 찾을 말로.** 경로(screen)는 힌트일 뿐이고 안 넣어도 된다:",
             "녹화기가 사이트를 돌며 그 말이 있는 화면을 직접 찾아 거기를 찍는다.",
             "- find는 문장이 말하는 그것을 가리키는 짧은 말. 위 '보이는 것'에",
-            "  있으면 그 글자를 그대로 쓰는 게 가장 정확하다.",
+            "  있으면 그 글자를 그대로 쓰는 게 가장 정확하다 (그 목록은 화면에",
+            "  한 번만 나오는 말만 담았다 — 여러 곳에 있는 말은 가리킬 수 없다).",
+            '- **find는 shot이 "focus"일 때만 넣는다.** find는 화면의 한 곳에',
+            '  테두리를 얹으라는 뜻이다. 화면 전체를 말하는 문장("whole")에',
+            "  넣으면 문장은 전체를 말하는데 그림은 버튼 하나를 가리킨다.",
+            "  전체를 말하는 문장은 screen만 넣는다.",
             "- 글자 없는 그림(도장·그래프·지도 같은 것)을 말하는 문장이면 그것을",
             "  부르는 말을 그대로 적는다 — 녹화기가 접근 이름과 크기로 찾는다.",
             "- 화면에서 보여줄 것이 아니라 원리·구조를 말하는 문장이면 find를",
@@ -574,6 +639,10 @@ export async function generateScript(
             "  자막만 뜬 빈 화면이 나간다. 그 문장이 말하는 구조·변화·모음을",
             "  다섯 종류 중 하나로 옮긴다. 문장 내용에 맞는 것만 — 빈 화면을",
             "  메우려고 아무 그림이나 붙이면 그게 더 나쁘다.",
+            "- 목록에 **링크 미리보기 카드**가 있으면, 공유·미리보기·링크를",
+            "  말하는 문장은 그 화면을 고른다. 사이트 페이지가 아니라 공유할 때",
+            "  뜨는 그림이지만 사이트가 제 주소로 서비스하므로 녹화할 수 있다 —",
+            "  그 그림에 대해 말하는 문장이 가리킬 수 있는 유일한 화면이다.",
             "- **삽질(fail) 문장도 예외가 아니다.** 삽질 카드는 문제·해결을 적은",
             "  제목 카드일 뿐이어서 그 문장이 말하는 것을 보여주지 못한다.",
             "  증상이 화면에 보이는 것이면 find로 가리키고(글자가 없는 도장·그림도",
