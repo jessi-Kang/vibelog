@@ -65,6 +65,157 @@ async function slowScroll(page: Page, px: number): Promise<void> {
   }
 }
 
+/**
+ * 대본이 말한 것을 **사이트에서 찾는다.**
+ *
+ * 전에는 대본이 경로(screen)를 맞히고 녹화기는 거기로만 갔다. 대본은 사이트를
+ * 본 적이 없으니 엉뚱한 화면을 고르거나(공유 글 이야기에 게임 모드 화면),
+ * 글자 없는 그림은 아예 가리킬 수 없었다 (apart의 도장은 홈 배경의 SVG다).
+ * 그래서 뒤집는다 — 대본은 문장이 말하는 것을 적고, **찾는 일은 녹화기가**
+ * 한다 (Jessi: "대본에 맞춘 화면을 찾아내서 영상에 써야지").
+ *
+ * 찾는 순서는 웹 표준과 크기뿐이다 — 사이트별 사전을 만들지 않는다
+ * (Jessi: "이렇게 매번 커스텀할 게 아니야").
+ *   1) 눈에 보이는 **글자**가 그 말을 담고 있는 요소
+ *   2) **접근 이름**(aria-label·alt·title)이 그 말을 담고 있는 요소 —
+ *      그림에 이름을 붙이는 웹의 표준 방식이다
+ *   3) 그래도 없으면 그 화면에서 **가장 큰 그림**(svg·img·canvas) —
+ *      글자로 설명되지 않는 것을 말하는 문장은 대개 그림을 말한다
+ */
+async function locateOnPage(
+  page: Page,
+  find: string,
+): Promise<{ kind: "text" | "name" | "graphic" } | null> {
+  const text = page
+    .getByText(find, { exact: false })
+    .filter({ visible: true })
+    .first();
+  if (
+    await text
+      .count()
+      .then((n) => n > 0)
+      .catch(() => false)
+  ) {
+    if (await text.isVisible().catch(() => false)) return { kind: "text" };
+  }
+  const esc = find.replace(/"/g, '\\"');
+  const named = page
+    .locator(`[aria-label*="${esc}"], [alt*="${esc}"], [title*="${esc}"]`)
+    .filter({ visible: true })
+    .first();
+  if (
+    await named
+      .count()
+      .then((n) => n > 0)
+      .catch(() => false)
+  ) {
+    if (await named.isVisible().catch(() => false)) return { kind: "name" };
+  }
+  const big = await page
+    .evaluate(() => {
+      let best: { area: number } | null = null;
+      for (const el of document.querySelectorAll("svg, img, canvas, picture")) {
+        const r = el.getBoundingClientRect();
+        const area = r.width * r.height;
+        if (r.width < 120 || r.height < 120) continue;
+        if (!best || area > best.area) best = { area };
+      }
+      return best !== null;
+    })
+    .catch(() => false);
+  return big ? { kind: "graphic" } : null;
+}
+
+/** 그 화면에서 대본이 말한 것을 화면 가운데로 올리고 표시를 얹는다 */
+async function focusOn(page: Page, find: string, kind: string): Promise<void> {
+  const esc = find.replace(/"/g, '\\"');
+  const target =
+    kind === "text"
+      ? page.getByText(find, { exact: false }).filter({ visible: true }).first()
+      : kind === "name"
+        ? page
+            .locator(
+              `[aria-label*="${esc}"], [alt*="${esc}"], [title*="${esc}"]`,
+            )
+            .filter({ visible: true })
+            .first()
+        : page.locator("svg, img, canvas, picture").first();
+  if (kind === "graphic") {
+    // 가장 큰 그림을 브라우저 쪽에서 직접 고른다 (locator로는 크기를 못 고른다)
+    await page.evaluate(() => {
+      let best: Element | null = null;
+      let area = 0;
+      for (const el of document.querySelectorAll("svg, img, canvas, picture")) {
+        const r = el.getBoundingClientRect();
+        if (r.width < 120 || r.height < 120) continue;
+        if (r.width * r.height > area) {
+          area = r.width * r.height;
+          best = el;
+        }
+      }
+      best?.scrollIntoView({ block: "center", behavior: "instant" });
+      if (best) {
+        const box = best.getBoundingClientRect();
+        const ring = document.createElement("div");
+        ring.dataset.vlRing = "1";
+        Object.assign(ring.style, {
+          position: "fixed",
+          left: `${Math.max(4, box.left - 8)}px`,
+          top: `${Math.max(4, box.top - 6)}px`,
+          width: `${Math.min(window.innerWidth - 8, box.width + 16)}px`,
+          height: `${box.height + 12}px`,
+          border: "3px solid #5EE1C3",
+          borderRadius: "8px",
+          boxShadow: "0 0 0 9999px rgba(6,10,16,.34)",
+          pointerEvents: "none",
+          zIndex: "2147483647",
+        });
+        document.body.appendChild(ring);
+      }
+    });
+    return;
+  }
+  await target.scrollIntoViewIfNeeded({ timeout: 4000 });
+  await target.evaluate((el) => {
+    el.scrollIntoView({ block: "center", behavior: "instant" });
+    const box = el.getBoundingClientRect();
+    const ring = document.createElement("div");
+    ring.dataset.vlRing = "1";
+    Object.assign(ring.style, {
+      position: "fixed",
+      left: `${Math.max(4, box.left - 8)}px`,
+      top: `${Math.max(4, box.top - 6)}px`,
+      width: `${Math.min(window.innerWidth - 8, box.width + 16)}px`,
+      height: `${box.height + 12}px`,
+      border: "3px solid #5EE1C3",
+      borderRadius: "8px",
+      boxShadow: "0 0 0 9999px rgba(6,10,16,.34)",
+      pointerEvents: "none",
+      zIndex: "2147483647",
+    });
+    document.body.appendChild(ring);
+  });
+}
+
+/** 사이트의 화면 후보 — 내부 링크를 훑는다 (대본이 말한 것을 여기서 찾는다) */
+async function siteLinks(page: Page): Promise<string[]> {
+  return (
+    await page
+      .locator("a[href^='/']")
+      .evaluateAll((as) =>
+        [
+          ...new Set(
+            as
+              .map((a) => a.getAttribute("href"))
+              .filter((h): h is string => !!h)
+              .map((h) => h.replace(/[?#].*$/, "").replace(/\/$/, "") || "/"),
+          ),
+        ].filter((h) => !h.includes(".")),
+      )
+      .catch(() => [] as string[])
+  ).slice(0, 6);
+}
+
 /** 투어가 방문할 내부 링크 (defaultTour와 같은 규칙) */
 async function tourLinks(page: Page): Promise<string[]> {
   return (
@@ -239,30 +390,35 @@ export async function record(
   // 대본이 문장마다 지정한 **정류장**(화면 + 가리킬 글자), 내레이션 순서대로.
   // 화면만 모으면 "같은 페이지의 다른 곳"을 구분할 수 없어, 격자 이야기에
   // 엉뚱한 스크롤 위치가 붙었다 (Jessi 지적)
-  const stops: { path: string; find?: string }[] = [];
+  // 정류장 = 대본이 말한 것(find) + 화면 힌트(screen, 없을 수 있다).
+  // find가 주다 — 어느 화면에 있는지는 아래 투어가 찾아낸다.
+  const stops: { path?: string; find?: string }[] = [];
   for (const l of script.lines) {
-    if (!l.screen) continue;
     const find = (lang === "en" ? l.findEn || l.find : l.find) || undefined;
-    const key = stopKey(l.screen, find);
-    if (!stops.some((st) => stopKey(st.path, st.find) === key)) {
-      stops.push({ path: l.screen, ...(find ? { find } : {}) });
+    if (!l.screen && !find) continue;
+    const key = `${l.screen ?? ""}\u0000${find ?? ""}`;
+    if (!stops.some((st) => `${st.path ?? ""}\u0000${st.find ?? ""}` === key)) {
+      stops.push({
+        ...(l.screen ? { path: l.screen } : {}),
+        ...(find ? { find } : {}),
+      });
     }
   }
-  // **경로가 하나면 다른 경로를 하나 더 녹화한다.** 렌더가 duo(두 폰) 샷을
-  // 쓸 때 재료가 하나뿐이면 똑같은 화면이 두 번 겹쳐 나온다 (Jessi 지적:
-  // "화면을 1개밖에 쓸 게 없으면 이 포맷을 쓰면 안 되잖아"). 렌더 쪽도
-  // 재료가 없으면 duo를 안 쓰게 막았지만, 재료를 만들어 줄 수 있으면 그게 낫다.
-  if (new Set(stops.map((st) => st.path)).size === 1) {
-    const only = stops[0].path;
-    if (only !== "/") {
+  // **정류장이 한 화면뿐이면 다른 화면을 하나 더 녹화한다.** 렌더가 duo(두 폰)
+  // 샷을 쓸 때 재료가 하나뿐이면 똑같은 화면이 두 번 겹쳐 나온다 (Jessi 지적).
+  const hintPaths = new Set(stops.map((st) => st.path).filter(Boolean));
+  if (hintPaths.size <= 1) {
+    const only = [...hintPaths][0];
+    if (only && only !== "/") {
       stops.push({ path: "/" });
     } else {
-      // 홈뿐이면 사이트의 내부 링크에서 하나 더 고른다
       const extra = (await tourLinks(page)).find((h) => h !== "/");
       if (extra) stops.push({ path: extra });
     }
   }
-  const screenList = [...new Set(stops.map((st) => st.path))];
+  const screenList = [
+    ...new Set(stops.map((st) => st.path).filter((p): p is string => !!p)),
+  ];
   const prewarmTargets = script.demo.steps.length
     ? script.demo.steps
         .filter((s) => s.startsWith("goto "))
@@ -310,85 +466,83 @@ export async function record(
       Math.floor((durationSec * 1000) / stops.length),
     );
     const segs: DemoSegment[] = [];
+    const candidates = [
+      "/",
+      ...(await siteLinks(page)).filter((h) => h !== "/"),
+    ];
     let n = 0;
-    let at = ""; // 지금 열려 있는 경로 — 같은 페이지의 다른 곳이면 다시 안 띄운다
-    for (const stop of stops) {
-      const p = stop.path;
+    let at = ""; // 지금 열려 있는 경로
+    const go = async (p: string): Promise<boolean> => {
+      if (p === at) return true;
       try {
-        // 앞 정류장의 표시를 지운다 (같은 페이지에 머무는 경우도 있다)
-        await page
-          .evaluate(() =>
-            document
-              .querySelectorAll("[data-vl-ring]")
-              .forEach((el) => el.remove()),
-          )
-          .catch(() => {});
-        if (p !== at) {
-          await page.goto(new URL(p, script.demo.url).toString(), {
-            waitUntil: "domcontentloaded",
-          });
-          await waitForLang(page, lang);
-          await page.waitForTimeout(400);
-          at = p;
-        }
-        // 문장이 가리킨 것을 화면에 올린다. 이게 이 변경의 핵심 —
-        // 구간이 "그것이 보이는 상태"에서 시작해야 말과 화면이 맞는다.
-        if (stop.find) {
-          const target = page
-            .getByText(stop.find, { exact: false })
-            .filter({ visible: true })
-            .first();
-          await target.scrollIntoViewIfNeeded({ timeout: 4000 });
-          // 화면 가운데로 — 맨 아래에 걸쳐 있으면 폰 프레임에서 잘린다
-          await target.evaluate((el) =>
-            el.scrollIntoView({ block: "center", behavior: "instant" }),
-          );
-          // **가리킨 것을 화면에 표시한다.** 요소를 가운데로 올려 놔도 보는
-          // 사람은 어디를 보라는 건지 모른다 (Jessi: "화면에 해당 부분을
-          // 표시한다고도 했잖아. 그런 것도 없어"). 사이트를 건드리는 게 아니라
-          // 녹화용 브라우저에서만 테두리를 얹는다 — 다음 정류장에서 지운다.
-          await target.evaluate((el) => {
-            const box = el.getBoundingClientRect();
-            const ring = document.createElement("div");
-            ring.dataset.vlRing = "1";
-            Object.assign(ring.style, {
-              position: "fixed",
-              left: `${Math.max(4, box.left - 8)}px`,
-              top: `${Math.max(4, box.top - 6)}px`,
-              width: `${Math.min(window.innerWidth - 8, box.width + 16)}px`,
-              height: `${box.height + 12}px`,
-              border: "3px solid #5EE1C3",
-              borderRadius: "8px",
-              boxShadow: "0 0 0 9999px rgba(6,10,16,.34)",
-              pointerEvents: "none",
-              zIndex: "2147483647",
-            });
-            document.body.appendChild(ring);
-          });
-          await page.waitForTimeout(300);
-        } else {
-          await page.evaluate(() => window.scrollTo({ top: 0 }));
-          await page.waitForTimeout(200);
-        }
+        await page.goto(new URL(p, script.demo.url).toString(), {
+          waitUntil: "domcontentloaded",
+        });
+        await waitForLang(page, lang);
+        await page.waitForTimeout(400);
+        at = p;
+        return true;
       } catch {
-        // 이동·검색 실패 — 화면 맨 위에서 시작한다 (녹화는 계속)
-        console.log(
-          `[record] 정류장 실패: ${p}${stop.find ? ` (${stop.find} 못 찾음)` : ""}`,
-        );
+        return false;
       }
-      // 구간 시작은 스크린샷을 찍은 "뒤"다. 앞에 두면 캡처가 끝날 때까지
-      // 화면이 완전히 정지한 구간이 구간 머리에 들어가는데, 데모 블록은
-      // 내레이션 두어 문장(2~5초)뿐이라 그 정지 구간만 보여 주고 끝난다
-      // ("계속 멈춰 있다가 마지막에 휙 스크롤 되다가 사라져" — Jessi).
-      // 캡처 뒤로 옮기면 블록이 화면 맨 위에서 시작해 곧바로 움직인다.
+    };
+
+    for (const stop of stops) {
+      // 앞 정류장의 표시를 지운다 (같은 페이지에 머무는 경우도 있다)
+      await page
+        .evaluate(() =>
+          document
+            .querySelectorAll("[data-vl-ring]")
+            .forEach((el) => el.remove()),
+        )
+        .catch(() => {});
+
+      // **대본이 말한 것을 사이트에서 찾는다.** screen은 힌트로 먼저 보고,
+      // 없으면 화면들을 돌며 찾는다. 찾은 화면이 이 정류장의 화면이 된다.
+      let path = stop.path ?? "/";
+      let kind: string | null = null;
+      if (stop.find) {
+        const order = [
+          ...(stop.path ? [stop.path] : []),
+          ...candidates.filter((c) => c !== stop.path),
+        ];
+        for (const cand of order) {
+          if (!(await go(cand))) continue;
+          const hit = await locateOnPage(page, stop.find);
+          if (hit) {
+            path = cand;
+            kind = hit.kind;
+            break;
+          }
+        }
+        if (!kind) {
+          // 어디에도 없다 — 힌트 화면(또는 홈) 맨 위에서 시작한다
+          await go(stop.path ?? "/");
+        }
+      } else {
+        await go(path);
+      }
+
+      if (kind && stop.find) {
+        await focusOn(page, stop.find, kind).catch(() => {
+          kind = null;
+        });
+        await page.waitForTimeout(300);
+      } else {
+        await page.evaluate(() => window.scrollTo({ top: 0 }));
+        await page.waitForTimeout(200);
+      }
+      console.log(
+        `[record] 정류장 ${path}${stop.find ? ` [${stop.find}] ${kind ?? "못 찾음"}` : ""}`,
+      );
+
+      // 구간 시작은 스크린샷을 찍은 "뒤"다 (캡처 동안 화면이 정지한다)
       n = await shot(page, shotsDir, n);
       const start = (Date.now() - started) / 1000 - readyAt;
       const until = Date.now() + perMs;
-      if (stop.find) {
-        // **가리킨 것을 붙잡고 있는다.** 시작점만 맞추고 계속 스크롤하면 문장이
-        // 말하는 동안 화면이 그 요소를 지나쳐 흘러간다 — "보여줘야 할 부분이
-        // 있는데 그걸 휙 넘겨버려" (Jessi). 이 정류장은 그 자리에 머문다.
-        // 완전 정지가 아니라 아주 조금만 흔들어 둔다 (프레임이 죽어 보이지 않게).
+      if (kind) {
+        // 가리킨 것을 붙잡고 있는다 — 계속 스크롤하면 문장이 말하는 동안
+        // 화면이 그 요소를 지나쳐 흘러간다 (Jessi: "휙 넘겨버려")
         const anchor = await page.evaluate(() => window.scrollY);
         let drift = 0;
         while (Date.now() < until) {
@@ -400,14 +554,13 @@ export async function record(
           await page.waitForTimeout(500);
         }
       } else {
-        // 가리킨 것이 없는 정류장은 화면 전체를 훑는다 (whole 샷의 재료)
         while (Date.now() < until) {
           await slowScroll(page, 240);
           await page.waitForTimeout(400);
         }
       }
       segs.push({
-        path: p,
+        path,
         ...(stop.find ? { find: stop.find } : {}),
         start: Number(start.toFixed(2)),
         end: Number(((Date.now() - started) / 1000 - readyAt).toFixed(2)),

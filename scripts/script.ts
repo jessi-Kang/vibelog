@@ -154,34 +154,75 @@ function parseJson(text: string): Record<string, unknown> {
   return JSON.parse(cleaned.slice(start, end + 1));
 }
 
+export interface SiteScreen {
+  path: string;
+  label: string;
+  /** 이 화면에 실제로 보이는 글자 몇 개 — find를 지어내지 않게 하는 근거 */
+  sees: string[];
+}
+
 /**
- * 배포 사이트의 내부 링크 목록 — 대본이 데모 문장마다 내용에 맞는 화면을
- * 고를 후보. 홈("/")은 항상 포함. 실패하면 빈 배열 (기존 투어 방식 폴백).
+ * 배포 사이트의 화면 목록 — 대본이 문장마다 내용에 맞는 화면과 **그 화면의
+ * 어디**를 고를 후보.
+ *
+ * 전에는 경로와 링크 이름만 줬다. 그래서 대본이 화면에 무엇이 보이는지 모른 채
+ * find를 지어냈다. 이제 화면마다 실제로 보이는 글자를 같이 준다 — 제목·라벨처럼
+ * 눈에 큰 것들. 대본은 여기서만 고른다.
+ *
+ * 글자가 없는 그림(도장·그래프 같은 것)은 여기 안 나온다. 그건 사이트마다
+ * 이름이 달라 목록으로 만들 수 없다 — 손으로 클래스 사전을 만들면 그 사이트에만
+ * 맞는다 (Jessi: "이렇게 매번 커스텀할 게 아니야"). 그림은 녹화기가 웹 표준과
+ * 크기로 찾는다 (scripts/record.ts) — 대본은 문장의 말을 그대로 find에 적으면 된다.
  */
-async function siteScreens(
-  url: string,
-): Promise<{ path: string; label: string }[]> {
+async function siteScreens(url: string): Promise<SiteScreen[]> {
   if (!url) return [];
-  try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
-    if (!res.ok) return [];
-    const html = await res.text();
-    const seen = new Map<string, string>([["/", "홈"]]);
+  const fetchHtml = async (u: string): Promise<string | null> => {
+    try {
+      const res = await fetch(u, { signal: AbortSignal.timeout(10000) });
+      return res.ok ? await res.text() : null;
+    } catch {
+      return null;
+    }
+  };
+  const home = await fetchHtml(url);
+  if (!home) return [];
+
+  const seen = new Map<string, string>([["/", "홈"]]);
+  for (const m of home.matchAll(
+    /<a[^>]+href="(\/[^"#?]*)"[^>]*>([\s\S]*?)<\/a>/g,
+  )) {
+    const p = m[1].replace(/\/$/, "") || "/";
+    const label = m[2]
+      .replace(/<[^>]+>/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!seen.has(p) && label && label.length <= 30) seen.set(p, label);
+    if (seen.size >= 6) break;
+  }
+
+  /** 제목·표머리·버튼 글자 — 화면에서 큰 글자들이다 */
+  const seesOf = (html: string): string[] => {
+    const out: string[] = [];
     for (const m of html.matchAll(
-      /<a[^>]+href="(\/[^"#?]*)"[^>]*>([\s\S]*?)<\/a>/g,
+      /<(h1|h2|h3|th|strong|b|button|summary)[^>]*>([\s\S]*?)<\/\1>/g,
     )) {
-      const p = m[1].replace(/\/$/, "") || "/";
-      const label = m[2]
+      const text = m[2]
         .replace(/<[^>]+>/g, "")
         .replace(/\s+/g, " ")
         .trim();
-      if (!seen.has(p) && label && label.length <= 30) seen.set(p, label);
-      if (seen.size >= 7) break;
+      if (text && text.length <= 24 && !out.includes(text)) out.push(text);
+      if (out.length >= 7) break;
     }
-    return [...seen].map(([path, label]) => ({ path, label }));
-  } catch {
-    return [];
+    return out;
+  };
+
+  const screens: SiteScreen[] = [];
+  for (const [path, label] of seen) {
+    const html =
+      path === "/" ? home : await fetchHtml(new URL(path, url).toString());
+    screens.push({ path, label, sees: html ? seesOf(html) : [] });
   }
+  return screens;
 }
 
 function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
@@ -487,49 +528,34 @@ export async function generateScript(
           ...(screens.length >= 2
             ? [
                 [
-                  "데모로 보여줄 수 있는 실제 화면 목록 (경로 — 링크 이름):",
-                  ...screens.map((s) => `  ${s.path} — ${s.label}`),
-                  "화면 이야기가 나오는 문장(장면 종류 무관, build·demo 포함)에",
-                  "screen 필드로 위 경로 중 하나를 넣어라. 우선순위는 이렇다 —",
-                  "1) 문장 내용과 가장 맞는 화면이 항상 먼저다. 목록에 없는 경로 금지.",
-                  "2) **관련 없는 화면을 채우지 마라.** 문장과 맞는 화면이 없으면",
-                  "   screen을 비워 둔다 — 비면 그 문장은 화면 없이(배경·자막) 나간다.",
-                  "   엉뚱한 화면이 도는 것이 가장 나쁘고, 같은 화면 반복이 그다음,",
-                  "   빈 것이 그중 낫다. 실제로 '공유 글에 주소가 들어간다'는 문장에",
-                  "   관련 없는 게임 모드 화면이 붙어 나갔다.",
-                  "3) 같은 화면이 두 문장에 걸릴 때는 find를 다르게 줘서 그 화면의",
-                  "   다른 곳을 보여준다 — 그게 '다른 화면'을 억지로 찾는 것보다 낫다.",
-                  "4) **demo 장면의 문장에는 빠짐없이 screen을 넣어라.** 화면을 보여주는",
-                  "   장면인데 한 문장만 지정하면 나머지 문장은 아무 화면이나 붙는다.",
-                  "   화면 속 무언가를 가리키는 문장(격자·숫자·목록·버튼 이야기)도",
-                  "   장면 종류와 무관하게 screen을 넣는다 — 삽질 문장도 포함이다.",
-                  "   **삽질 문장이 화면에 보이는 것을 말하면 그게 보이는 화면을 고른다.**",
-                  "   예: 결과 카드의 도장이 깨졌다는 이야기라면 결과 화면 + 그 카드에",
-                  "   보이는 글자. 그 화면이 목록에 없으면 비워 둔다.",
-                  "5) **screen을 넣은 문장에는 find도 넣어라.** 그 화면에서 이 문장이",
-                  "   말하는 것이 **화면에 글자로 보이는 그대로** 짧게 적는다 —",
-                  "   녹화기가 그 글자를 찾아 화면에 올린 뒤 그 지점부터 보여준다.",
-                  "   없으면 페이지 맨 위만 나와서, 격자 이야기에 엉뚱한 데가 돌아간다.",
-                  '   예: screen "/" + find "오늘 커밋" / screen "/log" + find "전체".',
-                  "   추측한 글자는 넣지 마라 — 확실하지 않으면 find를 비운다.",
-                  "   findEn에는 영어 화면에서 보일 글자를 같은 식으로 적는다.",
-                  "6) 화면이 나오는 문장이 둘뿐이고 둘 다 같은 페이지라면, 한쪽은",
-                  "   그 페이지의 다른 곳을 가리키게 find를 다르게 준다.",
-                  "7) **screen을 넣은 문장에는 shot도 정해라 — 연출을 내용이 정한다.**",
-                  '   "focus" = 화면의 한 곳을 이야기할 때 (find와 함께. 베젤 없이 크게),',
-                  '   "whole" = 화면 전체의 인상·흐름을 이야기할 때 (폰 프레임 그대로),',
-                  '   "compare" = 두 화면을 견주는 문장일 때 (폰 두 대).',
-                  "   compare는 서로 다른 화면을 실제로 견주는 문장에만 쓴다 — 그냥",
-                  "   두 대를 띄우고 싶어서 쓰면 같은 화면이 겹쳐 나온다.",
-                  "   매 편 같은 순서로 돌리지 마라. 문장이 무엇을 말하는지로만 고른다.",
-                  '8) **마지막 "다음 할 것" 문장도 매 편 같은 마무리가 되지 않게 한다.**',
-                  "   그 문장이 화면으로 보여줄 만한 것을 말하면 screen+find를 넣는다.",
-                  "9) **화면을 못 고른 문장에는 diagram을 붙여라.** 화면도 그림도 없으면",
-                  "   자막만 뜬 빈 화면이 나간다. 그 문장이 말하는 구조·변화·모음을",
-                  "   다섯 종류 중 하나로 옮긴다 (예: 순위로 모은다 → sets나 pipeline,",
-                  "   기준이 바뀌었다 → numberline, 전후가 갈린다 → beforeafter).",
-                  "   **문장 내용에 맞는 것만.** 빈 화면을 메우려고 아무 그림이나 붙이면",
-                  "   그게 더 나쁘다 — 그럴 땐 비워 둔다.",
+                  "이 사이트의 화면과 **거기 보이는 글자** (경로 — 이름 — 보이는 것):",
+                  ...screens.map(
+                    (sc) =>
+                      `  ${sc.path} — ${sc.label}${sc.sees.length ? ` — ${sc.sees.slice(0, 6).join(" / ")}` : ""}`,
+                  ),
+                  "",
+                  "**화면을 보여줄 문장에는 find를 넣어라 — 그 문장이 말하는 것을",
+                  "화면에서 찾을 말로.** 경로(screen)는 힌트일 뿐이고 안 넣어도 된다:",
+                  "녹화기가 사이트를 돌며 그 말이 있는 화면을 직접 찾아 거기를 찍는다.",
+                  "- find는 문장이 말하는 그것을 가리키는 짧은 말. 위 '보이는 것'에",
+                  "  있으면 그 글자를 그대로 쓰는 게 가장 정확하다.",
+                  "- 글자 없는 그림(도장·그래프·지도 같은 것)을 말하는 문장이면 그것을",
+                  "  부르는 말을 그대로 적는다 — 녹화기가 접근 이름과 크기로 찾는다.",
+                  "- 화면에서 보여줄 것이 아니라 원리·구조를 말하는 문장이면 find를",
+                  "  비우고 diagram을 붙인다. 둘 다 아니면 둘 다 비운다.",
+                  "- screen을 넣을 때는 목록에 있는 경로만. 문장과 맞는 화면이 없으면",
+                  "  비워 둔다 — 엉뚱한 화면이 도는 것이 가장 나쁘다.",
+                  "- 두 문장이 같은 것을 가리키게 하지 마라. 문장마다 다른 것을 본다.",
+                  "- **shot도 정한다** (연출을 내용이 정한다):",
+                  '  "focus" = 화면의 한 곳을 이야기할 때 (find와 함께. 크게 붙잡는다),',
+                  '  "whole" = 화면 전체의 인상·흐름을 이야기할 때,',
+                  '  "compare" = 두 화면을 견주는 문장일 때 (폰 두 대).',
+                  "  매 편 같은 순서로 돌리지 마라. 문장이 무엇을 말하는지로만 고른다.",
+                  "- **화면을 못 고른 문장에는 diagram을 붙여라.** 화면도 그림도 없으면",
+                  "  자막만 뜬 빈 화면이 나간다. 그 문장이 말하는 구조·변화·모음을",
+                  "  다섯 종류 중 하나로 옮긴다. 문장 내용에 맞는 것만 — 빈 화면을",
+                  "  메우려고 아무 그림이나 붙이면 그게 더 나쁘다.",
+                  '- 마지막 "다음 할 것" 문장도 매 편 같은 마무리가 되지 않게 한다.',
                 ].join("\n"),
               ]
             : []),
