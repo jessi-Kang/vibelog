@@ -11,13 +11,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { collect, type RepoActivity, type State } from "./collect";
+import { collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
 import { generateDevlog, translateCommitLines, translateLine } from "./generate";
 import { runShorts } from "./shorts";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
 const PROJECTS_FILE = path.join(CONTENT_DIR, "projects.json");
+const HOURS_FILE = path.join(CONTENT_DIR, "commit-hours.json");
 
 /** 화면의 "오늘" — countsDate·오늘 커밋 창. 벽시계 KST 날짜 그대로다 */
 function todayKST(): string {
@@ -199,6 +200,50 @@ async function writeDevlog(
   );
 }
 
+/**
+ * 홈 잔디 재료 — 날짜(KST)별 시간대 커밋 수를 content/commit-hours.json에 쌓는다.
+ * `{ "2026-09-11": [0시, 1시, ... 23시] }`
+ *
+ * 매 실행이 최근 HOURS_DAYS일을 통째로 다시 계산해 그 날짜들만 덮는다.
+ * 더하지 않고 덮는 이유는 같은 날 재실행 때문이다 — 더하면 두 배가 된다.
+ * 그보다 옛 날짜는 건드리지 않아 기록이 계속 쌓인다.
+ */
+function writeCommitHours(activities: RepoActivity[]): void {
+  let hours: Record<string, number[]> = {};
+  try {
+    hours = JSON.parse(fs.readFileSync(HOURS_FILE, "utf8"));
+  } catch {
+    // 첫 실행 — 빈 기록에서 시작한다
+  }
+  const fresh: Record<string, number[]> = {};
+  for (const a of activities) {
+    for (const iso of a.commitTimes) {
+      const t = new Date(iso);
+      if (Number.isNaN(t.getTime())) continue;
+      const kst = new Date(t.getTime() + 9 * 3600 * 1000);
+      const date = kst.toISOString().slice(0, 10);
+      (fresh[date] ??= new Array(24).fill(0))[kst.getUTCHours()] += 1;
+    }
+  }
+  // 다시 센 기간의 시작 — 그 이후 날짜는 이번 계산이 진실이다 (커밋이 0이면 0)
+  const from = new Date(Date.now() + 9 * 3600 * 1000 - HOURS_DAYS * 24 * 3600 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  for (const date of Object.keys(hours)) {
+    if (date >= from) delete hours[date];
+  }
+  Object.assign(hours, fresh);
+  const sorted = Object.fromEntries(
+    Object.entries(hours).sort(([a], [b]) => a.localeCompare(b)),
+  );
+  fs.writeFileSync(HOURS_FILE, JSON.stringify(sorted, null, 2) + "\n");
+  const total = Object.values(fresh).reduce(
+    (n, day) => n + day.reduce((x, y) => x + y, 0),
+    0,
+  );
+  console.log(`잔디: 최근 ${HOURS_DAYS}일 커밋 ${total}개 (${Object.keys(fresh).length}일)`);
+}
+
 async function main(): Promise<void> {
   const collectOnly = process.argv.includes("--collect-only");
   const projectsOnly = process.argv.includes("--projects-only");
@@ -276,6 +321,7 @@ async function main(): Promise<void> {
       `프로젝트 목록/메타 변경 감지: [${activities.map((a) => a.repo).join(", ")}]`,
     );
     await updateProjects(activities);
+  writeCommitHours(activities);
     console.log("projects.json 갱신 완료");
     return;
   }
@@ -340,6 +386,7 @@ async function main(): Promise<void> {
   // homepage(데모 URL)·theme을 읽으므로, 이 실행에서 처음 감지된 배포
   // 주소가 그날 쇼츠에 바로 쓰여야 한다. 뒤에 두면 하루 밀린다.
   await updateProjects(activities);
+  writeCommitHours(activities);
 
   // 쇼츠 단계 (2단계) — 실패해도 데브로그 발행은 막지 않는다
   if (process.env.SKIP_SHORTS === "1") {
