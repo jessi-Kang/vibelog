@@ -117,6 +117,8 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
     길면 두 줄로 터진다 ("범위 밖의 큰 수" ✗ → "범위 밖" ○).
   · fork — 하나가 둘로 갈릴 때 (같은 값을 다르게 쓰는 구조).
     labels: [출발, 왼쪽 결과, 오른쪽 결과, 왼쪽 이름, 오른쪽 이름]
+    **이야기의 답(고른 쪽)을 오른쪽에 둔다.** 강조가 그쪽에 켜진다.
+    왼쪽을 강조해야 하면 "pick": 1 을 같이 넣는다 (기본은 오른쪽).
     예: ["222건","이백이십이건","222건","음성","자막"]
   · beforeafter — 방식을 갈아치웠을 때.
     labels: [전-시작, 전-결과, 후-시작, 후-결과] 예: ["검색 API","늦게 뜸","내 레포 목록","30분 안에"]
@@ -169,7 +171,10 @@ async function siteScreens(
       /<a[^>]+href="(\/[^"#?]*)"[^>]*>([\s\S]*?)<\/a>/g,
     )) {
       const p = m[1].replace(/\/$/, "") || "/";
-      const label = m[2].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+      const label = m[2]
+        .replace(/<[^>]+>/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
       if (!seen.has(p) && label && label.length <= 30) seen.set(p, label);
       if (seen.size >= 7) break;
     }
@@ -201,14 +206,16 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       w.replace(/^[.,!?…:;"'“”‘’()[\]]+|[.,!?…:;"'“”‘’()[\]]+$/g, "");
     const koTokens = l.ko.split(/\s+/).map(strip);
     const enTokens = l.en.split(/\s+/).map(strip);
-    const inSentence = (tokens: string[]) => (k: string): boolean => {
-      const toks = k.split(/\s+/).map(strip).filter(Boolean);
-      if (!toks.length) return false;
-      for (let i = 0; i + toks.length <= tokens.length; i++) {
-        if (toks.every((tok, j) => tokens[i + j] === tok)) return true;
-      }
-      return false;
-    };
+    const inSentence =
+      (tokens: string[]) =>
+      (k: string): boolean => {
+        const toks = k.split(/\s+/).map(strip).filter(Boolean);
+        if (!toks.length) return false;
+        for (let i = 0; i + toks.length <= tokens.length; i++) {
+          if (toks.every((tok, j) => tokens[i + j] === tok)) return true;
+        }
+        return false;
+      };
     // hook은 화면 가득 찬 헤드라인이라 강조를 하나로 — 두 개만 돼도
     // 짧은 문장이 통째로 칠해진다 (Jessi 지적: "훅 메시지가 전체 하이라이트")
     const maxSpans = l.scene === "hook" ? 1 : 3;
@@ -233,9 +240,13 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         strip,
       ),
       // +알파 그래픽용 장면 은유 묘사 — 여기서 떨어뜨리면 art.ts가 만들 게 없다
-      ...(typeof l.art === "string" && l.art.trim() ? { art: l.art.trim() } : {}),
+      ...(typeof l.art === "string" && l.art.trim()
+        ? { art: l.art.trim() }
+        : {}),
       // 숫자 모먼트 — 숫자가 없는 stat은 카운터를 만들 수 없다
-      ...(typeof l.stat === "string" && /\d/.test(l.stat) ? { stat: l.stat } : {}),
+      ...(typeof l.stat === "string" && /\d/.test(l.stat)
+        ? { stat: l.stat }
+        : {}),
       ...(typeof l.statEn === "string" && /\d/.test(l.statEn)
         ? { statEn: l.statEn }
         : {}),
@@ -338,7 +349,9 @@ function neighborTemplates(
   const read = (d: string | undefined): string | null => {
     if (!d) return null;
     try {
-      const s = JSON.parse(fs.readFileSync(path.join(dir, `${d}.json`), "utf8"));
+      const s = JSON.parse(
+        fs.readFileSync(path.join(dir, `${d}.json`), "utf8"),
+      );
       return typeof s.template === "string" ? s.template : null;
     } catch {
       return null;
@@ -360,9 +373,9 @@ function neighborDiagrams(repo: string, date: string): string[] {
     .map((f) => f.replace(/\.json$/, ""))
     .sort();
   const i = days.indexOf(date);
-  const neighbors = (i === -1 ? days.slice(-1) : [days[i - 1], days[i + 1]]).filter(
-    (d): d is string => Boolean(d),
-  );
+  const neighbors = (
+    i === -1 ? days.slice(-1) : [days[i - 1], days[i + 1]]
+  ).filter((d): d is string => Boolean(d));
   const kinds = new Set<string>();
   for (const d of neighbors) {
     try {
@@ -393,7 +406,10 @@ function dayNumber(repo: string, date: string): number {
 function getProjectMeta(repo: string): ProjectMeta {
   try {
     const projects: ProjectMeta[] = JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), "content", "projects.json"), "utf8"),
+      fs.readFileSync(
+        path.join(process.cwd(), "content", "projects.json"),
+        "utf8",
+      ),
     );
     return projects.find((p) => p.slug === repo) ?? { slug: repo };
   } catch {
@@ -419,7 +435,9 @@ export async function generateScript(
   const meta = getProjectMeta(repo);
   const demoUrl = meta.homepage ?? "";
   // 레포가 고른 테마 — 알 수 없는 값은 기본(terminal)으로
-  const theme = SHORTS_THEMES.includes(meta.theme as (typeof SHORTS_THEMES)[number])
+  const theme = SHORTS_THEMES.includes(
+    meta.theme as (typeof SHORTS_THEMES)[number],
+  )
     ? (meta.theme as string)
     : "terminal";
 
@@ -485,7 +503,9 @@ export async function generateScript(
     ? (parsed.template as ShortsTemplate)
     : "ship-it";
 
-  const music = MUSIC_MOODS.includes(parsed.music as (typeof MUSIC_MOODS)[number])
+  const music = MUSIC_MOODS.includes(
+    parsed.music as (typeof MUSIC_MOODS)[number],
+  )
     ? (parsed.music as string)
     : "ship-it";
 

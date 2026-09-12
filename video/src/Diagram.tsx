@@ -25,7 +25,8 @@ const CY = 1020;
 const BAND_HALF = 74;
 const VALUE_GAP = BAND_HALF + 18;
 const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const ease = (p: number): number => 1 - Math.pow(1 - Math.min(1, Math.max(0, p)), 3);
+const ease = (p: number): number =>
+  1 - Math.pow(1 - Math.min(1, Math.max(0, p)), 3);
 /** 장면 시작 s초부터 d초 동안 0→1 */
 const seg = (t: number, s: number, d: number): number => ease((t - s) / d);
 
@@ -162,7 +163,11 @@ export const DiagramScene: React.FC<{
     const good = seg(t, 2.2, 0.45);
     return (
       <>
-        <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
+        <svg
+          style={{ position: "absolute", inset: 0 }}
+          width={1080}
+          height={1920}
+        >
           <line
             x1={120}
             y1={CY}
@@ -192,7 +197,13 @@ export const DiagramScene: React.FC<{
             opacity={bad}
           />
           <Arrow x0={394} x1={700} y={CY} p={arrow} color={th.ink} />
-          <circle cx={790} cy={CY} r={34 * (0.6 + 0.4 * good)} fill={th.accent} opacity={good} />
+          <circle
+            cx={790}
+            cy={CY}
+            r={34 * (0.6 + 0.4 * good)}
+            fill={th.accent}
+            opacity={good}
+          />
         </svg>
         <div
           style={{
@@ -244,6 +255,10 @@ export const DiagramScene: React.FC<{
 
   if (spec.kind === "fork") {
     // [출발, 왼쪽 결과, 오른쪽 결과, 왼쪽 이름, 오른쪽 이름]
+    // 강조는 **이야기의 답**에 켠다. 왼쪽에 못 박아 뒀더니 답이 오른쪽인 편에서
+    // 그림이 반대로 읽혔다 — "방문자가 백 명이어도 요청은 한 번"인데 "요청
+    // 백 번"이 민트색이었다 (Jessi 지적). 기본은 오른쪽(pick 2).
+    const pick = spec.pick ?? 2;
     const src = seg(t, 0.2, 0.45);
     const path = seg(t, 0.7, 0.8);
     const arrow = seg(t, 1.4, 0.3);
@@ -258,10 +273,14 @@ export const DiagramScene: React.FC<{
     });
     return (
       <>
-        <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
+        <svg
+          style={{ position: "absolute", inset: 0 }}
+          width={1080}
+          height={1920}
+        >
           <path
             d="M540 800 V880 Q540 916 496 916 H324 Q280 916 280 952 V1090"
-            stroke={th.accent}
+            stroke={pick === 1 ? th.accent : th.line}
             strokeWidth={7}
             fill="none"
             strokeLinecap="round"
@@ -270,29 +289,84 @@ export const DiagramScene: React.FC<{
           />
           <path
             d="M540 800 V880 Q540 916 584 916 H756 Q800 916 800 952 V1090"
-            stroke={th.line}
+            stroke={pick === 2 ? th.accent : th.line}
             strokeWidth={7}
             fill="none"
             strokeLinecap="round"
             pathLength={1}
             style={draw(path)}
           />
-          <path d="M256 1078 L280 1122 L304 1078 Z" fill={th.accent} opacity={arrow} />
-          <path d="M776 1078 L800 1122 L824 1078 Z" fill={th.line} opacity={arrow} />
+          <path
+            d="M256 1078 L280 1122 L304 1078 Z"
+            fill={pick === 1 ? th.accent : th.line}
+            opacity={arrow}
+          />
+          <path
+            d="M776 1078 L800 1122 L824 1078 Z"
+            fill={pick === 2 ? th.accent : th.line}
+            opacity={arrow}
+          />
         </svg>
-        <div style={{ ...boxStyle(th, false, l(0), 400), left: 340, top: 696, width: 400, height: 104, ...popIn(src) }}>
+        <div
+          style={{
+            ...boxStyle(th, false, l(0), 400),
+            left: 340,
+            top: 696,
+            width: 400,
+            height: 104,
+            ...popIn(src),
+          }}
+        >
           {l(0)}
         </div>
-        <div style={{ ...boxStyle(th, true, l(1), 440), left: 60, top: 1140, width: 440, height: 120, ...popIn(b1) }}>
+        <div
+          style={{
+            ...boxStyle(th, pick === 1, l(1), 440),
+            left: 60,
+            top: 1140,
+            width: 440,
+            height: 120,
+            ...popIn(b1),
+          }}
+        >
           {l(1)}
         </div>
-        <div style={{ ...boxStyle(th, false, l(2), 420), left: 600, top: 1140, width: 420, height: 120, ...popIn(b2) }}>
+        <div
+          style={{
+            ...boxStyle(th, pick === 2, l(2), 420),
+            left: 600,
+            top: 1140,
+            width: 420,
+            height: 120,
+            ...popIn(b2),
+          }}
+        >
           {l(2)}
         </div>
-        <div style={{ ...labelStyle(th), left: 60, width: 440, top: 1284, textAlign: "center", fontSize: fitFont(l(3), 30, 440), opacity: b1 }}>
+        <div
+          style={{
+            ...labelStyle(th),
+            left: 60,
+            width: 440,
+            top: 1284,
+            textAlign: "center",
+            fontSize: fitFont(l(3), 30, 440),
+            opacity: b1,
+          }}
+        >
           {l(3)}
         </div>
-        <div style={{ ...labelStyle(th), left: 600, width: 420, top: 1284, textAlign: "center", fontSize: fitFont(l(4), 30, 420), opacity: b2 }}>
+        <div
+          style={{
+            ...labelStyle(th),
+            left: 600,
+            width: 420,
+            top: 1284,
+            textAlign: "center",
+            fontSize: fitFont(l(4), 30, 420),
+            opacity: b2,
+          }}
+        >
           {l(4)}
         </div>
       </>
@@ -310,7 +384,11 @@ export const DiagramScene: React.FC<{
     const BOT = 1120;
     return (
       <>
-        <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
+        <svg
+          style={{ position: "absolute", inset: 0 }}
+          width={1080}
+          height={1920}
+        >
           <g opacity={dim}>
             <Arrow x0={452} x1={556} y={TOP + 55} p={ar1} color={th.line} />
           </g>
@@ -330,10 +408,32 @@ export const DiagramScene: React.FC<{
         >
           {lang === "en" ? "BEFORE" : "전"}
         </div>
-        <div style={{ ...boxStyle(th, false, l(0), 340), left: 96, top: TOP, width: 340, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
+        <div
+          style={{
+            ...boxStyle(th, false, l(0), 340),
+            left: 96,
+            top: TOP,
+            width: 340,
+            height: 110,
+            color: th.muted,
+            ...rise(a),
+            opacity: a * dim,
+          }}
+        >
           {l(0)}
         </div>
-        <div style={{ ...boxStyle(th, false, l(1), 374), left: 610, top: TOP, width: 374, height: 110, color: th.muted, ...rise(a), opacity: a * dim }}>
+        <div
+          style={{
+            ...boxStyle(th, false, l(1), 374),
+            left: 610,
+            top: TOP,
+            width: 374,
+            height: 110,
+            color: th.muted,
+            ...rise(a),
+            opacity: a * dim,
+          }}
+        >
           {l(1)}
         </div>
         <div
@@ -350,10 +450,29 @@ export const DiagramScene: React.FC<{
         >
           {lang === "en" ? "AFTER" : "후"}
         </div>
-        <div style={{ ...boxStyle(th, false, l(2), 340), left: 96, top: BOT, width: 340, height: 110, borderColor: th.accent, ...rise(b) }}>
+        <div
+          style={{
+            ...boxStyle(th, false, l(2), 340),
+            left: 96,
+            top: BOT,
+            width: 340,
+            height: 110,
+            borderColor: th.accent,
+            ...rise(b),
+          }}
+        >
           {l(2)}
         </div>
-        <div style={{ ...boxStyle(th, true, l(3), 374), left: 610, top: BOT, width: 374, height: 110, ...rise(b) }}>
+        <div
+          style={{
+            ...boxStyle(th, true, l(3), 374),
+            left: 610,
+            top: BOT,
+            width: 374,
+            height: 110,
+            ...rise(b),
+          }}
+        >
           {l(3)}
         </div>
       </>
@@ -374,7 +493,11 @@ export const DiagramScene: React.FC<{
     });
     return (
       <>
-        <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
+        <svg
+          style={{ position: "absolute", inset: 0 }}
+          width={1080}
+          height={1920}
+        >
           <circle cx={420} cy={CY} r={R} fill={th.panel} opacity={a * a} />
           <circle cx={700} cy={CY} r={R} fill={tint(th, 0.1)} opacity={b * b} />
           <path
@@ -382,15 +505,54 @@ export const DiagramScene: React.FC<{
             fill={th.accent}
             opacity={inter * 0.38}
           />
-          <circle cx={420} cy={CY} r={R} fill="none" stroke={th.ink} strokeWidth={5}
-            pathLength={1} transform={`rotate(-90 420 ${CY})`} style={ring(a)} />
-          <circle cx={700} cy={CY} r={R} fill="none" stroke={th.accent} strokeWidth={5}
-            pathLength={1} transform={`rotate(-90 700 ${CY})`} style={ring(b)} />
+          <circle
+            cx={420}
+            cy={CY}
+            r={R}
+            fill="none"
+            stroke={th.ink}
+            strokeWidth={5}
+            pathLength={1}
+            transform={`rotate(-90 420 ${CY})`}
+            style={ring(a)}
+          />
+          <circle
+            cx={700}
+            cy={CY}
+            r={R}
+            fill="none"
+            stroke={th.accent}
+            strokeWidth={5}
+            pathLength={1}
+            transform={`rotate(-90 700 ${CY})`}
+            style={ring(b)}
+          />
         </svg>
-        <div style={{ ...labelStyle(th, th.ink), left: 96, width: 520, top: CY - 316, fontWeight: 700, fontSize: fitFont(l(0), 30, 520), ...rise(seg(t, 0.5, 0.4), 16) }}>
+        <div
+          style={{
+            ...labelStyle(th, th.ink),
+            left: 96,
+            width: 520,
+            top: CY - 316,
+            fontWeight: 700,
+            fontSize: fitFont(l(0), 30, 520),
+            ...rise(seg(t, 0.5, 0.4), 16),
+          }}
+        >
           {l(0)}
         </div>
-        <div style={{ ...labelStyle(th, th.accent), right: 96, width: 520, top: CY + 270, fontWeight: 700, textAlign: "right", fontSize: fitFont(l(1), 30, 520), ...rise(seg(t, 0.9, 0.4), 16) }}>
+        <div
+          style={{
+            ...labelStyle(th, th.accent),
+            right: 96,
+            width: 520,
+            top: CY + 270,
+            fontWeight: 700,
+            textAlign: "right",
+            fontSize: fitFont(l(1), 30, 520),
+            ...rise(seg(t, 0.9, 0.4), 16),
+          }}
+        >
           {l(1)}
         </div>
         <div
@@ -424,7 +586,11 @@ export const DiagramScene: React.FC<{
   const rail = seg(t, 0.3, 0.9);
   return (
     <>
-      <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
+      <svg
+        style={{ position: "absolute", inset: 0 }}
+        width={1080}
+        height={1920}
+      >
         <path
           d={`M540 ${top + H} V${top + H + (railEnd - top - H) * rail}`}
           stroke={th.line}

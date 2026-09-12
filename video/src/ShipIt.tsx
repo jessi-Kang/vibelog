@@ -112,7 +112,12 @@ export function buildSegments(
   lang: "ko" | "en",
   segMap?: Map<string, { start: number; end: number }>,
 ): Seg[] {
-  const raw: { kind: Kind; from: number; screen?: string; diagram?: DiagramSpec }[] = [];
+  const raw: {
+    kind: Kind;
+    from: number;
+    screen?: string;
+    diagram?: DiagramSpec;
+  }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
@@ -124,7 +129,10 @@ export function buildSegments(
     if (kind === "end") {
       const statAt = statStartOf(script, s, lang);
       if (statAt != null) {
-        from = Math.max(from, statAt + offset + STAT_PUNCH_SEC + STAT_BREATH_SEC);
+        from = Math.max(
+          from,
+          statAt + offset + STAT_PUNCH_SEC + STAT_BREATH_SEC,
+        );
       }
     }
     // 다이어그램이 붙은 문장은 화면 녹화 대신 그림이 뜬다 — 원리를 말하는
@@ -132,13 +140,29 @@ export function buildSegments(
     // 앞 블록과 합치지 않고 항상 제 블록을 갖는다.
     const dia = line?.diagram;
     if (dia) {
-      raw.push({ kind: "diagram", from: raw.length === 0 ? 0 : from, diagram: dia });
+      raw.push({
+        kind: "diagram",
+        from: raw.length === 0 ? 0 : from,
+        diagram: dia,
+      });
     } else if (raw.length === 0) {
       raw.push({ kind, from: 0, screen: line?.screen }); // 첫 장면은 0초부터
-    } else if (raw[raw.length - 1].kind !== kind || raw[raw.length - 1].diagram) {
+    } else if (
+      raw[raw.length - 1].kind !== kind ||
+      raw[raw.length - 1].diagram ||
+      // 같은 장면이라도 **화면이 바뀌면 블록을 끊는다.** 합쳐 버리면 뒤
+      // 문장이 고른 화면이 통째로 버려진다 — 9/12 vibelog 편에서 demo 두
+      // 문장("첫 화면의 숫자" → /, "글 주소도 7자리" → /log)이 한 블록으로
+      // 합쳐져 둘 다 홈만 돌았다. 대본이 문장마다 화면을 고르는 의미가 없어진다
+      // (Jessi 지적: "이야기하는데 화면은 다른 데가 돌아간다")
+      (kind === "phone" &&
+        !!line?.screen &&
+        !!raw[raw.length - 1].screen &&
+        line.screen !== raw[raw.length - 1].screen)
+    ) {
       raw.push({ kind, from, screen: line?.screen });
     } else if (!raw[raw.length - 1].screen && line?.screen) {
-      // 같은 phone 블록에서 화면 지정이 있는 첫 문장을 대표로 쓴다
+      // 화면 지정이 없던 블록은 뒤 문장의 지정을 받아 쓴다
       raw[raw.length - 1].screen = line.screen;
     }
   }
@@ -162,7 +186,10 @@ export function buildSegments(
         // 화면 미지정 블록: 아직 가장 덜 쓴 녹화 화면을 골라 앞 블록과
         // 같은 화면만 반복되는 것을 피한다 (Jessi: 같은 화면 두 번은 의미 없다)
         for (const [p, cand] of segMap) {
-          if (!m || (usedInScreen.get(p) ?? 0) < (usedInScreen.get(key!) ?? 0)) {
+          if (
+            !m ||
+            (usedInScreen.get(p) ?? 0) < (usedInScreen.get(key!) ?? 0)
+          ) {
             key = p;
             m = cand;
           }
@@ -174,7 +201,8 @@ export function buildSegments(
         // 넘어가지 않게 한다 — 반복 프레임보다 엉뚱한 화면이 더 나쁘다
         const blockLen = to - seg.from;
         const segLen = m.end - m.start;
-        seg.sourceOffset = m.start + Math.min(used, Math.max(0, segLen - blockLen));
+        seg.sourceOffset =
+          m.start + Math.min(used, Math.max(0, segLen - blockLen));
         usedInScreen.set(key, used + blockLen);
       }
       // duo 샷의 보조 폰: 주 화면과 '다른' 화면의 구간 시작을 미리 골라 둔다
@@ -221,7 +249,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
     (segments ?? []).map((s) => [s.path, { start: s.start, end: s.end }]),
   );
   const segs = buildSegments(
-    script, timing, total, Boolean(artFiles?.next), offset, coldOpen, lang, segMap,
+    script,
+    timing,
+    total,
+    Boolean(artFiles?.next),
+    offset,
+    coldOpen,
+    lang,
+    segMap,
   );
   // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
   // 같은 데모 연출이 연속되지 않는다 (Jessi 지시)
@@ -326,7 +361,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 videoFile={videoFile}
                 sourceOffsetSec={videoStartSec + seg.sourceOffset}
                 fromFrame={Math.floor(seg.from * fps)}
-                durationInFrames={Math.ceil((seg.to - seg.from + SCENE_FADE) * fps)}
+                durationInFrames={Math.ceil(
+                  (seg.to - seg.from + SCENE_FADE) * fps,
+                )}
                 th={th}
                 fromSec={seg.from}
                 toSec={seg.to}
