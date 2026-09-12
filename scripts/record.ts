@@ -248,10 +248,20 @@ export async function record(
       stops.push({ path: l.screen, ...(find ? { find } : {}) });
     }
   }
-  // 정류장이 하나면 홈을 상비로 함께 녹화 — 폰 데모 블록이 두 번 나올 때
-  // 같은 화면만 반복되지 않게 렌더에 고를 여지를 남긴다
-  // (apart 9/11: 전 문장이 /findreal → 두 블록이 똑같은 화면, Jessi 지적)
-  if (stops.length === 1 && stops[0].path !== "/") stops.push({ path: "/" });
+  // **경로가 하나면 다른 경로를 하나 더 녹화한다.** 렌더가 duo(두 폰) 샷을
+  // 쓸 때 재료가 하나뿐이면 똑같은 화면이 두 번 겹쳐 나온다 (Jessi 지적:
+  // "화면을 1개밖에 쓸 게 없으면 이 포맷을 쓰면 안 되잖아"). 렌더 쪽도
+  // 재료가 없으면 duo를 안 쓰게 막았지만, 재료를 만들어 줄 수 있으면 그게 낫다.
+  if (new Set(stops.map((st) => st.path)).size === 1) {
+    const only = stops[0].path;
+    if (only !== "/") {
+      stops.push({ path: "/" });
+    } else {
+      // 홈뿐이면 사이트의 내부 링크에서 하나 더 고른다
+      const extra = (await tourLinks(page)).find((h) => h !== "/");
+      if (extra) stops.push({ path: extra });
+    }
+  }
   const screenList = [...new Set(stops.map((st) => st.path))];
   const prewarmTargets = script.demo.steps.length
     ? script.demo.steps

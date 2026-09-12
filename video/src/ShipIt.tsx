@@ -57,7 +57,15 @@ export type ShipItProps = {
     | null;
 };
 
-type Kind = "cold" | "hook" | "phone" | "fail" | "end" | "art" | "diagram";
+type Kind =
+  | "cold"
+  | "hook"
+  | "phone"
+  | "fail"
+  | "end"
+  | "art"
+  | "diagram"
+  | "plain";
 
 interface Seg {
   kind: Kind;
@@ -93,6 +101,10 @@ function kindOf(scene: string, hasNextArt: boolean, hasScreen = false): Kind {
   if (scene === "end") return "end";
   // "다음 할 것"은 데모 화면 대신 생성 일러스트 장면으로 — 그래픽이 있을 때만
   if (scene === "next" && hasNextArt) return "art";
+  // 그래픽이 보류인 동안 next가 폰으로 떨어져, 아무 화면이나 붙어 돌았다
+  // ("꼭 마지막엔 이 화면을 쓰기로 한 거야?" — Jessi). 대본이 화면을 고르지
+  // 않았으면 화면을 쓰지 않는다 — 배경과 자막만 (타이포 + 실제 녹화 원칙).
+  if (scene === "next" && !hasScreen) return "plain";
   return "phone";
 }
 
@@ -239,9 +251,12 @@ export function buildSegments(
       }
       // duo 샷의 보조 폰: 주 화면과 '다른' 화면의 구간 시작을 미리 골라 둔다
       // (내레이션 순서상 첫 번째 다른 화면 — 내용 관련 화면이 홈보다 먼저 잡힘)
+      // 같은 페이지의 다른 위치는 duo 재료로 안 쓴다 — 두 폰이 거의 같아 보인다.
+      // 경로 자체가 다른 정류장만 보조 폰에 올린다 (없으면 duo를 안 쓴다)
       if (segMap?.size) {
+        const mainPath = (key ?? "").split("\u0000")[0];
         for (const [p, cand] of segMap) {
-          if (p !== key) {
+          if (p.split("\u0000")[0] !== mainPath) {
             seg.duoAltOffset = cand.start;
             break;
           }
@@ -299,10 +314,16 @@ export const ShipIt: React.FC<ShipItProps> = ({
   segs.forEach((s, i) => {
     if (s.kind === "phone") demoOrdinal.set(i, demoOrdinal.size);
   });
-  const shotOf = (i: number) =>
-    (["phone", "band", "duo"] as const)[
-      (Math.max(0, script.day - 1) + (demoOrdinal.get(i) ?? 0)) % 3
-    ];
+  // 샷 로테이션 — 같은 편에서 폰/밴드/듀오가 돌아간다. 다만 **duo는 서로 다른
+  // 화면이 실제로 둘 있을 때만** 쓴다. 하나뿐인데 duo를 쓰면 두 폰에 똑같은
+  // 화면이 겹쳐 나온다 (Jessi 지적: "화면을 1개밖에 쓸 게 없으면 이 포맷을
+  // 쓰면 안 되잖아"). 그때는 로테이션에서 한 칸 물러나 band로 간다.
+  const shotOf = (i: number): "phone" | "band" | "duo" => {
+    const pick = (Math.max(0, script.day - 1) + (demoOrdinal.get(i) ?? 0)) % 3;
+    const shot = (["phone", "band", "duo"] as const)[pick];
+    if (shot === "duo" && segs[i]?.duoAltOffset == null) return "band";
+    return shot;
+  };
 
   // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은
   // 경계부터 뜬다. 크로스페이드는 레이아웃이 다른 장면끼리 애매하게
