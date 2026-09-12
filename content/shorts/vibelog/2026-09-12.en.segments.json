@@ -2,19 +2,14 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.88,
-      "end": 11.67
-    },
-    {
-      "path": "/",
       "find": "commits today",
-      "start": 12.16,
-      "end": 23.03
+      "start": 1.04,
+      "end": 15.12
     },
     {
       "path": "/log",
-      "start": 23.87,
-      "end": 34.5
+      "start": 15.99,
+      "end": 30.89
     }
   ]
 }
