@@ -385,23 +385,24 @@ export function capCoverage(
 }
 
 /**
- * 아무것도 못 보여주는 문장을 찾아 알린다.
+ * 아무것도 못 보여주는 문장을 찾는다 — **이건 장애다.**
  *
- * 화면(screen/find)도 그림(diagram)도 없는 문장은 배경과 자막만 뜬 빈 화면이
- * 된다 (Jessi 지적). 프롬프트로 막고 상한 순서도 고쳤지만, 대본이 끝내 아무것도
- * 안 고르면 조용히 빈 화면이 나간다 — 그건 눈에 보여야 한다.
+ * 화면(screen/find)도 그림(diagram)도 없는 문장은 배경과 자막만 뜬 빈 화면으로
+ * 나간다. 경고만 남기면 아무도 안 보고 그대로 발행된다 (Jessi: "대본이 화면도
+ * 그림도 안 고르면 장애야. 그럼 영상이 만들어지면 안 되지. 아주 치명적이야").
+ *
+ * 그래서 대본을 받으면 여기서 막는다 — 한 번은 이 문장들을 집어 다시 쓰게 하고,
+ * 그래도 비어 있으면 예외를 던져 **영상을 만들지 않는다.** 쇼츠가 없는 날이
+ * 빈 화면이 든 영상보다 낫다.
+ *
  * hook·end·fail은 제 카드가 있으니 빈 화면이 아니다.
  */
-export function warnBlankScenes(lines: ShortsLine[]): void {
-  const HAS_CARD = new Set(["hook", "end", "fail"]);
-  const blanks = lines.filter(
-    (l) => !HAS_CARD.has(l.scene) && !l.screen && !l.find && !l.diagram,
+const HAS_OWN_CARD = new Set(["hook", "end", "fail"]);
+
+export function blankScenes(lines: ShortsLine[]): ShortsLine[] {
+  return lines.filter(
+    (l) => !HAS_OWN_CARD.has(l.scene) && !l.screen && !l.find && !l.diagram,
   );
-  for (const l of blanks) {
-    console.warn(
-      `[script] 빈 화면 경고 — ${l.scene} 문장에 화면도 그림도 없습니다: "${l.ko.slice(0, 40)}"`,
-    );
-  }
 }
 
 /**
@@ -521,73 +522,124 @@ export async function generateScript(
   const screens = await siteScreens(demoUrl);
 
   const client = new Anthropic();
+  const userPrompt = [
+    `레포: ${repo}`,
+    `날짜: ${date}`,
+    (() => {
+      const n = neighborTemplates(repo, date);
+      return `이웃 편 템플릿 — 직전: ${n.prev ?? "(없음)"}, 다음: ${n.next ?? "(없음)"}`;
+    })(),
+    (() => {
+      const d = neighborDiagrams(repo, date);
+      return `이웃 편이 쓴 다이어그램 — ${d.length ? d.join(", ") : "(없음)"}${
+        d.length ? " (가급적 다른 종류로)" : ""
+      }`;
+    })(),
+    `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
+    ...(screens.length >= 2
+      ? [
+          [
+            "이 사이트의 화면과 **거기 보이는 글자** (경로 — 이름 — 보이는 것):",
+            ...screens.map(
+              (sc) =>
+                `  ${sc.path} — ${sc.label}${sc.sees.length ? ` — ${sc.sees.slice(0, 6).join(" / ")}` : ""}`,
+            ),
+            "",
+            "**화면을 보여줄 문장에는 find를 넣어라 — 그 문장이 말하는 것을",
+            "화면에서 찾을 말로.** 경로(screen)는 힌트일 뿐이고 안 넣어도 된다:",
+            "녹화기가 사이트를 돌며 그 말이 있는 화면을 직접 찾아 거기를 찍는다.",
+            "- find는 문장이 말하는 그것을 가리키는 짧은 말. 위 '보이는 것'에",
+            "  있으면 그 글자를 그대로 쓰는 게 가장 정확하다.",
+            "- 글자 없는 그림(도장·그래프·지도 같은 것)을 말하는 문장이면 그것을",
+            "  부르는 말을 그대로 적는다 — 녹화기가 접근 이름과 크기로 찾는다.",
+            "- 화면에서 보여줄 것이 아니라 원리·구조를 말하는 문장이면 find를",
+            "  비우고 diagram을 붙인다. 둘 다 아니면 둘 다 비운다.",
+            "- screen을 넣을 때는 목록에 있는 경로만. 문장과 맞는 화면이 없으면",
+            "  비워 둔다 — 엉뚱한 화면이 도는 것이 가장 나쁘다.",
+            "- 두 문장이 같은 것을 가리키게 하지 마라. 문장마다 다른 것을 본다.",
+            "- **shot도 정한다** (연출을 내용이 정한다):",
+            '  "focus" = 화면의 한 곳을 이야기할 때 (find와 함께. 크게 붙잡는다),',
+            '  "whole" = 화면 전체의 인상·흐름을 이야기할 때,',
+            '  "compare" = 두 화면을 견주는 문장일 때 (폰 두 대).',
+            "  매 편 같은 순서로 돌리지 마라. 문장이 무엇을 말하는지로만 고른다.",
+            "- **화면을 못 고른 문장에는 diagram을 붙여라.** 화면도 그림도 없으면",
+            "  자막만 뜬 빈 화면이 나간다. 그 문장이 말하는 구조·변화·모음을",
+            "  다섯 종류 중 하나로 옮긴다. 문장 내용에 맞는 것만 — 빈 화면을",
+            "  메우려고 아무 그림이나 붙이면 그게 더 나쁘다.",
+            '- 마지막 "다음 할 것" 문장도 매 편 같은 마무리가 되지 않게 한다.',
+          ].join("\n"),
+        ]
+      : []),
+    `데브로그 제목: ${data.title ?? ""}`,
+    "데브로그 본문:",
+    content,
+  ].join("\n\n");
+
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 16000,
     system: SYSTEM,
-    messages: [
-      {
-        role: "user",
-        content: [
-          `레포: ${repo}`,
-          `날짜: ${date}`,
-          (() => {
-            const n = neighborTemplates(repo, date);
-            return `이웃 편 템플릿 — 직전: ${n.prev ?? "(없음)"}, 다음: ${n.next ?? "(없음)"}`;
-          })(),
-          (() => {
-            const d = neighborDiagrams(repo, date);
-            return `이웃 편이 쓴 다이어그램 — ${d.length ? d.join(", ") : "(없음)"}${
-              d.length ? " (가급적 다른 종류로)" : ""
-            }`;
-          })(),
-          `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
-          ...(screens.length >= 2
-            ? [
-                [
-                  "이 사이트의 화면과 **거기 보이는 글자** (경로 — 이름 — 보이는 것):",
-                  ...screens.map(
-                    (sc) =>
-                      `  ${sc.path} — ${sc.label}${sc.sees.length ? ` — ${sc.sees.slice(0, 6).join(" / ")}` : ""}`,
-                  ),
-                  "",
-                  "**화면을 보여줄 문장에는 find를 넣어라 — 그 문장이 말하는 것을",
-                  "화면에서 찾을 말로.** 경로(screen)는 힌트일 뿐이고 안 넣어도 된다:",
-                  "녹화기가 사이트를 돌며 그 말이 있는 화면을 직접 찾아 거기를 찍는다.",
-                  "- find는 문장이 말하는 그것을 가리키는 짧은 말. 위 '보이는 것'에",
-                  "  있으면 그 글자를 그대로 쓰는 게 가장 정확하다.",
-                  "- 글자 없는 그림(도장·그래프·지도 같은 것)을 말하는 문장이면 그것을",
-                  "  부르는 말을 그대로 적는다 — 녹화기가 접근 이름과 크기로 찾는다.",
-                  "- 화면에서 보여줄 것이 아니라 원리·구조를 말하는 문장이면 find를",
-                  "  비우고 diagram을 붙인다. 둘 다 아니면 둘 다 비운다.",
-                  "- screen을 넣을 때는 목록에 있는 경로만. 문장과 맞는 화면이 없으면",
-                  "  비워 둔다 — 엉뚱한 화면이 도는 것이 가장 나쁘다.",
-                  "- 두 문장이 같은 것을 가리키게 하지 마라. 문장마다 다른 것을 본다.",
-                  "- **shot도 정한다** (연출을 내용이 정한다):",
-                  '  "focus" = 화면의 한 곳을 이야기할 때 (find와 함께. 크게 붙잡는다),',
-                  '  "whole" = 화면 전체의 인상·흐름을 이야기할 때,',
-                  '  "compare" = 두 화면을 견주는 문장일 때 (폰 두 대).',
-                  "  매 편 같은 순서로 돌리지 마라. 문장이 무엇을 말하는지로만 고른다.",
-                  "- **화면을 못 고른 문장에는 diagram을 붙여라.** 화면도 그림도 없으면",
-                  "  자막만 뜬 빈 화면이 나간다. 그 문장이 말하는 구조·변화·모음을",
-                  "  다섯 종류 중 하나로 옮긴다. 문장 내용에 맞는 것만 — 빈 화면을",
-                  "  메우려고 아무 그림이나 붙이면 그게 더 나쁘다.",
-                  '- 마지막 "다음 할 것" 문장도 매 편 같은 마무리가 되지 않게 한다.',
-                ].join("\n"),
-              ]
-            : []),
-          `데브로그 제목: ${data.title ?? ""}`,
-          "데브로그 본문:",
-          content,
-        ].join("\n\n"),
-      },
-    ],
+    messages: [{ role: "user", content: userPrompt }],
   });
-  const text = response.content
-    .filter((b) => b.type === "text")
-    .map((b) => b.text)
-    .join("");
-  const parsed = parseJson(text);
+  const readText = (r: Anthropic.Messages.Message): string =>
+    r.content
+      .filter((b): b is Anthropic.Messages.TextBlock => b.type === "text")
+      .map((b) => b.text)
+      .join("");
+
+  let text = readText(response);
+  let parsed = parseJson(text);
+  let lines = validateLines(
+    parsed.lines,
+    new Set(screens.map((sc) => sc.path)),
+  );
+
+  // 빈 화면이 될 문장이 있으면 그 문장들을 집어 한 번 다시 쓰게 한다.
+  // 고쳐 오면 그걸 쓰고, 그래도 비어 있으면 던진다 — 영상을 만들지 않는다.
+  let blanks = blankScenes(lines);
+  if (blanks.length > 0) {
+    console.warn(
+      `[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks
+        .map((l) => `"${l.ko.slice(0, 24)}"`)
+        .join(", ")}`,
+    );
+    const retry = await client.messages.create({
+      model: MODEL,
+      max_tokens: 16000,
+      system: SYSTEM,
+      messages: [
+        { role: "user", content: userPrompt },
+        { role: "assistant", content: text },
+        {
+          role: "user",
+          content: [
+            "아래 문장들은 화면(screen/find)도 그림(diagram)도 없어 배경과 자막만",
+            "뜬 빈 화면으로 나갑니다. 이건 영상 장애입니다.",
+            ...blanks.map((l) => `  - [${l.scene}] ${l.ko}`),
+            "",
+            "각 문장에 대해 하나를 고르세요 —",
+            "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
+            "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
+            "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
+            "③ 둘 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
+            "   없는 문장은 영상에 자리가 없습니다.",
+            "",
+            "전체 JSON을 같은 형식으로 다시 출력하세요 (다른 문장은 그대로).",
+          ].join("\n"),
+        },
+      ],
+    });
+    text = readText(retry);
+    parsed = parseJson(text);
+    lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
+    blanks = blankScenes(lines);
+  }
+  if (blanks.length > 0) {
+    throw new Error(
+      `빈 화면이 될 문장이 남아 있습니다 (${blanks.length}개) — 영상을 만들지 않습니다: ` +
+        blanks.map((l) => `[${l.scene}] ${l.ko}`).join(" / "),
+    );
+  }
 
   const template = (["ship-it", "fail", "before-after"] as const).includes(
     parsed.template as ShortsTemplate,
@@ -630,19 +682,9 @@ export async function generateScript(
     repo,
     date,
     day: dayNumber(repo, date),
-    lines: (() => {
-      // 다이어그램 개수 상한은 없앴다 — 그림이 내용을 더 잘 설명하면 더 쓰는 게
-      // 맞다. 상한이 있으면 대본이 그 칸에 맞춰 억지로 고르게 된다 (Jessi:
-      // "이런 규칙이 억지로 만들게 하는 요인이야"). 진짜 기준은 개수가 아니라
-      // "화면으로 보여줄 수 있는 것에는 그림을 붙이지 않는다"이고, 그건 프롬프트에
-      // 있다. 대신 아무것도 못 보여주는 문장은 아래에서 경고로 드러낸다.
-      const lines = validateLines(
-        parsed.lines,
-        new Set(screens.map((s) => s.path)),
-      );
-      warnBlankScenes(lines);
-      return lines;
-    })(),
+    // 다이어그램 개수 상한은 없앴다 — 그림이 내용을 더 잘 설명하면 더 쓰는 게
+    // 맞다 (Jessi). 빈 화면은 위에서 막았다 (한 번 교정, 안 되면 예외).
+    lines,
     demo: { url: demoUrl, steps: [] },
     ...(failCard ? { failCard } : {}),
     ...(commits.length ? { commits } : {}),

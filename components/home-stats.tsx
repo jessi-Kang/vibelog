@@ -137,8 +137,12 @@ export function HomeStats({
         ];
 
   return (
-    <div className="flex flex-col gap-3 border-t border-line pt-3.5 md:flex-row md:items-center md:justify-between md:gap-8">
-      <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs leading-snug text-muted md:grid md:max-w-[340px] md:flex-1 md:grid-cols-2 md:gap-x-7 md:gap-y-4">
+    /* 위아래 여백을 같게 — 위 14 / 아래 49로 블록이 위로 치우쳐 있었다
+       (Jessi: "왜 위로 이렇게 치우쳐져 있는거야. 이건 기초적인거야") */
+    <div className="flex flex-col gap-4 border-t border-line pt-6 md:flex-row md:items-center md:justify-between md:gap-8">
+      {/* 좁은 화면에서도 2단 격자 — 한 줄로 흘리면 "3 + 1"로 애매하게 끊긴다
+          (Jessi 지시: 모바일에서 2단 그리드로) */}
+      <div className="grid grid-cols-2 gap-x-5 gap-y-3.5 font-mono text-xs leading-snug text-muted md:max-w-[340px] md:flex-1 md:gap-x-7 md:gap-y-4">
         {facts.map(([k, n, l]) => (
           <Fact key={k} n={n} label={l} />
         ))}

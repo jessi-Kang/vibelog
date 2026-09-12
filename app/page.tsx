@@ -149,7 +149,7 @@ export default function Home() {
     <PageContainer>
       {/* 마스트헤드 */}
       {/* 통계 줄은 전 구간 동일 — 제목 아래 왼쪽 정렬 + 위 구분선 (Jessi 지시) */}
-      <section className="grid items-end gap-4 pt-1 md:gap-5 md:pt-3 lg:pb-2 lg:pt-5">
+      <section className="grid items-end gap-4 border-b border-dashed border-line pb-6 pt-1 md:gap-5 md:pt-3 lg:pt-5">
         <div className="flex flex-col gap-2 md:gap-3">
           <h1 className="m-0 max-w-[22ch] text-[24px] font-bold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
             <T
@@ -186,10 +186,12 @@ export default function Home() {
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
-      {/* 마스트헤드와 본문 사이에 점선 하나 (Jessi 선택 C안) — 통계·잔디가
-          아래 목록으로 흘러 붙어 보였다. 실선은 위 구분선과 같은 무게라
-          화면에 선이 두 줄로 겹쳐 보이고, 점선은 "여기서 끊긴다"만 말한다 */}
-      <div className="flex flex-col gap-10 border-t border-dashed border-line pt-7 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
+      {/* 마스트헤드와 본문 사이 점선은 마스트헤드 섹션의 아래 테두리다
+          (Jessi 선택 C안). 아래쪽 div에 border-t로 달면 그 위 간격을
+          컨테이너 gap(40px)이 정하므로, 선↔내용 거리가 위(24) / 아래(40)로
+          갈려 블록이 위로 치우쳐 보였다 (Jessi 지적). 선을 섹션에 두면
+          양쪽 거리를 여기서 같게 줄 수 있다 */}
+      <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
         <HomeProjects projects={projects} />
         {/* md:items-start는 md 2열 그리드용 — lg 세로 flex에서는 stretch로 되돌려야 카드 폭이 열에 맞는다 */}
         <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-6 lg:flex lg:flex-col lg:items-stretch lg:gap-12">
