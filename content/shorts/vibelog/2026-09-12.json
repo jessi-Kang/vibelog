@@ -8,13 +8,13 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "첫 화면의 커밋 숫자가 멈춰 있었습니다.",
-      "en": "The commit count on the front page was frozen.",
+      "ko": "첫 화면 숫자가 멈춰 있었습니다.",
+      "en": "The number on the front page was stuck.",
       "keywords": [
         "멈춰"
       ],
       "keywordsEn": [
-        "frozen"
+        "stuck"
       ]
     },
     {
@@ -22,46 +22,31 @@
       "ko": "이제는 서버가 5분에 한 번 대신 셉니다.",
       "en": "Now the server counts once every 5 minutes.",
       "keywords": [
-        "서버가"
+        "서버가",
+        "대신"
       ],
       "keywordsEn": [
-        "the server"
+        "server",
+        "counts"
       ],
       "stat": "5분",
       "statEn": "5 minutes"
     },
     {
       "scene": "build",
-      "ko": "방문자가 늘어도 요청은 한 번뿐입니다.",
-      "en": "More visitors, still just one request.",
+      "ko": "방문자가 늘어도 요청 수는 그대로입니다.",
+      "en": "More visitors no longer means more requests.",
       "keywords": [
-        "한 번뿐입니다"
+        "그대로입니다"
       ],
       "keywordsEn": [
-        "one request"
-      ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "방문자 100명",
-          "요청 100번",
-          "요청 1번",
-          "브라우저가 직접",
-          "서버가 대신"
-        ],
-        "labelsEn": [
-          "100 visitors",
-          "100 requests",
-          "1 request",
-          "browser asks",
-          "server asks"
-        ]
-      }
+        "no longer"
+      ]
     },
     {
       "scene": "demo",
-      "ko": "첫 화면의 숫자가 실제로 움직입니다.",
-      "en": "The number on the front page actually moves.",
+      "ko": "홈에서 오늘 커밋 수가 실제로 움직입니다.",
+      "en": "On the home page, today's commit count actually moves.",
       "keywords": [
         "실제로 움직입니다"
       ],
@@ -72,61 +57,75 @@
     },
     {
       "scene": "demo",
-      "ko": "글 주소도 7자리로 짧아졌습니다.",
-      "en": "Post addresses are now just 7 characters.",
+      "ko": "옆의 격자에는 언제 작업했는지가 시간 단위로 보입니다.",
+      "en": "The grid beside it shows when the work happened, hour by hour.",
       "keywords": [
-        "7자리로"
+        "시간 단위로"
       ],
       "keywordsEn": [
-        "7 characters"
+        "hour by hour"
       ],
-      "screen": "/log"
+      "screen": "/"
     },
     {
       "scene": "fail",
       "ko": "전에는 방문자 브라우저가 저마다 직접 물어봤습니다.",
       "en": "Before, every visitor's browser asked on its own.",
       "keywords": [
-        "직접 물어봤습니다"
+        "저마다 직접"
       ],
       "keywordsEn": [
-        "asked on its own"
-      ]
+        "on its own"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "방문자마다 직접 물어봄",
+          "1시간 60번 초과",
+          "거절당함",
+          "어제 숫자 표시"
+        ],
+        "labelsEn": [
+          "each visitor asks",
+          "over 60 per hour",
+          "request refused",
+          "yesterday's number"
+        ]
+      }
     },
     {
       "scene": "fail",
-      "ko": "같은 주소에서는 1시간에 60번까지만 답해 줍니다.",
-      "en": "One address only gets 60 answers per hour.",
+      "ko": "1시간에 60번 제한에 걸리면 화면이 조용히 어제 숫자로 돌아갔습니다.",
+      "en": "Past 60 requests an hour it was refused, and the screen fell back to yesterday's number.",
       "keywords": [
-        "60번까지만"
+        "어제 숫자로"
       ],
       "keywordsEn": [
-        "60 answers"
-      ],
-      "stat": "60번",
-      "statEn": "60 answers"
+        "60 requests",
+        "yesterday's number"
+      ]
     },
     {
       "scene": "next",
-      "ko": "실제 사이트에서 숫자가 진짜 움직이는지 확인해야 합니다.",
-      "en": "I need to see the number really move on the live site.",
+      "ko": "이제 실제 사이트에서 숫자가 진짜 움직이는지 봐야 합니다.",
+      "en": "Now I need to watch the number actually move on the live site.",
       "keywords": [
         "진짜 움직이는지"
       ],
       "keywordsEn": [
-        "really move"
+        "the live site"
       ],
-      "art": "a small gauge needle trembling awake on a dusty dashboard"
+      "art": "a small hand-cranked counter sitting on a windowsill at dawn, its dial caught mid-turn"
     },
     {
       "scene": "end",
-      "ko": "올렸으면 올라갔는지 확인하기로 했습니다.",
-      "en": "Push it, then check that it actually went live.",
+      "ko": "숫자 하나 고치는 데 하루가 갔습니다.",
+      "en": "One number took a whole day to fix.",
       "keywords": [
-        "확인하기로"
+        "하루가"
       ],
       "keywordsEn": [
-        "check"
+        "a whole day"
       ]
     }
   ],
@@ -135,12 +134,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "숫자가 멈춰 있었다",
-    "titleEn": "The number was frozen",
+    "title": "멈춰 있던 숫자",
+    "titleEn": "The frozen number",
     "before": "방문자마다 직접 물어보다 거절당했습니다",
-    "after": "서버가 5분에 한 번 세서 모두에게 같은 숫자를 줍니다",
+    "after": "서버가 5분에 한 번 대신 셉니다",
     "beforeEn": "Every visitor asked directly and got refused",
-    "afterEn": "The server counts every 5 minutes and shares one number"
+    "afterEn": "The server counts once every 5 minutes"
   },
   "commits": [
     [
@@ -309,22 +308,22 @@
   "commitCount": 20,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "첫 화면의 커밋 숫자가 멈춰 있던 이유와, 서버가 5분에 한 번 대신 세게 만든 과정입니다.",
-    "en": "Why the commit count on the front page was frozen, and how the server now counts once every 5 minutes for everyone."
+    "ko": "첫 화면의 커밋 숫자가 멈춰 있던 이유와, 서버가 5분에 한 번 대신 세도록 바꾼 이야기입니다. 옆에는 언제 작업했는지 보이는 시간별 격자도 붙였습니다.",
+    "en": "Why the commit count on the front page was frozen, and how moving the counting to the server every 5 minutes fixed it. Plus an hour-by-hour grid showing when the work happens."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
     "#devlog",
+    "#자동화",
     "#사이드프로젝트",
-    "#웹개발",
     "#buildinpublic",
-    "#쇼츠"
+    "#웹개발"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtyidezj",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtyidgwq",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtyif3c2",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtyif6db"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtyj86kk",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtyj88ua",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtyj9m4w",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtyj9pas"
   }
 }
