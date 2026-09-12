@@ -176,9 +176,18 @@ export default function Home() {
             />
           </p>
         </div>
-        <HomeFacts sources={factSources} active={active} />
-        {/* 커밋 잔디 — 날짜별 커밋 수는 데브로그 frontmatter에 이미 있다 */}
-        <CommitHeatmap hours={commitHours} buildDate={todayKST()} />
+        {/* 통계 줄 + 잔디는 한 덩어리다 — 둘 다 "커밋이 몇 번"을 말한다.
+            좁은 화면에서는 위아래로, md부터는 나란히 둔다. 잔디를 혼자
+            아래에 두면 넓은 화면에서 오른쪽이 통째로 비어 화면이 깨져
+            보였다 (Jessi 지적) */}
+        <div className="flex flex-col gap-3 border-t border-line pt-3.5 md:flex-row md:items-center md:gap-8">
+          <div className="md:flex-1">
+            <HomeFacts sources={factSources} active={active} />
+          </div>
+          <div className="md:w-[56%] md:flex-none lg:w-[552px]">
+            <CommitHeatmap hours={commitHours} buildDate={todayKST()} />
+          </div>
+        </div>
       </section>
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
