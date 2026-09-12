@@ -1,6 +1,7 @@
 # docs
 
-읽는 순서: 01-concept → 02-pipeline-and-setup(1단계) → 04-roadmap-sessions(2~4단계) / 03-shorts-spec + shorts-prototype.html은 2단계 세션 4~8에서
+1·2단계는 끝났다. **지금 돌아가는 것을 알고 싶으면 레포 루트의 `CLAUDE.md` → `03-shorts-spec.md` 순으로 읽는다.**
+아래 문서들은 설계 기록이자 남은 단계의 계획이다: 01-concept(왜) → 02-pipeline-and-setup(파이프라인·구조·운영) → 04-roadmap-sessions(3~4단계).
 
 - `01-concept.md` — 컨셉, 결정 사항, 단계별 MVP
 - `02-pipeline-and-setup.md` — 수집 파이프라인, 계정·키, 레포 구조, 1단계 스코프, 세션별 복붙 프롬프트

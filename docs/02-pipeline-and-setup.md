@@ -12,12 +12,13 @@
   ├─ (선택) devlog/*.md   ← 전역 Stop 훅이 세션 요약을 레포 안에 남김
   └─ (선택) vibelog.json  ← 카드 정보 덮어쓰기용
 
-[vibelog GitHub Action]  ← 매일 밤 23:00 KST 자동 + workflow_dispatch 수동
+[vibelog GitHub Action]  ← 밤 23:00 KST 자동 (백업 23:45·01:00·03:00) + workflow_dispatch 수동
   1. GitHub API: topic `vibelog` 달린 내 레포 전부 조회
   2. 레포별 체크포인트(state.json) 이후의 커밋·PR·devlog 파일 수집
   3. 활동 있는 레포만 Claude API → 데브로그 생성 (KR 원본 + EN)
   4. content/devlog/<repo>/<date>.md 저장, content/projects.json 갱신, state.json 갱신
-  5. 커밋 → Vercel 자동 배포
+  5. 쇼츠 생성 (대본 → 음성 → 화면 녹화 → Remotion 렌더 → Blob 업로드)
+  6. 커밋 → Vercel 자동 배포
 
 [이 Cowork 채팅]  ← 기획·설계만. 파이프라인에 관여하지 않음.
 ```
@@ -44,22 +45,49 @@
 
 ```
 vibelog/
-├─ CLAUDE.md
-├─ app/
-│   ├─ page.tsx                 # 프로젝트 카드 그리드
-│   ├─ projects/[slug]/page.tsx # 프로젝트 상세 + 데브로그 타임라인
-│   └─ log/page.tsx             # 전체 데브로그 피드
-├─ content/
-│   ├─ projects.json            # Action이 생성·갱신 (레포 메타 기반)
-│   ├─ devlog/<repo>/<date>.md  # Action이 생성. frontmatter manual: true면 보호
-│   └─ state.json               # 레포별 마지막 처리 커밋 SHA / 시각
+├─ CLAUDE.md                     # 작업 규칙 (세션 시작 전 필독)
+├─ app/                          # Next.js App Router
+│   ├─ page.tsx                  #   프로젝트 카드 그리드
+│   ├─ projects/[slug]/          #   프로젝트 상세 + 데브로그 타임라인
+│   ├─ log/                      #   전체 피드 + 글 상세
+│   ├─ shorts/                   #   쇼츠 그리드
+│   ├─ offline/                  #   연결 없음 화면 (서비스 워커가 꺼낸다)
+│   ├─ manifest.ts · icon.svg    #   PWA — 설치하면 주소창 없는 앱 창
+│   └─ sitemap.ts · robots.ts · feed.xml/
+├─ components/                   # UI. 다크 기본, 모바일은 하단 탭바
+├─ lib/                          # content 로더 · 포맷 · SITE_URL
+├─ public/sw.js                  # 서비스 워커 (없으면 안드로이드가 앱 대신 바로가기를 만든다)
+├─ content/                      # 파이프라인 산출물 — 손으로 고치지 않는다
+│   ├─ projects.json             #   레포 메타 기반 카드
+│   ├─ devlog/<repo>/<date>.md   #   frontmatter manual: true면 보호
+│   ├─ shorts/<repo>/<date>.*    #   대본 · 타이밍 · 화면 구간 (mp4는 Vercel Blob)
+│   └─ state.json                #   레포별 마지막 처리 SHA · 시각 · 날짜 버킷
 ├─ scripts/
-│   ├─ collect.ts               # GitHub API → 레포별 활동 수집 (Octokit)
-│   ├─ generate.ts              # 수집 결과 → Claude API → MDX (KR/EN)
-│   └─ run.ts                   # collect → generate → 파일 쓰기
+│   ├─ collect.ts                # GitHub API → 레포별 활동 수집 (Octokit)
+│   ├─ generate.ts               # 수집 결과 → 데브로그 MDX (KR/EN)
+│   ├─ script.ts                 # 데브로그 → 쇼츠 대본 (템플릿·다이어그램 선택)
+│   ├─ audio.ts                  # TTS + 발음 교정 + 단어 타이밍
+│   ├─ record.ts                 # 배포 사이트 화면 녹화 (문장↔화면 매칭)
+│   ├─ render.ts · mux.ts        # Remotion 렌더 + 오디오 믹스
+│   ├─ shorts.ts · poster.ts     # 쇼츠 전체 / 썸네일만 재생성 진입점
+│   └─ run.ts                    # 전체 실행 (collect → generate → shorts → 커밋)
+├─ video/src/                    # Remotion 컴포넌트 — 템플릿 3종 · 테마 5종 · 다이어그램 5종
 └─ .github/workflows/
-    └─ devlog.yml               # cron '0 14 * * *' (=23:00 KST) + workflow_dispatch
+    ├─ devlog.yml                # 밤 발행 (23:00 + 백업 23:45·01:00·03:00) + workflow_dispatch
+    ├─ projects.yml              # 30분마다 새 프로젝트 인식만
+    └─ deploy-guard.yml          # Vercel 웹훅 누락 자가 복구
 ```
+
+### 글 날짜는 "그 밤"이다
+
+날짜 버킷은 실행 시각의 벽시계 KST 날짜가 **아니라** 거기서 6시간을 뺀 날이다
+(`publishDateKST`). GitHub cron이 제때 안 돌기 때문이다 — 회차를 통째로
+건너뛰거나(2026-09-11 23:00) 3시간 넘게 밀려서 돈다(예정 14:00 UTC → 실행 17:27).
+벽시계로 잡으면 23:00 회차가 자정을 넘겨 돌 때 그날 글이 다음 날짜로 찍힌다
+(실제로 9/11 글이 02:52에 발행돼 그날 낮 작업이 통째로 빠졌다).
+경계는 KST 06:00 — 03:00까지 밀린 회차도 같은 날 글로 들어가고, 낮에 수동으로
+돌리면 그날 날짜 그대로다. 먼저 돈 회차가 발행을 끝내면 뒤 회차는
+`SCHEDULE_GUARD`가 바로 종료해 이중 발행·TTS 중복 비용이 없다.
 
 ## 3. 각 프로젝트 레포 쪽 규약 (최소)
 
@@ -114,6 +142,16 @@ Vercel의 GitHub 웹훅이 드물게 푸시를 놓쳐 배포가 아예 생성되
 급하면 Vercel 대시보드에서 최신 배포의 Redeploy 한 번이면 된다.
 판별법: 사이트가 낡았는데 `git log origin/<branch>` 헤드 커밋이 Vercel
 배포 목록(githubCommitSha)에 없으면 웹훅 누락이다.
+**자가 복구 워크플로를 붙였다** — `deploy-guard.yml`이 푸시 3분 뒤 Vercel API로
+배포 존재를 확인하고, 없으면 배포를 직접 만든다.
+
+### 운영 노트 — GitHub cron이 안 돌 때
+
+정기 회차가 제때 안 도는 일이 잦다 (2026-09 관측: 예정 14:00 UTC → 실행 17:27,
+그리고 23:00·23:45 두 회차가 통째로 누락된 날). 그래서 회차를 밤새 넉넉히 깔고
+(23:00·23:45·01:00·03:00 KST) 날짜를 "그 밤"으로 잡는다 — 위 §2 참고.
+그래도 아침까지 아무 회차도 안 떴으면 Run workflow로 수동 실행한다 (입력 비움).
+확인: Actions → devlog → 목록에서 `event: schedule` 실행이 있는지.
 
 ## 4. 전역 Stop 훅 (`~/.claude/settings.json`)
 
@@ -122,39 +160,24 @@ Vercel의 GitHub 웹훅이 드물게 푸시를 놓쳐 배포가 아예 생성되
 - 커밋은 안 함. 다음 push 때 코드와 같이 올라감.
 - 첫 vibelog 세션에서 Claude Code에게 이 훅 스크립트를 만들게 하면 됨.
 
-## 5. CLAUDE.md 초안 (vibelog 레포)
+## 5. CLAUDE.md
 
-```md
-# Vibelog
-바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그. 이 레포 자체가 첫 프로젝트.
+초안은 이 문서에 있었으나 지금은 레포 루트의 [`CLAUDE.md`](../CLAUDE.md)가
+실물이자 최신이다 — 원칙·스택·컨벤션·쇼츠 규칙·하지 말 것이 거기 모여 있다.
+세션을 시작할 때 그 파일부터 읽는다. (여기에 사본을 두면 반드시 갈라진다.)
 
-## 원칙
-- 커밋이 곧 콘텐츠. 데브로그는 사람이 쓰지 않고 파이프라인이 생성한다.
-- 수집은 pull 방식: vibelog가 GitHub API로 topic `vibelog` 레포를 읽는다. 프로젝트 레포에 설치할 것은 없다.
-- 손품 최소화: 새 기능은 "Jessi가 할 일이 늘어나는가?"를 먼저 묻는다.
-- 한국어 원본, 영어는 자동 번역.
+## 6. 1단계 스코프 (첫 주말) — 완료
 
-## 스택
-Next.js (App Router) + TypeScript + Tailwind + MDX. 배포 Vercel. Octokit으로 GitHub 읽기. DB는 2단계부터 Neon.
+- [x] Next.js 블로그가 Vercel에 배포됨 (지금은 커스텀 도메인 [vibelog.space](https://vibelog.space))
+- [x] `scripts/collect.ts`가 topic `vibelog` 레포들의 커밋·PR·devlog를 가져옴
+- [x] `scripts/generate.ts`가 Claude API로 데브로그 MDX 생성 (KR/EN)
+- [x] `devlog.yml`이 매일 밤 + 수동 실행되며 content/ 를 커밋
+- [x] 프로젝트 카드 그리드 + 프로젝트 상세 타임라인 렌더
+- [x] 전역 Stop 훅 설치
+- [x] vibelog 레포 자체에 topic `vibelog` 달고, 첫 데브로그가 자동 생성되어 블로그에 뜸
 
-## 컨벤션
-- 커밋 메시지는 데브로그 원료다. 한 줄 요약 + 본문에 "왜"를 쓴다.
-- content/ 밑 파일은 파이프라인이 덮어쓴다. 손수정은 frontmatter `manual: true`로 보호.
-- 프로젝트 상태값: idea | building | preview | live | paused
-- 데브로그 톤: 존댓말 (쇼츠 내레이션과 통일)
-```
-
-## 6. 1단계 스코프 (첫 주말)
-
-- [ ] Next.js 블로그가 Vercel에 배포됨
-- [ ] `scripts/collect.ts`가 topic `vibelog` 레포들의 커밋·PR·devlog를 가져옴
-- [ ] `scripts/generate.ts`가 Claude API로 데브로그 MDX 생성 (KR/EN)
-- [ ] `devlog.yml`이 매일 밤 + 수동 실행되며 content/ 를 커밋
-- [ ] 프로젝트 카드 그리드 + 프로젝트 상세 타임라인 렌더
-- [ ] 전역 Stop 훅 설치
-- [ ] vibelog 레포 자체에 topic `vibelog` 달고, 첫 데브로그가 자동 생성되어 블로그에 뜸
-
-일부러 뺀 것: 쇼츠, 승인 봇, DB, 조회수. 전부 2단계 이후.
+2단계(쇼츠)도 끝났다 — 대본·음성·녹화·렌더·업로드가 밤 실행에 붙어 있다.
+남은 것은 3단계(승인 큐·텔레그램 게시)와 4단계(현황판). `docs/04-roadmap-sessions.md`.
 
 ## 7. 첫 세션 프롬프트 (복붙용)
 
