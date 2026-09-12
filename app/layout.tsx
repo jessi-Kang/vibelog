@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/shell";
 import { InstallAppLink, InstallToast } from "@/components/install-app";
 import { LangProvider, T } from "@/components/lang";
+import { ShareLink } from "@/components/share";
 import { ServiceWorker } from "@/components/service-worker";
 import { getDevlogs, getProjects, getShorts } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -81,6 +82,7 @@ export default function RootLayout({
               © 2026 Jessi
             </a>
             <span className="flex items-center gap-4">
+              <ShareLink />
               <InstallAppLink />
               <a
                 href="https://github.com/jessi-Kang/vibelog"
