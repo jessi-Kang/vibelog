@@ -72,6 +72,32 @@ export function AboutClient() {
         <div className="flex flex-col gap-3.5">
           <SectionHeader title={lang === "ko" ? "소개" : "About"} />
           <p className="text-[15px] leading-relaxed text-ink-soft">{INTRO[lang]}</p>
+          {/* 만든 사람 — 소개 글 바로 아래 바이라인 (Jessi 지시).
+              이름만 또렷하게, 역할은 낮춰서, 링크는 아이콘 하나. */}
+          <p className="m-0 flex flex-wrap items-center gap-x-2 gap-y-1 pt-1 font-mono text-2xs text-muted">
+            <span className="font-bold text-ink-soft">Jessi</span>
+            <span aria-hidden>·</span>
+            <span>
+              {lang === "ko" ? "코딩과 승인만 합니다" : "only codes and approves"}
+            </span>
+            <a
+              href="https://www.linkedin.com/in/ji-hyun-kang-53276696"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hit -m-2 flex p-2 text-muted transition-colors duration-150 hover:text-ink"
+            >
+            <svg
+              aria-hidden
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+            </svg>
+            </a>
+          </p>
         </div>
         {SECTIONS.map((s) => (
           <div key={s.label} className="flex flex-col gap-3 border-t border-line pt-6">
@@ -86,32 +112,6 @@ export function AboutClient() {
             ))}
           </div>
         ))}
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-line pt-6 font-mono text-2xs text-muted">
-          <p className="m-0">
-            {lang === "ko"
-              ? "만든 사람 · Jessi — 코딩과 승인만 합니다"
-              : "Made by Jessi — who only codes and approves"}
-          </p>
-          {/* 아이콘만 (Jessi 지시). 이름이 글자로 안 보이니 aria-label로 남기고,
-              탭 영역은 음수 마진으로 레이아웃을 안 밀면서 넓힌다 */}
-          <a
-            href="https://www.linkedin.com/in/ji-hyun-kang-53276696"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="hit -m-2 flex p-2 text-muted transition-colors duration-150 hover:text-ink"
-          >
-            <svg
-              aria-hidden
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
-            </svg>
-          </a>
-        </div>
       </section>
     </PageContainer>
   );
