@@ -168,7 +168,7 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
   return (
     <>
       <header className="sticky top-0 z-10 border-b border-line bg-bg">
-        <div className="mx-auto flex max-w-[430px] flex-col gap-3 px-5 py-3 md:max-w-[1120px] md:flex-row md:items-center md:justify-between md:px-6 md:py-3.5 lg:px-8">
+        <div className="mx-auto flex max-w-[430px] flex-col gap-3 px-5 py-3 max-[359px]:px-4 md:max-w-[1120px] md:flex-row md:items-center md:justify-between md:px-6 md:py-3.5 lg:px-8">
           <div className="flex min-h-8 items-center justify-between gap-4">
             {detail ? (
               <>
