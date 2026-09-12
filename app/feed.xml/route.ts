@@ -1,5 +1,6 @@
 import { getDevlogs } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { postPath } from "@/lib/post-id";
 
 // 빌드 시점에 정적 생성 — 글은 파이프라인 커밋 → 재배포로만 늘어난다
 export const dynamic = "force-static";
@@ -16,7 +17,7 @@ export function GET() {
   const items = getDevlogs()
     .slice(0, 30)
     .map((d) => {
-      const url = `${SITE_URL}/log/${d.repo}/${d.date}`;
+      const url = `${SITE_URL}${postPath(d)}`;
       // 밤 실행이 23:00 KST(14:00 UTC)에 커밋한다 — 발행 시각 근사
       const pubDate = new Date(`${d.date}T14:00:00Z`).toUTCString();
       const desc = d.summary ?? d.title;
