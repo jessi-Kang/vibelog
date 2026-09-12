@@ -21,27 +21,42 @@ const REPO = "jessi-Kang/vibelog";
 const REF = "claude/file-analysis-dpnhw1";
 
 /**
- * 호출자 확인. 막을 때 **왜** 막았는지 구분해서 알려 준다 — 설정이 안 된 것과
- * 인증이 없는 것이 똑같이 403으로 보이면, 환경변수를 넣고도 들어갔는지 알 수
- * 없다. `curl https://vibelog.space/api/cron/devlog` 하나로 어디까지 됐는지
- * 보이게 하는 게 목적이다:
+ * 호출자 확인. 막을 때 **왜** 막았는지 사람 말로 알려 준다.
  *
- * - 503 `CRON_SECRET 미설정` → Vercel 환경변수가 아직 없다
- * - 503 `GH_PAT 없음`        → 시크릿은 됐고 토큰이 없다
- * - 403 `forbidden`          → 둘 다 됐다. 인증만 없는 것이니 설정은 끝
+ * 설정이 안 된 것과 인증이 없는 것이 똑같이 403으로 보이면, 환경변수를 넣고도
+ * 들어갔는지 알 수 없다. 그래서 브라우저로 이 주소를 그냥 열어 보면 어디까지
+ * 됐는지 한 문장으로 읽히게 했다 (Jessi: curl로 확인하라는 게 무슨 말인지
+ * 모르겠다 — 눌러서 보이는 쪽이 맞다).
+ *
+ *   https://vibelog.space/api/cron/devlog
+ *
+ * 기계는 이 본문을 안 읽는다. 부르는 쪽은 Vercel Cron뿐이고 성공만 본다.
  */
+function say(text: string, status: number): Response {
+  return new Response(`${text}\n`, {
+    status,
+    headers: { "content-type": "text/plain; charset=utf-8" },
+  });
+}
+
 export function guardCron(req: Request): Response | null {
   const secret = process.env.CRON_SECRET;
   if (!secret)
-    return Response.json(
-      {
-        error:
-          "CRON_SECRET 미설정 — Vercel 환경변수에 넣어야 예약 호출을 받습니다",
-      },
-      { status: 503 },
+    return say(
+      "아직입니다 — Vercel 환경변수에 CRON_SECRET이 없습니다. 넣고 재배포하세요.",
+      503,
     );
-  if (req.headers.get("authorization") !== `Bearer ${secret}`)
-    return new Response("forbidden", { status: 403 });
+  if (req.headers.get("authorization") !== `Bearer ${secret}`) {
+    if (!process.env.GH_PAT)
+      return say(
+        "거의 다 됐습니다 — CRON_SECRET은 들어갔고, GH_PAT(Actions: write)이 없습니다.",
+        503,
+      );
+    return say(
+      "설정 완료 — 자동 실행이 살아 있습니다. 이 화면은 정상입니다 (예약 호출만 받습니다).",
+      403,
+    );
+  }
   return null;
 }
 
@@ -51,12 +66,9 @@ export async function dispatch(
 ): Promise<Response> {
   const token = process.env.GH_PAT;
   if (!token)
-    return Response.json(
-      {
-        error:
-          "GH_PAT 없음 — Vercel 환경변수에 Actions:write 토큰이 필요합니다",
-      },
-      { status: 503 },
+    return say(
+      "GH_PAT이 없습니다 — Vercel 환경변수에 Actions: write 토큰을 넣으세요.",
+      503,
     );
 
   const res = await fetch(
