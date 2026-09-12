@@ -1,5 +1,6 @@
 import { OG_CONTENT_TYPE, OG_SIZE, ogCard } from "@/lib/og";
-import { getDevlog, getDevlogs } from "@/lib/content";
+import { getDevlogs } from "@/lib/content";
+import { findByPostId, postId } from "@/lib/post-id";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
@@ -7,20 +8,20 @@ export const alt = "vibelog 데브로그";
 
 // 빌드 때 미리 그린다 — 없으면 크롤러가 올 때마다 폰트를 새로 받는다
 export function generateStaticParams() {
-  return getDevlogs().map((d) => ({ repo: d.repo, date: d.date }));
+  return getDevlogs().map((d) => ({ id: postId(d.repo, d.date) }));
 }
 
 export default async function Image({
   params,
 }: {
-  params: Promise<{ repo: string; date: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const { repo, date } = await params;
-  const d = getDevlog(repo, date);
+  const { id } = await params;
+  const d = findByPostId(getDevlogs(), id);
   return ogCard({
     eyebrow: "devlog",
-    title: d?.title ?? repo,
+    title: d?.title ?? "devlog",
     sub: d?.summary,
-    meta: `${repo} · ${date}`,
+    meta: d ? `${d.repo} \u00b7 ${d.date}` : "vibelog",
   });
 }

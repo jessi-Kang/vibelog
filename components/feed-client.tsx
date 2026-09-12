@@ -5,6 +5,7 @@ import { useLang } from "./lang";
 import { projectColor } from "@/lib/project-color";
 import { EmptyState, SectionHeader } from "./ui";
 import { DevlogTimelineEntry } from "./vibelog";
+import { postPath } from "@/lib/post-id";
 
 export interface FeedItem {
   repo: string;
@@ -157,7 +158,7 @@ export function FeedClient({
           {list.map((d, i) => (
             <DevlogTimelineEntry
               key={`${d.repo}/${d.date}`}
-              href={`/log/${d.repo}/${d.date}`}
+              href={postPath(d)}
               date={en ? (d.dateLabelEn ?? d.dateLabel) : d.dateLabel}
               repo={d.repo}
               title={en ? (d.titleEn ?? d.title) : d.title}

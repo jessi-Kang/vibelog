@@ -12,6 +12,7 @@ import {
   getProjects,
   humanizeLastActive,
 } from "@/lib/content";
+import { postPath } from "@/lib/post-id";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -150,7 +151,7 @@ export default async function ProjectPage({ params }: Props) {
           {logs.map((d, i) => (
             <DevlogTimelineEntry
               key={d.date}
-              href={`/log/${d.repo}/${d.date}`}
+              href={postPath(d)}
               date={<T ko={fmtDate(d.date)} en={fmtDate(d.date, "en")} />}
               title={<T ko={d.title} en={d.titleEn ?? d.title} />}
               summary={

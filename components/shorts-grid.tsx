@@ -6,6 +6,7 @@ import { useLang } from "./lang";
 import type { ShortsMeta } from "@/lib/content";
 import { fmtShort } from "@/lib/format";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
+import { postPath } from "@/lib/post-id";
 
 /** 9:16 쇼츠 썸네일 — 쇼츠 페이지와 글 상세가 같은 문법을 쓴다 (영상 훅 프레임의 포스터) */
 export interface ThumbData {
@@ -90,7 +91,7 @@ export function ShortsGrid({
     <>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
         {shorts.map((s) => {
-          const href = `/log/${s.repo}/${s.date}`;
+          const href = postPath(s);
           // EN이면 영어 훅 프레임 썸네일 — 아직 없으면(구버전) ko 폴백
           const data = {
             ...s,

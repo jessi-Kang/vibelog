@@ -5,6 +5,7 @@ import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader } from "@/components/ui";
 import { DevlogCompactEntry, RunLog } from "@/components/vibelog";
 import { fmtShort, getDevlogs, getProjects, getRunLog } from "@/lib/content";
+import { postPath } from "@/lib/post-id";
 
 const RECENT_MAX = 5;
 
@@ -100,7 +101,7 @@ export default function Home() {
           {devlogs.slice(0, RECENT_MAX).map((d, i, a) => (
             <DevlogCompactEntry
               key={`${d.repo}/${d.date}`}
-              href={`/log/${d.repo}/${d.date}`}
+              href={postPath(d)}
               date={fmtShort(d.date)}
               repo={d.repo}
               title={<T ko={d.title} en={d.titleEn ?? d.title} />}
