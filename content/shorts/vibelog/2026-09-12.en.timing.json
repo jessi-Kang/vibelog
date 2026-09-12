@@ -1,11 +1,11 @@
 {
   "lang": "en",
-  "duration": 30.418,
+  "duration": 28.7,
   "sentences": [
     {
       "index": 0,
       "start": 0,
-      "end": 1.8,
+      "end": 2.009,
       "words": [
         {
           "text": "The",
@@ -13,500 +13,505 @@
           "end": 0.139
         },
         {
-          "text": "number",
-          "start": 0.197,
-          "end": 0.418
+          "text": "commit",
+          "start": 0.186,
+          "end": 0.395
         },
         {
-          "text": "on",
-          "start": 0.464,
-          "end": 0.522
-        },
-        {
-          "text": "the",
-          "start": 0.557,
-          "end": 0.627
-        },
-        {
-          "text": "front",
-          "start": 0.673,
-          "end": 0.871
-        },
-        {
-          "text": "page",
-          "start": 0.917,
-          "end": 1.138
+          "text": "count",
+          "start": 0.453,
+          "end": 0.662
         },
         {
           "text": "was",
-          "start": 1.173,
-          "end": 1.277
+          "start": 0.72,
+          "end": 0.824
         },
         {
-          "text": "stuck.",
-          "start": 1.324,
-          "end": 1.8
+          "text": "stuck",
+          "start": 0.848,
+          "end": 1.068
+        },
+        {
+          "text": "at",
+          "start": 1.115,
+          "end": 1.184
+        },
+        {
+          "text": "21.",
+          "start": 1.242,
+          "end": 2.009
         }
       ]
     },
     {
       "index": 1,
-      "start": 2.496,
-      "end": 4.702,
+      "start": 2.612,
+      "end": 4.865,
       "words": [
         {
           "text": "Now",
-          "start": 2.496,
-          "end": 2.647
+          "start": 2.612,
+          "end": 2.752
         },
         {
           "text": "the",
-          "start": 2.694,
-          "end": 2.763
+          "start": 2.798,
+          "end": 2.868
         },
         {
           "text": "server",
-          "start": 2.81,
-          "end": 3.053
+          "start": 2.914,
+          "end": 3.181
         },
         {
           "text": "counts",
-          "start": 3.123,
-          "end": 3.39
+          "start": 3.251,
+          "end": 3.529
         },
         {
           "text": "once",
-          "start": 3.46,
-          "end": 3.646
+          "start": 3.599,
+          "end": 3.796
         },
         {
           "text": "every",
-          "start": 3.669,
-          "end": 3.855
+          "start": 3.831,
+          "end": 4.029
         },
         {
           "text": "5",
-          "start": 3.924,
-          "end": 4.133
+          "start": 4.098,
+          "end": 4.272
         },
         {
           "text": "minutes.",
-          "start": 4.191,
-          "end": 4.702
+          "start": 4.331,
+          "end": 4.865
         }
       ]
     },
     {
       "index": 2,
-      "start": 5.085,
-      "end": 7.384,
+      "start": 5.306,
+      "end": 7.105,
       "words": [
         {
-          "text": "More",
-          "start": 5.085,
-          "end": 5.271
-        },
-        {
-          "text": "visitors",
+          "text": "Every",
           "start": 5.306,
-          "end": 5.689
+          "end": 5.561
         },
         {
-          "text": "no",
-          "start": 5.747,
-          "end": 5.84
+          "text": "visitor",
+          "start": 5.619,
+          "end": 5.956
         },
         {
-          "text": "longer",
-          "start": 5.921,
-          "end": 6.165
+          "text": "sees",
+          "start": 6.014,
+          "end": 6.2
         },
         {
-          "text": "means",
+          "text": "the",
           "start": 6.223,
-          "end": 6.432
+          "end": 6.293
         },
         {
-          "text": "more",
-          "start": 6.502,
-          "end": 6.653
+          "text": "same",
+          "start": 6.327,
+          "end": 6.525
         },
         {
-          "text": "requests.",
-          "start": 6.687,
-          "end": 7.384
+          "text": "number.",
+          "start": 6.56,
+          "end": 7.105
         }
       ]
     },
     {
       "index": 3,
-      "start": 7.825,
-      "end": 10.89,
+      "start": 7.488,
+      "end": 9.88,
       "words": [
         {
-          "text": "On",
-          "start": 7.825,
-          "end": 7.964
+          "text": "The",
+          "start": 7.488,
+          "end": 7.605
+        },
+        {
+          "text": "number",
+          "start": 7.663,
+          "end": 7.883
+        },
+        {
+          "text": "on",
+          "start": 7.918,
+          "end": 7.976
         },
         {
           "text": "the",
-          "start": 7.999,
-          "end": 8.069
+          "start": 8.011,
+          "end": 8.081
         },
         {
-          "text": "home",
-          "start": 8.115,
-          "end": 8.278
+          "text": "front",
+          "start": 8.127,
+          "end": 8.348
         },
         {
-          "text": "page,",
-          "start": 8.301,
-          "end": 8.719
-        },
-        {
-          "text": "today's",
-          "start": 8.963,
-          "end": 9.288
-        },
-        {
-          "text": "commit",
-          "start": 9.334,
-          "end": 9.59
-        },
-        {
-          "text": "count",
-          "start": 9.648,
-          "end": 9.868
+          "text": "page",
+          "start": 8.382,
+          "end": 8.673
         },
         {
           "text": "actually",
-          "start": 9.927,
-          "end": 10.31
+          "start": 8.719,
+          "end": 9.091
         },
         {
-          "text": "moves.",
-          "start": 10.368,
-          "end": 10.89
+          "text": "moves",
+          "start": 9.137,
+          "end": 9.358
+        },
+        {
+          "text": "now.",
+          "start": 9.416,
+          "end": 9.88
         }
       ]
     },
     {
       "index": 4,
-      "start": 11.331,
-      "end": 14.628,
+      "start": 10.391,
+      "end": 12.725,
       "words": [
         {
           "text": "The",
-          "start": 11.331,
-          "end": 11.447
+          "start": 10.391,
+          "end": 10.519
         },
         {
           "text": "grid",
-          "start": 11.494,
-          "end": 11.656
+          "start": 10.577,
+          "end": 10.751
         },
         {
           "text": "beside",
-          "start": 11.703,
-          "end": 12.005
+          "start": 10.797,
+          "end": 11.157
         },
         {
           "text": "it",
-          "start": 12.04,
-          "end": 12.109
+          "start": 11.192,
+          "end": 11.262
+        },
+        {
+          "text": "even",
+          "start": 11.32,
+          "end": 11.505
         },
         {
           "text": "shows",
-          "start": 12.156,
-          "end": 12.411
-        },
-        {
-          "text": "when",
-          "start": 12.446,
-          "end": 12.585
+          "start": 11.552,
+          "end": 11.784
         },
         {
           "text": "the",
-          "start": 12.62,
-          "end": 12.69
+          "start": 11.819,
+          "end": 11.889
         },
         {
-          "text": "work",
-          "start": 12.736,
-          "end": 12.921
+          "text": "dawn",
+          "start": 11.935,
+          "end": 12.132
         },
         {
-          "text": "happened,",
-          "start": 12.968,
-          "end": 13.49
-        },
-        {
-          "text": "hour",
-          "start": 13.664,
-          "end": 13.932
-        },
-        {
-          "text": "by",
-          "start": 13.99,
-          "end": 14.094
-        },
-        {
-          "text": "hour.",
-          "start": 14.152,
-          "end": 14.628
+          "text": "hours.",
+          "start": 12.167,
+          "end": 12.725
         }
       ]
     },
     {
       "index": 5,
-      "start": 15.232,
-      "end": 18.32,
+      "start": 13.328,
+      "end": 15.999,
       "words": [
         {
-          "text": "Before,",
-          "start": 15.232,
-          "end": 15.812
-        },
-        {
-          "text": "every",
-          "start": 16.056,
-          "end": 16.288
+          "text": "Every",
+          "start": 13.328,
+          "end": 13.595
         },
         {
           "text": "visitor's",
-          "start": 16.335,
-          "end": 16.706
+          "start": 13.642,
+          "end": 14.06
         },
         {
           "text": "browser",
-          "start": 16.741,
-          "end": 17.171
+          "start": 14.106,
+          "end": 14.466
         },
         {
-          "text": "asked",
-          "start": 17.322,
-          "end": 17.623
+          "text": "was",
+          "start": 14.512,
+          "end": 14.617
         },
         {
-          "text": "on",
-          "start": 17.658,
-          "end": 17.728
+          "text": "counting",
+          "start": 14.687,
+          "end": 14.988
         },
         {
-          "text": "its",
-          "start": 17.774,
-          "end": 17.879
+          "text": "the",
+          "start": 15.023,
+          "end": 15.093
         },
         {
-          "text": "own.",
-          "start": 17.925,
-          "end": 18.32
+          "text": "commits",
+          "start": 15.128,
+          "end": 15.43
+        },
+        {
+          "text": "itself.",
+          "start": 15.464,
+          "end": 15.999
         }
       ]
     },
     {
       "index": 6,
-      "start": 19.435,
-      "end": 24.148,
+      "start": 16.509,
+      "end": 21.165,
       "words": [
         {
-          "text": "Past",
-          "start": 19.435,
-          "end": 19.644
-        },
-        {
-          "text": "60",
-          "start": 19.69,
-          "end": 19.957
-        },
-        {
-          "text": "requests",
-          "start": 20.027,
-          "end": 20.363
-        },
-        {
-          "text": "an",
-          "start": 20.398,
-          "end": 20.456
-        },
-        {
-          "text": "hour",
-          "start": 20.491,
-          "end": 20.677
+          "text": "Once",
+          "start": 16.509,
+          "end": 16.765
         },
         {
           "text": "it",
-          "start": 20.747,
-          "end": 20.828
+          "start": 16.8,
+          "end": 16.858
         },
         {
-          "text": "was",
-          "start": 20.863,
-          "end": 20.956
-        },
-        {
-          "text": "refused,",
-          "start": 21.014,
-          "end": 21.768
-        },
-        {
-          "text": "and",
-          "start": 22.012,
-          "end": 22.151
+          "text": "hit",
+          "start": 16.916,
+          "end": 17.055
         },
         {
           "text": "the",
-          "start": 22.198,
-          "end": 22.267
+          "start": 17.09,
+          "end": 17.16
+        },
+        {
+          "text": "limit",
+          "start": 17.218,
+          "end": 17.485
+        },
+        {
+          "text": "of",
+          "start": 17.543,
+          "end": 17.601
+        },
+        {
+          "text": "60",
+          "start": 17.694,
+          "end": 17.984
+        },
+        {
+          "text": "per",
+          "start": 18.042,
+          "end": 18.146
+        },
+        {
+          "text": "hour,",
+          "start": 18.181,
+          "end": 18.634
+        },
+        {
+          "text": "the",
+          "start": 18.878,
+          "end": 18.994
         },
         {
           "text": "screen",
-          "start": 22.302,
-          "end": 22.569
+          "start": 19.029,
+          "end": 19.307
+        },
+        {
+          "text": "quietly",
+          "start": 19.365,
+          "end": 19.69
         },
         {
           "text": "fell",
-          "start": 22.616,
-          "end": 22.778
+          "start": 19.749,
+          "end": 19.899
         },
         {
           "text": "back",
-          "start": 22.836,
-          "end": 22.999
+          "start": 19.958,
+          "end": 20.108
         },
         {
           "text": "to",
-          "start": 23.045,
-          "end": 23.092
+          "start": 20.167,
+          "end": 20.236
         },
         {
-          "text": "yesterday's",
-          "start": 23.161,
-          "end": 23.603
+          "text": "an",
+          "start": 20.306,
+          "end": 20.364
         },
         {
-          "text": "number.",
-          "start": 23.649,
-          "end": 24.148
+          "text": "old",
+          "start": 20.41,
+          "end": 20.55
+        },
+        {
+          "text": "value.",
+          "start": 20.596,
+          "end": 21.165
         }
       ]
     },
     {
       "index": 7,
-      "start": 24.961,
-      "end": 27.794,
+      "start": 21.769,
+      "end": 24.729,
       "words": [
         {
-          "text": "Now",
-          "start": 24.961,
-          "end": 25.135
+          "text": "Next",
+          "start": 21.769,
+          "end": 22.094
         },
         {
           "text": "I",
-          "start": 25.193,
-          "end": 25.216
+          "start": 22.152,
+          "end": 22.175
         },
         {
           "text": "need",
-          "start": 25.286,
-          "end": 25.437
+          "start": 22.256,
+          "end": 22.43
         },
         {
           "text": "to",
-          "start": 25.46,
-          "end": 25.507
+          "start": 22.465,
+          "end": 22.523
         },
         {
           "text": "watch",
-          "start": 25.553,
-          "end": 25.75
+          "start": 22.593,
+          "end": 22.802
         },
         {
           "text": "the",
-          "start": 25.809,
-          "end": 25.878
+          "start": 22.86,
+          "end": 22.93
         },
         {
           "text": "number",
-          "start": 25.925,
-          "end": 26.157
+          "start": 22.988,
+          "end": 23.243
         },
         {
-          "text": "actually",
-          "start": 26.215,
-          "end": 26.586
+          "text": "really",
+          "start": 23.324,
+          "end": 23.58
         },
         {
           "text": "move",
-          "start": 26.644,
-          "end": 26.819
+          "start": 23.649,
+          "end": 23.858
         },
         {
           "text": "on",
-          "start": 26.853,
-          "end": 26.923
+          "start": 23.893,
+          "end": 23.951
         },
         {
           "text": "the",
-          "start": 26.969,
-          "end": 27.039
+          "start": 23.986,
+          "end": 24.056
         },
         {
           "text": "live",
-          "start": 27.097,
-          "end": 27.306
+          "start": 24.102,
+          "end": 24.288
         },
         {
           "text": "site.",
-          "start": 27.329,
-          "end": 27.794
+          "start": 24.323,
+          "end": 24.729
         }
       ]
     },
     {
       "index": 8,
-      "start": 28.398,
-      "end": 30.418,
+      "start": 25.24,
+      "end": 28.7,
       "words": [
         {
-          "text": "One",
-          "start": 28.398,
-          "end": 28.618
+          "text": "Fixing",
+          "start": 25.24,
+          "end": 25.6
         },
         {
-          "text": "number",
-          "start": 28.665,
-          "end": 28.932
+          "text": "it",
+          "start": 25.658,
+          "end": 25.716
         },
         {
-          "text": "took",
-          "start": 29.001,
-          "end": 29.141
+          "text": "isn't",
+          "start": 25.763,
+          "end": 25.948
         },
         {
-          "text": "a",
-          "start": 29.187,
-          "end": 29.21
+          "text": "the",
+          "start": 25.983,
+          "end": 26.053
         },
         {
-          "text": "whole",
-          "start": 29.257,
-          "end": 29.454
+          "text": "end;",
+          "start": 26.111,
+          "end": 26.471
         },
         {
-          "text": "day",
-          "start": 29.489,
-          "end": 29.628
+          "text": "I'll",
+          "start": 26.854,
+          "end": 27.028
         },
         {
-          "text": "to",
-          "start": 29.675,
-          "end": 29.721
+          "text": "check",
+          "start": 27.063,
+          "end": 27.249
         },
         {
-          "text": "fix.",
-          "start": 29.791,
-          "end": 30.418
+          "text": "that",
+          "start": 27.295,
+          "end": 27.4
+        },
+        {
+          "text": "it",
+          "start": 27.458,
+          "end": 27.516
+        },
+        {
+          "text": "actually",
+          "start": 27.55,
+          "end": 27.864
+        },
+        {
+          "text": "went",
+          "start": 27.899,
+          "end": 28.038
+        },
+        {
+          "text": "live.",
+          "start": 28.096,
+          "end": 28.7
         }
       ]
     }
