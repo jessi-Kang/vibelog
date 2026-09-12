@@ -13,8 +13,13 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
-import { generateDevlog, translateCommitLines, translateLine } from "./generate";
+import {
+  generateDevlog,
+  translateCommitLines,
+  translateLine,
+} from "./generate";
 import { runShorts } from "./shorts";
+import { checkDemoScreens } from "./shorts-types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
@@ -53,7 +58,9 @@ function loadState(): State {
   }
 }
 
-function autoStatus(a: RepoActivity): "building" | "preview" | "live" | "paused" {
+function autoStatus(
+  a: RepoActivity,
+): "building" | "preview" | "live" | "paused" {
   // 배포 주소가 있어도 릴리즈 선언(GitHub Release 발행) 전이면 preview —
   // 가배포와 정식 공개를 구분한다. 강제 지정은 vibelog.json status.
   if (a.homepage) return a.released ? "live" : "preview";
@@ -63,7 +70,10 @@ function autoStatus(a: RepoActivity): "building" | "preview" | "live" | "paused"
 
 async function updateProjects(activities: RepoActivity[]): Promise<void> {
   // 설명 번역 캐시 — 원문이 안 바뀐 레포는 이전 번역을 재사용한다 (API 절약)
-  const prev = new Map<string, { description?: string; descriptionEn?: string }>();
+  const prev = new Map<
+    string,
+    { description?: string; descriptionEn?: string }
+  >();
   try {
     for (const p of JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"))) {
       prev.set(p.slug, p);
@@ -85,7 +95,8 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
       descriptionEn.set(a.repo, await translateLine(a.description));
     } catch (err) {
       console.warn(`- ${a.repo} 설명 번역 실패 (ko로 폴백):`, err);
-      if (cached?.descriptionEn) descriptionEn.set(a.repo, cached.descriptionEn);
+      if (cached?.descriptionEn)
+        descriptionEn.set(a.repo, cached.descriptionEn);
     }
   }
 
@@ -166,7 +177,8 @@ async function writeDevlog(
     const old = matter(fs.readFileSync(file, "utf8")).data;
     if (Array.isArray(old.shasEn)) {
       for (const s of old.shasEn) {
-        if (Array.isArray(s) && s.length >= 2) cached.set(String(s[0]), String(s[1]));
+        if (Array.isArray(s) && s.length >= 2)
+          cached.set(String(s[0]), String(s[1]));
       }
     }
   } catch {
@@ -174,7 +186,9 @@ async function writeDevlog(
   }
   const missing = shas.filter(([sha]) => !cached.has(sha));
   try {
-    const translated = await translateCommitLines(missing.map(([, msg]) => msg));
+    const translated = await translateCommitLines(
+      missing.map(([, msg]) => msg),
+    );
     missing.forEach(([sha], i) => cached.set(sha, translated[i]));
   } catch (err) {
     console.warn(`- ${repo}/${date} 커밋 메시지 번역 실패 (ko로 폴백):`, err);
@@ -227,7 +241,9 @@ function writeCommitHours(activities: RepoActivity[]): void {
     }
   }
   // 다시 센 기간의 시작 — 그 이후 날짜는 이번 계산이 진실이다 (커밋이 0이면 0)
-  const from = new Date(Date.now() + 9 * 3600 * 1000 - HOURS_DAYS * 24 * 3600 * 1000)
+  const from = new Date(
+    Date.now() + 9 * 3600 * 1000 - HOURS_DAYS * 24 * 3600 * 1000,
+  )
     .toISOString()
     .slice(0, 10);
   for (const date of Object.keys(hours)) {
@@ -242,7 +258,9 @@ function writeCommitHours(activities: RepoActivity[]): void {
     (n, day) => n + day.reduce((x, y) => x + y, 0),
     0,
   );
-  console.log(`잔디: 최근 ${HOURS_DAYS}일 커밋 ${total}개 (${Object.keys(fresh).length}일)`);
+  console.log(
+    `잔디: 최근 ${HOURS_DAYS}일 커밋 ${total}개 (${Object.keys(fresh).length}일)`,
+  );
 }
 
 async function main(): Promise<void> {
@@ -322,14 +340,16 @@ async function main(): Promise<void> {
       `프로젝트 목록/메타 변경 감지: [${activities.map((a) => a.repo).join(", ")}]`,
     );
     await updateProjects(activities);
-  writeCommitHours(activities);
+    writeCommitHours(activities);
     console.log("projects.json 갱신 완료");
     return;
   }
 
-  const runLines: { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" }[] = [
-    { text: "npx tsx scripts/run.ts", kind: "cmd" },
-  ];
+  const runLines: {
+    text: string;
+    textEn?: string;
+    kind?: "cmd" | "ok" | "fail";
+  }[] = [{ text: "npx tsx scripts/run.ts", kind: "cmd" }];
 
   const activities = await collect(state, date);
   runLines.push({
@@ -402,8 +422,24 @@ async function main(): Promise<void> {
       try {
         await runShorts(repo, date);
         runLines.push({ text: `shorts   · ${repo}/${date} (ko, en)` });
+        // 데모 화면이 한 곳으로 몰렸으면 남긴다 — 같은 페이지가 비율만 달리
+        // 되풀이되는 영상은 봐야 알게 되는 부류다
+        const collapse = checkDemoScreens(repo, date);
+        if (collapse) {
+          runLines.push({
+            text: `warn     · ${repo}/${date} 데모 화면 중복 — 같은 자리를 두 번 보여줍니다 (${collapse.repeated.join(", ")}, 정류장 ${collapse.stops}개)`,
+            textEn: `warn     · ${repo}/${date} duplicate demo screen — same view shown twice (${collapse.repeated.join(", ")}, ${collapse.stops} stops)`,
+            kind: "fail",
+          });
+          console.warn(
+            `데모 화면 중복: ${repo}/${date} ${collapse.repeated.join(", ")} (정류장 ${collapse.stops}개)`,
+          );
+        }
       } catch (err) {
-        console.error(`- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`, err);
+        console.error(
+          `- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`,
+          err,
+        );
         runLines.push({
           text: `shorts   · ${repo} 실패 — 글 발행은 계속`,
           textEn: `shorts   · ${repo} failed — post still published`,
