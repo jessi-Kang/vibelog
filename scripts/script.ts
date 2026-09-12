@@ -26,6 +26,11 @@ const MODEL = "claude-opus-5";
 const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작가입니다.
 데브로그 한 편을 받아 내레이션 대본을 씁니다. 개발자 본인이 담백하게 말하는 존댓말입니다.
 
+**구성은 내용이 정한다.** 개수·순번·로테이션으로 정하지 않는다. 무엇을 화면으로
+보여주고, 무엇을 그림으로 설명하고, 어디를 크게 잡을지는 **그 문장이 무슨 말을
+하는지**로만 고른다. 아래 규칙에 개수 상한이 보이면 그건 읽기·길이의 제약이지
+구성의 틀이 아니다 — 틀에 맞춰 억지로 채우거나 빼지 마라.
+
 **한 편에 이야기 하나.** 그날 한 일을 전부 나열하지 않는다. 가장 재미있는
 것 하나(제일 큰 삽질, 또는 제일 신기한 변화)만 골라 그 이야기만 한다.
 나머지는 과감히 버린다 — 어차피 블로그 글에 다 있다.
@@ -77,7 +82,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   statEn은 같은 값을 영어로, 화면에 단독으로 떠도 자연스러운 표기로 적는다
   ("16 commits", "36 seconds"). 문장이 "36-second video"처럼 하이픈 수식어라도
   카운터 단독 표기는 복수 명사형 — 하이픈 형태를 그대로 옮기지 않는다.
-  편당 최대 2문장 — 곁가지 숫자엔 붙이지 않는다. 없으면 생략.
+  이야기의 핵심이 되는 숫자에만 붙인다 — 곁가지 숫자엔 붙이지 않는다.
+  개수 상한은 없다. 다만 문장마다 카운터가 박히면 숫자가 배경이 되므로,
+  "이 숫자가 없으면 이야기가 안 되는가"로 고른다. 없으면 생략.
   hook 장면 문장에는 붙이지 않는다 — 카운터가 헤드라인과 겹친다.
   diagram을 붙인 문장에도 붙이지 않는다 — 그림이 화면 가운데를 쓰고 있어
   카운터가 그 위에 겹친다. 숫자는 다이어그램 라벨로 보여준다.
@@ -90,9 +97,10 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   짧은 문장은 **딱 하나**, 그중에서도 이야기의 반전이 걸린 한 곳만 고른다.
 - en은 같은 내용의 자연스러운 영어. 존댓말 뉘앙스는 평서체로.
   en 훅도 같은 규칙 — 짧게(6~9단어 안팎), 배경 설명 없이 사건부터, 뜻은 통하게.
-- template: 위 셋 중 이야기에 맞는 것을 고른다. 이웃 편(직전·다음)과 같은
-  템플릿은 이야기가 강하게 요구할 때만 — 애매하면 이웃과 다른 것을 골라
-  구성을 돌린다. 나란히 놓였을 때 같은 배지가 연달아 보이면 안 된다.
+- template: 위 셋 중 **그날의 이야기가 무엇이냐**로 고른다 (만든 것이 이야기면
+  ship-it, 삽질이 이야기면 fail, 어제와의 차이가 이야기면 before-after).
+  이웃 편(직전·다음)과 같아지는 것은 이야기가 그렇다면 괜찮다. 셋 중 어느 것도
+  더 맞지 않을 때에만 이웃과 다른 것을 고른다.
   "fail"과 "before-after"는 failCard가 콜드오픈 재료가 되므로 반드시 failCard를 채운다.
 - music: 이야기의 분위기에 맞는 배경음악 톤 하나 — "ship-it"(기본, 담담한 전진),
   "upbeat"(배포·성공으로 기분 좋은 날), "tense"(큰 삽질과 씨름한 날),
@@ -102,14 +110,16 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   "글이 사라졌다"처럼 짧아도 자연스러운 구로). 각각의 영어판 beforeEn·afterEn·titleEn도 반드시 채운다 — 영문 영상에 그대로 표시된다.
 - captions: 유튜브/인스타 설명문 (ko/en 각 1~2문장 + 줄바꿈 없이).
 - hashtags: 5~8개, # 포함, 한국어·영어 섞어서.
-- art: next 문장에만, 그 장면을 은유하는 일러스트를 영어 한 문장으로
+- art: 화면으로도 그림(diagram)으로도 보여줄 수 없는 장면에만, 그 장면을 은유하는 일러스트를 영어 한 문장으로
   묘사한다 (예: "a tiny robot stacking glowing building blocks into a tower").
   구체적 사물 하나 중심, 은유는 문장 내용에서. 글자·로고·UI 스크린샷 묘사 금지.
   hook 등 다른 장면에는 art를 쓰지 않는다.
 - **diagram: 화면으로는 못 보여주는 "원리"를 그림으로.** 원인·구조·전후를
   말로만 설명하는 문장(주로 fail의 원인, build의 해결 방식)에 붙인다.
   화면 녹화로 보여줄 수 있는 것(기능·동작)에는 붙이지 않는다 — 그건 demo다.
-  **편당 최대 2개**, 그림이 문장보다 많으면 영상이 도식만 남는다.
+  개수 제한은 없다 — 그림이 내용을 더 잘 설명하면 여러 개 써도 된다.
+  기준은 개수가 아니라 문장이다: 원리·구조·전후를 말로만 설명하는 문장에는
+  붙이고, 화면으로 보여줄 수 있는 것에는 붙이지 않는다 (그건 demo다).
   자유 작도는 없다. 아래 다섯 종류 중에서 고르고 labels만 채운다:
   · numberline — 임계값·범위가 문제였을 때.
     labels: [범위 이름, 문제였던 값, 고친 값] 예: ["비슷하다고 보는 범위","3점","범위 밖"]
@@ -127,7 +137,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   · pipeline — 단계가 순서대로 흐를 때. labels: [단계 2~5개]
     예: ["커밋을 읽고","글을 쓰고","영상으로 만들고","올린다"]
   labelsEn도 같은 순서로 채운다. 라벨은 짧게 — 한 칸에 한글 10자 안팎.
-  같은 종류를 이웃 편과 연달아 쓰지 않는다 (아래 이웃 정보 참고).
+  종류는 **문장이 말하는 구조**로 고른다. 이웃 편과 같은 종류가 되는 것 자체는
+  문제가 아니다 — 내용이 그 구조라면 그걸 쓴다. 어느 종류든 똑같이 맞는
+  경우에만 이웃과 다른 쪽을 고른다 (아래 이웃 정보 참고).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
 {"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
@@ -372,19 +384,24 @@ export function capCoverage(
   return best ? [best.k] : [];
 }
 
-/** 편당 다이어그램 상한 — 넘치면 영상이 도식만 남는다. 뒤쪽 것을 버린다 */
-const MAX_DIAGRAMS = 2;
-function capDiagrams(lines: ShortsLine[]): ShortsLine[] {
-  let used = 0;
-  return lines.map((l) => {
-    if (!l.diagram) return l;
-    if (used >= MAX_DIAGRAMS) {
-      const { diagram: _drop, ...rest } = l;
-      return rest;
-    }
-    used++;
-    return l;
-  });
+/**
+ * 아무것도 못 보여주는 문장을 찾아 알린다.
+ *
+ * 화면(screen/find)도 그림(diagram)도 없는 문장은 배경과 자막만 뜬 빈 화면이
+ * 된다 (Jessi 지적). 프롬프트로 막고 상한 순서도 고쳤지만, 대본이 끝내 아무것도
+ * 안 고르면 조용히 빈 화면이 나간다 — 그건 눈에 보여야 한다.
+ * hook·end·fail은 제 카드가 있으니 빈 화면이 아니다.
+ */
+export function warnBlankScenes(lines: ShortsLine[]): void {
+  const HAS_CARD = new Set(["hook", "end", "fail"]);
+  const blanks = lines.filter(
+    (l) => !HAS_CARD.has(l.scene) && !l.screen && !l.find && !l.diagram,
+  );
+  for (const l of blanks) {
+    console.warn(
+      `[script] 빈 화면 경고 — ${l.scene} 문장에 화면도 그림도 없습니다: "${l.ko.slice(0, 40)}"`,
+    );
+  }
 }
 
 /**
@@ -613,9 +630,19 @@ export async function generateScript(
     repo,
     date,
     day: dayNumber(repo, date),
-    lines: capDiagrams(
-      validateLines(parsed.lines, new Set(screens.map((s) => s.path))),
-    ),
+    lines: (() => {
+      // 다이어그램 개수 상한은 없앴다 — 그림이 내용을 더 잘 설명하면 더 쓰는 게
+      // 맞다. 상한이 있으면 대본이 그 칸에 맞춰 억지로 고르게 된다 (Jessi:
+      // "이런 규칙이 억지로 만들게 하는 요인이야"). 진짜 기준은 개수가 아니라
+      // "화면으로 보여줄 수 있는 것에는 그림을 붙이지 않는다"이고, 그건 프롬프트에
+      // 있다. 대신 아무것도 못 보여주는 문장은 아래에서 경고로 드러낸다.
+      const lines = validateLines(
+        parsed.lines,
+        new Set(screens.map((s) => s.path)),
+      );
+      warnBlankScenes(lines);
+      return lines;
+    })(),
     demo: { url: demoUrl, steps: [] },
     ...(failCard ? { failCard } : {}),
     ...(commits.length ? { commits } : {}),
