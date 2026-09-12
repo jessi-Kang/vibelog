@@ -1,6 +1,7 @@
 "use client";
 /** 소개 — 이 사이트에서 유일하게 사람이 쓴 글. 언어는 헤더의 전역 설정을 따른다 */
 import { useLang } from "@/components/lang";
+import { AnnotatedText, useGlossary } from "@/components/glossary";
 import { PageContainer } from "@/components/page-container";
 import { SectionHeader } from "@/components/ui";
 
@@ -11,8 +12,8 @@ interface Section {
 }
 
 const INTRO = {
-  ko: "안녕하세요. 저는 제시, 바이브 코딩을 즐기는 바이브 코더입니다. 여기는 제가 만들고 있는 것들의 기록이죠. 여기 올라오는 글은 제가 쓰지 않습니다. 커밋이 곧 콘텐츠가 되도록, 파이프라인이 매일 밤 대신 씁니다. 단, 이 소개만은 예외입니다. 부디 같이 즐겨주세요.",
-  en: "Hi, I'm Jessi — a vibe coder who enjoys vibe coding. This is a record of the things I'm building. I don't write the posts here: so that commits become the content, a pipeline writes them for me every night. Only this introduction is the exception. I hope you'll enjoy it with me.",
+  ko: "안녕하세요. 저는 제시, 바이브 코딩을 즐기는 바이브 코더입니다. 여기는 제가 만들고 있는 것들의 기록이죠. 여기 올라오는 글은 제가 쓰지 않습니다. [[commit]]이 곧 콘텐츠가 되도록, [[pipeline]]이 매일 밤 대신 씁니다. 단, 이 소개만은 예외입니다. 부디 같이 즐겨주세요.",
+  en: "Hi, I'm Jessi — a vibe coder who enjoys vibe coding. This is a record of the things I'm building. I don't write the posts here: so that [[commit]] become the content, a [[pipeline]] writes them for me every night. Only this introduction is the exception. I hope you'll enjoy it with me.",
 };
 
 const SECTIONS: Section[] = [
@@ -35,16 +36,16 @@ const SECTIONS: Section[] = [
     title: { ko: "어떻게 돌아가나", en: "How it works" },
     body: [
       {
-        ko: "매일 밤 자동화가 그날의 커밋과 작업 기록을 모아, AI가 데브로그를 한국어·영어로 씁니다. 같은 밤에 그 글을 30~45초 세로 영상으로도 만듭니다 — 대본을 뽑고, 미리 복제해 둔 제 목소리로 내레이션을 입히고, 실제 배포된 화면을 녹화해 합칩니다.",
-        en: "Each night, automation gathers the day's commits and work records, and AI writes the devlog in Korean and English. The same night it turns the post into a 30–45 second vertical video — drafting a script, narrating it in a cloned copy of my voice, and stitching in recordings of the actual deployed site.",
+        ko: "매일 밤 자동화가 그날의 커밋과 작업 기록을 모아, AI가 [[devlog]]를 한국어·영어로 씁니다. 같은 밤에 그 글을 30~45초 세로 영상으로도 만듭니다 — 대본을 뽑고, 미리 복제해 둔 제 목소리로 내레이션을 입히고, 실제 배포된 화면을 녹화해 합칩니다.",
+        en: "Each night, automation gathers the day's commits and work records, and AI writes the [[devlog]] in Korean and English. The same night it turns the post into a 30–45 second vertical video — drafting a script, narrating it in a cloned copy of my voice, and stitching in recordings of the actual deployed site.",
       },
       {
         ko: "글도 영상도 사람이 만들지 않습니다. 품질이 마음에 안 드는 날만 버튼 하나로 다시 만들게 합니다.",
         en: "No human makes the posts or the videos. Only on days when the quality isn't right do I press one button to have them remade.",
       },
       {
-        ko: "새 프로젝트를 등록하는 데 필요한 건 레포에 붙이는 표식(topic) 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. 표식이 붙은 레포에 커밋이 생기면, 그날 밤 카드가 생기고 제작기가 쌓이기 시작합니다.",
-        en: "Registering a new project takes one label (a repo topic) — nothing gets installed in the project itself. Once a labeled repo has commits, a card appears that night and its build log starts piling up.",
+        ko: "새 프로젝트를 등록하는 데 필요한 건 [[repo]]에 붙이는 [[topic]] 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. 표식이 붙은 레포에 커밋이 생기면, 그날 밤 카드가 생기고 제작기가 쌓이기 시작합니다.",
+        en: "Registering a new project takes one label (a [[repo]] [[topic]]) — nothing gets installed in the project itself. Once a labeled repo has commits, a card appears that night and its build log starts piling up.",
       },
     ],
   },
@@ -66,12 +67,19 @@ const SECTIONS: Section[] = [
 
 export function AboutClient() {
   const { lang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치가 바꾼다
+  // 열린 주석은 페이지에 하나 — 다른 말을 누르면 앞엣것이 닫힌다
+  const [openNote, setOpenNote] = useGlossary();
   return (
     <PageContainer>
       <section className="mx-auto flex w-full max-w-[680px] flex-col gap-10">
         <div className="flex flex-col gap-3.5">
           <SectionHeader title={lang === "ko" ? "소개" : "About"} />
-          <p className="text-[15px] leading-relaxed text-ink-soft">{INTRO[lang]}</p>
+          <AnnotatedText
+            text={INTRO[lang]}
+            open={openNote}
+            onToggle={setOpenNote}
+            className="m-0 text-[15px] leading-relaxed text-ink-soft"
+          />
           {/* 만든 사람 — 소개 글 바로 아래 바이라인 (Jessi 지시).
               이름만 또렷하게, 역할은 낮춰서, 링크는 이름에 바로 붙는 작은
               아이콘 하나. 아이콘이 작아진 만큼 패딩으로 탭 영역을 지킨다. */}
@@ -109,9 +117,13 @@ export function AboutClient() {
             </div>
             <h2 className="text-lg font-bold text-ink">{s.title[lang]}</h2>
             {s.body.map((p, i) => (
-              <p key={i} className="text-[15px] leading-relaxed text-ink-soft">
-                {p[lang]}
-              </p>
+              <AnnotatedText
+                key={i}
+                text={p[lang]}
+                open={openNote}
+                onToggle={setOpenNote}
+                className="m-0 text-[15px] leading-relaxed text-ink-soft"
+              />
             ))}
           </div>
         ))}
