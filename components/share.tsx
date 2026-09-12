@@ -71,7 +71,7 @@ export function ShareLink() {
       // 결과는 라벨이 바뀌는 것으로 알린다. 탭 영역은 음수 마진으로 푸터 줄
       // 높이를 안 밀면서 넓힌다.
       aria-label={label[lang]}
-      className="hit -m-2.5 flex cursor-pointer p-2.5 text-muted transition-colors duration-150 hover:text-ink"
+      className="hit -my-2.5 flex cursor-pointer p-2.5 text-muted transition-colors duration-150 hover:text-ink"
     >
       {/* 복사 결과는 눈으로도 보여야 한다 — 아이콘이 잠깐 체크로 바뀐다 */}
       <svg
