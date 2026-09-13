@@ -8,98 +8,85 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "글 제목이 명령으로 읽힐 뻔했습니다.",
-      "en": "A post title nearly ran as a command.",
+      "ko": "글 제목에 기호 하나면 사이트가 뚫렸습니다.",
+      "en": "A symbol in a post title broke the site.",
       "keywords": [
-        "명령으로"
+        "기호 하나면"
       ],
       "keywordsEn": [
-        "nearly ran"
-      ]
+        "broke"
+      ],
+      "screen": "/log",
+      "shot": "whole"
     },
     {
       "scene": "build",
-      "ko": "사람이 읽기 전에 글이 그대로 올라갑니다.",
-      "en": "Posts go live before any human reads them.",
+      "ko": "기호를 걸러 내는 방법은 언젠가 뚫립니다.",
+      "en": "Filtering the symbols always loses eventually.",
       "keywords": [
-        "읽기 전에"
+        "걸러 내는"
       ],
       "keywordsEn": [
-        "before any human"
+        "Filtering"
       ],
-      "screen": "/about",
-      "find": "어떻게 돌아가나",
-      "findEn": "how it works",
-      "shot": "focus"
+      "motif": "leak"
     },
     {
       "scene": "build",
-      "ko": "제목에 기호 하나만 섞이면 명령이 됐습니다.",
-      "en": "One symbol in a title could turn into a command.",
+      "ko": "그래서 문장이 들어갈 자리 자체를 막았습니다.",
+      "en": "So I sealed the spot the sentence goes into.",
       "keywords": [
-        "기호 하나만"
+        "자리 자체를"
       ],
       "keywordsEn": [
-        "One symbol"
+        "sealed the spot"
       ],
       "diagram": {
         "kind": "fork",
         "labels": [
-          "제목 속 기호",
-          "명령으로 실행",
+          "AI가 쓴 제목",
+          "언젠가 뚫림",
           "그냥 글자",
-          "막기 전",
-          "막은 뒤"
+          "걸러 내기",
+          "자리 막기"
         ],
         "labelsEn": [
-          "symbol in a title",
-          "runs as code",
+          "AI-written title",
+          "broken eventually",
           "just text",
-          "before",
-          "after"
+          "filtering",
+          "sealing the spot"
         ],
         "pick": 2
       }
     },
     {
       "scene": "demo",
-      "ko": "이제 어떤 기호가 와도 그냥 글자로 보입니다.",
-      "en": "Now any symbol just shows up as text.",
+      "ko": "이제는 어떤 기호를 넣어도 그냥 글자로만 보입니다.",
+      "en": "Now any symbol just shows up as text and nothing more.",
       "keywords": [
-        "그냥 글자로"
+        "그냥 글자로만"
       ],
       "keywordsEn": [
-        "shows up"
+        "as text"
       ],
       "screen": "/",
       "find": "최근 데브로그",
-      "findEn": "recent devlogs",
+      "findEn": "recent devlog",
       "shot": "focus"
     },
     {
-      "scene": "demo",
-      "ko": "페이지마다 붙는 안전 설정 5개도 넣었습니다.",
-      "en": "I also added 5 safety settings to every page.",
-      "keywords": [
-        "안전 설정"
-      ],
-      "keywordsEn": [
-        "5 safety settings"
-      ],
-      "stat": "5개",
-      "statEn": "5 settings",
-      "motif": "stack"
-    },
-    {
       "scene": "fail",
-      "ko": "30분마다 도는 자동 실행은 계속 죽었습니다.",
-      "en": "The job that runs every 30 minutes kept dying.",
+      "ko": "그 사이 영상 만들기는 3번 연속 실패했습니다.",
+      "en": "Meanwhile the video build failed 3 times in a row.",
       "keywords": [
-        "계속 죽었습니다"
+        "3번 연속"
       ],
       "keywordsEn": [
-        "kept"
+        "3 times"
       ],
+      "stat": "3번",
+      "statEn": "3 failures",
       "screen": "/",
       "find": "지난 실행",
       "findEn": "last run",
@@ -107,34 +94,34 @@
     },
     {
       "scene": "fail",
-      "ko": "파일 2개가 바뀌는데 1개만 저장했습니다.",
-      "en": "Each run changed 2 files and saved only 1 of them.",
+      "ko": "전날 넣은 검사 기능을 영상 쪽이 읽지 못했습니다.",
+      "en": "The video side couldn't read a check I had added the day before.",
       "keywords": [
-        "1개만"
+        "검사 기능을"
       ],
       "keywordsEn": [
-        "only 1"
+        "couldn't read"
       ],
       "diagram": {
         "kind": "pipeline",
         "labels": [
-          "파일 2개가 바뀌고",
-          "1개만 저장하고",
-          "저장이 거절되고",
-          "다음 회차도 실패"
+          "검사 기능 추가",
+          "영상 쪽도 같이 읽음",
+          "부품을 못 읽음",
+          "영상 만들기 실패"
         ],
         "labelsEn": [
-          "2 files change",
-          "only 1 saved",
-          "save rejected",
-          "next run fails"
+          "added a check",
+          "video side reads it too",
+          "can't read the part",
+          "video build fails"
         ]
       }
     },
     {
       "scene": "next",
       "ko": "다음은 장면에 넣을 움직이는 그림을 고릅니다.",
-      "en": "Next I pick moving drawings for the scenes.",
+      "en": "Next I'll pick moving drawings for the scenes.",
       "keywords": [],
       "keywordsEn": [
         "moving drawings"
@@ -144,13 +131,13 @@
     },
     {
       "scene": "end",
-      "ko": "구멍은 막을 수 있을 때 막는 게 쌉니다.",
-      "en": "A hole is cheapest to close while you still can.",
+      "ko": "구멍 하나 막았고, 오늘 글도 알아서 올라갑니다.",
+      "en": "One hole closed, and today's post goes up on its own.",
       "keywords": [
-        "막을 수 있을 때"
+        "구멍 하나"
       ],
       "keywordsEn": [
-        "cheapest"
+        "on its own"
       ]
     }
   ],
@@ -159,12 +146,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "저장이 거절됐습니다",
-    "titleEn": "The save kept getting rejected",
-    "before": "바뀐 파일 2개 중 1개만 저장해서 거절됐습니다",
-    "after": "남은 파일까지 챙겨 저장이 통과했습니다",
-    "beforeEn": "Only 1 of the 2 changed files got saved, so the save was rejected",
-    "afterEn": "The run now saves both files and the save goes through"
+    "title": "영상이 3번 연속 실패",
+    "titleEn": "3 builds failed in a row",
+    "before": "전날 넣은 검사 기능을 영상 쪽이 읽지 못했습니다.",
+    "after": "검사 기능을 다른 자리로 옮기고, 미리 잡는 점검을 만들었습니다.",
+    "beforeEn": "The video side couldn't read a check added the day before.",
+    "afterEn": "I moved the check elsewhere and built an inspection that catches it early."
   },
   "commits": [
     [
@@ -277,22 +264,22 @@
   "commitCount": 13,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "사람 검토 없이 글이 올라가는 블로그라, 제목에 섞인 기호가 명령으로 읽히던 구멍을 막았습니다. 30분마다 돌던 자동 실행이 스스로 실패를 반복하던 것도 고쳤습니다.",
-    "en": "Posts here go live without review, so I closed the hole where a symbol in a title could run as a command. I also fixed the job that kept re-creating its own failure every 30 minutes."
+    "ko": "사람 검토 없이 글이 올라가는 블로그라, 제목에 섞인 기호가 명령으로 읽힐 수 있었습니다. 걸러 내는 대신 문장이 들어갈 자리 자체를 막았습니다.",
+    "en": "Posts here go live without review, so a symbol in a title could be read as an instruction. Instead of filtering input, I sealed the spot the sentence goes into."
   },
   "hashtags": [
     "#vibelog",
-    "#devlog",
+    "#개발일지",
     "#보안",
-    "#자동화",
     "#websecurity",
-    "#buildinpublic",
-    "#개발일지"
+    "#devlog",
+    "#자동화",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.poster.jpg?v=mtzw3dpz",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.mp4?v=mtzw3h3b",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.poster.jpg?v=mtzw4ufe",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.mp4?v=mtzw4wu2"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.poster.jpg?v=mtzz4lkn",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.mp4?v=mtzz4mvy",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.poster.jpg?v=mtzz5w5o",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.mp4?v=mtzz5yfw"
   }
 }
