@@ -1,0 +1,694 @@
+<title>빈 자리 모티프 열여섯</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+
+<style>
+  /* 쇼츠 테마 다섯 — video/src/theme.ts의 값을 그대로 옮겼다.
+     페이지가 테마를 갈아입으므로 영상에서 보일 모습 그대로 비교된다. */
+  :root {
+    --bg: #0a0e14; --panel: #141b24; --panel2: #1b2430; --line: #26313f;
+    --ink: #f3efe6; --muted: #8c98a8; --accent: #5ee1c3; --radius: 28px;
+    --sans: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+  [data-theme="blueprint"] {
+    --bg: #0d1b2e; --panel: #122540; --panel2: #173050; --line: #2a4a75;
+    --ink: #edf2fa; --muted: #6d84a3; --accent: #7fb0ff; --radius: 8px;
+  }
+  [data-theme="signal"] {
+    --bg: #131110; --panel: #1c1815; --panel2: #241a13; --line: #2a2522;
+    --ink: #f5efe8; --muted: #8a807a; --accent: #ff6b35; --radius: 24px;
+  }
+  [data-theme="paper"] {
+    --bg: #eff1f4; --panel: #ffffff; --panel2: #e4e8ed; --line: #dde1e7;
+    --ink: #171a1f; --muted: #8a919b; --accent: #0f7b5f; --radius: 20px;
+  }
+  [data-theme="highlighter"] {
+    --bg: #0c0c0d; --panel: #161618; --panel2: #1d1d20; --line: #232326;
+    --ink: #fafaf7; --muted: #77777b; --accent: #ffd84d; --radius: 4px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); word-break: keep-all; line-height: 1.6;
+    transition: background 200ms ease, color 200ms ease;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  header { display: flex; flex-direction: column; gap: 14px; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  h1 { margin: 0; font-size: clamp(26px, 6vw, 38px); font-weight: 700; letter-spacing: -.02em; text-wrap: balance; }
+  .lede { margin: 0; color: var(--muted); font-size: 15px; max-width: 64ch; }
+
+  .bar {
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0;
+    padding: 0; border: 0;
+  }
+  .bar legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .bar button {
+    font-family: var(--mono); font-size: 12px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px;
+    min-height: 40px; padding: 0 13px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--panel); color: var(--muted);
+    transition: color 150ms ease, border-color 150ms ease;
+  }
+  .bar button .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+  .bar button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+  .bar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .group { margin-top: 30px; }
+  .group h2 {
+    margin: 0 0 4px; font-family: var(--mono); font-size: 12px; font-weight: 400;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  .group p.note { margin: 0 0 14px; font-size: 13px; color: var(--muted); max-width: 60ch; }
+
+  .grid { display: grid; gap: 14px; }
+  @media (min-width: 620px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 980px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+  .motif {
+    display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 14px;
+    align-items: center;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 14px;
+  }
+  @media (max-width: 400px) { .motif { grid-template-columns: 96px minmax(0, 1fr); gap: 11px; padding: 12px; } }
+
+  /* 무대에서 자른다. 전에는 svg가 overflow: visible이라 밖에서 들어오는 것들이
+     (gate의 네모, tag의 표시표, scan의 막대) 타일 밖 카드 위에 그대로 그려졌다.
+     자르는 것이 먼저다 — 페이드만 넣으면 흐릿하게라도 여전히 밖에 보인다. */
+  .stage {
+    aspect-ratio: 1; max-width: 100%;
+    background: var(--panel2); border-radius: calc(var(--radius) * .5);
+    display: grid; place-items: center; overflow: hidden;
+  }
+  .stage svg { width: 100%; height: 100%; }
+
+  .name { margin: 0; font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .08em; }
+  .what { margin: 2px 0 7px; font-size: 14px; font-weight: 700; }
+  .said {
+    margin: 0; font-size: 12px; color: var(--muted);
+    border-left: 2px solid var(--line); padding-left: 9px;
+  }
+
+  /* 선 그림 공통 — 한 그리드, 한 굵기, 한 박자. 아이콘 팩의 규율이 이것이다 */
+  .ln { fill: none; stroke: var(--muted); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+  .ln.ink { stroke: var(--ink); }
+  .ln.hi { stroke: var(--accent); }
+  .ln.faint { opacity: .26; }
+  .fl { fill: var(--muted); }
+  .fl.ink { fill: var(--ink); }
+  .fl.hi { fill: var(--accent); }
+
+  /* ── 박자표 ──────────────────────────────────────────────────────────
+     순서는 **키프레임 안의 구간**으로 만든다. 지연(delay)으로는 못 만든다 —
+     애니메이션마다 자기 구간이 달라서(draw는 0~55%, pop은 46~62%), 지연을
+     조금 주면 늦게 시작해야 할 것이 먼저 그려진다. fanin에서 그게 드러났고
+     같은 병이 전부에 깔려 있었다.
+
+     한 편이 4초. 공통 골격은 이렇다.
+       0~10%    가만히 — 멈춰 있는 첫 프레임이 읽혀야 한다
+       10~55%   움직임
+       55~70%   뜻이 박히는 순간 (강조색이 여기서 켜진다)
+       70~100%  머무름 — 보는 사람이 읽을 시간
+     계속 흐르는 것(gate·scan·watch)만 이 골격 대신 등장·퇴장을 따로 태운다. */
+
+  .cycle {
+    animation-duration: 4s; animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.4, 0, .2, 1); animation-fill-mode: both;
+    /* 열자마자 보이는 첫 프레임이 **완성된 그림**이어야 한다. 0%에서 시작하면
+       열여섯 중 절반이 빈 칸으로 뜬다 (missing은 아예 아무것도 없었다).
+       음수 지연으로 머무름 구간(75%)에서 시작한다 — 박자는 그대로다 */
+    animation-delay: -3s;
+  }
+  .lin { animation-timing-function: linear; }
+  /* 선을 감출 때 dasharray를 `1`로 두면 안 된다 — 패턴이 [1 켜짐 / 1 꺼짐]이라
+     offset 1에서 길이 0짜리 다음 칸이 선 **끝점**에 걸려, round linecap이 거기에
+     점을 찍는다. fanin에서 선 셋이 모이는 자리(끝점이 셋 다 같다)에 점이 미리
+     그려져 보이던 것이 이것이다. 꺼짐 칸을 선보다 길게(`1 2`) 둔다.
+
+     시작 offset은 1이 아니라 **1.06**이다. 1에서 출발하면 이징이 느린 초반에
+     길이가 거의 0인 토막이 한동안 멈춰 있고, round linecap 때문에 그게 선
+     **시작점**의 점으로 보인다 (merge는 선이 둘이라 점도 둘이었다).
+     0.06만큼을 안 보이는 채로 흘려보내면 선은 이미 자란 상태로 나타난다 */
+  .pop { transform-box: fill-box; transform-origin: 50% 50%; }
+  .grow { transform-origin: 50% 92px; }
+
+  /* loop — 원을 다 그린 뒤 화살촉, 그다음 가운데 점 */
+  @keyframes lpDraw { 0%, 6% { stroke-dashoffset: 1.06; } 50%, 100% { stroke-dashoffset: 0; } }
+  @keyframes lpTip { 0%, 48% { opacity: 0; } 58%, 100% { opacity: 1; } }
+  @keyframes lpDot { 0%, 58% { transform: scale(0); } 70%, 100% { transform: scale(1); } }
+  .lp-draw { stroke-dasharray: 1 2; animation-name: lpDraw; }
+  .lp-tip { animation-name: lpTip; }
+  .lp-dot { animation-name: lpDot; }
+
+  /* watch — 막대가 46%에 정확히 가운데를 지나고, 그때 점이 켜진다 */
+  @keyframes wtBar {
+    0%, 4% { transform: translateX(-44px); opacity: 0; }
+    12% { opacity: 1; }
+    46% { transform: translateX(0); }
+    80% { opacity: 1; }
+    88%, 100% { transform: translateX(44px); opacity: 0; }
+  }
+  @keyframes wtDot { 0%, 42% { opacity: 0; } 52%, 100% { opacity: 1; } }
+  .wt-bar { animation-name: wtBar; }
+  .wt-dot { animation-name: wtDot; }
+
+  /* gate — 셋이 줄지어 **문을 지나** 화면 밖으로 빠진다. 전에는 문 앞(56px)에서
+     멈춰서, 검토를 통과하는 그림이 아니라 문 앞에 쌓이는 그림이었다.
+     들고 나는 자리는 투명도로 가린다 — 화면 밖에서 튀어 들어오지 않도록 */
+  @keyframes gtB1 {
+    0%, 2% { transform: translateX(-50px); opacity: 0; }
+    10%, 28% { opacity: 1; }
+    36%, 100% { transform: translateX(122px); opacity: 0; }
+  }
+  @keyframes gtB2 {
+    0%, 20% { transform: translateX(-50px); opacity: 0; }
+    28%, 46% { opacity: 1; }
+    54%, 100% { transform: translateX(122px); opacity: 0; }
+  }
+  @keyframes gtB3 {
+    0%, 38% { transform: translateX(-50px); opacity: 0; }
+    46%, 64% { opacity: 1; }
+    72%, 100% { transform: translateX(122px); opacity: 0; }
+  }
+  /* 강조 상자가 문을 지나는 순간(≈60%)에 맞춰 켠다 */
+  @keyframes gtChk { 0%, 60% { opacity: 0; } 70%, 100% { opacity: 1; } }
+  .gt-b1 { animation-name: gtB1; } .gt-b2 { animation-name: gtB2; }
+  .gt-b3 { animation-name: gtB3; } .gt-chk { animation-name: gtChk; }
+
+  /* stack — 하나씩 또렷하게 쌓인다 */
+  @keyframes stB1 { 0%, 6% { transform: scaleY(0); } 24%, 100% { transform: scaleY(1); } }
+  @keyframes stB2 { 0%, 18% { transform: scaleY(0); } 36%, 100% { transform: scaleY(1); } }
+  @keyframes stB3 { 0%, 30% { transform: scaleY(0); } 48%, 100% { transform: scaleY(1); } }
+  @keyframes stB4 { 0%, 42% { transform: scaleY(0); } 60%, 100% { transform: scaleY(1); } }
+  .st-1 { animation-name: stB1; } .st-2 { animation-name: stB2; }
+  .st-3 { animation-name: stB3; } .st-4 { animation-name: stB4; }
+
+  /* 갈아치우기 — merge·refine 공통. 옛 것이 비킨 뒤에 새 것이 그려진다 */
+  @keyframes swOld { 0%, 16% { opacity: 1; } 36%, 100% { opacity: 0; } }
+  @keyframes swNew { 0%, 20% { stroke-dashoffset: 1.06; } 60%, 100% { stroke-dashoffset: 0; } }
+  @keyframes swDot { 0%, 60% { transform: scale(0); } 72%, 100% { transform: scale(1); } }
+  .sw-old { animation-name: swOld; }
+  .sw-new { stroke-dasharray: 1 2; animation-name: swNew; }
+  .sw-dot { animation-name: swDot; }
+
+  /* fanin — 모임 셋 → 허브 → 나감 → 화살촉 */
+  @keyframes fiA { 0% { stroke-dashoffset: 1.06; } 20%, 100% { stroke-dashoffset: 0; } }
+  @keyframes fiB { 0%, 9% { stroke-dashoffset: 1.06; } 29%, 100% { stroke-dashoffset: 0; } }
+  @keyframes fiC { 0%, 18% { stroke-dashoffset: 1.06; } 38%, 100% { stroke-dashoffset: 0; } }
+  @keyframes fiHub { 0%, 40% { transform: scale(0); } 54%, 100% { transform: scale(1); } }
+  @keyframes fiOut { 0%, 56% { stroke-dashoffset: 1.06; } 76%, 100% { stroke-dashoffset: 0; } }
+  @keyframes fiTip { 0%, 78% { opacity: 0; } 88%, 100% { opacity: 1; } }
+  .fi-a { stroke-dasharray: 1 2; animation-name: fiA; }
+  .fi-b { stroke-dasharray: 1 2; animation-name: fiB; }
+  .fi-c { stroke-dasharray: 1 2; animation-name: fiC; }
+  .fi-hub { animation-name: fiHub; }
+  .fi-out { stroke-dasharray: 1 2; animation-name: fiOut; }
+  .fi-tip { animation-name: fiTip; }
+
+  /* limit — 셋째가 천장에 닿는 순간 표시가 켜진다 */
+  @keyframes lmB1 { 0%, 6% { transform: scaleY(0); } 24%, 100% { transform: scaleY(1); } }
+  @keyframes lmB2 { 0%, 18% { transform: scaleY(0); } 36%, 100% { transform: scaleY(1); } }
+  @keyframes lmB3 { 0%, 32% { transform: scaleY(0); } 54%, 100% { transform: scaleY(1); } }
+  @keyframes lmHit { 0%, 54% { opacity: 0; } 64%, 100% { opacity: 1; } }
+  .lm-1 { animation-name: lmB1; } .lm-2 { animation-name: lmB2; }
+  .lm-3 { animation-name: lmB3; } .lm-hit { animation-name: lmHit; }
+
+  /* tile — 토막이 하나씩 붙어 길이를 채운다 */
+  @keyframes tlA { 0%, 8% { transform: scale(0); } 22%, 100% { transform: scale(1); } }
+  @keyframes tlB { 0%, 26% { transform: scale(0); } 40%, 100% { transform: scale(1); } }
+  @keyframes tlC { 0%, 44% { transform: scale(0); } 58%, 100% { transform: scale(1); } }
+  .tl-1 { animation-name: tlA; } .tl-2 { animation-name: tlB; } .tl-3 { animation-name: tlC; }
+
+  /* cut — 어디서 잘릴지 먼저 보여 주고, 그다음에 잘린다 */
+  @keyframes ctMark { 0%, 22% { opacity: 0; } 32%, 100% { opacity: 1; } }
+  @keyframes ctBar { 0%, 38% { transform: scaleX(1); } 60%, 100% { transform: scaleX(.52); } }
+  .ct-mark { animation-name: ctMark; }
+  .ct-bar { animation-name: ctBar; transform-box: fill-box; transform-origin: 0 50%; }
+
+  /* missing — 테두리를 다 그린 뒤에야 빈 속이 드러난다 */
+  @keyframes msRing { 0%, 6% { stroke-dashoffset: 1.06; } 44%, 100% { stroke-dashoffset: 0; } }
+  /* 빈 속은 **또렷하게** 깜박여야 "없다"가 읽힌다. .18~.55로 흔들던 전 판은
+     그리기가 끝난 뒤 2초 남짓이 거의 정지 화면이라 애니메이션이 없어 보였다 */
+  @keyframes msHole {
+    0%, 44% { opacity: 0; transform: scale(.6); }
+    54% { opacity: 1; transform: scale(1); }
+    62% { opacity: .06; }
+    70% { opacity: 1; }
+    78% { opacity: .06; }
+    86%, 100% { opacity: 1; transform: scale(1); }
+  }
+  .ms-ring { stroke-dasharray: 1 2; animation-name: msRing; }
+  .ms-hole { animation-name: msHole; }
+
+  /* oneline — 가운데 줄은 회색으로 **이미 있고**, 그 위에 강조색이 덧그려진다.
+     전에는 그 줄 자체가 강조색 하나뿐이라 "없던 줄이 새로 생긴다"로 읽혔다.
+     파일에 원래 있던 한 줄이 문제였다는 뜻이므로 밑줄이 먼저 있어야 맞다 */
+  @keyframes olDim { 0%, 20% { opacity: 1; } 44%, 100% { opacity: .2; } }
+  @keyframes olHit { 0%, 24% { stroke-dashoffset: 1.06; } 56%, 100% { stroke-dashoffset: 0; } }
+  @keyframes olTip { 0%, 58% { opacity: 0; } 68%, 100% { opacity: 1; } }
+  .ol-dim { animation-name: olDim; }
+  .ol-hit { stroke-dasharray: 1 2; animation-name: olHit; }
+  .ol-tip { animation-name: olTip; }
+
+  /* fallback — 자리를 지키다 / 돌아갈 길이 보이고 / 그제야 되돌아간다.
+     전에는 화살표가 처음부터 그려지고 점이 그와 무관하게 움직여 어색했다 */
+  @keyframes fbArrow { 0%, 26% { stroke-dashoffset: 1.06; } 44%, 100% { stroke-dashoffset: 0; } }
+  @keyframes fbTip { 0%, 44% { opacity: 0; } 52%, 100% { opacity: 1; } }
+  @keyframes fbDot { 0%, 54% { transform: translateX(0); } 78%, 100% { transform: translateX(-56px); } }
+  .fb-arrow { stroke-dasharray: 1 2; animation-name: fbArrow; }
+  .fb-tip { animation-name: fbTip; }
+  .fb-dot { animation-name: fbDot; }
+
+  /* late — 셋이 제때 오고, **비는 구간**이 있어야 늦음이 읽힌다 */
+  @keyframes ltD1 { 0%, 8% { transform: scale(0); } 18%, 100% { transform: scale(1); } }
+  @keyframes ltD2 { 0%, 20% { transform: scale(0); } 30%, 100% { transform: scale(1); } }
+  @keyframes ltD3 { 0%, 32% { transform: scale(0); } 42%, 100% { transform: scale(1); } }
+  @keyframes ltD4 { 0%, 66% { transform: scale(0); } 78%, 100% { transform: scale(1); } }
+  @keyframes ltGap { 0%, 66% { opacity: 0; } 76%, 100% { opacity: 1; } }
+  .lt-1 { animation-name: ltD1; } .lt-2 { animation-name: ltD2; }
+  .lt-3 { animation-name: ltD3; } .lt-4 { animation-name: ltD4; }
+  .lt-gap { animation-name: ltGap; }
+
+  /* tag — 표시 하나를 달면 카드가 **비어 있던 목록 자리로 들어가고** 그 자리가
+     켜진다. 등록의 뜻은 "표시가 붙었다"가 아니라 "목록에 올라왔다"이고,
+     30분 뒤 실제로 일어나는 일이 이것이다. 점선 자리가 먼저 있어야
+     들어갈 곳이 있다는 게 읽힌다 */
+  @keyframes tgaMark { 0%, 14% { transform: scale(0); } 26%, 100% { transform: scale(1); } }
+  @keyframes tgaCard { 0%, 34% { transform: translateX(0); } 58%, 100% { transform: translateX(56px); } }
+  @keyframes tgaSlot { 0%, 60% { opacity: 0; } 70%, 100% { opacity: 1; } }
+  .tga-mark { animation-name: tgaMark; }
+  .tga-card { animation-name: tgaCard; }
+  .tga-slot { animation-name: tgaSlot; }
+
+  /* scan — 훑고 내려가 찾은 줄에서 멈춘 뒤 **빠진다**. 훑개는 목록과 같은 폭
+     (x 26~94)이고 멈추는 자리는 셋째 줄과 같은 높이(y 74)다. 전에는 폭이 더 넓고
+     (18~102) 2px 어긋난 채로 머물러서, 그 줄이 둘로 겹쳐 어긋나 보였다.
+     줄이 켜지는 순간(58~68%)에 맞춰 빠져야 켜진 줄 하나만 남는다.
+     훑개의 두께·폭도 줄과 똑같이 맞췄다 — 조금이라도 크면 겹치는 순간
+     줄 가장자리로 삐져나와 선이 둘로 겹쳐 보인다 */
+  @keyframes scBar {
+    0%, 6% { transform: translateY(-46px); opacity: 0; }
+    14% { opacity: 1; }
+    58% { transform: translateY(50px); opacity: 1; }
+    64% { opacity: 1; }
+    74%, 100% { transform: translateY(50px); opacity: 0; }
+  }
+  @keyframes scHit {
+    0%, 58% { stroke: var(--muted); opacity: .26; }
+    68%, 100% { stroke: var(--accent); opacity: 1; }
+  }
+  .sc-bar { animation-name: scBar; }
+  .sc-hit { animation-name: scHit; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cycle { animation: none; }
+    /* 멈춰 있어도 뜻이 읽히는 상태로 */
+    .lp-draw, .sw-new, .fi-a, .fi-b, .fi-c, .fi-out,
+    .ms-ring, .ol-hit, .fb-arrow { stroke-dasharray: none; }
+    .lp-dot, .sw-dot, .fi-hub, .st-1, .st-2, .st-3, .st-4,
+    .lm-1, .lm-2, .lm-3, .tl-1, .tl-2, .tl-3,
+    .lt-1, .lt-2, .lt-3, .lt-4 { transform: none; }
+    .wt-bar { transform: none; opacity: 1; }
+    .gt-b3 { transform: translateX(61px); opacity: 1; }
+    .gt-b1, .gt-b2 { opacity: 0; }
+    .sc-bar { opacity: 0; }
+    .sc-hit { stroke: var(--accent); opacity: 1; }
+    .sw-old { opacity: 0; }
+    .ol-dim { opacity: .2; }
+    .ms-hole { opacity: 1; transform: none; }
+    .ct-bar { transform: scaleX(.52); }
+    .tga-mark { transform: none; }
+    .tga-card { transform: translateX(56px); }
+    .tga-slot { opacity: 1; }
+    .fb-dot { transform: translateX(-56px); }
+  }
+
+  footer {
+    margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: space-between;
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">vibelog · 쇼츠 plain 장면</p>
+    <h1>빈 자리에 넣을 모티프 열여섯</h1>
+    <p class="lede">
+      화면도 그림도 못 고른 문장은 지금 배경과 자막만으로 나갑니다. 그 자리에 넣을 후보입니다.
+      어휘는 지어내지 않았습니다 — 지금까지 쓴 쇼츠 문장 예순한 개에서 되풀이되는 모양만 뽑았고,
+      카드마다 근거가 된 실제 문장을 붙였습니다. 그림은 직접 그렸습니다.
+      한 그리드·한 굵기·한 박자(4초)로 묶어 한 벌로 보이게 했습니다. 테마를 바꿔 가며 보세요.
+    </p>
+  </header>
+
+  <fieldset class="bar">
+    <legend>테마</legend>
+    <button type="button" id="t-terminal" data-t="terminal" aria-pressed="true"><span class="dot"></span>terminal</button>
+    <button type="button" id="t-blueprint" data-t="blueprint" aria-pressed="false"><span class="dot"></span>blueprint</button>
+    <button type="button" id="t-signal" data-t="signal" aria-pressed="false"><span class="dot"></span>signal</button>
+    <button type="button" id="t-paper" data-t="paper" aria-pressed="false"><span class="dot"></span>paper</button>
+    <button type="button" id="t-highlighter" data-t="highlighter" aria-pressed="false"><span class="dot"></span>highlighter</button>
+  </fieldset>
+
+  <section class="group">
+    <h2>다음 할 것 · 되풀이</h2>
+    <p class="note">“다음 할 것” 문장이 이 자리에 가장 많이 걸립니다. 처음 다섯입니다.</p>
+    <div class="grid">
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="원이 12시부터 시계방향으로 그려지고 가운데 점이 켜진다">
+            <circle class="ln faint" cx="60" cy="62" r="34"></circle>
+            <path class="ln hi cycle lp-draw" pathLength="1" d="M60 28 A34 34 0 1 1 26.6 68.4"></path>
+            <path class="ln hi cycle lp-tip" d="M52 22 L60 28 L52 34"></path>
+            <circle class="fl hi cycle pop lp-dot" cx="60" cy="62" r="5"></circle>
+          </svg>
+        </div>
+        <div>
+          <p class="name">loop</p>
+          <p class="what">반복 · 저절로</p>
+          <p class="said">이제 밤마다 그날의 글이 저절로 올라옵니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="가로선 위를 세로 막대가 왼쪽에서 오른쪽으로 훑고 가운데 점이 켜진다">
+            <path class="ln faint" d="M16 62 H104"></path>
+            <path class="ln faint" d="M16 44 V80 M104 44 V80"></path>
+            <g class="cycle lin wt-bar"><path class="ln hi" d="M60 34 V90"></path></g>
+            <circle class="fl hi cycle wt-dot" cx="60" cy="62" r="6"></circle>
+          </svg>
+        </div>
+        <div>
+          <p class="name">watch</p>
+          <p class="what">지켜보기 · 확인</p>
+          <p class="said">밤새 끝까지 도는지 지켜보겠습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="네모 셋이 왼쪽에서 오른쪽으로 흐르고 관문을 지난 하나만 강조색이 된다">
+            <path class="ln ink" d="M62 26 V98" opacity=".55"></path>
+            <path class="ln faint" d="M14 62 H106"></path>
+            <g class="cycle lin gt-b1"><rect class="ln" x="-9" y="52" width="19" height="19" rx="3"></rect></g>
+            <g class="cycle lin gt-b2"><rect class="ln" x="-9" y="52" width="19" height="19" rx="3"></rect></g>
+            <g class="cycle lin gt-b3"><rect class="ln hi" x="-9" y="52" width="19" height="19" rx="3"></rect></g>
+            <path class="ln hi cycle gt-chk" d="M74 40 L80 46 L92 32"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">gate</p>
+          <p class="what">관문 · 검토</p>
+          <p class="said">실제 단지 자료는 사람이 검토한 뒤에만 문제로 올립니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="막대 넷이 바닥에서 차례로 올라오고 마지막 하나가 강조색이다">
+            <path class="ln faint" d="M14 92 H106"></path>
+            <rect class="fl cycle grow st-1" x="22" y="66" width="15" height="26" rx="3"></rect>
+            <rect class="fl cycle grow st-2" x="45" y="54" width="15" height="38" rx="3"></rect>
+            <rect class="fl cycle grow st-3" x="68" y="44" width="15" height="48" rx="3"></rect>
+            <rect class="fl hi cycle grow st-4" x="91" y="30" width="15" height="62" rx="3"></rect>
+          </svg>
+        </div>
+        <div>
+          <p class="name">stack</p>
+          <p class="what">쌓임 · 모으기</p>
+          <p class="said">낮에는 블로그 화면 3개를 만들어 뒀습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="들쭉날쭉한 선이 고른 선으로 다듬어진다">
+            <path class="ln cycle sw-old" d="M16 74 L30 52 L40 82 L54 44 L66 80 L78 50 L90 72 L104 56"></path>
+            <path class="ln hi cycle sw-new" pathLength="1" d="M16 74 C42 74 40 48 60 48 S82 62 104 56"></path>
+            <circle class="fl hi cycle pop sw-dot" cx="104" cy="56" r="5"></circle>
+          </svg>
+        </div>
+        <div>
+          <p class="name">refine</p>
+          <p class="what">다듬기 · 계속</p>
+          <p class="said">숫자 읽는 방식도 계속 다듬겠습니다.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>고친 방식 · 구조</h2>
+    <p class="note">
+      “이렇게 바꿨다”를 말하는 문장들입니다. 라벨이 붙는 설명은 다이어그램이 맡고,
+      여기는 <strong>라벨 없는 아이콘</strong>만 — 그게 둘을 가르는 선입니다.
+    </p>
+    <div class="grid">
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="따로 가던 두 선이 하나로 합쳐진다">
+            <!-- 왼쪽 줄기는 늘 있다. 여기를 옛 선·새 선이 둘 다 그리면
+                 새 선을 다 그린 뒤에도 옛 선이 그 위에 남아 늦게 사라진다 -->
+            <path class="ln" d="M16 40 H46 M16 84 H46"></path>
+            <!-- 전: 따로 가던 꼬리. 이것만 사라진다 -->
+            <path class="ln cycle sw-old" d="M46 40 H102 M46 84 H102"></path>
+            <!-- 후: 하나로 모인다. 선은 점 앞에서 멈춘다 -->
+            <path class="ln hi cycle sw-new" pathLength="1" d="M46 40 C64 40 62 62 76 62 H92"></path>
+            <path class="ln hi cycle sw-new" pathLength="1" d="M46 84 C64 84 62 62 76 62"></path>
+            <circle class="fl hi cycle pop sw-dot" cx="100" cy="62" r="5"></circle>
+          </svg>
+        </div>
+        <div>
+          <p class="name">merge</p>
+          <p class="what">둘이 하나로</p>
+          <p class="said">주소를 하나로 합쳤더니 바로 풀렸습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="여럿이 한 점으로 모인 뒤 거기서 한 줄만 오른쪽으로 나간다">
+            <circle class="ln" cx="21" cy="26" r="7"></circle>
+            <circle class="ln" cx="21" cy="62" r="7"></circle>
+            <circle class="ln" cx="21" cy="98" r="7"></circle>
+            <!-- 모이는 선은 허브 테두리(x 57) 앞에서 멈춘다 — 화살표는 도착 도형에 닿지 않는다 -->
+            <path class="ln cycle fi-a" pathLength="1" d="M30 26 C46 26 42 62 54 62"></path>
+            <path class="ln cycle fi-b" pathLength="1" d="M30 62 H54"></path>
+            <path class="ln cycle fi-c" pathLength="1" d="M30 98 C46 98 42 62 54 62"></path>
+            <!-- 다 모인 뒤에 허브가 생기고, 그다음에 한 줄이 나간다 -->
+            <circle class="fl hi cycle pop fi-hub" cx="66" cy="62" r="9"></circle>
+            <path class="ln hi cycle fi-out" pathLength="1" d="M79 62 H97"></path>
+            <path class="ln hi cycle fi-tip" d="M93 56 L99 62 L93 68"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">fanin</p>
+          <p class="what">여럿이 한 번으로</p>
+          <p class="said">방문자가 늘어도 요청은 한 번입니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="막대가 올라가다 위쪽 한도 선에 부딪힌다">
+            <path class="ln ink" d="M14 36 H106" stroke-dasharray="7 7" opacity=".6"></path>
+            <rect class="fl cycle grow lm-1" x="26" y="70" width="16" height="22" rx="3"></rect>
+            <rect class="fl cycle grow lm-2" x="52" y="56" width="16" height="36" rx="3"></rect>
+            <rect class="fl hi cycle grow lm-3" x="78" y="38" width="16" height="54" rx="3"></rect>
+            <path class="ln hi cycle lm-hit" d="M78 28 L94 28"></path>
+            <path class="ln faint" d="M14 92 H106"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">limit</p>
+          <p class="what">한도에 걸림</p>
+          <p class="said">1시간에 60번만 답해 주는 한도에 걸렸습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="같은 토막을 옆으로 이어 붙여 빈 길이를 채운다">
+            <path class="ln faint" d="M14 40 H106 M14 84 H106"></path>
+            <rect class="fl cycle pop tl-1" x="16" y="52" width="26" height="20" rx="3"></rect>
+            <rect class="fl cycle pop tl-2" x="47" y="52" width="26" height="20" rx="3"></rect>
+            <rect class="fl hi cycle pop tl-3" x="78" y="52" width="26" height="20" rx="3"></rect>
+          </svg>
+        </div>
+        <div>
+          <p class="name">tile</p>
+          <p class="what">이어 붙이기</p>
+          <p class="said">이제 음악을 필요한 만큼 반복해 이어 붙입니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="긴 막대가 짧은 쪽 길이에 맞춰 잘린다">
+            <rect class="fl" x="16" y="38" width="46" height="18" rx="3"></rect>
+            <rect class="fl hi cycle ct-bar" x="16" y="70" width="88" height="18" rx="3"></rect>
+            <path class="ln ink cycle ct-mark" d="M62 30 V96" stroke-dasharray="6 6" opacity=".7"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">cut</p>
+          <p class="what">짧은 쪽에 맞춰 잘림</p>
+          <p class="said">소리와 화면 중 짧은 쪽에 맞춰 잘리고 있었습니다.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>삽질 · 무엇이 없거나 어긋났다</h2>
+    <p class="note">원인을 말하는 문장입니다. 삽질 카드가 제목을 맡고, 이 그림은 그 옆에서 형태만 보여 줍니다.</p>
+    <div class="grid">
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="테두리는 있는데 안이 비어 있고 점선만 깜박인다">
+            <circle class="ln cycle ms-ring" pathLength="1" cx="60" cy="62" r="32"></circle>
+            <circle class="ln hi cycle pop ms-hole" cx="60" cy="62" r="15" stroke-dasharray="5 8"></circle>
+          </svg>
+        </div>
+        <div>
+          <p class="name">missing</p>
+          <p class="what">있어야 할 게 없음</p>
+          <p class="said">처음엔 글자 없는 동그라미만 번졌습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="줄 넷 중 한 줄이 강조되고 나머지가 흐려진다">
+            <rect class="ln faint" x="18" y="26" width="84" height="68" rx="5"></rect>
+            <path class="ln cycle ol-dim" d="M30 44 H90 M30 80 H72"></path>
+            <path class="ln" d="M30 62 H90"></path>
+            <path class="ln hi cycle ol-hit" pathLength="1" d="M30 62 H90"></path>
+            <path class="ln hi cycle ol-tip" d="M96 56 L104 62 L96 68"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">oneline</p>
+          <p class="what">한 줄 때문에 전체가</p>
+          <p class="said">그 한 줄 때문에 파일 전체가 무시됐습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="오른쪽에 있던 점이 왼쪽 옛 자리로 되돌아가 그 고리 안에 앉는다">
+            <path class="ln faint" d="M16 70 H104"></path>
+            <!-- 옛 값의 자리. 돌아온 점이 이 고리 **안에** 앉는다 (r 10 > r 5.5) -->
+            <circle class="ln" cx="32" cy="70" r="10"></circle>
+            <circle class="fl hi cycle fb-dot" cx="88" cy="70" r="5.5"></circle>
+            <!-- 되돌아가는 방향은 선 위쪽에 따로 — 점이 지나는 자리와 겹치지 않는다 -->
+            <path class="ln ink cycle fb-arrow" pathLength="1" d="M86 38 H46" opacity=".6"></path>
+            <path class="ln ink cycle fb-tip" d="M52 32 L46 38 L52 44" opacity=".6"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">fallback</p>
+          <p class="what">옛 값으로 되돌아감</p>
+          <p class="said">그래서 어젯밤 값으로 조용히 돌아갔습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="점 셋이 제때 오고 하나가 늦게 도착한다">
+            <path class="ln faint" d="M16 62 H104"></path>
+            <circle class="fl cycle pop lt-1" cx="32" cy="62" r="6"></circle>
+            <circle class="fl cycle pop lt-2" cx="54" cy="62" r="6"></circle>
+            <circle class="fl cycle pop lt-3" cx="76" cy="62" r="6"></circle>
+            <circle class="fl hi cycle pop lt-4" cx="100" cy="62" r="6"></circle>
+            <path class="ln hi cycle lt-gap" d="M90 84 H110" stroke-dasharray="4 6"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">late</p>
+          <p class="what">늦게 도착</p>
+          <p class="said">방금 만든 프로젝트는 검색에 늦게 뜹니다.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>등록 · 훑기</h2>
+    <p class="note">vibelog가 실제로 하는 일 — 표시 하나로 등록되고, 목록을 직접 훑습니다.</p>
+    <div class="grid">
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="표시를 달자 카드가 비어 있던 목록 자리로 들어가 그 자리가 켜진다">
+            <rect class="ln faint" x="64" y="40" width="44" height="44" rx="6" stroke-dasharray="6 6"></rect>
+            <g class="cycle tga-card">
+              <rect class="ln" x="8" y="40" width="44" height="44" rx="6"></rect>
+              <circle class="fl hi cycle pop tga-mark" cx="50" cy="42" r="6"></circle>
+            </g>
+            <rect class="ln hi cycle tga-slot" x="64" y="40" width="44" height="44" rx="6"></rect>
+          </svg>
+        </div>
+        <div>
+          <p class="name">tag</p>
+          <p class="what">표시 하나로 등록</p>
+          <p class="said">표시만 달아 두면 30분 안에 올라옵니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="목록의 줄을 위에서 아래로 훑는다">
+            <path class="ln faint" d="M26 34 H94 M26 54 H94 M26 94 H80"></path>
+            <path class="ln cycle sc-hit" d="M26 74 H94"></path>
+            <g class="cycle sc-bar">
+              <rect class="fl hi" x="26" y="22.4" width="68" height="3.2" rx="1.6"></rect>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <p class="name">scan</p>
+          <p class="what">목록을 훑기</p>
+          <p class="said">이제 제 프로젝트 목록을 직접 훑습니다.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <span>그린 것: 직접 · 라이선스 문제 없음 · 레포에 커밋 가능</span>
+    <span>© 2026 vibelog · Jessi</span>
+  </footer>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const btns = [...document.querySelectorAll(".bar button")];
+  for (const b of btns) {
+    b.addEventListener("click", () => {
+      const t = b.dataset.t;
+      if (t === "terminal") root.removeAttribute("data-theme");
+      else root.setAttribute("data-theme", t);
+      for (const o of btns) o.setAttribute("aria-pressed", String(o === b));
+      try { localStorage.setItem("vl-motif-theme", t); } catch {}
+    });
+  }
+  try {
+    const saved = localStorage.getItem("vl-motif-theme");
+    if (saved && saved !== "terminal") document.getElementById("t-" + saved)?.click();
+  } catch {}
+</script>

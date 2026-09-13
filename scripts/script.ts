@@ -12,6 +12,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import matter from "gray-matter";
 import {
   type DiagramSpec,
+  type MotifName,
+  MOTIFS,
   MUSIC_MOODS,
   SHORTS_THEMES,
   shortsJsonPath,
@@ -148,9 +150,21 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   종류는 **문장이 말하는 구조**로 고른다. 이웃 편과 같은 종류가 되는 것 자체는
   문제가 아니다 — 내용이 그 구조라면 그걸 쓴다. 어느 종류든 똑같이 맞는
   경우에만 이웃과 다른 쪽을 고른다 (아래 이웃 정보 참고).
+- **motif: 마지막 수단.** 화면(screen/find)도 그림(diagram)도 못 고른 문장에만
+  붙인다. 라벨 없는 아이콘 하나가 뜬다 — 설명이 아니라 문장의 **모양**이다.
+  보여줄 화면이 있으면 화면이 이기고, 설명할 원리가 있으면 diagram이 이긴다.
+  자유 작도는 없다. 아래 열여섯 이름 중 하나를 문자열로 고른다:
+  · loop 반복·저절로 / watch 지켜보기·확인 / gate 사람이 본 뒤에만 지나감
+  · stack 하나씩 쌓임 / refine 들쭉날쭉하던 것이 고르게 / merge 둘이 하나로
+  · fanin 여럿이 와도 한 번만 / limit 천장에 닿음 / tile 같은 토막을 이어 붙임
+  · cut 짧은 쪽에 맞춰 잘림 / missing 있어야 할 게 없음 / oneline 한 줄 때문에 전체가
+  · fallback 옛 값으로 되돌아감 / late 늦게 도착 / tag 표시 하나로 목록에 오름
+  · scan 목록을 훑음
+  문장이 말하는 모양과 이름이 맞을 때만 고른다. 어느 것도 안 맞으면 비운다
+  (그럼 그 문장은 다시 쓰게 된다).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","motif":"loop","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -407,6 +421,11 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         const d = validDiagram(l.diagram);
         return d ? { diagram: d } : {};
       })(),
+      // 모티프 — 어휘 열여섯에 있는 이름만 (자유 작도 금지)
+      ...(typeof l.motif === "string" &&
+      (MOTIFS as readonly string[]).includes(l.motif)
+        ? { motif: l.motif as MotifName }
+        : {}),
     };
   });
 }
@@ -485,7 +504,12 @@ const HAS_OWN_CARD = new Set(["hook", "end"]);
 
 export function blankScenes(lines: ShortsLine[]): ShortsLine[] {
   return lines.filter(
-    (l) => !HAS_OWN_CARD.has(l.scene) && !l.screen && !l.find && !l.diagram,
+    (l) =>
+      !HAS_OWN_CARD.has(l.scene) &&
+      !l.screen &&
+      !l.find &&
+      !l.diagram &&
+      !l.motif,
   );
 }
 
@@ -725,7 +749,9 @@ export async function generateScript(
             "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
             "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
             "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
-            "③ 둘 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
+            "③ 둘 다 아니지만 문장의 **모양**이 어휘 열여섯 중 하나와 맞으면",
+            "   motif를 넣는다 (라벨 없는 아이콘. 화면·그림이 있으면 그쪽이 이긴다).",
+            "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
             "   없는 문장은 영상에 자리가 없습니다.",
             "",
             "전체 JSON을 같은 형식으로 다시 출력하세요 (다른 문장은 그대로).",
