@@ -1,8 +1,8 @@
 "use client";
-/** 데브로그 피드 — ProjectFilter(≤8 칩 / >8 Select) + 10편 페이지네이션 */
+/** 데브로그 피드 — ProjectFilter(쇼츠와 공용) + 10편 페이지네이션 */
 import { useState } from "react";
 import { useLang } from "./lang";
-import { projectColor } from "@/lib/project-color";
+import { ProjectFilter } from "./project-filter";
 import { EmptyState, SectionHeader } from "./ui";
 import { DevlogTimelineEntry } from "./vibelog";
 import { postPath } from "@/lib/post-id";
@@ -31,7 +31,6 @@ export interface FeedProject {
 }
 
 const PAGE = 10;
-const MAX_CHIPS = 8;
 
 export function FeedClient({
   items,
@@ -47,13 +46,9 @@ export function FeedClient({
 
   const counts: Record<string, number> = { all: items.length };
   for (const d of items) counts[d.repo] = (counts[d.repo] ?? 0) + 1;
-  const sorted = [...projects].sort(
-    (a, b) => (counts[b.slug] ?? 0) - (counts[a.slug] ?? 0),
-  );
   const all = items.filter((d) => filter === "all" || d.repo === filter);
   const list = all.slice(0, n);
   const proj = projects.find((p) => p.slug === filter);
-  const options = [{ slug: "all", name: en ? "All" : "전체" }, ...sorted];
 
   const pick = (v: string) => {
     setFilter(v);
@@ -68,59 +63,13 @@ export function FeedClient({
           // 개수는 메뉴 옆 숫자가 이미 말한다 — 규칙만 남긴다
           aside={all.length ? (en ? "one per day" : "하루 한 글") : undefined}
         />
-        {projects.length > MAX_CHIPS ? (
-          <label className="relative block max-w-[320px]">
-            <select
-              value={filter}
-              onChange={(e) => pick(e.target.value)}
-              className="h-11 w-full cursor-pointer appearance-none rounded-md border border-line bg-bg px-3.5 pr-10 font-mono text-base text-ink focus:border-accent"
-            >
-              {options.map((p) => (
-                <option key={p.slug} value={p.slug}>
-                  {p.name}
-                  {counts[p.slug] != null ? `  ·  ${counts[p.slug]}` : ""}
-                </option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 font-mono text-xs text-muted">
-              ▾
-            </span>
-          </label>
-        ) : (
-          <div className="-mx-1 flex gap-1.5 overflow-x-auto px-1 py-1.5 [scrollbar-width:none]">
-            {options.map((p) => {
-              const on = p.slug === filter;
-              return (
-                <button
-                  key={p.slug}
-                  type="button"
-                  aria-pressed={on}
-                  onClick={() => pick(p.slug)}
-                  className={`hit min-h-8 flex-none cursor-pointer whitespace-nowrap rounded-full border px-3 font-mono text-xs transition-colors duration-150 ${
-                    on
-                      ? "border-line-strong bg-panel2 font-bold text-ink"
-                      : "border-line bg-transparent font-medium text-muted"
-                  }`}
-                >
-                  {p.slug !== "all" && (
-                    // 칩에도 프로젝트 식별색 점 — 피드 마커와 색으로 이어진다
-                    <span
-                      aria-hidden
-                      className="mr-1.5 text-[8px] align-[1px]"
-                      style={{ color: projectColor(p.slug) }}
-                    >
-                      ●
-                    </span>
-                  )}
-                  {p.name}
-                  {counts[p.slug] != null && (
-                    <span className="ml-1.5 text-muted">{counts[p.slug]}</span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        )}
+        <ProjectFilter
+          projects={projects}
+          counts={counts}
+          value={filter}
+          onChange={pick}
+          label={en ? "Filter by project" : "프로젝트로 거르기"}
+        />
       </section>
 
       {list.length === 0 ? (
