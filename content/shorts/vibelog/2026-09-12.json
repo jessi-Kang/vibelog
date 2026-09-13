@@ -8,103 +8,125 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "커밋 숫자가 21에 멈춰 있었습니다.",
-      "en": "The commit count was stuck at 21.",
+      "ko": "오늘 커밋 수가 21에 멈췄습니다.",
+      "en": "The commit count was frozen at 21.",
       "keywords": [
-        "멈춰"
+        "21에"
       ],
       "keywordsEn": [
-        "stuck"
+        "frozen"
       ]
     },
     {
       "scene": "fail",
-      "ko": "방문자 브라우저가 저마다 직접 물어보고 있었습니다.",
-      "en": "Every visitor's browser was asking the code host directly.",
+      "ko": "방문자 화면이 저마다 직접 숫자를 물어봤습니다.",
+      "en": "Each visitor's browser was asking for the number directly.",
       "keywords": [
-        "저마다",
-        "직접"
+        "저마다 직접"
       ],
       "keywordsEn": [
-        "Every visitor's",
         "directly"
       ],
-      "diagram": {
-        "kind": "pipeline",
-        "labels": [
-          "방문자마다 접속",
-          "브라우저가 직접 물어봄",
-          "요청이 쌓임",
-          "거절"
-        ],
-        "labelsEn": [
-          "each visitor arrives",
-          "browser asks directly",
-          "requests pile up",
-          "refused"
-        ]
-      }
+      "screen": "/",
+      "shot": "whole"
     },
     {
       "scene": "fail",
-      "ko": "한 주소당 1시간에 60번이 한도였습니다.",
-      "en": "One address gets only 60 answers an hour.",
+      "ko": "1시간에 60번만 답해 주는 한도에 걸렸습니다.",
+      "en": "It only answers 60 times an hour, and we hit the cap.",
       "keywords": [
-        "60번이"
+        "1시간에 60번만"
       ],
       "keywordsEn": [
-        "60 answers"
+        "60 times an hour"
       ],
       "diagram": {
         "kind": "numberline",
         "labels": [
-          "1시간 응답 한도",
+          "1시간에 답해 주는 한도",
           "60번 초과",
-          "한도 안"
+          "5분에 1번"
         ],
         "labelsEn": [
-          "hourly answer limit",
+          "Answers per hour",
           "over 60",
-          "under limit"
+          "1 per 5 min"
         ]
       }
     },
     {
       "scene": "fail",
-      "ko": "거절당하면 화면은 어젯밤 숫자로 돌아갔습니다.",
-      "en": "When refused, the screen quietly fell back to last night's number.",
+      "ko": "그래서 어젯밤 값으로 조용히 돌아갔습니다.",
+      "en": "So the screen quietly fell back to last night's value.",
       "keywords": [
-        "어젯밤 숫자로"
+        "어젯밤 값으로"
       ],
       "keywordsEn": [
-        "fell back",
-        "last night's"
+        "quietly"
       ],
-      "art": "a worn mechanical counter silently snapping back to an older digit"
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "요청이 거절되고",
+          "어젯밤 저장값을 꺼내고",
+          "화면은 그대로 멈춘다"
+        ],
+        "labelsEn": [
+          "request refused",
+          "pull last night's value",
+          "screen sits frozen"
+        ]
+      }
     },
     {
       "scene": "build",
       "ko": "이제 서버가 5분에 한 번 대신 셉니다.",
-      "en": "Now the server counts once every 5 minutes for everyone.",
+      "en": "Now the server counts once every 5 minutes.",
       "keywords": [
         "5분에 한 번"
       ],
       "keywordsEn": [
-        "every 5 minutes"
+        "once every 5 minutes"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "방문자 화면이 직접",
+          "한도에 걸림",
+          "서버가 5분마다",
+          "모두 같은 숫자"
+        ],
+        "labelsEn": [
+          "each browser asks",
+          "hits the cap",
+          "server every 5 min",
+          "one shared number"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "방문자가 늘어도 요청은 한 번입니다.",
+      "en": "More visitors, still one request.",
+      "keywords": [
+        "한 번입니다"
+      ],
+      "keywordsEn": [
+        "one request"
       ],
       "diagram": {
         "kind": "fork",
         "labels": [
-          "오늘 커밋 숫자",
-          "방문자마다 물어봄",
-          "서버가 5분에 한 번",
-          "전에는",
-          "이제는"
+          "방문자 100명",
+          "요청 100번",
+          "요청 1번",
+          "예전",
+          "지금"
         ],
         "labelsEn": [
-          "commits today",
-          "every visitor asks",
-          "server asks once",
+          "100 visitors",
+          "100 requests",
+          "1 request",
           "before",
           "now"
         ],
@@ -113,59 +135,56 @@
     },
     {
       "scene": "demo",
-      "ko": "첫 화면의 오늘 커밋 수가 이제 움직입니다.",
-      "en": "On the front page, the commits-today number now actually moves.",
+      "ko": "첫 화면 숫자가 이제 움직입니다.",
+      "en": "The number on the front page actually moves now.",
       "keywords": [
-        "이제 움직입니다"
+        "움직입니다"
       ],
       "keywordsEn": [
-        "now actually moves"
+        "actually moves"
       ],
       "screen": "/",
-      "find": "오늘 커밋",
-      "findEn": "commits today",
+      "find": "22",
+      "findEn": "22",
       "shot": "focus"
     },
     {
       "scene": "next",
-      "ko": "제 작업 환경은 바깥과 통신이 안 됩니다.",
-      "en": "My work environment can't reach the outside.",
+      "ko": "올린 뒤에 숫자가 진짜 움직이는지 확인해야 합니다.",
+      "en": "After pushing, I need to confirm the number really moves.",
       "keywords": [
-        "바깥과 통신이"
+        "진짜 움직이는지"
       ],
       "keywordsEn": [
-        "can't reach"
+        "really moves"
       ],
       "diagram": {
-        "kind": "fork",
+        "kind": "pipeline",
         "labels": [
-          "숫자 세기 확인",
-          "실패한 모습만",
-          "진짜 도는 모습",
-          "작업 환경",
-          "실제 사이트"
+          "고치고",
+          "올리고",
+          "실제 사이트에서 확인한다"
         ],
         "labelsEn": [
-          "checking the counter",
-          "only the failure",
-          "the number moving",
-          "my machine",
-          "live site"
-        ],
-        "pick": 2
+          "fix it",
+          "push it",
+          "check it live"
+        ]
       }
     },
     {
       "scene": "end",
-      "ko": "진짜 도는지는 실제 사이트에서 봐야 합니다.",
-      "en": "I need to see it move on the live site.",
+      "ko": "커밋 20개 중 제일 오래 붙잡은 숫자였습니다.",
+      "en": "20 commits today, and this number took the longest.",
       "keywords": [
-        "실제 사이트에서"
+        "제일 오래"
       ],
       "keywordsEn": [
-        "live site"
+        "took the longest"
       ],
-      "art": "a hand reaching toward a dial that has just begun to turn"
+      "art": "a worn stopwatch resting beside a stack of paper slips",
+      "stat": "20개",
+      "statEn": "20 commits"
     }
   ],
   "demo": {
@@ -173,12 +192,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "숫자가 멈췄다",
-    "titleEn": "The number froze",
-    "before": "방문자마다 직접 물어보다 거절당했습니다",
-    "after": "서버가 5분에 한 번 세서 모두에게 나눠 줍니다",
-    "beforeEn": "Every visitor's browser asked directly and got refused",
-    "afterEn": "The server counts once every 5 minutes and shares it"
+    "title": "숫자가 21에 멈춰 있었습니다",
+    "titleEn": "The number was stuck at 21",
+    "before": "방문자마다 직접 물어보다 응답 한도에 걸렸습니다",
+    "after": "서버가 5분에 한 번 세서 모두에게 같은 숫자를 줍니다",
+    "beforeEn": "Every visitor asked directly and hit the hourly cap",
+    "afterEn": "The server counts every 5 minutes and shares one number"
   },
   "commits": [
     [
@@ -347,22 +366,22 @@
   "commitCount": 20,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "첫 화면의 커밋 숫자가 21에 멈춰 있었습니다. 방문자마다 직접 물어보던 걸 서버가 5분에 한 번 대신 세도록 바꿨습니다.",
-    "en": "The commit count on the front page was stuck at 21. Every visitor's browser was asking directly, so the server now counts once every 5 minutes and shares it."
+    "ko": "첫 화면의 오늘 커밋 수가 21에 멈춰 있었습니다. 방문자마다 직접 물어보다 응답 한도에 걸린 탓이라, 이제 서버가 5분에 한 번 대신 셉니다.",
+    "en": "The commit count on the front page was frozen at 21. Every visitor's browser was asking directly and hitting the hourly cap, so now the server counts once every 5 minutes for everyone."
   },
   "hashtags": [
+    "#개발",
     "#vibelog",
-    "#개발일지",
-    "#devlog",
     "#버그수정",
-    "#웹개발",
-    "#rateLimit",
-    "#인디개발"
+    "#devlog",
+    "#buildinpublic",
+    "#webdev",
+    "#캐싱"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtyn3fnb",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtyn3ikq",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtyn4qsh",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtyn4ts0"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.poster.jpg?v=mtz6d2vn",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.ko.mp4?v=mtz6d4y6",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.poster.jpg?v=mtz6efuc",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-12.en.mp4?v=mtz6ehvt"
   }
 }

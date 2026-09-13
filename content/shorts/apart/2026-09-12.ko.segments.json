@@ -2,26 +2,20 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.97,
-      "end": 9.27
+      "start": 0.93,
+      "end": 13.09
     },
     {
       "path": "/opengraph-image?f2c0039925850c95",
-      "start": 17.99,
-      "end": 26.3
+      "start": 21.82,
+      "end": 34.19
     },
     {
-      "path": "/",
-      "find": "아파트 감별사",
-      "focusY": 0.055,
-      "start": 27.4,
-      "end": 34.93
-    },
-    {
-      "path": "/me",
-      "find": "도장",
-      "start": 36.72,
-      "end": 45.02
+      "path": "/bug",
+      "find": "접수하기",
+      "focusY": 0.853,
+      "start": 35.19,
+      "end": 46.73
     }
   ]
 }
