@@ -309,6 +309,78 @@
   .sc-bar { animation-name: scBar; }
   .sc-hit { animation-name: scHit; }
 
+
+  /* ── 후보 여섯 (아직 안 들어감) ──────────────────────────────────────
+     감으로 고르지 않았다. 지금까지 쓴 대본 아홉 편 79문장에서 화면도 그림도
+     못 고른 자리 29개를 뽑아, 열여섯 중 어느 것도 안 맞는 것만 남겼다.
+     각 카드의 인용은 그 근거가 된 실제 문장이다. */
+
+  /* leak — 막았다고 생각한 곳으로 빠져나간다 */
+  @keyframes lkFlow {
+    0%, 6% { transform: translateX(14px); opacity: 0; }
+    14%, 40% { opacity: 1; }
+    48%, 100% { transform: translateX(106px); opacity: 0; }
+  }
+  @keyframes lkDrop {
+    0%, 28% { transform: translateY(-12px); opacity: 0; }
+    38% { opacity: 1; }
+    64%, 100% { transform: translateY(18px); opacity: 1; }
+  }
+  .lk-flow { animation-name: lkFlow; }
+  .lk-drop { animation-name: lkDrop; }
+
+  /* stale — 새 값이 생겼는데 저쪽은 옛것 그대로. fallback(되돌아감)과 다르다 */
+  @keyframes slNew { 0%, 30% { fill: var(--muted); } 42%, 100% { fill: var(--accent); } }
+  @keyframes slLink { 0%, 42% { opacity: 0; } 52%, 62% { opacity: 1; } 74%, 100% { opacity: 0; } }
+  @keyframes slOld { 0%, 66% { opacity: .26; } 76% { opacity: .85; } 88%, 100% { opacity: .26; } }
+  .sl-new { animation-name: slNew; }
+  .sl-link { animation-name: slLink; }
+  .sl-old { animation-name: slOld; }
+
+  /* convert — 하나가 다른 것이 된다. vibelog가 하는 일 그 자체다 */
+  @keyframes cvDoc { 0%, 4% { stroke-dashoffset: 1.06; } 22%, 100% { stroke-dashoffset: 0; } }
+  @keyframes cvTxt { 0%, 20% { stroke-dashoffset: 1.06; } 36%, 100% { stroke-dashoffset: 0; } }
+  @keyframes cvArrow { 0%, 36% { stroke-dashoffset: 1.06; } 48%, 100% { stroke-dashoffset: 0; } }
+  @keyframes cvTip { 0%, 48% { opacity: 0; } 56%, 100% { opacity: 1; } }
+  @keyframes cvVid { 0%, 54% { stroke-dashoffset: 1.06; } 66%, 100% { stroke-dashoffset: 0; } }
+  @keyframes cvPlay { 0%, 64% { transform: scale(0); } 74%, 100% { transform: scale(1); } }
+  .cv-doc { stroke-dasharray: 1 2; animation-name: cvDoc; }
+  .cv-txt { stroke-dasharray: 1 2; animation-name: cvTxt; }
+  .cv-arrow { stroke-dasharray: 1 2; animation-name: cvArrow; }
+  .cv-tip { animation-name: cvTip; }
+  .cv-vid { stroke-dasharray: 1 2; animation-name: cvVid; }
+  .cv-play { animation-name: cvPlay; }
+
+  /* remove — 하나를 빼내고, 빈 자리가 남는다 */
+  @keyframes rmRow {
+    0%, 34% { transform: translateX(0); opacity: 1; }
+    44% { opacity: 1; }
+    64%, 100% { transform: translateX(86px); opacity: 0; }
+  }
+  @keyframes rmGap { 0%, 66% { opacity: 0; } 78%, 100% { opacity: 1; } }
+  .rm-row { animation-name: rmRow; }
+  .rm-gap { animation-name: rmGap; }
+
+  /* earlyout — 확실하면 나머지는 안 본다 */
+  @keyframes eoDot { 0%, 8% { transform: translateX(14px); } 46%, 100% { transform: translateX(52px); } }
+  @keyframes eoStop { 0%, 46% { stroke-dashoffset: 1.06; } 62%, 100% { stroke-dashoffset: 0; } }
+  @keyframes eoRest { 0%, 54% { opacity: .26; } 70%, 100% { opacity: .12; } }
+  .eo-dot { animation-name: eoDot; }
+  .eo-stop { stroke-dasharray: 1 2; animation-name: eoStop; }
+  .eo-rest { animation-name: eoRest; }
+
+  /* fanout — 하나가 전부에 퍼진다. fanin의 짝 */
+  @keyframes foSrc { 0%, 6% { transform: scale(0); } 20%, 100% { transform: scale(1); } }
+  @keyframes foA { 0%, 20% { stroke-dashoffset: 1.06; } 44%, 100% { stroke-dashoffset: 0; } }
+  @keyframes foLit1 { 0%, 50% { stroke: var(--muted); } 60%, 100% { stroke: var(--accent); } }
+  @keyframes foLit2 { 0%, 56% { stroke: var(--muted); } 66%, 100% { stroke: var(--accent); } }
+  @keyframes foLit3 { 0%, 62% { stroke: var(--muted); } 72%, 100% { stroke: var(--accent); } }
+  .fo-src { animation-name: foSrc; }
+  .fo-line { stroke-dasharray: 1 2; animation-name: foA; }
+  .fo-1 { animation-name: foLit1; }
+  .fo-2 { animation-name: foLit2; }
+  .fo-3 { animation-name: foLit3; }
+
   @media (prefers-reduced-motion: reduce) {
     .cycle { animation: none; }
     /* 멈춰 있어도 뜻이 읽히는 상태로 */
@@ -326,6 +398,22 @@
     .ol-dim { opacity: .2; }
     .ms-hole { opacity: 1; transform: none; }
     .ct-bar { transform: scaleX(.52); }
+    .lk-flow { opacity: 0; }
+    .lk-drop { transform: translateY(18px); opacity: 1; }
+    .sl-new { fill: var(--accent); }
+    .sl-link { opacity: 0; }
+    .sl-old { opacity: .26; }
+    .cv-doc, .cv-arrow, .cv-vid { stroke-dasharray: none; }
+    .cv-txt, .cv-tip { opacity: 1; }
+    .cv-play { transform: none; }
+    .rm-row { transform: translateX(86px); opacity: 0; }
+    .rm-gap { opacity: 1; }
+    .eo-dot { transform: translateX(52px); }
+    .eo-stop { stroke-dasharray: none; }
+    .eo-rest { opacity: .12; }
+    .fo-src { transform: none; }
+    .fo-line { stroke-dasharray: none; }
+    .fo-1, .fo-2, .fo-3 { stroke: var(--accent); }
     .tga-mark { transform: none; }
     .tga-card { transform: translateX(56px); }
     .tga-slot { opacity: 1; }
@@ -666,6 +754,125 @@
           <p class="said">이제 제 프로젝트 목록을 직접 훑습니다.</p>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>후보 여섯 — 아직 안 들어간 것</h2>
+    <p class="note">
+      감으로 고르지 않았습니다. 지금까지 나온 대본 아홉 편 79문장에서 화면도 그림도
+      못 고른 자리 29개를 뽑아, 열여섯 중 어느 것도 안 맞는 것만 남겼습니다. 카드의
+      인용은 근거가 된 **실제 문장**입니다. 고르시면 그것만 컴포넌트로 옮깁니다.
+    </p>
+    <div class="grid">
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="통을 지나가는 흐름이 바닥의 터진 자리로 한 방울 빠져나간다">
+            <path class="ln faint" d="M16 44 H104"></path>
+            <path class="ln faint" d="M16 80 H52 M72 80 H104"></path>
+            <g class="cycle lin lk-flow"><circle class="fl" cx="0" cy="62" r="5.5"></circle></g>
+            <circle class="fl hi cycle lk-drop" cx="62" cy="86" r="5.5"></circle>
+          </svg>
+        </div>
+        <div>
+          <p class="name">leak</p>
+          <p class="what">막은 줄 알았는데 샌다</p>
+          <p class="said">로그인 없이 기록을 지우면 아직 답이 샙니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="왼쪽 값은 새것이 되는데 오른쪽은 옛것 그대로고 사이 연결은 못 건너간다">
+            <rect class="ln faint" x="14" y="42" width="36" height="40" rx="5"></rect>
+            <rect class="fl cycle sl-new" x="24" y="54" width="16" height="16" rx="3"></rect>
+            <rect class="ln faint cycle sl-old" x="70" y="42" width="36" height="40" rx="5"></rect>
+            <rect class="fl" x="80" y="54" width="16" height="16" rx="3"></rect>
+            <path class="ln hi cycle sl-link" d="M54 62 H66" stroke-dasharray="3 4"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">stale</p>
+          <p class="what">저쪽은 옛것 그대로</p>
+          <p class="said">먼저 설치한 앱은 옛 주소를 붙잡고 있었습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="글이 화살표를 지나 재생 표시가 있는 영상이 된다">
+            <rect class="ln cycle cv-doc" x="12" y="34" width="36" height="52" rx="4" pathLength="1"></rect>
+            <path class="ln cycle cv-txt" pathLength="1" d="M20 48 H40 M20 60 H40 M20 72 H33"></path>
+            <path class="ln cycle cv-arrow" pathLength="1" d="M54 60 H66"></path>
+            <path class="ln hi cycle cv-tip" d="M64 55 L70 60 L64 65"></path>
+            <rect class="ln hi cycle cv-vid" x="76" y="40" width="32" height="40" rx="4" pathLength="1"></rect>
+            <path class="fl hi cycle pop cv-play" d="M87 51 L101 60 L87 69 Z"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">convert</p>
+          <p class="what">하나가 다른 것이 된다</p>
+          <p class="said">그 글은 30초짜리 세로 영상까지 됩니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="가운데 줄 하나가 옆으로 빠져나가고 그 자리가 빈 채로 남는다">
+            <path class="ln" d="M20 40 H100"></path>
+            <path class="ln hi cycle rm-gap" d="M20 62 H100" stroke-dasharray="3 9"></path>
+            <g class="cycle rm-row"><path class="ln hi" d="M20 62 H100"></path></g>
+            <path class="ln" d="M20 84 H100"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="name">remove</p>
+          <p class="what">하나를 빼낸다</p>
+          <p class="said">그 줄을 지우고 확인 방식을 바꿨습니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="눈금을 따라가던 점이 중간에서 멈추고 남은 구간이 흐려진다">
+            <path class="ln faint" d="M14 62 H62"></path>
+            <path class="ln faint" d="M30 55 V69 M44 55 V69"></path>
+            <g class="cycle eo-rest">
+              <path class="ln" d="M62 62 H106"></path>
+              <path class="ln" d="M78 55 V69 M96 55 V69"></path>
+            </g>
+            <path class="ln" d="M62 44 V80"></path>
+            <path class="ln hi cycle eo-stop" pathLength="1" d="M62 44 V80"></path>
+            <g class="cycle eo-dot"><circle class="fl hi" cx="0" cy="62" r="6"></circle></g>
+          </svg>
+        </div>
+        <div>
+          <p class="name">earlyout</p>
+          <p class="what">확실하면 나머지는 안 본다</p>
+          <p class="said">이름 차이를 세는 계산은 확실히 다르면 일찍 멈춥니다.</p>
+        </div>
+      </article>
+
+      <article class="motif">
+        <div class="stage">
+          <svg viewBox="0 0 120 120" role="img" aria-label="위의 하나에서 갈라진 선 셋이 아래 상자 셋에 닿아 차례로 켜진다">
+            <circle class="fl hi cycle pop fo-src" cx="60" cy="26" r="8"></circle>
+            <path class="ln cycle fo-line" pathLength="1" d="M60 36 C60 56 32 52 26 68"></path>
+            <path class="ln cycle fo-line" pathLength="1" d="M60 36 V68"></path>
+            <path class="ln cycle fo-line" pathLength="1" d="M60 36 C60 56 88 52 94 68"></path>
+            <rect class="ln cycle fo-1" x="12" y="72" width="28" height="24" rx="4"></rect>
+            <rect class="ln cycle fo-2" x="46" y="72" width="28" height="24" rx="4"></rect>
+            <rect class="ln cycle fo-3" x="80" y="72" width="28" height="24" rx="4"></rect>
+          </svg>
+        </div>
+        <div>
+          <p class="name">fanout</p>
+          <p class="what">하나가 전부에 퍼진다</p>
+          <p class="said">페이지마다 붙는 안전 설정 5개도 넣었습니다.</p>
+        </div>
+      </article>
+
     </div>
   </section>
 
