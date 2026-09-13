@@ -1,0 +1,30 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "how it works",
+      "focusY": 0.499,
+      "start": 1.01,
+      "end": 8.03
+    },
+    {
+      "path": "/",
+      "find": "recent devlogs",
+      "focusY": 0.5,
+      "start": 9.07,
+      "end": 16.08
+    },
+    {
+      "path": "/",
+      "find": "last run",
+      "focusY": 0.5,
+      "start": 16.62,
+      "end": 23.63
+    },
+    {
+      "path": "/shorts",
+      "start": 24.6,
+      "end": 32.91
+    }
+  ]
+}
