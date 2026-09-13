@@ -1,3 +1,4 @@
+import { ldJson } from "@/lib/ld-json";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
@@ -47,7 +48,7 @@ export default async function DevlogPostPage({ params }: Props) {
         type="application/ld+json"
         // 검색엔진용 글 정보 — 발행일·작성 주체를 구조화해 노출
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: ldJson({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: d.title,
