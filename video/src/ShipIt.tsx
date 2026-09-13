@@ -123,7 +123,12 @@ function findOf(
  * 그 화면을 찾아낸다(scripts/record.ts). screen만 봤을 때는, find만 있는
  * 문장이 카드로 떨어져 정작 찾아 놓은 화면을 버렸다.
  */
-function kindOf(scene: string, hasNextArt: boolean, hasScreen = false): Kind {
+function kindOf(
+  scene: string,
+  hasNextArt: boolean,
+  hasScreen = false,
+  hasMotif = false,
+): Kind {
   if (scene === "hook") return "hook";
   // 삽질 문장도 화면을 지정했으면 폰을 보여준다. 카드·다이어그램만 띄우던
   // 탓에 "스탬프 이야기를 하는데 스탬프 화면이 하나도 안 나오는" 편이
@@ -137,10 +142,15 @@ function kindOf(scene: string, hasNextArt: boolean, hasScreen = false): Kind {
   // ("꼭 마지막엔 이 화면을 쓰기로 한 거야?" — Jessi). 대본이 화면을 고르지
   // 않았으면 화면을 쓰지 않는다.
   //
+  // 모티프가 붙었고 화면을 안 골랐으면 모티프를 그린다 — next만이 아니다.
+  // next에만 걸어 두면 build·demo 문장에 붙은 모티프가 그려지지 않고,
+  // 화면도 안 고른 그 문장에 아무 녹화나 붙어 돌게 된다 (plain으로 안 가니
+  // phone으로 떨어진다). hook·end·fail은 제 카드가 있어 여기 오지 않는다.
+  if (!hasScreen && hasMotif) return "plain";
   // plain은 **마지막 수단**이다 — 자막만 뜬 빈 화면이 된다 (Jessi 지적).
   // 채울 것은 내용에서 나와야 하므로(콜드오픈 모양을 그대로 재사용하는 것은
-  // 짜맞추기다) 대본이 그런 문장에 diagram을 붙이게 한다 — 그럼 이 분기까지
-  // 오지 않는다. 그래도 비면 배경과 자막만 (엉뚱한 화면보다는 낫다).
+  // 짜맞추기다) 대본이 그런 문장에 diagram이나 motif를 붙이게 한다 — 그럼 이
+  // 분기까지 오지 않는다. 그래도 비면 배경과 자막만 (엉뚱한 화면보다는 낫다).
   if (scene === "next" && !hasScreen) return "plain";
   return "phone";
 }
@@ -201,6 +211,7 @@ export function buildSegments(
       line?.scene ?? "build",
       hasNextArt,
       !!(line?.screen || findOf(line, lang)),
+      !!line?.motif,
     );
     let from = s.start + offset;
     // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
