@@ -63,6 +63,8 @@ vibelog/
 │   ├─ projects.json             #   레포 메타 기반 카드
 │   ├─ devlog/<repo>/<date>.md   #   frontmatter manual: true면 보호
 │   ├─ shorts/<repo>/<date>.*    #   대본 · 타이밍 · 화면 구간 (mp4는 Vercel Blob)
+│   ├─ commit-hours.json         #   홈 잔디 재료 (시각별 커밋 수)
+│   ├─ run.json                  #   마지막 실행 기록 — 홈의 "지난 실행"
 │   └─ state.json                #   레포별 마지막 처리 SHA · 시각 · 날짜 버킷
 ├─ scripts/
 │   ├─ collect.ts                # GitHub API → 레포별 활동 수집 (Octokit)
@@ -73,7 +75,8 @@ vibelog/
 │   ├─ render.ts · mux.ts        # Remotion 렌더 + 오디오 믹스
 │   ├─ shorts.ts · poster.ts     # 쇼츠 전체 / 썸네일만 재생성 진입점
 │   └─ run.ts                    # 전체 실행 (collect → generate → shorts → 커밋)
-├─ video/src/                    # Remotion 컴포넌트 — 템플릿 3종 · 테마 5종 · 다이어그램 5종
+├─ video/src/                    # Remotion 컴포넌트 — 템플릿 3종 · 테마 5종
+│                                #   · 다이어그램 5종 · 모티프 22종 (+ 검수용 MotifSheet)
 └─ .github/workflows/
     ├─ devlog.yml                # 밤 발행 (23:00 + 백업 23:45·01:00·03:00) + workflow_dispatch
     ├─ projects.yml              # 30분마다 새 프로젝트 인식만
