@@ -8,101 +8,104 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "진짜 아파트 이름이 막혔습니다.",
-      "en": "Real apartment names got blocked.",
+      "ko": "진짜 아파트 이름이 욕으로 걸렸습니다.",
+      "en": "Real apartment names got flagged as profanity.",
       "keywords": [
-        "막혔습니다"
+        "욕으로"
       ],
       "keywordsEn": [
-        "blocked"
-      ]
+        "profanity"
+      ],
+      "shot": "whole"
     },
     {
       "scene": "fail",
-      "ko": "욕설을 거르는 단어 목록을 채웠습니다.",
-      "en": "I filled out the banned-word list properly.",
+      "ko": "욕설을 거르는 단어 목록을 채웠더니 실제 아파트 이름 26개가 같이 걸렸습니다.",
+      "en": "I filled out the banned word list properly, and 26 real apartment names got caught with it.",
       "keywords": [
-        "욕설을 거르는"
+        "실제 아파트 이름 26개가"
       ],
       "keywordsEn": [
-        "banned-word list"
-      ],
-      "diagram": {
-        "kind": "beforeafter",
-        "labels": [
-          "듬성한 단어 목록",
-          "욕설이 통과",
-          "제대로 채운 목록",
-          "욕설을 차단"
-        ],
-        "labelsEn": [
-          "thin word list",
-          "profanity slips by",
-          "full word list",
-          "profanity blocked"
-        ]
-      }
-    },
-    {
-      "scene": "fail",
-      "ko": "그랬더니 실제 있는 아파트 이름 26개가 같이 걸렸습니다.",
-      "en": "Then 26 real apartment names got caught with them.",
-      "keywords": [
-        "26개가"
-      ],
-      "keywordsEn": [
-        "real apartment names"
+        "26 real apartment names"
       ],
       "diagram": {
         "kind": "sets",
         "labels": [
-          "욕설로 걸린 이름",
+          "욕설 단어 목록",
           "실제 아파트 이름",
-          "26개"
+          "26"
         ],
         "labelsEn": [
-          "flagged as profanity",
+          "banned word list",
           "real apartment names",
           "26"
         ]
       }
     },
     {
-      "scene": "build",
-      "ko": "실제 아파트 12,121건이 전부 통과하는지 먼저 확인했습니다.",
-      "en": "So I required all 12,121 real complexes to pass first.",
+      "scene": "fail",
+      "ko": "숫자를 지우고 비교하다가 멀쩡한 이름이 걸렸습니다.",
+      "en": "Stripping digits before comparing flagged a perfectly real name.",
       "keywords": [
-        "12,121건이",
-        "전부"
+        "숫자를 지우고"
       ],
       "keywordsEn": [
-        "12,121 real complexes"
+        "Stripping digits"
       ],
-      "stat": "12,121건",
-      "statEn": "12,121 complexes",
-      "motif": "gate"
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "자이2단지",
+          "걸림",
+          "통과",
+          "숫자를 지우고 비교",
+          "이름 그대로 비교"
+        ],
+        "labelsEn": [
+          "Xi 2-danji",
+          "flagged",
+          "passes",
+          "compare without digits",
+          "compare as written"
+        ],
+        "pick": 2
+      }
     },
     {
       "scene": "build",
-      "ko": "그 조건에 맞춰 목록을 다시 손봤습니다.",
-      "en": "Then I reworked the list to fit that condition.",
+      "ko": "실제 단지 12,121건이 전부 통과해야 한다는 조건을 걸었습니다.",
+      "en": "I made it a condition that all 12,121 real complexes must pass.",
+      "keywords": [
+        "전부 통과해야"
+      ],
+      "keywordsEn": [
+        "all 12,121"
+      ],
+      "stat": "12,121건",
+      "statEn": "12,121 complexes",
+      "motif": "scan"
+    },
+    {
+      "scene": "build",
+      "ko": "그 조건에 맞춰 단어 목록을 다시 손봤습니다.",
+      "en": "Then I reworked the word list until it held.",
       "keywords": [
         "다시 손봤습니다"
       ],
       "keywordsEn": [
         "reworked"
       ],
-      "motif": "scan"
+      "motif": "refine"
     },
     {
       "scene": "demo",
-      "ko": "사람이 지어 올린 이름도 검사를 통과하면 문제로 나갑니다.",
-      "en": "Names people invent now go out as quiz questions once they pass.",
+      "ko": "이제 직접 지은 이름이 검사를 거쳐 매일 새벽 문제로 나갑니다.",
+      "en": "Now a name you invent passes the checks and goes out as a quiz question each morning.",
       "keywords": [
-        "사람이 지어 올린"
+        "직접 지은 이름이"
       ],
       "keywordsEn": [
-        "Names people invent"
+        "a name you invent"
       ],
       "screen": "/o",
       "find": "이름 하나를 보고 진짜/가짜",
@@ -111,36 +114,40 @@
     },
     {
       "scene": "demo",
-      "ko": "몇 명을 속였는지는 기록 화면에 남습니다.",
-      "en": "How many people your name fooled shows up on your records page.",
+      "ko": "내 이름이 몇 명을 속였는지도 기록에서 볼 수 있습니다.",
+      "en": "You can see how many people your name fooled.",
       "keywords": [
-        "몇 명을 속였는지는"
+        "몇 명을 속였는지도"
       ],
-      "keywordsEn": [],
+      "keywordsEn": [
+        "how many people"
+      ],
       "screen": "/me",
-      "shot": "whole"
+      "find": "기록 열람",
+      "findEn": "records",
+      "shot": "focus"
     },
     {
       "scene": "next",
-      "ko": "로그인 없이 기록을 지우면 아직 답이 샙니다.",
-      "en": "Without a login, clearing your record still leaks answers.",
+      "ko": "기록을 지우고 다시 시작하면 아직 답이 새어 나갑니다.",
+      "en": "Clearing your local record and starting fresh still leaks answers.",
       "keywords": [
-        "아직 답이 샙니다"
+        "새어 나갑니다"
       ],
       "keywordsEn": [
         "still leaks answers"
       ],
-      "motif": "loop"
+      "motif": "leak"
     },
     {
       "scene": "end",
-      "ko": "이제 가짜 이름도 사람이 짓습니다.",
-      "en": "Now people write the fake names too.",
+      "ko": "막았다고 적지 않고 남은 일로 뒀습니다.",
+      "en": "I wrote it down as unfinished instead of claiming it was fixed.",
       "keywords": [
-        "사람이"
+        "남은 일로"
       ],
       "keywordsEn": [
-        "people"
+        "as unfinished"
       ]
     }
   ],
@@ -152,9 +159,9 @@
     "title": "진짜 이름이 걸렸다",
     "titleEn": "Real names got flagged",
     "before": "욕설 목록에 실제 아파트 이름 26개가 같이 걸렸습니다",
-    "after": "실제 단지 12,121건이 전부 통과하도록 목록을 고쳤습니다",
-    "beforeEn": "The banned-word list flagged 26 real apartment names",
-    "afterEn": "Reworked the list so all 12,121 real complexes pass"
+    "after": "실제 단지 12,121건이 전부 통과하도록 목록을 다시 손봤습니다",
+    "beforeEn": "26 real apartment names were caught by the banned word list",
+    "afterEn": "Reworked the list until all 12,121 real complexes pass"
   },
   "commits": [
     [
@@ -323,22 +330,22 @@
   "commitCount": 20,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "욕설을 거르는 목록을 제대로 채웠더니 실제 아파트 이름 26개가 같이 걸렸습니다. 실제 단지 12,121건이 전부 통과하는 것을 조건으로 걸고 목록을 다시 손봤습니다.",
-    "en": "Filling out the banned-word list properly caught 26 real apartment names. I made \"all 12,121 real complexes must pass\" a condition and reworked the list."
+    "ko": "사람이 직접 지은 가짜 이름을 문제로 내보내려다, 욕설 거르는 목록에 진짜 아파트 이름 26개가 걸렸습니다. 실제 단지 12,121건이 전부 통과하는 것을 조건으로 걸고 다시 손봤습니다.",
+    "en": "Opening a counter for player-invented apartment names, the banned word list caught 26 real names. I made all 12,121 real complexes passing a hard condition and reworked it."
   },
   "hashtags": [
-    "#개발일지",
-    "#devlog",
     "#아파트감별사",
-    "#인디개발",
+    "#개발일지",
     "#buildinpublic",
-    "#필터링",
-    "#sidequest"
+    "#devlog",
+    "#웹게임",
+    "#indiedev",
+    "#코딩"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.poster.jpg?v=mtzwc1ld",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.ko.mp4?v=mtzwc3x3",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.en.poster.jpg?v=mtzwda6d",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.en.mp4?v=mtzwdchf"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.poster.jpg?v=mtzzd8vk",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.ko.mp4?v=mtzzdb2y",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.en.poster.jpg?v=mtzzerca",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.en.mp4?v=mtzzesur"
   }
 }

@@ -1,467 +1,577 @@
 {
   "lang": "en",
-  "duration": 29.21,
+  "duration": 37.059,
   "sentences": [
     {
       "index": 0,
       "start": 0,
-      "end": 1.707,
+      "end": 2.368,
       "words": [
         {
           "text": "Real",
           "start": 0,
-          "end": 0.267
+          "end": 0.244
         },
         {
           "text": "apartment",
-          "start": 0.313,
-          "end": 0.708
+          "start": 0.279,
+          "end": 0.685
         },
         {
           "text": "names",
-          "start": 0.755,
+          "start": 0.743,
           "end": 0.964
         },
         {
           "text": "got",
           "start": 1.01,
-          "end": 1.149
+          "end": 1.161
         },
         {
-          "text": "blocked.",
-          "start": 1.196,
-          "end": 1.707
+          "text": "flagged",
+          "start": 1.207,
+          "end": 1.509
+        },
+        {
+          "text": "as",
+          "start": 1.533,
+          "end": 1.591
+        },
+        {
+          "text": "profanity.",
+          "start": 1.649,
+          "end": 2.368
         }
       ]
     },
     {
       "index": 1,
-      "start": 2.218,
-      "end": 4.389,
+      "start": 2.972,
+      "end": 8.313,
       "words": [
         {
           "text": "I",
-          "start": 2.218,
-          "end": 2.276
+          "start": 2.972,
+          "end": 3.019
         },
         {
           "text": "filled",
-          "start": 2.392,
-          "end": 2.635
+          "start": 3.146,
+          "end": 3.39
         },
         {
           "text": "out",
-          "start": 2.659,
-          "end": 2.775
+          "start": 3.425,
+          "end": 3.553
         },
         {
           "text": "the",
-          "start": 2.821,
-          "end": 2.891
+          "start": 3.587,
+          "end": 3.657
         },
         {
-          "text": "banned-word",
-          "start": 2.937,
-          "end": 3.448
+          "text": "banned",
+          "start": 3.704,
+          "end": 3.947
+        },
+        {
+          "text": "word",
+          "start": 3.994,
+          "end": 4.203
         },
         {
           "text": "list",
-          "start": 3.495,
-          "end": 3.669
+          "start": 4.261,
+          "end": 4.447
         },
         {
-          "text": "properly.",
-          "start": 3.715,
-          "end": 4.389
+          "text": "properly,",
+          "start": 4.493,
+          "end": 5.143
+        },
+        {
+          "text": "and",
+          "start": 5.526,
+          "end": 5.7
+        },
+        {
+          "text": "26",
+          "start": 5.77,
+          "end": 6.304
+        },
+        {
+          "text": "real",
+          "start": 6.397,
+          "end": 6.571
+        },
+        {
+          "text": "apartment",
+          "start": 6.606,
+          "end": 7.024
+        },
+        {
+          "text": "names",
+          "start": 7.082,
+          "end": 7.303
+        },
+        {
+          "text": "got",
+          "start": 7.338,
+          "end": 7.488
+        },
+        {
+          "text": "caught",
+          "start": 7.546,
+          "end": 7.744
+        },
+        {
+          "text": "with",
+          "start": 7.767,
+          "end": 7.906
+        },
+        {
+          "text": "it.",
+          "start": 7.964,
+          "end": 8.313
         }
       ]
     },
     {
       "index": 2,
-      "start": 4.899,
-      "end": 7.616,
+      "start": 8.824,
+      "end": 12.179,
       "words": [
         {
-          "text": "Then",
-          "start": 4.899,
-          "end": 5.062
+          "text": "Stripping",
+          "start": 8.824,
+          "end": 9.23
         },
         {
-          "text": "26",
-          "start": 5.132,
-          "end": 5.666
+          "text": "digits",
+          "start": 9.276,
+          "end": 9.613
+        },
+        {
+          "text": "before",
+          "start": 9.66,
+          "end": 9.903
+        },
+        {
+          "text": "comparing",
+          "start": 9.95,
+          "end": 10.495
+        },
+        {
+          "text": "flagged",
+          "start": 10.612,
+          "end": 10.937
+        },
+        {
+          "text": "a",
+          "start": 10.96,
+          "end": 10.983
+        },
+        {
+          "text": "perfectly",
+          "start": 11.053,
+          "end": 11.494
         },
         {
           "text": "real",
-          "start": 5.759,
-          "end": 5.933
+          "start": 11.552,
+          "end": 11.738
         },
         {
-          "text": "apartment",
-          "start": 5.968,
-          "end": 6.351
-        },
-        {
-          "text": "names",
-          "start": 6.397,
-          "end": 6.594
-        },
-        {
-          "text": "got",
-          "start": 6.641,
-          "end": 6.792
-        },
-        {
-          "text": "caught",
-          "start": 6.861,
-          "end": 7.082
-        },
-        {
-          "text": "with",
-          "start": 7.117,
-          "end": 7.245
-        },
-        {
-          "text": "them.",
-          "start": 7.291,
-          "end": 7.616
+          "text": "name.",
+          "start": 11.796,
+          "end": 12.179
         }
       ]
     },
     {
       "index": 3,
-      "start": 8.127,
-      "end": 12.458,
+      "start": 12.875,
+      "end": 17.833,
       "words": [
         {
-          "text": "So",
-          "start": 8.127,
-          "end": 8.266
-        },
-        {
           "text": "I",
-          "start": 8.324,
-          "end": 8.348
+          "start": 12.875,
+          "end": 12.922
         },
         {
-          "text": "required",
-          "start": 8.429,
-          "end": 8.835
+          "text": "made",
+          "start": 13.003,
+          "end": 13.166
+        },
+        {
+          "text": "it",
+          "start": 13.189,
+          "end": 13.247
+        },
+        {
+          "text": "a",
+          "start": 13.282,
+          "end": 13.317
+        },
+        {
+          "text": "condition",
+          "start": 13.363,
+          "end": 13.897
+        },
+        {
+          "text": "that",
+          "start": 13.99,
+          "end": 14.164
         },
         {
           "text": "all",
-          "start": 8.882,
-          "end": 9.009
+          "start": 14.199,
+          "end": 14.315
         },
         {
           "text": "12,121",
-          "start": 9.056,
-          "end": 10.588
+          "start": 14.361,
+          "end": 15.975
         },
         {
           "text": "real",
-          "start": 10.704,
-          "end": 10.89
+          "start": 16.091,
+          "end": 16.289
         },
         {
           "text": "complexes",
-          "start": 10.96,
-          "end": 11.529
+          "start": 16.347,
+          "end": 16.95
         },
         {
-          "text": "to",
-          "start": 11.564,
-          "end": 11.622
+          "text": "must",
+          "start": 17.02,
+          "end": 17.229
         },
         {
-          "text": "pass",
-          "start": 11.691,
-          "end": 11.912
-        },
-        {
-          "text": "first.",
-          "start": 11.97,
-          "end": 12.458
+          "text": "pass.",
+          "start": 17.275,
+          "end": 17.833
         }
       ]
     },
     {
       "index": 4,
-      "start": 13.154,
-      "end": 15.72,
+      "start": 18.645,
+      "end": 21.176,
       "words": [
         {
           "text": "Then",
-          "start": 13.154,
-          "end": 13.328
+          "start": 18.645,
+          "end": 18.808
         },
         {
           "text": "I",
-          "start": 13.386,
-          "end": 13.41
+          "start": 18.866,
+          "end": 18.889
         },
         {
           "text": "reworked",
-          "start": 13.526,
-          "end": 13.944
+          "start": 19.005,
+          "end": 19.412
         },
         {
           "text": "the",
-          "start": 13.967,
-          "end": 14.036
+          "start": 19.435,
+          "end": 19.504
+        },
+        {
+          "text": "word",
+          "start": 19.551,
+          "end": 19.76
         },
         {
           "text": "list",
-          "start": 14.106,
-          "end": 14.443
+          "start": 19.818,
+          "end": 20.166
         },
         {
-          "text": "to",
-          "start": 14.536,
-          "end": 14.652
+          "text": "until",
+          "start": 20.248,
+          "end": 20.549
         },
         {
-          "text": "fit",
-          "start": 14.733,
-          "end": 14.896
+          "text": "it",
+          "start": 20.607,
+          "end": 20.677
         },
         {
-          "text": "that",
-          "start": 14.93,
-          "end": 15.058
-        },
-        {
-          "text": "condition.",
-          "start": 15.104,
-          "end": 15.72
+          "text": "held.",
+          "start": 20.724,
+          "end": 21.176
         }
       ]
     },
     {
       "index": 5,
-      "start": 16.416,
-      "end": 19.713,
+      "start": 21.78,
+      "end": 26.331,
       "words": [
         {
-          "text": "Names",
-          "start": 16.416,
-          "end": 16.66
+          "text": "Now",
+          "start": 21.78,
+          "end": 21.954
         },
         {
-          "text": "people",
-          "start": 16.695,
-          "end": 16.95
+          "text": "a",
+          "start": 22.024,
+          "end": 22.059
+        },
+        {
+          "text": "name",
+          "start": 22.128,
+          "end": 22.384
+        },
+        {
+          "text": "you",
+          "start": 22.419,
+          "end": 22.511
         },
         {
           "text": "invent",
-          "start": 16.985,
-          "end": 17.299
+          "start": 22.581,
+          "end": 22.929
         },
         {
-          "text": "now",
-          "start": 17.368,
-          "end": 17.542
+          "text": "passes",
+          "start": 22.999,
+          "end": 23.371
         },
         {
-          "text": "go",
-          "start": 17.612,
-          "end": 17.717
+          "text": "the",
+          "start": 23.429,
+          "end": 23.498
+        },
+        {
+          "text": "checks",
+          "start": 23.533,
+          "end": 23.881
+        },
+        {
+          "text": "and",
+          "start": 23.928,
+          "end": 24.021
+        },
+        {
+          "text": "goes",
+          "start": 24.09,
+          "end": 24.323
         },
         {
           "text": "out",
-          "start": 17.775,
-          "end": 17.879
+          "start": 24.381,
+          "end": 24.578
         },
         {
           "text": "as",
-          "start": 17.925,
-          "end": 17.995
+          "start": 24.648,
+          "end": 24.764
+        },
+        {
+          "text": "a",
+          "start": 24.81,
+          "end": 24.833
         },
         {
           "text": "quiz",
-          "start": 18.065,
-          "end": 18.227
+          "start": 24.892,
+          "end": 25.089
         },
         {
-          "text": "questions",
-          "start": 18.285,
-          "end": 18.715
+          "text": "question",
+          "start": 25.159,
+          "end": 25.542
         },
         {
-          "text": "once",
-          "start": 18.785,
-          "end": 18.97
+          "text": "each",
+          "start": 25.588,
+          "end": 25.739
         },
         {
-          "text": "they",
-          "start": 18.994,
-          "end": 19.11
-        },
-        {
-          "text": "pass.",
-          "start": 19.156,
-          "end": 19.713
+          "text": "morning.",
+          "start": 25.797,
+          "end": 26.331
         }
       ]
     },
     {
       "index": 6,
-      "start": 20.317,
-      "end": 23.069,
+      "start": 27.028,
+      "end": 29.245,
       "words": [
         {
-          "text": "How",
-          "start": 20.317,
-          "end": 20.456
+          "text": "You",
+          "start": 27.028,
+          "end": 27.155
+        },
+        {
+          "text": "can",
+          "start": 27.202,
+          "end": 27.318
+        },
+        {
+          "text": "see",
+          "start": 27.364,
+          "end": 27.515
+        },
+        {
+          "text": "how",
+          "start": 27.562,
+          "end": 27.678
         },
         {
           "text": "many",
-          "start": 20.491,
-          "end": 20.631
+          "start": 27.736,
+          "end": 27.898
         },
         {
           "text": "people",
-          "start": 20.677,
-          "end": 20.921
+          "start": 27.945,
+          "end": 28.247
         },
         {
           "text": "your",
-          "start": 20.967,
-          "end": 21.083
+          "start": 28.293,
+          "end": 28.409
         },
         {
           "text": "name",
-          "start": 21.13,
-          "end": 21.304
+          "start": 28.444,
+          "end": 28.63
         },
         {
-          "text": "fooled",
-          "start": 21.35,
-          "end": 21.583
-        },
-        {
-          "text": "shows",
-          "start": 21.629,
-          "end": 21.873
-        },
-        {
-          "text": "up",
-          "start": 21.931,
-          "end": 22.024
-        },
-        {
-          "text": "on",
-          "start": 22.07,
-          "end": 22.128
-        },
-        {
-          "text": "your",
-          "start": 22.175,
-          "end": 22.268
-        },
-        {
-          "text": "records",
-          "start": 22.314,
-          "end": 22.581
-        },
-        {
-          "text": "page.",
-          "start": 22.628,
-          "end": 23.069
+          "text": "fooled.",
+          "start": 28.676,
+          "end": 29.245
         }
       ]
     },
     {
       "index": 7,
-      "start": 23.672,
-      "end": 26.726,
+      "start": 29.756,
+      "end": 33.367,
       "words": [
         {
-          "text": "Without",
-          "start": 23.672,
-          "end": 23.986
-        },
-        {
-          "text": "a",
-          "start": 24.032,
-          "end": 24.056
-        },
-        {
-          "text": "login,",
-          "start": 24.102,
-          "end": 24.659
-        },
-        {
-          "text": "clearing",
-          "start": 24.833,
-          "end": 25.147
+          "text": "Clearing",
+          "start": 29.756,
+          "end": 30.116
         },
         {
           "text": "your",
-          "start": 25.193,
-          "end": 25.286
+          "start": 30.163,
+          "end": 30.267
+        },
+        {
+          "text": "local",
+          "start": 30.314,
+          "end": 30.592
         },
         {
           "text": "record",
-          "start": 25.333,
-          "end": 25.6
+          "start": 30.673,
+          "end": 31.022
+        },
+        {
+          "text": "and",
+          "start": 31.068,
+          "end": 31.15
+        },
+        {
+          "text": "starting",
+          "start": 31.208,
+          "end": 31.649
+        },
+        {
+          "text": "fresh",
+          "start": 31.73,
+          "end": 32.067
         },
         {
           "text": "still",
-          "start": 25.635,
-          "end": 25.809
+          "start": 32.125,
+          "end": 32.392
         },
         {
           "text": "leaks",
-          "start": 25.855,
-          "end": 26.052
+          "start": 32.438,
+          "end": 32.659
         },
         {
           "text": "answers.",
-          "start": 26.099,
-          "end": 26.726
+          "start": 32.717,
+          "end": 33.367
         }
       ]
     },
     {
       "index": 8,
-      "start": 27.237,
-      "end": 29.21,
+      "start": 33.808,
+      "end": 37.059,
       "words": [
         {
-          "text": "Now",
-          "start": 27.237,
-          "end": 27.388
+          "text": "I",
+          "start": 33.808,
+          "end": 33.855
         },
         {
-          "text": "people",
-          "start": 27.446,
-          "end": 27.713
+          "text": "wrote",
+          "start": 33.924,
+          "end": 34.145
         },
         {
-          "text": "write",
-          "start": 27.736,
-          "end": 27.945
+          "text": "it",
+          "start": 34.168,
+          "end": 34.226
         },
         {
-          "text": "the",
-          "start": 27.968,
-          "end": 28.038
+          "text": "down",
+          "start": 34.273,
+          "end": 34.458
         },
         {
-          "text": "fake",
-          "start": 28.084,
-          "end": 28.328
+          "text": "as",
+          "start": 34.505,
+          "end": 34.586
         },
         {
-          "text": "names",
-          "start": 28.363,
-          "end": 28.595
+          "text": "unfinished",
+          "start": 34.644,
+          "end": 35.19
         },
         {
-          "text": "too.",
-          "start": 28.641,
-          "end": 29.21
+          "text": "instead",
+          "start": 35.236,
+          "end": 35.538
+        },
+        {
+          "text": "of",
+          "start": 35.573,
+          "end": 35.619
+        },
+        {
+          "text": "claiming",
+          "start": 35.689,
+          "end": 36.026
+        },
+        {
+          "text": "it",
+          "start": 36.072,
+          "end": 36.142
+        },
+        {
+          "text": "was",
+          "start": 36.188,
+          "end": 36.304
+        },
+        {
+          "text": "fixed.",
+          "start": 36.374,
+          "end": 37.059
         }
       ]
     }

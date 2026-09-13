@@ -3,13 +3,15 @@
     {
       "path": "/o",
       "find": "one name, real or fake",
-      "start": 0.97,
-      "end": 17.64
+      "start": 0.86,
+      "end": 21.45
     },
     {
       "path": "/me",
-      "start": 18.45,
-      "end": 35.79
+      "find": "records",
+      "focusY": 0.211,
+      "start": 22.48,
+      "end": 42.52
     }
   ]
 }
