@@ -1,0 +1,344 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-13",
+  "day": 4,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "진짜 아파트 이름이 막혔습니다.",
+      "en": "Real apartment names got blocked.",
+      "keywords": [
+        "막혔습니다"
+      ],
+      "keywordsEn": [
+        "blocked"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "욕설을 거르는 단어 목록을 채웠습니다.",
+      "en": "I filled out the banned-word list properly.",
+      "keywords": [
+        "욕설을 거르는"
+      ],
+      "keywordsEn": [
+        "banned-word list"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "듬성한 단어 목록",
+          "욕설이 통과",
+          "제대로 채운 목록",
+          "욕설을 차단"
+        ],
+        "labelsEn": [
+          "thin word list",
+          "profanity slips by",
+          "full word list",
+          "profanity blocked"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그랬더니 실제 있는 아파트 이름 26개가 같이 걸렸습니다.",
+      "en": "Then 26 real apartment names got caught with them.",
+      "keywords": [
+        "26개가"
+      ],
+      "keywordsEn": [
+        "real apartment names"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "욕설로 걸린 이름",
+          "실제 아파트 이름",
+          "26개"
+        ],
+        "labelsEn": [
+          "flagged as profanity",
+          "real apartment names",
+          "26"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "실제 아파트 12,121건이 전부 통과하는지 먼저 확인했습니다.",
+      "en": "So I required all 12,121 real complexes to pass first.",
+      "keywords": [
+        "12,121건이",
+        "전부"
+      ],
+      "keywordsEn": [
+        "12,121 real complexes"
+      ],
+      "stat": "12,121건",
+      "statEn": "12,121 complexes",
+      "motif": "gate"
+    },
+    {
+      "scene": "build",
+      "ko": "그 조건에 맞춰 목록을 다시 손봤습니다.",
+      "en": "Then I reworked the list to fit that condition.",
+      "keywords": [
+        "다시 손봤습니다"
+      ],
+      "keywordsEn": [
+        "reworked"
+      ],
+      "motif": "scan"
+    },
+    {
+      "scene": "demo",
+      "ko": "사람이 지어 올린 이름도 검사를 통과하면 문제로 나갑니다.",
+      "en": "Names people invent now go out as quiz questions once they pass.",
+      "keywords": [
+        "사람이 지어 올린"
+      ],
+      "keywordsEn": [
+        "Names people invent"
+      ],
+      "screen": "/o",
+      "find": "이름 하나를 보고 진짜/가짜",
+      "findEn": "one name, real or fake",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "몇 명을 속였는지는 기록 화면에 남습니다.",
+      "en": "How many people your name fooled shows up on your records page.",
+      "keywords": [
+        "몇 명을 속였는지는"
+      ],
+      "keywordsEn": [],
+      "screen": "/me",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "로그인 없이 기록을 지우면 아직 답이 샙니다.",
+      "en": "Without a login, clearing your record still leaks answers.",
+      "keywords": [
+        "아직 답이 샙니다"
+      ],
+      "keywordsEn": [
+        "still leaks answers"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 가짜 이름도 사람이 짓습니다.",
+      "en": "Now people write the fake names too.",
+      "keywords": [
+        "사람이"
+      ],
+      "keywordsEn": [
+        "people"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "진짜 이름이 걸렸다",
+    "titleEn": "Real names got flagged",
+    "before": "욕설 목록에 실제 아파트 이름 26개가 같이 걸렸습니다",
+    "after": "실제 단지 12,121건이 전부 통과하도록 목록을 고쳤습니다",
+    "beforeEn": "The banned-word list flagged 26 real apartment names",
+    "afterEn": "Reworked the list so all 12,121 real complexes pass"
+  },
+  "commits": [
+    [
+      "6351158",
+      "chore: 승인된 작명을 매일 새벽 자동으로 출제로 내보낸다"
+    ],
+    [
+      "b8937c8",
+      "feat: 말 거르기를 만들어 심사를 걸린 것만으로 줄인다"
+    ],
+    [
+      "86f982c",
+      "fix: 공식전에서 알고 나서 답을 바꾸지 못하게 한다"
+    ],
+    [
+      "ec737e2",
+      "feat: 지은 이름을 승인해 출제로 보내는 길을 낸다"
+    ],
+    [
+      "2fa7ab4",
+      "docs: 가짜 이름 수가 낡은 채로 남아 있던 것을 맞춘다"
+    ],
+    [
+      "3d4059b",
+      "docs: 목록을 쪽으로 나누는 규칙과 보안 점검 절차를 적는다"
+    ],
+    [
+      "e7dfcd1",
+      "fix: 집계에 안 남기고 정답을 캐낼 수 있던 스위치를 없앤다"
+    ],
+    [
+      "fcfe993",
+      "chore: 레드팀 점검 스킬을 만든다"
+    ],
+    [
+      "a1fd4c0",
+      "fix: 기록부의 중복을 걷어내고, 접수 목록을 쪽으로 나눈다"
+    ],
+    [
+      "3fff08f",
+      "docs: 용어집과 기획 문서를 현황 열·작명 호칭에 맞춘다"
+    ],
+    [
+      "a69247d",
+      "design: 접수 대장 셋째 열을 '현황'으로 되돌린다"
+    ],
+    [
+      "d82dfa5",
+      "feat: 내가 지은 이름이 몇 명을 속였는지 기록 열람실에 연다"
+    ],
+    [
+      "76a04c8",
+      "feat: 작명 점수와 호칭을 감별 직급과 갈라 세운다"
+    ],
+    [
+      "af345c4",
+      "fix: 작명소 — 단추를 하나로 줄이고, 조각 풀을 넓히고, 소리를 붙인다"
+    ],
+    [
+      "090604c",
+      "feat: 작명소 창구를 만든다 (비공개 전개)"
+    ],
+    [
+      "b575263",
+      "fix: 수집 스크립트가 일회성 네트워크 오류에 통째로 멈추지 않게 한다"
+    ],
+    [
+      "ec990ad",
+      "docs: 문서를 지금 코드 기준으로 맞추고, 대화체 표현을 걷어낸다"
+    ],
+    [
+      "a241ff1",
+      "fix: 본인 확인 표의 칸 선이 테두리 밖으로 삐져나오던 것을 고친다"
+    ],
+    [
+      "01a6c19",
+      "feat: 창구마다 지금 무엇을 하는지 한 줄로 말한다"
+    ],
+    [
+      "c13c995",
+      "feat: 가짜 이름을 259건에서 523건으로 늘린다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6351158",
+      "chore: Auto-export approved names to problems daily at dawn"
+    ],
+    [
+      "b8937c8",
+      "feat: Create word filtering to reduce reviews to only flagged items"
+    ],
+    [
+      "86f982c",
+      "fix: Prevent answer changes after reveal in official contests"
+    ],
+    [
+      "ec737e2",
+      "feat: Create path to approve created names and send to problems"
+    ],
+    [
+      "2fa7ab4",
+      "docs: Fix outdated fake name count"
+    ],
+    [
+      "3d4059b",
+      "docs: Document pagination rules and security check procedures"
+    ],
+    [
+      "e7dfcd1",
+      "fix: Remove switch that allowed answer extraction without aggregation"
+    ],
+    [
+      "fcfe993",
+      "chore: Create red team inspection skills"
+    ],
+    [
+      "a1fd4c0",
+      "fix: Remove duplicates from records and paginate application list"
+    ],
+    [
+      "3fff08f",
+      "docs: Align glossary and planning documents to current status columns and naming conventions"
+    ],
+    [
+      "a69247d",
+      "design: Revert third column of application ledger to 'Status'"
+    ],
+    [
+      "d82dfa5",
+      "feat: Open record room to see how many people my created names fooled"
+    ],
+    [
+      "76a04c8",
+      "feat: Separate naming score and denomination from inspection rank"
+    ],
+    [
+      "af345c4",
+      "fix: Naming center — reduce button to one, expand fragment pool, add sound"
+    ],
+    [
+      "090604c",
+      "feat: Create naming center counter (private deployment)"
+    ],
+    [
+      "b575263",
+      "fix: Prevent collection script from stopping entirely on transient network errors"
+    ],
+    [
+      "ec990ad",
+      "docs: Align documentation to current code standards and remove conversational language"
+    ],
+    [
+      "a241ff1",
+      "fix: Fix identity verification table cells extending beyond borders"
+    ],
+    [
+      "01a6c19",
+      "feat: Show one-line status of what each counter is doing now"
+    ],
+    [
+      "c13c995",
+      "feat: Increase fake names from 259 to 523 items"
+    ]
+  ],
+  "commitCount": 20,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "욕설을 거르는 목록을 제대로 채웠더니 실제 아파트 이름 26개가 같이 걸렸습니다. 실제 단지 12,121건이 전부 통과하는 것을 조건으로 걸고 목록을 다시 손봤습니다.",
+    "en": "Filling out the banned-word list properly caught 26 real apartment names. I made \"all 12,121 real complexes must pass\" a condition and reworked the list."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#devlog",
+    "#아파트감별사",
+    "#인디개발",
+    "#buildinpublic",
+    "#필터링",
+    "#sidequest"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.poster.jpg?v=mtzwc1ld",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.ko.mp4?v=mtzwc3x3",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.en.poster.jpg?v=mtzwda6d",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-13.en.mp4?v=mtzwdchf"
+  }
+}

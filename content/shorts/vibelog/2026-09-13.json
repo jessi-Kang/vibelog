@@ -1,0 +1,298 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-13",
+  "day": 6,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "글 제목이 명령으로 읽힐 뻔했습니다.",
+      "en": "A post title nearly ran as a command.",
+      "keywords": [
+        "명령으로"
+      ],
+      "keywordsEn": [
+        "nearly ran"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "사람이 읽기 전에 글이 그대로 올라갑니다.",
+      "en": "Posts go live before any human reads them.",
+      "keywords": [
+        "읽기 전에"
+      ],
+      "keywordsEn": [
+        "before any human"
+      ],
+      "screen": "/about",
+      "find": "어떻게 돌아가나",
+      "findEn": "how it works",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "제목에 기호 하나만 섞이면 명령이 됐습니다.",
+      "en": "One symbol in a title could turn into a command.",
+      "keywords": [
+        "기호 하나만"
+      ],
+      "keywordsEn": [
+        "One symbol"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "제목 속 기호",
+          "명령으로 실행",
+          "그냥 글자",
+          "막기 전",
+          "막은 뒤"
+        ],
+        "labelsEn": [
+          "symbol in a title",
+          "runs as code",
+          "just text",
+          "before",
+          "after"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 어떤 기호가 와도 그냥 글자로 보입니다.",
+      "en": "Now any symbol just shows up as text.",
+      "keywords": [
+        "그냥 글자로"
+      ],
+      "keywordsEn": [
+        "shows up"
+      ],
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "recent devlogs",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "페이지마다 붙는 안전 설정 5개도 넣었습니다.",
+      "en": "I also added 5 safety settings to every page.",
+      "keywords": [
+        "안전 설정"
+      ],
+      "keywordsEn": [
+        "5 safety settings"
+      ],
+      "stat": "5개",
+      "statEn": "5 settings",
+      "motif": "stack"
+    },
+    {
+      "scene": "fail",
+      "ko": "30분마다 도는 자동 실행은 계속 죽었습니다.",
+      "en": "The job that runs every 30 minutes kept dying.",
+      "keywords": [
+        "계속 죽었습니다"
+      ],
+      "keywordsEn": [
+        "kept"
+      ],
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "last run",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "파일 2개가 바뀌는데 1개만 저장했습니다.",
+      "en": "Each run changed 2 files and saved only 1 of them.",
+      "keywords": [
+        "1개만"
+      ],
+      "keywordsEn": [
+        "only 1"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "파일 2개가 바뀌고",
+          "1개만 저장하고",
+          "저장이 거절되고",
+          "다음 회차도 실패"
+        ],
+        "labelsEn": [
+          "2 files change",
+          "only 1 saved",
+          "save rejected",
+          "next run fails"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 장면에 넣을 움직이는 그림을 고릅니다.",
+      "en": "Next I pick moving drawings for the scenes.",
+      "keywords": [],
+      "keywordsEn": [
+        "moving drawings"
+      ],
+      "screen": "/shorts",
+      "shot": "whole"
+    },
+    {
+      "scene": "end",
+      "ko": "구멍은 막을 수 있을 때 막는 게 쌉니다.",
+      "en": "A hole is cheapest to close while you still can.",
+      "keywords": [
+        "막을 수 있을 때"
+      ],
+      "keywordsEn": [
+        "cheapest"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "저장이 거절됐습니다",
+    "titleEn": "The save kept getting rejected",
+    "before": "바뀐 파일 2개 중 1개만 저장해서 거절됐습니다",
+    "after": "남은 파일까지 챙겨 저장이 통과했습니다",
+    "beforeEn": "Only 1 of the 2 changed files got saved, so the save was rejected",
+    "afterEn": "The run now saves both files and the save goes through"
+  },
+  "commits": [
+    [
+      "d130d08",
+      "모티프가 next 밖에서도 그려지게 — 안 그러면 빈 화면 검사가 빈 화면을 통과시킨다"
+    ],
+    [
+      "7567431",
+      "모티프 16종을 쇼츠 파이프라인에 넣는다"
+    ],
+    [
+      "ac2588b",
+      "Lottie: 포인트 색만 테마 색으로 바꾼다"
+    ],
+    [
+      "f639c4c",
+      "Lottie 후보를 고를 수 있게 먼저 거르는 도구"
+    ],
+    [
+      "0f0ff96",
+      "그림 한 장짜리 화면을 폰 프레임에 넣지 않는다"
+    ],
+    [
+      "3b49941",
+      "레드팀 스킬을 만들고 돌렸다 — 글 페이지 스크립트 이탈(XSS) 하나를 막았다"
+    ],
+    [
+      "a463065",
+      "projects 배치가 30분마다 실패하던 것 — 쓴 파일을 다 담지 않았다"
+    ],
+    [
+      "1dbe81b",
+      "영상 렌더를 죽인 node:fs를 걷어내고, 같은 일을 막는 검사를 붙인다"
+    ],
+    [
+      "12fb4aa",
+      "쇼츠: 대본이 고른 화면을 녹화가 버리지 않는다"
+    ],
+    [
+      "38c7a49",
+      "층 순서를 정한다 — 본문이 고정 탭바 위로 올라오던 것"
+    ],
+    [
+      "965d39a",
+      "쇼츠 대본: 줄이려고 두 명사를 붙여 말을 만들지 않는다"
+    ],
+    [
+      "71d0a65",
+      "쇼츠: 테두리는 가리키는 문장만, 가리킬 말은 화면에 하나뿐일 때만"
+    ],
+    [
+      "fa161ed",
+      "문서: 취소선으로 먹는 물결표 표기를 걷어내고, 문서도 검사에 넣는다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "d130d08",
+      "Draw motifs outside next as well — otherwise empty screen checks pass empty screens"
+    ],
+    [
+      "7567431",
+      "Add 16 motifs to shorts pipeline"
+    ],
+    [
+      "ac2588b",
+      "Lottie: Change only point color to theme color"
+    ],
+    [
+      "f639c4c",
+      "Add filtering tool to select Lottie candidates first"
+    ],
+    [
+      "0f0ff96",
+      "Don't fit single-image screens into phone frame"
+    ],
+    [
+      "3b49941",
+      "Create and run red team skill — fixed one XSS vulnerability in text page script"
+    ],
+    [
+      "a463065",
+      "Fix projects batch failing every 30 minutes — wasn't including all written files"
+    ],
+    [
+      "1dbe81b",
+      "Remove node:fs that kills video render, add check to prevent same issue"
+    ],
+    [
+      "12fb4aa",
+      "Shorts: Recording doesn't discard screens chosen by script"
+    ],
+    [
+      "38c7a49",
+      "Define layer order — body was rising above fixed tab bar"
+    ],
+    [
+      "965d39a",
+      "Shorts script: Don't create words by combining two nouns to shorten"
+    ],
+    [
+      "71d0a65",
+      "Shorts: Border only for pointing sentences, pointing target only when there's one on screen"
+    ],
+    [
+      "fa161ed",
+      "Docs: Remove strikethrough wavy mark notation, add docs to checks"
+    ]
+  ],
+  "commitCount": 13,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "사람 검토 없이 글이 올라가는 블로그라, 제목에 섞인 기호가 명령으로 읽히던 구멍을 막았습니다. 30분마다 돌던 자동 실행이 스스로 실패를 반복하던 것도 고쳤습니다.",
+    "en": "Posts here go live without review, so I closed the hole where a symbol in a title could run as a command. I also fixed the job that kept re-creating its own failure every 30 minutes."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#devlog",
+    "#보안",
+    "#자동화",
+    "#websecurity",
+    "#buildinpublic",
+    "#개발일지"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.poster.jpg?v=mtzw3dpz",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.mp4?v=mtzw3h3b",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.poster.jpg?v=mtzw4ufe",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.mp4?v=mtzw4wu2"
+  }
+}

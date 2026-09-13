@@ -1,0 +1,469 @@
+{
+  "lang": "en",
+  "duration": 29.21,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 1.707,
+      "words": [
+        {
+          "text": "Real",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "apartment",
+          "start": 0.313,
+          "end": 0.708
+        },
+        {
+          "text": "names",
+          "start": 0.755,
+          "end": 0.964
+        },
+        {
+          "text": "got",
+          "start": 1.01,
+          "end": 1.149
+        },
+        {
+          "text": "blocked.",
+          "start": 1.196,
+          "end": 1.707
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.218,
+      "end": 4.389,
+      "words": [
+        {
+          "text": "I",
+          "start": 2.218,
+          "end": 2.276
+        },
+        {
+          "text": "filled",
+          "start": 2.392,
+          "end": 2.635
+        },
+        {
+          "text": "out",
+          "start": 2.659,
+          "end": 2.775
+        },
+        {
+          "text": "the",
+          "start": 2.821,
+          "end": 2.891
+        },
+        {
+          "text": "banned-word",
+          "start": 2.937,
+          "end": 3.448
+        },
+        {
+          "text": "list",
+          "start": 3.495,
+          "end": 3.669
+        },
+        {
+          "text": "properly.",
+          "start": 3.715,
+          "end": 4.389
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 4.899,
+      "end": 7.616,
+      "words": [
+        {
+          "text": "Then",
+          "start": 4.899,
+          "end": 5.062
+        },
+        {
+          "text": "26",
+          "start": 5.132,
+          "end": 5.666
+        },
+        {
+          "text": "real",
+          "start": 5.759,
+          "end": 5.933
+        },
+        {
+          "text": "apartment",
+          "start": 5.968,
+          "end": 6.351
+        },
+        {
+          "text": "names",
+          "start": 6.397,
+          "end": 6.594
+        },
+        {
+          "text": "got",
+          "start": 6.641,
+          "end": 6.792
+        },
+        {
+          "text": "caught",
+          "start": 6.861,
+          "end": 7.082
+        },
+        {
+          "text": "with",
+          "start": 7.117,
+          "end": 7.245
+        },
+        {
+          "text": "them.",
+          "start": 7.291,
+          "end": 7.616
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.127,
+      "end": 12.458,
+      "words": [
+        {
+          "text": "So",
+          "start": 8.127,
+          "end": 8.266
+        },
+        {
+          "text": "I",
+          "start": 8.324,
+          "end": 8.348
+        },
+        {
+          "text": "required",
+          "start": 8.429,
+          "end": 8.835
+        },
+        {
+          "text": "all",
+          "start": 8.882,
+          "end": 9.009
+        },
+        {
+          "text": "12,121",
+          "start": 9.056,
+          "end": 10.588
+        },
+        {
+          "text": "real",
+          "start": 10.704,
+          "end": 10.89
+        },
+        {
+          "text": "complexes",
+          "start": 10.96,
+          "end": 11.529
+        },
+        {
+          "text": "to",
+          "start": 11.564,
+          "end": 11.622
+        },
+        {
+          "text": "pass",
+          "start": 11.691,
+          "end": 11.912
+        },
+        {
+          "text": "first.",
+          "start": 11.97,
+          "end": 12.458
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 13.154,
+      "end": 15.72,
+      "words": [
+        {
+          "text": "Then",
+          "start": 13.154,
+          "end": 13.328
+        },
+        {
+          "text": "I",
+          "start": 13.386,
+          "end": 13.41
+        },
+        {
+          "text": "reworked",
+          "start": 13.526,
+          "end": 13.944
+        },
+        {
+          "text": "the",
+          "start": 13.967,
+          "end": 14.036
+        },
+        {
+          "text": "list",
+          "start": 14.106,
+          "end": 14.443
+        },
+        {
+          "text": "to",
+          "start": 14.536,
+          "end": 14.652
+        },
+        {
+          "text": "fit",
+          "start": 14.733,
+          "end": 14.896
+        },
+        {
+          "text": "that",
+          "start": 14.93,
+          "end": 15.058
+        },
+        {
+          "text": "condition.",
+          "start": 15.104,
+          "end": 15.72
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 16.416,
+      "end": 19.713,
+      "words": [
+        {
+          "text": "Names",
+          "start": 16.416,
+          "end": 16.66
+        },
+        {
+          "text": "people",
+          "start": 16.695,
+          "end": 16.95
+        },
+        {
+          "text": "invent",
+          "start": 16.985,
+          "end": 17.299
+        },
+        {
+          "text": "now",
+          "start": 17.368,
+          "end": 17.542
+        },
+        {
+          "text": "go",
+          "start": 17.612,
+          "end": 17.717
+        },
+        {
+          "text": "out",
+          "start": 17.775,
+          "end": 17.879
+        },
+        {
+          "text": "as",
+          "start": 17.925,
+          "end": 17.995
+        },
+        {
+          "text": "quiz",
+          "start": 18.065,
+          "end": 18.227
+        },
+        {
+          "text": "questions",
+          "start": 18.285,
+          "end": 18.715
+        },
+        {
+          "text": "once",
+          "start": 18.785,
+          "end": 18.97
+        },
+        {
+          "text": "they",
+          "start": 18.994,
+          "end": 19.11
+        },
+        {
+          "text": "pass.",
+          "start": 19.156,
+          "end": 19.713
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 20.317,
+      "end": 23.069,
+      "words": [
+        {
+          "text": "How",
+          "start": 20.317,
+          "end": 20.456
+        },
+        {
+          "text": "many",
+          "start": 20.491,
+          "end": 20.631
+        },
+        {
+          "text": "people",
+          "start": 20.677,
+          "end": 20.921
+        },
+        {
+          "text": "your",
+          "start": 20.967,
+          "end": 21.083
+        },
+        {
+          "text": "name",
+          "start": 21.13,
+          "end": 21.304
+        },
+        {
+          "text": "fooled",
+          "start": 21.35,
+          "end": 21.583
+        },
+        {
+          "text": "shows",
+          "start": 21.629,
+          "end": 21.873
+        },
+        {
+          "text": "up",
+          "start": 21.931,
+          "end": 22.024
+        },
+        {
+          "text": "on",
+          "start": 22.07,
+          "end": 22.128
+        },
+        {
+          "text": "your",
+          "start": 22.175,
+          "end": 22.268
+        },
+        {
+          "text": "records",
+          "start": 22.314,
+          "end": 22.581
+        },
+        {
+          "text": "page.",
+          "start": 22.628,
+          "end": 23.069
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 23.672,
+      "end": 26.726,
+      "words": [
+        {
+          "text": "Without",
+          "start": 23.672,
+          "end": 23.986
+        },
+        {
+          "text": "a",
+          "start": 24.032,
+          "end": 24.056
+        },
+        {
+          "text": "login,",
+          "start": 24.102,
+          "end": 24.659
+        },
+        {
+          "text": "clearing",
+          "start": 24.833,
+          "end": 25.147
+        },
+        {
+          "text": "your",
+          "start": 25.193,
+          "end": 25.286
+        },
+        {
+          "text": "record",
+          "start": 25.333,
+          "end": 25.6
+        },
+        {
+          "text": "still",
+          "start": 25.635,
+          "end": 25.809
+        },
+        {
+          "text": "leaks",
+          "start": 25.855,
+          "end": 26.052
+        },
+        {
+          "text": "answers.",
+          "start": 26.099,
+          "end": 26.726
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 27.237,
+      "end": 29.21,
+      "words": [
+        {
+          "text": "Now",
+          "start": 27.237,
+          "end": 27.388
+        },
+        {
+          "text": "people",
+          "start": 27.446,
+          "end": 27.713
+        },
+        {
+          "text": "write",
+          "start": 27.736,
+          "end": 27.945
+        },
+        {
+          "text": "the",
+          "start": 27.968,
+          "end": 28.038
+        },
+        {
+          "text": "fake",
+          "start": 28.084,
+          "end": 28.328
+        },
+        {
+          "text": "names",
+          "start": 28.363,
+          "end": 28.595
+        },
+        {
+          "text": "too.",
+          "start": 28.641,
+          "end": 29.21
+        }
+      ]
+    }
+  ]
+}
