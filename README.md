@@ -38,7 +38,8 @@
 app/                    Next.js 페이지 (카드 그리드 · 프로젝트 상세 · 피드 · 쇼츠)
                         + PWA — 설치하면 주소창 없는 앱 창으로 열린다
 components/             UI — 다크 기본, 모바일은 하단 탭바
-content/                파이프라인 산출물 (projects.json · devlog/ · shorts/ · state.json)
+content/                파이프라인 산출물 (projects.json · devlog/ · shorts/
+                        · state.json · commit-hours.json · run.json)
 scripts/
   collect.ts            GitHub API → 레포별 활동 수집
   generate.ts           수집 결과 → 데브로그 MDX (KR/EN)
@@ -48,12 +49,13 @@ scripts/
   render.ts · mux.ts    Remotion 렌더 + 오디오 믹스
   run.ts                전체 실행 (collect → generate → shorts → 커밋)
   shorts.ts · poster.ts   쇼츠 전체 / 썸네일만 재생성
-video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종 · 다이어그램 5종
+video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종
+                        · 다이어그램 5종 · 모티프 22종
 .github/workflows/
   devlog.yml            밤 23:00 발행 (백업 23:45 · 01:00 · 03:00)
   projects.yml          30분마다 새 프로젝트 인식
+  deploy-guard.yml      Vercel 웹훅 누락 자가 복구
 vercel.json             crons — 위 둘을 제때 띄운다 (GitHub 예약은 예비)
-  deploy-guard.yml      배포 누락 자가 복구
 ```
 
 ## 스택

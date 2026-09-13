@@ -8,7 +8,7 @@
 - `docs/02-pipeline-and-setup.md` — 데브로그 수집 파이프라인(pull 방식), 레포 구조, 1단계 스코프, 세션별 프롬프트
 - `docs/03-shorts-spec.md` — 쇼츠 영상 스펙 (2단계). 자막 규칙·오디오 믹스·렌더 방식
 - `docs/shorts-prototype.html` — 승인된 쇼츠 샘플의 HTML 프로토타입. Remotion 컴포넌트로 옮길 때 기준
-- `docs/plain-motifs.html` — 승인된 모티프 16종 시안. `video/src/Motif.tsx`가 여기서 나왔다 (박자·좌표의 기준)
+- `docs/plain-motifs.html` — 승인된 모티프 22종 시안. `video/src/Motif.tsx`가 여기서 나왔다 (박자·좌표의 기준)
 - `docs/04-roadmap-sessions.md` — 2–4단계 세션별 프롬프트와 완료 조건. 1단계 끝나면 여기서 이어간다
 
 ## 원칙
