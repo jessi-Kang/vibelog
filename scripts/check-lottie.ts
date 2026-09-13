@@ -97,21 +97,58 @@ export function checkLottie(name: string, json: unknown): LottieVerdict {
   };
 }
 
+/** #rrggbb → HSL의 S, L (0~1). 포인트 색과 무채색을 가르는 데 쓴다 */
+function sl(h: string): { s: number; l: number } {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  const d = max - min;
+  return { s: d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1)), l };
+}
+
+export interface Palette {
+  /** 포인트 색이 갈 곳 */
+  accent: string;
+  /** 진한 무채색(선·글자)이 갈 곳 */
+  ink: string;
+  /** 옅은 무채색(보조)이 갈 곳 */
+  muted: string;
+}
+
 /**
- * 색을 테마 색으로 바꿔 끼운다. 원본에서 **가장 많이 쓰인 색이 주색**,
- * 그다음이 보조색이다 — 디자인의 위계를 그대로 옮긴다.
+ * **포인트 컬러만 테마 색으로 바꾼다.** 그림은 그대로 두고 색만 우리 것으로.
+ *
+ * 처음엔 "가장 많이 쓰인 색을 주색"으로 봤는데 그건 다른 이야기다 — 선 그림은
+ * 회색 선이 제일 많고 포인트는 한 번만 찍히는 경우가 흔하다. 그러면 회색이
+ * 민트가 되고 포인트가 회색이 된다. 뒤집힌다.
+ *
+ * 그래서 **채도로 가른다**: 채도가 있는 색이 포인트 색이고, 무채색은 선·배경이다.
+ *
+ * 무채색도 그냥 두면 안 된다. 테마 다섯 중 `paper`는 밝은 테마라(ink #171A1F)
+ * 흰 선 그림은 거기서 사라진다. 밝기로 ink/muted에 나눠 옮긴다 — 어느 테마에
+ * 올려도 보이게.
  */
-export function recolor(json: unknown, palette: string[]): unknown {
-  const count = new Map<string, number>();
-  const out = { colors: [] as string[], expr: 0 };
-  scan((json as Record<string, unknown>).layers, out);
-  for (const c of out.colors) count.set(c, (count.get(c) ?? 0) + 1);
-  const order = [...count.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .map(([c]) => c);
-  const map = new Map(
-    order.map((c, i) => [c, palette[Math.min(i, palette.length - 1)]]),
+export function recolor(json: unknown, palette: Palette): unknown {
+  const seen = { colors: [] as string[], expr: 0 };
+  scan((json as Record<string, unknown>).layers, seen);
+  const uniq = [...new Set(seen.colors)];
+
+  // 채도 0.25 이상이면 포인트 색으로 본다. 여럿이면 가장 채도 높은 것만
+  // accent로 올리고 나머지 포인트는 muted로 — 테마는 강조색이 하나다
+  const points = uniq
+    .filter((c) => sl(c).s >= 0.25)
+    .sort((a, b) => sl(b).s - sl(a).s);
+  const map = new Map<string, string>();
+  points.forEach((c, i) =>
+    map.set(c, i === 0 ? palette.accent : palette.muted),
   );
+  for (const c of uniq) {
+    if (map.has(c)) continue;
+    // 무채색 — 밝기로 나눈다. 어두운 테마에서는 밝은 선이 ink, 그 반대도 성립
+    map.set(c, sl(c).l >= 0.5 ? palette.ink : palette.muted);
+  }
+
   const rgb = (h: string): number[] => [
     parseInt(h.slice(1, 3), 16) / 255,
     parseInt(h.slice(3, 5), 16) / 255,
