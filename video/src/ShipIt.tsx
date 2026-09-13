@@ -13,12 +13,14 @@ import {
 import {
   coldOpenKind,
   type DiagramSpec,
+  type MotifName,
   type ShortsScript,
   type ShortsTiming,
   type TimedSentence,
 } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
 import { DiagramScene } from "./Diagram";
+import { MotifScene } from "./Motif";
 import {
   ArtCard,
   Background,
@@ -102,6 +104,8 @@ interface Seg {
   duoAltOffset?: number;
   /** diagram 장면이 그릴 그림 — 대본이 고른 종류와 라벨 */
   diagram?: DiagramSpec;
+  /** plain 장면이 그릴 라벨 없는 아이콘 — 대본이 고른 이름 */
+  motif?: MotifName;
 }
 
 /** 이 문장이 가리킨 글자 (en은 findEn 우선) */
@@ -187,6 +191,7 @@ export function buildSegments(
     find?: string;
     shot?: "whole" | "focus" | "compare";
     diagram?: DiagramSpec;
+    motif?: MotifName;
   }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
@@ -218,6 +223,13 @@ export function buildSegments(
         kind: "diagram",
         from: raw.length === 0 ? 0 : from,
         diagram: dia,
+      });
+    } else if (kind === "plain" && line?.motif) {
+      // 모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다
+      raw.push({
+        kind: "plain",
+        from: raw.length === 0 ? 0 : from,
+        motif: line.motif,
       });
     } else if (raw.length === 0) {
       // 첫 장면은 0초부터
@@ -490,6 +502,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 lang={lang}
                 fromSec={seg.from}
               />
+            )}
+            {seg.kind === "plain" && seg.motif && (
+              <MotifScene name={seg.motif} th={th} fromSec={seg.from} />
             )}
             {seg.kind === "art" && artFiles?.next && (
               <ArtCard file={artFiles.next} th={th} />
