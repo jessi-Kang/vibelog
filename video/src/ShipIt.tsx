@@ -602,12 +602,17 @@ export const ShipIt: React.FC<ShipItProps> = ({
       {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트.
           hook 장면에는 안 띄운다(헤드라인과 겹침). end 문장의 stat은
           카운터가 먼저 나오고 엔드카드가 그 뒤에 들어온다 (buildSegments).
-          다이어그램이 붙은 문장에도 안 띄운다 — 그림이 이미 화면 가운데를
-          쓰고 있어 카운터가 그 위에 겹쳐 찍힌다. 집합 다이어그램은 겹친
-          값을 제 안에 크게 적기까지 해서 숫자가 두 번 나왔다 ("7"과 "개"가
-          겹쳐 에러처럼 보임 — Jessi 지적). 숫자는 그림이 말하게 둔다. */}
+          **그림이 붙은 문장에는 안 띄운다** — 다이어그램이든 모티프든 화면
+          가운데를 쓰고 있어 카운터가 그 위에 겹쳐 찍힌다. 집합 다이어그램은
+          겹친 값을 제 안에 크게 적기까지 해서 숫자가 두 번 나왔다 ("7"과 "개"가
+          겹쳐 에러처럼 보임 — Jessi 지적). 숫자는 그림이 말하게 둔다.
+
+          모티프를 넣으면서 이 조건에 diagram만 두고 motif를 빠뜨렸다. 9/13
+          첫 실전 회차에서 바로 드러났다 — vibelog 편의 stack 막대 한가운데에
+          "1개"가, apart 편의 gate 위에 "3,151건"이 얹혔다. 같은 자리를 쓰는
+          장면이 하나 늘었으면 이 목록도 같이 늘어야 한다. */}
       {script.lines.map((l, i) => {
-        if (!l.stat || l.scene === "hook" || l.diagram) return null;
+        if (!l.stat || l.scene === "hook" || l.diagram || l.motif) return null;
         const sent = timing.sentences.find((x) => x.index === i);
         if (!sent) return null;
         const statAt = statStartOf(script, sent, lang);
