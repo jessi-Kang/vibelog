@@ -62,6 +62,7 @@ Jessi가 새 프로젝트를 시작하면 (또는 "새 프로젝트" 얘기가 �
   4. **아이콘만 있는 컨트롤은 `aria-label`로 이름을 남긴다.** 상태가 바뀌면 `aria-live`로 알린다.
   5. **동작까지 확인한다** — 버튼이 뭘 복사하는지, 리다이렉트가 몇 번인지. 모양만 보고 넘기지 않는다.
   6. **320px에서도 어그러지지 않아야 한다**. 360 미만에서는 `app/globals.css`가 `--text-*`를 한 단계 줄인다 — Tailwind v4의 크기 유틸이 전부 그 변수를 참조하므로 사이트가 같이 작아진다. 크기를 `text-[24px]`처럼 박아 쓰면 이 장치를 빠져나가니 되도록 토큰(`text-lg` 등)을 쓴다.
+- **영상은 브라우저용으로 번들된다 — 타입체크로는 안 잡힌다.** `video/src/*`가 가져오는 파일(특히 `scripts/shorts-types.ts`)에 `node:fs` 같은 노드 전용 모듈을 import하면 Remotion 렌더가 번들 단계에서 죽는다 (`UnhandledSchemeError`). 타입체크는 통과하므로 Actions에서야 드러난다 — 실제로 regen이 세 번 연속 실패했다. `shorts-types.ts`에는 **타입과 순수 함수만** 둔다. 파일을 읽는 검사기는 `scripts/check-screens.ts`처럼 따로 둔다. 커밋 전에 `npx tsx scripts/check-video-imports.ts`를 돌린다 (import를 따라가며 노드 전용 모듈을 찾는다. 확실한 검사는 `cd video && npx remotion bundle`이지만 수십 초 걸린다).
 - **`video/`는 루트 타입체크에서 빠져 있다** (`tsconfig.json` exclude). 영상 코드를 고치면 `npx tsc --noEmit -p video/tsconfig.json`을 따로 돌린다 — 안 돌리면 `Seg`에 없는 필드를 쓰는 코드가 그대로 통과한다 (실제로 겪었다).
 - **숫자 범위는 물결표가 아니라 en dash(`–`)로 쓴다** — 마크다운 한 줄에 물결표가 둘 있으면 그 사이가 취소선으로 먹는다 (GFM의 물결표 하나짜리 취소선). 글 쪽은 파서를 껐지만(`post-client.tsx`의 `singleTilde: false`) **문서는 GitHub가 렌더하므로 표기를 바꿀 수밖에 없다** — 스펙 문서의 `길이 30~45초 … 훅(3~4초)` 줄이 화면에서 가운데가 통째로 그어져 나갔다. `npx tsx scripts/check-markdown.ts`가 글과 문서를 같이 검사한다 (`--docs`면 문서만).
 - **한글 줄바꿈은 `keep-all`.** 안 넣으면 "이유 / 를"처럼 조사가 떨어져 나간다. 웹·영상·OG 카드 어디서나 같다 (다이어그램 라벨과 OG 제목에서 두 번 겪었다).

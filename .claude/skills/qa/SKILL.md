@@ -97,6 +97,25 @@ node .claude/skills/qa/scripts/qa-render.mjs http://localhost:3210
   (`components/glossary.tsx`의 `[[commit]]`). 문장을 쉽게 고쳐 설명서로 만들지
   않는다.
 
+### 3.4 영상 코드를 고쳤으면
+
+```
+npx tsc --noEmit -p video/tsconfig.json     # 루트 타입체크에 video/는 빠져 있다
+npx tsx scripts/check-video-imports.ts      # 번들에 노드 전용 모듈이 끌려가는지
+```
+
+둘 다 타입체크만으로는 안 잡히는 것을 본다.
+
+`video/src/*`는 Remotion이 **브라우저용으로** webpack 번들한다. 거기서 가져오는
+파일(특히 `scripts/shorts-types.ts`)에 `node:fs` 같은 것을 import하면 렌더가
+번들 단계에서 죽는다 — `UnhandledSchemeError: Reading from "node:fs" is not
+handled by plugins`. 타입체크는 멀쩡히 통과하므로 Actions에서야 드러난다
+(regen이 세 번 연속 실패했다). `shorts-types.ts`에는 타입과 순수 함수만 두고,
+파일을 읽는 검사기는 `scripts/check-screens.ts`처럼 따로 둔다.
+
+확실한 검사는 실제로 묶어 보는 것이다 — `cd video && npx remotion bundle`
+(수십 초). 영상 파이프라인을 건드린 커밋은 이것까지 돌린다.
+
 ### 3.5 글이 쓴 대로 보이는지
 
 ```
