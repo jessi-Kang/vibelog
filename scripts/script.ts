@@ -151,7 +151,8 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   문제가 아니다 — 내용이 그 구조라면 그걸 쓴다. 어느 종류든 똑같이 맞는
   경우에만 이웃과 다른 쪽을 고른다 (아래 이웃 정보 참고).
 - **motif: 마지막 수단.** 화면(screen/find)도 그림(diagram)도 못 고른 문장에만
-  붙인다. 라벨 없는 아이콘 하나가 뜬다 — 설명이 아니라 문장의 **모양**이다.
+  붙인다. build·demo·next 장면에서만 쓴다 (hook·end·fail은 제 카드가 그 자리를
+  쓰므로 붙여도 안 나온다). 라벨 없는 아이콘 하나가 뜬다 — 설명이 아니라 문장의 **모양**이다.
   보여줄 화면이 있으면 화면이 이기고, 설명할 원리가 있으면 diagram이 이긴다.
   자유 작도는 없다. 아래 열여섯 이름 중 하나를 문자열로 고른다:
   · loop 반복·저절로 / watch 지켜보기·확인 / gate 사람이 본 뒤에만 지나감
@@ -421,9 +422,13 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         const d = validDiagram(l.diagram);
         return d ? { diagram: d } : {};
       })(),
-      // 모티프 — 어휘 열여섯에 있는 이름만 (자유 작도 금지)
+      // 모티프 — 어휘 열여섯에 있는 이름만 (자유 작도 금지). 그리고 **그려지는
+      // 자리에만** 받는다: hook·end는 제 카드가, fail은 삽질 카드가 그 자리를
+      // 쓴다. 거기에 붙은 모티프를 받아 두면 blankScenes는 통과하는데 화면에는
+      // 안 나와서, 빈 화면을 막으려던 검사가 오히려 빈 화면을 통과시킨다.
       ...(typeof l.motif === "string" &&
-      (MOTIFS as readonly string[]).includes(l.motif)
+      (MOTIFS as readonly string[]).includes(l.motif) &&
+      MOTIF_SCENES.has(l.scene)
         ? { motif: l.motif as MotifName }
         : {}),
     };
@@ -501,6 +506,10 @@ export function capCoverage(
  * failCard는 콜드오픈 재료로 그대로 쓴다.
  */
 const HAS_OWN_CARD = new Set(["hook", "end"]);
+
+/** 모티프가 실제로 그려지는 장면 — 나머지는 그 자리를 제 카드가 쓴다
+ *  (video/src/ShipIt.tsx kindOf와 같은 규칙). */
+const MOTIF_SCENES = new Set(["build", "demo", "next"]);
 
 export function blankScenes(lines: ShortsLine[]): ShortsLine[] {
   return lines.filter(
