@@ -511,6 +511,193 @@ function body(name: MotifName, t: number, c: C): React.ReactNode {
         </>
       );
     }
+
+    /** 막은 줄 알았는데 샌다 — 흐름은 지나가는데 터진 자리로 한 방울 빠진다 */
+    case "leak": {
+      const run = ph(t, 6, 48, true);
+      const io = clamp01(ph(t, 6, 14, true)) * (1 - ph(t, 40, 48, true));
+      return (
+        <>
+          <L c={c.line} d="M16 44 H104" opacity={F} />
+          <L c={c.line} d="M16 80 H52 M72 80 H104" opacity={F} />
+          <circle cx={14 + 92 * run} cy={62} r={5.5} fill={c.line} opacity={io} />
+          <circle
+            cx={62}
+            cy={74 + 30 * ph(t, 28, 64)}
+            r={5.5}
+            fill={c.hi}
+            opacity={ph(t, 28, 38)}
+          />
+        </>
+      );
+    }
+
+    /** 저쪽은 옛것 그대로 — 왼쪽만 새것이 되고, 건너가려던 연결은 못 간다.
+     *  fallback(옛 값으로 되돌아감)과 다르다: 이건 갱신이 저쪽까지 안 간 것이다 */
+    case "stale": {
+      // 옛쪽은 연결이 실패한 **직후에** 한 번 또렷하게 깜박인다 — "저긴 그대로"
+      const oldOp = 0.26 + 0.59 * (ph(t, 66, 76) - ph(t, 76, 88));
+      const box = (x: number, op: number) => (
+        <rect
+          key={x}
+          x={x}
+          y={42}
+          width={36}
+          height={40}
+          rx={5}
+          fill="none"
+          stroke={c.line}
+          strokeWidth={SW}
+          opacity={op}
+        />
+      );
+      return (
+        <>
+          {box(14, F)}
+          <rect x={24} y={54} width={16} height={16} rx={3} fill={c.line} />
+          <rect
+            x={24}
+            y={54}
+            width={16}
+            height={16}
+            rx={3}
+            fill={c.hi}
+            opacity={ph(t, 30, 42)}
+          />
+          {box(70, oldOp)}
+          <rect x={80} y={54} width={16} height={16} rx={3} fill={c.line} />
+          <L
+            c={c.hi}
+            d="M54 62 H66"
+            strokeDasharray="3 4"
+            opacity={ph(t, 42, 52) * (1 - ph(t, 62, 74))}
+          />
+        </>
+      );
+    }
+
+    /** 하나가 다른 것이 된다 — 글이 영상이 되듯. vibelog가 하는 일 그 자체다 */
+    case "convert": {
+      const play = ph(t, 64, 74);
+      return (
+        <>
+          <rect
+            x={12}
+            y={34}
+            width={36}
+            height={52}
+            rx={4}
+            fill="none"
+            stroke={c.line}
+            strokeWidth={SW}
+            {...drawn(ph(t, 4, 22))}
+          />
+          <L
+            c={c.line}
+            d="M20 48 H40 M20 60 H40 M20 72 H33"
+            {...drawn(ph(t, 20, 36))}
+          />
+          <L c={c.line} d="M54 60 H66" {...drawn(ph(t, 36, 48))} />
+          <L c={c.hi} d="M64 55 L70 60 L64 65" opacity={ph(t, 48, 56)} />
+          <rect
+            x={76}
+            y={40}
+            width={32}
+            height={40}
+            rx={4}
+            fill="none"
+            stroke={c.hi}
+            strokeWidth={SW}
+            {...drawn(ph(t, 54, 66))}
+          />
+          <path
+            d="M87 51 L101 60 L87 69 Z"
+            fill={c.hi}
+            transform={`translate(94 60) scale(${play.toFixed(3)}) translate(-94 -60)`}
+          />
+        </>
+      );
+    }
+
+    /** 하나를 빼내고 **빈 자리가 남는다.** 남는 두 줄은 배경이 아니라 내용이므로
+     *  흐리게 두지 않는다 — 흐리면 민트 점선 하나만 떠 있는 그림이 된다 */
+    case "remove": {
+      const dx = 86 * ph(t, 34, 64);
+      return (
+        <>
+          <L c={c.line} d="M20 40 H100" />
+          <L c={c.line} d="M20 84 H100" />
+          <L
+            c={c.hi}
+            d="M20 62 H100"
+            strokeDasharray="3 9"
+            opacity={ph(t, 66, 78)}
+          />
+          <g transform={`translate(${dx.toFixed(2)} 0)`}>
+            <L c={c.hi} d="M20 62 H100" opacity={1 - ph(t, 44, 64)} />
+          </g>
+        </>
+      );
+    }
+
+    /** 확실하면 나머지는 안 본다 — 점이 벽 **앞에서** 멈추고 뒤가 흐려진다.
+     *  벽 자리에는 회색 선이 먼저 있고 그 위에 강조색이 그려진다 (oneline과 같은 문법).
+     *  흐림은 한 겹으로만 — faint에 그룹 투명도를 또 곱하면 밝은 테마에서 통째로 사라진다 */
+    case "earlyout": {
+      const rest = 0.26 - 0.14 * ph(t, 54, 70);
+      return (
+        <>
+          <L c={c.line} d="M14 62 H62" opacity={F} />
+          <L c={c.line} d="M30 55 V69 M44 55 V69" opacity={F} />
+          <g opacity={rest}>
+            <L c={c.line} d="M62 62 H106" />
+            <L c={c.line} d="M78 55 V69 M96 55 V69" />
+          </g>
+          <L c={c.line} d="M62 44 V80" />
+          <L c={c.hi} d="M62 44 V80" {...drawn(ph(t, 46, 62))} />
+          <circle cx={14 + 38 * ph(t, 8, 46)} cy={62} r={6} fill={c.hi} />
+        </>
+      );
+    }
+
+    /** 하나가 전부에 퍼진다 — fanin의 짝. 선은 도착 상자 앞에서 멈춘다 */
+    case "fanout": {
+      const line = ph(t, 20, 44);
+      const lit = [ph(t, 50, 60), ph(t, 56, 66), ph(t, 62, 72)];
+      return (
+        <>
+          <circle cx={60} cy={26} r={8 * ph(t, 6, 20)} fill={c.hi} />
+          <L c={c.line} d="M60 36 C60 56 32 52 26 68" {...drawn(line)} />
+          <L c={c.line} d="M60 36 V68" {...drawn(line)} />
+          <L c={c.line} d="M60 36 C60 56 88 52 94 68" {...drawn(line)} />
+          {[12, 46, 80].map((x, i) => (
+            <g key={x}>
+              <rect
+                x={x}
+                y={72}
+                width={28}
+                height={24}
+                rx={4}
+                fill="none"
+                stroke={c.line}
+                strokeWidth={SW}
+              />
+              <rect
+                x={x}
+                y={72}
+                width={28}
+                height={24}
+                rx={4}
+                fill="none"
+                stroke={c.hi}
+                strokeWidth={SW}
+                opacity={lit[i]}
+              />
+            </g>
+          ))}
+        </>
+      );
+    }
   }
 }
 

@@ -126,8 +126,13 @@ export interface ShortsLine {
 }
 
 /**
- * 모티프 어휘 열여섯 (Jessi 승인 시안). 자유 작도 금지 — 그림은
+ * 모티프 어휘 스물둘 (Jessi 승인 시안). 자유 작도 금지 — 그림은
  * video/src/Motif.tsx가 테마 토큰으로 그리고, 대본은 이름만 고른다.
+ *
+ * 뒤의 여섯은 나중에 붙였다. 감으로 고르지 않았다 — 그때까지 나온 대본
+ * 아홉 편 79문장에서 화면도 그림도 못 고른 자리 29개를 뽑아, 열여섯 중
+ * 어느 것도 안 맞는 것만 남겼다. (실제로 "답이 샙니다"에 loop이 붙어
+ * 나갔다 — 어휘에 그 모양이 없어 제일 가까운 것을 억지로 고른 것이다.)
  */
 export const MOTIFS = [
   "loop", // 반복 · 저절로 — 밤마다 저절로 돈다
@@ -146,6 +151,12 @@ export const MOTIFS = [
   "late", // 늦게 도착
   "tag", // 표시 하나로 등록 — 목록 자리에 들어간다
   "scan", // 목록을 훑기
+  "leak", // 막은 줄 알았는데 샌다 — 빠져나간다
+  "stale", // 저쪽은 옛것 그대로 (fallback은 되돌아감, 이건 갱신이 안 감)
+  "convert", // 하나가 다른 것이 된다 — 글이 영상이 되듯
+  "remove", // 하나를 빼내고 빈 자리가 남는다
+  "earlyout", // 확실하면 나머지는 안 본다
+  "fanout", // 하나가 전부에 퍼진다 (fanin의 짝)
 ] as const;
 export type MotifName = (typeof MOTIFS)[number];
 
