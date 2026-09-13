@@ -149,7 +149,7 @@ export const HookCard: React.FC<{
 /** 데모 샷 종류 — 매 데모 장면이 같은 폰 컷이면 중반이 늘어진다 (Jessi 지시).
  *  phone(베젤+켄 번스) / band(와이드 밴드 크롭+세로 팬) / duo(두 시점 겹치기).
  *  녹화가 390×844라 1080 풀블리드는 화질이 무너진다 — 셋 다 업스케일 ~2배 이내. */
-export type DemoShot = "phone" | "band" | "duo";
+export type DemoShot = "phone" | "band" | "duo" | "card";
 
 /** 폰 프레임 + 데모 녹화. videoFile이 없으면 플레이스홀더 패널 */
 export const PhoneFrame: React.FC<{
@@ -169,6 +169,8 @@ export const PhoneFrame: React.FC<{
   held?: boolean;
   /** 붙잡은 요소가 녹화 화면에서 세로로 어디였는지 (0~1) — band 크롭의 기준 */
   focusY?: number;
+  /** 그림 한 장짜리 화면의 가로세로비 — 있으면 card 샷으로 그 비율대로 */
+  aspect?: number;
   /** duo 보조 폰이 틀 다른 화면의 소스 시각 — 없으면 같은 화면 +3초 폴백 */
   duoAltOffsetSec?: number;
 }> = ({
@@ -183,6 +185,7 @@ export const PhoneFrame: React.FC<{
   shot = "phone",
   held = false,
   focusY,
+  aspect,
   duoAltOffsetSec,
 }) => {
   const { fps } = useVideoConfig();
@@ -196,6 +199,58 @@ export const PhoneFrame: React.FC<{
     fromSec != null && toSec != null && toSec > fromSec
       ? ([fromSec, toSec] as const)
       : null;
+
+  if (videoFile && shot === "card" && aspect) {
+    // **그림 한 장은 그 비율대로 보여 준다.** 링크 미리보기 카드(og:image)는
+    // 앱 화면이 아니라 가로로 긴 그림이다. 폰 프레임(세로)에 cover로 넣으면
+    // 억지로 늘어나고 양옆이 잘린다 — 공유 카드가 실제로 그렇게 나갔다.
+    //
+    // 녹화기가 그림을 화면 **폭에 맞춰** 띄워 뒀으므로(scripts/record.ts),
+    // 폭을 채우는 이 카드에 같은 비율을 주고 세로 기준만 그림의 가운데
+    // (focusY)로 잡으면 소스의 그림 띠와 정확히 맞아떨어진다. 늘어나지도,
+    // 잘리지도 않는다.
+    const W = 940;
+    const H = Math.round(W / aspect);
+    const panY = focusY != null ? Math.min(95, Math.max(5, focusY * 100)) : 50;
+    const zoom = span ? interpolate(t, [...span], [1.0, 1.04], clamp0) : 1;
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 960 - H / 2,
+          transform: `translateX(-50%) scale(${zoom})`,
+          width: W,
+          height: H,
+          borderRadius: Math.max(18, th.radius),
+          overflow: "hidden",
+          border: `2px solid ${th.line}`,
+          background: th.panel,
+          boxShadow: th.light
+            ? "0 24px 70px rgba(23,26,31,.18)"
+            : "0 30px 90px rgba(0,0,0,.5)",
+        }}
+      >
+        <Sequence
+          from={fromFrame}
+          durationInFrames={durationInFrames}
+          layout="none"
+        >
+          <OffthreadVideo
+            src={staticFile(videoFile)}
+            muted
+            startFrom={Math.round(sourceOffsetSec * fps)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: `50% ${panY}%`,
+            }}
+          />
+        </Sequence>
+      </div>
+    );
+  }
 
   if (videoFile && shot === "band") {
     // 와이드 밴드 크롭 — 베젤 없이 화면 중앙을 크게.
