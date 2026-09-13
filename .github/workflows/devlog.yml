@@ -147,6 +147,6 @@ jobs:
             # run.json은 "가장 최근 실행" 스냅샷이라 연속 regen이 둘 다 다시 쓰면
             # 반드시 충돌하는데, 최신 실행 것이 맞다 (run #34가 여기서 죽어
             # 영상은 업로드되고 json은 옛것인 불일치가 났었다).
-            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+            git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}"
             git push
           fi
