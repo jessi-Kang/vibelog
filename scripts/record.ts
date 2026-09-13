@@ -590,8 +590,48 @@ export async function record(
         await go(path);
       }
 
+      // **그림 한 장짜리 화면인가.** 링크 미리보기 카드(og:image) 같은 것은
+      // 앱 화면이 아니라 가로로 긴 그림이다. 폰 프레임에 cover로 넣으면 억지로
+      // 늘어나고 잘린다 — 실제로 공유 카드가 그렇게 나갔다.
+      //
+      // 판정은 웹 표준 하나로 한다: 브라우저가 이미지 주소를 열면
+      // `document.contentType`이 `image/*`다. 경로 이름을 보고 맞히지 않으므로
+      // 사이트가 달라도 그대로 먹는다.
+      //
+      // 찾으면 그림을 화면 **폭에 맞춰** 가운데 띄우고, 그 띠의 세로 위치와
+      // 그림의 가로세로비를 남긴다. 렌더는 그 비율의 카드로 잘라 보여 준다.
+      let aspect: number | undefined;
       let focusY: number | undefined;
-      if (kind && stop.find && !stop.point) {
+      const picture = await page
+        .evaluate(() => {
+          if (!document.contentType?.startsWith("image/")) return null;
+          const img = document.images[0];
+          if (!img || !img.naturalWidth || !img.naturalHeight) return null;
+          document.documentElement.style.background = "#0A0E14";
+          document.body.style.margin = "0";
+          Object.assign(img.style, {
+            width: "100vw",
+            height: "auto",
+            display: "block",
+            position: "fixed",
+            top: "50%",
+            left: "0",
+            transform: "translateY(-50%)",
+          });
+          const r = img.getBoundingClientRect();
+          return {
+            aspect: img.naturalWidth / img.naturalHeight,
+            focusY: (r.top + r.bottom) / 2 / window.innerHeight,
+          };
+        })
+        .catch(() => null);
+      if (picture) {
+        aspect = Number(picture.aspect.toFixed(4));
+        focusY = Number(picture.focusY.toFixed(3));
+        kind = null; // 가리킬 것도, 훑을 것도 없다 — 아래에서 멈춰 있게 한다
+        stop.point = false;
+        await page.waitForTimeout(200);
+      } else if (kind && stop.find && !stop.point) {
         // 화면은 find로 찾았지만 문장이 말하는 건 화면 전체다 — 맨 위에서
         // 시작해 아래 루프가 훑는다 (kind를 지워 아래 분기를 그쪽으로 보낸다)
         kind = null;
@@ -608,15 +648,15 @@ export async function record(
         await page.waitForTimeout(200);
       }
       console.log(
-        `[record] 정류장 ${path}${stop.find ? ` [${stop.find}] ${kind ?? "못 찾음"}` : ""}`,
+        `[record] 정류장 ${path}${picture ? ` (그림 한 장, 비율 ${aspect})` : stop.find ? ` [${stop.find}] ${kind ?? "못 찾음"}` : ""}`,
       );
 
       // 구간 시작은 스크린샷을 찍은 "뒤"다 (캡처 동안 화면이 정지한다)
       n = await shot(page, shotsDir, n);
       const start = (Date.now() - started) / 1000 - readyAt;
       const until = Date.now() + perMs;
-      if (kind) {
-        // 가리킨 것을 붙잡고 **완전히 멈춘다.** 계속 스크롤하면 문장이 말하는
+      if (kind || picture) {
+        // 가리킨 것을 붙잡고, 또는 그림 한 장을 띄운 채 **완전히 멈춘다.** 계속 스크롤하면 문장이 말하는
         // 동안 화면이 그 요소를 지나쳐 흘러간다 (Jessi: "휙 넘겨버려").
         // 프레임이 죽어 보이지 않게 6px씩 흔들어 봤는데 그게 "주춤주춤
         // 스크롤하는 애매한 부분"으로 읽혔다 (Jessi) — 움직임은 렌더가 주는
@@ -632,6 +672,7 @@ export async function record(
         path,
         ...(stop.find ? { find: stop.find } : {}),
         ...(focusY != null ? { focusY: Number(focusY.toFixed(3)) } : {}),
+        ...(aspect != null ? { aspect } : {}),
         start: Number(start.toFixed(2)),
         end: Number(((Date.now() - started) / 1000 - readyAt).toFixed(2)),
       });

@@ -60,6 +60,8 @@ export type ShipItProps = {
         end: number;
         /** 가리킨 요소의 세로 위치(0~1) — band 크롭이 이걸 기준으로 잡는다 */
         focusY?: number;
+        /** 그림 한 장짜리 화면의 가로세로비 — 폰이 아니라 카드로 보여 준다 */
+        aspect?: number;
       }[]
     | null;
 };
@@ -91,6 +93,10 @@ interface Seg {
    *  제대로 표시한 요소가 영상에서 잘린다 (Jessi: "스탬프를 제대로
    *  표시했는데 영상에서 보여줄 때 짤렸잖아") */
   focusY?: number;
+  /** 그림 한 장짜리 화면(링크 미리보기 카드 등)의 가로세로비. 있으면 폰 프레임이
+   *  아니라 그 비율의 카드로 보여 준다 — 가로로 긴 그림을 세로 폰에 cover로
+   *  넣으면 억지로 늘어나고 잘린다 */
+  aspect?: number;
   /** duo 샷의 보조 폰이 틀 다른 화면의 시작 시각 — 주 화면과 같은
    *  화면이 좌우에 반복되지 않게 (Jessi 지적). 녹화가 한 화면뿐이면 없음 */
   duoAltOffset?: number;
@@ -164,7 +170,15 @@ export function buildSegments(
   offset: number,
   coldOpen: number,
   lang: "ko" | "en",
-  segMap?: Map<string, { start: number; end: number; focusY?: number }>,
+  segMap?: Map<
+    string,
+    {
+      start: number;
+      end: number;
+      focusY?: number;
+      aspect?: number;
+    }
+  >,
 ): Seg[] {
   const raw: {
     kind: Kind;
@@ -305,6 +319,7 @@ export function buildSegments(
         usedInScreen.set(key, used + blockLen);
         // 그 정류장에서 가리킨 요소의 세로 위치 — 크롭이 이걸 기준으로 잡는다
         seg.focusY = m.focusY;
+        seg.aspect = m.aspect;
       }
       // duo 샷의 보조 폰: 주 화면과 '다른' 화면의 구간 시작을 미리 골라 둔다
       // (내레이션 순서상 첫 번째 다른 화면 — 내용 관련 화면이 홈보다 먼저 잡힘)
@@ -352,7 +367,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const segMap = new Map(
     (segments ?? []).map((s) => [
       s.find ? `${s.path}\u0000${s.find}` : s.path,
-      { start: s.start, end: s.end, focusY: s.focusY },
+      { start: s.start, end: s.end, focusY: s.focusY, aspect: s.aspect },
     ]),
   );
   const segs = buildSegments(
@@ -379,10 +394,15 @@ export const ShipIt: React.FC<ShipItProps> = ({
    * 대본이 안 골랐으면 데이터로 유추한다 — 가리킨 것(find)이 있으면 그것을
    * 크게(focus), 없으면 화면 전체(whole).
    */
-  const shotOf = (i: number): "phone" | "band" | "duo" => {
+  const shotOf = (i: number): "phone" | "band" | "duo" | "card" => {
     const seg = segs[i];
     const want = seg?.shot ?? (seg?.find ? "focus" : "whole");
     // 견주려면 다른 화면이 실제로 녹화돼 있어야 한다 — 없으면 크게 보여준다
+    // **그림 한 장짜리 화면은 폰이 아니다.** 링크 미리보기 카드처럼 가로로 긴
+    // 그림을 세로 폰 프레임에 cover로 넣으면 억지로 늘어나고 잘린다. 녹화가
+    // 남긴 비율(aspect)이 있으면 그 비율의 카드로 보여 준다 — 대본이 고른
+    // shot보다 이게 앞선다. 무엇을 보여줄지가 아니라 그것이 무엇이냐의 문제다.
+    if (seg?.aspect != null) return "card";
     if (want === "compare") return seg?.duoAltOffset != null ? "duo" : "band";
     return want === "focus" ? "band" : "phone";
   };
@@ -492,6 +512,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 // 있으므로, 프레임까지 멈추면 크롭이 엉뚱한 데서 굳는다
                 held={!!seg.find && seg.shot !== "whole"}
                 focusY={seg.focusY}
+                aspect={seg.aspect}
                 duoAltOffsetSec={
                   seg.duoAltOffset != null
                     ? videoStartSec + seg.duoAltOffset
