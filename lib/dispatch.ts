@@ -41,23 +41,25 @@ function say(text: string, status: number): Response {
 
 export function guardCron(req: Request): Response | null {
   const secret = process.env.CRON_SECRET;
-  if (!secret)
-    return say(
-      "아직입니다 — Vercel 환경변수에 CRON_SECRET이 없습니다. 넣고 재배포하세요.",
-      503,
-    );
-  if (req.headers.get("authorization") !== `Bearer ${secret}`) {
-    if (!process.env.GH_PAT)
-      return say(
-        "거의 다 됐습니다 — CRON_SECRET은 들어갔고, GH_PAT(Actions: write)이 없습니다.",
-        503,
-      );
-    return say(
-      "설정 완료 — 자동 실행이 살아 있습니다. 이 화면은 정상입니다 (예약 호출만 받습니다).",
-      403,
-    );
-  }
-  return null;
+  const ok = secret && req.headers.get("authorization") === `Bearer ${secret}`;
+  if (ok) return null;
+
+  // **바깥에는 아무것도 알려 주지 않는다.** 전에는 여기서 설정이 어디까지
+  // 됐는지를 한국어로 알려 줬다 (환경변수를 넣고도 들어갔는지 알 수 없어서
+  // 만든 장치다). 그런데 그건 익명 방문자에게 "이 사이트의 자동 발행이
+  // 살아 있고 토큰 둘이 다 꽂혀 있다"를 말해 주는 것이기도 하다 — 이 라우트는
+  // 한 번 부르면 Actions를 45분 돌리고 TTS 과금을 부르는 자리라 그 정보에
+  // 값이 있다. 레드팀 검사에서 잡혔다.
+  //
+  // 진단은 없애지 않고 **자리를 옮겼다**: 함수 로그에 남긴다. Vercel 로그는
+  // 프로젝트 소유자만 본다 — 설정이 들어갔는지는 거기서 확인한다.
+  //   https://vercel.com/jessikang/vibelog/logs
+  console.warn(
+    `[cron] 인증 실패 — CRON_SECRET ${secret ? "있음" : "없음"} / GH_PAT ${
+      process.env.GH_PAT ? "있음" : "없음"
+    }`,
+  );
+  return say("Unauthorized", 401);
 }
 
 export async function dispatch(
