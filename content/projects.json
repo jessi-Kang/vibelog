@@ -11,11 +11,11 @@
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
-    "lastActivity": "2026-09-13",
-    "weekCommits": 312,
-    "todayCommits": 48,
-    "totalCommits": 312,
-    "countsDate": "2026-09-13"
+    "lastActivity": "2026-09-14",
+    "weekCommits": 320,
+    "todayCommits": 5,
+    "totalCommits": 320,
+    "countsDate": "2026-09-14"
   },
   {
     "slug": "apart",
@@ -29,11 +29,11 @@
     "repoUrl": "https://github.com/jessi-Kang/apart",
     "homepage": "https://apt-game.app",
     "language": "TypeScript",
-    "lastActivity": "2026-09-13",
-    "weekCommits": 179,
-    "todayCommits": 25,
-    "totalCommits": 179,
-    "countsDate": "2026-09-13",
+    "lastActivity": "2026-09-14",
+    "weekCommits": 180,
+    "todayCommits": 1,
+    "totalCommits": 180,
+    "countsDate": "2026-09-14",
     "theme": "paper"
   }
 ]
