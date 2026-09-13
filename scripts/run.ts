@@ -19,7 +19,7 @@ import {
   translateLine,
 } from "./generate";
 import { runShorts } from "./shorts";
-import { checkDemoScreens } from "./shorts-types";
+import { checkDemoScreens } from "./check-screens";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
