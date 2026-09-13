@@ -142,7 +142,17 @@ export async function locateOnPage(
   return big ? { kind: "graphic" } : null;
 }
 
-/** 그 화면에서 대본이 말한 것을 화면 가운데로 올리고 표시를 얹는다 */
+/**
+ * 그 화면에서 대본이 말한 것을 **화면 가운데로 올린다.** 돌려주는 값은 그
+ * 요소의 세로 위치(0~1)이고, 렌더가 그걸 크롭 기준으로 쓴다(focusY).
+ *
+ * **표시(민트 테두리)는 얹지 않는다.** 전에는 찾은 요소에 테두리와 어두운
+ * 막을 그려 넣었다 — 제대로 찾았을 때는 좋지만, 엉뚱한 것을 가리키면 그
+ * 잘못이 화면 한가운데에 강조되어 나간다. 이 사이트는 사람이 보기 전에
+ * 발행되므로 그걸 잡을 사람이 없다 (Jessi: "잘못 나오는 게 잡히지 않을 것
+ * 같아"). 틀렸을 때 조용한 쪽이 낫다 — 화면은 여전히 그 자리를 보여 주고,
+ * 다만 틀린 곳에 동그라미를 치지 않는다.
+ */
 export async function focusOn(
   page: Page,
   find: string,
@@ -162,7 +172,7 @@ export async function focusOn(
         : page.locator("svg, img, canvas, picture").first();
   if (kind === "graphic") {
     // 가장 큰 그림을 브라우저 쪽에서 직접 고른다 (locator로는 크기를 못 고른다)
-    await page.evaluate(() => {
+    const biggest = await page.evaluate(() => {
       let best: Element | null = null;
       let area = 0;
       for (const el of document.querySelectorAll("svg, img, canvas, picture")) {
@@ -173,63 +183,21 @@ export async function focusOn(
           best = el;
         }
       }
-      best?.scrollIntoView({ block: "center", behavior: "instant" });
-      if (best) {
-        const box = best.getBoundingClientRect();
-        const ring = document.createElement("div");
-        ring.dataset.vlRing = "1";
-        Object.assign(ring.style, {
-          position: "fixed",
-          left: `${Math.max(4, box.left - 8)}px`,
-          top: `${Math.max(4, box.top - 6)}px`,
-          width: `${Math.min(window.innerWidth - 8, box.width + 16)}px`,
-          height: `${box.height + 12}px`,
-          border: "3px solid #5EE1C3",
-          borderRadius: "8px",
-          boxShadow: "0 0 0 9999px rgba(6,10,16,.34)",
-          pointerEvents: "none",
-          zIndex: "2147483647",
-        });
-        document.body.appendChild(ring);
-      }
+      if (!best) return undefined;
+      best.scrollIntoView({ block: "center", behavior: "instant" });
+      const box = best.getBoundingClientRect();
+      return (box.top + box.bottom) / 2 / window.innerHeight;
     });
-    return page
-      .evaluate(() => {
-        const r = document
-          .querySelector("[data-vl-ring]")
-          ?.getBoundingClientRect();
-        return r ? (r.top + r.bottom) / 2 / window.innerHeight : undefined;
-      })
-      .catch(() => undefined);
+    return biggest ?? undefined;
   }
   await target.scrollIntoViewIfNeeded({ timeout: 4000 });
-  await target.evaluate((el) => {
-    // 화면 가운데에 둔다. 렌더가 이 지점을 크롭의 가운데로 잡으므로(focusY),
-    // 여기서 위아래로 밀 필요가 없다 — 밀면 크롭 경계에 걸려 잘린다
-    el.scrollIntoView({ block: "center", behavior: "instant" });
-    const box = el.getBoundingClientRect();
-    const ring = document.createElement("div");
-    ring.dataset.vlRing = "1";
-    Object.assign(ring.style, {
-      position: "fixed",
-      left: `${Math.max(4, box.left - 8)}px`,
-      top: `${Math.max(4, box.top - 6)}px`,
-      width: `${Math.min(window.innerWidth - 8, box.width + 16)}px`,
-      height: `${box.height + 12}px`,
-      border: "3px solid #5EE1C3",
-      borderRadius: "8px",
-      boxShadow: "0 0 0 9999px rgba(6,10,16,.34)",
-      pointerEvents: "none",
-      zIndex: "2147483647",
-    });
-    document.body.appendChild(ring);
-  });
-  return page
-    .evaluate(() => {
-      const r = document
-        .querySelector("[data-vl-ring]")
-        ?.getBoundingClientRect();
-      return r ? (r.top + r.bottom) / 2 / window.innerHeight : undefined;
+  return target
+    .evaluate((el) => {
+      // 화면 가운데에 둔다. 렌더가 이 지점을 크롭의 가운데로 잡으므로(focusY),
+      // 여기서 위아래로 밀 필요가 없다 — 밀면 크롭 경계에 걸려 잘린다
+      el.scrollIntoView({ block: "center", behavior: "instant" });
+      const box = el.getBoundingClientRect();
+      return (box.top + box.bottom) / 2 / window.innerHeight;
     })
     .catch(() => undefined);
 }
@@ -430,11 +398,11 @@ export async function record(
   // 정류장 = 대본이 말한 것(find) + 화면 힌트(screen, 없을 수 있다).
   // find가 주다 — 어느 화면에 있는지는 아래 투어가 찾아낸다.
   //
-  // `point`는 **가리킬지**다. 문장이 화면 전체를 말하면(shot "whole") find는
-  // 화면을 찾는 힌트로만 쓰고 테두리를 얹지 않는다 — "링크를 받은 사람은 이
-  // 화면으로 들어옵니다"에 `출전하기` 버튼 하나가 민트 테두리로 칠해져,
-  // 문장은 화면 전체를 말하는데 그림은 버튼 하나를 가리켰다. 표시는 한 곳을
-  // 이야기할 때만 뜻이 있다.
+  // `point`는 **그 한 곳에 붙잡을지**다. 문장이 화면 전체를 말하면
+  // (shot "whole") find는 화면을 찾는 힌트로만 쓰고, 요소에 멈추지 않고
+  // 화면을 훑는다 — 문장은 화면 전체를 말하는데 화면이 버튼 하나에 멈춰
+  // 있으면 어긋난다.
+  // (표시를 얹던 시절의 이름이다. 이제 테두리는 그리지 않는다 — focusOn 주석)
   const stops: { path?: string; find?: string; point?: boolean }[] = [];
   for (const l of script.lines) {
     const find = (lang === "en" ? l.findEn || l.find : l.find) || undefined;
@@ -532,15 +500,6 @@ export async function record(
     };
 
     for (const stop of stops) {
-      // 앞 정류장의 표시를 지운다 (같은 페이지에 머무는 경우도 있다)
-      await page
-        .evaluate(() =>
-          document
-            .querySelectorAll("[data-vl-ring]")
-            .forEach((el) => el.remove()),
-        )
-        .catch(() => {});
-
       // **대본이 화면을 지정했으면 그 화면이 이긴다.** 사이트를 돌며 찾는 것은
       // 대본이 경로를 고르지 못했을 때의 일이다 — 지정한 화면에서 글자를 못
       // 찾았다고 다른 페이지로 사냥을 가면 대본의 선택이 조용히 버려진다.
