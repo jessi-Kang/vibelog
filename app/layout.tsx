@@ -67,8 +67,11 @@ export default function RootLayout({
             counts={{
               projects: getProjects().length,
               devlogs: getDevlogs().length,
-              // 쇼츠 페이지 그리드와 같은 수 — 쇼츠 전부 + 인트로 카드 1
-              shorts: getShorts().length + 1,
+              // 쇼츠 **편수**만. 인트로 카드는 채널 소개지 쇼츠가 아니다.
+              // 쇼츠 페이지에 프로젝트 필터가 붙으면서 탭의 "쇼츠 10"과
+              // 필터의 "전체 9"가 나란히 어긋나 보였다 — 그때 +1이 인트로였다.
+              // 이제 탭 = 필터 전체 = 프로젝트별 합으로 셋이 같은 수를 말한다.
+              shorts: getShorts().length,
             }}
           />
           {children}

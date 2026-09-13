@@ -120,14 +120,21 @@ html {
   box-shadow: 0 0 0 6px rgba(94, 225, 195, 0.12);
 }
 
-/* 시각 크기는 그대로 두고 터치·클릭 영역만 44px급으로 넓히는 유틸 */
+/* 시각 크기는 그대로 두고 터치·클릭 영역만 **최소 44×44**로 넓히는 유틸.
+   inset: -6px만 쓰던 때는 28px짜리 컨트롤(h-8 = 2rem, 루트 14px)이 40px에서
+   멈췄다 — 규칙은 44인데 재 보면 40이었고, 칩·아이콘 버튼이 전부 그랬다.
+   가운데를 기준으로 키워서 어떤 크기든 44를 넘긴다. */
 .hit {
   position: relative;
 }
 .hit::after {
   content: "";
   position: absolute;
-  inset: -6px;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: max(44px, calc(100% + 12px));
+  height: max(44px, calc(100% + 12px));
 }
 
 .vl-blink {
