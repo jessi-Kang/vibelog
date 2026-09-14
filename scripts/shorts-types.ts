@@ -160,6 +160,58 @@ export const MOTIFS = [
 ] as const;
 export type MotifName = (typeof MOTIFS)[number];
 
+/**
+ * 모티프 이름 옆에 붙는 한 줄 — **어휘의 단일 진실**.
+ *
+ * 대본 프롬프트(첫 요청과 빈 화면 재작성 요청)와 검수 시트가 다 여기서
+ * 읽는다. `Record<MotifName, string>`이라 이름을 하나 늘리면 타입체크가
+ * 여기를 채우라고 막는다 — 목록이 갈라질 수 없다.
+ *
+ * 갈라진 적이 있다. 어휘를 스물둘로 늘리면서 첫 프롬프트만 고치고 재작성
+ * 요청은 "어휘 열여섯"인 채로 뒀는데, 재작성이야말로 목록이 가장 필요한
+ * 자리다 — 이미 한 번 못 고른 문장을 살려내라는 요청이라서다. 9/14 밤
+ * apart 편이 여기서 죽었다 ("제한이 걸리는지 재 보려고 이름을 20번 넣었는데
+ * 전부 통과했습니다" — `leak`이 맞는 모양인데 목록을 못 보고 비웠다).
+ */
+export const MOTIF_GLOSS: Record<MotifName, string> = {
+  loop: "반복·저절로",
+  watch: "지켜보기·확인",
+  gate: "사람이 본 뒤에만 지나감",
+  stack: "하나씩 쌓임",
+  refine: "들쭉날쭉하던 것이 고르게",
+  merge: "둘이 하나로",
+  fanin: "여럿이 와도 한 번만",
+  limit: "천장에 닿음",
+  tile: "같은 토막을 이어 붙임",
+  cut: "짧은 쪽에 맞춰 잘림",
+  missing: "있어야 할 게 없음",
+  oneline: "한 줄 때문에 전체가",
+  fallback: "옛 값으로 되돌아감",
+  late: "늦게 도착",
+  tag: "표시 하나로 목록에 오름",
+  scan: "목록을 훑음",
+  leak: "막은 줄 알았는데 샌다",
+  stale: "저쪽은 옛것 그대로",
+  convert: "하나가 다른 것이 된다",
+  remove: "하나를 빼내 빈 자리가 남는다",
+  earlyout: "확실하면 나머지는 안 본다",
+  fanout: "하나가 전부에 퍼진다",
+};
+
+/** 프롬프트에 넣을 어휘 목록 — 한 줄에 둘씩 */
+export function motifMenu(): string {
+  const rows: string[] = [];
+  for (let i = 0; i < MOTIFS.length; i += 2) {
+    rows.push(
+      "  · " +
+        MOTIFS.slice(i, i + 2)
+          .map((n) => `${n} ${MOTIF_GLOSS[n]}`)
+          .join(" / "),
+    );
+  }
+  return rows.join("\n");
+}
+
 /** 다이어그램 어휘 — 새 종류를 늘리기 전에 이 다섯으로 되는지 먼저 본다 */
 export type DiagramKind =
   | "numberline"
