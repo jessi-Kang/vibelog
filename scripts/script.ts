@@ -13,6 +13,7 @@ import matter from "gray-matter";
 import {
   type DiagramSpec,
   type MotifName,
+  motifMenu,
   MOTIFS,
   MUSIC_MOODS,
   SHORTS_THEMES,
@@ -24,6 +25,9 @@ import {
 } from "./shorts-types";
 
 const MODEL = "claude-opus-5";
+
+/** 어휘 목록은 shorts-types가 단일 진실이다 — 첫 프롬프트와 재작성 요청이 같은 것을 본다 */
+const MOTIF_MENU = motifMenu();
 
 const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작가입니다.
 데브로그 한 편을 받아 내레이션 대본을 씁니다. 개발자 본인이 담백하게 말하는 존댓말입니다.
@@ -154,15 +158,8 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   붙인다. build·demo·next 장면에서만 쓴다 (hook·end·fail은 제 카드가 그 자리를
   쓰므로 붙여도 안 나온다). 라벨 없는 아이콘 하나가 뜬다 — 설명이 아니라 문장의 **모양**이다.
   보여줄 화면이 있으면 화면이 이기고, 설명할 원리가 있으면 diagram이 이긴다.
-  자유 작도는 없다. 아래 스물두 이름 중 하나를 문자열로 고른다:
-  · loop 반복·저절로 / watch 지켜보기·확인 / gate 사람이 본 뒤에만 지나감
-  · stack 하나씩 쌓임 / refine 들쭉날쭉하던 것이 고르게 / merge 둘이 하나로
-  · fanin 여럿이 와도 한 번만 / limit 천장에 닿음 / tile 같은 토막을 이어 붙임
-  · cut 짧은 쪽에 맞춰 잘림 / missing 있어야 할 게 없음 / oneline 한 줄 때문에 전체가
-  · fallback 옛 값으로 되돌아감 / late 늦게 도착 / tag 표시 하나로 목록에 오름
-  · scan 목록을 훑음 / leak 막은 줄 알았는데 샌다 / stale 저쪽은 옛것 그대로
-  · convert 하나가 다른 것이 된다 / remove 하나를 빼내 빈 자리가 남는다
-  · earlyout 확실하면 나머지는 안 본다 / fanout 하나가 전부에 퍼진다
+  자유 작도는 없다. 아래 이름 중 하나를 문자열로 고른다:
+${MOTIF_MENU}
   문장이 말하는 모양과 이름이 맞을 때만 고른다. 어느 것도 안 맞으면 비운다
   (그럼 그 문장은 다시 쓰게 된다).
 
@@ -760,8 +757,9 @@ export async function generateScript(
             "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
             "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
             "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
-            "③ 둘 다 아니지만 문장의 **모양**이 어휘 열여섯 중 하나와 맞으면",
+            "③ 둘 다 아니지만 문장의 **모양**이 아래 어휘 중 하나와 맞으면",
             "   motif를 넣는다 (라벨 없는 아이콘. 화면·그림이 있으면 그쪽이 이긴다).",
+            MOTIF_MENU,
             "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
             "   없는 문장은 영상에 자리가 없습니다.",
             "",

@@ -9,40 +9,42 @@
  */
 import React from "react";
 import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
-import { MOTIFS, type MotifName } from "../../scripts/shorts-types";
+import {
+  MOTIF_GLOSS,
+  MOTIFS,
+  type MotifName,
+} from "../../scripts/shorts-types";
 import { MotifScene } from "./Motif";
 import { FONT_MONO, FONT_SANS, getTheme } from "./theme";
 
 /** 한 칸에 머무는 시간(초). 한 편(2.2초) + 읽을 틈 */
 export const SHEET_SLOT_SEC = 2.8;
 
-/** 시안 카드의 설명을 그대로 옮겼다 — 어느 문장에 걸리는 모양인지 같이 본다 */
-const SAID: Record<MotifName, [string, string]> = {
-  loop: ["반복 · 저절로", "이제 밤마다 그날의 글이 저절로 올라옵니다."],
-  watch: ["지켜보기 · 확인", "밤새 끝까지 도는지 지켜보겠습니다."],
-  gate: ["관문 · 검토", "실제 단지 자료는 사람이 검토한 뒤에만 문제로 올립니다."],
-  stack: ["쌓임 · 모으기", "낮에는 블로그 화면 3개를 만들어 뒀습니다."],
-  refine: ["다듬기 · 계속", "숫자 읽는 방식도 계속 다듬겠습니다."],
-  merge: ["둘이 하나로", "주소를 하나로 합쳤더니 바로 풀렸습니다."],
-  fanin: ["여럿이 한 번으로", "방문자가 늘어도 요청은 한 번입니다."],
-  limit: ["한도에 걸림", "1시간에 60번만 답해 주는 한도에 걸렸습니다."],
-  tile: ["이어 붙이기", "이제 음악을 필요한 만큼 반복해 이어 붙입니다."],
-  cut: ["짧은 쪽에 맞춰 잘림", "소리와 화면 중 짧은 쪽에 맞춰 잘리고 있었습니다."],
-  missing: ["있어야 할 게 없음", "처음엔 글자 없는 동그라미만 번졌습니다."],
-  oneline: ["한 줄 때문에 전체가", "그 한 줄 때문에 파일 전체가 무시됐습니다."],
-  fallback: ["옛 값으로 되돌아감", "그래서 어젯밤 값으로 조용히 돌아갔습니다."],
-  late: ["늦게 도착", "방금 만든 프로젝트는 검색에 늦게 뜹니다."],
-  tag: ["표시 하나로 등록", "표시만 달아 두면 30분 안에 올라옵니다."],
-  scan: ["목록을 훑기", "이제 제 프로젝트 목록을 직접 훑습니다."],
-  leak: ["막은 줄 알았는데 샌다", "로그인 없이 기록을 지우면 아직 답이 샙니다."],
-  stale: ["저쪽은 옛것 그대로", "먼저 설치한 앱은 옛 주소를 붙잡고 있었습니다."],
-  convert: ["하나가 다른 것이 된다", "그 글은 30초짜리 세로 영상까지 됩니다."],
-  remove: ["하나를 빼낸다", "그 줄을 지우고 확인 방식을 바꿨습니다."],
-  earlyout: [
-    "확실하면 나머지는 안 본다",
-    "이름 차이를 세는 계산은 확실히 다르면 일찍 멈춥니다.",
-  ],
-  fanout: ["하나가 전부에 퍼진다", "페이지마다 붙는 안전 설정 5개도 넣었습니다."],
+/** 근거가 된 실제 문장 — 어느 문장에 걸리는 모양인지 같이 본다.
+ *  모양 설명(한 줄)은 shorts-types의 MOTIF_GLOSS가 단일 진실이다 */
+const SAID: Record<MotifName, string> = {
+  loop: "이제 밤마다 그날의 글이 저절로 올라옵니다.",
+  watch: "밤새 끝까지 도는지 지켜보겠습니다.",
+  gate: "실제 단지 자료는 사람이 검토한 뒤에만 문제로 올립니다.",
+  stack: "낮에는 블로그 화면 3개를 만들어 뒀습니다.",
+  refine: "숫자 읽는 방식도 계속 다듬겠습니다.",
+  merge: "주소를 하나로 합쳤더니 바로 풀렸습니다.",
+  fanin: "방문자가 늘어도 요청은 한 번입니다.",
+  limit: "1시간에 60번만 답해 주는 한도에 걸렸습니다.",
+  tile: "이제 음악을 필요한 만큼 반복해 이어 붙입니다.",
+  cut: "소리와 화면 중 짧은 쪽에 맞춰 잘리고 있었습니다.",
+  missing: "처음엔 글자 없는 동그라미만 번졌습니다.",
+  oneline: "그 한 줄 때문에 파일 전체가 무시됐습니다.",
+  fallback: "그래서 어젯밤 값으로 조용히 돌아갔습니다.",
+  late: "방금 만든 프로젝트는 검색에 늦게 뜹니다.",
+  tag: "표시만 달아 두면 30분 안에 올라옵니다.",
+  scan: "이제 제 프로젝트 목록을 직접 훑습니다.",
+  leak: "로그인 없이 기록을 지우면 아직 답이 샙니다.",
+  stale: "먼저 설치한 앱은 옛 주소를 붙잡고 있었습니다.",
+  convert: "그 글은 30초짜리 세로 영상까지 됩니다.",
+  remove: "그 줄을 지우고 확인 방식을 바꿨습니다.",
+  earlyout: "이름 차이를 세는 계산은 확실히 다르면 일찍 멈춥니다.",
+  fanout: "페이지마다 붙는 안전 설정 5개도 넣었습니다.",
 };
 
 export interface MotifSheetProps {
@@ -56,7 +58,8 @@ export const MotifSheet: React.FC<MotifSheetProps> = ({ theme }) => {
   return (
     <AbsoluteFill style={{ background: th.bg }}>
       {MOTIFS.map((name, i) => {
-        const [what, said] = SAID[name];
+        const what = MOTIF_GLOSS[name];
+        const said = SAID[name];
         return (
           <Sequence key={name} from={i * slot} durationInFrames={slot}>
             <AbsoluteFill>
