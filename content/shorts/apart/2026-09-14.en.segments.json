@@ -1,0 +1,16 @@
+{
+  "screens": [
+    {
+      "path": "/",
+      "find": "Endless",
+      "focusY": 0.212,
+      "start": 1.39,
+      "end": 16.92
+    },
+    {
+      "path": "/me",
+      "start": 17.73,
+      "end": 33.83
+    }
+  ]
+}

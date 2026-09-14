@@ -1,0 +1,204 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-14",
+  "day": 5,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "이름 짓는 코너에 로그인을 걸었습니다.",
+      "en": "The naming corner now needs a login.",
+      "keywords": [
+        "로그인을"
+      ],
+      "keywordsEn": [
+        "login"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "지은 이름은 검수를 거쳐 남의 퀴즈로 나갑니다.",
+      "en": "Names you invent go through review into someone else's quiz.",
+      "keywords": [
+        "검수를 거쳐"
+      ],
+      "keywordsEn": [
+        "review"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "이름을 짓고",
+          "검수를 거쳐",
+          "퀴즈 문제로"
+        ],
+        "labelsEn": [
+          "Invent a name",
+          "Pass review",
+          "Becomes a quiz"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "로그인하지 않으면 누가 지었는지 남지 않습니다.",
+      "en": "Without a login, nothing is left to say who wrote it.",
+      "keywords": [
+        "남지 않습니다"
+      ],
+      "keywordsEn": [
+        "nothing is left"
+      ],
+      "motif": "missing"
+    },
+    {
+      "scene": "build",
+      "ko": "하루에 낼 수 있는 이름은 20건까지로 잡았습니다.",
+      "en": "I capped each person at 20 names a day.",
+      "keywords": [
+        "20건까지로"
+      ],
+      "keywordsEn": [
+        "20 names"
+      ],
+      "stat": "20건",
+      "statEn": "20 names",
+      "motif": "limit"
+    },
+    {
+      "scene": "demo",
+      "ko": "퀴즈 푸는 쪽은 로그인 없이 그대로입니다.",
+      "en": "Solving the quiz still works without signing in.",
+      "keywords": [
+        "로그인 없이"
+      ],
+      "keywordsEn": [
+        "without signing in"
+      ],
+      "screen": "/",
+      "find": "무한",
+      "findEn": "Endless",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "제한을 재려고 스무 번 넣었는데 전부 통과였습니다.",
+      "en": "I submitted twenty test names and all of them passed.",
+      "keywords": [
+        "전부 통과였습니다"
+      ],
+      "keywordsEn": [
+        "all of them passed"
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "하루 허용 범위",
+          "20건",
+          "계속 통과"
+        ],
+        "labelsEn": [
+          "Daily allowance",
+          "20",
+          "Still passing"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "숫자가 붙은 이름은 세어지지도 않았습니다.",
+      "en": "Names with digits were never counted at all.",
+      "keywords": [
+        "세어지지도 않았습니다"
+      ],
+      "keywordsEn": [
+        "never counted"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "숫자 붙은 이름",
+          "세어지지 않음",
+          "제대로 된 이름",
+          "20건째 막힘"
+        ],
+        "labelsEn": [
+          "Names with digits",
+          "Never counted",
+          "Proper names",
+          "Blocked at 20"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "아직 공개 전이라, 안내 문구를 다듬고 열겠습니다.",
+      "en": "It isn't public yet, so I'll clean up the wording first.",
+      "keywords": [
+        "안내 문구를"
+      ],
+      "keywordsEn": [
+        "clean up the wording"
+      ],
+      "motif": "refine"
+    },
+    {
+      "scene": "end",
+      "ko": "푸는 건 누구나, 짓는 건 로그인부터.",
+      "en": "Solving is open to all; inventing starts with a login.",
+      "keywords": [
+        "로그인부터"
+      ],
+      "keywordsEn": [
+        "starts with a login"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "전부 통과로 보였습니다",
+    "titleEn": "All twenty looked accepted",
+    "before": "숫자가 붙은 이름은 접수부터 거부됐습니다",
+    "after": "제대로 된 이름으로 재니 20건째에 막혔습니다",
+    "beforeEn": "Names with digits were rejected before counting",
+    "afterEn": "With proper names, the cap hit exactly at 20"
+  },
+  "commits": [
+    [
+      "2e6e997",
+      "feat: 작명소를 로그인한 사람만 쓰게 하고, 하루 접수 상한을 건다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "2e6e997",
+      "feat: restrict naming service to logged-in users and set daily submission limit"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "직접 이름을 짓는 코너는 로그인한 사람만, 하루 20건까지로 제한했습니다. 제한을 재는 테스트가 거부된 이름을 세지 않아 한참 헤맸습니다.",
+    "en": "Inventing your own apartment name now requires a login, capped at 20 per day. My cap test kept passing because rejected names were never counted."
+  },
+  "hashtags": [
+    "#아파트감별사",
+    "#개발일지",
+    "#사이드프로젝트",
+    "#로그인",
+    "#devlog",
+    "#vibecoding",
+    "#apart"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-14.poster.jpg?v=mu1ebyrb",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-14.ko.mp4?v=mu1ec0qb",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-14.en.poster.jpg?v=mu1ed37c",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-14.en.mp4?v=mu1ed5h5"
+  }
+}
