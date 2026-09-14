@@ -1,0 +1,229 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-14",
+  "day": 7,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "첫 영상에서 숫자가 그림을 가렸습니다.",
+      "en": "Numbers covered the drawing in the first video.",
+      "keywords": [
+        "숫자가"
+      ],
+      "keywordsEn": [
+        "Numbers"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "그림이 붙은 문장에는 숫자를 띄우지 않기로 돼 있었습니다.",
+      "en": "The rule was already there: no counter on a sentence with a drawing.",
+      "keywords": [
+        "숫자를 띄우지"
+      ],
+      "keywordsEn": [
+        "no counter"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "문장 하나",
+          "숫자를 띄운다",
+          "숫자를 안 띄운다",
+          "그림 없음",
+          "그림 있음"
+        ],
+        "labelsEn": [
+          "one sentence",
+          "show the counter",
+          "hide the counter",
+          "no drawing",
+          "has a drawing"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "새로 만든 그림을 그 확인 목록에 넣는 걸 빠뜨렸습니다.",
+      "en": "But I never added the new drawings to that checklist.",
+      "keywords": [
+        "확인 목록에",
+        "빠뜨렸습니다"
+      ],
+      "keywordsEn": [
+        "never added",
+        "checklist"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "만든 그림 22가지",
+          "규칙이 확인한 목록",
+          "16가지"
+        ],
+        "labelsEn": [
+          "22 drawings made",
+          "rule's checklist",
+          "16"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "지난 대본 79문장을 다시 훑었습니다.",
+      "en": "I went back through 79 sentences of past scripts.",
+      "keywords": [
+        "79문장을"
+      ],
+      "keywordsEn": [
+        "79 sentences"
+      ],
+      "stat": "79문장",
+      "statEn": "79 sentences",
+      "motif": "scan"
+    },
+    {
+      "scene": "build",
+      "ko": "맞는 그림이 없던 자리에 6가지를 새로 더했습니다.",
+      "en": "Where nothing fit, I added 6 new drawings.",
+      "keywords": [
+        "6가지를"
+      ],
+      "keywordsEn": [
+        "6 new drawings"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "그림 16가지",
+          "맞는 게 없음",
+          "그림 22가지",
+          "빈자리 없음"
+        ],
+        "labelsEn": [
+          "16 drawings",
+          "no match",
+          "22 drawings",
+          "every spot filled"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "짧은 영상 목록에서 프로젝트별로 골라 볼 수 있게 했습니다.",
+      "en": "The short video list now filters by project.",
+      "keywords": [
+        "프로젝트별로"
+      ],
+      "keywordsEn": [
+        "filters by project"
+      ],
+      "screen": "/shorts",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 영어 페이지와, 바로 올리는 걸 끄는 스위치입니다.",
+      "en": "Next: English pages, and a switch to turn instant publishing off.",
+      "keywords": [
+        "스위치입니다"
+      ],
+      "keywordsEn": [
+        "switch"
+      ],
+      "motif": "gate"
+    },
+    {
+      "scene": "end",
+      "ko": "숫자가 그림을 안 가리는지, 오늘 밤 영상에서 확인합니다.",
+      "en": "Tonight's video will show whether the numbers stay off the drawing.",
+      "keywords": [
+        "오늘 밤"
+      ],
+      "keywordsEn": [
+        "Tonight's video"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "숫자가 그림을 가렸다",
+    "titleEn": "Numbers covered the drawing",
+    "before": "규칙이 새 그림을 몰랐습니다",
+    "after": "확인 목록에 새 그림을 넣었습니다",
+    "beforeEn": "The rule didn't know the new drawings",
+    "afterEn": "Added the new drawings to its checklist"
+  },
+  "commits": [
+    [
+      "7f2c68c",
+      "쇼츠에도 프로젝트 구분 필터 — 피드와 같은 것을 쓴다"
+    ],
+    [
+      "250aff1",
+      "문서 업데이트 — 오늘 바뀐 것과 그 전부터 갈라져 있던 것"
+    ],
+    [
+      "43470b7",
+      "모티프를 스물둘로 — 어휘에 없어서 엉뚱한 게 붙던 자리를 메운다"
+    ],
+    [
+      "9321ad8",
+      "데모 화면의 민트 테두리를 걷어낸다 — 틀렸을 때 잡을 사람이 없다"
+    ],
+    [
+      "aecd037",
+      "모티프 위에 숫자 카운터가 겹쳤다 — 그림이 붙은 문장 목록에 모티프를 빠뜨렸다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "7f2c68c",
+      "Add project filter to Shorts — uses the same as Feed"
+    ],
+    [
+      "250aff1",
+      "Update docs — separate today's changes from previous divergences"
+    ],
+    [
+      "43470b7",
+      "Increase motifs to twenty-two — fill the slot where wrong items were attached due to missing vocabulary"
+    ],
+    [
+      "9321ad8",
+      "Remove mint border from demo screen — no one to catch mistakes"
+    ],
+    [
+      "aecd037",
+      "Numeric counter overlaps on motif — motif was omitted from the sentence list with images attached"
+    ]
+  ],
+  "commitCount": 5,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "사람 손 없이 나간 첫 영상에서 숫자가 그림 위에 겹쳐 찍혔습니다. 규칙은 있었는데 확인 목록이 옛날 그대로였습니다.",
+    "en": "In the first video published with no human touch, the counter printed right on top of the drawing. The rule existed; its checklist was out of date."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#자동화",
+    "#devlog",
+    "#buildinpublic",
+    "#shorts",
+    "#사이드프로젝트"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-14.poster.jpg?v=mu1bii4a",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-14.ko.mp4?v=mu1bij4p",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-14.en.poster.jpg?v=mu1bjq2e",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-14.en.mp4?v=mu1bjrer"
+  }
+}
