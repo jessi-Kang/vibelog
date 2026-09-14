@@ -1,0 +1,181 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-15",
+  "day": 8,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "어젯밤 영상이 안 나왔습니다.",
+      "en": "Last night's video never got made.",
+      "keywords": [
+        "안 나왔습니다"
+      ],
+      "keywordsEn": [
+        "never got made"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "그림을 못 찾은 문장은 다시 써 달라고 보냅니다.",
+      "en": "A sentence with no matching picture gets sent back for a rewrite.",
+      "keywords": [
+        "다시 써 달라고"
+      ],
+      "keywordsEn": [
+        "sent back for a rewrite"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "문장마다 그림 붙이기",
+          "못 찾은 문장",
+          "다시 써 달라고 요청"
+        ],
+        "labelsEn": [
+          "match each sentence",
+          "no match found",
+          "ask for a rewrite"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그림 종류를 16개에서 22개로 늘릴 때, 한쪽 요청만 고쳤습니다.",
+      "en": "When I grew the picture set from 16 to 22, I only updated one of the two requests.",
+      "keywords": [
+        "22개로",
+        "한쪽 요청만"
+      ],
+      "keywordsEn": [
+        "from 16 to 22",
+        "one of the two"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "그림 목록",
+          "22개",
+          "16개",
+          "첫 요청",
+          "다시 쓰기 요청"
+        ],
+        "labelsEn": [
+          "picture list",
+          "22",
+          "16",
+          "first request",
+          "rewrite request"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 목록은 한 곳에만 있습니다.",
+      "en": "Now the list lives in exactly one place.",
+      "keywords": [
+        "한 곳에만"
+      ],
+      "keywordsEn": [
+        "exactly one place"
+      ],
+      "motif": "merge"
+    },
+    {
+      "scene": "build",
+      "ko": "새 그림을 넣을 때 설명을 빠뜨리면 통과하지 못합니다.",
+      "en": "Adding a new picture without its description doesn't get through.",
+      "keywords": [
+        "설명을 빠뜨리면"
+      ],
+      "keywordsEn": [
+        "without its description"
+      ],
+      "motif": "gate"
+    },
+    {
+      "scene": "demo",
+      "ko": "오늘 밤 영상은 무사히 만들어졌습니다.",
+      "en": "Tonight's video came out just fine.",
+      "keywords": [
+        "무사히"
+      ],
+      "keywordsEn": [
+        "just fine"
+      ],
+      "screen": "/shorts",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "어제 못 만든 영상을 다시 만들어 볼 차례입니다.",
+      "en": "Next up is remaking the video that never happened.",
+      "keywords": [
+        "다시 만들어"
+      ],
+      "keywordsEn": [
+        "remaking"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "end",
+      "ko": "같은 목록을 두 번 적지 않기로 했습니다.",
+      "en": "No more writing the same list twice.",
+      "keywords": [
+        "두 번"
+      ],
+      "keywordsEn": [
+        "twice"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "목록이 둘로 갈라졌다",
+    "titleEn": "The list split in two",
+    "before": "다시 쓰기 요청에 그림 목록이 빠져 있었다",
+    "after": "목록은 한 곳에 두고 전부 거기서 읽어 간다",
+    "beforeEn": "The rewrite request was missing the picture list",
+    "afterEn": "One list in one place, everything reads from it"
+  },
+  "commits": [
+    [
+      "2c2284d",
+      "어휘 목록을 한 곳에서만 — 재작성 요청이 \"열여섯\"인 채로 남아 있었다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "2c2284d",
+      "chore: consolidate vocabulary list in one place — refactor request remained as \"열여섯\""
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "그림 목록이 두 군데로 갈라져 있었고, 그래서 어젯밤 영상이 만들어지지 않았습니다. 이제 목록은 한 곳에만 둡니다.",
+    "en": "The picture list had drifted into two copies, so last night's video never got made. Now it lives in exactly one place."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#자동화",
+    "#devlog",
+    "#buildinpublic",
+    "#AI",
+    "#쇼츠"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.poster.jpg?v=mu1qo967",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.ko.mp4?v=mu1qob6o",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.en.poster.jpg?v=mu1qpgaj",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.en.mp4?v=mu1qpigo"
+  }
+}
