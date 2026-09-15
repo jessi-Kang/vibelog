@@ -8,128 +8,148 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "어젯밤 영상이 안 나왔습니다.",
-      "en": "Last night's video never got made.",
+      "ko": "글이 새벽에 한 번 더 나갔습니다.",
+      "en": "The post went out again at dawn.",
       "keywords": [
-        "안 나왔습니다"
+        "한 번 더"
       ],
       "keywordsEn": [
-        "never got made"
+        "again"
       ]
     },
     {
       "scene": "fail",
-      "ko": "그림을 못 찾은 문장은 다시 써 달라고 보냅니다.",
-      "en": "A sentence with no matching picture gets sent back for a rewrite.",
+      "ko": "두 번 나가는 것은 날짜로 막고 있었습니다.",
+      "en": "The guard against a second post checked the date.",
       "keywords": [
-        "다시 써 달라고"
+        "날짜로"
       ],
       "keywordsEn": [
-        "sent back for a rewrite"
+        "the date"
       ],
       "diagram": {
         "kind": "pipeline",
         "labels": [
-          "문장마다 그림 붙이기",
-          "못 찾은 문장",
-          "다시 써 달라고 요청"
+          "이미 나갔나 확인",
+          "오늘 날짜엔 없음",
+          "통과",
+          "또 발행"
         ],
         "labelsEn": [
-          "match each sentence",
-          "no match found",
-          "ask for a rewrite"
+          "check for a repeat",
+          "nothing under today",
+          "passes",
+          "publishes again"
         ]
       }
     },
     {
       "scene": "fail",
-      "ko": "그림 종류를 16개에서 22개로 늘릴 때, 한쪽 요청만 고쳤습니다.",
-      "en": "When I grew the picture set from 16 to 22, I only updated one of the two requests.",
+      "ko": "하루가 새벽 6시에 바뀌니, 6시 6분은 새 날이었습니다.",
+      "en": "But the day flips at 6 a.m., so a 6:06 run counted as a new day.",
       "keywords": [
-        "22개로",
-        "한쪽 요청만"
+        "새벽 6시에",
+        "새 날이었습니다"
       ],
       "keywordsEn": [
-        "from 16 to 22",
-        "one of the two"
+        "6 a.m.",
+        "a new day"
       ],
       "diagram": {
         "kind": "fork",
         "labels": [
-          "그림 목록",
-          "22개",
-          "16개",
-          "첫 요청",
-          "다시 쓰기 요청"
+          "6시 6분 실행",
+          "같은 밤",
+          "새 날의 첫 글",
+          "사람 기준",
+          "시스템 기준"
         ],
         "labelsEn": [
-          "picture list",
-          "22",
-          "16",
-          "first request",
-          "rewrite request"
+          "6:06 run",
+          "same night",
+          "first post of a new day",
+          "how I see it",
+          "how it counted"
         ],
         "pick": 2
       }
     },
     {
       "scene": "build",
-      "ko": "이제 목록은 한 곳에만 있습니다.",
-      "en": "Now the list lives in exactly one place.",
+      "ko": "이제 날짜 대신 마지막 발행 이후 지난 시간을 봅니다.",
+      "en": "Now it measures hours since the last publish, not the date.",
       "keywords": [
-        "한 곳에만"
+        "날짜 대신",
+        "지난 시간을"
       ],
       "keywordsEn": [
-        "exactly one place"
+        "hours since"
       ],
-      "motif": "merge"
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "같은 밤으로 보는 범위",
+          "날짜 기준",
+          "12시간"
+        ],
+        "labelsEn": [
+          "counted as the same night",
+          "by date",
+          "12 hours"
+        ]
+      }
     },
     {
       "scene": "build",
-      "ko": "새 그림을 넣을 때 설명을 빠뜨리면 통과하지 못합니다.",
-      "en": "Adding a new picture without its description doesn't get through.",
+      "ko": "12시간 안에 이미 나갔으면 그대로 멈춥니다.",
+      "en": "If one went out within 12 hours, the run just stops.",
       "keywords": [
-        "설명을 빠뜨리면"
+        "12시간 안에"
       ],
       "keywordsEn": [
-        "without its description"
+        "within 12 hours"
       ],
-      "motif": "gate"
+      "stat": "12시간",
+      "statEn": "12 hours",
+      "motif": "fanin"
     },
     {
       "scene": "demo",
-      "ko": "오늘 밤 영상은 무사히 만들어졌습니다.",
-      "en": "Tonight's video came out just fine.",
-      "keywords": [
-        "무사히"
-      ],
+      "ko": "홈에 걸리는 글은 하루에 한 편입니다.",
+      "en": "The home page lists one post per day.",
+      "keywords": [],
       "keywordsEn": [
-        "just fine"
+        "one post per day"
       ],
-      "screen": "/shorts",
-      "shot": "whole"
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "recent devlog",
+      "shot": "focus"
     },
     {
       "scene": "next",
-      "ko": "어제 못 만든 영상을 다시 만들어 볼 차례입니다.",
-      "en": "Next up is remaking the video that never happened.",
+      "ko": "오늘 밤 기록을 보고 한 번만 나갔는지 확인합니다.",
+      "en": "Tonight I'll check the run log to confirm it published once.",
       "keywords": [
-        "다시 만들어"
+        "한 번만"
       ],
       "keywordsEn": [
-        "remaking"
+        "once"
       ],
-      "motif": "loop"
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "last run",
+      "shot": "focus"
     },
     {
       "scene": "end",
-      "ko": "같은 목록을 두 번 적지 않기로 했습니다.",
-      "en": "No more writing the same list twice.",
+      "ko": "이제 한 밤에 한 편만 나갑니다.",
+      "en": "Now it's one post per night.",
       "keywords": [
-        "두 번"
+        "한 편만"
       ],
       "keywordsEn": [
-        "twice"
+        "one post"
       ]
     }
   ],
@@ -138,14 +158,30 @@
     "steps": []
   },
   "failCard": {
-    "title": "목록이 둘로 갈라졌다",
-    "titleEn": "The list split in two",
-    "before": "다시 쓰기 요청에 그림 목록이 빠져 있었다",
-    "after": "목록은 한 곳에 두고 전부 거기서 읽어 간다",
-    "beforeEn": "The rewrite request was missing the picture list",
-    "afterEn": "One list in one place, everything reads from it"
+    "title": "새벽에 한 번 더 나갔습니다",
+    "titleEn": "It published again at dawn",
+    "before": "날짜로 막아서, 새벽 6시 6분 실행을 새 날로 봤습니다",
+    "after": "마지막 발행 이후 12시간이 안 지나면 멈춥니다",
+    "beforeEn": "Keyed to the date, a 6:06 a.m. run looked like a new day",
+    "afterEn": "It stops if the last publish was under 12 hours ago"
   },
   "commits": [
+    [
+      "1ebd76b",
+      "문서 최신화 — 오늘 고친 셋과, 그 전부터 갈라져 있던 둘"
+    ],
+    [
+      "cc8fcac",
+      "QA 검사기가 탭 영역을 33으로 쟀다 — 실제로는 44였다"
+    ],
+    [
+      "8b6f269",
+      "백업 회차 가드를 날짜가 아니라 간격으로 본다 — 경계로 새벽에 한 편이 샜다"
+    ],
+    [
+      "f2da2a7",
+      "비포·애프터의 '전' 줄이 안 보였다 — 물러남을 두 번 겹쳐 냈다"
+    ],
     [
       "2c2284d",
       "어휘 목록을 한 곳에서만 — 재작성 요청이 \"열여섯\"인 채로 남아 있었다"
@@ -153,29 +189,45 @@
   ],
   "commitsEn": [
     [
+      "1ebd76b",
+      "docs: update — three sets fixed today and two that diverged earlier"
+    ],
+    [
+      "cc8fcac",
+      "fix: QA checker measured tab area as 33 — actually 44"
+    ],
+    [
+      "8b6f269",
+      "fix: backup rotation guard uses interval instead of date — boundary leak at dawn"
+    ],
+    [
+      "f2da2a7",
+      "fix: before/after 'before' line was not visible — double revert caused it"
+    ],
+    [
       "2c2284d",
       "chore: consolidate vocabulary list in one place — refactor request remained as \"열여섯\""
     ]
   ],
-  "commitCount": 1,
+  "commitCount": 5,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "그림 목록이 두 군데로 갈라져 있었고, 그래서 어젯밤 영상이 만들어지지 않았습니다. 이제 목록은 한 곳에만 둡니다.",
-    "en": "The picture list had drifted into two copies, so last night's video never got made. Now it lives in exactly one place."
+    "ko": "밤에만 나가야 할 글이 새벽 6시 6분에 한 번 더 나갔습니다. 날짜로 막던 것을 마지막 발행 이후 지난 시간으로 바꿨습니다.",
+    "en": "A post that should only go out at night published again at 6:06 a.m. The guard now measures hours since the last publish instead of the date."
   },
   "hashtags": [
     "#vibelog",
     "#개발일지",
     "#자동화",
+    "#버그수정",
     "#devlog",
-    "#buildinpublic",
-    "#AI",
-    "#쇼츠"
+    "#automation",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.poster.jpg?v=mu1qo967",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.ko.mp4?v=mu1qob6o",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.en.poster.jpg?v=mu1qpgaj",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.en.mp4?v=mu1qpigo"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.poster.jpg?v=mu2rfqp9",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.ko.mp4?v=mu2rfslx",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.en.poster.jpg?v=mu2rgpzt",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-15.en.mp4?v=mu2rgrtp"
   }
 }

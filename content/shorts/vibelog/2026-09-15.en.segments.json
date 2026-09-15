@@ -1,14 +1,23 @@
 {
   "screens": [
     {
-      "path": "/shorts",
-      "start": 0.94,
-      "end": 14.58
+      "path": "/",
+      "find": "recent devlog",
+      "focusY": 0.5,
+      "start": 0.93,
+      "end": 10.45
     },
     {
       "path": "/",
-      "start": 15.46,
-      "end": 30.22
+      "find": "last run",
+      "focusY": 0.5,
+      "start": 10.87,
+      "end": 20.39
+    },
+    {
+      "path": "/log",
+      "start": 21.23,
+      "end": 30.9
     }
   ]
 }
