@@ -379,7 +379,11 @@ export const DiagramScene: React.FC<{
     const ar1 = seg(t, 0.45, 0.5);
     const b = seg(t, 1.3, 0.45);
     const ar2 = seg(t, 1.6, 0.5);
-    const dim = 1 - 0.5 * seg(t, 1.4, 0.5);
+    // 전 줄은 흐려지되 **읽히는 선에서** 멈춘다. muted 색에 opacity 0.5까지
+    // 겹쳐 두었더니 paper 테마에서 글자 대비가 1.6:1이라 사실상 안 보였다
+    // ("비포가 너무 흐려져서 잘 안 보여" — Jessi). 색은 본문색(th.ink) 그대로
+    // 두고 흐리기만 0.55까지 내린다 — 같은 자리에서 4:1이 나온다.
+    const dim = 1 - 0.45 * seg(t, 1.4, 0.5);
     const TOP = 800;
     const BOT = 1120;
     return (
@@ -396,7 +400,7 @@ export const DiagramScene: React.FC<{
         </svg>
         <div
           style={{
-            ...labelStyle(th),
+            ...labelStyle(th, th.ink),
             fontFamily: FONT_MONO,
             fontWeight: 500,
             fontSize: 26,
@@ -415,7 +419,6 @@ export const DiagramScene: React.FC<{
             top: TOP,
             width: 340,
             height: 110,
-            color: th.muted,
             ...rise(a),
             opacity: a * dim,
           }}
@@ -429,7 +432,6 @@ export const DiagramScene: React.FC<{
             top: TOP,
             width: 374,
             height: 110,
-            color: th.muted,
             ...rise(a),
             opacity: a * dim,
           }}

@@ -421,7 +421,7 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         const d = validDiagram(l.diagram);
         return d ? { diagram: d } : {};
       })(),
-      // 모티프 — 어휘 열여섯에 있는 이름만 (자유 작도 금지). 그리고 **그려지는
+      // 모티프 — MOTIFS 어휘에 있는 이름만 (자유 작도 금지). 그리고 **그려지는
       // 자리에만** 받는다: hook·end는 제 카드가, fail은 삽질 카드가 그 자리를
       // 쓴다. 거기에 붙은 모티프를 받아 두면 blankScenes는 통과하는데 화면에는
       // 안 나와서, 빈 화면을 막으려던 검사가 오히려 빈 화면을 통과시킨다.
