@@ -75,6 +75,7 @@ export default async function DevlogPostPage({ params }: Props) {
           sectionsEn: d.sectionsEn,
           hasEn: Boolean(d.bodyEn),
           body: d.body,
+          figures: d.figures,
           short: d.short
             ? {
                 template: d.short.template,
