@@ -36,8 +36,12 @@ function useRoute() {
     : post
       ? `log / ${decodeURIComponent(post[1])} / ${post[2]}`
       : "";
+  // 글 주소는 `/p/<id>`다. `/log/<repo>/<date>`는 옛 주소로 301만 한다 —
+  // 주소를 옮길 때(0eb702d) 여기를 같이 안 고쳐서, 글을 보는 동안 어느 탭에도
+  // 안 걸리고 마지막 폴백인 "/"로 떨어져 **프로젝트**에 밑줄이 그어져 있었다
+  // (Jessi 지적). 글은 데브로그다.
   const tab =
-    post || pathname.startsWith("/log")
+    post || pathname.startsWith("/p/") || pathname.startsWith("/log")
       ? "/log"
       : pathname.startsWith("/shorts")
         ? "/shorts"
