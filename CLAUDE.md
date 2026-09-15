@@ -35,7 +35,8 @@ content/devlog/<repo>/<date>.md   Action이 생성. frontmatter manual: true면 
 content/state.json          레포별 마지막 처리 커밋 SHA / 시각
 content/devlog/<repo>/<date>.figures.json  글 삽화 (검증 통과분만, 노드 트리). 없으면 삽화 없음
 scripts/figures.ts          글 → 삽화 SVG 생성 + 검증 + 한 번 재작성 (scripts/figure-types.ts가 계약·파서)
-scripts/check-figures.ts    삽화 검사기 — 저장분 재검증 + 공격 입력 18종 + 고정 모델 답
+scripts/check-figures.ts    삽화 검사기 — 저장분 재검증 + 공격 입력 19종 + 고정 모델 답
+scripts/figures-backfill.ts 이미 발행된 글에 삽화 붙이기 (Run workflow의 `figures` 입력: all 또는 repo/date)
 scripts/collect.ts          GitHub API → 레포별 활동 수집
 scripts/generate.ts         수집 결과 → Claude API → MDX (KR/EN)
 scripts/run.ts              collect → generate → 파일 쓰기

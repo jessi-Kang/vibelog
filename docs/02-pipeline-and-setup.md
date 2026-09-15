@@ -71,6 +71,7 @@ vibelog/
 │   ├─ collect.ts                # GitHub API → 레포별 활동 수집 (Octokit)
 │   ├─ generate.ts               # 수집 결과 → 데브로그 MDX (KR/EN)
 │   ├─ figures.ts · figure-types.ts  # 글 삽화 생성·검증 (허용 목록 파서) · check-figures.ts 검사기
+│   ├─ figures-backfill.ts        # 지난 글에 삽화만 붙인다 (Run workflow `figures` 입력)
 │   ├─ script.ts                 # 데브로그 → 쇼츠 대본 (템플릿·다이어그램 선택)
 │   ├─ audio.ts                  # TTS + 발음 교정 + 단어 타이밍
 │   ├─ record.ts                 # 배포 사이트 화면 녹화 (문장↔화면 매칭)

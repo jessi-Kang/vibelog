@@ -28,6 +28,10 @@ on:
         description: "썸네일만 다시 뽑을 글 — 예: vibelog/2026-09-09. 기존 영상에서 프레임만 재추출 (대본·음성 재생성 없음, 비용 0)"
         required: false
         default: ""
+      figures:
+        description: "이미 발행된 글에 삽화 붙이기 — all 또는 vibelog/2026-09-15,apart/2026-09-14. 글은 안 건드리고 .figures.json만 새로 만든다 (Opus 호출 글당 1–2번)"
+        required: false
+        default: ""
       guard:
         description: "중복 방지 — 이 밤에 이미 발행했으면 조용히 종료. 예약 대신 부르는 쪽(Vercel Cron)이 true로 넣는다. 손으로 돌릴 때는 비운다"
         required: false
@@ -79,7 +83,10 @@ jobs:
 
       - name: Collect, generate devlogs & shorts
         run: |
-          if [ -n "$POSTER" ]; then
+          if [ -n "$FIGURES" ]; then
+            # 삽화 백필 — 이미 발행된 글에 삽화만 붙인다 (글·쇼츠는 안 건드린다)
+            npx tsx scripts/figures-backfill.ts "$FIGURES"
+          elif [ -n "$POSTER" ]; then
             # 썸네일만 재추출 — 기존 mp4에서 프레임을 다시 뽑아 덮어쓴다 (API 비용 0)
             npx tsx scripts/poster.ts "$POSTER"
           elif [ -n "$REGEN" ]; then
@@ -91,6 +98,7 @@ jobs:
         env:
           REGEN: ${{ inputs.regen }}
           POSTER: ${{ inputs.poster }}
+          FIGURES: ${{ inputs.figures }}
           # 예약 회차와, 예약을 대신하는 호출(Vercel Cron → guard: true)에만
           # 켠다 — 이 밤에 이미 발행했으면 조용히 종료해 이중 발행·TTS 중복
           # 비용을 막는다. Jessi가 손으로 돌리는 Run workflow는 가드 없음.
@@ -125,6 +133,7 @@ jobs:
         env:
           REGEN: ${{ inputs.regen }}
           POSTER: ${{ inputs.poster }}
+          FIGURES: ${{ inputs.figures }}
         run: |
           git config user.name "vibelog-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -132,7 +141,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋 생략"
           else
-            if [ -n "$POSTER" ]; then
+            if [ -n "$FIGURES" ]; then
+              git commit -m "chore: 글 삽화 붙임 ($FIGURES)"
+            elif [ -n "$POSTER" ]; then
               git commit -m "chore: 쇼츠 썸네일 재추출 ($POSTER)"
             elif [ -n "$REGEN" ]; then
               git commit -m "chore: 쇼츠 다시 만듦 ($REGEN)"
