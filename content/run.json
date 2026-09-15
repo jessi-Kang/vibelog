@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-14T21:13:26.821Z",
+  "at": "2026-09-15T14:07:11.932Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
@@ -9,10 +9,10 @@
       "text": "collect  · 2 repos, 1 active"
     },
     {
-      "text": "generate · vibelog/2026-09-15.md (ko, en)"
+      "text": "generate · apart/2026-09-15.md (ko, en)"
     },
     {
-      "text": "shorts   · vibelog/2026-09-15 (ko, en)"
+      "text": "shorts   · apart/2026-09-15 (ko, en)"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
