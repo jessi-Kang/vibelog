@@ -275,15 +275,26 @@ async function main(): Promise<void> {
   // 그 창을 벗어나 이중 발행·TTS 중복 비용이 났다. 12시간을 보는 이유는
   // 한 밤 안의 회차들(23:00~03:00)은 다 덮으면서, 어제 남은 기록에는
   // 걸리지 않기 위해서다. 수동 Run workflow에는 이 env가 없어 항상 돈다.
+  //
+  // **날짜 버킷은 보지 않는다.** 처음에는 `lastDate === date`까지 같이 봤는데,
+  // 그 틈으로 한 회차가 빠져나갔다 (9/15 실측): 03:00 예정 백업이 3시간 6분
+  // 밀려 06:06에 떴고, publishDateKST의 경계가 06:00이라 "9/15 밤" 회차로
+  // 계산됐다. 일곱 시간 전에 끝난 9/14 밤 발행은 날짜가 달라 가드에 안 걸렸고,
+  // 새벽 여섯 시에 커밋 하나짜리 9/15 글과 영상이 그대로 나갔다 (TTS·렌더
+  // 비용 한 번 더). 밤 회차는 24시간 간격이므로 12시간 안에 발행 기록이
+  // 있으면 그건 경계가 어느 쪽으로 갈렸든 같은 밤의 중복이다.
   if (process.env.SCHEDULE_GUARD === "1" && !collectOnly && !projectsOnly) {
-    const publishedTonight = Object.values(state).some(
-      (s) =>
-        s.lastDate === date &&
-        s.lastRun &&
-        Date.now() - new Date(s.lastRun).getTime() < 12 * 3600 * 1000,
+    const last = Math.max(
+      0,
+      ...Object.values(state).map((s) =>
+        s.lastRun ? new Date(s.lastRun).getTime() : 0,
+      ),
     );
-    if (publishedTonight) {
-      console.log(`${date} 회차는 이미 발행됨 — 백업 회차 종료`);
+    const sinceH = (Date.now() - last) / 3600000;
+    if (last > 0 && sinceH < 12) {
+      console.log(
+        `${sinceH.toFixed(1)}시간 전에 발행함 — 백업 회차 종료 (이번 회차 날짜 ${date})`,
+      );
       return;
     }
   }
