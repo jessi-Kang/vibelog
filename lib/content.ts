@@ -123,7 +123,7 @@ const SECTION_MAP: Record<string, keyof DevlogSections> = {
   "next up": "next",
 };
 
-function parseSections(markdown: string): DevlogSections {
+export function parseSections(markdown: string): DevlogSections {
   const sections: DevlogSections = {};
   const parts = markdown.split(/^##\s+/m).slice(1);
   for (const part of parts) {

@@ -26,6 +26,7 @@ import {
   type PostFigure,
   FIG_SECTIONS,
 } from "./figure-types";
+import { parseFigureReply } from "./figures";
 
 const ROOT = process.cwd();
 const DEVLOG = path.join(ROOT, "content", "devlog");
@@ -163,6 +164,31 @@ say(
   "본문에 숫자가 없으면 그림의 숫자를 지적한다",
 );
 say(inventedNumbers(n, 본문).length === 0, "본문에 있는 숫자는 지적하지 않는다");
+
+/* ③ 모델 답을 받는 길 — 고정 답으로 매번 다시 태운다 (API 없이) */
+console.log("\n모델 답 처리");
+const replyFixture = fs.readFileSync(
+  path.join(ROOT, "scripts", "fixtures", "figure-reply.json"),
+  "utf8",
+);
+const sections = {
+  // why를 두 문단으로 — 고정 답의 after: 1이 가리키는 자리다
+  ko: { why: 본문.replace("이 시스템은", "\n\n이 시스템은"), fail: "화면 점검에서 지적이 54건 떴습니다.\n\n둘째 문단.", next: "한 문단뿐." },
+  en: { why: "At 6:06 the post went out. 12 hours.", fail: "54 problems.\n\nSecond.", next: "One." },
+};
+const r = parseFigureReply(replyFixture, sections);
+say(r.figures.length === 1, `정상 항목 1개만 통과 (통과 ${r.figures.length})`);
+say(r.dropped.length === 3, `걸린 항목 3개 (${r.dropped.length}): ${r.dropped.map((d) => d.reason.slice(0, 28)).join(" / ")}`);
+say(
+  r.dropped.some((d) => /9|99/.test(d.reason)) &&
+    r.dropped.some((d) => /script/.test(d.reason)) &&
+    r.dropped.some((d) => /문단 수/.test(d.reason)),
+  "이유가 각각 숫자·태그·문단 번호를 가리킨다",
+);
+say(
+  parseFigureReply("이건 JSON이 아닙니다", sections).dropped[0]?.index === -1,
+  "JSON이 아니면 전체를 한 번에 거절한다",
+);
 
 console.log(fail ? `\n지적 ${fail}건` : "\n삽화 규칙 이상 없음");
 process.exit(fail ? 1 : 0);

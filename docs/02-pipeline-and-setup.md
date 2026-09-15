@@ -62,6 +62,7 @@ vibelog/
 ├─ content/                      # 파이프라인 산출물 — 손으로 고치지 않는다
 │   ├─ projects.json             #   레포 메타 기반 카드
 │   ├─ devlog/<repo>/<date>.md   #   frontmatter manual: true면 보호
+│   ├─ devlog/<repo>/<date>.figures.json  #   글 삽화 — 검증 통과한 노드 트리 (SVG 문자열 아님)
 │   ├─ shorts/<repo>/<date>.*    #   대본 · 타이밍 · 화면 구간 (mp4는 Vercel Blob)
 │   ├─ commit-hours.json         #   홈 잔디 재료 (시각별 커밋 수)
 │   ├─ run.json                  #   마지막 실행 기록 — 홈의 "지난 실행"
@@ -69,6 +70,7 @@ vibelog/
 ├─ scripts/
 │   ├─ collect.ts                # GitHub API → 레포별 활동 수집 (Octokit)
 │   ├─ generate.ts               # 수집 결과 → 데브로그 MDX (KR/EN)
+│   ├─ figures.ts · figure-types.ts  # 글 삽화 생성·검증 (허용 목록 파서) · check-figures.ts 검사기
 │   ├─ script.ts                 # 데브로그 → 쇼츠 대본 (템플릿·다이어그램 선택)
 │   ├─ audio.ts                  # TTS + 발음 교정 + 단어 타이밍
 │   ├─ record.ts                 # 배포 사이트 화면 녹화 (문장↔화면 매칭)
