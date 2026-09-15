@@ -55,7 +55,16 @@ export function PostFigure({
   const kids = node.children ?? [];
   const label = kids.find((c) => c.tag === "title")?.text ?? "";
   return (
-    <figure className="my-7 flex flex-col items-center gap-3">
+    // 은은한 바탕판 (Jessi가 시안 A를 골랐다 — docs/post-figures-frame.html).
+    // 테두리는 없다: 두르면 카드가 되어 본문에서 떨어져 나온다. 바탕색 한 단계로
+    // "여기는 그림"만 읽히게 한다.
+    //
+    // 모바일에서는 판을 페이지 여백까지 밀어 붙인다(-mx = 컨테이너의 px). 화면 끝에
+    // 닿는 판은 모서리를 둥글리지 않는다 — 가장자리에 둥근 귀퉁이 조각이 남는다. 판의
+    // 안쪽 여백이 삽화 폭을 먹으면 320px에서 라벨이 11px 아래로 내려간다 —
+    // 삽화는 늘리지 않는 대신 줄어들 수는 있어서, 판 안의 폭이 곧 글자 크기다.
+    // 그래서 안쪽 여백을 여백값과 똑같이 두어 삽화 폭은 판이 없을 때와 같다.
+    <figure className="my-7 -mx-5 flex flex-col items-center gap-3 bg-panel px-5 pb-4 pt-6 max-[359px]:-mx-4 max-[359px]:px-4 md:mx-0 md:rounded-lg md:px-6">
       <svg
         viewBox={vb}
         role="img"
