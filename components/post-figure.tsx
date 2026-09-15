@@ -47,15 +47,23 @@ export function PostFigure({
 }) {
   if (node?.tag !== "svg") return null;
   const vb = node.attrs?.viewBox ?? `0 0 ${FIG_W} 200`;
+  // 계약은 <title>을 요구하지만 **그릴 때는 aria-label로 옮긴다.**
+  // React 19는 <title>을 문서 메타데이터로 다뤄 서버 렌더에서 속을 비워
+  // 내보낸다 — 브라우저에서 하이드레이션되면 채워지지만, 자바스크립트 없이
+  // 읽는 쪽·크롤러에는 접근성 이름이 아예 없다 (라이브에서 <title></title>로
+  // 나가는 것을 보고 알았다). role="img" + aria-label은 그런 취급이 없다.
+  const kids = node.children ?? [];
+  const label = kids.find((c) => c.tag === "title")?.text ?? "";
   return (
     <figure className="my-7 flex flex-col items-center gap-3">
       <svg
         viewBox={vb}
         role="img"
+        aria-label={label || undefined}
         className="block h-auto w-full"
         style={{ maxWidth: FIG_W }}
       >
-        {(node.children ?? []).map((c, i) => draw(c, i))}
+        {kids.filter((c) => c.tag !== "title").map((c, i) => draw(c, i))}
       </svg>
       {caption && (
         <figcaption

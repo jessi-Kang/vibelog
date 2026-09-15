@@ -132,6 +132,13 @@ const MEASURE = `((TAP_ICON, TAP_TEXT) => {
     return own > 0 && parent > own + 8;
   };
 
+  // 그림도 이름이 있어야 한다 — 글 삽화(svg role="img")가 SSR에서 이름 없이
+  // 나간 적이 있다. React 19가 <title>을 문서 메타데이터로 다뤄 서버 렌더에서
+  // 속을 비워 보내, 자바스크립트 없이 읽는 쪽에는 아무 이름도 없었다.
+  for (const el of document.querySelectorAll('[role="img"]')) {
+    if (!seen(el) || hidden(el)) continue;
+    if (!name(el)) out.unnamed.push({ tag: 'role=img', cls: el.className.toString().slice(0, 70) });
+  }
   for (const el of document.querySelectorAll('a, button, input, select, textarea, [role="button"], [role="switch"], [role="tab"]')) {
     if (!seen(el) || hidden(el) || el.tabIndex < 0) continue;
     const box = el.getBoundingClientRect();
