@@ -80,6 +80,8 @@ export function PostClient({ post }: { post: PostData }) {
   const [media, setMedia] = useState<LightboxMedia | null>(null);
   // 원료 git log — 10개 넘는 날은 접어서 시작 (frontmatter엔 전부 실려 있다)
   const [showAllShas, setShowAllShas] = useState(false);
+  /** 접혀 있어 아래에 "전부 보기" 버튼이 따라붙는 상태 */
+  const shasTruncated = !showAllShas && (post.shas?.length ?? 0) > 10;
   const en = lang === "en";
   const s = en ? post.sectionsEn : post.sections;
   const parsed = Boolean(post.sections.did || post.sections.why);
@@ -237,13 +239,18 @@ export function PostClient({ post }: { post: PostData }) {
             {en ? "Raw material · git log" : "원료 · git log"}
           </h2>
           <Card inset className="px-[18px] py-1">
-            {/* 그날 커밋 전부가 원료다 — 다만 많은 날은 10개까지만 펼치고 접는다 */}
+            {/* 그날 커밋 전부가 원료다 — 다만 많은 날은 10개까지만 펼치고 접는다.
+                줄 사이 선은 **다음에 올 것이 있을 때만** 긋는다. 마지막 줄에도
+                긋던 건 아래 "전부 보기" 버튼과 가르려던 것인데, 조건이
+                `!showAllShas`뿐이라 버튼이 없는 열 개 이하짜리 글에서도 그어졌다
+                — 카드 테두리 바로 위에 선이 하나 떠 있었다 (Jessi 지적).
+                대부분의 글이 이 경우다. */}
             {(showAllShas ? post.shas : post.shas.slice(0, 10)).map(
               ([sha, msg], i, visible) => (
                 <div
                   key={`${sha}-${i}`}
                   className={`flex gap-3 py-2.5 text-sm leading-normal ${
-                    i < visible.length - 1 || !showAllShas
+                    i < visible.length - 1 || shasTruncated
                       ? "border-b border-line"
                       : ""
                   }`}
