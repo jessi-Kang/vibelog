@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import type { PostFigure } from "../scripts/figure-types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -52,6 +53,8 @@ export interface DevlogEntry {
   shasEn?: [string, string][]; // 커밋 메시지 영어 번역 (파이프라인 생성)
   day: number; // 이 레포의 몇 번째 글
   short?: ShortsMeta; // 이 글의 쇼츠 (있으면)
+  /** 책 삽화처럼 문단 사이에 들어가는 그림. 검증을 통과한 것만 실린다 */
+  figures?: PostFigure[];
 }
 
 export interface ShortsMeta {
@@ -177,6 +180,17 @@ export function getCommitHours(): Record<string, number[]> {
   }
 }
 
+/** <date>.figures.json — 없으면 빈 배열. 읽다 실패하면 조용히 없는 셈 친다 */
+function readFigures(dir: string, mdFile: string): PostFigure[] {
+  const p = path.join(dir, mdFile.replace(/\.mdx?$/, ".figures.json"));
+  try {
+    const v: unknown = JSON.parse(fs.readFileSync(p, "utf8"));
+    return Array.isArray(v) ? (v as PostFigure[]) : [];
+  } catch {
+    return [];
+  }
+}
+
 export function getDevlogs(repo?: string): DevlogEntry[] {
   const devlogDir = path.join(CONTENT_DIR, "devlog");
   if (!fs.existsSync(devlogDir)) return [];
@@ -216,6 +230,9 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
           : undefined;
       const shas = parseShas(data.shas);
       const shasEn = parseShas(data.shasEn);
+      // 삽화는 사이드카 JSON이다 — SVG를 frontmatter에 넣으면 글이 안 읽힌다.
+      // 파이프라인이 검증을 통과한 것만 쓴다 (scripts/figure-types.ts).
+      const figures = readFigures(dir, f);
       entries.push({
         repo: r,
         date,
@@ -233,6 +250,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
         ...(shas ? { shas } : {}),
         ...(shasEn ? { shasEn } : {}),
+        ...(figures?.length ? { figures } : {}),
         day: i + 1,
       });
     });

@@ -13,6 +13,12 @@ import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
 import { Card, EmptyState } from "./ui";
+import { PostFigure as Figure } from "./post-figure";
+import {
+  splitParas,
+  type FigSection,
+  type PostFigure,
+} from "../scripts/figure-types";
 
 export interface PostData {
   repo: string;
@@ -29,6 +35,8 @@ export interface PostData {
   sectionsEn: { did?: string; why?: string; fail?: string; next?: string };
   hasEn: boolean;
   body: string; // 섹션 파싱 실패 시 폴백
+  /** 문단 사이에 들어가는 삽화 (검증 통과분만) */
+  figures?: PostFigure[];
   short?: {
     template: string;
     duration?: number;
@@ -67,6 +75,42 @@ function Md({ children }: { children: string }) {
   );
 }
 
+/**
+ * 섹션 하나를 그린다. 삽화가 있으면 **문단 사이에** 끼운다 — 책 삽화처럼.
+ * 문단 번호는 splitParas가 정한다 (생성 쪽과 같은 함수를 쓴다 — 목록이
+ * 두 군데로 갈라지면 자리가 어긋난다).
+ */
+function Body({
+  md,
+  figures,
+  en,
+}: {
+  md: string;
+  figures: PostFigure[];
+  en: boolean;
+}) {
+  if (!figures.length) return <Md>{md}</Md>;
+  const paras = splitParas(md);
+  return (
+    <>
+      {paras.map((p, i) => (
+        <div key={i}>
+          <Md>{p}</Md>
+          {figures
+            .filter((f) => f.after === i)
+            .map((f, j) => (
+              <Figure
+                key={j}
+                node={en ? f.nodeEn : f.node}
+                caption={en ? f.captionEn : f.caption}
+              />
+            ))}
+        </div>
+      ))}
+    </>
+  );
+}
+
 function H({ warn, children }: { warn?: boolean; children: string }) {
   return (
     <h2 className={`m-0 mb-2 text-md font-bold ${warn ? "text-warn" : "text-ink"}`}>
@@ -84,6 +128,8 @@ export function PostClient({ post }: { post: PostData }) {
   const shasTruncated = !showAllShas && (post.shas?.length ?? 0) > 10;
   const en = lang === "en";
   const s = en ? post.sectionsEn : post.sections;
+  const figsOf = (k: FigSection): PostFigure[] =>
+    (post.figures ?? []).filter((f) => f.section === k);
   const parsed = Boolean(post.sections.did || post.sections.why);
   const noFail = !s.fail || s.fail.startsWith("특별한 삽질은") || s.fail === "None.";
 
@@ -149,13 +195,13 @@ export function PostClient({ post }: { post: PostData }) {
               {s.did && (
                 <div>
                   <H>{headings.did}</H>
-                  <Md>{s.did}</Md>
+                  <Body md={s.did} figures={figsOf("did")} en={en} />
                 </div>
               )}
               {s.why && (
                 <div>
                   <H>{headings.why}</H>
-                  <Md>{s.why}</Md>
+                  <Body md={s.why} figures={figsOf("why")} en={en} />
                 </div>
               )}
               <div>
@@ -170,13 +216,17 @@ export function PostClient({ post }: { post: PostData }) {
                       : ""}
                   </p>
                 ) : (
-                  <Md>{s.fail as string}</Md>
+                  <Body
+                    md={s.fail as string}
+                    figures={figsOf("fail")}
+                    en={en}
+                  />
                 )}
               </div>
               {s.next && (
                 <div>
                   <H>{headings.next}</H>
-                  <Md>{s.next}</Md>
+                  <Body md={s.next} figures={figsOf("next")} en={en} />
                 </div>
               )}
             </section>
