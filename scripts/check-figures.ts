@@ -159,12 +159,16 @@ for (const [name, src] of attacks) {
 }
 
 /* 지어낸 숫자 검사가 실제로 무는지 (규칙이 느슨해지면 여기서 드러난다) */
-const n = toFigure(good, 본문);
-say(
-  inventedNumbers(n, "숫자가 하나도 없는 본문").length > 0,
-  "본문에 숫자가 없으면 그림의 숫자를 지적한다",
-);
-say(inventedNumbers(n, 본문).length === 0, "본문에 있는 숫자는 지적하지 않는다");
+try {
+  const n = toFigure(good, 본문);
+  say(
+    inventedNumbers(n, "숫자가 하나도 없는 본문").length > 0,
+    "본문에 숫자가 없으면 그림의 숫자를 지적한다",
+  );
+  say(inventedNumbers(n, 본문).length === 0, "본문에 있는 숫자는 지적하지 않는다");
+} catch (e) {
+  say(false, `고정 삽화가 규칙에 안 맞는다: ${(e as Error).message}`);
+}
 
 /* ③ 모델 답을 받는 길 — 고정 답으로 매번 다시 태운다 (API 없이) */
 console.log("\n모델 답 처리");
