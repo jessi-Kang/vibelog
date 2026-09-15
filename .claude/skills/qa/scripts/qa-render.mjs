@@ -103,17 +103,26 @@ const MEASURE = `((TAP_ICON, TAP_TEXT) => {
     }
   }
 
-  // .hit::after { inset: -6px } 처럼 가상 요소로 넓힌 히트 영역을 더한다
+  // 가상 요소로 넓힌 히트 영역(.hit::after)을 더한다. **쓰인 크기를 그대로
+  // 읽는다** — 처음에는 top/right/bottom/left를 음수 padding으로 환산했는데,
+  // .hit이 inset 대신 left/top+translate+width로 바뀌자 right/bottom이 auto가
+  // 되어 확장이 통째로 안 세어졌다. 실제 탭 영역은 44였는데 33으로 재어
+  // 한 번에 54건을 지적했다 — 거짓 지적은 진짜 지적을 묻는다.
+  // getComputedStyle은 그려진 가상 요소의 width/height를 px로 돌려주므로
+  // inset 방식이든 width 방식이든 같은 값이 나온다.
   const grown = (el) => {
     const r = el.getBoundingClientRect();
-    let pad = 0;
+    let w = r.width, h = r.height;
     for (const p of ["::after", "::before"]) {
       const s = getComputedStyle(el, p);
       if (s.content === "none" || s.position !== "absolute") continue;
-      const v = [s.top, s.right, s.bottom, s.left].map((x) => -parseFloat(x));
-      if (v.every((n) => Number.isFinite(n))) pad = Math.max(pad, Math.min(...v));
+      // 손가락을 안 받는 장식(밑줄·포커스링)은 탭 영역이 아니다
+      if (s.pointerEvents === "none") continue;
+      const pw = parseFloat(s.width), ph = parseFloat(s.height);
+      if (Number.isFinite(pw)) w = Math.max(w, pw);
+      if (Number.isFinite(ph)) h = Math.max(h, ph);
     }
-    return { w: Math.round(r.width + 2 * Math.max(0, pad)), h: Math.round(r.height + 2 * Math.max(0, pad)) };
+    return { w: Math.round(w), h: Math.round(h) };
   };
   // 글 속에 섞인 링크는 크기 규정에서 빠진다 (WCAG 2.5.8 inline 예외)
   const inlineInText = (el) => {
