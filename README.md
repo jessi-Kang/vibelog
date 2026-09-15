@@ -38,11 +38,12 @@
 app/                    Next.js 페이지 (카드 그리드 · 프로젝트 상세 · 피드 · 쇼츠)
                         + PWA — 설치하면 주소창 없는 앱 창으로 열린다
 components/             UI — 다크 기본, 모바일은 하단 탭바
-content/                파이프라인 산출물 (projects.json · devlog/ · shorts/
+content/                파이프라인 산출물 (projects.json · devlog/ (+ .figures.json) · shorts/
                         · state.json · commit-hours.json · run.json)
 scripts/
   collect.ts            GitHub API → 레포별 활동 수집
   generate.ts           수집 결과 → 데브로그 MDX (KR/EN)
+  figures.ts            글 삽화 — 자유 작도 SVG를 허용 목록 파서로 검증해 트리로 저장
   script.ts             데브로그 → 쇼츠 대본
   audio.ts              내레이션 TTS + 발음 교정 + 타이밍
   record.ts             배포 사이트 화면 녹화 (내레이션 내용과 화면을 매칭)

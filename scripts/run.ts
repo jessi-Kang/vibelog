@@ -15,11 +15,17 @@ import matter from "gray-matter";
 import { collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
 import {
   generateDevlog,
+
   translateCommitLines,
   translateLine,
 } from "./generate";
+import { generateFigures } from "./figures";
+import { parseSections } from "../lib/content";
 import { runShorts } from "./shorts";
 import { checkDemoScreens } from "./check-screens";
+
+/** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
+type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
@@ -151,6 +157,51 @@ function isProtected(file: string): boolean {
     return matter(fs.readFileSync(file, "utf8")).data.manual === true;
   } catch {
     return false;
+  }
+}
+
+/**
+ * 글 삽화 — 글이 다 써진 뒤 그린다. 검증에 걸린 삽화는 그것만 빼고 글은
+ * 그대로 낸다 (실행 기록에 warn). 이 단계의 실패는 글 발행을 막지 않는다.
+ * 파일은 <date>.figures.json — 삽화가 없으면 옛 파일도 지운다 (재실행 때
+ * 지난 그림이 새 글에 붙어 나가면 안 된다).
+ */
+async function writeFigures(
+  repo: string,
+  date: string,
+  d: { title: string; ko: string; en: string },
+  runLines: RunLine[],
+): Promise<void> {
+  const file = devlogPath(repo, date).replace(/\.md$/, ".figures.json");
+  try {
+    const { figures, dropped } = await generateFigures(d.title, {
+      ko: parseSections(d.ko),
+      en: parseSections(d.en),
+    });
+    for (const why of dropped) {
+      console.warn(`- ${repo}/${date} 삽화 제외: ${why}`);
+      runLines.push({
+        text: `warn     · ${repo}/${date} 삽화 제외 — ${why}`,
+        textEn: `warn     · ${repo}/${date} figure dropped — ${why}`,
+      });
+    }
+    if (figures.length) {
+      fs.writeFileSync(file, JSON.stringify(figures, null, 1) + "\n");
+    } else if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
+    console.log(`- ${repo}/${date} 삽화 ${figures.length}장`);
+    runLines.push({
+      text: `figures  · ${repo}/${date} ${figures.length}장`,
+      textEn: `figures  · ${repo}/${date} ${figures.length} figure${figures.length === 1 ? "" : "s"}`,
+    });
+  } catch (err) {
+    console.error(`- ${repo}/${date} 삽화 실패 (글 발행에는 영향 없음):`, err);
+    runLines.push({
+      text: `figures  · ${repo}/${date} 실패 — 글은 그대로 발행`,
+      textEn: `figures  · ${repo}/${date} failed — post published without figures`,
+      kind: "fail",
+    });
   }
 }
 
@@ -393,6 +444,7 @@ async function main(): Promise<void> {
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
         runLines.push({ text: `generate · ${a.repo}/${date}.md (ko, en)` });
         published.push(a.repo);
+        await writeFigures(a.repo, date, devlog, runLines);
       } catch (err) {
         // 한 레포의 실패가 나머지 발행을 막지 않게 한다
         failed++;
