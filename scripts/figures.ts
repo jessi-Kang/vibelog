@@ -19,6 +19,7 @@ import {
   FIG_MIN_FONT,
   FIG_SECTIONS,
   FIG_W,
+  koreanNumerals,
   splitParas,
   toFigure,
   type FigSection,
@@ -76,6 +77,9 @@ const SYSTEM = `당신은 "vibelog" 데브로그의 삽화가입니다. 다 써�
 - 영문 그림(svgEn)은 같은 도형·같은 좌표에 라벨만 영어로. 영어는 글자가 길어지니
   x 좌표를 그에 맞게 조금 옮겨도 됩니다.
 - 라벨 텍스트에는 <, >, & 를 쓰지 않습니다 (화살표는 → 를 씁니다).
+- **수는 아라비아 숫자로** — "4회차", "20건", "6시". "네 회차", "스무 건"처럼
+  한글로 풀지 않습니다. alt·caption도 같습니다. 그리고 본문에 없는 수는 한글로도
+  적지 않습니다 — 본문이 "여러 회차"라고만 했으면 그림도 수를 세지 않습니다.
 
 ## 출력
 
@@ -163,6 +167,9 @@ export function parseFigureReply(
     const caption = str(it.caption);
     const captionEn = str(it.captionEn);
     if (!alt || !caption) return drop("alt·caption이 비었습니다");
+    const koNums = koreanNumerals([alt, caption]);
+    if (koNums.length)
+      return drop(`alt·caption의 수는 아라비아 숫자로 ("4회차"): ${koNums[0].slice(0, 30)}`);
     try {
       const node = toFigure(str(it.svg), ko);
       const nodeEn = toFigure(str(it.svgEn) || str(it.svg), en || ko);

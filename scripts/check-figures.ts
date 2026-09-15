@@ -146,6 +146,7 @@ const attacks: [string, string][] = [
   ["짝 안 맞는 태그", good.replace("</text>", "</rect>")],
   ["viewBox 폭 변조", good.replace('viewBox="0 0 390', 'viewBox="0 0 680')],
   ["svg 뒤에 덧붙이기", `${good}<p>hi</p>`],
+  ["한글 수사 (네 회차)", good.replace(">예정<", ">예정 네 회차<")],
 ];
 for (const [name, src] of attacks) {
   let 막았나 = false;
