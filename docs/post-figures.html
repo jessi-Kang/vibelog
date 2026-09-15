@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>글 삽화 시안 — vibelog</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    />
+    <style>
+      /* 토큰은 app/globals.css에서 그대로 가져온다 — 값을 새로 만들지 않는다 */
+      :root {
+        --bg: #0a0e14;
+        --panel: #141b24;
+        --panel2: #1b2430;
+        --line: #26313f;
+        --line-strong: #3a4656;
+        --ink: #f3efe6;
+        --ink-soft: #c9cfd8;
+        --muted: #8c98a8;
+        --accent: #5ee1c3;
+        --accent-soft: rgba(94, 225, 195, 0.15);
+        --warn: #ffb454;
+        --danger: #ff6b6b;
+        --sans: "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 15px;
+        line-height: 1.75;
+        word-break: keep-all;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 6px;
+        letter-spacing: -0.01em;
+      }
+      .sub {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 12px;
+        margin: 0 0 32px;
+      }
+      h2 {
+        font-size: 15px;
+        margin: 48px 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .note {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* 글 본문 폭 — post-client의 max-w-[680px] */
+      .article {
+        max-width: 680px;
+      }
+      .article h3 {
+        font-size: 15px;
+        margin: 0 0 10px;
+        color: var(--ink);
+      }
+      .article p {
+        margin: 0 0 18px;
+        color: var(--ink-soft);
+      }
+
+      /* ── 삽화 ─────────────────────────────────────────────
+         책 삽화처럼 문단 사이에 놓인다. 상자에 넣지 않는다 —
+         테두리를 두르면 "카드"가 되어 본문에서 떨어져 나온다. */
+      figure.fig {
+        margin: 30px 0 34px;
+      }
+      figure.fig svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      figure.fig figcaption {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.6;
+        font-family: var(--mono);
+      }
+      .fig-t {
+        font-family: var(--sans);
+        font-size: 13px;
+        font-weight: 700;
+        fill: var(--ink-soft);
+      }
+      .fig-s {
+        font-family: var(--sans);
+        font-size: 12px;
+        fill: var(--muted);
+      }
+      .fig-m {
+        font-family: var(--mono);
+        font-size: 12px;
+        fill: var(--muted);
+      }
+      .fig-ma {
+        font-family: var(--mono);
+        font-size: 12px;
+        fill: var(--accent);
+        font-weight: 700;
+      }
+      .fig-mw {
+        font-family: var(--mono);
+        font-size: 12px;
+        fill: var(--warn);
+        font-weight: 700;
+      }
+
+      figure.fig.plate svg {
+        max-width: 390px;
+        margin: 0 auto;
+      }
+      .p-t {
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 700;
+        fill: var(--ink-soft);
+      }
+      .p-s {
+        font-family: var(--sans);
+        font-size: 14px;
+        fill: var(--muted);
+      }
+      .p-m {
+        font-family: var(--mono);
+        font-size: 13px;
+        fill: var(--muted);
+      }
+      .p-ma {
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 700;
+        fill: var(--accent);
+      }
+      .p-mw {
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 700;
+        fill: var(--warn);
+      }
+
+      /* 폭 비교 패널 */
+      .cols {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .col390 {
+        width: 390px;
+        max-width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 18px 16px;
+        background: var(--panel);
+      }
+      .col390 .article {
+        max-width: none;
+      }
+      .col390 p {
+        font-size: 14px;
+      }
+      .cap {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .rules-wrap {
+        overflow-x: auto;
+      }
+      table.rules {
+        width: 100%;
+        min-width: 560px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      table.rules code {
+        overflow-wrap: anywhere;
+      }
+      table.rules th,
+      table.rules td {
+        text-align: left;
+        vertical-align: top;
+        padding: 9px 12px 9px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      table.rules th {
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 12px;
+        font-family: var(--mono);
+      }
+      code {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--accent);
+      }
+      @media (max-width: 420px) {
+        .wrap {
+          padding: 24px 16px 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>글 삽화 시안</h1>
+      <p class="sub">
+        docs/post-figures.html · 본문은 실제 발행된 글 vibelog/2026-09-15
+      </p>
+      <p class="note" style="max-width: 680px">
+        책 삽화처럼 문단 사이에 놓인다. 상자에 넣지 않았다 — 테두리를 두르면
+        카드가 되어 본문에서 떨어져 나온다. 그림은 그때그때 그리되(고정 종류
+        없음), 색·글꼴·굵기는 사이트 토큰만 쓴다.
+      </p>
+
+      <h2>1. 본문 폭(680)에서 — "왜" 섹션</h2>
+
+      <div class="article">
+        <h3>왜</h3>
+        <p>
+          오늘 새벽 6시 6분에 그날 글과 영상이 나갔습니다. 커밋 하나만 담긴
+          빈약한 글이었고, 하루 종일 그대로 걸려 있었습니다. 목소리를 입히고
+          영상을 합치는 작업도 한 번 더 돌았습니다.
+        </p>
+        <p>
+          같은 밤에 두 번 나가는 것을 막는 장치는 있었습니다. 다만 "오늘
+          날짜로 이미 나갔나"를 기준으로 봤습니다. 이 시스템은 새벽 6시를
+          하루의 경계로 씁니다. 6시 6분에 시작된 실행은 새 날의 첫 발행으로
+          계산됐습니다.
+        </p>
+
+        <!-- ── 삽화 1 — 경계를 넘은 회차 ───────────────────── -->
+        <figure class="fig">
+          <svg viewBox="0 0 680 236" role="img" aria-labelledby="f1t">
+            <title id="f1t">
+              예정된 네 회차가 모두 늦게 떴고, 마지막 하나만 새벽 6시 경계를
+              넘어가 다음 날 회차로 계산되었다
+            </title>
+
+            <!-- 시간 축 -->
+            <line
+              x1="56"
+              y1="96"
+              x2="648"
+              y2="96"
+              stroke="var(--line-strong)"
+              stroke-width="1.5"
+            />
+            <!-- 눈금 -->
+            <g stroke="var(--line-strong)" stroke-width="1.5">
+              <line x1="56" y1="92" x2="56" y2="100" />
+              <line x1="204" y1="92" x2="204" y2="100" />
+              <line x1="352" y1="92" x2="352" y2="100" />
+              <line x1="500" y1="92" x2="500" y2="100" />
+              <line x1="648" y1="92" x2="648" y2="100" />
+            </g>
+            <text class="fig-m" x="56" y="118" text-anchor="middle">23시</text>
+            <text class="fig-m" x="204" y="118" text-anchor="middle">01시</text>
+            <text class="fig-m" x="352" y="118" text-anchor="middle">03시</text>
+            <text class="fig-m" x="500" y="118" text-anchor="middle">05시</text>
+            <text class="fig-m" x="648" y="118" text-anchor="middle">07시</text>
+
+            <!-- 경계 -->
+            <line
+              x1="574"
+              y1="26"
+              x2="574"
+              y2="150"
+              stroke="var(--warn)"
+              stroke-width="1.5"
+              stroke-dasharray="5 4"
+            />
+            <text class="fig-mw" x="566" y="38" text-anchor="end">06시 — 하루의 경계</text>
+
+            <!-- 예정 (위) → 실제 (축 위) -->
+            <!-- 23:00 → 03:59 -->
+            <g>
+              <circle cx="56" cy="62" r="3.5" fill="var(--muted)" />
+              <path
+                d="M56 66 C56 84, 425 78, 425 92"
+                fill="none"
+                stroke="var(--line-strong)"
+                stroke-width="1.4"
+              />
+              <circle cx="425" cy="96" r="4" fill="var(--muted)" />
+            </g>
+            <!-- 23:45 → 04:35 -->
+            <g>
+              <circle cx="111" cy="62" r="3.5" fill="var(--muted)" />
+              <path
+                d="M111 66 C111 84, 469 78, 469 92"
+                fill="none"
+                stroke="var(--line-strong)"
+                stroke-width="1.4"
+              />
+              <circle cx="469" cy="96" r="4" fill="var(--muted)" />
+            </g>
+            <!-- 01:00 → 04:57 -->
+            <g>
+              <circle cx="204" cy="62" r="3.5" fill="var(--muted)" />
+              <path
+                d="M204 66 C204 84, 496 78, 496 92"
+                fill="none"
+                stroke="var(--line-strong)"
+                stroke-width="1.4"
+              />
+              <circle cx="496" cy="96" r="4" fill="var(--muted)" />
+            </g>
+            <!-- 03:00 → 06:06 (경계를 넘는다) -->
+            <g>
+              <circle cx="352" cy="62" r="3.5" fill="var(--accent)" />
+              <path
+                d="M352 66 C352 84, 581 76, 581 92"
+                fill="none"
+                stroke="var(--accent)"
+                stroke-width="2"
+              />
+              <circle cx="581" cy="96" r="5" fill="var(--accent)" />
+            </g>
+
+            <text class="fig-s" x="56" y="46">예정</text>
+            <text class="fig-ma" x="581" y="84" text-anchor="middle">06:06</text>
+
+            <!-- 결과 두 줄 -->
+            <text class="fig-m" x="56" y="152">앞의 셋 — 같은 밤으로 보여 멈춤</text>
+
+            <rect
+              x="56"
+              y="172"
+              width="592"
+              height="48"
+              rx="6"
+              fill="var(--panel)"
+              stroke="var(--line)"
+            />
+            <text class="fig-t" x="72" y="192">날짜로 보면</text>
+            <text class="fig-m" x="206" y="192">
+              새 날의 첫 편이다 → 내보낸다
+            </text>
+            <text class="fig-t" x="72" y="212">지난 시간으로 보면</text>
+            <text class="fig-ma" x="206" y="212">
+              7시간 전에 나갔다 → 같은 밤, 멈춘다
+            </text>
+          </svg>
+          <figcaption>
+            예정 네 회차가 모두 늦게 떴다. 마지막 하나만 06시를 넘겨, 날짜로는
+            "새 날의 첫 편"이 됐다.
+          </figcaption>
+        </figure>
+
+        <p>
+          그래서 날짜 대신 마지막 발행으로부터 지난 시간으로 바꿨습니다.
+          12시간 안에 이미 한 편이 나갔으면 같은 밤으로 보고 멈춥니다.
+        </p>
+
+        <h3 style="margin-top: 40px">삽질 포인트</h3>
+        <p>
+          화면 점검에서 지적이 54건 떴습니다. 버튼을 손가락으로 누르는 영역이
+          너무 작다는 내용이었는데, 직접 재 보니 전부 충분했습니다.
+        </p>
+
+        <!-- ── 삽화 2 — 자가 옛 눈금을 읽었다 ──────────────── -->
+        <figure class="fig">
+          <svg viewBox="0 0 680 200" role="img" aria-labelledby="f2t">
+            <title id="f2t">
+              네 변의 값을 더해 재던 방식은 두 값이 비어 33으로 읽었고, 그려진
+              크기를 그대로 읽으면 44가 된다
+            </title>
+
+            <!-- 왼쪽: 옛 방식 -->
+            <text class="fig-t" x="16" y="22">재던 방식 — 네 변을 더한다</text>
+            <rect
+              x="56"
+              y="52"
+              width="104"
+              height="104"
+              rx="8"
+              fill="none"
+              stroke="var(--line-strong)"
+              stroke-width="1.5"
+              stroke-dasharray="5 4"
+            />
+            <rect
+              x="82"
+              y="78"
+              width="52"
+              height="52"
+              rx="6"
+              fill="var(--panel2)"
+              stroke="var(--line)"
+            />
+            <text
+              class="fig-m"
+              x="108"
+              y="108"
+              text-anchor="middle"
+              style="fill: var(--ink-soft)"
+            >
+              ↗
+            </text>
+            <!-- 네 변 값 -->
+            <text class="fig-m" x="108" y="46" text-anchor="middle">위 −6</text>
+            <text class="fig-m" x="108" y="174" text-anchor="middle" style="fill: var(--danger)">
+              아래 auto
+            </text>
+            <text class="fig-m" x="48" y="108" text-anchor="end">−6</text>
+            <text class="fig-m" x="168" y="108" style="fill: var(--danger)">auto</text>
+            <text class="fig-mw" x="108" y="192" text-anchor="middle">→ 33 으로 읽음</text>
+
+            <!-- 가운데 화살표 -->
+            <path
+              d="M258 108 H318"
+              stroke="var(--accent)"
+              stroke-width="2"
+              fill="none"
+            />
+            <path d="M318 108 l-9 -5 v10 z" fill="var(--accent)" />
+
+            <!-- 오른쪽: 지금 -->
+            <text class="fig-t" x="356" y="22">지금 — 그려진 크기를 그대로</text>
+            <rect
+              x="404"
+              y="52"
+              width="104"
+              height="104"
+              rx="8"
+              fill="var(--accent-soft)"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+            />
+            <rect
+              x="430"
+              y="78"
+              width="52"
+              height="52"
+              rx="6"
+              fill="var(--panel2)"
+              stroke="var(--line)"
+            />
+            <text
+              class="fig-m"
+              x="456"
+              y="108"
+              text-anchor="middle"
+              style="fill: var(--ink-soft)"
+            >
+              ↗
+            </text>
+            <text class="fig-ma" x="456" y="192" text-anchor="middle">→ 44</text>
+
+            <!-- 확인용 작은 버튼 -->
+            <rect
+              x="566"
+              y="86"
+              width="36"
+              height="36"
+              rx="6"
+              fill="var(--panel2)"
+              stroke="var(--danger)"
+              stroke-width="1.5"
+            />
+            <text class="fig-m" x="584" y="76" text-anchor="middle">20</text>
+            <text class="fig-m" x="584" y="140" text-anchor="middle" style="fill: var(--danger)">
+              일부러 끼운 것
+            </text>
+            <text class="fig-m" x="584" y="158" text-anchor="middle" style="fill: var(--danger)">
+              여전히 잡힘
+            </text>
+          </svg>
+          <figcaption>
+            네 변 중 둘이 비어 있으면 합이 무너진다. 그려진 크기를 그대로 읽으면
+            표기 방식이 바뀌어도 같은 값이 나온다.
+          </figcaption>
+        </figure>
+
+        <p>
+          비교 그림도 비슷했습니다. '바뀌기 전' 줄을 옅게 만드는 처리를 두 번
+          겹쳐 놔서 거의 읽히지 않았습니다.
+        </p>
+
+        <!-- ── 삽화 3 — 흐리기를 두 번 겹쳤다 ──────────────── -->
+        <figure class="fig">
+          <svg viewBox="0 0 680 150" role="img" aria-labelledby="f3t">
+            <title id="f3t">
+              옅은 색과 흐리기를 겹치면 대비가 1.8 대 1이 되고, 하나만 쓰면 4.8
+              대 1이 된다
+            </title>
+
+            <text class="fig-t" x="16" y="20">겹쳐 쓸 때</text>
+            <rect x="16" y="34" width="300" height="46" rx="6" fill="var(--panel)" stroke="var(--line)" />
+            <text
+              x="36"
+              y="63"
+              style="
+                font-family: var(--sans);
+                font-size: 15px;
+                font-weight: 700;
+                fill: var(--ink);
+                opacity: 0.17;
+              "
+            >
+              바뀌기 전
+            </text>
+            <text class="fig-m" x="16" y="100">옅은 색 × 흐리기 0.5</text>
+            <text class="fig-mw" x="16" y="120">대비 1.8 : 1</text>
+
+            <path d="M346 57 H392" stroke="var(--accent)" stroke-width="2" fill="none" />
+            <path d="M392 57 l-9 -5 v10 z" fill="var(--accent)" />
+
+            <text class="fig-t" x="420" y="20">하나만 쓸 때</text>
+            <rect x="420" y="34" width="244" height="46" rx="6" fill="var(--panel)" stroke="var(--line)" />
+            <text
+              x="440"
+              y="63"
+              style="
+                font-family: var(--sans);
+                font-size: 15px;
+                font-weight: 700;
+                fill: var(--ink);
+                opacity: 0.55;
+              "
+            >
+              바뀌기 전
+            </text>
+            <text class="fig-m" x="420" y="100">본문색 그대로 · 흐리기 0.55</text>
+            <text class="fig-ma" x="420" y="120">대비 4.8 : 1</text>
+          </svg>
+          <figcaption>
+            물러나 보이게 하는 방법은 둘 중 하나로 충분하다. 겹쳐 쓰면 곱해져서
+            사라진다.
+          </figcaption>
+        </figure>
+
+        <p>
+          색은 본문과 같게 두고 흐리기만 남겼습니다. 확인하려면 밤 발행을
+          기다려야 해서, 그림 다섯 종류를 한 화면에 펼쳐 바로 보는 검수용
+          페이지를 만들었습니다.
+        </p>
+      </div>
+
+      <h2>2. 좁은 화면(390)에서 같은 삽화</h2>
+      <p class="note">
+        폭이 줄면 글자가 같이 작아지지 않는다 — 삽화 안 글자는 SVG 좌표계라
+        <code>viewBox</code>와 함께 축소된다. 그래서 삽화의 최소 글자 크기를
+        검증기가 잰다 (아래 표).
+      </p>
+      <div class="cols">
+        <div class="col390">
+          <div class="cap">390px</div>
+          <div class="article">
+            <p style="margin-bottom: 14px">
+              같은 밤에 두 번 나가는 것을 막는 장치는 있었습니다. 다만 "오늘
+              날짜로 이미 나갔나"를 기준으로 봤습니다.
+            </p>
+            <figure class="fig" style="margin: 22px 0 24px">
+              <svg viewBox="0 0 680 236" aria-hidden="true">
+                <use href="#none" />
+                <line x1="56" y1="96" x2="648" y2="96" stroke="var(--line-strong)" stroke-width="1.5" />
+                <g stroke="var(--line-strong)" stroke-width="1.5">
+                  <line x1="56" y1="92" x2="56" y2="100" />
+                  <line x1="204" y1="92" x2="204" y2="100" />
+                  <line x1="352" y1="92" x2="352" y2="100" />
+                  <line x1="500" y1="92" x2="500" y2="100" />
+                  <line x1="648" y1="92" x2="648" y2="100" />
+                </g>
+                <text class="fig-m" x="56" y="118" text-anchor="middle">23시</text>
+                <text class="fig-m" x="204" y="118" text-anchor="middle">01시</text>
+                <text class="fig-m" x="352" y="118" text-anchor="middle">03시</text>
+                <text class="fig-m" x="500" y="118" text-anchor="middle">05시</text>
+                <text class="fig-m" x="648" y="118" text-anchor="middle">07시</text>
+                <line x1="574" y1="26" x2="574" y2="150" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4" />
+                <text class="fig-mw" x="566" y="38" text-anchor="end">06시 — 하루의 경계</text>
+                <g>
+                  <circle cx="56" cy="62" r="3.5" fill="var(--muted)" />
+                  <path d="M56 66 C56 84, 425 78, 425 92" fill="none" stroke="var(--line-strong)" stroke-width="1.4" />
+                  <circle cx="425" cy="96" r="4" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="111" cy="62" r="3.5" fill="var(--muted)" />
+                  <path d="M111 66 C111 84, 469 78, 469 92" fill="none" stroke="var(--line-strong)" stroke-width="1.4" />
+                  <circle cx="469" cy="96" r="4" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="204" cy="62" r="3.5" fill="var(--muted)" />
+                  <path d="M204 66 C204 84, 496 78, 496 92" fill="none" stroke="var(--line-strong)" stroke-width="1.4" />
+                  <circle cx="496" cy="96" r="4" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="352" cy="62" r="3.5" fill="var(--accent)" />
+                  <path d="M352 66 C352 84, 581 76, 581 92" fill="none" stroke="var(--accent)" stroke-width="2" />
+                  <circle cx="581" cy="96" r="5" fill="var(--accent)" />
+                </g>
+                <text class="fig-s" x="56" y="46">예정</text>
+                <text class="fig-ma" x="581" y="84" text-anchor="middle">06:06</text>
+                <text class="fig-m" x="56" y="152">앞의 셋 — 같은 밤으로 보여 멈춤</text>
+                <rect x="56" y="172" width="592" height="48" rx="6" fill="var(--panel)" stroke="var(--line)" />
+                <text class="fig-t" x="72" y="192">날짜로 보면</text>
+                <text class="fig-m" x="206" y="192">새 날의 첫 편이다 → 내보낸다</text>
+                <text class="fig-t" x="72" y="212">지난 시간으로 보면</text>
+                <text class="fig-ma" x="206" y="212">7시간 전에 나갔다 → 같은 밤, 멈춘다</text>
+              </svg>
+              <figcaption>
+                예정 네 회차가 모두 늦게 떴다. 마지막 하나만 06시를 넘겼다.
+              </figcaption>
+            </figure>
+            <p style="margin: 0">
+              그래서 날짜 대신 마지막 발행으로부터 지난 시간으로 바꿨습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="col390">
+          <div class="cap">390px · 영문</div>
+          <div class="article">
+            <p style="margin-bottom: 14px">
+              There was already a guard against publishing twice in one night.
+              But it asked "has anything gone out under today's date?"
+            </p>
+            <figure class="fig" style="margin: 22px 0 24px">
+              <svg viewBox="0 0 680 236" aria-hidden="true">
+                <line x1="56" y1="96" x2="648" y2="96" stroke="var(--line-strong)" stroke-width="1.5" />
+                <g stroke="var(--line-strong)" stroke-width="1.5">
+                  <line x1="56" y1="92" x2="56" y2="100" />
+                  <line x1="204" y1="92" x2="204" y2="100" />
+                  <line x1="352" y1="92" x2="352" y2="100" />
+                  <line x1="500" y1="92" x2="500" y2="100" />
+                  <line x1="648" y1="92" x2="648" y2="100" />
+                </g>
+                <text class="fig-m" x="56" y="118" text-anchor="middle">23:00</text>
+                <text class="fig-m" x="204" y="118" text-anchor="middle">01:00</text>
+                <text class="fig-m" x="352" y="118" text-anchor="middle">03:00</text>
+                <text class="fig-m" x="500" y="118" text-anchor="middle">05:00</text>
+                <text class="fig-m" x="648" y="118" text-anchor="middle">07:00</text>
+                <line x1="574" y1="26" x2="574" y2="150" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4" />
+                <text class="fig-mw" x="566" y="38" text-anchor="end">06:00 — day boundary</text>
+                <g>
+                  <circle cx="56" cy="62" r="3.5" fill="var(--muted)" />
+                  <path d="M56 66 C56 84, 425 78, 425 92" fill="none" stroke="var(--line-strong)" stroke-width="1.4" />
+                  <circle cx="425" cy="96" r="4" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="111" cy="62" r="3.5" fill="var(--muted)" />
+                  <path d="M111 66 C111 84, 469 78, 469 92" fill="none" stroke="var(--line-strong)" stroke-width="1.4" />
+                  <circle cx="469" cy="96" r="4" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="204" cy="62" r="3.5" fill="var(--muted)" />
+                  <path d="M204 66 C204 84, 496 78, 496 92" fill="none" stroke="var(--line-strong)" stroke-width="1.4" />
+                  <circle cx="496" cy="96" r="4" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="352" cy="62" r="3.5" fill="var(--accent)" />
+                  <path d="M352 66 C352 84, 581 76, 581 92" fill="none" stroke="var(--accent)" stroke-width="2" />
+                  <circle cx="581" cy="96" r="5" fill="var(--accent)" />
+                </g>
+                <text class="fig-s" x="56" y="46">scheduled</text>
+                <text class="fig-ma" x="581" y="84" text-anchor="middle">06:06</text>
+                <text class="fig-m" x="56" y="152">first three — seen as the same night, stopped</text>
+                <rect x="56" y="172" width="592" height="48" rx="6" fill="var(--panel)" stroke="var(--line)" />
+                <text class="fig-t" x="72" y="192">By date</text>
+                <text class="fig-m" x="206" y="192">first post of a new day → publish</text>
+                <text class="fig-t" x="72" y="212">By elapsed time</text>
+                <text class="fig-ma" x="206" y="212">7 hours ago → same night, stop</text>
+              </svg>
+              <figcaption>
+                All four rounds fired late. Only the last crossed 06:00.
+              </figcaption>
+            </figure>
+            <p style="margin: 0">
+              I switched it to measure hours since the last publish instead.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h2>3. 검증기가 거르는 것 (초안)</h2>
+      <p class="note" style="max-width: 680px">
+        자유롭게 그리는 대신, 나가기 전에 기계가 본다. 하나라도 걸리면 그
+        삽화는 <strong>빼고 글만 낸다</strong> — 쇼츠에서 "빈 화면이 든 영상보다
+        없는 게 낫다"와 같은 판단이다.
+      </p>
+      <div class="rules-wrap">
+      <table class="rules">
+        <tr>
+          <th style="width: 150px">거르는 것</th>
+          <th style="width: 210px">기준</th>
+          <th>왜</th>
+        </tr>
+        <tr>
+          <td>태그·속성</td>
+          <td>
+            <code>svg g path rect circle line polyline text tspan title</code>만.
+            <code>script</code>·<code>foreignObject</code>·<code>image</code>·<code>use</code>·<code>on*</code>·<code>href</code> 금지
+          </td>
+          <td>
+            모델이 쓴 마크업이 페이지에 그대로 들어간다. 이 사이트는 사람이 읽기
+            전에 발행된다
+          </td>
+        </tr>
+        <tr>
+          <td>색</td>
+          <td>토큰 이름만 (<code>var(--color-*)</code>). 생색·hex 금지</td>
+          <td>테마·다크모드가 저절로 맞고, 대비가 예측된다</td>
+        </tr>
+        <tr>
+          <td>글자 크기</td>
+          <td>
+            320px 화면에서 실측 11px 이상 (<code>viewBox</code> 폭 680 기준 최소
+            <code>font-size</code> 23)
+          </td>
+          <td>SVG 글자는 그림과 같이 줄어든다 — 폭이 반이면 글자도 반이다</td>
+        </tr>
+        <tr>
+          <td>대비</td>
+          <td>글자 4.5:1 (큰 글자 3:1). 배경은 조상까지 올라가 찾는다</td>
+          <td>오늘 비교 그림에서 1.8:1이 나갔다</td>
+        </tr>
+        <tr>
+          <td>넘침</td>
+          <td>모든 도형·글자가 <code>viewBox</code> 안. 글자는 실제 폭을 재서</td>
+          <td>한글은 글자폭이 달라 라벨이 밖으로 나간다</td>
+        </tr>
+        <tr>
+          <td>줄바꿈</td>
+          <td>
+            <code>&lt;text&gt;</code>에 <code>keep-all</code>. 두 줄 넘으면 지적
+          </td>
+          <td>"이유 / 를"처럼 조사가 떨어져 나간다</td>
+        </tr>
+        <tr>
+          <td>접근성</td>
+          <td><code>&lt;title&gt;</code> 필수 · <code>role="img"</code></td>
+          <td>그림만으로 끝나면 읽어 줄 것이 없다</td>
+        </tr>
+        <tr>
+          <td>내용</td>
+          <td>
+            라벨의 모든 숫자·낱말이 그 섹션 본문에 있어야 한다
+          </td>
+          <td>
+            그림이 본문에 없는 사실을 지어내는 것이 가장 위험하다. 쇼츠의
+            "데브로그 본문에 없는 복합명사를 새로 만들지 않는다"와 같은 규칙
+          </td>
+        </tr>
+        <tr>
+          <td>자리</td>
+          <td>
+            <code>section</code>(did·why·fail·next) + 그 안 문단 번호.
+            한 문단 뒤에 하나
+          </td>
+          <td>본문 흐름을 끊지 않는다</td>
+        </tr>
+      </table>
+      </div>
+
+      <p class="note" style="margin-top: 28px; max-width: 680px">
+        한글·영문은 라벨만 갈라 둔다 (<code>labels</code> /
+        <code>labelsEn</code>). 도형 좌표는 하나다 — 위 390 두 칸이 같은 그림에
+        라벨만 바꾼 것이다.
+      </p>
+
+      <h2>4. 규격을 바꾼다 — 삽화는 늘리지 않고 제 크기로 둔다</h2>
+      <p class="note" style="max-width: 680px">
+        위 2번이 문제를 그대로 보여 준다. <code>viewBox</code>를 칼럼 폭에
+        맞춰 늘리면 그림 속 글자도 같이 줄어든다 — 680으로 그린 것을 390에
+        넣으면 12px 라벨이 7px가 된다. 본문 글자는 안 줄어드는데 그림 글자만
+        줄어드니 삽화만 읽을 수 없게 된다.
+        <br /><br />
+        그래서 <strong>390 기준으로 그리고, 데스크탑에서도 그 크기 그대로
+        둔다</strong>(<code>max-width: 390px</code>, 가운데). 책 삽화가 본문
+        단보다 좁은 것과 같다. 배율이 1이라 글자 크기를 눈으로 정할 수 있고,
+        검증기도 <code>font-size</code>를 그대로 재면 된다. 대신 그림이
+        단순해져야 한다 — 그게 삽화에는 이득이다.
+      </p>
+
+      <div class="cols">
+        <div class="col390" style="width: 680px; max-width: 100%">
+          <div class="cap">680px 칼럼 · 삽화는 390 제 크기</div>
+          <div class="article">
+            <p style="margin-bottom: 14px">
+              이 시스템은 새벽 6시를 하루의 경계로 씁니다. 6시 6분에 시작된
+              실행은 새 날의 첫 발행으로 계산됐습니다.
+            </p>
+            <figure class="fig plate">
+              <svg viewBox="0 0 390 212" role="img" aria-labelledby="f4t">
+                <title id="f4t">
+                  예정된 네 회차가 모두 늦게 떴고, 마지막 하나만 새벽 6시
+                  경계를 넘어 다음 날 회차로 계산되었다
+                </title>
+                <text class="p-s" x="0" y="14">예정</text>
+                <text class="p-s" x="390" y="14" text-anchor="end">실제로 뜬 시각</text>
+
+                <line x1="0" y1="96" x2="390" y2="96" stroke="var(--line-strong)" stroke-width="1.5" />
+                <g stroke="var(--line-strong)" stroke-width="1.5">
+                  <line x1="8" y1="92" x2="8" y2="100" />
+                  <line x1="131" y1="92" x2="131" y2="100" />
+                  <line x1="254" y1="92" x2="254" y2="100" />
+                  <line x1="377" y1="92" x2="377" y2="100" />
+                </g>
+                <text class="p-m" x="8" y="116" text-anchor="start">23시</text>
+                <text class="p-m" x="131" y="116" text-anchor="middle">01시</text>
+                <text class="p-m" x="254" y="116" text-anchor="middle">03시</text>
+                <text class="p-m" x="377" y="116" text-anchor="end">07시</text>
+
+                <line x1="315" y1="30" x2="315" y2="106" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4" />
+                <text class="p-mw" x="307" y="42" text-anchor="end">06시 경계</text>
+
+                <g>
+                  <circle cx="8" cy="62" r="4" fill="var(--muted)" />
+                  <path d="M8 66 C8 82, 214 78, 214 90" fill="none" stroke="var(--line-strong)" stroke-width="1.5" />
+                  <circle cx="214" cy="96" r="4.5" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="54" cy="62" r="4" fill="var(--muted)" />
+                  <path d="M54 66 C54 82, 251 78, 251 90" fill="none" stroke="var(--line-strong)" stroke-width="1.5" />
+                  <circle cx="251" cy="96" r="4.5" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="131" cy="62" r="4" fill="var(--muted)" />
+                  <path d="M131 66 C131 82, 274 78, 274 90" fill="none" stroke="var(--line-strong)" stroke-width="1.5" />
+                  <circle cx="274" cy="96" r="4.5" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="254" cy="62" r="4.5" fill="var(--accent)" />
+                  <path d="M254 66 C254 82, 322 78, 322 90" fill="none" stroke="var(--accent)" stroke-width="2.2" />
+                  <circle cx="322" cy="96" r="6" fill="var(--accent)" />
+                </g>
+                <text class="p-ma" x="336" y="84">06:06</text>
+
+                <rect x="0" y="140" width="390" height="60" rx="8" fill="var(--panel)" stroke="var(--line)" />
+                <text class="p-t" x="14" y="162">날짜로 보면</text>
+                <text class="p-m" x="14" y="182" style="fill: var(--muted)">새 날의 첫 편 → 내보낸다</text>
+                <text class="p-t" x="206" y="162" style="fill: var(--accent)">지난 시간으로 보면</text>
+                <text class="p-ma" x="206" y="182">7시간 전 → 멈춘다</text>
+              </svg>
+              <figcaption>
+                예정 네 회차가 모두 늦게 떴다. 마지막 하나만 06시를 넘겼다.
+              </figcaption>
+            </figure>
+            <p style="margin: 0">
+              그래서 날짜 대신 마지막 발행으로부터 지난 시간으로 바꿨습니다.
+            </p>
+          </div>
+        </div>
+        <div class="col390">
+          <div class="cap">390px · 같은 그림, 같은 크기</div>
+          <div class="article">
+            <p style="margin-bottom: 14px">
+              이 시스템은 새벽 6시를 하루의 경계로 씁니다.
+            </p>
+            <figure class="fig plate">
+              <svg viewBox="0 0 390 212" role="img" aria-labelledby="f4t">
+                <title id="f4t">
+                  예정된 네 회차가 모두 늦게 떴고, 마지막 하나만 새벽 6시
+                  경계를 넘어 다음 날 회차로 계산되었다
+                </title>
+                <text class="p-s" x="0" y="14">예정</text>
+                <text class="p-s" x="390" y="14" text-anchor="end">실제로 뜬 시각</text>
+
+                <line x1="0" y1="96" x2="390" y2="96" stroke="var(--line-strong)" stroke-width="1.5" />
+                <g stroke="var(--line-strong)" stroke-width="1.5">
+                  <line x1="8" y1="92" x2="8" y2="100" />
+                  <line x1="131" y1="92" x2="131" y2="100" />
+                  <line x1="254" y1="92" x2="254" y2="100" />
+                  <line x1="377" y1="92" x2="377" y2="100" />
+                </g>
+                <text class="p-m" x="8" y="116" text-anchor="start">23시</text>
+                <text class="p-m" x="131" y="116" text-anchor="middle">01시</text>
+                <text class="p-m" x="254" y="116" text-anchor="middle">03시</text>
+                <text class="p-m" x="377" y="116" text-anchor="end">07시</text>
+
+                <line x1="315" y1="30" x2="315" y2="106" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="5 4" />
+                <text class="p-mw" x="307" y="42" text-anchor="end">06시 경계</text>
+
+                <g>
+                  <circle cx="8" cy="62" r="4" fill="var(--muted)" />
+                  <path d="M8 66 C8 82, 214 78, 214 90" fill="none" stroke="var(--line-strong)" stroke-width="1.5" />
+                  <circle cx="214" cy="96" r="4.5" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="54" cy="62" r="4" fill="var(--muted)" />
+                  <path d="M54 66 C54 82, 251 78, 251 90" fill="none" stroke="var(--line-strong)" stroke-width="1.5" />
+                  <circle cx="251" cy="96" r="4.5" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="131" cy="62" r="4" fill="var(--muted)" />
+                  <path d="M131 66 C131 82, 274 78, 274 90" fill="none" stroke="var(--line-strong)" stroke-width="1.5" />
+                  <circle cx="274" cy="96" r="4.5" fill="var(--muted)" />
+                </g>
+                <g>
+                  <circle cx="254" cy="62" r="4.5" fill="var(--accent)" />
+                  <path d="M254 66 C254 82, 322 78, 322 90" fill="none" stroke="var(--accent)" stroke-width="2.2" />
+                  <circle cx="322" cy="96" r="6" fill="var(--accent)" />
+                </g>
+                <text class="p-ma" x="336" y="84">06:06</text>
+
+                <rect x="0" y="140" width="390" height="60" rx="8" fill="var(--panel)" stroke="var(--line)" />
+                <text class="p-t" x="14" y="162">날짜로 보면</text>
+                <text class="p-m" x="14" y="182" style="fill: var(--muted)">새 날의 첫 편 → 내보낸다</text>
+                <text class="p-t" x="206" y="162" style="fill: var(--accent)">지난 시간으로 보면</text>
+                <text class="p-ma" x="206" y="182">7시간 전 → 멈춘다</text>
+              </svg>
+              <figcaption>
+                예정 네 회차가 모두 늦게 떴다. 마지막 하나만 06시를 넘겼다.
+              </figcaption>
+            </figure>
+            <p style="margin: 0">
+              그래서 날짜 대신 지난 시간으로 바꿨습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
