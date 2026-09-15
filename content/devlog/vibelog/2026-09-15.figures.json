@@ -2,10 +2,10 @@
  {
   "section": "why",
   "after": 0,
-  "alt": "예정된 네 회차가 모두 늦게 떴고, 마지막 하나만 새벽 6시 경계를 넘어 다음 날 회차로 계산되었다",
-  "altEn": "All four scheduled rounds fired late, and only the last one crossed the 6 am boundary",
-  "caption": "네 회차가 모두 늦게 떴다. 마지막 하나만 6시를 넘겨 다음 날로 셈해졌다.",
-  "captionEn": "All four rounds fired late. Only the last crossed 6 am and counted as a new day.",
+  "alt": "예정된 회차가 모두 늦게 떴고, 마지막 회차만 새벽 6시 경계를 넘어 다음 날 회차로 계산되었다",
+  "altEn": "All scheduled rounds fired late, and only the last one crossed the 6 am boundary",
+  "caption": "예정 회차가 모두 늦게 떴다. 마지막 회차만 6시를 넘겨 다음 날로 셈해졌다.",
+  "captionEn": "All rounds fired late. Only the last crossed 6 am and counted as a new day.",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -16,7 +16,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "예정된 네 회차가 모두 늦게 떴고, 마지막 하나만 새벽 6시 경계를 넘어 다음 날 회차로 계산되었다"
+     "text": "예정된 회차가 모두 늦게 떴고, 마지막 회차만 새벽 6시 경계를 넘어 다음 날 회차로 계산되었다"
     },
     {
      "tag": "line",
@@ -334,7 +334,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "All four scheduled rounds fired late, and only the last one crossed the 6 am boundary and was counted as a new day"
+     "text": "All scheduled rounds fired late, and only the last one crossed the 6 am boundary and was counted as a new day"
     },
     {
      "tag": "line",

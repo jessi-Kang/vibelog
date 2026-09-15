@@ -391,6 +391,19 @@ export function inventedNumbers(node: FigNode, sectionText: string): string[] {
   );
 }
 
+/**
+ * 한글 수사 + 단위("네 회차", "세 개")는 거절한다. 표기 규칙은 아라비아 숫자다
+ * ("4회차" — 데브로그와 같다). 그리고 이게 검증의 구멍이었다: 본문에 없는
+ * 수를 한글로 적으면 숫자 검사가 못 본다 — 실제로 본문에 4가 없는 글에
+ * "네 회차"가 그대로 나갔다 (Jessi 지적). 한/두는 "한 번 더"처럼 관용구가
+ * 많아 셋부터 본다.
+ */
+const KO_NUMERAL =
+  /(?:^|\s)(?:세|네|다섯|여섯|일곱|여덟|아홉|열|스무|스물|서른|마흔|쉰|예순|일흔|여든|아흔|백|천)\s?(?:개|번|회차|건|장|편|명|시간|초|분|줄|칸|번째|가지|곳|배|살|일|주|달|해|번씩)/;
+export function koreanNumerals(texts: string[]): string[] {
+  return texts.filter((t) => KO_NUMERAL.test(t));
+}
+
 /** svg 루트가 갖춰야 할 것 */
 export function checkRoot(node: FigNode): void {
   if (node.tag !== "svg") throw new FigError("뿌리가 <svg>가 아닙니다");
@@ -409,6 +422,11 @@ export function toFigure(svg: string, sectionText: string): FigNode {
   const bad = inventedNumbers(node, sectionText);
   if (bad.length)
     throw new FigError(`본문에 없는 숫자가 그림에 있습니다: ${bad.join(", ")}`);
+  const ko = koreanNumerals(figureText(node));
+  if (ko.length)
+    throw new FigError(
+      `수는 아라비아 숫자로 씁니다 ("4회차"): ${ko[0].slice(0, 30)}`,
+    );
   return node;
 }
 
