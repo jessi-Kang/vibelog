@@ -51,6 +51,7 @@ scripts/
   shorts.ts · poster.ts   쇼츠 전체 / 썸네일만 재생성
 video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종
                         · 다이어그램 5종 · 모티프 22종
+                        (+ 검수용 MotifSheet · DiagramSheet — 발행에는 안 쓴다)
 .github/workflows/
   devlog.yml            밤 23:00 발행 (백업 23:45 · 01:00 · 03:00)
   projects.yml          30분마다 새 프로젝트 인식
