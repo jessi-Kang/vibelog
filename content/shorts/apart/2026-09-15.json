@@ -1,0 +1,231 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-15",
+  "day": 6,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "시험 삼아 돌렸더니 한 건도 못 받았습니다.",
+      "en": "A test run fetched nothing at all.",
+      "keywords": [
+        "한 건도"
+      ],
+      "keywordsEn": [
+        "nothing at all"
+      ],
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "부산을 받다가 서버가 한 번 흔들렸습니다.",
+      "en": "While Busan was loading, the server hiccuped once.",
+      "keywords": [
+        "한 번"
+      ],
+      "keywordsEn": [
+        "hiccuped once"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "부산 받는 중",
+          "서버가 흔들림",
+          "나머지는 중단"
+        ],
+        "labelsEn": [
+          "fetching Busan",
+          "server hiccups",
+          "the rest stops"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 실패한 지역만 건너뜁니다.",
+      "en": "Now only the failed region is skipped.",
+      "keywords": [
+        "건너뜁니다"
+      ],
+      "keywordsEn": [
+        "skipped"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "부산에서 실패",
+          "나머지도 전부 중단",
+          "실패한 곳만 건너뜀",
+          "예전",
+          "지금"
+        ],
+        "labelsEn": [
+          "Busan fails",
+          "everything stops",
+          "skip just that one",
+          "before",
+          "now"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "200건마다 중간 저장을 해서 멈춰도 남습니다.",
+      "en": "It saves progress every 200 records, so nothing is lost.",
+      "keywords": [],
+      "keywordsEn": [
+        "saves progress"
+      ],
+      "stat": "200건",
+      "statEn": "200 records",
+      "motif": "stack"
+    },
+    {
+      "scene": "demo",
+      "ko": "진짜 아파트 이름이 15,837개로 늘었습니다.",
+      "en": "The pool of real apartment names grew to 15,837.",
+      "keywords": [
+        "15,837개로"
+      ],
+      "keywordsEn": [
+        "15,837"
+      ],
+      "stat": "15,837개",
+      "statEn": "15,837 names",
+      "screen": "/f",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "퀴즈에 나오는 이름도 그만큼 넓어졌습니다.",
+      "en": "The quiz now draws from a much wider pool.",
+      "keywords": [
+        "넓어졌습니다"
+      ],
+      "keywordsEn": [
+        "much wider pool"
+      ],
+      "screen": "/o",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "남은 건 경기 절반, 다음 새벽에 이어 받습니다.",
+      "en": "Half of Gyeonggi is left; tomorrow night picks it up.",
+      "keywords": [
+        "경기 절반"
+      ],
+      "keywordsEn": [
+        "Half of Gyeonggi"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "end",
+      "ko": "밤사이 쌓인 이름이 아침엔 퀴즈가 됩니다.",
+      "en": "Names gathered overnight become the morning quiz.",
+      "keywords": [
+        "퀴즈가"
+      ],
+      "keywordsEn": [
+        "overnight"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "한 번 흔들리자 전부 멈췄다",
+    "titleEn": "One hiccup stopped everything",
+    "before": "부산에서 한 번 실패하자 나머지 지역은 시작도 못 했습니다",
+    "after": "실패한 지역만 건너뛰고, 200건마다 중간 저장합니다",
+    "beforeEn": "One failure in Busan meant the other regions never started",
+    "afterEn": "A failed region is skipped, and progress saves every 200 records"
+  },
+  "commits": [
+    [
+      "18f89ed",
+      "chore: 부산·대구·인천을 채우고 경기를 절반까지 받는다"
+    ],
+    [
+      "a5c5d52",
+      "fix: 실단지가 늘 때마다 야간 작업이 멈출 자리 둘을 막는다"
+    ],
+    [
+      "cac107d",
+      "design: 푸터 출처 표기에 공공데이터포털 링크를 건다"
+    ],
+    [
+      "0b010a2",
+      "fix: 이름을 다섯 개 지어 놓고도 홈이 \"접수 전\"이라 말하던 것을 고친다"
+    ],
+    [
+      "bad825e",
+      "feat: 단지 수집을 매일 새벽에 돌리고 결과를 일지에 남긴다"
+    ],
+    [
+      "340ca79",
+      "fix: 수집이 한 번 튀면 그날 밤이 통째로 날아가던 것을 고친다"
+    ],
+    [
+      "8a308bf",
+      "chore: 승인된 작명을 출제 풀로 내보낸다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "18f89ed",
+      "chore: populate Busan, Daegu, Incheon and receive half of Gyeonggi"
+    ],
+    [
+      "a5c5d52",
+      "fix: prevent two spots where night jobs would stop when real complexes increase"
+    ],
+    [
+      "cac107d",
+      "design: add Public Data Portal link to footer source attribution"
+    ],
+    [
+      "0b010a2",
+      "fix: correct Home showing \"pre-admission\" despite five names already created"
+    ],
+    [
+      "bad825e",
+      "feat: run complex collection daily at dawn and log results to journal"
+    ],
+    [
+      "340ca79",
+      "fix: prevent entire night from being lost when collection fails once"
+    ],
+    [
+      "8a308bf",
+      "chore: export approved complex names to submission pool (nightly auto)"
+    ]
+  ],
+  "commitCount": 7,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "아파트 이름 모으기를 매일 새벽 자동으로 돌게 했습니다. 한 번 흔들린 서버 때문에 전부 멈추던 것을 고치고, 진짜 이름은 15,837개가 됐습니다.",
+    "en": "Apartment name collection now runs by itself every night. One server hiccup used to stop everything; after the fix, the pool of real names reached 15,837."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#자동화",
+    "#사이드프로젝트",
+    "#buildinpublic",
+    "#devlog",
+    "#automation",
+    "#아파트감별사"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-15.poster.jpg?v=mu2qvzc2",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-15.ko.mp4?v=mu2qw1i9",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-15.en.poster.jpg?v=mu2qx5f4",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-15.en.mp4?v=mu2qx7fe"
+  }
+}
