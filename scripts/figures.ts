@@ -27,6 +27,13 @@ import {
 } from "./figure-types";
 
 const MODEL = "claude-opus-5";
+/**
+ * 답의 상한. 16000에서 vibelog/2026-09-12(문단이 많은 글)의 답이 중간에 잘려
+ * `]`가 없는 채로 와서 "JSON을 찾지 못했다"로 **그 글의 삽화가 통째로 0장**이
+ * 됐다 (백필 #115). 한·영 두 벌의 SVG를 한 답에 내니 장수가 늘면 금방 찬다.
+ * 상한을 올리고, 그래도 잘리면 "잘렸다"를 이유로 돌려 한 번 다시 그리게 한다.
+ */
+const MAX_TOKENS = 32000;
 
 export interface FigureSections {
   ko: Partial<Record<FigSection, string>>;
@@ -198,38 +205,53 @@ export async function generateFigures(
   const messages: Anthropic.MessageParam[] = [
     { role: "user", content: buildUserPrompt(title, sections) },
   ];
-  const ask = async (): Promise<string> => {
+  const ask = async (): Promise<{ text: string; cut: boolean }> => {
     const res = await client.messages.create({
       model: MODEL,
-      max_tokens: 16000,
+      max_tokens: MAX_TOKENS,
       system: SYSTEM,
       messages,
     });
-    return res.content
-      .filter((b) => b.type === "text")
-      .map((b) => b.text)
-      .join("");
+    return {
+      text: res.content
+        .filter((b) => b.type === "text")
+        .map((b) => b.text)
+        .join(""),
+      cut: res.stop_reason === "max_tokens",
+    };
   };
+  const CUT = `답이 ${MAX_TOKENS} 토큰 상한에서 잘렸습니다`;
 
   const first = await ask();
-  let { figures, dropped } = parseFigureReply(first, sections);
+  // 잘린 답은 JSON이 닫히지 않아 통째로 못 읽는다 — 파싱 대신 "잘렸다"를 이유로 둔다
+  let { figures, dropped } = first.cut
+    ? { figures: [] as PostFigure[], dropped: [{ index: -1, reason: CUT }] }
+    : parseFigureReply(first.text, sections);
 
-  // 걸린 것만 한 번 다시 — 이유를 그대로 돌려준다. 통과한 것은 그대로 둔다.
-  if (dropped.length && dropped[0].index !== -1) {
+  // 한 번 다시 — 이유를 그대로 돌려준다.
+  //   걸린 삽화가 있으면: 걸린 것만 고쳐 내게 한다 (통과한 것은 그대로 둔다).
+  //   답이 잘렸으면: 장수를 줄이거나 단순하게 해서 전체를 다시 내게 한다.
+  if (dropped.length && (dropped[0].index !== -1 || first.cut)) {
     console.log(
-      `[figures] 검증에 걸린 삽화 ${dropped.length}장 — 다시 그리게 합니다`,
+      first.cut
+        ? `[figures] ${CUT} — 줄여서 다시 그리게 합니다`
+        : `[figures] 검증에 걸린 삽화 ${dropped.length}장 — 다시 그리게 합니다`,
     );
-    messages.push({ role: "assistant", content: first });
+    messages.push({ role: "assistant", content: first.text });
     messages.push({
       role: "user",
-      content:
-        "아래 삽화가 검증에 걸렸습니다. 걸린 것만 고쳐서, **그 항목들만** 같은 " +
-        "형식의 JSON 배열로 다시 내세요 (통과한 것은 다시 내지 않습니다). " +
-        "고칠 수 없으면 빈 배열을 내세요.\n\n" +
-        dropped.map((d) => `- [${d.index}] ${d.reason}`).join("\n"),
+      content: first.cut
+        ? `${CUT}. 그림 장수를 줄이거나 도형을 단순하게 해서, **전체를** 같은 ` +
+          "형식의 JSON 배열로 다시 내세요. 꼭 필요한 그림만 남깁니다."
+        : "아래 삽화가 검증에 걸렸습니다. 걸린 것만 고쳐서, **그 항목들만** 같은 " +
+          "형식의 JSON 배열로 다시 내세요 (통과한 것은 다시 내지 않습니다). " +
+          "고칠 수 없으면 빈 배열을 내세요.\n\n" +
+          dropped.map((d) => `- [${d.index}] ${d.reason}`).join("\n"),
     });
     const second = await ask();
-    const retry = parseFigureReply(second, sections);
+    const retry = second.cut
+      ? { figures: [] as PostFigure[], dropped: [{ index: -1, reason: `${CUT} (두 번째도)` }] }
+      : parseFigureReply(second.text, sections);
     figures = [...figures, ...retry.figures];
     dropped = retry.dropped;
   }
