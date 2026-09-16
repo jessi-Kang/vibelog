@@ -1,0 +1,862 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "확인 목록에 기존 그림만 있고 새 그림은 빠져 있어, 영상 화면에서 숫자가 그림 위에 겹쳐 찍힌 모습.",
+  "altEn": "The checklist has the existing drawings ticked but the new type missing, so the counter prints on top of the drawing.",
+  "caption": "규칙은 있었지만, 새 그림이 그 목록에 없었습니다.",
+  "captionEn": "The rule existed; the new drawing was not on its list.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "확인 목록에서 빠진 새 그림 때문에 숫자가 그림 위에 겹친 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "44",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "확인 목록"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "width": "150",
+      "height": "112",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "84",
+      "width": "16",
+      "height": "16",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M37 92 L41 97 L48 87",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "58",
+      "y": "97",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기존 그림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "126",
+      "width": "16",
+      "height": "16",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "58",
+      "y": "139",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "새 그림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "178",
+      "y1": "114",
+      "x2": "202",
+      "y2": "114",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "202,109 212,114 202,119",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "218",
+      "y": "54",
+      "width": "140",
+      "height": "120",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "288",
+      "cy": "110",
+      "r": "32",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "18",
+      "fill": "var(--color-warn)"
+     },
+     "text": "숫자"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "198",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "숫자가 그림 위에"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A missing checklist entry lets the counter print over the drawing"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "44",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "checklist"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "width": "150",
+      "height": "112",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "84",
+      "width": "16",
+      "height": "16",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M37 92 L41 97 L48 87",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "58",
+      "y": "97",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "old drawings"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "126",
+      "width": "16",
+      "height": "16",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "58",
+      "y": "139",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "new type"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "178",
+      "y1": "114",
+      "x2": "202",
+      "y2": "114",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "202,109 212,114 202,119",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "218",
+      "y": "54",
+      "width": "140",
+      "height": "120",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "288",
+      "cy": "110",
+      "r": "32",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "18",
+      "fill": "var(--color-warn)"
+     },
+     "text": "count"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "284",
+      "y": "198",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "counter on drawing"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 2,
+  "alt": "버튼의 보이는 크기는 같지만 누르는 범위가 40픽셀에서 44픽셀로 커진 비교.",
+  "altEn": "The button looks the same size, but its tap area grows from 40 pixels to 44.",
+  "caption": "보이는 크기는 그대로, 누르는 범위만 키웠습니다.",
+  "captionEn": "Visual size unchanged; only the tappable area grew.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "누르는 범위가 40픽셀에서 44픽셀로 커진 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "34",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "34",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "50",
+      "width": "80",
+      "height": "80",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "88",
+      "y": "68",
+      "width": "44",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "236",
+      "y": "46",
+      "width": "88",
+      "height": "88",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "258",
+      "y": "68",
+      "width": "44",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "40픽셀"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "44픽셀"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "186",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "점선은 누르는 범위"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Tap area growing from 40 pixels to 44 pixels"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "34",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "34",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "after"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "50",
+      "width": "80",
+      "height": "80",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "88",
+      "y": "68",
+      "width": "44",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "236",
+      "y": "46",
+      "width": "88",
+      "height": "88",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "258",
+      "y": "68",
+      "width": "44",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "40 px"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "44 px"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "186",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "dashed = tap area"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "대본 9편 79문장에서 그림을 못 고른 자리 29개를 추려 정말 없던 6가지만 더한 과정.",
+  "altEn": "A funnel from 79 sentences in 9 scripts to 29 unmatched spots to only the 6 that were truly missing.",
+  "caption": "감으로 늘리지 않고, 밀린 자리부터 세었습니다.",
+  "captionEn": "Counted the unmatched spots first, instead of guessing.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "대본 79문장에서 못 고른 자리 29개를 추려 6가지를 더한 과정"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "52",
+      "width": "350",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대본 9편 · 79문장"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "96",
+      "x2": "195",
+      "y2": "106",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,106 201,106 195,113",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "112",
+      "width": "270",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "139",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "못 고른 자리 29"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "156",
+      "x2": "195",
+      "y2": "166",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,166 201,166 195,173",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "172",
+      "width": "170",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "정말 없던 6가지"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "240",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "억지로 고른 자리만 메움"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "From 79 sentences to 29 unmatched spots to 6 added drawings"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "52",
+      "width": "350",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "9 scripts · 79 sentences"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "96",
+      "x2": "195",
+      "y2": "106",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,106 201,106 195,113",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "112",
+      "width": "270",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "139",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "29 spots with no fit"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "156",
+      "x2": "195",
+      "y2": "166",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,166 201,166 195,173",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "172",
+      "width": "170",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "6 truly missing"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "240",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "only the forced spots filled"
+    }
+   ]
+  }
+ }
+]
