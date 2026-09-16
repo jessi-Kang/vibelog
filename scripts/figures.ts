@@ -218,6 +218,11 @@ export async function generateFigures(
         messages,
       })
       .finalMessage();
+    // 실측 토큰을 실행 기록에 남긴다 — 비용은 여기서만 정확히 셀 수 있다.
+    // output에는 보이지 않는 thinking 토큰이 포함된다 (Opus 5는 기본으로 생각한다).
+    console.log(
+      `[figures] 토큰 in ${res.usage.input_tokens} · out ${res.usage.output_tokens} (thinking 포함)`,
+    );
     return {
       text: res.content
         .filter((b) => b.type === "text")
