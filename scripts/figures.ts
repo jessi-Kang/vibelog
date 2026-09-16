@@ -32,6 +32,7 @@ const MODEL = "claude-opus-5";
  * `]`가 없는 채로 와서 "JSON을 찾지 못했다"로 **그 글의 삽화가 통째로 0장**이
  * 됐다 (백필 #115). 한·영 두 벌의 SVG를 한 답에 내니 장수가 늘면 금방 찬다.
  * 상한을 올리고, 그래도 잘리면 "잘렸다"를 이유로 돌려 한 번 다시 그리게 한다.
+ * 이 크기는 SDK가 스트리밍을 요구한다 — ask()가 stream().finalMessage()를 쓴다.
  */
 const MAX_TOKENS = 32000;
 
@@ -205,13 +206,18 @@ export async function generateFigures(
   const messages: Anthropic.MessageParam[] = [
     { role: "user", content: buildUserPrompt(title, sections) },
   ];
+  // 스트리밍으로 받는다. 상한을 32000으로 올리자 SDK가 "10분을 넘길 수 있는
+  // 요청은 스트리밍이 필수"라며 요청을 보내기도 전에 거절했다 (백필 #116, 4편
+  // 전부 호출 0번에 실패). 답은 finalMessage()로 한 덩어리로 받으니 아래는 같다.
   const ask = async (): Promise<{ text: string; cut: boolean }> => {
-    const res = await client.messages.create({
-      model: MODEL,
-      max_tokens: MAX_TOKENS,
-      system: SYSTEM,
-      messages,
-    });
+    const res = await client.messages
+      .stream({
+        model: MODEL,
+        max_tokens: MAX_TOKENS,
+        system: SYSTEM,
+        messages,
+      })
+      .finalMessage();
     return {
       text: res.content
         .filter((b) => b.type === "text")
