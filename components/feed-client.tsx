@@ -1,5 +1,12 @@
 "use client";
-/** 데브로그 피드 — ProjectFilter(쇼츠와 공용) + 10편 페이지네이션 */
+/**
+ * 데브로그 피드 — ProjectFilter(쇼츠와 공용). 전부 보여 준다.
+ *
+ * 10편씩 끊어 "이전 글 N편 더"로 열던 것을 걷어냈다 ("페이징 하지 말고 전체 다
+ * 노출해" — Jessi). 글은 하루 한 편이라 한 해가 쌓여도 수백 줄이고, 필터가
+ * 이미 프로젝트별로 줄여 준다. 버튼 뒤에 숨은 글은 검색·스크롤 어느 쪽에서도
+ * 없는 글이었다.
+ */
 import { useState } from "react";
 import { useLang } from "./lang";
 import { ProjectFilter } from "./project-filter";
@@ -30,8 +37,6 @@ export interface FeedProject {
   lastActiveEn?: string;
 }
 
-const PAGE = 10;
-
 export function FeedClient({
   items,
   projects,
@@ -42,18 +47,13 @@ export function FeedClient({
   const { lang } = useLang();
   const en = lang === "en";
   const [filter, setFilter] = useState("all");
-  const [n, setN] = useState(PAGE);
 
   const counts: Record<string, number> = { all: items.length };
   for (const d of items) counts[d.repo] = (counts[d.repo] ?? 0) + 1;
-  const all = items.filter((d) => filter === "all" || d.repo === filter);
-  const list = all.slice(0, n);
+  const list = items.filter((d) => filter === "all" || d.repo === filter);
   const proj = projects.find((p) => p.slug === filter);
 
-  const pick = (v: string) => {
-    setFilter(v);
-    setN(PAGE);
-  };
+  const pick = (v: string) => setFilter(v);
 
   return (
     <>
@@ -61,7 +61,7 @@ export function FeedClient({
         <SectionHeader
           title={en ? "Devlog" : "데브로그"}
           // 개수는 메뉴 옆 숫자가 이미 말한다 — 규칙만 남긴다
-          aside={all.length ? (en ? "one per day" : "하루 한 글") : undefined}
+          aside={list.length ? (en ? "one per day" : "하루 한 글") : undefined}
         />
         <ProjectFilter
           projects={projects}
@@ -131,17 +131,6 @@ export function FeedClient({
             />
           ))}
         </div>
-      )}
-      {all.length > n && (
-        <button
-          type="button"
-          onClick={() => setN(n + PAGE)}
-          className="h-11 w-full cursor-pointer rounded-md border border-line bg-panel2 text-base font-bold text-ink transition-opacity duration-150 hover:opacity-85 active:scale-[.98]"
-        >
-          {en
-            ? `${Math.min(PAGE, all.length - n)} older posts`
-            : `이전 글 ${Math.min(PAGE, all.length - n)}편 더`}
-        </button>
       )}
     </>
   );
