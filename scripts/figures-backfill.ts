@@ -60,7 +60,7 @@ async function main(): Promise<void> {
     const [ko, en] = content.split(/<!--\s*en\s*-->/);
     const out = t.file.replace(/\.mdx?$/, ".figures.json");
     try {
-      const { figures, dropped } = await generateFigures(String(data.title ?? t.date), {
+      const { figures, dropped, usage } = await generateFigures(String(data.title ?? t.date), {
         ko: parseSections(ko.trim()),
         en: parseSections((en ?? "").trim()),
       });
@@ -68,7 +68,9 @@ async function main(): Promise<void> {
       if (figures.length) fs.writeFileSync(out, JSON.stringify(figures, null, 1) + "\n");
       else if (fs.existsSync(out)) fs.unlinkSync(out);
       drawn += figures.length;
-      console.log(`- ${t.repo}/${t.date} 삽화 ${figures.length}장`);
+      console.log(
+        `- ${t.repo}/${t.date} 삽화 ${figures.length}장 (토큰 in ${usage.input} · out ${usage.output})`,
+      );
     } catch (err) {
       failed++;
       console.error(`- ${t.repo}/${t.date} 실패:`, err);

@@ -45,6 +45,8 @@ export interface FigureResult {
   figures: PostFigure[];
   /** 검증에 걸려 뺀 삽화 — 실행 기록에 warn으로 남긴다 */
   dropped: string[];
+  /** 이 글에 쓴 토큰 합 (재작성 포함). output에는 thinking이 들어 있다 */
+  usage: { input: number; output: number };
 }
 
 const SECTION_NAME: Record<FigSection, string> = {
@@ -220,6 +222,8 @@ export async function generateFigures(
       .finalMessage();
     // 실측 토큰을 실행 기록에 남긴다 — 비용은 여기서만 정확히 셀 수 있다.
     // output에는 보이지 않는 thinking 토큰이 포함된다 (Opus 5는 기본으로 생각한다).
+    usage.input += res.usage.input_tokens;
+    usage.output += res.usage.output_tokens;
     console.log(
       `[figures] 토큰 in ${res.usage.input_tokens} · out ${res.usage.output_tokens} (thinking 포함)`,
     );
@@ -232,6 +236,7 @@ export async function generateFigures(
     };
   };
   const CUT = `답이 ${MAX_TOKENS} 토큰 상한에서 잘렸습니다`;
+  const usage = { input: 0, output: 0 };
 
   const first = await ask();
   // 잘린 답은 JSON이 닫히지 않아 통째로 못 읽는다 — 파싱 대신 "잘렸다"를 이유로 둔다
@@ -278,5 +283,6 @@ export async function generateFigures(
   return {
     figures: unique,
     dropped: dropped.map((d) => (d.index === -1 ? d.reason : `#${d.index} ${d.reason}`)),
+    usage,
   };
 }
