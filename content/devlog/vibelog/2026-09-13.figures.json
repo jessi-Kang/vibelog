@@ -1,0 +1,1462 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "전에는 제목 속 기호가 명령으로 실행됐고, 지금은 그냥 글자로 보인다",
+  "altEn": "Before, a symbol in a title ran as a command; now it shows as plain text",
+  "caption": "기호가 들어와도 명령이 아니라 글자로만 보이게 바꿨습니다.",
+  "captionEn": "A symbol now lands as text, never as a command.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "제목 속 기호의 처리 전후 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "38",
+      "width": "140",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "66",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "제목 + 기호"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "166",
+      "y1": "60",
+      "x2": "197",
+      "y2": "60",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "196,54 208,60 196,66",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "38",
+      "width": "154",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "66",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "명령으로 실행"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "128",
+      "width": "140",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "156",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "제목 + 기호"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "166",
+      "y1": "150",
+      "x2": "197",
+      "y2": "150",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "196,144 208,150 196,156",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "128",
+      "width": "154",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "156",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "그냥 글자"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before and after handling of a symbol in a title"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "38",
+      "width": "140",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "66",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "title + symbol"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "166",
+      "y1": "60",
+      "x2": "197",
+      "y2": "60",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "196,54 208,60 196,66",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "38",
+      "width": "154",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "66",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "runs as a command"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "after"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "128",
+      "width": "140",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "156",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "title + symbol"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "166",
+      "y1": "150",
+      "x2": "197",
+      "y2": "150",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "196,144 208,150 196,156",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "128",
+      "width": "154",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "156",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "plain text"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 1,
+  "alt": "가로로 긴 그림이 세로 틀에서 양옆이 잘리다가, 틀 안에 온전히 들어오게 됐다",
+  "altEn": "A wide image cropped on both sides in a tall frame, then fitted whole inside it",
+  "caption": "세로 틀에 억지로 끼우던 가로 그림을 통째로 보이게 고쳤습니다.",
+  "captionEn": "The wide image now fits the tall frame whole.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "가로 그림이 세로 틀에서 잘리던 문제와 수정 결과"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "42",
+      "width": "90",
+      "height": "150",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "12",
+      "y": "98",
+      "width": "156",
+      "height": "44",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "12",
+      "y": "98",
+      "width": "33",
+      "height": "44",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "135",
+      "y": "98",
+      "width": "33",
+      "height": "44",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "양옆 잘림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "115",
+      "x2": "207",
+      "y2": "115",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,109 218,115 206,121",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "245",
+      "y": "42",
+      "width": "90",
+      "height": "150",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "252",
+      "y": "100",
+      "width": "76",
+      "height": "40",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "다 보임"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A wide image cropped by a tall frame, and the fixed version"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "42",
+      "width": "90",
+      "height": "150",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "12",
+      "y": "98",
+      "width": "156",
+      "height": "44",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "12",
+      "y": "98",
+      "width": "33",
+      "height": "44",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "135",
+      "y": "98",
+      "width": "33",
+      "height": "44",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "sides cropped"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "115",
+      "x2": "207",
+      "y2": "115",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,109 218,115 206,121",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "after"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "245",
+      "y": "42",
+      "width": "90",
+      "height": "150",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "252",
+      "y": "100",
+      "width": "76",
+      "height": "40",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "shown whole"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "입력을 거르면 하나가 빠져나가지만, 문장이 들어가는 자리를 막으면 전부 막힌다",
+  "altEn": "Filtering the input lets one slip past; sealing the spot blocks everything",
+  "caption": "거르는 쪽은 언제든 하나가 새고, 자리를 막는 쪽은 새지 않습니다.",
+  "captionEn": "Filters leak; a sealed spot does not.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "입력을 거르는 방식과 자리를 막는 방식의 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "입력 거르기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "48",
+      "x2": "120",
+      "y2": "152",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "3",
+      "stroke-dasharray": "9 9"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "35",
+      "cy": "65",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "46",
+      "y1": "65",
+      "x2": "100",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,60 110,65 100,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "35",
+      "cy": "135",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "46",
+      "y1": "135",
+      "x2": "100",
+      "y2": "135",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,130 110,135 100,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "35",
+      "cy": "100",
+      "r": "7",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "46",
+      "y1": "100",
+      "x2": "148",
+      "y2": "100",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "148,95 158,100 148,105",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "하나가 통과"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "자리 막기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "288",
+      "y": "48",
+      "width": "9",
+      "height": "104",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "225",
+      "cy": "65",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "236",
+      "y1": "65",
+      "x2": "272",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,60 282,65 272,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "225",
+      "cy": "100",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "236",
+      "y1": "100",
+      "x2": "272",
+      "y2": "100",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,95 282,100 272,105",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "225",
+      "cy": "135",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "236",
+      "y1": "135",
+      "x2": "272",
+      "y2": "135",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,130 282,135 272,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "전부 막힘"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Filtering the input versus sealing the spot"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "filter input"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "48",
+      "x2": "120",
+      "y2": "152",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "3",
+      "stroke-dasharray": "9 9"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "35",
+      "cy": "65",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "46",
+      "y1": "65",
+      "x2": "100",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,60 110,65 100,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "35",
+      "cy": "135",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "46",
+      "y1": "135",
+      "x2": "100",
+      "y2": "135",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,130 110,135 100,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "35",
+      "cy": "100",
+      "r": "7",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "46",
+      "y1": "100",
+      "x2": "148",
+      "y2": "100",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "148,95 158,100 148,105",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "one gets through"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "seal the spot"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "288",
+      "y": "48",
+      "width": "9",
+      "height": "104",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "225",
+      "cy": "65",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "236",
+      "y1": "65",
+      "x2": "272",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,60 282,65 272,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "225",
+      "cy": "100",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "236",
+      "y1": "100",
+      "x2": "272",
+      "y2": "100",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,95 282,100 272,105",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "225",
+      "cy": "135",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "236",
+      "y1": "135",
+      "x2": "272",
+      "y2": "135",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,130 282,135 272,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "all blocked"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "파일 2개가 바뀌는데 1개만 저장해 저장이 거절되고, 다음 회차가 같은 자리에서 다시 죽는 순환",
+  "altEn": "2 files change but only 1 is saved, the save is rejected, and the next run dies at the same spot",
+  "caption": "저장이 안 되니 실패가 다음 회차를 똑같이 불러왔습니다.",
+  "captionEn": "Nothing saved, so the failure summoned itself again.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "저장 실패가 다음 회차에서 반복되는 순환"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "24",
+      "width": "240",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "파일 2개 바뀜"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "220",
+      "y1": "66",
+      "x2": "220",
+      "y2": "86",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,84 226,84 220,94",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "94",
+      "width": "240",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "121",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "저장은 1개만 챙김"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "220",
+      "y1": "136",
+      "x2": "220",
+      "y2": "156",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,154 226,154 220,164",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "164",
+      "width": "240",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "191",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "저장 거절"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M100 185 L58 185 L58 45 L86 45",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "86,39 98,45 86,51",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "다음 회차도 같은 자리"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A rejected save that repeats on the next run"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "24",
+      "width": "240",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "2 files change"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "220",
+      "y1": "66",
+      "x2": "220",
+      "y2": "86",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,84 226,84 220,94",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "94",
+      "width": "240",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "121",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "save picks up only 1"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "220",
+      "y1": "136",
+      "x2": "220",
+      "y2": "156",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,154 226,154 220,164",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "164",
+      "width": "240",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "191",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "save rejected"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M100 185 L58 185 L58 45 L86 45",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "86,39 98,45 86,51",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "next run, same spot"
+    }
+   ]
+  }
+ }
+]

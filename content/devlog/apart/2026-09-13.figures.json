@@ -1,0 +1,1222 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "사람이 접수한 이름이 검사와 승인을 거쳐, 12시간과 하루 30건이라는 관문을 지나 새벽 출제로 가는 흐름",
+  "altEn": "A submitted name passes checks and approval, then two gates — 12 hours and 30 a day — before going out each morning",
+  "caption": "접수한 이름은 12시간을 기다리고, 하루 30건까지만 나갑니다.",
+  "captionEn": "A submitted name waits 12 hours, and at most 30 go out a day.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "사람이 지은 이름이 관문을 지나 퀴즈로 나가는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "18",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "42",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "사람이 이름을 접수"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "57",
+      "x2": "195",
+      "y2": "65",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,65 201,65 195,71",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "70",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "94",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "검사 · 승인"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "109",
+      "x2": "195",
+      "y2": "117",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,117 201,117 195,123",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "122",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "146",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "12시간 지난 것만"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "161",
+      "x2": "195",
+      "y2": "169",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,169 201,169 195,175",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "174",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "198",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "하루 30건까지"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "213",
+      "x2": "195",
+      "y2": "221",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,221 201,221 195,227",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "226",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "250",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "매일 새벽 출제"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "286",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "잘못 통과한 이름을 되돌릴 시간"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A submitted name passing through gates into the quiz"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "18",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "42",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Someone submits a name"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "57",
+      "x2": "195",
+      "y2": "65",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,65 201,65 195,71",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "70",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "94",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Checks · approval"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "109",
+      "x2": "195",
+      "y2": "117",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,117 201,117 195,123",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "122",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "146",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Only after 12 hours"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "161",
+      "x2": "195",
+      "y2": "169",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,169 201,169 195,175",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "174",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "198",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "At most 30 a day"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "213",
+      "x2": "195",
+      "y2": "221",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,221 201,221 195,227",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "226",
+      "width": "220",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "250",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Goes out each morning"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "286",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Time to pull back a bad one"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "금칙어 목록을 지나며 실제 아파트 이름 26개가 걸렸고, 12,121건 전부 통과를 조건으로 다시 손봤다는 그림",
+  "altEn": "The banned-word list caught 26 real apartment names, so all 12,121 must pass became the rule",
+  "caption": "실제 단지 12,121건이 전부 통과하는 것을 조건으로 걸었습니다.",
+  "captionEn": "All 12,121 real complexes passing became the condition.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 256",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "금칙어 목록이 실제 아파트 이름을 걸러낸 문제와 그 조건"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "105",
+      "y": "14",
+      "width": "180",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "40",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실제 단지 12,121건"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "56",
+      "x2": "195",
+      "y2": "66",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,66 201,66 195,73",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "55",
+      "y": "76",
+      "width": "280",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "금칙어 목록"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "115",
+      "y1": "116",
+      "x2": "115",
+      "y2": "132",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "109,132 121,132 115,138",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "275",
+      "y1": "116",
+      "x2": "275",
+      "y2": "132",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "269,132 281,132 275,138",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "142",
+      "width": "140",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "통과"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "142",
+      "width": "140",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "275",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "26개가 걸림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "200",
+      "width": "300",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "226",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "조건: 12,121건 전부 통과"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 256",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The banned-word list catching real apartment names, and the rule that fixed it"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "105",
+      "y": "14",
+      "width": "180",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "40",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "12,121 real names"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "56",
+      "x2": "195",
+      "y2": "66",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,66 201,66 195,73",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "55",
+      "y": "76",
+      "width": "280",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "banned-word list"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "115",
+      "y1": "116",
+      "x2": "115",
+      "y2": "132",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "109,132 121,132 115,138",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "275",
+      "y1": "116",
+      "x2": "275",
+      "y2": "132",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "269,132 281,132 275,138",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "142",
+      "width": "140",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "passed"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "142",
+      "width": "140",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "275",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "26 caught"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "200",
+      "width": "300",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "226",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Rule: all 12,121 must pass"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "부정행위 두 가지와 각각의 조치를 짝지어 보여 주는 표",
+  "altEn": "Two cheats paired with the fix for each",
+  "caption": "두 가지 부정행위와 각각의 조치.",
+  "captionEn": "Two cheats, and what each one got.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 236",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "부정행위 두 가지와 각각의 조치"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "14",
+      "y": "20",
+      "width": "180",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "한 줄만 덧붙여"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "그날 정답 전부"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "198",
+      "y1": "52",
+      "x2": "208",
+      "y2": "52",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,46 208,58 215,52",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "20",
+      "width": "160",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "296",
+      "y": "58",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "통로를 막음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "14",
+      "y": "104",
+      "width": "180",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "진짜·가짜 번갈아"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "만점 만들기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "198",
+      "y1": "136",
+      "x2": "208",
+      "y2": "136",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,130 208,142 215,136",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "104",
+      "width": "160",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "296",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "첫 답으로 고정"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "196",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "두 번째 답을 거절하지는 않음 —"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "218",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "통신이 끊기면 정직한 사람이 손해"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 236",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Two cheats and the fix for each"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "14",
+      "y": "20",
+      "width": "180",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "One extra line"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "pulls all answers"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "198",
+      "y1": "52",
+      "x2": "208",
+      "y2": "52",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,46 208,58 215,52",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "20",
+      "width": "160",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "296",
+      "y": "58",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Path removed"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "14",
+      "y": "104",
+      "width": "180",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Real and fake"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "on one question"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "198",
+      "y1": "136",
+      "x2": "208",
+      "y2": "136",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,130 208,142 215,136",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "104",
+      "width": "160",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "296",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "First answer locked"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "196",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "The repeat is not rejected —"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "218",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "a dropped line would cost honest players"
+    }
+   ]
+  }
+ }
+]

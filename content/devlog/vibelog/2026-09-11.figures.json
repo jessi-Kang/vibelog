@@ -1,0 +1,1018 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "배경 음악이 45.024초에서 끝나 50초 영상이 45초에서 잘리던 구조와, 음악을 반복해 채운 뒤의 비교",
+  "altEn": "Before and after: the 45.024-second music track cut the 50-second video short, until the music was looped to fill the length",
+  "caption": "짧은 쪽에 맞춰 자르니, 음악이 끝나는 순간 영상도 끝났습니다.",
+  "captionEn": "Trimming to the shorter track meant the video ended when the music did.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "음악 길이에 맞춰 잘리던 영상과, 음악을 반복해 채운 뒤의 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "24",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "32",
+      "width": "270",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "47",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "화면 50초"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "60",
+      "width": "243",
+      "height": "20",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "75",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "소리 45.024초"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "313",
+      "y1": "28",
+      "x2": "313",
+      "y2": "112",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "88",
+      "width": "243",
+      "height": "20",
+      "fill": "none",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "103",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "결과 45초에서 끊김"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "130",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "138",
+      "width": "270",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "153",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "화면 50초"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "166",
+      "width": "243",
+      "height": "20",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "313",
+      "y": "166",
+      "width": "27",
+      "height": "20",
+      "fill": "none",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "181",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "음악 반복 + 무음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "194",
+      "width": "270",
+      "height": "20",
+      "fill": "none",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "209",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "결과 50초 전부 재생"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The video cut short by the music length, compared with the looped-music version"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "24",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "32",
+      "width": "270",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "47",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "picture 50s"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "60",
+      "width": "243",
+      "height": "20",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "75",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "sound 45.024s"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "313",
+      "y1": "28",
+      "x2": "313",
+      "y2": "112",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "88",
+      "width": "243",
+      "height": "20",
+      "fill": "none",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "103",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "result: stops at 45s"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "130",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "138",
+      "width": "270",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "153",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "picture 50s"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "166",
+      "width": "243",
+      "height": "20",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "313",
+      "y": "166",
+      "width": "27",
+      "height": "20",
+      "fill": "none",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "181",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "music looped + silence"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "194",
+      "width": "270",
+      "height": "20",
+      "fill": "none",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "78",
+      "y": "209",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "result: full 50s plays"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 1,
+  "alt": "완성본 한 편은 내레이션 26~34초에 시작 화면과 끝 화면 5.5초가 앞뒤로 더 붙은 구성",
+  "altEn": "A finished episode is 26–34 seconds of narration with 5.5 seconds of opening and closing screens added around it",
+  "caption": "말하는 시간만 재면 길이를 놓칩니다. 앞뒤가 더 붙습니다.",
+  "captionEn": "Measuring only the spoken part misses the length — screens get added at both ends.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "완성본 한 편의 구성: 내레이션 앞뒤에 시작 화면과 끝 화면이 붙는다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "38",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "완성본 한 편"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "56",
+      "width": "22",
+      "height": "28",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "56",
+      "width": "286",
+      "height": "28",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "338",
+      "y": "56",
+      "width": "22",
+      "height": "28",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "내레이션 26–34초"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "41,90 41,106 195,106",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "349,90 349,106 195,106",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "106",
+      "x2": "195",
+      "y2": "118",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "시작 화면 + 끝 화면 5.5초"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "How one finished episode is made up: narration with an opening and closing screen around it"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "38",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "one finished episode"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "56",
+      "width": "22",
+      "height": "28",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "56",
+      "width": "286",
+      "height": "28",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "338",
+      "y": "56",
+      "width": "22",
+      "height": "28",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "narration 26–34s"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "41,90 41,106 195,106",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "349,90 349,106 195,106",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "106",
+      "x2": "195",
+      "y2": "118",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "opening + closing 5.5s"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "숫자 읽기 문제를 고치려다 두 번 헛짚고, 특별 규칙을 지우자 해결된 순서",
+  "altEn": "Two wrong fixes for the number-reading problem, then the fix: deleting the special rule",
+  "caption": "고치려 덧댄 규칙이 문제였습니다. 지우니 맞았습니다.",
+  "captionEn": "The patch was the problem. Deleting it fixed the reading.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "숫자 읽기 문제와 두 번의 헛짚음, 그리고 특별 규칙 삭제로 해결된 과정"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "24",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "45",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "문제"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "67",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "긴 숫자를 뭉개서 읽음"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "76",
+      "x2": "195",
+      "y2": "92",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,92 201,92 195,100",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "100",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "121",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "헛짚음 — 단위를 세게"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "143",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "단위만 툭 튀어나옴"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "152",
+      "x2": "195",
+      "y2": "168",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,168 201,168 195,176",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "176",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "197",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "다시 헛짚음 — 그걸 뺌"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "219",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "띄어쓰기가 어긋남"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "228",
+      "x2": "195",
+      "y2": "244",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,244 201,244 195,252",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "252",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "273",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "해결 — 특별 규칙 삭제"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "295",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "일반 규칙이 맞게 읽음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The number-reading problem, two failed attempts, and the fix of deleting the special rule"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "24",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "45",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Problem"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "67",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "long numbers came out mangled"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "76",
+      "x2": "195",
+      "y2": "92",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,92 201,92 195,100",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "100",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "121",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Wrong turn — harden the unit"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "143",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "only the unit popped out"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "152",
+      "x2": "195",
+      "y2": "168",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,168 201,168 195,176",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "176",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "197",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Wrong again — remove it"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "219",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "spacing broke instead"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "228",
+      "x2": "195",
+      "y2": "244",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,244 201,244 195,252",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "252",
+      "width": "350",
+      "height": "52",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "273",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Fix — delete the special rule"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "295",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "general rule read it right"
+    }
+   ]
+  }
+ }
+]

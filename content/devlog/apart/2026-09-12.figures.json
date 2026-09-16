@@ -1,0 +1,912 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "전에는 주소 글자만 나왔고, 이제는 서류 모양 그림과 이름, 설명이 함께 나오는 카드가 뜹니다.",
+  "altEn": "Before, only the bare address showed; now a card appears with a document-style picture, a name, and a description.",
+  "caption": "같은 링크, 붙여 넣었을 때 보이는 모습.",
+  "captionEn": "The same link, as it looks when pasted.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "링크를 붙여 넣었을 때의 전과 후"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "38",
+      "width": "350",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "68",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "주소 글자만"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "122",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "132",
+      "width": "350",
+      "height": "100",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "36",
+      "y": "148",
+      "width": "72",
+      "height": "68",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "168",
+      "x2": "96",
+      "y2": "168",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "182",
+      "x2": "96",
+      "y2": "182",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "196",
+      "x2": "80",
+      "y2": "196",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "124",
+      "y": "176",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "이름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "124",
+      "y": "204",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "설명"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A pasted link, before and after"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "38",
+      "width": "350",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "68",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "just the address"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "122",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "after"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "132",
+      "width": "350",
+      "height": "100",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "36",
+      "y": "148",
+      "width": "72",
+      "height": "68",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "168",
+      "x2": "96",
+      "y2": "168",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "182",
+      "x2": "96",
+      "y2": "182",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "196",
+      "x2": "80",
+      "y2": "196",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "124",
+      "y": "176",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "name"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "124",
+      "y": "204",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "description"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 2,
+  "alt": "예전에는 모든 문제가 10점이었고, 이제는 둘 중 하나가 6~12점, 넷 중 하나가 9~16점, 이름 직접 입력이 12~22점입니다.",
+  "altEn": "Every question used to be worth 10 points; now a two-way gives 6-12, a four-way 9-16, and typing the name 12-22.",
+  "caption": "어려운 문제일수록 점수 폭이 넓고 높습니다.",
+  "captionEn": "The harder the question, the wider and higher the range.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "문제 종류별 점수 폭 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "42",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "예전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "50",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "211",
+      "y": "50",
+      "width": "7",
+      "height": "14",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "42",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "10점"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "102",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "둘 중 하나"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "110",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "173",
+      "y": "110",
+      "width": "62",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-accent-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "102",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "6~12점"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "넷 중 하나"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "170",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "204",
+      "y": "170",
+      "width": "73",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-accent-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "162",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "9~16점"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "222",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이름 직접"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "230",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "230",
+      "width": "104",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "222",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "12~22점"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Point ranges by question type"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "42",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "50",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "211",
+      "y": "50",
+      "width": "7",
+      "height": "14",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "42",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "10 pts"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "102",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "two-way"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "110",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "173",
+      "y": "110",
+      "width": "62",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-accent-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "102",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "6-12"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "four-way"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "170",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "204",
+      "y": "170",
+      "width": "73",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-accent-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "162",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "9-16"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "222",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "type it"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "230",
+      "width": "250",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-panel)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "230",
+      "width": "104",
+      "height": "14",
+      "rx": "7",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "222",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "12-22"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "글자가 빠진 빈 동그라미와, 동그라미 위에 글자를 따로 얹어 완성한 도장.",
+  "altEn": "An empty letterless circle next to a circle with the letters drawn on top of it.",
+  "caption": "동그라미는 그림으로, 글자는 카드가 가진 글꼴로.",
+  "captionEn": "The circle as a picture, the letters in the card's own font.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "빈 동그라미 도장과 글자를 얹은 도장"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "95",
+      "cy": "96",
+      "r": "44",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "80",
+      "y": "82",
+      "width": "14",
+      "height": "14",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "98",
+      "y": "82",
+      "width": "14",
+      "height": "14",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "168,96 210,96",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "216",
+      "y": "102",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-line-strong)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "292",
+      "cy": "96",
+      "r": "44",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "103",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-accent)"
+     },
+     "text": "글자"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "176",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "글자 없는 동그라미"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "176",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글자를 따로 얹기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "An empty stamp circle and a stamp with letters added"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "95",
+      "cy": "96",
+      "r": "44",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "80",
+      "y": "82",
+      "width": "14",
+      "height": "14",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "98",
+      "y": "82",
+      "width": "14",
+      "height": "14",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "168,96 210,96",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "216",
+      "y": "102",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-line-strong)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "292",
+      "cy": "96",
+      "r": "44",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "103",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "letters"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "176",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "letterless circle"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "176",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "letters on top"
+    }
+   ]
+  }
+ }
+]
