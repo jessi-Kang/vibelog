@@ -1,0 +1,1052 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "임시 점수 3이 비슷함 판정 범위 안에 있었고, 범위 밖 큰 수로 옮기자 경고가 사라진 그림",
+  "altEn": "The placeholder score of 3 sat inside the too-similar range; moving it outside cleared the warnings",
+  "caption": "임시 점수 3이 하필 비슷함 범위 안. 범위 밖으로 옮기니 경고 222건이 0건.",
+  "captionEn": "The placeholder 3 landed inside the too-similar range. Moved outside, 222 warnings became 0.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "차이 점수 눈금 위에서 임시 점수를 비슷함 범위 밖으로 옮긴 그림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "22",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "차이 점수"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "110",
+      "y1": "60",
+      "x2": "305",
+      "y2": "60",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "313,60 303,55 303,65",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "212",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "범위 밖 큰 수로"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "120",
+      "x2": "360",
+      "y2": "120",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "96",
+      "width": "120",
+      "height": "24",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "105",
+      "cy": "120",
+      "r": "6",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "88",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "3"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "146",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "비슷함 범위"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "320",
+      "cy": "120",
+      "r": "6",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "146",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "큰 수"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)"
+     },
+     "text": "경고 222건 →",
+     "children": [
+      {
+       "tag": "tspan",
+       "attrs": {
+        "fill": "var(--color-accent)"
+       },
+       "text": "0건"
+      }
+     ]
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The placeholder score moved outside the too-similar range on the difference scale"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "22",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "difference score"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "110",
+      "y1": "60",
+      "x2": "305",
+      "y2": "60",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "313,60 303,55 303,65",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "212",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "moved outside"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "120",
+      "x2": "360",
+      "y2": "120",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "96",
+      "width": "120",
+      "height": "24",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "105",
+      "cy": "120",
+      "r": "6",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "88",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "3"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "146",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "too-similar range"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "320",
+      "cy": "120",
+      "r": "6",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "146",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "big number"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)"
+     },
+     "text": "222 warnings →",
+     "children": [
+      {
+       "tag": "tspan",
+       "attrs": {
+        "fill": "var(--color-accent)"
+       },
+       "text": "0"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "서버가 정답을 보관하고 문제만 사람들에게 내려보내는 그림",
+  "altEn": "A server keeps the answers and sends only the questions down to players",
+  "caption": "같은 날, 전국이 같은 문제. 정답은 서버에만 남습니다.",
+  "captionEn": "Same day, same questions for everyone. The answers stay on the server.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "정답은 서버에 남고 문제만 사람들에게 전달되는 구조"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "22",
+      "width": "200",
+      "height": "62",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "정답 보관"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "106",
+      "x2": "370",
+      "y2": "106",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "99",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "정답은 안 넘어감"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "150",
+      "y1": "84",
+      "x2": "150",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "150,132 145,122 155,122",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "164",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "문제만 내려감"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     },
+     "children": [
+      {
+       "tag": "circle",
+       "attrs": {
+        "cx": "90",
+        "cy": "162",
+        "r": "16"
+       }
+      },
+      {
+       "tag": "circle",
+       "attrs": {
+        "cx": "195",
+        "cy": "162",
+        "r": "16"
+       }
+      },
+      {
+       "tag": "circle",
+       "attrs": {
+        "cx": "300",
+        "cy": "162",
+        "r": "16"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전국 누구나 같은 문제"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The server holds the answers while only the questions travel to players"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "22",
+      "width": "200",
+      "height": "62",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "answers kept here"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "106",
+      "x2": "370",
+      "y2": "106",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "99",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "answers never cross"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "130",
+      "y1": "84",
+      "x2": "130",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "130,132 125,122 135,122",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "144",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "questions only"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     },
+     "children": [
+      {
+       "tag": "circle",
+       "attrs": {
+        "cx": "90",
+        "cy": "162",
+        "r": "16"
+       }
+      },
+      {
+       "tag": "circle",
+       "attrs": {
+        "cx": "195",
+        "cy": "162",
+        "r": "16"
+       }
+      },
+      {
+       "tag": "circle",
+       "attrs": {
+        "cx": "300",
+        "cy": "162",
+        "r": "16"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "same set for everyone"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "서버마다 따로 세던 정답률을 한 곳으로 모은 전후 그림",
+  "altEn": "Before and after: counts kept per server, then gathered into one place",
+  "caption": "따로 세던 숫자를 한 곳으로. 집계가 실패해도 게임은 멈추지 않습니다.",
+  "captionEn": "Separate counts become one. If the counting fails, the game runs on.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "서버마다 따로 세던 정답률을 한 곳에 모은 변화"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "22",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "이전"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "32",
+        "width": "100",
+        "height": "58",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "145",
+        "y": "32",
+        "width": "100",
+        "height": "58",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "270",
+        "y": "32",
+        "width": "100",
+        "height": "58",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "따로 셈"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "따로 셈"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "따로 셈"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "96",
+      "x2": "195",
+      "y2": "128",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,136 190,126 200,126",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "212",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "한 곳으로"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "142",
+      "width": "220",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전국 정답률"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "22",
+      "fill": "var(--color-accent)"
+     },
+     "text": "23%"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "228",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "집계 실패해도 게임은 계속"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Per-server counts moved into one shared count"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "22",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "32",
+        "width": "100",
+        "height": "58",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "145",
+        "y": "32",
+        "width": "100",
+        "height": "58",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "270",
+        "y": "32",
+        "width": "100",
+        "height": "58",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "own count"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "own count"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "own count"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "96",
+      "x2": "195",
+      "y2": "128",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,136 190,126 200,126",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "212",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "into one"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "142",
+      "width": "220",
+      "height": "64",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "nationwide rate"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "22",
+      "fill": "var(--color-accent)"
+     },
+     "text": "23%"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "228",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "counting fails, game runs on"
+    }
+   ]
+  }
+ }
+]

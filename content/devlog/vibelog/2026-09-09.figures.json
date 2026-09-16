@@ -1,0 +1,1514 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "설정 파일 안의 한 줄이 잘못되자 파일 전체가 무효로 취급된 모습.",
+  "altEn": "One wrong line inside the configuration file, and the whole file is treated as invalid.",
+  "caption": "한 줄 때문에 책 전체가 반품됐습니다.",
+  "captionEn": "One line, and the whole book came back.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "설정 파일의 한 줄 때문에 파일 전체가 무효가 된 상황"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "설정 파일"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "150",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "64",
+      "x2": "150",
+      "y2": "64",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "88",
+      "x2": "128",
+      "y2": "88",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "114",
+      "x2": "154",
+      "y2": "114",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "140",
+      "x2": "136",
+      "y2": "140",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "164",
+      "x2": "112",
+      "y2": "164",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "216",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "한 줄이 잘못됨"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "115",
+      "x2": "208",
+      "y2": "115",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "218,115 208,110 208,120",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "228",
+      "y": "40",
+      "width": "142",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-danger)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "64",
+      "x2": "352",
+      "y2": "64",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "88",
+      "x2": "330",
+      "y2": "88",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "114",
+      "x2": "356",
+      "y2": "114",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "140",
+      "x2": "338",
+      "y2": "140",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "164",
+      "x2": "314",
+      "y2": "164",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "238",
+      "y1": "50",
+      "x2": "360",
+      "y2": "180",
+      "stroke": "var(--color-danger)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "360",
+      "y1": "50",
+      "x2": "238",
+      "y2": "180",
+      "stroke": "var(--color-danger)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "216",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-danger)"
+     },
+     "text": "파일 전체 무효"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "One line in the config file makes the entire file invalid"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "config file"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "150",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "64",
+      "x2": "150",
+      "y2": "64",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "88",
+      "x2": "128",
+      "y2": "88",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "114",
+      "x2": "154",
+      "y2": "114",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "140",
+      "x2": "136",
+      "y2": "140",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "164",
+      "x2": "112",
+      "y2": "164",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "216",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "one bad line"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "115",
+      "x2": "208",
+      "y2": "115",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "218,115 208,110 208,120",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "228",
+      "y": "40",
+      "width": "142",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-danger)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "64",
+      "x2": "352",
+      "y2": "64",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "88",
+      "x2": "330",
+      "y2": "88",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "114",
+      "x2": "356",
+      "y2": "114",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "140",
+      "x2": "338",
+      "y2": "140",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "244",
+      "y1": "164",
+      "x2": "314",
+      "y2": "164",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "238",
+      "y1": "50",
+      "x2": "360",
+      "y2": "180",
+      "stroke": "var(--color-danger)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "360",
+      "y1": "50",
+      "x2": "238",
+      "y2": "180",
+      "stroke": "var(--color-danger)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "216",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-danger)"
+     },
+     "text": "whole file invalid"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "조립할 때 글씨체를 받으면 인터넷이 막힌 곳에서 실패하고, 방문할 때 받으면 문제가 없다는 전후 비교.",
+  "altEn": "Before and after: fetching fonts at build time fails without internet, while fetching them when a visitor arrives works.",
+  "caption": "글씨체를 받는 시점을 조립할 때에서 방문할 때로 옮겼습니다.",
+  "captionEn": "Fonts moved from build time to visit time.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 215",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "글씨체를 조립할 때 받던 방식과 방문할 때 받는 방식의 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전: 조립할 때 받기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "140",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "조립 환경"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "60",
+      "x2": "178",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "222",
+      "y1": "60",
+      "x2": "240",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "192",
+      "y1": "50",
+      "x2": "210",
+      "y2": "70",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "210",
+      "y1": "50",
+      "x2": "192",
+      "y2": "70",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "40",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글씨체"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "사이트가 안 만들어짐"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "122",
+      "x2": "370",
+      "y2": "122",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "150",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후: 방문할 때 받기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "162",
+      "width": "140",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "방문자 화면"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "182",
+      "x2": "228",
+      "y2": "182",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,182 228,177 228,187",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "162",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "글씨체"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 215",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Fetching fonts at build time versus when a visitor arrives"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before: fonts at build"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "140",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "build step"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "60",
+      "x2": "178",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "222",
+      "y1": "60",
+      "x2": "240",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "192",
+      "y1": "50",
+      "x2": "210",
+      "y2": "70",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "210",
+      "y1": "50",
+      "x2": "192",
+      "y2": "70",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "40",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "fonts"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "site fails to build"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "122",
+      "x2": "370",
+      "y2": "122",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "150",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After: fonts on visit"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "162",
+      "width": "140",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "visitor browser"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "182",
+      "x2": "228",
+      "y2": "182",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,182 228,177 228,187",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "162",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "fonts"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 1,
+  "alt": "코드 변경 기록이 글 한 편이 되고, 대본과 목소리 내레이션·화면 녹화를 거쳐 세로 영상 30초대로 이어지는 흐름도.",
+  "altEn": "A flow chart: code-change records become a post, then a script, cloned voice and screen capture, ending in a vertical video of around 30 seconds.",
+  "caption": "밤마다 기록 → 글 → 영상으로 이어지는 한 줄기.",
+  "captionEn": "One nightly line: records → post → video.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 330",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "밤마다 코드 기록이 글이 되고 다시 세로 영상이 되는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "16",
+      "width": "200",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "40",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "코드 변경 기록"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "54",
+      "x2": "195",
+      "y2": "72",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,80 190,70 200,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "80",
+      "width": "200",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "104",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "118",
+      "x2": "195",
+      "y2": "136",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,144 190,134 200,134",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "144",
+      "width": "200",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대본"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "182",
+      "x2": "195",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "196",
+      "x2": "287",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "196",
+      "x2": "102",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "102,208 97,198 107,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "287",
+      "y1": "196",
+      "x2": "287",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "287,208 282,198 292,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "208",
+      "width": "165",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "목소리 내레이션"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "208",
+      "width": "165",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "화면 녹화"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "246",
+      "x2": "102",
+      "y2": "258",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "287",
+      "y1": "246",
+      "x2": "287",
+      "y2": "258",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "258",
+      "x2": "287",
+      "y2": "258",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "258",
+      "x2": "195",
+      "y2": "264",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,272 190,262 200,262",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "272",
+      "width": "220",
+      "height": "42",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "299",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "세로 영상 30초대"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 330",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The nightly chain from code records to a post to a vertical video"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "16",
+      "width": "200",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "40",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "code-change records"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "54",
+      "x2": "195",
+      "y2": "72",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,80 190,70 200,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "80",
+      "width": "200",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "104",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "post"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "118",
+      "x2": "195",
+      "y2": "136",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,144 190,134 200,134",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "144",
+      "width": "200",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "script"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "182",
+      "x2": "195",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "196",
+      "x2": "287",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "196",
+      "x2": "102",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "102,208 97,198 107,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "287",
+      "y1": "196",
+      "x2": "287",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "287,208 282,198 292,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "208",
+      "width": "165",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "cloned voice"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "208",
+      "width": "165",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "screen capture"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "246",
+      "x2": "102",
+      "y2": "258",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "287",
+      "y1": "246",
+      "x2": "287",
+      "y2": "258",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "102",
+      "y1": "258",
+      "x2": "287",
+      "y2": "258",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "258",
+      "x2": "195",
+      "y2": "264",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,272 190,262 200,262",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "272",
+      "width": "220",
+      "height": "42",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "299",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "vertical video 30s"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,1322 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "바꾸기 전에는 가짜 이름이 동네 밖에도 있었고, 바꾼 뒤에는 진짜와 가짜가 모두 같은 동네 안에 있다.",
+  "altEn": "Before, fake names came from anywhere in the city; after, real and fake names all sit inside the same area.",
+  "caption": "가짜도 같은 동네 이름이어야 공짜 힌트가 사라집니다.",
+  "captionEn": "The free hint disappears only when fakes share the same area.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "가짜 이름을 같은 구역 안으로 좁히기 전과 후"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "바꾸기 전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "바꾼 뒤"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "42",
+      "width": "160",
+      "height": "118",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "35",
+      "y": "62",
+      "width": "80",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "55",
+      "cy": "80",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "85",
+      "cy": "95",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "65",
+      "cy": "115",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "145",
+      "cy": "62",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "155",
+      "cy": "105",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "135",
+      "cy": "142",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "75",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "우리 동네"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "42",
+      "width": "160",
+      "height": "118",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "62",
+      "width": "80",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "255",
+      "cy": "80",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "285",
+      "cy": "95",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "265",
+      "cy": "115",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "297",
+      "cy": "75",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "300",
+      "cy": "118",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "247",
+      "cy": "100",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "275",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "우리 동네"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "182",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "가짜는 딴 동네"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "182",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "가짜도 같은 동네"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "128",
+      "cy": "210",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "142",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "진짜"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "210",
+      "cy": "210",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "224",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "가짜"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Fake names before and after being narrowed to the chosen area"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "after"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "42",
+      "width": "160",
+      "height": "118",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "35",
+      "y": "62",
+      "width": "80",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "55",
+      "cy": "80",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "85",
+      "cy": "95",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "65",
+      "cy": "115",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "145",
+      "cy": "62",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "155",
+      "cy": "105",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "135",
+      "cy": "142",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "75",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "my area"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "42",
+      "width": "160",
+      "height": "118",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "62",
+      "width": "80",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "255",
+      "cy": "80",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "285",
+      "cy": "95",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "265",
+      "cy": "115",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "297",
+      "cy": "75",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "300",
+      "cy": "118",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "247",
+      "cy": "100",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "275",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "my area"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "182",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "fakes: anywhere"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "182",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "fakes: same area"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "126",
+      "cy": "210",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "140",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "real"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "fake"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "186",
+      "cy": "210",
+      "r": "5",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "설치한 앱은 옛 주소로 이어져 로그인이 막혔고, 브라우저는 새 주소로 이어져 열렸다. 주소는 하나로 모았다.",
+  "altEn": "The installed app pointed at the old address and sign-in was blocked, while the browser pointed at the new one and worked. Everything was folded into one address.",
+  "caption": "주소가 둘이면 같은 사람의 기록도 둘로 갈립니다.",
+  "captionEn": "Two addresses split one person's records in two.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "설치한 앱은 옛 주소, 브라우저는 새 주소로 갈렸고 주소를 하나로 모았다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "6",
+      "y": "30",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "57",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "설치한 앱"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "51",
+      "x2": "138",
+      "y2": "51",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "146,51 138,46 138,56",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "30",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "204",
+      "y": "57",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "옛 주소"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "270",
+      "y": "57",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "차단"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "6",
+      "y": "100",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "127",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "브라우저"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "121",
+      "x2": "138",
+      "y2": "121",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "146,121 138,116 138,126",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "100",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "204",
+      "y": "127",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "새 주소"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "270",
+      "y": "127",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "열림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "168",
+      "x2": "370",
+      "y2": "168",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "186",
+      "width": "310",
+      "height": "46",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "215",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "주소 하나로 모음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The installed app went to the old address, the browser to the new one, then both were folded into one"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "6",
+      "y": "30",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "57",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "installed app"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "51",
+      "x2": "138",
+      "y2": "51",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "146,51 138,46 138,56",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "30",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "204",
+      "y": "57",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "old address"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "266",
+      "y": "57",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "blocked"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "6",
+      "y": "100",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "127",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "browser"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "121",
+      "x2": "138",
+      "y2": "121",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "146,121 138,116 138,126",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "100",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "204",
+      "y": "127",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "new address"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "266",
+      "y": "127",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "works"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "168",
+      "x2": "370",
+      "y2": "168",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "186",
+      "width": "310",
+      "height": "46",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "215",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "folded into one address"
+    }
+   ]
+  }
+ },
+ {
+  "section": "next",
+  "after": 0,
+  "alt": "사용자 기기가 보낸 점수가 곧바로 순위표로 가고, 그 사이의 서버 점수 검사 자리는 아직 비어 있다.",
+  "altEn": "Scores sent by the player's own device go straight to the leaderboard, with the server-side score check still missing in between.",
+  "caption": "순위표보다 점수 검사가 먼저입니다.",
+  "captionEn": "The score check has to come before the leaderboard.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "기기가 보낸 점수와 순위표 사이에 서버 검사가 아직 없다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "6",
+      "y": "48",
+      "width": "108",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "사용자 기기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "118",
+      "y1": "72",
+      "x2": "136",
+      "y2": "72",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "144,72 136,67 136,77",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "148",
+      "y": "40",
+      "width": "100",
+      "height": "64",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "198",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "점수 검사"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "198",
+      "y": "90",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "(서버)"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "252",
+      "y1": "72",
+      "x2": "270",
+      "y2": "72",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "278,72 270,67 270,77",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "282",
+      "y": "48",
+      "width": "102",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "333",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "순위표"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "198",
+      "y": "136",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "아직 없음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The server-side score check between device and leaderboard is still missing"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "6",
+      "y": "48",
+      "width": "108",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "player device"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "118",
+      "y1": "72",
+      "x2": "136",
+      "y2": "72",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "144,72 136,67 136,77",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "148",
+      "y": "40",
+      "width": "100",
+      "height": "64",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "198",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "score check"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "198",
+      "y": "90",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "(server)"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "252",
+      "y1": "72",
+      "x2": "270",
+      "y2": "72",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "278,72 270,67 270,77",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "282",
+      "y": "48",
+      "width": "102",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "333",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "leaderboard"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "198",
+      "y": "136",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "not there yet"
+    }
+   ]
+  }
+ }
+]

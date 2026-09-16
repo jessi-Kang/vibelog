@@ -1,0 +1,756 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "푸는 것은 나에게서 끝나고, 짓는 것은 검수를 거쳐 다른 사람의 문제로 나가는 두 갈래 그림.",
+  "altEn": "Two paths: solving ends with you, while creating goes through review and becomes someone else's question.",
+  "caption": "소비하고 끝나는 길과, 남의 화면까지 가는 길.",
+  "captionEn": "One path ends with you; the other reaches other people.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "푸는 것과 짓는 것이 가는 길의 차이"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "48",
+      "width": "96",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "74",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "푸는 것"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "68",
+      "x2": "156",
+      "y2": "68",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "156,68 148,64 148,72",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "166",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "나에게서 끝"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "128",
+      "width": "96",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "154",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "짓는 것"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "148",
+      "x2": "150",
+      "y2": "148",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "150,148 142,144 142,152",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "156",
+      "y": "128",
+      "width": "60",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "186",
+      "y": "154",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "검수"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "224",
+      "y1": "148",
+      "x2": "252",
+      "y2": "148",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "252,148 244,144 244,152",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "258",
+      "y": "143",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "다른 사람의"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "258",
+      "y": "163",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "문제"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Where solving ends and where creating goes"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "48",
+      "width": "96",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "74",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Solving"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "68",
+      "x2": "156",
+      "y2": "68",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "156,68 148,64 148,72",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "166",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "ends with you"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "128",
+      "width": "96",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "154",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Creating"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "148",
+      "x2": "150",
+      "y2": "148",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "150,148 142,144 142,152",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "156",
+      "y": "128",
+      "width": "60",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "186",
+      "y": "154",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "review"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "224",
+      "y1": "148",
+      "x2": "252",
+      "y2": "148",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "252,148 244,144 244,152",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "256",
+      "y": "143",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "someone else's"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "256",
+      "y": "163",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "question"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 3,
+  "alt": "로그인 요구가 마지막에 있으면 지은 것이 날아가고, 첫 화면에 있으면 그대로 남는다는 비교 그림.",
+  "altEn": "If the sign-in wall comes last, your work is gone; if it comes first, nothing is lost.",
+  "caption": "같은 벽이라도 어디에 세우느냐가 다릅니다.",
+  "captionEn": "Same wall, different place to stand it.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "로그인 요구를 뒤에 두느냐 앞에 두느냐의 차이"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "나중에 막으면"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "48",
+      "width": "130",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "81",
+      "y": "71",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이름 짓기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "66",
+      "x2": "176",
+      "y2": "66",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "176,66 168,62 168,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "190",
+      "y1": "40",
+      "x2": "190",
+      "y2": "92",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "로그인"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지은 것이 날아감"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "16",
+      "y1": "134",
+      "x2": "374",
+      "y2": "134",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "먼저 막으면"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "26",
+      "y1": "172",
+      "x2": "26",
+      "y2": "224",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "202",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "로그인"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "92",
+      "y1": "196",
+      "x2": "116",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "116,196 108,192 108,200",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "126",
+      "y": "178",
+      "width": "130",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "191",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이름 짓기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "244",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "그대로 남음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Putting the sign-in wall last versus first"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "If the block comes last"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "48",
+      "width": "130",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "81",
+      "y": "71",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "invent name"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "66",
+      "x2": "176",
+      "y2": "66",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "176,66 168,62 168,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "190",
+      "y1": "40",
+      "x2": "190",
+      "y2": "92",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Sign in"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "your work is gone"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "16",
+      "y1": "134",
+      "x2": "374",
+      "y2": "134",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "If the block comes first"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "26",
+      "y1": "172",
+      "x2": "26",
+      "y2": "224",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "202",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Sign in"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "98",
+      "y1": "196",
+      "x2": "122",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "122,196 114,192 114,200",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "132",
+      "y": "178",
+      "width": "130",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "197",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "invent name"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "244",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "nothing lost"
+    }
+   ]
+  }
+ }
+]

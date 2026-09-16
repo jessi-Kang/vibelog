@@ -1,0 +1,1144 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "오늘의 AI와 내일의 AI 사이는 기억이 끊겨 있고, 두 쪽 모두 프로젝트 안의 글에서 기준을 받아옵니다.",
+  "altEn": "Today's AI and tomorrow's AI are cut off from each other, and both draw their standards from writing kept inside the project.",
+  "caption": "기억은 끊기지만, 글로 박아 두면 남습니다.",
+  "captionEn": "Memory is wiped; writing stays.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "기억은 끊기고 기준은 문서에 남는다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "기억 지워짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "40",
+      "width": "140",
+      "height": "55",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "225",
+      "y": "40",
+      "width": "140",
+      "height": "55",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "74",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "오늘의 AI"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "74",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "내일의 AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "167",
+      "y1": "67",
+      "x2": "223",
+      "y2": "67",
+      "stroke": "var(--color-muted)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "188",
+      "y1": "60",
+      "x2": "202",
+      "y2": "74",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "202",
+      "y1": "60",
+      "x2": "188",
+      "y2": "74",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "160",
+      "width": "200",
+      "height": "60",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "196",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "프로젝트 안의 글"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "145",
+      "y1": "160",
+      "x2": "107",
+      "y2": "105",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "105,100 114,107 107,112",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "245",
+      "y1": "160",
+      "x2": "283",
+      "y2": "105",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "285,100 283,112 276,107",
+      "fill": "var(--color-line-strong)"
+     }
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Memory is wiped, standards stay in the documents"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "memory wiped"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "40",
+      "width": "140",
+      "height": "55",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "225",
+      "y": "40",
+      "width": "140",
+      "height": "55",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "74",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Today's AI"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "74",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Tomorrow's AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "167",
+      "y1": "67",
+      "x2": "223",
+      "y2": "67",
+      "stroke": "var(--color-muted)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "188",
+      "y1": "60",
+      "x2": "202",
+      "y2": "74",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "202",
+      "y1": "60",
+      "x2": "188",
+      "y2": "74",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "160",
+      "width": "200",
+      "height": "60",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "196",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "written in the project"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "145",
+      "y1": "160",
+      "x2": "107",
+      "y2": "105",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "105,100 114,107 107,112",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "245",
+      "y1": "160",
+      "x2": "283",
+      "y2": "105",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "285,100 283,112 276,107",
+      "fill": "var(--color-line-strong)"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "위쪽은 집마다 우편함을 단 모습이고, 아래쪽은 우체부 1명이 동네를 도는 모습입니다.",
+  "altEn": "Above, every house has its own mailbox; below, 1 mail carrier walks the whole neighborhood.",
+  "caption": "집마다 우편함 대신, 우체부 1명이 걷어갑니다.",
+  "captionEn": "Instead of a mailbox per house, 1 carrier picks it all up.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "프로젝트마다 수집 장치를 두는 방식에서 우체부 1명이 걷어가는 방식으로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "프로젝트마다 수집 장치"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-line-strong)",
+      "fill": "var(--color-panel)"
+     },
+     "children": [
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "45,78 75,48 105,78"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "51",
+        "y": "78",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "165,78 195,48 225,78"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "171",
+        "y": "78",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "285,78 315,48 345,78"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "291",
+        "y": "78",
+        "width": "48",
+        "height": "38"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-warn)",
+      "fill": "none"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "113",
+        "y1": "116",
+        "x2": "113",
+        "y2": "100"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "106",
+        "y": "90",
+        "width": "14",
+        "height": "10"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "233",
+        "y1": "116",
+        "x2": "233",
+        "y2": "100"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "226",
+        "y": "90",
+        "width": "14",
+        "height": "10"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "353",
+        "y1": "116",
+        "x2": "353",
+        "y2": "100"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "346",
+        "y": "90",
+        "width": "14",
+        "height": "10"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "142",
+      "x2": "370",
+      "y2": "142",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이름표 1개만 붙이면 끝"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-line-strong)",
+      "fill": "var(--color-panel)"
+     },
+     "children": [
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "45,216 75,186 105,216"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "51",
+        "y": "216",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "165,216 195,186 225,216"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "171",
+        "y": "216",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "285,216 315,186 345,216"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "291",
+        "y": "216",
+        "width": "48",
+        "height": "38"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "25",
+      "y1": "278",
+      "x2": "345",
+      "y2": "278",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "358,278 344,272 344,284",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "60",
+      "cy": "258",
+      "r": "7",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "60",
+      "y1": "265",
+      "x2": "60",
+      "y2": "278",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "306",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "우체부 1명이 매일 밤"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "From a collector in every project to 1 mail carrier picking everything up"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "a collector in every project"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-line-strong)",
+      "fill": "var(--color-panel)"
+     },
+     "children": [
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "45,78 75,48 105,78"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "51",
+        "y": "78",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "165,78 195,48 225,78"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "171",
+        "y": "78",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "285,78 315,48 345,78"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "291",
+        "y": "78",
+        "width": "48",
+        "height": "38"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-warn)",
+      "fill": "none"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "113",
+        "y1": "116",
+        "x2": "113",
+        "y2": "100"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "106",
+        "y": "90",
+        "width": "14",
+        "height": "10"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "233",
+        "y1": "116",
+        "x2": "233",
+        "y2": "100"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "226",
+        "y": "90",
+        "width": "14",
+        "height": "10"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "353",
+        "y1": "116",
+        "x2": "353",
+        "y2": "100"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "346",
+        "y": "90",
+        "width": "14",
+        "height": "10"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "142",
+      "x2": "370",
+      "y2": "142",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "just stick on 1 name tag"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-line-strong)",
+      "fill": "var(--color-panel)"
+     },
+     "children": [
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "45,216 75,186 105,216"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "51",
+        "y": "216",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "165,216 195,186 225,216"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "171",
+        "y": "216",
+        "width": "48",
+        "height": "38"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "285,216 315,186 345,216"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "291",
+        "y": "216",
+        "width": "48",
+        "height": "38"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "25",
+      "y1": "278",
+      "x2": "345",
+      "y2": "278",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "358,278 344,272 344,284",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "60",
+      "cy": "258",
+      "r": "7",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "60",
+      "y1": "265",
+      "x2": "60",
+      "y2": "278",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "306",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "1 carrier, every night"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "설명서 4권이 왜 만드는가, 글감 모으는 법, 영상 규격, 로드맵으로 나뉘어 있습니다.",
+  "altEn": "The 4 guides are split into why it exists, gathering material, the video format, and the roadmap.",
+  "caption": "프로젝트의 기준을 설명서 4권으로 고정했습니다.",
+  "captionEn": "The project's standards, fixed in 4 written guides.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "설명서 4권의 내용"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "24",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "설명서 4권"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "40",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "40",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "130",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "130",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "82",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "왜 만드는가"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "82",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글감 모으는 법"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "영상 규격"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "로드맵"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "What the 4 guides cover"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "24",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "4 guides"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "40",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "40",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "130",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "130",
+      "width": "160",
+      "height": "70",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "82",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Why it exists"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "82",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Gathering material"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Video format"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Roadmap"
+    }
+   ]
+  }
+ }
+]
