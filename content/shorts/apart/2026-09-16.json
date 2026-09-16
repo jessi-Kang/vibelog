@@ -1,0 +1,222 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-16",
+  "day": 7,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "가짜 이름에 사람 손이 티가 났습니다.",
+      "en": "A human fingerprint showed in the fake names.",
+      "keywords": [],
+      "keywordsEn": [
+        "human fingerprint"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "가짜는 절반이 띄어쓰기였습니다.",
+      "en": "Half the fakes had a space in the name.",
+      "keywords": [
+        "절반이"
+      ],
+      "keywordsEn": [
+        "Half"
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "띄어쓰기 비율",
+          "49.6%",
+          "15.9%"
+        ],
+        "labelsEn": [
+          "spacing ratio",
+          "49.6%",
+          "15.9%"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "이름을 안 읽고 빈칸만 세도 76%를 맞혔습니다.",
+      "en": "Just checking for a blank was right 76% of the time.",
+      "keywords": [
+        "빈칸만",
+        "76%를"
+      ],
+      "keywordsEn": [
+        "a blank",
+        "76%"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "이름 하나",
+          "이름을 읽는다",
+          "76%를 맞힌다",
+          "이름 읽기",
+          "빈칸 세기"
+        ],
+        "labelsEn": [
+          "one name",
+          "read the name",
+          "76% correct",
+          "read it",
+          "count blanks"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제는 실제 이름의 모양을 흉내 내서 짓습니다.",
+      "en": "Now it copies the shape of real names instead.",
+      "keywords": [
+        "실제 이름의 모양을"
+      ],
+      "keywordsEn": [
+        "real names"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "손으로 정한 규칙",
+          "티가 남",
+          "실제 이름대로",
+          "44.5%"
+        ],
+        "labelsEn": [
+          "hand-picked rules",
+          "obvious tell",
+          "copy real names",
+          "44.5%"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "밤마다 가짜 이름도 60개씩 같이 채워집니다.",
+      "en": "Every night 60 more fakes are added.",
+      "keywords": [
+        "60개씩"
+      ],
+      "keywordsEn": [
+        "60"
+      ],
+      "stat": "60개",
+      "statEn": "60 names",
+      "motif": "loop"
+    },
+    {
+      "scene": "demo",
+      "ko": "새 이름들은 곧바로 문제에 나옵니다.",
+      "en": "The new names show up in the quiz right away.",
+      "keywords": [
+        "곧바로"
+      ],
+      "keywordsEn": [
+        "right away"
+      ],
+      "screen": "/o",
+      "find": "이름 하나를 보고 진짜/가짜",
+      "findEn": "one name, real or fake",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "넷 중 진짜를 찾는 문제에도 섞여 있습니다.",
+      "en": "They also appear in the round where one of four is real.",
+      "keywords": [
+        "넷 중 진짜를"
+      ],
+      "keywordsEn": [
+        "one of four"
+      ],
+      "screen": "/f",
+      "find": "넷 중 진짜는 하나",
+      "findEn": "one of four is real",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "가짜가 2,000개가 되면 자동 생성은 멈춥니다.",
+      "en": "Generation stops once there are 2,000 fakes.",
+      "keywords": [
+        "2,000개가"
+      ],
+      "keywordsEn": [
+        "2,000"
+      ],
+      "stat": "2,000개",
+      "statEn": "2,000 names",
+      "motif": "limit"
+    },
+    {
+      "scene": "end",
+      "ko": "그때까지 매일 밤 비율을 지켜봅니다.",
+      "en": "Until then I watch the ratio every night.",
+      "keywords": [
+        "매일 밤"
+      ],
+      "keywordsEn": [
+        "every night"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "빈칸만 봐도 알았다",
+    "titleEn": "The blank gave it away",
+    "before": "가짜는 절반이 띄어쓰기, 실제 단지는 15.9%",
+    "after": "실제 이름 모양을 흉내 내 44.5%로 내려왔습니다",
+    "beforeEn": "49.6% of fakes had a space; real ones, 15.9%",
+    "afterEn": "Copying real name shapes brought it down to 44.5%"
+  },
+  "commits": [
+    [
+      "c9aaeee",
+      "chore: 생성한 가짜 60건을 출제 풀에 넣는다"
+    ],
+    [
+      "9a2defe",
+      "feat: 가짜 이름을 실단지 모양을 배워서 짓는다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "c9aaeee",
+      "chore: add 60 generated fake items to the question pool"
+    ],
+    [
+      "9a2defe",
+      "feat: generate fake names by learning from real data patterns"
+    ]
+  ],
+  "commitCount": 2,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "가짜 아파트 이름을 컴퓨터가 직접 짓게 했습니다. 이름을 읽지 않고 띄어쓰기만 세도 76%를 맞힐 수 있던 문제를 고쳤습니다.",
+    "en": "The computer now invents the fake apartment names itself. You used to be right 76% of the time just by checking for a space — not anymore."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#아파트감별사",
+    "#vibelog",
+    "#데이터",
+    "#devlog",
+    "#buildinpublic",
+    "#indiedev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.poster.jpg?v=mu46t0ei",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.ko.mp4?v=mu46t2au",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.en.poster.jpg?v=mu46u396",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.en.mp4?v=mu46u4qe"
+  }
+}

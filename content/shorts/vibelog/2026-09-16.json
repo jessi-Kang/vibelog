@@ -1,0 +1,311 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-16",
+  "day": 9,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "글 사이에 그림이 들어갑니다.",
+      "en": "Drawings now go between the paragraphs.",
+      "keywords": [
+        "그림이"
+      ],
+      "keywordsEn": [
+        "Drawings"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "글을 다 쓰면 어울리는 그림을 그려 넣습니다.",
+      "en": "Once a post is written, a matching drawing is made and placed inline.",
+      "keywords": [
+        "어울리는 그림을"
+      ],
+      "keywordsEn": [
+        "matching drawing"
+      ],
+      "motif": "merge"
+    },
+    {
+      "scene": "build",
+      "ko": "그림 속 숫자가 본문에 있는지 매번 확인합니다.",
+      "en": "Every number inside a drawing is checked against the text.",
+      "keywords": [
+        "숫자가",
+        "매번 확인합니다"
+      ],
+      "keywordsEn": [
+        "Every number",
+        "checked"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "demo",
+      "ko": "지난 글 14편에도 전부 붙였습니다.",
+      "en": "I went back and added them to all 14 earlier posts.",
+      "keywords": [
+        "14편에도"
+      ],
+      "keywordsEn": [
+        "14 earlier posts"
+      ],
+      "stat": "14편",
+      "statEn": "14 posts",
+      "screen": "/log",
+      "find": "데브로그 14",
+      "findEn": "Devlog 14",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 한 편은 그림이 0장이었습니다.",
+      "en": "But one post came back with zero drawings.",
+      "keywords": [
+        "0장이었습니다"
+      ],
+      "keywordsEn": [
+        "zero drawings"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "설명이 길어짐",
+          "중간에서 잘림",
+          "그림 0장"
+        ],
+        "labelsEn": [
+          "answer runs long",
+          "cut off midway",
+          "zero drawings"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "한도를 올리자 이번엔 4편이 1초 만에 거절당했습니다.",
+      "en": "I raised the limit, and then 4 posts were rejected within 1 second.",
+      "keywords": [
+        "1초 만에"
+      ],
+      "keywordsEn": [
+        "within 1 second"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "한 번에 받기",
+          "1초 만에 거절",
+          "나눠 받기",
+          "전부 통과"
+        ],
+        "labelsEn": [
+          "all at once",
+          "rejected in 1s",
+          "in pieces",
+          "all passed"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "조금씩 나눠 받으니 그대로 통과했습니다.",
+      "en": "Receiving it piece by piece fixed it.",
+      "keywords": [
+        "나눠 받으니"
+      ],
+      "keywordsEn": [
+        "piece by piece"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "그림 한 장에 드는 비용도 실행 기록에 남깁니다.",
+      "en": "The cost of each drawing now goes into the run log.",
+      "keywords": [
+        "비용도",
+        "실행 기록에"
+      ],
+      "keywordsEn": [
+        "cost of each drawing"
+      ],
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "recent runs",
+      "shot": "focus"
+    },
+    {
+      "scene": "end",
+      "ko": "다음 실행부터는 어림짐작 대신 실제 숫자를 봅니다.",
+      "en": "From the next run on, I get real numbers instead of estimates.",
+      "keywords": [
+        "실제 숫자를"
+      ],
+      "keywordsEn": [
+        "real numbers"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "그림이 0장인 글",
+    "titleEn": "A post with zero drawings",
+    "before": "답이 중간에서 잘려 그림이 전부 사라졌습니다",
+    "after": "조금씩 나눠 받으니 그대로 통과했습니다",
+    "beforeEn": "The answer got cut off, so every drawing was lost",
+    "afterEn": "Receiving it piece by piece fixed it"
+  },
+  "commits": [
+    [
+      "3bb2247",
+      "데브로그 피드의 10편 페이지네이션을 걷어낸다 — 전부 보여 준다"
+    ],
+    [
+      "6f8995d",
+      "chore: 글 삽화 붙임 (vibelog/2026-09-12,vibelog/2026-09-14,apart/2026-09-15,vibelog/2026-09-15)"
+    ],
+    [
+      "88f4b71",
+      "삽화 호출의 실측 토큰을 실행 기록에 남긴다 — 비용은 여기서만 정확히 센다"
+    ],
+    [
+      "6da5d58",
+      "삽화 요청을 스트리밍으로 — 상한 32000이 SDK의 사전 검사에 걸려 4편 전부 실패"
+    ],
+    [
+      "7c82737",
+      "삽화 답이 토큰 상한에서 잘리면 줄여서 한 번 다시 — 글 하나가 통째로 0장이 됐다"
+    ],
+    [
+      "149cbe5",
+      "chore: 글 삽화 붙임 (all)"
+    ],
+    [
+      "39411c8",
+      "지난 글에도 삽화를 붙인다 — Run workflow의 figures 입력"
+    ],
+    [
+      "d4f1abc",
+      "삽화를 은은한 바탕판 위에 — 본문 글자와 구분한다"
+    ],
+    [
+      "479a3e1",
+      "고정 삽화도 새 규칙에 맞춘다 — 검사기가 제 고정값에 걸려 죽었다"
+    ],
+    [
+      "e1512d1",
+      "삽화의 수는 아라비아 숫자로 — \"네 회차\"는 표기도 틀렸고 검증의 구멍이었다"
+    ],
+    [
+      "52e2f84",
+      "글 삽화 생성을 파이프라인에 붙인다 — 걸린 삽화만 빼고 글은 낸다"
+    ],
+    [
+      "d35596d",
+      "삽화 이름이 서버 HTML에서 비어 나갔다 — <title> 대신 aria-label"
+    ],
+    [
+      "cc04382",
+      "글 삽화 — 계약·검증기·렌더러. 생성은 아직 안 붙였다"
+    ],
+    [
+      "f99d392",
+      "글 삽화 시안 — 자유 작도 + 검증기, 책 삽화 자리"
+    ],
+    [
+      "56dd67b",
+      "글을 보는데 메뉴는 \"프로젝트\"였다 — 주소를 옮길 때 탭 판정을 안 고쳤다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "3bb2247",
+      "Remove pagination limit from devlog feed — show all posts"
+    ],
+    [
+      "6f8995d",
+      "chore: Attach illustrations to posts (vibelog/2026-09-12,vibelog/2026-09-14,apart/2026-09-15,vibelog/2026-09-15)"
+    ],
+    [
+      "88f4b71",
+      "Log actual token usage of illustration calls in execution records — cost is only counted accurately here"
+    ],
+    [
+      "6da5d58",
+      "Stream illustration requests — 32000 token limit caught by SDK pre-check, all 4 posts failed"
+    ],
+    [
+      "7c82737",
+      "Retry with reduced content if illustration response is truncated at token limit — one post ended up with zero illustrations"
+    ],
+    [
+      "149cbe5",
+      "chore: Attach illustrations to posts (all)"
+    ],
+    [
+      "39411c8",
+      "Add illustrations to past posts — Run workflow figures input"
+    ],
+    [
+      "d4f1abc",
+      "Render illustrations on subtle background — distinguish from body text"
+    ],
+    [
+      "479a3e1",
+      "Align fixed illustrations to new rules — validator crashed on hardcoded values"
+    ],
+    [
+      "e1512d1",
+      "Use Arabic numerals for illustration count — \"four episodes\" was misspelled and a validation gap"
+    ],
+    [
+      "52e2f84",
+      "Attach post illustration generation to pipeline — publish posts excluding stuck illustrations"
+    ],
+    [
+      "d35596d",
+      "Illustration name missing from server HTML — use aria-label instead of <title>"
+    ],
+    [
+      "cc04382",
+      "Post illustrations — contract, validator, renderer. Generation not yet integrated"
+    ],
+    [
+      "f99d392",
+      "Post illustration draft — free-form drawing + validator, book illustration slot"
+    ],
+    [
+      "56dd67b",
+      "Menu showed \"Project\" when viewing posts — didn't update tab detection when moving URLs"
+    ]
+  ],
+  "commitCount": 15,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "데브로그 글 사이에 설명 그림이 들어가기 시작했습니다. 지난 글 14편에도 전부 붙였고, 답이 중간에서 잘리던 문제는 조금씩 나눠 받는 방식으로 풀었습니다.",
+    "en": "Devlog posts now carry explanatory drawings between the paragraphs, including all 14 earlier posts. The truncated-answer problem was fixed by receiving it piece by piece."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#자동화",
+    "#devlog",
+    "#buildinpublic",
+    "#AI",
+    "#블로그"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-16.poster.jpg?v=mu46ka7i",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-16.ko.mp4?v=mu46kbhi",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-16.en.poster.jpg?v=mu46lrd9",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-16.en.mp4?v=mu46lszo"
+  }
+}

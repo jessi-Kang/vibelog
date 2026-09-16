@@ -1,0 +1,21 @@
+{
+  "screens": [
+    {
+      "path": "/log",
+      "find": "Devlog 14",
+      "start": 0.87,
+      "end": 11.96
+    },
+    {
+      "path": "/",
+      "start": 12.84,
+      "end": 23.91
+    },
+    {
+      "path": "/",
+      "find": "recent runs",
+      "start": 24.32,
+      "end": 35.39
+    }
+  ]
+}

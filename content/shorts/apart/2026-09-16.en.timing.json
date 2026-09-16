@@ -1,0 +1,474 @@
+{
+  "lang": "en",
+  "duration": 24.613,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.136,
+      "words": [
+        {
+          "text": "A",
+          "start": 0,
+          "end": 0.081
+        },
+        {
+          "text": "human",
+          "start": 0.139,
+          "end": 0.395
+        },
+        {
+          "text": "fingerprint",
+          "start": 0.453,
+          "end": 0.871
+        },
+        {
+          "text": "showed",
+          "start": 0.906,
+          "end": 1.103
+        },
+        {
+          "text": "in",
+          "start": 1.126,
+          "end": 1.173
+        },
+        {
+          "text": "the",
+          "start": 1.196,
+          "end": 1.265
+        },
+        {
+          "text": "fake",
+          "start": 1.3,
+          "end": 1.533
+        },
+        {
+          "text": "names.",
+          "start": 1.567,
+          "end": 2.136
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.519,
+      "end": 4.319,
+      "words": [
+        {
+          "text": "Half",
+          "start": 2.519,
+          "end": 2.74
+        },
+        {
+          "text": "the",
+          "start": 2.786,
+          "end": 2.856
+        },
+        {
+          "text": "fakes",
+          "start": 2.891,
+          "end": 3.17
+        },
+        {
+          "text": "had",
+          "start": 3.216,
+          "end": 3.32
+        },
+        {
+          "text": "a",
+          "start": 3.355,
+          "end": 3.379
+        },
+        {
+          "text": "space",
+          "start": 3.425,
+          "end": 3.704
+        },
+        {
+          "text": "in",
+          "start": 3.738,
+          "end": 3.796
+        },
+        {
+          "text": "the",
+          "start": 3.831,
+          "end": 3.901
+        },
+        {
+          "text": "name.",
+          "start": 3.947,
+          "end": 4.319
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 4.702,
+      "end": 7.964,
+      "words": [
+        {
+          "text": "Just",
+          "start": 4.702,
+          "end": 4.876
+        },
+        {
+          "text": "checking",
+          "start": 4.911,
+          "end": 5.178
+        },
+        {
+          "text": "for",
+          "start": 5.224,
+          "end": 5.317
+        },
+        {
+          "text": "a",
+          "start": 5.352,
+          "end": 5.375
+        },
+        {
+          "text": "blank",
+          "start": 5.41,
+          "end": 5.642
+        },
+        {
+          "text": "was",
+          "start": 5.689,
+          "end": 5.805
+        },
+        {
+          "text": "right",
+          "start": 5.875,
+          "end": 6.165
+        },
+        {
+          "text": "76%",
+          "start": 6.339,
+          "end": 7.233
+        },
+        {
+          "text": "of",
+          "start": 7.349,
+          "end": 7.396
+        },
+        {
+          "text": "the",
+          "start": 7.442,
+          "end": 7.512
+        },
+        {
+          "text": "time.",
+          "start": 7.546,
+          "end": 7.964
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.661,
+      "end": 10.797,
+      "words": [
+        {
+          "text": "Now",
+          "start": 8.661,
+          "end": 8.812
+        },
+        {
+          "text": "it",
+          "start": 8.858,
+          "end": 8.905
+        },
+        {
+          "text": "copies",
+          "start": 8.94,
+          "end": 9.218
+        },
+        {
+          "text": "the",
+          "start": 9.242,
+          "end": 9.311
+        },
+        {
+          "text": "shape",
+          "start": 9.358,
+          "end": 9.601
+        },
+        {
+          "text": "of",
+          "start": 9.636,
+          "end": 9.694
+        },
+        {
+          "text": "real",
+          "start": 9.752,
+          "end": 9.927
+        },
+        {
+          "text": "names",
+          "start": 9.985,
+          "end": 10.182
+        },
+        {
+          "text": "instead.",
+          "start": 10.228,
+          "end": 10.797
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 11.122,
+      "end": 13.003,
+      "words": [
+        {
+          "text": "Every",
+          "start": 11.122,
+          "end": 11.401
+        },
+        {
+          "text": "night",
+          "start": 11.459,
+          "end": 11.645
+        },
+        {
+          "text": "60",
+          "start": 11.703,
+          "end": 11.97
+        },
+        {
+          "text": "more",
+          "start": 12.04,
+          "end": 12.179
+        },
+        {
+          "text": "fakes",
+          "start": 12.214,
+          "end": 12.457
+        },
+        {
+          "text": "are",
+          "start": 12.481,
+          "end": 12.574
+        },
+        {
+          "text": "added.",
+          "start": 12.608,
+          "end": 13.003
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 13.328,
+      "end": 15.43,
+      "words": [
+        {
+          "text": "The",
+          "start": 13.328,
+          "end": 13.444
+        },
+        {
+          "text": "new",
+          "start": 13.502,
+          "end": 13.63
+        },
+        {
+          "text": "names",
+          "start": 13.688,
+          "end": 13.909
+        },
+        {
+          "text": "show",
+          "start": 13.932,
+          "end": 14.094
+        },
+        {
+          "text": "up",
+          "start": 14.141,
+          "end": 14.222
+        },
+        {
+          "text": "in",
+          "start": 14.269,
+          "end": 14.327
+        },
+        {
+          "text": "the",
+          "start": 14.35,
+          "end": 14.419
+        },
+        {
+          "text": "quiz",
+          "start": 14.466,
+          "end": 14.686
+        },
+        {
+          "text": "right",
+          "start": 14.756,
+          "end": 14.942
+        },
+        {
+          "text": "away.",
+          "start": 14.977,
+          "end": 15.43
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 15.871,
+      "end": 18.541,
+      "words": [
+        {
+          "text": "They",
+          "start": 15.871,
+          "end": 16.045
+        },
+        {
+          "text": "also",
+          "start": 16.08,
+          "end": 16.3
+        },
+        {
+          "text": "appear",
+          "start": 16.347,
+          "end": 16.579
+        },
+        {
+          "text": "in",
+          "start": 16.625,
+          "end": 16.672
+        },
+        {
+          "text": "the",
+          "start": 16.707,
+          "end": 16.776
+        },
+        {
+          "text": "round",
+          "start": 16.834,
+          "end": 17.125
+        },
+        {
+          "text": "where",
+          "start": 17.241,
+          "end": 17.45
+        },
+        {
+          "text": "one",
+          "start": 17.496,
+          "end": 17.612
+        },
+        {
+          "text": "of",
+          "start": 17.647,
+          "end": 17.693
+        },
+        {
+          "text": "four",
+          "start": 17.752,
+          "end": 17.914
+        },
+        {
+          "text": "is",
+          "start": 17.972,
+          "end": 18.042
+        },
+        {
+          "text": "real.",
+          "start": 18.111,
+          "end": 18.541
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 18.924,
+      "end": 21.432,
+      "words": [
+        {
+          "text": "Generation",
+          "start": 18.924,
+          "end": 19.423
+        },
+        {
+          "text": "stops",
+          "start": 19.47,
+          "end": 19.783
+        },
+        {
+          "text": "once",
+          "start": 19.841,
+          "end": 20.05
+        },
+        {
+          "text": "there",
+          "start": 20.085,
+          "end": 20.236
+        },
+        {
+          "text": "are",
+          "start": 20.259,
+          "end": 20.364
+        },
+        {
+          "text": "2,000",
+          "start": 20.41,
+          "end": 20.851
+        },
+        {
+          "text": "fakes.",
+          "start": 20.909,
+          "end": 21.432
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 21.873,
+      "end": 24.613,
+      "words": [
+        {
+          "text": "Until",
+          "start": 21.873,
+          "end": 22.187
+        },
+        {
+          "text": "then",
+          "start": 22.245,
+          "end": 22.488
+        },
+        {
+          "text": "I",
+          "start": 22.93,
+          "end": 23.011
+        },
+        {
+          "text": "watch",
+          "start": 23.127,
+          "end": 23.324
+        },
+        {
+          "text": "the",
+          "start": 23.371,
+          "end": 23.44
+        },
+        {
+          "text": "ratio",
+          "start": 23.487,
+          "end": 23.789
+        },
+        {
+          "text": "every",
+          "start": 23.847,
+          "end": 24.044
+        },
+        {
+          "text": "night.",
+          "start": 24.091,
+          "end": 24.613
+        }
+      ]
+    }
+  ]
+}
