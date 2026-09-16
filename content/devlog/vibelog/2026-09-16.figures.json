@@ -1,0 +1,562 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "이전 글 목록은 10편만 보이고 나머지는 버튼 뒤에 숨어 있었지만, 지금은 전부 보인다.",
+  "altEn": "The post list used to show only 10 entries with the rest behind a button; now every entry is visible.",
+  "caption": "버튼 뒤에 숨던 글이 한 번에 다 보입니다.",
+  "captionEn": "Posts once hidden behind a button now all show at once.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "글 목록이 10편만 보이던 상태에서 전부 보이는 상태로 바뀐 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "이전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "14",
+      "y": "44",
+      "width": "160",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "60",
+      "x2": "160",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "76",
+      "x2": "160",
+      "y2": "76",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "92",
+      "x2": "160",
+      "y2": "92",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "108",
+      "x2": "160",
+      "y2": "108",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "38",
+      "y": "118",
+      "width": "112",
+      "height": "28",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "94",
+      "y": "137",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "더 보기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "164",
+      "x2": "160",
+      "y2": "164",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "180",
+      "x2": "160",
+      "y2": "180",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "94",
+      "y": "216",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "10편만"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "126",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "216",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "44",
+      "width": "160",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "60",
+      "x2": "362",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "76",
+      "x2": "362",
+      "y2": "76",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "92",
+      "x2": "362",
+      "y2": "92",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "108",
+      "x2": "362",
+      "y2": "108",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "124",
+      "x2": "362",
+      "y2": "124",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "140",
+      "x2": "362",
+      "y2": "140",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "156",
+      "x2": "362",
+      "y2": "156",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "172",
+      "x2": "362",
+      "y2": "172",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "296",
+      "y": "216",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "전부 보임"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Comparison of a post list showing only 10 entries versus showing every entry"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "14",
+      "y": "44",
+      "width": "160",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "60",
+      "x2": "160",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "76",
+      "x2": "160",
+      "y2": "76",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "92",
+      "x2": "160",
+      "y2": "92",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "108",
+      "x2": "160",
+      "y2": "108",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "32",
+      "y": "118",
+      "width": "124",
+      "height": "28",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "94",
+      "y": "137",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Show more"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "164",
+      "x2": "160",
+      "y2": "164",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "28",
+      "y1": "180",
+      "x2": "160",
+      "y2": "180",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "94",
+      "y": "216",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "only 10"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "126",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "216",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "now"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "216",
+      "y": "44",
+      "width": "160",
+      "height": "150",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "60",
+      "x2": "362",
+      "y2": "60",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "76",
+      "x2": "362",
+      "y2": "76",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "92",
+      "x2": "362",
+      "y2": "92",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "108",
+      "x2": "362",
+      "y2": "108",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "124",
+      "x2": "362",
+      "y2": "124",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "140",
+      "x2": "362",
+      "y2": "140",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "156",
+      "x2": "362",
+      "y2": "156",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "172",
+      "x2": "362",
+      "y2": "172",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "296",
+      "y": "216",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "all visible"
+    }
+   ]
+  }
+ }
+]
