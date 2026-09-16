@@ -1,524 +1,323 @@
 [
  {
   "section": "why",
-  "after": 0,
-  "alt": "예정된 회차가 모두 늦게 떴고, 마지막 회차만 새벽 6시 경계를 넘어 다음 날 회차로 계산되었다",
-  "altEn": "All scheduled rounds fired late, and only the last one crossed the 6 am boundary",
-  "caption": "예정 회차가 모두 늦게 떴다. 마지막 회차만 6시를 넘겨 다음 날로 셈해졌다.",
-  "captionEn": "All rounds fired late. Only the last crossed 6 am and counted as a new day.",
+  "after": 1,
+  "alt": "새벽 6시를 하루의 경계로 삼아 6시 6분 실행이 새 날의 첫 발행으로 세어졌고, 12시간 기준으로 바꾸자 같은 밤으로 보고 멈추는 그림.",
+  "altEn": "Because 6 in the morning is the day boundary, a 6:06 run counted as a new day's first post; measuring hours since the last publish makes it the same night, so it stops.",
+  "caption": "날짜로 세면 새 날, 시간으로 세면 같은 밤.",
+  "captionEn": "By date it's a new day; by hours it's the same night.",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 224",
+    "viewBox": "0 0 390 240",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "예정된 회차가 모두 늦게 떴고, 마지막 회차만 새벽 6시 경계를 넘어 다음 날 회차로 계산되었다"
+     "text": "새벽 6시 경계 탓에 6시 6분 실행이 새 날로 세어졌고, 12시간 기준으로 바꿔 멈추게 한 그림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "34",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "6시 = 하루의 경계"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "0",
-      "y1": "96",
-      "x2": "390",
-      "y2": "96",
+      "x1": "20",
+      "y1": "110",
+      "x2": "370",
+      "y2": "110",
       "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
+      "stroke-width": "2"
      }
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "8",
-      "y1": "92",
-      "x2": "8",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "131",
-      "y1": "92",
-      "x2": "131",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "254",
-      "y1": "92",
-      "x2": "254",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "377",
-      "y1": "92",
-      "x2": "377",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "315",
-      "y1": "28",
-      "x2": "315",
-      "y2": "108",
-      "stroke": "var(--color-warn)",
-      "stroke-width": "1.5",
-      "stroke-dasharray": "5 4"
+      "x1": "200",
+      "y1": "62",
+      "x2": "200",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
      }
     },
     {
      "tag": "circle",
      "attrs": {
-      "cx": "8",
-      "cy": "62",
-      "r": "4",
-      "fill": "var(--color-muted)"
+      "cx": "110",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
      }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "262",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "92",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "밤 발행"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "262",
+      "y": "92",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "6:06 또 발행"
     },
     {
      "tag": "path",
      "attrs": {
-      "d": "M8 66 C8 82, 214 78, 214 90",
-      "fill": "none",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "214",
-      "cy": "96",
-      "r": "4.5",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "54",
-      "cy": "62",
-      "r": "4",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "path",
-     "attrs": {
-      "d": "M54 66 C54 82, 251 78, 251 90",
-      "fill": "none",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "251",
-      "cy": "96",
-      "r": "4.5",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "131",
-      "cy": "62",
-      "r": "4",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "path",
-     "attrs": {
-      "d": "M131 66 C131 82, 274 78, 274 90",
-      "fill": "none",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "274",
-      "cy": "96",
-      "r": "4.5",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "254",
-      "cy": "62",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "path",
-     "attrs": {
-      "d": "M254 66 C254 82, 322 78, 322 90",
+      "d": "M110 132 V146 H262 V132",
       "fill": "none",
       "stroke": "var(--color-accent)",
-      "stroke-width": "2.2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "322",
-      "cy": "96",
-      "r": "6.5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "0",
-      "y": "146",
-      "width": "390",
-      "height": "68",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "0",
-      "y": "20",
-      "font-family": "var(--font-sans)",
+      "x": "186",
+      "y": "170",
+      "font-family": "var(--font-mono)",
       "font-size": "15",
-      "fill": "var(--color-muted)"
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
      },
-     "text": "예정"
+     "text": "12시간"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "390",
-      "y": "20",
+      "x": "195",
+      "y": "200",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)",
-      "text-anchor": "end"
+      "text-anchor": "middle"
      },
-     "text": "실제로 뜬 시각"
+     "text": "날짜로 보면 새 날 → 통과"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "307",
-      "y": "44",
-      "font-family": "var(--font-mono)",
-      "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-warn)",
-      "text-anchor": "end"
-     },
-     "text": "6시 경계"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "334",
-      "y": "88",
-      "font-family": "var(--font-mono)",
-      "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-accent)"
-     },
-     "text": "6:06"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "8",
-      "y": "122",
-      "font-family": "var(--font-mono)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "밤"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "377",
-      "y": "122",
-      "font-family": "var(--font-mono)",
-      "font-size": "15",
-      "fill": "var(--color-muted)",
-      "text-anchor": "end"
-     },
-     "text": "아침"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "14",
-      "y": "172",
+      "x": "195",
+      "y": "226",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-ink-soft)"
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
      },
-     "text": "날짜로 보면"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "14",
-      "y": "196",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "새 날의 첫 편 → 내보낸다"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "206",
-      "y": "172",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-accent)"
-     },
-     "text": "지난 시간으로 보면"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "206",
-      "y": "196",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
-     },
-     "text": "12시간 안 → 멈춘다"
+     "text": "12시간 안이면 같은 밤 → 멈춤"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 224",
+    "viewBox": "0 0 390 240",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "All scheduled rounds fired late, and only the last one crossed the 6 am boundary and was counted as a new day"
+     "text": "With 6 in the morning as the day boundary, a 6:06 run counted as a new day; switching to hours since last publish stops it"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "34",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "6am = day boundary"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "0",
-      "y1": "96",
-      "x2": "390",
-      "y2": "96",
+      "x1": "20",
+      "y1": "110",
+      "x2": "370",
+      "y2": "110",
       "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
+      "stroke-width": "2"
      }
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "8",
-      "y1": "92",
-      "x2": "8",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "131",
-      "y1": "92",
-      "x2": "131",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "254",
-      "y1": "92",
-      "x2": "254",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "377",
-      "y1": "92",
-      "x2": "377",
-      "y2": "100",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "315",
-      "y1": "28",
-      "x2": "315",
-      "y2": "108",
-      "stroke": "var(--color-warn)",
-      "stroke-width": "1.5",
-      "stroke-dasharray": "5 4"
+      "x1": "200",
+      "y1": "62",
+      "x2": "200",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
      }
     },
     {
      "tag": "circle",
      "attrs": {
-      "cx": "8",
-      "cy": "62",
-      "r": "4",
-      "fill": "var(--color-muted)"
+      "cx": "110",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-ink-soft)"
      }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "262",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "92",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "night post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "262",
+      "y": "92",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "6:06 again"
     },
     {
      "tag": "path",
      "attrs": {
-      "d": "M8 66 C8 82, 214 78, 214 90",
-      "fill": "none",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "214",
-      "cy": "96",
-      "r": "4.5",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "54",
-      "cy": "62",
-      "r": "4",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "path",
-     "attrs": {
-      "d": "M54 66 C54 82, 251 78, 251 90",
-      "fill": "none",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "251",
-      "cy": "96",
-      "r": "4.5",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "131",
-      "cy": "62",
-      "r": "4",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "path",
-     "attrs": {
-      "d": "M131 66 C131 82, 274 78, 274 90",
-      "fill": "none",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "274",
-      "cy": "96",
-      "r": "4.5",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "254",
-      "cy": "62",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "path",
-     "attrs": {
-      "d": "M254 66 C254 82, 322 78, 322 90",
+      "d": "M110 132 V146 H262 V132",
       "fill": "none",
       "stroke": "var(--color-accent)",
-      "stroke-width": "2.2"
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "circle",
+     "tag": "text",
      "attrs": {
-      "cx": "322",
-      "cy": "96",
-      "r": "6.5",
-      "fill": "var(--color-accent)"
-     }
+      "x": "186",
+      "y": "170",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "12 hours"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "200",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "by date: new day → passes"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "226",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "within 12 hours: same night → stops"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "적어 둔 값이 비어 있어 엉뚱한 크기가 나오며 지적 54건이 떴고, 그려진 크기를 그대로 읽자 맞는 크기가 나오는 그림.",
+  "altEn": "Empty recorded values produced wrong sizes and 54 reports; reading the size as drawn produces the correct size.",
+  "caption": "같은 계산, 다른 입력.",
+  "captionEn": "Same math, different input.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "비어 있는 값으로 계산해 54건이 떴고, 그려진 크기를 읽자 맞는 크기가 나온 비교 그림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "버튼 크기 계산"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "0",
-      "y": "146",
-      "width": "390",
-      "height": "68",
-      "rx": "8",
+      "x": "16",
+      "y": "44",
+      "width": "130",
+      "height": "52",
+      "rx": "6",
       "fill": "var(--color-panel)",
       "stroke": "var(--color-line)"
      }
@@ -526,119 +325,660 @@
     {
      "tag": "text",
      "attrs": {
-      "x": "0",
-      "y": "20",
+      "x": "81",
+      "y": "68",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-muted)"
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
      },
-     "text": "scheduled"
+     "text": "적어 둔 값"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "390",
-      "y": "20",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)",
-      "text-anchor": "end"
-     },
-     "text": "actually fired"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "307",
-      "y": "44",
-      "font-family": "var(--font-mono)",
-      "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-warn)",
-      "text-anchor": "end"
-     },
-     "text": "6 am boundary"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "334",
+      "x": "81",
       "y": "88",
-      "font-family": "var(--font-mono)",
+      "font-family": "var(--font-sans)",
       "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-accent)"
+      "fill": "var(--color-warn)",
+      "text-anchor": "middle"
      },
-     "text": "6:06"
+     "text": "비어 있음"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "70",
+      "x2": "180",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,70 178,65 178,75",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "192",
+      "y": "44",
+      "width": "182",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "8",
-      "y": "122",
-      "font-family": "var(--font-mono)",
+      "x": "283",
+      "y": "68",
+      "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-muted)"
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
      },
-     "text": "night"
+     "text": "엉뚱한 크기"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "377",
-      "y": "122",
-      "font-family": "var(--font-mono)",
+      "x": "283",
+      "y": "88",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)",
+      "text-anchor": "middle"
+     },
+     "text": "지적 54건"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "134",
+      "width": "130",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "81",
+      "y": "166",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "그려진 크기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "160",
+      "x2": "180",
+      "y2": "160",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,160 178,155 178,165",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "192",
+      "y": "134",
+      "width": "182",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "283",
+      "y": "166",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "맞는 크기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Empty values led to wrong sizes and 54 reports, while reading the drawn size gives the correct size"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)",
-      "text-anchor": "end"
+      "text-anchor": "middle"
      },
-     "text": "morning"
+     "text": "button size math"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "44",
+      "width": "130",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "14",
-      "y": "172",
+      "x": "81",
+      "y": "68",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "font-weight": "700",
-      "fill": "var(--color-ink-soft)"
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
      },
-     "text": "By date"
+     "text": "recorded value"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "14",
-      "y": "196",
+      "x": "81",
+      "y": "88",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-muted)"
+      "fill": "var(--color-warn)",
+      "text-anchor": "middle"
      },
-     "text": "first post of a new day"
+     "text": "empty"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "70",
+      "x2": "180",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,70 178,65 178,75",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "192",
+      "y": "44",
+      "width": "182",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "206",
-      "y": "172",
+      "x": "283",
+      "y": "68",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "font-weight": "700",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "wrong size"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "283",
+      "y": "88",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)",
+      "text-anchor": "middle"
+     },
+     "text": "54 reports"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "134",
+      "width": "130",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "81",
+      "y": "166",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "size as drawn"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "160",
+      "x2": "180",
+      "y2": "160",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,160 178,155 178,165",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "192",
+      "y": "134",
+      "width": "182",
+      "height": "52",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "283",
+      "y": "166",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "correct size"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "밤 발행을 기다려 그림을 보던 방식에서, 검수 페이지에서 여러 그림을 한 화면에 펼쳐 보는 방식으로 바뀐 그림.",
+  "altEn": "Checking a graphic used to mean waiting for the night run; now a review page lays out the graphic types at once.",
+  "caption": "기다림 대신 한 화면.",
+  "captionEn": "One screen instead of a wait.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "밤 발행을 기다려 한 장씩 보던 방식에서 검수 페이지에 여러 그림을 펼쳐 보는 방식으로 바뀐 그림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "34",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "그림을 확인하는 방법"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "66",
+      "width": "110",
+      "height": "74",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "92",
+      "x2": "122",
+      "y2": "92",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "112",
+      "x2": "100",
+      "y2": "112",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "170",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "밤 발행 기다림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "103",
+      "x2": "208",
+      "y2": "103",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "218,103 206,97 206,109",
       "fill": "var(--color-accent)"
-     },
-     "text": "By elapsed time"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "66",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "278",
+      "y": "66",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "326",
+      "y": "66",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "106",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "278",
+      "y": "106",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "206",
-      "y": "196",
+      "x": "290",
+      "y": "170",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-accent)"
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
      },
-     "text": "within 12 hours → stop"
+     "text": "검수 페이지 한 화면"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "From waiting for the night run to see one graphic, to a review page showing the graphic types at once"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "34",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "how graphics get checked"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "66",
+      "width": "110",
+      "height": "74",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "92",
+      "x2": "122",
+      "y2": "92",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "112",
+      "x2": "100",
+      "y2": "112",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "170",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "wait for night run"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "103",
+      "x2": "208",
+      "y2": "103",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "218,103 206,97 206,109",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "66",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "278",
+      "y": "66",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "326",
+      "y": "66",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "106",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "278",
+      "y": "106",
+      "width": "40",
+      "height": "30",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "170",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "review page, one screen"
     }
    ]
   }

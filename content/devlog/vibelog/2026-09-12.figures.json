@@ -1,0 +1,1730 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "요청 27번 중 한 번만 늦어도 사이트 전체가 멈췄으나, 요청을 19번으로 줄이고 늦으면 포기하도록 바꿨다.",
+  "altEn": "One slow response out of 27 requests stopped the whole site; the requests were cut to 19 with a cutoff and a fallback.",
+  "caption": "요청 27번을 19번으로 줄이고, 늦으면 포기하게 했습니다.",
+  "captionEn": "27 requests trimmed to 19, with a cutoff when they drag on.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 236",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "요청 27번에서 19번으로 줄이고 늦으면 포기하게 한 변화"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그림 9장 × 글씨체 3번 = 27번"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-line-strong)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "33",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "46",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "59",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "72",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "85",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "98",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "111",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "124",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "137",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "150",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "163",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "176",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "202",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "215",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "228",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "241",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "254",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "267",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "280",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "293",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "306",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "319",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "332",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "345",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "358",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "189",
+      "y": "34",
+      "width": "8",
+      "height": "24",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "80",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "1장만 늦어도 사이트 전체 실패"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "94",
+      "x2": "195",
+      "y2": "114",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,112 201,112 195,122",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "146",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "쓰는 글자만 받아 19번"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-accent)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "33",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "46",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "59",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "72",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "85",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "98",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "111",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "124",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "137",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "150",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "163",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "176",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "189",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "202",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "215",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "228",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "241",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "254",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "200",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "8초 넘으면 3번까지 다시 시도"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "224",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "끝내 못 받으면 그 글씨체는 빼고"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 236",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "From 27 requests down to 19, with a cutoff when a fetch drags on"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "9 images × 3 fetches = 27"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-line-strong)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "33",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "46",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "59",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "72",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "85",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "98",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "111",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "124",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "137",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "150",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "163",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "176",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "202",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "215",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "228",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "241",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "254",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "267",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "280",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "293",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "306",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "319",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "332",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "345",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "358",
+        "y": "38",
+        "width": "8",
+        "height": "16"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "189",
+      "y": "34",
+      "width": "8",
+      "height": "24",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "80",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "one slow fetch → whole site fails"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "94",
+      "x2": "195",
+      "y2": "114",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,112 201,112 195,122",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "146",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "only the characters used = 19"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-accent)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "33",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "46",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "59",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "72",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "85",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "98",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "111",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "124",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "137",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "150",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "163",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "176",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "189",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "202",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "215",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "228",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "241",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "254",
+        "y": "158",
+        "width": "8",
+        "height": "16"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "200",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "cutoff at 8s, up to 3 retries"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "224",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "still failing → draw without it"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "프로젝트 이름과 날짜가 드러나던 긴 주소가 7자리 짧은 주소로 바뀌고, 옛 주소는 자동으로 넘어간다.",
+  "altEn": "A long address spelling out project name and date becomes a short 7-character address, with old links redirecting automatically.",
+  "caption": "긴 주소가 7자리로 짧아졌습니다.",
+  "captionEn": "Long addresses became 7 characters.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "긴 글 주소가 7자리 짧은 주소로 바뀐 모습"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "60",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "/프로젝트이름/날짜"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "84",
+      "x2": "195",
+      "y2": "106",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,104 201,104 195,114",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "212",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "자동 이동"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "148",
+      "font-family": "var(--font-mono)",
+      "font-size": "18",
+      "fill": "var(--color-accent)"
+     },
+     "text": "/afkdxzq"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "354",
+      "y": "148",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "7자리"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A long post address becomes a short 7-character one"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "60",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "/project-name/date"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "84",
+      "x2": "195",
+      "y2": "106",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,104 201,104 195,114",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "212",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "auto redirect"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "148",
+      "font-family": "var(--font-mono)",
+      "font-size": "18",
+      "fill": "var(--color-accent)"
+     },
+     "text": "/afkdxzq"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "354",
+      "y": "148",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "7 chars"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "방문자마다 직접 물어보다 1시간에 60번 제한에 걸려 숫자가 21에 멈췄고, 이제는 서버가 대신 물어본다.",
+  "altEn": "Visitors asking directly hit the limit of 60 times an hour and the number froze at 21; now the server asks for everyone.",
+  "caption": "각자 묻던 것을 서버가 대신 세도록 바꿨습니다.",
+  "captionEn": "Instead of each visitor asking, the server counts for everyone.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 252",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "방문자 직접 요청에서 서버가 대신 세는 방식으로의 변화"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전 · 방문자마다 직접 물어봄"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "36",
+      "cy": "62",
+      "r": "9",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "62",
+      "cy": "62",
+      "r": "9",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "88",
+      "cy": "62",
+      "r": "9",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "94",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "방문자"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "106",
+      "y1": "62",
+      "x2": "228",
+      "y2": "62",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "228,56 240,62 228,68",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "42",
+      "width": "124",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "308",
+      "y": "67",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "1시간 60번"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "120",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "거절 → 화면은 21에 멈춤"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "138",
+      "x2": "370",
+      "y2": "138",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "166",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "후 · 서버가 대신 셈"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "180",
+      "width": "100",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "128",
+      "y1": "200",
+      "x2": "228",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "228,194 240,200 228,206",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "178",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "5분에 한 번"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "180",
+      "width": "124",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "308",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "1시간 60번"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "244",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "방문자가 늘어도 요청 수는 그대로"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 252",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "From every visitor asking directly to the server counting for everyone"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Before · every visitor asks"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "36",
+      "cy": "62",
+      "r": "9",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "62",
+      "cy": "62",
+      "r": "9",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "88",
+      "cy": "62",
+      "r": "9",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "94",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "visitors"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "106",
+      "y1": "62",
+      "x2": "228",
+      "y2": "62",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "228,56 240,62 228,68",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "42",
+      "width": "124",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "308",
+      "y": "67",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "60 an hour"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "120",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "refused → frozen at 21"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "138",
+      "x2": "370",
+      "y2": "138",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "166",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "After · the server counts"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "180",
+      "width": "100",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "server"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "128",
+      "y1": "200",
+      "x2": "228",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "228,194 240,200 228,206",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "178",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "once every 5 min"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "180",
+      "width": "124",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "308",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "60 an hour"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "244",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "more visitors, same requests"
+    }
+   ]
+  }
+ }
+]
