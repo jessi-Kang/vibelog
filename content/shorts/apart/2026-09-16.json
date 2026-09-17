@@ -8,22 +8,84 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "가짜 이름에 사람 손이 티가 났습니다.",
-      "en": "A human fingerprint showed in the fake names.",
-      "keywords": [],
+      "ko": "가짜 이름은 빈칸만 봐도 티가 났습니다.",
+      "en": "You could spot the fakes just by the blank space.",
+      "keywords": [
+        "빈칸만"
+      ],
       "keywordsEn": [
-        "human fingerprint"
+        "blank space"
       ]
     },
     {
-      "scene": "fail",
-      "ko": "가짜는 절반이 띄어쓰기였습니다.",
-      "en": "Half the fakes had a space in the name.",
+      "scene": "build",
+      "ko": "규칙 대신 실제 이름의 모양을 흉내 냈습니다.",
+      "en": "Instead of writing rules, I had it copy the shape of real names.",
       "keywords": [
-        "절반이"
+        "실제 이름의 모양을"
       ],
       "keywordsEn": [
-        "Half"
+        "the shape of real names"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "손으로 정한 규칙",
+          "빈칸이 티가 남",
+          "실제 이름 흉내",
+          "비율 44.5%"
+        ],
+        "labelsEn": [
+          "hand-written rules",
+          "blank gives it away",
+          "copy real names",
+          "44.5%"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "밤마다 가짜 이름 60개가 새로 채워집니다.",
+      "en": "Every night 60 new fake names get added.",
+      "keywords": [
+        "60개가"
+      ],
+      "keywordsEn": [
+        "Every night",
+        "60"
+      ],
+      "stat": "60개",
+      "statEn": "60 names",
+      "motif": "loop"
+    },
+    {
+      "scene": "demo",
+      "ko": "퀴즈에 쓰는 가짜 이름은 564개가 됐습니다.",
+      "en": "The pool of fakes used in the quiz is now 564.",
+      "keywords": [
+        "564개가"
+      ],
+      "keywordsEn": [
+        "564"
+      ],
+      "stat": "564개",
+      "statEn": "564 names",
+      "screen": "/f",
+      "find": "넷 중 진짜는 하나",
+      "findEn": "one of the four is real",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "가짜 이름의 49.6%에 빈칸이 있었습니다.",
+      "en": "49.6% of the fake names had a blank in them.",
+      "keywords": [
+        "49.6%에",
+        "빈칸이"
+      ],
+      "keywordsEn": [
+        "49.6%",
+        "a blank"
       ],
       "diagram": {
         "kind": "numberline",
@@ -41,128 +103,56 @@
     },
     {
       "scene": "fail",
-      "ko": "이름을 안 읽고 빈칸만 세도 76%를 맞혔습니다.",
-      "en": "Just checking for a blank was right 76% of the time.",
+      "ko": "빈칸만 세도 76%를 맞힐 수 있었습니다.",
+      "en": "Just counting blanks got you 76% right.",
       "keywords": [
-        "빈칸만",
         "76%를"
       ],
       "keywordsEn": [
-        "a blank",
         "76%"
       ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "이름 하나",
-          "이름을 읽는다",
-          "76%를 맞힌다",
-          "이름 읽기",
-          "빈칸 세기"
-        ],
-        "labelsEn": [
-          "one name",
-          "read the name",
-          "76% correct",
-          "read it",
-          "count blanks"
-        ],
-        "pick": 2
-      }
-    },
-    {
-      "scene": "build",
-      "ko": "이제는 실제 이름의 모양을 흉내 내서 짓습니다.",
-      "en": "Now it copies the shape of real names instead.",
-      "keywords": [
-        "실제 이름의 모양을"
-      ],
-      "keywordsEn": [
-        "real names"
-      ],
-      "diagram": {
-        "kind": "beforeafter",
-        "labels": [
-          "손으로 정한 규칙",
-          "티가 남",
-          "실제 이름대로",
-          "44.5%"
-        ],
-        "labelsEn": [
-          "hand-picked rules",
-          "obvious tell",
-          "copy real names",
-          "44.5%"
-        ]
-      }
-    },
-    {
-      "scene": "build",
-      "ko": "밤마다 가짜 이름도 60개씩 같이 채워집니다.",
-      "en": "Every night 60 more fakes are added.",
-      "keywords": [
-        "60개씩"
-      ],
-      "keywordsEn": [
-        "60"
-      ],
-      "stat": "60개",
-      "statEn": "60 names",
-      "motif": "loop"
-    },
-    {
-      "scene": "demo",
-      "ko": "새 이름들은 곧바로 문제에 나옵니다.",
-      "en": "The new names show up in the quiz right away.",
-      "keywords": [
-        "곧바로"
-      ],
-      "keywordsEn": [
-        "right away"
-      ],
+      "stat": "76%",
+      "statEn": "76%",
       "screen": "/o",
       "find": "이름 하나를 보고 진짜/가짜",
       "findEn": "one name, real or fake",
       "shot": "focus"
     },
     {
-      "scene": "demo",
-      "ko": "넷 중 진짜를 찾는 문제에도 섞여 있습니다.",
-      "en": "They also appear in the round where one of four is real.",
-      "keywords": [
-        "넷 중 진짜를"
-      ],
-      "keywordsEn": [
-        "one of four"
-      ],
-      "screen": "/f",
-      "find": "넷 중 진짜는 하나",
-      "findEn": "one of four is real",
-      "shot": "focus"
-    },
-    {
       "scene": "next",
-      "ko": "가짜가 2,000개가 되면 자동 생성은 멈춥니다.",
-      "en": "Generation stops once there are 2,000 fakes.",
+      "ko": "가짜 이름이 2,000개가 되면 멈춥니다.",
+      "en": "Once there are 2,000 fakes, it stops.",
       "keywords": [
         "2,000개가"
       ],
       "keywordsEn": [
-        "2,000"
+        "2,000 fakes"
       ],
       "stat": "2,000개",
       "statEn": "2,000 names",
       "motif": "limit"
     },
     {
-      "scene": "end",
-      "ko": "그때까지 매일 밤 비율을 지켜봅니다.",
-      "en": "Until then I watch the ratio every night.",
+      "scene": "next",
+      "ko": "그때까지 매일 밤 띄어쓰기 비율을 보고받습니다.",
+      "en": "Until then I get the spacing ratio reported every night.",
       "keywords": [
-        "매일 밤"
+        "띄어쓰기 비율을"
       ],
       "keywordsEn": [
-        "every night"
+        "spacing ratio"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 빈칸은 힌트가 아닙니다.",
+      "en": "The blank space is no longer a hint.",
+      "keywords": [
+        "빈칸은"
+      ],
+      "keywordsEn": [
+        "no longer a hint"
       ]
     }
   ],
@@ -171,12 +161,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "빈칸만 봐도 알았다",
-    "titleEn": "The blank gave it away",
-    "before": "가짜는 절반이 띄어쓰기, 실제 단지는 15.9%",
-    "after": "실제 이름 모양을 흉내 내 44.5%로 내려왔습니다",
-    "beforeEn": "49.6% of fakes had a space; real ones, 15.9%",
-    "afterEn": "Copying real name shapes brought it down to 44.5%"
+    "title": "빈칸이 정답을 알려줬다",
+    "titleEn": "The blank space gave it away",
+    "before": "가짜 이름의 49.6%에 띄어쓰기가 있었습니다",
+    "after": "실제 이름을 흉내 내 44.5%로 내려왔습니다",
+    "beforeEn": "49.6% of fake names had a space in them",
+    "afterEn": "Copying real names brought it down to 44.5%"
   },
   "commits": [
     [
@@ -201,22 +191,22 @@
   "commitCount": 2,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "가짜 아파트 이름을 컴퓨터가 직접 짓게 했습니다. 이름을 읽지 않고 띄어쓰기만 세도 76%를 맞힐 수 있던 문제를 고쳤습니다.",
-    "en": "The computer now invents the fake apartment names itself. You used to be right 76% of the time just by checking for a space — not anymore."
+    "ko": "가짜 아파트 이름을 컴퓨터가 직접 짓게 했습니다. 손으로 정한 작명 규칙은 띄어쓰기만 세도 티가 나서, 실제 단지 이름의 모양을 흉내 내게 바꿨습니다.",
+    "en": "I let the computer invent the fake apartment names. Hand-written naming rules showed through in the spacing alone, so now it copies the shape of real complex names."
   },
   "hashtags": [
-    "#개발일지",
     "#아파트감별사",
-    "#vibelog",
-    "#데이터",
+    "#개발일지",
     "#devlog",
-    "#buildinpublic",
-    "#indiedev"
+    "#vibecoding",
+    "#퀴즈게임",
+    "#데이터",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.poster.jpg?v=mu46t0ei",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.ko.mp4?v=mu46t2au",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.en.poster.jpg?v=mu46u396",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.en.mp4?v=mu46u4qe"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.poster.jpg?v=mu4xepcp",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.ko.mp4?v=mu4xer2t",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.en.poster.jpg?v=mu4xg1bx",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-16.en.mp4?v=mu4xg3jo"
   }
 }

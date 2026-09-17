@@ -1,16 +1,16 @@
 {
   "screens": [
     {
-      "path": "/o",
-      "find": "one name, real or fake",
-      "start": 0.98,
-      "end": 14.96
+      "path": "/f",
+      "find": "one of the four is real",
+      "start": 0.85,
+      "end": 17.71
     },
     {
-      "path": "/f",
-      "find": "one of four is real",
-      "start": 15.89,
-      "end": 29.88
+      "path": "/o",
+      "find": "one name, real or fake",
+      "start": 18.59,
+      "end": 35.35
     }
   ]
 }
