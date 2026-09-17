@@ -1,0 +1,452 @@
+{
+  "lang": "en",
+  "duration": 30.929,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.148,
+      "words": [
+        {
+          "text": "Real",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "usage",
+          "start": 0.337,
+          "end": 0.639
+        },
+        {
+          "text": "was",
+          "start": 0.673,
+          "end": 0.778
+        },
+        {
+          "text": "3",
+          "start": 0.871,
+          "end": 1.045
+        },
+        {
+          "text": "times",
+          "start": 1.126,
+          "end": 1.358
+        },
+        {
+          "text": "my",
+          "start": 1.416,
+          "end": 1.498
+        },
+        {
+          "text": "estimate.",
+          "start": 1.556,
+          "end": 2.148
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.589,
+      "end": 5.12,
+      "words": [
+        {
+          "text": "Behind",
+          "start": 2.589,
+          "end": 2.902
+        },
+        {
+          "text": "each",
+          "start": 2.961,
+          "end": 3.123
+        },
+        {
+          "text": "drawing",
+          "start": 3.158,
+          "end": 3.471
+        },
+        {
+          "text": "there",
+          "start": 3.529,
+          "end": 3.68
+        },
+        {
+          "text": "was",
+          "start": 3.715,
+          "end": 3.808
+        },
+        {
+          "text": "a",
+          "start": 3.855,
+          "end": 3.878
+        },
+        {
+          "text": "hidden",
+          "start": 3.936,
+          "end": 4.203
+        },
+        {
+          "text": "thinking",
+          "start": 4.249,
+          "end": 4.563
+        },
+        {
+          "text": "stage.",
+          "start": 4.609,
+          "end": 5.12
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.561,
+      "end": 8.487,
+      "words": [
+        {
+          "text": "Asking",
+          "start": 5.561,
+          "end": 5.921
+        },
+        {
+          "text": "for",
+          "start": 5.979,
+          "end": 6.118
+        },
+        {
+          "text": "a",
+          "start": 6.153,
+          "end": 6.177
+        },
+        {
+          "text": "redraw",
+          "start": 6.235,
+          "end": 6.606
+        },
+        {
+          "text": "sends",
+          "start": 6.687,
+          "end": 6.92
+        },
+        {
+          "text": "the",
+          "start": 6.954,
+          "end": 7.036
+        },
+        {
+          "text": "whole",
+          "start": 7.094,
+          "end": 7.349
+        },
+        {
+          "text": "first",
+          "start": 7.396,
+          "end": 7.639
+        },
+        {
+          "text": "answer",
+          "start": 7.686,
+          "end": 7.953
+        },
+        {
+          "text": "again.",
+          "start": 8.011,
+          "end": 8.487
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 9.091,
+      "end": 11.366,
+      "words": [
+        {
+          "text": "So",
+          "start": 9.091,
+          "end": 9.218
+        },
+        {
+          "text": "I",
+          "start": 9.288,
+          "end": 9.311
+        },
+        {
+          "text": "started",
+          "start": 9.381,
+          "end": 9.694
+        },
+        {
+          "text": "recording",
+          "start": 9.741,
+          "end": 10.124
+        },
+        {
+          "text": "the",
+          "start": 10.17,
+          "end": 10.24
+        },
+        {
+          "text": "real",
+          "start": 10.298,
+          "end": 10.461
+        },
+        {
+          "text": "numbers",
+          "start": 10.519,
+          "end": 10.797
+        },
+        {
+          "text": "instead.",
+          "start": 10.844,
+          "end": 11.366
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 11.807,
+      "end": 14.454,
+      "words": [
+        {
+          "text": "I",
+          "start": 11.807,
+          "end": 11.877
+        },
+        {
+          "text": "summed",
+          "start": 12.005,
+          "end": 12.272
+        },
+        {
+          "text": "it",
+          "start": 12.307,
+          "end": 12.376
+        },
+        {
+          "text": "up",
+          "start": 12.434,
+          "end": 12.527
+        },
+        {
+          "text": "per",
+          "start": 12.585,
+          "end": 12.713
+        },
+        {
+          "text": "post",
+          "start": 12.794,
+          "end": 13.096
+        },
+        {
+          "text": "and",
+          "start": 13.142,
+          "end": 13.212
+        },
+        {
+          "text": "put",
+          "start": 13.27,
+          "end": 13.409
+        },
+        {
+          "text": "it",
+          "start": 13.444,
+          "end": 13.514
+        },
+        {
+          "text": "on",
+          "start": 13.56,
+          "end": 13.618
+        },
+        {
+          "text": "the",
+          "start": 13.653,
+          "end": 13.723
+        },
+        {
+          "text": "home",
+          "start": 13.769,
+          "end": 13.943
+        },
+        {
+          "text": "page.",
+          "start": 13.967,
+          "end": 14.454
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 15.151,
+      "end": 23.603,
+      "words": [
+        {
+          "text": "Yesterday's",
+          "start": 15.151,
+          "end": 15.673
+        },
+        {
+          "text": "post:",
+          "start": 15.731,
+          "end": 16.265
+        },
+        {
+          "text": "one",
+          "start": 16.707,
+          "end": 16.892
+        },
+        {
+          "text": "illustration,",
+          "start": 16.927,
+          "end": 17.763
+        },
+        {
+          "text": "3,445",
+          "start": 18.146,
+          "end": 20.074
+        },
+        {
+          "text": "in",
+          "start": 20.155,
+          "end": 20.306
+        },
+        {
+          "text": "and",
+          "start": 20.689,
+          "end": 20.909
+        },
+        {
+          "text": "21,387",
+          "start": 21.002,
+          "end": 23.185
+        },
+        {
+          "text": "out.",
+          "start": 23.255,
+          "end": 23.603
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 24.207,
+      "end": 27.771,
+      "words": [
+        {
+          "text": "Once",
+          "start": 24.207,
+          "end": 24.474
+        },
+        {
+          "text": "records",
+          "start": 24.52,
+          "end": 24.857
+        },
+        {
+          "text": "pile",
+          "start": 24.915,
+          "end": 25.17
+        },
+        {
+          "text": "up,",
+          "start": 25.217,
+          "end": 25.577
+        },
+        {
+          "text": "I",
+          "start": 25.786,
+          "end": 25.832
+        },
+        {
+          "text": "want",
+          "start": 25.913,
+          "end": 26.053
+        },
+        {
+          "text": "to",
+          "start": 26.076,
+          "end": 26.122
+        },
+        {
+          "text": "compare",
+          "start": 26.18,
+          "end": 26.471
+        },
+        {
+          "text": "the",
+          "start": 26.505,
+          "end": 26.575
+        },
+        {
+          "text": "trend",
+          "start": 26.622,
+          "end": 26.9
+        },
+        {
+          "text": "over",
+          "start": 26.958,
+          "end": 27.132
+        },
+        {
+          "text": "days.",
+          "start": 27.179,
+          "end": 27.771
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 28.212,
+      "end": 30.929,
+      "words": [
+        {
+          "text": "Now",
+          "start": 28.212,
+          "end": 28.468
+        },
+        {
+          "text": "I",
+          "start": 28.584,
+          "end": 28.63
+        },
+        {
+          "text": "can",
+          "start": 28.711,
+          "end": 28.827
+        },
+        {
+          "text": "see",
+          "start": 28.874,
+          "end": 28.99
+        },
+        {
+          "text": "what",
+          "start": 29.025,
+          "end": 29.141
+        },
+        {
+          "text": "one",
+          "start": 29.187,
+          "end": 29.338
+        },
+        {
+          "text": "post",
+          "start": 29.373,
+          "end": 29.64
+        },
+        {
+          "text": "costs",
+          "start": 29.698,
+          "end": 30.035
+        },
+        {
+          "text": "every",
+          "start": 30.093,
+          "end": 30.279
+        },
+        {
+          "text": "night.",
+          "start": 30.325,
+          "end": 30.929
+        }
+      ]
+    }
+  ]
+}
