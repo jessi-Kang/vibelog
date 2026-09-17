@@ -12,10 +12,10 @@
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
     "lastActivity": "2026-09-17",
-    "weekCommits": 211,
-    "todayCommits": 2,
-    "totalCommits": 352,
-    "countsDate": "2026-09-17"
+    "weekCommits": 184,
+    "todayCommits": 0,
+    "totalCommits": 353,
+    "countsDate": "2026-09-18"
   },
   {
     "slug": "apart",
@@ -30,10 +30,10 @@
     "homepage": "https://apt-game.app",
     "language": "TypeScript",
     "lastActivity": "2026-09-15",
-    "weekCommits": 174,
+    "weekCommits": 150,
     "todayCommits": 0,
     "totalCommits": 189,
-    "countsDate": "2026-09-17",
+    "countsDate": "2026-09-18",
     "theme": "paper"
   }
 ]
