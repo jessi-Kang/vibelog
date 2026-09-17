@@ -1,0 +1,190 @@
+{
+  "template": "fail",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-17",
+  "day": 10,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "실제 사용량이 제 짐작의 3배였습니다",
+      "en": "Real usage was 3 times my estimate.",
+      "keywords": [
+        "3배였습니다"
+      ],
+      "keywordsEn": [
+        "3 times"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "그림 뒤에 생각하는 과정이 숨어 있었습니다",
+      "en": "Behind each drawing there was a hidden thinking stage.",
+      "keywords": [
+        "생각하는 과정이"
+      ],
+      "keywordsEn": [
+        "hidden thinking stage"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "그림 한 장",
+          "완성된 그림",
+          "생각하는 과정",
+          "보이는 몫",
+          "숨은 몫 3~4배"
+        ],
+        "labelsEn": [
+          "one illustration",
+          "finished image",
+          "thinking stage",
+          "visible part",
+          "hidden 3-4x"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "다시 그리게 하면 첫 답을 통째로 다시 보냅니다",
+      "en": "Asking for a redraw sends the whole first answer again.",
+      "keywords": [
+        "통째로"
+      ],
+      "keywordsEn": [
+        "whole first answer"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "한 번 그리면",
+          "한 몫",
+          "다시 그리면",
+          "3~5배"
+        ],
+        "labelsEn": [
+          "draw once",
+          "one share",
+          "redraw",
+          "3-5x"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 실제로 쓴 양을 그대로 받아 적었습니다",
+      "en": "So I started recording the real numbers instead.",
+      "keywords": [
+        "실제로 쓴 양을"
+      ],
+      "keywordsEn": [
+        "the real numbers"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "build",
+      "ko": "글 한 편에 들어간 양을 합쳐 홈에 붙였습니다",
+      "en": "I summed it up per post and put it on the home page.",
+      "keywords": [
+        "합쳐",
+        "홈에"
+      ],
+      "keywordsEn": [
+        "per post",
+        "home page"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "어제 글은 그림 1장에 입력 3,445, 출력 21,387입니다",
+      "en": "Yesterday's post: one illustration, 3,445 in and 21,387 out.",
+      "keywords": [
+        "그림 1장에"
+      ],
+      "keywordsEn": [
+        "21,387 out"
+      ],
+      "stat": "21,387",
+      "statEn": "21,387 out",
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "recent runs",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "기록이 쌓이면 며칠치 흐름을 비교해 보려 합니다",
+      "en": "Once records pile up, I want to compare the trend over days.",
+      "keywords": [
+        "쌓이면",
+        "흐름을"
+      ],
+      "keywordsEn": [
+        "pile up",
+        "the trend"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 글 한 편 값을 밤마다 눈으로 봅니다",
+      "en": "Now I can see what one post costs every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "짐작이 3배 틀렸습니다",
+    "titleEn": "My estimate was off by 3x",
+    "before": "밖에서 어림으로 센 사용량",
+    "after": "실제로 쓴 양을 그대로 기록",
+    "beforeEn": "Usage guessed from the outside",
+    "afterEn": "Record the real usage as it is"
+  },
+  "commits": [
+    [
+      "bd5c215",
+      "삽화 토큰 합을 실행 기록(run.json)에도 남긴다 — 홈의 \"지난 실행\"에서 비용이 보인다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "bd5c215",
+      "feat: log illustration token sum to run.json — show cost in home's \"past runs\""
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "그림 한 장에 든 AI 사용량을 홈 화면에서 바로 볼 수 있게 했습니다. 어림으로 잡아 둔 값은 실제의 3분의 1밖에 안 됐습니다.",
+    "en": "The AI usage for each illustration now shows on the home page. My rough estimate turned out to be only a third of the real number."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발로그",
+    "#devlog",
+    "#AI",
+    "#자동화",
+    "#buildinpublic",
+    "#쇼츠"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-17.poster.jpg?v=mu5lue5j",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-17.ko.mp4?v=mu5lugx3",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-17.en.poster.jpg?v=mu5lw0q1",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-17.en.mp4?v=mu5lw2ii"
+  }
+}

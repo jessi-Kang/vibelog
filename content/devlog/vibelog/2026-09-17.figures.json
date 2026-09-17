@@ -1,0 +1,808 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "실행 중 기록은 2주 뒤 지워지고 홈 기록은 계속 남는 것을 보여 주는 두 개의 막대",
+  "altEn": "Two bars showing run logs ending after 2 weeks while the home record keeps going",
+  "caption": "한쪽은 2주에서 끊기고, 한쪽은 남습니다.",
+  "captionEn": "One stops at 2 weeks, the other stays.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "실행 중 기록은 2주 뒤 지워지고 홈 기록은 그대로 남는다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "206",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "2주"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "206",
+      "y1": "38",
+      "x2": "206",
+      "y2": "148",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "52",
+      "width": "190",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실행 중 기록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "222",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지워짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "102",
+      "width": "344",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "홈 기록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "346",
+      "y": "124",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "남음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Run logs are deleted after 2 weeks while the home record stays"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "206",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "2 weeks"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "206",
+      "y1": "38",
+      "x2": "206",
+      "y2": "148",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "52",
+      "width": "190",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "run logs"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "222",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "deleted"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "102",
+      "width": "344",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "home record"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "346",
+      "y": "124",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "stays"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "어림한 양이 실제의 3분의 1이었고, 빠진 것은 생각하는 과정과 다시 그리기였다는 그림",
+  "altEn": "A short estimate bar next to a real bar three times longer, with the two missing parts listed",
+  "caption": "짧은 쪽이 제 어림, 긴 쪽이 실제입니다.",
+  "captionEn": "The short bar is my guess, the long one is reality.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 252",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "어림한 사용량은 실제의 3분의 1이었고, 빠진 것은 생각하는 과정과 다시 그리기였다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "어림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "40",
+      "width": "100",
+      "height": "28",
+      "rx": "5",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "128",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "3분의 1"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "96",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실제"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "104",
+      "width": "300",
+      "height": "28",
+      "rx": "5",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "16",
+      "y1": "158",
+      "x2": "374",
+      "y2": "158",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "184",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "빠진 것"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "212",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "생각하는 과정 3~4배"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "238",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다시 그리기 입력 3~5배"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 252",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The estimate was a third of the real number; the missing parts were the thinking stage and redraws"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "estimate"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "40",
+      "width": "100",
+      "height": "28",
+      "rx": "5",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "128",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "a third"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "96",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "real"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "104",
+      "width": "300",
+      "height": "28",
+      "rx": "5",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "16",
+      "y1": "158",
+      "x2": "374",
+      "y2": "158",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "184",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "what was missing"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "212",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "thinking stage, 3 to 4 times"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "238",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "redraw input, 3 to 5 times"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "실행 중 흘러가던 기록이 글 단위로 합쳐져 홈의 지난 실행 줄에 붙는 그림",
+  "altEn": "Usage that scrolled by in run logs is summed per post and attached to the home page's recent runs line",
+  "caption": "흘러가던 숫자가 글 한 편의 줄로 모입니다.",
+  "captionEn": "Numbers that scrolled by are gathered into one line per post.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "실행 기록에 흩어져 있던 사용량이 글 단위로 합쳐져 홈에 붙는다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "실행 중 기록"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "38",
+      "width": "136",
+      "height": "112",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "56",
+      "x2": "138",
+      "y2": "56",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "70",
+      "x2": "122",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "84",
+      "x2": "138",
+      "y2": "84",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "98",
+      "x2": "110",
+      "y2": "98",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "112",
+      "x2": "138",
+      "y2": "112",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "126",
+      "x2": "126",
+      "y2": "126",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "158",
+      "y1": "94",
+      "x2": "206",
+      "y2": "94",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,94 204,89 204,99",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "374",
+      "y": "26",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "홈 · 지난 실행"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "222",
+      "y": "38",
+      "width": "152",
+      "height": "112",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "238",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그림 한 편"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "238",
+      "y": "100",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "입력 3,445"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "238",
+      "y": "126",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "출력 21,387"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Usage scattered across run logs is summed per post and shown on the home page"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "run logs"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "38",
+      "width": "136",
+      "height": "112",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "56",
+      "x2": "138",
+      "y2": "56",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "70",
+      "x2": "122",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "84",
+      "x2": "138",
+      "y2": "84",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "98",
+      "x2": "110",
+      "y2": "98",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "112",
+      "x2": "138",
+      "y2": "112",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "126",
+      "x2": "126",
+      "y2": "126",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "158",
+      "y1": "94",
+      "x2": "206",
+      "y2": "94",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,94 204,89 204,99",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "374",
+      "y": "26",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "home · recent runs"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "222",
+      "y": "38",
+      "width": "152",
+      "height": "112",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "238",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "one illustration"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "238",
+      "y": "100",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "in 3,445"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "238",
+      "y": "126",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "out 21,387"
+    }
+   ]
+  }
+ }
+]
