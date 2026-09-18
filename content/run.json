@@ -1,27 +1,12 @@
 {
-  "at": "2026-09-17T14:09:39.362Z",
+  "at": "2026-09-18T14:01:39.667Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 2 repos, 1 active"
-    },
-    {
-      "text": "generate · vibelog/2026-09-17.md (ko, en)"
-    },
-    {
-      "text": "figures  · vibelog/2026-09-17 3장 · 토큰 in 10,327 · out 10,840",
-      "textEn": "figures  · vibelog/2026-09-17 3 figures · tokens in 10,327 · out 10,840"
-    },
-    {
-      "text": "shorts   · vibelog/2026-09-17 (ko, en)"
-    },
-    {
-      "text": "warn     · vibelog/2026-09-17 데모 화면 중복 — 같은 자리를 두 번 보여줍니다 (/, 정류장 3개)",
-      "textEn": "warn     · vibelog/2026-09-17 duplicate demo screen — same view shown twice (/, 3 stops)",
-      "kind": "fail"
+      "text": "collect  · 2 repos, 0 active"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
