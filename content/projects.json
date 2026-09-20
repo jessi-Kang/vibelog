@@ -1,5 +1,29 @@
 [
   {
+    "slug": "Anchor",
+    "name": "Anchor",
+    "description": "기존과 다른 언어학습 앱",
+    "descriptionEn": "A language learning app with a different approach",
+    "status": "building",
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Neon Postgres",
+      "Neon Auth",
+      "Vercel",
+      "Claude API",
+      "ElevenLabs"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/Anchor",
+    "language": "HTML",
+    "lastActivity": "2026-09-20",
+    "weekCommits": 5,
+    "todayCommits": 5,
+    "totalCommits": 5,
+    "countsDate": "2026-09-20",
+    "theme": "blueprint"
+  },
+  {
     "slug": "vibelog",
     "name": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
@@ -12,9 +36,9 @@
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
     "lastActivity": "2026-09-20",
-    "weekCommits": 89,
-    "todayCommits": 15,
-    "totalCommits": 389,
+    "weekCommits": 82,
+    "todayCommits": 16,
+    "totalCommits": 390,
     "countsDate": "2026-09-20"
   },
   {
@@ -30,7 +54,7 @@
     "homepage": "https://apt-game.app",
     "language": "TypeScript",
     "lastActivity": "2026-09-15",
-    "weekCommits": 24,
+    "weekCommits": 11,
     "todayCommits": 0,
     "totalCommits": 189,
     "countsDate": "2026-09-20",
