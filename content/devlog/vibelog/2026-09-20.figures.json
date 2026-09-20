@@ -1,0 +1,604 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "같은 지시문을 처음 보낼 때와 다음부터 드는 몫을 막대 길이로 비교한 그림",
+  "altEn": "Two bars comparing the cost of the same instructions on the first call and on later calls",
+  "caption": "같은 지시문은 한 번만 보내고, 다음부터는 10분의 1 몫",
+  "captionEn": "The same instructions are sent once; later calls cost a tenth",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "같은 지시문을 재사용하면 다음부터는 10분의 1 몫이 된다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "매일 밤 보내는 같은 지시문"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "52",
+      "width": "320",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "75",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "처음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "110",
+      "width": "32",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "133",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다음부터 10분의 1"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Reusing the same instructions makes later calls cost a tenth"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "The same nightly instructions"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "52",
+      "width": "320",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "32",
+      "y": "75",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "first call"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "110",
+      "width": "32",
+      "height": "34",
+      "rx": "6",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "133",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "after that: a tenth"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "어림짐작한 비용 막대와 실제로 재 본 비용 막대를 나란히 비교한 그림",
+  "altEn": "A short bar for the guessed cost next to a much longer bar for the measured cost",
+  "caption": "짐작한 비용과 재 본 비용은 3배 가까이 달랐습니다",
+  "captionEn": "The guess was off from the measurement by nearly 3 times",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "짐작한 비용보다 재 본 비용이 3배 가까이 컸다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "짐작"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "40",
+      "width": "70",
+      "height": "26",
+      "rx": "5",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "재 본 값"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "100",
+      "width": "250",
+      "height": "26",
+      "rx": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "360",
+      "y": "156",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "3배 가까이"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The measured cost was nearly 3 times the guess"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "guess"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "130",
+      "y": "40",
+      "width": "60",
+      "height": "26",
+      "rx": "5",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "measured"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "130",
+      "y": "100",
+      "width": "230",
+      "height": "26",
+      "rx": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "360",
+      "y": "156",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "nearly 3 times"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "밤마다 도는 빈 실행들이 홈 화면 기록을 덮어쓰고, 이제는 바로 멈춘다는 흐름도",
+  "altEn": "Flow showing empty nightly runs overwriting the home record, and the new early stop",
+  "caption": "쓸 글이 없는 밤에도 계속 돌아 어젯밤 기록을 덮어썼습니다",
+  "captionEn": "With nothing to publish, the runs kept going and erased last night's line",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "밤마다 6~8번 도는 빈 실행이 홈 화면 기록을 덮어썼고, 이제는 바로 멈춘다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "밤마다 6~8번"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "48",
+      "cy": "62",
+      "r": "14",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "96",
+      "cy": "62",
+      "r": "14",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "144",
+      "cy": "62",
+      "r": "14",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "176",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "빈 실행"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "96",
+      "y1": "84",
+      "x2": "96",
+      "y2": "104",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "96,112 91,102 101,102",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "width": "350",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "148",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "홈 화면 기록이 덮어써짐"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "96",
+      "y1": "172",
+      "x2": "96",
+      "y2": "190",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "96,198 91,188 101,188",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "204",
+      "width": "350",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이제: 정규 실행이면 멈춤"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Empty runs 6 to 8 times a night overwrote the home record; now it stops early"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "6~8 times a night"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "48",
+      "cy": "62",
+      "r": "14",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "96",
+      "cy": "62",
+      "r": "14",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "144",
+      "cy": "62",
+      "r": "14",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "176",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "empty runs"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "96",
+      "y1": "84",
+      "x2": "96",
+      "y2": "104",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "96,112 91,102 101,102",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "118",
+      "width": "350",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "148",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "home record overwritten"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "96",
+      "y1": "172",
+      "x2": "96",
+      "y2": "190",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "96,198 91,188 101,188",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "204",
+      "width": "350",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "now: regular run → stop"
+    }
+   ]
+  }
+ }
+]
