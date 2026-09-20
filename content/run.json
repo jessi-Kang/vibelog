@@ -1,12 +1,34 @@
 {
-  "at": "2026-09-19T19:41:54.887Z",
+  "at": "2026-09-20T14:10:14.881Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 2 repos, 0 active"
+      "text": "collect  · 3 repos, 2 active"
+    },
+    {
+      "text": "generate · Anchor/2026-09-20.md (ko, en) · 토큰 in 13,999 · out 3,417"
+    },
+    {
+      "text": "figures  · Anchor/2026-09-20 3장 · 토큰 in 2,128 · out 6,880",
+      "textEn": "figures  · Anchor/2026-09-20 3 figures · tokens in 2,128 · out 6,880"
+    },
+    {
+      "text": "generate · vibelog/2026-09-20.md (ko, en) · 토큰 in 4,269 · out 2,603 · cache 2,354"
+    },
+    {
+      "text": "figures  · vibelog/2026-09-20 3장 · 토큰 in 1,772 · out 5,319",
+      "textEn": "figures  · vibelog/2026-09-20 3 figures · tokens in 1,772 · out 5,319"
+    },
+    {
+      "text": "shorts   · Anchor 실패 — 글 발행은 계속",
+      "textEn": "shorts   · Anchor failed — post still published",
+      "kind": "fail"
+    },
+    {
+      "text": "shorts   · vibelog/2026-09-20 (ko, en) · 대본 토큰 in 9,653 · out 8,484 · cache 6,280"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

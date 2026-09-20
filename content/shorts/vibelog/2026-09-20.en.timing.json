@@ -1,0 +1,477 @@
+{
+  "lang": "en",
+  "duration": 25.635,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 1.892,
+      "words": [
+        {
+          "text": "Last",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "night's",
+          "start": 0.313,
+          "end": 0.534
+        },
+        {
+          "text": "post",
+          "start": 0.58,
+          "end": 0.813
+        },
+        {
+          "text": "record",
+          "start": 0.859,
+          "end": 1.173
+        },
+        {
+          "text": "vanished.",
+          "start": 1.231,
+          "end": 1.892
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.218,
+      "end": 5.329,
+      "words": [
+        {
+          "text": "There",
+          "start": 2.218,
+          "end": 2.38
+        },
+        {
+          "text": "were",
+          "start": 2.403,
+          "end": 2.496
+        },
+        {
+          "text": "no",
+          "start": 2.519,
+          "end": 2.577
+        },
+        {
+          "text": "commits",
+          "start": 2.635,
+          "end": 2.926
+        },
+        {
+          "text": "for",
+          "start": 2.961,
+          "end": 3.065
+        },
+        {
+          "text": "two",
+          "start": 3.1,
+          "end": 3.216
+        },
+        {
+          "text": "days,",
+          "start": 3.274,
+          "end": 3.553
+        },
+        {
+          "text": "but",
+          "start": 3.587,
+          "end": 3.727
+        },
+        {
+          "text": "the",
+          "start": 3.762,
+          "end": 3.831
+        },
+        {
+          "text": "nightly",
+          "start": 3.901,
+          "end": 4.203
+        },
+        {
+          "text": "job",
+          "start": 4.261,
+          "end": 4.47
+        },
+        {
+          "text": "kept",
+          "start": 4.54,
+          "end": 4.76
+        },
+        {
+          "text": "running.",
+          "start": 4.83,
+          "end": 5.329
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.933,
+      "end": 9.009,
+      "words": [
+        {
+          "text": "Those",
+          "start": 5.933,
+          "end": 6.188
+        },
+        {
+          "text": "empty",
+          "start": 6.223,
+          "end": 6.455
+        },
+        {
+          "text": "runs",
+          "start": 6.525,
+          "end": 6.769
+        },
+        {
+          "text": "overwrote",
+          "start": 6.827,
+          "end": 7.256
+        },
+        {
+          "text": "the",
+          "start": 7.279,
+          "end": 7.349
+        },
+        {
+          "text": "line",
+          "start": 7.407,
+          "end": 7.628
+        },
+        {
+          "text": "about",
+          "start": 7.651,
+          "end": 7.86
+        },
+        {
+          "text": "last",
+          "start": 7.906,
+          "end": 8.104
+        },
+        {
+          "text": "night's",
+          "start": 8.162,
+          "end": 8.394
+        },
+        {
+          "text": "post.",
+          "start": 8.452,
+          "end": 9.009
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 9.52,
+      "end": 13.491,
+      "words": [
+        {
+          "text": "Now",
+          "start": 9.52,
+          "end": 9.671
+        },
+        {
+          "text": "if",
+          "start": 9.718,
+          "end": 9.776
+        },
+        {
+          "text": "the",
+          "start": 9.822,
+          "end": 9.892
+        },
+        {
+          "text": "last",
+          "start": 9.961,
+          "end": 10.182
+        },
+        {
+          "text": "record",
+          "start": 10.252,
+          "end": 10.565
+        },
+        {
+          "text": "came",
+          "start": 10.612,
+          "end": 10.809
+        },
+        {
+          "text": "from",
+          "start": 10.844,
+          "end": 10.971
+        },
+        {
+          "text": "a",
+          "start": 11.018,
+          "end": 11.041
+        },
+        {
+          "text": "nightly",
+          "start": 11.111,
+          "end": 11.389
+        },
+        {
+          "text": "run,",
+          "start": 11.459,
+          "end": 11.889
+        },
+        {
+          "text": "it",
+          "start": 12.167,
+          "end": 12.307
+        },
+        {
+          "text": "stops",
+          "start": 12.353,
+          "end": 12.678
+        },
+        {
+          "text": "right",
+          "start": 12.748,
+          "end": 12.968
+        },
+        {
+          "text": "there.",
+          "start": 13.003,
+          "end": 13.491
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 13.874,
+      "end": 15.999,
+      "words": [
+        {
+          "text": "Last",
+          "start": 13.874,
+          "end": 14.118
+        },
+        {
+          "text": "night's",
+          "start": 14.176,
+          "end": 14.385
+        },
+        {
+          "text": "post",
+          "start": 14.443,
+          "end": 14.687
+        },
+        {
+          "text": "is",
+          "start": 14.745,
+          "end": 14.814
+        },
+        {
+          "text": "still",
+          "start": 14.849,
+          "end": 15.07
+        },
+        {
+          "text": "there",
+          "start": 15.14,
+          "end": 15.314
+        },
+        {
+          "text": "in",
+          "start": 15.348,
+          "end": 15.395
+        },
+        {
+          "text": "the",
+          "start": 15.43,
+          "end": 15.499
+        },
+        {
+          "text": "list.",
+          "start": 15.546,
+          "end": 15.999
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 16.382,
+      "end": 18.46,
+      "words": [
+        {
+          "text": "The",
+          "start": 16.382,
+          "end": 16.498
+        },
+        {
+          "text": "home",
+          "start": 16.544,
+          "end": 16.718
+        },
+        {
+          "text": "page",
+          "start": 16.742,
+          "end": 16.985
+        },
+        {
+          "text": "shows",
+          "start": 17.02,
+          "end": 17.241
+        },
+        {
+          "text": "last",
+          "start": 17.299,
+          "end": 17.473
+        },
+        {
+          "text": "night's",
+          "start": 17.52,
+          "end": 17.705
+        },
+        {
+          "text": "post",
+          "start": 17.74,
+          "end": 17.949
+        },
+        {
+          "text": "again.",
+          "start": 17.996,
+          "end": 18.46
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 19.064,
+      "end": 21.955,
+      "words": [
+        {
+          "text": "I'll",
+          "start": 19.064,
+          "end": 19.238
+        },
+        {
+          "text": "watch",
+          "start": 19.284,
+          "end": 19.47
+        },
+        {
+          "text": "a",
+          "start": 19.505,
+          "end": 19.528
+        },
+        {
+          "text": "few",
+          "start": 19.586,
+          "end": 19.714
+        },
+        {
+          "text": "nights",
+          "start": 19.76,
+          "end": 19.992
+        },
+        {
+          "text": "to",
+          "start": 20.039,
+          "end": 20.109
+        },
+        {
+          "text": "see",
+          "start": 20.167,
+          "end": 20.283
+        },
+        {
+          "text": "if",
+          "start": 20.318,
+          "end": 20.387
+        },
+        {
+          "text": "the",
+          "start": 20.422,
+          "end": 20.492
+        },
+        {
+          "text": "empty",
+          "start": 20.538,
+          "end": 20.77
+        },
+        {
+          "text": "runs",
+          "start": 20.828,
+          "end": 21.037
+        },
+        {
+          "text": "are",
+          "start": 21.072,
+          "end": 21.165
+        },
+        {
+          "text": "really",
+          "start": 21.2,
+          "end": 21.409
+        },
+        {
+          "text": "gone.",
+          "start": 21.455,
+          "end": 21.955
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 22.558,
+      "end": 25.635,
+      "words": [
+        {
+          "text": "If",
+          "start": 22.558,
+          "end": 22.686
+        },
+        {
+          "text": "you",
+          "start": 22.721,
+          "end": 22.79
+        },
+        {
+          "text": "don't",
+          "start": 22.825,
+          "end": 22.999
+        },
+        {
+          "text": "measure,",
+          "start": 23.069,
+          "end": 23.638
+        },
+        {
+          "text": "you",
+          "start": 23.963,
+          "end": 24.056
+        },
+        {
+          "text": "don't",
+          "start": 24.091,
+          "end": 24.277
+        },
+        {
+          "text": "even",
+          "start": 24.311,
+          "end": 24.486
+        },
+        {
+          "text": "notice",
+          "start": 24.544,
+          "end": 24.811
+        },
+        {
+          "text": "what's",
+          "start": 24.834,
+          "end": 25.02
+        },
+        {
+          "text": "gone.",
+          "start": 25.066,
+          "end": 25.635
+        }
+      ]
+    }
+  ]
+}

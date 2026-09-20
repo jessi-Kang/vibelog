@@ -1,0 +1,190 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-20",
+  "day": 11,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "어젯밤 쓴 글 기록이 사라졌습니다.",
+      "en": "Last night's post record vanished.",
+      "keywords": [
+        "사라졌습니다"
+      ],
+      "keywordsEn": [
+        "vanished"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "이틀 동안 커밋이 없었는데 자동 실행은 밤마다 계속 돌았습니다.",
+      "en": "There were no commits for two days, but the nightly job kept running.",
+      "keywords": [
+        "커밋이 없었는데",
+        "계속 돌았습니다"
+      ],
+      "keywordsEn": [
+        "no commits",
+        "kept running"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "커밋 0개",
+          "밤마다 6~8번 실행",
+          "발행 기록 없음",
+          "검사 통과"
+        ],
+        "labelsEn": [
+          "0 commits",
+          "6~8 runs a night",
+          "no publish record",
+          "check passes"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그 빈 실행이 어젯밤 발행한 줄을 덮어썼습니다.",
+      "en": "Those empty runs overwrote the line about last night's post.",
+      "keywords": [
+        "덮어썼습니다"
+      ],
+      "keywordsEn": [
+        "empty runs",
+        "overwrote"
+      ],
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "last run",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "이제 마지막 기록이 밤 자동 실행이면 바로 멈춥니다.",
+      "en": "Now if the last record came from a nightly run, it stops right there.",
+      "keywords": [
+        "바로 멈춥니다"
+      ],
+      "keywordsEn": [
+        "stops right there"
+      ],
+      "motif": "earlyout"
+    },
+    {
+      "scene": "demo",
+      "ko": "어젯밤 쓴 글은 목록에 그대로 있습니다.",
+      "en": "Last night's post is still there in the list.",
+      "keywords": [
+        "그대로 있습니다"
+      ],
+      "keywordsEn": [
+        "still there"
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "홈 화면에도 어젯밤 글이 다시 보입니다.",
+      "en": "The home page shows last night's post again.",
+      "keywords": [
+        "다시 보입니다"
+      ],
+      "keywordsEn": [
+        "again"
+      ],
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "recent devlog",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "며칠 밤 지켜보면서 빈 실행이 정말 사라졌는지 봅니다.",
+      "en": "I'll watch a few nights to see if the empty runs are really gone.",
+      "keywords": [
+        "며칠 밤"
+      ],
+      "keywordsEn": [
+        "a few nights",
+        "empty runs"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "재 보지 않으면 사라진 것도 모릅니다.",
+      "en": "If you don't measure, you don't even notice what's gone.",
+      "keywords": [
+        "재 보지 않으면"
+      ],
+      "keywordsEn": [
+        "don't measure"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "어젯밤 기록이 사라졌다",
+    "titleEn": "Last night's record vanished",
+    "before": "빈 실행이 홈 화면 기록을 덮어썼습니다",
+    "after": "밤 자동 실행이 이미 있으면 바로 멈춥니다",
+    "beforeEn": "Empty runs overwrote the home page record",
+    "afterEn": "If a nightly run already happened, it stops right there"
+  },
+  "commits": [
+    [
+      "6b6ea52",
+      "비용 절감 (트레이드오프) — 삽화·대본은 처음 medium, 검증에 걸리면 high로 다시"
+    ],
+    [
+      "d3bde50",
+      "비용 절감 2/2 (무료분) — 활동 없는 밤의 헛실행을 막는다"
+    ],
+    [
+      "fc2e5a9",
+      "비용 절감 1/2 — 토큰 실측·프롬프트 캐시·삽화 재작성 다이어트"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6b6ea52",
+      "Cost reduction (trade-offs) — illustrations and scripts initially medium, re-run at high if validation fails"
+    ],
+    [
+      "d3bde50",
+      "Cost reduction 2/2 (free tier) — prevent idle runs during inactive nights"
+    ],
+    [
+      "fc2e5a9",
+      "Cost reduction 1/2 — token measurement, prompt caching, illustration rewriting diet"
+    ]
+  ],
+  "commitCount": 3,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "쓸 글이 없는 밤에도 자동 실행이 계속 돌면서 어젯밤 발행 기록을 덮어썼습니다. 같은 밤이면 바로 멈추게 고쳤습니다.",
+    "en": "With nothing to publish, the nightly job kept running and overwrote last night's record. Now it stops as soon as it sees a regular nightly run."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#자동화",
+    "#삽질",
+    "#devlog",
+    "#automation",
+    "#buildinpublic",
+    "#vibelog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-20.poster.jpg?v=mu9w73ty",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-20.ko.mp4?v=mu9w75zt",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-20.en.poster.jpg?v=mu9w8bmc",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-20.en.mp4?v=mu9w8dwh"
+  }
+}

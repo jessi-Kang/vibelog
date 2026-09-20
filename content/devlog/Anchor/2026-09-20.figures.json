@@ -1,0 +1,774 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "전과 후: 큰 검은 버튼이 계정 삭제에서 그만두기로 바뀌고, 삭제는 아래 회색 링크로 내려갔다.",
+  "altEn": "Before and after: the big button changes from Delete account to No, never mind, and deleting moves down to a grey link.",
+  "caption": "큰 버튼 자리에는 되돌릴 수 있는 쪽을 둡니다.",
+  "captionEn": "The big button slot now holds the undoable choice.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "버튼 두 개를 맞바꾼 전과 후"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "42",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "계정 삭제"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "114",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "취소"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "42",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "아니, 그만둘래"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "114",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "계정 삭제"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "삭제는 입력을 거쳐야 눌립니다"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before and after swapping the two buttons"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "42",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Delete account"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "114",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Cancel"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "42",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "No, never mind"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "114",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Delete account"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Deleting needs typing first"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 2,
+  "alt": "고정된 빈칸은 답의 길이를 숨기고, 늘어나는 빈칸은 글자 수를 드러낸다.",
+  "altEn": "A fixed blank hides the answer length while a stretching blank reveals how many letters it has.",
+  "caption": "빈칸 너비를 고정한 이유.",
+  "captionEn": "Why the blank has a fixed width.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "고정 빈칸과 늘어나는 빈칸 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "고정 칸"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "35",
+      "y": "45",
+      "width": "120",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "35",
+      "y": "95",
+      "width": "120",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "길이를 숨김"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "늘어나는 칸"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "45",
+      "width": "60",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "95",
+      "width": "140",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글자 수가 새어 나감"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Fixed blank versus stretching blank"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Fixed blank"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "35",
+      "y": "45",
+      "width": "120",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "35",
+      "y": "95",
+      "width": "120",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "hides the length"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Stretching blank"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "45",
+      "width": "60",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "95",
+      "width": "140",
+      "height": "32",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "leaks the length"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "녹음 목록이 먼저 사라지면 어느 음성 파일을 지울지 알 수 없게 된다.",
+  "altEn": "The recording list is wiped first, so there is no way to know which audio files to delete.",
+  "caption": "지우는 순서가 뒤집혀 주인 없는 녹음이 남습니다.",
+  "captionEn": "The deletion order is reversed, leaving orphaned recordings.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 235",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "목록이 먼저 사라져 음성 파일을 찾을 수 없게 되는 순서"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "55",
+      "y": "32",
+      "width": "280",
+      "height": "58",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "녹음 목록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "어느 파일이 누구 것인지"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "92",
+      "x2": "195",
+      "y2": "126",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,134 190,124 200,124",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "208",
+      "y": "117",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "먼저 사라짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "55",
+      "y": "140",
+      "width": "280",
+      "height": "58",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "164",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "음성 파일"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지울 대상을 알 수 없음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "221",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "30일이 지나도 지우는 쪽이 없었음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 235",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The list disappears first, making the audio files unfindable"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "55",
+      "y": "32",
+      "width": "280",
+      "height": "58",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Recording list"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "says which file belongs to whom"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "92",
+      "x2": "195",
+      "y2": "126",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,134 190,124 200,124",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "208",
+      "y": "117",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "wiped first"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "55",
+      "y": "140",
+      "width": "280",
+      "height": "58",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "164",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Audio files"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "no way to know which"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "221",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "After 30 days, nothing removed them"
+    }
+   ]
+  }
+ }
+]
