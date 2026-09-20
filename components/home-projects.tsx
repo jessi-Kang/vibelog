@@ -43,8 +43,13 @@ export function HomeProjects({ projects }: { projects: Project[] }) {
           hint="gh repo edit --add-topic vibelog"
         />
       ) : (
+        // grid-cols-1을 기본에 박아 둔다 — 없으면 암묵적 열이 auto라 카드의
+        // max-content(스택 줄 전체)만큼 넓어진다. truncate는 폭이 제한될 때만
+        // 먹는다. 프로젝트 둘일 때는 스택 줄이 짧아 우연히 맞았고, Anchor의
+        // 스택 여덟 개가 들어오자 320px 화면에서 카드가 616px로 벌어져 홈이
+        // 가로로 300px 넘쳤다 (9/20 실측). minmax(0,1fr)이 폭을 화면에 묶는다.
         <div
-          className={`grid gap-3 md:grid-cols-2 ${
+          className={`grid grid-cols-1 gap-3 md:grid-cols-2 ${
             projects.length > 6 ? "lg:grid-cols-2" : "lg:grid-cols-1"
           }`}
         >
