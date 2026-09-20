@@ -21,6 +21,7 @@ import {
 } from "./generate";
 import { generateFigures } from "./figures";
 import { fmtNum } from "../lib/format";
+import { fmtTally, takeUsage } from "./usage";
 import { parseSections } from "../lib/content";
 import { runShorts } from "./shorts";
 import { checkDemoScreens } from "./check-screens";
@@ -446,7 +447,9 @@ async function main(): Promise<void> {
         const devlog = await generateDevlog(a, date);
         await writeDevlog(a.repo, date, devlog, a);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
-        runLines.push({ text: `generate · ${a.repo}/${date}.md (ko, en)` });
+        runLines.push({
+          text: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(takeUsage("generate"))}`,
+        });
         published.push(a.repo);
         await writeFigures(a.repo, date, devlog, runLines);
       } catch (err) {
@@ -488,7 +491,9 @@ async function main(): Promise<void> {
     for (const repo of published) {
       try {
         await runShorts(repo, date);
-        runLines.push({ text: `shorts   · ${repo}/${date} (ko, en)` });
+        runLines.push({
+          text: `shorts   · ${repo}/${date} (ko, en) · 대본 ${fmtTally(takeUsage("script"))}`,
+        });
         // 데모 화면이 한 곳으로 몰렸으면 남긴다 — 같은 페이지가 비율만 달리
         // 되풀이되는 영상은 봐야 알게 되는 부류다
         const collapse = checkDemoScreens(repo, date);

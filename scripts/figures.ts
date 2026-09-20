@@ -13,6 +13,7 @@
  * 화면은 검증을 통과한 트리(FigNode)만 그린다. 문자열은 저장하지 않는다.
  */
 import Anthropic from "@anthropic-ai/sdk";
+import { noteUsage } from "./usage";
 import {
   FIG_COLOR_TOKENS,
   FIG_H_MAX,
@@ -81,7 +82,9 @@ const SYSTEM = `당신은 "vibelog" 데브로그의 삽화가입니다. 다 써�
 - 모든 글자와 도형이 viewBox 안에 들어와야 합니다. 라벨끼리 겹치지 않게 좌표를
   넉넉히 잡습니다. text-anchor로 끝을 맞춥니다.
 - 첫 자식은 <title> — 그림이 무엇을 보여 주는지 한 문장 (스크린 리더용).
-- **라벨의 숫자는 그 섹션 본문에 있는 숫자만** 씁니다. 본문에 없는 숫자·사실을
+- **라벨의 숫자는 그 섹션 본문에 있는 숫자만** 씁니다. 섹션마다 "쓸 수 있는 숫자"
+  목록을 같이 줍니다 — 그 밖의 숫자는 검증기가 거절합니다 (재작성 비용이 듭니다).
+  목록이 "없음"이면 그 섹션 그림에는 숫자를 쓰지 않습니다. 본문에 없는 숫자·사실을
   그림에 넣지 않습니다. 시각은 본문 표기 그대로 (본문이 "6시 6분"이면 6:06은 되지만
   6:00은 안 됩니다).
 - 영문 그림(svgEn)은 같은 도형·같은 좌표에 라벨만 영어로. 영어는 글자가 길어지니
@@ -111,12 +114,22 @@ function paraBlock(
     const md = sections[k];
     if (!md) continue;
     out.push(`### ${k} — ${SECTION_NAME[k]} (${label})`);
+    // 검증기(inventedNumbers)와 같은 눈으로 본문의 숫자를 미리 뽑아 준다 —
+    // 백필·정규 회차에서 걸린 삽화의 탈락 사유가 전부 "본문에 없는 숫자"였다.
+    // 목록을 주면 첫 답에서 맞히고, 재작성(입력 3–5배)이 줄어든다.
+    out.push(`쓸 수 있는 숫자: ${allowedNumbers(md)}`);
     splitParas(md).forEach((p, i) => out.push(`[${i}] ${p}`));
   }
   return out.join("\n");
 }
 
-function buildUserPrompt(title: string, s: FigureSections): string {
+/** 본문에 있는 숫자 목록 — 검증기가 허용하는 것과 같은 규칙(콤마 제거, 소수 포함) */
+function allowedNumbers(md: string): string {
+  const nums = [...new Set(md.replace(/,/g, "").match(/\d+(?:\.\d+)?/g) ?? [])];
+  return nums.length ? nums.join(", ") : "없음";
+}
+
+export function buildUserPrompt(title: string, s: FigureSections): string {
   return [
     `# ${title}`,
     "",
@@ -151,9 +164,9 @@ const str = (v: unknown): string => (typeof v === "string" ? v.trim() : "");
 export function parseFigureReply(
   text: string,
   s: FigureSections,
-): { figures: PostFigure[]; dropped: { index: number; reason: string }[] } {
+): { figures: PostFigure[]; dropped: { index: number; reason: string; raw?: string }[] } {
   const figures: PostFigure[] = [];
-  const dropped: { index: number; reason: string }[] = [];
+  const dropped: { index: number; reason: string; raw?: string }[] = [];
   let items: unknown[];
   try {
     items = extractJsonArray(text);
@@ -161,7 +174,10 @@ export function parseFigureReply(
     return { figures, dropped: [{ index: -1, reason: (e as Error).message }] };
   }
   items.forEach((raw, index) => {
-    const drop = (reason: string) => dropped.push({ index, reason });
+    // 걸린 항목은 그 항목만 되돌려 보낸다 — 첫 답 전체를 다시 보내면 입력이
+    // 3–5배가 된다 (실측: 재작성 입력 8,700–17,000 vs 첫 호출 3,000).
+    const drop = (reason: string) =>
+      dropped.push({ index, reason, raw: JSON.stringify(raw).slice(0, 6000) });
     if (!raw || typeof raw !== "object") return drop("항목이 객체가 아닙니다");
     const it = raw as Record<string, unknown>;
     const section = str(it.section) as FigSection;
@@ -216,7 +232,8 @@ export async function generateFigures(
       .stream({
         model: MODEL,
         max_tokens: MAX_TOKENS,
-        system: SYSTEM,
+        // 규칙(~800토큰)은 글마다 같다 — 같은 밤의 두 번째 글·재작성은 캐시에서 읽는다
+        system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
         messages,
       })
       .finalMessage();
@@ -224,9 +241,7 @@ export async function generateFigures(
     // output에는 보이지 않는 thinking 토큰이 포함된다 (Opus 5는 기본으로 생각한다).
     usage.input += res.usage.input_tokens;
     usage.output += res.usage.output_tokens;
-    console.log(
-      `[figures] 토큰 in ${res.usage.input_tokens} · out ${res.usage.output_tokens} (thinking 포함)`,
-    );
+    noteUsage("figures", res.usage);
     return {
       text: res.content
         .filter((b) => b.type === "text")
@@ -253,16 +268,24 @@ export async function generateFigures(
         ? `[figures] ${CUT} — 줄여서 다시 그리게 합니다`
         : `[figures] 검증에 걸린 삽화 ${dropped.length}장 — 다시 그리게 합니다`,
     );
-    messages.push({ role: "assistant", content: first.text });
+    // 첫 답을 assistant 턴으로 되돌려 보내지 않는다. 걸린 항목의 JSON과 이유만
+    // 본문 뒤에 붙인 **새 user 턴 하나**로 묻는다 — 잘린 답(32,000토큰)을 다시
+    // 보내는 일도 없어진다.
+    messages.length = 0;
     messages.push({
       role: "user",
-      content: first.cut
-        ? `${CUT}. 그림 장수를 줄이거나 도형을 단순하게 해서, **전체를** 같은 ` +
-          "형식의 JSON 배열로 다시 내세요. 꼭 필요한 그림만 남깁니다."
-        : "아래 삽화가 검증에 걸렸습니다. 걸린 것만 고쳐서, **그 항목들만** 같은 " +
-          "형식의 JSON 배열로 다시 내세요 (통과한 것은 다시 내지 않습니다). " +
-          "고칠 수 없으면 빈 배열을 내세요.\n\n" +
-          dropped.map((d) => `- [${d.index}] ${d.reason}`).join("\n"),
+      content:
+        buildUserPrompt(title, sections) +
+        "\n\n## 다시 그릴 것\n" +
+        (first.cut
+          ? `${CUT}. 그림 장수를 줄이거나 도형을 단순하게 해서, 꼭 필요한 그림만 ` +
+            "같은 형식의 JSON 배열로 내세요."
+          : "아래 항목이 검증에 걸렸습니다. 고쳐서 **이 항목들만** 같은 형식의 JSON " +
+            "배열로 내세요 (통과한 다른 항목은 이미 받았으니 다시 내지 않습니다). " +
+            "고칠 수 없으면 빈 배열을 내세요.\n\n" +
+            dropped
+              .map((d) => `- [${d.index}] 이유: ${d.reason}\n  항목: ${d.raw ?? "(없음)"}`)
+              .join("\n")),
     });
     const second = await ask();
     const retry = second.cut
