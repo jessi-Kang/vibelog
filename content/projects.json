@@ -15,11 +15,12 @@
       "ElevenLabs"
     ],
     "repoUrl": "https://github.com/jessi-Kang/Anchor",
+    "homepage": "https://anchor-zeta-gilt.vercel.app",
     "language": "HTML",
     "lastActivity": "2026-09-20",
-    "weekCommits": 5,
-    "todayCommits": 5,
-    "totalCommits": 5,
+    "weekCommits": 12,
+    "todayCommits": 12,
+    "totalCommits": 12,
     "countsDate": "2026-09-20",
     "theme": "blueprint"
   },
@@ -36,9 +37,9 @@
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
     "lastActivity": "2026-09-20",
-    "weekCommits": 82,
-    "todayCommits": 16,
-    "totalCommits": 390,
+    "weekCommits": 83,
+    "todayCommits": 17,
+    "totalCommits": 391,
     "countsDate": "2026-09-20"
   },
   {
@@ -54,7 +55,7 @@
     "homepage": "https://apt-game.app",
     "language": "TypeScript",
     "lastActivity": "2026-09-15",
-    "weekCommits": 11,
+    "weekCommits": 10,
     "todayCommits": 0,
     "totalCommits": 189,
     "countsDate": "2026-09-20",
