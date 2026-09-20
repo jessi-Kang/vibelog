@@ -58,6 +58,18 @@ export function publishDateKST(now = Date.now()): string {
     .slice(0, 10);
 }
 
+/** 마지막 run.ts 실행 시각 — run.json의 at. regen·백필이 남긴 기록은 세지 않는다 */
+function lastRunTsAt(): number {
+  try {
+    const r = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, "run.json"), "utf8"));
+    const cmd = r.lines?.[0]?.text ?? "";
+    if (!/scripts\/run\.ts$/.test(cmd)) return 0;
+    return new Date(r.at).getTime() || 0;
+  } catch {
+    return 0;
+  }
+}
+
 function loadState(): State {
   try {
     return JSON.parse(fs.readFileSync(STATE_FILE, "utf8"));
@@ -350,6 +362,18 @@ async function main(): Promise<void> {
     if (last > 0 && sinceH < 12) {
       console.log(
         `${sinceH.toFixed(1)}시간 전에 발행함 — 백업 회차 종료 (이번 회차 날짜 ${date})`,
+      );
+      return;
+    }
+    // 발행이 없어도 이 밤에 이미 한 번 돌았으면 끝이다. 활동 없는 밤(0 active)은
+    // 발행 기록이 안 남아 백업 슬롯 넷이 전부 돌았다 — 9/18·19에 하루 6–8번,
+    // 매번 run.json만 바꿔 커밋·배포했다. 마지막 run.ts 실행(run.json의 at)이
+    // 12시간 안이면 같은 밤이다. 수동 실행·regen은 SCHEDULE_GUARD가 없으니 안 걸린다.
+    const lastRunAt = lastRunTsAt();
+    const sinceRunH = (Date.now() - lastRunAt) / 3600000;
+    if (lastRunAt > 0 && sinceRunH < 12) {
+      console.log(
+        `${sinceRunH.toFixed(1)}시간 전에 이미 돌았음(활동 없음) — 백업 회차 종료`,
       );
       return;
     }
