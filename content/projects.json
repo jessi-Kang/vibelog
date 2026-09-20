@@ -17,12 +17,31 @@
     "repoUrl": "https://github.com/jessi-Kang/Anchor",
     "homepage": "https://anchor-zeta-gilt.vercel.app",
     "language": "JavaScript",
-    "lastActivity": "2026-09-20",
-    "weekCommits": 121,
-    "todayCommits": 121,
-    "totalCommits": 121,
-    "countsDate": "2026-09-20",
+    "lastActivity": "2026-09-21",
+    "weekCommits": 264,
+    "todayCommits": 80,
+    "totalCommits": 264,
+    "countsDate": "2026-09-21",
     "theme": "blueprint"
+  },
+  {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "preview",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-21",
+    "weekCommits": 10,
+    "todayCommits": 1,
+    "totalCommits": 190,
+    "countsDate": "2026-09-21",
+    "theme": "paper"
   },
   {
     "slug": "vibelog",
@@ -37,28 +56,9 @@
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
     "lastActivity": "2026-09-20",
-    "weekCommits": 83,
-    "todayCommits": 21,
-    "totalCommits": 395,
-    "countsDate": "2026-09-20"
-  },
-  {
-    "slug": "apart",
-    "name": "apart",
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-09-15",
-    "weekCommits": 10,
+    "weekCommits": 76,
     "todayCommits": 0,
-    "totalCommits": 189,
-    "countsDate": "2026-09-20",
-    "theme": "paper"
+    "totalCommits": 397,
+    "countsDate": "2026-09-21"
   }
 ]
