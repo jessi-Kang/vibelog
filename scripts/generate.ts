@@ -5,6 +5,7 @@
  * "뭘 했나 / 왜 / 삽질 포인트 / 다음 할 것" 구조.
  */
 import Anthropic from "@anthropic-ai/sdk";
+import { noteUsage } from "./usage";
 import type { RepoActivity } from "./collect";
 
 export interface GeneratedDevlog {
@@ -135,9 +136,12 @@ export async function generateDevlog(
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 16000,
-    system: SYSTEM,
+    // 시스템 프롬프트는 밤마다 같다 — 한 밤에 레포 수만큼 부르니 두 번째부터
+    // 캐시에서 읽는다 (Opus 5는 512토큰부터 캐시. 이 프롬프트는 ~1,300).
+    system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
     messages: [{ role: "user", content: buildUserPrompt(activity, date) }],
   });
+  noteUsage("generate", response.usage);
   const text = response.content
     .filter((b) => b.type === "text")
     .map((b) => b.text)

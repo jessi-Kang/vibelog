@@ -9,6 +9,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
+import { noteUsage } from "./usage";
 import matter from "gray-matter";
 import {
   type DiagramSpec,
@@ -711,12 +712,18 @@ export async function generateScript(
     content,
   ].join("\n\n");
 
+  // 시스템 프롬프트(~3,300토큰)는 편마다 같다 — 캐시 표시를 붙여 같은 밤의
+  // 두 번째 편·재작성이 캐시에서 읽게 한다.
+  const SYSTEM_CACHED: Anthropic.TextBlockParam[] = [
+    { type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } },
+  ];
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 16000,
-    system: SYSTEM,
+    system: SYSTEM_CACHED,
     messages: [{ role: "user", content: userPrompt }],
   });
+  noteUsage("script", response.usage);
   const readText = (r: Anthropic.Messages.Message): string =>
     r.content
       .filter((b): b is Anthropic.Messages.TextBlock => b.type === "text")
@@ -742,7 +749,7 @@ export async function generateScript(
     const retry = await client.messages.create({
       model: MODEL,
       max_tokens: 16000,
-      system: SYSTEM,
+      system: SYSTEM_CACHED,
       messages: [
         { role: "user", content: userPrompt },
         { role: "assistant", content: text },
@@ -768,6 +775,7 @@ export async function generateScript(
         },
       ],
     });
+    noteUsage("script", retry.usage);
     text = readText(retry);
     parsed = parseJson(text);
     lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
