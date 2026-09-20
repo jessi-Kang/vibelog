@@ -26,6 +26,14 @@ import {
 } from "./shorts-types";
 
 const MODEL = "claude-opus-5";
+/**
+ * 생각의 깊이 — 처음은 medium, 빈 화면이 남아 다시 쓸 때만 high. 대본은 문장
+ * 9개짜리 JSON이라 thinking이 출력의 대부분이다 (삽화 실측과 같은 구조).
+ * 빈 화면 검사(blankScenes)가 실패 신호라 "싼 값에 먼저, 실패만 비싸게"가 된다.
+ * 품질이 떨어지면(빈 화면·화면 중복 경고 증가) FIRST를 "high"로 되돌린다.
+ */
+const EFFORT_FIRST = "medium" as const;
+const EFFORT_RETRY = "high" as const;
 
 /** 어휘 목록은 shorts-types가 단일 진실이다 — 첫 프롬프트와 재작성 요청이 같은 것을 본다 */
 const MOTIF_MENU = motifMenu();
@@ -720,6 +728,7 @@ export async function generateScript(
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 16000,
+    output_config: { effort: EFFORT_FIRST },
     system: SYSTEM_CACHED,
     messages: [{ role: "user", content: userPrompt }],
   });
@@ -749,6 +758,7 @@ export async function generateScript(
     const retry = await client.messages.create({
       model: MODEL,
       max_tokens: 16000,
+      output_config: { effort: EFFORT_RETRY },
       system: SYSTEM_CACHED,
       messages: [
         { role: "user", content: userPrompt },
