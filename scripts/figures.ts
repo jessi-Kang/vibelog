@@ -36,6 +36,14 @@ const MODEL = "claude-opus-5";
  * 이 크기는 SDK가 스트리밍을 요구한다 — ask()가 stream().finalMessage()를 쓴다.
  */
 const MAX_TOKENS = 32000;
+/**
+ * 생각의 깊이. 실측에서 출력의 3/4이 보이지 않는 thinking이었다 (보이는 SVG
+ * 2,900토큰 vs 출력 11,000–32,000). 처음은 medium으로 그리고, 검증에 걸린 것만
+ * high로 다시 그린다 — "싼 값에 먼저, 실패만 비싸게". 검증기가 실패 신호라서
+ * 이 방식이 된다. 품질이 떨어지면(탈락률·그림 수 변화) FIRST를 "high"로 되돌린다.
+ */
+const EFFORT_FIRST = "medium" as const;
+const EFFORT_RETRY = "high" as const;
 
 export interface FigureSections {
   ko: Partial<Record<FigSection, string>>;
@@ -227,11 +235,14 @@ export async function generateFigures(
   // 스트리밍으로 받는다. 상한을 32000으로 올리자 SDK가 "10분을 넘길 수 있는
   // 요청은 스트리밍이 필수"라며 요청을 보내기도 전에 거절했다 (백필 #116, 4편
   // 전부 호출 0번에 실패). 답은 finalMessage()로 한 덩어리로 받으니 아래는 같다.
-  const ask = async (): Promise<{ text: string; cut: boolean }> => {
+  const ask = async (
+    effort: "medium" | "high",
+  ): Promise<{ text: string; cut: boolean }> => {
     const res = await client.messages
       .stream({
         model: MODEL,
         max_tokens: MAX_TOKENS,
+        output_config: { effort },
         // 규칙(~800토큰)은 글마다 같다 — 같은 밤의 두 번째 글·재작성은 캐시에서 읽는다
         system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
         messages,
@@ -253,7 +264,7 @@ export async function generateFigures(
   const CUT = `답이 ${MAX_TOKENS} 토큰 상한에서 잘렸습니다`;
   const usage = { input: 0, output: 0 };
 
-  const first = await ask();
+  const first = await ask(EFFORT_FIRST);
   // 잘린 답은 JSON이 닫히지 않아 통째로 못 읽는다 — 파싱 대신 "잘렸다"를 이유로 둔다
   let { figures, dropped } = first.cut
     ? { figures: [] as PostFigure[], dropped: [{ index: -1, reason: CUT }] }
@@ -287,7 +298,7 @@ export async function generateFigures(
               .map((d) => `- [${d.index}] 이유: ${d.reason}\n  항목: ${d.raw ?? "(없음)"}`)
               .join("\n")),
     });
-    const second = await ask();
+    const second = await ask(EFFORT_RETRY);
     const retry = second.cut
       ? { figures: [] as PostFigure[], dropped: [{ index: -1, reason: `${CUT} (두 번째도)` }] }
       : parseFigureReply(second.text, sections);
