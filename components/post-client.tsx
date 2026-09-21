@@ -5,6 +5,7 @@
  * 고정 레일 — 남는 좌우 여백을 미디어에 쓴다. 모바일·태블릿: 기존 세로 순서.
  */
 import Link from "next/link";
+import { hasRealFail } from "@/lib/has-fail";
 import { useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import { useLang } from "./lang";
@@ -131,7 +132,9 @@ export function PostClient({ post }: { post: PostData }) {
   const figsOf = (k: FigSection): PostFigure[] =>
     (post.figures ?? []).filter((f) => f.section === k);
   const parsed = Boolean(post.sections.did || post.sections.why);
-  const noFail = !s.fail || s.fail.startsWith("특별한 삽질은") || s.fail === "None.";
+  // 판정은 lib/has-fail.ts 하나로 — 첫 문장이 "없었습니다"여도 뒤에 이야기가
+  // 이어지면 본문(과 삽화)을 그대로 보여 준다
+  const noFail = !hasRealFail(s.fail);
 
   const headings = en
     ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up" }

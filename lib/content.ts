@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { hasRealFail } from "./has-fail";
 import type { PostFigure } from "../scripts/figure-types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -137,9 +138,7 @@ export function parseSections(markdown: string): DevlogSections {
 }
 
 function computeHasFail(fail?: string): boolean {
-  const t = fail?.trim();
-  if (!t) return false;
-  return !/^(특별한 삽질은 없|오늘은 없었습니다|없었습니다|없음)/.test(t);
+  return hasRealFail(fail);
 }
 
 /**

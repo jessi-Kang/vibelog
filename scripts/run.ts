@@ -22,6 +22,7 @@ import {
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
 import { parseSections } from "../lib/content";
+import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
 import { checkDemoScreens } from "./check-screens";
 
@@ -187,10 +188,15 @@ async function writeFigures(
 ): Promise<void> {
   const file = devlogPath(repo, date).replace(/\.md$/, ".figures.json");
   try {
-    const { figures, dropped } = await generateFigures(d.title, {
-      ko: parseSections(d.ko),
-      en: parseSections(d.en),
-    });
+    // 삽질 섹션이 "없었습니다"뿐이면 페이지가 그 본문을 접는다 — 거기 그린 삽화는
+    // 화면에 안 나온다. 그리지 않는다 (9/21 apart에서 1장이 그렇게 사라졌다).
+    const ko = parseSections(d.ko);
+    const en = parseSections(d.en);
+    if (!hasRealFail(ko.fail)) {
+      delete ko.fail;
+      delete en.fail;
+    }
+    const { figures, dropped } = await generateFigures(d.title, { ko, en });
     for (const why of dropped) {
       console.warn(`- ${repo}/${date} 삽화 제외: ${why}`);
       runLines.push({
