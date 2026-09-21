@@ -20,7 +20,6 @@ import {
   translateLine,
 } from "./generate";
 import { generateFigures } from "./figures";
-import { fmtNum } from "../lib/format";
 import { fmtTally, takeUsage } from "./usage";
 import { parseSections } from "../lib/content";
 import { runShorts } from "./shorts";
@@ -188,7 +187,7 @@ async function writeFigures(
 ): Promise<void> {
   const file = devlogPath(repo, date).replace(/\.md$/, ".figures.json");
   try {
-    const { figures, dropped, usage } = await generateFigures(d.title, {
+    const { figures, dropped } = await generateFigures(d.title, {
       ko: parseSections(d.ko),
       en: parseSections(d.en),
     });
@@ -206,11 +205,13 @@ async function writeFigures(
     }
     // 토큰을 같이 남긴다 — 비용은 여기서만 정확히 센다 (out에는 thinking이 든다).
     // 어림값이 실측의 1/3이었다: 보이는 SVG 뒤에 그 3–4배의 생각이 있었다.
-    const tok = `in ${fmtNum(usage.input)} · out ${fmtNum(usage.output)}`;
-    console.log(`- ${repo}/${date} 삽화 ${figures.length}장 (토큰 ${tok})`);
+    // 다른 단계와 같은 tally를 쓴다 — 삽화 줄에만 cache가 빠져 있었다 (9/21 실측:
+    // 로그에는 cache read 1,637이 찍히는데 홈 줄에는 in/out뿐이었다).
+    const tok = fmtTally(takeUsage("figures"));
+    console.log(`- ${repo}/${date} 삽화 ${figures.length}장 (${tok})`);
     runLines.push({
-      text: `figures  · ${repo}/${date} ${figures.length}장 · 토큰 ${tok}`,
-      textEn: `figures  · ${repo}/${date} ${figures.length} figure${figures.length === 1 ? "" : "s"} · tokens ${tok}`,
+      text: `figures  · ${repo}/${date} ${figures.length}장 · ${tok}`,
+      textEn: `figures  · ${repo}/${date} ${figures.length} figure${figures.length === 1 ? "" : "s"} · ${tok}`,
     });
   } catch (err) {
     console.error(`- ${repo}/${date} 삽화 실패 (글 발행에는 영향 없음):`, err);
