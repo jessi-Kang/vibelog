@@ -1,0 +1,546 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "화면에 메시지가 없다는 같은 상황을 한쪽 기준은 정상으로, 다른 쪽 기준은 실패로 읽는다.",
+  "altEn": "The same blank screen is read as fine by one rule and as a failure by the other.",
+  "caption": "같은 화면을 두 기준이 반대로 읽습니다.",
+  "captionEn": "Two rules read the same screen in opposite ways.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "메시지 없음이라는 같은 상황을 두 기준이 정상과 실패로 반대로 판정한다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "18",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "49",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink)"
+     },
+     "text": "메시지 없음"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "70",
+      "x2": "100",
+      "y2": "120",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,120 108,112 96,110",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "70",
+      "x2": "292",
+      "y2": "120",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,120 282,110 294,110",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "126",
+      "width": "152",
+      "height": "52",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "96",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기준 A: 정상"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "218",
+      "y": "126",
+      "width": "152",
+      "height": "52",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "294",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "기준 B: 실패"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The same no-message screen is judged fine by one rule and failed by the other"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "18",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "49",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink)"
+     },
+     "text": "No message"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "70",
+      "x2": "100",
+      "y2": "120",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,120 108,112 96,110",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "230",
+      "y1": "70",
+      "x2": "292",
+      "y2": "120",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,120 282,110 294,110",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "126",
+      "width": "152",
+      "height": "52",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "96",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Rule A: fine"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "218",
+      "y": "126",
+      "width": "152",
+      "height": "52",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "294",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Rule B: failed"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "절차 파일이 저장소에 없어 화면 메시지 규칙을 버리고, 저장된 개수를 물어 판정하기로 바꿨다.",
+  "altEn": "The procedure file was missing from the repo, so the screen-message rule was dropped in favor of asking the storage for a count.",
+  "caption": "열어 볼 수 없으니, 개수를 물어보는 쪽으로 바꿨습니다.",
+  "captionEn": "Couldn't open it, so the check became a count.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "절차 파일이 저장소에 없어 화면 메시지 판정을 버리고 저장된 개수로 판정한다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "22",
+      "y": "18",
+      "width": "146",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "절차 파일"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "42",
+      "x2": "220",
+      "y2": "42",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "220,42 210,37 210,47",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "226",
+      "y": "18",
+      "width": "142",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "297",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "저장소에 없음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "98",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "화면 메시지 규칙 삭제"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "56",
+      "y": "116",
+      "width": "278",
+      "height": "54",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "149",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "저장소에 몇 개 들어 있나"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "176",
+      "x2": "195",
+      "y2": "198",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,198 190,188 200,188",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "개수로 판정"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The procedure file is missing from the repo, so the screen-message check is replaced by a stored count"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "22",
+      "y": "18",
+      "width": "146",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Procedure file"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "42",
+      "x2": "220",
+      "y2": "42",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "220,42 210,37 210,47",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "226",
+      "y": "18",
+      "width": "142",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "297",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Not in repo"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "98",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Screen-message rule dropped"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "56",
+      "y": "116",
+      "width": "278",
+      "height": "54",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "149",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Ask storage: how many?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "176",
+      "x2": "195",
+      "y2": "198",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,198 190,188 200,188",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Judge by the count"
+    }
+   ]
+  }
+ }
+]

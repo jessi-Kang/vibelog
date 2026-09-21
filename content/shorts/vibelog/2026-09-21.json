@@ -1,0 +1,185 @@
+{
+  "template": "before-after",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-09-21",
+  "day": 12,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "휴대폰에서 첫 화면이 옆으로 밀렸습니다.",
+      "en": "The home screen slid sideways on phones.",
+      "keywords": [
+        "옆으로"
+      ],
+      "keywordsEn": [
+        "sideways"
+      ],
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "카드 폭이 화면 밖으로 나가지 못하게 묶었습니다.",
+      "en": "I capped the card width to the screen.",
+      "keywords": [
+        "화면 밖으로",
+        "묶었습니다"
+      ],
+      "keywordsEn": [
+        "capped",
+        "width"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "폭 제한 없음",
+          "화면 밖 310픽셀",
+          "화면 폭에 맞춤",
+          "292픽셀"
+        ],
+        "labelsEn": [
+          "no width cap",
+          "310px off screen",
+          "capped to screen",
+          "292px"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "그러자 긴 줄이 다시 말줄임표로 잘렸습니다.",
+      "en": "Then long lines got cut off with an ellipsis again.",
+      "keywords": [
+        "말줄임표로",
+        "잘렸습니다"
+      ],
+      "keywordsEn": [
+        "ellipsis",
+        "cut off"
+      ],
+      "motif": "cut"
+    },
+    {
+      "scene": "demo",
+      "ko": "지금 첫 화면입니다. 카드 3개가 화면 안에 들어옵니다.",
+      "en": "Here is the home screen now. All 3 cards fit inside.",
+      "keywords": [],
+      "keywordsEn": [
+        "3 cards"
+      ],
+      "stat": "3개",
+      "statEn": "3 cards",
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "원인은 카드 아래에 적힌 도구 이름 한 줄이었습니다.",
+      "en": "The cause was the single line of tool names under each card.",
+      "keywords": [
+        "도구 이름"
+      ],
+      "keywordsEn": [
+        "tool names",
+        "single line"
+      ],
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "Recent devlog",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "그 줄이 길어지자 카드가 통째로 넓어졌습니다.",
+      "en": "When that line ran long, the whole card stretched with it.",
+      "keywords": [
+        "통째로 넓어졌습니다"
+      ],
+      "keywordsEn": [
+        "stretched"
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "화면 폭 320픽셀",
+          "600픽셀",
+          "292픽셀"
+        ],
+        "labelsEn": [
+          "320px screen",
+          "600px",
+          "292px"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "프로젝트가 더 늘어도 같은 일이 생기는지 지켜보겠습니다.",
+      "en": "I will watch whether it comes back as projects pile up.",
+      "keywords": [
+        "지켜보겠습니다"
+      ],
+      "keywordsEn": [
+        "watch"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "첫 화면은 제일 먼저 보이는 곳이니까요.",
+      "en": "The home screen is the first thing anyone sees.",
+      "keywords": [
+        "제일 먼저"
+      ],
+      "keywordsEn": [
+        "first thing"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "카드가 화면 밖으로 나갔다",
+    "titleEn": "Cards ran off the screen",
+    "before": "도구 이름 줄에 맞춰 카드가 310픽셀 삐져나왔다",
+    "after": "카드 폭을 묶자 292픽셀로 들어왔다",
+    "beforeEn": "Cards spilled 310px past the edge, stretched by the tool line",
+    "afterEn": "Capping the width brought them back to 292px"
+  },
+  "commits": [
+    [
+      "0915e5c",
+      "홈 프로젝트 카드가 모바일에서 화면 밖으로 벌어졌다 — 기본 열을 minmax(0,1fr)로 묶는다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "0915e5c",
+      "fix: Home project card overflowed off-screen on mobile — wrap base column with minmax(0,1fr)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "새 프로젝트를 추가했더니 휴대폰에서 첫 화면이 옆으로 밀렸습니다. 카드 폭을 화면에 묶어 고쳤습니다.",
+    "en": "Adding a new project made the home screen slide sideways on phones. Capping the card width fixed it."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#반응형",
+    "#버그수정",
+    "#devlog",
+    "#css",
+    "#webdev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-21.poster.jpg?v=mubboywt",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-21.ko.mp4?v=mubbp13m",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-21.en.poster.jpg?v=mubbqc5x",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-21.en.mp4?v=mubbqete"
+  }
+}

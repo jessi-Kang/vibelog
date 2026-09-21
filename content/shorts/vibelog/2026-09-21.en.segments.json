@@ -1,0 +1,21 @@
+{
+  "screens": [
+    {
+      "path": "/",
+      "start": 0.89,
+      "end": 11.93
+    },
+    {
+      "path": "/",
+      "find": "Recent devlog",
+      "focusY": 0.501,
+      "start": 12.43,
+      "end": 22.46
+    },
+    {
+      "path": "/log",
+      "start": 23.35,
+      "end": 34.38
+    }
+  ]
+}
