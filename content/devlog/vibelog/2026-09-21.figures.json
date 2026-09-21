@@ -1,0 +1,508 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "고치기 전에는 카드가 화면 밖으로 310픽셀 삐져나왔고, 고친 뒤에는 320픽셀 화면 안에 292픽셀로 들어왔다.",
+  "altEn": "Before the fix a card spilled 310 pixels past the screen; after, it fits in 292 pixels on a 320-pixel screen.",
+  "caption": "화면 밖으로 나가던 카드가 화면 안으로 들어왔습니다.",
+  "captionEn": "The card that ran off the screen now fits inside it.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "고치기 전과 후의 카드 폭 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "45",
+      "width": "140",
+      "height": "70",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "60",
+      "width": "290",
+      "height": "40",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "52",
+      "y": "86",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "카드"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "128",
+      "x2": "322",
+      "y2": "128",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "330,128 320,123 320,133",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "250",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "310px 밖으로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "180",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "192",
+      "width": "140",
+      "height": "70",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "38",
+      "y": "207",
+      "width": "124",
+      "height": "40",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "233",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "292px"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "182",
+      "y": "233",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "320px 화면 안"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Card width before and after the fix"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "45",
+      "width": "140",
+      "height": "70",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "60",
+      "width": "290",
+      "height": "40",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "52",
+      "y": "86",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "card"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "128",
+      "x2": "322",
+      "y2": "128",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "330,128 320,123 320,133",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "250",
+      "y": "152",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "310px past edge"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "180",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "192",
+      "width": "140",
+      "height": "70",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "38",
+      "y": "207",
+      "width": "124",
+      "height": "40",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "233",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "292px"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "182",
+      "y": "233",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "on 320px screen"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "도구 8개가 적힌 긴 줄이 600픽셀을 넘어 카드를 늘였고, 카드 폭을 화면에 묶자 줄이 말줄임표로 잘렸다.",
+  "altEn": "A line listing 8 tools ran past 600 pixels and stretched the card; capping the card width cut the line with an ellipsis.",
+  "caption": "긴 줄이 카드를 늘였고, 폭을 묶자 줄이 잘렸습니다.",
+  "captionEn": "The long line stretched the card; capping the width cut it off.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "긴 도구 줄이 카드를 늘린 구조와 폭을 묶은 뒤의 모습"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "250",
+      "y1": "34",
+      "x2": "250",
+      "y2": "210",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "256",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "화면 끝"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "폭 상한 없음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "70",
+      "width": "350",
+      "height": "50",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "도구 8개 줄 → 600px 넘음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "폭을 화면에 묶음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "230",
+      "height": "50",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "200",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "도구 8개 줄 …"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A long tool line stretching the card, and the capped card"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "250",
+      "y1": "34",
+      "x2": "250",
+      "y2": "210",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "256",
+      "y": "26",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "edge"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "no width limit"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "70",
+      "width": "350",
+      "height": "50",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "8 tools → past 600px"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "width capped"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "230",
+      "height": "50",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "200",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "8 tools …"
+    }
+   ]
+  }
+ }
+]

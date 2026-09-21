@@ -1,0 +1,20 @@
+{
+  "screens": [
+    {
+      "path": "/",
+      "start": 0.97,
+      "end": 11.81
+    },
+    {
+      "path": "/f",
+      "find": "3 Find the Real One",
+      "start": 12.66,
+      "end": 22.46
+    },
+    {
+      "path": "/o",
+      "start": 23.27,
+      "end": 33.06
+    }
+  ]
+}

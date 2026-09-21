@@ -1,0 +1,457 @@
+{
+  "lang": "en",
+  "duration": 26.331,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.194,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.139
+        },
+        {
+          "text": "home",
+          "start": 0.197,
+          "end": 0.395
+        },
+        {
+          "text": "screen",
+          "start": 0.418,
+          "end": 0.685
+        },
+        {
+          "text": "slid",
+          "start": 0.731,
+          "end": 0.952
+        },
+        {
+          "text": "sideways",
+          "start": 0.998,
+          "end": 1.382
+        },
+        {
+          "text": "on",
+          "start": 1.44,
+          "end": 1.533
+        },
+        {
+          "text": "phones.",
+          "start": 1.602,
+          "end": 2.194
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.635,
+      "end": 4.481,
+      "words": [
+        {
+          "text": "I",
+          "start": 2.635,
+          "end": 2.705
+        },
+        {
+          "text": "capped",
+          "start": 2.798,
+          "end": 3.042
+        },
+        {
+          "text": "the",
+          "start": 3.065,
+          "end": 3.135
+        },
+        {
+          "text": "card",
+          "start": 3.17,
+          "end": 3.379
+        },
+        {
+          "text": "width",
+          "start": 3.425,
+          "end": 3.646
+        },
+        {
+          "text": "to",
+          "start": 3.669,
+          "end": 3.738
+        },
+        {
+          "text": "the",
+          "start": 3.796,
+          "end": 3.866
+        },
+        {
+          "text": "screen.",
+          "start": 3.901,
+          "end": 4.481
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 4.992,
+      "end": 7.488,
+      "words": [
+        {
+          "text": "Then",
+          "start": 4.992,
+          "end": 5.178
+        },
+        {
+          "text": "long",
+          "start": 5.259,
+          "end": 5.445
+        },
+        {
+          "text": "lines",
+          "start": 5.503,
+          "end": 5.712
+        },
+        {
+          "text": "got",
+          "start": 5.759,
+          "end": 5.909
+        },
+        {
+          "text": "cut",
+          "start": 5.968,
+          "end": 6.118
+        },
+        {
+          "text": "off",
+          "start": 6.165,
+          "end": 6.269
+        },
+        {
+          "text": "with",
+          "start": 6.316,
+          "end": 6.432
+        },
+        {
+          "text": "an",
+          "start": 6.467,
+          "end": 6.525
+        },
+        {
+          "text": "ellipsis",
+          "start": 6.571,
+          "end": 6.954
+        },
+        {
+          "text": "again.",
+          "start": 7.001,
+          "end": 7.488
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.301,
+      "end": 12.04,
+      "words": [
+        {
+          "text": "Here",
+          "start": 8.301,
+          "end": 8.545
+        },
+        {
+          "text": "is",
+          "start": 8.591,
+          "end": 8.684
+        },
+        {
+          "text": "the",
+          "start": 8.719,
+          "end": 8.789
+        },
+        {
+          "text": "home",
+          "start": 8.835,
+          "end": 9.021
+        },
+        {
+          "text": "screen",
+          "start": 9.044,
+          "end": 9.323
+        },
+        {
+          "text": "now.",
+          "start": 9.369,
+          "end": 9.834
+        },
+        {
+          "text": "All",
+          "start": 10.275,
+          "end": 10.519
+        },
+        {
+          "text": "3",
+          "start": 10.635,
+          "end": 10.809
+        },
+        {
+          "text": "cards",
+          "start": 10.879,
+          "end": 11.169
+        },
+        {
+          "text": "fit",
+          "start": 11.215,
+          "end": 11.355
+        },
+        {
+          "text": "inside.",
+          "start": 11.401,
+          "end": 12.04
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 12.736,
+      "end": 15.743,
+      "words": [
+        {
+          "text": "The",
+          "start": 12.736,
+          "end": 12.852
+        },
+        {
+          "text": "cause",
+          "start": 12.91,
+          "end": 13.166
+        },
+        {
+          "text": "was",
+          "start": 13.201,
+          "end": 13.317
+        },
+        {
+          "text": "the",
+          "start": 13.363,
+          "end": 13.433
+        },
+        {
+          "text": "single",
+          "start": 13.479,
+          "end": 13.781
+        },
+        {
+          "text": "line",
+          "start": 13.816,
+          "end": 14.036
+        },
+        {
+          "text": "of",
+          "start": 14.06,
+          "end": 14.118
+        },
+        {
+          "text": "tool",
+          "start": 14.187,
+          "end": 14.408
+        },
+        {
+          "text": "names",
+          "start": 14.466,
+          "end": 14.698
+        },
+        {
+          "text": "under",
+          "start": 14.768,
+          "end": 14.965
+        },
+        {
+          "text": "each",
+          "start": 15.012,
+          "end": 15.186
+        },
+        {
+          "text": "card.",
+          "start": 15.244,
+          "end": 15.743
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 16.347,
+      "end": 19.516,
+      "words": [
+        {
+          "text": "When",
+          "start": 16.347,
+          "end": 16.533
+        },
+        {
+          "text": "that",
+          "start": 16.567,
+          "end": 16.684
+        },
+        {
+          "text": "line",
+          "start": 16.742,
+          "end": 16.951
+        },
+        {
+          "text": "ran",
+          "start": 16.985,
+          "end": 17.136
+        },
+        {
+          "text": "long,",
+          "start": 17.206,
+          "end": 17.659
+        },
+        {
+          "text": "the",
+          "start": 17.984,
+          "end": 18.112
+        },
+        {
+          "text": "whole",
+          "start": 18.158,
+          "end": 18.367
+        },
+        {
+          "text": "card",
+          "start": 18.402,
+          "end": 18.611
+        },
+        {
+          "text": "stretched",
+          "start": 18.657,
+          "end": 18.959
+        },
+        {
+          "text": "with",
+          "start": 18.982,
+          "end": 19.133
+        },
+        {
+          "text": "it.",
+          "start": 19.18,
+          "end": 19.516
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 20.329,
+      "end": 23.034,
+      "words": [
+        {
+          "text": "I",
+          "start": 20.329,
+          "end": 20.387
+        },
+        {
+          "text": "will",
+          "start": 20.468,
+          "end": 20.608
+        },
+        {
+          "text": "watch",
+          "start": 20.654,
+          "end": 20.84
+        },
+        {
+          "text": "whether",
+          "start": 20.886,
+          "end": 21.107
+        },
+        {
+          "text": "it",
+          "start": 21.142,
+          "end": 21.211
+        },
+        {
+          "text": "comes",
+          "start": 21.258,
+          "end": 21.467
+        },
+        {
+          "text": "back",
+          "start": 21.513,
+          "end": 21.734
+        },
+        {
+          "text": "as",
+          "start": 21.804,
+          "end": 21.943
+        },
+        {
+          "text": "projects",
+          "start": 22.024,
+          "end": 22.372
+        },
+        {
+          "text": "pile",
+          "start": 22.419,
+          "end": 22.639
+        },
+        {
+          "text": "up.",
+          "start": 22.674,
+          "end": 23.034
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 23.847,
+      "end": 26.331,
+      "words": [
+        {
+          "text": "The",
+          "start": 23.847,
+          "end": 23.975
+        },
+        {
+          "text": "home",
+          "start": 24.021,
+          "end": 24.218
+        },
+        {
+          "text": "screen",
+          "start": 24.242,
+          "end": 24.52
+        },
+        {
+          "text": "is",
+          "start": 24.555,
+          "end": 24.625
+        },
+        {
+          "text": "the",
+          "start": 24.66,
+          "end": 24.729
+        },
+        {
+          "text": "first",
+          "start": 24.787,
+          "end": 24.996
+        },
+        {
+          "text": "thing",
+          "start": 25.031,
+          "end": 25.205
+        },
+        {
+          "text": "anyone",
+          "start": 25.275,
+          "end": 25.612
+        },
+        {
+          "text": "sees.",
+          "start": 25.646,
+          "end": 26.331
+        }
+      ]
+    }
+  ]
+}

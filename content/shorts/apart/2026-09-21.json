@@ -1,0 +1,216 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-21",
+  "day": 8,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 이름을 한 번에 다 받을 수 없습니다.",
+      "en": "I can't pull all the apartment names at once.",
+      "keywords": [
+        "한 번에"
+      ],
+      "keywordsEn": [
+        "at once"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "이름을 주는 곳이 하루 5,000건까지만 허용합니다.",
+      "en": "The source only hands out 5,000 names a day.",
+      "keywords": [
+        "5,000건까지만"
+      ],
+      "keywordsEn": [
+        "5,000 names a day"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 a day",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 밤마다 조금씩 나눠 받게 했습니다.",
+      "en": "So now it comes in a little each night.",
+      "keywords": [
+        "밤마다",
+        "나눠 받게"
+      ],
+      "keywordsEn": [
+        "each night",
+        "a little"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "밤이 되면",
+          "목록을 받고",
+          "게임에 더하고",
+          "다음 밤에 또"
+        ],
+        "labelsEn": [
+          "night comes",
+          "fetch the list",
+          "add to the game",
+          "again tomorrow"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "남은 분량이 적은 지역부터 먼저 받습니다.",
+      "en": "Regions with the least left go first.",
+      "keywords": [
+        "적은 지역부터"
+      ],
+      "keywordsEn": [
+        "the least left"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "받는 순서",
+          "나머지는 얇게 남음",
+          "모든 지역이 고르게",
+          "큰 지역 먼저",
+          "적은 지역 먼저"
+        ],
+        "labelsEn": [
+          "fetch order",
+          "others stay thin",
+          "every region evenly",
+          "biggest first",
+          "smallest first"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "진짜 이름 목록은 이렇게 계속 늘어납니다.",
+      "en": "The list of real names keeps growing like this.",
+      "keywords": [
+        "계속 늘어납니다"
+      ],
+      "keywordsEn": [
+        "keeps growing"
+      ],
+      "screen": "/f",
+      "find": "3 진짜 찾기",
+      "findEn": "3 Find the Real One",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "같은 밤에 가짜 이름도 새로 채웁니다.",
+      "en": "The same night, new fake names get topped up.",
+      "keywords": [
+        "가짜 이름도"
+      ],
+      "keywordsEn": [
+        "fake names"
+      ],
+      "screen": "/o",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "덮어쓰면 손으로 넣은 단지가 사라져서, 더하기만 합니다.",
+      "en": "Overwriting would erase hand-added complexes, so it only adds.",
+      "keywords": [
+        "덮어쓰면",
+        "더하기만"
+      ],
+      "keywordsEn": [
+        "Overwriting",
+        "only adds"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "손으로 넣은 단지",
+          "밤마다 받은 목록",
+          "함께 남는다"
+        ],
+        "labelsEn": [
+          "hand-added complexes",
+          "list fetched at night",
+          "both kept"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "달라고 해도 한 건도 안 오는 지역이 두 곳 남았습니다.",
+      "en": "Two regions still return nothing when I ask.",
+      "keywords": [
+        "한 건도",
+        "두 곳"
+      ],
+      "keywordsEn": [
+        "nothing",
+        "Two regions"
+      ],
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "자는 동안 목록이 조금씩 두꺼워집니다.",
+      "en": "The list gets thicker while I sleep.",
+      "keywords": [
+        "조금씩"
+      ],
+      "keywordsEn": []
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "덮어쓰면 사라진다",
+    "titleEn": "Overwriting erases them",
+    "before": "통째로 덮어쓰면 손으로 넣은 단지가 매일 밤 사라진다",
+    "after": "덮어쓰지 않고 새 이름만 더한다",
+    "beforeEn": "A full overwrite quietly erases hand-added complexes every night",
+    "afterEn": "New names are added instead of overwriting"
+  },
+  "commits": [
+    [
+      "e4ec46b",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "e4ec46b",
+      "chore: receive batch and fill fake data (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루 5,000건 제한 때문에 아파트 이름을 밤마다 조금씩 나눠 받게 했습니다. 남은 분량이 적은 지역부터 받고, 가짜 이름도 같은 밤에 채웁니다.",
+    "en": "With a 5,000-a-day limit, apartment names now come in a little each night. Regions with the least left go first, and fake names get topped up the same night."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#아파트감별사",
+    "#공공데이터",
+    "#devlog",
+    "#buildinpublic",
+    "#sidequest",
+    "#automation"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-21.poster.jpg?v=mubbulx9",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-21.ko.mp4?v=mubbunm0",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-21.en.poster.jpg?v=mubbvqhr",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-21.en.mp4?v=mubbvsqw"
+  }
+}
