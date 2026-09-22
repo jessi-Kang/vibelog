@@ -1,0 +1,15 @@
+{
+  "screens": [
+    {
+      "path": "/log",
+      "start": 0.86,
+      "end": 18.82
+    },
+    {
+      "path": "/",
+      "find": "recent runs",
+      "start": 19.7,
+      "end": 37.68
+    }
+  ]
+}

@@ -1,33 +1,26 @@
 {
-  "at": "2026-09-21T14:16:07.644Z",
+  "at": "2026-09-22T14:13:39.409Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 3 repos, 3 active"
+      "text": "collect  · 3 repos, 2 active"
     },
     {
-      "text": "generate · Anchor/2026-09-21.md (ko, en) · 토큰 in 13,963 · out 2,643"
+      "text": "generate · Anchor/2026-09-22.md (ko, en) · 토큰 in 16,571 · out 3,101"
     },
     {
-      "text": "figures  · Anchor/2026-09-21 2장 · 토큰 in 1,517 · out 4,477",
-      "textEn": "figures  · Anchor/2026-09-21 2 figures · tokens in 1,517 · out 4,477"
+      "text": "figures  · Anchor/2026-09-22 3장 · 토큰 in 9,224 · out 12,258",
+      "textEn": "figures  · Anchor/2026-09-22 3 figures · 토큰 in 9,224 · out 12,258"
     },
     {
-      "text": "generate · vibelog/2026-09-21.md (ko, en) · 토큰 in 2,571 · out 1,896 · cache 2,354"
+      "text": "generate · vibelog/2026-09-22.md (ko, en) · 토큰 in 3,040 · out 2,686 · cache 2,354"
     },
     {
-      "text": "figures  · vibelog/2026-09-21 2장 · 토큰 in 1,296 · out 4,791",
-      "textEn": "figures  · vibelog/2026-09-21 2 figures · tokens in 1,296 · out 4,791"
-    },
-    {
-      "text": "generate · apart/2026-09-21.md (ko, en) · 토큰 in 2,948 · out 2,323 · cache 2,354"
-    },
-    {
-      "text": "figures  · apart/2026-09-21 3장 · 토큰 in 1,320 · out 8,042",
-      "textEn": "figures  · apart/2026-09-21 3 figures · tokens in 1,320 · out 8,042"
+      "text": "figures  · vibelog/2026-09-22 3장 · 토큰 in 7,400 · out 13,679 · cache 3,274",
+      "textEn": "figures  · vibelog/2026-09-22 3 figures · 토큰 in 7,400 · out 13,679 · cache 3,274"
     },
     {
       "text": "shorts   · Anchor 실패 — 글 발행은 계속",
@@ -35,15 +28,7 @@
       "kind": "fail"
     },
     {
-      "text": "shorts   · vibelog/2026-09-21 (ko, en) · 대본 토큰 in 13,437 · out 8,720 · cache 12,560"
-    },
-    {
-      "text": "warn     · vibelog/2026-09-21 데모 화면 중복 — 같은 자리를 두 번 보여줍니다 (/, 정류장 3개)",
-      "textEn": "warn     · vibelog/2026-09-21 duplicate demo screen — same view shown twice (/, 3 stops)",
-      "kind": "fail"
-    },
-    {
-      "text": "shorts   · apart/2026-09-21 (ko, en) · 대본 토큰 in 3,264 · out 3,204 · cache 6,280"
+      "text": "shorts   · vibelog/2026-09-22 (ko, en) · 대본 토큰 in 14,426 · out 9,944 · cache 12,560"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

@@ -1,0 +1,549 @@
+{
+  "lang": "en",
+  "duration": 32.972,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 1.533,
+      "words": [
+        {
+          "text": "One",
+          "start": 0,
+          "end": 0.186
+        },
+        {
+          "text": "illustration",
+          "start": 0.209,
+          "end": 0.708
+        },
+        {
+          "text": "went",
+          "start": 0.766,
+          "end": 0.917
+        },
+        {
+          "text": "missing.",
+          "start": 0.964,
+          "end": 1.533
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.043,
+      "end": 5.666,
+      "words": [
+        {
+          "text": "The",
+          "start": 2.043,
+          "end": 2.171
+        },
+        {
+          "text": "page",
+          "start": 2.218,
+          "end": 2.45
+        },
+        {
+          "text": "read",
+          "start": 2.485,
+          "end": 2.647
+        },
+        {
+          "text": "only",
+          "start": 2.705,
+          "end": 2.902
+        },
+        {
+          "text": "the",
+          "start": 2.949,
+          "end": 3.019
+        },
+        {
+          "text": "first",
+          "start": 3.077,
+          "end": 3.286
+        },
+        {
+          "text": "sentence",
+          "start": 3.32,
+          "end": 3.947
+        },
+        {
+          "text": "and",
+          "start": 4.063,
+          "end": 4.307
+        },
+        {
+          "text": "folded",
+          "start": 4.377,
+          "end": 4.667
+        },
+        {
+          "text": "the",
+          "start": 4.702,
+          "end": 4.772
+        },
+        {
+          "text": "whole",
+          "start": 4.818,
+          "end": 5.004
+        },
+        {
+          "text": "section.",
+          "start": 5.039,
+          "end": 5.666
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 6.362,
+      "end": 9.613,
+      "words": [
+        {
+          "text": "Three",
+          "start": 6.362,
+          "end": 6.618
+        },
+        {
+          "text": "different",
+          "start": 6.653,
+          "end": 6.931
+        },
+        {
+          "text": "places",
+          "start": 6.954,
+          "end": 7.279
+        },
+        {
+          "text": "made",
+          "start": 7.338,
+          "end": 7.5
+        },
+        {
+          "text": "that",
+          "start": 7.523,
+          "end": 7.663
+        },
+        {
+          "text": "call,",
+          "start": 7.721,
+          "end": 8.15
+        },
+        {
+          "text": "each",
+          "start": 8.324,
+          "end": 8.51
+        },
+        {
+          "text": "with",
+          "start": 8.545,
+          "end": 8.661
+        },
+        {
+          "text": "its",
+          "start": 8.707,
+          "end": 8.812
+        },
+        {
+          "text": "own",
+          "start": 8.847,
+          "end": 8.963
+        },
+        {
+          "text": "standard.",
+          "start": 9.021,
+          "end": 9.613
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 10.426,
+      "end": 12.527,
+      "words": [
+        {
+          "text": "Now",
+          "start": 10.426,
+          "end": 10.612
+        },
+        {
+          "text": "there",
+          "start": 10.67,
+          "end": 10.809
+        },
+        {
+          "text": "is",
+          "start": 10.844,
+          "end": 10.913
+        },
+        {
+          "text": "only",
+          "start": 10.96,
+          "end": 11.157
+        },
+        {
+          "text": "one",
+          "start": 11.215,
+          "end": 11.343
+        },
+        {
+          "text": "place",
+          "start": 11.378,
+          "end": 11.633
+        },
+        {
+          "text": "that",
+          "start": 11.656,
+          "end": 11.773
+        },
+        {
+          "text": "decides.",
+          "start": 11.819,
+          "end": 12.527
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 13.224,
+      "end": 17.519,
+      "words": [
+        {
+          "text": "If",
+          "start": 13.224,
+          "end": 13.398
+        },
+        {
+          "text": "more",
+          "start": 13.468,
+          "end": 13.607
+        },
+        {
+          "text": "than",
+          "start": 13.642,
+          "end": 13.758
+        },
+        {
+          "text": "40",
+          "start": 13.839,
+          "end": 14.094
+        },
+        {
+          "text": "characters",
+          "start": 14.152,
+          "end": 14.593
+        },
+        {
+          "text": "of",
+          "start": 14.64,
+          "end": 14.698
+        },
+        {
+          "text": "story",
+          "start": 14.756,
+          "end": 15.058
+        },
+        {
+          "text": "follow",
+          "start": 15.128,
+          "end": 15.348
+        },
+        {
+          "text": "the",
+          "start": 15.406,
+          "end": 15.476
+        },
+        {
+          "text": "first",
+          "start": 15.522,
+          "end": 15.72
+        },
+        {
+          "text": "line,",
+          "start": 15.778,
+          "end": 16.207
+        },
+        {
+          "text": "it",
+          "start": 16.451,
+          "end": 16.579
+        },
+        {
+          "text": "counts",
+          "start": 16.637,
+          "end": 16.904
+        },
+        {
+          "text": "as",
+          "start": 16.95,
+          "end": 17.032
+        },
+        {
+          "text": "real.",
+          "start": 17.101,
+          "end": 17.519
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 18.82,
+      "end": 22.326,
+      "words": [
+        {
+          "text": "The",
+          "start": 18.82,
+          "end": 18.959
+        },
+        {
+          "text": "section",
+          "start": 19.005,
+          "end": 19.365
+        },
+        {
+          "text": "that",
+          "start": 19.412,
+          "end": 19.528
+        },
+        {
+          "text": "was",
+          "start": 19.574,
+          "end": 19.679
+        },
+        {
+          "text": "folded",
+          "start": 19.748,
+          "end": 20.05
+        },
+        {
+          "text": "yesterday",
+          "start": 20.097,
+          "end": 20.503
+        },
+        {
+          "text": "is",
+          "start": 20.549,
+          "end": 20.642
+        },
+        {
+          "text": "back,",
+          "start": 20.7,
+          "end": 21.176
+        },
+        {
+          "text": "picture",
+          "start": 21.385,
+          "end": 21.792
+        },
+        {
+          "text": "and",
+          "start": 21.827,
+          "end": 21.896
+        },
+        {
+          "text": "all.",
+          "start": 21.954,
+          "end": 22.326
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 22.709,
+      "end": 26.54,
+      "words": [
+        {
+          "text": "On",
+          "start": 22.709,
+          "end": 22.86
+        },
+        {
+          "text": "the",
+          "start": 22.895,
+          "end": 22.964
+        },
+        {
+          "text": "home",
+          "start": 23.011,
+          "end": 23.185
+        },
+        {
+          "text": "page,",
+          "start": 23.208,
+          "end": 23.742
+        },
+        {
+          "text": "the",
+          "start": 23.951,
+          "end": 24.056
+        },
+        {
+          "text": "recent",
+          "start": 24.114,
+          "end": 24.381
+        },
+        {
+          "text": "run",
+          "start": 24.416,
+          "end": 24.555
+        },
+        {
+          "text": "log",
+          "start": 24.601,
+          "end": 24.775
+        },
+        {
+          "text": "got",
+          "start": 24.822,
+          "end": 24.973
+        },
+        {
+          "text": "its",
+          "start": 25.019,
+          "end": 25.124
+        },
+        {
+          "text": "missing",
+          "start": 25.17,
+          "end": 25.426
+        },
+        {
+          "text": "numbers",
+          "start": 25.472,
+          "end": 25.751
+        },
+        {
+          "text": "back",
+          "start": 25.797,
+          "end": 25.994
+        },
+        {
+          "text": "too.",
+          "start": 26.064,
+          "end": 26.54
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 27.144,
+      "end": 29.988,
+      "words": [
+        {
+          "text": "I'll",
+          "start": 27.144,
+          "end": 27.295
+        },
+        {
+          "text": "look",
+          "start": 27.318,
+          "end": 27.457
+        },
+        {
+          "text": "for",
+          "start": 27.492,
+          "end": 27.585
+        },
+        {
+          "text": "other",
+          "start": 27.643,
+          "end": 27.806
+        },
+        {
+          "text": "spots",
+          "start": 27.852,
+          "end": 28.131
+        },
+        {
+          "text": "that",
+          "start": 28.154,
+          "end": 28.258
+        },
+        {
+          "text": "judge",
+          "start": 28.305,
+          "end": 28.548
+        },
+        {
+          "text": "by",
+          "start": 28.595,
+          "end": 28.699
+        },
+        {
+          "text": "the",
+          "start": 28.746,
+          "end": 28.815
+        },
+        {
+          "text": "first",
+          "start": 28.862,
+          "end": 29.071
+        },
+        {
+          "text": "sentence",
+          "start": 29.106,
+          "end": 29.477
+        },
+        {
+          "text": "alone.",
+          "start": 29.512,
+          "end": 29.988
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 30.685,
+      "end": 32.972,
+      "words": [
+        {
+          "text": "No",
+          "start": 30.685,
+          "end": 30.824
+        },
+        {
+          "text": "drawing",
+          "start": 30.87,
+          "end": 31.172
+        },
+        {
+          "text": "should",
+          "start": 31.207,
+          "end": 31.381
+        },
+        {
+          "text": "be",
+          "start": 31.416,
+          "end": 31.486
+        },
+        {
+          "text": "paid",
+          "start": 31.521,
+          "end": 31.718
+        },
+        {
+          "text": "for",
+          "start": 31.764,
+          "end": 31.904
+        },
+        {
+          "text": "and",
+          "start": 31.962,
+          "end": 32.043
+        },
+        {
+          "text": "never",
+          "start": 32.078,
+          "end": 32.275
+        },
+        {
+          "text": "seen.",
+          "start": 32.333,
+          "end": 32.972
+        }
+      ]
+    }
+  ]
+}

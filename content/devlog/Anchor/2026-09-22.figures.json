@@ -1,0 +1,798 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "다시 눌러도 같은 자리에서 멈추는 안내와, 다시 누르면 되는 안내 4개를 나란히 비교한 그림.",
+  "altEn": "A side-by-side comparison: one message where pressing again always stops at the same place, and the other retry messages that really work.",
+  "caption": "안 되는 재시도만 문구를 바꾸고, 되는 쪽은 그대로 뒀습니다.",
+  "captionEn": "Only the retry that cannot work was reworded; the ones that work stayed.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "다시 눌러도 안 되는 안내와, 다시 누르면 되는 안내 4개의 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "101",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "고침"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "그대로"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "40",
+      "width": "170",
+      "height": "120",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "101",
+      "y": "76",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "다시 눌러도"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "101",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "같은 자리"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M66 124 a22 14 0 1 0 22 -12",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "84,106 96,112 84,118",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "124",
+      "y": "134",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "안 됨"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "204",
+      "y": "40",
+      "width": "170",
+      "height": "120",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "76",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "다른 안내 4개"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "다시 누르면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "132",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "됨"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A retry that never works, next to the retries that do"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "101",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "Fixed"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "Unchanged"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "40",
+      "width": "170",
+      "height": "120",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "101",
+      "y": "76",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "Press again,"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "101",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "same stop"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M66 124 a22 14 0 1 0 22 -12",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "84,106 96,112 84,118",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "122",
+      "y": "134",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "no use"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "204",
+      "y": "40",
+      "width": "170",
+      "height": "120",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "76",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "Other retries"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "still work"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 1,
+  "alt": "두 문서가 이름으로 서로를 가리키고, 그 자리가 있는지 매번 확인해 알려 주기만 하는 그림.",
+  "altEn": "Two documents point at each other by name, and a check reports whether the spot exists without blocking anything.",
+  "caption": "가리킨 자리가 있는지 확인하되, 틀려도 작업을 막지는 않습니다.",
+  "captionEn": "It checks whether the target exists, but never blocks the work.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "이름으로 가리킨 자리가 실제로 있는지 확인하고 알리기만 하는 흐름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "이름으로 가리키기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "56",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "75",
+      "y": "98",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "문서"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "260",
+      "y": "56",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "315",
+      "y": "98",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "문서"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "132",
+      "y1": "91",
+      "x2": "248",
+      "y2": "91",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "248,85 260,91 248,97",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "80",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "있나?"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "없으면 알림만 — 막지 않음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Pointing by name, checked each time and only reported"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "Pointing by name"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "56",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "75",
+      "y": "98",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "doc"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "260",
+      "y": "56",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "315",
+      "y": "98",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "middle"
+     },
+     "text": "doc"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "132",
+      "y1": "91",
+      "x2": "248",
+      "y2": "91",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "248,85 260,91 248,97",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "80",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "exists?"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "reports only — never blocks"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "개수는 맞았지만 이유는 틀렸고, 열어 보니 반례 3개가 나왔다는 그림.",
+  "altEn": "The count was right but the reason was wrong; opening them turned up counterexamples.",
+  "caption": "세기만 하고 열어 보지 않으면, 숫자는 맞아도 설명이 틀립니다.",
+  "captionEn": "Counting without opening: the number holds, the explanation doesn't.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "개수는 맞고 이유는 틀렸으며, 열어 보니 반례 3개가 나온 결과"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "40",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "개수"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "end"
+     },
+     "text": "맞음"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "310,53 320,63 340,41",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "86",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "40",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이유"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)",
+      "text-anchor": "end"
+     },
+     "text": "틀림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "312",
+      "y1": "99",
+      "x2": "338",
+      "y2": "121",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "338",
+      "y1": "99",
+      "x2": "312",
+      "y2": "121",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "열어 보니 반례 3개"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The count was right, the reason was wrong, and opening them found counterexamples"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "40",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Count"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)",
+      "text-anchor": "end"
+     },
+     "text": "right"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "310,53 320,63 340,41",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "86",
+      "width": "350",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "40",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Reason"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)",
+      "text-anchor": "end"
+     },
+     "text": "wrong"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "312",
+      "y1": "99",
+      "x2": "338",
+      "y2": "121",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "338",
+      "y1": "99",
+      "x2": "312",
+      "y2": "121",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "162",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "opened them: counterexamples"
+    }
+   ]
+  }
+ }
+]
