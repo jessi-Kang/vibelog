@@ -1,0 +1,1000 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "첫 문장만 읽고 대목 전체를 한 줄로 접어, 뒤따르던 이야기와 옆 그림이 함께 사라졌다.",
+  "altEn": "Reading only the first sentence, the page folded the whole section into one line, losing the story and the picture with it.",
+  "caption": "접히면서 옆에 있던 그림까지 같이 사라졌습니다.",
+  "captionEn": "The fold took the picture along with the story.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "대목 전체가 한 줄로 접히면서 이야기와 그림이 사라진 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "쓴 대목"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "299",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "보인 화면"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "56",
+      "width": "150",
+      "height": "112",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "80",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "첫 문장"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "34",
+      "y1": "94",
+      "x2": "154",
+      "y2": "94",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "34",
+      "y1": "106",
+      "x2": "128",
+      "y2": "106",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "118",
+      "width": "66",
+      "height": "36",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "67",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "그림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "113",
+      "x2": "208",
+      "y2": "113",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,106 220,113 208,120",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "228",
+      "y": "96",
+      "width": "142",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "242",
+      "y": "120",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "첫 문장"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "299",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "이야기·그림 없음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The whole section folded into one line, losing story and picture"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "written"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "299",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "shown"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "56",
+      "width": "150",
+      "height": "112",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "80",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "first line"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "34",
+      "y1": "94",
+      "x2": "154",
+      "y2": "94",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "34",
+      "y1": "106",
+      "x2": "128",
+      "y2": "106",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "118",
+      "width": "78",
+      "height": "36",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "73",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "picture"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "113",
+      "x2": "208",
+      "y2": "113",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,106 220,113 208,120",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "228",
+      "y": "96",
+      "width": "142",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "240",
+      "y": "120",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "first line"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "299",
+      "y": "158",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "story, picture gone"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "준비한 그림 3장 가운데 2장만 화면에 나오고 마지막 그림은 사라졌다.",
+  "altEn": "Of 3 prepared illustrations only 2 appeared, and the last one went missing.",
+  "caption": "마지막 자리가 비어 있었습니다.",
+  "captionEn": "The last slot came up empty.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "준비한 그림 3장 중 2장만 화면에 나온 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "준비 3장"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "46",
+      "width": "100",
+      "height": "72",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "34,104 56,74 74,94 88,80 106,104",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "46",
+      "width": "100",
+      "height": "72",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "159,104 181,74 199,94 213,80 231,104",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "46",
+      "width": "100",
+      "height": "72",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "6 5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "292",
+      "y1": "66",
+      "x2": "348",
+      "y2": "98",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "348",
+      "y1": "66",
+      "x2": "292",
+      "y2": "98",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "보임"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "보임"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "사라짐"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "화면 2장"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Of 3 prepared illustrations, only 2 appeared on screen"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Prepared: 3"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "46",
+      "width": "100",
+      "height": "72",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "34,104 56,74 74,94 88,80 106,104",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "46",
+      "width": "100",
+      "height": "72",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "159,104 181,74 199,94 213,80 231,104",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "46",
+      "width": "100",
+      "height": "72",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "6 5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "292",
+      "y1": "66",
+      "x2": "348",
+      "y2": "98",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "348",
+      "y1": "66",
+      "x2": "292",
+      "y2": "98",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "shown"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "shown"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "missing"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Shown: 2"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 1,
+  "alt": "제각각 판단하던 자리를 모아 한군데로 두고, 첫 문장 뒤 40자가 넘으면 진짜 삽질로 보는 규칙을 세웠다.",
+  "altEn": "Places that judged on their own were merged into a single spot, with one rule: more than 40 characters after the first sentence counts as real.",
+  "caption": "판단도 기준도 하나로 모았습니다.",
+  "captionEn": "Judgement and rule, merged into a single spot.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "흩어져 있던 판단을 한군데로 모은 그림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "44",
+      "width": "152",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "70",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "목록 표시"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "96",
+      "width": "152",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "122",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글 화면"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "148",
+      "width": "152",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "174",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그림 그리기"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "172,64 196,64 196,114",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "116",
+      "x2": "196",
+      "y2": "116",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "172,168 196,168 196,118",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "196",
+      "y1": "116",
+      "x2": "214",
+      "y2": "116",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,109 226,116 214,123",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "232",
+      "y": "92",
+      "width": "138",
+      "height": "48",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "301",
+      "y": "122",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "판단은 여기서만"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "첫 문장 뒤 40자 넘으면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "234",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "진짜 삽질"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Scattered judgements merged into a single place"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "44",
+      "width": "152",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "70",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "list badge"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "96",
+      "width": "152",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "122",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "post page"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "148",
+      "width": "152",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "34",
+      "y": "174",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "drawing step"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "172,64 196,64 196,114",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "116",
+      "x2": "196",
+      "y2": "116",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "172,168 196,168 196,118",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "196",
+      "y1": "116",
+      "x2": "214",
+      "y2": "116",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "214,109 226,116 214,123",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "232",
+      "y": "92",
+      "width": "138",
+      "height": "48",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "301",
+      "y": "122",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "judged here only"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "over 40 chars after line one"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "234",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "→ counts as real"
+    }
+   ]
+  }
+ }
+]
