@@ -1,0 +1,15 @@
+{
+  "screens": [
+    {
+      "path": "/f",
+      "find": "one of four is real",
+      "start": 0.98,
+      "end": 19.22
+    },
+    {
+      "path": "/",
+      "start": 20.24,
+      "end": 38.22
+    }
+  ]
+}

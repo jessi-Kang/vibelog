@@ -1,0 +1,195 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-23",
+  "day": 9,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 목록을 한 번에 못 받습니다.",
+      "en": "I can't pull the whole apartment list at once.",
+      "keywords": [
+        "한 번에"
+      ],
+      "keywordsEn": [
+        "at once"
+      ],
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "자료를 내주는 쪽이 하루 5,000건까지만 주거든요.",
+      "en": "The source only hands out 5,000 records a day.",
+      "keywords": [
+        "5,000건까지만"
+      ],
+      "keywordsEn": [
+        "5,000 records"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 records",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 매일 밤 조금씩 나눠 받게 했습니다.",
+      "en": "So it now comes in small slices every night.",
+      "keywords": [
+        "매일 밤"
+      ],
+      "keywordsEn": [
+        "every night"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "build",
+      "ko": "부산, 대구, 인천처럼 목록이 얇은 곳부터 채웁니다.",
+      "en": "It fills the thinnest regions first, like Busan, Daegu, and Incheon.",
+      "keywords": [
+        "얇은 곳부터"
+      ],
+      "keywordsEn": [
+        "thinnest regions first"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "build",
+      "ko": "같은 밤에 가짜 이름도 새로 지어 넣습니다.",
+      "en": "The same night, it also makes a fresh batch of fake names.",
+      "keywords": [
+        "가짜 이름도"
+      ],
+      "keywordsEn": [
+        "fake names"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "build",
+      "ko": "진짜로 밝혀진 가짜 이름은 문제에서 빠지니까요.",
+      "en": "Names that turn out to be real drop out of the quiz.",
+      "keywords": [
+        "문제에서 빠지니까요"
+      ],
+      "keywordsEn": [
+        "drop out"
+      ],
+      "motif": "convert"
+    },
+    {
+      "scene": "demo",
+      "ko": "넷 중 진짜 하나를 고르는 문제입니다.",
+      "en": "Here you pick the one real name out of four.",
+      "keywords": [
+        "진짜 하나를"
+      ],
+      "keywordsEn": [
+        "one real name"
+      ],
+      "screen": "/f",
+      "find": "넷 중 진짜는 하나",
+      "findEn": "one of four is real",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "목록을 덮어쓰게 뒀으면 큰일이었습니다.",
+      "en": "Overwriting the list every night would have been a disaster.",
+      "keywords": [
+        "덮어쓰게"
+      ],
+      "keywordsEn": [
+        "Overwriting"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "덮어쓰기",
+          "손 입력 사라짐",
+          "새것만 더하기",
+          "그대로 남음"
+        ],
+        "labelsEn": [
+          "Overwrite",
+          "Hand entries gone",
+          "Add only new",
+          "They stay"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "광주와 전남은 달라고 해도 0건이 돌아옵니다.",
+      "en": "Gwangju and Jeonnam return zero records no matter how I ask.",
+      "keywords": [
+        "0건이"
+      ],
+      "keywordsEn": [
+        "zero records"
+      ],
+      "stat": "0건",
+      "statEn": "0 records",
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "이 두 곳은 원인부터 찾아봅니다.",
+      "en": "For those two, I need to find out why first.",
+      "keywords": [
+        "원인부터"
+      ],
+      "keywordsEn": [
+        "find out why"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "덮어쓰면 매일 밤 사라진다",
+    "titleEn": "Overwrite erases it nightly",
+    "before": "받아온 목록으로 통째로 덮어쓰기",
+    "after": "새로 받은 것만 더하기",
+    "beforeEn": "Replace the whole list each night",
+    "afterEn": "Only add what's new"
+  },
+  "commits": [
+    [
+      "a65e4b2",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "a65e4b2",
+      "chore: receive bundle and fill with fake (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루에 5,000건까지만 받을 수 있어서, 매일 밤 목록이 얇은 지역부터 조금씩 채우게 했습니다. 통째로 덮어쓰면 손으로 넣은 단지가 사라져서 더하는 방식으로 바꿨습니다.",
+    "en": "The source only gives 5,000 records a day, so the list now fills in nightly, thinnest regions first. A straight overwrite would erase hand-entered buildings, so the nightly run only adds."
+  },
+  "hashtags": [
+    "#아파트감별사",
+    "#개발일지",
+    "#데브로그",
+    "#자동화",
+    "#devlog",
+    "#buildinpublic",
+    "#indiedev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-23.poster.jpg?v=mue6frbz",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-23.ko.mp4?v=mue6ft7k",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-23.en.poster.jpg?v=mue6h08c",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-23.en.mp4?v=mue6h22w"
+  }
+}
