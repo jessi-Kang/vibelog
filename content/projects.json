@@ -30,11 +30,30 @@
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
-    "lastActivity": "2026-09-23",
-    "weekCommits": 55,
-    "todayCommits": 0,
-    "totalCommits": 405,
+    "lastActivity": "2026-09-24",
+    "weekCommits": 56,
+    "todayCommits": 1,
+    "totalCommits": 406,
     "countsDate": "2026-09-24"
+  },
+  {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "preview",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-24",
+    "weekCommits": 3,
+    "todayCommits": 1,
+    "totalCommits": 192,
+    "countsDate": "2026-09-24",
+    "theme": "paper"
   },
   {
     "slug": "Anchor",
