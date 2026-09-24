@@ -1,5 +1,24 @@
 [
   {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "preview",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-25",
+    "weekCommits": 4,
+    "todayCommits": 1,
+    "totalCommits": 193,
+    "countsDate": "2026-09-25",
+    "theme": "paper"
+  },
+  {
     "slug": "vibelog",
     "name": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
@@ -13,9 +32,9 @@
     "language": "JavaScript",
     "lastActivity": "2026-09-24",
     "weekCommits": 57,
-    "todayCommits": 4,
-    "totalCommits": 409,
-    "countsDate": "2026-09-24"
+    "todayCommits": 0,
+    "totalCommits": 410,
+    "countsDate": "2026-09-25"
   },
   {
     "slug": "portfolio-tmp",
@@ -30,9 +49,9 @@
     "language": "JavaScript",
     "lastActivity": "2026-09-24",
     "weekCommits": 2,
-    "todayCommits": 2,
+    "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-09-24",
+    "countsDate": "2026-09-25",
     "theme": "blueprint"
   },
   {
@@ -55,9 +74,9 @@
     "language": "TypeScript",
     "lastActivity": "2026-09-24",
     "weekCommits": 1070,
-    "todayCommits": 1,
+    "todayCommits": 0,
     "totalCommits": 1070,
-    "countsDate": "2026-09-24",
+    "countsDate": "2026-09-25",
     "theme": "blueprint"
   },
   {
@@ -70,28 +89,9 @@
     "repoUrl": "https://github.com/jessi-Kang/agency",
     "lastActivity": "2026-09-24",
     "weekCommits": 1,
-    "todayCommits": 1,
+    "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-09-24",
+    "countsDate": "2026-09-25",
     "theme": "highlighter"
-  },
-  {
-    "slug": "apart",
-    "name": "apart",
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-09-24",
-    "weekCommits": 3,
-    "todayCommits": 1,
-    "totalCommits": 192,
-    "countsDate": "2026-09-24",
-    "theme": "paper"
   }
 ]
