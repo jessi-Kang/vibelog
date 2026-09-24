@@ -1,5 +1,23 @@
 [
   {
+    "slug": "vibelog",
+    "name": "vibelog",
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
+    "status": "live",
+    "stack": [
+      "JavaScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "homepage": "https://vibelog.space",
+    "language": "JavaScript",
+    "lastActivity": "2026-09-24",
+    "weekCommits": 57,
+    "todayCommits": 4,
+    "totalCommits": 409,
+    "countsDate": "2026-09-24"
+  },
+  {
     "slug": "portfolio-tmp",
     "name": "portfolio-tmp",
     "description": "포트폴리오 템플릿 페이지",
@@ -41,24 +59,6 @@
     "totalCommits": 1070,
     "countsDate": "2026-09-24",
     "theme": "blueprint"
-  },
-  {
-    "slug": "vibelog",
-    "name": "vibelog",
-    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "status": "live",
-    "stack": [
-      "JavaScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog.space",
-    "language": "JavaScript",
-    "lastActivity": "2026-09-24",
-    "weekCommits": 56,
-    "todayCommits": 3,
-    "totalCommits": 408,
-    "countsDate": "2026-09-24"
   },
   {
     "slug": "agency",

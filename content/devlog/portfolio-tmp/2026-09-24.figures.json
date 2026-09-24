@@ -1,0 +1,876 @@
+[
+ {
+  "section": "did",
+  "after": 1,
+  "alt": "방문자마다 코드를 발급하면 열리고, 기한이 지나면 닫히며, 즉시 막을 수도 있는 흐름도.",
+  "altEn": "A flow where each visitor gets a code, the page opens, it closes when the period ends, and it can also be shut off right away.",
+  "caption": "코드 하나가 열고, 기한이 닫습니다.",
+  "captionEn": "A code opens it; the period closes it.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "초대 코드가 발급되어 열리고 기한이 지나면 닫히는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "26",
+      "y": "20",
+      "width": "210",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "131",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "방문자마다 코드 발급"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "131",
+      "y1": "64",
+      "x2": "131",
+      "y2": "80",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "131,88 125,78 137,78",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "26",
+      "y": "88",
+      "width": "210",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "131",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "열림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "131",
+      "y1": "132",
+      "x2": "131",
+      "y2": "148",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "131,156 125,146 137,146",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "26",
+      "y": "156",
+      "width": "210",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "131",
+      "y": "184",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기한 지나면 닫힘"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "288",
+      "y1": "110",
+      "x2": "246",
+      "y2": "110",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,110 248,105 248,115",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "362",
+      "y": "116",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "즉시 막기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A code is issued, the page opens, and it closes when the period ends"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "26",
+      "y": "20",
+      "width": "210",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "131",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "A code per visitor"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "131",
+      "y1": "64",
+      "x2": "131",
+      "y2": "80",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "131,88 125,78 137,78",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "26",
+      "y": "88",
+      "width": "210",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "131",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Open"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "131",
+      "y1": "132",
+      "x2": "131",
+      "y2": "148",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "131,156 125,146 137,146",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "26",
+      "y": "156",
+      "width": "210",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "131",
+      "y": "184",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Closes at period end"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "288",
+      "y1": "110",
+      "x2": "246",
+      "y2": "110",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,110 248,105 248,115",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "366",
+      "y": "116",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Shut off"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 1,
+  "alt": "빈 화면 대신 예시 내용이 채워진 화면이 먼저 보이는 두 화면 비교.",
+  "altEn": "Two screens compared: an empty one versus one already filled with sample content.",
+  "caption": "빈 화면 대신, 완성된 모습부터.",
+  "captionEn": "A finished page first, not a blank one.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "빈 화면과 예시로 채워진 화면 비교"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "28",
+      "width": "124",
+      "height": "104",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "80",
+      "x2": "216",
+      "y2": "80",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "226,80 214,74 214,86",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "232",
+      "y": "28",
+      "width": "124",
+      "height": "104",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "52",
+      "x2": "340",
+      "y2": "52",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "74",
+      "x2": "340",
+      "y2": "74",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "96",
+      "x2": "340",
+      "y2": "96",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "116",
+      "x2": "304",
+      "y2": "116",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "96",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "빈 화면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "294",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "예시가 채워짐"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "An empty screen next to one filled with sample content"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "28",
+      "width": "124",
+      "height": "104",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "80",
+      "x2": "216",
+      "y2": "80",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "226,80 214,74 214,86",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "232",
+      "y": "28",
+      "width": "124",
+      "height": "104",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "52",
+      "x2": "340",
+      "y2": "52",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "74",
+      "x2": "340",
+      "y2": "74",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "96",
+      "x2": "340",
+      "y2": "96",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "116",
+      "x2": "304",
+      "y2": "116",
+      "stroke": "var(--color-accent-soft)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "96",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "empty screen"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "294",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "sample filled in"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "아무나 보게 두기와 매번 따로 보내기는 애매하고, 고른 사람에게만 열기는 편하다는 비교.",
+  "altEn": "Rows comparing leaving it wide open, sending it out individually, and opening it only for chosen people.",
+  "caption": "위는 애매한 쪽, 아래는 편한 쪽.",
+  "captionEn": "Awkward above, easier below.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "공개 방식 비교"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "18",
+      "width": "342",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "44",
+      "cy": "38",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "44",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "아무나 보게 두기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "352",
+      "y": "44",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "애매함"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "68",
+      "width": "342",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "44",
+      "cy": "88",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "94",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "매번 따로 보내기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "352",
+      "y": "94",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "애매함"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "118",
+      "width": "342",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "44",
+      "cy": "138",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "144",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "고른 사람에게만 열기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "352",
+      "y": "144",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "편함"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Ways of sharing a portfolio compared"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "18",
+      "width": "342",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "44",
+      "cy": "38",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "44",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Leave it wide open"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "352",
+      "y": "44",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "awkward"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "68",
+      "width": "342",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "44",
+      "cy": "88",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "94",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Send it out each time"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "352",
+      "y": "94",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "awkward"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "118",
+      "width": "342",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "44",
+      "cy": "138",
+      "r": "5",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "144",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Open for chosen people"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "352",
+      "y": "144",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "easier"
+    }
+   ]
+  }
+ }
+]

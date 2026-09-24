@@ -1,0 +1,212 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-24",
+  "day": 10,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 목록을 한 번에 다 못 받습니다.",
+      "en": "I can't pull the whole apartment list at once.",
+      "keywords": [
+        "한 번에"
+      ],
+      "keywordsEn": [
+        "at once"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 밤마다 5,000건까지만 나눠 받습니다.",
+      "en": "So each night it pulls up to 5,000 records.",
+      "keywords": [
+        "밤마다",
+        "5,000건까지만"
+      ],
+      "keywordsEn": [
+        "each night",
+        "5,000 records"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 records",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "남은 양이 적은 지역부터 채웁니다.",
+      "en": "It starts with the regions that have the least left.",
+      "keywords": [
+        "적은 지역부터"
+      ],
+      "keywordsEn": [
+        "the least left"
+      ],
+      "motif": "refine"
+    },
+    {
+      "scene": "build",
+      "ko": "진짜가 늘면 가짜가 줄어서 다시 채웁니다.",
+      "en": "As the real list grows the fake names shrink, so I top them up.",
+      "keywords": [
+        "가짜가 줄어서"
+      ],
+      "keywordsEn": [
+        "fake names shrink"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "지어낸 이름",
+          "실제 단지 목록",
+          "겹치면 빠짐"
+        ],
+        "labelsEn": [
+          "made-up names",
+          "real apartment list",
+          "dropped if it matches"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "재료가 늘면 이런 문제가 늘어납니다.",
+      "en": "More data means more questions like this.",
+      "keywords": [
+        "늘어납니다"
+      ],
+      "keywordsEn": [
+        "more questions"
+      ],
+      "screen": "/o",
+      "find": "이름 하나를 보고 진짜/가짜",
+      "findEn": "one name, real or fake",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "넷 중 진짜 하나를 찾는 문제도 마찬가지입니다.",
+      "en": "Same for the one-real-out-of-four question.",
+      "keywords": [
+        "진짜 하나를"
+      ],
+      "keywordsEn": [],
+      "screen": "/f",
+      "find": "넷 중 진짜는 하나",
+      "findEn": "one of four is real",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "통째로 갈아 끼우면 손으로 넣은 단지가 사라집니다.",
+      "en": "Replacing the whole list would erase the entries I added by hand.",
+      "keywords": [
+        "손으로 넣은"
+      ],
+      "keywordsEn": [
+        "by hand"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "새로 받은 목록",
+          "손으로 넣은 게 사라짐",
+          "그대로 남음",
+          "갈아 끼우기",
+          "더하기"
+        ],
+        "labelsEn": [
+          "fresh nightly list",
+          "hand-added entries gone",
+          "everything stays",
+          "replace",
+          "add on top"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "부산이 끝나면 대구, 인천, 경기로 넘어갑니다.",
+      "en": "Once Busan is done it moves to Daegu, Incheon, Gyeonggi.",
+      "keywords": [
+        "대구, 인천, 경기로"
+      ],
+      "keywordsEn": [
+        "Daegu, Incheon, Gyeonggi"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "부산",
+          "대구",
+          "인천",
+          "경기"
+        ],
+        "labelsEn": [
+          "Busan",
+          "Daegu",
+          "Incheon",
+          "Gyeonggi"
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "며칠 뒤에 지역마다 고르게 늘었는지 보겠습니다.",
+      "en": "In a few days I'll check whether every region grew evenly.",
+      "keywords": [
+        "고르게 늘었는지"
+      ],
+      "keywordsEn": [
+        "grew evenly"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "손으로 넣은 단지가 사라진다",
+    "titleEn": "Hand-added entries vanish",
+    "before": "새 목록으로 통째로 갈아 끼우기",
+    "after": "갈아 끼우지 않고 더하기",
+    "beforeEn": "Replace the list every night",
+    "afterEn": "Add on top instead of replacing"
+  },
+  "commits": [
+    [
+      "f595a79",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "f595a79",
+      "chore: receive bundle and fill fake (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "공공 데이터가 하루 5,000건까지만 나와서, 밤마다 남은 양이 적은 지역부터 조금씩 채우게 했습니다. 통째로 갈아 끼우지 않고 더하는 방식으로 손으로 넣은 단지를 지켰습니다.",
+    "en": "The public data source caps me at 5,000 records a day, so a nightly run fills the smallest regions first. It adds on top instead of replacing, so hand-added entries survive."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#사이드프로젝트",
+    "#공공데이터",
+    "#자동화",
+    "#indiedev",
+    "#buildinpublic",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-24.poster.jpg?v=mufmmahb",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-24.ko.mp4?v=mufmmc1z",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-24.en.poster.jpg?v=mufmng9s",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-24.en.mp4?v=mufmni0b"
+  }
+}

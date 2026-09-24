@@ -1,0 +1,206 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "blueprint",
+  "repo": "Anchor",
+  "date": "2026-09-24",
+  "day": 4,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "기획 문서를 손으로 쓰는 걸 그만뒀습니다.",
+      "en": "I stopped writing planning docs by hand.",
+      "keywords": [
+        "손으로"
+      ],
+      "keywordsEn": [
+        "by hand"
+      ],
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "무엇을 만들지 적고, 계획을 세우고, 할 일을 쪼개고, 만듭니다.",
+      "en": "Write down what to build, plan it, split it into tasks, then build.",
+      "keywords": [
+        "쪼개고"
+      ],
+      "keywordsEn": [
+        "split it into tasks"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "무엇을 만들지 적고",
+          "계획을 세우고",
+          "할 일을 쪼개고",
+          "만든다"
+        ],
+        "labelsEn": [
+          "write it down",
+          "make a plan",
+          "split into tasks",
+          "build it"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이 순서를 불러 쓰는 명령 10개가 생겼습니다.",
+      "en": "I now have 10 commands that follow this order.",
+      "keywords": [],
+      "keywordsEn": [
+        "10 commands"
+      ],
+      "stat": "10개",
+      "statEn": "10 commands",
+      "motif": "stack"
+    },
+    {
+      "scene": "build",
+      "ko": "이제 저와 AI가 같은 순서표를 보고 일합니다.",
+      "en": "Now the AI and I work from the same checklist.",
+      "keywords": [],
+      "keywordsEn": [
+        "the same checklist"
+      ],
+      "motif": "merge"
+    },
+    {
+      "scene": "demo",
+      "ko": "이 순서로 만든 기능은 여기서 바로 확인합니다.",
+      "en": "Features built this way show up right here.",
+      "keywords": [
+        "바로 확인합니다"
+      ],
+      "keywordsEn": [
+        "right here"
+      ],
+      "screen": "/",
+      "find": "오늘의 화면",
+      "findEn": "today's screen"
+    },
+    {
+      "scene": "fail",
+      "ko": "설치가 기존 파일을 덮어쓸 수 있다고 해서, 버릴 사본에서 먼저 돌려 봤습니다.",
+      "en": "The install can overwrite files, so I ran it on a throwaway copy first.",
+      "keywords": [
+        "덮어쓸 수"
+      ],
+      "keywordsEn": [
+        "overwrite files",
+        "throwaway copy"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "설치",
+          "실제 파일이 덮어써짐",
+          "사본에서 확인",
+          "바로 설치",
+          "버릴 사본"
+        ],
+        "labelsEn": [
+          "install",
+          "real files overwritten",
+          "checked on a copy",
+          "install directly",
+          "throwaway copy"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "설정 파일 하나가 다시 쓰였는데, 내용은 똑같고 빈 줄만 빠져 있었습니다.",
+      "en": "One settings file got rewritten, same contents with the blank lines gone.",
+      "keywords": [
+        "빈 줄만"
+      ],
+      "keywordsEn": [
+        "blank lines"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "원래 설정 파일",
+          "빈 줄 있음",
+          "다시 쓰인 파일",
+          "빈 줄만 빠짐"
+        ],
+        "labelsEn": [
+          "original file",
+          "blank lines kept",
+          "rewritten file",
+          "blank lines gone"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "원칙 문서를 기존 규칙 문서로 가리키게 할지 정하겠습니다.",
+      "en": "Next I will decide whether the principles doc just points at the existing rules.",
+      "keywords": [
+        "가리키게 할지"
+      ],
+      "keywordsEn": [
+        "points at"
+      ],
+      "motif": "merge"
+    },
+    {
+      "scene": "end",
+      "ko": "기획도 이제 같은 순서를 따릅니다.",
+      "en": "Planning follows the same order now.",
+      "keywords": [],
+      "keywordsEn": [
+        "same order"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://anchor-zeta-gilt.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "빈 줄만 빠졌습니다",
+    "titleEn": "Only the blank lines went",
+    "before": "설치가 설정 파일을 다시 썼습니다",
+    "after": "내용이 같아 원래대로 되돌렸습니다",
+    "beforeEn": "The install rewrote a settings file",
+    "afterEn": "Contents matched, so I put it back"
+  },
+  "commits": [
+    [
+      "eba7618",
+      "chore: GitHub spec-kit 을 들인다 — 스킬 열 개와 .specify/ 뼈대만"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "eba7618",
+      "chore: Add GitHub spec-kit — skill templates and .specify/ skeleton only"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "anchor-zeta-gilt.vercel.app",
+  "captions": {
+    "ko": "기획을 단계별로 돕는 도구를 들였습니다. 명령 10개로 적기, 계획, 쪼개기, 만들기까지 같은 순서로 갑니다.",
+    "en": "Brought in a tool that walks a feature through planning step by step, with 10 commands for the same fixed order."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#devlog",
+    "#기획",
+    "#AI코딩",
+    "#vibelog",
+    "#buildinpublic",
+    "#사이드프로젝트"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-24.poster.jpg?v=mufmbzjo",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-24.ko.mp4?v=mufmc1ui",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-24.en.poster.jpg?v=mufmeacq",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-24.en.mp4?v=mufmecod"
+  }
+}

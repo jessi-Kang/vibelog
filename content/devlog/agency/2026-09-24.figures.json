@@ -1,0 +1,610 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "머릿속 계획은 날마다 모양이 바뀌지만, 적어 둔 한 줄은 고쳐 쓸 대상으로 남는다",
+  "altEn": "A plan in the head changes shape each day, while a written line stays as something to edit",
+  "caption": "밖에 적는 순간, 계획은 고쳐 쓸 문장이 됩니다",
+  "captionEn": "Once written down, a plan becomes a sentence you can edit",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "머릿속 계획과 적어 둔 한 줄의 차이"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "머릿속"
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "95",
+      "cy": "75",
+      "rx": "62",
+      "ry": "32",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "95",
+      "cy": "75",
+      "rx": "44",
+      "ry": "20",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-dasharray": "4 6"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "81",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "모양이 변함"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M175 75 L250 75",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M243 69 L251 75 L243 81",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "268",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "밖에 적음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "262",
+      "y": "48",
+      "width": "110",
+      "height": "54",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "276",
+      "y1": "78",
+      "x2": "358",
+      "y2": "78",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "317",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "한 줄"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그다음부터는"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그 문장을 고치는 일"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A plan in the head versus one line written down"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "In the head"
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "95",
+      "cy": "75",
+      "rx": "62",
+      "ry": "32",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "95",
+      "cy": "75",
+      "rx": "46",
+      "ry": "20",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-dasharray": "4 6"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "81",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "shifts shape"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M175 75 L250 75",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M243 69 L251 75 L243 81",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "262",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Written down"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "262",
+      "y": "48",
+      "width": "110",
+      "height": "54",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "276",
+      "y1": "78",
+      "x2": "358",
+      "y2": "78",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "317",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "one line"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "From then on,"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "the work is editing it"
+    }
+   ]
+  }
+ },
+ {
+  "section": "next",
+  "after": 0,
+  "alt": "도우미가 아이디어를 모아 주는 쪽인지 추려 주는 쪽인지 두 갈래로 갈린다",
+  "altEn": "The helper splits into two branches: gathering ideas or narrowing them down",
+  "caption": "둘 중 어느 쪽인지를 한 문장으로 정할 차례입니다",
+  "captionEn": "Next: pick one of the two branches in a single sentence",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "모아 주기와 추려 주기 두 갈래"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "120",
+      "y": "18",
+      "width": "150",
+      "height": "46",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "47",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이 도우미는?"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 64 L195 90",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 90 L90 90 L90 120",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 90 L300 90 L300 120",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "22",
+      "y": "122",
+      "width": "136",
+      "height": "56",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "148",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "아이디어를"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "모아 주기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "232",
+      "y": "122",
+      "width": "136",
+      "height": "56",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "148",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "모은 것을"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "추려 주기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "한 문장으로 정하기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Two branches: gathering ideas or narrowing them"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "18",
+      "width": "170",
+      "height": "46",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "47",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "What does it do?"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 64 L195 90",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 90 L90 90 L90 120",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 90 L300 90 L300 120",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "22",
+      "y": "122",
+      "width": "136",
+      "height": "56",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "148",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "gathers"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "ideas"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "232",
+      "y": "122",
+      "width": "136",
+      "height": "56",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "148",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "narrows"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "170",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "them down"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "212",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "decide in one sentence"
+    }
+   ]
+  }
+ }
+]

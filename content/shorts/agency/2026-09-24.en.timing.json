@@ -1,0 +1,457 @@
+{
+  "lang": "en",
+  "duration": 25.263,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 1.73,
+      "words": [
+        {
+          "text": "All",
+          "start": 0,
+          "end": 0.163
+        },
+        {
+          "text": "I",
+          "start": 0.221,
+          "end": 0.244
+        },
+        {
+          "text": "made",
+          "start": 0.313,
+          "end": 0.464
+        },
+        {
+          "text": "today",
+          "start": 0.488,
+          "end": 0.697
+        },
+        {
+          "text": "is",
+          "start": 0.731,
+          "end": 0.801
+        },
+        {
+          "text": "one",
+          "start": 0.871,
+          "end": 1.022
+        },
+        {
+          "text": "sentence.",
+          "start": 1.057,
+          "end": 1.73
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.334,
+      "end": 4.458,
+      "words": [
+        {
+          "text": "I",
+          "start": 2.334,
+          "end": 2.392
+        },
+        {
+          "text": "opened",
+          "start": 2.508,
+          "end": 2.74
+        },
+        {
+          "text": "an",
+          "start": 2.775,
+          "end": 2.833
+        },
+        {
+          "text": "empty",
+          "start": 2.879,
+          "end": 3.088
+        },
+        {
+          "text": "spot",
+          "start": 3.135,
+          "end": 3.355
+        },
+        {
+          "text": "for",
+          "start": 3.402,
+          "end": 3.506
+        },
+        {
+          "text": "a",
+          "start": 3.553,
+          "end": 3.576
+        },
+        {
+          "text": "new",
+          "start": 3.622,
+          "end": 3.738
+        },
+        {
+          "text": "project.",
+          "start": 3.785,
+          "end": 4.458
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 4.783,
+      "end": 8.348,
+      "words": [
+        {
+          "text": "Build",
+          "start": 4.783,
+          "end": 5.016
+        },
+        {
+          "text": "a",
+          "start": 5.05,
+          "end": 5.074
+        },
+        {
+          "text": "helper",
+          "start": 5.132,
+          "end": 5.399
+        },
+        {
+          "text": "that",
+          "start": 5.445,
+          "end": 5.561
+        },
+        {
+          "text": "finds",
+          "start": 5.608,
+          "end": 5.851
+        },
+        {
+          "text": "ideas.",
+          "start": 5.898,
+          "end": 6.525
+        },
+        {
+          "text": "That",
+          "start": 6.966,
+          "end": 7.152
+        },
+        {
+          "text": "line",
+          "start": 7.221,
+          "end": 7.43
+        },
+        {
+          "text": "is",
+          "start": 7.465,
+          "end": 7.535
+        },
+        {
+          "text": "the",
+          "start": 7.57,
+          "end": 7.639
+        },
+        {
+          "text": "whole",
+          "start": 7.686,
+          "end": 7.883
+        },
+        {
+          "text": "thing.",
+          "start": 7.918,
+          "end": 8.348
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.858,
+      "end": 11.691,
+      "words": [
+        {
+          "text": "The",
+          "start": 8.858,
+          "end": 8.975
+        },
+        {
+          "text": "repo",
+          "start": 9.033,
+          "end": 9.265
+        },
+        {
+          "text": "holds",
+          "start": 9.334,
+          "end": 9.613
+        },
+        {
+          "text": "just",
+          "start": 9.659,
+          "end": 9.834
+        },
+        {
+          "text": "a",
+          "start": 9.88,
+          "end": 9.903
+        },
+        {
+          "text": "name",
+          "start": 9.985,
+          "end": 10.252
+        },
+        {
+          "text": "and",
+          "start": 10.31,
+          "end": 10.472
+        },
+        {
+          "text": "a",
+          "start": 10.53,
+          "end": 10.553
+        },
+        {
+          "text": "one-line",
+          "start": 10.623,
+          "end": 10.971
+        },
+        {
+          "text": "description.",
+          "start": 11.006,
+          "end": 11.691
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 12.388,
+      "end": 14.164,
+      "words": [
+        {
+          "text": "I",
+          "start": 12.388,
+          "end": 12.434
+        },
+        {
+          "text": "haven't",
+          "start": 12.516,
+          "end": 12.725
+        },
+        {
+          "text": "decided",
+          "start": 12.748,
+          "end": 13.096
+        },
+        {
+          "text": "a",
+          "start": 13.131,
+          "end": 13.154
+        },
+        {
+          "text": "single",
+          "start": 13.201,
+          "end": 13.444
+        },
+        {
+          "text": "feature",
+          "start": 13.479,
+          "end": 13.746
+        },
+        {
+          "text": "yet.",
+          "start": 13.792,
+          "end": 14.164
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 14.861,
+      "end": 17.508,
+      "words": [
+        {
+          "text": "A",
+          "start": 14.861,
+          "end": 14.942
+        },
+        {
+          "text": "plan",
+          "start": 15.011,
+          "end": 15.174
+        },
+        {
+          "text": "that",
+          "start": 15.22,
+          "end": 15.325
+        },
+        {
+          "text": "lives",
+          "start": 15.371,
+          "end": 15.534
+        },
+        {
+          "text": "only",
+          "start": 15.58,
+          "end": 15.731
+        },
+        {
+          "text": "in",
+          "start": 15.778,
+          "end": 15.824
+        },
+        {
+          "text": "my",
+          "start": 15.859,
+          "end": 15.929
+        },
+        {
+          "text": "head",
+          "start": 15.998,
+          "end": 16.149
+        },
+        {
+          "text": "looks",
+          "start": 16.196,
+          "end": 16.381
+        },
+        {
+          "text": "different",
+          "start": 16.416,
+          "end": 16.683
+        },
+        {
+          "text": "the",
+          "start": 16.707,
+          "end": 16.776
+        },
+        {
+          "text": "next",
+          "start": 16.811,
+          "end": 16.985
+        },
+        {
+          "text": "morning.",
+          "start": 17.043,
+          "end": 17.508
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 18.204,
+      "end": 20.898,
+      "words": [
+        {
+          "text": "Next",
+          "start": 18.204,
+          "end": 18.448
+        },
+        {
+          "text": "I'll",
+          "start": 18.483,
+          "end": 18.599
+        },
+        {
+          "text": "write",
+          "start": 18.622,
+          "end": 18.796
+        },
+        {
+          "text": "one",
+          "start": 18.843,
+          "end": 18.97
+        },
+        {
+          "text": "sentence",
+          "start": 19.005,
+          "end": 19.33
+        },
+        {
+          "text": "on",
+          "start": 19.365,
+          "end": 19.423
+        },
+        {
+          "text": "what",
+          "start": 19.458,
+          "end": 19.574
+        },
+        {
+          "text": "this",
+          "start": 19.609,
+          "end": 19.725
+        },
+        {
+          "text": "helper",
+          "start": 19.772,
+          "end": 20.027
+        },
+        {
+          "text": "actually",
+          "start": 20.073,
+          "end": 20.445
+        },
+        {
+          "text": "does.",
+          "start": 20.491,
+          "end": 20.898
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 21.339,
+      "end": 25.263,
+      "words": [
+        {
+          "text": "Gather",
+          "start": 21.339,
+          "end": 21.629
+        },
+        {
+          "text": "ideas,",
+          "start": 21.687,
+          "end": 22.314
+        },
+        {
+          "text": "or",
+          "start": 22.523,
+          "end": 22.674
+        },
+        {
+          "text": "narrow",
+          "start": 22.721,
+          "end": 22.929
+        },
+        {
+          "text": "them",
+          "start": 22.976,
+          "end": 23.104
+        },
+        {
+          "text": "down.",
+          "start": 23.162,
+          "end": 23.568
+        },
+        {
+          "text": "That's",
+          "start": 24.009,
+          "end": 24.265
+        },
+        {
+          "text": "the",
+          "start": 24.299,
+          "end": 24.369
+        },
+        {
+          "text": "first",
+          "start": 24.416,
+          "end": 24.625
+        },
+        {
+          "text": "call.",
+          "start": 24.671,
+          "end": 25.263
+        }
+      ]
+    }
+  ]
+}
