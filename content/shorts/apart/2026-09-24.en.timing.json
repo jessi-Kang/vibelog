@@ -1,0 +1,504 @@
+{
+  "lang": "en",
+  "duration": 28.003,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.218,
+      "words": [
+        {
+          "text": "I",
+          "start": 0,
+          "end": 0.081
+        },
+        {
+          "text": "can't",
+          "start": 0.174,
+          "end": 0.395
+        },
+        {
+          "text": "pull",
+          "start": 0.43,
+          "end": 0.592
+        },
+        {
+          "text": "the",
+          "start": 0.639,
+          "end": 0.708
+        },
+        {
+          "text": "whole",
+          "start": 0.743,
+          "end": 0.975
+        },
+        {
+          "text": "apartment",
+          "start": 0.998,
+          "end": 1.393
+        },
+        {
+          "text": "list",
+          "start": 1.428,
+          "end": 1.579
+        },
+        {
+          "text": "at",
+          "start": 1.614,
+          "end": 1.695
+        },
+        {
+          "text": "once.",
+          "start": 1.776,
+          "end": 2.218
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.461,
+      "end": 5.004,
+      "words": [
+        {
+          "text": "So",
+          "start": 2.461,
+          "end": 2.601
+        },
+        {
+          "text": "each",
+          "start": 2.659,
+          "end": 2.798
+        },
+        {
+          "text": "night",
+          "start": 2.868,
+          "end": 3.065
+        },
+        {
+          "text": "it",
+          "start": 3.1,
+          "end": 3.17
+        },
+        {
+          "text": "pulls",
+          "start": 3.216,
+          "end": 3.46
+        },
+        {
+          "text": "up",
+          "start": 3.495,
+          "end": 3.564
+        },
+        {
+          "text": "to",
+          "start": 3.611,
+          "end": 3.669
+        },
+        {
+          "text": "5,000",
+          "start": 3.785,
+          "end": 4.319
+        },
+        {
+          "text": "records.",
+          "start": 4.389,
+          "end": 5.004
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.387,
+      "end": 7.93,
+      "words": [
+        {
+          "text": "It",
+          "start": 5.387,
+          "end": 5.526
+        },
+        {
+          "text": "starts",
+          "start": 5.561,
+          "end": 5.875
+        },
+        {
+          "text": "with",
+          "start": 5.909,
+          "end": 6.037
+        },
+        {
+          "text": "the",
+          "start": 6.072,
+          "end": 6.142
+        },
+        {
+          "text": "regions",
+          "start": 6.211,
+          "end": 6.583
+        },
+        {
+          "text": "that",
+          "start": 6.629,
+          "end": 6.757
+        },
+        {
+          "text": "have",
+          "start": 6.803,
+          "end": 6.943
+        },
+        {
+          "text": "the",
+          "start": 6.978,
+          "end": 7.047
+        },
+        {
+          "text": "least",
+          "start": 7.117,
+          "end": 7.384
+        },
+        {
+          "text": "left.",
+          "start": 7.477,
+          "end": 7.93
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.371,
+      "end": 12.016,
+      "words": [
+        {
+          "text": "As",
+          "start": 8.371,
+          "end": 8.557
+        },
+        {
+          "text": "the",
+          "start": 8.603,
+          "end": 8.673
+        },
+        {
+          "text": "real",
+          "start": 8.742,
+          "end": 8.928
+        },
+        {
+          "text": "list",
+          "start": 8.963,
+          "end": 9.125
+        },
+        {
+          "text": "grows",
+          "start": 9.183,
+          "end": 9.474
+        },
+        {
+          "text": "the",
+          "start": 9.509,
+          "end": 9.578
+        },
+        {
+          "text": "fake",
+          "start": 9.648,
+          "end": 9.88
+        },
+        {
+          "text": "names",
+          "start": 9.915,
+          "end": 10.124
+        },
+        {
+          "text": "shrink,",
+          "start": 10.147,
+          "end": 10.693
+        },
+        {
+          "text": "so",
+          "start": 11.018,
+          "end": 11.146
+        },
+        {
+          "text": "I",
+          "start": 11.215,
+          "end": 11.238
+        },
+        {
+          "text": "top",
+          "start": 11.308,
+          "end": 11.471
+        },
+        {
+          "text": "them",
+          "start": 11.529,
+          "end": 11.645
+        },
+        {
+          "text": "up.",
+          "start": 11.714,
+          "end": 12.016
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 12.713,
+      "end": 14.837,
+      "words": [
+        {
+          "text": "More",
+          "start": 12.713,
+          "end": 12.922
+        },
+        {
+          "text": "data",
+          "start": 12.957,
+          "end": 13.201
+        },
+        {
+          "text": "means",
+          "start": 13.259,
+          "end": 13.479
+        },
+        {
+          "text": "more",
+          "start": 13.549,
+          "end": 13.723
+        },
+        {
+          "text": "questions",
+          "start": 13.769,
+          "end": 14.152
+        },
+        {
+          "text": "like",
+          "start": 14.199,
+          "end": 14.35
+        },
+        {
+          "text": "this.",
+          "start": 14.373,
+          "end": 14.837
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 15.162,
+      "end": 17.264,
+      "words": [
+        {
+          "text": "Same",
+          "start": 15.162,
+          "end": 15.406
+        },
+        {
+          "text": "for",
+          "start": 15.429,
+          "end": 15.522
+        },
+        {
+          "text": "the",
+          "start": 15.557,
+          "end": 15.627
+        },
+        {
+          "text": "one-real-out-of-four",
+          "start": 15.685,
+          "end": 16.532
+        },
+        {
+          "text": "question.",
+          "start": 16.602,
+          "end": 17.264
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 17.647,
+      "end": 20.573,
+      "words": [
+        {
+          "text": "Replacing",
+          "start": 17.647,
+          "end": 18.065
+        },
+        {
+          "text": "the",
+          "start": 18.111,
+          "end": 18.181
+        },
+        {
+          "text": "whole",
+          "start": 18.204,
+          "end": 18.378
+        },
+        {
+          "text": "list",
+          "start": 18.413,
+          "end": 18.645
+        },
+        {
+          "text": "would",
+          "start": 18.704,
+          "end": 18.866
+        },
+        {
+          "text": "erase",
+          "start": 18.912,
+          "end": 19.156
+        },
+        {
+          "text": "the",
+          "start": 19.191,
+          "end": 19.261
+        },
+        {
+          "text": "entries",
+          "start": 19.307,
+          "end": 19.597
+        },
+        {
+          "text": "I",
+          "start": 19.644,
+          "end": 19.667
+        },
+        {
+          "text": "added",
+          "start": 19.748,
+          "end": 19.981
+        },
+        {
+          "text": "by",
+          "start": 20.004,
+          "end": 20.12
+        },
+        {
+          "text": "hand.",
+          "start": 20.178,
+          "end": 20.573
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 21.014,
+      "end": 24.404,
+      "words": [
+        {
+          "text": "Once",
+          "start": 21.014,
+          "end": 21.304
+        },
+        {
+          "text": "Busan",
+          "start": 21.339,
+          "end": 21.629
+        },
+        {
+          "text": "is",
+          "start": 21.676,
+          "end": 21.757
+        },
+        {
+          "text": "done",
+          "start": 21.815,
+          "end": 22.059
+        },
+        {
+          "text": "it",
+          "start": 22.117,
+          "end": 22.233
+        },
+        {
+          "text": "moves",
+          "start": 22.279,
+          "end": 22.465
+        },
+        {
+          "text": "to",
+          "start": 22.5,
+          "end": 22.558
+        },
+        {
+          "text": "Daegu,",
+          "start": 22.616,
+          "end": 23.08
+        },
+        {
+          "text": "Incheon,",
+          "start": 23.127,
+          "end": 23.649
+        },
+        {
+          "text": "Gyeonggi.",
+          "start": 23.765,
+          "end": 24.404
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 25.008,
+      "end": 28.003,
+      "words": [
+        {
+          "text": "In",
+          "start": 25.008,
+          "end": 25.147
+        },
+        {
+          "text": "a",
+          "start": 25.182,
+          "end": 25.205
+        },
+        {
+          "text": "few",
+          "start": 25.263,
+          "end": 25.391
+        },
+        {
+          "text": "days",
+          "start": 25.437,
+          "end": 25.693
+        },
+        {
+          "text": "I'll",
+          "start": 25.739,
+          "end": 25.902
+        },
+        {
+          "text": "check",
+          "start": 25.937,
+          "end": 26.111
+        },
+        {
+          "text": "whether",
+          "start": 26.157,
+          "end": 26.378
+        },
+        {
+          "text": "every",
+          "start": 26.447,
+          "end": 26.656
+        },
+        {
+          "text": "region",
+          "start": 26.714,
+          "end": 26.981
+        },
+        {
+          "text": "grew",
+          "start": 27.039,
+          "end": 27.19
+        },
+        {
+          "text": "evenly.",
+          "start": 27.248,
+          "end": 28.003
+        }
+      ]
+    }
+  ]
+}

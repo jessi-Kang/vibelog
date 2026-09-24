@@ -1,0 +1,10 @@
+{
+  "screens": [
+    {
+      "path": "/",
+      "find": "today's screen",
+      "start": 1.22,
+      "end": 35.03
+    }
+  ]
+}

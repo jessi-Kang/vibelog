@@ -6,15 +6,27 @@
     "daySince": "2026-09-21T14:04:17.394Z"
   },
   "apart": {
-    "lastSha": "a65e4b216f3cf039319ecf534f748fe32dac7206",
-    "lastRun": "2026-09-23T14:03:22.290Z",
-    "lastDate": "2026-09-23",
-    "daySince": "2026-09-21T14:06:16.241Z"
+    "lastSha": "f595a793d8a792e7c3e531fd43dbcf545aa6bd73",
+    "lastRun": "2026-09-24T14:09:01.968Z",
+    "lastDate": "2026-09-24",
+    "daySince": "2026-09-23T14:03:22.290Z"
   },
   "Anchor": {
-    "lastSha": "4737e6055664635dc5420f1bd9acb80349f5b61d",
-    "lastRun": "2026-09-22T14:04:08.451Z",
-    "lastDate": "2026-09-22",
-    "daySince": "2026-09-21T14:02:54.083Z"
+    "lastSha": "eba7618d15054b92fea0955a023dc8a4f7ec97cc",
+    "lastRun": "2026-09-24T14:05:16.915Z",
+    "lastDate": "2026-09-24",
+    "daySince": "2026-09-22T14:04:08.451Z"
+  },
+  "portfolio-tmp": {
+    "lastSha": "d8e247566e7ee61dbd5dce9853718bafbf2587d1",
+    "lastRun": "2026-09-24T14:03:31.462Z",
+    "lastDate": "2026-09-24",
+    "daySince": "2026-09-17T14:01:20.080Z"
+  },
+  "agency": {
+    "lastSha": "c7cc41742884d3903d5a4684376aab1dbbb59c32",
+    "lastRun": "2026-09-24T14:06:06.025Z",
+    "lastDate": "2026-09-24",
+    "daySince": "2026-09-17T14:01:22.944Z"
   }
 }

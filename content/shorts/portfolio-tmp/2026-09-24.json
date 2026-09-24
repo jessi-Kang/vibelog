@@ -1,0 +1,210 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "blueprint",
+  "repo": "portfolio-tmp",
+  "date": "2026-09-24",
+  "day": 1,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "초대 코드가 없으면 안 열립니다.",
+      "en": "It only opens with an invite code.",
+      "keywords": [
+        "초대 코드가"
+      ],
+      "keywordsEn": [
+        "invite code"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "보여 줄 사람에게만 코드를 하나씩 내줍니다.",
+      "en": "I hand out a separate code to each person I want to show it to.",
+      "keywords": [
+        "하나씩"
+      ],
+      "keywordsEn": [
+        "separate code"
+      ],
+      "motif": "tag"
+    },
+    {
+      "scene": "build",
+      "ko": "기한이 지나면 저절로 닫히고, 필요하면 바로 막을 수도 있습니다.",
+      "en": "It closes on its own when the period ends, and I can shut it off right away.",
+      "keywords": [
+        "저절로 닫히고"
+      ],
+      "keywordsEn": [
+        "closes on its own"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "코드 발급",
+          "방문자 입장",
+          "기한 끝",
+          "자동 잠김"
+        ],
+        "labelsEn": [
+          "issue code",
+          "visitor enters",
+          "period ends",
+          "auto lock"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "코드는 그대로 두지 않고 알아볼 수 없게 바꿔서 보관합니다.",
+      "en": "Codes are not kept as they are; they get scrambled before saving.",
+      "keywords": [
+        "알아볼 수 없게"
+      ],
+      "keywordsEn": [
+        "scrambled"
+      ],
+      "motif": "convert"
+    },
+    {
+      "scene": "demo",
+      "ko": "관리 화면에서 소개 글을 고치면 옆에서 바로 결과가 보입니다.",
+      "en": "When I edit the intro text in the admin screen, the result shows up right beside it.",
+      "keywords": [
+        "바로 결과가"
+      ],
+      "keywordsEn": [
+        "right beside it"
+      ],
+      "find": "관리 화면",
+      "findEn": "admin screen",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "화면 분위기는 6가지 중에 고를 수 있습니다.",
+      "en": "There are 6 looks to choose from.",
+      "keywords": [
+        "6가지"
+      ],
+      "keywordsEn": [
+        "6 looks"
+      ],
+      "stat": "6가지",
+      "statEn": "6 looks",
+      "find": "분위기 선택",
+      "findEn": "theme picker"
+    },
+    {
+      "scene": "build",
+      "ko": "다른 사람도 자기 내용만 채우면 되는 틀로 정리했습니다.",
+      "en": "I packaged it as a base where anyone just fills in their own content.",
+      "keywords": [
+        "자기 내용만"
+      ],
+      "keywordsEn": [
+        "their own content"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "같은 틀",
+          "내 내용",
+          "자기 내용",
+          "내 포트폴리오",
+          "남의 포트폴리오"
+        ],
+        "labelsEn": [
+          "same base",
+          "my content",
+          "their content",
+          "my portfolio",
+          "their portfolio"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "내려받아 실행하면 예시로 채운 완성된 화면이 먼저 보입니다.",
+      "en": "Download it and run it, and you see a finished page filled with sample content first.",
+      "keywords": [
+        "완성된 화면이"
+      ],
+      "keywordsEn": [
+        "finished page"
+      ],
+      "find": "예시 소개 글",
+      "findEn": "sample intro"
+    },
+    {
+      "scene": "next",
+      "ko": "다른 사람이 안내서만 보고 끝까지 설치할 수 있는지 확인해 보려 합니다.",
+      "en": "Next I want to check if someone else can finish the setup using only the guide.",
+      "keywords": [
+        "안내서만 보고"
+      ],
+      "keywordsEn": [
+        "only the guide"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "막히는 곳이 있으면 안내서를 고치겠습니다.",
+      "en": "If anything trips them up, I will fix the guide.",
+      "keywords": [
+        "안내서를 고치겠습니다"
+      ],
+      "keywordsEn": [
+        "fix the guide"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "commits": [
+    [
+      "d8e2475",
+      "Token-gated portfolio template"
+    ],
+    [
+      "d8a0caf",
+      "Initial commit"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "d8e2475",
+      "Token-gated portfolio template"
+    ],
+    [
+      "d8a0caf",
+      "Initial commit"
+    ]
+  ],
+  "commitCount": 2,
+  "handle": "portfolio-tmp",
+  "captions": {
+    "ko": "초대 코드가 있어야 열리는 포트폴리오를 만들었습니다. 방문자마다 코드를 따로 내주고, 기한이 지나면 저절로 닫힙니다.",
+    "en": "I built a portfolio that only opens with an invite code. Each visitor gets their own code, and it closes on its own when the period ends."
+  },
+  "hashtags": [
+    "#포트폴리오",
+    "#초대코드",
+    "#개발로그",
+    "#사이드프로젝트",
+    "#portfolio",
+    "#invitecode",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/portfolio-tmp/2026-09-24.poster.jpg?v=mufm2vbg",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/portfolio-tmp/2026-09-24.ko.mp4?v=mufm2yqg",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/portfolio-tmp/2026-09-24.en.poster.jpg?v=mufm5lfr",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/portfolio-tmp/2026-09-24.en.mp4?v=mufm5nw8"
+  }
+}

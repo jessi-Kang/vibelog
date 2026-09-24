@@ -1,0 +1,153 @@
+{
+  "template": "ship-it",
+  "music": "calm",
+  "theme": "highlighter",
+  "repo": "agency",
+  "date": "2026-09-24",
+  "day": 1,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "오늘 만든 건 문장 하나입니다.",
+      "en": "All I made today is one sentence.",
+      "keywords": [],
+      "keywordsEn": [
+        "one sentence"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "새 프로젝트의 빈 자리를 열었습니다.",
+      "en": "I opened an empty spot for a new project.",
+      "keywords": [],
+      "keywordsEn": [
+        "empty spot"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "build",
+      "ko": "아이디어를 찾아 주는 도우미를 만들어 보겠다, 이 한 줄이 전부입니다.",
+      "en": "Build a helper that finds ideas. That line is the whole thing.",
+      "keywords": [],
+      "keywordsEn": [
+        "helper",
+        "whole thing"
+      ],
+      "motif": "oneline"
+    },
+    {
+      "scene": "demo",
+      "ko": "저장소에는 이름과 설명 한 줄만 있습니다.",
+      "en": "The repo holds just a name and a one-line description.",
+      "keywords": [
+        "이름과 설명"
+      ],
+      "keywordsEn": [
+        "name and"
+      ],
+      "find": "저장소 이름과 설명",
+      "findEn": "repo name and description",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "기능은 아직 하나도 정하지 않았습니다.",
+      "en": "I haven't decided a single feature yet.",
+      "keywords": [
+        "하나도 정하지 않았습니다"
+      ],
+      "keywordsEn": [
+        "haven't decided"
+      ],
+      "motif": "missing"
+    },
+    {
+      "scene": "next",
+      "ko": "머릿속에만 있는 계획은 다음 날이면 모양이 달라집니다.",
+      "en": "A plan that lives only in my head looks different the next morning.",
+      "keywords": [
+        "모양이 달라집니다"
+      ],
+      "keywordsEn": [
+        "looks different"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "머릿속 계획",
+          "다음 날 달라짐",
+          "적어 둔 한 줄",
+          "고치면 된다"
+        ],
+        "labelsEn": [
+          "Plan in my head",
+          "Changes overnight",
+          "One written line",
+          "Just edit it"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음에는 이 도우미가 뭘 해 주는지 한 문장으로 적어 보려 합니다.",
+      "en": "Next I'll write one sentence on what this helper actually does.",
+      "keywords": [
+        "한 문장으로"
+      ],
+      "keywordsEn": [
+        "one sentence"
+      ],
+      "motif": "refine"
+    },
+    {
+      "scene": "end",
+      "ko": "아이디어를 모아 줄지, 추려 줄지부터 정해야죠.",
+      "en": "Gather ideas, or narrow them down. That's the first call.",
+      "keywords": [
+        "모아 줄지"
+      ],
+      "keywordsEn": [
+        "Gather ideas",
+        "narrow them down"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "commits": [
+    [
+      "c7cc417",
+      "Initial commit"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "c7cc417",
+      "Initial commit"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "agency",
+  "captions": {
+    "ko": "새 프로젝트의 첫 자리를 열었습니다. 오늘 남긴 것은 이름과 한 줄짜리 설명뿐입니다.",
+    "en": "Opened the starting point for a new project. All that exists today is a name and a one-line description."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#사이드프로젝트",
+    "#vibelog",
+    "#devlog",
+    "#buildinpublic",
+    "#newproject",
+    "#아이디어"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/agency/2026-09-24.poster.jpg?v=mufmgbd1",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/agency/2026-09-24.ko.mp4?v=mufmgdda",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/agency/2026-09-24.en.poster.jpg?v=mufmhc88",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/agency/2026-09-24.en.mp4?v=mufmhcu4"
+  }
+}

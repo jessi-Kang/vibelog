@@ -1,0 +1,928 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "기획을 네 단계로 이끄는 명령 10개의 순서표",
+  "altEn": "A checklist of 10 commands that walk planning through four steps",
+  "caption": "같은 순서표를 보고 일합니다.",
+  "captionEn": "We now follow the same checklist.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "기획을 네 단계로 이끄는 순서표"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "명령 10개"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "45",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "69",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "무엇을 만들지 적기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "85",
+      "x2": "195",
+      "y2": "95",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,100 191,92 199,92",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "100",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "계획 세우기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "140",
+      "x2": "195",
+      "y2": "150",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,155 191,147 199,147",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "155",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "179",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "할 일 쪼개기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "195",
+      "x2": "195",
+      "y2": "205",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,210 191,202 199,202",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "210",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "234",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "만들기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A four-step checklist for planning"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "10 commands"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "45",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "69",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Write what to build"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "85",
+      "x2": "195",
+      "y2": "95",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,100 191,92 199,92",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "100",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Make a plan"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "140",
+      "x2": "195",
+      "y2": "150",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,155 191,147 199,147",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "155",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "179",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Break into tasks"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "195",
+      "x2": "195",
+      "y2": "205",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,210 191,202 199,202",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "210",
+      "width": "270",
+      "height": "38",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "80",
+      "y": "234",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Build it"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "설치가 설정 파일의 빈 줄만 지웠고, 그래서 원래대로 되돌린 모습",
+  "altEn": "The install only removed blank lines from a settings file, so the original was put back",
+  "caption": "내용은 같고 빈 줄만 빠졌습니다.",
+  "captionEn": "Same contents, only blank lines gone.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 245",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "빈 줄만 빠진 설정 파일과 되돌림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "원래 파일"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "설치 후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "50",
+      "width": "130",
+      "height": "110",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "70",
+      "x2": "142",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "85",
+      "x2": "122",
+      "y2": "85",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "115",
+      "x2": "142",
+      "y2": "115",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "130",
+      "x2": "112",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "50",
+      "width": "130",
+      "height": "110",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "70",
+      "x2": "342",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "85",
+      "x2": "322",
+      "y2": "85",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "100",
+      "x2": "342",
+      "y2": "100",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "115",
+      "x2": "312",
+      "y2": "115",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "168",
+      "y1": "105",
+      "x2": "216",
+      "y2": "105",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "222,105 214,101 214,109",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "182",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "빈 줄만 빠짐"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "295,172 295,205 95,205 95,180",
+      "fill": "none",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "95,172 91,180 99,180",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "228",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "원래대로 되돌림"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 245",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A settings file with only blank lines removed, then restored"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Original"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After install"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "50",
+      "width": "130",
+      "height": "110",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "70",
+      "x2": "142",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "85",
+      "x2": "122",
+      "y2": "85",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "115",
+      "x2": "142",
+      "y2": "115",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "48",
+      "y1": "130",
+      "x2": "112",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "50",
+      "width": "130",
+      "height": "110",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "70",
+      "x2": "342",
+      "y2": "70",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "85",
+      "x2": "322",
+      "y2": "85",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "100",
+      "x2": "342",
+      "y2": "100",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "115",
+      "x2": "312",
+      "y2": "115",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "168",
+      "y1": "105",
+      "x2": "216",
+      "y2": "105",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "222,105 214,101 214,109",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "182",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "only blank lines gone"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "295,172 295,205 95,205 95,180",
+      "fill": "none",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "95,172 91,180 99,180",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "228",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "put the original back"
+    }
+   ]
+  }
+ },
+ {
+  "section": "next",
+  "after": 0,
+  "alt": "기존 설계 문서와 새 기획 문서 자리가 두 집으로 갈라질 위험",
+  "altEn": "The existing design document and the tool's new planning place risk becoming two homes",
+  "caption": "문서가 두 집으로 갈라지지 않게.",
+  "captionEn": "Keep the documents from splitting into two homes.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 185",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "설계 문서와 새 기획 문서 자리가 갈라질 위험"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "55",
+      "width": "145",
+      "height": "62",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "설계 문서"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "55",
+      "width": "145",
+      "height": "62",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "새 기획 문서"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "48",
+      "x2": "195",
+      "y2": "124",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "두 집으로 갈라지지 않게"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 185",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The design document and the new planning place risk splitting apart"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "55",
+      "width": "145",
+      "height": "62",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Design doc"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "55",
+      "width": "145",
+      "height": "62",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "New plan docs"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "48",
+      "x2": "195",
+      "y2": "124",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "not two separate homes"
+    }
+   ]
+  }
+ }
+]
