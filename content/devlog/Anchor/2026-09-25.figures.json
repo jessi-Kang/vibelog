@@ -1,0 +1,676 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "오가는 횟수는 13,431번에서 18번으로, 시간은 2.8초에서 0.37초로 줄었습니다.",
+  "altEn": "Round trips drop from 13,431 to 18, and time from 2.8 seconds to 0.37 seconds.",
+  "caption": "묶어 보내니 오가는 횟수도 시간도 크게 줄었습니다.",
+  "captionEn": "Batching cut both the trips and the time.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 225",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "오가는 횟수와 걸린 시간의 전후 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "오가는 횟수"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "280",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "56",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "13,431"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "70",
+      "width": "6",
+      "height": "20",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "86",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "18"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "130",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "걸린 시간"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "142",
+      "width": "280",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "158",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "2.8초"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "width": "37",
+      "height": "20",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "188",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "0.37초"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 225",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before and after for round trips and time"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "round trips"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "280",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "56",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "13,431"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "70",
+      "width": "6",
+      "height": "20",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "86",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "18"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "130",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "time taken"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "142",
+      "width": "280",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "158",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "2.8 s"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "width": "37",
+      "height": "20",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "188",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "0.37 s"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "14분 59초까지 진행하다 15분 제한에 걸려 끊기고, 넣던 것이 통째로 처음으로 되돌아갑니다.",
+  "altEn": "The load reaches 14 minutes 59 seconds, hits the 15-minute cap, and everything rolls back to the start.",
+  "caption": "끝을 코앞에 두고 끊기면, 넣은 것도 남지 않습니다.",
+  "captionEn": "Cut off near the end, nothing written survives.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "15분 제한에 걸려 끊긴 작업이 전부 되돌아가는 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "30",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "15분 제한"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "50",
+      "width": "290",
+      "height": "22",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "330",
+      "y1": "38",
+      "x2": "330",
+      "y2": "86",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "98",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "14분 59초"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "310,125 310,145 50,145",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "38,145 52,139 52,151",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "178",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전부 되돌아감"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The job hits the 15-minute cap and rolls all the way back"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "30",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "15-min cap"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "50",
+      "width": "290",
+      "height": "22",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "330",
+      "y1": "38",
+      "x2": "330",
+      "y2": "86",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "98",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "14 min 59 s"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "310,125 310,145 50,145",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "38,145 52,139 52,151",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "178",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "all rolled back"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "옛 방식과 새 방식으로 각각 채운 두 데이터베이스가 항목 3,108개, 연결 6,048개로 같습니다.",
+  "altEn": "Two databases, one loaded the old way and one the new way, both end with 3,108 items and 6,048 links.",
+  "caption": "같다고 믿지 않고, 두 번 돌려 숫자를 맞춰 봤습니다.",
+  "captionEn": "Not assumed identical — loaded twice and compared the counts.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "옛 방식과 새 방식의 결과 수가 같음을 보여 주는 비교"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "width": "155",
+      "height": "130",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "30",
+      "width": "155",
+      "height": "130",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "옛 방식"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "231",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "새 방식"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "100",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "항목 3,108"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "132",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "연결 6,048"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "231",
+      "y": "100",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "항목 3,108"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "231",
+      "y": "132",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "연결 6,048"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "103",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "22",
+      "fill": "var(--color-accent)"
+     },
+     "text": "="
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Old way and new way end with the same counts"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "width": "155",
+      "height": "130",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "30",
+      "width": "155",
+      "height": "130",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "old way"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "231",
+      "y": "60",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "new way"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "100",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "items 3,108"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "132",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "links 6,048"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "231",
+      "y": "100",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "items 3,108"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "231",
+      "y": "132",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "links 6,048"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "103",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "22",
+      "fill": "var(--color-accent)"
+     },
+     "text": "="
+    }
+   ]
+  }
+ }
+]

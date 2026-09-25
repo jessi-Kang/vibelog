@@ -1,5 +1,48 @@
 [
   {
+    "slug": "Anchor",
+    "name": "Anchor",
+    "description": "기존과 다른 언어학습 앱",
+    "descriptionEn": "A language learning app with a different approach",
+    "status": "building",
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Neon Postgres",
+      "Neon Auth",
+      "Vercel",
+      "Claude API",
+      "ElevenLabs"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/Anchor",
+    "homepage": "https://anchor-zeta-gilt.vercel.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-25",
+    "weekCommits": 1071,
+    "todayCommits": 1,
+    "totalCommits": 1071,
+    "countsDate": "2026-09-25",
+    "theme": "blueprint"
+  },
+  {
+    "slug": "vibelog",
+    "name": "vibelog",
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
+    "status": "live",
+    "stack": [
+      "JavaScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "homepage": "https://vibelog.space",
+    "language": "JavaScript",
+    "lastActivity": "2026-09-25",
+    "weekCommits": 57,
+    "todayCommits": 1,
+    "totalCommits": 411,
+    "countsDate": "2026-09-25"
+  },
+  {
     "slug": "apart",
     "name": "apart",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
@@ -19,24 +62,6 @@
     "theme": "paper"
   },
   {
-    "slug": "vibelog",
-    "name": "vibelog",
-    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "status": "live",
-    "stack": [
-      "JavaScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog.space",
-    "language": "JavaScript",
-    "lastActivity": "2026-09-24",
-    "weekCommits": 57,
-    "todayCommits": 0,
-    "totalCommits": 410,
-    "countsDate": "2026-09-25"
-  },
-  {
     "slug": "portfolio-tmp",
     "name": "portfolio-tmp",
     "description": "포트폴리오 템플릿 페이지",
@@ -51,31 +76,6 @@
     "weekCommits": 2,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-09-25",
-    "theme": "blueprint"
-  },
-  {
-    "slug": "Anchor",
-    "name": "Anchor",
-    "description": "기존과 다른 언어학습 앱",
-    "descriptionEn": "A language learning app with a different approach",
-    "status": "building",
-    "stack": [
-      "Next.js",
-      "TypeScript",
-      "Neon Postgres",
-      "Neon Auth",
-      "Vercel",
-      "Claude API",
-      "ElevenLabs"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/Anchor",
-    "homepage": "https://anchor-zeta-gilt.vercel.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-09-24",
-    "weekCommits": 1070,
-    "todayCommits": 0,
-    "totalCommits": 1070,
     "countsDate": "2026-09-25",
     "theme": "blueprint"
   },
