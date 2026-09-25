@@ -1,0 +1,16 @@
+{
+  "screens": [
+    {
+      "path": "/o",
+      "find": "real or fake from one name",
+      "start": 0.84,
+      "end": 18.73
+    },
+    {
+      "path": "/f",
+      "find": "one of four is real",
+      "start": 19.58,
+      "end": 37.63
+    }
+  ]
+}
