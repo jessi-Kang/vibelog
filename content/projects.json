@@ -1,5 +1,24 @@
 [
   {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "preview",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-27",
+    "weekCommits": 6,
+    "todayCommits": 1,
+    "totalCommits": 195,
+    "countsDate": "2026-09-27",
+    "theme": "paper"
+  },
+  {
     "slug": "vibelog",
     "name": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
@@ -12,29 +31,10 @@
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
     "lastActivity": "2026-09-26",
-    "weekCommits": 41,
-    "todayCommits": 1,
-    "totalCommits": 413,
-    "countsDate": "2026-09-26"
-  },
-  {
-    "slug": "apart",
-    "name": "apart",
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-09-26",
-    "weekCommits": 5,
-    "todayCommits": 1,
-    "totalCommits": 194,
-    "countsDate": "2026-09-26",
-    "theme": "paper"
+    "weekCommits": 24,
+    "todayCommits": 0,
+    "totalCommits": 414,
+    "countsDate": "2026-09-27"
   },
   {
     "slug": "Anchor",
@@ -58,7 +58,7 @@
     "weekCommits": 1071,
     "todayCommits": 0,
     "totalCommits": 1071,
-    "countsDate": "2026-09-26",
+    "countsDate": "2026-09-27",
     "theme": "blueprint"
   },
   {
@@ -76,7 +76,7 @@
     "weekCommits": 2,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-09-26",
+    "countsDate": "2026-09-27",
     "theme": "blueprint"
   },
   {
@@ -91,7 +91,7 @@
     "weekCommits": 1,
     "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-09-26",
+    "countsDate": "2026-09-27",
     "theme": "highlighter"
   }
 ]
