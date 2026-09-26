@@ -1,0 +1,888 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "매일 밤 하루치 5,000건이 전국 명단에 조금씩 더해지는 흐름",
+  "altEn": "Each night a daily batch of 5,000 records is added to the nationwide list",
+  "caption": "하루 상한이 있어서, 명단은 밤마다 조금씩 차오릅니다.",
+  "captionEn": "With a daily cap, the list fills a little at a time, night after night.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "매일 밤 5,000건씩 전국 명단이 조금씩 채워지는 흐름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "매일 밤"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "68",
+      "r": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "96",
+      "x2": "195",
+      "y2": "116",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,114 201,114 195,124",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "128",
+      "width": "170",
+      "height": "42",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5,000건"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "176",
+      "x2": "195",
+      "y2": "192",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,190 201,190 195,200",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "204",
+      "width": "330",
+      "height": "32",
+      "rx": "5",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "204",
+      "width": "104",
+      "height": "32",
+      "rx": "5",
+      "fill": "var(--color-accent-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "255",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전국 명단"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Each night a batch of 5,000 records is added to the nationwide list"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "every night"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "68",
+      "r": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "96",
+      "x2": "195",
+      "y2": "116",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,114 201,114 195,124",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "128",
+      "width": "190",
+      "height": "42",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "155",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5,000 a day"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "176",
+      "x2": "195",
+      "y2": "192",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,190 201,190 195,200",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "204",
+      "width": "330",
+      "height": "32",
+      "rx": "5",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "204",
+      "width": "104",
+      "height": "32",
+      "rx": "5",
+      "fill": "var(--color-accent-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "255",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "nationwide list"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "남은 양이 적은 부산부터 시작해 가장 많은 경기를 마지막에 두는 순서",
+  "altEn": "Region order: Busan with the least left goes first, Gyeonggi with the most goes last",
+  "caption": "남은 양이 적은 지역부터 끝내고, 가장 큰 경기는 마지막에.",
+  "captionEn": "Finish the thin regions first; the biggest one waits till last.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "남은 양이 적은 지역부터 순서를 정한 막대 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "24",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "남은 양이 적은 곳부터"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "62",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "부산"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "43",
+      "width": "44",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "107",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대구"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "88",
+      "width": "74",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "152",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인천"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "133",
+      "width": "116",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "197",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "경기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "178",
+      "width": "250",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "360",
+      "y": "228",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "남은 양"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Bars showing region order, from the least left to the most"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "24",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "fewest left goes first"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "62",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Busan"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "43",
+      "width": "44",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "107",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Daegu"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "88",
+      "width": "74",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "152",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Incheon"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "133",
+      "width": "116",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "197",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Gyeonggi"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "178",
+      "width": "240",
+      "height": "23",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "360",
+      "y": "228",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "remaining"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "새 명단을 덮어쓰면 손으로 넣은 단지가 사라지고, 더하면 남는다",
+  "altEn": "Overwriting erases hand-typed entries; adding keeps them",
+  "caption": "덮어쓰기와 더하기 사이에서 갈리는 것은 손으로 넣은 단지의 운명입니다.",
+  "captionEn": "Overwrite or add — the hand-typed entries hang in the balance.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "새 명단을 덮어쓸 때와 더할 때의 결과 비교"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "130",
+      "y": "14",
+      "width": "130",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "새 명단"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "52",
+      "x2": "110",
+      "y2": "82",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "104,78 114,88 100,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "210",
+      "y1": "52",
+      "x2": "280",
+      "y2": "82",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "286,78 276,88 290,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "92",
+      "width": "120",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "덮어쓰기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "92",
+      "width": "120",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "더하기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "손으로 넣은"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "단지 사라짐"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "손으로 넣은"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "단지 남음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Overwriting versus adding the new records, and what happens to hand-typed entries"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "130",
+      "y": "14",
+      "width": "130",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "new records"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "52",
+      "x2": "110",
+      "y2": "82",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "104,78 114,88 100,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "210",
+      "y1": "52",
+      "x2": "280",
+      "y2": "82",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "286,78 276,88 290,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "92",
+      "width": "120",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "overwrite"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "92",
+      "width": "120",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "add"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "hand-typed"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "entries erased"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "hand-typed"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "entries kept"
+    }
+   ]
+  }
+ }
+]
