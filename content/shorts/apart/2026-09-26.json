@@ -1,0 +1,197 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-26",
+  "day": 12,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "명단이 밤마다 저절로 늘어납니다.",
+      "en": "The list grows by itself every night.",
+      "keywords": [
+        "저절로"
+      ],
+      "keywordsEn": [
+        "by itself"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "하루에 받아올 수 있는 양이 5,000건으로 정해져 있습니다.",
+      "en": "There is a daily cap of 5,000 records.",
+      "keywords": [
+        "5,000건으로"
+      ],
+      "keywordsEn": [
+        "5,000 records"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 records",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 매일 밤 조금씩만 받아옵니다.",
+      "en": "So a little arrives each night.",
+      "keywords": [
+        "조금씩만"
+      ],
+      "keywordsEn": [
+        "a little"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "build",
+      "ko": "남은 양이 적은 지역부터 채웁니다. 부산, 대구, 인천, 경기 순입니다.",
+      "en": "Regions with the least left go first. Busan, Daegu, Incheon, then Gyeonggi.",
+      "keywords": [
+        "남은 양이 적은 지역부터"
+      ],
+      "keywordsEn": [
+        "the least left"
+      ],
+      "motif": "scan"
+    },
+    {
+      "scene": "build",
+      "ko": "진짜 명단이 늘면 가짜인 줄 알았던 이름이 실제로 있는 것으로 드러나기도 합니다.",
+      "en": "As the real list grows, a name I thought was fake sometimes turns out to exist.",
+      "keywords": [],
+      "keywordsEn": [
+        "I thought was fake"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "지어낸 가짜 이름",
+          "새로 받은 진짜 명단",
+          "겹친 이름"
+        ],
+        "labelsEn": [
+          "invented fake names",
+          "new real records",
+          "overlap"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "그래서 가짜 이름도 같은 밤에 보충합니다.",
+      "en": "So fake names get topped up the same night.",
+      "keywords": [
+        "같은 밤에"
+      ],
+      "keywordsEn": [
+        "the same night"
+      ],
+      "screen": "/f",
+      "find": "진짜 찾기",
+      "findEn": "Find the real one",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "통째로 덮어썼다면 손으로 넣은 단지가 매일 밤 사라졌을 겁니다.",
+      "en": "Overwriting would have erased my hand-typed entries every night.",
+      "keywords": [
+        "덮어썼다면",
+        "사라졌을"
+      ],
+      "keywordsEn": [
+        "Overwriting",
+        "erased"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "새로 받은 명단",
+          "손으로 넣은 단지가 사라짐",
+          "둘 다 남음",
+          "덮어쓰기",
+          "더하기"
+        ],
+        "labelsEn": [
+          "new records",
+          "hand-typed gone",
+          "both kept",
+          "overwrite",
+          "add"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "며칠 밤 지켜보며 지역별로 고르게 차오르는지 봅니다.",
+      "en": "I will watch a few nights to see if regions fill evenly.",
+      "keywords": [
+        "고르게"
+      ],
+      "keywordsEn": [
+        "evenly"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "밤마다 조금씩, 명단이 두꺼워집니다.",
+      "en": "A little each night, the list gets thicker.",
+      "keywords": [
+        "두꺼워집니다"
+      ],
+      "keywordsEn": [
+        "gets thicker"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "손으로 넣은 단지가 사라질 뻔",
+    "titleEn": "Hand-typed entries almost vanished",
+    "before": "새 명단으로 통째로 덮어쓰기",
+    "after": "기존 명단에 더하는 방식으로",
+    "beforeEn": "Overwrite the whole list each night",
+    "afterEn": "Add to the existing list instead"
+  },
+  "commits": [
+    [
+      "7617787",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "7617787",
+      "chore: receive bundles and fill fakes (night automation)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루 5,000건 제한 때문에 전국을 한 번에 못 받아옵니다. 그래서 매일 밤 남은 양이 적은 지역부터 조금씩 채우고, 가짜 이름도 같은 밤에 보충합니다.",
+    "en": "A 5,000-record daily cap means I can't pull the whole country at once, so each night the thinnest regions fill up a little more and the fake names get topped up too."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#자동화",
+    "#공공데이터",
+    "#devlog",
+    "#buildinpublic",
+    "#sideproject",
+    "#아파트감별사"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-26.poster.jpg?v=muigqt28",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-26.ko.mp4?v=muigqusa",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-26.en.poster.jpg?v=muigrz5n",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-26.en.mp4?v=muigs0qm"
+  }
+}
