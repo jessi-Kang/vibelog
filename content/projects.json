@@ -1,5 +1,42 @@
 [
   {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "preview",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-09-28",
+    "weekCommits": 6,
+    "todayCommits": 1,
+    "totalCommits": 196,
+    "countsDate": "2026-09-28",
+    "theme": "paper"
+  },
+  {
+    "slug": "vibelog",
+    "name": "vibelog",
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
+    "status": "live",
+    "stack": [
+      "JavaScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "homepage": "https://vibelog.space",
+    "language": "JavaScript",
+    "lastActivity": "2026-09-27",
+    "weekCommits": 19,
+    "todayCommits": 0,
+    "totalCommits": 416,
+    "countsDate": "2026-09-28"
+  },
+  {
     "slug": "Anchor",
     "name": "Anchor",
     "description": "기존과 다른 언어학습 앱",
@@ -18,48 +55,11 @@
     "homepage": "https://anchor-zeta-gilt.vercel.app",
     "language": "TypeScript",
     "lastActivity": "2026-09-27",
-    "weekCommits": 952,
-    "todayCommits": 4,
+    "weekCommits": 809,
+    "todayCommits": 0,
     "totalCommits": 1075,
-    "countsDate": "2026-09-27",
+    "countsDate": "2026-09-28",
     "theme": "blueprint"
-  },
-  {
-    "slug": "vibelog",
-    "name": "vibelog",
-    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "status": "live",
-    "stack": [
-      "JavaScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog.space",
-    "language": "JavaScript",
-    "lastActivity": "2026-09-27",
-    "weekCommits": 20,
-    "todayCommits": 1,
-    "totalCommits": 415,
-    "countsDate": "2026-09-27"
-  },
-  {
-    "slug": "apart",
-    "name": "apart",
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-09-27",
-    "weekCommits": 6,
-    "todayCommits": 1,
-    "totalCommits": 195,
-    "countsDate": "2026-09-27",
-    "theme": "paper"
   },
   {
     "slug": "portfolio-tmp",
@@ -76,7 +76,7 @@
     "weekCommits": 2,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-09-27",
+    "countsDate": "2026-09-28",
     "theme": "blueprint"
   },
   {
@@ -91,7 +91,7 @@
     "weekCommits": 1,
     "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-09-27",
+    "countsDate": "2026-09-28",
     "theme": "highlighter"
   }
 ]
