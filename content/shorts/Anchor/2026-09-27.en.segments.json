@@ -1,0 +1,22 @@
+{
+  "screens": [
+    {
+      "path": "/",
+      "find": "first visit screen",
+      "start": 1.23,
+      "end": 13.34
+    },
+    {
+      "path": "/",
+      "find": "lesson result",
+      "start": 13.64,
+      "end": 25.79
+    },
+    {
+      "path": "/",
+      "find": "next button",
+      "start": 26.09,
+      "end": 38.35
+    }
+  ]
+}

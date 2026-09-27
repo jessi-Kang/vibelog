@@ -1,0 +1,560 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "첫 방문부터 첫 학습까지 13번 눌렀고 목표는 17번 이하였다",
+  "altEn": "It took 13 taps from first visit to first lesson, against a target of 17 or fewer",
+  "caption": "목표보다 짧게 끝난 첫 걸음",
+  "captionEn": "The first walk came in under target",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "실제 13번과 목표 17번의 길이 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "첫 방문 → 첫 학습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "84",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "실제"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "64",
+      "width": "182",
+      "height": "26",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "84",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "13번"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "134",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "목표"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "114",
+      "width": "238",
+      "height": "26",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "344",
+      "y": "134",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "17번"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 180",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "13 actual taps compared with a 17 tap target"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "first visit → first lesson"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "84",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "actual"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "64",
+      "width": "172",
+      "height": "26",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "278",
+      "y": "84",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "13"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "134",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "target"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "114",
+      "width": "228",
+      "height": "26",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "334",
+      "y": "134",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "17"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "다음을 누르면 있어야 할 화면이 없어 엉뚱한 곳으로 보내진다",
+  "altEn": "Pressing next leads to a screen that does not exist, so it sends you somewhere else",
+  "caption": "목적지는 비어 있고, 발길만 옆으로 샜다",
+  "captionEn": "The destination is empty, so the path veers aside",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "다음 버튼이 없는 화면 대신 엉뚱한 곳으로 이어지는 그림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "36",
+      "width": "124",
+      "height": "46",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "\"다음\""
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "148",
+      "y1": "59",
+      "x2": "200",
+      "y2": "59",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,59 198,54 198,64",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "212",
+      "y": "36",
+      "width": "154",
+      "height": "46",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "없는 화면"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "86,82 86,150 196,150",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,150 196,145 196,155",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "212",
+      "y": "127",
+      "width": "154",
+      "height": "46",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "156",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "엉뚱한 곳"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The next button leads to a missing screen, so it routes elsewhere"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "24",
+      "y": "36",
+      "width": "124",
+      "height": "46",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "86",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "\"next\""
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "148",
+      "y1": "59",
+      "x2": "200",
+      "y2": "59",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,59 198,54 198,64",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "212",
+      "y": "36",
+      "width": "154",
+      "height": "46",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "missing screen"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "86,82 86,150 196,150",
+      "fill": "none",
+      "stroke": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,150 196,145 196,155",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "212",
+      "y": "127",
+      "width": "154",
+      "height": "46",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "289",
+      "y": "156",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "wrong place"
+    }
+   ]
+  }
+ },
+ {
+  "section": "next",
+  "after": 0,
+  "alt": "첫 학습이 5분 안에 끝나는지는 기계가 못 재고 사람이 써 봐야 안다",
+  "altEn": "Whether the first lesson fits in 5 minutes cannot be measured by a machine, only by a person using it",
+  "caption": "시간은 사람이 재야 답이 나온다",
+  "captionEn": "Only a person can answer this one",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "5분이라는 기준은 기계가 재지 못하고 사람이 답한다"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "76",
+      "cy": "85",
+      "r": "40",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "76",
+      "y": "93",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "20",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5분"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "140",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "기계 → 못 잼"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "140",
+      "y": "110",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "사람 → 답이 남"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The 5 minute mark can only be answered by a person, not a machine"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "76",
+      "cy": "85",
+      "r": "40",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "76",
+      "y": "93",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "20",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5 min"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "136",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "machine → can't measure"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "136",
+      "y": "110",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "person → gives the answer"
+    }
+   ]
+  }
+ }
+]
