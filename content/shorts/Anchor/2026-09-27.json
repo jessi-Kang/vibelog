@@ -1,0 +1,223 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "blueprint",
+  "repo": "Anchor",
+  "date": "2026-09-27",
+  "day": 6,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "제 추측이 처음으로 저장됐습니다.",
+      "en": "My guess finally got saved.",
+      "keywords": [
+        "저장됐습니다"
+      ],
+      "keywordsEn": [
+        "saved"
+      ],
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "실제 계정을 만들어 첫 방문부터 첫 학습까지 직접 걸어 봤습니다.",
+      "en": "I made a real account and walked from first visit to first lesson.",
+      "keywords": [
+        "첫 학습까지"
+      ],
+      "keywordsEn": [
+        "real account",
+        "first lesson"
+      ],
+      "screen": "/",
+      "find": "첫 방문 화면",
+      "findEn": "first visit screen"
+    },
+    {
+      "scene": "demo",
+      "ko": "확인을 누르자 적어 둔 추측이 그대로 기록에 남았습니다.",
+      "en": "I hit confirm and my guess stayed in the record.",
+      "keywords": [
+        "그대로",
+        "기록에 남았습니다"
+      ],
+      "keywordsEn": [
+        "stayed",
+        "record"
+      ],
+      "screen": "/",
+      "find": "학습 결과",
+      "findEn": "lesson result",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "여기까지 화면을 13번 눌렀습니다. 목표는 17번 이하였습니다.",
+      "en": "It took 13 taps to get there. The target was 17 or fewer.",
+      "keywords": [
+        "13번"
+      ],
+      "keywordsEn": [
+        "13 taps"
+      ],
+      "stat": "13번",
+      "statEn": "13 taps",
+      "shot": "focus",
+      "motif": "limit"
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 길 중간이 끊겨 있었습니다.",
+      "en": "But the path was broken in the middle.",
+      "keywords": [
+        "끊겨"
+      ],
+      "keywordsEn": [
+        "broken"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "다음을 누르고",
+          "고를 화면이 없고",
+          "첫 학습"
+        ],
+        "labelsEn": [
+          "tap next",
+          "no screen to pick",
+          "first lesson"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "언어를 어디서 쓸지 고르는 화면이 아예 없었습니다.",
+      "en": "The screen for picking where you'll use the language didn't exist.",
+      "keywords": [
+        "아예 없었습니다"
+      ],
+      "keywordsEn": [
+        "didn't exist"
+      ],
+      "screen": "/",
+      "find": "다음 버튼",
+      "findEn": "next button",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "제가 대신 채우면 그게 곧 학습 과정이 되어 버립니다.",
+      "en": "If I filled it in myself, that would become the course.",
+      "keywords": [],
+      "keywordsEn": [
+        "the course"
+      ],
+      "motif": "gate"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 목적지는 그대로 두고, 잘못 적힌 설명만 사실대로 고쳤습니다.",
+      "en": "So I left the destination alone and just fixed the wrong note.",
+      "keywords": [
+        "잘못 적힌 설명만"
+      ],
+      "keywordsEn": [
+        "the wrong note"
+      ],
+      "shot": "focus",
+      "motif": "stale"
+    },
+    {
+      "scene": "next",
+      "ko": "빠진 화면은 목록을 받아서 세울 예정입니다.",
+      "en": "I'll build the missing screen once I get the list.",
+      "keywords": [],
+      "keywordsEn": [
+        "missing screen"
+      ],
+      "art": "a small wooden footbridge over a stream with one plank missing in the middle",
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "첫 학습이 5분 안에 끝나는지는 사람이 써 봐야 압니다.",
+      "en": "Whether the first lesson fits in 5 minutes only a person can tell.",
+      "keywords": [
+        "사람이 써 봐야"
+      ],
+      "keywordsEn": [
+        "only a person"
+      ],
+      "shot": "focus"
+    }
+  ],
+  "demo": {
+    "url": "https://anchor-zeta-gilt.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "길 중간이 끊겼다",
+    "titleEn": "The path broke midway",
+    "before": "다음을 누르면 엉뚱한 곳으로 갔습니다",
+    "after": "목적지는 두고 잘못된 설명만 고쳤습니다",
+    "beforeEn": "Pressing next sent me somewhere else",
+    "afterEn": "Left the destination, fixed the wrong note"
+  },
+  "commits": [
+    [
+      "33d7b62",
+      "docs: 첫 카드를 실계정으로 걸었다 — 추측은 저장되고 協이 켜진다"
+    ],
+    [
+      "2cebe79",
+      "chore: main 을 가져와 합친다 — 밀기 전"
+    ],
+    [
+      "51fd026",
+      "docs: 첫 방문을 360×650 에서 걸었다 — 2′ 에서 멈추고, 막는 건 손이 아니라 Jessi 의 목록이다"
+    ],
+    [
+      "5e2f553",
+      "docs: 중지판 머리를 지금으로 다시 쓴다 — 09-21 표가 나흘째 「지금」 자리에 서 있었다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "33d7b62",
+      "docs: Set first card with real account — guesses are saved and 協 turns on"
+    ],
+    [
+      "2cebe79",
+      "chore: Bring and merge main — before pushing"
+    ],
+    [
+      "51fd026",
+      "docs: Set first visit at 360×650 — stops at 2′, and it's not hand blocking but Jessi's list"
+    ],
+    [
+      "5e2f553",
+      "docs: Rewrite stop sign header to now — 09-21 table has been standing in the 「now」 position for four days"
+    ]
+  ],
+  "commitCount": 4,
+  "handle": "anchor-zeta-gilt.vercel.app",
+  "captions": {
+    "ko": "실제 계정으로 첫 방문부터 첫 학습까지 직접 걸어 봤습니다. 화면 13번 만에 도착했고, 길 중간에 빠진 화면 하나를 찾았습니다.",
+    "en": "I used a real account to walk from first visit to first lesson. It took 13 taps, and I found one screen missing in the middle of the path."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#devlog",
+    "#사이드프로젝트",
+    "#buildinpublic",
+    "#앱개발",
+    "#UX",
+    "#Anchor"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-27.poster.jpg?v=mujwc55a",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-27.ko.mp4?v=mujwc867",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-27.en.poster.jpg?v=mujwekty",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-09-27.en.mp4?v=mujwemxm"
+  }
+}
