@@ -1,0 +1,656 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "덮어쓰기와 더하기의 차이. 덮어쓰면 손으로 넣은 단지가 사라지고, 더하면 남는다.",
+  "altEn": "Overwriting makes hand-entered complexes vanish; adding keeps them.",
+  "caption": "덮어쓰기 대신 더하기.",
+  "captionEn": "Add, don't overwrite.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "덮어쓰기와 더하기의 결과 차이"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "밤에 받은 새 목록을…"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "46",
+      "width": "350",
+      "height": "70",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "덮어쓰기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "98",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "→ 손으로 넣은 단지가 사라짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "132",
+      "width": "350",
+      "height": "70",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "더하기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "184",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "→ 손으로 넣은 단지가 남음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Overwrite versus add, and what happens to hand-entered rows"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "The new nightly batch…"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "46",
+      "width": "350",
+      "height": "70",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Overwrite"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "98",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "→ hand-entered rows vanish"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "132",
+      "width": "350",
+      "height": "70",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Add"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "38",
+      "y": "184",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "→ hand-entered rows stay"
+    }
+   ]
+  }
+ },
+ {
+  "section": "next",
+  "after": 0,
+  "alt": "광주와 전남은 목록을 요청해도 빈 결과가 돌아온다.",
+  "altEn": "Gwangju and Jeonnam return an empty result when asked for their lists.",
+  "caption": "요청해도 아무것도 오지 않는 두 곳.",
+  "captionEn": "Two regions that answer with nothing.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "광주와 전남은 요청에 빈 결과가 돌아온다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "광주"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전남"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "70",
+      "y1": "62",
+      "x2": "175",
+      "y2": "80",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "70",
+      "y1": "110",
+      "x2": "175",
+      "y2": "92",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "190",
+      "y": "40",
+      "width": "160",
+      "height": "90",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 6"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "270",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "빈 결과"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Gwangju and Jeonnam return an empty result"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Gwangju"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "16",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Jeonnam"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "62",
+      "x2": "175",
+      "y2": "80",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "110",
+      "x2": "175",
+      "y2": "92",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "190",
+      "y": "40",
+      "width": "160",
+      "height": "90",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 6"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "270",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "empty"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "밤마다 5,000건 한도 안에서 적게 모인 지역부터 순서대로 받아오는 모습.",
+  "altEn": "Each night, within the 5,000-record cap, the regions with the least data are filled first.",
+  "caption": "적게 모인 곳부터, 밤마다 조금씩.",
+  "captionEn": "Thinnest first, a slice each night.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "하루 5,000건 한도 안에서 지역별로 나눠 받는 순서"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "하루 한도"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "108",
+      "y": "30",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5,000건"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "12",
+      "y1": "56",
+      "x2": "12",
+      "y2": "206",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "12,214 7,202 17,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "28",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "부산"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "90",
+      "y": "60",
+      "width": "55",
+      "height": "20",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "28",
+      "y": "114",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대구"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "90",
+      "y": "100",
+      "width": "75",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "28",
+      "y": "154",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인천"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "90",
+      "y": "140",
+      "width": "110",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "28",
+      "y": "194",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "경기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "90",
+      "y": "180",
+      "width": "255",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Nightly slices within the 5,000-record cap, thinnest region first"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Daily cap"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "104",
+      "y": "30",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5,000"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "12",
+      "y1": "56",
+      "x2": "12",
+      "y2": "206",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "12,214 7,202 17,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "26",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Busan"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "115",
+      "y": "60",
+      "width": "50",
+      "height": "20",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "26",
+      "y": "114",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Daegu"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "115",
+      "y": "100",
+      "width": "70",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "26",
+      "y": "154",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Incheon"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "115",
+      "y": "140",
+      "width": "105",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "26",
+      "y": "194",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Gyeonggi"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "115",
+      "y": "180",
+      "width": "230",
+      "height": "20",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    }
+   ]
+  }
+ }
+]

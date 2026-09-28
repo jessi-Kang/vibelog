@@ -1,0 +1,186 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-28",
+  "day": 14,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 목록이 밤마다 스스로 늘어납니다.",
+      "en": "The apartment list grows on its own every night.",
+      "keywords": [
+        "스스로"
+      ],
+      "keywordsEn": [
+        "on its own"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "하루에 받을 수 있는 양이 5,000건으로 막혀 있습니다.",
+      "en": "There is a cap of 5,000 records a day.",
+      "keywords": [],
+      "keywordsEn": [
+        "5,000 records"
+      ],
+      "stat": "5,000건",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 매일 밤 조금씩 나눠 받습니다.",
+      "en": "So it arrives in small nightly slices.",
+      "keywords": [
+        "매일 밤"
+      ],
+      "keywordsEn": [
+        "nightly slices"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "build",
+      "ko": "순서는 아직 적게 모인 지역부터입니다.",
+      "en": "The order starts with the regions that have the least.",
+      "keywords": [],
+      "keywordsEn": [
+        "the least"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "부산",
+          "대구",
+          "인천",
+          "경기"
+        ],
+        "labelsEn": [
+          "Busan",
+          "Daegu",
+          "Incheon",
+          "Gyeonggi"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "여기 보이는 이름들이 그렇게 쌓인 목록입니다.",
+      "en": "These names come from the list built that way.",
+      "keywords": [],
+      "keywordsEn": [
+        "built that way"
+      ],
+      "screen": "/o",
+      "find": "1 감별 O/X",
+      "findEn": "1 감별 O/X",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "넷 중 진짜를 고르는 문제도 같이 채워집니다.",
+      "en": "The pick-the-real quiz gets topped up too.",
+      "keywords": [],
+      "keywordsEn": [
+        "pick-the-real"
+      ],
+      "screen": "/f",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "새로 받은 목록을 덮어쓰지 않고 더하게 했습니다.",
+      "en": "New batches get added, not written over.",
+      "keywords": [
+        "더하게"
+      ],
+      "keywordsEn": [
+        "added"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "덮어쓰기",
+          "손으로 넣은 단지 사라짐",
+          "더하기",
+          "그대로 남음"
+        ],
+        "labelsEn": [
+          "Overwrite",
+          "Hand-entered ones vanish",
+          "Append",
+          "They stay"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "광주와 전남은 요청해도 빈 결과만 옵니다.",
+      "en": "Gwangju and Jeonnam still return empty results.",
+      "keywords": [
+        "빈 결과만"
+      ],
+      "keywordsEn": [
+        "empty results"
+      ],
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "그쪽 방법부터 찾아보겠습니다.",
+      "en": "That is the next thing to solve.",
+      "keywords": [
+        "그쪽 방법부터"
+      ],
+      "keywordsEn": [
+        "next thing"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "덮어쓰지 않고 더하기",
+    "titleEn": "Append, not overwrite",
+    "before": "덮어쓰면 손으로 넣은 단지가 매일 밤 사라집니다",
+    "after": "더하는 방식으로 만들어 그대로 남습니다",
+    "beforeEn": "Overwriting would quietly erase hand-entered complexes every night",
+    "afterEn": "Appending keeps them in the list"
+  },
+  "commits": [
+    [
+      "c064416",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "c064416",
+      "chore: receive batch and fill fake (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루 한도가 5,000건이라 밤마다 조금씩 나눠 받습니다. 적게 모인 지역부터 채우고, 기존 목록은 덮어쓰지 않고 더합니다.",
+    "en": "A 5,000-record daily cap means the apartment list fills in nightly slices, starting with the thinnest regions and appending instead of overwriting."
+  },
+  "hashtags": [
+    "#아파트감별사",
+    "#개발일지",
+    "#자동화",
+    "#공공데이터",
+    "#devlog",
+    "#buildinpublic",
+    "#sideproject"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-28.poster.jpg?v=mulblrhu",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-28.ko.mp4?v=mulbltey",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-28.en.poster.jpg?v=mulbmlvi",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-28.en.mp4?v=mulbmnw0"
+  }
+}
