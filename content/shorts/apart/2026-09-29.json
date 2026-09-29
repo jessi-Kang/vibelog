@@ -1,0 +1,206 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-29",
+  "day": 15,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 목록이 밤마다 저절로 늘어납니다.",
+      "en": "The apartment list now grows by itself every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "공공 창구는 하루에 5,000건까지만 내줍니다.",
+      "en": "The public data service hands out only 5,000 records a day.",
+      "keywords": [
+        "5,000건까지만"
+      ],
+      "keywordsEn": [
+        "5,000 records"
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "하루 받을 수 있는 양",
+          "5,000건",
+          "0시 초기화"
+        ],
+        "labelsEn": [
+          "daily allowance",
+          "5,000",
+          "resets at 0:00"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 남은 양이 적은 지역부터 순서대로 받습니다.",
+      "en": "So it fetches the regions with the least data first.",
+      "keywords": [
+        "적은 지역부터"
+      ],
+      "keywordsEn": [
+        "least data first"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "받는 순서",
+          "몇 주 내내 한 지역만",
+          "전국이 고르게",
+          "큰 곳 먼저",
+          "적은 곳 먼저"
+        ],
+        "labelsEn": [
+          "fetch order",
+          "weeks on one region",
+          "all regions evenly",
+          "biggest first",
+          "smallest first"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "실제 단지가 늘면 가짜로 넣었던 이름이 진짜로 밝혀져 빠집니다.",
+      "en": "As real complexes arrive, names filed as fake turn out to be real and drop out.",
+      "keywords": [
+        "진짜로 밝혀져"
+      ],
+      "keywordsEn": [
+        "turn out to be real"
+      ],
+      "motif": "convert"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 가짜 이름도 같은 밤에 함께 채웁니다.",
+      "en": "So new fake names are generated the same night.",
+      "keywords": [
+        "같은 밤에"
+      ],
+      "keywordsEn": [
+        "the same night"
+      ],
+      "screen": "/a",
+      "find": "2 이름 조립",
+      "findEn": "2 Build the Name",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "넷 중 진짜 하나를 고르는 문제에 그 단지들이 쓰입니다.",
+      "en": "Those complexes feed the round where one of four is real.",
+      "keywords": [],
+      "keywordsEn": [
+        "one of four is real"
+      ],
+      "screen": "/f",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "목록을 통째로 갈아치우면 손으로 넣은 단지가 사라집니다.",
+      "en": "Replacing the whole list would erase the complexes I entered by hand.",
+      "keywords": [],
+      "keywordsEn": [
+        "entered by hand"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "통째로 갈아치움",
+          "손으로 넣은 단지 사라짐",
+          "위에 더하기만",
+          "둘 다 남음"
+        ],
+        "labelsEn": [
+          "replace wholesale",
+          "hand-entered ones vanish",
+          "add on top only",
+          "both stay"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "며칠 돌려 보며 지역마다 고르게 차오르는지 확인할 생각입니다.",
+      "en": "I will watch it for a few nights to see if every region fills up evenly.",
+      "keywords": [
+        "고르게 차오르는지"
+      ],
+      "keywordsEn": [
+        "fills up evenly"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "밤마다 문제가 조금씩 늘어납니다.",
+      "en": "A few more questions every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "손으로 넣은 단지가 사라진다",
+    "titleEn": "Hand-entered complexes vanish",
+    "before": "목록을 통째로 갈아치우면 손으로 넣은 단지가 매일 밤 지워집니다.",
+    "after": "새로 받은 목록을 기존 목록 위에 더하기만 하게 했습니다.",
+    "beforeEn": "Replacing the list wholesale would wipe hand-entered complexes every night.",
+    "afterEn": "New data is now added on top of the existing list instead."
+  },
+  "commits": [
+    [
+      "a4da3ec",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "a4da3ec",
+      "chore: receive bundle and fill fake data (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루 5,000건 제한 때문에 전국을 한 번에 못 받아서, 남은 양이 적은 지역부터 밤마다 조금씩 받아오게 했습니다. 가짜 이름도 같은 밤에 함께 채웁니다.",
+    "en": "The public API caps out at 5,000 records a day, so the list now fills itself a little each night, starting with the regions that have the least data. Fake names get topped up in the same pass."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#자동화",
+    "#공공데이터",
+    "#아파트감별사",
+    "#indiedev",
+    "#buildinpublic",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-29.poster.jpg?v=mumr46cu",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-29.ko.mp4?v=mumr4ai1",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-29.en.poster.jpg?v=mumr5c8m",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-29.en.mp4?v=mumr5e14"
+  }
+}

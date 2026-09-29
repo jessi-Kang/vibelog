@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-28T14:06:43.163Z",
+  "at": "2026-09-29T14:08:57.274Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
@@ -9,14 +9,14 @@
       "text": "collect  · 5 repos, 1 active"
     },
     {
-      "text": "generate · apart/2026-09-28.md (ko, en) · 토큰 in 2,946 · out 2,193"
+      "text": "generate · apart/2026-09-29.md (ko, en) · 토큰 in 2,948 · out 2,154"
     },
     {
-      "text": "figures  · apart/2026-09-28 3장 · 토큰 in 4,608 · out 6,912",
-      "textEn": "figures  · apart/2026-09-28 3 figures · 토큰 in 4,608 · out 6,912"
+      "text": "figures  · apart/2026-09-29 3장 · 토큰 in 1,403 · out 8,167",
+      "textEn": "figures  · apart/2026-09-29 3 figures · 토큰 in 1,403 · out 8,167"
     },
     {
-      "text": "shorts   · apart/2026-09-28 (ko, en) · 대본 토큰 in 3,334 · out 2,163"
+      "text": "shorts   · apart/2026-09-29 (ko, en) · 대본 토큰 in 3,434 · out 4,289"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
