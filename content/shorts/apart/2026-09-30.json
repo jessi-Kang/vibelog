@@ -1,0 +1,194 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-09-30",
+  "day": 16,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "밤마다 아파트 목록이 저절로 늘어납니다.",
+      "en": "The apartment list grows by itself every night.",
+      "keywords": [
+        "저절로"
+      ],
+      "keywordsEn": [
+        "by itself"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "목록을 주는 곳이 하루 5,000건까지만 내려줍니다.",
+      "en": "The source only hands out 5,000 entries a day.",
+      "keywords": [],
+      "keywordsEn": [
+        "5,000 entries"
+      ],
+      "stat": "5,000건",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 남은 양이 적은 지역부터 밤마다 조금씩 모읍니다.",
+      "en": "So each night I collect a small batch, starting with the regions that have the least left.",
+      "keywords": [
+        "남은 양이 적은 지역부터"
+      ],
+      "keywordsEn": [
+        "the least left"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "부산",
+          "대구",
+          "인천",
+          "경기"
+        ],
+        "labelsEn": [
+          "Busan",
+          "Daegu",
+          "Incheon",
+          "Gyeonggi"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "같은 밤에 가짜 이름도 새로 채웁니다.",
+      "en": "On the same nights, new made-up names get topped up too.",
+      "keywords": [],
+      "keywordsEn": [
+        "made-up names"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "build",
+      "ko": "진짜 목록이 늘면 가짜로 등록해 둔 이름이 실제 단지로 밝혀져 빠지거든요.",
+      "en": "As the real list grows, a name filed as fake turns out to be real and gets pulled.",
+      "keywords": [
+        "실제 단지로 밝혀져"
+      ],
+      "keywordsEn": [
+        "turns out to be real"
+      ],
+      "motif": "remove"
+    },
+    {
+      "scene": "demo",
+      "ko": "문제는 전부 이 목록에서 나옵니다.",
+      "en": "Every question comes out of this list.",
+      "keywords": [
+        "이 목록에서"
+      ],
+      "keywordsEn": [
+        "this list"
+      ],
+      "screen": "/f",
+      "find": "3 진짜 찾기",
+      "findEn": "3 Spot the Real One",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "새로 받은 목록으로 덮어쓰니, 손으로 넣어 둔 단지가 매일 밤 사라졌습니다.",
+      "en": "Overwriting with each fresh batch quietly erased the complexes I had added by hand.",
+      "keywords": [
+        "덮어쓰니",
+        "매일 밤 사라졌습니다"
+      ],
+      "keywordsEn": [
+        "Overwriting",
+        "erased"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "통째로 덮어쓰기",
+          "손으로 넣은 단지 사라짐",
+          "없는 것만 더하기",
+          "그대로 남음"
+        ],
+        "labelsEn": [
+          "Overwrite all",
+          "Hand-added ones gone",
+          "Add only missing",
+          "They stay"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "광주와 전남은 요청해도 0건만 돌아옵니다.",
+      "en": "Gwangju and Jeonnam still come back with 0 entries.",
+      "keywords": [
+        "0건만"
+      ],
+      "keywordsEn": [
+        "0 entries"
+      ],
+      "stat": "0건",
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "목록이 커질수록 문제도 어려워집니다.",
+      "en": "The bigger the list, the harder the questions.",
+      "keywords": [
+        "어려워집니다"
+      ],
+      "keywordsEn": [
+        "harder"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "손으로 넣은 단지가 사라졌다",
+    "titleEn": "Hand-added complexes vanished",
+    "before": "새 목록으로 통째로 덮어씀",
+    "after": "없는 것만 더하도록 변경",
+    "beforeEn": "Overwrote the whole list each night",
+    "afterEn": "Now it only adds what is missing"
+  },
+  "commits": [
+    [
+      "3e2ea3e",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "3e2ea3e",
+      "chore: receive bundle and fill fake data (nightly auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "밤마다 아파트 목록이 저절로 늘어나게 했습니다. 하루 5,000건 제한 때문에 남은 양이 적은 지역부터 조금씩 모읍니다.",
+    "en": "The apartment list now grows on its own every night. With a 5,000-a-day cap, it collects a small batch, regions with the least left first."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#사이드프로젝트",
+    "#아파트감별사",
+    "#자동화",
+    "#devlog",
+    "#buildinpublic",
+    "#webgame"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-30.poster.jpg?v=muo6ljfi",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-30.ko.mp4?v=muo6lld9",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-30.en.poster.jpg?v=muo6mup8",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-30.en.mp4?v=muo6mwdm"
+  }
+}
