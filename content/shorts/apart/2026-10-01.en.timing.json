@@ -1,0 +1,462 @@
+{
+  "lang": "en",
+  "duration": 27.632,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 1.73,
+      "words": [
+        {
+          "text": "Hand-typed",
+          "start": 0,
+          "end": 0.511
+        },
+        {
+          "text": "entries",
+          "start": 0.557,
+          "end": 0.882
+        },
+        {
+          "text": "almost",
+          "start": 0.94,
+          "end": 1.242
+        },
+        {
+          "text": "vanished",
+          "start": 1.289,
+          "end": 1.73
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.426,
+      "end": 5.526,
+      "words": [
+        {
+          "text": "The",
+          "start": 2.426,
+          "end": 2.566
+        },
+        {
+          "text": "problem:",
+          "start": 2.624,
+          "end": 3.158
+        },
+        {
+          "text": "each",
+          "start": 3.483,
+          "end": 3.692
+        },
+        {
+          "text": "download",
+          "start": 3.762,
+          "end": 4.168
+        },
+        {
+          "text": "replaced",
+          "start": 4.214,
+          "end": 4.621
+        },
+        {
+          "text": "the",
+          "start": 4.644,
+          "end": 4.714
+        },
+        {
+          "text": "whole",
+          "start": 4.76,
+          "end": 4.946
+        },
+        {
+          "text": "file.",
+          "start": 4.981,
+          "end": 5.526
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 6.037,
+      "end": 8.626,
+      "words": [
+        {
+          "text": "Now",
+          "start": 6.037,
+          "end": 6.223
+        },
+        {
+          "text": "it",
+          "start": 6.293,
+          "end": 6.374
+        },
+        {
+          "text": "adds",
+          "start": 6.42,
+          "end": 6.664
+        },
+        {
+          "text": "only",
+          "start": 6.722,
+          "end": 6.931
+        },
+        {
+          "text": "what",
+          "start": 6.978,
+          "end": 7.105
+        },
+        {
+          "text": "is",
+          "start": 7.152,
+          "end": 7.233
+        },
+        {
+          "text": "missing",
+          "start": 7.303,
+          "end": 7.593
+        },
+        {
+          "text": "instead",
+          "start": 7.639,
+          "end": 7.895
+        },
+        {
+          "text": "of",
+          "start": 7.918,
+          "end": 7.964
+        },
+        {
+          "text": "swapping.",
+          "start": 8.022,
+          "end": 8.626
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.951,
+      "end": 13.363,
+      "words": [
+        {
+          "text": "The",
+          "start": 8.951,
+          "end": 9.079
+        },
+        {
+          "text": "source",
+          "start": 9.137,
+          "end": 9.404
+        },
+        {
+          "text": "caps",
+          "start": 9.439,
+          "end": 9.718
+        },
+        {
+          "text": "at",
+          "start": 9.752,
+          "end": 9.834
+        },
+        {
+          "text": "5,000",
+          "start": 9.903,
+          "end": 10.449
+        },
+        {
+          "text": "records",
+          "start": 10.519,
+          "end": 10.832
+        },
+        {
+          "text": "a",
+          "start": 10.867,
+          "end": 10.89
+        },
+        {
+          "text": "day,",
+          "start": 10.948,
+          "end": 11.436
+        },
+        {
+          "text": "so",
+          "start": 11.645,
+          "end": 11.773
+        },
+        {
+          "text": "it",
+          "start": 11.842,
+          "end": 11.912
+        },
+        {
+          "text": "takes",
+          "start": 11.935,
+          "end": 12.156
+        },
+        {
+          "text": "a",
+          "start": 12.19,
+          "end": 12.225
+        },
+        {
+          "text": "slice",
+          "start": 12.272,
+          "end": 12.585
+        },
+        {
+          "text": "each",
+          "start": 12.632,
+          "end": 12.806
+        },
+        {
+          "text": "night.",
+          "start": 12.864,
+          "end": 13.363
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 13.874,
+      "end": 16.184,
+      "words": [
+        {
+          "text": "The",
+          "start": 13.874,
+          "end": 14.002
+        },
+        {
+          "text": "real",
+          "start": 14.06,
+          "end": 14.234
+        },
+        {
+          "text": "names",
+          "start": 14.292,
+          "end": 14.524
+        },
+        {
+          "text": "come",
+          "start": 14.582,
+          "end": 14.745
+        },
+        {
+          "text": "from",
+          "start": 14.768,
+          "end": 14.896
+        },
+        {
+          "text": "the",
+          "start": 14.942,
+          "end": 15.012
+        },
+        {
+          "text": "public",
+          "start": 15.047,
+          "end": 15.337
+        },
+        {
+          "text": "data",
+          "start": 15.395,
+          "end": 15.604
+        },
+        {
+          "text": "portal.",
+          "start": 15.662,
+          "end": 16.184
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 16.695,
+      "end": 20.109,
+      "words": [
+        {
+          "text": "The",
+          "start": 16.695,
+          "end": 16.823
+        },
+        {
+          "text": "find-the-real-one",
+          "start": 16.881,
+          "end": 17.74
+        },
+        {
+          "text": "round",
+          "start": 17.787,
+          "end": 18.007
+        },
+        {
+          "text": "now",
+          "start": 18.065,
+          "end": 18.251
+        },
+        {
+          "text": "has",
+          "start": 18.332,
+          "end": 18.506
+        },
+        {
+          "text": "many",
+          "start": 18.588,
+          "end": 18.785
+        },
+        {
+          "text": "more",
+          "start": 18.843,
+          "end": 19.006
+        },
+        {
+          "text": "names",
+          "start": 19.052,
+          "end": 19.308
+        },
+        {
+          "text": "to",
+          "start": 19.342,
+          "end": 19.412
+        },
+        {
+          "text": "pull",
+          "start": 19.482,
+          "end": 19.667
+        },
+        {
+          "text": "from.",
+          "start": 19.726,
+          "end": 20.109
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 20.712,
+      "end": 25.252,
+      "words": [
+        {
+          "text": "Gwangju",
+          "start": 20.712,
+          "end": 21.142
+        },
+        {
+          "text": "and",
+          "start": 21.212,
+          "end": 21.293
+        },
+        {
+          "text": "South",
+          "start": 21.351,
+          "end": 21.572
+        },
+        {
+          "text": "Jeolla",
+          "start": 21.618,
+          "end": 21.897
+        },
+        {
+          "text": "still",
+          "start": 21.955,
+          "end": 22.14
+        },
+        {
+          "text": "come",
+          "start": 22.198,
+          "end": 22.349
+        },
+        {
+          "text": "back",
+          "start": 22.373,
+          "end": 22.547
+        },
+        {
+          "text": "with",
+          "start": 22.582,
+          "end": 22.709
+        },
+        {
+          "text": "0",
+          "start": 22.767,
+          "end": 22.976
+        },
+        {
+          "text": "records,",
+          "start": 23.046,
+          "end": 23.685
+        },
+        {
+          "text": "so",
+          "start": 23.894,
+          "end": 24.021
+        },
+        {
+          "text": "that",
+          "start": 24.079,
+          "end": 24.207
+        },
+        {
+          "text": "needs",
+          "start": 24.265,
+          "end": 24.451
+        },
+        {
+          "text": "a",
+          "start": 24.486,
+          "end": 24.509
+        },
+        {
+          "text": "separate",
+          "start": 24.555,
+          "end": 24.88
+        },
+        {
+          "text": "look.",
+          "start": 24.915,
+          "end": 25.252
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 25.693,
+      "end": 27.632,
+      "words": [
+        {
+          "text": "The",
+          "start": 25.693,
+          "end": 25.809
+        },
+        {
+          "text": "list",
+          "start": 25.867,
+          "end": 26.03
+        },
+        {
+          "text": "grows",
+          "start": 26.076,
+          "end": 26.308
+        },
+        {
+          "text": "a",
+          "start": 26.343,
+          "end": 26.366
+        },
+        {
+          "text": "little",
+          "start": 26.413,
+          "end": 26.633
+        },
+        {
+          "text": "again",
+          "start": 26.668,
+          "end": 26.877
+        },
+        {
+          "text": "tonight.",
+          "start": 26.924,
+          "end": 27.632
+        }
+      ]
+    }
+  ]
+}
