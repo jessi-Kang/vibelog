@@ -1,0 +1,199 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-10-02",
+  "day": 18,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 이름을 밤마다 모읍니다.",
+      "en": "Apartment names get collected every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "공공 목록은 하루에 5,000건까지만 받을 수 있습니다.",
+      "en": "The public list caps at 5,000 records a day.",
+      "keywords": [
+        "5,000건까지만"
+      ],
+      "keywordsEn": [
+        "5,000 records"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 records",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 남은 양이 적은 지역부터 조금씩 받습니다.",
+      "en": "So it takes the regions with the least left first.",
+      "keywords": [
+        "적은 지역부터"
+      ],
+      "keywordsEn": [
+        "least left first"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "부산",
+          "대구",
+          "인천",
+          "경기"
+        ],
+        "labelsEn": [
+          "Busan",
+          "Daegu",
+          "Incheon",
+          "Gyeonggi"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "같은 밤에 가짜 이름도 새로 지어 채웁니다.",
+      "en": "The same night, new fake names get written in too.",
+      "keywords": [
+        "가짜 이름도"
+      ],
+      "keywordsEn": [
+        "fake names"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "demo",
+      "ko": "모은 이름은 넷 중 진짜를 고르는 문제가 됩니다.",
+      "en": "The names become a pick-the-real-one question.",
+      "keywords": [
+        "넷 중 진짜를"
+      ],
+      "keywordsEn": [
+        "pick-the-real-one"
+      ],
+      "screen": "/f",
+      "find": "넷 중 진짜는 하나",
+      "findEn": "only one of four is real",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "이름 하나만 보고 가려내는 문제도 있습니다.",
+      "en": "There is also a one-name true-or-false round.",
+      "keywords": [
+        "이름 하나만"
+      ],
+      "keywordsEn": [
+        "one-name"
+      ],
+      "screen": "/o",
+      "find": "이름 하나를 보고 진짜/가짜",
+      "findEn": "one name, real or fake",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "받아 온 목록으로 덮어쓰면 손으로 넣은 단지가 사라집니다.",
+      "en": "Overwriting with the fetched list erased the ones I added by hand.",
+      "keywords": [
+        "덮어쓰면",
+        "사라집니다"
+      ],
+      "keywordsEn": [
+        "Overwriting",
+        "erased"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "덮어쓰기",
+          "손으로 넣은 것 사라짐",
+          "없는 것만 더하기",
+          "그대로 남음"
+        ],
+        "labelsEn": [
+          "Overwrite",
+          "hand-added gone",
+          "Add only missing",
+          "they stay"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "광주와 전남은 요청해도 0건이 돌아옵니다.",
+      "en": "Gwangju and South Jeolla return zero records.",
+      "keywords": [
+        "0건이"
+      ],
+      "keywordsEn": [
+        "zero records"
+      ],
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "다른 경로를 찾아봐야 합니다.",
+      "en": "I need another route.",
+      "keywords": [],
+      "keywordsEn": [
+        "another route"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "손으로 넣은 단지가 사라졌다",
+    "titleEn": "Hand-added entries vanished",
+    "before": "받아 온 목록으로 매일 밤 덮어썼다",
+    "after": "덮어쓰지 않고 없는 것만 더한다",
+    "beforeEn": "The fetched list overwrote everything each night",
+    "afterEn": "Now it only adds what isn't there yet"
+  },
+  "commits": [
+    [
+      "c96d22d",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "c96d22d",
+      "chore: receive batch and fill fake data (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "진짜 아파트 이름을 밤마다 조금씩 모으고, 같은 밤에 가짜 이름도 새로 지어 채웁니다. 덮어쓰기 때문에 손으로 넣은 단지가 사라질 뻔한 이야기.",
+    "en": "Real apartment names get collected a slice at a time each night, with new fake names written in the same night. Also: how overwriting almost erased the ones I added by hand."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#devlog",
+    "#아파트감별사",
+    "#공공데이터",
+    "#자동화",
+    "#automation",
+    "#indiedev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-02.poster.jpg?v=mur1fazj",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-02.ko.mp4?v=mur1fde9",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-02.en.poster.jpg?v=mur1gcmu",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-02.en.mp4?v=mur1ge4t"
+  }
+}
