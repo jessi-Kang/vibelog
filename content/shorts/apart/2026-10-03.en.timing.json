@@ -1,0 +1,566 @@
+{
+  "lang": "en",
+  "duration": 29.164,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.31,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.151
+        },
+        {
+          "text": "apartment",
+          "start": 0.186,
+          "end": 0.627
+        },
+        {
+          "text": "list",
+          "start": 0.685,
+          "end": 0.859
+        },
+        {
+          "text": "grows",
+          "start": 0.906,
+          "end": 1.126
+        },
+        {
+          "text": "by",
+          "start": 1.173,
+          "end": 1.254
+        },
+        {
+          "text": "itself",
+          "start": 1.3,
+          "end": 1.602
+        },
+        {
+          "text": "every",
+          "start": 1.672,
+          "end": 1.869
+        },
+        {
+          "text": "night.",
+          "start": 1.916,
+          "end": 2.31
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.752,
+      "end": 5.224,
+      "words": [
+        {
+          "text": "The",
+          "start": 2.752,
+          "end": 2.879
+        },
+        {
+          "text": "source",
+          "start": 2.937,
+          "end": 3.216
+        },
+        {
+          "text": "hands",
+          "start": 3.239,
+          "end": 3.437
+        },
+        {
+          "text": "out",
+          "start": 3.471,
+          "end": 3.587
+        },
+        {
+          "text": "only",
+          "start": 3.622,
+          "end": 3.785
+        },
+        {
+          "text": "5,000",
+          "start": 3.843,
+          "end": 4.389
+        },
+        {
+          "text": "records",
+          "start": 4.458,
+          "end": 4.76
+        },
+        {
+          "text": "a",
+          "start": 4.795,
+          "end": 4.818
+        },
+        {
+          "text": "day.",
+          "start": 4.865,
+          "end": 5.224
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.828,
+      "end": 7.697,
+      "words": [
+        {
+          "text": "So",
+          "start": 5.828,
+          "end": 5.968
+        },
+        {
+          "text": "I",
+          "start": 6.037,
+          "end": 6.06
+        },
+        {
+          "text": "fill",
+          "start": 6.142,
+          "end": 6.316
+        },
+        {
+          "text": "the",
+          "start": 6.362,
+          "end": 6.432
+        },
+        {
+          "text": "thinnest",
+          "start": 6.467,
+          "end": 6.757
+        },
+        {
+          "text": "regions",
+          "start": 6.827,
+          "end": 7.14
+        },
+        {
+          "text": "first.",
+          "start": 7.198,
+          "end": 7.697
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.208,
+      "end": 10.67,
+      "words": [
+        {
+          "text": "You",
+          "start": 8.208,
+          "end": 8.324
+        },
+        {
+          "text": "see",
+          "start": 8.371,
+          "end": 8.499
+        },
+        {
+          "text": "one",
+          "start": 8.545,
+          "end": 8.684
+        },
+        {
+          "text": "name",
+          "start": 8.719,
+          "end": 8.905
+        },
+        {
+          "text": "and",
+          "start": 8.94,
+          "end": 9.009
+        },
+        {
+          "text": "decide",
+          "start": 9.067,
+          "end": 9.427
+        },
+        {
+          "text": "if",
+          "start": 9.462,
+          "end": 9.532
+        },
+        {
+          "text": "it",
+          "start": 9.578,
+          "end": 9.648
+        },
+        {
+          "text": "is",
+          "start": 9.694,
+          "end": 9.764
+        },
+        {
+          "text": "real",
+          "start": 9.845,
+          "end": 10.054
+        },
+        {
+          "text": "or",
+          "start": 10.112,
+          "end": 10.17
+        },
+        {
+          "text": "fake.",
+          "start": 10.24,
+          "end": 10.67
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 11.273,
+      "end": 13.421,
+      "words": [
+        {
+          "text": "There",
+          "start": 11.273,
+          "end": 11.447
+        },
+        {
+          "text": "is",
+          "start": 11.471,
+          "end": 11.529
+        },
+        {
+          "text": "also",
+          "start": 11.564,
+          "end": 11.761
+        },
+        {
+          "text": "a",
+          "start": 11.819,
+          "end": 11.842
+        },
+        {
+          "text": "round",
+          "start": 11.9,
+          "end": 12.132
+        },
+        {
+          "text": "where",
+          "start": 12.19,
+          "end": 12.365
+        },
+        {
+          "text": "one",
+          "start": 12.411,
+          "end": 12.527
+        },
+        {
+          "text": "of",
+          "start": 12.562,
+          "end": 12.608
+        },
+        {
+          "text": "four",
+          "start": 12.666,
+          "end": 12.841
+        },
+        {
+          "text": "is",
+          "start": 12.887,
+          "end": 12.945
+        },
+        {
+          "text": "real.",
+          "start": 13.015,
+          "end": 13.421
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 13.804,
+      "end": 16.173,
+      "words": [
+        {
+          "text": "A",
+          "start": 13.804,
+          "end": 13.885
+        },
+        {
+          "text": "made-up",
+          "start": 13.967,
+          "end": 14.245
+        },
+        {
+          "text": "name",
+          "start": 14.303,
+          "end": 14.466
+        },
+        {
+          "text": "that",
+          "start": 14.489,
+          "end": 14.594
+        },
+        {
+          "text": "turns",
+          "start": 14.617,
+          "end": 14.837
+        },
+        {
+          "text": "out",
+          "start": 14.884,
+          "end": 15
+        },
+        {
+          "text": "to",
+          "start": 15.023,
+          "end": 15.07
+        },
+        {
+          "text": "be",
+          "start": 15.128,
+          "end": 15.209
+        },
+        {
+          "text": "real",
+          "start": 15.279,
+          "end": 15.476
+        },
+        {
+          "text": "gets",
+          "start": 15.534,
+          "end": 15.708
+        },
+        {
+          "text": "dropped.",
+          "start": 15.743,
+          "end": 16.173
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 16.451,
+      "end": 18.611,
+      "words": [
+        {
+          "text": "So",
+          "start": 16.451,
+          "end": 16.625
+        },
+        {
+          "text": "fake",
+          "start": 16.683,
+          "end": 16.916
+        },
+        {
+          "text": "names",
+          "start": 16.939,
+          "end": 17.148
+        },
+        {
+          "text": "get",
+          "start": 17.194,
+          "end": 17.322
+        },
+        {
+          "text": "refilled",
+          "start": 17.392,
+          "end": 17.763
+        },
+        {
+          "text": "on",
+          "start": 17.798,
+          "end": 17.844
+        },
+        {
+          "text": "the",
+          "start": 17.879,
+          "end": 17.949
+        },
+        {
+          "text": "same",
+          "start": 17.995,
+          "end": 18.204
+        },
+        {
+          "text": "night.",
+          "start": 18.239,
+          "end": 18.611
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 19.052,
+      "end": 22.686,
+      "words": [
+        {
+          "text": "If",
+          "start": 19.052,
+          "end": 19.18
+        },
+        {
+          "text": "it",
+          "start": 19.214,
+          "end": 19.272
+        },
+        {
+          "text": "overwrote",
+          "start": 19.319,
+          "end": 19.725
+        },
+        {
+          "text": "the",
+          "start": 19.748,
+          "end": 19.818
+        },
+        {
+          "text": "list,",
+          "start": 19.876,
+          "end": 20.317
+        },
+        {
+          "text": "the",
+          "start": 20.492,
+          "end": 20.596
+        },
+        {
+          "text": "entries",
+          "start": 20.654,
+          "end": 20.944
+        },
+        {
+          "text": "I",
+          "start": 20.991,
+          "end": 21.014
+        },
+        {
+          "text": "typed",
+          "start": 21.095,
+          "end": 21.327
+        },
+        {
+          "text": "by",
+          "start": 21.374,
+          "end": 21.49
+        },
+        {
+          "text": "hand",
+          "start": 21.56,
+          "end": 21.78
+        },
+        {
+          "text": "would",
+          "start": 21.838,
+          "end": 21.978
+        },
+        {
+          "text": "have",
+          "start": 22.001,
+          "end": 22.105
+        },
+        {
+          "text": "vanished.",
+          "start": 22.129,
+          "end": 22.686
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 23.499,
+      "end": 27.214,
+      "words": [
+        {
+          "text": "Gwangju",
+          "start": 23.499,
+          "end": 23.858
+        },
+        {
+          "text": "and",
+          "start": 23.882,
+          "end": 23.963
+        },
+        {
+          "text": "Jeonnam",
+          "start": 24.009,
+          "end": 24.3
+        },
+        {
+          "text": "still",
+          "start": 24.358,
+          "end": 24.555
+        },
+        {
+          "text": "return",
+          "start": 24.613,
+          "end": 24.892
+        },
+        {
+          "text": "zero",
+          "start": 24.95,
+          "end": 25.17
+        },
+        {
+          "text": "records,",
+          "start": 25.228,
+          "end": 25.821
+        },
+        {
+          "text": "so",
+          "start": 26.064,
+          "end": 26.18
+        },
+        {
+          "text": "I",
+          "start": 26.25,
+          "end": 26.273
+        },
+        {
+          "text": "need",
+          "start": 26.331,
+          "end": 26.482
+        },
+        {
+          "text": "another",
+          "start": 26.517,
+          "end": 26.749
+        },
+        {
+          "text": "way.",
+          "start": 26.796,
+          "end": 27.214
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 27.539,
+      "end": 29.164,
+      "words": [
+        {
+          "text": "The",
+          "start": 27.539,
+          "end": 27.643
+        },
+        {
+          "text": "list",
+          "start": 27.701,
+          "end": 27.887
+        },
+        {
+          "text": "grows",
+          "start": 27.945,
+          "end": 28.177
+        },
+        {
+          "text": "again",
+          "start": 28.212,
+          "end": 28.433
+        },
+        {
+          "text": "tonight.",
+          "start": 28.491,
+          "end": 29.164
+        }
+      ]
+    }
+  ]
+}
