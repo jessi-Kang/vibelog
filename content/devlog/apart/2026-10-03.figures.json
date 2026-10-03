@@ -1,0 +1,1020 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "하루 5,000건 한도 아래, 남은 양이 적은 부산·대구·인천·경기 순으로 막대 길이가 길어진다.",
+  "altEn": "Under a 5,000-a-day cap, bars grow longer in the order Busan, Daegu, Incheon, Gyeonggi.",
+  "caption": "남은 양이 적은 지역부터 매일 조금씩 받습니다.",
+  "captionEn": "Each night takes a slice, starting with the thinnest region.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "하루 5,000건 한도 안에서 남은 양이 적은 지역부터 받는 순서"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "하루 5,000건"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "46",
+      "x2": "370",
+      "y2": "46",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M14 66 L14 204",
+      "stroke": "var(--color-muted)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "14,214 9,202 19,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "84",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "부산"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "67",
+      "width": "46",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대구"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "107",
+      "width": "74",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "164",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인천"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "147",
+      "width": "112",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "204",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "경기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "96",
+      "y": "187",
+      "width": "214",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "238",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "막대 길이 = 남은 양"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Order of nightly pulls under the 5,000-a-day cap, thinnest region first"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "5,000 a day"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "46",
+      "x2": "370",
+      "y2": "46",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M10 66 L10 204",
+      "stroke": "var(--color-muted)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "10,214 5,202 15,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "24",
+      "y": "84",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Busan"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "104",
+      "y": "67",
+      "width": "46",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "24",
+      "y": "124",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Daegu"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "104",
+      "y": "107",
+      "width": "74",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "24",
+      "y": "164",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Incheon"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "104",
+      "y": "147",
+      "width": "112",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "24",
+      "y": "204",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Gyeonggi"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "104",
+      "y": "187",
+      "width": "200",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "238",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "bar length = amount left"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 1,
+  "alt": "덮어쓰면 손으로 넣은 단지가 사라지고, 덧붙이면 그대로 남는다.",
+  "altEn": "Overwriting erases the hand-typed entries; appending keeps them.",
+  "caption": "덮어쓰기 대신 덧붙이기를 고른 이유.",
+  "captionEn": "Why the nightly run appends instead of replacing.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 268",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "덮어쓰기와 덧붙이기의 결과 비교"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "105",
+      "y": "16",
+      "width": "180",
+      "height": "80",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "기존 목록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "62",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "받아 온 단지"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "86",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "손으로 넣은 단지"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 100 L195 112 M98 112 L292 112 M98 112 L98 126 M292 112 L292 126",
+      "stroke": "var(--color-line-strong)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "98,136 93,124 103,124",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,136 287,124 297,124",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "142",
+      "width": "164",
+      "height": "106",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "98",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "덮어쓰기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "98",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "받아 온 단지"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "206",
+      "width": "136",
+      "height": "28",
+      "rx": "5",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "98",
+      "y": "226",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "사라짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "142",
+      "width": "164",
+      "height": "106",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "덧붙이기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "받아 온 단지"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "226",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "손으로 넣은 단지"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 268",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Overwrite versus append, and what happens to hand-typed entries"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "105",
+      "y": "16",
+      "width": "180",
+      "height": "80",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "38",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "current list"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "62",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "fetched entries"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "86",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "hand-typed entries"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 100 L195 112 M98 112 L292 112 M98 112 L98 126 M292 112 L292 126",
+      "stroke": "var(--color-line-strong)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "98,136 93,124 103,124",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,136 287,124 297,124",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "16",
+      "y": "142",
+      "width": "164",
+      "height": "106",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "98",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Overwrite"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "98",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "fetched entries"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "206",
+      "width": "136",
+      "height": "28",
+      "rx": "5",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "98",
+      "y": "226",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "erased"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "142",
+      "width": "164",
+      "height": "106",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "166",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Append"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "fetched entries"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "226",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "hand-typed entries"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 2,
+  "alt": "진짜 목록은 늘어나고 가짜 이름은 줄어들어, 같은 밤에 가짜를 새로 채운다.",
+  "altEn": "The real list grows while the fake side shrinks, so fakes are refilled the same night.",
+  "caption": "한쪽이 늘면 다른 쪽이 줄어듭니다.",
+  "captionEn": "One side growing makes the other side shrink.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 212",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "진짜 목록은 늘고 가짜 이름은 줄어 새로 채우는 구조"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "112",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "늘어남"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M112 66 L112 44",
+      "stroke": "var(--color-ink-soft)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "112,36 107,48 117,48",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "80",
+      "y": "78",
+      "width": "64",
+      "height": "90",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "278",
+      "y": "66",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "새로 채움"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "78",
+      "width": "64",
+      "height": "40",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "118",
+      "width": "64",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "222",
+      "y": "112",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "줄어듦"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M232 120 L232 142",
+      "stroke": "var(--color-muted)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "232,152 227,140 237,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "50",
+      "y1": "168",
+      "x2": "340",
+      "y2": "168",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "112",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "진짜 목록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "278",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "가짜 이름"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 212",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The real list grows, the fake side shrinks, and fakes get refilled"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "112",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "grows"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M112 66 L112 44",
+      "stroke": "var(--color-ink-soft)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "112,36 107,48 117,48",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "80",
+      "y": "78",
+      "width": "64",
+      "height": "90",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "286",
+      "y": "66",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "refilled"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "78",
+      "width": "64",
+      "height": "40",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "246",
+      "y": "118",
+      "width": "64",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "222",
+      "y": "112",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "shrinks"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M232 120 L232 142",
+      "stroke": "var(--color-muted)",
+      "fill": "none"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "232,152 227,140 237,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "50",
+      "y1": "168",
+      "x2": "340",
+      "y2": "168",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "112",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Real list"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "278",
+      "y": "194",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Fake names"
+    }
+   ]
+  }
+ }
+]
