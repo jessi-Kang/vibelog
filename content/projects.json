@@ -11,11 +11,11 @@
     "repoUrl": "https://github.com/jessi-Kang/apart",
     "homepage": "https://apt-game.app",
     "language": "TypeScript",
-    "lastActivity": "2026-10-03",
+    "lastActivity": "2026-10-04",
     "weekCommits": 7,
     "todayCommits": 1,
-    "totalCommits": 201,
-    "countsDate": "2026-10-03",
+    "totalCommits": 202,
+    "countsDate": "2026-10-04",
     "theme": "paper"
   },
   {
@@ -32,9 +32,9 @@
     "language": "JavaScript",
     "lastActivity": "2026-10-03",
     "weekCommits": 14,
-    "todayCommits": 1,
-    "totalCommits": 427,
-    "countsDate": "2026-10-03"
+    "todayCommits": 0,
+    "totalCommits": 428,
+    "countsDate": "2026-10-04"
   },
   {
     "slug": "Anchor",
@@ -58,7 +58,7 @@
     "weekCommits": 4,
     "todayCommits": 0,
     "totalCommits": 1075,
-    "countsDate": "2026-10-03",
+    "countsDate": "2026-10-04",
     "theme": "blueprint"
   },
   {
@@ -76,7 +76,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-03",
+    "countsDate": "2026-10-04",
     "theme": "blueprint"
   },
   {
@@ -91,7 +91,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-10-03",
+    "countsDate": "2026-10-04",
     "theme": "highlighter"
   }
 ]
