@@ -1,0 +1,862 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "공공 데이터에서 하루 5,000건 한도를 지나 밤마다 조금씩 목록이 늘어나는 그림",
+  "altEn": "Diagram of a nightly batch passing through a 5,000-a-day cap so the list grows bit by bit",
+  "caption": "하루 한도가 있어 한 번에 못 받고, 밤마다 조금씩 쌓입니다.",
+  "captionEn": "The daily cap blocks one big pull, so the list stacks up night by night.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "하루 5,000건 한도를 거쳐 밤마다 목록이 조금씩 늘어난다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "12",
+      "y": "72",
+      "width": "100",
+      "height": "58",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "62",
+      "y": "107",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "공공 데이터"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "112",
+      "y1": "101",
+      "x2": "140",
+      "y2": "101",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "148,101 138,96 138,106",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "160",
+      "y1": "42",
+      "x2": "160",
+      "y2": "172",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "160",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "하루 5,000건"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "170",
+      "x2": "376",
+      "y2": "170",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "142",
+      "width": "36",
+      "height": "28",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "122",
+      "width": "36",
+      "height": "48",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "280",
+      "y": "102",
+      "width": "36",
+      "height": "68",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "330",
+      "y": "82",
+      "width": "36",
+      "height": "88",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "273",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "밤마다 조금씩"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A nightly batch passes a 5,000-a-day cap and the list grows bit by bit"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "12",
+      "y": "72",
+      "width": "104",
+      "height": "58",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "107",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "public data"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "116",
+      "y1": "101",
+      "x2": "142",
+      "y2": "101",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "150,101 140,96 140,106",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "162",
+      "y1": "42",
+      "x2": "162",
+      "y2": "172",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "162",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "5,000 a day"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "174",
+      "y1": "170",
+      "x2": "376",
+      "y2": "170",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "142",
+      "width": "36",
+      "height": "28",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "122",
+      "width": "36",
+      "height": "48",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "280",
+      "y": "102",
+      "width": "36",
+      "height": "68",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "330",
+      "y": "82",
+      "width": "36",
+      "height": "88",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "273",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "a bit each night"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 1,
+  "alt": "기존 목록을 갈아 끼우면 손으로 넣은 것이 사라지고, 더하면 그대로 남는 두 갈래 그림",
+  "altEn": "A fork: replacing the list erases hand-typed entries, adding keeps them",
+  "caption": "갈아 끼우기와 더하기의 차이.",
+  "captionEn": "Replace versus add.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "목록을 갈아 끼우면 손으로 넣은 것이 사라지고 더하면 남는다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "75",
+      "width": "122",
+      "height": "62",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "71",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기존 목록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "71",
+      "y": "123",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "손으로 넣은 것"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "136",
+      "y1": "96",
+      "x2": "168",
+      "y2": "66",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "176,59 164,62 170,71",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "136",
+      "y1": "118",
+      "x2": "168",
+      "y2": "150",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "176,157 164,154 170,145",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "20",
+      "width": "196",
+      "height": "66",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "46",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "갈아 끼우기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "매일 밤 사라짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "124",
+      "width": "196",
+      "height": "66",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "150",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "더하기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "176",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "그대로 남음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Replacing the list erases hand-typed entries while adding keeps them"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "75",
+      "width": "122",
+      "height": "62",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "71",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "existing list"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "71",
+      "y": "123",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "typed by hand"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "136",
+      "y1": "96",
+      "x2": "168",
+      "y2": "66",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "176,59 164,62 170,71",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "136",
+      "y1": "118",
+      "x2": "168",
+      "y2": "150",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "176,157 164,154 170,145",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "20",
+      "width": "196",
+      "height": "66",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "46",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "replace"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "72",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "erased every night"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "124",
+      "width": "196",
+      "height": "66",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "150",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "add"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "176",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "they stay"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 2,
+  "alt": "실제 단지가 늘면 겹친 가짜 이름이 빠지고, 그래서 가짜를 보충한다는 흐름",
+  "altEn": "Flow: real complexes grow, overlapping fake names drop out, so fakes get topped up",
+  "caption": "가짜 쪽만 줄어들지 않게 같은 밤에 채웁니다.",
+  "captionEn": "Topped up the same night so the fake side doesn't keep shrinking.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "실제 목록이 늘면 겹친 가짜 이름이 빠지므로 가짜를 보충한다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "14",
+      "width": "250",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "44",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실제 단지 늘어남"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "62",
+      "x2": "195",
+      "y2": "82",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,90 190,80 200,80",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "91",
+      "width": "250",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "121",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "겹친 가짜 이름 빠짐"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "139",
+      "x2": "195",
+      "y2": "159",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,167 190,157 200,157",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "168",
+      "width": "250",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "198",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "밤마다 가짜 보충"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "As the real list grows, overlapping fake names drop out, so fakes are topped up"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "14",
+      "width": "270",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "44",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "real complexes grow"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "62",
+      "x2": "195",
+      "y2": "82",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,90 190,80 200,80",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "91",
+      "width": "270",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "121",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "matching fakes drop out"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "139",
+      "x2": "195",
+      "y2": "159",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,167 190,157 200,157",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "168",
+      "width": "270",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "198",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "top up fakes each night"
+    }
+   ]
+  }
+ }
+]

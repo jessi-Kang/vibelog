@@ -1,0 +1,191 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-10-04",
+  "day": 20,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 목록이 밤마다 늘어납니다.",
+      "en": "The apartment list grows every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "공공 데이터는 하루에 5,000건까지만 내줍니다.",
+      "en": "The public data source caps out at 5,000 records a day.",
+      "keywords": [
+        "5,000건까지만"
+      ],
+      "keywordsEn": [
+        "5,000 records a day"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 records",
+      "screen": "/",
+      "find": "공공데이터포털",
+      "findEn": "public data portal",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 밤마다 조금씩 받아오고, 가짜 이름도 같이 채웁니다.",
+      "en": "So each night it fetches a small batch and tops up the made-up names too.",
+      "keywords": [
+        "조금씩",
+        "가짜 이름도"
+      ],
+      "keywordsEn": [
+        "a small batch",
+        "made-up names"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "적게 모인 지역부터",
+          "기존 목록에 더하고",
+          "가짜 이름을 채운다"
+        ],
+        "labelsEn": [
+          "start with thin regions",
+          "add to the list",
+          "top up fake names"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "새로 받은 목록은 덮어쓰지 않고 더합니다.",
+      "en": "New results get added on top instead of replacing the list.",
+      "keywords": [
+        "덮어쓰지 않고"
+      ],
+      "keywordsEn": [
+        "added on top"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "통째로 갈아끼우면",
+          "손으로 넣은 단지가 사라짐",
+          "더하면",
+          "손으로 넣은 단지도 남음"
+        ],
+        "labelsEn": [
+          "replace it all",
+          "hand-typed ones vanish",
+          "add on top",
+          "hand-typed ones stay"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "진짜와 가짜를 가리는 문제의 재료가 이렇게 늘어납니다.",
+      "en": "This is what feeds the real-or-fake quiz.",
+      "keywords": [
+        "재료가"
+      ],
+      "keywordsEn": [
+        "feeds"
+      ],
+      "screen": "/o",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "넷 중 진짜 하나를 찾는 문제도 같이 두꺼워집니다.",
+      "en": "The find-the-real-one round gets deeper too.",
+      "keywords": [
+        "넷 중"
+      ],
+      "keywordsEn": [
+        "find-the-real-one"
+      ],
+      "screen": "/f",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "실제 단지가 늘면 지어낸 이름이 진짜가 되기도 합니다.",
+      "en": "As the real list grows, a name I invented can turn out to exist.",
+      "keywords": [
+        "지어낸 이름이",
+        "진짜가"
+      ],
+      "keywordsEn": [
+        "a name I invented"
+      ],
+      "motif": "convert"
+    },
+    {
+      "scene": "next",
+      "ko": "광주와 전남은 아직 0건만 돌아옵니다.",
+      "en": "Gwangju and Jeonnam still return zero records.",
+      "keywords": [
+        "0건만"
+      ],
+      "keywordsEn": [
+        "zero records"
+      ],
+      "stat": "0건",
+      "statEn": "0 records",
+      "motif": "missing"
+    },
+    {
+      "scene": "end",
+      "ko": "며칠 밤, 제대로 늘어나는지 지켜보겠습니다.",
+      "en": "I'll watch a few nights and see if it really grows.",
+      "keywords": [
+        "지켜보겠습니다"
+      ],
+      "keywordsEn": [
+        "watch a few nights"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "commits": [
+    [
+      "e9c7aeb",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "e9c7aeb",
+      "chore: receive batch and fill fake data (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루에 받을 수 있는 양이 막혀 있어서, 매일 밤 조금씩 아파트 목록을 늘리게 했습니다. 가짜 이름도 같은 밤에 채웁니다.",
+    "en": "The data source caps daily records, so the apartment list now grows a little every night — and the fake names get topped up the same night."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#자동화",
+    "#공공데이터",
+    "#indiedev",
+    "#buildinpublic",
+    "#아파트감별사",
+    "#webgame"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-04.poster.jpg?v=mutwajec",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-04.ko.mp4?v=mutwakw5",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-04.en.poster.jpg?v=mutwbsgr",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-04.en.mp4?v=mutwbv5q"
+  }
+}
