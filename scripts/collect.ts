@@ -559,6 +559,10 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
         // 머지 커밋은 git 자동 메시지라 재료가 아니다 — 글 원료에 브랜치
         // 주소가 그대로 노출되기도 한다 (Jessi 지적)
         !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message) &&
+        // 레포를 만들 때 GitHub가 찍는 첫 커밋은 일이 아니다 — agency·portfolio-tmp가
+        // "Initial commit" 하나로 글·쇼츠가 됐다 (9/24). 커밋 규칙(타입: 요약 + 왜)에
+        // 맞지 않는 유일하게 확실한 꼴이라 이것만 거른다
+        !/^Initial commit$/i.test(c.message.trim()) &&
         // 봇 커밋은 글 재료도, 활동도 아니다 (isBotCommit 주석)
         !isBotCommit(c),
     );
