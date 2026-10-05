@@ -28,7 +28,7 @@ import {
 /** 녹화할 화면이 없어 대본을 쓰지 않은 경우 — run.ts가 실패가 아니라 skip으로 적는다 */
 export class NoScreensError extends Error {
   constructor(why: string) {
-    super(`쇼츠 건너뜀 — ${why}`);
+    super(why);
     this.name = "NoScreensError";
   }
 }
@@ -661,8 +661,8 @@ export async function generateScript(
   if (screens.length < 2) {
     throw new NoScreensError(
       demoUrl
-        ? `화면이 홈 하나뿐 (${demoUrl}) — 로그인·랜딩만 있는 사이트`
-        : "배포 주소 없음",
+        ? `로그인 없이 볼 수 있는 화면이 첫 화면 하나뿐이라 쇼츠를 만들지 않습니다 (${demoUrl})`
+        : "배포 주소가 없어 쇼츠를 만들지 않습니다",
     );
   }
 
