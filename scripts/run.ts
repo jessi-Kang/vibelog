@@ -15,13 +15,13 @@ import matter from "gray-matter";
 import { MIN_HUMAN_COMMITS, collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
 import {
   generateDevlog,
-
+  type Readability,
   translateCommitLines,
   translateLine,
 } from "./generate";
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
-import { parseSections } from "../lib/content";
+import { getDevlogs, parseSections } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
 import { NoScreensError } from "./script";
@@ -29,6 +29,44 @@ import { checkDemoScreens } from "./check-screens";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
+
+/** 같은 레포의 지난 글 제목 3개 (최근 것부터) — 글이 지난 이야기와 이어지는지 보게 */
+function recentTitles(repo: string, before: string): { date: string; title: string }[] {
+  return getDevlogs(repo)
+    .filter((d) => d.date < before)
+    .sort((x, y) => y.date.localeCompare(x.date))
+    .slice(0, 3)
+    .map((d) => ({ date: d.date, title: d.title }));
+}
+
+/**
+ * 읽기 검사 결과를 홈 "지난 실행"에 한 줄로 — 글이 다시 쓰였는지, 몇 문장이
+ * 걸렸는지 로그를 안 열고 보이게. 검사가 실패해도 글은 나갔으므로 fail은
+ * 검사를 못 한 경우에만 붙인다.
+ */
+function readabilityLine(id: string, r: Readability): RunLine {
+  const tally = fmtTally(takeUsage("review"));
+  const tail = tally ? ` · ${tally}` : "";
+  if (r.error && !r.rewritten) {
+    return {
+      text: `review   · ${id} 읽기 검사를 못 해 첫 원고 그대로 냄${tail}`,
+      textEn: `review   · ${id} readability check failed — published the first draft${tail}`,
+      kind: "fail",
+    };
+  }
+  if (!r.rewritten) {
+    return {
+      text: `review   · ${id} 처음 읽는 사람이 막힌 문장 없음${tail}`,
+      textEn: `review   · ${id} no sentence stopped a first-time reader${tail}`,
+    };
+  }
+  const left = r.after == null ? "다시 검사 못 함" : `남은 것 ${r.after}개`;
+  const leftEn = r.after == null ? "recheck failed" : `${r.after} left`;
+  return {
+    text: `review   · ${id} 막힌 문장 ${r.before}개 → 다시 씀 → ${left}${tail}`,
+    textEn: `review   · ${id} ${r.before} unclear sentence${r.before === 1 ? "" : "s"} → rewritten → ${leftEn}${tail}`,
+  };
+}
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const STATE_FILE = path.join(CONTENT_DIR, "state.json");
@@ -501,12 +539,13 @@ async function main(): Promise<void> {
       published.push(a.repo); // 글은 이미 있으므로 쇼츠는 시도한다
     } else {
       try {
-        const devlog = await generateDevlog(a, date);
+        const devlog = await generateDevlog(a, date, { recent: recentTitles(a.repo, date) });
         await writeDevlog(a.repo, date, devlog, a);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
         runLines.push({
           text: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(takeUsage("generate"))}`,
         });
+        runLines.push(readabilityLine(`${a.repo}/${date}`, devlog.readability));
         published.push(a.repo);
         await writeFigures(a.repo, date, devlog, runLines);
       } catch (err) {
