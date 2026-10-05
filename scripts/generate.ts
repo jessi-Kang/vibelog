@@ -6,6 +6,7 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
+import { createMessage } from "./models";
 import { askReader, type Readability, type Unclear } from "./readability";
 
 export type { Readability, Unclear };
@@ -20,7 +21,9 @@ export interface GeneratedDevlog {
   failStory: boolean;
 }
 
-const MODEL = "claude-opus-5";
+// 글은 독자가 직접 읽는 원고라 가장 좋은 모델로 쓴다 (10/5 Jessi: "글 쓰기만
+// Opus 5.5로 바꿔. 대본도"). 삽화는 검증기가 받쳐 주므로 Opus 5 그대로다.
+const MODEL = "claude-opus-5-5";
 
 const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이브 코딩(AI와 같이 코딩하는 방식)으로
 만드는 프로젝트의 하루치 활동(커밋, 머지된 PR, 세션 요약)을 받아, 만든 사람 본인의
@@ -248,7 +251,7 @@ export async function generateDevlog(
     { type: "text" as const, text: SYSTEM, cache_control: { type: "ephemeral" as const } },
   ];
   const userPrompt = buildUserPrompt(activity, date, ctx);
-  const first = await client.messages.create({
+  const first = await createMessage(client, {
     model: MODEL,
     max_tokens: 16000,
     system,
@@ -277,7 +280,7 @@ export async function generateDevlog(
 
   let fixed: GeneratedDevlog;
   try {
-    const second = await client.messages.create({
+    const second = await createMessage(client, {
       model: MODEL,
       max_tokens: 16000,
       system,
