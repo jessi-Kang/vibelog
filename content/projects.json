@@ -11,11 +11,11 @@
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
     "homepage": "https://vibelog.space",
     "language": "JavaScript",
-    "lastActivity": "2026-10-05",
-    "weekCommits": 14,
-    "todayCommits": 1,
-    "totalCommits": 431,
-    "countsDate": "2026-10-05"
+    "lastActivity": "2026-10-06",
+    "weekCommits": 19,
+    "todayCommits": 6,
+    "totalCommits": 438,
+    "countsDate": "2026-10-06"
   },
   {
     "slug": "apart",
@@ -31,9 +31,9 @@
     "language": "TypeScript",
     "lastActivity": "2026-10-05",
     "weekCommits": 7,
-    "todayCommits": 1,
+    "todayCommits": 0,
     "totalCommits": 203,
-    "countsDate": "2026-10-05",
+    "countsDate": "2026-10-06",
     "theme": "paper"
   },
   {
@@ -58,7 +58,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1075,
-    "countsDate": "2026-10-05",
+    "countsDate": "2026-10-06",
     "theme": "blueprint"
   },
   {
@@ -76,7 +76,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-05",
+    "countsDate": "2026-10-06",
     "theme": "blueprint"
   },
   {
@@ -91,7 +91,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-10-05",
+    "countsDate": "2026-10-06",
     "theme": "highlighter"
   }
 ]
