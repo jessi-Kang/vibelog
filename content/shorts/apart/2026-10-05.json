@@ -1,0 +1,200 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-10-05",
+  "day": 21,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "밤마다 아파트 이름이 쌓입니다.",
+      "en": "Apartment names pile up every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "하루에 받을 수 있는 양은 5,000건으로 정해져 있습니다.",
+      "en": "There is a daily cap of 5,000 requests.",
+      "keywords": [
+        "5,000건으로"
+      ],
+      "keywordsEn": [
+        "5,000 requests"
+      ],
+      "stat": "5,000건",
+      "statEn": "5,000 requests",
+      "motif": "limit"
+    },
+    {
+      "scene": "build",
+      "ko": "한도는 매일 새로 채워지니 밤마다 조금씩 받습니다.",
+      "en": "The cap refills daily, so I take a small batch each night.",
+      "keywords": [
+        "매일 새로 채워지니"
+      ],
+      "keywordsEn": [
+        "refills daily"
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "build",
+      "ko": "모인 양이 적은 지역부터 받습니다.",
+      "en": "I start with the regions that have the least collected.",
+      "keywords": [
+        "적은 지역부터"
+      ],
+      "keywordsEn": [
+        "the least collected"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "부산",
+          "대구",
+          "인천",
+          "경기"
+        ],
+        "labelsEn": [
+          "Busan",
+          "Daegu",
+          "Incheon",
+          "Gyeonggi"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "새로 받은 목록은 덮어쓰지 않고 더합니다.",
+      "en": "The new list is added on, not written over.",
+      "keywords": [
+        "덮어쓰지 않고"
+      ],
+      "keywordsEn": [
+        "not written over"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "새로 받은 목록",
+          "손으로 넣은 단지가 사라짐",
+          "기존 목록에 더해짐",
+          "덮어쓰기",
+          "더하기"
+        ],
+        "labelsEn": [
+          "new list",
+          "hand-entered ones vanish",
+          "added to the old list",
+          "overwrite",
+          "append"
+        ],
+        "pick": 2
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "같은 밤에 가짜 이름도 새로 채웁니다.",
+      "en": "Fake names get topped up on the same nights.",
+      "keywords": [
+        "가짜 이름도"
+      ],
+      "keywordsEn": [
+        "Fake names"
+      ],
+      "screen": "/o",
+      "find": "1 감별 O/X",
+      "findEn": "1 감별 O/X",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "광주와 전남은 목록을 요청해도 0건이 돌아옵니다.",
+      "en": "Gwangju and Jeonnam return zero results when I ask.",
+      "keywords": [
+        "0건이"
+      ],
+      "keywordsEn": [
+        "zero results"
+      ],
+      "screen": "/",
+      "find": "공공데이터포털",
+      "findEn": "공공데이터포털",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "밤마다 얼마나 쌓이는지 지켜봅니다.",
+      "en": "I will watch how much piles up each night.",
+      "keywords": [
+        "얼마나 쌓이는지"
+      ],
+      "keywordsEn": [
+        "how much piles up"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "한 달 뒤에는 목록이 꽤 두꺼워져 있을 겁니다.",
+      "en": "In a month the list should be a lot thicker.",
+      "keywords": [
+        "꽤 두꺼워져"
+      ],
+      "keywordsEn": [
+        "a lot thicker"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "요청해도 0건",
+    "titleEn": "Zero results",
+    "before": "광주와 전남은 목록을 요청해도 0건이 돌아옵니다",
+    "after": "아직 한 건도 받지 못해 원인을 찾는 중입니다",
+    "beforeEn": "Gwangju and Jeonnam return zero results",
+    "afterEn": "Nothing collected yet, still looking into why"
+  },
+  "commits": [
+    [
+      "8e2f824",
+      "chore: 단지를 받고 가짜를 채운다 (야간 자동)"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "8e2f824",
+      "chore: receive bundle and fill fakes (night auto)"
+    ]
+  ],
+  "commitCount": 1,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "하루 한도가 5,000건이라 밤마다 조금씩, 모인 양이 적은 지역부터 아파트 이름을 모으게 했습니다. 같은 밤에 가짜 이름도 새로 채웁니다.",
+    "en": "With a 5,000-request daily cap, apartment names now get collected a little each night, starting with the thinnest regions. Fake names are topped up the same nights."
+  },
+  "hashtags": [
+    "#개발일지",
+    "#데브로그",
+    "#자동화",
+    "#공공데이터",
+    "#devlog",
+    "#sideproject",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-05.poster.jpg?v=muvbqx04",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-05.ko.mp4?v=muvbqyo6",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-05.en.poster.jpg?v=muvbs19n",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-05.en.mp4?v=muvbs26e"
+  }
+}
