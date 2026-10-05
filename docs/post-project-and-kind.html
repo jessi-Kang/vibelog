@@ -1,0 +1,147 @@
+<title>글 머리와 이야기 배지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 사이트 토큰 그대로 (app/globals.css). 사이트가 다크 한 벌이라 이 시안도 한 벌. */
+:root {
+  --bg: #0a0e14; --bg-deep: #05080c; --panel: #141b24; --panel2: #1b2430;
+  --line: #26313f; --line-strong: #3a4656;
+  --ink: #f3efe6; --ink-soft: #c9cfd8; --muted: #8c98a8;
+  --accent: #5ee1c3; --warn: #ffb454; --danger: #ff6b6b;
+  --anchor: #c9e579; --apart: #b9a7ff; --vibelog: #5ee1c3;
+  --sans: "Noto Sans KR", "Noto Sans CJK KR", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html { font-size: 14px; }
+body { background: var(--bg-deep); color: var(--ink); font-family: var(--sans); margin: 0; word-break: keep-all; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: flex; flex-direction: column; gap: 40px; }
+h1.page { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.lede { color: var(--ink-soft); margin: 8px 0 0; line-height: 1.7; max-width: 64ch; }
+h2 { font-size: 1.2rem; margin: 0 0 6px; }
+.why { color: var(--muted); margin: 0 0 18px; line-height: 1.7; max-width: 64ch; }
+.mono { font-family: var(--mono); }
+.row { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.opt { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.tag { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; }
+.tag b { color: var(--ink); font-size: .95rem; }
+.tag .rec { color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 8px; font-size: .72rem; }
+.phone { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; border-bottom: 1px solid var(--line); }
+.word { font-family: var(--mono); font-weight: 700; font-size: 1.15rem; }
+.lang { font-family: var(--mono); font-size: .8rem; border: 1px solid var(--line); border-radius: 8px; padding: 3px 8px; color: var(--muted); }
+.lang b { color: var(--ink); }
+.back { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+.body { padding: 22px 20px 26px; display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font-family: var(--mono); font-size: .85rem; display: flex; gap: 8px; align-items: center; color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.proj { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+.title { font-size: 1.45rem; font-weight: 900; line-height: 1.3; margin: 0; text-wrap: balance; }
+.meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+.lead { color: var(--ink-soft); line-height: 1.75; margin: 6px 0 0; }
+.note { font-size: .85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+.note b { color: var(--ink-soft); }
+/* 목록 */
+.list { padding: 20px; display: flex; flex-direction: column; gap: 24px; }
+.entry { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 12px; }
+.entry .dot { margin-top: 7px; }
+.e-head { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+.e-head b { font-weight: 700; }
+.e-title { font-weight: 700; font-size: 1.1rem; margin: 4px 0; line-height: 1.35; }
+.e-meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.warn { color: var(--warn); }
+.acc { color: var(--accent); }
+.k { font-family: var(--mono); font-size: .75rem; border-radius: 999px; padding: 1px 9px; border: 1px solid; }
+.k.fail { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
+.k.ship { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.k.ba { color: #8fb8ff; border-color: color-mix(in srgb, #8fb8ff 45%, transparent); }
+table { border-collapse: collapse; font-size: .9rem; width: 100%; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: .75rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+tr:last-child td { border-bottom: 0; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 380px) { .row { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1 class="page">글 머리와 이야기 배지</h1>
+    <p class="lede">두 가지를 고르시면 됩니다. 글을 열었을 때 어느 프로젝트의 글인지, 그리고 목록에서 모든 글에 붙는 "삽질" 대신 무엇을 붙일지입니다. 예시는 실제 글(Anchor 9/27)입니다.</p>
+  </header>
+
+  <section>
+    <h2>1. 글을 열면 프로젝트가 보이게</h2>
+    <p class="why">원래는 화면 위의 경로 줄(← log / Anchor / 2026-09-27)이 프로젝트를 말해 줬습니다. 글 주소를 /p/…로 바꿀 때 그 줄이 옛 주소에만 반응하게 남아, 지금은 휴대폰에서 경로 줄도 뒤로 버튼도 안 뜹니다. 고장이라 어느 쪽을 고르든 같이 고칩니다.</p>
+    <div class="row">
+      <div class="opt">
+        <div class="tag"><b>A</b> 제목 위에 목록과 같은 머리줄 <span class="rec">권함</span></div>
+        <div class="phone">
+          <div class="bar"><span class="back"><span>←</span> 데브로그</span><span class="lang"><b>KO</b> EN</span></div>
+          <div class="body">
+            <div class="eyebrow"><span class="dot" style="background:var(--anchor)"></span><a class="proj" style="color:var(--anchor)" href="#a">Anchor</a><span>2026-09-27 · 일</span></div>
+            <p class="title">실제 계정으로 앱을 끝까지 걸었습니다</p>
+            <div class="meta">AI가 커밋 4개로 작성 · day 06</div>
+            <p class="lead">처음으로 실제 계정을 만들어 앱을 끝까지 써 봤습니다. 휴대폰만 한 작은 화면에서 첫 방문부터 첫 학습까지 갔습니다.</p>
+          </div>
+        </div>
+        <p class="note">목록에서 본 것과 <b>같은 줄이 그대로</b> 글 위에 옵니다. 프로젝트 이름을 누르면 그 프로젝트 페이지로 갑니다.</p>
+      </div>
+      <div class="opt">
+        <div class="tag"><b>B</b> 메타 줄 맨 앞에 이름만</div>
+        <div class="phone">
+          <div class="bar"><span class="back"><span>←</span> 데브로그</span><span class="lang"><b>KO</b> EN</span></div>
+          <div class="body">
+            <p class="title">실제 계정으로 앱을 끝까지 걸었습니다</p>
+            <div class="meta"><a class="proj" style="color:var(--anchor)" href="#b">Anchor</a> · AI가 커밋 4개로 작성 · day 06</div>
+            <p class="lead">처음으로 실제 계정을 만들어 앱을 끝까지 써 봤습니다. 휴대폰만 한 작은 화면에서 첫 방문부터 첫 학습까지 갔습니다.</p>
+          </div>
+        </div>
+        <p class="note">자리를 덜 먹지만, 제목을 읽고 난 뒤에야 누구 글인지 압니다. 날짜도 안 보입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 목록의 "삽질" 배지</h2>
+    <p class="why">지금 27편 중 27편에 "삽질"이 붙어 있습니다. 글 형식이 매번 삽질 칸을 채우게 되어 있어서, 붙는 기준이 아니라 늘 붙는 장식이 됐습니다. 쇼츠는 세 가지(출시·삽질·전후)로 나누지만, 그건 직전 편과 다르게 돌리는 로테이션이 섞여서 고른 값이라 글의 내용과 꼭 맞지는 않습니다.</p>
+    <div class="tbl" style="margin-bottom:18px">
+      <table>
+        <tr><th>지금</th><th>값</th></tr>
+        <tr><td>목록 "삽질" 배지</td><td class="n">27 / 27편</td></tr>
+        <tr><td>쇼츠 구성: 삽질</td><td class="n">11편</td></tr>
+        <tr><td>쇼츠 구성: 출시</td><td class="n">5편</td></tr>
+        <tr><td>쇼츠 구성: 전후</td><td class="n">4편</td></tr>
+        <tr><td>쇼츠 없음</td><td class="n">7편</td></tr>
+      </table>
+    </div>
+    <div class="row">
+      <div class="opt">
+        <div class="tag"><b>A</b> 배지를 뺀다</div>
+        <div class="phone"><div class="list">
+          <div class="entry"><span class="dot" style="background:var(--anchor)"></span><div><div class="e-head"><b style="color:var(--anchor)">Anchor</b> 2026-09-27 · 일</div><div class="e-title">실제 계정으로 앱을 끝까지 걸었습니다</div><div class="e-meta"><span>커밋 4</span></div></div></div>
+          <div class="entry"><span class="dot" style="background:var(--vibelog)"></span><div><div class="e-head"><b style="color:var(--vibelog)">vibelog</b> 2026-09-21 · 월</div><div class="e-title">휴대폰에서 옆으로 밀리던 첫 화면을 고쳤습니다</div><div class="e-meta"><span>커밋 1</span><span class="acc">쇼츠 ▶</span></div></div></div>
+        </div></div>
+        <p class="note">가장 단순합니다. 대신 목록에서 글의 성격을 미리 알 길이 없어집니다.</p>
+      </div>
+      <div class="opt">
+        <div class="tag"><b>B</b> 이야기 종류 하나 <span class="rec">권함</span></div>
+        <div class="phone"><div class="list">
+          <div class="entry"><span class="dot" style="background:var(--anchor)"></span><div><div class="e-head"><b style="color:var(--anchor)">Anchor</b> 2026-09-27 · 일</div><div class="e-title">실제 계정으로 앱을 끝까지 걸었습니다</div><div class="e-meta"><span>커밋 4</span><span class="k ship">출시</span></div></div></div>
+          <div class="entry"><span class="dot" style="background:var(--vibelog)"></span><div><div class="e-head"><b style="color:var(--vibelog)">vibelog</b> 2026-09-21 · 월</div><div class="e-title">휴대폰에서 옆으로 밀리던 첫 화면을 고쳤습니다</div><div class="e-meta"><span>커밋 1</span><span class="k ba">전후</span><span class="acc">쇼츠 ▶</span></div></div></div>
+          <div class="entry"><span class="dot" style="background:var(--apart)"></span><div><div class="e-head"><b style="color:var(--apart)">apart</b> 2026-09-13 · 일</div><div class="e-title">사람이 지은 가짜 이름을 문제로 내보냈습니다</div><div class="e-meta"><span>커밋 20</span><span class="k fail">삽질</span><span class="acc">쇼츠 ▶</span></div></div></div>
+        </div></div>
+        <p class="note">글을 쓰는 모델이 같은 호출에서 <b>출시·삽질·전후</b> 중 하나를 고릅니다 (추가 비용 없음). 쇼츠도 이 값을 따르게 해서 글과 영상이 같은 말을 합니다. 지난 27편은 작은 모델로 한 번 분류합니다 (몇 센트). 예시의 vibelog·apart 배지는 그 글의 쇼츠가 실제로 고른 값이고, Anchor는 쇼츠가 없어 가정입니다.</p>
+      </div>
+      <div class="opt">
+        <div class="tag"><b>C</b> 삽질이 중심인 날만 "삽질"</div>
+        <div class="phone"><div class="list">
+          <div class="entry"><span class="dot" style="background:var(--anchor)"></span><div><div class="e-head"><b style="color:var(--anchor)">Anchor</b> 2026-09-27 · 일</div><div class="e-title">실제 계정으로 앱을 끝까지 걸었습니다</div><div class="e-meta"><span>커밋 4</span></div></div></div>
+          <div class="entry"><span class="dot" style="background:var(--apart)"></span><div><div class="e-head"><b style="color:var(--apart)">apart</b> 2026-09-13 · 일</div><div class="e-title">사람이 지은 가짜 이름을 문제로 내보냈습니다</div><div class="e-meta"><span>커밋 20</span><span class="warn">삽질</span><span class="acc">쇼츠 ▶</span></div></div></div>
+        </div></div>
+        <p class="note">지금 모양 그대로, 붙는 기준만 엄격하게. 글 모델이 "오늘 이야기의 중심이 삽질이었나"를 판단합니다. 쇼츠 구분과는 따로 갑니다.</p>
+      </div>
+    </div>
+  </section>
+</div>

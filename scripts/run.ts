@@ -233,7 +233,7 @@ async function writeFigures(
 async function writeDevlog(
   repo: string,
   date: string,
-  d: { title: string; titleEn: string; ko: string; en: string },
+  d: { title: string; titleEn: string; ko: string; en: string; failStory?: boolean },
   a: RepoActivity,
 ): Promise<void> {
   const file = devlogPath(repo, date);
@@ -280,6 +280,7 @@ async function writeDevlog(
     `date: "${date}"`,
     `repo: ${JSON.stringify(repo)}`,
     `commits: ${a.commits.length}`,
+    `failStory: ${d.failStory === true}`,
     `prs: ${a.mergedPRs.length}`,
     `shas: ${JSON.stringify(shas)}`,
     ...(shasEn.length > 0 ? [`shasEn: ${JSON.stringify(shasEn)}`] : []),

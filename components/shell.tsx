@@ -30,12 +30,18 @@ function useRoute() {
   const pathname = usePathname();
   const project = pathname.match(/^\/projects\/([^/]+)/);
   const post = pathname.match(/^\/log\/([^/]+)\/([^/]+)/);
-  const detail = Boolean(project || post);
+  // 지금 글 주소는 /p/<id>다. 위의 /log/… 판정만 있어서 글을 열면 모바일에서
+  // 뒤로 버튼과 경로 줄이 통째로 안 떴다 (탭 밑줄이 "프로젝트"로 가던 것과 같은
+  // 뿌리 — 주소를 옮길 때 여기를 안 고쳤다). 프로젝트 이름은 글 머리가 말한다.
+  const postById = pathname.startsWith("/p/");
+  const detail = Boolean(project || post || postById);
   const crumb = project
     ? `projects / ${decodeURIComponent(project[1])}`
     : post
       ? `log / ${decodeURIComponent(post[1])} / ${post[2]}`
-      : "";
+      : postById
+        ? "log"
+        : "";
   // 글 주소는 `/p/<id>`다. `/log/<repo>/<date>`는 옛 주소로 301만 한다 —
   // 주소를 옮길 때(0eb702d) 여기를 같이 안 고쳐서, 글을 보는 동안 어느 탭에도
   // 안 걸리고 마지막 폴백인 "/"로 떨어져 **프로젝트**에 밑줄이 그어져 있었다
