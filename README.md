@@ -22,10 +22,15 @@
 수집은 **pull 방식**입니다. vibelog가 GitHub API로 topic `vibelog`가 달린
 레포를 찾아 읽습니다. 프로젝트 레포에 설치할 훅·워크플로·설정 파일은 없습니다.
 
+글은 **커밋이 쌓여야** 나옵니다. 봇이 남긴 커밋과 레포를 만들 때의 첫 커밋은
+세지 않고, 본문("왜")이 있는 커밋이 5개 모인 밤에 한 편이 나옵니다. 모자라면
+다음 밤으로 넘어가 같이 묶입니다. 모델을 부르기 전에 거르므로 헛돈이 안 듭니다.
+
 ## 새 프로젝트 등록
 
 레포에 **topic `vibelog` 하나** 달면 끝입니다. 30분 안에 카드가 올라오고,
-그날 밤 첫 글과 영상이 나옵니다.
+커밋이 5개 모인 밤에 첫 글과 영상이 나옵니다. 영상은 로그인 없이 볼 수 있는
+화면이 둘 이상인 사이트만 만듭니다 (첫 화면이 로그인뿐이면 글만 나갑니다).
 
 배포 주소는 자동으로 찾아 붙고(Vercel 연동 또는 GitHub Deployments),
 상태(building · preview · live)도 커밋과 릴리즈를 보고 스스로 판단합니다.
@@ -41,7 +46,7 @@ components/             UI — 다크 기본, 모바일은 하단 탭바
 content/                파이프라인 산출물 (projects.json · devlog/ (+ .figures.json) · shorts/
                         · state.json · commit-hours.json · run.json)
 scripts/
-  collect.ts            GitHub API → 레포별 활동 수집
+  collect.ts            GitHub API → 레포별 활동 수집 (봇 커밋 제외, 글 문턱 5개)
   generate.ts           수집 결과 → 데브로그 MDX (KR/EN)
   figures.ts            글 삽화 — 자유 작도 SVG를 허용 목록 파서로 검증해 트리로 저장
   script.ts             데브로그 → 쇼츠 대본
@@ -49,6 +54,7 @@ scripts/
   record.ts             배포 사이트 화면 녹화 (내레이션 내용과 화면을 매칭)
   render.ts · mux.ts    Remotion 렌더 + 오디오 믹스
   run.ts                전체 실행 (collect → generate → shorts → 커밋)
+  usage.ts              모델 호출 토큰 합 — 홈 "지난 실행"에 편당 비용이 찍힌다
   shorts.ts · poster.ts   쇼츠 전체 / 썸네일만 재생성
 video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종
                         · 다이어그램 5종 · 모티프 22종
