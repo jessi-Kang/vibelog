@@ -6,6 +6,9 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
+import { askReader, type Readability, type Unclear } from "./readability";
+
+export type { Readability, Unclear };
 import type { RepoActivity } from "./collect";
 
 export interface GeneratedDevlog {
@@ -27,6 +30,13 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이�
 개발을 모르는 사람이 이 글 한 편만 보고 들어옵니다. 이 프로젝트가 뭔지도, 어제 글도
 모릅니다. 다 읽고 나서 "오늘 뭐가 달라졌는지"를 자기 말로 한 문장에 옮길 수 있어야
 성공입니다. 읽다가 한 문장이라도 "이게 무슨 말이지?" 하고 멈추면 실패입니다.
+
+## 말하는 사람
+글은 프로젝트를 만드는 Jessi 한 사람이 "저"로 말합니다. 재료(커밋, 세션 요약)는 Jessi와
+같이 일하는 AI가 쓴 것이 많아서, Jessi를 3인칭으로 부르고 "나"·"내가"는 그 AI를 가리킵니다.
+재료의 "Jessi"가 글의 "저"입니다. AI가 한 일도 "저"가 한 일로 씁니다. 글에 "Jessi"라는
+이름을 쓰지 않습니다 — 한 글 안에서 "저"와 "Jessi"가 따로 나오면 독자는 누가 말하는지
+놓칩니다. 영어는 "I"로 씁니다.
 
 ## 재료를 읽는 법
 커밋 메시지는 개발자가 나중의 자기에게 남긴 메모입니다. 내부 이름, 판단 기준,
@@ -173,42 +183,21 @@ function parseJson(text: string): GeneratedDevlog {
   return parsed as GeneratedDevlog;
 }
 
-/** 처음 읽는 독자가 멈춘 문장 하나 */
-export interface Unclear {
-  sentence: string;
-  why: string;
-}
-
-/** 읽기 검사 결과 — run.ts가 실행 기록에 한 줄로 남긴다 */
-export interface Readability {
-  /** 첫 원고에서 막힌 문장 수 (검사가 실패하면 null) */
-  before: number | null;
-  /** 다시 쓴 원고에서 남은 수 (다시 쓰지 않았거나 검사가 실패하면 null) */
-  after: number | null;
-  rewritten: boolean;
-  /** 막힌 문장들 — 로그와 미리보기에 그대로 보여 준다 */
-  unclear: Unclear[];
-  error?: string;
-}
-
 const REVIEW_SYSTEM = `당신은 개발을 전혀 모르는 독자입니다. 이 블로그에 처음 들어와 아래 글 한 편을
 읽습니다. 이 프로젝트도, 지난 글도 모릅니다.
 
-읽다가 멈추게 되는 문장을 찾습니다. 멈추는 이유는 넷 중 하나입니다.
+읽다가 멈추게 되는 문장을 찾습니다. 멈추는 이유는 다섯 중 하나입니다.
 1. 뜻을 모르는 말 — 전문 용어, 내부에서만 쓰는 이름, 처음 보는 줄임말이나 붙여 만든 말
 2. 무엇을 가리키는지 모르는 말 — "그 판정", "그 대목", "세 군데"처럼 앞에서 소개된 적 없는 것
 3. 왜 알아야 하는지 모르는 속사정 — 어떤 기준으로 판단하는지, 기준값이 몇인지 같은 내부 설명
 4. 앞뒤가 이어지지 않아 무슨 말을 하려는지 모르는 문장
+5. 누가 말하는지 헷갈리는 문장 — 글쓴이("저")와 다른 이름이 같은 사람인지 다른 사람인지 모를 때
 
 문체 취향, 문장 길이, 맞춤법은 지적하지 않습니다. 실제로 이해가 막히는 문장만 고릅니다.
 막히는 곳이 없으면 빈 배열을 냅니다. 많아도 6개까지, 가장 막히는 것부터.
 
 반드시 JSON 배열 하나만 출력합니다 (코드펜스 없이):
 [{"sentence": "글에 있는 문장 그대로", "why": "어디서 왜 막혔는지 한 문장"}]`;
-
-// 읽기 검사는 큰 모델이 필요 없다 — 글을 쓰는 게 아니라 읽고 표시만 한다.
-// 앞 것이 안 되면(모델 이름이 바뀌는 등) 다음 것으로 한다.
-const REVIEW_MODELS = ["claude-sonnet-5-5", "claude-haiku-4-5-20251001"];
 
 function textOf(content: Anthropic.ContentBlock[]): string {
   return content
@@ -217,42 +206,9 @@ function textOf(content: Anthropic.ContentBlock[]): string {
     .join("");
 }
 
-export function parseUnclear(text: string): Unclear[] {
-  const start = text.indexOf("[");
-  const end = text.lastIndexOf("]");
-  if (start === -1 || end === -1) throw new Error(`읽기 검사 결과를 못 읽음: ${text.slice(0, 200)}`);
-  const parsed: unknown = JSON.parse(text.slice(start, end + 1));
-  if (!Array.isArray(parsed)) throw new Error("읽기 검사 결과가 배열이 아닙니다");
-  return parsed
-    .filter(
-      (u): u is Unclear =>
-        !!u && typeof u === "object" &&
-        typeof (u as Unclear).sentence === "string" &&
-        typeof (u as Unclear).why === "string",
-    )
-    .slice(0, 6);
-}
-
 /** 처음 읽는 독자 역할로 한국어 원고를 읽고, 막히는 문장을 돌려준다 */
-export async function reviewReadability(d: GeneratedDevlog): Promise<Unclear[]> {
-  const client = new Anthropic();
-  let lastErr: unknown;
-  for (const model of REVIEW_MODELS) {
-    try {
-      const response = await client.messages.create({
-        model,
-        max_tokens: 2000,
-        system: REVIEW_SYSTEM,
-        messages: [{ role: "user", content: `# ${d.title}\n\n${d.ko}` }],
-      });
-      noteUsage("review", response.usage);
-      return parseUnclear(textOf(response.content));
-    } catch (err) {
-      lastErr = err;
-      console.warn(`[review] ${model} 실패 — 다음 모델로:`, (err as Error).message);
-    }
-  }
-  throw lastErr;
+export function reviewReadability(d: GeneratedDevlog): Promise<Unclear[]> {
+  return askReader(REVIEW_SYSTEM, `# ${d.title}\n\n${d.ko}`, "review");
 }
 
 function rewriteAsk(unclear: Unclear[]): string {

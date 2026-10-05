@@ -70,6 +70,7 @@ vibelog/
 ├─ scripts/
 │   ├─ collect.ts                # GitHub API → 레포별 활동 수집 (Octokit)
 │   ├─ generate.ts               # 수집 결과 → 데브로그 MDX (KR/EN) + 처음 읽는 사람의 읽기 검사
+│   ├─ readability.ts            # 처음 보는 사람 역할의 검사 모델 호출 (글·대본이 같이 씀)
 │   ├─ devlog-preview.ts         # 지난 글을 지금 지시문으로 다시 써서 나란히 보기 (발행 안 함, `preview` 입력)
 │   ├─ figures.ts · figure-types.ts  # 글 삽화 생성·검증 (허용 목록 파서) · check-figures.ts 검사기
 │   ├─ figures-backfill.ts        # 지난 글에 삽화만 붙인다 (Run workflow `figures` 입력)
@@ -231,6 +232,11 @@ vibelog-bot이 다 걸리고, Botond 같은 이름은 안 걸린다. 5개가 안
    삽화의 검증기와 같은 구조다. 검사가 실패하거나 다시 쓴 답이 깨지면 첫 원고를
    낸다. 홈 "지난 실행"에 `review · <repo>/<date> 막힌 문장 3개 → 다시 씀 → 남은 것
    0개`로 남는다.
+
+말하는 사람도 정했다. 재료(커밋)는 Jessi와 일하는 AI가 써서 Jessi를 3인칭으로 부른다.
+그 말투를 따라간 Anchor 9/27 글은 "저"와 "Jessi"가 한 글에 따로 나왔다. 이제 글은
+Jessi 한 명이 "저"로 말하고, 이름을 쓰지 않는다. 쇼츠 대본도 같은 방식으로 검사한다
+(docs/03 "듣기 검사").
 
 검사 모델은 Sonnet 5.5, 안 되면 Haiku 4.5다. 검사는 한 번에 1센트 안쪽이고, 다시
 쓰는 날만 Opus 호출이 하나 더 든다. 지시문을 고친 효과는 Run workflow의 `preview`
