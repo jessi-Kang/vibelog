@@ -24,6 +24,7 @@ import { fmtTally, takeUsage } from "./usage";
 import { parseSections } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
+import { NoScreensError } from "./script";
 import { checkDemoScreens } from "./check-screens";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
@@ -458,7 +459,7 @@ async function main(): Promise<void> {
     const why = a.hasActivity
       ? "생성 대상"
       : a.newCommits > 0
-        ? `건너뜀 — 사람 커밋 ${a.newCommits}개, ${MIN_HUMAN_COMMITS}개 모이면 씀`
+        ? `건너뜀 — 사람 커밋 ${a.newCommits}개(규칙에 맞는 ${a.ruleCommits}개), ${MIN_HUMAN_COMMITS}개 모이면 씀`
         : a.botCommits > 0
           ? `건너뜀 — 봇 커밋 ${a.botCommits}개뿐`
           : "건너뜀";
@@ -473,7 +474,7 @@ async function main(): Promise<void> {
         text: `skip     · ${a.repo} ${why.replace(/^건너뜀 — /, "")}`,
         textEn: `skip     · ${a.repo} ${
           a.newCommits > 0
-            ? `${a.newCommits} human commit${a.newCommits === 1 ? "" : "s"} — writes at ${MIN_HUMAN_COMMITS}`
+            ? `${a.newCommits} human commit${a.newCommits === 1 ? "" : "s"} (${a.ruleCommits} with a body) — writes at ${MIN_HUMAN_COMMITS}`
             : `only ${a.botCommits} bot commit${a.botCommits === 1 ? "" : "s"}`
         }`,
       });
@@ -558,6 +559,15 @@ async function main(): Promise<void> {
           );
         }
       } catch (err) {
+        if (err instanceof NoScreensError) {
+          // 돈을 쓰기 전에 멈춘 것이다 — 실패가 아니라 건너뜀
+          console.log(`- ${repo} ${err.message}`);
+          runLines.push({
+            text: `skip     · ${repo} ${err.message}`,
+            textEn: `skip     · ${repo} short skipped — no recordable screens (login or landing only)`,
+          });
+          continue;
+        }
         console.error(
           `- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`,
           err,
