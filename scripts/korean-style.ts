@@ -144,10 +144,16 @@ export interface StyleHit {
 
 /**
  * 따옴표·백틱 안은 보지 않는다 — 문서가 나쁜 예를 인용할 때 걸리지 않게.
- * 길이를 그대로 두어 위치가 어긋나지 않게 같은 길이의 공백으로 덮는다.
+ * 인용이 줄을 넘어갈 수 있어서 글 전체에서 짝을 맞춘다 (줄마다 맞추던 때는
+ * 앞 줄에서 열린 따옴표를 닫는 것으로 잘못 읽어 인용 안의 말을 잡았다).
+ * 작은따옴표는 줄 안에서만 본다 — 영어 문장의 's 같은 것과 짝이 엉킨다.
+ * 위치가 어긋나지 않게 줄바꿈은 두고 나머지를 공백으로 덮는다.
  */
-function maskQuotes(line: string): string {
-  return line.replace(/`[^`]*`|"[^"\n]*"|“[^”\n]*”|'[^'\n]*'|‘[^’\n]*’/g, (m) => " ".repeat(m.length));
+function maskQuotes(text: string): string {
+  return text.replace(
+    /`[^`]*`|"[^"]{0,300}"|“[^”]{0,300}”|'[^'\n]*'|‘[^’\n]*’/g,
+    (m) => m.replace(/[^\n]/g, " "),
+  );
 }
 
 /** 줄 하나에서 위치를 감싼 문장을 잘라 낸다 */
@@ -167,13 +173,15 @@ function sentenceAround(line: string, index: number): string {
 export function findStyleHits(text: string, opts: { quoted?: boolean } = {}): StyleHit[] {
   const hits: StyleHit[] = [];
   let inFence = false;
-  text.split("\n").forEach((raw, i) => {
+  const rawLines = text.split("\n");
+  const masked = (opts.quoted ? text : maskQuotes(text)).split("\n");
+  rawLines.forEach((raw, i) => {
     if (/^\s*```/.test(raw)) {
       inFence = !inFence;
       return;
     }
     if (inFence) return;
-    const line = opts.quoted ? raw : maskQuotes(raw);
+    const line = masked[i] ?? raw;
     for (const rule of STYLE_RULES) {
       rule.re.lastIndex = 0;
       let m: RegExpExecArray | null;
