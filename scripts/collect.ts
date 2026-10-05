@@ -31,21 +31,19 @@ export function isBotCommit(c: Pick<RepoCommit, "author" | "authorEmail">): bool
 }
 
 /**
- * 글 한 편이 될 만한 활동인가.
+ * 글 한 편이 될 만한 활동인가 — **사람 커밋 5개**가 모여야 쓴다.
  *
- * 사람 커밋 1개로는 글을 쓰지 않는다 — apart의 야간 자동 수집 커밋 하나가 12밤
- * 연속으로 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 헛돈, "1개 커밋만으로
- * 글 쓰게 하지마" — Jessi). 봇 커밋은 세지 않고, 사람 커밋이 2개 미만이면 머지된
- * PR이나 세션 요약(devlog/*.md)이 있어야 쓴다. 건너뛴 레포는 체크포인트가
- * 안 움직이므로 그 커밋은 다음 밤 글에 같이 묶인다.
+ * 처음엔 "커밋 1개 이상"이었다. apart의 야간 자동 수집 커밋 하나가 12밤 연속으로
+ * 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 헛돈). 봇 커밋을 거르고 문턱을
+ * 올렸다: "최소 5개 커밋이 안 모이면 모이기 전까지 글과 쇼츠 생성을 멈추게 해"
+ * (Jessi). PR·세션 요약도 예외가 아니다 — 규칙은 하나다.
+ *
+ * 건너뛴 레포는 체크포인트(lastRun·lastSha)가 안 움직이므로 수집 창이 그대로
+ * 이어지고, 그 커밋들은 5개가 차는 밤의 글에 한꺼번에 들어간다.
  */
-export const MIN_HUMAN_COMMITS = 2;
-export function enoughForPost(
-  humanCommits: number,
-  prs: number,
-  devlogFiles: number,
-): boolean {
-  return humanCommits >= MIN_HUMAN_COMMITS || prs > 0 || devlogFiles > 0;
+export const MIN_HUMAN_COMMITS = 5;
+export function enoughForPost(humanCommits: number): boolean {
+  return humanCommits >= MIN_HUMAN_COMMITS;
 }
 
 export interface RepoPR {
@@ -590,7 +588,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       mergedPRs,
       devlogFiles,
       since,
-      hasActivity: enoughForPost(newCommits.length, newPRs.length, devlogFiles.length),
+      hasActivity: enoughForPost(newCommits.length),
       newCommits: newCommits.length,
       botCommits,
       latestSha: commits[0]?.sha ?? prev?.lastSha ?? null,

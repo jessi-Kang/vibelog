@@ -12,7 +12,7 @@ import { checkDevlogs } from "./check-markdown";
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
+import { MIN_HUMAN_COMMITS, collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
 import {
   generateDevlog,
 
@@ -458,7 +458,7 @@ async function main(): Promise<void> {
     const why = a.hasActivity
       ? "생성 대상"
       : a.newCommits > 0
-        ? `건너뜀 — 사람 커밋 ${a.newCommits}개뿐, 다음 밤에 묶음`
+        ? `건너뜀 — 사람 커밋 ${a.newCommits}개, ${MIN_HUMAN_COMMITS}개 모이면 씀`
         : a.botCommits > 0
           ? `건너뜀 — 봇 커밋 ${a.botCommits}개뿐`
           : "건너뜀";
@@ -473,7 +473,7 @@ async function main(): Promise<void> {
         text: `skip     · ${a.repo} ${why.replace(/^건너뜀 — /, "")}`,
         textEn: `skip     · ${a.repo} ${
           a.newCommits > 0
-            ? `only ${a.newCommits} human commit — bundled into the next night`
+            ? `${a.newCommits} human commit${a.newCommits === 1 ? "" : "s"} — writes at ${MIN_HUMAN_COMMITS}`
             : `only ${a.botCommits} bot commit${a.botCommits === 1 ? "" : "s"}`
         }`,
       });

@@ -193,14 +193,14 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
 
 ### 글이 되는 활동의 문턱
 
-봇 커밋은 재료도 활동도 아니다. 사람 커밋이 2개 미만이면 머지된 PR이나 세션
-요약(devlog/*.md)이 있어야 글을 쓴다 (`scripts/collect.ts`의 `isBotCommit`,
-`enoughForPost`). apart의 야간 자동 수집 커밋 하나가 12밤 연속으로 글·삽화·쇼츠를
+봇 커밋은 재료도 활동도 아니다. **사람 커밋이 5개 모여야** 글과 쇼츠를 만든다
+(`scripts/collect.ts`의 `isBotCommit`, `enoughForPost`, `MIN_HUMAN_COMMITS`).
+PR·세션 요약도 예외가 아니다. apart의 야간 자동 수집 커밋 하나가 12밤 연속으로 글·삽화·쇼츠를
 만든 뒤 넣었다 (9/23–10/5, 밤마다 $0.4쯤). 봇 판정은 로그인·이름·메일에 "bot"이
 낱말로 들어 있는가 하나뿐이다 — github-actions[bot]·dependabot[bot]·apt-gam-bot·
 vibelog-bot이 다 걸리고, Botond 같은 이름은 안 걸린다. 건너뛴 레포는 체크포인트가
 그대로라 그 커밋은 다음 밤 창에 같이 들어온다. 홈 "지난 실행"에 `skip · <repo>
-사람 커밋 1개뿐, 다음 밤에 묶음`으로 남는다.
+사람 커밋 1개, 5개 모이면 씀`으로 남는다.
 
 ### 비용 — 실측과 손잡이
 
