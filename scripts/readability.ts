@@ -8,6 +8,7 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
+import { findStyleHits } from "./korean-style";
 
 /** 처음 보는 사람이 멈춘 문장 하나 */
 export interface Unclear {
@@ -79,6 +80,30 @@ export async function askReader(
     }
   }
   throw lastErr;
+}
+
+/**
+ * 목록에 있는 어색한 표현("~를 통해", "되어지다", 이 레포에서 만든 말 …)이 든 문장.
+ * 모델을 부르지 않고 찾는다 — 검사 모델이 놓치거나 실패해도 이것은 걸린다.
+ * "강"만 다시 쓰게 한다. "약"은 문맥에 따라 바른 말이라 밤에 자동으로 고치지 않는다.
+ */
+export function styleUnclear(text: string): Unclear[] {
+  return findStyleHits(text, { quoted: true })
+    .filter((h) => h.rule.level === "strong")
+    .map((h) => ({ sentence: h.sentence, why: `「${h.match}」 ${h.rule.why}` }));
+}
+
+/** 두 목록을 합친다 — 같은 문장은 한 번만, 모두 합쳐 8개까지 */
+export function mergeUnclear(a: Unclear[], b: Unclear[]): Unclear[] {
+  const seen = new Set<string>();
+  const out: Unclear[] = [];
+  for (const u of [...a, ...b]) {
+    const key = u.sentence.trim();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(u);
+  }
+  return out.slice(0, 8);
 }
 
 /** "막힌 문장 3개 → 다시 씀 → 남은 것 0개" — 실행 기록·미리보기가 같이 쓴다 */

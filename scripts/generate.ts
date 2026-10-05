@@ -7,7 +7,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
 import { createMessage } from "./models";
-import { askReader, type Readability, type Unclear } from "./readability";
+import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
+import { styleRulesForPrompt } from "./korean-style";
 
 export type { Readability, Unclear };
 import type { RepoActivity } from "./collect";
@@ -50,15 +51,15 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이�
 속에서 어떻게 돌아가는지(무엇을 어떤 기준으로 판단하는지, 몇 군데서 하는지, 기준값이
 몇인지)는 쓰지 않습니다. 결과만 씁니다. 원인을 말해야 이야기가 되는 삽질 포인트에서만
 원인을 한두 문장으로, 화면에서 보이는 말로 씁니다.
-커밋 메시지의 내부 용어(판정, 문턱, 가드, 슬롯, 캐시, 체크포인트, tally 같은 말)는
+커밋 메시지의 내부 용어("판정", "문턱", "가드", "슬롯", "캐시", "체크포인트", "tally" 같은 말)는
 가져오지 않습니다. 그 말이 가리키는 것을 독자가 보는 이름으로 부릅니다.
 
 ## 무엇을 쓸까 — 이야기 하나
 1. 그날 바뀐 것 중 쓰는 사람에게 가장 큰 것 하나를 고릅니다. 글은 그 하나의 이야기입니다.
 2. 나머지는 "뭘 했나" 끝에 한 문장으로 묶거나("이 밖에 영상 속 그림도 손봤습니다")
    뺍니다. 하나씩 설명하지 않습니다. 네 가지를 조금씩 말하면 아무것도 전해지지 않습니다.
-3. 무대부터 깝니다. 그 일이 어디(어떤 화면, 어떤 기능)에서 일어나는지 한 문장으로
-   먼저 말합니다. 독자가 그 화면을 떠올릴 수 있어야 다음 문장이 읽힙니다.
+3. 이 프로젝트가 무엇인지, 그 일이 어디(어떤 화면, 어떤 기능)에서 일어나는지를
+   먼저 한 문장으로 소개합니다. 독자가 그 화면을 떠올릴 수 있어야 다음 문장이 읽힙니다.
    ✗ "사라진 그림 한 장 때문에 판정 규칙을 하나로 모았습니다."
      (무슨 그림인지, 판정이 뭔지 모른다)
    ○ "이 블로그는 글 사이사이에 설명 그림을 넣습니다. 그런데 어제 글에서 그림 한 장이
@@ -69,7 +70,7 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이�
 ## 섹션
 "## 뭘 했나", "## 왜", "## 삽질 포인트", "## 다음 할 것" 네 섹션의 마크다운.
 - 뭘 했나: 첫 문장은 달라진 것 하나를 25–45자 한 문장으로. 그 문장이 글 목록과 카드의
-  요약으로 그대로 쓰이므로 짧게 끊습니다. 세부와 무대는 둘째 문장부터.
+  요약으로 그대로 쓰이므로 짧게 끊습니다. 세부 내용과 프로젝트 소개는 둘째 문장부터.
   ✗ "아파트 이름을 보고 실제로 있는 단지인지 지어낸 이름인지 맞히는 하루 10문제짜리
      퀴즈를, 기획 문서부터 실제로 돌아가는 웹사이트까지 하루에 만들었습니다." (86자)
   ○ "아파트 이름을 맞히는 하루 10문제 퀴즈를 만들었습니다. 기획 문서부터 돌아가는
@@ -92,6 +93,8 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이�
 - 비유는 구조가 한 번에 맞을 때 한 문장만. 비유를 걷어내도 뜻이 그대로 통해야 합니다.
 - 숫자는 아라비아 숫자와 단위로("52초", "커밋 16개"). 숫자를 쓰면 그게 뭔지 같이
   말합니다. 역할을 설명할 수 없는 세부 값이면 숫자를 빼고 현상만 씁니다.
+- 영어를 옮긴 말투를 쓰지 않습니다. 한국어로 말할 때 안 쓰는 꼴입니다.
+${styleRulesForPrompt()}
 - 무언가를 끄거나 미루거나 뺐다고 쓰면 이유를 붙입니다. 이유가 재료에 없으면 그
   결정 언급을 뺍니다.
 - 커밋 본문의 "왜"를 가장 먼저 봅니다. 재료에 없는 사실은 지어내지 않습니다.
@@ -124,7 +127,7 @@ function buildUserPrompt(
   date: string,
   ctx?: PostContext,
 ): string {
-  // 프로젝트가 뭔지가 먼저다 — 글의 첫 문단이 무대를 깔려면 모델이 먼저 알아야 한다.
+  // 프로젝트가 뭔지가 먼저다 — 글의 첫 문단에서 프로젝트를 소개하려면 모델이 먼저 알아야 한다.
   // README를 맨 뒤에 붙이던 때는 커밋 메모부터 읽고 그 말투를 그대로 옮겼다.
   const parts: string[] = [
     `레포: ${a.repo}`,
@@ -132,7 +135,7 @@ function buildUserPrompt(
     `프로젝트 한 줄 설명: ${a.description || "(없음)"}`,
   ];
   if (a.readme) {
-    parts.push("## README (이 프로젝트가 뭔지 — 무대를 깔 때 참고)", a.readme);
+    parts.push("## README (이 프로젝트가 뭔지 — 첫 문단에서 소개할 때 참고)", a.readme);
   }
   if (ctx && ctx.recent.length > 0) {
     parts.push(
@@ -189,12 +192,13 @@ function parseJson(text: string): GeneratedDevlog {
 const REVIEW_SYSTEM = `당신은 개발을 전혀 모르는 독자입니다. 이 블로그에 처음 들어와 아래 글 한 편을
 읽습니다. 이 프로젝트도, 지난 글도 모릅니다.
 
-읽다가 멈추게 되는 문장을 찾습니다. 멈추는 이유는 다섯 중 하나입니다.
+읽다가 멈추게 되는 문장을 찾습니다. 멈추는 이유는 여섯 중 하나입니다.
 1. 뜻을 모르는 말 — 전문 용어, 내부에서만 쓰는 이름, 처음 보는 줄임말이나 붙여 만든 말
 2. 무엇을 가리키는지 모르는 말 — "그 판정", "그 대목", "세 군데"처럼 앞에서 소개된 적 없는 것
-3. 왜 알아야 하는지 모르는 속사정 — 어떤 기준으로 판단하는지, 기준값이 몇인지 같은 내부 설명
+3. 왜 알아야 하는지 모르는 내부 설명 — 프로그램이 어떤 기준으로 판단하는지, 기준값이 몇인지
 4. 앞뒤가 이어지지 않아 무슨 말을 하려는지 모르는 문장
 5. 누가 말하는지 헷갈리는 문장 — 글쓴이("저")와 다른 이름이 같은 사람인지 다른 사람인지 모를 때
+6. 영어를 옮긴 듯한 말투 — "~를 통해", "~에 의해", "가지고 있다", "되어지다"처럼 한국어로 말할 때 안 쓰는 꼴
 
 문체 취향, 문장 길이, 맞춤법은 지적하지 않습니다. 실제로 이해가 막히는 문장만 고릅니다.
 막히는 곳이 없으면 빈 배열을 냅니다. 많아도 6개까지, 가장 막히는 것부터.
@@ -222,7 +226,7 @@ function rewriteAsk(unclear: Unclear[]): string {
     "",
     "이 문장들을 고쳐 글 전체를 다시 내 주세요.",
     "- 독자가 모르는 말은 화면에서 보이는 말로 바꾸거나, 처음 나올 때 무엇인지 먼저 소개합니다.",
-    "- 이야기에 꼭 필요하지 않은 속사정(기준값, 내부 동작)이면 고치지 말고 뺍니다.",
+    "- 이야기에 꼭 필요하지 않은 내부 설명(기준값, 프로그램이 안에서 판단하는 방식)이면 고치지 말고 뺍니다.",
     "- 재료에 없는 사실을 새로 넣지 않습니다. 첫 문장 길이와 섹션 구조 규칙은 그대로입니다.",
     "- 영어(en)도 같이 맞춥니다.",
     "같은 JSON 형식 하나만 출력합니다.",
@@ -261,17 +265,21 @@ export async function generateDevlog(
   const firstText = textOf(first.content);
   const draft = parseJson(firstText);
 
-  let unclear: Unclear[];
-  try {
-    unclear = await reviewReadability(draft);
-  } catch (err) {
+  // 두 가지를 합친다: 처음 읽는 사람 역할의 모델이 막힌 문장과, 목록에 있는
+  // 어색한 표현이 든 문장(모델 없이 찾는다). 검사 모델이 실패해도 목록 검사는 남는다.
+  let reviewError: string | undefined;
+  const reviewed = await reviewReadability(draft).catch((err: Error) => {
+    reviewError = err.message;
+    return [] as Unclear[];
+  });
+  const unclear = mergeUnclear(reviewed, styleUnclear(`${draft.title}\n${draft.ko}`));
+  if (unclear.length === 0) {
     return {
       ...draft,
-      readability: { before: null, after: null, rewritten: false, unclear: [], error: (err as Error).message },
+      readability: reviewError
+        ? { before: null, after: null, rewritten: false, unclear, error: reviewError }
+        : { before: 0, after: null, rewritten: false, unclear },
     };
-  }
-  if (unclear.length === 0) {
-    return { ...draft, readability: { before: 0, after: null, rewritten: false, unclear } };
   }
   console.log(
     `[review] 막힌 문장 ${unclear.length}개:\n` +
@@ -302,9 +310,15 @@ export async function generateDevlog(
     };
   }
   const left = await reviewReadability(fixed).catch(() => null);
+  const leftStyle = styleUnclear(`${fixed.title}\n${fixed.ko}`);
   return {
     ...fixed,
-    readability: { before: unclear.length, after: left ? left.length : null, rewritten: true, unclear },
+    readability: {
+      before: unclear.length,
+      after: left ? mergeUnclear(left, leftStyle).length : null,
+      rewritten: true,
+      unclear,
+    },
   };
 }
 
