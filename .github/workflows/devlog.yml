@@ -32,6 +32,10 @@ on:
         description: "이미 발행된 글에 삽화 붙이기 — all 또는 vibelog/2026-09-15,apart/2026-09-14. 글은 안 건드리고 .figures.json만 새로 만든다 (Opus 호출 글당 1–2번)"
         required: false
         default: ""
+      preview:
+        description: "글을 지금 지시문으로 다시 써서 원래 글과 나란히 보기 — 예: vibelog/2026-09-22,apart/2026-09-21. 발행 안 함, 결과는 실행 요약에 (글당 Opus 1–2번)"
+        required: false
+        default: ""
       guard:
         description: "중복 방지 — 이 밤에 이미 발행했으면 조용히 종료. 예약 대신 부르는 쪽(Vercel Cron)이 true로 넣는다. 손으로 돌릴 때는 비운다"
         required: false
@@ -64,7 +68,7 @@ jobs:
 
       # ---- 쇼츠 툴체인 (ELEVENLABS 키가 있을 때만 — 없으면 run.ts가 쇼츠를 건너뜀) ----
       - name: Install shorts toolchain (ffmpeg, CJK fonts, Chromium)
-        if: ${{ env.HAS_ELEVENLABS == 'true' }}
+        if: ${{ env.HAS_ELEVENLABS == 'true' && !inputs.preview }}
         run: |
           # 러너에 기본 등록된 크롬·엣지 저장소는 쓰지 않는데, 갱신 경합
           # (Hash Sum mismatch)으로 실행을 두 번 죽였다(run #14·#15 — .list만
@@ -77,13 +81,16 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Install video (Remotion) deps
-        if: ${{ env.HAS_ELEVENLABS == 'true' }}
+        if: ${{ env.HAS_ELEVENLABS == 'true' && !inputs.preview }}
         working-directory: video
         run: npm ci
 
       - name: Collect, generate devlogs & shorts
         run: |
-          if [ -n "$FIGURES" ]; then
+          if [ -n "$PREVIEW" ]; then
+            # 미리보기 — 다시 쓴 글을 실행 요약에만 남긴다. content/는 안 건드린다
+            npx tsx scripts/devlog-preview.ts "$PREVIEW"
+          elif [ -n "$FIGURES" ]; then
             # 삽화 백필 — 이미 발행된 글에 삽화만 붙인다 (글·쇼츠는 안 건드린다)
             npx tsx scripts/figures-backfill.ts "$FIGURES"
           elif [ -n "$POSTER" ]; then
@@ -99,6 +106,7 @@ jobs:
           REGEN: ${{ inputs.regen }}
           POSTER: ${{ inputs.poster }}
           FIGURES: ${{ inputs.figures }}
+          PREVIEW: ${{ inputs.preview }}
           # 예약 회차와, 예약을 대신하는 호출(Vercel Cron → guard: true)에만
           # 켠다 — 이 밤에 이미 발행했으면 조용히 종료해 이중 발행·TTS 중복
           # 비용을 막는다. Jessi가 손으로 돌리는 Run workflow는 가드 없음.

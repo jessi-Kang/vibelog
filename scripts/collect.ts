@@ -143,7 +143,7 @@ function b64(content: string): string {
   return Buffer.from(content, "base64").toString("utf8");
 }
 
-async function getOwner(octokit: Octokit): Promise<string> {
+export async function getOwner(octokit: Octokit): Promise<string> {
   if (process.env.VIBELOG_OWNER) return process.env.VIBELOG_OWNER;
   // Actions의 GITHUB_TOKEN으로는 getAuthenticated가 안 되므로 레포 소유자로 폴백
   if (process.env.GITHUB_REPOSITORY) {
@@ -171,7 +171,7 @@ async function getVibelogJson(
   }
 }
 
-async function getReadme(
+export async function getReadme(
   octokit: Octokit,
   owner: string,
   repo: string,
