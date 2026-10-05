@@ -13,6 +13,8 @@ export interface GeneratedDevlog {
   titleEn: string;
   ko: string;
   en: string;
+  /** 그날 이야기의 중심이 삽질이었나 — 목록의 "삽질" 배지 (docs/post-project-and-kind.html C안) */
+  failStory: boolean;
 }
 
 const MODEL = "claude-opus-5";
@@ -72,8 +74,14 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이�
      돌아가는 웹사이트까지 하루에 갔습니다."
 - 영어 번역(en)은 같은 구조·같은 눈높이로: "## What I did", "## Why", "## Rabbit holes", "## Next up".
 
+- failStory: 그날 이야기의 **중심**이 삽질이었으면 true. 무언가가 고장 나 있었고
+  그 원인을 찾아 고친 것이 하루의 줄기일 때다 (제목이 "…안 뜬 이유를 찾았습니다",
+  "…끊기던 것을 고쳤습니다" 같은 꼴이 된다). 만든 것·들인 것·바꾼 것이 줄기이고
+  삽질은 곁가지였으면 false. 삽질 섹션은 형식이라 늘 채워지므로, 섹션이 있다고
+  true가 아니다 — 목록의 "삽질" 배지가 모든 글에 붙어 아무 말도 안 하게 됐었다.
+
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
-{"title": "한국어 제목 (…했습니다 체)", "titleEn": "English title", "ko": "한국어 마크다운", "en": "English markdown"}`;
+{"title": "한국어 제목 (…했습니다 체)", "titleEn": "English title", "ko": "한국어 마크다운", "en": "English markdown", "failStory": false}`;
 
 function buildUserPrompt(a: RepoActivity, date: string): string {
   const parts: string[] = [
@@ -125,6 +133,8 @@ function parseJson(text: string): GeneratedDevlog {
       throw new Error(`데브로그 JSON에 ${key}가 없습니다`);
     }
   }
+  // 빠졌거나 이상한 값이면 false — 배지는 확실할 때만 붙인다
+  parsed.failStory = parsed.failStory === true;
   return parsed as GeneratedDevlog;
 }
 

@@ -5,6 +5,7 @@
  * 고정 레일 — 남는 좌우 여백을 미디어에 쓴다. 모바일·태블릿: 기존 세로 순서.
  */
 import Link from "next/link";
+import { projectColor, withAlpha } from "@/lib/project-color";
 import { hasRealFail } from "@/lib/has-fail";
 import { useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
@@ -148,7 +149,10 @@ export function PostClient({ post }: { post: PostData }) {
       label: `${post.title} 쇼츠`,
     });
 
-  // 날짜·레포는 상단 경로(← log / repo / date)가 이미 말한다 — 여기서 반복하지 않는다
+  // 프로젝트 이름은 메타 줄 맨 앞에 둔다 (Jessi가 시안 B를 골랐다 —
+  // docs/post-project-and-kind.html). 전에는 "상단 경로가 이미 말한다"며 뺐는데,
+  // 글 주소가 /p/<id>로 바뀐 뒤 그 경로 줄이 안 떠서 글을 열면 누구 글인지
+  // 알 길이 없었다. 누르면 그 프로젝트 페이지로 간다.
   const head = (
     <section className="flex flex-col gap-3">
       <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
@@ -156,6 +160,14 @@ export function PostClient({ post }: { post: PostData }) {
       </h1>
       {/* 언어 토글은 헤더의 전역 스위치로 올라갔다 (Jessi 지시) */}
       <div className="font-mono text-xs text-muted">
+        <Link
+          href={`/projects/${post.repo}`}
+          className="hit relative font-bold underline decoration-1 underline-offset-[3px] transition-opacity duration-150 hover:opacity-85"
+          style={{ color: projectColor(post.repo), textDecorationColor: withAlpha(projectColor(post.repo), 0.4) }}
+        >
+          {post.repo}
+        </Link>
+        {" · "}
         {post.commits != null
           ? en
             ? `Written by AI from ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `

@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { hasRealFail } from "./has-fail";
 import type { PostFigure } from "../scripts/figure-types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
@@ -137,9 +136,6 @@ export function parseSections(markdown: string): DevlogSections {
   return sections;
 }
 
-function computeHasFail(fail?: string): boolean {
-  return hasRealFail(fail);
-}
 
 /**
  * 목록·카드의 요약 — 본문 "뭘 했나"의 첫 문장을 쓴다.
@@ -242,7 +238,10 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(bodyEn ? { bodyEn } : {}),
         sections,
         sectionsEn,
-        hasFail: computeHasFail(sections.fail),
+        // 목록의 "삽질" 배지 — 그날 이야기의 중심이 삽질이었나 (글 모델이 정한
+        // frontmatter failStory). 전에는 삽질 섹션이 있으면 붙였는데, 형식상 늘
+        // 채워져 27편 전부에 붙었다. 값이 없는 글은 안 붙인다.
+        hasFail: data.failStory === true,
         summary: firstSentence(sections.did),
         ...(sectionsEn.did ? { summaryEn: firstSentence(sectionsEn.did) } : {}),
         ...(typeof data.commits === "number" ? { commits: data.commits } : {}),
