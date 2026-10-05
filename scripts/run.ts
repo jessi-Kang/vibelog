@@ -457,13 +457,18 @@ async function main(): Promise<void> {
   });
   console.log(`수집: 레포 ${activities.length}개`);
   for (const a of activities) {
+    // 홈 "지난 실행"에 그대로 찍힌다 — 읽는 사람이 바로 알아듣는 문장으로 쓴다
+    const reason =
+      a.newCommits > 0
+        ? `본문을 쓴 커밋이 아직 ${a.ruleCommits}개 (전체 ${a.newCommits}개) — ${MIN_HUMAN_COMMITS}개가 모이면 글을 씁니다`
+        : a.botCommits > 0
+          ? "봇이 남긴 커밋뿐이라 글을 쓰지 않습니다"
+          : "";
     const why = a.hasActivity
       ? "생성 대상"
-      : a.newCommits > 0
-        ? `건너뜀 — 사람 커밋 ${a.newCommits}개(규칙에 맞는 ${a.ruleCommits}개), ${MIN_HUMAN_COMMITS}개 모이면 씀`
-        : a.botCommits > 0
-          ? `건너뜀 — 봇 커밋 ${a.botCommits}개뿐`
-          : "건너뜀";
+      : reason
+        ? `건너뜀 — ${reason}`
+        : "건너뜀";
     console.log(
       `- ${a.repo}: 커밋 ${a.commits.length}(봇 ${a.botCommits} 제외), PR ${a.mergedPRs.length}, ` +
         `devlog ${a.devlogFiles.length} → ${why}`,
@@ -472,11 +477,11 @@ async function main(): Promise<void> {
     // 로그를 안 열고 알 수 있게. 아무 일도 없던 레포는 줄을 안 만든다.
     if (!a.hasActivity && (a.newCommits > 0 || a.botCommits > 0)) {
       runLines.push({
-        text: `skip     · ${a.repo} ${why.replace(/^건너뜀 — /, "")}`,
+        text: `skip     · ${a.repo} ${reason}`,
         textEn: `skip     · ${a.repo} ${
           a.newCommits > 0
-            ? `${a.newCommits} human commit${a.newCommits === 1 ? "" : "s"} (${a.ruleCommits} with a body) — writes at ${MIN_HUMAN_COMMITS}`
-            : `only ${a.botCommits} bot commit${a.botCommits === 1 ? "" : "s"}`
+            ? `only ${a.ruleCommits} of ${a.newCommits} commit${a.newCommits === 1 ? "" : "s"} have a body — a post comes at ${MIN_HUMAN_COMMITS}`
+            : `only bot commits — no post`
         }`,
       });
     }

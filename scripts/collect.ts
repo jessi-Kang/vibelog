@@ -31,15 +31,15 @@ export function isBotCommit(c: Pick<RepoCommit, "author" | "authorEmail">): bool
 }
 
 /**
- * 글 한 편이 될 만한 활동인가 — **사람 커밋 5개**가 모여야 쓴다.
+ * 글 한 편을 쓸 만큼 활동이 있었나 — 본문을 쓴 사람 커밋이 **5개 이상** 모여야 쓴다.
  *
  * 처음엔 "커밋 1개 이상"이었다. apart의 야간 자동 수집 커밋 하나가 12밤 연속으로
- * 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 헛돈). 봇 커밋을 거르고 문턱을
- * 올렸다: "최소 5개 커밋이 안 모이면 모이기 전까지 글과 쇼츠 생성을 멈추게 해"
- * (Jessi). PR·세션 요약도 예외가 아니다 — 규칙은 하나다.
+ * 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 낭비). 그래서 봇 커밋을 빼고,
+ * 필요한 커밋 수를 5개로 올렸다: "최소 5개 커밋이 안 모이면 모이기 전까지 글과 쇼츠 생성을 멈추게 해"
+ * (Jessi). PR·세션 요약이 있어도 마찬가지다.
  *
- * 건너뛴 레포는 체크포인트(lastRun·lastSha)가 안 움직이므로 수집 창이 그대로
- * 이어지고, 그 커밋들은 5개가 차는 밤의 글에 한꺼번에 들어간다.
+ * 5개가 안 된 레포는 처리 위치(lastRun·lastSha)를 옮기지 않는다. 그래서 그 커밋들은
+ * 다음 밤에 다시 읽히고, 5개가 차는 밤의 글에 한꺼번에 들어간다.
  */
 export const MIN_HUMAN_COMMITS = 5;
 export function enoughForPost(ruleCommits: number): boolean {
@@ -48,8 +48,9 @@ export function enoughForPost(ruleCommits: number): boolean {
 
 /**
  * 커밋 규칙(docs/02 §3: 한 줄 요약 + 빈 줄 + "왜"가 든 본문)을 따른 커밋인가.
- * 본문이 40자는 돼야 "왜"가 있다고 본다. 글 재료로는 다 쓰되, 문턱 5개는 이런
- * 커밋만 센다 — "fix", "wip" 다섯 개가 글 한 편을 사게 두지 않는다.
+ * 본문이 40자는 돼야 "왜"가 있다고 본다. 글을 쓸 때는 모든 커밋을 재료로 쓰지만,
+ * "5개가 모였나"를 셀 때는 이런 커밋만 센다 — "fix", "wip"처럼 제목만 있는 커밋은
+ * 다섯 개가 쌓여도 글이 나오지 않는다.
  */
 export const RULE_BODY_MIN = 40;
 export function followsCommitRule(message: string): boolean {
@@ -97,7 +98,7 @@ export interface RepoActivity {
   hasActivity: boolean;
   /** 체크포인트 이후의 사람 커밋 수 — 글을 안 쓸 때 이유를 적기 위해 */
   newCommits: number;
-  /** 그중 커밋 규칙(본문 있음)을 따른 수 — 문턱은 이걸로 센다 */
+  /** 그중 본문을 쓴 커밋 수 — "5개가 모였나"는 이걸로 센다 */
   ruleCommits: number;
   /** 창 안의 봇 커밋 수 (걸러진 것) */
   botCommits: number;
