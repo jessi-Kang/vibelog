@@ -42,8 +42,19 @@ export function isBotCommit(c: Pick<RepoCommit, "author" | "authorEmail">): bool
  * 이어지고, 그 커밋들은 5개가 차는 밤의 글에 한꺼번에 들어간다.
  */
 export const MIN_HUMAN_COMMITS = 5;
-export function enoughForPost(humanCommits: number): boolean {
-  return humanCommits >= MIN_HUMAN_COMMITS;
+export function enoughForPost(ruleCommits: number): boolean {
+  return ruleCommits >= MIN_HUMAN_COMMITS;
+}
+
+/**
+ * 커밋 규칙(docs/02 §3: 한 줄 요약 + 빈 줄 + "왜"가 든 본문)을 따른 커밋인가.
+ * 본문이 40자는 돼야 "왜"가 있다고 본다. 글 재료로는 다 쓰되, 문턱 5개는 이런
+ * 커밋만 센다 — "fix", "wip" 다섯 개가 글 한 편을 사게 두지 않는다.
+ */
+export const RULE_BODY_MIN = 40;
+export function followsCommitRule(message: string): boolean {
+  const body = message.split("\n").slice(1).join("\n").trim();
+  return body.length >= RULE_BODY_MIN;
 }
 
 export interface RepoPR {
@@ -86,6 +97,8 @@ export interface RepoActivity {
   hasActivity: boolean;
   /** 체크포인트 이후의 사람 커밋 수 — 글을 안 쓸 때 이유를 적기 위해 */
   newCommits: number;
+  /** 그중 커밋 규칙(본문 있음)을 따른 수 — 문턱은 이걸로 센다 */
+  ruleCommits: number;
   /** 창 안의 봇 커밋 수 (걸러진 것) */
   botCommits: number;
   latestSha: string | null;
@@ -574,6 +587,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       ? commits.findIndex((c) => c.sha === prev.lastSha)
       : -1;
     const newCommits = idx === -1 ? commits : commits.slice(0, idx);
+    const ruleCommits = newCommits.filter((c) => followsCommitRule(c.message)).length;
     const newPRs = prev?.lastRun
       ? mergedPRs.filter((p) => p.mergedAt > prev.lastRun!)
       : mergedPRs;
@@ -592,8 +606,9 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       mergedPRs,
       devlogFiles,
       since,
-      hasActivity: enoughForPost(newCommits.length),
+      hasActivity: enoughForPost(ruleCommits),
       newCommits: newCommits.length,
+      ruleCommits,
       botCommits,
       latestSha: commits[0]?.sha ?? prev?.lastSha ?? null,
       weekCommits,

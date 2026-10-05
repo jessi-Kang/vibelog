@@ -25,6 +25,14 @@ import {
   validDiagram,
 } from "./shorts-types";
 
+/** 녹화할 화면이 없어 대본을 쓰지 않은 경우 — run.ts가 실패가 아니라 skip으로 적는다 */
+export class NoScreensError extends Error {
+  constructor(why: string) {
+    super(`쇼츠 건너뜀 — ${why}`);
+    this.name = "NoScreensError";
+  }
+}
+
 const MODEL = "claude-opus-5";
 /**
  * 생각의 깊이 — 처음은 medium, 빈 화면이 남아 다시 쓸 때만 high. 대본은 문장
@@ -645,6 +653,18 @@ export async function generateScript(
   // 실제 사이트의 화면 목록 — 대본이 데모 문장마다 내용에 맞는 화면(screen)을
   // 고르게 한다. 없으면 기존 방식(투어를 시간순으로 자름)으로 폴백.
   const screens = await siteScreens(demoUrl);
+  // 화면이 홈 하나뿐이거나(로그인·랜딩만) 배포 주소가 없으면 대본을 쓰지 않는다.
+  // Anchor는 첫 화면이 로그인이라 홈 말고는 못 들어가는데, 밤마다 대본을 두 번
+  // 쓰고(빈 화면 재작성) "빈 화면이 남아 영상을 만들지 않습니다"로 끝났다 —
+  // 9/20부터 매번 $0.15–0.3을 버렸다. 쇼츠는 실제 화면 녹화가 소재다
+  // (CLAUDE.md). 소재가 없으면 돈을 쓰기 전에 멈춘다.
+  if (screens.length < 2) {
+    throw new NoScreensError(
+      demoUrl
+        ? `화면이 홈 하나뿐 (${demoUrl}) — 로그인·랜딩만 있는 사이트`
+        : "배포 주소 없음",
+    );
+  }
 
   const client = new Anthropic();
   const userPrompt = [
