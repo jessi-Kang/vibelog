@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
+import { createMessage } from "./models";
 import { askReader, type Readability, type Unclear } from "./readability";
 import matter from "gray-matter";
 import {
@@ -34,7 +35,8 @@ export class NoScreensError extends Error {
   }
 }
 
-const MODEL = "claude-opus-5";
+// 대본도 글과 같은 모델 — 내레이션은 시청자가 직접 듣는 원고다 (10/5 Jessi)
+const MODEL = "claude-opus-5-5";
 /**
  * 생각의 깊이 — 처음은 medium, 빈 화면이 남아 다시 쓸 때만 high. 대본은 문장
  * 9개짜리 JSON이라 thinking이 출력의 대부분이다 (삽화 실측과 같은 구조).
@@ -792,7 +794,7 @@ export async function generateScript(
   const SYSTEM_CACHED: Anthropic.TextBlockParam[] = [
     { type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } },
   ];
-  const response = await client.messages.create({
+  const response = await createMessage(client, {
     model: MODEL,
     max_tokens: 16000,
     output_config: { effort: EFFORT_FIRST },
@@ -874,7 +876,7 @@ export async function generateScript(
       );
     }
     ask.push("전체 JSON을 같은 형식으로 다시 출력하세요 (말한 문장 말고는 그대로).");
-    const retry = await client.messages.create({
+    const retry = await createMessage(client, {
       model: MODEL,
       max_tokens: 16000,
       output_config: { effort: EFFORT_RETRY },
