@@ -455,10 +455,29 @@ async function main(): Promise<void> {
   });
   console.log(`수집: 레포 ${activities.length}개`);
   for (const a of activities) {
+    const why = a.hasActivity
+      ? "생성 대상"
+      : a.newCommits > 0
+        ? `건너뜀 — 사람 커밋 ${a.newCommits}개뿐, 다음 밤에 묶음`
+        : a.botCommits > 0
+          ? `건너뜀 — 봇 커밋 ${a.botCommits}개뿐`
+          : "건너뜀";
     console.log(
-      `- ${a.repo}: 커밋 ${a.commits.length}, PR ${a.mergedPRs.length}, ` +
-        `devlog ${a.devlogFiles.length} → ${a.hasActivity ? "생성 대상" : "건너뜀"}`,
+      `- ${a.repo}: 커밋 ${a.commits.length}(봇 ${a.botCommits} 제외), PR ${a.mergedPRs.length}, ` +
+        `devlog ${a.devlogFiles.length} → ${why}`,
     );
+    // 새 커밋이 있었는데 안 쓴 밤은 홈에도 이유를 남긴다 — "왜 글이 없지"를
+    // 로그를 안 열고 알 수 있게. 아무 일도 없던 레포는 줄을 안 만든다.
+    if (!a.hasActivity && (a.newCommits > 0 || a.botCommits > 0)) {
+      runLines.push({
+        text: `skip     · ${a.repo} ${why.replace(/^건너뜀 — /, "")}`,
+        textEn: `skip     · ${a.repo} ${
+          a.newCommits > 0
+            ? `only ${a.newCommits} human commit — bundled into the next night`
+            : `only ${a.botCommits} bot commit${a.botCommits === 1 ? "" : "s"}`
+        }`,
+      });
+    }
   }
   if (collectOnly) {
     console.log(JSON.stringify(activities, null, 2));

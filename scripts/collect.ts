@@ -11,6 +11,41 @@ export interface RepoCommit {
   message: string;
   date: string;
   files: string[];
+  /** GitHub 로그인(없으면 커밋 author 이름) — 봇 판정용 */
+  author?: string;
+  authorEmail?: string;
+}
+
+/**
+ * 봇이 남긴 커밋인가. 로그인·이름·메일 로컬파트에 "bot"이 낱말로 들어 있으면
+ * 봇이다 — github-actions[bot], dependabot[bot], apt-gam-bot, vibelog-bot,
+ * bot@users.noreply.github.com. "Botond" 같은 이름은 낱말 경계로 비껴간다.
+ *
+ * 사이트별 목록을 두지 않는다 — 어느 레포의 자동 커밋이든 같은 규칙으로 걸러야
+ * 새 프로젝트에서 또 새지 않는다.
+ */
+const BOT_WORD = /(^|[^a-z0-9])bot([^a-z0-9]|$)/i;
+export function isBotCommit(c: Pick<RepoCommit, "author" | "authorEmail">): boolean {
+  const local = (c.authorEmail ?? "").split("@")[0];
+  return BOT_WORD.test(c.author ?? "") || BOT_WORD.test(local);
+}
+
+/**
+ * 글 한 편이 될 만한 활동인가.
+ *
+ * 사람 커밋 1개로는 글을 쓰지 않는다 — apart의 야간 자동 수집 커밋 하나가 12밤
+ * 연속으로 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 헛돈, "1개 커밋만으로
+ * 글 쓰게 하지마" — Jessi). 봇 커밋은 세지 않고, 사람 커밋이 2개 미만이면 머지된
+ * PR이나 세션 요약(devlog/*.md)이 있어야 쓴다. 건너뛴 레포는 체크포인트가
+ * 안 움직이므로 그 커밋은 다음 밤 글에 같이 묶인다.
+ */
+export const MIN_HUMAN_COMMITS = 2;
+export function enoughForPost(
+  humanCommits: number,
+  prs: number,
+  devlogFiles: number,
+): boolean {
+  return humanCommits >= MIN_HUMAN_COMMITS || prs > 0 || devlogFiles > 0;
 }
 
 export interface RepoPR {
@@ -51,6 +86,10 @@ export interface RepoActivity {
   /** 이번 수집이 실제로 쓴 창의 시작 — run.ts가 state.daySince로 저장한다 */
   since: string;
   hasActivity: boolean;
+  /** 체크포인트 이후의 사람 커밋 수 — 글을 안 쓸 때 이유를 적기 위해 */
+  newCommits: number;
+  /** 창 안의 봇 커밋 수 (걸러진 것) */
+  botCommits: number;
   latestSha: string | null;
   /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
   weekCommits: number;
@@ -164,6 +203,8 @@ async function getCommits(
       message: c.commit.message,
       date: c.commit.committer?.date ?? c.commit.author?.date ?? "",
       files,
+      author: c.author?.login ?? c.commit.author?.name ?? undefined,
+      authorEmail: c.commit.author?.email ?? undefined,
     });
   }
   return commits;
@@ -519,8 +560,11 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
         ) &&
         // 머지 커밋은 git 자동 메시지라 재료가 아니다 — 글 원료에 브랜치
         // 주소가 그대로 노출되기도 한다 (Jessi 지적)
-        !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message),
+        !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message) &&
+        // 봇 커밋은 글 재료도, 활동도 아니다 (isBotCommit 주석)
+        !isBotCommit(c),
     );
+    const botCommits = allCommits.length - commits.length;
 
     // 활동 판정은 체크포인트 sha "이후" 커밋만 센다 (목록은 최신순).
     // 글 재료는 창 전체(commits) — 재실행에도 하루치가 통째로 들어간다.
@@ -546,8 +590,9 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       mergedPRs,
       devlogFiles,
       since,
-      hasActivity:
-        newCommits.length > 0 || newPRs.length > 0 || devlogFiles.length > 0,
+      hasActivity: enoughForPost(newCommits.length, newPRs.length, devlogFiles.length),
+      newCommits: newCommits.length,
+      botCommits,
       latestSha: commits[0]?.sha ?? prev?.lastSha ?? null,
       weekCommits,
       todayCommits,
