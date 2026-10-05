@@ -11,7 +11,8 @@ import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
 import { createMessage } from "./models";
-import { askReader, type Readability, type Unclear } from "./readability";
+import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
+import { styleRulesForPrompt } from "./korean-style";
 import matter from "gray-matter";
 import {
   type DiagramSpec,
@@ -108,6 +109,8 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
   기준은 하나 — **데브로그 본문에 없는 복합명사를 새로 만들지 않는다.**
   자막 24자에 안 들어가면 문장을 둘로 쪼개거나 덜 중요한 수식을 버린다.
   줄이려고 말을 만들면 그 문장은 못 알아듣는다. 훅·자막·카드·캡션 전부 같다.
+- **영어를 옮긴 말투를 쓰지 않는다.** 귀로 들으면 더 어색하다.
+${styleRulesForPrompt()}
 - **정체불명 숫자 금지.** 코드 속 값을 언급하면 역할을 같이 말한다 —
   "3을 주고 멈추게 했습니다"는 듣는 사람이 3이 뭔지 모른다. "임시 점수
   3점을 주고 멈추게 했습니다"처럼 쓰거나, 역할을 설명할 자리가 없으면
@@ -644,13 +647,14 @@ const LISTEN_SYSTEM = `당신은 개발을 모르는 사람입니다. 휴대폰�
 내레이션을 귀로 한 번 듣습니다. 화면에 자막이 같이 뜹니다. 되돌려 듣지 않습니다.
 이 프로젝트도, 이 채널의 지난 영상도 모릅니다.
 
-들으면서 멈추게 되는 문장을 고릅니다. 멈추는 이유는 다섯 중 하나입니다.
+들으면서 멈추게 되는 문장을 고릅니다. 멈추는 이유는 여섯 중 하나입니다.
 1. 처음 듣는 말 — 전문 용어, 내부에서만 쓰는 이름, 줄임말
 2. 명사를 붙여 만든 말이라 관계를 알 수 없는 말 — "미리보기 도장"처럼 무엇이 무엇에
    어떻게 하는지 알 수 없는 말
 3. 무엇을 가리키는지 모르는 말 — "그거", "그 문제"처럼 앞에서 나온 적 없는 것
 4. 앞 문장과 이어지지 않아 이야기를 놓치게 되는 문장
 5. 한 번 들어서는 따라갈 수 없게 정보가 몰린 문장
+6. 영어를 옮긴 듯한 말투 — "~를 통해", "~에 의해", "가지고 있다", "되어지다"처럼 한국어로 말할 때 안 쓰는 꼴
 
 문체 취향, 문장 길이, 맞춤법은 지적하지 않습니다. 실제로 알아듣기 막히는 문장만 고릅니다.
 막히는 곳이 없으면 빈 배열을 냅니다. 많아도 6개까지, 가장 막히는 것부터.
@@ -823,11 +827,14 @@ export async function generateScript(
   let blanks = blankScenes(lines);
   let unclear: Unclear[] = [];
   let listen: Readability;
+  // 목록에 있는 어색한 표현은 모델 없이 찾는다 — 검사 모델이 실패해도 이것은 걸린다
+  const styleOf = (ls: ShortsLine[]) => styleUnclear(ls.map((l) => l.ko).join("\n"));
   try {
-    unclear = await listenTo(title, lines);
+    unclear = mergeUnclear(await listenTo(title, lines), styleOf(lines));
     listen = { before: unclear.length, after: null, rewritten: false, unclear };
   } catch (err) {
-    listen = { before: null, after: null, rewritten: false, unclear: [], error: (err as Error).message };
+    unclear = styleOf(lines);
+    listen = { before: null, after: null, rewritten: false, unclear, error: (err as Error).message };
   }
   if (unclear.length > 0) {
     console.warn(
@@ -894,7 +901,12 @@ export async function generateScript(
     blanks = blankScenes(lines);
     if (unclear.length > 0) {
       const left = await listenTo(title, lines).catch(() => null);
-      listen = { before: unclear.length, after: left ? left.length : null, rewritten: true, unclear };
+      listen = {
+        before: unclear.length,
+        after: left ? mergeUnclear(left, styleOf(lines)).length : null,
+        rewritten: true,
+        unclear,
+      };
     }
   }
   listenResults.set(`${repo}/${date}`, listen);
