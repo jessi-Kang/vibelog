@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
+import { askReader, type Readability, type Unclear } from "./readability";
 import matter from "gray-matter";
 import {
   type DiagramSpec,
@@ -48,6 +49,8 @@ const MOTIF_MENU = motifMenu();
 
 const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작가입니다.
 데브로그 한 편을 받아 내레이션 대본을 씁니다. 개발자 본인이 담백하게 말하는 존댓말입니다.
+말하는 사람은 프로젝트를 만드는 Jessi 본인("저")이고, 내레이션도 Jessi의 목소리로 나갑니다.
+문장에 "Jessi"라는 이름을 넣지 않습니다 — 본인 목소리가 자기 이름을 3인칭으로 부르게 됩니다.
 
 **구성은 내용이 정한다.** 개수·순번·로테이션으로 정하지 않는다. 무엇을 화면으로
 보여주고, 무엇을 그림으로 설명하고, 어디를 크게 잡을지는 **그 문장이 무슨 말을
@@ -626,6 +629,50 @@ function getProjectMeta(repo: string): ProjectMeta {
   }
 }
 
+/**
+ * 듣기 검사 — 대본을 쓴 뒤, 목소리를 만들기 전에 한 번 듣는다.
+ *
+ * 대본 다음이 돈이 가장 많이 드는 구간이다 (목소리 생성 → 화면 녹화 → 렌더).
+ * 어색한 문장은 그 앞에서 잡아야 다시 만드는 비용이 없다. 글과 기준이 다르다:
+ * 영상은 되돌려 듣지 않고, 자막 길이에 맞추려 말을 줄이다 "미리보기 도장"처럼
+ * 관계가 사라진 말이 생긴다. 걸리면 빈 화면 검사와 **같은 한 번의** 다시 쓰기에
+ * 합쳐 고친다 — Opus 호출이 늘지 않는다.
+ */
+const LISTEN_SYSTEM = `당신은 개발을 모르는 사람입니다. 휴대폰으로 30–45초짜리 짧은 영상을 보며 아래
+내레이션을 귀로 한 번 듣습니다. 화면에 자막이 같이 뜹니다. 되돌려 듣지 않습니다.
+이 프로젝트도, 이 채널의 지난 영상도 모릅니다.
+
+들으면서 멈추게 되는 문장을 고릅니다. 멈추는 이유는 다섯 중 하나입니다.
+1. 처음 듣는 말 — 전문 용어, 내부에서만 쓰는 이름, 줄임말
+2. 명사를 붙여 만든 말이라 관계를 알 수 없는 말 — "미리보기 도장"처럼 무엇이 무엇에
+   어떻게 하는지 알 수 없는 말
+3. 무엇을 가리키는지 모르는 말 — "그거", "그 문제"처럼 앞에서 나온 적 없는 것
+4. 앞 문장과 이어지지 않아 이야기를 놓치게 되는 문장
+5. 한 번 들어서는 따라갈 수 없게 정보가 몰린 문장
+
+문체 취향, 문장 길이, 맞춤법은 지적하지 않습니다. 실제로 알아듣기 막히는 문장만 고릅니다.
+막히는 곳이 없으면 빈 배열을 냅니다. 많아도 6개까지, 가장 막히는 것부터.
+
+반드시 JSON 배열 하나만 출력합니다 (코드펜스 없이):
+[{"sentence": "내레이션 문장 그대로", "why": "어디서 왜 막혔는지 한 문장"}]`;
+
+/** 내레이션(한국어)만 순서대로 들려준다 — 화면 지시는 듣는 사람이 모른다 */
+function listenTo(title: string, lines: ShortsLine[]): Promise<Unclear[]> {
+  return askReader(
+    LISTEN_SYSTEM,
+    [`영상 제목: ${title}`, "", ...lines.map((l, i) => `${i + 1}. ${l.ko}`)].join("\n"),
+    "listen",
+  );
+}
+
+/** 마지막 듣기 검사 결과 — run.ts가 쇼츠 줄에 붙인다 (repo/date → 결과) */
+const listenResults = new Map<string, Readability>();
+export function takeListenCheck(repo: string, date: string): Readability | undefined {
+  const r = listenResults.get(`${repo}/${date}`);
+  listenResults.delete(`${repo}/${date}`);
+  return r;
+}
+
 export async function generateScript(
   repo: string,
   date: string,
@@ -766,15 +813,67 @@ export async function generateScript(
     new Set(screens.map((sc) => sc.path)),
   );
 
-  // 빈 화면이 될 문장이 있으면 그 문장들을 집어 한 번 다시 쓰게 한다.
-  // 고쳐 오면 그걸 쓰고, 그래도 비어 있으면 던진다 — 영상을 만들지 않는다.
+  // 두 가지를 본다. 빈 화면이 될 문장(화면도 그림도 없음)과, 처음 듣는 사람이
+  // 알아듣기 막히는 문장. 하나라도 있으면 둘을 합쳐 **한 번** 다시 쓰게 한다.
+  // 고쳐 오면 그걸 쓰고, 빈 화면이 그래도 남으면 던진다 — 영상을 만들지 않는다.
+  // 듣기 검사는 실패해도 영상을 막지 않는다 (검사를 못 한 것이지 대본이 틀린 게 아니다).
+  const title = String(data.title ?? "");
   let blanks = blankScenes(lines);
-  if (blanks.length > 0) {
+  let unclear: Unclear[] = [];
+  let listen: Readability;
+  try {
+    unclear = await listenTo(title, lines);
+    listen = { before: unclear.length, after: null, rewritten: false, unclear };
+  } catch (err) {
+    listen = { before: null, after: null, rewritten: false, unclear: [], error: (err as Error).message };
+  }
+  if (unclear.length > 0) {
     console.warn(
-      `[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks
-        .map((l) => `"${l.ko.slice(0, 24)}"`)
-        .join(", ")}`,
+      `[listen] 알아듣기 막힌 문장 ${unclear.length}개:\n` +
+        unclear.map((u) => `  - "${u.sentence}" → ${u.why}`).join("\n"),
     );
+  }
+  if (blanks.length > 0 || unclear.length > 0) {
+    if (blanks.length > 0) {
+      console.warn(
+        `[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks
+          .map((l) => `"${l.ko.slice(0, 24)}"`)
+          .join(", ")}`,
+      );
+    }
+    const ask: string[] = [];
+    if (blanks.length > 0) {
+      ask.push(
+        "아래 문장들은 화면(screen/find)도 그림(diagram)도 없어 배경과 자막만",
+        "뜬 빈 화면으로 나갑니다. 이건 영상 장애입니다.",
+        ...blanks.map((l) => `  - [${l.scene}] ${l.ko}`),
+        "",
+        "각 문장에 대해 하나를 고르세요 —",
+        "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
+        "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
+        "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
+        "③ 둘 다 아니지만 문장의 **모양**이 아래 어휘 중 하나와 맞으면",
+        "   motif를 넣는다 (라벨 없는 아이콘. 화면·그림이 있으면 그쪽이 이긴다).",
+        MOTIF_MENU,
+        "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
+        "   없는 문장은 영상에 자리가 없습니다.",
+        "",
+      );
+    }
+    if (unclear.length > 0) {
+      ask.push(
+        "개발을 모르는 사람이 이 내레이션을 처음 들으며 아래 문장에서 막혔습니다.",
+        ...unclear.map((u) => `  - "${u.sentence}" → ${u.why}`),
+        "",
+        "이 문장들을 귀로 한 번에 알아듣게 고치세요 —",
+        "- 모르는 말은 화면에서 보이는 말로 바꾸거나 빼고, 붙여 만든 말은 조사를",
+        "  살려 관계를 밝힙니다. 데브로그 본문에 없는 복합명사를 새로 만들지 않습니다.",
+        "- 자막 길이가 넘치면 줄이지 말고 문장을 쪼갭니다. 문장 수 상한은 그대로입니다.",
+        "- 고친 문장의 keywords·stat·en도 고친 문장에 맞춥니다. 화면·그림 지정은 유지합니다.",
+        "",
+      );
+    }
+    ask.push("전체 JSON을 같은 형식으로 다시 출력하세요 (말한 문장 말고는 그대로).");
     const retry = await client.messages.create({
       model: MODEL,
       max_tokens: 16000,
@@ -783,26 +882,7 @@ export async function generateScript(
       messages: [
         { role: "user", content: userPrompt },
         { role: "assistant", content: text },
-        {
-          role: "user",
-          content: [
-            "아래 문장들은 화면(screen/find)도 그림(diagram)도 없어 배경과 자막만",
-            "뜬 빈 화면으로 나갑니다. 이건 영상 장애입니다.",
-            ...blanks.map((l) => `  - [${l.scene}] ${l.ko}`),
-            "",
-            "각 문장에 대해 하나를 고르세요 —",
-            "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
-            "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
-            "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
-            "③ 둘 다 아니지만 문장의 **모양**이 아래 어휘 중 하나와 맞으면",
-            "   motif를 넣는다 (라벨 없는 아이콘. 화면·그림이 있으면 그쪽이 이긴다).",
-            MOTIF_MENU,
-            "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
-            "   없는 문장은 영상에 자리가 없습니다.",
-            "",
-            "전체 JSON을 같은 형식으로 다시 출력하세요 (다른 문장은 그대로).",
-          ].join("\n"),
-        },
+        { role: "user", content: ask.join("\n") },
       ],
     });
     noteUsage("script", retry.usage);
@@ -810,7 +890,12 @@ export async function generateScript(
     parsed = parseJson(text);
     lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
     blanks = blankScenes(lines);
+    if (unclear.length > 0) {
+      const left = await listenTo(title, lines).catch(() => null);
+      listen = { before: unclear.length, after: left ? left.length : null, rewritten: true, unclear };
+    }
   }
+  listenResults.set(`${repo}/${date}`, listen);
   if (blanks.length > 0) {
     throw new Error(
       `빈 화면이 될 문장이 남아 있습니다 (${blanks.length}개) — 영상을 만들지 않습니다: ` +

@@ -24,7 +24,8 @@ import { fmtTally, takeUsage } from "./usage";
 import { getDevlogs, parseSections } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
-import { NoScreensError } from "./script";
+import { NoScreensError, takeListenCheck } from "./script";
+import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
@@ -40,31 +41,24 @@ function recentTitles(repo: string, before: string): { date: string; title: stri
 }
 
 /**
- * 읽기 검사 결과를 홈 "지난 실행"에 한 줄로 — 글이 다시 쓰였는지, 몇 문장이
- * 걸렸는지 로그를 안 열고 보이게. 검사가 실패해도 글은 나갔으므로 fail은
- * 검사를 못 한 경우에만 붙인다.
+ * 읽기·듣기 검사 결과를 홈 "지난 실행"에 한 줄로 — 원고가 다시 쓰였는지, 몇
+ * 문장이 걸렸는지 로그를 안 열고 보이게. 검사가 실패해도 글·영상은 나갔으므로
+ * fail은 검사를 못 한 경우에만 붙인다.
  */
-function readabilityLine(id: string, r: Readability): RunLine {
-  const tally = fmtTally(takeUsage("review"));
+function checkLine(
+  label: "review " | "listen ",
+  id: string,
+  r: Readability | undefined,
+  stage: "review" | "listen",
+): RunLine {
+  const tally = fmtTally(takeUsage(stage));
   const tail = tally ? ` · ${tally}` : "";
-  if (r.error && !r.rewritten) {
-    return {
-      text: `review   · ${id} 읽기 검사를 못 해 첫 원고 그대로 냄${tail}`,
-      textEn: `review   · ${id} readability check failed — published the first draft${tail}`,
-      kind: "fail",
-    };
-  }
-  if (!r.rewritten) {
-    return {
-      text: `review   · ${id} 처음 읽는 사람이 막힌 문장 없음${tail}`,
-      textEn: `review   · ${id} no sentence stopped a first-time reader${tail}`,
-    };
-  }
-  const left = r.after == null ? "다시 검사 못 함" : `남은 것 ${r.after}개`;
-  const leftEn = r.after == null ? "recheck failed" : `${r.after} left`;
+  if (!r) return { text: `${label}  · ${id} 검사 기록 없음${tail}` };
+  const f = fmtReadability(r);
   return {
-    text: `review   · ${id} 막힌 문장 ${r.before}개 → 다시 씀 → ${left}${tail}`,
-    textEn: `review   · ${id} ${r.before} unclear sentence${r.before === 1 ? "" : "s"} → rewritten → ${leftEn}${tail}`,
+    text: `${label}  · ${id} ${f.ko}${tail}`,
+    textEn: `${label}  · ${id} ${f.en}${tail}`,
+    ...(r.error && !r.rewritten ? { kind: "fail" as const } : {}),
   };
 }
 
@@ -545,7 +539,7 @@ async function main(): Promise<void> {
         runLines.push({
           text: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(takeUsage("generate"))}`,
         });
-        runLines.push(readabilityLine(`${a.repo}/${date}`, devlog.readability));
+        runLines.push(checkLine("review ", `${a.repo}/${date}`, devlog.readability, "review"));
         published.push(a.repo);
         await writeFigures(a.repo, date, devlog, runLines);
       } catch (err) {
@@ -590,6 +584,7 @@ async function main(): Promise<void> {
         runLines.push({
           text: `shorts   · ${repo}/${date} (ko, en) · 대본 ${fmtTally(takeUsage("script"))}`,
         });
+        runLines.push(checkLine("listen ", `${repo}/${date}`, takeListenCheck(repo, date), "listen"));
         // 데모 화면이 한 곳으로 몰렸으면 남긴다 — 같은 페이지가 비율만 달리
         // 되풀이되는 영상은 봐야 알게 되는 부류다
         const collapse = checkDemoScreens(repo, date);

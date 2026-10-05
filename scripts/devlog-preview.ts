@@ -18,6 +18,7 @@ import { Octokit } from "@octokit/rest";
 import { getDevlog, getDevlogs, getProject } from "../lib/content";
 import { getOwner, getReadme, type RepoCommit } from "./collect";
 import { generateDevlog } from "./generate";
+import { fmtReadability } from "./readability";
 import { fmtTally, takeUsage } from "./usage";
 
 /** 글의 섹션 제목(##)이 미리보기의 글 단위 제목(##)과 같은 층이 되지 않게 내린다 */
@@ -81,11 +82,7 @@ async function main() {
         "",
         `커밋 ${commits.length}개로 다시 씀 · 글 ${gen} · 읽기 검사 ${rev}`,
         "",
-        r.error
-          ? `읽기 검사: ${r.error}`
-          : r.rewritten
-            ? `읽기 검사: 막힌 문장 ${r.before}개 → 다시 씀 → 남은 것 ${r.after ?? "?"}개`
-            : "읽기 검사: 막힌 문장 없음",
+        `읽기 검사: ${fmtReadability(r).ko}${r.error ? ` (${r.error})` : ""}`,
         ...r.unclear.map((u) => `- "${u.sentence}" → ${u.why}`),
         "",
         "### 지금 글",
