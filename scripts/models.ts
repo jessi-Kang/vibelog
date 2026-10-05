@@ -1,5 +1,5 @@
 /**
- * models.ts — 글·대본 모델 호출. 새 모델을 못 찾으면(404) 한 단계 아래 모델로
+ * models.ts — 글·대본·삽화 모델 호출. 새 모델을 못 찾으면(404) 한 단계 아래 모델로
  * 한 번 다시 부른다.
  *
  * 10/5에 글·대본을 Opus 5.5로 올렸다. 모델 이름이 틀렸거나 키에 아직 열리지
@@ -20,6 +20,25 @@ export async function createMessage(
     if (err instanceof Anthropic.NotFoundError && params.model !== FALLBACK_MODEL) {
       console.warn(`[model] ${params.model}를 못 찾음 — ${FALLBACK_MODEL}로 다시 부릅니다`);
       return client.messages.create({ ...params, model: FALLBACK_MODEL });
+    }
+    throw err;
+  }
+}
+
+/**
+ * 스트리밍판 — 답 상한이 커서 SDK가 스트리밍을 요구하는 호출(삽화)용.
+ * 답은 finalMessage()로 한 덩어리로 받는다.
+ */
+export async function streamMessage(
+  client: Anthropic,
+  params: Anthropic.MessageStreamParams,
+): Promise<Anthropic.Message> {
+  try {
+    return await client.messages.stream(params).finalMessage();
+  } catch (err) {
+    if (err instanceof Anthropic.NotFoundError && params.model !== FALLBACK_MODEL) {
+      console.warn(`[model] ${params.model}를 못 찾음 — ${FALLBACK_MODEL}로 다시 부릅니다`);
+      return client.messages.stream({ ...params, model: FALLBACK_MODEL }).finalMessage();
     }
     throw err;
   }

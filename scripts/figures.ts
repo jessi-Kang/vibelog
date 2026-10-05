@@ -14,6 +14,7 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
+import { streamMessage } from "./models";
 import {
   FIG_COLOR_TOKENS,
   FIG_H_MAX,
@@ -27,7 +28,9 @@ import {
   type PostFigure,
 } from "./figure-types";
 
-const MODEL = "claude-opus-5";
+// 글·대본과 같은 모델로 맞춘다 (10/5 Jessi: "나머지도 오퍼스로 생성하면 같은걸로").
+// 못 찾으면 models.ts가 Opus 5로 넘어간다.
+const MODEL = "claude-opus-5-5";
 /**
  * 답의 상한. 16000에서 vibelog/2026-09-12(문단이 많은 글)의 답이 중간에 잘려
  * `]`가 없는 채로 와서 "JSON을 찾지 못했다"로 **그 글의 삽화가 통째로 0장**이
@@ -238,16 +241,14 @@ export async function generateFigures(
   const ask = async (
     effort: "medium" | "high",
   ): Promise<{ text: string; cut: boolean }> => {
-    const res = await client.messages
-      .stream({
-        model: MODEL,
-        max_tokens: MAX_TOKENS,
-        output_config: { effort },
-        // 규칙(~800토큰)은 글마다 같다 — 같은 밤의 두 번째 글·재작성은 캐시에서 읽는다
-        system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
-        messages,
-      })
-      .finalMessage();
+    const res = await streamMessage(client, {
+      model: MODEL,
+      max_tokens: MAX_TOKENS,
+      output_config: { effort },
+      // 규칙(~800토큰)은 글마다 같다 — 같은 밤의 두 번째 글·재작성은 캐시에서 읽는다
+      system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
+      messages,
+    });
     // 실측 토큰을 실행 기록에 남긴다 — 비용은 여기서만 정확히 셀 수 있다.
     // output에는 보이지 않는 thinking 토큰이 포함된다 (Opus 5는 기본으로 생각한다).
     usage.input += res.usage.input_tokens;
