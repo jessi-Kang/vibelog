@@ -345,13 +345,6 @@ export function PostClient({ post }: { post: PostData }) {
           </Card>
         </section>
       )}
-      {!post.short && (
-        <p className="m-0 font-mono text-2xs text-muted">
-          {en
-            ? "Shorts are made only on days with a deploy commit or a clear rabbit hole."
-            : "쇼츠는 배포 커밋이 있거나 삽질이 뚜렷한 날만 만듭니다."}
-        </p>
-      )}
       <Link
         href={`/projects/${post.repo}`}
         className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
