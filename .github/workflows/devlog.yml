@@ -116,6 +116,8 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 발행 전 안전 검사(scripts/safety.ts) — 없으면 모양 규칙만으로 검사한다
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
           # 배포 주소 자동 감지 — projects.yml과 같은 세트
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}

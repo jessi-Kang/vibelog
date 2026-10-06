@@ -21,15 +21,62 @@ import {
 } from "./generate";
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
+import { fmtNum } from "../lib/format";
 import { getDevlogs, parseSections } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
 import { NoScreensError, takeListenCheck } from "./script";
+import { checkSafety, checkSafetyMany, fmtSafety, inputFlags, SafetyBlockError, withoutTrailers, type SafetyKind } from "./safety";
+import { followsCommitRule } from "./commit-rule";
+import { enoughForPost } from "./collect";
 import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
+
+/**
+ * 안전 검사 ① — 커밋·PR·세션 요약을 AI에게 넘기기 전에 본다. 비밀 키나 AI에게 끼워 넣은
+ * 지시가 걸린 것은 글 재료와 글 페이지의 커밋 목록에서 뺀다. 빼고 나서 글을 쓸 만한
+ * 커밋이 5개 아래로 줄면 그날은 쓰지 않는다 (처리 위치를 옮기지 않으므로 다음 밤에 다시 본다).
+ */
+async function screenInput(a: RepoActivity): Promise<{ material: RepoActivity | null; line: RunLine }> {
+  const texts = [
+    ...a.commits.map((c) => withoutTrailers(c.message)),
+    ...a.mergedPRs.map((p) => `${p.title}\n${p.body}`),
+    ...a.devlogFiles.map((f) => f.content),
+  ];
+  const v = await checkSafetyMany(texts);
+  const bad = (i: number) => inputFlags(v[i]).length > 0;
+  const nc = a.commits.length;
+  const np = a.mergedPRs.length;
+  const commits = a.commits.filter((_, i) => !bad(i));
+  const mergedPRs = a.mergedPRs.filter((_, i) => !bad(nc + i));
+  const devlogFiles = a.devlogFiles.filter((_, i) => !bad(nc + np + i));
+  const removed = texts.length - commits.length - mergedPRs.length - devlogFiles.length;
+  const kinds = [...new Set(v.flatMap((x) => inputFlags(x)))] as SafetyKind[];
+  const tokens = v.reduce((s, x) => s + x.tokens, 0);
+  const jevDown = v.some((x) => x.jevError);
+  const id = a.repo;
+  const tail = `${jevDown ? " · Jev를 못 불러 모양 규칙만으로 봄" : ""}${tokens ? ` · Jev 토큰 ${fmtNum(tokens)}` : ""}`;
+  const tailEn = `${jevDown ? " · Jev unavailable, rules only" : ""}${tokens ? ` · Jev tokens ${fmtNum(tokens)}` : ""}`;
+  if (removed === 0) {
+    return {
+      material: a,
+      line: { text: `safety   · ${id} 재료 ${texts.length}개 통과${tail}`, textEn: `safety   · ${id} ${texts.length} inputs passed${tailEn}` },
+    };
+  }
+  const material = { ...a, commits, mergedPRs, devlogFiles };
+  const enough = enoughForPost(commits.filter((c) => followsCommitRule(c.message)).length);
+  return {
+    material: enough ? material : null,
+    line: {
+      text: `safety   · ${id} 재료 ${removed}개를 뺐습니다 — ${fmtSafety(kinds)}${enough ? "" : " · 남은 커밋으로는 글을 쓰지 않습니다"}${tail}`,
+      textEn: `safety   · ${id} removed ${removed} input${removed === 1 ? "" : "s"} — ${kinds.join(", ")}${enough ? "" : " · not enough left for a post"}${tailEn}`,
+      kind: "fail",
+    },
+  };
+}
 
 /** 같은 레포의 지난 글 제목 3개 (최근 것부터) — 글이 지난 이야기와 이어지는지 보게 */
 function recentTitles(repo: string, before: string): { date: string; title: string }[] {
@@ -533,8 +580,15 @@ async function main(): Promise<void> {
       published.push(a.repo); // 글은 이미 있으므로 쇼츠는 시도한다
     } else {
       try {
-        const devlog = await generateDevlog(a, date, { recent: recentTitles(a.repo, date) });
-        await writeDevlog(a.repo, date, devlog, a);
+        // 안전 검사 ① — 커밋·PR·세션 요약을 AI에게 넘기기 전에 본다 (scripts/safety.ts)
+        const input = await screenInput(a);
+        runLines.push(input.line);
+        if (!input.material) continue; // 걸러 내고 나니 글을 쓸 만큼 안 남았다 — 다음 밤에 다시 본다
+        const devlog = await generateDevlog(input.material, date, { recent: recentTitles(a.repo, date) });
+        // 안전 검사 ② — 완성된 글을 발행하기 전에 본다. 걸리면 그날 글을 내지 않는다
+        const out = await checkSafety([devlog.title, devlog.titleEn, devlog.ko, devlog.en].join("\n\n"));
+        if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
+        await writeDevlog(a.repo, date, devlog, input.material);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
         runLines.push({
           text: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(takeUsage("generate"))}`,
@@ -543,6 +597,16 @@ async function main(): Promise<void> {
         published.push(a.repo);
         await writeFigures(a.repo, date, devlog, runLines);
       } catch (err) {
+        if (err instanceof SafetyBlockError) {
+          // 무엇이 걸렸는지 종류만 남긴다 — 실행 기록은 홈에 공개된다
+          console.warn(`- ${a.repo}/${date} ${err.message}`);
+          runLines.push({
+            text: `block    · ${a.repo}/${date} ${err.message}`,
+            textEn: `block    · ${a.repo}/${date} withheld by the safety check — ${err.flags.join(", ")}`,
+            kind: "fail",
+          });
+          continue;
+        }
         // 한 레포의 실패가 나머지 발행을 막지 않게 한다
         failed++;
         console.error(`- ${a.repo} 생성 실패:`, err);
@@ -599,6 +663,15 @@ async function main(): Promise<void> {
           );
         }
       } catch (err) {
+        if (err instanceof SafetyBlockError) {
+          console.warn(`- ${repo} ${err.message}`);
+          runLines.push({
+            text: `block    · ${repo}/${date} ${err.message}`,
+            textEn: `block    · ${repo}/${date} short withheld by the safety check — ${err.flags.join(", ")}`,
+            kind: "fail",
+          });
+          continue;
+        }
         if (err instanceof NoScreensError) {
           // 돈을 쓰기 전에 멈춘 것이다 — 실패가 아니라 건너뜀
           console.log(`- ${repo} ${err.message}`);
