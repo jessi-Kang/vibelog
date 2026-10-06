@@ -55,6 +55,8 @@ export interface DevlogEntry {
   short?: ShortsMeta; // 이 글의 쇼츠 (있으면)
   /** 책 삽화처럼 문단 사이에 들어가는 그림. 검증을 통과한 것만 실린다 */
   figures?: PostFigure[];
+  /** 이 글이 이어 가는 같은 레포 지난 글의 날짜 (frontmatter continues). 그 글이 있을 때만 */
+  continues?: string;
 }
 
 export interface ShortsMeta {
@@ -249,6 +251,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(shas ? { shas } : {}),
         ...(shasEn ? { shasEn } : {}),
         ...(figures?.length ? { figures } : {}),
+        ...(typeof data.continues === "string" ? { continues: data.continues } : {}),
         day: i + 1,
       });
     });
@@ -256,6 +259,11 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
   const sorted = entries.sort(
     (a, b) => b.date.localeCompare(a.date) || a.repo.localeCompare(b.repo),
   );
+  // 이어지는 글은 같은 레포의 더 앞선 글만 — 없는 글이나 뒤의 글을 가리키면 버린다
+  for (const e of sorted) {
+    if (e.continues && !sorted.some((x) => x.repo === e.repo && x.date === e.continues && x.date < e.date))
+      delete e.continues;
+  }
   // 쇼츠 연결
   const shorts = getShorts();
   for (const e of sorted) {
@@ -263,6 +271,38 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
     if (s) e.short = s;
   }
   return sorted;
+}
+
+/**
+ * 글을 쓸 때 넘기는 같은 레포의 지난 글 8편 (최근 것부터) — 제목과 "다음 할 것".
+ * 글 모델이 이야기가 이어지는지 보고, 이어지면 그 날짜를 continues로 고른다.
+ * 10/7 시험에서 이어진 글은 모두 지난 글이 "다음 할 것"에 적어 둔 일을 한 날이었다.
+ * 밤 실행(run.ts)과 지난 글 다시 쓰기(devlog-preview.ts)가 같이 쓴다.
+ */
+export function recentPosts(
+  repo: string,
+  before: string,
+): { date: string; title: string; next?: string }[] {
+  return getDevlogs(repo)
+    .filter((d) => d.date < before)
+    .slice(0, 8)
+    .map((d) => ({
+      date: d.date,
+      title: d.title,
+      ...(d.sections.next ? { next: d.sections.next.replace(/\s+/g, " ").slice(0, 300) } : {}),
+    }));
+}
+
+/** 이 글의 앞(이어 가는 지난 글)과 뒤(이 글을 이어 간 글들) — 글 끝 "이 이야기의 앞뒤" */
+export function storyThread(
+  post: DevlogEntry,
+  all: DevlogEntry[] = getDevlogs(post.repo),
+): { prev?: DevlogEntry; next: DevlogEntry[] } {
+  const same = all.filter((d) => d.repo === post.repo);
+  return {
+    prev: post.continues ? same.find((d) => d.date === post.continues) : undefined,
+    next: same.filter((d) => d.continues === post.date).sort((a, b) => a.date.localeCompare(b.date)),
+  };
 }
 
 export function getDevlog(repo: string, date: string): DevlogEntry | undefined {

@@ -15,7 +15,7 @@
  */
 import fs from "node:fs";
 import { Octokit } from "@octokit/rest";
-import { getDevlog, getDevlogs, getProject } from "../lib/content";
+import { getDevlog, getProject, recentPosts } from "../lib/content";
 import { getOwner, getReadme, type RepoCommit } from "./collect";
 import { generateDevlog } from "./generate";
 import { fmtReadability } from "./readability";
@@ -57,11 +57,7 @@ async function main() {
           files: (data.files ?? []).map((f) => f.filename),
         });
       }
-      const recent = getDevlogs(repo)
-        .filter((d) => d.date < date)
-        .sort((x, y) => y.date.localeCompare(x.date))
-        .slice(0, 3)
-        .map((d) => ({ date: d.date, title: d.title }));
+      const recent = recentPosts(repo, date);
       const next = await generateDevlog(
         {
           repo,

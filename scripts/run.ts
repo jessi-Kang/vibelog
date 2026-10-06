@@ -22,7 +22,7 @@ import {
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
 import { fmtNum } from "../lib/format";
-import { getDevlogs, parseSections } from "../lib/content";
+import { parseSections, recentPosts } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
 import { NoScreensError, takeListenCheck } from "./script";
@@ -76,15 +76,6 @@ async function screenInput(a: RepoActivity): Promise<{ material: RepoActivity | 
       kind: "fail",
     },
   };
-}
-
-/** 같은 레포의 지난 글 제목 3개 (최근 것부터) — 글이 지난 이야기와 이어지는지 보게 */
-function recentTitles(repo: string, before: string): { date: string; title: string }[] {
-  return getDevlogs(repo)
-    .filter((d) => d.date < before)
-    .sort((x, y) => y.date.localeCompare(x.date))
-    .slice(0, 3)
-    .map((d) => ({ date: d.date, title: d.title }));
 }
 
 /**
@@ -312,7 +303,7 @@ async function writeFigures(
 async function writeDevlog(
   repo: string,
   date: string,
-  d: { title: string; titleEn: string; ko: string; en: string; failStory?: boolean },
+  d: { title: string; titleEn: string; ko: string; en: string; failStory?: boolean; continues?: string | null },
   a: RepoActivity,
 ): Promise<void> {
   const file = devlogPath(repo, date);
@@ -360,6 +351,7 @@ async function writeDevlog(
     `repo: ${JSON.stringify(repo)}`,
     `commits: ${a.commits.length}`,
     `failStory: ${d.failStory === true}`,
+    ...(d.continues ? [`continues: "${d.continues}"`] : []),
     `prs: ${a.mergedPRs.length}`,
     `shas: ${JSON.stringify(shas)}`,
     ...(shasEn.length > 0 ? [`shasEn: ${JSON.stringify(shasEn)}`] : []),
@@ -584,7 +576,7 @@ async function main(): Promise<void> {
         const input = await screenInput(a);
         runLines.push(input.line);
         if (!input.material) continue; // 걸러 내고 나니 글을 쓸 만큼 안 남았다 — 다음 밤에 다시 본다
-        const devlog = await generateDevlog(input.material, date, { recent: recentTitles(a.repo, date) });
+        const devlog = await generateDevlog(input.material, date, { recent: recentPosts(a.repo, date) });
         // 안전 검사 ② — 완성된 글을 발행하기 전에 본다. 걸리면 그날 글을 내지 않는다
         const out = await checkSafety([devlog.title, devlog.titleEn, devlog.ko, devlog.en].join("\n\n"));
         if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
