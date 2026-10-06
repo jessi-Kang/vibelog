@@ -4,6 +4,11 @@
 name: jev-trial
 
 on:
+  # 이 세션에는 워크플로를 직접 띄울 권한이 없어서, 시험 파일이 바뀌어 푸시되면 돈다
+  push:
+    paths:
+      - "scripts/jev-trial.ts"
+      - ".github/workflows/jev-trial.yml"
   workflow_dispatch:
     inputs:
       since:
@@ -28,7 +33,7 @@ jobs:
       - name: Ask Jev about past commits
         run: npx tsx scripts/jev-trial.ts "$SINCE"
         env:
-          SINCE: ${{ inputs.since }}
+          SINCE: ${{ inputs.since || '2026-09-01' }}
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
