@@ -20,6 +20,8 @@ export interface GeneratedDevlog {
   en: string;
   /** 그날 이야기의 중심이 삽질이었나 — 목록의 "삽질" 배지 (docs/post-project-and-kind.html C안) */
   failStory: boolean;
+  /** 이 글이 이어 가는 지난 글의 날짜 — 글 끝 "이 이야기의 앞뒤" (docs/post-thread.html). 없으면 null */
+  continues: string | null;
 }
 
 // 글은 독자가 직접 읽는 원고라 가장 좋은 모델로 쓴다 (10/5 Jessi: "글 쓰기만
@@ -108,8 +110,15 @@ ${styleRulesForPrompt()}
 고쳤습니다" 같은 꼴). 만든 것·들인 것·바꾼 것이 줄기이고 삽질은 곁가지였으면 false.
 삽질 섹션은 형식이라 늘 채워지므로, 섹션이 있다고 true가 아닙니다.
 
+## continues
+재료에 "이 프로젝트의 지난 글"이 있으면, 오늘 글이 그중 한 편의 이야기를 **바로 이어
+가는지** 봅니다. 그 글이 "다음 할 것"에 적어 둔 일을 오늘 했거나, 그 글에서 만든 것을
+오늘 고치거나 넓혔으면 그 글의 날짜("2026-09-15")를 냅니다. 글 페이지 끝에 "이 이야기의
+앞뒤" 링크로 걸립니다. 제목에 같은 낱말이 있다는 것만으로는 이어진 것이 아닙니다. 다른
+이야기이거나 확실하지 않으면 null — 잘못 이은 링크는 링크가 없는 것보다 나쁩니다.
+
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
-{"title": "한국어 제목 (…했습니다 체)", "titleEn": "English title", "ko": "한국어 마크다운", "en": "English markdown", "failStory": false}`;
+{"title": "한국어 제목 (…했습니다 체)", "titleEn": "English title", "ko": "한국어 마크다운", "en": "English markdown", "failStory": false, "continues": null}`;
 
 /** 글 재료 중 생성에 쓰는 부분 — 지난 글을 다시 써 보는 미리보기도 같은 꼴로 만든다 */
 export type DevlogMaterial = Pick<
@@ -117,9 +126,9 @@ export type DevlogMaterial = Pick<
   "repo" | "description" | "commits" | "mergedPRs" | "devlogFiles" | "readme"
 >;
 
-/** 독자가 이미 본 이야기 — 같은 레포의 지난 글 제목 (최근 것부터) */
+/** 독자가 이미 본 이야기 — 같은 레포의 지난 글 제목과 "다음 할 것" (최근 것부터) */
 export interface PostContext {
-  recent: { date: string; title: string }[];
+  recent: { date: string; title: string; next?: string }[];
 }
 
 function buildUserPrompt(
@@ -139,8 +148,8 @@ function buildUserPrompt(
   }
   if (ctx && ctx.recent.length > 0) {
     parts.push(
-      "## 이 프로젝트의 지난 글 (최근 것부터 — 이어지는 이야기인지 볼 때만)",
-      ...ctx.recent.map((r) => `- ${r.date} ${r.title}`),
+      "## 이 프로젝트의 지난 글 (최근 것부터 — 이어지는 이야기인지 볼 때만. continues는 이 날짜 중 하나 또는 null)",
+      ...ctx.recent.map((r) => `- ${r.date} ${r.title}${r.next ? `\n  다음 할 것: ${r.next}` : ""}`),
     );
   }
   if (a.devlogFiles.length > 0) {
@@ -167,7 +176,7 @@ function buildUserPrompt(
   return parts.join("\n\n");
 }
 
-function parseJson(text: string): GeneratedDevlog {
+function parseJson(text: string, ctx?: PostContext): GeneratedDevlog {
   // 모델이 코드펜스로 감싸는 경우까지 방어
   const cleaned = text
     .trim()
@@ -186,6 +195,11 @@ function parseJson(text: string): GeneratedDevlog {
   }
   // 빠졌거나 이상한 값이면 false — 배지는 확실할 때만 붙인다
   parsed.failStory = parsed.failStory === true;
+  // 보기에 없는 날짜는 버린다 — 모델이 날짜를 지어내면 없는 글로 가는 링크가 된다
+  parsed.continues =
+    typeof parsed.continues === "string" && ctx?.recent.some((r) => r.date === parsed.continues)
+      ? parsed.continues
+      : null;
   return parsed as GeneratedDevlog;
 }
 
@@ -265,7 +279,7 @@ export async function generateDevlog(
   });
   noteUsage("generate", first.usage);
   const firstText = textOf(first.content);
-  const draft = parseJson(firstText);
+  const draft = parseJson(firstText, ctx);
 
   // 두 가지를 합친다: 처음 읽는 사람 역할의 모델이 막힌 문장과, 목록에 있는
   // 어색한 표현이 든 문장(모델 없이 찾는다). 검사 모델이 실패해도 목록 검사는 남는다.
@@ -301,7 +315,7 @@ export async function generateDevlog(
       ],
     });
     noteUsage("generate", second.usage);
-    fixed = parseJson(textOf(second.content));
+    fixed = parseJson(textOf(second.content), ctx);
   } catch (err) {
     return {
       ...draft,
