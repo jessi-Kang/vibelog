@@ -2,10 +2,10 @@
  {
   "section": "did",
   "after": 0,
-  "alt": "내가 쓴 메모가 5개 이상이면 글을 올리고, 모자라면 다음 날로 넘기는 갈림길 그림",
-  "altEn": "A fork: with 5 or more of my notes a post goes up, otherwise the notes carry over to the next day",
-  "caption": "메모가 5개 이상 쌓여야 글이 나옵니다",
-  "captionEn": "A post appears only once 5 or more notes pile up",
+  "alt": "내가 쓴 커밋이 5개 이상이면 글을 올리고, 모자라면 다음 날로 넘기는 갈림길 그림",
+  "altEn": "A fork: with 5 or more of my commits a post goes up, otherwise the commits carry over to the next day",
+  "caption": "커밋이 5개 이상 쌓여야 글이 나옵니다",
+  "captionEn": "A post appears only once 5 or more commits pile up",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -16,7 +16,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "내가 쓴 메모가 5개 이상이면 글을 올리고, 모자라면 다음 날로 넘깁니다"
+     "text": "내가 쓴 커밋이 5개 이상이면 글을 올리고, 모자라면 다음 날로 넘깁니다"
     },
     {
      "tag": "g",
@@ -104,7 +104,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "내가 쓴 메모"
+     "text": "내가 쓴 커밋"
     },
     {
      "tag": "line",
@@ -271,7 +271,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "With 5 or more of my notes a post goes up; otherwise they carry over to the next day"
+     "text": "With 5 or more of my commits a post goes up; otherwise they carry over to the next day"
     },
     {
      "tag": "g",
@@ -359,7 +359,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "My notes"
+     "text": "My commits"
     },
     {
      "tag": "line",
@@ -520,10 +520,10 @@
  {
   "section": "fail",
   "after": 0,
-  "alt": "프로그램이 남긴 메모는 세지 않고, 내가 쓴 메모만 센다는 것을 보여 주는 두 갈래 그림",
-  "altEn": "Two lanes: notes left by a program are not counted, only notes I wrote are counted",
-  "caption": "이제 프로그램이 남긴 메모는 세지 않습니다",
-  "captionEn": "Notes left by a program no longer count",
+  "alt": "프로그램이 남긴 커밋은 세지 않고, 내가 쓴 커밋만 센다는 것을 보여 주는 두 갈래 그림",
+  "altEn": "Two lanes: commits left by a program are not counted, only commits I wrote are counted",
+  "caption": "이제 프로그램이 남긴 커밋은 세지 않습니다",
+  "captionEn": "Commits left by a program no longer count",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -534,7 +534,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "프로그램이 남긴 메모는 세지 않고, 내가 쓴 메모만 셉니다"
+     "text": "프로그램이 남긴 커밋은 세지 않고, 내가 쓴 커밋만 셉니다"
     },
     {
      "tag": "rect",
@@ -559,7 +559,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "프로그램이 남긴 메모"
+     "text": "프로그램이 남긴 커밋"
     },
     {
      "tag": "line",
@@ -636,7 +636,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "내가 쓴 메모"
+     "text": "내가 쓴 커밋"
     },
     {
      "tag": "line",
@@ -679,7 +679,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "Notes left by a program are not counted; only notes I wrote are counted"
+     "text": "Commits left by a program are not counted; only commits I wrote are counted"
     },
     {
      "tag": "rect",
@@ -704,7 +704,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "Program's notes"
+     "text": "Bot commits"
     },
     {
      "tag": "line",
@@ -781,7 +781,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "My notes"
+     "text": "My commits"
     },
     {
      "tag": "line",
