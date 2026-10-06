@@ -1,0 +1,328 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-06",
+  "day": 14,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "같은 글이 12편이나 올라갔습니다",
+      "en": "The same post went up 12 times.",
+      "keywords": [
+        "12편이나"
+      ],
+      "keywordsEn": [
+        "12 times"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "이 블로그는 제 작업 메모로 글을 씁니다.",
+      "en": "This blog writes posts from my work notes.",
+      "keywords": [
+        "작업 메모로"
+      ],
+      "keywordsEn": [
+        "work notes"
+      ],
+      "screen": "/about",
+      "find": "어떻게 돌아가나",
+      "findEn": "How it works",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "퀴즈 하나가 밤마다 저절로 메모를 남깁니다.",
+      "en": "One of my quizzes leaves a note on its own every night.",
+      "keywords": [
+        "밤마다",
+        "저절로"
+      ],
+      "keywordsEn": [
+        "every night",
+        "on its own"
+      ],
+      "screen": "/projects/apart",
+      "find": "apart",
+      "findEn": "apart",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "블로그는 그 메모로도 밤마다 글을 썼습니다.",
+      "en": "The blog turned that note into a post every night too.",
+      "keywords": [
+        "그 메모로도"
+      ],
+      "keywordsEn": [
+        "that note"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "프로그램이 남긴 메모",
+          "제가 쓴 메모",
+          "똑같이 셌다"
+        ],
+        "labelsEn": [
+          "Program's notes",
+          "My notes",
+          "Counted the same"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 프로그램이 남긴 메모는 세지 않습니다.",
+      "en": "Now notes left by a program don't count.",
+      "keywords": [
+        "세지 않습니다."
+      ],
+      "keywordsEn": [
+        "don't count"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "모든 메모",
+          "매일 밤 글",
+          "제가 쓴 메모만",
+          "모아서 글"
+        ],
+        "labelsEn": [
+          "Every note",
+          "A post nightly",
+          "Only my notes",
+          "Post when enough"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "제가 쓴 메모가 5개 쌓여야 글이 나옵니다.",
+      "en": "A post appears only after 5 of my notes pile up.",
+      "keywords": [
+        "5개",
+        "쌓여야"
+      ],
+      "keywordsEn": [
+        "5 of my notes"
+      ],
+      "stat": "5개",
+      "statEn": "5 notes",
+      "motif": "stack"
+    },
+    {
+      "scene": "demo",
+      "ko": "겹친 12편은 모두 지웠습니다.",
+      "en": "I deleted all 12 duplicate posts.",
+      "keywords": [
+        "모두 지웠습니다."
+      ],
+      "keywordsEn": [
+        "deleted"
+      ],
+      "stat": "12편",
+      "statEn": "12 posts",
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "바뀐 블로그는 오늘 밤 처음 움직입니다.",
+      "en": "Tonight the updated blog runs for the first time.",
+      "keywords": [
+        "오늘 밤"
+      ],
+      "keywordsEn": [
+        "Tonight"
+      ],
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "last run",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "메모가 모자라면 글을 건너뛰는지 지켜봅니다.",
+      "en": "I'll watch whether it skips the post when notes fall short.",
+      "keywords": [
+        "모자라면"
+      ],
+      "keywordsEn": [
+        "skips"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 메모가 모일 때만 글이 나갑니다.",
+      "en": "Now posts go out only when notes add up.",
+      "keywords": [
+        "모일 때만"
+      ],
+      "keywordsEn": [
+        "only when"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "같은 글이 매일 올라왔다",
+    "titleEn": "The same post, every night",
+    "before": "프로그램이 남긴 메모로 매일 글",
+    "after": "제가 쓴 메모 5개가 쌓여야 글",
+    "beforeEn": "A program's note triggered a post nightly",
+    "afterEn": "Posts wait for 5 notes I wrote"
+  },
+  "commits": [
+    [
+      "89cc11b",
+      "한국어 표현 검사기가 두 줄에 걸친 인용을 제대로 건너뛰게 한다"
+    ],
+    [
+      "56d9905",
+      "한국어를 처음 읽는 사람이 알아듣게 쓰도록 규칙·검사기·밤 검사를 더한다"
+    ],
+    [
+      "e0ca3f1",
+      "삽화도 Opus 5.5로 그린다 — Opus로 만드는 것을 한 모델로 맞춘다"
+    ],
+    [
+      "9bbfc8e",
+      "글·쇼츠 대본을 Opus 5.5로 쓴다 — 못 찾으면 Opus 5로 넘어간다"
+    ],
+    [
+      "090d3e5",
+      "쇼츠 대본도 목소리를 만들기 전에 한 번 듣고, 글은 Jessi 한 명이 \"저\"로 말한다"
+    ],
+    [
+      "83397e3",
+      "데브로그가 처음 읽는 사람에게 읽히게 — 지시문을 고치고 읽기 검사를 넣는다"
+    ],
+    [
+      "1b38022",
+      "문서·실행 기록의 어려운 말을 쉬운 한국어로 바꾼다"
+    ],
+    [
+      "826a8ec",
+      "문서 최신화 — 글 문턱·쇼츠 화면 조건·비용 실측을 지금 코드에 맞춘다"
+    ],
+    [
+      "1df21f7",
+      "글을 열면 프로젝트가 보이게, \"삽질\" 배지는 삽질이 중심인 날만"
+    ],
+    [
+      "e8ed9d2",
+      "Anchor 쇼츠를 내린다 — 로그인 화면 하나만 되풀이되는 영상"
+    ],
+    [
+      "b312dc0",
+      "돈을 쓰기 전에 거는 규칙 둘 — 규칙 따른 커밋만 세고, 화면 없는 사이트는 대본을 안 쓴다"
+    ],
+    [
+      "bcf822a",
+      "레포만 만든 글을 지우고, \"Initial commit\"은 세지 않는다"
+    ],
+    [
+      "7d9c4de",
+      "apart의 봇 커밋 글을 지운다 — 야간 자동 수집 커밋 하나로 나간 글·삽화·쇼츠"
+    ],
+    [
+      "cbd0673",
+      "글·쇼츠 문턱을 사람 커밋 5개로 — 모일 때까지 만들지 않는다"
+    ],
+    [
+      "6df08ff",
+      "봇 커밋은 세지 않고, 사람 커밋 1개로는 글을 쓰지 않는다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "89cc11b",
+      "Korean expression checker properly skips multi-line quotes"
+    ],
+    [
+      "56d9905",
+      "Add rules, checkers, and night checks for Korean beginners to understand"
+    ],
+    [
+      "e0ca3f1",
+      "Draw illustrations with Opus 5.5 — align Opus creation to a single model"
+    ],
+    [
+      "9bbfc8e",
+      "Write posts and shorts scripts with Opus 5.5 — fall back to Opus 5 if not found"
+    ],
+    [
+      "090d3e5",
+      "Listen to shorts script once before voice generation, posts narrated by Jessi alone as \"I\""
+    ],
+    [
+      "83397e3",
+      "Make devlog readable for first-time readers — fix instructions and add readability checks"
+    ],
+    [
+      "1b38022",
+      "Replace difficult words in docs and execution logs with simple Korean"
+    ],
+    [
+      "826a8ec",
+      "Update docs — align post threshold, shorts screen conditions, and actual costs to current code"
+    ],
+    [
+      "1df21f7",
+      "Show project when opening posts, \"trial and error\" badge only on days centered on trial and error"
+    ],
+    [
+      "e8ed9d2",
+      "Remove Anchor shorts — video with only repeated login screen"
+    ],
+    [
+      "b312dc0",
+      "Two rules before spending money — count only rule-following commits, don't write scripts for sites without pages"
+    ],
+    [
+      "bcf822a",
+      "Delete posts created from repo alone, don't count \"Initial commit\""
+    ],
+    [
+      "7d9c4de",
+      "Remove apart bot commit messages — one night auto-collection commit for posts, illustrations, shorts"
+    ],
+    [
+      "cbd0673",
+      "Post and shorts threshold at 5 human commits — don't create until ready"
+    ],
+    [
+      "6df08ff",
+      "Don't count bot commits, don't write posts with 1 human commit"
+    ]
+  ],
+  "commitCount": 15,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "아파트 퀴즈가 남긴 메모 하나 때문에 같은 글이 12편 올라갔습니다. 이제는 제가 쓴 메모가 5개 쌓여야 글이 나옵니다.",
+    "en": "One automatic note from my apartment quiz made the same post go up 12 times. Now a post waits until 5 notes I wrote pile up."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#자동화",
+    "#삽질",
+    "#devlog",
+    "#automation",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-06.poster.jpg?v=muwrazo7",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-06.ko.mp4?v=muwrb16j",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-06.en.poster.jpg?v=muwrchu7",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-06.en.mp4?v=muwrcj7n"
+  }
+}

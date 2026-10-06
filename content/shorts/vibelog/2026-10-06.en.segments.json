@@ -1,0 +1,29 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "How it works",
+      "focusY": 0.499,
+      "start": 0.97,
+      "end": 8.99
+    },
+    {
+      "path": "/projects/apart",
+      "find": "apart",
+      "start": 9.88,
+      "end": 18.05
+    },
+    {
+      "path": "/log",
+      "start": 18.93,
+      "end": 27.25
+    },
+    {
+      "path": "/",
+      "find": "last run",
+      "focusY": 0.5,
+      "start": 28.26,
+      "end": 36.28
+    }
+  ]
+}

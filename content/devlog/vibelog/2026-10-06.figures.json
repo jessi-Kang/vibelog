@@ -1,0 +1,818 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "내가 쓴 메모가 5개 이상이면 글을 올리고, 모자라면 다음 날로 넘기는 갈림길 그림",
+  "altEn": "A fork: with 5 or more of my notes a post goes up, otherwise the notes carry over to the next day",
+  "caption": "메모가 5개 이상 쌓여야 글이 나옵니다",
+  "captionEn": "A post appears only once 5 or more notes pile up",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "내가 쓴 메모가 5개 이상이면 글을 올리고, 모자라면 다음 날로 넘깁니다"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "92",
+        "width": "55",
+        "height": "65",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "26",
+        "y": "86",
+        "width": "55",
+        "height": "65",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "80",
+        "width": "55",
+        "height": "65",
+        "rx": "4"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "40",
+        "y1": "96",
+        "x2": "78",
+        "y2": "96"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "40",
+        "y1": "108",
+        "x2": "78",
+        "y2": "108"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "40",
+        "y1": "120",
+        "x2": "68",
+        "y2": "120"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "53",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "내가 쓴 메모"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "92",
+      "y1": "120",
+      "x2": "120",
+      "y2": "120",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "127,120 118,115 118,125",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "130",
+      "y": "95",
+      "width": "110",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "185",
+      "y": "126",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5개 이상?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "240",
+      "y1": "110",
+      "x2": "264",
+      "y2": "66",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,58 259,64 268,70",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "248",
+      "y": "82",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "예"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "272",
+      "y": "38",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "326",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "글 올림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "240",
+      "y1": "130",
+      "x2": "264",
+      "y2": "174",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,182 268,170 259,176",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "248",
+      "y": "170",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "아니오"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "272",
+      "y": "160",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "326",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다음 날로"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "With 5 or more of my notes a post goes up; otherwise they carry over to the next day"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "92",
+        "width": "55",
+        "height": "65",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "26",
+        "y": "86",
+        "width": "55",
+        "height": "65",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "80",
+        "width": "55",
+        "height": "65",
+        "rx": "4"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "40",
+        "y1": "96",
+        "x2": "78",
+        "y2": "96"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "40",
+        "y1": "108",
+        "x2": "78",
+        "y2": "108"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "40",
+        "y1": "120",
+        "x2": "68",
+        "y2": "120"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "53",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "My notes"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "92",
+      "y1": "120",
+      "x2": "120",
+      "y2": "120",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "127,120 118,115 118,125",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "130",
+      "y": "95",
+      "width": "110",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "185",
+      "y": "126",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5 or more?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "240",
+      "y1": "110",
+      "x2": "264",
+      "y2": "66",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,58 259,64 268,70",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "248",
+      "y": "82",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "yes"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "272",
+      "y": "38",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "326",
+      "y": "65",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Post"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "240",
+      "y1": "130",
+      "x2": "264",
+      "y2": "174",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,182 268,170 259,176",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "248",
+      "y": "170",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "no"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "272",
+      "y": "160",
+      "width": "108",
+      "height": "42",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "326",
+      "y": "187",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Next day"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "프로그램이 남긴 메모는 세지 않고, 내가 쓴 메모만 센다는 것을 보여 주는 두 갈래 그림",
+  "altEn": "Two lanes: notes left by a program are not counted, only notes I wrote are counted",
+  "caption": "이제 프로그램이 남긴 메모는 세지 않습니다",
+  "captionEn": "Notes left by a program no longer count",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "프로그램이 남긴 메모는 세지 않고, 내가 쓴 메모만 셉니다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "40",
+      "width": "190",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "프로그램이 남긴 메모"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "200",
+      "y1": "63",
+      "x2": "250",
+      "y2": "63",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "257,63 248,58 248,68",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "219",
+      "y1": "54",
+      "x2": "235",
+      "y2": "72",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "235",
+      "y1": "54",
+      "x2": "219",
+      "y2": "72",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "266",
+      "y": "69",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "세지 않음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "134",
+      "width": "190",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "내가 쓴 메모"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "200",
+      "y1": "157",
+      "x2": "250",
+      "y2": "157",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "257,157 248,152 248,162",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "266",
+      "y": "163",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "셈에 넣음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Notes left by a program are not counted; only notes I wrote are counted"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "40",
+      "width": "190",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Program's notes"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "200",
+      "y1": "63",
+      "x2": "250",
+      "y2": "63",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "257,63 248,58 248,68",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "219",
+      "y1": "54",
+      "x2": "235",
+      "y2": "72",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "235",
+      "y1": "54",
+      "x2": "219",
+      "y2": "72",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "264",
+      "y": "69",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Not counted"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "134",
+      "width": "190",
+      "height": "46",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "My notes"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "200",
+      "y1": "157",
+      "x2": "250",
+      "y2": "157",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "257,157 248,152 248,162",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "264",
+      "y": "163",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Counted"
+    }
+   ]
+  }
+ }
+]

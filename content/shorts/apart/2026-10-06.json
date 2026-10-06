@@ -1,0 +1,292 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-10-06",
+  "day": 9,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "가짜 이름은 짧아서 티가 났습니다.",
+      "en": "The fake names were too short to fool anyone.",
+      "keywords": [
+        "짧아서"
+      ],
+      "keywordsEn": [
+        "too short"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "가짜 이름이 4.8자에서 7.9자로 늘었습니다.",
+      "en": "Fake names went from 4.8 to 7.9 characters.",
+      "keywords": [
+        "4.8자에서",
+        "7.9자로"
+      ],
+      "keywordsEn": [
+        "4.8",
+        "7.9 characters"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "가짜 평균 4.8자",
+          "찍으면 맞음",
+          "가짜 평균 7.9자",
+          "진짜 8.1자와 비슷"
+        ],
+        "labelsEn": [
+          "Fakes: 4.8 chars",
+          "Easy to guess",
+          "Fakes: 7.9 chars",
+          "Close to real 8.1"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 길이만 봐선 진짜인지 모릅니다.",
+      "en": "Now length alone won't tell you if it's real.",
+      "keywords": [
+        "길이만"
+      ],
+      "keywordsEn": [
+        "length alone"
+      ],
+      "screen": "/o",
+      "find": "이름 하나를 보고 진짜/가짜",
+      "findEn": "Real or fake from one name",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 11자 넘는 이름이 안 나왔습니다.",
+      "en": "At first, nothing over 11 characters came out.",
+      "keywords": [
+        "11자 넘는"
+      ],
+      "keywordsEn": [
+        "over 11 characters"
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "가짜 이름 길이",
+          "11자",
+          "그 이상"
+        ],
+        "labelsEn": [
+          "Fake name length",
+          "11 chars",
+          "Longer"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "프로그램이 진짜 이름을 쪼개 붙여 짓습니다.",
+      "en": "A program splits real names into pieces and rejoins them.",
+      "keywords": [
+        "쪼개 붙여"
+      ],
+      "keywordsEn": [
+        "into pieces"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "진짜 이름",
+          "조각으로 나눔",
+          "새로 이어 붙임"
+        ],
+        "labelsEn": [
+          "Real name",
+          "Split into pieces",
+          "Rejoin in new ways"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "'휴먼시아' 같은 조각은 몰라서 건너뛰었습니다.",
+      "en": "It didn't know pieces like \"Humansia,\" so it skipped those names.",
+      "keywords": [
+        "몰라서",
+        "건너뛰었습니다."
+      ],
+      "keywordsEn": [
+        "didn't know",
+        "skipped"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "긴 진짜 이름",
+          "조각으로 나눔",
+          "통째로 건너뜀",
+          "아는 조각뿐",
+          "'휴먼시아' 섞임"
+        ],
+        "labelsEn": [
+          "Long real name",
+          "Split into pieces",
+          "Skipped entirely",
+          "Known pieces",
+          "Has \"Humansia\""
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그 조각을 가르치고, 길이부터 정해 붙입니다.",
+      "en": "So I taught it those pieces and had it set the length first.",
+      "keywords": [
+        "길이부터"
+      ],
+      "keywordsEn": [
+        "length first"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "모르던 조각 추가",
+          "길이를 먼저 정함",
+          "길이에 맞게 조각 고름"
+        ],
+        "labelsEn": [
+          "Add missing pieces",
+          "Pick length first",
+          "Fit pieces to length"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "가짜 이름을 지어 문제로 내는 곳도 엽니다.",
+      "en": "Next, I'll open the page where people write fake names as questions.",
+      "keywords": [
+        "문제로 내는"
+      ],
+      "keywordsEn": [
+        "write fake names"
+      ],
+      "motif": "fanout"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 길이 말고 감으로 맞혀 보세요.",
+      "en": "Now guess by instinct, not by length.",
+      "keywords": [
+        "감으로"
+      ],
+      "keywordsEn": [
+        "instinct"
+      ],
+      "screen": "/",
+      "shot": "whole"
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "가짜 이름이 짧았다",
+    "titleEn": "Fake names were short",
+    "before": "가짜 이름 평균 4.8자, 짧으면 가짜",
+    "after": "가짜도 평균 7.9자, 진짜와 비슷",
+    "beforeEn": "Fakes averaged 4.8 characters, short meant fake",
+    "afterEn": "Fakes now average 7.9, close to the real ones"
+  },
+  "commits": [
+    [
+      "1f16eff",
+      "docs: 문서를 지금 코드 기준으로 맞춘다"
+    ],
+    [
+      "e84d69e",
+      "fix: 기본정보가 없는 단지도 적어 둬서 매일 다시 받지 않게 한다"
+    ],
+    [
+      "7a304d5",
+      "fix: 무한 감별에서 가짜가 줄줄이 이어지던 것을 누른다"
+    ],
+    [
+      "d6343eb",
+      "chore: 가짜 풀을 2,000건으로 새로 채운다"
+    ],
+    [
+      "4876fb0",
+      "fix: 버려서 비율을 맞추던 것을 길이부터 정하는 방식으로 바꾼다"
+    ],
+    [
+      "a17d557",
+      "chore: 쏠린 가짜를 솎고 모양 맞춘 것으로 다시 채운다"
+    ],
+    [
+      "7aa0c41",
+      "fix: 목록 0건을 성공으로 받아들여 13일을 헛돌던 것을 고친다"
+    ],
+    [
+      "baf6c58",
+      "fix: 생성한 가짜가 죄다 4자 \"동네+회사\"로 쏠리던 것을 고친다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "1f16eff",
+      "docs: Align documentation to current code baseline"
+    ],
+    [
+      "e84d69e",
+      "fix: Mark apartments without basic info to prevent daily refetch"
+    ],
+    [
+      "7a304d5",
+      "fix: Stop fake data from repeating endlessly in infinite verification"
+    ],
+    [
+      "d6343eb",
+      "chore: Replenish fake pool with 2,000 new entries"
+    ],
+    [
+      "4876fb0",
+      "fix: Change from discarding to adjust ratio to length-first approach"
+    ],
+    [
+      "a17d557",
+      "chore: Thin out skewed fake data and refill with shape-corrected entries"
+    ],
+    [
+      "7aa0c41",
+      "fix: Fix 13-day idle loop by accepting 0-item list as success"
+    ],
+    [
+      "baf6c58",
+      "fix: Fix generated fake data from all converging to 4-char \"neighborhood+company\" format"
+    ]
+  ],
+  "commitCount": 8,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "AI가 지은 가짜 아파트 이름이 짧아서 길이만 봐도 정답이 보였습니다. 이제 가짜도 진짜만큼 깁니다.",
+    "en": "The AI's fake apartment names were so short that length gave the answer away. Now the fakes are as long as the real ones."
+  },
+  "hashtags": [
+    "#아파트감별사",
+    "#개발일지",
+    "#퀴즈게임",
+    "#AI",
+    "#devlog",
+    "#indiedev",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-06.poster.jpg?v=muwrjhbq",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-06.ko.mp4?v=muwrjj40",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-06.en.poster.jpg?v=muwrkp3z",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-06.en.mp4?v=muwrkrgj"
+  }
+}
