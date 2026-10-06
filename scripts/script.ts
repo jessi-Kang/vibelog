@@ -12,6 +12,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
 import { createMessage } from "./models";
 import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
+import { checkSafety, SafetyBlockError } from "./safety";
 import { CORE_TERMS_REVIEW, CORE_TERMS_RULE_SPOKEN, styleRulesForPrompt } from "./korean-style";
 import matter from "gray-matter";
 import {
@@ -978,6 +979,18 @@ export async function generateScript(
       .filter((h: unknown): h is string => typeof h === "string")
       .slice(0, 8),
   };
+
+  // 안전 검사 — 목소리를 만들기 전에 내레이션·자막·캡션을 본다. 글은 이미 검사했지만
+  // 대본은 글을 다시 쓴 것이라 따로 본다. 걸리면 그날 쇼츠를 만들지 않는다.
+  const safety = await checkSafety(
+    [
+      ...script.lines.map((l) => `${l.ko}\n${l.en}`),
+      script.captions.ko,
+      script.captions.en,
+      script.failCard ? JSON.stringify(script.failCard) : "",
+    ].join("\n"),
+  );
+  if (safety.flags.length > 0) throw new SafetyBlockError("쇼츠", safety.flags);
 
   const out = path.join(process.cwd(), shortsJsonPath(repo, date));
   fs.mkdirSync(path.dirname(out), { recursive: true });

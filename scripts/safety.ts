@@ -67,7 +67,9 @@ const RULES: Record<SafetyKind, RegExp[]> = {
     /\bAKIA[0-9A-Z]{16}\b/,
     /\b(postgres|postgresql|mysql|mongodb(\+srv)?):\/\/[^\s:]+:[^\s@]+@/,
     /-----BEGIN [A-Z ]*PRIVATE KEY-----/,
-    /(\bpassword|\bpasswd|비밀번호)\s*[:=]\s*\S+/i, // \b는 한글 앞에서 듣지 않는다
+    // \b는 한글 앞에서 듣지 않는다. 값이 따옴표로 시작하면 인용이라 뺀다
+    // (커밋 본문의 '"비밀번호:"를 못 잡던' 같은 설명이 비밀번호로 걸렸다)
+    /(\bpassword|\bpasswd|비밀번호)\s*[:=]\s*[^\s"'“”「」]{4,}/i,
   ],
   personal: [/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}/, /\b01[016789][-\s]?\d{3,4}[-\s]?\d{4}\b/],
   internal: [
@@ -75,7 +77,8 @@ const RULES: Record<SafetyKind, RegExp[]> = {
     /https?:\/\/[^\s]*[?&](token|key|secret)=/i,
     /\/(admin|debug)\b/,
   ],
-  injection: [/(무시하고|ignore (all |the )?(previous|prior|above) instructions|system prompt)/i],
+  // "무시하고"만 보면 "에러를 무시하고 넘어간다" 같은 평범한 문장이 걸린다 — 지시를 무시하라는 꼴만 본다
+  injection: [/(앞의|이전|위의|기존)\s*(지시|명령|규칙)[^.\n]{0,20}무시|ignore (all |the )?(previous|prior|above) instructions|system prompt/i],
 };
 
 /**
@@ -86,6 +89,8 @@ const PUBLIC_EMAIL = /[A-Za-z0-9._%+-]*noreply[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]+|[
 
 export interface SafetyVerdict {
   flags: SafetyKind[];
+  /** 모양 규칙만으로 걸린 것 */
+  rule: SafetyKind[];
   /** Jev가 낸 확률 (Jev를 못 불렀으면 없다) */
   probs?: Record<SafetyKind, number>;
   /** Jev를 못 불러 규칙만으로 본 경우의 이유 */
@@ -116,13 +121,13 @@ export async function checkSafety(text: string): Promise<SafetyVerdict> {
   const rule = ruleFlags(text);
   // 서명 줄의 noreply 주소는 Jev에게도 보내지 않는다 — 개인 연락처로 오해할 여지를 없앤다
   const clean = text.replace(PUBLIC_EMAIL, "");
-  if (!process.env.TYPESAFE_API_KEY) return { flags: rule, jevError: "TYPESAFE_API_KEY 없음", tokens: 0 };
+  if (!process.env.TYPESAFE_API_KEY) return { flags: rule, rule, jevError: "TYPESAFE_API_KEY 없음", tokens: 0 };
   try {
     const { probs, tokens } = await askJev(clean);
     const jev = SAFETY_KINDS.filter((k) => probs[k] >= SAFETY_FLAG);
-    return { flags: [...new Set([...rule, ...jev])], probs, tokens };
+    return { flags: [...new Set([...rule, ...jev])], rule, probs, tokens };
   } catch (err) {
-    return { flags: rule, jevError: (err as Error).message, tokens: 0 };
+    return { flags: rule, rule, jevError: (err as Error).message, tokens: 0 };
   }
 }
 
@@ -139,4 +144,40 @@ export async function checkSafetyMany(texts: string[]): Promise<SafetyVerdict[]>
 /** "비밀 키·비밀번호, AI에게 끼워 넣은 지시" — 무엇이 걸렸는지 종류만. 내용은 절대 적지 않는다 */
 export function fmtSafety(flags: SafetyKind[]): string {
   return flags.map((k) => SAFETY_KO[k]).join(", ");
+}
+
+/** 안전 검사에 걸려 그것을 내지 않은 경우 — run.ts가 실패 대신 block 줄로 적는다 */
+export class SafetyBlockError extends Error {
+  constructor(public what: string, public flags: SafetyKind[]) {
+    super(`안전 검사에 걸려 ${what}을 내지 않았습니다 — ${fmtSafety(flags)}`);
+    this.name = "SafetyBlockError";
+  }
+}
+
+/**
+ * 커밋 메시지에서 걸러 낼 종류. 이것이 걸린 커밋은 글 재료와 공개 커밋 목록에서 뺀다.
+ * 나머지 종류는 완성된 글을 검사할 때 본다 — 커밋에는 환경변수 이름이나 localhost 같은
+ * 개발 메모가 흔해서, 커밋 단계에서 막으면 멀쩡한 재료가 빠진다 (10/7 실제 커밋 시험).
+ */
+export const INPUT_KINDS: SafetyKind[] = ["secret", "injection"];
+
+/**
+ * 커밋 단계의 Jev 기준. 프롬프트를 고친 커밋은 "AI에게 하는 말"을 설명하므로 끼워 넣은
+ * 지시로 0.58–0.67이 나왔다 (10/7 실제 커밋 274개). 진짜로 심은 지시는 0.89–0.99였다.
+ * 그래서 커밋에서는 0.8부터 거른다. 완성된 글은 SAFETY_FLAG(0.5) 그대로 본다.
+ */
+export const INPUT_FLAG: Partial<Record<SafetyKind, number>> = { secret: SAFETY_FLAG, injection: 0.8 };
+
+/** 커밋 단계에서 걸러 낼 종류 — 규칙에 걸렸거나 Jev 확률이 그 종류의 기준을 넘은 것 */
+export function inputFlags(v: SafetyVerdict): SafetyKind[] {
+  return INPUT_KINDS.filter((k) => v.rule.includes(k) || (v.probs?.[k] ?? 0) >= (INPUT_FLAG[k] ?? SAFETY_FLAG));
+}
+
+const TRAILER = /^(Co-Authored-By|Claude-Session|Signed-off-by|Reviewed-by|Generated-by|Change-Id):/i;
+export function withoutTrailers(message: string): string {
+  return message
+    .split("\n")
+    .filter((l) => !TRAILER.test(l.trim()))
+    .join("\n")
+    .trim();
 }
