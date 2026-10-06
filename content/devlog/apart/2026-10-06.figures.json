@@ -1,0 +1,760 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "진짜 아파트 이름은 평균 8.1자, 고친 뒤 가짜 이름은 평균 7.9자로 길이가 거의 같아졌음을 보여 주는 막대 그림",
+  "altEn": "Bar chart showing real apartment names average 8.1 characters and fake names now average 7.9, almost the same length",
+  "caption": "이제 길이만 보고는 진짜와 가짜를 가를 수 없습니다",
+  "captionEn": "Length alone no longer tells real from fake",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 150",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "진짜 이름 평균 8.1자와 가짜 이름 평균 7.9자의 길이 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "평균 글자 수"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "88",
+      "y": "71",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "진짜"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "50",
+      "width": "200",
+      "height": "30",
+      "rx": "3",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "312",
+      "y": "71",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "8.1자"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "88",
+      "y": "121",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "가짜"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "100",
+      "width": "195",
+      "height": "30",
+      "rx": "3",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "312",
+      "y": "121",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "7.9자"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 150",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Real names average 8.1 characters, fake names now average 7.9"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Average length (characters)"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "88",
+      "y": "71",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Real"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "50",
+      "width": "200",
+      "height": "30",
+      "rx": "3",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "312",
+      "y": "71",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "8.1"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "88",
+      "y": "121",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Fake"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "100",
+      "y": "100",
+      "width": "195",
+      "height": "30",
+      "rx": "3",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "312",
+      "y": "121",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "7.9"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "고치기 전에는 긴 진짜 이름에 모르는 조각이 있으면 통째로 건너뛰었고, 고친 뒤에는 조각을 더 넣고 길이를 먼저 정한 뒤 조각을 고르는 흐름",
+  "altEn": "Before the fix, long real names with unknown pieces were skipped entirely; after, more pieces were added and the length is chosen first, then pieces to fit",
+  "caption": "모르는 조각 하나 때문에 긴 이름은 배우지도 못했습니다",
+  "captionEn": "One unknown piece meant long names were never learned",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "긴 이름을 건너뛰던 흐름과 길이를 먼저 정하는 새 흐름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "10",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "고치기 전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "45",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "75",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "긴 진짜 이름"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "122",
+      "y1": "70",
+      "x2": "134",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "134,64 140,70 134,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "45",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "75",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "모르는 조각"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "117",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "휴먼시아"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "252",
+      "y1": "70",
+      "x2": "262",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "262,64 268,70 262,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "45",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "75",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "통째로 건너뜀"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "10",
+      "y1": "140",
+      "x2": "380",
+      "y2": "140",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "10",
+      "y": "165",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "고친 뒤"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "180",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "210",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "조각 더 넣기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "122",
+      "y1": "205",
+      "x2": "134",
+      "y2": "205",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "134,199 140,205 134,211",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "180",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "210",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "길이 먼저"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "252",
+      "y1": "205",
+      "x2": "262",
+      "y2": "205",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "262,199 268,205 262,211",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "180",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "210",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "맞춰 조각 고름"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The old flow that skipped long names and the new flow that picks length first"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "10",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "45",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "75",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Long name"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "122",
+      "y1": "70",
+      "x2": "134",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "134,64 140,70 134,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "45",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "75",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Unknown"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "117",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Humansia"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "252",
+      "y1": "70",
+      "x2": "262",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "262,64 268,70 262,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "45",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "75",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Skipped"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "10",
+      "y1": "140",
+      "x2": "380",
+      "y2": "140",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "10",
+      "y": "165",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "180",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "210",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Add pieces"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "122",
+      "y1": "205",
+      "x2": "134",
+      "y2": "205",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "134,199 140,205 134,211",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "180",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "210",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Length first"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "252",
+      "y1": "205",
+      "x2": "262",
+      "y2": "205",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "262,199 268,205 262,211",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "180",
+      "width": "110",
+      "height": "50",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "210",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Pieces to fit"
+    }
+   ]
+  }
+ }
+]

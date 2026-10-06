@@ -1,0 +1,29 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "어떻게 돌아가나",
+      "focusY": 0.5,
+      "start": 1.02,
+      "end": 10.05
+    },
+    {
+      "path": "/projects/apart",
+      "find": "apart",
+      "start": 10.93,
+      "end": 20.62
+    },
+    {
+      "path": "/log",
+      "start": 21.48,
+      "end": 31.16
+    },
+    {
+      "path": "/",
+      "find": "지난 실행",
+      "focusY": 0.5,
+      "start": 32.2,
+      "end": 41.22
+    }
+  ]
+}

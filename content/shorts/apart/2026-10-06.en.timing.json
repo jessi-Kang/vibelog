@@ -1,0 +1,504 @@
+{
+  "lang": "en",
+  "duration": 30.186,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.159,
+      "words": [
+        {
+          "text": "The",
+          "start": 0,
+          "end": 0.139
+        },
+        {
+          "text": "fake",
+          "start": 0.197,
+          "end": 0.418
+        },
+        {
+          "text": "names",
+          "start": 0.464,
+          "end": 0.685
+        },
+        {
+          "text": "were",
+          "start": 0.708,
+          "end": 0.813
+        },
+        {
+          "text": "too",
+          "start": 0.836,
+          "end": 0.964
+        },
+        {
+          "text": "short",
+          "start": 1.022,
+          "end": 1.242
+        },
+        {
+          "text": "to",
+          "start": 1.277,
+          "end": 1.324
+        },
+        {
+          "text": "fool",
+          "start": 1.393,
+          "end": 1.591
+        },
+        {
+          "text": "anyone.",
+          "start": 1.649,
+          "end": 2.159
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.485,
+      "end": 5.782,
+      "words": [
+        {
+          "text": "Fake",
+          "start": 2.485,
+          "end": 2.74
+        },
+        {
+          "text": "names",
+          "start": 2.775,
+          "end": 2.995
+        },
+        {
+          "text": "went",
+          "start": 3.03,
+          "end": 3.17
+        },
+        {
+          "text": "from",
+          "start": 3.204,
+          "end": 3.332
+        },
+        {
+          "text": "4.8",
+          "start": 3.448,
+          "end": 4.156
+        },
+        {
+          "text": "to",
+          "start": 4.249,
+          "end": 4.319
+        },
+        {
+          "text": "7.9",
+          "start": 4.412,
+          "end": 5.039
+        },
+        {
+          "text": "characters.",
+          "start": 5.097,
+          "end": 5.782
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 6.293,
+      "end": 8.313,
+      "words": [
+        {
+          "text": "Now",
+          "start": 6.293,
+          "end": 6.455
+        },
+        {
+          "text": "length",
+          "start": 6.536,
+          "end": 6.769
+        },
+        {
+          "text": "alone",
+          "start": 6.815,
+          "end": 7.082
+        },
+        {
+          "text": "won't",
+          "start": 7.117,
+          "end": 7.303
+        },
+        {
+          "text": "tell",
+          "start": 7.326,
+          "end": 7.465
+        },
+        {
+          "text": "you",
+          "start": 7.512,
+          "end": 7.593
+        },
+        {
+          "text": "if",
+          "start": 7.628,
+          "end": 7.686
+        },
+        {
+          "text": "it's",
+          "start": 7.732,
+          "end": 7.848
+        },
+        {
+          "text": "real.",
+          "start": 7.895,
+          "end": 8.313
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 9.009,
+      "end": 11.97,
+      "words": [
+        {
+          "text": "At",
+          "start": 9.009,
+          "end": 9.172
+        },
+        {
+          "text": "first,",
+          "start": 9.242,
+          "end": 9.694
+        },
+        {
+          "text": "nothing",
+          "start": 10.019,
+          "end": 10.333
+        },
+        {
+          "text": "over",
+          "start": 10.403,
+          "end": 10.588
+        },
+        {
+          "text": "11",
+          "start": 10.635,
+          "end": 10.902
+        },
+        {
+          "text": "characters",
+          "start": 10.948,
+          "end": 11.366
+        },
+        {
+          "text": "came",
+          "start": 11.413,
+          "end": 11.622
+        },
+        {
+          "text": "out.",
+          "start": 11.656,
+          "end": 11.97
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 12.666,
+      "end": 15.627,
+      "words": [
+        {
+          "text": "A",
+          "start": 12.666,
+          "end": 12.748
+        },
+        {
+          "text": "program",
+          "start": 12.829,
+          "end": 13.154
+        },
+        {
+          "text": "splits",
+          "start": 13.201,
+          "end": 13.456
+        },
+        {
+          "text": "real",
+          "start": 13.502,
+          "end": 13.677
+        },
+        {
+          "text": "names",
+          "start": 13.746,
+          "end": 13.978
+        },
+        {
+          "text": "into",
+          "start": 14.013,
+          "end": 14.153
+        },
+        {
+          "text": "pieces",
+          "start": 14.199,
+          "end": 14.571
+        },
+        {
+          "text": "and",
+          "start": 14.629,
+          "end": 14.745
+        },
+        {
+          "text": "rejoins",
+          "start": 14.814,
+          "end": 15.232
+        },
+        {
+          "text": "them.",
+          "start": 15.279,
+          "end": 15.627
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 16.01,
+      "end": 19.203,
+      "words": [
+        {
+          "text": "It",
+          "start": 16.01,
+          "end": 16.138
+        },
+        {
+          "text": "didn't",
+          "start": 16.173,
+          "end": 16.393
+        },
+        {
+          "text": "know",
+          "start": 16.428,
+          "end": 16.533
+        },
+        {
+          "text": "pieces",
+          "start": 16.602,
+          "end": 16.893
+        },
+        {
+          "text": "like",
+          "start": 16.939,
+          "end": 17.113
+        },
+        {
+          "text": "\"Humansia,\"",
+          "start": 17.148,
+          "end": 17.856
+        },
+        {
+          "text": "so",
+          "start": 17.949,
+          "end": 18.1
+        },
+        {
+          "text": "it",
+          "start": 18.17,
+          "end": 18.228
+        },
+        {
+          "text": "skipped",
+          "start": 18.263,
+          "end": 18.53
+        },
+        {
+          "text": "those",
+          "start": 18.565,
+          "end": 18.75
+        },
+        {
+          "text": "names.",
+          "start": 18.797,
+          "end": 19.203
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 19.9,
+      "end": 22.744,
+      "words": [
+        {
+          "text": "So",
+          "start": 19.9,
+          "end": 20.039
+        },
+        {
+          "text": "I",
+          "start": 20.12,
+          "end": 20.143
+        },
+        {
+          "text": "taught",
+          "start": 20.26,
+          "end": 20.445
+        },
+        {
+          "text": "it",
+          "start": 20.48,
+          "end": 20.538
+        },
+        {
+          "text": "those",
+          "start": 20.561,
+          "end": 20.736
+        },
+        {
+          "text": "pieces",
+          "start": 20.77,
+          "end": 21.13
+        },
+        {
+          "text": "and",
+          "start": 21.188,
+          "end": 21.316
+        },
+        {
+          "text": "had",
+          "start": 21.386,
+          "end": 21.502
+        },
+        {
+          "text": "it",
+          "start": 21.548,
+          "end": 21.618
+        },
+        {
+          "text": "set",
+          "start": 21.653,
+          "end": 21.815
+        },
+        {
+          "text": "the",
+          "start": 21.862,
+          "end": 21.931
+        },
+        {
+          "text": "length",
+          "start": 21.978,
+          "end": 22.187
+        },
+        {
+          "text": "first.",
+          "start": 22.233,
+          "end": 22.744
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 23.441,
+      "end": 27.121,
+      "words": [
+        {
+          "text": "Next,",
+          "start": 23.441,
+          "end": 24.01
+        },
+        {
+          "text": "I'll",
+          "start": 24.161,
+          "end": 24.335
+        },
+        {
+          "text": "open",
+          "start": 24.381,
+          "end": 24.567
+        },
+        {
+          "text": "the",
+          "start": 24.602,
+          "end": 24.671
+        },
+        {
+          "text": "page",
+          "start": 24.718,
+          "end": 24.985
+        },
+        {
+          "text": "where",
+          "start": 25.008,
+          "end": 25.159
+        },
+        {
+          "text": "people",
+          "start": 25.194,
+          "end": 25.472
+        },
+        {
+          "text": "write",
+          "start": 25.496,
+          "end": 25.705
+        },
+        {
+          "text": "fake",
+          "start": 25.739,
+          "end": 25.983
+        },
+        {
+          "text": "names",
+          "start": 26.03,
+          "end": 26.227
+        },
+        {
+          "text": "as",
+          "start": 26.262,
+          "end": 26.343
+        },
+        {
+          "text": "questions.",
+          "start": 26.401,
+          "end": 27.121
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 27.725,
+      "end": 30.186,
+      "words": [
+        {
+          "text": "Now",
+          "start": 27.725,
+          "end": 27.876
+        },
+        {
+          "text": "guess",
+          "start": 27.934,
+          "end": 28.108
+        },
+        {
+          "text": "by",
+          "start": 28.143,
+          "end": 28.247
+        },
+        {
+          "text": "instinct,",
+          "start": 28.328,
+          "end": 28.909
+        },
+        {
+          "text": "not",
+          "start": 29.083,
+          "end": 29.257
+        },
+        {
+          "text": "by",
+          "start": 29.315,
+          "end": 29.431
+        },
+        {
+          "text": "length.",
+          "start": 29.501,
+          "end": 30.186
+        }
+      ]
+    }
+  ]
+}
