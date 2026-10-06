@@ -16,6 +16,8 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { Octokit } from "@octokit/rest";
+import { checkSafetyMany, fmtSafety, SAFETY_KINDS, type SafetyKind as SK } from "./safety";
 
 const JEV_URL = process.env.JEV_URL ?? "https://api.typesafe.ai/v1/systemone";
 const PRICE_PER_MTOK = 0.042;
@@ -244,6 +246,8 @@ async function main() {
   line(`맞게 판단한 것: 규칙 ${ruleOk}/${planted.length}, Jev ${jevOk}/${planted.length}, 둘 중 하나라도 ${bothOk}/${planted.length}`);
   line(`("괜찮음" 글은 둘 다 아무것도 안 잡아야 맞게 친다. "둘 중 하나라도"는 괜찮음 글에서 하나라도 잡으면 틀린 것으로 친다.)`);
 
+  await commitsReport(line);
+
   const md = out.join("\n");
   console.log(md);
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, md + "\n");
@@ -253,3 +257,51 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
+
+/**
+ * 3) 실제 커밋 메시지 — 밤 실행은 커밋을 AI에게 넘기기 전에 검사한다. 커밋에는 환경변수
+ * 이름, 파일 경로, localhost 같은 개발 메모가 흔해서, 이것까지 걸리면 글 재료가 사라진다.
+ * 그래서 잘못 막는 비율을 실제 커밋으로 잰다. 서명 줄(Co-Authored-By 등)은 빼고 본다.
+ * 내용은 찍지 않고 제목만 찍는다.
+ */
+async function commitsReport(line: (x?: string) => void) {
+  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN });
+  const owner = (process.env.GITHUB_REPOSITORY ?? "jessi-Kang/vibelog").split("/")[0];
+  const repos: string[] = JSON.parse(fs.readFileSync("content/projects.json", "utf8")).map((p: { slug: string }) => p.slug);
+  const msgs: { repo: string; subject: string; text: string }[] = [];
+  for (const repo of repos) {
+    try {
+      const { data } = await octokit.rest.repos.listCommits({ owner, repo, since: "2026-09-01T00:00:00Z", per_page: 100 });
+      for (const c of data) {
+        if ((c.parents?.length ?? 0) > 1) continue;
+        const text = c.commit.message
+          .split("\n")
+          .filter((l: string) => !/^(Co-Authored-By|Claude-Session|Signed-off-by):/i.test(l.trim()))
+          .join("\n")
+          .trim();
+        msgs.push({ repo, subject: c.commit.message.split("\n")[0], text });
+      }
+    } catch (err) {
+      line(`\n커밋 수집 실패: ${repo} — ${(err as Error).message.slice(0, 80)}`);
+    }
+  }
+  const verdicts = await checkSafetyMany(msgs.map((m) => m.text));
+  const tokens = verdicts.reduce((s, v) => s + v.tokens, 0);
+  const by = Object.fromEntries(SAFETY_KINDS.map((k) => [k, 0])) as Record<SK, number>;
+  verdicts.forEach((v) => v.flags.forEach((k) => by[k]++));
+  const flagged = msgs.map((m, i) => ({ m, v: verdicts[i] })).filter((x) => x.v.flags.length > 0);
+  line();
+  line(`## 실제 커밋 메시지 ${msgs.length}개 — 걸린 커밋 ${flagged.length}개 (입력 토큰 ${tokens.toLocaleString("en-US")})`);
+  line();
+  line(`| 종류 | 걸린 수 |`);
+  line(`|---|---|`);
+  for (const k of SAFETY_KINDS) line(`| ${fmtSafety([k])} | ${by[k]} |`);
+  const errs = verdicts.filter((v) => v.jevError).length;
+  if (errs) line(`\nJev를 못 불러 규칙만으로 본 커밋 ${errs}개`);
+  line();
+  line(`| 레포 | 제목 | 걸린 것 | Jev 확률 |`);
+  line(`|---|---|---|---|`);
+  for (const { m, v } of flagged.slice(0, 60))
+    line(`| ${m.repo} | ${m.subject.slice(0, 50).replace(/\|/g, "/")} | ${fmtSafety(v.flags)} | ${v.probs ? SAFETY_KINDS.map((k) => `${k} ${v.probs![k].toFixed(2)}`).join(" · ") : "—"} |`);
+}

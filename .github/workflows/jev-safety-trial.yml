@@ -1,0 +1,34 @@
+# Jev(TypeSafe AI) 안전 검사 시험 — 발행된 글·대본과 문제를 심은 가짜 글을 Jev와 규칙으로 검사해 비교한다.
+# 발행하지 않고 content/를 건드리지 않는다. Opus·TTS를 부르지 않는다 (Jev 비용만, 1센트 안쪽).
+# 결과는 실행 요약에 남는다. 글 내용과 가짜 키는 로그에 찍지 않는다. 시험이 끝나면 이 파일은 지운다.
+name: jev-safety-trial
+
+on:
+  # 이 세션에는 워크플로를 직접 띄울 권한이 없어서, 시험 파일이 바뀌어 푸시되면 돈다
+  push:
+    paths:
+      - "scripts/jev-safety-trial.ts"
+      - "scripts/safety.ts"
+      - ".github/workflows/jev-safety-trial.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check published and planted posts
+        run: npx tsx scripts/jev-safety-trial.ts
+        env:
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
