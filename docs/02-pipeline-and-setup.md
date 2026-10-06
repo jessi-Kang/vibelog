@@ -201,7 +201,9 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
 봇 커밋과 GitHub의 "Initial commit"은 글의 재료가 아니라서 아예 빼고 센다.
 **제목과 본문(40자 이상)을 다 쓴 사람 커밋이 5개 이상 모여야** 글과 쇼츠를 만든다
 (`scripts/collect.ts`의 `isBotCommit`, `followsCommitRule`, `enoughForPost`,
-`MIN_HUMAN_COMMITS`). PR·세션 요약이 있어도 마찬가지다. 쇼츠는 여기에 조건이 하나
+`MIN_HUMAN_COMMITS`, 규칙 자체는 `scripts/commit-rule.ts`). 끝에 붙는 `Co-Authored-By` 같은
+서명 줄은 본문으로 세지 않는다 — 세던 때는 제목 한 줄에 서명만 붙은 커밋도 통과했다.
+PR·세션 요약이 있어도 마찬가지다. 쇼츠는 여기에 조건이 하나
 더 있다 — 녹화할 화면이 둘 이상(`siteScreens`)이어야 대본을 쓴다. 배포 주소가
 없거나 첫 화면이 로그인·소개 페이지뿐이면 AI를 부르기 전에 `skip`으로 끝난다. apart의 야간 자동 수집 커밋 하나가 12밤 연속으로 글·삽화·쇼츠를
 만든 뒤 넣었다 (9/23–10/5, 밤마다 $0.4쯤). 봇 판정은 로그인·이름·메일에 "bot"이

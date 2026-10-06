@@ -1,0 +1,5 @@
+#!/bin/sh
+# 커밋 규칙 검사 — 형식("타입: 요약" + 빈 줄 + 본문 40자 이상)과 한국어 표현.
+# 이 폴더를 쓰려면 한 번: git config core.hooksPath .githooks
+# (Claude Code 세션은 .claude/settings.json의 SessionStart 훅이 해 둔다)
+exec npx --no-install tsx scripts/check-commit.ts "$1"

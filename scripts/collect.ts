@@ -46,17 +46,9 @@ export function enoughForPost(ruleCommits: number): boolean {
   return ruleCommits >= MIN_HUMAN_COMMITS;
 }
 
-/**
- * 커밋 규칙(docs/02 §3: 한 줄 요약 + 빈 줄 + "왜"가 든 본문)을 따른 커밋인가.
- * 본문이 40자는 돼야 "왜"가 있다고 본다. 글을 쓸 때는 모든 커밋을 재료로 쓰지만,
- * "5개가 모였나"를 셀 때는 이런 커밋만 센다 — "fix", "wip"처럼 제목만 있는 커밋은
- * 다섯 개가 쌓여도 글이 나오지 않는다.
- */
-export const RULE_BODY_MIN = 40;
-export function followsCommitRule(message: string): boolean {
-  const body = message.split("\n").slice(1).join("\n").trim();
-  return body.length >= RULE_BODY_MIN;
-}
+// 커밋 규칙(본문 40자, 서명 줄 제외)은 check-commit.ts와 같이 쓰려고 commit-rule.ts로 옮겼다
+export { RULE_BODY_MIN, followsCommitRule } from "./commit-rule";
+import { followsCommitRule } from "./commit-rule";
 
 export interface RepoPR {
   number: number;
