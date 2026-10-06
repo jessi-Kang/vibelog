@@ -1,0 +1,42 @@
+# Jev(TypeSafe AI) 시험 — 지난 커밋을 Jev에게 물어 지금 규칙과 나란히 본다.
+# 발행하지 않고 content/를 건드리지 않는다. Opus도 부르지 않는다 (Jev 비용만, 1센트 안쪽).
+# 결과는 실행 요약에 남는다. 시험이 끝나면 이 파일은 지운다.
+name: jev-trial
+
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "이 날짜 이후 커밋을 본다 (YYYY-MM-DD)"
+        required: false
+        default: "2026-09-01"
+
+permissions:
+  contents: read
+
+jobs:
+  trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Ask Jev about past commits
+        run: npx tsx scripts/jev-trial.ts "$SINCE"
+        env:
+          SINCE: ${{ inputs.since }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Keep raw answers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jev-trial-${{ github.run_id }}
+          path: jev-trial.json
+          if-no-files-found: ignore
+          retention-days: 14

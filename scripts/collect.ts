@@ -13,6 +13,8 @@ export interface RepoCommit {
   files: string[];
   /** GitHub 로그인(없으면 커밋 author 이름) — 봇 판정용 */
   author?: string;
+  /** 커밋에 적힌 작성자 이름 — GitHub 계정과 다를 수 있다 (vibelog-bot은 계정이 actions다) */
+  authorName?: string;
   authorEmail?: string;
 }
 
@@ -25,9 +27,11 @@ export interface RepoCommit {
  * 새 프로젝트에서 또 새지 않는다.
  */
 const BOT_WORD = /(^|[^a-z0-9])bot([^a-z0-9]|$)/i;
-export function isBotCommit(c: Pick<RepoCommit, "author" | "authorEmail">): boolean {
+export function isBotCommit(c: Pick<RepoCommit, "author" | "authorName" | "authorEmail">): boolean {
+  // 계정 이름과 커밋에 적힌 이름을 둘 다 본다. 계정 이름만 보던 때는 vibelog 밤 실행이
+  // 남기는 커밋(이름 vibelog-bot, 계정 actions)을 사람 커밋으로 셌다 (Jev 시험에서 드러났다).
   const local = (c.authorEmail ?? "").split("@")[0];
-  return BOT_WORD.test(c.author ?? "") || BOT_WORD.test(local);
+  return BOT_WORD.test(c.author ?? "") || BOT_WORD.test(c.authorName ?? "") || BOT_WORD.test(local);
 }
 
 /**
@@ -208,6 +212,7 @@ async function getCommits(
       date: c.commit.committer?.date ?? c.commit.author?.date ?? "",
       files,
       author: c.author?.login ?? c.commit.author?.name ?? undefined,
+      authorName: c.commit.author?.name ?? undefined,
       authorEmail: c.commit.author?.email ?? undefined,
     });
   }
