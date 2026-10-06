@@ -1,0 +1,195 @@
+<title>이어지는 글과 글 종류</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 사이트 토큰 그대로 (app/globals.css). 사이트가 다크 한 벌이라 이 시안도 한 벌. */
+:root {
+  --bg: #0a0e14; --bg-deep: #05080c; --panel: #141b24; --panel2: #1b2430;
+  --line: #26313f; --line-strong: #3a4656;
+  --ink: #f3efe6; --ink-soft: #c9cfd8; --muted: #8c98a8;
+  --accent: #5ee1c3; --warn: #ffb454; --danger: #ff6b6b;
+  --anchor: #c9e579; --apart: #b9a7ff; --vibelog: #5ee1c3;
+  --sans: "Noto Sans KR", "Noto Sans CJK KR", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html { font-size: 14px; }
+body { background: var(--bg-deep); color: var(--ink); font-family: var(--sans); margin: 0; word-break: keep-all; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: flex; flex-direction: column; gap: 44px; }
+h1.page { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.lede { color: var(--ink-soft); margin: 8px 0 0; line-height: 1.7; max-width: 64ch; }
+h2 { font-size: 1.2rem; margin: 0 0 6px; }
+h3 { font-size: 1rem; margin: 22px 0 8px; color: var(--ink-soft); }
+.why { color: var(--muted); margin: 0 0 18px; line-height: 1.7; max-width: 64ch; }
+.why b { color: var(--ink-soft); }
+.row { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.opt { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.tag { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.tag b { color: var(--ink); font-size: .95rem; }
+.tag .rec { color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 8px; font-size: .72rem; }
+.phone { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; border-bottom: 1px solid var(--line); }
+.lang { font-family: var(--mono); font-size: .8rem; border: 1px solid var(--line); border-radius: 8px; padding: 3px 8px; color: var(--muted); }
+.lang b { color: var(--ink); }
+.back { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+.body { padding: 22px 20px 26px; display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font-family: var(--mono); font-size: .85rem; display: flex; gap: 8px; align-items: center; color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+.proj { font-weight: 700; }
+.title { font-size: 1.45rem; font-weight: 900; line-height: 1.3; margin: 0; text-wrap: balance; }
+.meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+.lead { color: var(--ink-soft); line-height: 1.75; margin: 0; }
+.h { font-weight: 700; margin: 6px 0 0; }
+.fade { color: var(--muted); font-family: var(--mono); font-size: .8rem; text-align: center; }
+.note { font-size: .85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+.note b { color: var(--ink-soft); }
+/* 이어지는 글 — 위 한 줄 */
+.thread-top { display: flex; gap: 8px; align-items: baseline; font-size: .9rem; color: var(--muted); line-height: 1.5; padding: 10px 12px; background: var(--panel); border-radius: 10px; }
+.thread-top a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.thread-top .m { font-family: var(--mono); font-size: .8rem; flex: none; }
+/* 이어지는 글 — 끝 카드 */
+.thread { display: flex; flex-direction: column; gap: 10px; }
+.thread .lbl { font-weight: 700; font-size: 1.05rem; }
+.card { background: var(--panel); border-radius: 12px; display: flex; flex-direction: column; }
+.card a { display: grid; grid-template-columns: 4.6em minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 13px 16px; color: inherit; text-decoration: none; min-height: 44px; box-sizing: border-box; }
+.card a + a { border-top: 1px solid var(--line); }
+.card .d { font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+.card .t { color: var(--ink-soft); line-height: 1.45; }
+.card .ar { font-family: var(--mono); color: var(--muted); }
+.card .now { font-family: var(--mono); font-size: .78rem; color: var(--apart); padding: 9px 16px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+/* 목록 */
+.list { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 22px; }
+.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; }
+.chip { flex: none; font-family: var(--mono); font-size: .8rem; border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; color: var(--muted); white-space: nowrap; }
+.chip.on { border-color: var(--line-strong); background: var(--panel2); color: var(--ink); font-weight: 700; }
+.chip i { font-style: normal; margin-left: 5px; }
+.filters { display: flex; flex-direction: column; gap: 6px; }
+.entry { display: grid; grid-template-columns: 8px minmax(0, 1fr); gap: 14px; }
+.entry .dot { margin-top: 6px; }
+.e-head { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 10px; }
+.e-head b { font-weight: 700; }
+.e-title { font-weight: 700; font-size: 1.1rem; margin: 4px 0; line-height: 1.35; }
+.e-meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.warn { color: var(--warn); }
+.acc { color: var(--accent); }
+.soft { color: var(--ink-soft); }
+/* 표 */
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); margin-bottom: 18px; }
+table.wide { min-width: 600px; }
+table { border-collapse: collapse; font-size: .9rem; width: 100%; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: .75rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.x { color: var(--danger); }
+td.o { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 380px) { .row { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1 class="page">이어지는 글과 글 종류</h1>
+    <p class="lede">고르실 것은 두 가지입니다. 글 페이지에 "이전 이야기" 링크를 어디에 둘지, 그리고 글 목록에 종류로 거르는 칩을 둘지입니다. 예시는 모두 실제 글이고, 링크와 종류는 지난 글 29편으로 돌린 시험의 실제 답입니다.</p>
+  </header>
+
+  <section>
+    <h2>1. 이어지는 글</h2>
+    <p class="why">처음 들어온 사람은 그 글 하나만 봅니다. 예를 들어 apart 9/16 글은 "가짜 이름을 컴퓨터가 짓게 했다"는 이야기인데, 왜 가짜 이름이 모자랐는지는 9/15 글에 있습니다. 앞뒤 글을 이어 주면 맥락을 따라갈 수 있습니다.</p>
+
+    <h3>시험 결과 — Jev가 확신 0.7 이상으로 이은 6쌍</h3>
+    <div class="tbl">
+      <table class="wide">
+        <tr><th>글</th><th>이어진다고 고른 지난 글</th><th>확신</th><th>판정</th></tr>
+        <tr><td>Anchor 9/27 실제 계정으로 앱을 끝까지 걸었습니다</td><td>9/20 — "실제 계정으로 눌러 봐야 할 항목은 다음 차례"</td><td class="n">0.86</td><td class="o">맞음</td></tr>
+        <tr><td>apart 9/16 띄어쓰기만 세도 정답이 보였습니다</td><td>9/15 — "지어낸 이름이 너무 적으니 늘립니다"</td><td class="n">0.97</td><td class="o">맞음</td></tr>
+        <tr><td>apart 9/21 매일 밤 아파트 이름을 조금씩 받아오게 했습니다</td><td>9/15 — 매일 새벽 자동 수집</td><td class="n">0.75</td><td class="o">맞음</td></tr>
+        <tr><td>apart 10/6 가짜 아파트 이름이 짧은 것만 나오던 것을 고쳤습니다</td><td>9/16 — "짧은 이름이 아직 만들어질 수 있는지"</td><td class="n">0.97</td><td class="o">맞음</td></tr>
+        <tr><td>vibelog 9/17 그림 한 장에 든 AI 사용량을 홈에서 보이게 했습니다</td><td>9/16 — 삽화가 들어가기 시작</td><td class="n">0.98</td><td class="o">맞음</td></tr>
+        <tr><td>vibelog 9/15 새벽 6시에 글이 혼자 한 번 더 나갔습니다</td><td>9/13 — 제목의 "구멍"이 겹쳤을 뿐, 보안 이야기</td><td class="n">0.87</td><td class="x">틀림</td></tr>
+      </table>
+    </div>
+    <p class="why">6쌍 중 5쌍이 맞았습니다. 틀린 한 쌍은 맞은 쌍(0.86)과 확신이 같아서 기준값으로 걸러낼 수 없습니다. 잘못 이은 링크는 공개되면 링크가 없는 것보다 나쁩니다. 그래서 <b>새 글은 글을 쓰는 모델이 같은 호출에서 고르게 하겠습니다</b>. 지난 글의 제목과 "다음 할 것"을 함께 넘기면 되고, 밤마다 입력이 1–2천 토큰 늘어납니다 (1센트 안쪽). 지난 29편은 위 표에서 맞은 5쌍만 넣습니다.</p>
+
+    <div class="row">
+      <div class="opt">
+        <div class="tag"><b>A</b> 제목 아래 한 줄</div>
+        <div class="phone">
+          <div class="bar"><span class="back">← 데브로그</span><span class="lang"><b>KO</b> EN</span></div>
+          <div class="body">
+            <div class="eyebrow"><span class="dot" style="background:var(--apart)"></span><span class="proj" style="color:var(--apart)">apart</span><span>2026-09-16 · 수</span></div>
+            <p class="title">띄어쓰기만 세도 정답이 보였습니다</p>
+            <div class="meta">AI가 커밋 2개로 작성</div>
+            <div class="thread-top"><span class="m">↳ 9/15</span><span><a href="#a">아파트 이름 모으기를 매일 새벽 자동으로 돌게 했습니다</a>에서 이어집니다</span></div>
+            <p class="lead">가짜 아파트 이름을 컴퓨터가 직접 짓게 했습니다. 밤마다 실제 단지 목록이 갱신될 때 가짜 이름도 한 번에 60개씩 같이 채워집니다.</p>
+          </div>
+        </div>
+        <p class="note">읽기 전에 맥락을 압니다. 대신 본문 첫 문단이 한 줄 내려가고, 뒤로 이어진 글(10/6)은 보여 줄 자리가 없습니다.</p>
+      </div>
+
+      <div class="opt">
+        <div class="tag"><b>B</b> 글 끝에 앞뒤 이야기 <span class="rec">권함</span></div>
+        <div class="phone">
+          <div class="bar"><span class="back">← 데브로그</span><span class="lang"><b>KO</b> EN</span></div>
+          <div class="body">
+            <p class="fade">… 본문 …</p>
+            <p class="h">다음 할 것</p>
+            <p class="lead">가짜 이름이 2,000개가 되면 자동 생성은 멈춥니다. 그때까지 매일 밤 두 가지를 보고받게 해 뒀습니다.</p>
+            <div class="thread" style="margin-top:14px">
+              <span class="lbl">이어지는 이야기</span>
+              <div class="card">
+                <a href="#b"><span class="d">9/15 앞</span><span class="t">아파트 이름 모으기를 매일 새벽 자동으로 돌게 했습니다</span><span class="ar">→</span></a>
+                <div class="now">9/16 지금 읽은 글</div>
+                <a href="#b"><span class="d">10/6 뒤</span><span class="t">가짜 아파트 이름이 짧은 것만 나오던 것을 고쳤습니다</span><span class="ar">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note">본문 첫머리는 그대로 두고, 다 읽은 뒤 <b>앞으로도 뒤로도</b> 따라갈 수 있습니다. "다음 할 것"을 읽은 바로 그 자리에서 그 일이 실제로 어떻게 됐는지로 넘어갑니다. 원료(git log) 위에 놓고, 이어진 글이 없으면 칸을 그리지 않습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 글 종류로 거르기</h2>
+    <p class="why">먼저 짚을 것이 있습니다. 9월에 목록 배지를 고를 때 "이야기 종류 하나(출시·삽질·전후)"를 붙이는 안 대신 <b>"삽질이 중심인 날만 삽질"</b>을 고르셨습니다. 종류 칩은 그때 고르지 않은 쪽에 가깝습니다.</p>
+
+    <h3>시험 결과 — 29편을 다섯 종류로</h3>
+    <div class="tbl">
+      <table>
+        <tr><th>종류</th><th>편수</th></tr>
+        <tr><td>기능 추가</td><td class="n">10</td></tr>
+        <tr><td>버그 잡기</td><td class="n">9</td></tr>
+        <tr><td>자동화·인프라</td><td class="n">6</td></tr>
+        <tr><td>디자인</td><td class="n">3</td></tr>
+        <tr><td>비용</td><td class="n">1</td></tr>
+      </table>
+    </div>
+    <p class="why">확신 0.85 이상으로 고른 18편 중 2편이 틀렸습니다. apart 9/11 "로그인이 막힌 건 주소가 둘이었기 때문입니다"(0.91)와 9/12 "링크를 붙여도 아무것도 안 뜨던 걸 고쳤습니다"(0.89)를 <b>기능 추가</b>로 골랐습니다. 둘 다 고친 이야기입니다. 칩을 만든다면 이것도 글을 쓰는 모델이 같은 호출에서 고르게 하겠습니다.</p>
+
+    <div class="row">
+      <div class="opt">
+        <div class="tag"><b>A</b> 만들지 않는다 <span class="rec">권함</span></div>
+        <div class="phone"><div class="list">
+          <div class="chips"><span class="chip on">전체<i>29</i></span><span class="chip"><span style="color:var(--vibelog)">●</span> vibelog<i>14</i></span><span class="chip"><span style="color:var(--apart)">●</span> apart<i>9</i></span><span class="chip"><span style="color:var(--anchor)">●</span> Anchor<i>6</i></span></div>
+          <div class="entry"><span class="dot" style="background:var(--apart)"></span><div><div class="e-head"><b style="color:var(--apart)">apart</b> 2026-10-06 · 화</div><div class="e-title">가짜 아파트 이름이 짧은 것만 나오던 것을 고쳤습니다</div><div class="e-meta"><span>커밋 8</span><span class="warn">삽질</span><span class="acc">쇼츠 ▶</span></div></div></div>
+          <div class="entry"><span class="dot" style="background:var(--vibelog)"></span><div><div class="e-head"><b style="color:var(--vibelog)">vibelog</b> 2026-09-20 · 일</div><div class="e-title">AI 비용을 줄이려고 먼저 사용량을 쟀습니다</div><div class="e-meta"><span>커밋 3</span><span class="acc">쇼츠 ▶</span></div></div></div>
+        </div></div>
+        <p class="note">지금 목록 그대로입니다. 29편이면 스크롤로 다 보이고, 비용(1편)·디자인(3편) 칩은 거의 비어 있습니다. 글이 100편을 넘으면 다시 봅니다.</p>
+      </div>
+
+      <div class="opt">
+        <div class="tag"><b>B</b> 프로젝트 칩 아래 종류 칩 한 줄</div>
+        <div class="phone"><div class="list">
+          <div class="filters">
+            <div class="chips"><span class="chip on">전체<i>29</i></span><span class="chip"><span style="color:var(--vibelog)">●</span> vibelog<i>14</i></span><span class="chip"><span style="color:var(--apart)">●</span> apart<i>9</i></span><span class="chip"><span style="color:var(--anchor)">●</span> Anchor<i>6</i></span></div>
+            <div class="chips"><span class="chip">모든 종류</span><span class="chip on">버그 잡기<i>9</i></span><span class="chip">기능 추가<i>10</i></span><span class="chip">자동화<i>6</i></span><span class="chip">디자인<i>3</i></span><span class="chip">비용<i>1</i></span></div>
+          </div>
+          <div class="entry"><span class="dot" style="background:var(--apart)"></span><div><div class="e-head"><b style="color:var(--apart)">apart</b> 2026-10-06 · 화</div><div class="e-title">가짜 아파트 이름이 짧은 것만 나오던 것을 고쳤습니다</div><div class="e-meta"><span>커밋 8</span><span class="soft">버그 잡기</span><span class="warn">삽질</span><span class="acc">쇼츠 ▶</span></div></div></div>
+          <div class="entry"><span class="dot" style="background:var(--vibelog)"></span><div><div class="e-head"><b style="color:var(--vibelog)">vibelog</b> 2026-09-22 · 화</div><div class="e-title">접혀서 사라진 그림 한 장을 되찾았습니다</div><div class="e-meta"><span>커밋 2</span><span class="soft">버그 잡기</span><span class="warn">삽질</span><span class="acc">쇼츠 ▶</span></div></div></div>
+        </div></div>
+        <p class="note">"버그 잡기만 보기"가 됩니다. 대신 칩이 두 줄이 되고, 글마다 종류 글자가 붙습니다. 버그 잡기와 "삽질" 배지가 대부분 같은 글에 겹쳐 붙습니다 (버그 잡기 9편 중 9편).</p>
+      </div>
+    </div>
+  </section>
+</div>
