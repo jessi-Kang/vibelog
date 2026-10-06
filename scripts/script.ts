@@ -12,7 +12,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
 import { createMessage } from "./models";
 import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
-import { styleRulesForPrompt } from "./korean-style";
+import { CORE_TERMS_REVIEW, CORE_TERMS_RULE_SPOKEN, styleRulesForPrompt } from "./korean-style";
 import matter from "gray-matter";
 import {
   type DiagramSpec,
@@ -97,6 +97,7 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 규칙:
 - **시청자는 개발자가 아닐 수 있다.** 전문용어는 편당 두세 개 이하로만 쓰고,
   쓸 때는 짧게 풀어 말한다. 파일명·함수명은 입에 올리지 않는다.
+${CORE_TERMS_RULE_SPOKEN}
 - 숫자는 아라비아 숫자로, 단위와 함께 쓴다: "52초", "커밋 16개", "화면 5개".
   금지하는 것은 두 가지뿐 — ① "5화면"처럼 단위 없이 숫자를 명사에 붙이는
   축약, ② "쉰두 초", "다섯 화면"처럼 숫자를 한글 수사로 풀어 쓰는 것.
@@ -657,6 +658,7 @@ const LISTEN_SYSTEM = `당신은 개발을 모르는 사람입니다. 휴대폰�
 6. 영어를 옮긴 듯한 말투 — "~를 통해", "~에 의해", "가지고 있다", "되어지다"처럼 한국어로 말할 때 안 쓰는 꼴
 
 문체 취향, 문장 길이, 맞춤법은 지적하지 않습니다. 실제로 알아듣기 막히는 문장만 고릅니다.
+${CORE_TERMS_REVIEW}
 막히는 곳이 없으면 빈 배열을 냅니다. 많아도 6개까지, 가장 막히는 것부터.
 
 반드시 JSON 배열 하나만 출력합니다 (코드펜스 없이):
@@ -878,6 +880,7 @@ export async function generateScript(
         "- 모르는 말은 화면에서 보이는 말로 바꾸거나 빼고, 붙여 만든 말은 조사를",
         "  살려 관계를 밝힙니다. 데브로그 본문에 없는 복합명사를 새로 만들지 않습니다.",
         "- 자막 길이가 넘치면 줄이지 말고 문장을 쪼갭니다. 문장 수 상한은 그대로입니다.",
+        "- 핵심 용어(커밋, 레포, 배포 등)는 다른 말로 바꾸지 않습니다. 처음 나올 때만 짧게 풀어 말합니다.",
         "- 고친 문장의 keywords·stat·en도 고친 문장에 맞춥니다. 화면·그림 지정은 유지합니다.",
         "",
       );
