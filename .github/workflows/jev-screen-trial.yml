@@ -1,0 +1,39 @@
+# Jev(TypeSafe AI) 화면 고르기 시험 — 지난 쇼츠 대본의 문장마다 Jev가 화면을 고르게 하고,
+# Opus가 고른 화면·실제로 녹화된 화면과 비교한다. 발행하지 않고 content/를 건드리지 않는다.
+# Opus·TTS를 부르지 않는다 (Jev 비용만, 1센트 안쪽). 시험이 끝나면 이 파일은 지운다.
+name: jev-screen-trial
+
+on:
+  # 이 세션에는 워크플로를 직접 띄울 권한이 없어서, 시험 파일이 바뀌어 푸시되면 돈다
+  push:
+    paths:
+      - "scripts/jev-screen-trial.ts"
+      - ".github/workflows/jev-screen-trial.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Ask Jev which screen fits each sentence
+        run: npx tsx scripts/jev-screen-trial.ts
+        env:
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+      - name: Keep raw answers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jev-screen-trial-${{ github.run_id }}
+          path: jev-screen-trial.json
+          if-no-files-found: ignore
+          retention-days: 14

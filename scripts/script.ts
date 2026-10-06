@@ -234,7 +234,7 @@ export interface SiteScreen {
  * 맞는다. 그림은 녹화기가 웹 표준과
  * 크기로 찾는다 (scripts/record.ts) — 대본은 문장의 말을 그대로 find에 적으면 된다.
  */
-async function siteScreens(url: string): Promise<SiteScreen[]> {
+export async function siteScreens(url: string): Promise<SiteScreen[]> {
   if (!url) return [];
   const fetchHtml = async (u: string): Promise<string | null> => {
     try {
