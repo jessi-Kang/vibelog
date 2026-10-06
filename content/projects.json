@@ -6,16 +6,16 @@
     "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
     "status": "live",
     "stack": [
-      "JavaScript"
+      "TypeScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/vibelog",
     "homepage": "https://vibelog.space",
-    "language": "JavaScript",
-    "lastActivity": "2026-10-06",
-    "weekCommits": 29,
-    "todayCommits": 16,
-    "totalCommits": 448,
-    "countsDate": "2026-10-06"
+    "language": "TypeScript",
+    "lastActivity": "2026-10-07",
+    "weekCommits": 43,
+    "todayCommits": 14,
+    "totalCommits": 463,
+    "countsDate": "2026-10-07"
   },
   {
     "slug": "apart",
@@ -31,9 +31,9 @@
     "language": "TypeScript",
     "lastActivity": "2026-10-06",
     "weekCommits": 14,
-    "todayCommits": 8,
+    "todayCommits": 0,
     "totalCommits": 211,
-    "countsDate": "2026-10-06",
+    "countsDate": "2026-10-07",
     "theme": "paper"
   },
   {
@@ -58,7 +58,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1075,
-    "countsDate": "2026-10-06",
+    "countsDate": "2026-10-07",
     "theme": "blueprint"
   },
   {
@@ -76,7 +76,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-06",
+    "countsDate": "2026-10-07",
     "theme": "blueprint"
   },
   {
@@ -91,7 +91,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-10-06",
+    "countsDate": "2026-10-07",
     "theme": "highlighter"
   }
 ]
