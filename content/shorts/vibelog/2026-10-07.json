@@ -1,0 +1,302 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-07",
+  "day": 15,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "비밀번호 같은 비밀 키가 공개될 수 있었습니다.",
+      "en": "A secret key, like a password, could have gone public.",
+      "keywords": [
+        "공개될"
+      ],
+      "keywordsEn": [
+        "gone public"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "AI가 제 커밋을 읽고 밤마다 글을 올립니다.",
+      "en": "AI reads my commits and posts every night.",
+      "keywords": [
+        "커밋을",
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "my commits",
+        "every night"
+      ],
+      "screen": "/about",
+      "find": "어떻게 돌아가나",
+      "findEn": "How it works",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "이제 올리기 전에 검사를 두 번 합니다.",
+      "en": "Now every post is checked twice first.",
+      "keywords": [
+        "두 번"
+      ],
+      "keywordsEn": [
+        "twice"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "커밋 검사",
+          "AI가 글 쓰기",
+          "완성 글 검사",
+          "올리기"
+        ],
+        "labelsEn": [
+          "Check commits",
+          "AI writes",
+          "Check post",
+          "Publish"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "비밀 키를 숨긴 가짜 글을 만들었습니다.",
+      "en": "I made fake posts with hidden secret keys.",
+      "keywords": [
+        "가짜 글을"
+      ],
+      "keywordsEn": [
+        "fake posts"
+      ],
+      "motif": "stack"
+    },
+    {
+      "scene": "demo",
+      "ko": "시험해 보니 15편 모두 검사에 걸렸습니다.",
+      "en": "In the test, all 15 got caught by the check.",
+      "keywords": [
+        "모두",
+        "걸렸습니다"
+      ],
+      "keywordsEn": [
+        "all 15",
+        "caught"
+      ],
+      "stat": "15편",
+      "statEn": "15 posts",
+      "motif": "watch"
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 멀쩡한 커밋도 검사에 걸렸습니다.",
+      "en": "At first, even fine commits got caught.",
+      "keywords": [
+        "멀쩡한 커밋도"
+      ],
+      "keywordsEn": [
+        "fine commits"
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "막는 범위",
+          "멀쩡한 글",
+          "범위 밖"
+        ],
+        "labelsEn": [
+          "Blocked range",
+          "Fine post",
+          "Outside"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "따옴표 속 '비밀번호'도 진짜로 잡혔습니다.",
+      "en": "Even a quoted \"password\" was treated as real.",
+      "keywords": [
+        "진짜로"
+      ],
+      "keywordsEn": [
+        "as real"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "'비밀번호:'",
+          "진짜 비밀번호",
+          "인용한 말",
+          "예전",
+          "지금"
+        ],
+        "labelsEn": [
+          "\"password:\"",
+          "Real password",
+          "Just quoted",
+          "Before",
+          "Now"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "지금은 올라간 글 51편 중 하나도 안 막힙니다.",
+      "en": "Now none of the 51 published posts get blocked.",
+      "keywords": [
+        "하나도"
+      ],
+      "keywordsEn": [
+        "none"
+      ],
+      "stat": "51편",
+      "statEn": "51 posts",
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "오늘 밤, 멀쩡한 글이 막히는지 지켜봅니다.",
+      "en": "Tonight, I'll watch whether fine posts get blocked.",
+      "keywords": [
+        "멀쩡한 글이"
+      ],
+      "keywordsEn": [
+        "fine posts"
+      ],
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "Recent runs",
+      "shot": "focus"
+    },
+    {
+      "scene": "end",
+      "ko": "제가 읽기 전에 검사가 먼저 글을 읽습니다.",
+      "en": "Before I read a post, the check reads it first.",
+      "keywords": [
+        "검사가 먼저"
+      ],
+      "keywordsEn": [
+        "the check"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "멀쩡한 글도 막혔다",
+    "titleEn": "Clean posts got blocked",
+    "before": "인용한 비밀번호란 말까지 걸림",
+    "after": "정말 수상한 것만 걸리게 고침",
+    "beforeEn": "Even a quoted \"password\" got flagged",
+    "afterEn": "Now only truly suspicious things get caught"
+  },
+  "commits": [
+    [
+      "c29bbf2",
+      "docs: 이어지는 이야기 1안을 원료 다음 자리로 옮겨 다시 그린다"
+    ],
+    [
+      "8333a20",
+      "feat: 글 모델이 이어지는 지난 글을 같은 호출에서 고른다"
+    ],
+    [
+      "e12aa46",
+      "design: 쇼츠가 없는 글 아래의 안내 문구를 지운다"
+    ],
+    [
+      "2d4805b",
+      "docs: 이어지는 글·글 종류 시안을 올리고 시험 워크플로를 지운다"
+    ],
+    [
+      "35e231e",
+      "feat: 이어지는 글과 글 종류를 Jev가 고를 수 있는지 시험한다"
+    ],
+    [
+      "9ac84f4",
+      "feat: 발행 전 안전 검사를 밤 실행에 넣는다"
+    ],
+    [
+      "5ceb3eb",
+      "feat: 안전 검사 모듈을 만들고, 실제 커밋으로 잘못 막는 비율을 잰다"
+    ],
+    [
+      "a94184b",
+      "feat: 쇼츠·삽화를 만들기 전에 Jev가 먼저 판단하는 시험을 더한다"
+    ],
+    [
+      "247c843",
+      "feat: Jev 발행 전 안전 검사 시험을 더한다"
+    ],
+    [
+      "b99bfb8",
+      "chore: Jev 화면 고르기 시험 워크플로를 지운다 — 시험이 끝났다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "c29bbf2",
+      "docs: Move draft 1 of continuing story to next section and redraw"
+    ],
+    [
+      "8333a20",
+      "feat: Post model selects continuing previous post in same call"
+    ],
+    [
+      "e12aa46",
+      "design: Remove guidance text below post without shorts"
+    ],
+    [
+      "2d4805b",
+      "docs: Upload continuing post and post type draft, remove test workflow"
+    ],
+    [
+      "35e231e",
+      "feat: Test if Jev can select continuing post and post type"
+    ],
+    [
+      "9ac84f4",
+      "feat: Add pre-publication safety check to night run"
+    ],
+    [
+      "5ceb3eb",
+      "feat: Create safety check module and measure false rejection rate against actual commits"
+    ],
+    [
+      "a94184b",
+      "feat: Add test for Jev to judge first before creating shorts and illustrations"
+    ],
+    [
+      "247c843",
+      "feat: Add test for Jev pre-publication safety check"
+    ],
+    [
+      "b99bfb8",
+      "chore: Remove Jev screen selection test workflow — testing complete"
+    ]
+  ],
+  "commitCount": 10,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "AI가 밤마다 올리는 글에 비밀 키나 숨은 지시가 섞이지 않도록 검사를 두 번 넣었습니다. 가짜 글 15편은 모두 잡혔고, 올라간 글 51편은 하나도 막히지 않았습니다.",
+    "en": "Posts that AI publishes every night are now checked twice for secret keys and hidden instructions. All 15 fake posts were caught, and none of the 51 published posts were blocked."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#AI",
+    "#보안",
+    "#개발일지",
+    "#devlog",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-07.poster.jpg?v=muy6pj2c",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-07.ko.mp4?v=muy6pkw7",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-07.en.poster.jpg?v=muy6r2z1",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-07.en.mp4?v=muy6r4kp"
+  }
+}

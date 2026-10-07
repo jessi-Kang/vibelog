@@ -1,0 +1,1152 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "커밋은 검사를 거쳐 AI에게 가고, 완성된 글은 한 번 더 검사를 거쳐 공개됩니다. 어느 검사에서든 걸리면 그날은 올리지 않습니다.",
+  "altEn": "Commits pass a check before reaching the AI, and the finished post passes another check before publishing. If either check catches something, the post doesn't go out that day.",
+  "caption": "AI에 넘기기 전과 올리기 전에 각각 검사하고, 걸리면 그날은 올리지 않습니다.",
+  "captionEn": "One check before the AI and one before publishing. If either catches something, nothing goes out that day.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 304",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "커밋이 검사를 거쳐 AI에게 가고, 완성된 글이 다시 검사를 거쳐 공개되며, 걸리면 그날은 올리지 않는 흐름"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "50",
+        "y": "16",
+        "width": "160",
+        "height": "40",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "50",
+        "y": "132",
+        "width": "160",
+        "height": "40",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "70",
+        "y": "76",
+        "width": "120",
+        "height": "36",
+        "rx": "18"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "70",
+        "y": "192",
+        "width": "120",
+        "height": "36",
+        "rx": "18"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "248",
+      "width": "160",
+      "height": "40",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "56",
+        "x2": "130",
+        "y2": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "112",
+        "x2": "130",
+        "y2": "126"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "172",
+        "x2": "130",
+        "y2": "186"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "228",
+        "x2": "130",
+        "y2": "242"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-muted)"
+     },
+     "children": [
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,70 135,70 130,76"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,126 135,126 130,132"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,186 135,186 130,192"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,242 135,242 130,248"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "5 4",
+      "fill": "none"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "190",
+        "y1": "94",
+        "x2": "260",
+        "y2": "145"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "190",
+        "y1": "210",
+        "x2": "260",
+        "y2": "160"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "260",
+        "y": "130",
+        "width": "120",
+        "height": "44",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "42",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "검사"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI가 글 쓰기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "216",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "검사"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "274",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-accent)"
+     },
+     "text": "공개"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "걸리면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그날은 안 올림"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 304",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Commits pass a check before the AI, the finished post passes another check before publishing, and anything caught is held back that day"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "50",
+        "y": "16",
+        "width": "160",
+        "height": "40",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "50",
+        "y": "132",
+        "width": "160",
+        "height": "40",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "70",
+        "y": "76",
+        "width": "120",
+        "height": "36",
+        "rx": "18"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "70",
+        "y": "192",
+        "width": "120",
+        "height": "36",
+        "rx": "18"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "248",
+      "width": "160",
+      "height": "40",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "56",
+        "x2": "130",
+        "y2": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "112",
+        "x2": "130",
+        "y2": "126"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "172",
+        "x2": "130",
+        "y2": "186"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "130",
+        "y1": "228",
+        "x2": "130",
+        "y2": "242"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-muted)"
+     },
+     "children": [
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,70 135,70 130,76"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,126 135,126 130,132"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,186 135,186 130,192"
+       }
+      },
+      {
+       "tag": "polygon",
+       "attrs": {
+        "points": "125,242 135,242 130,248"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "5 4",
+      "fill": "none"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "190",
+        "y1": "94",
+        "x2": "260",
+        "y2": "145"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "190",
+        "y1": "210",
+        "x2": "260",
+        "y2": "160"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "260",
+        "y": "130",
+        "width": "120",
+        "height": "44",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "42",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commits"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "100",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Check"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI writes post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "216",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Check"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "274",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Publish"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "118",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "If caught"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Not posted"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "규칙과 작은 AI 중 하나라도 걸면 글을 막습니다. 시험 결과 가짜 글 15편은 모두 잡혔고, 이미 올라간 글 51편은 하나도 막히지 않았습니다.",
+  "altEn": "The rules and a small AI each check the text, and either one can block it. All 15 fake posts were caught, and none of the 51 published posts were blocked.",
+  "caption": "규칙과 AI 중 하나라도 걸면 막습니다. 가짜 글은 다 잡혔고, 멀쩡한 글은 막히지 않았습니다.",
+  "captionEn": "Either the rules or the AI can block. The fakes were all caught, and normal posts weren't blocked.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 316",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "규칙과 작은 AI 중 하나라도 걸면 막으며, 가짜 글 15편은 모두 잡히고 올린 글 51편은 막히지 않음"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "55",
+        "width": "70",
+        "height": "40",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "140",
+        "y": "20",
+        "width": "110",
+        "height": "40",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "140",
+        "y": "90",
+        "width": "110",
+        "height": "40",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "90",
+        "y1": "75",
+        "x2": "140",
+        "y2": "40"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "90",
+        "y1": "75",
+        "x2": "140",
+        "y2": "110"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "250",
+        "y1": "40",
+        "x2": "290",
+        "y2": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "250",
+        "y1": "110",
+        "x2": "290",
+        "y2": "80"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "290",
+      "y": "55",
+      "width": "80",
+      "height": "40",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "160",
+      "x2": "370",
+      "y2": "160",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "210",
+      "x2": "256",
+      "y2": "210",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "12",
+      "stroke-dasharray": "12 4"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "10",
+      "stroke-dasharray": "10 3"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "20",
+        "y1": "270",
+        "x2": "238",
+        "y2": "270"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "20",
+        "y1": "283",
+        "x2": "238",
+        "y2": "283"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "20",
+        "y1": "296",
+        "x2": "238",
+        "y2": "296"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "55",
+      "y": "81",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "규칙"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "작은 AI"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "81",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "막음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "121",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "text-anchor": "middle",
+      "fill": "var(--color-muted)"
+     },
+     "text": "하나라도 걸면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "190",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "start",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "가짜 글 15편"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "end",
+      "fill": "var(--color-warn)"
+     },
+     "text": "모두 잡힘"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "254",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "start",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "올린 글 51편"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "288",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "end",
+      "fill": "var(--color-accent)"
+     },
+     "text": "막힌 글 없음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 316",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Either the rules or a small AI can block a post; all 15 fake posts were caught and none of the 51 published posts were blocked"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "55",
+        "width": "70",
+        "height": "40",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "140",
+        "y": "20",
+        "width": "110",
+        "height": "40",
+        "rx": "6"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "140",
+        "y": "90",
+        "width": "110",
+        "height": "40",
+        "rx": "6"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "90",
+        "y1": "75",
+        "x2": "140",
+        "y2": "40"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "90",
+        "y1": "75",
+        "x2": "140",
+        "y2": "110"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "250",
+        "y1": "40",
+        "x2": "290",
+        "y2": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "250",
+        "y1": "110",
+        "x2": "290",
+        "y2": "80"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "290",
+      "y": "55",
+      "width": "80",
+      "height": "40",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "160",
+      "x2": "370",
+      "y2": "160",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "210",
+      "x2": "256",
+      "y2": "210",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "12",
+      "stroke-dasharray": "12 4"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "10",
+      "stroke-dasharray": "10 3"
+     },
+     "children": [
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "20",
+        "y1": "270",
+        "x2": "238",
+        "y2": "270"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "20",
+        "y1": "283",
+        "x2": "238",
+        "y2": "283"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "20",
+        "y1": "296",
+        "x2": "238",
+        "y2": "296"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "55",
+      "y": "81",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Rules"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "116",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Small AI"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "81",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "middle",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Block"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "121",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "text-anchor": "middle",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Either flags"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "190",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "start",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "15 fake posts"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "end",
+      "fill": "var(--color-warn)"
+     },
+     "text": "All caught"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "254",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "start",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "51 published posts"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "288",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "text-anchor": "end",
+      "fill": "var(--color-accent)"
+     },
+     "text": "None blocked"
+    }
+   ]
+  }
+ }
+]

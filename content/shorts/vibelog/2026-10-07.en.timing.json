@@ -1,0 +1,501 @@
+{
+  "lang": "en",
+  "duration": 29.257,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 3.053,
+      "words": [
+        {
+          "text": "A",
+          "start": 0,
+          "end": 0.081
+        },
+        {
+          "text": "secret",
+          "start": 0.163,
+          "end": 0.499
+        },
+        {
+          "text": "key,",
+          "start": 0.546,
+          "end": 0.964
+        },
+        {
+          "text": "like",
+          "start": 1.115,
+          "end": 1.3
+        },
+        {
+          "text": "a",
+          "start": 1.335,
+          "end": 1.358
+        },
+        {
+          "text": "password,",
+          "start": 1.405,
+          "end": 1.95
+        },
+        {
+          "text": "could",
+          "start": 2.02,
+          "end": 2.194
+        },
+        {
+          "text": "have",
+          "start": 2.218,
+          "end": 2.322
+        },
+        {
+          "text": "gone",
+          "start": 2.345,
+          "end": 2.519
+        },
+        {
+          "text": "public.",
+          "start": 2.554,
+          "end": 3.053
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 3.75,
+      "end": 6.118,
+      "words": [
+        {
+          "text": "AI",
+          "start": 3.75,
+          "end": 4.075
+        },
+        {
+          "text": "reads",
+          "start": 4.145,
+          "end": 4.365
+        },
+        {
+          "text": "my",
+          "start": 4.423,
+          "end": 4.505
+        },
+        {
+          "text": "commits",
+          "start": 4.563,
+          "end": 4.899
+        },
+        {
+          "text": "and",
+          "start": 4.946,
+          "end": 5.027
+        },
+        {
+          "text": "posts",
+          "start": 5.085,
+          "end": 5.375
+        },
+        {
+          "text": "every",
+          "start": 5.433,
+          "end": 5.666
+        },
+        {
+          "text": "night.",
+          "start": 5.724,
+          "end": 6.118
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 6.502,
+      "end": 8.475,
+      "words": [
+        {
+          "text": "Now",
+          "start": 6.502,
+          "end": 6.653
+        },
+        {
+          "text": "every",
+          "start": 6.711,
+          "end": 6.908
+        },
+        {
+          "text": "post",
+          "start": 6.954,
+          "end": 7.175
+        },
+        {
+          "text": "is",
+          "start": 7.221,
+          "end": 7.291
+        },
+        {
+          "text": "checked",
+          "start": 7.338,
+          "end": 7.581
+        },
+        {
+          "text": "twice",
+          "start": 7.605,
+          "end": 7.93
+        },
+        {
+          "text": "first.",
+          "start": 7.988,
+          "end": 8.475
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 9.079,
+      "end": 11.413,
+      "words": [
+        {
+          "text": "I",
+          "start": 9.079,
+          "end": 9.137
+        },
+        {
+          "text": "made",
+          "start": 9.23,
+          "end": 9.416
+        },
+        {
+          "text": "fake",
+          "start": 9.451,
+          "end": 9.694
+        },
+        {
+          "text": "posts",
+          "start": 9.729,
+          "end": 9.996
+        },
+        {
+          "text": "with",
+          "start": 10.043,
+          "end": 10.194
+        },
+        {
+          "text": "hidden",
+          "start": 10.24,
+          "end": 10.519
+        },
+        {
+          "text": "secret",
+          "start": 10.588,
+          "end": 10.879
+        },
+        {
+          "text": "keys.",
+          "start": 10.913,
+          "end": 11.413
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 11.854,
+      "end": 14.443,
+      "words": [
+        {
+          "text": "In",
+          "start": 11.854,
+          "end": 11.993
+        },
+        {
+          "text": "the",
+          "start": 12.028,
+          "end": 12.098
+        },
+        {
+          "text": "test,",
+          "start": 12.144,
+          "end": 12.55
+        },
+        {
+          "text": "all",
+          "start": 12.585,
+          "end": 12.783
+        },
+        {
+          "text": "15",
+          "start": 12.841,
+          "end": 13.247
+        },
+        {
+          "text": "got",
+          "start": 13.317,
+          "end": 13.479
+        },
+        {
+          "text": "caught",
+          "start": 13.537,
+          "end": 13.746
+        },
+        {
+          "text": "by",
+          "start": 13.781,
+          "end": 13.862
+        },
+        {
+          "text": "the",
+          "start": 13.92,
+          "end": 13.99
+        },
+        {
+          "text": "check.",
+          "start": 14.036,
+          "end": 14.443
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 14.826,
+      "end": 17.125,
+      "words": [
+        {
+          "text": "At",
+          "start": 14.826,
+          "end": 14.988
+        },
+        {
+          "text": "first,",
+          "start": 15.07,
+          "end": 15.464
+        },
+        {
+          "text": "even",
+          "start": 15.546,
+          "end": 15.801
+        },
+        {
+          "text": "fine",
+          "start": 15.871,
+          "end": 16.091
+        },
+        {
+          "text": "commits",
+          "start": 16.126,
+          "end": 16.463
+        },
+        {
+          "text": "got",
+          "start": 16.498,
+          "end": 16.649
+        },
+        {
+          "text": "caught.",
+          "start": 16.707,
+          "end": 17.125
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 17.636,
+      "end": 20.004,
+      "words": [
+        {
+          "text": "Even",
+          "start": 17.636,
+          "end": 17.891
+        },
+        {
+          "text": "a",
+          "start": 17.926,
+          "end": 17.949
+        },
+        {
+          "text": "quoted",
+          "start": 18.019,
+          "end": 18.355
+        },
+        {
+          "text": "\"password\"",
+          "start": 18.39,
+          "end": 18.889
+        },
+        {
+          "text": "was",
+          "start": 18.913,
+          "end": 19.029
+        },
+        {
+          "text": "treated",
+          "start": 19.075,
+          "end": 19.365
+        },
+        {
+          "text": "as",
+          "start": 19.412,
+          "end": 19.493
+        },
+        {
+          "text": "real.",
+          "start": 19.563,
+          "end": 20.004
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 20.608,
+      "end": 23.232,
+      "words": [
+        {
+          "text": "Now",
+          "start": 20.608,
+          "end": 20.805
+        },
+        {
+          "text": "none",
+          "start": 20.898,
+          "end": 21.084
+        },
+        {
+          "text": "of",
+          "start": 21.107,
+          "end": 21.165
+        },
+        {
+          "text": "the",
+          "start": 21.211,
+          "end": 21.281
+        },
+        {
+          "text": "51",
+          "start": 21.351,
+          "end": 21.676
+        },
+        {
+          "text": "published",
+          "start": 21.757,
+          "end": 22.094
+        },
+        {
+          "text": "posts",
+          "start": 22.14,
+          "end": 22.419
+        },
+        {
+          "text": "get",
+          "start": 22.465,
+          "end": 22.605
+        },
+        {
+          "text": "blocked.",
+          "start": 22.639,
+          "end": 23.232
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 23.673,
+      "end": 26.088,
+      "words": [
+        {
+          "text": "Tonight,",
+          "start": 23.673,
+          "end": 24.067
+        },
+        {
+          "text": "I'll",
+          "start": 24.114,
+          "end": 24.288
+        },
+        {
+          "text": "watch",
+          "start": 24.334,
+          "end": 24.52
+        },
+        {
+          "text": "whether",
+          "start": 24.555,
+          "end": 24.787
+        },
+        {
+          "text": "fine",
+          "start": 24.845,
+          "end": 25.078
+        },
+        {
+          "text": "posts",
+          "start": 25.124,
+          "end": 25.391
+        },
+        {
+          "text": "get",
+          "start": 25.414,
+          "end": 25.554
+        },
+        {
+          "text": "blocked.",
+          "start": 25.588,
+          "end": 26.088
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 26.471,
+      "end": 29.257,
+      "words": [
+        {
+          "text": "Before",
+          "start": 26.471,
+          "end": 26.784
+        },
+        {
+          "text": "I",
+          "start": 26.819,
+          "end": 26.842
+        },
+        {
+          "text": "read",
+          "start": 26.912,
+          "end": 27.063
+        },
+        {
+          "text": "a",
+          "start": 27.098,
+          "end": 27.121
+        },
+        {
+          "text": "post,",
+          "start": 27.179,
+          "end": 27.655
+        },
+        {
+          "text": "the",
+          "start": 27.771,
+          "end": 27.876
+        },
+        {
+          "text": "check",
+          "start": 27.922,
+          "end": 28.108
+        },
+        {
+          "text": "reads",
+          "start": 28.154,
+          "end": 28.328
+        },
+        {
+          "text": "it",
+          "start": 28.363,
+          "end": 28.433
+        },
+        {
+          "text": "first.",
+          "start": 28.479,
+          "end": 29.257
+        }
+      ]
+    }
+  ]
+}
