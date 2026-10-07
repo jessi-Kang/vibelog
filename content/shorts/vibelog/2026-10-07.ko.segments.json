@@ -1,0 +1,23 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "어떻게 돌아가나",
+      "focusY": 0.5,
+      "start": 1.02,
+      "end": 13.05
+    },
+    {
+      "path": "/log",
+      "start": 13.91,
+      "end": 26.39
+    },
+    {
+      "path": "/",
+      "find": "지난 실행",
+      "focusY": 0.5,
+      "start": 27.4,
+      "end": 39.43
+    }
+  ]
+}
