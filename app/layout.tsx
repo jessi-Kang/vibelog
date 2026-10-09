@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import { ldJson } from "@/lib/ld-json";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
@@ -125,6 +126,9 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* 방문 통계 (Vercel Web Analytics) — 쿠키를 쓰지 않는다. 글 끝 "이 이야기의
+            앞뒤"를 만들기 전에 사람들이 글 끝까지 와서 다른 글로 넘어가는지부터 본다 (10/9) */}
+        <Analytics />
       </body>
     </html>
   );
