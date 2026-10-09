@@ -346,7 +346,9 @@ export function PostClient({ post }: { post: PostData }) {
         </section>
       )}
       <Link
-        href={`/projects/${post.repo}`}
+        // utm_source로 글 끝 링크를 눌렀는지 센다 — 무료 요금제의 방문 통계는 클릭
+        // 이벤트를 못 받지만 들어온 주소의 utm 값은 나눠서 보여 준다
+        href={`/projects/${post.repo}?utm_source=post-end`}
         className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
       >
         {en ? `More days of ${post.repo} →` : `${post.repo}의 다른 날 →`}
