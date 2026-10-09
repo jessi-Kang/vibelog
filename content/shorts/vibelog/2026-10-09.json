@@ -1,0 +1,255 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-09",
+  "day": 16,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "글 끝 링크를 누르는지 셉니다",
+      "en": "I started counting end-of-post clicks",
+      "keywords": [
+        "누르는지"
+      ],
+      "keywordsEn": [
+        "counting"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "글 끝에는 다른 날 글로 가는 링크가 있습니다.",
+      "en": "Each post ends with a link to another day.",
+      "keywords": [
+        "링크가"
+      ],
+      "keywordsEn": [
+        "another day"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "글을 읽고",
+          "맨 아래까지",
+          "다른 날 글로"
+        ],
+        "labelsEn": [
+          "Read a post",
+          "Reach the bottom",
+          "Go to another day"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "통계가 꺼져 있어 알 길이 없었습니다.",
+      "en": "Stats were off, so I had no way to tell.",
+      "keywords": [
+        "꺼져"
+      ],
+      "keywordsEn": [
+        "off"
+      ],
+      "motif": "missing"
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 Vercel의 방문 통계를 켰습니다.",
+      "en": "So I turned on Vercel's visitor stats.",
+      "keywords": [
+        "Vercel의"
+      ],
+      "keywordsEn": [
+        "Vercel's"
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "demo",
+      "ko": "링크를 누른 횟수도 따로 보고 싶었습니다.",
+      "en": "I also wanted to see how many clicked that link.",
+      "keywords": [
+        "누른 횟수도"
+      ],
+      "keywordsEn": [
+        "clicked"
+      ],
+      "motif": "scan"
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 무료 요금제로는 클릭 수를 못 셌습니다.",
+      "en": "But the free plan can't count clicks.",
+      "keywords": [
+        "무료 요금제로는"
+      ],
+      "keywordsEn": [
+        "free plan"
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "클릭 세기",
+          "무료로는 안 됨",
+          "주소에 꼬리표",
+          "방문에 남음"
+        ],
+        "labelsEn": [
+          "Count clicks",
+          "Not on free plan",
+          "Tag the address",
+          "Shows in visits"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "링크에 '글 끝에서 왔다'는 표시를 달았습니다.",
+      "en": "So I tagged the link: \"came from the end of a post.\"",
+      "keywords": [
+        "표시를"
+      ],
+      "keywordsEn": [
+        "tagged"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "링크를 누름",
+          "주소에 표시",
+          "통계에 남음"
+        ],
+        "labelsEn": [
+          "Click the link",
+          "Tag in address",
+          "Shows in stats"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "표시가 붙은 방문만 세면 클릭 수입니다.",
+      "en": "Count only the tagged visits, and that's the clicks.",
+      "keywords": [
+        "방문만 세면"
+      ],
+      "keywordsEn": [
+        "tagged visits"
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "전체 방문",
+          "표시가 붙은 방문",
+          "글 끝에서 온 수"
+        ],
+        "labelsEn": [
+          "All visits",
+          "Tagged visits",
+          "From post ends"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "이어지는 이야기로 가는 링크를 더 붙입니다.",
+      "en": "Next, I'll add links to the rest of the story.",
+      "keywords": [
+        "이어지는 이야기로"
+      ],
+      "keywordsEn": [
+        "rest of the story"
+      ],
+      "motif": "tile"
+    },
+    {
+      "scene": "end",
+      "ko": "그 링크는 며칠 숫자를 보고 만들겠습니다.",
+      "en": "I'll build them after a few days of numbers.",
+      "keywords": [
+        "며칠"
+      ],
+      "keywordsEn": [
+        "a few days"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "무료로는 클릭을 못 셌다",
+    "titleEn": "The free plan couldn't count clicks",
+    "before": "무료 요금제는 링크 클릭 수를 안 센다",
+    "after": "링크 주소에 꼬리표를 붙여 골라 센다",
+    "beforeEn": "The free plan doesn't count link clicks",
+    "afterEn": "Tag the link address and count tagged visits"
+  },
+  "commits": [
+    [
+      "4483215",
+      "chore: 커밋 습관 시험 워크플로를 지운다"
+    ],
+    [
+      "bae9a4b",
+      "feat: 커밋 습관 알림을 Jev로 셀 수 있는지 시험한다"
+    ],
+    [
+      "5d1065b",
+      "chore: 주간 하이라이트 시험 워크플로를 지운다"
+    ],
+    [
+      "2e178c8",
+      "feat: 주간 하이라이트를 Jev가 고를 수 있는지 시험한다"
+    ],
+    [
+      "1282ca1",
+      "feat: 방문 통계를 켜고 글 끝 링크를 누른 수를 센다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "4483215",
+      "chore: remove commit habit test workflow"
+    ],
+    [
+      "bae9a4b",
+      "feat: test if commit habit notifications can be counted with Jev"
+    ],
+    [
+      "5d1065b",
+      "chore: remove weekly highlight test workflow"
+    ],
+    [
+      "2e178c8",
+      "feat: test if weekly highlights can be selected by Jev"
+    ],
+    [
+      "1282ca1",
+      "feat: enable visit statistics and count clicks on links at the end of posts"
+    ]
+  ],
+  "commitCount": 5,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "글 끝 링크를 누르고 다른 글로 넘어가는 사람이 있을까요? 무료 요금제의 한계를 링크 꼬리표로 넘어 세기 시작했습니다.",
+    "en": "Does anyone click the link at the end of a post? The free plan couldn't count clicks, so I tagged the link instead."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#Vercel",
+    "#방문통계",
+    "#devlog",
+    "#webanalytics",
+    "#indiedev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-09.poster.jpg?v=mv11hyob",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-09.ko.mp4?v=mv11i2ml",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-09.en.poster.jpg?v=mv11iz55",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-09.en.mp4?v=mv11j1up"
+  }
+}
