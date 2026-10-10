@@ -4,16 +4,17 @@
     "name": "lie-detective",
     "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
     "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
-    "status": "building",
+    "status": "preview",
     "stack": [
-      "HTML"
+      "JavaScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/lie-detective",
-    "language": "HTML",
+    "homepage": "https://lie-detective.vercel.app",
+    "language": "JavaScript",
     "lastActivity": "2026-10-10",
-    "weekCommits": 23,
-    "todayCommits": 23,
-    "totalCommits": 23,
+    "weekCommits": 49,
+    "todayCommits": 49,
+    "totalCommits": 49,
     "countsDate": "2026-10-10",
     "theme": "highlighter"
   },
@@ -30,9 +31,9 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-10",
-    "weekCommits": 61,
-    "todayCommits": 2,
-    "totalCommits": 488,
+    "weekCommits": 62,
+    "todayCommits": 3,
+    "totalCommits": 489,
     "countsDate": "2026-10-10"
   },
   {
