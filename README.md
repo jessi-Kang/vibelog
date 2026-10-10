@@ -35,6 +35,9 @@
 
 배포 주소는 자동으로 찾아 붙고(Vercel 연동 또는 GitHub Deployments),
 상태(building · preview · live)도 커밋과 릴리즈를 보고 스스로 판단합니다.
+**live는 GitHub Release가 있고 자기 도메인(`*.vercel.app`이 아닌 주소)일 때뿐**이고,
+사이트 주소는 live일 때만 화면에 겁니다 — 정식 공개 전 주소는 숨겨 둡니다.
+홈에서는 최근 7일 안에 커밋이 있는 프로젝트만 카드로 펼치고 나머지는 접습니다.
 품질을 좌우하는 건 **커밋 메시지** 하나뿐이라, 새 레포에는 커밋 규약
 ([docs/02 §3](docs/02-pipeline-and-setup.md))을 붙여 두기를 권합니다.
 
@@ -48,7 +51,8 @@ content/                파이프라인 산출물 (projects.json · devlog/ (+ .
                         · state.json · commit-hours.json · run.json)
 scripts/
   collect.ts            GitHub API → 레포별 활동 수집 (봇 커밋 제외, 본문 있는 커밋 5개부터 글)
-  generate.ts           수집 결과 → 데브로그 MDX (KR/EN)
+  generate.ts           수집 결과 → 데브로그 MDX (KR/EN) — 이어 가는 지난 글도 같은 호출에서 고른다
+  safety.ts             발행 전 안전 검사 — 비밀 키·개인 연락처·내부 주소·AI에게 끼워 넣은 지시
   figures.ts            글 삽화 — 자유 작도 SVG를 허용 목록 파서로 검증해 트리로 저장
   script.ts             데브로그 → 쇼츠 대본
   audio.ts              내레이션 TTS + 발음 교정 + 타이밍

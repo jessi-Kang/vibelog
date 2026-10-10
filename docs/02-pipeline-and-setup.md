@@ -34,6 +34,8 @@
 - 레포 Secrets:
   - `ANTHROPIC_API_KEY` — 데브로그 생성
   - `GH_PAT` — fine-grained PAT (Contents: read, Metadata: read, 대상: 모든 내 레포). private 프로젝트 레포까지 읽으려면 필수. public만이면 생략 가능하나 rate limit 때문에 권장.
+  - `TYPESAFE_API_KEY` — 발행 전 안전 검사(Jev). 없으면 모양 규칙만으로 검사한다.
+- Vercel Web Analytics — 대시보드에서 켠다 (10/9부터 켜짐). 코드는 `app/layout.tsx`의 `<Analytics />`.
 
 2단계 이후 (지금은 안 해도 됨):
 
@@ -58,6 +60,8 @@ vibelog/
 │   └─ sitemap.ts · robots.ts · feed.xml/
 ├─ components/                   # UI. 다크 기본, 모바일은 하단 탭바
 ├─ lib/                          # content 로더 · 포맷 · SITE_URL
+│                                #   · commit-hours.ts (홈 통계·잔디 셈, 최근 7일 판정 activeThisWeek)
+│                                #   · public-homepage.ts (사이트 주소는 live일 때만 화면에)
 ├─ public/sw.js                  # 서비스 워커 (없으면 안드로이드가 앱 대신 바로가기를 만든다)
 ├─ content/                      # 파이프라인 산출물 — 손으로 고치지 않는다
 │   ├─ projects.json             #   레포 메타 기반 카드
@@ -72,6 +76,8 @@ vibelog/
 │   ├─ generate.ts               # 수집 결과 → 데브로그 MDX (KR/EN) + 처음 읽는 사람의 읽기 검사
 │   ├─ korean-style.ts · check-korean.ts  # 어색한 한국어 표현 목록과 그 검사기 (문서·커밋·실행 기록 문구)
 │   ├─ readability.ts            # 처음 보는 사람 역할의 검사 모델 호출 (글·대본이 같이 씀)
+│   ├─ safety.ts                 # 발행 전 안전 검사 (Jev + 모양 규칙) — jev-*-trial.ts가 그 시험 기록
+│   ├─ commit-rule.ts · check-commit.ts  # 커밋 규칙을 코드로 — 밤 수집과 .githooks/commit-msg가 같이 씀
 │   ├─ devlog-preview.ts         # 지난 글을 지금 지시문으로 다시 써서 나란히 보기 (발행 안 함, `preview` 입력)
 │   ├─ figures.ts · figure-types.ts  # 글 삽화 생성·검증 (허용 목록 파서) · check-figures.ts 검사기
 │   ├─ figures-backfill.ts        # 지난 글에 삽화만 붙인다 (Run workflow `figures` 입력)
@@ -124,7 +130,10 @@ vibelog/
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 
 상태 자동 판정 기본값: 배포 주소가 있으면 **preview**(가배포), GitHub **Release를
-1개 이상 발행**하면 **live** — "정식 공개" 선언은 Release 발행 하나뿐이다.
+1개 이상 발행**하고 주소가 **Vercel 기본 주소(`*.vercel.app`)가 아니면** **live**
+(`scripts/run.ts` `isVercelDefault`) — 정식 공개는 자기 도메인을 단 뒤 Release를 내는 것이다.
+**사이트 주소는 live일 때만 화면에 건다** (`lib/public-homepage.ts` — 홈 카드 "열기"와
+프로젝트 페이지). 쇼츠 녹화가 주소를 쓰므로 `projects.json`에는 남는다 (10/10).
 About Website는 주소 지정용일 뿐 상태와 무관 (주소만 채워도 live가 되던 사고의 교훈).
 배포가 없으면 30일 내 커밋 building, 넘으면 paused. `vibelog.json`의 status가
 있으면 언제나 그게 우선 — 예외적 강제 지정용 (vibelog 자신이 이걸로 live 고정).
@@ -254,6 +263,20 @@ Jessi 한 명이 "저"로 말하고, 이름을 쓰지 않는다. 쇼츠 대본�
 쓰는 날만 Opus 호출이 하나 더 든다. 지시문을 고친 효과는 Run workflow의 `preview`
 입력(예: `vibelog/2026-09-22`)으로 지난 글을 다시 써서 원래 글과 나란히 본다 —
 발행하지 않고 실행 요약에만 남긴다.
+
+### 이어지는 글
+
+글을 쓰는 모델이 같은 호출에서 "오늘 글이 어느 지난 글을 바로 이어 가는가"를 고른다
+(frontmatter `continues: "YYYY-MM-DD"`). 같은 레포 지난 글 8편의 제목과 "다음 할 것"을
+보기로 넘기고(`lib/content.ts`의 `recentPosts`), 보기에 없는 날짜는 버린다. 앞뒤 글은
+`storyThread`가 찾는다. 이 판단을 값싼 Jev로 시험했을 때(10/7) 확신 높게 이은 6쌍 중
+1쌍이 제목의 낱말만 겹친 엉뚱한 연결이었고 맞은 쌍과 확신이 같아 걸러낼 수 없어서,
+재료를 다 읽는 글 모델에게 맡겼다. 지난 글에는 시험에서 맞은 5쌍만 손으로 넣었다.
+
+글 페이지의 "이 이야기의 앞뒤" 화면은 **아직 만들지 않았다**. 시안은 `docs/post-thread.html`
+(1안 — 원료 다음에 데브로그 목록과 같은 점·세로줄). 사람들이 글 끝까지 와서 다른 글로
+넘어가는지부터 보기로 했다 — Vercel Web Analytics를 켜고, 글 끝 "다른 날" 링크에
+`?utm_source=post-end`를 붙여 utm 값으로 센다 (무료 요금제는 클릭 이벤트를 못 센다).
 
 ### 발행 전 안전 검사
 
