@@ -1,0 +1,804 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "전에는 답변 규칙이 인물 소개와 함께 브라우저로 내려왔고, 지금은 규칙이 서버에 남고 브라우저에는 인물 소개와 받은 답만 있다.",
+  "altEn": "Before, the answer rules came down to the browser along with the character intros; now the rules stay on the server and the browser holds only the intros and the answers it receives.",
+  "caption": "답을 정하는 규칙이 브라우저에서 서버로 자리를 옮겼습니다",
+  "captionEn": "The rules that decide answers moved from the browser to the server",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "답변 규칙이 브라우저에서 서버로 옮겨 간 전과 후"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "90",
+      "x2": "202",
+      "y2": "90",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "202,85 210,90 202,95",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "45",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "브라우저"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "98",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인물 소개"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "122",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "답변 규칙"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "177",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "190",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "217",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "252",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "답변 규칙"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "235",
+      "x2": "202",
+      "y2": "235",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "202,230 210,235 202,240",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "190",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "217",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "브라우저"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "243",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인물 소개"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "267",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "받은 답"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before and after the answer rules moved from the browser to the server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Server"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "90",
+      "x2": "202",
+      "y2": "90",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "202,85 210,90 202,95",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "45",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "72",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Browser"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "98",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Character intros"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "122",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Answer rules"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "177",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "190",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "217",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "252",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Answer rules"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "235",
+      "x2": "202",
+      "y2": "235",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "202,230 210,235 202,240",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "190",
+      "width": "160",
+      "height": "90",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "217",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Browser"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "243",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Character intros"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "267",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Answers only"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "따옴표가 명령의 앞뒤를 감싸면 끝이 보이지만, 닫는 따옴표 앞에 역슬래시가 붙으면 명령의 끝을 찾지 못한다.",
+  "altEn": "When quotes wrap both ends of a command its end is clear, but a backslash before the closing quote makes the end impossible to find.",
+  "caption": "역슬래시 하나 때문에 닫는 따옴표가 제 역할을 못 했습니다",
+  "captionEn": "A single backslash kept the closing quote from doing its job",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "정상적인 따옴표와 역슬래시 때문에 끝을 잃은 따옴표의 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "62",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "정상"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "62",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "\""
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "60",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "명령"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "62",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24",
+      "fill": "var(--color-accent)"
+     },
+     "text": "\""
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M100 72 V80 H300 V72",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "104",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "여기서 끝"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "167",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "오류"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "167",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "\""
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "명령"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "167",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24"
+     },
+     "children": [
+      {
+       "tag": "tspan",
+       "attrs": {
+        "fill": "var(--color-warn)"
+       },
+       "text": "\\"
+      },
+      {
+       "tag": "tspan",
+       "attrs": {
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "\""
+      }
+     ]
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M100 177 V185 H375",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "375",
+      "y": "209",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "끝을 못 찾음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A working pair of quotes compared with a quote that lost its end because of a backslash"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "62",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "OK"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "62",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "\""
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "60",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "command"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "62",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24",
+      "fill": "var(--color-accent)"
+     },
+     "text": "\""
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M100 72 V80 H300 V72",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "104",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "ends here"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "167",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Broken"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "167",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "\""
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "command"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "167",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "24"
+     },
+     "children": [
+      {
+       "tag": "tspan",
+       "attrs": {
+        "fill": "var(--color-warn)"
+       },
+       "text": "\\"
+      },
+      {
+       "tag": "tspan",
+       "attrs": {
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "\""
+      }
+     ]
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M100 177 V185 H375",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "375",
+      "y": "209",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "end not found"
+    }
+   ]
+  }
+ }
+]
