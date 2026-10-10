@@ -1,0 +1,398 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-10",
+  "day": 1,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "추리 게임 속 용의자의 거짓말이 다 보였습니다.",
+      "en": "Every suspect's lie in my mystery game was visible.",
+      "keywords": [
+        "거짓말이"
+      ],
+      "keywordsEn": [
+        "lie"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "브라우저의 소스 보기로 코드만 열면요.",
+      "en": "Just open the code with view source.",
+      "keywords": [
+        "소스 보기로"
+      ],
+      "keywordsEn": [
+        "view source."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 답변 규칙을 서버로 옮겼습니다.",
+      "en": "So I moved the answer rules to the server.",
+      "keywords": [
+        "답변 규칙을"
+      ],
+      "keywordsEn": [
+        "answer rules",
+        "server."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "브라우저",
+          "규칙이 보임",
+          "서버",
+          "답만 보냄"
+        ],
+        "labelsEn": [
+          "Browser",
+          "Rules visible",
+          "Server",
+          "Sends answers only"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "인터넷에 올리는 배포 전엔 검사가 저절로 돕니다.",
+      "en": "Before each deploy, a check runs on its own.",
+      "keywords": [
+        "배포 전엔",
+        "저절로"
+      ],
+      "keywordsEn": [
+        "deploy,",
+        "on its own."
+      ],
+      "motif": "loop"
+    },
+    {
+      "scene": "demo",
+      "ko": "브라우저로 갈 코드에 정답이 있으면 멈춥니다.",
+      "en": "If browser code holds the answers, it stops.",
+      "keywords": [
+        "정답이",
+        "멈춥니다."
+      ],
+      "keywordsEn": [
+        "answers,",
+        "stops."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "배포 전 검사",
+          "정답 발견",
+          "배포 멈춤"
+        ],
+        "labelsEn": [
+          "Pre-deploy check",
+          "Answers found",
+          "Deploy stops"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 Vercel에 올리다 멈췄습니다.",
+      "en": "Then uploading to Vercel stopped.",
+      "keywords": [
+        "멈췄습니다."
+      ],
+      "keywordsEn": [
+        "stopped."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "코드를 묶고",
+          "빌드에서 멈춤",
+          "배포 못 함"
+        ],
+        "labelsEn": [
+          "Bundle code",
+          "Build stops",
+          "No deploy"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "따옴표 앞 역슬래시 기호 하나 때문이었습니다.",
+      "en": "One backslash symbol before a quote did it.",
+      "keywords": [
+        "역슬래시 기호 하나"
+      ],
+      "keywordsEn": [
+        "One backslash symbol"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "따옴표",
+          "명령을 감쌈",
+          "감싸지 못함",
+          "그냥 쓰면",
+          "역슬래시가 앞에"
+        ],
+        "labelsEn": [
+          "Quote",
+          "Wraps command",
+          "Wraps nothing",
+          "On its own",
+          "After a backslash"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "코드를 묶는 빌드가 명령의 끝을 못 찾았죠.",
+      "en": "The build, which bundles code, lost the command's end.",
+      "keywords": [
+        "명령의 끝을"
+      ],
+      "keywordsEn": [
+        "command's end."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "역슬래시 붙음",
+          "끝을 못 찾음",
+          "역슬래시 뗌",
+          "빌드 통과"
+        ],
+        "labelsEn": [
+          "Backslash added",
+          "Can't find the end",
+          "Backslash removed",
+          "Build passes"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음엔 실제 휴대폰으로 끝까지 돌려 봅니다.",
+      "en": "Next, I'll play it start to finish on a real phone.",
+      "keywords": [
+        "실제 휴대폰으로"
+      ],
+      "keywordsEn": [
+        "real phone."
+      ],
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 소스를 열어도 정답은 없습니다.",
+      "en": "Now view source holds no answers.",
+      "keywords": [
+        "정답은 없습니다."
+      ],
+      "keywordsEn": [
+        "no answers."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://lie-detective.vercel.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "빌드가 멈췄다",
+    "titleEn": "The build stopped",
+    "before": "역슬래시 하나에 빌드 중단",
+    "after": "역슬래시를 떼고 빌드 통과",
+    "beforeEn": "One backslash halted the build",
+    "afterEn": "Removed it, build passes"
+  },
+  "commits": [
+    [
+      "1136d88",
+      "fix: DB 저장 API의 잘못된 문자열 이스케이프로 인한 빌드 실패 수정"
+    ],
+    [
+      "e5de2ec",
+      "chore: 단위 테스트와 공개 빌드 보안 검사를 배포 명령에 연결"
+    ],
+    [
+      "def0ad6",
+      "chore: 컴파일된 브라우저 코드의 정답 및 시크릿 노출을 추가 검사"
+    ],
+    [
+      "3ece64a",
+      "chore: 게스트 진행과 계정 저장의 보안 경계를 테스트 코드로 고정"
+    ],
+    [
+      "9f6e0de",
+      "fix: 로그인 UI 스타일 누락과 서버 파일 보안 스캔 오탐 수정"
+    ],
+    [
+      "2ac6185",
+      "fix: 로그인 직후 자동 저장이 무시되는 상태 충돌 해결"
+    ],
+    [
+      "b1986de",
+      "feat: 비회원 플레이를 유지하며 구글 로그인 후 선택적 클라우드 저장 UI 추가"
+    ],
+    [
+      "ea8c50f",
+      "feat: 현장 관찰 기록을 계정 저장용 스냅샷으로 내보내고 복원 지원"
+    ],
+    [
+      "c540688",
+      "feat: 구글 계정별 수사 기록과 사진 저장 및 복원 API 구현"
+    ],
+    [
+      "1635c07",
+      "feat: 구글 계정 인증과 폐기 가능한 로그인 세션 저장 구조 추가"
+    ],
+    [
+      "9374259",
+      "feat: 사진 심문 UI를 서버 호출로 전환하고 공개 HTML에서 비밀 규칙 제거"
+    ],
+    [
+      "263560e",
+      "docs: 무료 데이터베이스 우선 정책과 최신 무료 한도 비교 반영"
+    ],
+    [
+      "1225d6c",
+      "feat: 비밀 답변 정책을 서버로 이전하고 세션 보호 심문 API 구현"
+    ],
+    [
+      "6a92279",
+      "chore: 서버 전용 API를 갖춘 Next.js 프로젝트 기본 구조 추가"
+    ],
+    [
+      "9272ea2",
+      "docs: 공개 파일의 게임 비밀 노출 검사와 알려진 차단 문제 기록"
+    ],
+    [
+      "b81df93",
+      "chore: 브라우저에 정답 규칙과 비밀 설정이 노출되는지 사전 점검 추가"
+    ],
+    [
+      "ee22ef8",
+      "docs: 보안 리팩터링과 데이터베이스 도입 체크를 릴리스 게이트로 추가"
+    ],
+    [
+      "851b6c4",
+      "docs: 이전 기획서부터 보안과 개발 체크리스트까지 문서 목차 통합"
+    ],
+    [
+      "64b5de2",
+      "docs: 거짓말 탐정 프로젝트 현황과 보안 선결과제 README 등록"
+    ],
+    [
+      "fa796c3",
+      "chore: 개발 시크릿과 이용자 사진이 Git에 들어가지 않도록 무시 규칙 추가"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "1136d88",
+      "fix: resolve build failure from incorrect string escaping in DB save API"
+    ],
+    [
+      "e5de2ec",
+      "chore: connect unit tests and public build security checks to deploy commands"
+    ],
+    [
+      "def0ad6",
+      "chore: add additional checks for answer and secret exposure in compiled browser code"
+    ],
+    [
+      "3ece64a",
+      "chore: fix security boundaries between guest progression and account saving with test code"
+    ],
+    [
+      "9f6e0de",
+      "fix: resolve missing login UI styles and fix false positives in server file security scan"
+    ],
+    [
+      "2ac6185",
+      "fix: resolve state conflict where auto-save is ignored immediately after login"
+    ],
+    [
+      "b1986de",
+      "feat: add optional cloud save UI after Google login while maintaining guest play"
+    ],
+    [
+      "ea8c50f",
+      "feat: export investigation records as snapshots for account saving and support restoration"
+    ],
+    [
+      "c540688",
+      "feat: implement Google account investigation history and photo save/restore APIs"
+    ],
+    [
+      "1635c07",
+      "feat: add Google account authentication and disposable login session storage structure"
+    ],
+    [
+      "9374259",
+      "feat: switch photo interrogation UI to server calls and remove secret rules from public HTML"
+    ],
+    [
+      "263560e",
+      "docs: reflect free database priority policy and latest free tier comparison"
+    ],
+    [
+      "1225d6c",
+      "feat: migrate secret answer policy to server and implement session-protected interrogation API"
+    ],
+    [
+      "6a92279",
+      "chore: add Next.js project base structure with server-only APIs"
+    ],
+    [
+      "9272ea2",
+      "docs: document public file game secret exposure checks and known blocking issues"
+    ],
+    [
+      "b81df93",
+      "chore: add pre-check for answer rules and secret settings exposure in browser"
+    ],
+    [
+      "ee22ef8",
+      "docs: add security refactoring and database adoption checks as release gates"
+    ],
+    [
+      "851b6c4",
+      "docs: consolidate documentation table of contents from previous planning to security and dev checklists"
+    ],
+    [
+      "64b5de2",
+      "docs: register project status and security prerequisites in README"
+    ],
+    [
+      "fa796c3",
+      "chore: add ignore rules to prevent dev secrets and user photos from entering Git"
+    ]
+  ],
+  "commitCount": 20,
+  "handle": "lie-detective.vercel.app",
+  "captions": {
+    "ko": "추리 게임의 정답이 소스 보기에 그대로 보였습니다. 용의자의 답변 규칙을 서버로 옮긴 날의 기록입니다.",
+    "en": "The mystery's answers were sitting in view source. Here's the day I moved the suspects' answer rules to the server."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#거짓말탐정",
+    "#추리게임",
+    "#Nextjs",
+    "#Vercel",
+    "#gamedev",
+    "#webdev"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-10.poster.jpg?v=mv2gxx0q",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-10.ko.mp4?v=mv2gxyrz",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-10.en.poster.jpg?v=mv2gyuqr",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-10.en.mp4?v=mv2gywob"
+  }
+}

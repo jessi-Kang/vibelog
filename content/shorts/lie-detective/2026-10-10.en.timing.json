@@ -1,0 +1,481 @@
+{
+  "lang": "en",
+  "duration": 29.815,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.717,
+      "words": [
+        {
+          "text": "Every",
+          "start": 0,
+          "end": 0.267
+        },
+        {
+          "text": "suspect's",
+          "start": 0.325,
+          "end": 0.72
+        },
+        {
+          "text": "lie",
+          "start": 0.778,
+          "end": 0.964
+        },
+        {
+          "text": "in",
+          "start": 1.01,
+          "end": 1.08
+        },
+        {
+          "text": "my",
+          "start": 1.138,
+          "end": 1.207
+        },
+        {
+          "text": "mystery",
+          "start": 1.277,
+          "end": 1.602
+        },
+        {
+          "text": "game",
+          "start": 1.66,
+          "end": 1.869
+        },
+        {
+          "text": "was",
+          "start": 1.892,
+          "end": 2.009
+        },
+        {
+          "text": "visible.",
+          "start": 2.067,
+          "end": 2.717
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 3.529,
+      "end": 5.329,
+      "words": [
+        {
+          "text": "Just",
+          "start": 3.529,
+          "end": 3.727
+        },
+        {
+          "text": "open",
+          "start": 3.773,
+          "end": 3.982
+        },
+        {
+          "text": "the",
+          "start": 4.029,
+          "end": 4.098
+        },
+        {
+          "text": "code",
+          "start": 4.145,
+          "end": 4.389
+        },
+        {
+          "text": "with",
+          "start": 4.412,
+          "end": 4.551
+        },
+        {
+          "text": "view",
+          "start": 4.609,
+          "end": 4.772
+        },
+        {
+          "text": "source.",
+          "start": 4.841,
+          "end": 5.329
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.84,
+      "end": 7.814,
+      "words": [
+        {
+          "text": "So",
+          "start": 5.84,
+          "end": 5.979
+        },
+        {
+          "text": "I",
+          "start": 6.049,
+          "end": 6.072
+        },
+        {
+          "text": "moved",
+          "start": 6.153,
+          "end": 6.339
+        },
+        {
+          "text": "the",
+          "start": 6.362,
+          "end": 6.432
+        },
+        {
+          "text": "answer",
+          "start": 6.478,
+          "end": 6.734
+        },
+        {
+          "text": "rules",
+          "start": 6.769,
+          "end": 6.978
+        },
+        {
+          "text": "to",
+          "start": 7.012,
+          "end": 7.07
+        },
+        {
+          "text": "the",
+          "start": 7.14,
+          "end": 7.21
+        },
+        {
+          "text": "server.",
+          "start": 7.256,
+          "end": 7.814
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 8.417,
+      "end": 11.262,
+      "words": [
+        {
+          "text": "Before",
+          "start": 8.417,
+          "end": 8.754
+        },
+        {
+          "text": "each",
+          "start": 8.789,
+          "end": 8.951
+        },
+        {
+          "text": "deploy,",
+          "start": 8.998,
+          "end": 9.648
+        },
+        {
+          "text": "a",
+          "start": 9.892,
+          "end": 9.961
+        },
+        {
+          "text": "check",
+          "start": 10.031,
+          "end": 10.252
+        },
+        {
+          "text": "runs",
+          "start": 10.321,
+          "end": 10.542
+        },
+        {
+          "text": "on",
+          "start": 10.588,
+          "end": 10.67
+        },
+        {
+          "text": "its",
+          "start": 10.716,
+          "end": 10.832
+        },
+        {
+          "text": "own.",
+          "start": 10.879,
+          "end": 11.262
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 11.865,
+      "end": 14.373,
+      "words": [
+        {
+          "text": "If",
+          "start": 11.865,
+          "end": 12.005
+        },
+        {
+          "text": "browser",
+          "start": 12.063,
+          "end": 12.399
+        },
+        {
+          "text": "code",
+          "start": 12.457,
+          "end": 12.666
+        },
+        {
+          "text": "holds",
+          "start": 12.701,
+          "end": 12.934
+        },
+        {
+          "text": "the",
+          "start": 12.957,
+          "end": 13.026
+        },
+        {
+          "text": "answers,",
+          "start": 13.073,
+          "end": 13.537
+        },
+        {
+          "text": "it",
+          "start": 13.595,
+          "end": 13.723
+        },
+        {
+          "text": "stops.",
+          "start": 13.769,
+          "end": 14.373
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 15.07,
+      "end": 16.742,
+      "words": [
+        {
+          "text": "Then",
+          "start": 15.07,
+          "end": 15.256
+        },
+        {
+          "text": "uploading",
+          "start": 15.314,
+          "end": 15.697
+        },
+        {
+          "text": "to",
+          "start": 15.743,
+          "end": 15.79
+        },
+        {
+          "text": "Vercel",
+          "start": 15.848,
+          "end": 16.185
+        },
+        {
+          "text": "stopped.",
+          "start": 16.266,
+          "end": 16.742
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 17.439,
+      "end": 19.691,
+      "words": [
+        {
+          "text": "One",
+          "start": 17.439,
+          "end": 17.682
+        },
+        {
+          "text": "backslash",
+          "start": 17.729,
+          "end": 18.205
+        },
+        {
+          "text": "symbol",
+          "start": 18.24,
+          "end": 18.518
+        },
+        {
+          "text": "before",
+          "start": 18.576,
+          "end": 18.867
+        },
+        {
+          "text": "a",
+          "start": 18.89,
+          "end": 18.913
+        },
+        {
+          "text": "quote",
+          "start": 18.971,
+          "end": 19.203
+        },
+        {
+          "text": "did",
+          "start": 19.238,
+          "end": 19.377
+        },
+        {
+          "text": "it.",
+          "start": 19.424,
+          "end": 19.691
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 20.202,
+      "end": 23.371,
+      "words": [
+        {
+          "text": "The",
+          "start": 20.202,
+          "end": 20.341
+        },
+        {
+          "text": "build,",
+          "start": 20.399,
+          "end": 20.887
+        },
+        {
+          "text": "which",
+          "start": 21.096,
+          "end": 21.305
+        },
+        {
+          "text": "bundles",
+          "start": 21.351,
+          "end": 21.653
+        },
+        {
+          "text": "code,",
+          "start": 21.699,
+          "end": 22.082
+        },
+        {
+          "text": "lost",
+          "start": 22.257,
+          "end": 22.489
+        },
+        {
+          "text": "the",
+          "start": 22.524,
+          "end": 22.593
+        },
+        {
+          "text": "command's",
+          "start": 22.64,
+          "end": 22.976
+        },
+        {
+          "text": "end.",
+          "start": 23.023,
+          "end": 23.371
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 24.184,
+      "end": 26.994,
+      "words": [
+        {
+          "text": "Next,",
+          "start": 24.184,
+          "end": 24.799
+        },
+        {
+          "text": "I'll",
+          "start": 24.95,
+          "end": 25.136
+        },
+        {
+          "text": "play",
+          "start": 25.171,
+          "end": 25.333
+        },
+        {
+          "text": "it",
+          "start": 25.368,
+          "end": 25.415
+        },
+        {
+          "text": "start",
+          "start": 25.449,
+          "end": 25.693
+        },
+        {
+          "text": "to",
+          "start": 25.716,
+          "end": 25.774
+        },
+        {
+          "text": "finish",
+          "start": 25.821,
+          "end": 26.1
+        },
+        {
+          "text": "on",
+          "start": 26.169,
+          "end": 26.25
+        },
+        {
+          "text": "a",
+          "start": 26.297,
+          "end": 26.32
+        },
+        {
+          "text": "real",
+          "start": 26.378,
+          "end": 26.552
+        },
+        {
+          "text": "phone.",
+          "start": 26.599,
+          "end": 26.994
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 27.806,
+      "end": 29.815,
+      "words": [
+        {
+          "text": "Now",
+          "start": 27.806,
+          "end": 27.98
+        },
+        {
+          "text": "view",
+          "start": 28.05,
+          "end": 28.213
+        },
+        {
+          "text": "source",
+          "start": 28.271,
+          "end": 28.538
+        },
+        {
+          "text": "holds",
+          "start": 28.572,
+          "end": 28.816
+        },
+        {
+          "text": "no",
+          "start": 28.874,
+          "end": 28.967
+        },
+        {
+          "text": "answers.",
+          "start": 29.037,
+          "end": 29.815
+        }
+      ]
+    }
+  ]
+}
