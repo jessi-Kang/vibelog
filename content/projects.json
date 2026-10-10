@@ -1,5 +1,23 @@
 [
   {
+    "slug": "vibelog",
+    "name": "vibelog",
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
+    "status": "live",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "homepage": "https://vibelog.space",
+    "language": "TypeScript",
+    "lastActivity": "2026-10-11",
+    "weekCommits": 70,
+    "todayCommits": 4,
+    "totalCommits": 498,
+    "countsDate": "2026-10-11"
+  },
+  {
     "slug": "lie-detective",
     "name": "lie-detective",
     "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
@@ -36,24 +54,6 @@
     "totalCommits": 213,
     "countsDate": "2026-10-11",
     "theme": "paper"
-  },
-  {
-    "slug": "vibelog",
-    "name": "vibelog",
-    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "status": "live",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog.space",
-    "language": "TypeScript",
-    "lastActivity": "2026-10-10",
-    "weekCommits": 66,
-    "todayCommits": 0,
-    "totalCommits": 494,
-    "countsDate": "2026-10-11"
   },
   {
     "slug": "Anchor",
