@@ -26,8 +26,8 @@ const SECTIONS: Section[] = [
         en: "When you vibe-code your way through projects, the making of them survives only inside commit logs, scattered. And if a human has to write the journal, it lasts a day or two before it stops.",
       },
       {
-        ko: "그래서 기록을 아예 기계에 맡기는 실험을 시작했습니다. 저는 평소처럼 만들기만 하고, 매일 밤 11시에 자동화가 그날의 커밋을 읽어 제작기를 대신 씁니다. 이 사이트가 그 실험의 첫 번째 대상이고, 이 사이트를 만드는 과정 자체가 첫 콘텐츠입니다.",
-        en: "So this is an experiment in handing the journal to a machine. I just build as usual; every night at 11, automation reads the day's commits and writes the build log for me. This site is the experiment's first subject — the process of building it is the first content.",
+        ko: "그래서 기록을 아예 AI에게 맡기는 실험을 시작했습니다. 저는 평소처럼 만들기만 하고, 매일 밤 11시에 자동화가 그날의 커밋을 읽어 제작기를 대신 씁니다. 이 사이트가 그 실험의 첫 번째 대상이고, 이 사이트를 만드는 과정 자체가 첫 콘텐츠입니다.",
+        en: "So this is an experiment in handing the journal to AI. I just build as usual; every night at 11, automation reads the day's commits and writes the build log for me. This site is the experiment's first subject — the process of building it is the first content.",
       },
     ],
   },
@@ -36,16 +36,16 @@ const SECTIONS: Section[] = [
     title: { ko: "어떻게 돌아가나", en: "How it works" },
     body: [
       {
-        ko: "매일 밤 자동화가 그날의 커밋과 작업 기록을 모아, AI가 [[devlog]]를 한국어·영어로 씁니다. 같은 밤에 그 글을 30~45초 세로 영상으로도 만듭니다 — 대본을 뽑고, 미리 복제해 둔 제 목소리로 내레이션을 입히고, 실제 배포된 화면을 녹화해 합칩니다.",
-        en: "Each night, automation gathers the day's commits and work records, and AI writes the [[devlog]] in Korean and English. The same night it turns the post into a 30–45 second vertical video — drafting a script, narrating it in a cloned copy of my voice, and stitching in recordings of the actual deployed site.",
+        ko: "매일 밤 자동화가 그날의 커밋과 작업 기록을 모아, AI가 [[devlog]]를 한국어·영어로 씁니다. 로그인 없이 볼 수 있는 화면이 둘 이상인 사이트라면, 같은 밤에 그 글을 30–45초 세로 영상으로도 만듭니다 — 대본을 뽑고, 미리 복제해 둔 제 목소리로 내레이션을 입히고, 실제 배포된 화면을 녹화해 합칩니다.",
+        en: "Each night, automation gathers the day's commits and work records, and AI writes the [[devlog]] in Korean and English. If the site has at least two screens you can see without logging in, the same night it turns the post into a 30–45 second vertical video — drafting a script, narrating it in a cloned copy of my voice, and stitching in recordings of the actual deployed site.",
       },
       {
         ko: "글도 영상도 사람이 만들지 않습니다. 품질이 마음에 안 드는 날만 버튼 하나로 다시 만들게 합니다.",
         en: "No human makes the posts or the videos. Only on days when the quality isn't right do I press one button to have them remade.",
       },
       {
-        ko: "새 프로젝트를 등록하는 데 필요한 건 [[repo]]에 붙이는 [[topic]] 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. 표식이 붙은 레포에 커밋이 생기면, 그날 밤 카드가 생기고 제작기가 쌓이기 시작합니다.",
-        en: "Registering a new project takes one label (a [[repo]] [[topic]]) — nothing gets installed in the project itself. Once a labeled repo has commits, a card appears that night and its build log starts piling up.",
+        ko: "새 프로젝트를 등록하는 데 필요한 건 [[repo]]에 붙이는 [[topic]] 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. topic을 달면 30분 안에 카드가 생기고, 이유까지 적은 커밋이 5개 모인 밤부터 제작기가 쌓입니다.",
+        en: "Registering a new project takes one label (a [[repo]] [[topic]]) — nothing gets installed in the project itself. Add the topic and a card appears within 30 minutes; the build log starts piling up on the first night with five commits that explain why.",
       },
     ],
   },
@@ -54,7 +54,7 @@ const SECTIONS: Section[] = [
     title: { ko: "뭘 하고 싶나", en: "Where it's going" },
     body: [
       {
-        ko: "지금은 글과 영상이 이 사이트에 자동으로 쌓이는 단계입니다. 다음은 올리기 전에 미리보기로 승인만 누르는 큐, 그 다음은 유튜브 쇼츠와 인스타 릴스까지 자동 게시입니다. 반응 데이터가 다시 이 사이트의 현황판으로 돌아오는 것까지가 그림입니다.",
+        ko: "지금은 글과 영상이 이 사이트에 자동으로 쌓이는 단계입니다. 다음은 올리기 전에 미리 보고 승인 버튼만 누르는 단계, 그 다음은 유튜브 쇼츠와 인스타 릴스까지 자동 게시입니다. 반응 데이터가 다시 이 사이트의 현황판으로 돌아오는 것까지가 그림입니다.",
         en: "Right now, posts and videos pile up here automatically. Next comes an approval queue — preview, tap approve — then automatic publishing to YouTube Shorts and Instagram Reels. The full picture ends with reaction data flowing back into this site's dashboard.",
       },
       {
