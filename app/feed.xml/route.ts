@@ -5,8 +5,12 @@ import { postPath } from "@/lib/post-id";
 // 빌드 시점에 정적 생성 — 글은 파이프라인 커밋 → 재배포로만 늘어난다
 export const dynamic = "force-static";
 
+// XML 1.0이 허용하지 않는 제어문자는 지운다 — 모델이 쓴 제목·요약에 하나만 섞여도
+// 피드 전체가 "잘못된 XML"로 읽기 거부된다 (레드팀 점검 10/10)
 const esc = (s: string) =>
   s
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g, "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")

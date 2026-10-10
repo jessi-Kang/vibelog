@@ -7,6 +7,10 @@ on:
   push:
     branches: [claude/file-analysis-dpnhw1]
 
+# Vercel 토큰만 쓰고 레포에는 손대지 않는다 — 기본 토큰 권한을 읽기로 묶는다
+permissions:
+  contents: read
+
 concurrency:
   group: deploy-guard
   cancel-in-progress: true # 연속 푸시면 마지막 것만 검사하면 된다

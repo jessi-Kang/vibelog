@@ -11,6 +11,7 @@ import { useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
+import { allowedPostLink } from "@/lib/md-links";
 import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
@@ -48,11 +49,24 @@ export interface PostData {
   };
 }
 
-// 본문 속 링크는 전부 외부(레포·문서 등)라 새 창으로 — 읽던 글을 잃지 않게 (Jessi 지시)
+// 본문 속 링크는 새 창으로 — 읽던 글을 잃지 않게 (Jessi 지시).
+// 모델이 쓴 링크는 이 사이트와 GitHub만 살리고, 본문 그림은 그리지 않는다 (lib/md-links.ts).
+// `node`는 react-markdown이 넘기는 구문 트리라 DOM 속성으로 내보내지 않는다.
 const mdComponents = {
-  a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a {...props} target="_blank" rel="noopener noreferrer" />
-  ),
+  a: ({
+    node: _node,
+    href,
+    children,
+    ...rest
+  }: AnchorHTMLAttributes<HTMLAnchorElement> & { node?: unknown }) =>
+    allowedPostLink(href) ? (
+      <a {...rest} href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    ) : (
+      <span>{children}</span>
+    ),
+  img: () => null,
 };
 
 /**
@@ -115,7 +129,9 @@ function Body({
 
 function H({ warn, children }: { warn?: boolean; children: string }) {
   return (
-    <h2 className={`m-0 mb-2 text-md font-bold ${warn ? "text-warn" : "text-ink"}`}>
+    <h2
+      className={`m-0 mb-2 text-md font-bold ${warn ? "text-warn" : "text-ink"}`}
+    >
       {children}
     </h2>
   );
@@ -163,7 +179,10 @@ export function PostClient({ post }: { post: PostData }) {
         <Link
           href={`/projects/${post.repo}`}
           className="hit relative font-bold underline decoration-1 underline-offset-[3px] transition-opacity duration-150 hover:opacity-85"
-          style={{ color: projectColor(post.repo), textDecorationColor: withAlpha(projectColor(post.repo), 0.4) }}
+          style={{
+            color: projectColor(post.repo),
+            textDecorationColor: withAlpha(projectColor(post.repo), 0.4),
+          }}
         >
           {post.repo}
         </Link>
@@ -203,7 +222,9 @@ export function PostClient({ post }: { post: PostData }) {
       {(!en || post.hasEn) && (
         <>
           {en && (
-            <p className="m-0 font-mono text-xs text-muted">Automatically translated.</p>
+            <p className="m-0 font-mono text-xs text-muted">
+              Automatically translated.
+            </p>
           )}
           {parsed ? (
             <section className="flex flex-col gap-8">

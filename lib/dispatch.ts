@@ -17,6 +17,8 @@
  *   이유는 아래 guardCron 주석에 적었다 — 설정이 들어갔는지 보여야 한다.
  */
 
+import { timingSafeEqual } from "node:crypto";
+
 const REPO = "jessi-Kang/vibelog";
 const REF = "claude/file-analysis-dpnhw1";
 
@@ -39,9 +41,17 @@ function say(text: string, status: number): Response {
   });
 }
 
+/** 비밀값 비교는 걸리는 시간으로 앞 글자가 맞았는지 새지 않게 한다 */
+function sameSecret(got: string | null, want: string): boolean {
+  if (!got) return false;
+  const a = Buffer.from(got);
+  const b = Buffer.from(want);
+  return a.length === b.length && timingSafeEqual(a, b);
+}
+
 export function guardCron(req: Request): Response | null {
   const secret = process.env.CRON_SECRET;
-  const ok = secret && req.headers.get("authorization") === `Bearer ${secret}`;
+  const ok = secret && sameSecret(req.headers.get("authorization"), `Bearer ${secret}`);
   if (ok) return null;
 
   // **바깥에는 아무것도 알려 주지 않는다.** 전에는 여기서 설정이 어디까지
