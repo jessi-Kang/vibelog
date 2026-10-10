@@ -1,22 +1,44 @@
 "use client";
-/** 홈 프로젝트 섹션 — 5개 이상이면 building·live만 카드, 나머지는 접힌 목록 */
+/**
+ * 홈 프로젝트 섹션 — 5개 이상이면 최근 7일 안에 커밋이 있는 것만 카드, 나머지는 접힌 목록.
+ *
+ * 처음엔 상태값(building·live만 카드)으로 갈랐다. 그러자 preview(배포했고 정식 공개 전)가
+ * 통째로 "쉬는 프로젝트"로 접혔다 — 오늘 커밋 49개인 lie-detective와 어제 커밋한 apart가
+ * 접히고, 2주 넘게 커밋이 없는 building 셋이 펼쳐졌다 (10/10 Jessi 지적). building은
+ * "배포 주소 없고 30일 안에 푸시"라 쉬어도 한 달은 building이고, 배포한 프로젝트는
+ * 아무리 쉬어도 paused가 되지 않는다. 그래서 접는 기준을 상태값에서 떼어 최근 활동으로
+ * 본다. 7일은 홈 통계 줄의 "이번 주"와 같은 창(오늘 포함 7일, KST)이다.
+ */
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { addDays, todayKst } from "@/lib/commit-hours";
 import type { Project } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
 import { useLang } from "./lang";
 import { Card, SectionHeader, StatusBadge, EmptyState } from "./ui";
 import { ProjectCard } from "./vibelog";
 
-export function HomeProjects({ projects }: { projects: Project[] }) {
+/** 최근 7일(오늘 포함, KST) 안에 활동이 있었나 */
+function activeThisWeek(p: Project, today: string): boolean {
+  return p.lastActivity.slice(0, 10) >= addDays(today, -6);
+}
+
+export function HomeProjects({
+  projects,
+  buildDate,
+}: {
+  projects: Project[];
+  /** 빌드한 날(KST) — 첫 화면은 이 날짜로 갈라 서버·브라우저가 같게 그린다 */
+  buildDate: string;
+}) {
   const { lang } = useLang();
   const [showRest, setShowRest] = useState(false);
-  const active = projects.filter(
-    (p) => p.status === "building" || p.status === "live",
-  );
-  const rest = projects.filter(
-    (p) => p.status !== "building" && p.status !== "live",
-  );
+  // 페이지는 빌드 때 만들어진다. 며칠 빌드가 없으면 그사이 7일을 넘긴 프로젝트가
+  // 펼쳐진 채 남으므로, 화면이 뜬 뒤 방문자의 오늘로 다시 가른다
+  const [today, setToday] = useState(buildDate);
+  useEffect(() => setToday(todayKst()), []);
+  const active = projects.filter((p) => activeThisWeek(p, today));
+  const rest = projects.filter((p) => !activeThisWeek(p, today));
   const collapse = projects.length > 4 && rest.length > 0;
   const shown = collapse && !showRest ? active : projects;
 
