@@ -15,6 +15,8 @@
 - `post-figures.html` — 글 삽화(자유 작도 + 검증기)의 규칙과 이유
 - `post-figures-frame.html` — 삽화 바탕판 시안 A·B·C (A 채택)
 - `post-project-and-kind.html` — 글 머리의 프로젝트 자리(B 채택)와 목록 "삽질" 배지(C 채택)
+- `post-thread-and-kind.html` — 이어지는 글 링크(B: 글 끝)와 글 종류 칩(A: 만들지 않음)
+- `post-thread.html` — 글 끝 "이 이야기의 앞뒤" 1안 보완. **화면은 보류** — 방문 통계를 보고 정한다
 
 ---
 
