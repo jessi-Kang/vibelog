@@ -23,6 +23,7 @@
  */
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
+  activeThisWeek,
   HEATMAP_DAYS,
   hourRows,
   todayKst,
@@ -60,12 +61,13 @@ function Fact({ n, label }: { n: number | string; label: ReactNode }) {
 
 export function HomeStats({
   sources,
-  active,
+  activity,
   hours,
   buildDate,
 }: {
   sources: FactSource[];
-  active: number;
+  /** 프로젝트마다 마지막 활동 날짜 — "만드는 중"은 이 중 최근 7일 안인 것의 수 */
+  activity: string[];
   hours: CommitHours;
   /** 빌드 시점의 오늘(KST) — 마운트 전 첫 렌더용 (홈은 정적 빌드다) */
   buildDate: string;
@@ -133,7 +135,11 @@ export function HomeStats({
             grid.peak,
             <T key="p" ko="한 시간 최대" en="peak in an hour" />,
           ],
-          ["a", active, <T key="a" ko="만드는 중" en="building" />],
+          [
+            "a",
+            activity.filter((d) => activeThisWeek(d, today)).length,
+            <T key="a" ko="만드는 중" en="building" />,
+          ],
         ];
 
   return (

@@ -33,10 +33,6 @@ export default function Home() {
   const run = getRunLog();
   const commitHours = getCommitHours();
 
-  const active = projects.filter(
-    (p) =>
-      p.status === "building" || p.status === "preview" || p.status === "live",
-  ).length;
   // 오늘·이번 주 커밋은 방문자 브라우저가 GitHub API로 실시간으로 센다
   // (HomeStats) — 낮 커밋도 바로 오른다 (Jessi 지시). 실패 시 저장값 폴백.
   const factSources = projects.map((p) => ({
@@ -179,7 +175,7 @@ export default function Home() {
             보였다 (Jessi 지적) */}
         <HomeStats
           sources={factSources}
-          active={active}
+          activity={projects.map((p) => p.lastActivity)}
           hours={commitHours}
           buildDate={todayKST()}
         />

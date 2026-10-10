@@ -11,17 +11,12 @@
  */
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { addDays, todayKst } from "@/lib/commit-hours";
+import { activeThisWeek, todayKst } from "@/lib/commit-hours";
 import type { Project } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
 import { useLang } from "./lang";
 import { Card, SectionHeader, StatusBadge, EmptyState } from "./ui";
 import { ProjectCard } from "./vibelog";
-
-/** 최근 7일(오늘 포함, KST) 안에 활동이 있었나 */
-function activeThisWeek(p: Project, today: string): boolean {
-  return p.lastActivity.slice(0, 10) >= addDays(today, -6);
-}
 
 export function HomeProjects({
   projects,
@@ -37,8 +32,8 @@ export function HomeProjects({
   // 펼쳐진 채 남으므로, 화면이 뜬 뒤 방문자의 오늘로 다시 가른다
   const [today, setToday] = useState(buildDate);
   useEffect(() => setToday(todayKst()), []);
-  const active = projects.filter((p) => activeThisWeek(p, today));
-  const rest = projects.filter((p) => !activeThisWeek(p, today));
+  const active = projects.filter((p) => activeThisWeek(p.lastActivity, today));
+  const rest = projects.filter((p) => !activeThisWeek(p.lastActivity, today));
   const collapse = projects.length > 4 && rest.length > 0;
   const shown = collapse && !showRest ? active : projects;
 

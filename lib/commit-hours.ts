@@ -33,6 +33,15 @@ export function todayKst(): string {
   return new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
 }
 
+/**
+ * 최근 7일(오늘 포함, KST) 안에 활동이 있었나 — 홈의 "만드는 중" 숫자와 프로젝트 카드 접기가
+ * 같이 쓴다. 상태값(building·preview…)으로 세던 때는 2주째 조용한 building이 "만드는 중"에
+ * 들고, 매일 커밋하는 preview가 "쉬는 프로젝트"로 접혔다 (10/10).
+ */
+export function activeThisWeek(lastActivity: string, today: string): boolean {
+  return lastActivity.slice(0, 10) >= addDays(today, -6);
+}
+
 export function addDays(date: string, days: number): string {
   const d = new Date(`${date}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
