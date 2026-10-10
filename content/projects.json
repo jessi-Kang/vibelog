@@ -11,12 +11,31 @@
     "repoUrl": "https://github.com/jessi-Kang/lie-detective",
     "homepage": "https://lie-detective.vercel.app",
     "language": "JavaScript",
-    "lastActivity": "2026-10-10",
+    "lastActivity": "2026-10-11",
     "weekCommits": 49,
-    "todayCommits": 49,
+    "todayCommits": 0,
     "totalCommits": 49,
-    "countsDate": "2026-10-10",
+    "countsDate": "2026-10-11",
     "theme": "highlighter"
+  },
+  {
+    "slug": "apart",
+    "name": "apart",
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "live",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-10-10",
+    "weekCommits": 12,
+    "todayCommits": 0,
+    "totalCommits": 213,
+    "countsDate": "2026-10-11",
+    "theme": "paper"
   },
   {
     "slug": "vibelog",
@@ -31,29 +50,10 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-10",
-    "weekCommits": 63,
-    "todayCommits": 4,
-    "totalCommits": 490,
-    "countsDate": "2026-10-10"
-  },
-  {
-    "slug": "apart",
-    "name": "apart",
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "preview",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-10-09",
-    "weekCommits": 12,
+    "weekCommits": 66,
     "todayCommits": 0,
-    "totalCommits": 213,
-    "countsDate": "2026-10-10",
-    "theme": "paper"
+    "totalCommits": 494,
+    "countsDate": "2026-10-11"
   },
   {
     "slug": "Anchor",
@@ -77,7 +77,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1075,
-    "countsDate": "2026-10-10",
+    "countsDate": "2026-10-11",
     "theme": "blueprint"
   },
   {
@@ -95,7 +95,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-10",
+    "countsDate": "2026-10-11",
     "theme": "blueprint"
   },
   {
@@ -110,7 +110,7 @@
     "weekCommits": 0,
     "todayCommits": 0,
     "totalCommits": 1,
-    "countsDate": "2026-10-10",
+    "countsDate": "2026-10-11",
     "theme": "highlighter"
   }
 ]
