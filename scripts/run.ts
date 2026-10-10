@@ -149,12 +149,24 @@ function loadState(): State {
   }
 }
 
+/** Vercel이 붙여 주는 기본 주소인가 — 자기 도메인이 아니다 */
+export function isVercelDefault(url: string): boolean {
+  try {
+    return new URL(url).hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
+
 function autoStatus(
   a: RepoActivity,
 ): "building" | "preview" | "live" | "paused" {
   // 배포 주소가 있어도 릴리즈 선언(GitHub Release 발행) 전이면 preview —
   // 가배포와 정식 공개를 구분한다. 강제 지정은 vibelog.json status.
-  if (a.homepage) return a.released ? "live" : "preview";
+  // 주소가 Vercel 기본 주소(*.vercel.app)면 Release가 있어도 preview다 — 정식 공개는
+  // 자기 도메인을 단 뒤다 (10/10 Jessi: "베르셀 주소가 아니어야 라이브로"). live일 때만
+  // 화면에 주소를 건다 (lib/content.ts publicHomepage).
+  if (a.homepage) return a.released && !isVercelDefault(a.homepage) ? "live" : "preview";
   const days = (Date.now() - new Date(a.pushedAt).getTime()) / 86400000;
   return days <= 30 ? "building" : "paused";
 }

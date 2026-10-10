@@ -13,6 +13,7 @@ import {
   humanizeLastActive,
 } from "@/lib/content";
 import { postPath } from "@/lib/post-id";
+import { publicHomepage } from "@/lib/public-homepage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -46,6 +47,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   const logs = getDevlogs(project.slug);
+  const homepage = publicHomepage(project);
   const lastActive = humanizeLastActive(project.lastActivity);
   const lastActiveEn = humanizeLastActive(project.lastActivity, "en");
 
@@ -78,14 +80,14 @@ export default async function ProjectPage({ params }: Props) {
           )}
         </p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-          {project.homepage && (
+          {homepage && (
             <a
-              href={project.homepage}
+              href={homepage}
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
             >
-              {project.homepage.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
+              {homepage.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
             </a>
           )}
           {/* 레포 링크는 주소 대신 간결하게 (Jessi 지시) — 배포 주소보다 한 톤 낮게 */}

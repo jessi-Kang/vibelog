@@ -109,8 +109,8 @@ export function HomeProjects({
       {projects.length > 0 && (
         <p className="m-0 px-1 font-mono text-2xs leading-relaxed text-muted">
           {lang === "ko"
-            ? "새 프로젝트 등록은 레포에 topic ‘vibelog’ 하나가 전부입니다. 커밋하면 그날 밤 글과 영상이 자동으로 올라오고, 배포 주소를 채우면 live로 표시됩니다."
-            : "Registering a project takes one repo topic: ‘vibelog’. Commit, and a post and video go up that night. Add a deploy URL and it shows as live."}
+            ? "새 프로젝트 등록은 레포에 topic ‘vibelog’ 하나가 전부입니다. 커밋하면 그날 밤 글과 영상이 자동으로 올라옵니다. 자기 도메인을 달고 GitHub Release를 내면 live로 표시되고, 그때부터 사이트 주소가 열립니다."
+            : "Registering a project takes one repo topic: ‘vibelog’. Commit, and a post and video go up that night. Give it its own domain and publish a GitHub Release, and it shows as live with its site link."}
         </p>
       )}
     </section>
