@@ -192,7 +192,7 @@ export default function Home() {
           갈려 블록이 위로 치우쳐 보였다 (Jessi 지적). 선을 섹션에 두면
           양쪽 거리를 여기서 같게 줄 수 있다 */}
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
-        <HomeProjects projects={projects} />
+        <HomeProjects projects={projects} buildDate={todayKST()} />
         {/* md:items-start는 md 2열 그리드용 — lg 세로 flex에서는 stretch로 되돌려야 카드 폭이 열에 맞는다 */}
         <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:items-start md:gap-6 lg:flex lg:flex-col lg:items-stretch lg:gap-12">
           {runSection}
