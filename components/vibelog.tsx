@@ -5,6 +5,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Project, RunLogLine } from "@/lib/content";
+import { publicHomepage } from "@/lib/public-homepage";
 import { humanizeLastActive } from "@/lib/format";
 import { projectColor } from "@/lib/project-color";
 import { useLang } from "./lang";
@@ -48,9 +49,9 @@ export function ProjectCard({ project }: { project: Project }) {
       )}
       <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-mono text-2xs text-muted">
         <span className="min-w-0 flex-1 truncate">{meta.join(" · ")}</span>
-        {project.homepage && (
+        {publicHomepage(project) && (
           <a
-            href={project.homepage}
+            href={publicHomepage(project)}
             target="_blank"
             rel="noopener noreferrer"
             className="hit relative z-[1] whitespace-nowrap text-accent transition-opacity duration-150 hover:opacity-85"
