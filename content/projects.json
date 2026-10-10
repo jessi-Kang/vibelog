@@ -1,5 +1,23 @@
 [
   {
+    "slug": "vibelog",
+    "name": "vibelog",
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
+    "status": "live",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "homepage": "https://vibelog.space",
+    "language": "TypeScript",
+    "lastActivity": "2026-10-11",
+    "weekCommits": 72,
+    "todayCommits": 6,
+    "totalCommits": 500,
+    "countsDate": "2026-10-11"
+  },
+  {
     "slug": "apart",
     "name": "apart",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
@@ -17,24 +35,6 @@
     "totalCommits": 217,
     "countsDate": "2026-10-11",
     "theme": "paper"
-  },
-  {
-    "slug": "vibelog",
-    "name": "vibelog",
-    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "status": "live",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog.space",
-    "language": "TypeScript",
-    "lastActivity": "2026-10-11",
-    "weekCommits": 71,
-    "todayCommits": 5,
-    "totalCommits": 499,
-    "countsDate": "2026-10-11"
   },
   {
     "slug": "lie-detective",
