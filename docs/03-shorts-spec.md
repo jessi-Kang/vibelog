@@ -477,15 +477,14 @@ ffmpeg -i video.mp4 -i narration.mp3 -i music.mp3 -filter_complex "\
 ## +알파 그래픽 (생성 일러스트) — 보류 중
 
 **지금은 꺼져 있다** (`shorts.ts`에서 호출 주석). Jessi가 스타일 레퍼런스를 줄 때
-다시 켠다. 아래는 켜 두었을 때의 동작 기록이다. 이미지 모델은 바꿀 수 있다
-(OpenAI `gpt-image-*`도 검토했다 — `OPENAI_API_KEY` 시크릿과 레퍼런스가 필요하다).
+다시 켠다. 아래는 켜 두었을 때의 동작 기록이다. 키는 둘 다 넣어 두었다 (10/11).
 
 텍스트·실제 화면 녹화 위에 얹는 보조 그래픽. 데모 화면은 여전히 실제 배포 사이트 녹화만 쓴다 (텍스트→비디오로 데모를 대체하지 않는 이유: 가짜 화면이 되기 때문).
 
-- 대본(script.ts)이 hook·next 문장에 장면 은유 묘사(`art`, 영어 한 문장)를 쓰고, `scripts/art.ts`가 Gemini 이미지 API(`gemini-2.5-flash-image`)로 일러스트를 만든다.
+- 대본(script.ts)이 hook·next 문장에 장면 은유 묘사(`art`, 영어 한 문장)를 쓰고, `scripts/art.ts`가 일러스트를 만든다. Gemini와 OpenAI를 둘 다 쓴다 — 먼저 부르는 쪽은 `ART_PROVIDER`(기본 gemini)로 고르고, 실패하면 다른 쪽으로 넘어간다. 모델은 회사마다 최신부터: Gemini `gemini-nano-banana-2.1` → `gemini-3.1-flash-image`, OpenAI `gpt-image-2.5-flare` → `gpt-image-2.5-sunburst` (10/11 공식 문서 기준, 모델을 못 찾을 때만 다음 모델로). 키·모델 이름 확인은 `art-try` 워크플로가 한 장씩 만들어 아티팩트로 올린다.
 - 스타일 고정: 다크 배경(#0a0e14) + 민트(#5EE1C3) 단일 강조 + 회색, 플랫 미니멀, **글자·로고 금지**, 정방형.
 - 쓰임: hook 장면은 헤드라인 위 인셋(480px), next 장면은 폰 화면 대신 일러스트 카드(860px)로 전환.
-- `GEMINI_API_KEY` 시크릿이 없으면 이 단계는 통째로 건너뛰고, 쇼츠는 그래픽 없이 이전과 동일하게 렌더된다. 장면 하나가 실패해도 그 장면만 그래픽 없이 간다.
+- `GEMINI_API_KEY`·`OPENAI_API_KEY`(비밀값)가 둘 다 없으면 이 단계는 통째로 건너뛰고, 쇼츠는 그래픽 없이 이전과 동일하게 렌더된다. 장면 하나가 실패해도 그 장면만 그래픽 없이 간다.
 - 산출물 `content/shorts/<repo>/<date>.art/<scene>.png`는 재생성 가능하므로 커밋하지 않는다.
 
 ---
