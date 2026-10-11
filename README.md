@@ -66,18 +66,22 @@ scripts/
   safety.ts             발행 전 안전 검사 — 비밀 키·개인 연락처·내부 주소·AI에게 끼워 넣은 지시
   figures.ts            글 삽화 — 자유 작도 SVG를 허용 목록 파서로 검증해 트리로 저장
   script.ts             데브로그 → 쇼츠 대본
-  audio.ts              내레이션 TTS + 발음 교정 + 타이밍
+  audio.ts              내레이션 TTS(eleven_multilingual_v2) + 발음 교정 + 타이밍
+                        + 문장 사이 쉼·그림을 읽을 틈 채우기
+  art.ts                쇼츠 그림 (둥근 평면·강조색 한 군데·투명 배경) — 비슷한 그림은 다시 쓴다
+  small-video.ts        데스크톱 팝업용 540×960 사본
   record.ts             배포 사이트 화면 녹화 (내레이션 내용과 화면을 매칭)
   render.ts · mux.ts    Remotion 렌더 + 오디오 믹스
   run.ts                전체 실행 (collect → generate → shorts → 커밋)
   usage.ts              모델 호출 토큰 합 — 홈 "지난 실행"에 편당 비용이 찍힌다
   shorts.ts · poster.ts   쇼츠 전체 / 썸네일만 재생성
 video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종
-                        · 다이어그램 5종 · 모티프 22종
+                        · 다이어그램 5종 · 모티프 22종 · 아이콘 장면 · 장면 효과(Enter.tsx)
                         (+ 검수용 MotifSheet · DiagramSheet — 발행에는 안 쓴다)
 .github/workflows/
   devlog.yml            밤 23:00 발행 (백업 23:45 · 01:00 · 03:00)
   projects.yml          30분마다 새 프로젝트 인식
+  art-try.yml           그림 API 확인·시안 (손으로만 돌린다)
   deploy-guard.yml      Vercel 웹훅 누락 자가 복구
 vercel.json             crons — 위 둘을 제때 띄운다 (GitHub 예약은 예비)
 auth.ts · lib/comments.ts  댓글 — Google 로그인, 댓글 규칙, 알림 메일(Resend), AI 답글 초안 (DB는 Neon)
@@ -109,9 +113,10 @@ npx tsx scripts/run.ts                    # 전체 실행 — 글·영상 생성
 | 입력                          | 하는 일                                                       |
 | ----------------------------- | ------------------------------------------------------------- |
 | 둘 다 비움                    | 일반 실행 — 그날 글과 영상을 만듭니다                         |
-| `regen` = `apart/2026-09-11`  | 그 글의 **영상만** 다시 만듭니다. 저장된 대본·목소리를 그대로 써서 녹화→렌더→썸네일만 다시 합니다 (모델·TTS 비용 0) |
+| `regen` = `apart/2026-09-11`  | 그 글의 **영상만** 다시 만듭니다. 저장된 대본·목소리를 그대로 써서 녹화→렌더→썸네일만 다시 합니다 (모델·TTS 비용 0). 여러 편은 띄어 씁니다 — `apart/2026-10-11 vibelog/2026-10-11` |
 | `regen` + `new_script` 켬     | 대본부터 새로 씁니다 (대본·목소리 비용이 듭니다) |
 | `poster` = `apart/2026-09-11` | 기존 영상에서 **썸네일 프레임만** 다시 뽑습니다 (API 비용 0)  |
+| `small` = `all` 또는 `vibelog/2026-10-07` | 기존 영상에 데스크톱 팝업용 **작은 사본**만 붙입니다 (API 비용 0) |
 | `figures` = `all` 또는 `vibelog/2026-09-15` | 이미 발행된 글에 **삽화만** 붙입니다 (글·영상은 그대로) |
 | `intro` = `all` 또는 `vibelog,agency` | 소개 글이 없는 프로젝트에 **소개 글과 아이콘**을 씁니다 (일반 글·영상은 그대로) |
 

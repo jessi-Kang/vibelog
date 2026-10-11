@@ -17,6 +17,13 @@
 - `post-project-and-kind.html` — 글 머리의 프로젝트 자리(B 채택)와 목록 "삽질" 배지(C 채택)
 - `post-thread-and-kind.html` — 이어지는 글 링크(B: 글 끝)와 글 종류 칩(A: 만들지 않음)
 - `post-thread.html` — 글 끝 "이 이야기의 앞뒤" 1안 보완. **화면은 보류** — 방문 통계를 보고 정한다
+- `post-term-tooltip.html` — 글의 용어 설명 말풍선
+- `post-comments.html` · `comment-draft-error.html` — 댓글, AI 초안 실패 안내(A 채택)
+- `home-stats-size.html` — 홈 통계 줄 크기(A 채택)
+- `project-intro.html` · `project-intro-figures.html` · `project-page-intro.html` — 프로젝트 소개 글과 그 그림(B 채택)
+- `project-icons.html` · `project-icon-places.html` · `project-icon-default.html` · `project-colors.html` — 프로젝트 아이콘·놓는 자리·기본 아이콘(C 채택)·식별색. 쇼츠 머리글에 이름·아이콘을 넣던 ③은 10/11 되돌렸다
+- `shorts-icons.html` — 쇼츠 아이콘 장면과 다이어그램 칸 아이콘
+- `art-styles.html` — 쇼츠 그림체(둥근 평면 한 색 채택, 종이 콜라주는 보관)
 
 ---
 
