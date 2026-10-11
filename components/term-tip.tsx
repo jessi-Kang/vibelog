@@ -19,7 +19,7 @@ import { createPortal } from "react-dom";
 const OPEN_EVENT = "vl-term-open";
 /** 화면 가장자리에서 띄울 거리 — 페이지 여백과 같다 */
 const EDGE = 16;
-const GAP = 8;
+const GAP = 7;
 
 interface Pos {
   left: number;
@@ -39,7 +39,11 @@ export function TermTip({ note, children }: { note: string; children?: ReactNode
     const b = btn.current;
     const t = tip.current;
     if (!b || !t) return;
-    const r = b.getClientRects()[0] ?? b.getBoundingClientRect();
+    // 버튼 상자는 줄 높이(1.75)만큼 위아래가 비어 있어서, 그 상자에 붙이면 말풍선이 글자에서 한참 떴다.
+    // 글자 범위(Range)는 글꼴의 글자 높이만 차지하므로 그 위에 붙인다 (10/11).
+    const rg = document.createRange();
+    rg.selectNodeContents(b);
+    const r = rg.getClientRects()[0] ?? b.getBoundingClientRect();
     const vw = document.documentElement.clientWidth;
     const w = t.offsetWidth;
     const h = t.offsetHeight;
@@ -122,7 +126,7 @@ export function TermTip({ note, children }: { note: string; children?: ReactNode
             }}
             className="fixed z-40 block w-max max-w-[min(280px,calc(100vw-32px))] rounded-md border border-line-strong bg-panel2 px-3 py-2 text-sm leading-normal text-ink-soft shadow-[0_8px_20px_rgba(5,8,12,.5)] [overflow-wrap:anywhere] [word-break:keep-all]"
           >
-            <b className="mb-0.5 block font-mono text-2xs font-normal tracking-[.08em] text-accent">{children}</b>
+            <b className="mb-0.5 block text-xs font-bold text-accent">{children}</b>
             {note}
             <span
               aria-hidden
