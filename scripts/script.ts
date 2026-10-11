@@ -41,13 +41,13 @@ export class NoScreensError extends Error {
 // 대본도 글과 같은 모델 — 내레이션은 시청자가 직접 듣는 원고다 (10/5 Jessi)
 const MODEL = "claude-opus-5-5";
 /**
- * 생각의 깊이 — 처음은 medium, 빈 화면이 남아 다시 쓸 때만 high. 대본은 문장
- * 9개짜리 JSON이라 thinking이 출력의 대부분이다 (삽화 실측과 같은 구조).
- * 빈 화면 검사(blankScenes)가 실패 신호라 "싼 값에 먼저, 실패만 비싸게"가 된다.
- * 품질이 떨어지면(빈 화면·화면 중복 경고 증가) FIRST를 "high"로 되돌린다.
+ * 생각의 깊이 — 처음도 다시 쓸 때도 medium. 대본은 문장 9개짜리 JSON이라 thinking이
+ * 출력의 대부분이다 (삽화 실측과 같은 구조). 다시 쓸 때 high로 전체를 새로 내게 하던
+ * 때는 빈 화면 한 문장을 고치는 데 출력 16000토큰을 다 썼다 (10/11, 첫 대본은 3300).
+ * 지금은 걸린 문장만 돌려받는다 (applyReplace). 품질이 떨어지면(빈 화면·화면 중복 경고
+ * 증가) FIRST를 "high"로 되돌린다.
  */
 const EFFORT_FIRST = "medium" as const;
-const EFFORT_RETRY = "high" as const;
 /**
  * 답 상한 — 다시 쓸 때(high)는 thinking이 길어 16000에서 답이 잘렸다. 잘린 답은
  * 글자가 비어 통째로 못 쓴다 (10/11 lie-detective 다시 만들기가 이걸로 실패했다).
@@ -209,6 +209,27 @@ interface ProjectMeta {
   status?: string;
   /** 레포가 vibelog.json으로 고른 쇼츠 테마 */
   theme?: string;
+}
+
+/**
+ * 다시 쓰기 답({"replace":{"3":[…]}})을 처음 대본의 lines에 끼워 넣는다. 번호는 처음
+ * 대본 기준이라 뒤에서부터 바꾼다 (앞에서 쪼개면 뒤 번호가 밀린다). 모델이 형식을 어기고
+ * 전체 lines를 다시 냈으면 그걸 그대로 쓴다.
+ */
+export function applyReplace(original: unknown, answer: Record<string, unknown>): unknown[] {
+  if (Array.isArray(answer.lines) && !answer.replace) return answer.lines;
+  const out = Array.isArray(original) ? [...original] : [];
+  const replace = (answer.replace ?? {}) as Record<string, unknown>;
+  const keys = Object.keys(replace)
+    .map(Number)
+    .filter((i) => Number.isInteger(i) && i >= 0 && i < out.length)
+    .sort((a, b) => b - a);
+  for (const i of keys) {
+    const v = replace[String(i)];
+    const items = Array.isArray(v) ? v : v && typeof v === "object" ? [v] : null;
+    if (items) out.splice(i, 1, ...items);
+  }
+  return out;
 }
 
 function parseJson(text: string): Record<string, unknown> {
@@ -836,7 +857,7 @@ export async function generateScript(
     }
   };
   cutCheck(response, "대본");
-  let text = readText(response);
+  const text = readText(response);
   let parsed = parseJson(text);
   let lines = validateLines(
     parsed.lines,
@@ -849,6 +870,11 @@ export async function generateScript(
   // 듣기 검사는 실패해도 영상을 막지 않는다 (검사를 못 한 것이지 대본이 틀린 게 아니다).
   const title = String(data.title ?? "");
   let blanks = blankScenes(lines);
+  // 듣기 검사가 고른 문장이 대본의 몇 번째인지 — 검사 모델이 문장을 조금 다르게 옮겨 올 수 있다
+  const lineOf = (sentence: string): number => {
+    const t = sentence.trim();
+    return lines.findIndex((l) => l.ko.includes(t) || t.includes(l.ko.trim()));
+  };
   let unclear: Unclear[] = [];
   let listen: Readability;
   // 목록에 있는 어색한 표현은 모델 없이 찾는다 — 검사 모델이 실패해도 이것은 걸린다
@@ -879,7 +905,7 @@ export async function generateScript(
       ask.push(
         "아래 문장들은 화면(screen/find)도 그림(diagram)도 없어 배경과 자막만",
         "뜬 빈 화면으로 나갑니다. 이건 영상 장애입니다.",
-        ...blanks.map((l) => `  - [${l.scene}] ${l.ko}`),
+        ...blanks.map((l) => `  - #${lines.indexOf(l)} [${l.scene}] ${l.ko}`),
         "",
         "각 문장에 대해 하나를 고르세요 —",
         "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
@@ -896,7 +922,10 @@ export async function generateScript(
     if (unclear.length > 0) {
       ask.push(
         "개발을 모르는 사람이 이 내레이션을 처음 들으며 아래 문장에서 막혔습니다.",
-        ...unclear.map((u) => `  - "${u.sentence}" → ${u.why}`),
+        ...unclear.map((u) => {
+          const i = lineOf(u.sentence);
+          return `  - ${i >= 0 ? `#${i} ` : ""}"${u.sentence}" → ${u.why}`;
+        }),
         "",
         "이 문장들을 귀로 한 번에 알아듣게 고치세요 —",
         "- 기술 용어는 그대로 두고 처음 나올 때 한 번 풀어 말합니다. 내부에서만 쓰는 이름은 빼고, 붙여 만든 말은 조사를",
@@ -907,11 +936,19 @@ export async function generateScript(
         "",
       );
     }
-    ask.push("전체 JSON을 같은 형식으로 다시 출력하세요 (말한 문장 말고는 그대로).");
+    ask.push(
+      "지금 문장 번호 —",
+      ...lines.map((l, i) => `  #${i} [${l.scene}] ${l.ko}`),
+      "",
+      "고친 문장만 아래 형식으로 출력하세요. 전체 대본을 다시 쓰지 않습니다 —",
+      '{"replace":{"3":[{문장 객체}],"5":[{문장 객체},{문장 객체}]}}',
+      "- 키는 위의 문장 번호, 값은 그 자리에 들어갈 문장 객체 배열입니다 (처음 대본의 lines 항목과 같은 형식).",
+      "- 하나로 고치면 한 개, 쪼개면 두 개, 빼려면 빈 배열입니다. 말하지 않은 문장은 넣지 않습니다 — 그대로 둡니다.",
+    );
     const retry = await streamMessage(client, {
       model: MODEL,
       max_tokens: MAX_TOKENS,
-      output_config: { effort: EFFORT_RETRY },
+      output_config: { effort: EFFORT_FIRST },
       system: SYSTEM_CACHED,
       messages: [
         { role: "user", content: userPrompt },
@@ -921,8 +958,7 @@ export async function generateScript(
     });
     noteUsage("script", retry.usage);
     cutCheck(retry, "다시 쓴 대본");
-    text = readText(retry);
-    parsed = parseJson(text);
+    parsed = { ...parsed, lines: applyReplace(parsed.lines, parseJson(readText(retry))) };
     lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
     blanks = blankScenes(lines);
     if (unclear.length > 0) {
