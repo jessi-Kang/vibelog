@@ -36,6 +36,7 @@ import { checkSafety, maskSecrets, SafetyBlockError } from "./safety";
 import { generateFigures } from "./figures";
 import { getOwner } from "./collect";
 import { parseSections } from "../lib/content";
+import { plainTerms } from "../lib/term-marker";
 import { pickIcon } from "./icons";
 import type { ProjectIcon } from "../lib/project-icon";
 
@@ -268,7 +269,7 @@ nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 
 
 ## 프로젝트 설명 (about)
 이후의 모든 글 제목 아래에 붙는 한 문장입니다. "<서비스 이름>은(는) …입니다."로 무엇을 하는
-것인지만 말합니다. 60자 안팎. 위 "공개하지 않는 것"을 똑같이 지킵니다.
+것인지만 말합니다. 60자 안팎. 위 "공개하지 않는 것"을 똑같이 지킵니다. 용어 설명 표시는 쓰지 않습니다.
 
 ## 아이콘 (icons)
 이 프로젝트가 **무엇인지** 보여 주는 Tabler 아이콘(tabler-icons.io) 이름 후보를 3–5개, 좋은
@@ -374,8 +375,8 @@ export async function writeIntro(m: CodeMaterial): Promise<IntroResult> {
   const draft = parseIntro(firstText);
   if ("why" in draft) return { status: "deferred", why: draft.why };
 
-  const reviewed = await askReader(REVIEW_SYSTEM, `# ${draft.title}\n\n${draft.ko}`, "review").catch(() => [] as Unclear[]);
-  const unclear = mergeUnclear(reviewed, styleUnclear(`${draft.title}\n${draft.about}\n${draft.ko}`));
+  const reviewed = await askReader(REVIEW_SYSTEM, `# ${draft.title}\n\n${plainTerms(draft.ko)}`, "review").catch(() => [] as Unclear[]);
+  const unclear = mergeUnclear(reviewed, styleUnclear(`${draft.title}\n${draft.about}\n${plainTerms(draft.ko)}`));
   if (unclear.length === 0) return { status: "written", intro: draft, reviewed: { before: 0, rewritten: false } };
   // 문장은 로그에 적지 않는다 — 공개 로그이고 안전 검사 전의 원고다
   console.log(`[intro] 막힌 문장 ${unclear.length}개 — 다시 쓴다`);
@@ -393,7 +394,7 @@ export async function writeIntro(m: CodeMaterial): Promise<IntroResult> {
             "개발을 모르는 독자가 이 소개 글을 처음 읽다가 아래 문장에서 멈췄습니다.",
             ...unclear.map((u, i) => `${i + 1}. "${u.sentence}"\n   → ${u.why}`),
             "",
-            "이 문장들을 고쳐 전체를 다시 내 주세요. 기술 용어는 그대로 두고 처음 나올 때 괄호로 설명을 붙입니다.",
+            "이 문장들을 고쳐 전체를 다시 내 주세요. 기술 용어는 그대로 두고 처음 나올 때 [[용어|설명]] 표시로 설명을 붙입니다. 독자는 표시를 \"용어(설명)\"로 읽었습니다.",
             "기획서나 코드에 없는 사실을 새로 넣지 않습니다. 같은 JSON 형식 하나만 출력합니다.",
           ].join("\n"),
         },
@@ -510,8 +511,9 @@ export function saveIntroMeta(repo: string, it: Intro): void {
     p.name = it.name;
     if (it.nameEn) p.nameEn = it.nameEn;
   }
-  p.about = it.about;
-  p.aboutEn = it.aboutEn;
+  // 설명 한 줄은 글 제목 아래에 그냥 글자로 붙는다 — 표시가 섞였으면 괄호 표기로
+  p.about = plainTerms(it.about);
+  p.aboutEn = plainTerms(it.aboutEn);
   if (it.icon) p.icon = it.icon;
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(list, null, 2) + "\n");
 }

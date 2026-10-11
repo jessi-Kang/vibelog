@@ -13,6 +13,7 @@
  * 화면은 검증을 통과한 트리(FigNode)만 그린다. 문자열은 저장하지 않는다.
  */
 import Anthropic from "@anthropic-ai/sdk";
+import { plainTerms } from "../lib/term-marker";
 import { noteUsage } from "./usage";
 import { streamMessage } from "./models";
 import {
@@ -235,6 +236,10 @@ export async function generateFigures(
   /** 글 종류에 따른 덧붙임 — 소개 글은 구조 그림을 적어도 한 장 그리게 한다 */
   note?: string,
 ): Promise<FigureResult> {
+  // 용어 설명 표시([[용어|설명]])는 괄호 표기로 — 삽화 모델이 표시를 그림 글자로 옮기지 않게
+  const plain = (o: Partial<Record<FigSection, string>>) =>
+    Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v && plainTerms(v)])) as Partial<Record<FigSection, string>>;
+  sections = { ko: plain(sections.ko), en: plain(sections.en) };
   const client = new Anthropic();
   const messages: Anthropic.MessageParam[] = [
     { role: "user", content: buildUserPrompt(title, sections, note) },

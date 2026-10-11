@@ -112,10 +112,11 @@ export function AnnotatedText({
         aria-expanded={isOpen}
         aria-controls={`note-${part}`}
         onClick={() => onToggle(isOpen ? null : part)}
-        className={`cursor-pointer border-b border-dotted underline-offset-4 transition-colors duration-150 ${
+        // 밑줄은 글자에 붙인다 — border-bottom은 줄 높이 아래로 떨어져 글자에서 멀었다 (10/11)
+        className={`cursor-pointer underline decoration-dotted decoration-1 underline-offset-[3px] transition-colors duration-150 ${
           isOpen
-            ? "border-accent text-accent"
-            : "border-muted text-ink hover:border-ink hover:text-ink"
+            ? "text-accent decoration-accent"
+            : "text-ink decoration-muted hover:decoration-ink"
         }`}
       >
         {entry.term}
