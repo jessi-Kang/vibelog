@@ -10,10 +10,11 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import type {
-  ShortsScript,
-  ShortsTiming,
-  TimedSentence,
+import {
+  templateBadge,
+  type ShortsScript,
+  type ShortsTiming,
+  type TimedSentence,
 } from "../../scripts/shorts-types";
 import { interpolate, Easing } from "remotion";
 import {
@@ -731,7 +732,7 @@ export const EndCard: React.FC<{
         <span style={{ color: th.accent, fontWeight: 700 }}>
           day {String(script.day).padStart(2, "0")}
         </span>
-        <span>{script.template.replace("-", " ")}</span>
+        <span>{templateBadge(script.template)}</span>
       </div>
       <div
         style={{

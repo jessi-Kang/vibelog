@@ -51,24 +51,6 @@ export function posterAtSec(script: ShortsScript, timing: ShortsTiming): number 
   return narrationOffsetSec(script) + Math.max(cand, (s0?.start ?? 0) + 0.6);
 }
 
-/** projects.json에서 그 레포의 화면 이름·아이콘 — 소개 글이 아직 없으면 null(머리글은 vibelog) */
-function projectFor(repo: string, lang: "ko" | "en"): { name: string; short: string | null; icon: unknown } | null {
-  try {
-    const list = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content", "projects.json"), "utf8"));
-    const p = list.find((x: { slug: string }) => x.slug === repo);
-    if (!p?.icon) return null;
-    const en = lang === "en" && p.nameEn;
-    // 짧은 이름 — 머리글 자리를 넘을 때만 렌더가 쓴다 (scripts/short-name.ts)
-    return {
-      name: (en ? p.nameEn : p.name) ?? repo,
-      short: (en ? p.nameEnShort : p.nameShort) ?? null,
-      icon: p.icon,
-    };
-  } catch {
-    return null;
-  }
-}
-
 export async function renderShort(
   repo: string,
   date: string,
@@ -149,8 +131,6 @@ export async function renderShort(
       artFiles,
       // 레포가 고른 영상 테마 — 대본 JSON에 박혀 있어 재생성에도 유지된다
       theme: script.theme ?? null,
-      // 머리글의 서비스 이름·아이콘 — 소개 글이 정한 값이라 대본이 아니라 렌더할 때 읽는다
-      project: projectFor(script.repo, lang),
     }),
   );
 
