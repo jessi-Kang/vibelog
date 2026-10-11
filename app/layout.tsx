@@ -59,7 +59,7 @@ export default function RootLayout({
       <head>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
         />
       </head>
       {/* 모바일 하단 여백 = 고정 탭바 높이 + safe-area — 푸터가 탭바에 안 가리게 */}
