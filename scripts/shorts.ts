@@ -2,7 +2,10 @@
  * shorts.ts — 데브로그 한 편에 대한 쇼츠 전체 단계 오케스트레이터.
  * script → audio(ko/en) → record → render(ko/en) → upload → JSON에 URL 기록.
  *
- * 사용: npx tsx scripts/shorts.ts <repo> <date>
+ * 사용: npx tsx scripts/shorts.ts <repo>[/<date>] [--new-script]
+ *   기본은 저장된 대본을 그대로 쓰고 목소리부터 다시 만든다 — 목소리도 같은 문장이면
+ *   저장분을 받아 쓰므로, 디자인·자막을 고친 다시 만들기는 모델·TTS 비용이 들지 않는다.
+ *   --new-script면 대본부터 새로 쓴다 (밤 실행은 늘 이쪽).
  * 필요 환경변수: ANTHROPIC_API_KEY, ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
  * 선택: BLOB_READ_WRITE_TOKEN (없으면 업로드 생략, mp4는 로컬에만 남음)
  */
@@ -13,6 +16,7 @@ import path from "node:path";
 // import { generateArt } from "./art"; // 그래픽 보류 — 레퍼런스 확정 시 복원
 import { generateScript } from "./script";
 import { generateAudio } from "./audio";
+import { blobDel, blobGet, blobPut } from "./blob-cache";
 import { record } from "./record";
 import { posterAtSec, renderShort } from "./render";
 import {
@@ -39,9 +43,45 @@ export async function upload(file: string, key: string): Promise<string | null> 
   return `${url}?v=${Date.now().toString(36)}`;
 }
 
-export async function runShorts(repo: string, date: string): Promise<void> {
-  console.log(`[shorts] ${repo}/${date} 대본 생성`);
-  const script = await generateScript(repo, date);
+/**
+ * 대본 초안 — 새로 쓴 대본은 실행이 끝나야 커밋되므로, 뒤 단계에서 죽으면 대본도 같이
+ * 사라졌다. Blob에 먼저 남겨 두고 다음 다시 만들기가 이어 쓴다. 다 끝나면 지운다.
+ */
+const draftPath = (repo: string, date: string) => `shorts/${repo}/${date}.draft.json`;
+
+async function loadScript(repo: string, date: string): Promise<ShortsScript> {
+  const file = path.join(process.cwd(), shortsJsonPath(repo, date));
+  const draft = await blobGet(draftPath(repo, date));
+  if (draft) {
+    // 지난번에 대본까지 쓰고 죽은 실행이 있다 — 그 대본으로 이어 간다
+    const script: ShortsScript = JSON.parse(draft.toString("utf8"));
+    const committed: ShortsScript | null = fs.existsSync(file)
+      ? JSON.parse(fs.readFileSync(file, "utf8"))
+      : null;
+    fs.writeFileSync(file, JSON.stringify({ ...script, media: committed?.media ?? script.media }, null, 2) + "\n");
+    console.log(`[shorts] 끝나지 못한 지난 실행의 대본을 이어 씁니다 — 대본을 새로 쓰지 않습니다`);
+    return script;
+  }
+  if (!fs.existsSync(file)) {
+    throw new Error(`저장된 대본이 없습니다: ${shortsJsonPath(repo, date)} — 대본부터 새로 쓰려면 new_script를 켜세요`);
+  }
+  console.log(`[shorts] 저장된 대본을 그대로 씁니다 — 대본을 새로 쓰지 않습니다`);
+  return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+export async function runShorts(
+  repo: string,
+  date: string,
+  { newScript = true }: { newScript?: boolean } = {},
+): Promise<void> {
+  let script: ShortsScript;
+  if (newScript) {
+    console.log(`[shorts] ${repo}/${date} 대본 생성`);
+    script = await generateScript(repo, date);
+    await blobPut(draftPath(repo, date), JSON.stringify(script));
+  } else {
+    script = await loadScript(repo, date);
+  }
 
   // 생성 그래픽은 보류 — Jessi가 스타일 레퍼런스를 줄 때까지 쓰지 않는다.
   // 시안 3종(라인·플랫·듀오톤)이 전부 반려됐다. 레퍼런스가 오면 art.ts의
@@ -118,20 +158,21 @@ export async function runShorts(repo: string, date: string): Promise<void> {
     saved.media = { ...saved.media, ...media };
     fs.writeFileSync(jsonPath, JSON.stringify(saved, null, 2) + "\n");
   }
+  await blobDel(draftPath(repo, date));
 }
 
 /** 단독 실행(=재생성)일 때만 홈 "지난 실행" 패널에 기록을 남긴다 */
-function writeRegenRunLog(repo: string, date: string): void {
+function writeRegenRunLog(repo: string, date: string, newScript: boolean): void {
   fs.writeFileSync(
     path.join(process.cwd(), "content", "run.json"),
     JSON.stringify(
       {
         at: new Date().toISOString(),
         lines: [
-          { text: `npx tsx scripts/shorts.ts ${repo}/${date}`, kind: "cmd" },
+          { text: `npx tsx scripts/shorts.ts ${repo}/${date}${newScript ? " --new-script" : ""}`, kind: "cmd" },
           {
-            text: `shorts   · ${repo}/${date} 다시 만듦 (ko, en)`,
-            textEn: `shorts   · ${repo}/${date} remade (ko, en)`,
+            text: `shorts   · ${repo}/${date} 다시 만듦 (ko, en)${newScript ? " — 대본 새로 씀" : " — 대본 그대로"}`,
+            textEn: `shorts   · ${repo}/${date} remade (ko, en)${newScript ? " — new script" : " — same script"}`,
           },
           {
             text: "publish  · content 커밋 → vercel 자동 배포",
@@ -149,7 +190,9 @@ if (process.argv[1]?.endsWith("shorts.ts")) {
   // 자막 규칙·프레임 디자인처럼 영상 쪽 수정이 잦아서, 이미 발행된 글의
   // 영상을 통째로 다시 만드는 재생성 진입점을 CLI에 둔다.
   // 사용: npx tsx scripts/shorts.ts <repo>[/<date>]  (날짜 생략 = 최신 글)
-  const args = process.argv.slice(2).join("/").split("/").filter(Boolean);
+  const argv = process.argv.slice(2);
+  const newScript = argv.includes("--new-script");
+  const args = argv.filter((a) => !a.startsWith("--")).join("/").split("/").filter(Boolean);
   const repo = args[0];
   let date = args[1];
   if (!repo) {
@@ -176,8 +219,8 @@ if (process.argv[1]?.endsWith("shorts.ts")) {
     console.error(`글이 없습니다: content/devlog/${repo}/${date}.md`);
     process.exit(1);
   }
-  runShorts(repo, date)
-    .then(() => writeRegenRunLog(repo, date))
+  runShorts(repo, date, { newScript })
+    .then(() => writeRegenRunLog(repo, date, newScript))
     .catch((err) => {
       console.error(err);
       process.exit(1);
