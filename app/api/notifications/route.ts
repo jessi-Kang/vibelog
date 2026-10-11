@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const v = hasDb() ? await viewer() : null;
-  if (!v) return Response.json({ unread: 0, items: [] }, { headers: { "cache-control": "private, no-store" } });
-  return Response.json(await listNotes(v), { headers: { "cache-control": "private, no-store" } });
+  if (!v) return Response.json({ signedIn: false, unread: 0, items: [] }, { headers: { "cache-control": "private, no-store" } });
+  return Response.json({ signedIn: true, ...(await listNotes(v)) }, { headers: { "cache-control": "private, no-store" } });
 }
 
 export async function POST(req: Request) {

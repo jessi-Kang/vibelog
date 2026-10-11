@@ -17,6 +17,8 @@ import remarkGfm from "remark-gfm";
 import { allowedPostLink } from "@/lib/md-links";
 import { remarkTerms } from "@/lib/remark-terms";
 import { TermTip } from "./term-tip";
+import { Comments } from "./comments";
+import { postId } from "@/lib/post-id";
 import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
@@ -442,6 +444,7 @@ export function PostClient({ post }: { post: PostData }) {
           </Card>
         </section>
       )}
+      <Comments postId={postId(post.repo, post.date)} />
       <Link
         // utm_source로 글 맨 아래에 있는 이 링크를 눌렀는지 센다 — 무료 요금제의 방문 통계는 클릭
         // 이벤트를 못 받지만 들어온 주소의 utm 값은 나눠서 보여 준다
