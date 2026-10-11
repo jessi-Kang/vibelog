@@ -201,8 +201,22 @@ export function DevlogCompactEntry({
         <div className="text-md font-bold leading-snug text-ink [text-wrap:pretty]">
           {title}
         </div>
+        {/* 프로젝트 이름은 전체 피드와 같은 식별색 — 여러 프로젝트가 섞인 목록에서 색만 봐도 구분된다 */}
         <MonoMeta
-          items={[...(repo ? [{ text: repo, tone: "soft" as const }] : []), ...meta]}
+          items={[
+            ...(repo
+              ? [
+                  {
+                    text: (
+                      <span className="font-bold" style={{ color: projectColor(repo) }}>
+                        {repo}
+                      </span>
+                    ),
+                  },
+                ]
+              : []),
+            ...meta,
+          ]}
         />
       </div>
     </Link>
