@@ -109,3 +109,18 @@ export const MotifSheet: React.FC<MotifSheetProps> = ({ theme }) => {
     </AbsoluteFill>
   );
 };
+
+/** 모티프 + 아이콘 시안 (10/11) — 한 장면을 정지 화면으로 견준다 */
+export const MotifIconTry: React.FC<{
+  name: MotifName;
+  icon: import("../../lib/project-icon").ProjectIcon;
+  mode?: "focus" | "top";
+  theme?: string | null;
+}> = ({ name, icon, mode = "focus", theme }) => {
+  const th = getTheme(theme);
+  return (
+    <AbsoluteFill style={{ background: th.bg }}>
+      <MotifScene name={name} th={th} fromSec={0} icon={icon} iconMode={mode} />
+    </AbsoluteFill>
+  );
+};
