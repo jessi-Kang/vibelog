@@ -38,9 +38,10 @@ export const HookCard: React.FC<{
   th: ShortsTheme;
   /** 화면 시간 → 오디오 시간 변환 오프셋 (콜드오픈 포함) */
   offsetSec?: number;
-  /** 낱말이 켜지는 방식 — rise(떠오르며·키워드 팝) / fade(제자리에서 옅게→또렷) / still(처음부터 다) */
+  /** 낱말이 켜지는 방식 — fade(제자리에서 옅게→또렷, 기본) / rise(떠오르며·키워드 팝) / still(처음부터 다).
+   *  예전 기본이던 rise는 글씨가 튀어 오르며 바뀌는 게 이상했다 (10/11 Jessi, 세 가지를 견줘 fade로) */
   motion?: "rise" | "fade" | "still";
-}> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY, motion = "rise" }) => {
+}> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY, motion = "fade" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps - offsetSec; // 오디오 시간

@@ -28,6 +28,12 @@ const SECURITY_HEADERS = [
 ];
 
 const nextConfig: NextConfig = {
+  // 쇼츠 썸네일(Vercel Blob)을 카드 크기로 미리 줄여 보낸다 — 1080px 원본을 브라우저가 240px로
+  // 한 번에 줄이면 글자 가장자리가 들쭉날쭉해졌다 (데스크톱, 10/11 Jessi). 모바일은 화면 밀도가
+  // 높아 덜 줄여서 멀쩡했다
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
+  },
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
