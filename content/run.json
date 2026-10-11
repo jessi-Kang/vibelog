@@ -6,16 +6,20 @@
       "kind": "cmd"
     },
     {
-      "text": "intro    · vibelog/2026-09-07 소개 글 · 토큰 in 9,935 · out 2,300"
+      "text": "intro    · vibelog/2026-09-07 소개 글 · 토큰 in 9,935 · out 2,300",
+      "textEn": "intro    · vibelog/2026-09-07 intro post · tokens in 9,935 · out 2,300"
     },
     {
-      "text": "figures  · vibelog/2026-09-07 1장 · 토큰 in 997 · out 4,617"
+      "text": "figures  · vibelog/2026-09-07 1장 · 토큰 in 997 · out 4,617",
+      "textEn": "figures  · vibelog/2026-09-07 1 figure · tokens in 997 · out 4,617"
     },
     {
-      "text": "skip     · agency 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다"
+      "text": "skip     · agency 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다",
+      "textEn": "skip     · agency no plan doc or code yet to tell what it is — intro post postponed"
     },
     {
-      "text": "publish  · content 커밋 → vercel 자동 배포"
+      "text": "publish  · content 커밋 → vercel 자동 배포",
+      "textEn": "publish  · commit content → vercel auto-deploy"
     }
   ]
 }

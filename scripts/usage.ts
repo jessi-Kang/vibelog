@@ -59,8 +59,8 @@ export function takeUsage(stage: string): Tally | undefined {
 }
 
 /** run.json 한 줄에 붙이는 꼴. 캐시 읽기는 있을 때만 */
-export function fmtTally(t: Tally | undefined): string {
+export function fmtTally(t: Tally | undefined, lang: "ko" | "en" = "ko"): string {
   if (!t) return "";
   const cache = t.cacheRead ? ` · cache ${fmtNum(t.cacheRead)}` : "";
-  return `토큰 in ${fmtNum(t.input)} · out ${fmtNum(t.output)}${cache}`;
+  return `${lang === "en" ? "tokens" : "토큰"} in ${fmtNum(t.input)} · out ${fmtNum(t.output)}${cache}`;
 }
