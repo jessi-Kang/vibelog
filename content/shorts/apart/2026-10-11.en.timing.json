@@ -1,0 +1,566 @@
+{
+  "lang": "en",
+  "duration": 34.56,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 3.36,
+      "words": [
+        {
+          "text": "I",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "text": "aced",
+          "start": 0.4,
+          "end": 0.56
+        },
+        {
+          "text": "all",
+          "start": 0.72,
+          "end": 0.88
+        },
+        {
+          "text": "30",
+          "start": 1.04,
+          "end": 1.28
+        },
+        {
+          "text": "apartment",
+          "start": 1.36,
+          "end": 1.76
+        },
+        {
+          "text": "quiz",
+          "start": 1.84,
+          "end": 2.08
+        },
+        {
+          "text": "questions",
+          "start": 2.16,
+          "end": 2.56
+        },
+        {
+          "text": "with",
+          "start": 2.64,
+          "end": 2.72
+        },
+        {
+          "text": "a",
+          "start": 2.76,
+          "end": 2.8
+        },
+        {
+          "text": "trick.",
+          "start": 2.88,
+          "end": 3.36
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 3.84,
+      "end": 6.96,
+      "words": [
+        {
+          "text": "The",
+          "start": 3.84,
+          "end": 3.88
+        },
+        {
+          "text": "Naming",
+          "start": 3.92,
+          "end": 4.24
+        },
+        {
+          "text": "Office",
+          "start": 4.32,
+          "end": 4.64
+        },
+        {
+          "text": "is",
+          "start": 4.72,
+          "end": 4.88
+        },
+        {
+          "text": "where",
+          "start": 4.96,
+          "end": 5.04
+        },
+        {
+          "text": "you",
+          "start": 5.12,
+          "end": 5.2
+        },
+        {
+          "text": "make",
+          "start": 5.32,
+          "end": 5.44
+        },
+        {
+          "text": "up",
+          "start": 5.52,
+          "end": 5.6
+        },
+        {
+          "text": "fake",
+          "start": 5.68,
+          "end": 5.92
+        },
+        {
+          "text": "apartment",
+          "start": 6,
+          "end": 6.4
+        },
+        {
+          "text": "names.",
+          "start": 6.48,
+          "end": 6.96
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 7.36,
+      "end": 10.56,
+      "words": [
+        {
+          "text": "It",
+          "start": 7.36,
+          "end": 7.52
+        },
+        {
+          "text": "warns",
+          "start": 7.6,
+          "end": 7.92
+        },
+        {
+          "text": "you",
+          "start": 8,
+          "end": 8.16
+        },
+        {
+          "text": "if",
+          "start": 8.24,
+          "end": 8.32
+        },
+        {
+          "text": "a",
+          "start": 8.36,
+          "end": 8.4
+        },
+        {
+          "text": "similar",
+          "start": 8.48,
+          "end": 8.88
+        },
+        {
+          "text": "real",
+          "start": 9.04,
+          "end": 9.28
+        },
+        {
+          "text": "complex",
+          "start": 9.36,
+          "end": 9.84
+        },
+        {
+          "text": "exists.",
+          "start": 9.92,
+          "end": 10.56
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 11.04,
+      "end": 14.24,
+      "words": [
+        {
+          "text": "I",
+          "start": 11.04,
+          "end": 11.12
+        },
+        {
+          "text": "took",
+          "start": 11.2,
+          "end": 11.28
+        },
+        {
+          "text": "a",
+          "start": 11.36,
+          "end": 11.4
+        },
+        {
+          "text": "quiz",
+          "start": 11.44,
+          "end": 11.68
+        },
+        {
+          "text": "name,",
+          "start": 11.76,
+          "end": 12.32
+        },
+        {
+          "text": "added",
+          "start": 12.48,
+          "end": 12.64
+        },
+        {
+          "text": "one",
+          "start": 12.72,
+          "end": 12.88
+        },
+        {
+          "text": "syllable,",
+          "start": 12.96,
+          "end": 13.52
+        },
+        {
+          "text": "and",
+          "start": 13.56,
+          "end": 13.6
+        },
+        {
+          "text": "checked",
+          "start": 13.68,
+          "end": 14
+        },
+        {
+          "text": "it.",
+          "start": 14.08,
+          "end": 14.24
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 14.72,
+      "end": 17.84,
+      "words": [
+        {
+          "text": "Real",
+          "start": 14.72,
+          "end": 14.96
+        },
+        {
+          "text": "names",
+          "start": 15.04,
+          "end": 15.28
+        },
+        {
+          "text": "got",
+          "start": 15.36,
+          "end": 15.52
+        },
+        {
+          "text": "the",
+          "start": 15.56,
+          "end": 15.6
+        },
+        {
+          "text": "warning;",
+          "start": 15.68,
+          "end": 16.4
+        },
+        {
+          "text": "fake",
+          "start": 16.48,
+          "end": 16.72
+        },
+        {
+          "text": "ones",
+          "start": 16.8,
+          "end": 17.04
+        },
+        {
+          "text": "just",
+          "start": 17.12,
+          "end": 17.28
+        },
+        {
+          "text": "passed.",
+          "start": 17.52,
+          "end": 17.84
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 18.4,
+      "end": 21.28,
+      "words": [
+        {
+          "text": "Now",
+          "start": 18.4,
+          "end": 18.64
+        },
+        {
+          "text": "fake",
+          "start": 18.88,
+          "end": 19.12
+        },
+        {
+          "text": "names",
+          "start": 19.2,
+          "end": 19.44
+        },
+        {
+          "text": "get",
+          "start": 19.52,
+          "end": 19.6
+        },
+        {
+          "text": "the",
+          "start": 19.68,
+          "end": 19.76
+        },
+        {
+          "text": "same",
+          "start": 19.84,
+          "end": 20.08
+        },
+        {
+          "text": "warning",
+          "start": 20.16,
+          "end": 20.48
+        },
+        {
+          "text": "when",
+          "start": 20.56,
+          "end": 20.64
+        },
+        {
+          "text": "they're",
+          "start": 20.68,
+          "end": 20.8
+        },
+        {
+          "text": "similar.",
+          "start": 21,
+          "end": 21.28
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 21.76,
+      "end": 24.4,
+      "words": [
+        {
+          "text": "Trying",
+          "start": 21.76,
+          "end": 22
+        },
+        {
+          "text": "again,",
+          "start": 22.08,
+          "end": 22.72
+        },
+        {
+          "text": "I",
+          "start": 22.76,
+          "end": 22.8
+        },
+        {
+          "text": "got",
+          "start": 22.92,
+          "end": 23.04
+        },
+        {
+          "text": "fewer",
+          "start": 23.12,
+          "end": 23.28
+        },
+        {
+          "text": "than",
+          "start": 23.36,
+          "end": 23.44
+        },
+        {
+          "text": "half",
+          "start": 23.6,
+          "end": 23.92
+        },
+        {
+          "text": "right.",
+          "start": 24.12,
+          "end": 24.4
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 24.72,
+      "end": 26.16,
+      "words": [
+        {
+          "text": "That's",
+          "start": 24.72,
+          "end": 24.96
+        },
+        {
+          "text": "no",
+          "start": 25.04,
+          "end": 25.12
+        },
+        {
+          "text": "better",
+          "start": 25.2,
+          "end": 25.36
+        },
+        {
+          "text": "than",
+          "start": 25.44,
+          "end": 25.52
+        },
+        {
+          "text": "guessing.",
+          "start": 25.6,
+          "end": 26.16
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 26.64,
+      "end": 30.96,
+      "words": [
+        {
+          "text": "Every",
+          "start": 26.64,
+          "end": 26.88
+        },
+        {
+          "text": "week,",
+          "start": 26.96,
+          "end": 27.36
+        },
+        {
+          "text": "I",
+          "start": 27.44,
+          "end": 27.52
+        },
+        {
+          "text": "now",
+          "start": 27.6,
+          "end": 27.68
+        },
+        {
+          "text": "check",
+          "start": 27.84,
+          "end": 28.08
+        },
+        {
+          "text": "that",
+          "start": 28.16,
+          "end": 28.24
+        },
+        {
+          "text": "the",
+          "start": 28.28,
+          "end": 28.32
+        },
+        {
+          "text": "quiz",
+          "start": 28.4,
+          "end": 28.64
+        },
+        {
+          "text": "shows",
+          "start": 28.72,
+          "end": 28.96
+        },
+        {
+          "text": "real",
+          "start": 29.12,
+          "end": 29.36
+        },
+        {
+          "text": "and",
+          "start": 29.44,
+          "end": 29.52
+        },
+        {
+          "text": "fake",
+          "start": 29.6,
+          "end": 29.92
+        },
+        {
+          "text": "half",
+          "start": 30.08,
+          "end": 30.32
+        },
+        {
+          "text": "and",
+          "start": 30.36,
+          "end": 30.4
+        },
+        {
+          "text": "half.",
+          "start": 30.48,
+          "end": 30.96
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 31.44,
+      "end": 34.56,
+      "words": [
+        {
+          "text": "The",
+          "start": 31.44,
+          "end": 31.52
+        },
+        {
+          "text": "Naming",
+          "start": 31.68,
+          "end": 31.84
+        },
+        {
+          "text": "Office",
+          "start": 31.92,
+          "end": 32.24
+        },
+        {
+          "text": "is",
+          "start": 32.32,
+          "end": 32.4
+        },
+        {
+          "text": "now",
+          "start": 32.48,
+          "end": 32.64
+        },
+        {
+          "text": "open",
+          "start": 32.72,
+          "end": 32.96
+        },
+        {
+          "text": "to",
+          "start": 33.04,
+          "end": 33.2
+        },
+        {
+          "text": "anyone",
+          "start": 33.28,
+          "end": 33.68
+        },
+        {
+          "text": "logged",
+          "start": 33.76,
+          "end": 34
+        },
+        {
+          "text": "in.",
+          "start": 34.08,
+          "end": 34.56
+        }
+      ]
+    }
+  ]
+}

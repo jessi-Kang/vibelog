@@ -1,15 +1,17 @@
 {
   "vibelog": {
-    "lastSha": "4483215b5f61369edb365bacb5e78004d0356f5e",
-    "lastRun": "2026-10-09T14:02:47.319Z",
-    "lastDate": "2026-10-09",
-    "daySince": "2026-10-07T14:04:59.144Z"
+    "lastSha": "a0d32b80cec4e22c6446eddcbee910b8b5e72dad",
+    "lastRun": "2026-10-11T14:03:51.195Z",
+    "lastDate": "2026-10-11",
+    "daySince": "2026-10-09T14:02:47.319Z",
+    "planSha": "docs/01-concept.md:79db1e2dd243a2f6e1a74b0e3d550ce9f291a414,docs/03-shorts-spec.md:38f9f2441ca4e88e0e6b132dc6751b9a122f6ad8,README.md:4962d58dc2524e297ba8f734d130879c5a1c5649"
   },
   "apart": {
-    "lastSha": "1f16eff62cffa99d94bdd5f314368154d655a98b",
-    "lastRun": "2026-10-06T14:06:05.540Z",
-    "lastDate": "2026-10-06",
-    "daySince": "2026-10-05T14:04:01.147Z"
+    "lastSha": "b8afff2b865947645a10de84ef0d2258b32070b6",
+    "lastRun": "2026-10-11T14:05:43.746Z",
+    "lastDate": "2026-10-11",
+    "daySince": "2026-10-06T14:06:05.540Z",
+    "planSha": "docs/01-service-overview.md:1c01e38d9ff3df5c3137b7af422926b12b8e6f02,docs/04-tech-spec.md:bb2d1bc3493ab60e5f32b5e94dfa68e2e6c9a899,README.md:99a60c88cfa49c4ccbf7c4d993eae01eacedcbe1"
   },
   "Anchor": {
     "lastSha": "33d7b620722e420ef6690294ed92e2aba28b8d38",
@@ -21,7 +23,8 @@
     "lastSha": "d8e247566e7ee61dbd5dce9853718bafbf2587d1",
     "lastRun": "2026-09-24T14:03:31.462Z",
     "lastDate": "2026-09-24",
-    "daySince": "2026-09-17T14:01:20.080Z"
+    "daySince": "2026-09-17T14:01:20.080Z",
+    "planSha": "README.md:fff8c0e3afd56fed084f2a98679d2e8a035e10d7,TEMPLATE.md:5f9337c299ee549de24b237df5cd82abebb13ea1,public/robots.txt:dff7cf03abb4d6fd87793a174653410e6265a36b"
   },
   "agency": {
     "lastSha": "c7cc41742884d3903d5a4684376aab1dbbb59c32",
@@ -33,6 +36,7 @@
     "lastSha": "1136d88d63b3ab5f660f0893028bab3ebc1a783f",
     "lastRun": "2026-10-10T14:03:11.191Z",
     "lastDate": "2026-10-10",
-    "daySince": "2026-10-03T14:01:05.403Z"
+    "daySince": "2026-10-03T14:01:05.403Z",
+    "planSha": "docs/QA_TEST_PLAN.md:5544d2dbb5f447319efc30897ccd9c2b145466d1,README.md:8da74853a766e02ff206b885dbbda9e31b59f2c6,docs/EVIDENCE_CATALOG.md:82787893d15a8bc0da675360d2e315ed3ee60065"
   }
 }

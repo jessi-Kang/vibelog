@@ -1,0 +1,327 @@
+{
+  "template": "fail",
+  "music": "playful",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-11",
+  "day": 17,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "AI가 그린 그림에 다른 색이 섞였습니다.",
+      "en": "Extra colors crept into my AI pictures.",
+      "keywords": [
+        "다른 색이"
+      ],
+      "keywordsEn": [
+        "Extra colors"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "쇼츠에 넣을 견본 그림을 AI가 그렸습니다.",
+      "en": "AI drew sample pictures for the shorts.",
+      "keywords": [
+        "견본 그림을"
+      ],
+      "keywordsEn": [
+        "sample pictures"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "AI에겐 쓸 색 하나만 글로 적어 줬습니다.",
+      "en": "In my written instructions, I gave the AI just one color.",
+      "keywords": [
+        "색 하나만"
+      ],
+      "keywordsEn": [
+        "just one color"
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "글로 지시",
+          "색 하나만 적음",
+          "AI가 그림"
+        ],
+        "labelsEn": [
+          "Written instructions",
+          "One color named",
+          "AI draws"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:palette",
+            "paths": [
+              {
+                "d": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"
+              },
+              {
+                "d": "M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:robot",
+            "paths": [
+              {
+                "d": "M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6-4v2m-3 8v9m6-9v9M5 16l4-2m6 0l4 2M9 18h6M10 8v.01M14 8v.01"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "다른 색은 쓰지 말란 말이 없어서였죠.",
+      "en": "It never said not to use other colors.",
+      "keywords": [
+        "쓰지 말란"
+      ],
+      "keywordsEn": [
+        "not to use"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "지시문",
+          "노란 물건",
+          "한 가지 색",
+          "금지 없음",
+          "금지 적음"
+        ],
+        "labelsEn": [
+          "Instructions",
+          "Yellow object",
+          "One color",
+          "No ban",
+          "Ban written"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "쓰지 말라고 적자 한 가지 색이 됐습니다.",
+      "en": "Once I wrote that in, it stuck to one color.",
+      "keywords": [
+        "한 가지 색이"
+      ],
+      "keywordsEn": [
+        "one color"
+      ],
+      "motif": "oneline"
+    },
+    {
+      "scene": "build",
+      "ko": "외곽선 없는 둥근 그림으로 정했습니다.",
+      "en": "I settled on rounded shapes with no outlines.",
+      "keywords": [
+        "외곽선 없는"
+      ],
+      "keywordsEn": [
+        "no outlines",
+        "rounded"
+      ],
+      "icon": {
+        "name": "tabler:circles",
+        "paths": [
+          {
+            "d": "M8 7a4 4 0 1 0 8 0a4 4 0 1 0-8 0M2.5 17a4 4 0 1 0 8 0a4 4 0 1 0-8 0m11 0a4 4 0 1 0 8 0a4 4 0 1 0-8 0"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이 그림이 쇼츠 장면마다 들어갑니다.",
+      "en": "These pictures will go on every scene of the shorts.",
+      "keywords": [
+        "장면마다"
+      ],
+      "keywordsEn": [
+        "every scene"
+      ],
+      "screen": "/shorts",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "고른 그림체로 색 테마 5가지를 다 그려 봅니다.",
+      "en": "Next, I'll draw this style in all 5 color themes.",
+      "keywords": [
+        "색 테마 5가지를"
+      ],
+      "keywordsEn": [
+        "all 5 color themes"
+      ],
+      "icon": {
+        "name": "tabler:palette",
+        "paths": [
+          {
+            "d": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"
+          },
+          {
+            "d": "M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "AI에겐 하지 말 것도 적어야 했습니다.",
+      "en": "With AI, you have to write what not to do, too.",
+      "keywords": [
+        "하지 말 것도"
+      ],
+      "keywordsEn": [
+        "what not to do"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "그림에 다른 색이 섞였다",
+    "titleEn": "Other colors crept in",
+    "before": "파란 그림에 노란 물건과 빛줄기",
+    "after": "다른 색 금지를 적자 한 가지 색으로",
+    "beforeEn": "A yellow object and light streaks in a blue picture",
+    "afterEn": "Banning other colors kept it to one"
+  },
+  "commits": [
+    [
+      "a0d32b8",
+      "feat: 쇼츠 그림을 둥근 평면 한 색으로 정하고 밝은 테마 색을 고친다"
+    ],
+    [
+      "a9b8859",
+      "feat: 둥근 평면 그림체 시안을 만든다"
+    ],
+    [
+      "8cec823",
+      "fix: 그림에서 다른 색과 빛 효과를 막고 전환 비교의 빛 번짐을 뺀다"
+    ],
+    [
+      "b849b15",
+      "feat: 쇼츠 장면 전환을 비교하는 검수용 영상을 만든다"
+    ],
+    [
+      "4345de6",
+      "feat: 쇼츠 그림을 종이 콜라주로 정하고 색을 테마에 맞춘다"
+    ],
+    [
+      "dee5e5d",
+      "feat: 쇼츠 그림을 투명 배경으로 받고 OpenAI를 먼저 부른다"
+    ],
+    [
+      "03e1c7b",
+      "fix: 제목이 굵게 나오던 것을 고치고 요약을 얇게 한다"
+    ],
+    [
+      "ed249b9",
+      "fix: 그림 시안 장면을 대본이 실제로 쓴 문장으로 바꾼다"
+    ],
+    [
+      "5d2b113",
+      "feat: 쇼츠 그림 스타일 시안을 한 번에 12장 만든다"
+    ],
+    [
+      "9863b59",
+      "design: 데브로그 목록의 프로젝트 이름 앞에 아이콘을 넣는다"
+    ],
+    [
+      "ee27327",
+      "fix: Gemini 이미지를 JPEG로 받고 시험 실패를 빨갛게 보인다"
+    ],
+    [
+      "b9ab522",
+      "feat: 이미지 생성에 Gemini와 OpenAI를 둘 다 최신 모델로 쓴다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "a0d32b8",
+      "feat: Set Shorts art to a round flat single-color style and fix the light theme colors"
+    ],
+    [
+      "a9b8859",
+      "feat: Create round flat art style mockups"
+    ],
+    [
+      "8cec823",
+      "fix: Block other colors and light effects in art, and remove glow from transition comparison"
+    ],
+    [
+      "b849b15",
+      "feat: Create a review video comparing Shorts scene transitions"
+    ],
+    [
+      "4345de6",
+      "feat: Set Shorts art to paper collage style and match colors to the theme"
+    ],
+    [
+      "dee5e5d",
+      "feat: Receive Shorts art with transparent background and call OpenAI first"
+    ],
+    [
+      "03e1c7b",
+      "fix: Stop title from rendering bold and make summary lighter"
+    ],
+    [
+      "ed249b9",
+      "fix: Change art mockup scenes to the sentences the script actually uses"
+    ],
+    [
+      "5d2b113",
+      "feat: Generate 12 Shorts art style mockups at once"
+    ],
+    [
+      "9863b59",
+      "design: Add icons before project names in the devlog list"
+    ],
+    [
+      "ee27327",
+      "fix: Receive Gemini images as JPEG and show failed trial runs in red"
+    ],
+    [
+      "b9ab522",
+      "feat: Use the latest models for both Gemini and OpenAI for image generation"
+    ]
+  ],
+  "commitCount": 12,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "쇼츠에 넣을 AI 그림을 그렸더니 파란 그림에 노란 물건이 끼었습니다. 지시문에 한 줄을 더해 한 가지 색으로 맞추고 둥근 평면 그림체로 정했습니다.",
+    "en": "The AI pictures for my shorts kept sneaking in extra colors. One added line in the instructions fixed it, and I settled on a rounded, flat style."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#AI그림",
+    "#프롬프트",
+    "#devlog",
+    "#AIart",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv3whfv8",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv3whhbf",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv3witya",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv3wiv7p"
+  }
+}
