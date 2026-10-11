@@ -110,7 +110,7 @@ function Tabs({
             <span className="relative py-1">
               {lang === "ko" ? t.ko : t.en}
               {countOf(t.href) != null && (
-                <span className="ml-1 align-[2px] font-mono text-2xs font-medium text-muted">
+                <span className="ml-1 font-sans text-xs font-medium tabular-nums text-muted">
                   {countOf(t.href)}
                 </span>
               )}
