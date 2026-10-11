@@ -48,14 +48,54 @@ function kst(iso: string): string {
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
 }
 
-async function call(url: string, method: string, body?: unknown): Promise<{ ok: boolean; data: Record<string, unknown> }> {
-  const res = await fetch(url, {
-    method,
-    headers: body ? { "content-type": "application/json" } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const data = await res.json().catch(() => ({}));
-  return { ok: res.ok, data };
+async function call(url: string, method: string, body?: unknown): Promise<{ ok: boolean; status: number; data: Record<string, unknown> }> {
+  try {
+    const res = await fetch(url, {
+      method,
+      headers: body ? { "content-type": "application/json" } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, data };
+  } catch {
+    // 연결이 끊긴 경우 — 서버가 답하지 않았다
+    return { ok: false, status: 0, data: {} };
+  }
+}
+
+/** 실패 안내 — 다시 눌러서 될 수 있는 실패(연결 끊김·서버 쪽 오류)에만 "다시 시도"를 붙인다 */
+interface Problem {
+  text: string;
+  retry?: () => void;
+}
+
+function problemOf(r: { status: number; data: Record<string, unknown> }, fallback: string, retry: () => void, en: boolean): Problem {
+  const server = typeof r.data.error === "string" ? r.data.error : "";
+  if (r.status === 0) return { text: en ? "Couldn't reach the server" : "서버에 닿지 못했습니다", retry };
+  // 400·422(안전 검사)·429(너무 잦음)는 같은 내용으로 다시 눌러도 같은 답이 온다
+  return { text: server || fallback, retry: r.status >= 500 ? retry : undefined };
+}
+
+/** 시안 docs/comment-draft-error.html A안 (10/11) — 빨강 대신 옅은 주황 판. 글이 틀린 게 아니라 잠깐 안 된 것이라서 */
+function Notice({ problem, retryLabel }: { problem: Problem | null; retryLabel: string }) {
+  return (
+    <div role="status" aria-live="polite" className="empty:hidden">
+      {problem && (
+        <div className="mr-1.5 flex items-start gap-2 rounded-lg bg-warn-soft py-2 pl-3 pr-2 text-sm leading-normal text-ink-soft">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden className="mt-[4px] flex-none text-warn">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          <span className="min-w-0 flex-1 [overflow-wrap:anywhere]">{problem.text}</span>
+          {problem.retry && (
+            <button type="button" onClick={problem.retry} className="hit flex-none cursor-pointer px-1 font-bold text-warn transition-opacity duration-150 hover:opacity-80">
+              {retryLabel}
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 /* ---------- 이름 메뉴 ---------- */
@@ -246,30 +286,34 @@ function ReplyBox({ comment, onDone, onCancel }: { comment: C; onDone: () => voi
   const [ai, setAi] = useState<Mode | null>(null);
   const [fromAi, setFromAi] = useState(false);
   const [read, setRead] = useState<string[]>([]);
-  const [err, setErr] = useState("");
+  const [aiErr, setAiErr] = useState<Problem | null>(null);
+  const [err, setErr] = useState<Problem | null>(null);
   const ref = useAutosize(text);
 
   const askAi = async (mode: Mode) => {
     setAi(mode);
-    setErr("");
+    setAiErr(null);
     const r = await call("/api/comments/draft", "POST", { commentId: comment.id, mode, current: text });
     setAi(null);
-    if (!r.ok) return setErr(String(r.data.error ?? (en ? "Couldn't make a draft" : "초안을 만들지 못했습니다")));
+    if (!r.ok) return setAiErr(problemOf(r, en ? "Couldn't make a draft" : "초안을 만들지 못했습니다", () => askAi(mode), en));
     setText(String(r.data.text ?? ""));
     setRead(mode === "draft" ? ((r.data.read as string[]) ?? []) : read);
     setFromAi(true);
     ref.current?.focus();
   };
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const send = async () => {
     setBusy(true);
-    setErr("");
+    setErr(null);
     const r = await call("/api/comments", "POST", { post: postIdOf(), body: text, parentId: comment.id });
     setBusy(false);
-    if (!r.ok) return setErr(String(r.data.error ?? ""));
+    if (!r.ok) return setErr(problemOf(r, en ? "Couldn't post the reply" : "답글을 올리지 못했습니다", send, en));
     setText("");
     onDone();
+  };
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    send();
   };
 
   const chips: [Mode, string][] = [
@@ -298,6 +342,7 @@ function ReplyBox({ comment, onDone, onCancel }: { comment: C; onDone: () => voi
           </button>
         ))}
       </div>
+      <Notice problem={aiErr} retryLabel={en ? "Try again" : "다시 시도"} />
       {fromAi && <span className="text-xs font-bold text-warn">{en ? "AI draft — edit before posting" : "AI 초안 — 고친 뒤 올리세요"}</span>}
       <textarea
         ref={ref}
@@ -305,6 +350,8 @@ function ReplyBox({ comment, onDone, onCancel }: { comment: C; onDone: () => voi
         onChange={(e) => {
           setText(e.target.value);
           setFromAi(false);
+          setAiErr(null);
+          setErr(null);
         }}
         aria-label={en ? "Reply" : "답글"}
         placeholder={en ? "Write a reply or get an AI draft" : "답글을 쓰거나 AI 초안을 받아 보세요"}
@@ -318,6 +365,7 @@ function ReplyBox({ comment, onDone, onCancel }: { comment: C; onDone: () => voi
           {en ? "Read" : "읽은 것"} · {read.join(" · ")}
         </span>
       )}
+      <Notice problem={err} retryLabel={en ? "Try again" : "다시 시도"} />
       <div className="flex items-center justify-end gap-2.5">
         <Count n={text.length} />
         <button type="button" onClick={onCancel} className="hit cursor-pointer px-1 text-sm text-muted transition-colors duration-150 hover:text-ink">
@@ -327,9 +375,6 @@ function ReplyBox({ comment, onDone, onCancel }: { comment: C; onDone: () => voi
           {en ? "Post reply" : "답글 올리기"}
         </SubmitButton>
       </div>
-      <p aria-live="polite" className="m-0 text-xs text-danger empty:hidden">
-        {err}
-      </p>
     </form>
   );
 }
@@ -344,17 +389,20 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
   const en = lang === "en";
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState("");
+  const [err, setErr] = useState<Problem | null>(null);
   const ref = useAutosize(text);
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const send = async () => {
     setBusy(true);
-    setErr("");
+    setErr(null);
     const r = await call("/api/comments", "POST", { post: postIdOf(), body: text });
     setBusy(false);
-    if (!r.ok) return setErr(String(r.data.error ?? ""));
+    if (!r.ok) return setErr(problemOf(r, en ? "Couldn't post the comment" : "댓글을 올리지 못했습니다", send, en));
     setText("");
     onDone();
+  };
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    send();
   };
   const toggleMail = async () => {
     const r = await call("/api/me", "POST", { mailReplies: !me.mailReplies });
@@ -377,7 +425,10 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
       <textarea
         ref={ref}
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          setText(e.target.value);
+          setErr(null);
+        }}
         aria-label={en ? "Comment" : "댓글"}
         placeholder={en ? "Leave a comment" : "댓글을 남겨 보세요"}
         rows={2}
@@ -385,6 +436,7 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
         // 칸 전체가 포커스를 보여 준다 — 사이트 공통 :focus-visible 테두리가 글 칸에 한 겹 더 그려졌다
         style={{ outline: "none", boxShadow: "none" }}
       />
+      <Notice problem={err} retryLabel={en ? "Try again" : "다시 시도"} />
       <div className="flex items-center justify-end gap-2.5">
         <Count n={text.length} />
         {/* 댓글 칸은 늘 열려 있으니 쓴 글이 있을 때만 지우기로 보인다 */}
@@ -397,9 +449,6 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
           {en ? "Post" : "올리기"}
         </SubmitButton>
       </div>
-      <p aria-live="polite" className="m-0 text-xs text-danger empty:hidden">
-        {err}
-      </p>
     </form>
   );
 }

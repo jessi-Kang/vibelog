@@ -101,7 +101,8 @@ export async function draftReply(commentId: number, mode: DraftMode, current: st
     .trim()
     .replace(/^["“]|["”]$/g, "");
   const safety = await checkSafety(text);
-  if (safety.flags.length) throw new CommentError(422, `초안에 내보내면 안 되는 내용이 걸렸습니다 (${fmtSafety(safety.flags)}). 다시 눌러 주세요`);
+  // 다시 부르면 다른 초안이 나오므로 다시 시도할 수 있는 실패(502)로 돌려준다
+  if (safety.flags.length) throw new CommentError(502, `초안에 내보내면 안 되는 내용이 걸렸습니다 (${fmtSafety(safety.flags)})`);
   const read = [
     "이 글",
     ...(post.shas?.length ? [`그날 커밋 ${post.shas.length}개`] : []),
