@@ -12,8 +12,7 @@ import {
 } from "remotion";
 import {
   coldOpenKind,
-  headerNameBudget,
-  headerUnits,
+  templateBadge,
   type DiagramSpec,
   type MotifName,
   type ShortsScript,
@@ -21,7 +20,7 @@ import {
   type TimedSentence,
 } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
-import { iconOrDefault, type ProjectIcon } from "../../lib/project-icon";
+import type { ProjectIcon } from "../../lib/project-icon";
 import { DiagramScene } from "./Diagram";
 import { MotifScene } from "./Motif";
 import { IconScene } from "./IconScene";
@@ -39,7 +38,6 @@ import {
 import {
   COLD_OPEN_SEC,
   FONT_MONO,
-  FONT_SANS,
   getTheme,
   NARRATION_DELAY,
   SCENE_FADE,
@@ -57,16 +55,10 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
-  /** 머리글 배치 — 검수·시안용 (one 지금 / tier 이름만 크게 / stack 두 줄) */
-  eyebrowLayout?: "one" | "tier" | "stack";
-  /** 템플릿 배지 글자 — 검수·시안용. 없으면 템플릿 이름 */
-  badgeLabel?: string;
   /** 훅 헤드라인 낱말 움직임 — 검수·시안용. 없으면 기본(HookCard) */
   hookMotion?: "rise" | "fade" | "still";
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
   theme?: string | null;
-  /** 머리글에 쓰는 서비스 이름과 아이콘 (projects.json, 소개 글이 정한다) — 없으면 "vibelog" */
-  project?: { name: string; short?: string | null; icon?: ProjectIcon | null } | null;
   /** 화면별 녹화 구간 (readyAt 기준 초) — 문장의 screen과 매칭. 없으면 시간순 */
   segments?:
     | {
@@ -403,15 +395,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoStartSec = 0,
   artFiles = null,
   hookMotion,
-  badgeLabel,
-  eyebrowLayout = "one",
   theme = null,
   segments = null,
-  project = null,
 }) => {
   const th = getTheme(theme);
-  // 머리글 아이콘 — 없으면 기본 아이콘(코드 꺾쇠). 프로젝트 정보가 아예 없으면 그리지 않는다
-  const icon = project ? iconOrDefault(project.icon) : null;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -501,29 +488,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
 
   // 머리글 크기 — 30px일 때 데스크톱 카드(폭 240)에서 글자가 7px로 줄어 뭉개졌다.
   // 42px·굵게로 키웠다 (10/11 Jessi, 시안 B안)
-  const EB = { fs: 42, ls: "0.02em", icon: 56, stroke: 2.8, gap: 18 };
-  // 이름이 배지 옆 자리에 다 안 들어가면 짧은 이름(projects.json nameShort)을 쓴다. 그래도 길면 "…"
-  const fullName = project?.name ?? "vibelog";
-  const shownName =
-    project?.short && headerUnits(fullName) > headerNameBudget(script.template) ? project.short : fullName;
-  const hangulName = /[가-힣]/.test(shownName);
-  const badge = (fs: number, padding: string) => (
-    <span
-      style={{
-        border: `2px solid ${th.badgeFill ? th.accent : th.line}`,
-        borderRadius: th.badgeRadius,
-        padding,
-        fontSize: fs,
-        color: th.badgeFill ? th.accentInk : th.ink,
-        background: th.badgeFill ? th.accent : "transparent",
-        fontWeight: 700,
-        flex: "none",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {badgeLabel ?? script.template.replace("-", " ")}
-    </span>
-  );
+  const EB = { fs: 42, ls: "0.04em" };
 
   return (
     <AbsoluteFill style={{ background: th.bg }}>
@@ -642,18 +607,17 @@ export const ShipIt: React.FC<ShipItProps> = ({
         );
       })}
 
-      {/* eyebrow */}
+      {/* eyebrow — VIBELOG · DAY NN / 템플릿 배지. 프로젝트 이름·아이콘으로 바꿨다가 되돌렸다:
+          42px로 키우자 이름·DAY·배지가 한 줄에 빽빽했고 긴 이름은 잘렸다 (10/11 Jessi) */}
       <div
         style={{
           position: "absolute",
-          top: eyebrowLayout === "stack" ? 72 : 88,
+          top: 88,
           left: 80,
           right: 80,
           display: "flex",
-          flexDirection: eyebrowLayout === "stack" ? "column" : "row",
           justifyContent: "space-between",
-          alignItems: eyebrowLayout === "stack" ? "flex-start" : "center",
-          rowGap: 14,
+          alignItems: "center",
           fontFamily: FONT_MONO,
           fontSize: EB.fs,
           fontWeight: 700,
@@ -662,56 +626,22 @@ export const ShipIt: React.FC<ShipItProps> = ({
           textTransform: "uppercase",
         }}
       >
-        {/* 아이콘 + 서비스 이름 · DAY NN (docs/project-icon-places.html ③). 이름이 길면 줄여서
-            "…"로 끝낸다 — 오른쪽 템플릿 배지와 겹치지 않게. 아이콘이 없으면 예전처럼 vibelog */}
-        <span style={{ display: "flex", alignItems: "center", gap: EB.gap, minWidth: 0, flex: 1, marginRight: 24 }}>
-          {icon && (
-            <svg
-              viewBox="0 0 24 24"
-              width={EB.icon}
-              height={EB.icon}
-              fill="none"
-              stroke={th.accent}
-              strokeWidth={EB.stroke}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ flex: "none" }}
-            >
-              {icon.paths.map((p, i) => (
-                <path key={i} d={p.d} {...(p.filled ? { fill: th.accent } : {})} />
-              ))}
-            </svg>
-          )}
-          <span
-            style={{
-              color: th.accent,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              minWidth: 0,
-              textTransform: project ? "none" : "uppercase",
-              letterSpacing: project ? "0.02em" : undefined,
-              // 한글 이름은 고정폭 글꼴에 한글이 없어 기기마다 다른 글꼴로 바뀐다 — 한글 글꼴로.
-              // 영어 이름은 고정폭 그대로 (10/11 Jessi: "…")
-              ...(hangulName && project ? { fontFamily: FONT_SANS, fontWeight: 800, letterSpacing: 0 } : {}),
-            }}
-          >
-            {shownName}
-          </span>
-          {eyebrowLayout !== "stack" && (
-            <span style={{ flex: "none", whiteSpace: "nowrap", ...(eyebrowLayout === "tier" ? { fontSize: 30, fontWeight: 600 } : {}) }}>
-              · day {String(script.day).padStart(2, "0")}
-            </span>
-          )}
+        <span>
+          <span style={{ color: th.accent }}>vibelog</span> · day{" "}
+          {String(script.day).padStart(2, "0")}
         </span>
-        {eyebrowLayout === "stack" && (
-          <span style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 28, marginLeft: EB.icon + EB.gap }}>
-            <span style={{ whiteSpace: "nowrap" }}>day {String(script.day).padStart(2, "0")}</span>
-            {badge(28, "6px 16px")}
-          </span>
-        )}
-        {eyebrowLayout === "one" && badge(EB.fs, "10px 24px")}
-        {eyebrowLayout === "tier" && badge(28, "8px 18px")}
+        <span
+          style={{
+            border: `2px solid ${th.badgeFill ? th.accent : th.line}`,
+            borderRadius: th.badgeRadius,
+            padding: "10px 24px",
+            color: th.badgeFill ? th.accentInk : th.ink,
+            background: th.badgeFill ? th.accent : "transparent",
+            fontWeight: 700,
+          }}
+        >
+          {templateBadge(script.template)}
+        </span>
       </div>
 
       {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트.

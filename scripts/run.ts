@@ -8,8 +8,6 @@
  *                                          # 바뀌었을 때만 projects.json을 다시 쓴다.
  *                                          # 글·쇼츠·state는 건드리지 않는다 (짧은 주기 배치용)
  */
-import { shortNames, type ShortNames } from "./short-name";
-import { headerUnits, SHORT_NAME_BUDGET } from "./shorts-types";
 import { checkDevlogs } from "./check-markdown";
 import fs from "node:fs";
 import path from "node:path";
@@ -211,9 +209,6 @@ async function updateProjects(
       about?: string;
       aboutEn?: string;
       icon?: unknown;
-      nameShort?: string;
-      nameEnShort?: string;
-      shortFor?: string;
     }
   >();
   try {
@@ -263,33 +258,16 @@ async function updateProjects(
       icon: safeIcon(it?.icon ?? p?.icon),
     };
   };
-  // 화면 이름 — vibelog.json name > 기획서가 정한 이름(소개 글·plan-name.ts) > 화면에서 찾은 이름 > 레포 이름
-  const namesOf = (a: (typeof activities)[number]) => {
-    const intro = introOf(a.repo);
-    return {
-      name: a.vibelogJson?.name ?? intro.serviceName ?? a.repo,
-      nameEn: a.vibelogJson?.name ? undefined : intro.serviceNameEn,
-    };
-  };
-  // 쇼츠 머리글에 안 들어가는 긴 이름만 짧은 이름을 만들어 둔다 — 이름이 그대로면 이전 것을 쓴다 (scripts/short-name.ts)
-  const shorts = new Map<string, ShortNames>();
-  for (const a of activities) {
-    const { name, nameEn } = namesOf(a);
-    if (headerUnits(name) <= SHORT_NAME_BUDGET && (!nameEn || headerUnits(nameEn) <= SHORT_NAME_BUDGET)) continue;
-    shorts.set(a.repo, await shortNames(name, nameEn, prev.get(a.repo)));
-  }
   const projects = activities.map((a) => {
     const intro = introOf(a.repo);
-    const { name, nameEn } = namesOf(a);
-    const short = shorts.get(a.repo);
+    // 화면 이름 — vibelog.json name > 기획서가 정한 이름(소개 글·plan-name.ts) > 화면에서 찾은 이름 > 레포 이름
+    const name = a.vibelogJson?.name ?? intro.serviceName ?? a.repo;
+    const nameEn = a.vibelogJson?.name ? undefined : intro.serviceNameEn;
     return {
     slug: a.repo,
     ...(colors[a.repo] ? { color: colors[a.repo] } : {}),
     name,
     ...(nameEn ? { nameEn } : {}),
-    ...(short?.nameShort ? { nameShort: short.nameShort } : {}),
-    ...(short?.nameEnShort ? { nameEnShort: short.nameEnShort } : {}),
-    ...(short?.shortFor ? { shortFor: short.shortFor } : {}),
     ...(intro.serviceName ? { serviceName: intro.serviceName } : {}),
     ...(intro.serviceNameEn ? { serviceNameEn: intro.serviceNameEn } : {}),
     ...(intro.about ? { about: intro.about } : {}),
