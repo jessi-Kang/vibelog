@@ -2,31 +2,26 @@
   "screens": [
     {
       "path": "/n",
-      "find": "make up a fake complex name",
+      "find": "fake name request",
       "focusY": 0.211,
-      "start": 1.13,
-      "end": 8.65
+      "start": 1.08,
+      "end": 9.1
     },
     {
       "path": "/n",
-      "start": 8.99,
-      "end": 17.29
-    },
-    {
-      "path": "/f",
-      "start": 18.19,
-      "end": 26.58
+      "start": 9.43,
+      "end": 17.69
     },
     {
       "path": "/o",
-      "find": "real or fake from the name alo",
-      "start": 27.49,
-      "end": 35.88
+      "find": "real or fake by name",
+      "start": 18.6,
+      "end": 26.99
     },
     {
       "path": "/o",
-      "start": 36.18,
-      "end": 44.52
+      "start": 27.3,
+      "end": 35.61
     }
   ]
 }
