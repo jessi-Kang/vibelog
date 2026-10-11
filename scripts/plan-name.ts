@@ -35,7 +35,8 @@ const SYSTEM = `프로젝트 기획서의 앞부분을 받습니다. 이 기획�
 여러 문서가 다르게 말하면 가장 최근 결정처럼 보이는 것(예: "이름 변경", "최종")을 고릅니다.
 기획서가 이름을 정하지 않았으면 null입니다.
 JSON 하나만 출력합니다: {"name": "한국어 이름 또는 null", "nameEn": "영어 이름 또는 null"}
-한쪽만 있으면 다른 쪽은 null로 둡니다.`;
+영어 이름이 따로 없으면 nameEn은 한국어 이름의 뜻을 영어로 옮겨 씁니다 — 영어 화면에 그대로 나갑니다
+(예: 거짓말 탐정 → Lie Detective). 소리 나는 대로 적지 않습니다. 한국어 이름이 없으면 name은 null로 둡니다.`;
 
 function parse(text: string): PlanName | null {
   const m = text.match(/\{[\s\S]*\}/);

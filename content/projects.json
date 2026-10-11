@@ -34,11 +34,11 @@
     "slug": "apart",
     "color": "#B9A7FF",
     "name": "아파트 감별사",
-    "nameEn": "아파트 감별사",
+    "nameEn": "Apartment Authenticator",
     "serviceName": "아파트 감별사",
-    "serviceNameEn": "아파트 감별사",
+    "serviceNameEn": "Apartment Authenticator",
     "about": "아파트 감별사는 진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
-    "aboutEn": "아파트 감별사 is a daily quiz where you tell real apartment names from ones made up by AI.",
+    "aboutEn": "Apartment Authenticator is a daily quiz where you tell real apartment names from ones made up by AI.",
     "icon": {
       "name": "tabler:building-community",
       "paths": [
@@ -67,11 +67,11 @@
     "slug": "lie-detective",
     "color": "#6FD3F2",
     "name": "거짓말 탐정",
-    "nameEn": "거짓말 탐정",
+    "nameEn": "Lie Detective",
     "serviceName": "거짓말 탐정",
-    "serviceNameEn": "거짓말 탐정",
+    "serviceNameEn": "Lie Detective",
     "about": "거짓말 탐정은 현장을 살피고 사진을 찍고 인물에게 직접 질문하며 사건을 푸는 모바일 추리 게임입니다.",
-    "aboutEn": "거짓말 탐정 is a mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
+    "aboutEn": "Lie Detective is a mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
     "icon": {
       "name": "tabler:spy",
       "paths": [
