@@ -1,36 +1,44 @@
 /**
- * art-samples.ts — 쇼츠 그림 스타일 시안. 스타일 × 장면 × 회사로 한 장씩 만든다.
+ * art-samples.ts — 쇼츠 그림 스타일 시안. 스타일 × 테마 × 장면으로 한 장씩 만든다.
  *
- * 예전 시안 3종(라인·플랫·듀오톤)이 반려된 뒤, 바이브로그에서만 나올 그림을 찾으려고
- * 세 방향을 다시 그려 본다 (10/11). 장면은 지난 쇼츠 대본에 대본 모델이 실제로 쓴 art 문장이다.
+ * 1차 시안(잔디 칸 도트·실사·클레이, 10/11)에서 Jessi가 종이 커팅으로 방향을 정했다.
+ * 그림은 쇼츠 테마 바탕 위에 얹으므로 투명 배경이고, 그래서 OpenAI만 쓴다.
+ * 장면은 지난 쇼츠 대본에 대본 모델이 실제로 쓴 art 문장이다.
  * 여기서 고른 스타일이 art.ts의 STYLE이 된다.
  *
- * 출력: art-samples/<스타일>-<장면>-<회사>.<jpg|png> — 커밋하지 않는다 (art-try 워크플로가 아티팩트로 올린다)
+ * 출력: art-samples/<스타일>-<테마>-<장면>.png — 커밋하지 않는다 (art-try 워크플로가 아티팩트로 올린다)
  * 사용: npx tsx scripts/art-samples.ts
  */
 import fs from "node:fs";
 import path from "node:path";
 import { generateImage } from "./art";
 
+/** 쇼츠 화면 위에 얹으므로 바탕 없이 — 투명 배경은 OpenAI만 된다 */
 const COMMON =
-  "Very dark navy background (#0a0e14). One single mint green accent (#5EE1C3) used only on the focal part; " +
-  "everything else in muted desaturated grays. Absolutely no text, no letters, no numbers, no logos, no people, no hands. " +
-  "One centered subject, generous empty space. Square composition. ";
+  "Isolated object on a fully transparent background: no backdrop, no floor, no frame, no vignette. " +
+  "Absolutely no text, no letters, no numbers, no logos, no people, no hands. " +
+  "One centered subject with generous empty space around it. Square composition. ";
 
+/** … */
 const STYLES: Record<string, string> = {
-  // 홈 잔디(커밋 칸)와 같은 문법 — 작은 네모 칸만으로 그린다
-  grid:
-    "Mosaic made only of small rounded square cells on a strict grid, like a GitHub contribution heatmap: " +
-    "every cell the same size, a thin dark gap between cells, about 40 cells across the image. " +
-    "Cells in 3–4 shades of gray-blue; the subject is a clear, readable silhouette made of cells. ",
-  // 진짜 물건을 찍은 사진 — 녹화 화면 사이에 끼어도 결이 튀지 않게
-  photo:
-    "Moody product photograph of real physical objects on a dark matte desk, 50mm lens, shallow depth of field, " +
-    "soft mint green rim light from one side, otherwise neutral lighting. Minimal, calm still life. ",
-  // 손으로 빚은 작은 모형
-  clay:
-    "Handmade matte clay miniature, soft rounded forms with subtle fingerprint texture, soft studio light. " +
-    "Muted gray-blue clay; the mint accent is mint colored clay on the focal object. ",
+  // 여러 겹 종이를 오려 쌓아 깊이를 낸다
+  layered:
+    "Layered paper-cut art: the subject is built from several sheets of matte cardstock cut with clean, precise edges, " +
+    "stacked in 3–5 layers; each layer casts a small soft shadow on the layer beneath, giving shallow depth. ",
+  // 몇 장의 종이를 가위로 오려 평평하게 붙인 콜라주
+  collage:
+    "Flat paper cutout collage: the subject is made of a few hand-cut paper shapes with slightly irregular scissor edges " +
+    "and visible paper fiber texture, glued flat, with only a faint shadow along the edges. ",
+};
+
+/** 쇼츠 테마 색으로 종이를 고른다 — 그림이 그 테마 바탕 위에 놓인다 (video/src/theme.ts) */
+const THEMES: Record<string, string> = {
+  // 어두운 바탕(#0A0E14) 위 — 밝은 종이가 떠야 읽힌다
+  terminal:
+    "Paper colors: off-white, light warm gray and slate gray papers, with exactly one mint green (#5EE1C3) paper piece on the focal part. ",
+  // 밝은 바탕(#EFF1F4) 위
+  paper:
+    "Paper colors: white, light gray and charcoal papers, with exactly one deep green (#0F7B5F) paper piece on the focal part. ",
 };
 
 /** 대본 모델이 실제로 쓴 art 문장 그대로 — 밤 실행이 넘길 입력과 같아야 시안이 의미가 있다 */
@@ -49,12 +57,11 @@ async function main(): Promise<void> {
   const failed: string[] = [];
   let made = 0;
   for (const [style, s] of Object.entries(STYLES)) {
-    for (const [scene, sc] of Object.entries(SCENES)) {
-      for (const provider of ["gemini", "openai"] as const) {
-        const id = `${style}-${scene}-${provider}`;
+    for (const [theme, t] of Object.entries(THEMES)) {
+      for (const [scene, sc] of Object.entries(SCENES)) {
+        const id = `${style}-${theme}-${scene}`;
         try {
-          // 회사를 하나만 넘긴다 — 시안은 두 회사를 나란히 보려는 것이라 넘어가기를 하지 않는다
-          const r = await generateImage(COMMON + s + "Subject: " + sc, [provider]);
+          const r = await generateImage(COMMON + s + t + "Subject: " + sc, ["openai"], { transparent: true });
           fs.writeFileSync(path.join(dir, `${id}.${r.ext}`), r.data);
           console.log(`- ${id} (${r.model})`);
           made += 1;

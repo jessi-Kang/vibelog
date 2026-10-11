@@ -2,12 +2,12 @@ name: art-try
 
 # 이미지 생성 API 확인용 — 손으로만 돌린다. 아무것도 커밋하지 않는다.
 #   try:     Gemini·OpenAI에서 한 장씩 (키·모델 이름 확인)
-#   samples: 스타일 시안 — 스타일 3 × 장면 3 × 회사 2 = 18장 (scripts/art-samples.ts)
+#   samples: 스타일 시안 — 종이 커팅 2 × 테마 2 × 장면 3 = 12장, 투명 배경(OpenAI) (scripts/art-samples.ts)
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "try = 한 장씩 확인 / samples = 스타일 시안 18장"
+        description: "try = 한 장씩 확인 / samples = 스타일 시안 12장"
         type: choice
         options: [samples, try]
         default: samples
