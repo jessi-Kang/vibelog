@@ -91,6 +91,7 @@ async function mailAdmins(): Promise<void> {
   for (const a of admins) {
     const un = unsubscribeUrl(a.id, "admin");
     const { subject, html } = adminMail(items, un);
-    await sendMail(a.email, subject, html, un);
+    // 받는 주소는 따로 정할 수 있다 (ADMIN_NOTIFY_EMAIL, 비밀값) — 로그인 계정과 메일을 읽는 곳이 다르다
+    await sendMail(process.env.ADMIN_NOTIFY_EMAIL?.trim() || a.email, subject, html, un);
   }
 }
