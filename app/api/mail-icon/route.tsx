@@ -8,6 +8,7 @@ import { ImageResponse } from "next/og";
 import { AVATAR_PATHS } from "@/lib/avatar-icons";
 import { getProjects } from "@/lib/content";
 import { PALETTE } from "@/lib/project-color";
+import { iconOrDefault } from "@/lib/project-icon";
 
 const ALLOWED = new Set([...PALETTE, "#5EE1C3", "#8C98A8"].map((c) => c.slice(1).toUpperCase()));
 
@@ -25,7 +26,7 @@ export async function GET(req: Request) {
   const slug = q.get("p");
   if (slug) {
     const p = getProjects().find((x) => x.slug === slug);
-    paths = p?.icon?.paths.map((x) => x.d);
+    paths = p ? iconOrDefault(p.icon).paths.map((x) => x.d) : undefined;
     color = (p?.color ?? "").replace("#", "").toUpperCase();
     shape = "square";
   } else {

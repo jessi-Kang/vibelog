@@ -250,7 +250,7 @@ export function PostClient({ post }: { post: PostData }) {
         <Link
           href={post.project.introHref}
           // 연한 바탕을 깐다 — 본문과 다른, 프로젝트에 대한 말이라는 것이 보이게 (Jessi, 10/11)
-          className={`group mt-1 grid rounded-md bg-panel px-3.5 py-3 ${post.project.icon ? "grid-cols-[20px_minmax(0,1fr)]" : "grid-cols-[3px_minmax(0,1fr)]"} gap-3`}
+          className={`group mt-1 grid rounded-md bg-panel px-3.5 py-3 grid-cols-[20px_minmax(0,1fr)] gap-3`}
         >
           {/* 아이콘을 위에, 그 아래로 색 세로선을 잇는다 (docs/project-icon-places.html ②) */}
           <span className="flex flex-col items-center gap-1.5" aria-hidden>
