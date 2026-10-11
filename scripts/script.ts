@@ -637,6 +637,15 @@ const HAS_OWN_CARD = new Set(["hook", "end"]);
  *  (video/src/ShipIt.tsx kindOf와 같은 규칙). */
 const MOTIF_SCENES = new Set(["build", "demo", "next"]);
 
+/** 화면·다이어그램·그림 없이 아이콘·모티프만 있는 문장 */
+const graphicOnly = (l: ShortsLine) =>
+  !HAS_OWN_CARD.has(l.scene) && !l.screen && !l.find && !l.diagram && !l.art && !!(l.icon || l.motif);
+
+/** 바로 앞 문장도 아이콘·모티프만 있는 문장들 (둘째부터) */
+export function graphicRuns(lines: ShortsLine[]): ShortsLine[] {
+  return lines.filter((l, i) => i > 0 && graphicOnly(l) && graphicOnly(lines[i - 1]));
+}
+
 export function blankScenes(lines: ShortsLine[]): ShortsLine[] {
   return lines.filter(
     (l) =>
@@ -951,6 +960,9 @@ export async function generateScript(
   // (lie-detective 10/10, Jessi). 넘친 훅은 같은 한 번의 다시 쓰기에 합친다
   const longHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook" && [...l.ko].length > HOOK_MAX);
   let longs = longHooks(lines);
+  // 아이콘·모티프만 있는 장면이 연달아 오는 문장 — 가운데 그림 하나가 이어져 같은 화면처럼 보였다
+  // … 같은 한 번의 다시 쓰기에 합친다
+  let runs = graphicRuns(lines);
   // 듣기 검사가 고른 문장이 대본의 몇 번째인지 — 검사 모델이 문장을 조금 다르게 옮겨 올 수 있다
   const lineOf = (sentence: string): number => {
     const t = sentence.trim();
@@ -973,7 +985,7 @@ export async function generateScript(
       `[listen] 알아듣기 막힌 문장 ${unclear.length}개`,
     );
   }
-  if (blanks.length > 0 || unclear.length > 0 || longs.length > 0) {
+  if (blanks.length > 0 || unclear.length > 0 || longs.length > 0 || runs.length > 0) {
     if (blanks.length > 0) {
       // 문장은 적지 않는다 — 공개 로그이고 안전 검사 전의 대본이다
       console.warn(`[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks.map((l) => `#${lines.indexOf(l)} ${l.scene}`).join(", ")}`);
@@ -997,6 +1009,17 @@ export async function generateScript(
         MOTIF_MENU,
         "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
         "   없는 문장은 영상에 자리가 없습니다.",
+        "",
+      );
+    }
+    if (runs.length > 0) {
+      ask.push(
+        "아래 문장은 바로 앞 문장처럼 아이콘이나 모티프만 있어, 화면 가운데 그림 하나가 연달아 나옵니다.",
+        ...runs.map((l) => `  - #${lines.indexOf(l)} [${l.scene}] ${l.ko}`),
+        "",
+        "되도록 화면(screen/find)·다이어그램·그림(art) 중 하나로 바꾸세요. 사이트에서 보여 줄 수 있는 것을",
+        "말하면 화면을, 원리를 말하면 다이어그램을 고릅니다. 정말 그럴 것이 없으면 그대로 둡니다 — 억지로 맞지 않는",
+        "화면을 붙이지 않습니다.",
         "",
       );
     }
@@ -1053,6 +1076,7 @@ export async function generateScript(
     lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
     blanks = blankScenes(lines);
     longs = longHooks(lines);
+    runs = graphicRuns(lines);
     if (longs.length > 0) console.warn(`[script] 훅이 아직 ${HOOK_MAX}자를 넘습니다 (${longs.length}문장) — 렌더가 글자를 줄여 받는다`);
     if (unclear.length > 0) {
       const left = await listenTo(title, lines).catch(() => null);
