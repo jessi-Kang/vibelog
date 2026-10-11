@@ -57,6 +57,8 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
+  /** 템플릿 배지 글자 — 검수·시안용. 없으면 템플릿 이름 */
+  badgeLabel?: string;
   /** 훅 헤드라인 낱말 움직임 — 검수·시안용. 없으면 기본(HookCard) */
   hookMotion?: "rise" | "fade" | "still";
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
@@ -399,6 +401,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoStartSec = 0,
   artFiles = null,
   hookMotion,
+  badgeLabel,
   theme = null,
   segments = null,
   project = null,
@@ -689,7 +692,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
             whiteSpace: "nowrap",
           }}
         >
-          {script.template.replace("-", " ")}
+          {badgeLabel ?? script.template.replace("-", " ")}
         </span>
       </div>
 
