@@ -22,54 +22,10 @@ import {
   type LiveCounts,
 } from "@/lib/commit-hours";
 import { getProjects } from "@/lib/content";
+import { countSince, ghGet as get, repoOf } from "@/lib/github-server";
 
 /** 5분 — 예전 클라이언트 재조회 간격과 같고, 무인증 한도 안에 든다 */
 export const revalidate = 300;
-
-const API = "https://api.github.com";
-
-const TOKEN = process.env.GH_PAT || process.env.GITHUB_TOKEN;
-
-function headers(withToken: boolean): HeadersInit {
-  return {
-    accept: "application/vnd.github+json",
-    ...(withToken && TOKEN ? { authorization: `Bearer ${TOKEN}` } : {}),
-  };
-}
-
-function repoOf(repoUrl: string): string | null {
-  return repoUrl.match(/github\.com\/([^/]+\/[^/]+)/)?.[1] ?? null;
-}
-
-async function get(path: string): Promise<Response> {
-  const url = `${API}${path}`;
-  const res = await fetch(url, {
-    headers: headers(true),
-    signal: AbortSignal.timeout(8000),
-  });
-  if (res.ok) return res;
-  // 토큰이 만료·오설정이면 401/403이 온다. 우리 레포는 public이라 토큰 없이도
-  // 읽히므로 한 번 더 맨손으로 물어본다 — 잘못된 토큰 하나가 기능을 죽이면 안 된다
-  if (TOKEN && (res.status === 401 || res.status === 403)) {
-    const plain = await fetch(url, {
-      headers: headers(false),
-      signal: AbortSignal.timeout(8000),
-    });
-    if (plain.ok) return plain;
-    throw new Error(`GitHub ${res.status}/${plain.status} ${path}`);
-  }
-  throw new Error(`GitHub ${res.status} ${path}`);
-}
-
-/** per_page=1의 Link 헤더 마지막 페이지 번호가 총 개수 (collect.ts와 같은 기법) */
-async function countSince(repo: string, since: string): Promise<number> {
-  const res = await get(
-    `/repos/${repo}/commits?since=${encodeURIComponent(since)}&per_page=1`,
-  );
-  const last = res.headers.get("link")?.match(/[?&]page=(\d+)>;\s*rel="last"/);
-  if (last) return Number(last[1]);
-  return ((await res.json()) as unknown[]).length;
-}
 
 /** 커밋 시각 목록. 오늘치는 보통 한 번이면 끝난다 (최대 300개) */
 async function timesSince(repo: string, since: string): Promise<string[]> {
