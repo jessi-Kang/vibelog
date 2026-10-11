@@ -13,7 +13,6 @@ import React from "react";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import {
   lineStarts,
-  longestLine,
   type ShortsScript,
   type ShortsTiming,
   type TimedSentence,
@@ -95,13 +94,13 @@ export const Captions: React.FC<{
       <div
         style={{
           fontFamily: FONT_SANS,
-          fontSize: breaks ? Math.min(52, Math.floor(930 / longestLine(texts, breaks))) : 52,
+          // 줄 나눔이 있어도 글자 크기는 그대로 — 폭을 넘는 줄은 그 안에서 접힌다 (훅과 같은 이유)
+          fontSize: 52,
           fontWeight: 900,
           // 마커칠 테마는 상자 겹침 방지로 줄간을 조금 더 (훅과 같은 이유)
           lineHeight: th.keyword === "marker" ? 1.42 : 1.3,
           wordBreak: "keep-all",
           textWrap: "balance",
-          ...(breaks ? { whiteSpace: "nowrap" as const } : {}),
           // 글자 그림자(다크 검은 그림자·라이트 흰 글로우)는 하이라이트 상자
           // 주변이 뿌옇게 번져 보여 제거 (Jessi 지시). 자막은 폰 프레임 아래
           // 안전 구역에만 놓이므로 그림자 없이도 배경과 안 겹친다.
