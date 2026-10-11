@@ -189,3 +189,44 @@ export function RollingNumber({
     </AbsoluteFill>
   );
 }
+
+/**
+ * 쇼츠의 숫자 인서트(StatPunch)용 — 화면 가운데를 차지하지 않고 글줄 안에 놓인다.
+ * progress(0–1)는 부르는 쪽이 시간으로 정한다 (원본은 영상 전체 길이에 맞춰 굴러서, 긴 영상
+ * 안에서는 너무 느렸다). 천 단위 자리에는 빈칸 대신 콤마를 찍는다 — 숫자 표기 규칙.
+ */
+export function RollingInline({
+  to,
+  progress,
+  fontSize,
+}: {
+  to: number;
+  progress: number;
+  fontSize: number;
+}) {
+  const end = Math.max(0, Math.round(to));
+  const e = COUNT_EASING(Math.min(1, Math.max(0, progress)));
+  const current = e * end;
+  const digits = String(end);
+  const cellHeight = fontSize * 1.1;
+  const cells: React.ReactNode[] = [];
+  for (let place = 0; place < digits.length; place++) {
+    if (place > 0 && place % 3 === 0) {
+      cells.unshift(
+        <span key={`c${place}`} style={{ display: "inline-block", height: cellHeight, lineHeight: `${cellHeight}px` }}>
+          ,
+        </span>,
+      );
+    }
+    const travel = placeTravel(0, end, place);
+    cells.unshift(
+      <DigitColumn
+        key={`d${place}`}
+        value={wrap10(e * travel)}
+        fontSize={fontSize}
+        reveal={placeReveal(current, place)}
+      />,
+    );
+  }
+  return <span style={{ display: "inline-flex", alignItems: "flex-start", fontVariantNumeric: "tabular-nums" }}>{cells}</span>;
+}

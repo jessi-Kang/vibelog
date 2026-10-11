@@ -23,6 +23,7 @@ import { iconOrDefault, type ProjectIcon } from "../../lib/project-icon";
 import { DiagramScene } from "./Diagram";
 import { MotifScene } from "./Motif";
 import { IconScene } from "./IconScene";
+import { Enter, enterOf } from "./Enter";
 import {
   ArtCard,
   Background,
@@ -444,6 +445,13 @@ export const ShipIt: React.FC<ShipItProps> = ({
   // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은
   // 경계부터 뜬다. 크로스페이드는 레이아웃이 다른 장면끼리 애매하게
   // 겹쳐 보였다 (Jessi 지적).
+  const fadeOutOf = (seg: Seg): number =>
+    seg.to >= total
+      ? 1
+      : interpolate(t, [seg.to - SCENE_FADE, seg.to], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
   const opacityOf = (seg: Seg): number => {
     const fadeIn =
       seg.from === 0
@@ -467,23 +475,13 @@ export const ShipIt: React.FC<ShipItProps> = ({
       <Background th={th} />
 
       {segs.map((seg, i) => {
-        const opacity = opacityOf(seg);
-        if (opacity <= 0) return null;
-        // 장면 입장 라이즈 — 페이드에 20px 상승을 더해 컷마다 방향감을 준다.
-        // 폰 프레임은 자체 카메라워크(틸트·줌)가 있어 제외.
-        const rise =
-          seg.from > 0 && seg.kind !== "phone"
-            ? interpolate(t, [seg.from, seg.from + SCENE_FADE + 0.1], [20, 0], {
-                extrapolateLeft: "clamp",
-                extrapolateRight: "clamp",
-                easing: Easing.out(Easing.cubic),
-              })
-            : 0;
+        // 들어오는 효과는 장면 종류가 고른다 (Enter.tsx) — 나가는 쪽은 예전처럼 다 사라진 뒤 다음이 온다
+        const effect = seg.from > 0 ? enterOf(seg.kind, i > 0 ? segs[i - 1].kind : null) : "none";
+        const opacity = effect === "none" ? opacityOf(seg) : fadeOutOf(seg);
+        if (opacity <= 0 || t < seg.from) return null;
         return (
-          <AbsoluteFill
-            key={i}
-            style={{ opacity, transform: `translateY(${rise}px)` }}
-          >
+          <AbsoluteFill key={i} style={{ opacity }}>
+            <Enter effect={effect} local={t - seg.from} fps={fps} th={th}>
             {seg.kind === "cold" && cold && (
               <ColdOpen
                 variant={cold}
@@ -532,7 +530,17 @@ export const ShipIt: React.FC<ShipItProps> = ({
               <MotifScene name={seg.motif} th={th} fromSec={seg.from} />
             )}
             {seg.kind === "art" && artFiles?.next && (
-              <ArtCard file={artFiles.next} th={th} />
+              // 정지 그림이 2초를 못 버틴다 — 장면 내내 아주 천천히 다가온다 (remocn drift)
+              <AbsoluteFill
+                style={{
+                  transform: `scale(${interpolate(t, [seg.from, seg.to], [1, 1.05], {
+                    extrapolateLeft: "clamp",
+                    extrapolateRight: "clamp",
+                  })})`,
+                }}
+              >
+                <ArtCard file={artFiles.next} th={th} />
+              </AbsoluteFill>
             )}
             {seg.kind === "phone" && (
               <PhoneFrame
@@ -573,6 +581,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
             {seg.kind === "end" && (
               <EndCard script={script} th={th} sceneStartSec={seg.from} />
             )}
+            </Enter>
           </AbsoluteFill>
         );
       })}
