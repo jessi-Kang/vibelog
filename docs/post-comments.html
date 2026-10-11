@@ -36,13 +36,12 @@
   .txt { margin: 0; font-size: 14px; line-height: 1.7; color: var(--ink-soft); white-space: pre-wrap; }
   /* 답글 — 안으로 밀지 않고, 같은 폭에 바탕만 깐다 */
   .reply { background: var(--panel); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
-  /* 이름 옆 ⋯ — 보이는 크기 28px, 누르는 영역 44px */
-  .mw { position: relative; display: inline-flex; margin-right: -6px; }
-  .more { all: unset; position: relative; width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; color: var(--muted); cursor: pointer; }
-  .more::after { content: ""; position: absolute; inset: -8px; }
-  .more:hover, .more[aria-expanded="true"] { color: var(--ink); background: var(--panel2); }
-  .more svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-  .menu { position: absolute; right: 0; top: calc(100% + 4px); z-index: 5; min-width: 132px; background: var(--panel2); border: 1px solid var(--line-strong); border-radius: 10px; padding: 4px; display: flex; flex-direction: column; box-shadow: 0 8px 20px rgba(5,8,12,.5); }
+  /* 이름을 누르면 메뉴가 열린다 — 따로 ⋯ 버튼을 두지 않는다 */
+  .mw { position: relative; display: inline-flex; }
+  .nm { all: unset; position: relative; cursor: pointer; font-weight: 700; color: var(--ink); border-radius: 6px; padding: 2px 6px; margin: -2px -6px; }
+  .nm::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; translate: 0 -50%; height: 44px; }
+  .nm:hover, .nm[aria-expanded="true"] { background: var(--panel2); }
+  .menu { position: absolute; left: -6px; top: calc(100% + 4px); z-index: 5; min-width: 132px; background: var(--panel2); border: 1px solid var(--line-strong); border-radius: 10px; padding: 4px; display: flex; flex-direction: column; box-shadow: 0 8px 20px rgba(5,8,12,.5); }
   .menu[hidden] { display: none; }
   .menu button { all: unset; cursor: pointer; padding: 0 12px; min-height: 40px; display: flex; align-items: center; border-radius: 7px; font-size: 13px; color: var(--ink-soft); white-space: nowrap; }
   .menu button:hover, .menu button:focus-visible { background: var(--line); color: var(--ink); }
@@ -50,7 +49,7 @@
   .c.hidden-c .txt { opacity: .5; }
   .hid { font-size: 10px; letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 1px 7px; font-family: "JetBrains Mono", monospace; }
   .me { display: flex; gap: 8px; align-items: center; font-size: 13px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-  .me b { color: var(--ink); } .me .mw { margin-left: auto; }
+  .me b { color: var(--ink); }
   /* 알림 — 머리글 오른쪽 종, 누르면 아래로 목록 */
   .hdr { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
   .hdr .wm { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 14px; color: var(--ink); }
@@ -155,7 +154,7 @@
 
     <div class="col">
       <span class="tag mono">② 로그인 후</span><h2>이름과 아이콘이 보이고, 쓸 수 있습니다</h2>
-      <p class="d">내 이름 옆 ⋯에서 답글 메일 끄기·로그아웃. 답글은 안으로 밀지 않고 바탕만 깔아 구분합니다.</p>
+      <p class="d">내 이름을 누르면 답글 메일 끄기·로그아웃. 답글은 안으로 밀지 않고 바탕만 깔아 구분합니다.</p>
       <div class="phone">
         <div class="sec"><h3>댓글 2</h3></div>
         <div class="c">
@@ -167,7 +166,7 @@
           </div>
         </div>
         <div class="box focus">
-          <div class="me"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>도윤</b><span class="mw"><button class="more" aria-label="내 계정 메뉴" aria-haspopup="menu" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg></button><span class="menu" role="menu"><button role="menuitem">답글 메일 받지 않기</button><button role="menuitem">로그아웃</button></span></span></div>
+          <div class="me"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><span class="mw"><button class="nm" aria-haspopup="menu" aria-expanded="true">도윤</button><span class="menu" role="menu"><button role="menuitem">답글 메일 받지 않기</button><button role="menuitem">로그아웃</button></span></span></div>
           <textarea aria-label="댓글">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</textarea>
           <div class="row"><span class="count">33 / 1,000</span><button class="btn pri">올리기</button></div>
         </div>
@@ -176,14 +175,14 @@
 
     <div class="col">
       <span class="tag mono">③ Jessi · 답글</span><h2>개발 내용을 아는 AI 초안</h2>
-      <p class="d">이름 옆 ⋯에서 숨기기·지우기·다시 보이기. 초안은 쓰는 칸에만 들어가고, 올리기는 Jessi가 누릅니다.</p>
+      <p class="d">댓글 쓴 사람의 이름을 누르면 숨기기·지우기·다시 보이기. 초안은 쓰는 칸에만 들어가고, 올리기는 Jessi가 누릅니다.</p>
       <div class="phone" id="jessi">
         <div class="c">
-          <div class="who"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>도윤</b><time>10/11 10:05</time><span class="mw"><button class="more" aria-label="댓글 관리" aria-haspopup="menu" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg></button><span class="menu" role="menu"><button role="menuitem">숨기기</button><button role="menuitem" class="danger">지우기</button></span></span></div>
+          <div class="who"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><span class="mw"><button class="nm" aria-haspopup="menu" aria-expanded="true">도윤</button><span class="menu" role="menu"><button role="menuitem">숨기기</button><button role="menuitem" class="danger">지우기</button></span></span><time>10/11 10:05</time></div>
           <p class="txt">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
         </div>
         <div class="c hidden-c">
-          <div class="who"><span class="av" data-i="dice" style="--c:#C9E579" aria-hidden="true"></span><b>준</b><span class="hid">숨김</span><time>10/11 11:20</time><span class="mw"><button class="more" aria-label="댓글 관리" aria-haspopup="menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg></button><span class="menu" role="menu" hidden><button role="menuitem">다시 보이기</button><button role="menuitem" class="danger">지우기</button></span></span></div>
+          <div class="who"><span class="av" data-i="dice" style="--c:#C9E579" aria-hidden="true"></span><span class="mw"><button class="nm" aria-haspopup="menu" aria-expanded="false">준</button><span class="menu" role="menu" hidden><button role="menuitem">다시 보이기</button><button role="menuitem" class="danger">지우기</button></span></span><span class="hid">숨김</span><time>10/11 11:20</time></div>
           <p class="txt">광고 링크 남깁니다. 지금 가입하면 혜택!</p>
         </div>
         <div class="box focus">
@@ -236,7 +235,7 @@
         <div class="mfoot">이 댓글에 바로 이어지는 화면으로 열립니다. AI 초안은 거기서 받을 수 있습니다.<br><a href="#">이 알림 메일 끄기</a></div>
       </div>
       <h2 style="margin-top:14px">답글 메일 — 댓글 쓴 사람에게</h2>
-      <p class="d">Jessi가 답글을 달면 그 댓글을 쓴 사람의 Google 메일로 한 통. 메일 주소는 이 알림에만 쓰고 화면에는 내보내지 않습니다. 받기 싫으면 메일 아래 링크나 내 이름 옆 ⋯에서 끕니다.</p>
+      <p class="d">Jessi가 답글을 달면 그 댓글을 쓴 사람의 Google 메일로 한 통. 메일 주소는 이 알림에만 쓰고 화면에는 내보내지 않습니다. 받기 싫으면 메일 아래 링크나 내 이름 메뉴에서 끕니다.</p>
       <div class="mail">
         <div class="subj">보낸 사람 <b>vibelog</b><br>제목 <b>[vibelog] Jessi가 내 댓글에 답글을 달았습니다</b></div>
         <div class="mcard">
@@ -285,7 +284,7 @@
       <li><b>메일 주소</b>: 로그인 확인과 관리자 판별에만 씁니다. 화면·응답·커밋·로그 어디에도 내보내지 않고, 관리자 메일은 코드가 아니라 Vercel 환경변수에 둡니다.</li>
       <li><b>쓰기 안전</b>: 댓글은 글자로만 그립니다(마크다운·HTML 해석 안 함). 한 사람당 1분에 3개까지. 비밀 키·연락처가 걸리면 올리지 않고 이유를 알려 줍니다.</li>
       <li><b>알림</b>: 사이트 머리글의 종(로그인한 사람만)과 Jessi에게 가는 메일. Jessi에게는 새 댓글 메일, 댓글 쓴 사람에게는 Jessi의 답글 메일이 갑니다. 메일 본문에는 다른 사람의 메일 주소를 담지 않습니다. 메일 발송에는 메일 보내는 서비스(Resend)의 키가 하나 더 필요합니다.</li>
-      <li><b>⋯ 메뉴</b>: 방문자는 내 이름 옆 ⋯에서 답글 메일 끄기·로그아웃. Jessi의 답글 칸에는 이름 줄을 두지 않습니다 — 로그아웃할 일이 없고, 누가 쓰는지 이미 압니다. Jessi는 모든 댓글의 이름 옆 ⋯에서 숨기기·지우기, 숨긴 댓글은 다시 보이기. 숨긴 댓글은 Jessi와 쓴 사람에게만 흐리게 보입니다. 지우기는 한 번 더 묻고 지웁니다.</li>
+      <li><b>이름 메뉴</b>: 방문자는 내 이름을 누르면 답글 메일 끄기·로그아웃. Jessi의 답글 칸에는 이름 줄을 두지 않습니다 — 로그아웃할 일이 없고, 누가 쓰는지 이미 압니다. Jessi는 댓글마다 쓴 사람의 이름을 누르면 숨기기·지우기, 숨긴 댓글은 다시 보이기. 숨긴 댓글은 Jessi와 쓴 사람에게만 흐리게 보입니다. 지우기는 한 번 더 묻고 지웁니다.</li>
     </ul>
   </div>
 </div>
@@ -309,10 +308,10 @@
   ta.addEventListener("input", () => { dn.hidden = true; upd(); });
   document.querySelectorAll("#jessi .chip").forEach((b) => b.addEventListener("click", () => { ta.value = T[b.dataset.k]; dn.hidden = false; rd.hidden = b.dataset.k !== "draft"; upd(); ta.focus(); }));
 
-  document.querySelectorAll(".more").forEach((b) => b.addEventListener("click", (e) => {
+  document.querySelectorAll(".nm").forEach((b) => b.addEventListener("click", (e) => {
     e.stopPropagation();
     const m = b.nextElementSibling, open = b.getAttribute("aria-expanded") === "true";
-    b.closest(".phone").querySelectorAll(".more").forEach((x) => { x.setAttribute("aria-expanded", "false"); x.nextElementSibling.hidden = true; });
+    b.closest(".phone").querySelectorAll(".nm").forEach((x) => { x.setAttribute("aria-expanded", "false"); x.nextElementSibling.hidden = true; });
     if (!open) { b.setAttribute("aria-expanded", "true"); m.hidden = false; }
   }));
 </script>
