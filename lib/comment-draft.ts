@@ -9,7 +9,6 @@
  * 댓글은 아무나 쓰는 글이라 지시가 아니라 자료로만 넘긴다.
  */
 import Anthropic from "@anthropic-ai/sdk";
-import { createMessage } from "@/scripts/models";
 import { checkSafety, fmtSafety } from "@/scripts/safety";
 import { getDevlogs, introPost, type DevlogEntry } from "./content";
 import { db } from "./db";
@@ -17,7 +16,9 @@ import { plainTerms } from "./term-marker";
 import { projectName } from "./project-name";
 import { findPost, CommentError } from "./comments";
 
-const MODEL = "claude-opus-5-5";
+// 답글 초안은 짧은 글이라 Opus까지 쓰지 않는다 — 비용을 줄이려고 Sonnet으로 내렸다 (10/11 Jessi).
+// 앞 것을 못 찾으면(모델 이름이 바뀌는 등) 다음 것으로 한다. 더 비싼 모델로는 넘어가지 않는다.
+const MODELS = ["claude-sonnet-5-5", "claude-haiku-4-5-20251001"];
 
 export type DraftMode = "draft" | "polish" | "short";
 
@@ -85,15 +86,24 @@ export async function draftReply(commentId: number, mode: DraftMode, current: st
   if (mode !== "draft" && !current.trim()) throw new CommentError(400, "먼저 답글을 써 주세요");
 
   const client = new Anthropic();
-  const res = await createMessage(client, {
-    model: MODEL,
+  const params = {
     max_tokens: 2000,
     system: [
-      { type: "text", text: SYSTEM },
-      { type: "text", text: `## 자료\n${material(post)}`, cache_control: { type: "ephemeral" } },
+      { type: "text" as const, text: SYSTEM },
+      { type: "text" as const, text: `## 자료\n${material(post)}`, cache_control: { type: "ephemeral" as const } },
     ],
-    messages: [{ role: "user", content: ask(mode, c.body, current.slice(0, 2000)) }],
-  });
+    messages: [{ role: "user" as const, content: ask(mode, c.body, current.slice(0, 2000)) }],
+  };
+  let res: Anthropic.Message | undefined;
+  for (const [i, model] of MODELS.entries()) {
+    try {
+      res = await client.messages.create({ ...params, model });
+      break;
+    } catch (err) {
+      if (!(err instanceof Anthropic.NotFoundError) || i === MODELS.length - 1) throw err;
+    }
+  }
+  if (!res) throw new Error("초안 모델이 답하지 않았습니다");
   const text = res.content
     .filter((b): b is Anthropic.TextBlock => b.type === "text")
     .map((b) => b.text)
