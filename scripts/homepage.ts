@@ -47,3 +47,13 @@ export async function resolveHomepage(repo: string, publicHomepage?: string): Pr
     return "";
   }
 }
+
+/**
+ * 오류를 공개 로그에 적을 때 주소의 호스트를 지운다. Playwright·fetch 오류에는 열던 주소가
+ * 통째로 들어 있어서, live 전 사이트에서 녹화가 실패하면 그 주소가 Actions 로그에 남는다.
+ */
+export function hideHosts(err: unknown): string {
+  const e = err as Error;
+  const text = e?.stack ?? e?.message ?? String(err);
+  return text.replace(/https?:\/\/[^\s/"'<>)]+/g, "<사이트>");
+}

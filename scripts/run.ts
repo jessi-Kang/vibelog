@@ -31,7 +31,7 @@ import { followsCommitRule } from "./commit-rule";
 import { enoughForPost } from "./collect";
 import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
-import { isPublicStatus, savePrivateHomepages } from "./homepage";
+import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
@@ -699,7 +699,7 @@ async function main(): Promise<void> {
         }
         console.error(
           `- ${repo} 쇼츠 실패 (데브로그 발행에는 영향 없음):`,
-          err,
+          hideHosts(err),
         );
         runLines.push({
           text: `shorts   · ${repo} 실패 — 글 발행은 계속`,

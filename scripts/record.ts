@@ -10,7 +10,7 @@
  *
  * 사용: npx tsx scripts/record.ts <repo> <date> [durationSec]
  */
-import { resolveHomepage } from "./homepage";
+import { hideHosts, resolveHomepage } from "./homepage";
 import fs from "node:fs";
 import path from "node:path";
 import { chromium, type Page } from "playwright";
@@ -304,8 +304,11 @@ async function runSteps(
         await page.waitForTimeout(Number(arg) || 500);
       }
     } catch (err) {
-      // 한 스텝 실패가 녹화 전체를 죽이지 않게
-      console.warn(`스텝 실패("${step}"):`, err);
+      // 한 스텝 실패가 녹화 전체를 죽이지 않게. Playwright 오류에는 열던 주소가 통째로
+      // 들어 있다 — live 전 주소가 공개 로그에 남지 않게 호스트를 지운다
+      console.warn(
+        `스텝 실패("${step}"): ${hideHosts((err as Error)?.message ?? err).slice(0, 300)}`,
+      );
     }
   }
 }
@@ -705,7 +708,7 @@ if (process.argv[1]?.endsWith("record.ts")) {
     dur ? Number(dur) : undefined,
     langArg === "en" ? "en" : "ko",
   ).catch((err) => {
-    console.error(err);
+    console.error(hideHosts(err));
     process.exit(1);
   });
 }

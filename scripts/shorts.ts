@@ -9,7 +9,7 @@
  * 필요 환경변수: ANTHROPIC_API_KEY, ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
  * 선택: BLOB_READ_WRITE_TOKEN (없으면 업로드 생략, mp4는 로컬에만 남음)
  */
-import { resolveHomepage } from "./homepage";
+import { hideHosts, resolveHomepage } from "./homepage";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -222,7 +222,7 @@ if (process.argv[1]?.endsWith("shorts.ts")) {
   runShorts(repo, date, { newScript })
     .then(() => writeRegenRunLog(repo, date, newScript))
     .catch((err) => {
-      console.error(err);
+      console.error(hideHosts(err));
       process.exit(1);
     });
 }
