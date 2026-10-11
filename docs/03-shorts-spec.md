@@ -497,6 +497,7 @@ ffmpeg -i video.mp4 -i narration.mp3 -i music.mp3 -filter_complex "\
 - 쓰임: 그 문장 동안 폰 화면 대신 그림을 판·테두리 없이 테마 바탕 위에 바로 얹는다(820px).
 - `GEMINI_API_KEY`·`OPENAI_API_KEY`(비밀값)가 둘 다 없으면 이 단계는 통째로 건너뛰고, 쇼츠는 그래픽 없이 이전과 동일하게 렌더된다. 장면 하나가 실패해도 그 장면만 그래픽 없이 간다.
 - 산출물 `content/shorts/<repo>/<date>.art/<scene>.png`는 재생성 가능하므로 커밋하지 않는다.
+- **비슷하면 다시 쓴다** (10/11). 만든 그림은 Blob `shorts/art/<id>.png`에 올리고 `shorts/art/index.json`에 테마·그림체·묘사를 적는다. 새 문장의 묘사가 같은 테마·그림체의 지난 묘사와 뜻 있는 낱말이 60% 이상 겹치면(`findSimilarArt`) 그 그림을 받아 쓴다. 실행 기록에 `[art] … 비슷한 그림을 다시 씀 (낱말 겹침 0.70)`이 남는다.
 
 ---
 
