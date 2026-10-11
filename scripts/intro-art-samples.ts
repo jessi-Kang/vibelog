@@ -20,6 +20,8 @@ const SYSTEM = `프로젝트 소개 글을 받습니다. 이 글 맨 위에 놓�
 - 이 프로젝트가 무엇을 하는지 한눈에 떠오르는 물건 두세 개를 옆으로 늘어놓은 작은 장면입니다.
 - 화면·앱 화면·UI·글자·숫자·로고·사람·손·동물은 넣지 않습니다. 물건으로만 말합니다.
 - 소개 글에 없는 것을 지어내지 않고, 정답·비밀·푸는 법·내부 동작은 그리지 않습니다 — 간판 정도만.
+- **물건 이름과 놓인 순서만** 씁니다. 색·재질(금빛, 놋쇠, 나무, 벨벳)·빛(조명, 따뜻한 빛, 밤빛)·분위기·
+  바닥이나 탁자·배경은 쓰지 않습니다. 색과 그림체는 따로 정해져 있어서, 여기서 색을 말하면 그쪽이 깨집니다.
 그 문장 하나만 출력합니다.`;
 
 function introPosts(): { repo: string; text: string }[] {
@@ -47,7 +49,8 @@ async function main(): Promise<void> {
   for (const { repo, text } of introPosts()) {
     try {
       const res = await createInOrder(client, ["claude-sonnet-5-5", ...HAIKU_MODELS], {
-        max_tokens: 200,
+        // 200이면 생각에 다 써서 답이 비었다 (첫 시안의 apart·Anchor) — 넉넉히 둔다
+        max_tokens: 2000,
         system: SYSTEM,
         messages: [{ role: "user", content: text }],
       });
@@ -55,8 +58,11 @@ async function main(): Promise<void> {
         .filter((b): b is Anthropic.TextBlock => b.type === "text")
         .map((b) => b.text)
         .join("")
-        .trim()
-        .split("\n")[0];
+        .split("\n")
+        .map((x) => x.trim())
+        .find(Boolean);
+      // 빈 답이면 그림체 문장만으로 엉뚱한 물건이 그려졌다 (첫 시안의 apart·Anchor) — 그리지 않는다
+      if (!scene) throw new Error(`그림 묘사가 비었습니다 (stop_reason ${res.stop_reason})`);
       lines.push(`${repo}: ${scene}`);
       const r = await generateImage(styleFor("terminal", "flat", { wide: true }) + scene, ["openai"], {
         transparent: true,
