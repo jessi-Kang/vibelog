@@ -15,43 +15,10 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-11",
-    "weekCommits": 169,
-    "todayCommits": 104,
-    "totalCommits": 598,
+    "weekCommits": 181,
+    "todayCommits": 116,
+    "totalCommits": 610,
     "countsDate": "2026-10-11"
-  },
-  {
-    "slug": "apart",
-    "color": "#B9A7FF",
-    "name": "아파트 감별사",
-    "nameEn": "아파트 감별사",
-    "serviceName": "아파트 감별사",
-    "serviceNameEn": "아파트 감별사",
-    "about": "아파트 감별사는 진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
-    "aboutEn": "아파트 감별사 is a daily quiz where you tell real apartment names from ones made up by AI.",
-    "icon": {
-      "name": "tabler:building-community",
-      "paths": [
-        {
-          "d": "m8 9l5 5v7H8v-4m0 4H3v-7l5-5m1 1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17h-8m0-14v.01M17 7v.01M17 11v.01M17 15v.01"
-        }
-      ]
-    },
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "live",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-10-11",
-    "weekCommits": 35,
-    "todayCommits": 24,
-    "totalCommits": 237,
-    "countsDate": "2026-10-11",
-    "theme": "paper"
   },
   {
     "slug": "lie-detective",
@@ -84,6 +51,39 @@
     "totalCommits": 49,
     "countsDate": "2026-10-11",
     "theme": "highlighter"
+  },
+  {
+    "slug": "apart",
+    "color": "#B9A7FF",
+    "name": "아파트 감별사",
+    "nameEn": "아파트 감별사",
+    "serviceName": "아파트 감별사",
+    "serviceNameEn": "아파트 감별사",
+    "about": "아파트 감별사는 진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
+    "aboutEn": "아파트 감별사 is a daily quiz where you tell real apartment names from ones made up by AI.",
+    "icon": {
+      "name": "tabler:building-community",
+      "paths": [
+        {
+          "d": "m8 9l5 5v7H8v-4m0 4H3v-7l5-5m1 1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17h-8m0-14v.01M17 7v.01M17 11v.01M17 15v.01"
+        }
+      ]
+    },
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "live",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-10-11",
+    "weekCommits": 37,
+    "todayCommits": 26,
+    "totalCommits": 239,
+    "countsDate": "2026-10-11",
+    "theme": "paper"
   },
   {
     "slug": "Anchor",
