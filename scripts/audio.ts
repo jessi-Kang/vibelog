@@ -9,8 +9,10 @@
  * 사용: npx tsx scripts/audio.ts <repo> <date> [ko|en|both]
  * 필요 환경변수: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
  */
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { blobGet, blobPut } from "./blob-cache";
 import {
   narrationPath,
   shortsJsonPath,
@@ -339,6 +341,41 @@ function toTiming(
   };
 }
 
+/**
+ * 같은 목소리로 같은 문장을 읽힌 적이 있으면 그 녹음을 받아 쓴다.
+ *
+ * 다시 만들기가 렌더·녹화에서 죽으면 다음 실행이 목소리를 또 샀다. 읽을 글자·목소리·
+ * 모델·설정을 묶은 지문을 Blob 경로에 넣어 두므로, 하나라도 바뀌면 경로가 달라져
+ * 저절로 새로 녹음한다. 타이밍은 저장한 문자 타임스탬프에서 매번 다시 계산한다.
+ */
+async function cachedTts(
+  script: ShortsScript,
+  lang: "ko" | "en",
+  spoken: string,
+): Promise<{ audio: Buffer; alignment: Alignment }> {
+  const key = createHash("sha256")
+    .update(JSON.stringify({ spoken, voice: process.env.ELEVENLABS_VOICE_ID, MODEL_ID, VOICE_SETTINGS }))
+    .digest("hex")
+    .slice(0, 16);
+  const base = `shorts/${script.repo}/${script.date}.${lang}.narration.${key}`;
+  const [audio, align] = await Promise.all([blobGet(`${base}.mp3`), blobGet(`${base}.json`)]);
+  if (audio && align) {
+    try {
+      const alignment = JSON.parse(align.toString("utf8")) as Alignment;
+      console.log(`[audio] ${lang} 저장해 둔 내레이션을 씁니다 — 목소리를 새로 만들지 않습니다`);
+      return { audio, alignment };
+    } catch {
+      // 타임스탬프가 깨졌으면 새로 녹음한다
+    }
+  }
+  const fresh = await tts(spoken);
+  await Promise.all([
+    blobPut(`${base}.mp3`, fresh.audio),
+    blobPut(`${base}.json`, JSON.stringify(fresh.alignment)),
+  ]);
+  return fresh;
+}
+
 async function generateNarration(
   script: ShortsScript,
   lang: "ko" | "en",
@@ -346,9 +383,8 @@ async function generateNarration(
   const sentences = script.lines.map((l) => l[lang]);
   const lineIndexes = script.lines.map((_, i) => i);
   // 발음 교정본으로 녹음하고, 자막(timing.words)은 표시용 원문을 유지한다
-  const { audio, alignment } = await tts(
-    sentences.map((s) => speakable(s, lang)).join(SENTENCE_GAP),
-  );
+  const spoken = sentences.map((s) => speakable(s, lang)).join(SENTENCE_GAP);
+  const { audio, alignment } = await cachedTts(script, lang, spoken);
   const timing = toTiming(sentences, lineIndexes, alignment, lang);
 
   const mp3 = path.join(process.cwd(), narrationPath(script.repo, script.date, lang));
