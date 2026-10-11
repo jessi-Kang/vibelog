@@ -32,7 +32,9 @@
   .pool { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .pool .av { width: 32px; height: 32px; } .pool .av svg { width: 19px; height: 19px; }
   .anon-name { color: var(--muted); }
-  .badge { font-size: 10px; letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 7px; font-family: "JetBrains Mono", monospace; }
+  /* 한글이 든 작은 표시는 한글 글꼴로, 높이를 정해 가운데에 둔다 — 코딩 글꼴엔 한글이 없어 기기마다 다른 글꼴로 바뀌며 높이가 흔들렸다 */
+  .badge { display: inline-flex; align-items: center; height: 18px; padding: 0 7px; line-height: 1; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: "Noto Sans KR", system-ui, sans-serif; color: var(--accent); border: 1px solid var(--accent); }
+  .badge > span, .hid > span, .mb > span { display: inline-block; transform: translateY(var(--lift, 0px)); }
   .txt { margin: 0; font-size: 14px; line-height: 1.7; color: var(--ink-soft); white-space: pre-wrap; }
   /* 답글 — 안으로 밀지 않고, 같은 폭에 바탕만 깐다 */
   .reply { background: var(--panel); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
@@ -47,7 +49,7 @@
   .menu button:hover, .menu button:focus-visible { background: var(--line); color: var(--ink); }
   .menu .danger { color: #ff8a8a; }
   .c.hidden-c .txt { opacity: .5; }
-  .hid { font-size: 10px; letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 1px 7px; font-family: "JetBrains Mono", monospace; }
+  .hid { display: inline-flex; align-items: center; height: 18px; padding: 0 7px; line-height: 1; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: "Noto Sans KR", system-ui, sans-serif; color: var(--muted); border: 1px solid var(--line-strong); }
   .me { display: flex; gap: 8px; align-items: center; font-size: 13px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
   .me b { color: var(--ink); }
   /* 사이트 머리글 — 실제 vibelog 머리글과 같은 구성(돌아가기·탭·KO/EN)에 종만 더한다 */
@@ -105,19 +107,20 @@
   .em { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(20,30,45,.06); }
   .em-top { background: #0a0e14; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
   .em-top .wm { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 16px; color: #f3efe6; }
-  .em-top .kind { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; color: #5ee1c3; }
+  .em-top .kind { font-family: "Noto Sans KR", system-ui, sans-serif; font-size: 12px; font-weight: 700; color: #5ee1c3; }
   /* 메일 여백은 한 값(24px)으로 — 위·양옆·버튼 아래가 같고, 덩어리 사이는 20px */
   .em-body { padding: 24px 24px 0; display: flex; flex-direction: column; gap: 20px; }
   .em h4 { margin: 0; font-size: 20px; line-height: 1.45; color: #111722; text-wrap: balance; }
   .em-post { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; padding: 12px 16px; border: 1px solid #e6e9ee; border-radius: 10px; text-decoration: none; }
-  .em-post .pi { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 18%, white); color: color-mix(in srgb, var(--c) 70%, black); }
+  .em-post .pi { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 22%, white); color: color-mix(in srgb, var(--c) 72%, black); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 55%, white); }
   .em-post .pi svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .em-post span { font-size: 12px; color: #5b6573; line-height: 1.5; min-width: 0; }
   .em-post b { display: block; font-size: 14px; color: #1d2430; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .em-c { display: flex; flex-direction: column; gap: 8px; }
   .em-c .h { display: flex; gap: 8px; align-items: center; font-size: 13px; color: #1d2430; }
   .em-c .h time { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; color: #8a93a2; }
-  .em-c .av { --c: #888; background: color-mix(in srgb, var(--c) 18%, white); color: color-mix(in srgb, var(--c) 70%, black); }
+  /* 밝은 판 위의 아이콘 — 옅은 바탕만 깔면 경계가 흐려서, 같은 색의 얇은 테를 두른다 */
+  .em-c .av { --c: #888; background: color-mix(in srgb, var(--c) 22%, white); color: color-mix(in srgb, var(--c) 72%, black); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 55%, white); }
   .em-c p { margin: 0; font-size: 15px; line-height: 1.75; color: #2b3340; white-space: pre-wrap; }
   .em-c.quiet p { font-size: 13px; color: #6b7482; }
   .em-c.quiet { padding: 14px 16px; background: #f5f6f8; border-radius: 10px; }
@@ -127,9 +130,10 @@
   /* 내 댓글과 Jessi 답글은 한 덩어리 — 둘 사이만 좁힌다 */
   .em-c.quiet + .em-c.main { margin-top: -12px; }
 
-  .mb { color: #0f8f75; border: 1px solid #0f8f75; border-radius: 999px; padding: 0 7px; font-size: 10px; font-family: "JetBrains Mono", monospace; }
+  .mb { display: inline-flex; align-items: center; height: 18px; padding: 0 7px; line-height: 1; border-radius: 999px; font-size: 11px; font-weight: 700; font-family: "Noto Sans KR", system-ui, sans-serif; color: #0f8f75; border: 1px solid #0f8f75; }
   .em-cta { padding: 24px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-  .em-cta a.btn2 { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #0f8f75; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
+  /* 메일 버튼 글자는 아래 여백을 2px 더 줘 1px 올린다 — 재서 맞춤 */
+  .em-cta a.btn2 { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px 2px; border-radius: 10px; background: #0f8f75; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
   .em-cta a.sub { font-size: 13px; color: #5b6573; }
   .em-foot { border-top: 1px solid #eef0f3; padding: 16px 24px; font-size: 12px; color: #8a93a2; line-height: 1.7; }
   .em-foot a { color: #5b6573; }
@@ -155,6 +159,9 @@
   /* 아래 줄: 글자 수와 올리기 버튼을 오른쪽에 한 덩어리로, 세로 가운데를 맞춘다 */
   .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
   /* 쓰는 칸 안의 버튼은 AI 버튼과 같은 30px — 보이는 크기만 줄이고 누르는 영역은 ::after로 44px */
+  /* 한글은 잉크가 줄 상자 가운데보다 아래에 앉는다 — 글자만 0.5px 올린다 (재서 맞춤) */
+  /* 2배·3배 화면에서 재서 고른 값 — 한글 13px 굵은 글자는 1px 올려야 위아래 여백이 같다 */
+  .box .btn > span, .chip > span { display: inline-block; transform: translateY(var(--lift, -1px)); }
   .box .btn { min-height: 30px; padding: 0 12px; border-radius: 8px; font-size: 13px; position: relative; }
   .box .btn::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: max(44px, calc(100% + 8px)); height: 44px; }
   .count { font-size: 12px; line-height: 1; color: var(--muted); font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
@@ -165,7 +172,7 @@
   .chip::after { content: ""; position: absolute; inset: -6px; }
   .chip:hover { color: var(--ink); border-color: var(--ink-soft); }
   .chip svg { width: 14px; height: 14px; }
-  .draftnote { font-size: 11px; color: var(--warn); font-family: "JetBrains Mono", monospace; letter-spacing: .04em; }
+  .draftnote { font-size: 12px; font-weight: 700; color: var(--warn); }
   .read { font-size: 11px; color: var(--muted); line-height: 1.6; }
   .read b { color: var(--ink-soft); font-weight: 400; }
   .note { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
@@ -192,7 +199,7 @@
           <div class="who"><span class="av anon" data-i="user" aria-hidden="true"></span><span class="anon-name">방문자 1</span><time>10/10 23:41</time></div>
           <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
           <div class="reply">
-            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><b>Jessi</b><span class="badge"><span>만든 사람</span></span><time>10/11 09:12</time></div>
             <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 고르는 시간에 비하면 거의 차이가 없었습니다.</p>
           </div>
         </div>
@@ -209,14 +216,14 @@
           <div class="who"><span class="av" data-i="cat" style="--c:#8FB8FF" aria-hidden="true"></span><b>민지</b><time>10/10 23:41</time></div>
           <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
           <div class="reply">
-            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><b>Jessi</b><span class="badge"><span>만든 사람</span></span><time>10/11 09:12</time></div>
             <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 고르는 시간에 비하면 거의 차이가 없었습니다.</p>
           </div>
         </div>
         <div class="box focus">
           <div class="me"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><span class="mw"><button class="nm" aria-haspopup="menu" aria-expanded="true">도윤</button><span class="menu" role="menu"><button role="menuitem">답글 메일 받지 않기</button><button role="menuitem">로그아웃</button></span></span></div>
           <textarea aria-label="댓글">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</textarea>
-          <div class="row"><span class="count">33 / 1,000</span><button class="btn pri">올리기</button></div>
+          <div class="row"><span class="count">33 / 1,000</span><button class="btn pri"><span>올리기</span></button></div>
         </div>
       </div>
     </div>
@@ -230,19 +237,19 @@
           <p class="txt">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
         </div>
         <div class="c hidden-c">
-          <div class="who"><span class="av" data-i="dice" style="--c:#C9E579" aria-hidden="true"></span><span class="mw"><button class="nm" aria-haspopup="menu" aria-expanded="false">준</button><span class="menu" role="menu" hidden><button role="menuitem">다시 보이기</button><button role="menuitem" class="danger">지우기</button></span></span><span class="hid">숨김</span><time>10/11 11:20</time></div>
+          <div class="who"><span class="av" data-i="dice" style="--c:#C9E579" aria-hidden="true"></span><span class="mw"><button class="nm" aria-haspopup="menu" aria-expanded="false">준</button><span class="menu" role="menu" hidden><button role="menuitem">다시 보이기</button><button role="menuitem" class="danger">지우기</button></span></span><span class="hid"><span>숨김</span></span><time>10/11 11:20</time></div>
           <p class="txt">광고 링크 남깁니다. 지금 가입하면 혜택!</p>
         </div>
         <div class="box focus">
           <div class="ai" role="group" aria-label="AI 도움">
-            <button class="chip" data-k="draft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z"/></svg>초안 쓰기</button>
-            <button class="chip" data-k="polish">다듬기</button>
-            <button class="chip" data-k="short">짧게</button>
+            <button class="chip" data-k="draft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z"/></svg><span>초안 쓰기</span></button>
+            <button class="chip" data-k="polish"><span>다듬기</span></button>
+            <button class="chip" data-k="short"><span>짧게</span></button>
           </div>
           <span class="draftnote" id="dn" hidden>AI 초안 — 고친 뒤 올리세요</span>
           <textarea id="ta" aria-label="답글" placeholder="답글을 쓰거나 AI 초안을 받아 보세요"></textarea>
           <div class="read" id="rd" hidden>읽은 것 · <b>이 글</b> · <b>그날 커밋 20개</b> · <b>소개 글</b> · <b>지난 글 3편</b></div>
-          <div class="row"><span class="count" id="ct">0 / 1,000</span><button class="btn pri">답글 올리기</button></div>
+          <div class="row"><span class="count" id="ct">0 / 1,000</span><button class="btn pri"><span>답글 올리기</span></button></div>
         </div>
       </div>
     </div>
@@ -334,7 +341,7 @@
             <p>용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
           </div>
           <div class="em-c main jessi">
-            <div class="h"><span class="av" data-i="terminal" style="--c:#0f8f75" aria-hidden="true"></span><b>Jessi</b><span class="mb">만든 사람</span><time>10/11 12:30</time></div>
+            <div class="h"><span class="av" data-i="terminal" style="--c:#0f8f75" aria-hidden="true"></span><b>Jessi</b><span class="mb"><span>만든 사람</span></span><time>10/11 12:30</time></div>
             <p>아직 표정은 바뀌지 않고, 지금은 말에서만 단서를 찾을 수 있어요. 이번에 대답을 서버가 정하게 바꿨으니 표정도 같이 정하게 할 수 있을 것 같습니다. 만들면 데브로그에 남길게요!</p>
           </div>
           <a class="em-post" href="#" style="--c:#6FD3F2"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M4 17a3 3 0 1 0 6 0a3 3 0 1 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-4 0h4"/></svg></span><span>거짓말 탐정 · 10/10<b>용의자의 답변 규칙을 서버로 옮겼습니다</b></span></a>
