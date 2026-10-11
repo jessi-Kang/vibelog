@@ -199,8 +199,10 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
 
 - Vercel 환경변수 둘: [`GH_PAT`·`CRON_SECRET`](https://vercel.com/jessikang/vibelog/settings/environment-variables).
   `GH_PAT`는 [fine-grained PAT](https://github.com/settings/personal-access-tokens/new)에
-  `jessi-Kang/vibelog`의 **Actions: Read and write**. `CRON_SECRET`은 임의 문자열
-  (`openssl rand -hex 32`).
+  `jessi-Kang/vibelog`의 **Actions: Read and write**. 프로젝트 페이지의 실시간 커밋 수
+  (`/api/repo-stats`)가 같은 토큰으로 비공개 레포를 읽으므로, 대상 레포를 **모든 내 레포**로
+  두고 **Contents: Read-only**도 준다 — 없으면 비공개 레포는 밤에 저장한 값에 머문다.
+  `CRON_SECRET`은 임의 문자열 (`openssl rand -hex 32`).
 - 인증 없이 부르면 설정 상태와 상관없이 **401 `Unauthorized`만** 돌려준다. 전에는
   "시크릿 없음 / 토큰 없음"을 본문으로 알려 줬는데, 익명 방문자에게 자동 발행이
   살아 있는지를 말해 주는 셈이라 레드팀 점검에서 걷어냈다. 설정이 들어갔는지는
