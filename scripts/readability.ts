@@ -29,7 +29,7 @@ export interface Readability {
 }
 
 // 앞 것이 안 되면(모델 이름이 바뀌는 등) 다음 것으로 한다.
-const READER_MODELS = ["claude-sonnet-5-5", "claude-haiku-4-5-20251001"];
+const READER_MODELS = ["claude-sonnet-5-5", "claude-haiku-5-5", "claude-haiku-4-5-20251001"];
 const MAX_UNCLEAR = 6;
 
 export function parseUnclear(text: string): Unclear[] {

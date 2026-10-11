@@ -6,7 +6,7 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
-import { createMessage } from "./models";
+import { createInOrder, createMessage, HAIKU_MODELS } from "./models";
 import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
 import { plainTerms } from "../lib/term-marker";
 import { CORE_TERMS_REVIEW, CORE_TERMS_RULE, styleRulesForPrompt } from "./korean-style";
@@ -347,8 +347,8 @@ export async function generateDevlog(
  */
 export async function translateLine(ko: string): Promise<string> {
   const client = new Anthropic();
-  const response = await client.messages.create({
-    model: "claude-haiku-4-5-20251001", // 한 줄 번역 — 큰 모델이 필요 없다
+  // 한 줄 번역 — 큰 모델이 필요 없다
+  const response = await createInOrder(client, HAIKU_MODELS, {
     max_tokens: 300,
     system:
       "Translate the given Korean text to natural, concise English. " +
@@ -369,8 +369,7 @@ export async function translateLine(ko: string): Promise<string> {
 export async function translateCommitLines(lines: string[]): Promise<string[]> {
   if (lines.length === 0) return [];
   const client = new Anthropic();
-  const response = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
+  const response = await createInOrder(client, HAIKU_MODELS, {
     max_tokens: 2000,
     system:
       "Translate each Korean git commit message to concise natural English. " +
