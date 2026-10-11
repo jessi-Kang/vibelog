@@ -1,0 +1,1276 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "한 판의 흐름: 아파트 이름 하나가 뜨고, 진짜나 가짜를 누르고, 맞히면 연속 기록이 쌓여 다음 이름으로 넘어가며, 틀리면 기록이 끊기고 판정 통지서가 나온다.",
+  "altEn": "The flow of one game: an apartment name appears, you press Real or Fake, a correct answer grows the streak and brings the next name, and a wrong answer breaks the streak and produces a verdict notice.",
+  "caption": "맞히는 동안은 계속 돌고, 한 번 틀리면 통지서가 나옵니다.",
+  "captionEn": "The loop keeps going while you're right; one miss brings the verdict notice.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 310",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "이름이 뜨고, 진짜나 가짜를 누르고, 맞히면 다음 이름으로 돌아가고 틀리면 판정 통지서로 끝나는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "16",
+      "width": "200",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "44",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "아파트 이름 하나"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "60",
+      "x2": "195",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "190,78 200,78 195,86",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "86",
+      "width": "200",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "114",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "진짜 또는 가짜 누르기"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 130 V150 H105 V164 M195 150 H285 V164",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,164 110,164 105,172",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "280,164 290,164 285,172",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "맞힘"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "262",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "틀림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "연속 기록 쌓임"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "172",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기록 끊김"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M30 172 V38 H87",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "87,33 87,43 95,38",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "112",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "다음"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "285",
+      "y1": "216",
+      "x2": "285",
+      "y2": "240",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "280,240 290,240 285,248",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "248",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "276",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "판정 통지서"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 310",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A name appears, you press Real or Fake, a correct answer loops back to the next name, and a wrong one ends in a verdict notice"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "16",
+      "width": "200",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "44",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "One apartment name"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "60",
+      "x2": "195",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "190,78 200,78 195,86",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "86",
+      "width": "200",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "114",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Press Real or Fake"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 130 V150 H105 V164 M195 150 H285 V164",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "100,164 110,164 105,172",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "280,164 290,164 285,172",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "135",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Correct"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "258",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Wrong"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Streak grows"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "172",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "200",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Streak breaks"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M30 172 V38 H87",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "87,33 87,43 95,38",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "112",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "next"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "285",
+      "y1": "216",
+      "x2": "285",
+      "y2": "240",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "280,240 290,240 285,248",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "248",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "276",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Verdict notice"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 1,
+  "alt": "가짜 이름이 만들어지는 길: 실제 단지 이름을 토막으로 나누고, 붙는 순서를 익히고, 새로 이어 붙인 뒤 검사를 통과한 이름만 문제 모음에 들어가며, 게임은 그 모음에서 꺼내 쓸 뿐 AI에게 묻지 않는다.",
+  "altEn": "How fake names are made: real complex names are split into pieces, word order is learned, new names are strung together, only names that pass the checks enter the question pool, and the game just draws from that pool without asking an AI.",
+  "caption": "이름은 미리 다 지어 두고, 게임은 모아 둔 것만 꺼내 씁니다.",
+  "captionEn": "Every name is made beforehand; the game only draws from the stored pool.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 500",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "실제 이름에서 가짜 이름을 지어 검사를 거쳐 문제 모음에 쌓고, 게임은 그 모음만 쓰는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "12",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "37",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실제 단지 이름"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "52",
+      "x2": "165",
+      "y2": "68",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,68 170,68 165,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "76",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "101",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "토막으로 나누기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "116",
+      "x2": "165",
+      "y2": "132",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,132 170,132 165,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "140",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "붙는 순서 익히기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "180",
+      "x2": "165",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,196 170,196 165,204",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "204",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "229",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "새로 이어 붙이기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "244",
+      "x2": "165",
+      "y2": "260",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,260 170,260 165,268",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "268",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "293",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "겹침·거슬리는 말 검사"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "280",
+      "y1": "288",
+      "x2": "292",
+      "y2": "288",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,283 292,293 300,288",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "300",
+      "y": "268",
+      "width": "84",
+      "height": "40",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "342",
+      "y": "293",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "탈락"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "308",
+      "x2": "165",
+      "y2": "324",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,324 170,324 165,332",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "332",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "357",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "문제 모음"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "394",
+      "x2": "370",
+      "y2": "394",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "6 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "388",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "미리 지어 둠"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "413",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "게임 중"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "372",
+      "x2": "165",
+      "y2": "412",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,412 170,412 165,420",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "420",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "445",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "게임"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "486",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "게임 중엔 AI에게 묻지 않음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 500",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Fake names are built from real names, checked, and stored in a question pool; the game only uses that pool"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "12",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "37",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Real complex names"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "52",
+      "x2": "165",
+      "y2": "68",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,68 170,68 165,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "76",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "101",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Split into pieces"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "116",
+      "x2": "165",
+      "y2": "132",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,132 170,132 165,140",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "140",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Learn word order"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "180",
+      "x2": "165",
+      "y2": "196",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,196 170,196 165,204",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "204",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "229",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "String new names"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "244",
+      "x2": "165",
+      "y2": "260",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,260 170,260 165,268",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "268",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "293",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Check: real? offensive?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "280",
+      "y1": "288",
+      "x2": "292",
+      "y2": "288",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,283 292,293 300,288",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "300",
+      "y": "268",
+      "width": "84",
+      "height": "40",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "342",
+      "y": "293",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Rejected"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "308",
+      "x2": "165",
+      "y2": "324",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,324 170,324 165,332",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "332",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "357",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Question pool"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "394",
+      "x2": "370",
+      "y2": "394",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "6 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "388",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Made in advance"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "413",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "During play"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "165",
+      "y1": "372",
+      "x2": "165",
+      "y2": "412",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,412 170,412 165,420",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "420",
+      "width": "230",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "445",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Game"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "165",
+      "y": "486",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "No AI request while playing"
+    }
+   ]
+  }
+ }
+]

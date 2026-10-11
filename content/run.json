@@ -1,17 +1,45 @@
 {
-  "at": "2026-10-11T03:43:17.581Z",
+  "at": "2026-10-11T04:47:24.315Z",
   "lines": [
     {
-      "text": "npx tsx scripts/shorts.ts vibelog/2026-10-09",
+      "text": "npx tsx scripts/intro.ts all",
       "kind": "cmd"
     },
     {
-      "text": "shorts   · vibelog/2026-10-09 다시 만듦 (ko, en) — 대본 그대로",
-      "textEn": "shorts   · vibelog/2026-10-09 remade (ko, en) — same script"
+      "text": "intro    · vibelog/2026-09-07 소개 글 · 토큰 in 82,524 · out 6,945 · cache 2,615"
     },
     {
-      "text": "publish  · content 커밋 → vercel 자동 배포",
-      "textEn": "publish  · commit content → vercel auto-deploy"
+      "text": "figures  · vibelog/2026-09-07 2장 · 토큰 in 2,031 · out 9,562"
+    },
+    {
+      "text": "intro    · apart/2026-09-09 소개 글 · 토큰 in 77,492 · out 7,337 · cache 5,230"
+    },
+    {
+      "text": "figures  · apart/2026-09-09 2장 · 토큰 in 2,369 · out 11,586 · cache 1,646"
+    },
+    {
+      "text": "intro    · lie-detective/2026-10-09 소개 글 · 토큰 in 65,042 · out 6,194 · cache 5,230"
+    },
+    {
+      "text": "figures  · lie-detective/2026-10-09 2장 · 토큰 in 2,289 · out 6,830 · cache 1,646"
+    },
+    {
+      "text": "intro    · Anchor/2026-09-19 소개 글 · 토큰 in 94,655 · out 4,455 · cache 5,230"
+    },
+    {
+      "text": "figures  · Anchor/2026-09-19 3장 · 토큰 in 10,691 · out 19,890 · cache 3,292"
+    },
+    {
+      "text": "intro    · portfolio-tmp/2026-10-11 소개 글 · 토큰 in 28,108 · out 3,560 · cache 2,615"
+    },
+    {
+      "text": "figures  · portfolio-tmp/2026-10-11 2장 · 토큰 in 1,848 · out 9,495 · cache 1,646"
+    },
+    {
+      "text": "skip     · agency 판단할 코드가 아직 없어 소개 글을 미룹니다"
+    },
+    {
+      "text": "publish  · content 커밋 → vercel 자동 배포"
     }
   ]
 }
