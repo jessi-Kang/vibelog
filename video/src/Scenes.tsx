@@ -98,7 +98,9 @@ export const HookCard: React.FC<{
           letterSpacing: "-0.01em",
           margin: 0,
           wordBreak: "keep-all",
-          textWrap: "balance",
+          // balance는 줄 길이를 고르게 맞추느라 "추리 게임 / 속 용의자의"처럼 한 덩어리 말을
+          // 갈랐다 (10/11 Jessi). 앞에서부터 채우고, 마지막 줄에 낱말 하나만 남는 것만 막는다
+          textWrap: "pretty",
           color: th.ink,
         }}
       >

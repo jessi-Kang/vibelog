@@ -41,6 +41,8 @@ export class NoScreensError extends Error {
   }
 }
 
+/** 훅 문장 상한(공백 포함 글자 수) — 넘으면 한 번 다시 쓰게 한다 */
+const HOOK_MAX = 22;
 // 대본도 글과 같은 모델 — 내레이션은 시청자가 직접 듣는 원고다 (10/5 Jessi)
 const MODEL = "claude-opus-5-5";
 /**
@@ -100,7 +102,8 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 그날 글이 사라졌습니다" 대신 "글이 통째로 사라졌습니다").
 단, 짧게 하려고 뜻을 흐리면 더 나쁘다 — 훅만 읽어도 무슨 일이 났는지
 통해야 한다. 주어를 지우거나 압축 조어("글 증발 사건")로 알 수 없는
-말을 만들지 말 것. 20자에 안 들어가면 뜻이 통하는 25자가 낫다.
+말을 만들지 말 것. 20자에 안 들어가면 뜻이 통하는 22자까지는 괜찮다 —
+**22자를 넘기면 검사가 다시 쓰게 한다.**
 **채널 소개를 반복하지 않는다.** "이 블로그의 글은 사람이 쓰지 않는다"
 같은 채널 컨셉 설명은 별도 인트로 영상이 이미 한다 — 첫 에피소드라도
 훅은 그날의 사건("첫 자동 실행이 안 됐습니다")으로 시작한다.
@@ -904,6 +907,10 @@ export async function generateScript(
   // 듣기 검사는 실패해도 영상을 막지 않는다 (검사를 못 한 것이지 대본이 틀린 게 아니다).
   const title = String(data.title ?? "");
   let blanks = blankScenes(lines);
+  // 훅 길이 — "20자 안팎"을 지시문에만 적어 두었더니 26자 훅이 나가 화면에 네 줄로 꽉 찼다
+  // (lie-detective 10/10, Jessi). 넘친 훅은 같은 한 번의 다시 쓰기에 합친다
+  const longHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook" && [...l.ko].length > HOOK_MAX);
+  let longs = longHooks(lines);
   // 듣기 검사가 고른 문장이 대본의 몇 번째인지 — 검사 모델이 문장을 조금 다르게 옮겨 올 수 있다
   const lineOf = (sentence: string): number => {
     const t = sentence.trim();
@@ -926,7 +933,7 @@ export async function generateScript(
       `[listen] 알아듣기 막힌 문장 ${unclear.length}개`,
     );
   }
-  if (blanks.length > 0 || unclear.length > 0) {
+  if (blanks.length > 0 || unclear.length > 0 || longs.length > 0) {
     if (blanks.length > 0) {
       console.warn(
         `[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks
@@ -953,6 +960,16 @@ export async function generateScript(
         MOTIF_MENU,
         "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
         "   없는 문장은 영상에 자리가 없습니다.",
+        "",
+      );
+    }
+    if (longs.length > 0) {
+      ask.push(
+        `아래 hook 문장이 공백 포함 ${HOOK_MAX}자를 넘습니다. 훅은 화면 가득 큰 헤드라인이라 길면 글자 벽이 됩니다.`,
+        ...longs.map((l) => `  - #${lines.indexOf(l)} [hook] ${l.ko} (${[...l.ko].length}자)`),
+        "",
+        `${HOOK_MAX}자 이하로 줄이세요. 배경 설명은 빼고 사건을 바로 칩니다. 뜻이 흐려지게 주어를 지우거나`,
+        "새 말을 만들지 않습니다 — 안 되면 두 문장으로 쪼개 둘째 문장도 hook으로 둡니다.",
         "",
       );
     }
@@ -998,6 +1015,8 @@ export async function generateScript(
     parsed = { ...parsed, lines: applyReplace(parsed.lines, parseJson(readText(retry))) };
     lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
     blanks = blankScenes(lines);
+    longs = longHooks(lines);
+    if (longs.length > 0) console.warn(`[script] 훅이 아직 ${HOOK_MAX}자를 넘습니다 (${longs.length}문장) — 렌더가 글자를 줄여 받는다`);
     if (unclear.length > 0) {
       const left = await listenTo(title, lines).catch(() => null);
       listen = {
