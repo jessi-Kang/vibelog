@@ -15,12 +15,17 @@
     "weekCommits": 81,
     "todayCommits": 15,
     "totalCommits": 509,
-    "countsDate": "2026-10-11"
+    "countsDate": "2026-10-11",
+    "serviceName": "vibelog",
+    "serviceNameEn": "vibelog",
+    "nameEn": "vibelog",
+    "about": "vibelog는 바이브 코딩으로 만드는 서비스들의 커밋을 매일 밤 읽어 데브로그와 쇼츠를 저절로 올리는 블로그입니다.",
+    "aboutEn": "vibelog is a blog that reads the day's commits from vibe-coded projects every night and publishes a devlog and a short video on its own."
   },
   {
     "slug": "apart",
     "color": "#B9A7FF",
-    "name": "apart",
+    "name": "아파트 감별사",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
     "status": "live",
@@ -35,12 +40,17 @@
     "todayCommits": 4,
     "totalCommits": 217,
     "countsDate": "2026-10-11",
-    "theme": "paper"
+    "theme": "paper",
+    "serviceName": "아파트 감별사",
+    "serviceNameEn": "Apartment Detective",
+    "nameEn": "Apartment Detective",
+    "about": "아파트 감별사는 아파트 이름 하나를 보고 실제로 있는 단지인지, AI가 지은 가짜 이름인지 가려내는 퀴즈 게임입니다.",
+    "aboutEn": "Apartment Detective is a quiz game where you see one apartment name and decide whether it's a real complex or a fake name made up by AI."
   },
   {
     "slug": "lie-detective",
     "color": "#6FD3F2",
-    "name": "lie-detective",
+    "name": "거짓말 탐정",
     "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
     "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
     "status": "preview",
@@ -54,7 +64,12 @@
     "todayCommits": 0,
     "totalCommits": 49,
     "countsDate": "2026-10-11",
-    "theme": "highlighter"
+    "theme": "highlighter",
+    "serviceName": "거짓말 탐정",
+    "serviceNameEn": "Lie Detective",
+    "nameEn": "Lie Detective",
+    "about": "거짓말 탐정은 가상의 미술관을 직접 살피고 사진을 찍은 뒤, 그 사진을 들고 인물들을 심문해 사건의 진실을 밝히는 모바일 추리 게임입니다.",
+    "aboutEn": "Lie Detective is a mobile mystery game where you search a fictional art museum, photograph what you find, and question the people involved to uncover the truth."
   },
   {
     "slug": "Anchor",
@@ -79,7 +94,12 @@
     "todayCommits": 0,
     "totalCommits": 1075,
     "countsDate": "2026-10-11",
-    "theme": "blueprint"
+    "theme": "blueprint",
+    "serviceName": "Anchor",
+    "serviceNameEn": "Anchor",
+    "nameEn": "Anchor",
+    "about": "Anchor는 한국어로 이미 아는 뜻에서 출발해, 영어·일본어·스페인어의 글자와 소리를 스스로 맞혀 보고 소리 내어 말하게 하는 언어 학습 앱입니다.",
+    "aboutEn": "Anchor is a language-learning app that starts from meanings you already know in Korean and has you guess, then say out loud, the letters and sounds of English, Japanese, and Spanish."
   },
   {
     "slug": "portfolio-tmp",
@@ -98,7 +118,9 @@
     "todayCommits": 0,
     "totalCommits": 2,
     "countsDate": "2026-10-11",
-    "theme": "blueprint"
+    "theme": "blueprint",
+    "about": "이 프로젝트는 접속 토큰을 받은 방문자만 볼 수 있는 개인 포트폴리오 사이트이고, 내용과 토큰을 관리하는 어드민 콘솔이 함께 있습니다.",
+    "aboutEn": "This project is a personal portfolio site that only visitors with an access token can open, paired with an admin console for managing its content and tokens."
   },
   {
     "slug": "agency",

@@ -1,0 +1,764 @@
+[
+ {
+  "section": "built",
+  "after": 0,
+  "alt": "심문에서 플레이어의 질문이 주제 고르기를 거쳐 미리 써 둔 대답으로 이어지는 흐름. 주제 고르기를 도울 Jev는 아직 연결 전이다.",
+  "altEn": "In interrogation, the player's question goes through topic picking and comes back as a prewritten reply. Jev, which will help pick the topic, is not connected yet.",
+  "caption": "심문의 대답은 즉석에서 지어내지 않고, 질문의 주제를 골라 미리 써 둔 문장을 꺼냅니다.",
+  "captionEn": "Replies aren't made up on the spot. The game picks the question's topic and pulls out a line written in advance.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 310",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "질문이 주제 고르기를 거쳐 미리 써 둔 대답으로 이어지는 심문의 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "20",
+      "width": "250",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "질문 + 사진"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "145",
+      "y1": "70",
+      "x2": "145",
+      "y2": "102",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "139,100 151,100 145,110",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "112",
+      "width": "250",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "주제 고르기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "질문 속 낱말을 보고"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "270",
+      "y1": "147",
+      "x2": "290",
+      "y2": "147",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "290",
+      "y": "117",
+      "width": "90",
+      "height": "60",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "335",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Jev"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "335",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "연결 전"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "145",
+      "y1": "182",
+      "x2": "145",
+      "y2": "212",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "139,210 151,210 145,220",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "222",
+      "width": "250",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "251",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "미리 써 둔 대답"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "276",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "인물별 · 주제별"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 310",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Interrogation flow: a question goes through topic picking and returns a prewritten reply"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "20",
+      "width": "250",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Question + photo"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "145",
+      "y1": "70",
+      "x2": "145",
+      "y2": "102",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "139,100 151,100 145,110",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "112",
+      "width": "250",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Pick the topic"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "from the words in it"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "270",
+      "y1": "147",
+      "x2": "290",
+      "y2": "147",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "290",
+      "y": "117",
+      "width": "90",
+      "height": "60",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "6 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "335",
+      "y": "142",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Jev"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "335",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "not yet"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "145",
+      "y1": "182",
+      "x2": "145",
+      "y2": "212",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "139,210 151,210 145,220",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "222",
+      "width": "250",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "251",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Prewritten reply"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "145",
+      "y": "276",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "per character + topic"
+    }
+   ]
+  }
+ },
+ {
+  "section": "next",
+  "after": 0,
+  "alt": "지금은 심문 규칙이 브라우저의 게임 파일 안에 있어 정답이 드러날 수 있지만, 옮긴 뒤에는 정답과 비밀이 서버에만 있고 브라우저에는 대답만 간다.",
+  "altEn": "Now the interrogation rules sit in the browser's game files and could expose the answer; after the move, the answer and secrets stay on the server and only replies reach the browser.",
+  "caption": "정답과 비밀을 서버로 옮기면, 플레이어 쪽에는 대답만 도착합니다.",
+  "captionEn": "Once the answer and secrets move to the server, only the replies reach the player.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 350",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "정답이 브라우저에 있던 지금과, 서버에만 두고 대답만 보내는 옮긴 뒤의 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "350",
+      "height": "75",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "브라우저 · 게임 파일"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "103",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "심문 규칙 → 열면 정답이 보임"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "옮긴 뒤"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "185",
+      "width": "150",
+      "height": "105",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "225",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "서버"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "256",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "정답 · 비밀"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "238",
+      "x2": "210",
+      "y2": "238",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,232 208,244 218,238",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "185",
+      "width": "150",
+      "height": "105",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "225",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "브라우저"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "256",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "대답만"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "325",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "정답은 서버 밖으로 나가지 않음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 350",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Now the answer sits in the browser; after the move it stays on the server and only replies are sent"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "350",
+      "height": "75",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Browser · game files"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "103",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "rules inside → answer exposed"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "172",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After the move"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "185",
+      "width": "150",
+      "height": "105",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "225",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Server"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "256",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "answer, secrets"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "238",
+      "x2": "210",
+      "y2": "238",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "208,232 208,244 218,238",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "185",
+      "width": "150",
+      "height": "105",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "225",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Browser"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "256",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "replies only"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "325",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "The answer never leaves the server"
+    }
+   ]
+  }
+ }
+]
