@@ -53,6 +53,10 @@ scripts/devlog-preview.ts   지난 글을 지금 지시문으로 다시 써서 �
 scripts/run.ts              collect → generate → 파일 쓰기
 scripts/usage.ts            모든 Opus 호출의 토큰 합 — 홈 "지난 실행" 줄에 찍는다 (비용의 자)
 scripts/blob-cache.ts       쇼츠 대본 초안·내레이션 음성을 Blob에 저장해 다시 쓴다 — 다시 만들기가 앞 단계를 또 사지 않게
+scripts/audio.ts            내레이션(eleven_multilingual_v2) + 타이밍 + 문장 사이 쉼·그림을 읽을 틈 채우기 (holdGaps·padNarration)
+scripts/art.ts              쇼츠 그림 — 둥근 평면·강조색 한 군데·투명 배경(OpenAI). 비슷한 그림은 Blob에서 다시 쓴다 (art-try.yml로 시안)
+scripts/small-video.ts      데스크톱 팝업용 540×960 사본 (Run workflow의 `small` 입력은 scripts/small-backfill.ts)
+video/src/Enter.tsx         장면이 들어오는 효과 — 장면마다 다르게, 흐림 없음, 훅·마무리 카드는 제자리에서 나타나기만
 lib/has-fail.ts             삽질 섹션에 이야기가 있나 — 글 페이지 접기·삽화 생성이 같이 쓰는 순수 함수
 lib/commit-hours.ts         홈 통계·잔디 셈 + 최근 7일 판정(activeThisWeek) — 카드 접기와 "만드는 중"이 같이 쓴다
 lib/project-color.ts        프로젝트 식별색 9색 — 파이프라인이 projects.json에 한 번 적으면 바꾸지 않고, 새 프로젝트는 빈 색을 받는다
