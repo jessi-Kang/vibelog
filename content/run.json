@@ -1,39 +1,36 @@
 {
-  "at": "2026-10-11T04:47:24.315Z",
+  "at": "2026-10-11T05:11:57.515Z",
   "lines": [
     {
       "text": "npx tsx scripts/intro.ts all",
       "kind": "cmd"
     },
     {
-      "text": "intro    · vibelog/2026-09-07 소개 글 · 토큰 in 82,524 · out 6,945 · cache 2,615"
+      "text": "skip     · vibelog 판단할 코드가 아직 없어 소개 글을 미룹니다"
     },
     {
-      "text": "figures  · vibelog/2026-09-07 2장 · 토큰 in 2,031 · out 9,562"
+      "text": "intro    · apart/2026-09-09 소개 글 · 토큰 in 11,177 · out 1,521"
     },
     {
-      "text": "intro    · apart/2026-09-09 소개 글 · 토큰 in 77,492 · out 7,337 · cache 5,230"
+      "text": "figures  · apart/2026-09-09 1장 · 토큰 in 892 · out 4,530"
     },
     {
-      "text": "figures  · apart/2026-09-09 2장 · 토큰 in 2,369 · out 11,586 · cache 1,646"
+      "text": "intro    · lie-detective/2026-10-09 소개 글 · 토큰 in 11,207 · out 1,813 · cache 3,091"
     },
     {
-      "text": "intro    · lie-detective/2026-10-09 소개 글 · 토큰 in 65,042 · out 6,194 · cache 5,230"
+      "text": "figures  · lie-detective/2026-10-09 1장 · 토큰 in 897 · out 3,132 · cache 1,646"
     },
     {
-      "text": "figures  · lie-detective/2026-10-09 2장 · 토큰 in 2,289 · out 6,830 · cache 1,646"
+      "text": "intro    · Anchor/2026-09-19 소개 글 · 토큰 in 25,532 · out 3,162 · cache 6,182"
     },
     {
-      "text": "intro    · Anchor/2026-09-19 소개 글 · 토큰 in 94,655 · out 4,455 · cache 5,230"
+      "text": "figures  · Anchor/2026-09-19 1장 · 토큰 in 917 · out 3,395 · cache 1,646"
     },
     {
-      "text": "figures  · Anchor/2026-09-19 3장 · 토큰 in 10,691 · out 19,890 · cache 3,292"
+      "text": "intro    · portfolio-tmp/2026-10-11 소개 글 · 토큰 in 10,584 · out 1,827 · cache 3,091"
     },
     {
-      "text": "intro    · portfolio-tmp/2026-10-11 소개 글 · 토큰 in 28,108 · out 3,560 · cache 2,615"
-    },
-    {
-      "text": "figures  · portfolio-tmp/2026-10-11 2장 · 토큰 in 1,848 · out 9,495 · cache 1,646"
+      "text": "figures  · portfolio-tmp/2026-10-11 1장 · 토큰 in 909 · out 4,028 · cache 1,646"
     },
     {
       "text": "skip     · agency 판단할 코드가 아직 없어 소개 글을 미룹니다"

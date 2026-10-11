@@ -1,0 +1,460 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "템플릿에 내 내용을 넣으면 내 포트폴리오가 생기고, 초대한 사람에게는 열리고 그 밖의 사람에게는 닫힌다는 흐름도.",
+  "altEn": "A flow diagram: the template plus your content becomes your portfolio, which opens to invited people and stays closed to everyone else.",
+  "caption": "템플릿에 내 내용만 넣으면, 허락한 사람에게만 열리는 포트폴리오가 됩니다.",
+  "captionEn": "Add your content to the template, and you get a portfolio that opens only to the people you allow.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "템플릿과 내 내용이 합쳐져 내 포트폴리오가 되고, 초대한 사람에게만 열리는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "20",
+      "width": "150",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "50",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "템플릿"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "20",
+      "width": "150",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "50",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "내 내용"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "95,68 95,84 295,84 295,68",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "84",
+      "x2": "195",
+      "y2": "103",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,102 201,102 195,112",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "112",
+      "width": "200",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "143",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink)"
+     },
+     "text": "내 포트폴리오"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "162",
+      "x2": "195",
+      "y2": "176",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "176",
+      "x2": "290",
+      "y2": "176",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "176",
+      "x2": "100",
+      "y2": "227",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "94,226 106,226 100,236",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "176",
+      "x2": "290",
+      "y2": "198",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "258",
+      "y1": "202",
+      "x2": "322",
+      "y2": "202",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "258",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "초대한 사람"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "283",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "열림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "258",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "그 밖의 사람"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "283",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "닫힘"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The template and your content combine into your portfolio, which opens only to invited people"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "20",
+      "width": "150",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "50",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Template"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "20",
+      "width": "150",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "50",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Your content"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "95,68 95,84 295,84 295,68",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "84",
+      "x2": "195",
+      "y2": "103",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,102 201,102 195,112",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "112",
+      "width": "200",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "143",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Your portfolio"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "162",
+      "x2": "195",
+      "y2": "176",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "176",
+      "x2": "290",
+      "y2": "176",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "176",
+      "x2": "100",
+      "y2": "227",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "94,226 106,226 100,236",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "176",
+      "x2": "290",
+      "y2": "198",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "258",
+      "y1": "202",
+      "x2": "322",
+      "y2": "202",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "4",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "258",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Invited people"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "283",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Open"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "258",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Everyone else"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "283",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Closed"
+    }
+   ]
+  }
+ }
+]

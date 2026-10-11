@@ -1,0 +1,442 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "플레이어가 전시실을 살펴보고, 사진으로 남기고, 그 사진과 추리로 인물에게 질문해 진실에 다가가는 흐름",
+  "altEn": "The flow of play: explore the gallery, keep findings as photos, question people with those photos and your theories, and reach the truth.",
+  "caption": "찾은 것을 사진으로 남기고, 그 사진으로 묻는다",
+  "captionEn": "Keep what you find as photos, then ask with them",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 340",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "전시실을 살펴보고 사진으로 남긴 뒤, 사진과 추리로 인물에게 질문해 진실에 다가가는 흐름"
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "16",
+        "width": "270",
+        "height": "64",
+        "rx": "10",
+        "fill": "var(--color-panel)",
+        "stroke": "var(--color-line-strong)",
+        "stroke-width": "1.5"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "42",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "전시실 살펴보기"
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "66",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "15",
+        "fill": "var(--color-muted)"
+       },
+       "text": "뒤집기 · 확대 · 조명"
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "82",
+      "x2": "195",
+      "y2": "96",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,96 202,96 195,104",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "104",
+        "width": "270",
+        "height": "52",
+        "rx": "10",
+        "fill": "var(--color-panel)",
+        "stroke": "var(--color-line-strong)",
+        "stroke-width": "1.5"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "136",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "사진으로 남기기"
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "158",
+      "x2": "195",
+      "y2": "172",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,172 202,172 195,180",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "180",
+        "width": "270",
+        "height": "64",
+        "rx": "10",
+        "fill": "var(--color-panel)",
+        "stroke": "var(--color-line-strong)",
+        "stroke-width": "1.5"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "206",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "인물에게 자유롭게 질문"
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "230",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "15",
+        "fill": "var(--color-muted)"
+       },
+       "text": "사진 + 내 추리"
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "246",
+      "x2": "195",
+      "y2": "260",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,260 202,260 195,268",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "268",
+        "width": "270",
+        "height": "52",
+        "rx": "10",
+        "fill": "var(--color-panel2)",
+        "stroke": "var(--color-accent)",
+        "stroke-width": "2"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "300",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-accent)"
+       },
+       "text": "진실"
+      }
+     ]
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 340",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Explore the gallery, keep findings as photos, then question people with photos and theories to reach the truth"
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "16",
+        "width": "270",
+        "height": "64",
+        "rx": "10",
+        "fill": "var(--color-panel)",
+        "stroke": "var(--color-line-strong)",
+        "stroke-width": "1.5"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "42",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "Explore the gallery"
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "66",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "15",
+        "fill": "var(--color-muted)"
+       },
+       "text": "turn · zoom · light"
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "82",
+      "x2": "195",
+      "y2": "96",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,96 202,96 195,104",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "104",
+        "width": "270",
+        "height": "52",
+        "rx": "10",
+        "fill": "var(--color-panel)",
+        "stroke": "var(--color-line-strong)",
+        "stroke-width": "1.5"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "136",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "Keep it as photos"
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "158",
+      "x2": "195",
+      "y2": "172",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,172 202,172 195,180",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "180",
+        "width": "270",
+        "height": "64",
+        "rx": "10",
+        "fill": "var(--color-panel)",
+        "stroke": "var(--color-line-strong)",
+        "stroke-width": "1.5"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "206",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-ink-soft)"
+       },
+       "text": "Question people freely"
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "230",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "15",
+        "fill": "var(--color-muted)"
+       },
+       "text": "photos + your theories"
+      }
+     ]
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "246",
+      "x2": "195",
+      "y2": "260",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,260 202,260 195,268",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "268",
+        "width": "270",
+        "height": "52",
+        "rx": "10",
+        "fill": "var(--color-panel2)",
+        "stroke": "var(--color-accent)",
+        "stroke-width": "2"
+       }
+      },
+      {
+       "tag": "text",
+       "attrs": {
+        "x": "195",
+        "y": "300",
+        "text-anchor": "middle",
+        "font-family": "var(--font-sans)",
+        "font-size": "17",
+        "fill": "var(--color-accent)"
+       },
+       "text": "The truth"
+      }
+     ]
+    }
+   ]
+  }
+ }
+]
