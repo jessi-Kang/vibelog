@@ -170,7 +170,7 @@ function buildUserPrompt(
       "## 커밋 (개발자가 자기가 보려고 쓴 글 — 그대로 옮기지 말고 골라낼 것)",
       ...a.commits.map(
         (c) =>
-          `- ${c.sha.slice(0, 7)} (${c.date})\n${c.message}\n  변경 파일: ${c.files.join(", ") || "(정보 없음)"}`,
+          `- ${c.sha.slice(0, 7)} (${c.date})\n${c.message}${c.files.length ? `\n  변경 파일: ${c.files.join(", ")}` : ""}`,
       ),
     );
   }
@@ -368,6 +368,12 @@ export async function translateLine(ko: string): Promise<string> {
  */
 export async function translateCommitLines(lines: string[]): Promise<string[]> {
   if (lines.length === 0) return [];
+  // 커밋 수를 자르지 않으므로 하루 100개가 넘을 수 있다 — 한 번에 넘기면 답이 잘린다
+  if (lines.length > 40) {
+    const out: string[] = [];
+    for (let i = 0; i < lines.length; i += 40) out.push(...(await translateCommitLines(lines.slice(i, i + 40))));
+    return out;
+  }
   const client = new Anthropic();
   const response = await createInOrder(client, HAIKU_MODELS, {
     max_tokens: 2000,
