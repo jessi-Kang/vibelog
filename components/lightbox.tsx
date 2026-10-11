@@ -14,7 +14,8 @@ export type LightboxMedia =
   | { kind: "image"; src: string; label: string }
   | {
       kind: "video";
-      sources: { ko?: string; en?: string };
+      /** koSm·enSm: 540×960 작은 사본 — 작게 띄울 때 고른다 */
+      sources: { ko?: string; en?: string; koSm?: string; enSm?: string };
       lang?: "ko" | "en";
       label: string;
     };
@@ -59,9 +60,19 @@ export function MediaLightbox({
     };
   }, [onClose, pokeUi]);
 
+  // 데스크톱 팝업은 화면 높이의 85%로 띄운다 — 그 폭이 기기 화소로 640 이하면 작은 사본이 더 곱다.
+  // 1080px 원본을 브라우저가 한 번에 두 배 넘게 줄이면 작은 글자가 들쭉날쭉했다 (10/11)
+  const wantSmall =
+    typeof window !== "undefined" &&
+    window.matchMedia("(min-width: 768px)").matches &&
+    window.innerHeight * 0.85 * (9 / 16) * (window.devicePixelRatio || 1) <= 640;
+  const pick = (l: "ko" | "en") =>
+    media.kind === "video"
+      ? ((wantSmall ? media.sources[`${l}Sm` as "koSm" | "enSm"] : undefined) ?? media.sources[l])
+      : undefined;
   const videoSrc =
     media.kind === "video"
-      ? (media.sources[lang] ?? media.sources.ko ?? media.sources.en)
+      ? (pick(lang) ?? pick("ko") ?? pick("en"))
       : undefined;
   const bothLangs =
     media.kind === "video" && Boolean(media.sources.ko && media.sources.en);
