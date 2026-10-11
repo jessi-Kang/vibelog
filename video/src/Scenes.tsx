@@ -38,7 +38,9 @@ export const HookCard: React.FC<{
   th: ShortsTheme;
   /** 화면 시간 → 오디오 시간 변환 오프셋 (콜드오픈 포함) */
   offsetSec?: number;
-}> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY }) => {
+  /** 낱말이 켜지는 방식 — rise(떠오르며·키워드 팝) / fade(제자리에서 옅게→또렷) / still(처음부터 다) */
+  motion?: "rise" | "fade" | "still";
+}> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY, motion = "rise" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps - offsetSec; // 오디오 시간
@@ -100,14 +102,14 @@ export const HookCard: React.FC<{
       >
         {words.map((w, i) => {
           // 말하는 순간 14px 아래서 떠오르며 켜진다 — 자막과 같은 문법
-          const at = starts ? starts[i] : -Infinity;
+          const at = starts && motion !== "still" ? starts[i] : -Infinity;
           const p = Math.min(1, Math.max(0, (t - at) / 0.3));
           const isKw = kwOn.has(i);
           // 키워드 점화 팝 — 켜지는 순간 살짝 튀었다 자리잡는다.
           // 켜지기 전엔 1 — clamp가 시작값(1.12)을 미리 적용하면 아직 안
           // 말한 키워드가 커진 채 이웃 단어 간격을 먹는다 (영문 검증에서 발견)
           const pop =
-            isKw && starts && t >= at
+            motion === "rise" && isKw && starts && t >= at
               ? interpolate(t, [at, at + 0.32], [1.12, 1], {
                   extrapolateLeft: "clamp",
                   extrapolateRight: "clamp",
@@ -120,7 +122,7 @@ export const HookCard: React.FC<{
                 style={{
                   display: "inline-block",
                   opacity: 0.25 + 0.75 * p,
-                  transform: `translateY(${14 * (1 - p)}px) scale(${pop})`,
+                  transform: motion === "rise" ? `translateY(${14 * (1 - p)}px) scale(${pop})` : undefined,
                   transformOrigin: "50% 80%",
                   ...(isKw && p > 0 ? keywordStyle(th, 1) : {}),
                 }}
