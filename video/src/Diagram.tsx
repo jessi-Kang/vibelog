@@ -148,9 +148,7 @@ export const DiagramScene: React.FC<{
   lang: "ko" | "en";
   /** 장면이 시작되는 영상 시각(초) */
   fromSec: number;
-  /** 겹친 원의 긴 겹친 값 배치 — 검수·시안용 (line 지금 / chip 아래 칩 / tick 아래 글자) */
-  setsVariant?: "line" | "chip" | "tick";
-}> = ({ spec, th, lang, fromSec, setsVariant = "line" }) => {
+}> = ({ spec, th, lang, fromSec }) => {
   const { fps } = useVideoConfig();
   const t = useCurrentFrame() / fps - fromSec;
   const L =
@@ -513,67 +511,16 @@ export const DiagramScene: React.FC<{
     const b = seg(t, 0.6, 0.5);
     const inter = seg(t, 1.3, 0.5);
     const num = seg(t, 1.5, 0.45);
-    // 겹친 값이 숫자 몇 자면 겹친 자리 안에 크게 쓴다. 그보다 길면 겹친 자리(폭 180)에
-    // …
+    // 겹친 값이 숫자 몇 자면 겹친 자리 안에 크게 쓴다. 그보다 길면 원 아래 가운데에 쓰고,
+    // 겹친 자리 한가운데의 점에서 곧은 세로선으로 잇는다 (10/11 Jessi, 시안 B). 사선을 꺾어
+    // 왼쪽 아래로 끌어내던 때는 보기 안 좋았다. 길 때는 집합 이름 둘을 원 위로 올려 아래를 비운다
     const inside = visualLen(l(2)) <= 5;
     const ring = (p: number): React.CSSProperties => ({
       strokeDasharray: 1,
       strokeDashoffset: 1 - p,
       opacity: p > 0 ? 1 : 0,
     });
-    if (!inside && setsVariant !== "line") {
-      // 시안 — 집합 이름 둘은 원 위에, 겹친 값은 원 아래 가운데에 (사선 없이)
-      const chip = setsVariant === "chip";
-      return (
-        <>
-          <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
-            <circle cx={420} cy={CY} r={R} fill={th.panel} opacity={a * a} />
-            <circle cx={700} cy={CY} r={R} fill={tint(th, 0.1)} opacity={b * b} />
-            <path
-              d={`M560 ${CY - LENS_H} A${R} ${R} 0 0 1 560 ${CY + LENS_H} A${R} ${R} 0 0 1 560 ${CY - LENS_H} Z`}
-              fill={th.accent}
-              opacity={inter * 0.38 + num * 0.22}
-            />
-            <circle cx={420} cy={CY} r={R} fill="none" stroke={th.ink} strokeWidth={5} pathLength={1}
-              transform={`rotate(-90 420 ${CY})`} style={ring(a)} />
-            <circle cx={700} cy={CY} r={R} fill="none" stroke={th.accent} strokeWidth={5} pathLength={1}
-              transform={`rotate(-90 700 ${CY})`} style={ring(b)} />
-            {!chip && (
-              <path
-                d={`M560 ${CY + LENS_H + 14} V${CY + 262}`}
-                stroke={th.accent}
-                strokeWidth={4}
-                strokeLinecap="round"
-                pathLength={1}
-                style={{ strokeDasharray: "1 2", strokeDashoffset: 1.06 * (1 - num) }}
-              />
-            )}
-          </svg>
-          <div style={{ ...labelStyle(th, th.ink), left: 96, width: 420, top: CY - 316, fontWeight: 700,
-            fontSize: fitFont(l(0), 30, 420), ...rise(seg(t, 0.5, 0.4), 16) }}>{l(0)}</div>
-          <div style={{ ...labelStyle(th, th.accent), right: 96, width: 420, top: CY - 316, fontWeight: 700,
-            textAlign: "right", fontSize: fitFont(l(1), 30, 420), ...rise(seg(t, 0.9, 0.4), 16) }}>{l(1)}</div>
-          <div style={{ position: "absolute", left: 140, width: 840, top: CY + (chip ? 290 : 280), display: "flex",
-            justifyContent: "center", ...rise(num, 16) }}>
-            <span
-              style={{
-                fontFamily: FONT_SANS,
-                fontWeight: 900,
-                fontSize: fitFont(l(2), chip ? 40 : 44, 760, 1),
-                wordBreak: "keep-all",
-                color: chip ? th.accentInk : th.accent,
-                background: chip ? th.accent : "transparent",
-                borderRadius: chip ? 999 : 0,
-                padding: chip ? "14px 34px" : 0,
-                lineHeight: 1.2,
-              }}
-            >
-              {l(2)}
-            </span>
-          </div>
-        </>
-      );
-    }
+    const VALUE_TOP = CY + 290;
     return (
       <>
         <svg
@@ -612,26 +559,25 @@ export const DiagramScene: React.FC<{
           />
           {!inside && (
             <path
-              d={`M560 ${CY + 40} L560 ${CY + 150} L330 ${CY + 250}`}
+              d={`M560 ${CY} V${VALUE_TOP - 24}`}
               fill="none"
               stroke={th.accent}
               strokeWidth={4}
               strokeLinecap="round"
-              strokeLinejoin="round"
               pathLength={1}
               style={{ strokeDasharray: "1 2", strokeDashoffset: 1.06 * (1 - num) }}
             />
           )}
-          {!inside && <circle cx={560} cy={CY + 40} r={10} fill={th.accent} opacity={num} />}
+          {!inside && <circle cx={560} cy={CY} r={10} fill={th.accent} opacity={num} />}
         </svg>
         <div
           style={{
             ...labelStyle(th, th.ink),
             left: 96,
-            width: 520,
+            width: inside ? 520 : 420,
             top: CY - 316,
             fontWeight: 700,
-            fontSize: fitFont(l(0), 30, 520),
+            fontSize: fitFont(l(0), 30, inside ? 520 : 420),
             ...rise(seg(t, 0.5, 0.4), 16),
           }}
         >
@@ -641,9 +587,9 @@ export const DiagramScene: React.FC<{
           style={{
             ...labelStyle(th, th.accent),
             right: 96,
-            // 겹친 값이 왼쪽 아래로 나오면 자리를 나눈다
             width: inside ? 520 : 420,
-            top: CY + 270,
+            // 겹친 값이 아래로 나오면 오른쪽 집합 이름은 위로 올린다
+            top: inside ? CY + 270 : CY - 316,
             fontWeight: 700,
             textAlign: "right",
             fontSize: fitFont(l(1), 30, inside ? 520 : 420),
@@ -673,11 +619,12 @@ export const DiagramScene: React.FC<{
           <div
             style={{
               ...labelStyle(th, th.accent),
-              left: 96,
-              width: 420,
-              top: CY + 270,
+              left: 140,
+              width: 800,
+              top: VALUE_TOP,
+              textAlign: "center",
               fontWeight: 900,
-              fontSize: fitFont(l(2), 36, 420),
+              fontSize: fitFont(l(2), 44, 800),
               ...rise(num, 16),
             }}
           >

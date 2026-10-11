@@ -133,16 +133,3 @@ export const DiagramSheet: React.FC<DiagramSheetProps> = ({ theme, lang }) => {
   );
 };
 
-/** 겹친 원의 긴 겹친 값 배치 시안 (10/11) — 정지 화면으로 견준다 */
-export const SetsTry: React.FC<{ variant?: "line" | "chip" | "tick"; labels: string[]; theme?: string | null }> = ({
-  variant = "line",
-  labels,
-  theme,
-}) => {
-  const th = getTheme(theme);
-  return (
-    <AbsoluteFill style={{ background: th.bg }}>
-      <DiagramScene spec={{ kind: "sets", labels }} th={th} lang="ko" fromSec={0} setsVariant={variant} />
-    </AbsoluteFill>
-  );
-};
