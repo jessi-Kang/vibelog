@@ -2,8 +2,8 @@
   "screens": [
     {
       "path": "/log",
-      "start": 0.8,
-      "end": 32.36
+      "start": 1.09,
+      "end": 30.16
     }
   ]
 }

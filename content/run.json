@@ -1,13 +1,13 @@
 {
-  "at": "2026-10-11T02:55:08.602Z",
+  "at": "2026-10-11T03:43:17.581Z",
   "lines": [
     {
-      "text": "npx tsx scripts/shorts.ts lie-detective/2026-10-10",
+      "text": "npx tsx scripts/shorts.ts vibelog/2026-10-09",
       "kind": "cmd"
     },
     {
-      "text": "shorts   · lie-detective/2026-10-10 다시 만듦 (ko, en) — 대본 그대로",
-      "textEn": "shorts   · lie-detective/2026-10-10 remade (ko, en) — same script"
+      "text": "shorts   · vibelog/2026-10-09 다시 만듦 (ko, en) — 대본 그대로",
+      "textEn": "shorts   · vibelog/2026-10-09 remade (ko, en) — same script"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
