@@ -2,7 +2,7 @@
  * art-samples.ts — 쇼츠 그림 스타일 시안. 스타일 × 장면 × 회사로 한 장씩 만든다.
  *
  * 예전 시안 3종(라인·플랫·듀오톤)이 반려된 뒤, 바이브로그에서만 나올 그림을 찾으려고
- * 세 방향을 다시 그려 본다 (10/11). 장면은 실제 지난 글 두 편의 은유다.
+ * 세 방향을 다시 그려 본다 (10/11). 장면은 지난 쇼츠 대본에 대본 모델이 실제로 쓴 art 문장이다.
  * 여기서 고른 스타일이 art.ts의 STYLE이 된다.
  *
  * 출력: art-samples/<스타일>-<장면>-<회사>.<jpg|png> — 커밋하지 않는다 (art-try 워크플로가 아티팩트로 올린다)
@@ -33,13 +33,14 @@ const STYLES: Record<string, string> = {
     "Muted gray-blue clay; the mint accent is mint colored clay on the focal object. ",
 };
 
+/** 대본 모델이 실제로 쓴 art 문장 그대로 — 밤 실행이 넘길 입력과 같아야 시안이 의미가 있다 */
 const SCENES: Record<string, string> = {
-  // vibelog 10/7 "글이 나가기 전에 위험한 내용을 거르게 했습니다"
-  safety:
-    "Subject: a fine mesh sieve holding back a few sharp jagged shards, while small clean blank paper notes fall through it.",
-  // lie-detective 10/10 "용의자의 답변 규칙을 서버로 옮겼습니다"
-  server:
-    "Subject: a small closed steel safe receiving a sealed blank envelope, next to an open empty cardboard box.",
+  // apart 9/10 "실제 단지 자료는 사람이 검토한 뒤에만 문제로 올립니다."
+  review: "a magnifying glass held over a single paper card pulled from a tall stack",
+  // apart 9/11 "공개 순위표 전에, 점수를 서버에서 검사하게 만들 차례입니다."
+  guard: "a small guard robot inspecting glowing score tokens on a conveyor belt",
+  // vibelog 9/22 "그려 놓고 못 보여 준 그림은 없어야죠."
+  painting: "a small framed painting hidden behind a folded paper flap, being lifted back into the light",
 };
 
 async function main(): Promise<void> {
@@ -53,7 +54,7 @@ async function main(): Promise<void> {
         const id = `${style}-${scene}-${provider}`;
         try {
           // 회사를 하나만 넘긴다 — 시안은 두 회사를 나란히 보려는 것이라 넘어가기를 하지 않는다
-          const r = await generateImage(COMMON + s + sc, [provider]);
+          const r = await generateImage(COMMON + s + "Subject: " + sc, [provider]);
           fs.writeFileSync(path.join(dir, `${id}.${r.ext}`), r.data);
           console.log(`- ${id} (${r.model})`);
           made += 1;
