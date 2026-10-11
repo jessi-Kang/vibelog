@@ -28,6 +28,7 @@ import { runShorts } from "./shorts";
 import { NoScreensError, takeListenCheck } from "./script";
 import { checkSafety, checkSafetyMany, fmtSafety, inputFlags, SafetyBlockError, withoutTrailers, type SafetyKind } from "./safety";
 import { followsCommitRule } from "./commit-rule";
+import { planNameIfChanged, type PlanName } from "./plan-name";
 import { enoughForPost } from "./collect";
 import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
@@ -192,6 +193,8 @@ async function updateProjects(
   activities: RepoActivity[],
   /** 이 실행에서 쓴 소개 글 — 서비스 이름과 프로젝트 설명을 projects.json에 적는다 */
   intros: Map<string, Intro> = new Map(),
+  /** 이 실행에서 바뀐 기획서가 정한 서비스 이름 (scripts/plan-name.ts) */
+  planNames: Map<string, PlanName> = new Map(),
 ): Promise<void> {
   // 설명 번역 캐시 — 원문이 안 바뀐 레포는 이전 번역을 재사용한다 (API 절약)
   const prev = new Map<
@@ -242,9 +245,12 @@ async function updateProjects(
   const introOf = (repo: string) => {
     const it = intros.get(repo);
     const p = prev.get(repo);
+    const plan = planNames.get(repo);
+    // 기획서가 새 이름을 정했는데 영어 이름은 없으면 — 이름이 그대로일 때만 예전 영어 이름을 둔다
+    const planEn = plan && (plan.nameEn ?? (plan.name === p?.serviceName ? p?.serviceNameEn : plan.name));
     return {
-      serviceName: it?.name ?? p?.serviceName,
-      serviceNameEn: it?.nameEn ?? p?.serviceNameEn,
+      serviceName: it?.name ?? plan?.name ?? p?.serviceName,
+      serviceNameEn: it?.nameEn ?? planEn ?? p?.serviceNameEn,
       about: it?.about ?? p?.about,
       aboutEn: it?.aboutEn ?? p?.aboutEn,
       // 아이콘도 한 번 정하면 그대로 — 소개 글이 다시 고를 때만 바뀐다
@@ -253,7 +259,7 @@ async function updateProjects(
   };
   const projects = activities.map((a) => {
     const intro = introOf(a.repo);
-    // 화면 이름 — vibelog.json name > 소개 글이 코드에서 찾은 서비스 이름 > 레포 이름
+    // 화면 이름 — vibelog.json name > 기획서가 정한 이름(소개 글·plan-name.ts) > 화면에서 찾은 이름 > 레포 이름
     const name = a.vibelogJson?.name ?? intro.serviceName ?? a.repo;
     const nameEn = a.vibelogJson?.name ? undefined : intro.serviceNameEn;
     return {
@@ -312,6 +318,16 @@ function writeRunLog(
 
 function devlogPath(repo: string, date: string): string {
   return path.join(CONTENT_DIR, "devlog", repo, `${date}.md`);
+}
+
+/** projects.json에 지금 적힌 서비스 이름 */
+function prevServiceName(repo: string): string | undefined {
+  try {
+    const list = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, "projects.json"), "utf8")) as { slug: string; serviceName?: string }[];
+    return list.find((p) => p.slug === repo)?.serviceName;
+  } catch {
+    return undefined;
+  }
 }
 
 /** 소개 글 파일인가 (frontmatter intro: true) */
@@ -784,7 +800,32 @@ async function main(): Promise<void> {
   // 쇼츠보다 먼저 projects.json을 갱신한다 — 쇼츠(script.ts)가 여기서
   // homepage(데모 URL)·theme을 읽으므로, 이 실행에서 처음 감지된 배포
   // 주소가 그날 쇼츠에 바로 쓰여야 한다. 뒤에 두면 하루 밀린다.
-  await updateProjects(activities, intros);
+  // 서비스 이름은 기획서가 1순위다 — 기획서가 바뀐 프로젝트만 이름을 다시 읽는다 (scripts/plan-name.ts).
+  // 파일 목록의 지문이 지난번과 같으면 AI를 부르지 않아서, 대부분의 밤은 GitHub 호출만 레포당 두 번이다
+  const planNames = new Map<string, PlanName>();
+  for (const a of activities) {
+    // 소개 글을 이 실행에서 썼으면 거기서 이미 기획서를 읽었다. vibelog.json name은 언제나 이긴다
+    if (!hasIntro(a.repo) || intros.has(a.repo) || a.vibelogJson?.name) continue;
+    try {
+      const r = await planNameIfChanged(octokit, a.owner, a.repo, state[a.repo]?.planSha);
+      if (r.status === "same") continue;
+      state[a.repo] = { ...state[a.repo], planSha: r.planSha };
+      if (r.status !== "found") continue;
+      const before = prevServiceName(a.repo);
+      if (r.found.name === before) continue;
+      planNames.set(a.repo, r.found);
+      console.log(`- ${a.repo}: 기획서의 서비스 이름 ${before ?? a.repo} → ${r.found.name}`);
+      runLines.push({
+        text: `name     · ${a.repo} 기획서에 맞춰 서비스 이름을 ${r.found.name}(으)로 바꿨습니다`,
+        textEn: `name     · ${a.repo} service name updated from the plan doc to ${r.found.nameEn ?? r.found.name}`,
+      });
+    } catch (err) {
+      // 이름을 못 읽어도 글·쇼츠는 막지 않는다 — 지문을 남기지 않았으니 다음 밤에 다시 본다
+      console.warn(`- ${a.repo} 기획서 이름 확인 실패:`, hideHosts(err));
+    }
+  }
+
+  await updateProjects(activities, intros, planNames);
   writeCommitHours(activities);
 
   // 쇼츠 단계 (2단계) — 실패해도 데브로그 발행은 막지 않는다

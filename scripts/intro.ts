@@ -52,10 +52,10 @@ const PROJECTS_FILE = path.join(process.cwd(), "content", "projects.json");
  * 폴더(.claude, .github …)는 도구 설정이고 docs/는 시안·문서라 무엇을 만드는지와 다르다 —
  * vibelog로 시험했을 때 .claude 안의 시안 index.html이 맨 먼저 읽혔다.
  */
-const SKIP_DIR = /(^|\/)(node_modules|dist|build|out|coverage|vendor|\.[^/]+)\//;
+export const SKIP_DIR = /(^|\/)(node_modules|dist|build|out|coverage|vendor|\.[^/]+)\//;
 /** docs/는 코드로 세지 않는다 — 시안 html이 거기 있다. 기획서는 아래 PLAN_DOC으로 따로 읽는다 */
 const DOCS_DIR = /(^|\/)docs\//;
-const SKIP_FILE =
+export const SKIP_FILE =
   /(^|\/)(\.env[^/]*|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb?)$|\.(png|jpe?g|gif|webp|avif|ico|svg|woff2?|ttf|otf|mp3|mp4|webm|mov|pdf|zip|map)$|\.min\.(js|css)$/i;
 const CODE_EXT = /\.(tsx?|jsx?|mjs|cjs|py|html?|css|scss|vue|svelte|astro|go|rs|swift|kt|java|rb|php|sql|prisma|dart|cs|c|cpp|h)$/i;
 /** 설정 파일은 코드 확장자여도 "무엇을 만드는지"를 말해 주지 않는다 */
@@ -67,12 +67,12 @@ const MIN_CODE_BYTES = 1500;
  * 기획서 — 글로 쓴 문서(md·mdx·txt). 변경 기록·라이선스 같은 꾸러미 문서는 뺀다.
  * html 시안은 대부분 스타일이라 읽지 않는다.
  */
-const PLAN_EXT = /\.(md|mdx|txt)$/i;
-const NOT_PLAN = /(^|\/)(changelog|license|licence|contributing|code_of_conduct|security|history)(\.[a-z]+)?$/i;
+export const PLAN_EXT = /\.(md|mdx|txt)$/i;
+export const NOT_PLAN = /(^|\/)(changelog|license|licence|contributing|code_of_conduct|security|history)(\.[a-z]+)?$/i;
 /**
  * 새 프로젝트 도구가 만들어 두는 README — 무엇을 만드는지 말하지 않는다. 그대로면 기획서로 치지 않는다.
  */
-const TEMPLATE_README =
+export const TEMPLATE_README =
   /bootstrapped with|create-next-app|create-react-app|npm create vite|This template provides|Getting Started\s+First, run the development server/i;
 /** 기획서가 이만큼 있으면 코드가 없어도 판단할 수 있다 — 제목 한 줄짜리 README는 못 넘는다 */
 const MIN_PLAN_CHARS = 600;
@@ -110,7 +110,7 @@ export interface CodeMaterial {
 }
 
 /** 기획서 먼저 읽을 순서 — 이름에 기획·개요가 드러난 것, 루트 README, docs/, 그 밖 */
-function planRank(p: string): number {
+export function planRank(p: string): number {
   if (/기획|concept|prd|overview|idea|brief|개요|소개/i.test(p)) return 0;
   if (/plan|spec/i.test(p)) return 1;
   if (/^readme(\.[a-z]+)?$/i.test(p)) return 1;
@@ -266,10 +266,10 @@ ${CORE_TERMS_RULE}
 ${styleRulesForPrompt()}
 
 ## 서비스 이름
-레포 이름과 실제 서비스 이름은 다를 수 있습니다. 사용하는 사람이 실제로 보는 자리 — 페이지
-<title>, 앱 manifest의 name, 첫 화면 헤더나 로고 글자 — 나, 코드가 아직 없으면 기획서가 정한
-서비스 이름(제목이나 "서비스명" 항목)에서 이름을 찾아 name(한국어)과
-nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 그대로 씁니다. 찾지 못했으면
+레포 이름과 실제 서비스 이름은 다를 수 있습니다. **기획서가 정한 서비스 이름**(제목이나 "서비스명"
+항목)을 먼저 씁니다 — 만드는 사람이 기획서를 최신으로 고쳐 둡니다. 기획서가 이름을 정하지 않았을
+때만 사용하는 사람이 실제로 보는 자리 — 페이지 <title>, 앱 manifest의 name, 첫 화면 헤더나 로고
+글자 — 에서 찾습니다. 찾은 이름을 name(한국어)과 nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 그대로 씁니다. 찾지 못했으면
 둘 다 null입니다 — 레포 이름을 다듬어 지어내지 않습니다. nameFrom에는 찾은 자리를 짧게 적습니다.
 
 ## 프로젝트 설명 (about)

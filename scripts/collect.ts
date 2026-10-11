@@ -129,6 +129,11 @@ export interface RepoState {
    * 답한 레포는 새로 푸시될 때까지 다시 묻지 않는다 (밤마다 같은 질문에 돈을 쓰지 않게)
    */
   introDeferredAt?: string;
+  /**
+   * 마지막으로 서비스 이름을 읽은 기획서들의 지문(파일 내용 해시를 이은 것) — 밤마다 레포 파일 목록만
+   * 보고 이 값이 같으면 AI를 부르지 않는다 (scripts/plan-name.ts)
+   */
+  planSha?: string;
 }
 
 export type State = Record<string, RepoState>;
