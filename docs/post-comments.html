@@ -25,8 +25,12 @@
   .who { display: flex; gap: 8px; align-items: center; min-height: 24px; font-size: 13px; }
   .who b { color: var(--ink); }
   .who time { color: var(--muted); font-size: 11px; font-family: "JetBrains Mono", monospace; margin-left: auto; }
-  .av { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 700; color: var(--bg); flex: none; }
-  .av.anon { background: var(--line-strong); }
+  /* 프로필 사진 대신 vibelog 아이콘 세트(Tabler) — 계정마다 아이콘 하나와 색 하나가 정해진다 */
+  .av { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; flex: none; background: color-mix(in srgb, var(--c, var(--muted)) 16%, transparent); color: var(--c, var(--muted)); }
+  .av svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .av.anon { --c: var(--muted); }
+  .pool { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .pool .av { width: 32px; height: 32px; } .pool .av svg { width: 19px; height: 19px; }
   .anon-name { color: var(--muted); }
   .badge { font-size: 10px; letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 7px; font-family: "JetBrains Mono", monospace; }
   .txt { margin: 0; font-size: 14px; line-height: 1.7; color: var(--ink-soft); white-space: pre-wrap; }
@@ -45,7 +49,8 @@
   .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
   .box.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   .box textarea { all: unset; display: block; width: 100%; min-height: 72px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
-  .box .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  /* 글자 수는 900자를 넘을 때만 버튼 옆에 띄운다 — 평소엔 버튼만 오른쪽에 */
+  .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
   .count { font-size: 11px; color: var(--muted); font-family: "JetBrains Mono", monospace; }
   .ai { display: flex; gap: 6px; flex-wrap: wrap; }
   .chip { min-height: 32px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; position: relative; }
@@ -63,59 +68,58 @@
 
 <div class="wrap">
   <div class="lead">
-    <span class="tag mono">VIBELOG · 데브로그 댓글 · 2안</span>
+    <span class="tag mono">VIBELOG · 데브로그 댓글 · 3안</span>
     <h1>글 아래에 Google 로그인 댓글, Jessi의 답글엔 AI 초안</h1>
-    <p>1안에서 세 가지를 바꿨습니다. 로그인하기 전에는 누가 썼는지(이름·사진)를 보여 주지 않고, 모바일에서 답글을 안으로 밀던 것을 없앴고, 로그인 안내를 한 줄로 줄였습니다. AI 초안은 그 글만이 아니라 그날 커밋과 그 프로젝트의 지난 글까지 읽고 씁니다. 세 번째 칸의 버튼은 눌러 볼 수 있습니다.</p>
+    <p>프로필 사진 대신 vibelog 아이콘 세트로 사람을 나타냅니다. 계정마다 아이콘과 색이 하나씩 정해집니다. 세 번째 칸의 버튼은 눌러 볼 수 있습니다.</p>
   </div>
 
   <div class="grid">
     <div class="col">
       <span class="tag mono">① 로그인 전</span><h2>글은 보이고, 누가 썼는지는 안 보입니다</h2>
-      <p class="d">이름·사진 대신 "방문자 1, 2"로 나옵니다. 같은 사람은 그 글 안에서 같은 번호입니다. 이름은 화면에서 가리는 게 아니라 서버가 아예 보내지 않습니다.</p>
+      <p class="d">회색 아이콘과 "방문자 1, 2"로만 나옵니다. 이름은 서버가 아예 보내지 않습니다.</p>
       <div class="phone">
         <p class="tail">…다음 글에서는 수사 기록을 다른 기기에서 이어 보는 화면을 다듬겠습니다.</p>
         <div class="sec"><h3>댓글 2</h3></div>
         <div class="c">
-          <div class="who"><span class="av anon" aria-hidden="true"></span><span class="anon-name">방문자 1</span><time>10/10 23:41</time></div>
+          <div class="who"><span class="av anon" data-i="user" aria-hidden="true"></span><span class="anon-name">방문자 1</span><time>10/10 23:41</time></div>
           <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
           <div class="reply">
-            <div class="who"><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
             <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 고르는 시간에 비하면 거의 차이가 없었습니다.</p>
           </div>
         </div>
         <div class="gate">
           <button class="btn wide"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2-1.9 3.2-4.7 3.2-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.2a6.6 6.6 0 0 1 0-4.3V7.1H2.1a11 11 0 0 0 0 9.9l3.7-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg>Google로 로그인하고 댓글 쓰기</button>
-          <p>로그인하면 이름이 보입니다</p>
         </div>
       </div>
     </div>
 
     <div class="col">
-      <span class="tag mono">② 로그인 후</span><h2>이름·사진이 보이고, 쓸 수 있습니다</h2>
-      <p class="d">답글은 안으로 밀지 않고 같은 폭에 바탕만 깔아 구분합니다. 320px 화면에서도 본문 폭이 줄지 않습니다.</p>
+      <span class="tag mono">② 로그인 후</span><h2>이름과 아이콘이 보이고, 쓸 수 있습니다</h2>
+      <p class="d">답글은 안으로 밀지 않고 바탕만 깔아 구분합니다.</p>
       <div class="phone">
         <div class="sec"><h3>댓글 2</h3></div>
         <div class="c">
-          <div class="who"><span class="av" style="background:#8FB8FF" aria-hidden="true">민</span><b>민지</b><time>10/10 23:41</time></div>
+          <div class="who"><span class="av" data-i="cat" style="--c:#8FB8FF" aria-hidden="true"></span><b>민지</b><time>10/10 23:41</time></div>
           <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
           <div class="reply">
-            <div class="who"><span class="av" style="background:#5ee1c3" aria-hidden="true">J</span><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
             <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 고르는 시간에 비하면 거의 차이가 없었습니다.</p>
           </div>
         </div>
         <div class="box focus">
           <textarea aria-label="댓글">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</textarea>
-          <div class="row"><span class="count">33 / 1,000</span><button class="btn pri">올리기</button></div>
+          <div class="row"><button class="btn pri">올리기</button></div>
         </div>
       </div>
     </div>
 
     <div class="col">
       <span class="tag mono">③ Jessi · 답글</span><h2>개발 내용을 아는 AI 초안</h2>
-      <p class="d">"초안 쓰기"를 누르면 AI가 무엇을 읽었는지가 같이 나옵니다. 초안은 쓰는 칸에만 들어가고, 올리기는 Jessi가 누릅니다.</p>
+      <p class="d">초안은 쓰는 칸에만 들어가고, 올리기는 Jessi가 누릅니다.</p>
       <div class="phone" id="jessi">
         <div class="c">
-          <div class="who"><span class="av" style="background:#FF9EC7" aria-hidden="true">도</span><b>도윤</b><time>10/11 10:05</time></div>
+          <div class="who"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>도윤</b><time>10/11 10:05</time></div>
           <p class="txt">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
           <div class="acts"><button>숨기기</button><button>지우기</button></div>
         </div>
@@ -128,7 +132,7 @@
             <button class="chip" data-k="polish">다듬기</button>
             <button class="chip" data-k="short">짧게</button>
           </div>
-          <div class="row"><span class="count" id="ct">0 / 1,000</span><button class="btn pri">답글 올리기</button></div>
+          <div class="row"><span class="count" id="ct" hidden></span><button class="btn pri">답글 올리기</button></div>
         </div>
       </div>
     </div>
@@ -145,10 +149,20 @@
   </div>
 
   <div class="note">
+    <h3>사람 아이콘</h3>
+    <ul>
+      <li>Google 프로필 사진은 받지도 저장하지도 않습니다. 얼굴이 사이트에 남지 않고, 프로젝트 아이콘·쇼츠 아이콘과 한 세트로 보입니다.</li>
+      <li>아이콘은 아래 42개 중 하나, 색은 프로젝트 색 9가지 중 하나 — 계정마다 정해져 378가지 조합이 됩니다. 같은 사람은 어느 글에서나 같은 아이콘입니다.</li>
+      <li>Jessi는 터미널 아이콘에 vibelog 민트색으로 고정합니다(다른 아이콘을 원하시면 고르시면 됩니다). 로그인 전에도 "만든 사람" 표시와 같이 보입니다.</li>
+    </ul>
+    <div class="pool" id="pool"></div>
+  </div>
+
+  <div class="note">
     <h3>정해 두는 것</h3>
     <ul>
       <li><b>자리</b>: 글 맨 아래, "이 이야기의 앞뒤" 다음. 한국어·영어 탭이 같은 댓글을 봅니다.</li>
-      <li><b>로그인 전</b>: 댓글 글자는 보이고, 쓴 사람의 이름·사진은 서버가 보내지 않습니다. "만든 사람" 표시만 보입니다.</li>
+      <li><b>로그인 전</b>: 댓글 글자는 보이고, 쓴 사람의 이름·아이콘은 서버가 보내지 않습니다. "만든 사람" 표시만 보입니다.</li>
       <li><b>메일 주소</b>: 로그인 확인과 관리자 판별에만 씁니다. 화면·응답·커밋·로그 어디에도 내보내지 않고, 관리자 메일은 코드가 아니라 Vercel 환경변수에 둡니다.</li>
       <li><b>쓰기 안전</b>: 댓글은 글자로만 그립니다(마크다운·HTML 해석 안 함). 한 사람당 1분에 3개까지. 비밀 키·연락처가 걸리면 올리지 않고 이유를 알려 줍니다.</li>
       <li><b>관리</b>: Jessi는 아무 댓글이나 숨기거나 지울 수 있습니다.</li>
@@ -157,13 +171,21 @@
 </div>
 
 <script>
+  const ICONS = {"cat": "M20 3v10a8 8 0 1 1-16 0V3l3.432 3.432A7.96 7.96 0 0 1 12 5c1.769 0 3.403.574 4.728 1.546z|M2 16h5l-4 4m19-4h-5l4 4m-10-4a1 1 0 1 0 2 0a1 1 0 1 0-2 0m-2-5v.01m6-.01v.01", "dog": "M11 5h2m6 7q-1 8-5 8h-4q-4 0-5-8|M11 16q0 1 1 1c1 0 1-.333 1-1zm1 2v2m-2-9v.01m4-.01v.01M5 4l6 .97l-6.238 6.688a1.02 1.02 0 0 1-1.41.111a.95.95 0 0 1-.327-.954zm14 0l-6 .97l6.238 6.688c.358.408.989.458 1.41.111a.95.95 0 0 0 .327-.954z", "fish": "M16.69 7.44A6.97 6.97 0 0 0 15 12a6.97 6.97 0 0 0 1.699 4.571|M2 9.504c7.715 8.647 14.75 10.265 20 2.498C16.75 4.241 9.715 5.86 2 14.506M18 11v.01|M11.5 10.5q-1 1.5 0 3", "feather": "m4 20l10-10m0-5v5h5m-9-1v5h5m-9-1v5h5m-5-5l4-4l4-4|M19 10c.638-.636 1-1.515 1-2.486A3.515 3.515 0 0 0 16.483 4c-.97 0-1.847.367-2.483 1m-3 13l4-4l4-4", "leaf": "M5 21c.5-4.5 2.5-8 7-10|M9 18c6.218 0 10.5-3.288 11-12V4h-4.014c-9 0-11.986 4-12 9c0 1 0 3 2 5z", "plant": "M7 15h10v4a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2zm5-6a6 6 0 0 0-6-6H3v2a6 6 0 0 0 6 6h3m0 0a6 6 0 0 1 6-6h3v1a6 6 0 0 1-6 6h-3m0 3V9", "cactus": "M6 9v1a3 3 0 0 0 3 3h1m8-5v5a3 3 0 0 1-3 3h-1m-4 5V5a2 2 0 1 1 4 0v16m-7 0h10", "mushroom": "M20 11.1C20 6.626 16.418 3 12 3s-8 3.626-8 8.1a.9.9 0 0 0 .9.9h14.2a.9.9 0 0 0 .9-.9M10 12v7a2 2 0 1 0 4 0v-7", "flower": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0|M12 2a3 3 0 0 1 3 3q0 .843-.776 2.64L13.5 9l1.76-1.893q.748-.899 1.27-1.205a2.97 2.97 0 0 1 4.07 1.099a3.01 3.01 0 0 1-1.09 4.098q-.561.326-1.846.535L15 12l2.4.326c1 .145 1.698.337 2.11.576A3.01 3.01 0 0 1 20.6 17a2.97 2.97 0 0 1-4.07 1.098q-.522-.303-1.27-1.205L13.5 15l.724 1.36q.775 1.799.776 2.64a3 3 0 0 1-6 0q0-.843.776-2.64L10.5 15l-1.76 1.893q-.748.9-1.27 1.205A2.97 2.97 0 0 1 3.4 17a3.01 3.01 0 0 1 1.09-4.098q.561-.326 1.846-.536L9 12l-2.4-.325c-1-.145-1.698-.337-2.11-.576A3.01 3.01 0 0 1 3.4 7a2.97 2.97 0 0 1 4.07-1.099q.522.304 1.27 1.205L10.5 9Q9 5.562 9 5a3 3 0 0 1 3-3", "moon": "M12 3h.393a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 2.992z", "sun": "M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7", "cloud": "M6.657 18C4.085 18 2 15.993 2 13.517s2.085-4.482 4.657-4.482c.393-1.762 1.794-3.2 3.675-3.773c1.88-.572 3.956-.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486s-1.551 3.487-3.465 3.487H6.657", "planet": "M18.816 13.58c2.292 2.138 3.546 4 3.092 4.9c-.745 1.46-5.783-.259-11.255-3.838c-5.47-3.579-9.304-7.664-8.56-9.123c.464-.91 2.926-.444 5.803.805|M5 12a7 7 0 1 0 14 0a7 7 0 1 0-14 0", "rocket": "M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3-5a9 9 0 0 0 6-8a3 3 0 0 0-3-3a9 9 0 0 0-8 6a6 6 0 0 0-5 3|M7 14a6 6 0 0 0-3 6a6 6 0 0 0 6-3m4-8a1 1 0 1 0 2 0a1 1 0 1 0-2 0", "coffee": "M3 14c.83.642 2.077 1.017 3.5 1c1.423.017 2.67-.358 3.5-1s2.077-1.017 3.5-1c1.423-.017 2.67.358 3.5 1M8 3a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2m4-4a2.4 2.4 0 0 0-1 2a2.4 2.4 0 0 0 1 2|M3 10h14v5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z|M16.746 16.726a3 3 0 1 0 .252-5.555", "cookie": "M8 13v.01M12 17v.01M12 12v.01M16 14v.01M11 8v.01m2.148-4.534l2.667 1.104a4 4 0 0 0 4.656 6.14l.053.132a3 3 0 0 1 0 2.296Q19.779 14.328 19.5 15q-.283.684-.66 2.216a3 3 0 0 1-1.624 1.623q-1.572.394-2.216.661q-.712.295-1.852 1.024a3 3 0 0 1-2.296 0Q9.649 19.77 9 19.5q-.707-.292-2.216-.66a3 3 0 0 1-1.623-1.624Q4.764 15.639 4.5 15q-.298-.718-1.024-1.852a3 3 0 0 1 0-2.296Q4.195 9.736 4.5 9q.257-.62.66-2.216a3 3 0 0 1 1.624-1.623Q8.331 4.777 9 4.5q.687-.285 1.852-1.024a3 3 0 0 1 2.296 0", "pizza": "M12 21.5c-3.04 0-5.952-.714-8.5-1.983L12 3l8.5 16.517A19.1 19.1 0 0 1 12 21.5|M5.38 15.866a14.94 14.94 0 0 0 6.815 1.634a14.94 14.94 0 0 0 6.502-1.479M13 11.01V11m-2 3v-.01", "ice-cream": "M12 21.5V17m-4 0h8V7a4 4 0 1 0-8 0zm0-6.5L16 7m-8 7.5l8-3.5", "bulb": "M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7l-.7.7M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0-1 3a2 2 0 0 1-4 0a3.5 3.5 0 0 0-1-3m.7 1h4.6", "music": "M3 17a3 3 0 1 0 6 0a3 3 0 0 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 0 0-6 0|M9 17V4h10v13M9 8h10", "palette": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21|M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0", "anchor": "M12 9v12m-8-8a8 8 0 0 0 16 0m1 0h-2M5 13H3m6-7a3 3 0 1 0 6 0a3 3 0 1 0-6 0", "umbrella": "M4 12a8 8 0 0 1 16 0zm8 0v6a2 2 0 0 0 4 0", "bike": "M2 18a3 3 0 1 0 6 0a3 3 0 0 0-6 0m14 0a3 3 0 1 0 6 0a3 3 0 0 0-6 0m-4 1v-4l-3-3l5-4l2 3h3m-5.993-6a2 2 0 1 0 4 0a2 2 0 1 0-4 0", "balloon": "M14 8a2 2 0 0 0-2-2|M6 8a6 6 0 1 1 12 0c0 4.97-2.686 9-6 9s-6-4.03-6-9m6 9v1a2 2 0 0 1-2 2H7a2 2 0 0 0-2 2", "butterfly": "M12 18.176a3 3 0 1 1-4.953-2.449l-.025.023A4.502 4.502 0 0 1 8.505 7c1.414 0 2.675.652 3.5 1.671a4.5 4.5 0 1 1 4.983 7.079A3 3 0 1 1 12.005 18zM12 19V9M9 3l3 2l3-2", "ghost": "M5 11a7 7 0 0 1 14 0v7a1.78 1.78 0 0 1-3.1 1.4a1.65 1.65 0 0 0-2.6 0a1.65 1.65 0 0 1-2.6 0a1.65 1.65 0 0 0-2.6 0A1.78 1.78 0 0 1 5 18zm5-1h.01M14 10h.01|M10 14a3.5 3.5 0 0 0 4 0", "puzzle": "M4 7h3a1 1 0 0 0 1-1V5a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-1a2 2 0 0 0-4 0v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a2 2 0 0 0 0-4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1", "diamond": "M6 5h12l3 5l-8.5 9.5a.7.7 0 0 1-1 0L3 10z|M10 12L8 9.8l.6-1", "paw": "M14.7 13.5c-1.1-2-1.441-2.5-2.7-2.5s-1.736.755-2.836 2.747c-.942 1.703-2.846 1.845-3.321 3.291c-.097.265-.145.677-.143.962c0 1.176.787 2 1.8 2c1.259 0 3-1 4.5-1s3.241 1 4.5 1c1.013 0 1.8-.823 1.8-2c0-.285-.049-.697-.146-.962c-.475-1.451-2.512-1.835-3.454-3.538m5.488-5.418A1 1 0 0 0 19.782 8h-.015c-.735.012-1.56.75-1.993 1.866c-.519 1.335-.28 2.7.538 3.052q.196.082.406.082c.739 0 1.575-.742 2.011-1.866c.516-1.335.273-2.7-.54-3.052zM9.474 9c.055 0 .109 0 .163-.011c.944-.128 1.533-1.346 1.32-2.722C10.754 4.97 9.91 4 9.025 4c-.055 0-.109 0-.163.011c-.944.128-1.533 1.346-1.32 2.722C7.746 8.026 8.59 9 9.475 9m6.981-2.267c.214-1.376-.375-2.594-1.32-2.722A1 1 0 0 0 14.974 4c-.885 0-1.728.97-1.93 2.267c-.214 1.376.375 2.594 1.32 2.722q.081.01.162.011c.885 0 1.73-.974 1.93-2.267M5.69 12.918c.816-.352 1.054-1.719.536-3.052C5.79 8.742 4.955 8 4.217 8q-.211 0-.407.082c-.816.352-1.054 1.719-.536 3.052C3.71 12.258 4.545 13 5.283 13q.211 0 .407-.082", "tree": "m12 13l-2-2m2 1l2-2m-2 11V8m-2.176 8a3 3 0 0 1-2.743-3.69a3 3 0 0 1 .304-4.833A3 3 0 0 1 12 3.77a3 3 0 0 1 4.614 3.707a3 3 0 0 1 .305 4.833A3 3 0 0 1 14 16.005h-4z", "snowflake": "m10 4l2 1l2-1|M12 2v6.5l3 1.72m2.928-3.952l.134 2.232l1.866 1.232|m20.66 7l-5.629 3.25l.01 3.458m4.887.56L18.062 15.5l-.134 2.232|m20.66 17l-5.629-3.25l-2.99 1.738M14 20l-2-1l-2 1|M12 22v-6.5l-3-1.72m-2.928 3.952L5.938 15.5l-1.866-1.232|m3.34 17l5.629-3.25l-.01-3.458m-4.887-.56L5.938 8.5l.134-2.232|m3.34 7l5.629 3.25l2.99-1.738", "flame": "M12 10.941c2.333-3.308.167-7.823-1-8.941c0 3.395-2.235 5.299-3.667 6.706C5.903 10.114 5 12 5 14.294C5 17.998 8.134 21 12 21s7-3.002 7-6.706c0-1.712-1.232-4.403-2.333-5.588c-2.084 3.353-3.257 3.353-4.667 2.235", "lemon": "M17.536 3.393c3.905 3.906 3.905 10.237 0 14.143c-3.906 3.905-10.237 3.905-14.143 0z|M5.868 15.06a6.5 6.5 0 0 0 9.193-9.192m-4.597 4.596l4.597 4.597m-4.597-4.597v6.364m0-6.364h6.364", "carrot": "M3 21s9.834-3.489 12.684-6.34a4.487 4.487 0 0 0 0-6.344a4.483 4.483 0 0 0-6.342 0c-2.86 2.861-6.347 12.689-6.347 12.689zm6-8l-1.5-1.5M16 14l-2-2m8-4s-1.14-2-3-2c-1.406 0-3 2-3 2s1.14 2 3 2s3-2 3-2|M16 2s-2 1.14-2 3s2 3 2 3s2-1.577 2-3c0-1.86-2-3-2-3", "sailboat": "M2 20a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2-1a2.4 2.4 0 0 1 2-1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2-1a2.4 2.4 0 0 1 2-1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2-1M4 18l-1-3h18l-1 3m-9-6h7l-7-9zM8 7l-2 5", "compass": "m8 16l2-6l6-2l-2 6z|M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9-9v2m0 14v2m-9-9h2m14 0h2", "telescope": "m6 21l6-5l6 5m-6-8v8m-8.706-7.322l.166.281c.52.88 1.624 1.265 2.605.91l14.242-5.165a1.023 1.023 0 0 0 .565-1.456l-2.62-4.705a1.087 1.087 0 0 0-1.447-.42l-.056.032l-12.694 7.618c-1.02.613-1.357 1.897-.76 2.905zM14 5l3 5.5", "headphones": "M4 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm11 0a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2z|M4 15v-3a8 8 0 0 1 16 0v3", "book": "M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13m9-13v13m9-13v13", "dice": "M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z|M8 8.5a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0m7 0a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0m0 7a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0m-7 0a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0", "chess-knight": "m8 16l-1.447.724a1 1 0 0 0-.553.894V20h12v-2.382a1 1 0 0 0-.553-.894L16 16zM9 3l1 3l-3.491 2.148A1 1 0 0 0 7.033 10H10l-2.073 6h7.961L16 11c0-3-1.09-5.983-4-7Q9.09 2.983 9 3", "user": "M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2", "terminal": "m5 7l5 5l-5 5m7 2h7"};
+  const POOL = ["cat", "dog", "fish", "paw", "butterfly", "feather", "leaf", "plant", "cactus", "mushroom", "flower", "tree", "moon", "sun", "cloud", "snowflake", "planet", "rocket", "telescope", "compass", "sailboat", "anchor", "umbrella", "bike", "balloon", "coffee", "cookie", "pizza", "ice-cream", "carrot", "lemon", "bulb", "music", "headphones", "palette", "book", "dice", "chess-knight", "puzzle", "diamond", "ghost", "flame"];
+  const PAL = ["#E59FF6","#81D584","#8FB8FF","#C9E579","#6FD3F2","#B9A7FF","#3BACDA","#968DFD","#FF9EC7"];
+  const svg = (n) => `<svg viewBox="0 0 24 24">${ICONS[n].split("|").map((d) => `<path d="${d}"/>`).join("")}</svg>`;
+  document.querySelectorAll(".av[data-i]").forEach((el) => { el.innerHTML = svg(el.dataset.i); });
+  const pool = document.getElementById("pool");
+  POOL.forEach((n, i) => { const s = document.createElement("span"); s.className = "av"; s.style.setProperty("--c", PAL[i % PAL.length]); s.title = n; s.innerHTML = svg(n); pool.append(s); });
+
   const ta = document.getElementById("ta"), ct = document.getElementById("ct"), dn = document.getElementById("dn"), rd = document.getElementById("rd");
   const T = {
     draft: "아직 표정은 바뀌지 않습니다. 지금은 대답하는 말에서만 단서를 찾게 되어 있어요. 이번 글에서 대답을 정하는 일을 서버로 옮겼는데, 표정도 그 대답과 함께 정해지게 하면 붙일 수 있을 것 같습니다. 만들게 되면 데브로그에 남기겠습니다!",
     polish: "표정은 아직 바뀌지 않고, 지금은 말에서만 단서를 찾을 수 있어요. 이번에 대답을 서버가 정하게 바꿨으니, 표정도 같이 정하게 할 수 있을 것 같습니다. 만들면 데브로그에 남길게요!",
     short: "표정은 아직 안 바뀌고 말에서만 단서를 찾습니다. 넣게 되면 글로 알려 드릴게요!",
   };
-  const upd = () => { ct.textContent = `${ta.value.length} / 1,000`; };
+  const upd = () => { const n = ta.value.length; ct.hidden = n < 900; ct.textContent = `${n} / 1,000`; };
   ta.addEventListener("input", () => { dn.hidden = true; upd(); });
   document.querySelectorAll("#jessi .chip").forEach((b) => b.addEventListener("click", () => { ta.value = T[b.dataset.k]; dn.hidden = false; rd.hidden = b.dataset.k !== "draft"; upd(); ta.focus(); }));
 </script>
