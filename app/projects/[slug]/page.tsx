@@ -60,9 +60,9 @@ export default async function ProjectPage({ params }: Props) {
   const facts: [string, React.ReactNode, React.ReactNode][] = [
     ["s", <T key="k1" ko="상태" en="status" />, <StatusBadge key="s" status={project.status} />],
     ["t", <T key="k2" ko="스택" en="stack" />, project.stack.join(" · ").toLowerCase() || "—"],
-    ["c", <T key="k7" ko="누적 커밋" en="total commits" />, <LiveRepoStat key="v7" repoUrl={project.repoUrl} kind="total" fallback={project.totalCommits} />],
-    ["w", <T key="k3" ko="이번 주 커밋" en="commits this week" />, <LiveRepoStat key="v3" repoUrl={project.repoUrl} kind="week" fallback={project.weekCommits ?? 0} />],
-    ["l", <T key="k4" ko="마지막 활동" en="last active" />, <LiveLastActive key="v4" repoUrl={project.repoUrl} iso={project.lastActivity} />],
+    ["c", <T key="k7" ko="누적 커밋" en="total commits" />, <LiveRepoStat key="v7" slug={project.slug} kind="total" fallback={project.totalCommits} />],
+    ["w", <T key="k3" ko="이번 주 커밋" en="commits this week" />, <LiveRepoStat key="v3" slug={project.slug} kind="week" fallback={project.weekCommits ?? 0} />],
+    ["l", <T key="k4" ko="마지막 활동" en="last active" />, <LiveLastActive key="v4" slug={project.slug} iso={project.lastActivity} />],
     ["d", <T key="k5" ko="데브로그" en="devlogs" />, <T key="v5" ko={`${dayLogs.length}편`} en={String(dayLogs.length)} />],
     ["b", <T key="k6" ko="시작일" en="started" />, dayLogs.length ? dayLogs[dayLogs.length - 1].date : "—"],
   ];
