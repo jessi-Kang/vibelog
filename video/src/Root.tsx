@@ -61,8 +61,8 @@ export const RemotionRoot: React.FC = () => {
       durationInFrames={Math.ceil(MOTIFS.length * SHEET_SLOT_SEC * FPS)}
       defaultProps={{ theme: "terminal" } as MotifSheetProps}
     />
-    {/* 검수용 — 그림·아이콘 장면에 글을 함께 두는 시안 */}
-    <Composition id="ArtTextTry" component={ArtTextTry} width={1080} height={1920} fps={FPS} durationInFrames={30} defaultProps={{ variant: "now", theme: "terminal" }} />
+    {/* 검수용 — 그림 장면의 세로 자리 시안 */}
+    <Composition id="ArtTextTry" component={ArtTextTry} width={1080} height={1920} fps={FPS} durationInFrames={30} defaultProps={{ centerY: 883, theme: "terminal" }} />
     {/* 검수용 — 다이어그램 다섯 종. 테마마다 다르게 나오는 흐리기·대비를
         그 테마로 돌려 본다 (paper에서만 '전' 줄이 안 보였던 자리) */}
     <Composition
