@@ -46,17 +46,19 @@
   .btn svg { width: 18px; height: 18px; flex: none; }
   .gate { display: flex; flex-direction: column; gap: 8px; align-items: center; }
   .gate p { margin: 0; font-size: 12px; color: var(--muted); }
-  .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 12px 10px 14px; display: flex; flex-direction: column; gap: 8px; }
   .box.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-  .box textarea { all: unset; display: block; width: 100%; min-height: 72px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
+  .box textarea { all: unset; display: block; width: 100%; min-height: 48px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
   /* 아래 줄: 글자 수와 올리기 버튼을 오른쪽에 한 덩어리로, 세로 가운데를 맞춘다 */
-  .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+  .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin: -2px -2px -2px 0; }
+  /* 쓰는 칸 안의 버튼은 AI 버튼과 같은 30px — 보이는 크기만 줄이고 누르는 영역은 ::after로 44px */
+  .box .btn { min-height: 30px; padding: 0 12px; border-radius: 8px; font-size: 13px; position: relative; }
+  .box .btn::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: max(44px, calc(100% + 8px)); height: 44px; }
   .count { font-size: 12px; line-height: 1; color: var(--muted); font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
   /* AI 버튼은 쓰는 칸 위 도구 줄로 — 아래 줄은 다른 댓글 칸과 같은 모양이 된다 */
   .ai { padding-bottom: 10px; border-bottom: 1px solid var(--line); align-items: center; }
-  .ai-label { font-size: 11px; letter-spacing: .08em; color: var(--muted); font-family: "JetBrains Mono", monospace; margin-right: 2px; }
   .ai { display: flex; gap: 6px; flex-wrap: wrap; }
-  .chip { min-height: 32px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; position: relative; }
+  .chip { min-height: 30px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; position: relative; }
   .chip::after { content: ""; position: absolute; inset: -6px; }
   .chip:hover { color: var(--ink); border-color: var(--ink-soft); }
   .chip svg { width: 14px; height: 14px; }
@@ -127,7 +129,7 @@
           <div class="acts"><button>숨기기</button><button>지우기</button></div>
         </div>
         <div class="box focus">
-          <div class="ai" role="group" aria-label="AI 도움"><span class="ai-label">AI</span>
+          <div class="ai" role="group" aria-label="AI 도움">
             <button class="chip" data-k="draft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z"/></svg>초안 쓰기</button>
             <button class="chip" data-k="polish">다듬기</button>
             <button class="chip" data-k="short">짧게</button>
