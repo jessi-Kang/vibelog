@@ -82,7 +82,7 @@ devlog.yml에 ffmpeg, Chromium 설치 스텝 추가. 렌더 시간 측정해서 
 - 텔레그램 봇 토큰 + 내 chat_id → Secrets `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 - YouTube Data API OAuth → refresh token → Secrets `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`
 - Instagram 비즈니스 계정 + Meta 앱 → 장기 토큰 → Secrets `IG_USER_ID`, `IG_ACCESS_TOKEN`
-- Neon 프로젝트 → `DATABASE_URL`
+- Neon 프로젝트 → `DATABASE_URL` (**10/11 완료** — 댓글을 붙이며 Vercel Storage로 연결했다. 같은 DB에 승인 큐 테이블을 더하면 된다)
 
 ### 세션 9 — 승인 큐 (DB)
 
