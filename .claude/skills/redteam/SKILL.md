@@ -42,6 +42,10 @@ grep -rn "rehype-raw\|rehypeRaw" .          # 마크다운에서 raw HTML을 켰
   JSON-LD 블록이 대표적인 자리다.
 - XML/RSS도 같다 — `&<>"`만 바꾸는 이스케이프는 대부분 충분하지만, 제어문자와
   `]]>`가 들어오면 깨진다.
+- 마크다운 본문의 **링크와 그림**도 출력 자리다. react-markdown은 `javascript:`는
+  막지만 `[로그인](https://남의-사이트)`와 `![](https://추적-서버/p.gif)`는 그대로
+  그린다 — 10/10 점검에서 실제로 확인했고 `lib/md-links.ts`로 막았다. 본문 렌더러의
+  `components`에 `a`·`img`가 그 관문을 거치는지 본다.
 - 확인은 문자열 하나로 끝난다:
   `node -e 'console.log(JSON.stringify({a:"x</script><img src=x onerror=1>"}))'`
   결과에 `</script>`가 살아 있으면 그 자리는 뚫린다.
