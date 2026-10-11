@@ -21,7 +21,7 @@ export function hasDb(): boolean {
 function sql(): Sql {
   if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL 없음");
   // 서버리스 함수 하나가 연결 하나 — Neon의 연결 모으개(pooler) 주소를 쓴다
-  client ??= postgres(process.env.DATABASE_URL, { max: 1, idle_timeout: 20, prepare: false });
+  client ??= postgres(process.env.DATABASE_URL, { max: 1, idle_timeout: 20, prepare: false, onnotice: () => {} });
   return client;
 }
 
