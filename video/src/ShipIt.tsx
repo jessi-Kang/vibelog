@@ -254,11 +254,15 @@ export function buildSegments(
       raw.push({ kind: "art", from: raw.length === 0 ? 0 : from, art });
     } else if (kind === "plain" && (line?.icon || line?.motif)) {
       // 아이콘·모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다.
-      // 둘 다 있으면 아이콘이 이긴다 (대상이 분명한 문장이다)
+      // 둘 다 있으면 아이콘이 이긴다 (대상이 분명한 문장이다). 다만 바로 앞 장면도 아이콘이었으면
+      // 모티프를 쓴다 — 가운데 판 위 아이콘 하나가 서너 번 이어져 같은 화면이 반복됐다
+      // …
+      const prev = raw[raw.length - 1];
+      const useMotif = !!line.motif && (!line.icon || (prev?.kind === "plain" && !!prev.icon));
       raw.push({
         kind: "plain",
         from: raw.length === 0 ? 0 : from,
-        ...(line.icon ? { icon: line.icon } : { motif: line.motif }),
+        ...(useMotif ? { motif: line.motif } : { icon: line.icon }),
       });
     } else if (raw.length === 0) {
       // 첫 장면은 0초부터
