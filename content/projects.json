@@ -24,9 +24,9 @@
     "slug": "apart",
     "color": "#B9A7FF",
     "name": "아파트 감별사",
-    "nameEn": "Apartment Detective",
+    "nameEn": "아파트 감별사",
     "serviceName": "아파트 감별사",
-    "serviceNameEn": "Apartment Detective",
+    "serviceNameEn": "아파트 감별사",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
     "status": "live",
@@ -41,15 +41,25 @@
     "todayCommits": 15,
     "totalCommits": 228,
     "countsDate": "2026-10-11",
-    "theme": "paper"
+    "theme": "paper",
+    "about": "아파트 감별사는 진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
+    "aboutEn": "아파트 감별사 is a daily quiz where you tell real apartment names from ones made up by AI.",
+    "icon": {
+      "name": "tabler:building-community",
+      "paths": [
+        {
+          "d": "m8 9l5 5v7H8v-4m0 4H3v-7l5-5m1 1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17h-8m0-14v.01M17 7v.01M17 11v.01M17 15v.01"
+        }
+      ]
+    }
   },
   {
     "slug": "lie-detective",
     "color": "#6FD3F2",
     "name": "거짓말 탐정",
-    "nameEn": "Lie Detective",
+    "nameEn": "거짓말 탐정",
     "serviceName": "거짓말 탐정",
-    "serviceNameEn": "Lie Detective",
+    "serviceNameEn": "거짓말 탐정",
     "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
     "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
     "status": "preview",
@@ -63,7 +73,17 @@
     "todayCommits": 0,
     "totalCommits": 49,
     "countsDate": "2026-10-11",
-    "theme": "highlighter"
+    "theme": "highlighter",
+    "about": "거짓말 탐정은 현장을 살피고 사진을 찍고 인물에게 직접 질문하며 사건을 푸는 모바일 추리 게임입니다.",
+    "aboutEn": "거짓말 탐정 is a mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
+    "icon": {
+      "name": "tabler:spy",
+      "paths": [
+        {
+          "d": "M3 11h18M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M4 17a3 3 0 1 0 6 0a3 3 0 1 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-4 0h4"
+        }
+      ]
+    }
   },
   {
     "slug": "Anchor",
@@ -90,7 +110,18 @@
     "todayCommits": 0,
     "totalCommits": 1075,
     "countsDate": "2026-10-11",
-    "theme": "blueprint"
+    "theme": "blueprint",
+    "nameEn": "Anchor",
+    "about": "Anchor는 내 자료와 못 한 말에서 출발해 영어·일본어·스페인어로 말하게 돕는 앱입니다.",
+    "aboutEn": "Anchor is an app that helps you speak English, Japanese, and Spanish, starting from your own materials and the things you couldn't say.",
+    "icon": {
+      "name": "tabler:anchor",
+      "paths": [
+        {
+          "d": "M12 9v12m-8-8a8 8 0 0 0 16 0m1 0h-2M5 13H3m6-7a3 3 0 1 0 6 0a3 3 0 1 0-6 0"
+        }
+      ]
+    }
   },
   {
     "slug": "portfolio-tmp",
@@ -109,7 +140,20 @@
     "todayCommits": 0,
     "totalCommits": 2,
     "countsDate": "2026-10-11",
-    "theme": "blueprint"
+    "theme": "blueprint",
+    "about": "이 프로젝트는 허락한 사람에게만 열리는 개인 포트폴리오 사이트를 만드는 템플릿입니다.",
+    "aboutEn": "This project is a template for building a personal portfolio site that opens only to the people you invite.",
+    "icon": {
+      "name": "tabler:briefcase",
+      "paths": [
+        {
+          "d": "M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm5-2V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m-4 5v.01"
+        },
+        {
+          "d": "M3 13a20 20 0 0 0 18 0"
+        }
+      ]
+    }
   },
   {
     "slug": "agency",

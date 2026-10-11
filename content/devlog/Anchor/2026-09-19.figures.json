@@ -1,0 +1,370 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "내 자료를 넣으면 모르는 것만 골라내고, 아는 말에 기대어 뜻을 추측한 뒤, 소리 내어 말해 보는 흐름을 위에서 아래로 보여 주는 그림.",
+  "altEn": "A top-to-bottom flow: you put in your own materials, the app picks out only the unknown parts, you guess the meaning from words you know, then say it out loud.",
+  "caption": "넣는 것은 내 자료, 얻는 것은 내 입으로 해 본 말",
+  "captionEn": "What goes in is your own material; what comes out is something you've said yourself",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 390",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "내 자료에서 모르는 것을 골라 아는 말로 추측하고 소리 내어 말하는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "16",
+      "width": "290",
+      "height": "80",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "내 자료"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "문서 · 기사 · 못 한 말"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "100",
+      "x2": "195",
+      "y2": "116",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,115 202,115 195,123",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "126",
+      "width": "290",
+      "height": "60",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "모르는 것만 골라내기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "190",
+      "x2": "195",
+      "y2": "206",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,205 202,205 195,213",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "216",
+      "width": "290",
+      "height": "60",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "251",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "아는 말에 기대어 뜻 추측"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "280",
+      "x2": "195",
+      "y2": "296",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,295 202,295 195,303",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "306",
+      "width": "290",
+      "height": "60",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "341",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "소리 내어 말하기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 390",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Flow from your own materials to picking the unknown, guessing from known words, and saying it out loud"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "16",
+      "width": "290",
+      "height": "80",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Your own materials"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "docs · articles · unsaid words"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "100",
+      "x2": "195",
+      "y2": "116",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,115 202,115 195,123",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "126",
+      "width": "290",
+      "height": "60",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Pick out only the unknown"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "190",
+      "x2": "195",
+      "y2": "206",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,205 202,205 195,213",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "216",
+      "width": "290",
+      "height": "60",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "251",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Guess from words you know"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "280",
+      "x2": "195",
+      "y2": "296",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,295 202,295 195,303",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "50",
+      "y": "306",
+      "width": "290",
+      "height": "60",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "341",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Say it out loud"
+    }
+   ]
+  }
+ }
+]
