@@ -472,19 +472,6 @@ export function lineStarts(words: string[], lines: string[] | undefined): number
   return starts.length === lines.length - 1 ? starts : null;
 }
 
-/** 줄들 중 가장 긴 줄의 폭(글자 크기 배수) — 굵은 Noto Sans KR로 재 본 값: 한글 0.92, 띄어쓰기 0.28,
- *  영문·숫자 0.56. 렌더가 이 값으로 가장 긴 줄이 폭에 들어갈 글자 크기를 정한다 */
-export function longestLine(words: string[], starts: number[]): number {
-  const cut = [0, ...starts, words.length];
-  let max = 0;
-  for (let k = 0; k + 1 < cut.length; k++) {
-    const text = words.slice(cut[k], cut[k + 1]).join(" ");
-    let n = 0;
-    for (const ch of text) n += /[가-힣ㄱ-ㅎ一-鿿]/.test(ch) ? 0.92 : ch === " " ? 0.28 : 0.56;
-    max = Math.max(max, n);
-  }
-  return max;
-}
 
 /**
  * 그림이 다 그려지는 시각(장면 시작부터 초) — video/src/Diagram.tsx·Motif.tsx의 시간표와 같은 값.

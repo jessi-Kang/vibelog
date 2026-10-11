@@ -12,7 +12,6 @@ import {
 } from "remotion";
 import {
   lineStarts,
-  longestLine,
   templateBadge,
   type ShortsScript,
   type ShortsTiming,
@@ -95,9 +94,9 @@ export const HookCard: React.FC<{
           // 긴 훅은 줄여서 — 132px 고정이면 25자 넘는 문장이 글자 벽이 된다
           // (Jessi 지적). 대본 규칙은 20자 안팎이지만 렌더도 방어한다.
           // 기준은 시각 폭(한글 1·영문 0.5) — 영어가 억울하게 줄지 않게.
-          fontSize: breaks
-            ? Math.min(132, Math.floor(900 / longestLine(words, breaks)))
-            : visualLen(hook[lang]) > 24 ? 104 : 132,
+          // 줄 나눔이 있어도 글자 크기는 줄이지 않는다 — 가장 긴 줄에 맞춰 줄였더니 영어 훅이 68px까지
+          // … 폭을 넘는 줄은 그 줄 안에서 낱말 단위로 접힌다
+          fontSize: visualLen(hook[lang]) > 24 ? 104 : 132,
           // 마커칠 키워드는 배경 상자가 글자 박스만큼 높다 — 줄간이 좁으면
           // 이웃 줄 글자를 덮는다 (Jessi 지적). 마커 테마만 줄간을 벌린다.
           lineHeight: th.keyword === "marker" ? 1.3 : 1.14,
@@ -107,7 +106,6 @@ export const HookCard: React.FC<{
           // balance는 줄 길이를 고르게 맞추느라 "추리 게임 / 속 용의자의"처럼 한 덩어리 말을
           // 갈랐다 (10/11 Jessi). 앞에서부터 채우고, 마지막 줄에 낱말 하나만 남는 것만 막는다
           textWrap: "pretty",
-          ...(breaks ? { whiteSpace: "nowrap" as const } : {}),
           color: th.ink,
         }}
       >
