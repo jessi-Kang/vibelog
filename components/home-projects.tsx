@@ -15,7 +15,7 @@ import { activeThisWeek, todayKst } from "@/lib/commit-hours";
 import type { Project } from "@/lib/content";
 import { humanizeLastActive } from "@/lib/format";
 import { useLang } from "./lang";
-import { Card, SectionHeader, StatusBadge, EmptyState } from "./ui";
+import { Card, SectionHeader, EmptyState } from "./ui";
 import { ProjectCard } from "./vibelog";
 import { ProjectIcon } from "./project-icon";
 import { projectColor } from "@/lib/project-color";
@@ -29,7 +29,6 @@ export function HomeProjects({
   buildDate: string;
 }) {
   const { lang } = useLang();
-  const [showRest, setShowRest] = useState(false);
   // 페이지는 빌드 때 만들어진다. 며칠 빌드가 없으면 그사이 7일을 넘긴 프로젝트가
   // 펼쳐진 채 남으므로, 화면이 뜬 뒤 방문자의 오늘로 다시 가른다
   const [today, setToday] = useState(buildDate);
@@ -37,7 +36,7 @@ export function HomeProjects({
   const active = projects.filter((p) => activeThisWeek(p.lastActivity, today));
   const rest = projects.filter((p) => !activeThisWeek(p.lastActivity, today));
   const collapse = projects.length > 4 && rest.length > 0;
-  const shown = collapse && !showRest ? active : projects;
+  const shown = collapse ? active : projects;
 
   return (
     <section className="flex flex-col gap-3.5">
@@ -77,35 +76,33 @@ export function HomeProjects({
           ))}
         </div>
       )}
-      {collapse && !showRest && (
+      {/* 쉬는 프로젝트 — 카드로 펼치기는 없앴다. 눌러 들어가면 다 보이니 목록은 이름과
+          마지막 활동만 둔다. 상태 표시도 뺐다 — 한 줄에 셋이면 좁은 화면에서 이름이 밀렸다 (10/11) */}
+      {collapse && (
         <Card className="p-0">
-          {rest.map((p) => (
+          <div className="border-b border-line px-[18px] py-2.5 font-mono text-2xs text-muted">
+            {lang === "ko" ? "쉬는 프로젝트 · 최근 7일 커밋 없음" : "Resting · no commits in 7 days"}
+          </div>
+          {rest.map((p, i) => (
             <Link
               key={p.slug}
               href={`/projects/${p.slug}`}
-              className="flex items-center gap-3 border-b border-line px-[18px] py-3 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2"
+              className={`flex items-center gap-3 px-[18px] py-3 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2 ${i < rest.length - 1 ? "border-b border-line" : ""}`}
             >
               <span className="flex min-w-0 flex-1 items-center gap-2 font-sans text-base font-bold text-ink-soft">
-                <ProjectIcon icon={p.icon} size={16} className="self-center" style={{ color: projectColor(p.slug) }} />
+                {/* 아이콘이 없는 줄도 같은 폭을 비워 이름 시작을 맞춘다 */}
+                {p.icon ? (
+                  <ProjectIcon icon={p.icon} size={16} className="self-center" style={{ color: projectColor(p.slug) }} />
+                ) : rest.some((x) => x.icon) ? (
+                  <span className="w-4 flex-none" aria-hidden />
+                ) : null}
                 <span className="truncate">{lang === "en" ? (p.nameEn ?? p.name) : p.name}</span>
               </span>
-              <StatusBadge status={p.status} />
-              <span className="w-[52px] text-right">
+              <span className="flex-none text-right">
                 {humanizeLastActive(p.lastActivity, lang)}
               </span>
             </Link>
           ))}
-          <div className="px-2.5 py-2">
-            <button
-              type="button"
-              onClick={() => setShowRest(true)}
-              className="h-8 cursor-pointer rounded-sm px-3 text-sm font-bold text-muted transition-opacity duration-150 hover:opacity-85 active:scale-[.98]"
-            >
-              {lang === "ko"
-                ? `쉬는 프로젝트 ${rest.length}개 카드로 펼치기`
-                : `Show ${rest.length} paused ${rest.length === 1 ? "project" : "projects"} as cards`}
-            </button>
-          </div>
         </Card>
       )}
       {/* 핵심 동작 안내 — 카드가 어떻게 늘어나는지 사이트 안에서 알 수 있게 (Jessi 지시) */}
