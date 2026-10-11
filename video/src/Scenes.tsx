@@ -152,7 +152,8 @@ export const HookCard: React.FC<{
           color: th.muted,
         }}
       >
-        {script.repo} · devlog day {String(script.day).padStart(2, "0")}
+        {/* DAY 번호는 머리글(VIBELOG · DAY NN)에 이미 있어 레포 이름만 둔다 — 둘 다 적던 때는 한 화면에 두 번 나왔다 (10/11 Jessi) */}
+        {script.repo}
       </p>
     </div>
   );
