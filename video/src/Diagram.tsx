@@ -14,6 +14,7 @@ import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import type { DiagramSpec } from "../../scripts/shorts-types";
 import { FONT_MONO, FONT_SANS, visualLen, type ShortsTheme } from "./theme";
+import { BoxIcon } from "./IconScene";
 
 /** 무대 — 자막 위, 헤드라인 아래의 가운데 띠 */
 const CY = 1020;
@@ -153,6 +154,9 @@ export const DiagramScene: React.FC<{
   const L =
     lang === "en" && spec.labelsEn?.length ? spec.labelsEn : spec.labels;
   const l = (i: number): string => L[i] ?? "";
+  // 칸마다 얹는 아이콘 (docs/shorts-icons.html B·C안) — 있으면 라벨 앞에, 그만큼 글자 폭을 줄인다
+  const ic = (i: number) => spec.icons?.[i] ?? null;
+  const iw = (i: number) => (ic(i) ? 58 : 0);
 
   if (spec.kind === "numberline") {
     // [범위 이름, 문제였던 값, 고친 값] — 범위 밖으로 옮겨 해결했다는 그림
@@ -414,7 +418,7 @@ export const DiagramScene: React.FC<{
         </div>
         <div
           style={{
-            ...boxStyle(th, false, l(0), 340),
+            ...boxStyle(th, false, l(0), 340 - iw(0)),
             left: 96,
             top: TOP,
             width: 340,
@@ -423,11 +427,12 @@ export const DiagramScene: React.FC<{
             opacity: a * dim,
           }}
         >
+          <BoxIcon icon={ic(0)} color={th.ink} />
           {l(0)}
         </div>
         <div
           style={{
-            ...boxStyle(th, false, l(1), 374),
+            ...boxStyle(th, false, l(1), 374 - iw(1)),
             left: 610,
             top: TOP,
             width: 374,
@@ -436,6 +441,7 @@ export const DiagramScene: React.FC<{
             opacity: a * dim,
           }}
         >
+          <BoxIcon icon={ic(1)} color={th.ink} />
           {l(1)}
         </div>
         <div
@@ -454,7 +460,7 @@ export const DiagramScene: React.FC<{
         </div>
         <div
           style={{
-            ...boxStyle(th, false, l(2), 340),
+            ...boxStyle(th, false, l(2), 340 - iw(2)),
             left: 96,
             top: BOT,
             width: 340,
@@ -463,11 +469,12 @@ export const DiagramScene: React.FC<{
             ...rise(b),
           }}
         >
+          <BoxIcon icon={ic(2)} color={th.ink} />
           {l(2)}
         </div>
         <div
           style={{
-            ...boxStyle(th, true, l(3), 374),
+            ...boxStyle(th, true, l(3), 374 - iw(3)),
             left: 610,
             top: BOT,
             width: 374,
@@ -475,6 +482,7 @@ export const DiagramScene: React.FC<{
             ...rise(b),
           }}
         >
+          <BoxIcon icon={ic(3)} color={th.accent} />
           {l(3)}
         </div>
       </>
@@ -488,6 +496,9 @@ export const DiagramScene: React.FC<{
     const b = seg(t, 0.6, 0.5);
     const inter = seg(t, 1.3, 0.5);
     const num = seg(t, 1.5, 0.45);
+    // 겹친 값이 숫자 몇 자면 겹친 자리 안에 크게 쓴다. 그보다 길면 겹친 자리(폭 180)에
+    // …
+    const inside = visualLen(l(2)) <= 5;
     const ring = (p: number): React.CSSProperties => ({
       strokeDasharray: 1,
       strokeDashoffset: 1 - p,
@@ -529,6 +540,19 @@ export const DiagramScene: React.FC<{
             transform={`rotate(-90 700 ${CY})`}
             style={ring(b)}
           />
+          {!inside && (
+            <path
+              d={`M560 ${CY + 40} L560 ${CY + 150} L330 ${CY + 250}`}
+              fill="none"
+              stroke={th.accent}
+              strokeWidth={4}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              pathLength={1}
+              style={{ strokeDasharray: "1 2", strokeDashoffset: 1.06 * (1 - num) }}
+            />
+          )}
+          {!inside && <circle cx={560} cy={CY + 40} r={10} fill={th.accent} opacity={num} />}
         </svg>
         <div
           style={{
@@ -547,32 +571,49 @@ export const DiagramScene: React.FC<{
           style={{
             ...labelStyle(th, th.accent),
             right: 96,
-            width: 520,
+            // 겹친 값이 왼쪽 아래로 나오면 자리를 나눈다
+            width: inside ? 520 : 420,
             top: CY + 270,
             fontWeight: 700,
             textAlign: "right",
-            fontSize: fitFont(l(1), 30, 520),
+            fontSize: fitFont(l(1), 30, inside ? 520 : 420),
             ...rise(seg(t, 0.9, 0.4), 16),
           }}
         >
           {l(1)}
         </div>
-        <div
-          style={{
-            position: "absolute",
-            left: 470,
-            width: 180,
-            top: CY - 70,
-            textAlign: "center",
-            fontFamily: FONT_SANS,
-            fontWeight: 900,
-            fontSize: fitFont(l(2), 86, 180, 1),
-            color: th.accent,
-            ...popIn(num),
-          }}
-        >
-          {l(2)}
-        </div>
+        {inside ? (
+          <div
+            style={{
+              position: "absolute",
+              left: 470,
+              width: 180,
+              top: CY - 70,
+              textAlign: "center",
+              fontFamily: FONT_SANS,
+              fontWeight: 900,
+              fontSize: fitFont(l(2), 86, 180, 1),
+              color: th.accent,
+              ...popIn(num),
+            }}
+          >
+            {l(2)}
+          </div>
+        ) : (
+          <div
+            style={{
+              ...labelStyle(th, th.accent),
+              left: 96,
+              width: 420,
+              top: CY + 270,
+              fontWeight: 900,
+              fontSize: fitFont(l(2), 36, 420),
+              ...rise(num, 16),
+            }}
+          >
+            {l(2)}
+          </div>
+        )}
       </>
     );
   }
@@ -608,7 +649,7 @@ export const DiagramScene: React.FC<{
           <div
             key={i}
             style={{
-              ...boxStyle(th, last, label, 540),
+              ...boxStyle(th, last, label, 540 - iw(i)),
               left: 270,
               top: ys[i],
               width: 540,
@@ -616,6 +657,7 @@ export const DiagramScene: React.FC<{
               ...popIn(seg(t, 0.4 + i * 0.35, 0.4)),
             }}
           >
+            <BoxIcon icon={ic(i)} color={last ? th.accent : th.ink} />
             {label}
           </div>
         );
