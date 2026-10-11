@@ -356,7 +356,8 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
   };
   return (
     <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border border-line-strong bg-panel py-3 pl-3.5 pr-2 pb-2 focus-within:border-accent focus-within:shadow-[0_0_0_3px_var(--color-accent-soft)]">
-      <div className="flex items-center gap-2 border-b border-line pb-2 pr-1.5">
+      {/* Jessi의 쓰는 칸에는 이름 줄을 두지 않는다 — 쓰는 사람이 늘 Jessi이고, 로그아웃할 일도 없다 */}
+      {!me.isAdmin && <div className="flex items-center gap-2 border-b border-line pb-2 pr-1.5">
         <PersonIcon icon={me.icon} color={me.color} />
         <NameMenu
           name={me.name}
@@ -366,7 +367,7 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
             { label: en ? "Sign out" : "로그아웃", onSelect: () => logout(location.pathname) },
           ]}
         />
-      </div>
+      </div>}
       <textarea
         ref={ref}
         value={text}
@@ -505,7 +506,8 @@ export function Comments({ postId }: { postId: string }) {
           })}
         </ol>
       )}
-      {me ? me.isAdmin ? null : <Writer me={me} onDone={load} onMe={(m) => setState({ ...state, me: m })} /> : <Gate />}
+      {/* Jessi도 댓글을 쓴다 — 처음엔 답글만 달게 했는데, 자기 블로그에 먼저 한마디 남길 자리가 없었다 (10/11) */}
+      {me ? <Writer me={me} onDone={load} onMe={(m) => setState({ ...state, me: m })} /> : <Gate />}
       <p aria-live="polite" className="sr-only">
         {flash}
       </p>
