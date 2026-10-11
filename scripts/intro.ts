@@ -20,6 +20,7 @@
  *   npx tsx scripts/intro.ts all          # 소개 글이 없는 프로젝트 전부
  *   npx tsx scripts/intro.ts apart,Anchor # 이 둘만
  *   npx tsx scripts/intro.ts icons        # 소개 글은 있는데 아이콘이 없는 프로젝트에 아이콘만
+ *   npx tsx scripts/intro.ts redo         # 이미 있는 소개 글을 지금 지시문으로 같은 날짜에 다시 쓴다
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -201,14 +202,19 @@ nameFrom에는 찾은 자리를 짧게 적습니다 ("index.html의 title").
 (예: 추리 게임 → ["spy", "search", "fingerprint"], 아파트 퀴즈 → ["building-community", "buildings"]).
 영어 소문자와 하이픈만 씁니다. 기술 스택(react, database)이 아니라 사용하는 사람이 보는 것을 고릅니다.
 
-## 글
+## 글 — 개요만
+이 글은 프로젝트를 **처음 시작할 때** 쓰는 소개입니다. 그 시점에는 만들어 둔 것이 거의 없습니다.
+그래서 무엇을 만드는 프로젝트인지 **개요만** 씁니다. 코드에서 본 화면·기능·진행 상황은
+"무엇을 만드는지" 판단하는 근거로만 쓰고 글에 늘어놓지 않습니다 — 기능 목록, 화면 목록,
+지금까지 만든 것, 남은 일, 사건 이름 같은 세부 내용은 쓰지 않습니다. 그날그날 만든 것은
+이후의 하루 글이 이야기합니다.
 - title: "…를 만들고 있습니다"처럼 무엇을 만드는지가 드러나는 한 문장.
-- ko: 아래 네 섹션의 마크다운. 전체 400–800자.
+- ko: 아래 두 섹션의 마크다운. 전체 250–450자. 목록(-)을 쓰지 않고 문단으로 씁니다.
   "## 어떤 프로젝트인가" — 첫 문장은 25–45자로 무엇인지 한 문장. 글 목록의 요약으로 그대로 쓰입니다.
-  "## 누구를 위해, 왜" — 누가 어떤 불편 때문에 쓰는지. 코드와 README에서 읽히는 만큼만.
-  "## 지금까지 만든 것" — 코드에 실제로 있는 화면·기능을 사용하는 사람 눈으로 3–5개.
-  "## 다음 할 것" — README·코드의 할 일 표시에서 읽히는 것. 없으면 한 문장으로 짧게.
-- en: 같은 구조의 영어 — "## What it is", "## Who it's for, and why", "## What's built so far", "## Next up".
+    이어서 사용하는 사람이 이것으로 무엇을 하게 되는지 한두 문장.
+  "## 누구를 위해, 왜" — 누가 어떤 불편이나 재미 때문에 쓰는지, 왜 만들기 시작했는지.
+    코드와 README에서 읽히는 만큼만.
+- en: 같은 구조의 영어 — "## What it is", "## Who it's for, and why".
 
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
 {"ready": true, "name": "서비스 이름 또는 null", "nameEn": "Service name or null", "nameFrom": "찾은 자리", "icons": ["후보", "후보", "후보"],
@@ -348,6 +354,17 @@ export function introDate(repo: string, tonight: string): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** 그 프로젝트 소개 글의 날짜 — 없으면 null */
+export function introDateOf(repo: string): string | null {
+  const dir = path.join(DEVLOG_DIR, repo);
+  if (!fs.existsSync(dir)) return null;
+  const f = fs
+    .readdirSync(dir)
+    .filter((x) => /^\d{4}-\d{2}-\d{2}\.md$/.test(x))
+    .find((x) => matter(fs.readFileSync(path.join(dir, x), "utf8")).data.intro === true);
+  return f ? f.slice(0, 10) : null;
+}
+
 export function hasIntro(repo: string): boolean {
   const dir = path.join(DEVLOG_DIR, repo);
   if (!fs.existsSync(dir)) return false;
@@ -397,7 +414,7 @@ export function saveIntroMeta(repo: string, it: Intro): void {
 
 /** 소개 글은 코드 구조를 설명하는 그림을 붙인다 — 화면 캡처는 하지 않는다 */
 export const INTRO_FIGURE_NOTE =
-  "이 글은 프로젝트 소개 글입니다. 코드에서 읽은 구조 — 사용하는 사람이 거치는 화면의 흐름이나 데이터가 오가는 길 — 를 설명하는 그림을 적어도 한 장 그립니다. 화면을 흉내 낸 그림은 그리지 않습니다.";
+  "이 글은 프로젝트를 처음 시작할 때 쓰는 개요입니다. 이 프로젝트가 무엇인지 한눈에 보이는 그림을 한 장 그립니다 — 사용하는 사람이 무엇을 넣고 무엇을 얻는지 같은 큰 흐름. 기능·화면을 늘어놓거나 화면을 흉내 내지 않고, 본문에 없는 세부 내용을 넣지 않습니다.";
 
 export async function writeIntroFigures(repo: string, date: string, it: Intro): Promise<{ count: number; dropped: string[] }> {
   const ko = parseSections(it.ko);
@@ -405,6 +422,8 @@ export async function writeIntroFigures(repo: string, date: string, it: Intro): 
   const { figures, dropped } = await generateFigures(it.title, { ko, en }, INTRO_FIGURE_NOTE);
   const file = path.join(DEVLOG_DIR, repo, `${date}.figures.json`);
   if (figures.length) fs.writeFileSync(file, JSON.stringify(figures, null, 1) + "\n");
+  // 다시 쓸 때 그림이 0장이면 예전 그림을 지운다 — 없는 섹션을 가리키는 그림이 남지 않게
+  else if (fs.existsSync(file)) fs.unlinkSync(file);
   return { count: figures.length, dropped };
 }
 
@@ -484,7 +503,13 @@ async function main(): Promise<void> {
   const projects: { slug: string; description?: string; status?: string; homepage?: string }[] = JSON.parse(
     fs.readFileSync(PROJECTS_FILE, "utf8"),
   );
-  const targets = arg === "all" ? projects.filter((p) => !hasIntro(p.slug)).map((p) => p.slug) : arg.split(",").map((s) => s.trim());
+  // redo — 지시문을 바꾼 뒤 이미 쓴 소개 글을 같은 날짜에 다시 쓴다 (10/11: 세부 목록을 빼고 개요만)
+  const redo = arg === "redo";
+  const targets = redo
+    ? projects.filter((p) => hasIntro(p.slug)).map((p) => p.slug)
+    : arg === "all"
+      ? projects.filter((p) => !hasIntro(p.slug)).map((p) => p.slug)
+      : arg.split(",").map((s) => s.trim());
   const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
   const owner = await getOwner(octokit);
   const lines: { text: string; textEn?: string; kind?: string }[] = [{ text: `npx tsx scripts/intro.ts ${arg}`, kind: "cmd" }];
@@ -496,7 +521,7 @@ async function main(): Promise<void> {
       console.warn(`- ${repo}: projects.json에 없습니다`);
       continue;
     }
-    if (hasIntro(repo)) {
+    if (!redo && hasIntro(repo)) {
       console.log(`- ${repo}: 소개 글이 이미 있습니다 — 건너뜀`);
       continue;
     }
@@ -518,7 +543,7 @@ async function main(): Promise<void> {
       const { resolveHomepage, isPublicStatus } = await import("./homepage");
       const real = isPublicStatus(p.status) ? null : await resolveHomepage(repo).catch(() => null);
       await checkIntro(r.intro, real ? new URL(real).host : null);
-      const date = introDate(repo, tonight);
+      const date = (redo ? introDateOf(repo) : null) ?? introDate(repo, tonight);
       writeIntroPost(repo, date, r.intro);
       saveIntroMeta(repo, r.intro);
       lines.push({ text: `intro    · ${repo}/${date} 소개 글 · ${fmtTally(takeUsage("intro"))}` });
