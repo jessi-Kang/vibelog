@@ -102,13 +102,14 @@ function checkLine(
   r: Readability | undefined,
   stage: "review" | "listen",
 ): RunLine {
-  const tally = fmtTally(takeUsage(stage));
-  const tail = tally ? ` · ${tally}` : "";
-  if (!r) return { text: `${label}  · ${id} 검사 기록 없음${tail}` };
+  const used = takeUsage(stage);
+  const tail = used ? ` · ${fmtTally(used)}` : "";
+  const tailEn = used ? ` · ${fmtTally(used, "en")}` : "";
+  if (!r) return { text: `${label}  · ${id} 검사 기록 없음${tail}`, textEn: `${label}  · ${id} no check record${tailEn}` };
   const f = fmtReadability(r);
   return {
     text: `${label}  · ${id} ${f.ko}${tail}`,
-    textEn: `${label}  · ${id} ${f.en}${tail}`,
+    textEn: `${label}  · ${id} ${f.en}${tailEn}`,
     ...(r.error && !r.rewritten ? { kind: "fail" as const } : {}),
   };
 }
@@ -384,11 +385,12 @@ async function writeFigures(
     // 어림값이 실측의 1/3이었다: 보이는 SVG 뒤에 그 3–4배의 생각이 있었다.
     // 다른 단계와 같은 tally를 쓴다 — 삽화 줄에만 cache가 빠져 있었다 (9/21 실측:
     // 로그에는 cache read 1,637이 찍히는데 홈 줄에는 in/out뿐이었다).
-    const tok = fmtTally(takeUsage("figures"));
+    const used = takeUsage("figures");
+    const tok = fmtTally(used);
     console.log(`- ${repo}/${date} 삽화 ${figures.length}장 (${tok})`);
     runLines.push({
       text: `figures  · ${repo}/${date} ${figures.length}장 · ${tok}`,
-      textEn: `figures  · ${repo}/${date} ${figures.length} figure${figures.length === 1 ? "" : "s"} · ${tok}`,
+      textEn: `figures  · ${repo}/${date} ${figures.length} figure${figures.length === 1 ? "" : "s"} · ${fmtTally(used, "en")}`,
     });
   } catch (err) {
     console.error(`- ${repo}/${date} 삽화 실패 (글 발행에는 영향 없음):`, err);
@@ -703,9 +705,10 @@ async function main(): Promise<void> {
       intros.set(a.repo, r.intro);
       if (day === date) introTonight.add(a.repo);
       console.log(`- ${a.repo}/${day}.md 소개 글: ${r.intro.title}`);
+      const introUsed = takeUsage("intro");
       runLines.push({
-        text: `intro    · ${a.repo}/${day} 소개 글 (ko, en) · ${fmtTally(takeUsage("intro"))}`,
-        textEn: `intro    · ${a.repo}/${day} intro post (ko, en) · ${fmtTally(takeUsage("intro"))}`,
+        text: `intro    · ${a.repo}/${day} 소개 글 (ko, en) · ${fmtTally(introUsed)}`,
+        textEn: `intro    · ${a.repo}/${day} intro post (ko, en) · ${fmtTally(introUsed, "en")}`,
       });
       const f = await writeIntroFigures(a.repo, day, r.intro);
       for (const why of f.dropped) {
@@ -714,10 +717,10 @@ async function main(): Promise<void> {
           textEn: `warn     · ${a.repo}/${day} figure dropped — ${why}`,
         });
       }
-      const tok = fmtTally(takeUsage("figures"));
+      const figUsed = takeUsage("figures");
       runLines.push({
-        text: `figures  · ${a.repo}/${day} ${f.count}장 · ${tok}`,
-        textEn: `figures  · ${a.repo}/${day} ${f.count} figure${f.count === 1 ? "" : "s"} · ${tok}`,
+        text: `figures  · ${a.repo}/${day} ${f.count}장 · ${fmtTally(figUsed)}`,
+        textEn: `figures  · ${a.repo}/${day} ${f.count} figure${f.count === 1 ? "" : "s"} · ${fmtTally(figUsed, "en")}`,
       });
     } catch (err) {
       if (err instanceof SafetyBlockError) {
@@ -758,8 +761,10 @@ async function main(): Promise<void> {
         if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
         await writeDevlog(a.repo, date, devlog, input.material);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
+        const genUsed = takeUsage("generate");
         runLines.push({
-          text: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(takeUsage("generate"))}`,
+          text: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(genUsed)}`,
+          textEn: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(genUsed, "en")}`,
         });
         runLines.push(checkLine("review ", `${a.repo}/${date}`, devlog.readability, "review"));
         published.push(a.repo);
@@ -840,8 +845,10 @@ async function main(): Promise<void> {
     for (const repo of published) {
       try {
         await runShorts(repo, date);
+        const scriptUsed = takeUsage("script");
         runLines.push({
-          text: `shorts   · ${repo}/${date} (ko, en) · 대본 ${fmtTally(takeUsage("script"))}`,
+          text: `shorts   · ${repo}/${date} (ko, en) · 대본 ${fmtTally(scriptUsed)}`,
+          textEn: `shorts   · ${repo}/${date} (ko, en) · script ${fmtTally(scriptUsed, "en")}`,
         });
         runLines.push(checkLine("listen ", `${repo}/${date}`, takeListenCheck(repo, date), "listen"));
         // 데모 화면이 한 곳으로 몰렸으면 남긴다 — 같은 페이지가 비율만 달리

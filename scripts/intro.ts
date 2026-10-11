@@ -554,10 +554,10 @@ export async function checkIntro(it: Intro, hiddenHost: string | null): Promise<
  * 소개 글이 쓴 프로젝트 설명만 작은 모델에게 보여 준다 — 아이콘은 "무엇인지"를 보여 주는
  * 것이라 설명이면 충분하다.
  */
-async function iconsOnly(): Promise<{ text: string }[]> {
+async function iconsOnly(): Promise<{ text: string; textEn?: string }[]> {
   const list: Record<string, unknown>[] = JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"));
   const client = new Anthropic();
-  const lines: { text: string }[] = [];
+  const lines: { text: string; textEn?: string }[] = [];
   for (const p of list) {
     if (p.icon || typeof p.about !== "string") continue;
     const res = await client.messages.create({
@@ -585,7 +585,10 @@ async function iconsOnly(): Promise<{ text: string }[]> {
     const icon = pickIcon(cands);
     if (icon) p.icon = icon;
     console.log(`- ${String(p.slug)}: ${icon?.name ?? "맞는 아이콘 없음"}`);
-    lines.push({ text: `icon     · ${String(p.slug)} ${icon ? icon.name.replace("tabler:", "") : "맞는 아이콘 없음"}` });
+    lines.push({
+      text: `icon     · ${String(p.slug)} ${icon ? icon.name.replace("tabler:", "") : "맞는 아이콘 없음"}`,
+      textEn: `icon     · ${String(p.slug)} ${icon ? icon.name.replace("tabler:", "") : "no matching icon"}`,
+    });
   }
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(list, null, 2) + "\n");
   return lines;
@@ -642,12 +645,18 @@ async function main(): Promise<void> {
         (redo ? introDateOf(repo) : null) ?? introDate(repo, tonight),
       );
       if (!r) {
-        lines.push({ text: `skip     · ${repo} 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다` });
+        lines.push({
+          text: `skip     · ${repo} 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다`,
+          textEn: `skip     · ${repo} no plan doc or code yet to tell what it is — intro post postponed`,
+        });
         console.log(`- ${repo}: 기획서·코드가 아직 없음 — 미룸`);
         continue;
       }
       if (r.status === "deferred") {
-        lines.push({ text: `skip     · ${repo} 무엇을 만드는지 아직 알 수 없어 소개 글을 미룹니다` });
+        lines.push({
+          text: `skip     · ${repo} 무엇을 만드는지 아직 알 수 없어 소개 글을 미룹니다`,
+          textEn: `skip     · ${repo} can't tell yet what it is — intro post postponed`,
+        });
         // 모델이 적은 이유는 로그에 남기지 않는다 — 공개 로그이고 검사 전의 글이다
         console.log(`- ${repo}: 무엇을 만드는지 아직 알 수 없다는 답 — 미룸`);
         continue;
@@ -658,22 +667,36 @@ async function main(): Promise<void> {
       await checkIntro(r.intro, real ? new URL(real).host : null);
       writeIntroPost(repo, date, r.intro);
       saveIntroMeta(repo, r.intro);
-      lines.push({ text: `intro    · ${repo}/${date} 소개 글 · ${fmtTally(takeUsage("intro"))}` });
+      const introUsed = takeUsage("intro");
+      lines.push({
+        text: `intro    · ${repo}/${date} 소개 글 · ${fmtTally(introUsed)}`,
+        textEn: `intro    · ${repo}/${date} intro post · ${fmtTally(introUsed, "en")}`,
+      });
       console.log(`- ${repo}/${date} 소개 글: ${r.intro.title} (이름: ${r.intro.name ?? "못 찾음"} — ${r.intro.nameFrom})`);
       const f = await writeIntroFigures(repo, date, r.intro);
-      lines.push({ text: `figures  · ${repo}/${date} ${f.count}장 · ${fmtTally(takeUsage("figures"))}` });
-      for (const why of f.dropped) lines.push({ text: `warn     · ${repo}/${date} 삽화 제외 — ${why}` });
+      const figUsed = takeUsage("figures");
+      lines.push({
+        text: `figures  · ${repo}/${date} ${f.count}장 · ${fmtTally(figUsed)}`,
+        textEn: `figures  · ${repo}/${date} ${f.count} figure${f.count === 1 ? "" : "s"} · ${fmtTally(figUsed, "en")}`,
+      });
+      for (const why of f.dropped) {
+        lines.push({ text: `warn     · ${repo}/${date} 삽화 제외 — ${why}`, textEn: `warn     · ${repo}/${date} figure dropped — ${why}` });
+      }
     } catch (err) {
       if (err instanceof SafetyBlockError) {
-        lines.push({ text: `block    · ${repo} ${err.message}`, kind: "fail" });
+        lines.push({
+          text: `block    · ${repo} ${err.message}`,
+          textEn: `block    · ${repo} intro post withheld by the safety check — ${err.flags.join(", ")}`,
+          kind: "fail",
+        });
         continue;
       }
       failed++;
       console.error(`- ${repo} 소개 글 실패:`, (err as Error).message);
-      lines.push({ text: `intro    · ${repo} 실패`, kind: "fail" });
+      lines.push({ text: `intro    · ${repo} 실패`, textEn: `intro    · ${repo} failed`, kind: "fail" });
     }
   }
-  lines.push({ text: "publish  · content 커밋 → vercel 자동 배포" });
+  lines.push({ text: "publish  · content 커밋 → vercel 자동 배포", textEn: "publish  · commit content → vercel auto-deploy" });
   fs.writeFileSync(
     path.join(process.cwd(), "content", "run.json"),
     JSON.stringify({ at: new Date().toISOString(), lines }, null, 2) + "\n",
