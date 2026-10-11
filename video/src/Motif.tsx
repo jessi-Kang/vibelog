@@ -32,7 +32,6 @@
  */
 import React from "react";
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import type { ProjectIcon } from "../../lib/project-icon";
 import type { MotifName } from "../../scripts/shorts-types";
 import type { ShortsTheme } from "./theme";
 
@@ -702,46 +701,12 @@ function body(name: MotifName, t: number, c: C): React.ReactNode {
   }
 }
 
-
-/**
- * 모티프의 "뜻이 박히는 자리" — 강조 점·도착 상자가 있는 곳 (viewBox 120 좌표).
- * 아이콘을 얹을 때 여기에 둔다. 모티프는 모양, 아이콘은 그 모양을 겪는 "무엇"이다
- */
-const FOCUS: Record<MotifName, [number, number]> = {
-  loop: [60, 62],
-  watch: [60, 62],
-  gate: [84, 38],
-  stack: [98, 18],
-  limit: [86, 18],
-  refine: [104, 56],
-  merge: [100, 62],
-  fanin: [66, 62],
-  tile: [91, 62],
-  cut: [84, 104],
-  missing: [60, 62],
-  oneline: [100, 62],
-  fallback: [32, 70],
-  late: [100, 62],
-  tag: [86, 62],
-  scan: [104, 74],
-  leak: [62, 104],
-  stale: [32, 62],
-  convert: [92, 60],
-  remove: [60, 62],
-  earlyout: [52, 62],
-  fanout: [60, 26],
-};
-
 export const MotifScene: React.FC<{
   name: MotifName;
   th: ShortsTheme;
   /** 장면이 시작되는 영상 시각(초) */
   fromSec: number;
-  /** 모티프가 말하는 대상 아이콘 — 있으면 뜻이 박히는 순간 그 자리에 얹는다 */
-  icon?: ProjectIcon | null;
-  /** 아이콘 얹는 방식 — 검수·시안용 (focus 박히는 자리에 / top 모티프 위 판에) */
-  iconMode?: "focus" | "top";
-}> = ({ name, th, fromSec, icon = null, iconMode = "focus" }) => {
+}> = ({ name, th, fromSec }) => {
   const { fps } = useVideoConfig();
   const t = useCurrentFrame() / fps - fromSec;
   const c: C = { line: th.muted, hi: th.accent, ink: th.ink };
@@ -761,65 +726,7 @@ export const MotifScene: React.FC<{
     >
       <svg viewBox="0 0 120 120" width={SIZE} height={SIZE}>
         {body(name, t, c)}
-        {icon && iconMode === "focus" && <FocusIcon icon={icon} at={FOCUS[name]} p={ph(t, 55, 70)} th={th} />}
       </svg>
-      {icon && iconMode === "top" && <TopIcon icon={icon} p={ph(t, 0, 20)} th={th} />}
     </div>
   );
 };
-
-/** 박히는 자리의 아이콘 — 바탕색 원판이 밑의 선을 가리고, 그 위에 강조색 선 아이콘 */
-const FocusIcon: React.FC<{ icon: ProjectIcon; at: [number, number]; p: number; th: ShortsTheme }> = ({
-  icon,
-  at,
-  p,
-  th,
-}) => {
-  if (p <= 0) return null;
-  const r = 15 * (0.6 + 0.4 * p);
-  const k = (18 / 24) * (0.6 + 0.4 * p);
-  return (
-    <g opacity={p}>
-      <circle cx={at[0]} cy={at[1]} r={r} fill={th.bg} stroke={th.accent} strokeWidth={SW} />
-      <g transform={`translate(${at[0] - 12 * k} ${at[1] - 12 * k}) scale(${k})`}>
-        {icon.paths.map((q, i) => (
-          <path
-            key={i}
-            d={q.d}
-            fill={q.filled ? th.accent : "none"}
-            stroke={th.accent}
-            strokeWidth={2.2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        ))}
-      </g>
-    </g>
-  );
-};
-
-/** 모티프 위 작은 판에 아이콘 — 처음부터 "무엇의 이야기"인지 보여 주고, 아래 모티프가 모양을 보여 준다 */
-const TopIcon: React.FC<{ icon: ProjectIcon; p: number; th: ShortsTheme }> = ({ icon, p, th }) => (
-  <div
-    style={{
-      position: "absolute",
-      left: SIZE / 2 - 110,
-      top: -250,
-      width: 220,
-      height: 220,
-      display: "grid",
-      placeItems: "center",
-      background: th.panel,
-      border: `4px solid ${th.line}`,
-      borderRadius: th.radius,
-      opacity: p,
-    }}
-  >
-    <svg viewBox="0 0 24 24" width={128} height={128} fill="none" stroke={th.accent} strokeWidth={1.6}
-      strokeLinecap="round" strokeLinejoin="round">
-      {icon.paths.map((q, i) => (
-        <path key={i} d={q.d} {...(q.filled ? { fill: th.accent } : {})} />
-      ))}
-    </svg>
-  </div>
-);

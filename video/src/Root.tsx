@@ -7,7 +7,7 @@ import {
   DIAGRAM_SHEET_SLOTS,
   DIAGRAM_SLOT_SEC,
 } from "./DiagramSheet";
-import { MotifIconTry, MotifSheet, type MotifSheetProps, SHEET_SLOT_SEC } from "./MotifSheet";
+import { MotifSheet, type MotifSheetProps, SHEET_SLOT_SEC } from "./MotifSheet";
 import { CaptionSheet } from "./CaptionSheet";
 import { RemocnSheet, type RemocnSheetProps, REMOCN_SHEET_FRAMES } from "./RemocnSheet";
 import { ShipIt, type ShipItProps } from "./ShipIt";
@@ -59,16 +59,6 @@ export const RemotionRoot: React.FC = () => {
       fps={FPS}
       durationInFrames={Math.ceil(MOTIFS.length * SHEET_SLOT_SEC * FPS)}
       defaultProps={{ theme: "terminal" } as MotifSheetProps}
-    />
-    {/* 검수용 — 모티프 + 아이콘 시안 */}
-    <Composition
-      id="MotifIconTry"
-      component={MotifIconTry}
-      width={1080}
-      height={1920}
-      fps={FPS}
-      durationInFrames={90}
-      defaultProps={{ name: "loop", icon: { name: "tabler:code", paths: [{ d: "m7 8l-4 4l4 4m10-8l4 4l-4 4M14 4l-4 16" }] }, mode: "focus", theme: "terminal" }}
     />
     {/* 검수용 — 다이어그램 다섯 종. 테마마다 다르게 나오는 흐리기·대비를
         그 테마로 돌려 본다 (paper에서만 '전' 줄이 안 보였던 자리) */}
