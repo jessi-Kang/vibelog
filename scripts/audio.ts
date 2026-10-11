@@ -24,7 +24,13 @@ import {
 } from "./shorts-types";
 
 const API = "https://api.elevenlabs.io/v1";
-const MODEL_ID = "eleven_multilingual_v2";
+/**
+ * 목소리 모델 — 먼저 Eleven v4로 만들고, 실패하면(크레딧을 다 쓴 경우 등) 예전 모델로 다시 만든다 (10/11 Jessi).
+ * 크레딧이 떨어졌을 때 오는 답의 모양이 문서에 없어서, 이유를 가리지 않고 v4가 실패하면 넘어간다 —
+ * 그날 쇼츠가 목소리 때문에 통째로 빠지는 것보다 예전 목소리로 나가는 게 낫다.
+ */
+const MODEL_V4 = "eleven_v4";
+const MODEL_V2 = "eleven_multilingual_v2";
 // docs/03-shorts-spec.md 승인 샘플 기준 확정값 (2026-09-09 갱신)
 const VOICE_SETTINGS = {
   stability: 0.5,
@@ -33,6 +39,17 @@ const VOICE_SETTINGS = {
   use_speaker_boost: true,
   speed: 1.0,
 };
+// v4에는 style·speed 조절이 없다 (ElevenLabs 모델 문서). 둘 다 기본값이었으니 빼도 읽기는 같다.
+const VOICE_SETTINGS_V4 = {
+  stability: VOICE_SETTINGS.stability,
+  similarity_boost: VOICE_SETTINGS.similarity_boost,
+  use_speaker_boost: VOICE_SETTINGS.use_speaker_boost,
+};
+type Model = { id: string; settings: Record<string, number | boolean> };
+const MODELS: Model[] = [
+  { id: MODEL_V4, settings: VOICE_SETTINGS_V4 },
+  { id: MODEL_V2, settings: VOICE_SETTINGS },
+];
 const MUSIC_PROMPT =
   "minimal lo-fi electronic, soft synth pad, muted plucked melody, " +
   "light percussion around 90 BPM, sits under narration, no vocals, no drops, " +
@@ -254,6 +271,7 @@ function speakable(sentence: string, lang: "ko" | "en"): string {
 
 async function tts(
   text: string,
+  model: Model,
 ): Promise<{ audio: Buffer; alignment: Alignment }> {
   const voiceId = process.env.ELEVENLABS_VOICE_ID;
   if (!voiceId) throw new Error("ELEVENLABS_VOICE_ID가 없습니다");
@@ -264,8 +282,8 @@ async function tts(
       headers: { "xi-api-key": apiKey(), "content-type": "application/json" },
       body: JSON.stringify({
         text,
-        model_id: MODEL_ID,
-        voice_settings: VOICE_SETTINGS,
+        model_id: model.id,
+        voice_settings: model.settings,
       }),
     },
   );
@@ -353,8 +371,30 @@ async function cachedTts(
   lang: "ko" | "en",
   spoken: string,
 ): Promise<{ audio: Buffer; alignment: Alignment }> {
+  let lastErr: unknown;
+  for (const [i, model] of MODELS.entries()) {
+    try {
+      return await cachedTtsWith(script, lang, spoken, model);
+    } catch (err) {
+      lastErr = err;
+      const next = MODELS[i + 1];
+      if (!next) break;
+      // 응답 본문은 짧게만 — 실행 로그는 공개다
+      console.warn(`[audio] ${lang} ${model.id}로 목소리를 못 만들었습니다 (${String((err as Error).message).slice(0, 160)}) — ${next.id}로 다시 만듭니다`);
+    }
+  }
+  throw lastErr;
+}
+
+async function cachedTtsWith(
+  script: ShortsScript,
+  lang: "ko" | "en",
+  spoken: string,
+  model: Model,
+): Promise<{ audio: Buffer; alignment: Alignment }> {
+  // v2 지문은 예전과 같은 모양으로 둔다 — 그래야 이미 저장해 둔 v2 녹음을 그대로 받아 쓴다
   const key = createHash("sha256")
-    .update(JSON.stringify({ spoken, voice: process.env.ELEVENLABS_VOICE_ID, MODEL_ID, VOICE_SETTINGS }))
+    .update(JSON.stringify({ spoken, voice: process.env.ELEVENLABS_VOICE_ID, MODEL_ID: model.id, VOICE_SETTINGS: model.settings }))
     .digest("hex")
     .slice(0, 16);
   const base = `shorts/${script.repo}/${script.date}.${lang}.narration.${key}`;
@@ -362,13 +402,14 @@ async function cachedTts(
   if (audio && align) {
     try {
       const alignment = JSON.parse(align.toString("utf8")) as Alignment;
-      console.log(`[audio] ${lang} 저장해 둔 내레이션을 씁니다 — 목소리를 새로 만들지 않습니다`);
+      console.log(`[audio] ${lang} 저장해 둔 내레이션을 씁니다 (${model.id}) — 목소리를 새로 만들지 않습니다`);
       return { audio, alignment };
     } catch {
       // 타임스탬프가 깨졌으면 새로 녹음한다
     }
   }
-  const fresh = await tts(spoken);
+  const fresh = await tts(spoken, model);
+  console.log(`[audio] ${lang} 목소리 모델 ${model.id}`);
   await Promise.all([
     blobPut(`${base}.mp3`, fresh.audio),
     blobPut(`${base}.json`, JSON.stringify(fresh.alignment)),

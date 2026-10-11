@@ -391,7 +391,8 @@ Opus 호출이 늘지 않는다. 대본 다음이 목소리 생성·녹화·렌�
   - 단위·조사 경계의 연음을 미리 잇는다 — `222건이` → `이백이십이꺼니`.
   - 연음은 거기까지만. 숫자 읽기 안쪽까지 이으면 (`이배기시비`) 낱말 꼴이 사라지고, 고유어는 ㄴ첨가를 놓쳐 `열여섯`이 `여려섯`으로 틀린다.
   - 음절 수는 보존되므로 자막 정렬(alignment)에는 영향이 없다.
-  - 확정 설정(승인된 샘플 기준): speed 1.00 / stability 0.50 / similarity_boost 0.75 / style 0 / speaker_boost on. 모델 eleven_multilingual_v2.
+  - 확정 설정(승인된 샘플 기준): speed 1.00 / stability 0.50 / similarity_boost 0.75 / style 0 / speaker_boost on.
+  - 모델: 먼저 `eleven_v4`로 만들고, 실패하면(크레딧을 다 쓴 경우 등) 예전처럼 `eleven_multilingual_v2`로 다시 만든다 (10/11 Jessi). v4에는 style·speed 조절이 없어서 그 둘은 빼고 보낸다 — 둘 다 기본값이라 읽기는 같다. 어느 모델로 만들었는지는 Actions 로그의 `[audio] … 목소리 모델` 줄에 남는다.
   - 같은 설정이라도 테이크마다 길이가 ±1초 정도 달라진다 → 타이밍은 항상 생성된 음성의 타임스탬프로 잡는다. 텍스트를 미리 자막에 박아두고 음성을 맞추지 않는다.
   - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
 
