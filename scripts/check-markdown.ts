@@ -23,6 +23,7 @@ import { fromMarkdown } from "mdast-util-from-markdown";
 import { gfm } from "micromark-extension-gfm";
 import { gfmFromMarkdown } from "mdast-util-gfm";
 import type { Node, Parent } from "unist";
+import { keepBackslashes } from "../lib/md-backslash";
 
 /** 우리 글이 쓰는 서식. 이 밖은 모델이 흘린 기호가 먹힌 것으로 본다 */
 const ALLOWED = new Set([
@@ -53,6 +54,11 @@ function bodyOf(source: string): string {
   return m ? source.slice(m[0].length) : source;
 }
 
+/** 글은 화면과 같이 역슬래시를 글자로 읽는다 (lib/md-backslash.ts) — 문서는 GitHub가 읽으므로 그대로 */
+function postBodyOf(source: string): string {
+  return keepBackslashes(bodyOf(source));
+}
+
 function textOf(node: Node): string {
   if ("value" in node && typeof node.value === "string") return node.value;
   const kids = (node as Parent).children ?? [];
@@ -60,7 +66,7 @@ function textOf(node: Node): string {
 }
 
 export function checkMarkdown(file: string, source: string): MarkdownFinding[] {
-  const tree = fromMarkdown(bodyOf(source), {
+  const tree = fromMarkdown(postBodyOf(source), {
     // 화면과 **같은 설정**으로 읽는다 (post-client.tsx의 REMARK) — 검사기가
     // 렌더러와 다른 눈을 갖고 있으면 없는 문제를 보고하거나 있는 문제를 놓친다
     extensions: [gfm({ singleTilde: false })],

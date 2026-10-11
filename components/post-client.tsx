@@ -9,6 +9,7 @@ import { projectColor, withAlpha } from "@/lib/project-color";
 import { hasRealFail } from "@/lib/has-fail";
 import { useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
+import { keepBackslashes } from "@/lib/md-backslash";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
 import { allowedPostLink } from "@/lib/md-links";
@@ -85,7 +86,7 @@ function Md({ children }: { children: string }) {
   return (
     <div className="text-md leading-[1.75] text-ink-soft [text-wrap:pretty] [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
       <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
-        {children}
+        {keepBackslashes(children)}
       </ReactMarkdown>
     </div>
   );
@@ -269,7 +270,7 @@ export function PostClient({ post }: { post: PostData }) {
           ) : (
             <div className="prose-devlog">
               <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
-                {post.body}
+                {keepBackslashes(post.body)}
               </ReactMarkdown>
             </div>
           )}
