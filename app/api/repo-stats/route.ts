@@ -41,8 +41,10 @@ export async function GET(req: Request) {
     return Response.json(body, {
       headers: { "cache-control": "public, s-maxage=300, stale-while-revalidate=600" },
     });
-  } catch {
-    // 못 세면 화면은 저장값을 그대로 쓴다. 실패는 짧게만 캐시한다
+  } catch (e) {
+    // 못 세면 화면은 저장값을 그대로 쓴다. 실패는 짧게만 캐시한다. 이유(토큰 권한 등)는
+    // 응답이 아니라 함수 로그에만 남긴다
+    console.error(`[repo-stats] ${slug}: ${e instanceof Error ? e.message : e}`);
     return Response.json(
       { error: "unavailable" },
       { status: 502, headers: { "cache-control": "public, s-maxage=30" } },
