@@ -9,7 +9,7 @@
  * 각 회사 안에서는 최신 모델부터 부르고, 모델을 못 찾으면(404) 다음 모델로 간다.
  * 모델 이름은 2026-10-11 공식 문서 기준이다 — 바뀌면 아래 목록만 고친다.
  *
- * 출력: content/shorts/<repo>/<date>.art/<scene>.png
+ * 출력: content/shorts/<repo>/<date>.art/<scene>.jpg (Gemini) 또는 .png (OpenAI)
  * 필요 환경변수: GEMINI_API_KEY, OPENAI_API_KEY (비밀값, 둘 다 없으면 통째로 건너뜀)
  *
  * 사용: npx tsx scripts/art.ts <repo> <date>
@@ -41,7 +41,9 @@ export function artDir(repo: string, date: string): string {
 
 class ModelNotFound extends Error {}
 
-async function geminiOnce(model: string, prompt: string): Promise<Buffer> {
+type Image = { data: Buffer; ext: "png" | "jpg" };
+
+async function geminiOnce(model: string, prompt: string): Promise<Image> {
   const res = await fetch("https://generativelanguage.googleapis.com/v1beta/interactions", {
     method: "POST",
     headers: {
@@ -51,7 +53,8 @@ async function geminiOnce(model: string, prompt: string): Promise<Buffer> {
     body: JSON.stringify({
       model,
       input: prompt,
-      response_format: { type: "image", mime_type: "image/png", aspect_ratio: "1:1", image_size: "1K" },
+      // Nano Banana 2.1은 JPEG만 낸다 — PNG를 달라고 하면 400 (10/11 art-try에서 확인)
+      response_format: { type: "image", mime_type: "image/jpeg", aspect_ratio: "1:1", image_size: "1K" },
     }),
   });
   if (res.status === 404) throw new ModelNotFound(`Gemini ${model} 없음`);
@@ -72,10 +75,10 @@ async function geminiOnce(model: string, prompt: string): Promise<Buffer> {
     .filter((c) => c.type === "image" && c.data);
   const b64 = images.at(-1)?.data;
   if (!b64) throw new Error("Gemini 응답에 이미지가 없습니다");
-  return Buffer.from(b64, "base64");
+  return { data: Buffer.from(b64, "base64"), ext: "jpg" };
 }
 
-async function openaiOnce(model: string, prompt: string): Promise<Buffer> {
+async function openaiOnce(model: string, prompt: string): Promise<Image> {
   const res = await fetch("https://api.openai.com/v1/images/generations", {
     method: "POST",
     headers: {
@@ -98,16 +101,16 @@ async function openaiOnce(model: string, prompt: string): Promise<Buffer> {
   }
   const b64 = json.data?.[0]?.b64_json;
   if (!b64) throw new Error("OpenAI 응답에 이미지가 없습니다");
-  return Buffer.from(b64, "base64");
+  return { data: Buffer.from(b64, "base64"), ext: "png" };
 }
 
 /** 한 회사 안에서 최신 모델부터 — 모델을 못 찾을 때만 다음 모델로 */
-async function fromProvider(provider: Provider, prompt: string): Promise<{ png: Buffer; model: string }> {
+async function fromProvider(provider: Provider, prompt: string): Promise<Image & { model: string }> {
   const [models, once] = provider === "gemini" ? [GEMINI_MODELS, geminiOnce] : [OPENAI_MODELS, openaiOnce];
   let last: unknown;
   for (const model of models) {
     try {
-      return { png: await once(model, prompt), model };
+      return { ...(await once(model, prompt)), model };
     } catch (err) {
       last = err;
       if (!(err instanceof ModelNotFound)) throw err;
@@ -127,7 +130,7 @@ export function providerOrder(): Provider[] {
 export async function generateImage(
   prompt: string,
   order: Provider[] = providerOrder(),
-): Promise<{ png: Buffer; provider: Provider; model: string }> {
+): Promise<Image & { provider: Provider; model: string }> {
   if (order.length === 0) throw new Error("GEMINI_API_KEY·OPENAI_API_KEY가 둘 다 없습니다");
   let last: unknown;
   for (const provider of order) {
@@ -160,11 +163,10 @@ export async function generateArt(repo: string, date: string): Promise<void> {
   const dir = artDir(repo, date);
   fs.mkdirSync(dir, { recursive: true });
   for (const l of targets) {
-    const out = path.join(dir, `${l.scene}.png`);
     try {
       const r = await generateImage(STYLE + (l.art as string));
-      fs.writeFileSync(out, r.png);
-      console.log(`[art] ${l.scene}.png 생성 (${r.provider} ${r.model})`);
+      fs.writeFileSync(path.join(dir, `${l.scene}.${r.ext}`), r.data);
+      console.log(`[art] ${l.scene}.${r.ext} 생성 (${r.provider} ${r.model})`);
     } catch (err) {
       console.warn(`[art] ${l.scene} 생성 실패 — 그 장면은 그래픽 없이:`, err);
     }
@@ -177,8 +179,8 @@ if (process.argv[1]?.endsWith("art.ts") && process.argv[2] === "--try") {
   const only = process.argv[4] as Provider | undefined;
   generateImage(STYLE + prompt, only ? [only] : undefined)
     .then((r) => {
-      const out = path.join(process.cwd(), `art-try-${r.provider}.png`);
-      fs.writeFileSync(out, r.png);
+      const out = path.join(process.cwd(), `art-try-${r.provider}.${r.ext}`);
+      fs.writeFileSync(out, r.data);
       console.log(`${r.provider} ${r.model} → ${out}`);
     })
     .catch((err) => {

@@ -30,6 +30,7 @@ jobs:
 
       # 한쪽이 실패해도 다른 쪽은 돌린다
       - name: Gemini
+        id: gemini
         continue-on-error: true
         run: npx tsx scripts/art.ts --try "$PROMPT" gemini
         env:
@@ -37,6 +38,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: OpenAI
+        id: openai
         continue-on-error: true
         run: npx tsx scripts/art.ts --try "$PROMPT" openai
         env:
@@ -46,5 +48,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: art-try
-          path: art-try-*.png
+          path: art-try-*
           if-no-files-found: warn
+
+      # 위 두 단계는 실패해도 넘어가게 해 두었으므로, 실패를 여기서 빨갛게 보인다
+      - name: Result
+        run: |
+          echo "gemini: ${{ steps.gemini.outcome }} · openai: ${{ steps.openai.outcome }}"
+          test "${{ steps.gemini.outcome }}" = success && test "${{ steps.openai.outcome }}" = success
