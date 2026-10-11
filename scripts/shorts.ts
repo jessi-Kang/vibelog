@@ -19,6 +19,7 @@ import { generateAudio } from "./audio";
 import { blobDel, blobGet, blobPut } from "./blob-cache";
 import { record } from "./record";
 import { posterAtSec, renderShort } from "./render";
+import { makeSmall } from "./small-video";
 import {
   shortsJsonPath,
   timingJsonPath,
@@ -142,6 +143,15 @@ export async function runShorts(
       if (url) {
         media[lang] = url;
         console.log(`[shorts] 업로드: ${url}`);
+        // 작게 보는 화면(데스크톱 팝업)용 사본 — 실패해도 원본으로 재생된다
+        try {
+          const small = mp4.replace(/\.mp4$/, ".sm.mp4");
+          makeSmall(mp4, small);
+          const smUrl = await upload(small, `shorts/${repo}/${date}.${lang}.sm.mp4`);
+          if (smUrl) media[`${lang}Sm`] = smUrl;
+        } catch (err) {
+          console.warn(`[shorts] 작은 사본 실패(${lang}) — 원본만:`, err instanceof Error ? err.message : err);
+        }
       } else {
         console.log(`[shorts] BLOB_READ_WRITE_TOKEN 없음 — 로컬 파일만: ${mp4}`);
       }

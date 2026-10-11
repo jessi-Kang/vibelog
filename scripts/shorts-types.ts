@@ -355,7 +355,8 @@ export interface ShortsScript {
   /** 영문 영상용 커밋 메시지 (frontmatter shasEn) — 없으면 ko로 폴백 */
   commitsEn?: [string, string][];
   /** 8단계에서 업로드 후 기록. poster/posterEn = 훅 헤드라인이 다 켜진 순간의 프레임(썸네일용) */
-  media?: { ko?: string; en?: string; poster?: string; posterEn?: string };
+  /** koSm·enSm: 작게 보는 화면용 540×960 사본 (scripts/small-video.ts) */
+  media?: { ko?: string; en?: string; koSm?: string; enSm?: string; poster?: string; posterEn?: string };
 }
 
 export interface TimedWord {
