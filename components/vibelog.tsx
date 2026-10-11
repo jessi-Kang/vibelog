@@ -36,8 +36,8 @@ export function ProjectCard({ project }: { project: Project }) {
         aria-label={`${project.name} 상세 보기`}
         className="absolute inset-0 z-0 rounded-lg"
       />
-      {/* 아이콘 + 서비스 이름 | 상태. 레포 이름은 이름 아래 줄로 — 한 줄에 셋을 두면 좁은
-          화면에서 이름이 잘렸다 (docs/project-icon-places.html ①) */}
+      {/* 아이콘 + 서비스 이름 | 상태 (docs/project-icon-places.html ①). 레포 이름은 홈에서 뺐다 —
+          GitHub에서 찾아갈 이름은 프로젝트 페이지에 있다 (Jessi, 10/11) */}
       <div className="flex flex-col gap-0.5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-bold text-ink">
@@ -48,9 +48,6 @@ export function ProjectCard({ project }: { project: Project }) {
           </h3>
           <StatusBadge status={project.status} />
         </div>
-        {project.name !== project.slug && (
-          <span className={`truncate font-mono text-2xs text-muted ${project.icon ? "pl-7" : ""}`}>{project.slug}</span>
-        )}
       </div>
       {project.description && (
         <p className="m-0 text-base leading-[1.55] text-muted [text-wrap:pretty]">
