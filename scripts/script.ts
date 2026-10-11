@@ -250,9 +250,28 @@ export function applyReplace(original: unknown, answer: Record<string, unknown>)
   for (const i of keys) {
     const v = replace[String(i)];
     const items = Array.isArray(v) ? v : v && typeof v === "object" ? [v] : null;
-    if (items) out.splice(i, 1, ...items);
+    if (items) out.splice(i, 1, ...items.map((it) => keepVisual(out[i], it)));
   }
   return out;
+}
+
+/** 화면·그림을 정하는 필드 — 이 중 하나라도 있으면 빈 화면이 아니다 (blankScenes와 같은 기준) */
+const VISUAL_KEYS = ["screen", "find", "findEn", "shot", "diagram", "icon", "motif", "art"] as const;
+
+/**
+ * 문장을 고쳐 받을 때 화면·그림 지정을 빠뜨리면 원래 문장의 것을 이어받는다.
+ * 지시문에 "화면·그림 지정은 유지합니다"라고 적어도 빠뜨린 문장이 와서, 듣기 검사로 문장만
+ * 고쳤는데 빈 화면이 생겨 영상 전체가 멈췄다 (vibelog 10/11 다시 만들기 — fail 문장의 그림이 빠졌다)
+ */
+function keepVisual(orig: unknown, next: unknown): unknown {
+  if (!next || typeof next !== "object" || !orig || typeof orig !== "object") return next;
+  const n = next as Record<string, unknown>;
+  const o = orig as Record<string, unknown>;
+  const has = (x: Record<string, unknown>) => VISUAL_KEYS.some((k) => k !== "findEn" && k !== "shot" && x[k]);
+  if (has(n) || !has(o)) return next;
+  const carried: Record<string, unknown> = {};
+  for (const k of VISUAL_KEYS) if (o[k] !== undefined) carried[k] = o[k];
+  return { ...n, ...carried };
 }
 
 function parseJson(text: string): Record<string, unknown> {
@@ -952,11 +971,8 @@ export async function generateScript(
   }
   if (blanks.length > 0 || unclear.length > 0 || longs.length > 0) {
     if (blanks.length > 0) {
-      console.warn(
-        `[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks
-          .map((l) => `"${l.ko.slice(0, 24)}"`)
-          .join(", ")}`,
-      );
+      // 문장은 적지 않는다 — 공개 로그이고 안전 검사 전의 대본이다
+      console.warn(`[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks.map((l) => `#${lines.indexOf(l)} ${l.scene}`).join(", ")}`);
     }
     const ask: string[] = [];
     if (blanks.length > 0) {
@@ -1048,7 +1064,8 @@ export async function generateScript(
   if (blanks.length > 0) {
     throw new Error(
       `빈 화면이 될 문장이 남아 있습니다 (${blanks.length}개) — 영상을 만들지 않습니다: ` +
-        blanks.map((l) => `[${l.scene}] ${l.ko}`).join(" / "),
+        // 문장은 적지 않는다 — 예외 메시지는 공개 로그에 찍힌다
+        blanks.map((l) => `#${lines.indexOf(l)} ${l.scene}`).join(", "),
     );
   }
 
