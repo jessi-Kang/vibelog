@@ -22,12 +22,23 @@ export interface ThumbData {
   poster?: string;
 }
 
-/** 호버 시 재생 표시 — "이건 영상"이라는 신호. 정지 상태에선 조용히 */
+/**
+ * 호버 시 재생 표시 — "이건 영상"이라는 신호. 정지 상태에선 조용히.
+ * 글자 "▶"는 기기마다 글꼴이 달라 모양·자리가 흔들려서 Tabler player-play-filled로 바꿨다
+ * (10/11 Jessi, 시안 B — 민트 원판). 삼각형은 상자 가운데가 아니라 무게중심을 원 가운데에
+ * 맞춘다 — 상자로 맞추면 왼쪽으로 쏠려 보인다. translate 0.9는 4배 화면에서 잰 값이다.
+ */
 function PlayOverlay() {
   return (
     <div className="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-150 group-hover:opacity-100">
-      <span className="grid h-12 w-12 place-items-center rounded-full border border-line-strong bg-bg-deep/80 pl-1 font-mono text-sm text-accent">
-        ▶
+      <span className="grid h-12 w-12 place-items-center rounded-full bg-accent text-accent-ink shadow-[0_2px_10px_rgba(0,0,0,.35)]">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            transform="translate(0.9 0)"
+            fill="currentColor"
+            d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8A1 1 0 0 0 6 4"
+          />
+        </svg>
       </span>
     </div>
   );
