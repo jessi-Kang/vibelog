@@ -11,10 +11,12 @@
  */
 import React from "react";
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import type {
-  ShortsScript,
-  ShortsTiming,
-  TimedSentence,
+import {
+  lineStarts,
+  longestLine,
+  type ShortsScript,
+  type ShortsTiming,
+  type TimedSentence,
 } from "../../scripts/shorts-types";
 import {
   FONT_SANS,
@@ -66,6 +68,9 @@ export const Captions: React.FC<{
   // 떠 있어 중복된다 (Jessi 지시). 헤드라인은 HookCard가 말 따라 갱신.
   if (line.scene === "hook") return null;
   // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다 (Jessi 지적)
+  // 대본이 뜻 덩어리로 끊어 둔 줄 — 있으면 그 자리에서 끊는다. 없으면 폭으로 고르게 나눈다
+  const texts = win.sentence.words.map((w) => w.text);
+  const breaks = lineStarts(texts, lang === "ko" ? line.koLines : line.enLines);
   const kwOn = keywordIndices(
     win.sentence.words.map((w) => w.text),
     lang === "ko" ? line.keywords : line.keywordsEn,
@@ -90,12 +95,13 @@ export const Captions: React.FC<{
       <div
         style={{
           fontFamily: FONT_SANS,
-          fontSize: 52,
+          fontSize: breaks ? Math.min(52, Math.floor(930 / longestLine(texts, breaks))) : 52,
           fontWeight: 900,
           // 마커칠 테마는 상자 겹침 방지로 줄간을 조금 더 (훅과 같은 이유)
           lineHeight: th.keyword === "marker" ? 1.42 : 1.3,
           wordBreak: "keep-all",
           textWrap: "balance",
+          ...(breaks ? { whiteSpace: "nowrap" as const } : {}),
           // 글자 그림자(다크 검은 그림자·라이트 흰 글로우)는 하이라이트 상자
           // 주변이 뿌옇게 번져 보여 제거 (Jessi 지시). 자막은 폰 프레임 아래
           // 안전 구역에만 놓이므로 그림자 없이도 배경과 안 겹친다.
@@ -120,7 +126,7 @@ export const Captions: React.FC<{
               >
                 {w.text}
               </span>
-              {i < win.sentence.words.length - 1 ? " " : null}
+              {i < win.sentence.words.length - 1 ? (breaks?.includes(i + 1) ? <br /> : " ") : null}
             </React.Fragment>
           );
         })}
