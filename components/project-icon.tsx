@@ -1,6 +1,6 @@
-import { safeIcon, type ProjectIcon as Icon } from "@/lib/project-icon";
+import { iconOrDefault, type ProjectIcon as Icon } from "@/lib/project-icon";
 
-/** 프로젝트 아이콘 (Tabler outline, lib/project-icon.ts) — 색은 부모의 글자색을 따른다 */
+/** 프로젝트 아이콘 (Tabler outline, lib/project-icon.ts) — 색은 부모의 글자색을 따른다. 없으면 기본 아이콘(코드 꺾쇠) */
 export function ProjectIcon({
   icon,
   size = 28,
@@ -12,8 +12,7 @@ export function ProjectIcon({
   className?: string;
   style?: React.CSSProperties;
 }) {
-  const ok = safeIcon(icon);
-  if (!ok) return null;
+  const ok = iconOrDefault(icon);
   return (
     <svg
       viewBox="0 0 24 24"

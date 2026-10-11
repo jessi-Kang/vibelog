@@ -19,7 +19,7 @@ import {
   type TimedSentence,
 } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
-import { safeIcon, type ProjectIcon } from "../../lib/project-icon";
+import { iconOrDefault, type ProjectIcon } from "../../lib/project-icon";
 import { DiagramScene } from "./Diagram";
 import { MotifScene } from "./Motif";
 import { IconScene } from "./IconScene";
@@ -389,7 +389,8 @@ export const ShipIt: React.FC<ShipItProps> = ({
   project = null,
 }) => {
   const th = getTheme(theme);
-  const icon = safeIcon(project?.icon);
+  // 머리글 아이콘 — 없으면 기본 아이콘(코드 꺾쇠). 프로젝트 정보가 아예 없으면 그리지 않는다
+  const icon = project ? iconOrDefault(project.icon) : null;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;

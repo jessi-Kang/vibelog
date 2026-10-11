@@ -22,6 +22,21 @@ export interface ProjectIcon {
 /** 경로 명령과 숫자만 — 다른 글자가 섞이면 그리지 않는다 */
 const D = /^[MmLlHhVvCcSsQqTtAaZz0-9.,\s-]+$/;
 
+/**
+ * 아이콘을 고를 재료가 없을 때(소개 글이 아직 없거나, 세트에 맞는 아이콘이 없을 때) 그리는 기본 아이콘 —
+ * Tabler `code` (시안 docs/project-icon-default.html C안, 10/11 Jessi). projects.json에는 적지 않는다 —
+ * 적으면 나중에 소개 글이 고른 아이콘과 구별이 안 된다. 화면에서만 대신 그린다.
+ */
+export const DEFAULT_PROJECT_ICON: ProjectIcon = {
+  name: "tabler:code",
+  paths: [{ d: "m7 8l-4 4l4 4m10-8l4 4l-4 4M14 4l-4 16" }],
+};
+
+/** 그릴 아이콘 — 저장된 것이 쓸 만하면 그것, 아니면 기본 아이콘 */
+export function iconOrDefault(v: unknown): ProjectIcon {
+  return safeIcon(v) ?? DEFAULT_PROJECT_ICON;
+}
+
 export function safeIcon(v: unknown): ProjectIcon | null {
   if (!v || typeof v !== "object") return null;
   const o = v as { name?: unknown; paths?: unknown };

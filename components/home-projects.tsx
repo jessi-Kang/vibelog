@@ -90,12 +90,8 @@ export function HomeProjects({
               className={`flex items-center gap-3 px-[18px] py-3 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2 ${i < rest.length - 1 ? "border-b border-line" : ""}`}
             >
               <span className="flex min-w-0 flex-1 items-center gap-2 font-sans text-base font-bold text-ink-soft">
-                {/* 아이콘이 없는 줄도 같은 폭을 비워 이름 시작을 맞춘다 */}
-                {p.icon ? (
-                  <ProjectIcon icon={p.icon} size={16} className="self-center" style={{ color: projectColor(p.slug) }} />
-                ) : rest.some((x) => x.icon) ? (
-                  <span className="w-4 flex-none" aria-hidden />
-                ) : null}
+                {/* 아이콘이 없는 프로젝트는 기본 아이콘(코드 꺾쇠)을 그린다 — 빈자리로 두면 이름 시작이 어긋나 보였다 */}
+                <ProjectIcon icon={p.icon} size={16} className="self-center" style={{ color: projectColor(p.slug) }} />
                 <span className="truncate">{lang === "en" ? (p.nameEn ?? p.name) : p.name}</span>
               </span>
               <span className="flex-none text-right">
