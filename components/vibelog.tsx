@@ -134,6 +134,7 @@ export function DevlogTimelineEntry({
   summary,
   meta,
   last,
+  hollow,
 }: {
   href: string;
   date: ReactNode;
@@ -142,6 +143,8 @@ export function DevlogTimelineEntry({
   summary?: ReactNode;
   meta: (string | { text: ReactNode; tone?: "warn" | "accent" | "soft" })[];
   last?: boolean;
+  /** 빈 점 — 그날 한 일이 아닌 글(프로젝트 소개 글)을 하루 글과 구분한다 */
+  hollow?: boolean;
 }) {
   return (
     // 전체 피드(repo 있음)는 타임라인 점을 프로젝트 식별색으로 — 이름도 같은
@@ -152,8 +155,14 @@ export function DevlogTimelineEntry({
         <div className="absolute bottom-[-28px] left-[3.5px] top-4 w-px bg-line" />
       )}
       <div
-        className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-accent"
-        style={repo ? { background: projectColor(repo) } : undefined}
+        className={`absolute left-0 top-1.5 h-2 w-2 rounded-full ${hollow ? "border-2 border-accent bg-bg" : "bg-accent"}`}
+        style={
+          repo
+            ? hollow
+              ? { borderColor: projectColor(repo) }
+              : { background: projectColor(repo) }
+            : undefined
+        }
       />
       <div className="flex flex-col gap-1.5">
         <div className="flex gap-2.5 font-mono text-xs text-muted">

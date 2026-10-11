@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import { projectColor } from "@/lib/project-color";
 import { PageContainer } from "@/components/page-container";
 import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
@@ -49,6 +51,7 @@ export default async function ProjectPage({ params }: Props) {
   const logs = getDevlogs(project.slug);
   // 소개 글은 그날 한 일이 아니라 숫자에 넣지 않는다 — 나중에 넣은 소개 글은 날짜도 첫 글 하루 전으로 지어 붙인 것이다
   const dayLogs = logs.filter((d) => !d.intro);
+  const intro = logs.find((d) => d.intro);
   const homepage = publicHomepage(project);
   const lastActive = humanizeLastActive(project.lastActivity);
   const lastActiveEn = humanizeLastActive(project.lastActivity, "en");
@@ -74,8 +77,11 @@ export default async function ProjectPage({ params }: Props) {
         {project.name !== project.slug && (
           <span className="-mt-2 font-mono text-xs text-muted">{project.slug}</span>
         )}
+        {/* 소개 글이 코드를 읽고 쓴 설명이 있으면 그것을, 없으면 레포 설명 한 줄 (docs/project-page-intro.html A안) */}
         <p className="m-0 text-md leading-[1.6] text-ink-soft [text-wrap:pretty]">
-          {project.description ? (
+          {project.about ? (
+            <T ko={project.about} en={project.aboutEn ?? project.about} />
+          ) : project.description ? (
             <T
               ko={project.description}
               en={project.descriptionEn ?? project.description}
@@ -85,6 +91,15 @@ export default async function ProjectPage({ params }: Props) {
           )}
         </p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          {intro && (
+            <Link
+              href={postPath(intro)}
+              className="hit font-mono text-sm transition-opacity duration-150 hover:opacity-85"
+              style={{ color: projectColor(project.slug) }}
+            >
+              <T ko="소개 글 읽기 →" en="Read the intro →" />
+            </Link>
+          )}
           {homepage && (
             <a
               href={homepage}
@@ -167,7 +182,9 @@ export default async function ProjectPage({ params }: Props) {
                 ) : undefined
               }
               last={i === logs.length - 1}
+              hollow={d.intro}
               meta={[
+                ...(d.intro ? [{ text: <T ko="프로젝트 소개" en="project intro" />, tone: "soft" as const }] : []),
                 ...(d.commits
                   ? [
                       {
