@@ -52,12 +52,18 @@ export function posterAtSec(script: ShortsScript, timing: ShortsTiming): number 
 }
 
 /** projects.json에서 그 레포의 화면 이름·아이콘 — 소개 글이 아직 없으면 null(머리글은 vibelog) */
-function projectFor(repo: string, lang: "ko" | "en"): { name: string; icon: unknown } | null {
+function projectFor(repo: string, lang: "ko" | "en"): { name: string; short: string | null; icon: unknown } | null {
   try {
     const list = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content", "projects.json"), "utf8"));
     const p = list.find((x: { slug: string }) => x.slug === repo);
     if (!p?.icon) return null;
-    return { name: (lang === "en" ? p.nameEn : null) ?? p.name ?? repo, icon: p.icon };
+    const en = lang === "en" && p.nameEn;
+    // 짧은 이름 — 머리글 자리를 넘을 때만 렌더가 쓴다 (scripts/short-name.ts)
+    return {
+      name: (en ? p.nameEn : p.name) ?? repo,
+      short: (en ? p.nameEnShort : p.nameShort) ?? null,
+      icon: p.icon,
+    };
   } catch {
     return null;
   }

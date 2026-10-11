@@ -432,3 +432,31 @@ export function narrationPath(
 ): string {
   return `${shortsDir(repo)}/${date}.${lang}.mp3`;
 }
+
+/**
+ * 쇼츠 머리글의 이름 자리 계산 (video/src/ShipIt.tsx). 단위는 머리글 고정폭 글자 한 칸(42px 글꼴 ≈ 26px).
+ * 한글이 든 이름은 한글 글꼴로 그려서 한글 한 자가 1.6칸쯤 된다. 렌더는 이름이 자리를 넘으면
+ * 짧은 이름(projects.json nameShort)으로 바꾸고, 밤 파이프라인은 같은 계산으로 짧은 이름이
+ * 필요한 프로젝트를 고른다 (scripts/short-name.ts). 넘는 만큼은 화면에서 "…"로 잘린다.
+ */
+export function headerUnits(name: string): number {
+  const hangul = /[가-힣]/.test(name);
+  let u = 0;
+  for (const ch of name) {
+    if (/[가-힣ㄱ-ㅎ一-鿿]/.test(ch)) u += 1.6;
+    else if (ch === " ") u += hangul ? 0.45 : 1;
+    else u += hangul ? 0.9 : 1;
+  }
+  return u;
+}
+
+/** 템플릿 배지("SHIP IT"·"FAIL"·"BEFORE AFTER")를 뺀 이름 자리 (칸) */
+export function headerNameBudget(template: string): number {
+  const CELL = 26; // 42px 고정폭 한 칸 + 자간
+  const badge = template.replace("-", " ").length * CELL + 52; // 안쪽 여백 24×2 + 테두리
+  // 머리글 폭 920 − 배지 − 배지 앞 여백 24 − 아이콘 56·간격 18 − 간격 18 − "· DAY 10" 8칸
+  return (920 - badge - 24 - 56 - 18 - 18 - 8 * CELL) / CELL;
+}
+
+/** 짧은 이름이 맞춰야 할 자리 — 배지가 가장 긴 before-after 기준 */
+export const SHORT_NAME_BUDGET = Math.floor(headerNameBudget("before-after"));

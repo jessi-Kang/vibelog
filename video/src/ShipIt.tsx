@@ -12,6 +12,8 @@ import {
 } from "remotion";
 import {
   coldOpenKind,
+  headerNameBudget,
+  headerUnits,
   type DiagramSpec,
   type MotifName,
   type ShortsScript,
@@ -55,14 +57,12 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
-  /** 머리글 크기 — 검수·시안용 (now 지금 / a 한 단계 / b 두 단계) */
-  eyebrowSize?: "now" | "a" | "b";
   /** 훅 헤드라인 낱말 움직임 — 검수·시안용. 없으면 기본(HookCard) */
   hookMotion?: "rise" | "fade" | "still";
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
   theme?: string | null;
   /** 머리글에 쓰는 서비스 이름과 아이콘 (projects.json, 소개 글이 정한다) — 없으면 "vibelog" */
-  project?: { name: string; icon?: ProjectIcon | null } | null;
+  project?: { name: string; short?: string | null; icon?: ProjectIcon | null } | null;
   /** 화면별 녹화 구간 (readyAt 기준 초) — 문장의 screen과 매칭. 없으면 시간순 */
   segments?:
     | {
@@ -399,7 +399,6 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoStartSec = 0,
   artFiles = null,
   hookMotion,
-  eyebrowSize = "now",
   theme = null,
   segments = null,
   project = null,
@@ -494,13 +493,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
     script.day ?? 0,
   );
 
-  // 머리글 크기 — 데스크톱에서 작게 보이면 글자·아이콘 선이 뭉개졌다 (10/11 시안)
-  const EB = {
-    now: { fs: 30, ls: "0.08em", icon: 40, stroke: 2, gap: 14, sansName: false },
-    a: { fs: 36, ls: "0.04em", icon: 48, stroke: 2.6, gap: 16, sansName: false },
-    b: { fs: 42, ls: "0.02em", icon: 56, stroke: 2.8, gap: 18, sansName: true },
-  }[eyebrowSize];
-  const hangulName = /[가-힣]/.test(project?.name ?? "");
+  // 머리글 크기 — 30px일 때 데스크톱 카드(폭 240)에서 글자가 7px로 줄어 뭉개졌다.
+  // 42px·굵게로 키웠다 (10/11 Jessi, 시안 B안)
+  const EB = { fs: 42, ls: "0.02em", icon: 56, stroke: 2.8, gap: 18 };
+  // 이름이 배지 옆 자리에 다 안 들어가면 짧은 이름(projects.json nameShort)을 쓴다. 그래도 길면 "…"
+  const fullName = project?.name ?? "vibelog";
+  const shownName =
+    project?.short && headerUnits(fullName) > headerNameBudget(script.template) ? project.short : fullName;
+  const hangulName = /[가-힣]/.test(shownName);
 
   return (
     <AbsoluteFill style={{ background: th.bg }}>
@@ -666,11 +666,12 @@ export const ShipIt: React.FC<ShipItProps> = ({
               minWidth: 0,
               textTransform: project ? "none" : "uppercase",
               letterSpacing: project ? "0.02em" : undefined,
-              // 한글 이름은 고정폭 글꼴에 한글이 없어 기기마다 다른 글꼴로 바뀐다 — 한글 글꼴로
-              ...((EB.sansName || hangulName) && project ? { fontFamily: FONT_SANS, fontWeight: 800, letterSpacing: 0 } : {}),
+              // 한글 이름은 고정폭 글꼴에 한글이 없어 기기마다 다른 글꼴로 바뀐다 — 한글 글꼴로.
+              // 영어 이름은 고정폭 그대로 (10/11 Jessi: "…")
+              ...(hangulName && project ? { fontFamily: FONT_SANS, fontWeight: 800, letterSpacing: 0 } : {}),
             }}
           >
-            {project?.name ?? "vibelog"}
+            {shownName}
           </span>
           <span style={{ flex: "none", whiteSpace: "nowrap" }}>
             · day {String(script.day).padStart(2, "0")}
