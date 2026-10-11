@@ -317,6 +317,11 @@ function devlogPath(repo: string, date: string): string {
   return path.join(CONTENT_DIR, "devlog", repo, `${date}.md`);
 }
 
+/** 소개 글 파일인가 (frontmatter intro: true) */
+function isIntroFile(file: string): boolean {
+  return fs.existsSync(file) && matter(fs.readFileSync(file, "utf8")).data.intro === true;
+}
+
 /** frontmatter manual: true인 파일은 파이프라인이 덮어쓰지 않는다 */
 function isProtected(file: string): boolean {
   if (!fs.existsSync(file)) return false;
@@ -719,8 +724,10 @@ async function main(): Promise<void> {
 
   for (const a of activities) {
     if (!a.hasActivity) continue;
-    if (introTonight.has(a.repo)) {
-      console.log(`- ${a.repo}: 오늘 밤은 소개 글을 썼다 — 일반 글은 다음 밤에`);
+    // 그 밤 날짜에 소개 글이 이미 있으면(이 실행에서 썼거나, 낮에 intro 입력으로 썼거나) 일반 글을
+    // 쓰지 않는다 — 같은 파일이라 덮어쓰면 소개 글이 사라진다. 커밋은 다음 밤 글에 들어간다
+    if (introTonight.has(a.repo) || isIntroFile(devlogPath(a.repo, date))) {
+      console.log(`- ${a.repo}: 오늘 밤 날짜에 소개 글이 있다 — 일반 글은 다음 밤에`);
       continue;
     }
     const file = devlogPath(a.repo, date);
