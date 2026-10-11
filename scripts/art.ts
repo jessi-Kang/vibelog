@@ -5,7 +5,10 @@
  * 실제 배포 사이트 녹화만 쓴다.
  *
  * Gemini와 OpenAI를 둘 다 쓴다 (10/11 Jessi). 먼저 부르는 쪽은 ART_PROVIDER
- * (gemini | openai, 기본 gemini)로 고르고, 그쪽이 실패하면 다른 쪽으로 넘어간다.
+ * (openai | gemini, 기본 openai)로 고르고, 그쪽이 실패하면 다른 쪽으로 넘어간다.
+ * 쇼츠 그림은 테마 바탕 위에 얹으므로 투명 배경이어야 하는데, 투명 배경은 OpenAI만
+ * 된다 (Gemini 최신 모델은 JPEG만 낸다). 그래서 투명 배경을 달라고 하면 OpenAI만 부르고,
+ * 실패하면 그 장면은 그림 없이 간다 — 남색 바탕이 박힌 그림이 밝은 테마에 얹히는 것보다 낫다.
  * 각 회사 안에서는 최신 모델부터 부르고, 모델을 못 찾으면(404) 다음 모델로 간다.
  * 모델 이름은 2026-10-11 공식 문서 기준이다 — 바뀌면 아래 목록만 고친다.
  *
@@ -78,14 +81,21 @@ async function geminiOnce(model: string, prompt: string): Promise<Image> {
   return { data: Buffer.from(b64, "base64"), ext: "jpg" };
 }
 
-async function openaiOnce(model: string, prompt: string): Promise<Image> {
+async function openaiOnce(model: string, prompt: string, transparent = false): Promise<Image> {
   const res = await fetch("https://api.openai.com/v1/images/generations", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
-    body: JSON.stringify({ model, prompt, size: "1024x1024", output_format: "png", n: 1 }),
+    body: JSON.stringify({
+      model,
+      prompt,
+      size: "1024x1024",
+      output_format: "png",
+      n: 1,
+      ...(transparent ? { background: "transparent" } : {}),
+    }),
   });
   if (res.status === 404) throw new ModelNotFound(`OpenAI ${model} 없음`);
   const text = await res.text();
@@ -105,12 +115,17 @@ async function openaiOnce(model: string, prompt: string): Promise<Image> {
 }
 
 /** 한 회사 안에서 최신 모델부터 — 모델을 못 찾을 때만 다음 모델로 */
-async function fromProvider(provider: Provider, prompt: string): Promise<Image & { model: string }> {
-  const [models, once] = provider === "gemini" ? [GEMINI_MODELS, geminiOnce] : [OPENAI_MODELS, openaiOnce];
+async function fromProvider(
+  provider: Provider,
+  prompt: string,
+  transparent: boolean,
+): Promise<Image & { model: string }> {
+  const models = provider === "gemini" ? GEMINI_MODELS : OPENAI_MODELS;
   let last: unknown;
   for (const model of models) {
     try {
-      return { ...(await once(model, prompt)), model };
+      const img = provider === "gemini" ? await geminiOnce(model, prompt) : await openaiOnce(model, prompt, transparent);
+      return { ...img, model };
     } catch (err) {
       last = err;
       if (!(err instanceof ModelNotFound)) throw err;
@@ -122,7 +137,7 @@ async function fromProvider(provider: Provider, prompt: string): Promise<Image &
 
 /** 키가 있는 회사들을 정한 순서로. 한쪽이 어떤 이유로든 실패하면 다른 쪽으로 넘어간다 */
 export function providerOrder(): Provider[] {
-  const first: Provider = process.env.ART_PROVIDER === "openai" ? "openai" : "gemini";
+  const first: Provider = process.env.ART_PROVIDER === "gemini" ? "gemini" : "openai";
   const order: Provider[] = first === "gemini" ? ["gemini", "openai"] : ["openai", "gemini"];
   return order.filter((p) => (p === "gemini" ? process.env.GEMINI_API_KEY : process.env.OPENAI_API_KEY));
 }
@@ -130,12 +145,15 @@ export function providerOrder(): Provider[] {
 export async function generateImage(
   prompt: string,
   order: Provider[] = providerOrder(),
+  { transparent = false }: { transparent?: boolean } = {},
 ): Promise<Image & { provider: Provider; model: string }> {
-  if (order.length === 0) throw new Error("GEMINI_API_KEY·OPENAI_API_KEY가 둘 다 없습니다");
+  // 투명 배경은 OpenAI만 된다
+  const usable = transparent ? order.filter((p) => p === "openai") : order;
+  if (usable.length === 0) throw new Error(transparent ? "투명 배경은 OPENAI_API_KEY가 있어야 합니다" : "GEMINI_API_KEY·OPENAI_API_KEY가 둘 다 없습니다");
   let last: unknown;
-  for (const provider of order) {
+  for (const provider of usable) {
     try {
-      const r = await fromProvider(provider, prompt);
+      const r = await fromProvider(provider, prompt, transparent);
       return { ...r, provider };
     } catch (err) {
       last = err;
@@ -164,7 +182,7 @@ export async function generateArt(repo: string, date: string): Promise<void> {
   fs.mkdirSync(dir, { recursive: true });
   for (const l of targets) {
     try {
-      const r = await generateImage(STYLE + (l.art as string));
+      const r = await generateImage(STYLE + (l.art as string), undefined, { transparent: true });
       fs.writeFileSync(path.join(dir, `${l.scene}.${r.ext}`), r.data);
       console.log(`[art] ${l.scene}.${r.ext} 생성 (${r.provider} ${r.model})`);
     } catch (err) {

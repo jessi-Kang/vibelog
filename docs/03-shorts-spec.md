@@ -481,7 +481,7 @@ ffmpeg -i video.mp4 -i narration.mp3 -i music.mp3 -filter_complex "\
 
 텍스트·실제 화면 녹화 위에 얹는 보조 그래픽. 데모 화면은 여전히 실제 배포 사이트 녹화만 쓴다 (텍스트→비디오로 데모를 대체하지 않는 이유: 가짜 화면이 되기 때문).
 
-- 대본(script.ts)이 hook·next 문장에 장면 은유 묘사(`art`, 영어 한 문장)를 쓰고, `scripts/art.ts`가 일러스트를 만든다. Gemini와 OpenAI를 둘 다 쓴다 — 먼저 부르는 쪽은 `ART_PROVIDER`(기본 gemini)로 고르고, 실패하면 다른 쪽으로 넘어간다. 모델은 회사마다 최신부터: Gemini `gemini-nano-banana-2.1` → `gemini-3.1-flash-image`, OpenAI `gpt-image-2.5-flare` → `gpt-image-2.5-sunburst` (10/11 공식 문서 기준, 모델을 못 찾을 때만 다음 모델로). 키·모델 이름 확인은 `art-try` 워크플로가 한 장씩 만들어 아티팩트로 올린다.
+- 대본(script.ts)이 hook·next 문장에 장면 은유 묘사(`art`, 영어 한 문장)를 쓰고, `scripts/art.ts`가 일러스트를 만든다. Gemini와 OpenAI를 둘 다 쓴다 — 먼저 부르는 쪽은 `ART_PROVIDER`(기본 openai)로 고르고, 실패하면 다른 쪽으로 넘어간다. 쇼츠 그림은 테마 바탕 위에 얹으므로 **투명 배경**인데, 투명 배경은 OpenAI만 된다(Gemini 최신 모델은 JPEG만 낸다). 그래서 쇼츠 그림은 OpenAI만 부르고, 실패하면 그 장면은 그림 없이 간다. 모델은 회사마다 최신부터: Gemini `gemini-nano-banana-2.1` → `gemini-3.1-flash-image`, OpenAI `gpt-image-2.5-flare` → `gpt-image-2.5-sunburst` (10/11 공식 문서 기준, 모델을 못 찾을 때만 다음 모델로). 키·모델 이름 확인은 `art-try` 워크플로가 한 장씩 만들어 아티팩트로 올린다.
 - 스타일 고정: 다크 배경(#0a0e14) + 민트(#5EE1C3) 단일 강조 + 회색, 플랫 미니멀, **글자·로고 금지**, 정방형.
 - 쓰임: hook 장면은 헤드라인 위 인셋(480px), next 장면은 폰 화면 대신 일러스트 카드(860px)로 전환.
 - `GEMINI_API_KEY`·`OPENAI_API_KEY`(비밀값)가 둘 다 없으면 이 단계는 통째로 건너뛰고, 쇼츠는 그래픽 없이 이전과 동일하게 렌더된다. 장면 하나가 실패해도 그 장면만 그래픽 없이 간다.
