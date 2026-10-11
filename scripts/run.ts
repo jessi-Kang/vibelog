@@ -37,11 +37,8 @@ import { safeIcon } from "../lib/project-icon";
 import { Octokit } from "@octokit/rest";
 import {
   checkIntro,
-  enoughCode,
-  gatherCode,
+  composeIntro,
   hasIntro,
-  introDate,
-  writeIntro,
   writeIntroFigures,
   writeIntroPost,
   type Intro,
@@ -664,8 +661,9 @@ async function main(): Promise<void> {
     // AI가 "무엇을 만드는지 아직 모르겠다"고 한 레포는 새로 푸시될 때까지 다시 묻지 않는다
     if (state[a.repo]?.introDeferredAt && state[a.repo]?.introDeferredAt === a.pushedAt) continue;
     try {
-      const m = await gatherCode(octokit, a.owner, a.repo, a.description);
-      if (!enoughCode(m)) {
+      // 그 시점의 코드로 쓴다 — 새 프로젝트는 그 밤, 이미 글이 있던 프로젝트는 첫 글 하루 전 (scripts/intro.ts)
+      const { date: day, r } = await composeIntro(octokit, a.owner, a.repo, a.description, date);
+      if (!r) {
         console.log(`- ${a.repo}: 판단할 코드가 아직 없어 소개 글을 미룸`);
         runLines.push({
           text: `skip     · ${a.repo} 판단할 코드가 아직 없어 소개 글을 미룹니다`,
@@ -673,7 +671,6 @@ async function main(): Promise<void> {
         });
         continue;
       }
-      const r = await writeIntro(m);
       if (r.status === "deferred") {
         state[a.repo] = { ...state[a.repo], introDeferredAt: a.pushedAt };
         console.log(`- ${a.repo}: 무엇을 만드는지 아직 알 수 없다는 답 — 소개 글을 미룸`);
@@ -686,7 +683,6 @@ async function main(): Promise<void> {
       // live 전 사이트 주소가 글에 옮겨졌으면 내지 않는다 — 공개 파일에는 live 주소만 둔다
       const hidden = a.homepage && !publicHomepageOf(a) ? new URL(a.homepage).host : null;
       await checkIntro(r.intro, hidden);
-      const day = introDate(a.repo, date);
       writeIntroPost(a.repo, day, r.intro);
       intros.set(a.repo, r.intro);
       if (day === date) introTonight.add(a.repo);
