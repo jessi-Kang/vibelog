@@ -1,16 +1,17 @@
 /**
- * intro.ts — 프로젝트 소개 글. 레포의 **코드**를 읽고 "무엇을 만드는 프로젝트인가"를 쓴다.
+ * intro.ts — 프로젝트 소개 글. 레포의 **기획서와 코드**를 읽고 "무엇을 만드는 프로젝트인가"를 쓴다.
  *
  * 새 프로젝트의 첫 글이 "그날 한 일"로 시작하면, 처음 들어온 사람은 그 프로젝트가
  * 무엇인지 모른 채 읽게 된다 (Anchor 첫 글은 끝까지 Anchor가 무엇인지 말하지 않았다).
- * 레포 설명 한 줄로는 부족해서(Jessi, 10/11) 코드를 읽는다.
+ * 레포 설명 한 줄로는 부족해서(Jessi, 10/11) 코드를 읽는다. 코드보다 기획서가 먼저 올라오는
+ * 레포가 더 많아서(Jessi는 기획서만 둔 레포로 시작한다, 10/11) 기획서도 같은 재료로 읽는다.
  *
  * 같은 호출에서 세 가지를 같이 얻는다 — 모델 호출이 늘지 않는다.
  * - 소개 글: 그 프로젝트의 첫 글 (frontmatter intro: true)
  * - 서비스 이름: 레포 이름과 다른 실제 이름 ("lie-detective" → "거짓말 탐정")
  * - 프로젝트 설명 한두 문장: 이후 모든 글 제목 아래에 붙고, 누르면 소개 글로 간다
  *
- * 판단할 코드가 없으면 미룬다. README·설정 파일뿐이면 모델을 부르지 않고, 코드가 있어도
+ * 판단할 재료(코드나 기획서)가 없으면 미룬다. 템플릿 README·설정 파일뿐이면 모델을 부르지 않고, 재료가 있어도
  * 모델이 "무엇을 만드는지 모르겠다"고 하면 그 레포가 새로 푸시될 때까지 다시 묻지 않는다.
  * 프로젝트를 시작하는 시점에는 보여 줄 화면이 없을 수 있어서, 그림도 화면 캡처가 아니라
  * 코드에서 읽은 구조를 그린다 (docs/project-intro-figures.html B안).
@@ -50,7 +51,9 @@ const PROJECTS_FILE = path.join(process.cwd(), "content", "projects.json");
  * 폴더(.claude, .github …)는 도구 설정이고 docs/는 시안·문서라 무엇을 만드는지와 다르다 —
  * vibelog로 시험했을 때 .claude 안의 시안 index.html이 맨 먼저 읽혔다.
  */
-const SKIP_DIR = /(^|\/)(node_modules|dist|build|out|coverage|vendor|docs|\.[^/]+)\//;
+const SKIP_DIR = /(^|\/)(node_modules|dist|build|out|coverage|vendor|\.[^/]+)\//;
+/** docs/는 코드로 세지 않는다 — 시안 html이 거기 있다. 기획서는 아래 PLAN_DOC으로 따로 읽는다 */
+const DOCS_DIR = /(^|\/)docs\//;
 const SKIP_FILE =
   /(^|\/)(\.env[^/]*|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb?)$|\.(png|jpe?g|gif|webp|avif|ico|svg|woff2?|ttf|otf|mp3|mp4|webm|mov|pdf|zip|map)$|\.min\.(js|css)$/i;
 const CODE_EXT = /\.(tsx?|jsx?|mjs|cjs|py|html?|css|scss|vue|svelte|astro|go|rs|swift|kt|java|rb|php|sql|prisma|dart|cs|c|cpp|h)$/i;
@@ -59,6 +62,23 @@ const CONFIG_FILE =
   /(^|\/)((next|vite|tailwind|postcss|eslint|prettier|jest|vitest|babel|webpack|svelte|astro|remotion)\.config\.[a-z]+|tsconfig[^/]*\.json|\.eslintrc[^/]*|next-env\.d\.ts)$/i;
 /** 이만큼은 코드가 있어야 무엇을 만드는지 판단할 수 있다 — README·설정만 있는 레포는 여기서 멈춘다 */
 const MIN_CODE_BYTES = 1500;
+/**
+ * 기획서 — 글로 쓴 문서(md·mdx·txt). 변경 기록·라이선스 같은 꾸러미 문서는 뺀다.
+ * html 시안은 대부분 스타일이라 읽지 않는다.
+ */
+const PLAN_EXT = /\.(md|mdx|txt)$/i;
+const NOT_PLAN = /(^|\/)(changelog|license|licence|contributing|code_of_conduct|security|history)(\.[a-z]+)?$/i;
+/**
+ * 새 프로젝트 도구가 만들어 두는 README — 무엇을 만드는지 말하지 않는다. 그대로면 기획서로 치지 않는다.
+ */
+const TEMPLATE_README =
+  /bootstrapped with|create-next-app|create-react-app|npm create vite|This template provides|Getting Started\s+First, run the development server/i;
+/** 기획서가 이만큼 있으면 코드가 없어도 판단할 수 있다 — 제목 한 줄짜리 README는 못 넘는다 */
+const MIN_PLAN_CHARS = 600;
+/** 기획서 한 편은 앞부분에 개요가 있다 — 그 뒤 세부 계획은 소개 글에 필요 없다 */
+const PER_PLAN_CHARS = 6000;
+/** 기획서가 여럿이어도 이만큼만 — 나머지 자리는 코드 몫이다 */
+const PLAN_BUDGET = 12000;
 /**
  * 읽는 양 — 개요를 쓰는 데는 README와 화면의 입구 몇 개면 된다. 6만 자를 읽히던 때는 글이
  * 기능·화면·내부 동작을 늘어놓았다 (10/11). 많이 읽힐수록 많이 쓴다.
@@ -84,6 +104,18 @@ export interface CodeMaterial {
   files: { path: string; text: string }[];
   /** 설정 파일을 뺀 코드 파일의 크기 합 */
   codeBytes: number;
+  /** 템플릿 README를 뺀 기획서 글자 수 합 */
+  planChars: number;
+}
+
+/** 기획서 먼저 읽을 순서 — 이름에 기획·개요가 드러난 것, 루트 README, docs/, 그 밖 */
+function planRank(p: string): number {
+  if (/기획|concept|prd|overview|idea|brief|개요|소개/i.test(p)) return 0;
+  if (/plan|spec/i.test(p)) return 1;
+  if (/^readme(\.[a-z]+)?$/i.test(p)) return 1;
+  if (DOCS_DIR.test(p)) return 2 + p.split("/").length;
+  if (/^(claude|agents)\.md$/i.test(p)) return 9;
+  return 10 + p.split("/").length;
 }
 
 function codeRank(p: string): number {
@@ -125,23 +157,34 @@ export async function gatherCode(
   const blobs = tree.tree.filter(
     (t) => t.type === "blob" && t.path && !SKIP_DIR.test(t.path) && !SKIP_FILE.test(t.path),
   );
-  const code = blobs.filter((t) => CODE_EXT.test(t.path!) && !CONFIG_FILE.test(t.path!));
+  const code = blobs.filter((t) => CODE_EXT.test(t.path!) && !CONFIG_FILE.test(t.path!) && !DOCS_DIR.test(t.path!));
   const codeBytes = code.reduce((n, t) => n + (t.size ?? 0), 0);
+  const plans = blobs
+    .filter((t) => PLAN_EXT.test(t.path!) && !NOT_PLAN.test(t.path!))
+    .sort((a, b) => planRank(a.path!) - planRank(b.path!) || (b.size ?? 0) - (a.size ?? 0));
 
-  const readme = blobs.find((t) => /^readme(\.[a-z]+)?$/i.test(t.path!));
   const pkg = blobs.find((t) => t.path === "package.json");
+  // 기획서를 코드보다 먼저 — 무엇을 만들려는지는 기획서가 가장 바로 말한다
   const pick = [
-    ...(readme ? [readme] : []),
+    ...plans,
     ...(pkg ? [pkg] : []),
     ...[...code].sort((a, b) => codeRank(a.path!) - codeRank(b.path!) || (a.size ?? 0) - (b.size ?? 0)),
   ];
   const files: { path: string; text: string }[] = [];
   let total = 0;
+  let planChars = 0;
+  let planRead = 0;
   for (const t of pick) {
     if (total >= TOTAL_CHARS) break;
+    if (planRead >= PLAN_BUDGET && plans.includes(t)) continue;
     try {
       const { data } = await octokit.rest.git.getBlob({ owner, repo, file_sha: t.sha! });
       let text = Buffer.from(data.content, "base64").toString("utf8");
+      const isPlan = plans.includes(t);
+      if (isPlan) {
+        if (TEMPLATE_README.test(text)) continue;
+        planChars += text.trim().length;
+      }
       if (t.path === "package.json") {
         // 이름·설명·쓰는 라이브러리만 — 나머지는 무엇을 만드는지와 상관없다
         try {
@@ -155,7 +198,9 @@ export async function gatherCode(
           // 깨진 package.json은 그대로 읽는다
         }
       }
-      text = maskSecrets(text).slice(0, Math.min(PER_FILE_CHARS, TOTAL_CHARS - total));
+      const cap = isPlan ? Math.min(PER_PLAN_CHARS, PLAN_BUDGET - planRead) : PER_FILE_CHARS;
+      text = maskSecrets(text).slice(0, Math.min(cap, TOTAL_CHARS - total));
+      if (isPlan) planRead += text.length;
       files.push({ path: t.path!, text });
       total += text.length;
     } catch {
@@ -168,12 +213,13 @@ export async function gatherCode(
     tree: blobs.map((t) => t.path!).slice(0, 400),
     files,
     codeBytes,
+    planChars,
   };
 }
 
-/** 모델을 부르기 전에 — 판단할 코드가 있는가 */
+/** 모델을 부르기 전에 — 판단할 재료(코드나 기획서)가 있는가 */
 export function enoughCode(m: CodeMaterial): boolean {
-  return m.codeBytes >= MIN_CODE_BYTES;
+  return m.codeBytes >= MIN_CODE_BYTES || m.planChars >= MIN_PLAN_CHARS;
 }
 
 /* ---------- 소개 글 쓰기 ---------- */
@@ -183,21 +229,23 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. vibelog�
 프로젝트의 **소개 글**을 씁니다 — 이 프로젝트의 첫 글이고, 이후의 모든 글이 이 글로 이어집니다.
 
 ## 이 글이 쓰이는 때
-프로젝트를 블로그에 등록한 **직후**, 무엇을 만드는지 판단할 코드가 처음 올라온 밤에 씁니다.
-받은 코드는 **그 시점의 레포**입니다. 대개 막 시작한 상태라 만들어 둔 것이 거의 없습니다.
+프로젝트를 블로그에 등록한 **직후**, 무엇을 만드는지 판단할 기획서나 코드가 처음 올라온 밤에 씁니다.
+받은 파일은 **그 시점의 레포**입니다. 대개 막 시작한 상태라 기획서만 있거나 만들어 둔 것이 거의 없습니다.
+기획서에 적힌 것은 "만들려는 것"입니다. 이미 만들었다고 쓰지 않습니다.
 그 시점의 사람이 "이런 걸 만들려고 합니다"라고 소개하는 글입니다. 진행 상황(시험판인지,
 어디까지 됐는지), 만든 기능, 남은 일은 쓰지 않습니다 — 그건 이후의 하루 글이 매일 이야기합니다.
 
 ## 판단할 수 없으면 쓰지 않습니다
-코드가 템플릿 그대로이거나(새 프로젝트 기본 화면, 예제 코드) 무엇을 만드는지 알 수 없으면
+기획서가 없고 코드가 템플릿 그대로이거나(새 프로젝트 기본 화면, 예제 코드) 무엇을 만드는지 알 수 없으면
 글을 쓰지 말고 {"ready": false, "why": "한 문장"}만 냅니다. 억지로 쓴 소개는 소개가 없는 것보다 나쁩니다.
 
 ## 공개하지 않는 것
-이 글은 누구나 읽는 공개 블로그에 사람이 읽기 전에 올라갑니다. 코드에서 보았더라도 아래는 쓰지 않습니다.
+이 글은 누구나 읽는 공개 블로그에 사람이 읽기 전에 올라갑니다. 기획서나 코드에서 보았더라도 아래는 쓰지 않습니다.
+기획서에는 코드보다 이런 내용이 훨씬 많이 적혀 있습니다 — 특히 조심합니다.
 - 게임·퀴즈의 정답, 사건의 진상, 인물의 비밀, 문제를 푸는 방법 — 쓰면 그 프로젝트가 망가집니다.
 - 내부 동작 방식(데이터가 어디에 있는지, 어떤 규칙으로 답하는지, 어떤 AI를 어떻게 부르는지).
 - 보안상 약점이나 아직 막지 않은 부분, 접속 방법·토큰·관리 화면.
-- 공개 전 계획, 일정, 시험 방법.
+- 공개 전 계획, 일정, 시험 방법, 돈을 버는 방법, 경쟁 서비스 분석, 아직 정하지 않은 선택지.
 - 사이트 주소(URL). 코드에 있어도 옮기지 않습니다.
 알 수 있는 것은 "무엇을 하는 것인지"까지입니다. 이 프로젝트를 쓸 사람이 가게 앞 간판을 보고 아는 정도만 씁니다.
 
@@ -213,7 +261,8 @@ ${styleRulesForPrompt()}
 
 ## 서비스 이름
 레포 이름과 실제 서비스 이름은 다를 수 있습니다. 사용하는 사람이 실제로 보는 자리 — 페이지
-<title>, 앱 manifest의 name, 첫 화면 헤더나 로고 글자 — 에서 이름을 찾아 name(한국어)과
+<title>, 앱 manifest의 name, 첫 화면 헤더나 로고 글자 — 나, 코드가 아직 없으면 기획서가 정한
+서비스 이름(제목이나 "서비스명" 항목)에서 이름을 찾아 name(한국어)과
 nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 그대로 씁니다. 찾지 못했으면
 둘 다 null입니다 — 레포 이름을 다듬어 지어내지 않습니다. nameFrom에는 찾은 자리를 짧게 적습니다.
 
@@ -232,7 +281,7 @@ nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 
   "## 어떤 프로젝트인가" — 첫 문장은 25–45자로 무엇인지 한 문장. 글 목록의 요약으로 그대로
     쓰입니다. 이어서 사용하는 사람이 이것으로 무엇을 하게 되는지 한 문장.
   "## 누구를 위해, 왜" — 누가 어떤 불편이나 재미 때문에 쓰게 되는지, 왜 만들기 시작했는지.
-    README에 적힌 만큼만 쓰고, 없으면 무엇을 만드는지에서 자연스럽게 읽히는 만큼 한두 문장.
+    기획서·README에 적힌 만큼만 쓰고, 없으면 무엇을 만드는지에서 자연스럽게 읽히는 만큼 한두 문장.
 - en: 같은 구조의 영어 — "## What it is", "## Who it's for, and why".
 
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
@@ -271,7 +320,7 @@ function buildPrompt(m: CodeMaterial): string {
     `레포 한 줄 설명(만든 사람이 GitHub에 적은 것 — 참고만): ${m.description || "(없음)"}`,
     "## 파일 목록",
     m.tree.join("\n"),
-    "## 코드 (앞부분만 — 비밀처럼 생긴 값은 [가린 값]으로 바꿔 두었습니다)",
+    "## 기획서와 코드 (앞부분만 — 비밀처럼 생긴 값은 [가린 값]으로 바꿔 두었습니다)",
     ...m.files.map((f) => `### ${f.path}\n${f.text}`),
   ].join("\n\n");
 }
@@ -345,7 +394,7 @@ export async function writeIntro(m: CodeMaterial): Promise<IntroResult> {
             ...unclear.map((u, i) => `${i + 1}. "${u.sentence}"\n   → ${u.why}`),
             "",
             "이 문장들을 고쳐 전체를 다시 내 주세요. 기술 용어는 그대로 두고 처음 나올 때 괄호로 설명을 붙입니다.",
-            "코드에 없는 사실을 새로 넣지 않습니다. 같은 JSON 형식 하나만 출력합니다.",
+            "기획서나 코드에 없는 사실을 새로 넣지 않습니다. 같은 JSON 형식 하나만 출력합니다.",
           ].join("\n"),
         },
       ],
@@ -586,8 +635,8 @@ async function main(): Promise<void> {
         (redo ? introDateOf(repo) : null) ?? introDate(repo, tonight),
       );
       if (!r) {
-        lines.push({ text: `skip     · ${repo} 판단할 코드가 아직 없어 소개 글을 미룹니다` });
-        console.log(`- ${repo}: 판단할 코드가 아직 없음 — 미룸`);
+        lines.push({ text: `skip     · ${repo} 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다` });
+        console.log(`- ${repo}: 기획서·코드가 아직 없음 — 미룸`);
         continue;
       }
       if (r.status === "deferred") {
