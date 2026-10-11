@@ -25,11 +25,10 @@ import {
 
 const API = "https://api.elevenlabs.io/v1";
 /**
- * 목소리 모델 — 먼저 Eleven v4로 만들고, 실패하면(크레딧을 다 쓴 경우 등) 예전 모델로 다시 만든다 (10/11 Jessi).
- * 크레딧이 떨어졌을 때 오는 답의 모양이 문서에 없어서, 이유를 가리지 않고 v4가 실패하면 넘어간다 —
- * 그날 쇼츠가 목소리 때문에 통째로 빠지는 것보다 예전 목소리로 나가는 게 낫다.
+ * 목소리 모델 — eleven_multilingual_v2 하나 (10/11 Jessi: "…").
+ * 같은 날 Eleven v4를 먼저 부르고 실패하면 v2로 넘어가게 했다가 되돌렸다. v4로 돌아가려면
+ * MODELS 앞에 { id: "eleven_v4", settings: style·speed를 뺀 설정 }을 다시 넣는다 — v4에는 style·speed가 없다.
  */
-const MODEL_V4 = "eleven_v4";
 const MODEL_V2 = "eleven_multilingual_v2";
 // docs/03-shorts-spec.md 승인 샘플 기준 확정값 (2026-09-09 갱신)
 const VOICE_SETTINGS = {
@@ -39,17 +38,8 @@ const VOICE_SETTINGS = {
   use_speaker_boost: true,
   speed: 1.0,
 };
-// v4에는 style·speed 조절이 없다 (ElevenLabs 모델 문서). 둘 다 기본값이었으니 빼도 읽기는 같다.
-const VOICE_SETTINGS_V4 = {
-  stability: VOICE_SETTINGS.stability,
-  similarity_boost: VOICE_SETTINGS.similarity_boost,
-  use_speaker_boost: VOICE_SETTINGS.use_speaker_boost,
-};
 type Model = { id: string; settings: Record<string, number | boolean> };
-const MODELS: Model[] = [
-  { id: MODEL_V4, settings: VOICE_SETTINGS_V4 },
-  { id: MODEL_V2, settings: VOICE_SETTINGS },
-];
+const MODELS: Model[] = [{ id: MODEL_V2, settings: VOICE_SETTINGS }];
 const MUSIC_PROMPT =
   "minimal lo-fi electronic, soft synth pad, muted plucked melody, " +
   "light percussion around 90 BPM, sits under narration, no vocals, no drops, " +
