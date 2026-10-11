@@ -54,6 +54,8 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
+  /** 훅 헤드라인 낱말 움직임 — 검수·시안용. 없으면 기본(HookCard) */
+  hookMotion?: "rise" | "fade" | "still";
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
   theme?: string | null;
   /** 머리글에 쓰는 서비스 이름과 아이콘 (projects.json, 소개 글이 정한다) — 없으면 "vibelog" */
@@ -393,6 +395,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoFile,
   videoStartSec = 0,
   artFiles = null,
+  hookMotion,
   theme = null,
   segments = null,
   project = null,
@@ -530,6 +533,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 timing={timing}
                 th={th}
                 offsetSec={offset}
+                motion={hookMotion}
               />
             )}
             {seg.kind === "diagram" && seg.diagram && (
