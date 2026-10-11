@@ -1,509 +1,499 @@
 {
   "lang": "en",
-  "duration": 30.366,
+  "duration": 32.549,
   "sentences": [
     {
       "index": 0,
       "start": 0,
-      "end": 1.8,
+      "end": 1.939,
       "words": [
         {
-          "text": "My",
+          "text": "The",
           "start": 0,
-          "end": 0.139
-        },
-        {
-          "text": "mystery",
-          "start": 0.197,
-          "end": 0.441
+          "end": 0.163
         },
         {
           "text": "game's",
-          "start": 0.476,
-          "end": 0.673
+          "start": 0.209,
+          "end": 0.453
         },
         {
           "text": "answers",
-          "start": 0.72,
-          "end": 1.022
+          "start": 0.499,
+          "end": 0.824
         },
         {
           "text": "were",
-          "start": 1.057,
-          "end": 1.161
+          "start": 0.859,
+          "end": 0.987
         },
         {
-          "text": "exposed.",
-          "start": 1.196,
-          "end": 1.8
+          "text": "in",
+          "start": 1.022,
+          "end": 1.08
+        },
+        {
+          "text": "plain",
+          "start": 1.126,
+          "end": 1.347
+        },
+        {
+          "text": "sight.",
+          "start": 1.405,
+          "end": 1.939
         }
       ]
     },
     {
       "index": 1,
-      "start": 2.35,
-      "end": 4.648,
+      "start": 2.543,
+      "end": 5.178,
       "words": [
         {
-          "text": "I",
-          "start": 2.35,
-          "end": 2.408
+          "text": "Open",
+          "start": 2.543,
+          "end": 2.833
         },
         {
-          "text": "moved",
-          "start": 2.501,
-          "end": 2.71
+          "text": "view",
+          "start": 2.879,
+          "end": 3.019
         },
         {
-          "text": "the",
-          "start": 2.733,
-          "end": 2.802
+          "text": "source,",
+          "start": 3.077,
+          "end": 3.599
         },
         {
-          "text": "suspects'",
-          "start": 2.837,
-          "end": 3.255
-        },
-        {
-          "text": "answer",
-          "start": 3.278,
-          "end": 3.545
-        },
-        {
-          "text": "rules",
-          "start": 3.604,
-          "end": 3.8360000000000003
-        },
-        {
-          "text": "to",
-          "start": 3.871,
-          "end": 3.9290000000000003
+          "text": "and",
+          "start": 3.773,
+          "end": 3.913
         },
         {
           "text": "the",
-          "start": 3.998,
-          "end": 4.068
+          "start": 3.959,
+          "end": 4.029
         },
         {
-          "text": "server.",
-          "start": 4.114,
-          "end": 4.648
+          "text": "code",
+          "start": 4.063,
+          "end": 4.272
+        },
+        {
+          "text": "showed",
+          "start": 4.296,
+          "end": 4.505
+        },
+        {
+          "text": "the",
+          "start": 4.528,
+          "end": 4.598
+        },
+        {
+          "text": "rules.",
+          "start": 4.644,
+          "end": 5.178
         }
       ]
     },
     {
       "index": 2,
-      "start": 5.800000000000001,
-      "end": 8.111,
+      "start": 5.875,
+      "end": 8.243,
       "words": [
         {
-          "text": "The",
-          "start": 5.800000000000001,
-          "end": 5.916
+          "text": "Now",
+          "start": 5.875,
+          "end": 6.072
+        },
+        {
+          "text": "the",
+          "start": 6.142,
+          "end": 6.223
         },
         {
           "text": "server",
-          "start": 5.963000000000001,
-          "end": 6.195
+          "start": 6.269,
+          "end": 6.513
         },
         {
           "text": "decides",
-          "start": 6.241,
-          "end": 6.59
+          "start": 6.56,
+          "end": 6.908
         },
         {
-          "text": "each",
-          "start": 6.625,
-          "end": 6.775
+          "text": "the",
+          "start": 6.943,
+          "end": 7.012
         },
         {
-          "text": "answer",
-          "start": 6.822000000000001,
-          "end": 7.101000000000001
+          "text": "answers",
+          "start": 7.07,
+          "end": 7.419
         },
         {
           "text": "and",
-          "start": 7.147,
-          "end": 7.2170000000000005
+          "start": 7.454,
+          "end": 7.535
         },
         {
           "text": "sends",
-          "start": 7.263,
-          "end": 7.484
+          "start": 7.581,
+          "end": 7.825
         },
         {
-          "text": "it",
-          "start": 7.529999999999999,
-          "end": 7.6
-        },
-        {
-          "text": "back.",
-          "start": 7.646000000000001,
-          "end": 8.111
+          "text": "them.",
+          "start": 7.872,
+          "end": 8.243
         }
       ]
     },
     {
       "index": 3,
-      "start": 8.75,
-      "end": 11.188,
+      "start": 9.325,
+      "end": 11.798000000000002,
       "words": [
         {
-          "text": "A",
-          "start": 8.75,
-          "end": 8.832
+          "text": "The",
+          "start": 9.325,
+          "end": 9.440999999999999
         },
         {
-          "text": "check",
-          "start": 8.901,
-          "end": 9.099
+          "text": "browser",
+          "start": 9.487000000000002,
+          "end": 9.824000000000002
         },
         {
-          "text": "now",
-          "start": 9.157000000000002,
-          "end": 9.273000000000001
+          "text": "only",
+          "start": 9.894000000000002,
+          "end": 10.138000000000002
         },
         {
-          "text": "runs",
-          "start": 9.342,
-          "end": 9.528
+          "text": "gets",
+          "start": 10.184000000000001,
+          "end": 10.381
         },
         {
-          "text": "on",
-          "start": 9.575000000000001,
-          "end": 9.644000000000002
+          "text": "the",
+          "start": 10.416,
+          "end": 10.486
         },
         {
-          "text": "its",
-          "start": 9.691,
-          "end": 9.807
+          "text": "character",
+          "start": 10.521,
+          "end": 10.904
         },
         {
-          "text": "own",
-          "start": 9.853000000000002,
-          "end": 9.993
-        },
-        {
-          "text": "before",
-          "start": 10.039000000000001,
-          "end": 10.329
-        },
-        {
-          "text": "each",
-          "start": 10.376000000000001,
-          "end": 10.538
-        },
-        {
-          "text": "deploy.",
-          "start": 10.585,
-          "end": 11.188
+          "text": "introductions.",
+          "start": 10.95,
+          "end": 11.798000000000002
         }
       ]
     },
     {
       "index": 4,
-      "start": 11.738,
-      "end": 14.629,
+      "start": 12.494,
+      "end": 16.117,
       "words": [
         {
-          "text": "If",
-          "start": 11.738,
-          "end": 11.889
+          "text": "Before",
+          "start": 12.494,
+          "end": 12.82
         },
         {
-          "text": "code",
-          "start": 11.958,
-          "end": 12.202
+          "text": "each",
+          "start": 12.866,
+          "end": 13.04
         },
         {
-          "text": "headed",
-          "start": 12.237,
-          "end": 12.469
-        },
-        {
-          "text": "to",
-          "start": 12.491999999999999,
-          "end": 12.539
-        },
-        {
-          "text": "the",
-          "start": 12.597,
-          "end": 12.666
-        },
-        {
-          "text": "browser",
-          "start": 12.701,
-          "end": 13.026
-        },
-        {
-          "text": "holds",
-          "start": 13.096,
-          "end": 13.294
-        },
-        {
-          "text": "answers,",
-          "start": 13.34,
-          "end": 13.815999999999999
+          "text": "deploy,",
+          "start": 13.087,
+          "end": 13.690000000000001
         },
         {
           "text": "it",
-          "start": 13.874,
-          "end": 14.002
+          "start": 13.899000000000001,
+          "end": 14.039000000000001
         },
         {
-          "text": "stops.",
-          "start": 14.048,
-          "end": 14.629
+          "text": "checks",
+          "start": 14.073,
+          "end": 14.329
+        },
+        {
+          "text": "for",
+          "start": 14.375,
+          "end": 14.492
+        },
+        {
+          "text": "leaked",
+          "start": 14.561,
+          "end": 14.805
+        },
+        {
+          "text": "answers",
+          "start": 14.852,
+          "end": 15.2
+        },
+        {
+          "text": "automatically.",
+          "start": 15.235,
+          "end": 16.117
         }
       ]
     },
     {
       "index": 5,
-      "start": 15.326,
-      "end": 17.404,
+      "start": 16.667,
+      "end": 19.558000000000003,
       "words": [
         {
-          "text": "This",
-          "start": 15.326,
-          "end": 15.523
+          "text": "If",
+          "start": 16.667,
+          "end": 16.830000000000002
         },
         {
-          "text": "time,",
-          "start": 15.581,
-          "end": 15.836
+          "text": "answers",
+          "start": 16.922000000000004,
+          "end": 17.364000000000004
+        },
+        {
+          "text": "slip",
+          "start": 17.398000000000003,
+          "end": 17.619000000000003
+        },
+        {
+          "text": "into",
+          "start": 17.666000000000004,
+          "end": 17.793000000000003
         },
         {
           "text": "the",
-          "start": 15.86,
-          "end": 15.929
+          "start": 17.851000000000003,
+          "end": 17.921000000000003
+        },
+        {
+          "text": "code,",
+          "start": 17.979000000000003,
+          "end": 18.351000000000003
+        },
+        {
+          "text": "the",
+          "start": 18.42,
+          "end": 18.536
         },
         {
           "text": "deploy",
-          "start": 15.975999999999999,
-          "end": 16.254
+          "start": 18.583000000000002,
+          "end": 18.873000000000005
         },
         {
-          "text": "to",
-          "start": 16.312,
-          "end": 16.37
-        },
-        {
-          "text": "Vercel",
-          "start": 16.417,
-          "end": 16.742
-        },
-        {
-          "text": "stalled.",
-          "start": 16.8,
-          "end": 17.404
+          "text": "stops.",
+          "start": 18.919000000000004,
+          "end": 19.558000000000003
         }
       ]
     },
     {
       "index": 6,
-      "start": 18.926000000000002,
-      "end": 21.178,
+      "start": 20.267,
+      "end": 23.367,
       "words": [
         {
-          "text": "At",
-          "start": 18.926000000000002,
-          "end": 19.077
+          "text": "Then",
+          "start": 20.267,
+          "end": 20.441
         },
         {
-          "text": "the",
-          "start": 19.112000000000002,
-          "end": 19.181
+          "text": "Vercel's",
+          "start": 20.499,
+          "end": 20.894
         },
         {
           "text": "build,",
-          "start": 19.239,
-          "end": 19.599
+          "start": 20.951999999999998,
+          "end": 21.335
         },
         {
-          "text": "the",
-          "start": 19.715,
-          "end": 19.82
-        },
-        {
-          "text": "step",
-          "start": 19.866,
-          "end": 20.075
-        },
-        {
-          "text": "that",
-          "start": 20.122,
-          "end": 20.238
+          "text": "which",
+          "start": 21.405,
+          "end": 21.625
         },
         {
           "text": "bundles",
-          "start": 20.284000000000002,
-          "end": 20.598
+          "start": 21.672,
+          "end": 22.02
         },
         {
           "text": "the",
-          "start": 20.621000000000002,
-          "end": 20.691000000000003
+          "start": 22.055,
+          "end": 22.125
         },
         {
-          "text": "code.",
-          "start": 20.737000000000002,
-          "end": 21.178
+          "text": "code,",
+          "start": 22.183,
+          "end": 22.519
+        },
+        {
+          "text": "got",
+          "start": 22.601,
+          "end": 22.786
+        },
+        {
+          "text": "stuck.",
+          "start": 22.844,
+          "end": 23.367
         }
       ]
     },
     {
       "index": 7,
-      "start": 21.782,
-      "end": 24.348,
+      "start": 23.917,
+      "end": 26.762,
       "words": [
         {
           "text": "A",
-          "start": 21.782,
-          "end": 21.863
+          "start": 23.917,
+          "end": 23.998
         },
         {
-          "text": "needless",
-          "start": 21.979,
-          "end": 22.374000000000002
+          "text": "stray",
+          "start": 24.068,
+          "end": 24.3
         },
         {
           "text": "backslash",
-          "start": 22.42,
-          "end": 22.931
+          "start": 24.358,
+          "end": 24.823
         },
         {
-          "text": "sat",
-          "start": 23.047,
-          "end": 23.256
+          "text": "symbol",
+          "start": 24.869000000000003,
+          "end": 25.229000000000003
         },
         {
-          "text": "in",
-          "start": 23.303,
-          "end": 23.361
+          "text": "hid",
+          "start": 25.310000000000002,
+          "end": 25.543000000000003
         },
         {
-          "text": "front",
-          "start": 23.407,
-          "end": 23.57
+          "text": "where",
+          "start": 25.589000000000002,
+          "end": 25.775000000000002
         },
         {
-          "text": "of",
-          "start": 23.616,
-          "end": 23.663
+          "text": "the",
+          "start": 25.810000000000002,
+          "end": 25.879
         },
         {
-          "text": "a",
-          "start": 23.709,
-          "end": 23.732
+          "text": "command",
+          "start": 25.926000000000002,
+          "end": 26.228
         },
         {
-          "text": "quote.",
-          "start": 23.79,
-          "end": 24.348
+          "text": "ended.",
+          "start": 26.297,
+          "end": 26.762
         }
       ]
     },
     {
       "index": 8,
-      "start": 25.462,
-      "end": 27.854,
+      "start": 27.367,
+      "end": 29.863,
       "words": [
         {
           "text": "Next,",
-          "start": 25.462,
-          "end": 25.764
+          "start": 27.367,
+          "end": 27.913
         },
         {
           "text": "I'll",
-          "start": 25.799,
-          "end": 25.927
+          "start": 28.064,
+          "end": 28.25
         },
         {
-          "text": "run",
-          "start": 25.973,
-          "end": 26.101
+          "text": "play",
+          "start": 28.284,
+          "end": 28.459
         },
         {
           "text": "it",
-          "start": 26.147000000000002,
-          "end": 26.229
+          "start": 28.505,
+          "end": 28.575
         },
         {
-          "text": "end",
-          "start": 26.310000000000002,
-          "end": 26.472
-        },
-        {
-          "text": "to",
-          "start": 26.519000000000002,
-          "end": 26.577
-        },
-        {
-          "text": "end",
-          "start": 26.658,
-          "end": 26.821
+          "text": "through",
+          "start": 28.598,
+          "end": 28.830000000000002
         },
         {
           "text": "on",
-          "start": 26.879,
-          "end": 26.948
+          "start": 28.888,
+          "end": 28.993000000000002
         },
         {
           "text": "a",
-          "start": 26.995,
-          "end": 27.018
+          "start": 29.039,
+          "end": 29.062
         },
         {
           "text": "real",
-          "start": 27.088,
-          "end": 27.297
+          "start": 29.12,
+          "end": 29.306
         },
         {
           "text": "phone.",
-          "start": 27.355,
-          "end": 27.854
+          "start": 29.364,
+          "end": 29.863
         }
       ]
     },
     {
       "index": 9,
-      "start": 28.403999999999996,
-      "end": 30.366,
+      "start": 30.413,
+      "end": 32.549,
       "words": [
         {
           "text": "Now",
-          "start": 28.403999999999996,
-          "end": 28.567
+          "start": 30.413,
+          "end": 30.61
         },
         {
-          "text": "only",
-          "start": 28.625,
-          "end": 28.787
+          "text": "you",
+          "start": 30.668000000000003,
+          "end": 30.749000000000002
+        },
+        {
+          "text": "have",
+          "start": 30.819000000000003,
+          "end": 30.923000000000002
+        },
+        {
+          "text": "to",
+          "start": 30.947000000000003,
+          "end": 30.993000000000002
+        },
+        {
+          "text": "catch",
+          "start": 31.040000000000003,
+          "end": 31.26
         },
         {
           "text": "the",
-          "start": 28.821999999999996,
-          "end": 28.891999999999996
+          "start": 31.295,
+          "end": 31.365000000000002
         },
         {
-          "text": "suspects",
-          "start": 28.927,
-          "end": 29.343999999999994
+          "text": "lies",
+          "start": 31.423000000000002,
+          "end": 31.632
         },
         {
-          "text": "know",
-          "start": 29.378999999999998,
-          "end": 29.494999999999997
-        },
-        {
-          "text": "the",
-          "start": 29.541999999999994,
-          "end": 29.611999999999995
-        },
-        {
-          "text": "lies.",
-          "start": 29.657999999999994,
-          "end": 30.366
+          "text": "yourself.",
+          "start": 31.678,
+          "end": 32.549
         }
       ]
     }
