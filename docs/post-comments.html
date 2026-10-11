@@ -119,6 +119,11 @@
   .em-c p { margin: 0; font-size: 15px; line-height: 1.75; color: #2b3340; white-space: pre-wrap; }
   .em-c.quiet p { font-size: 13px; color: #6b7482; }
   .em-c.quiet { padding: 14px 16px; background: #f5f6f8; border-radius: 10px; }
+  /* 댓글·답글 본문도 판 위에 얹는다 — 맨바탕에 두면 제목과 버튼 사이에 떠 보였다 */
+  .em-c.main { padding: 16px 18px; background: #f5f6f8; border-radius: 10px; }
+  .em-c.main.jessi { background: #eaf6f2; }
+  /* 내 댓글과 Jessi 답글은 한 덩어리 — 둘 사이만 좁힌다 */
+  .em-c.quiet + .em-c.main { margin-top: -12px; }
 
   .mb { color: #0f8f75; border: 1px solid #0f8f75; border-radius: 999px; padding: 0 7px; font-size: 10px; font-family: "JetBrains Mono", monospace; }
   .em-cta { padding: 24px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
@@ -326,7 +331,7 @@
             <div class="h"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>내 댓글</b><time>10/11 10:05</time></div>
             <p>용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
           </div>
-          <div class="em-c main">
+          <div class="em-c main jessi">
             <div class="h"><span class="av" data-i="terminal" style="--c:#0f8f75" aria-hidden="true"></span><b>Jessi</b><span class="mb">만든 사람</span><time>10/11 12:30</time></div>
             <p>아직 표정은 바뀌지 않고, 지금은 말에서만 단서를 찾을 수 있어요. 이번에 대답을 서버가 정하게 바꿨으니 표정도 같이 정하게 할 수 있을 것 같습니다. 만들면 데브로그에 남길게요!</p>
           </div>
