@@ -646,6 +646,8 @@ function dayNumber(repo: string, date: string): number {
   const dates = fs
     .readdirSync(dir)
     .filter((f) => /^\d{4}-\d{2}-\d{2}\.mdx?$/.test(f))
+    // 소개 글은 번호를 세지 않는다 (lib/content.ts의 day와 같은 규칙)
+    .filter((f) => !/^intro:\s*true\s*$/m.test(fs.readFileSync(path.join(dir, f), "utf8").split(/\n---\n/)[0]))
     .map((f) => f.slice(0, 10))
     .sort();
   const idx = dates.indexOf(date);

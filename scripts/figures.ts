@@ -66,6 +66,7 @@ const SECTION_NAME: Record<FigSection, string> = {
   why: "왜",
   fail: "삽질 포인트",
   next: "다음 할 것",
+  built: "지금까지 만든 것",
 };
 
 const SYSTEM = `당신은 "vibelog" 데브로그의 삽화가입니다. 다 써진 글을 받아, 책 삽화처럼
@@ -113,7 +114,7 @@ JSON 배열 하나만, 코드펜스 없이:
   "svg": "<svg viewBox=\\"0 0 ${FIG_W} 200\\" role=\\"img\\"><title>…</title>…</svg>",
   "svgEn": "<svg …>…</svg>"}]
 
-section은 did/why/fail/next, after는 그 섹션의 문단 번호(0부터) — 그 문단 **뒤**에
+section은 did/why/fail/next(소개 글은 built도), after는 그 섹션의 문단 번호(0부터) — 그 문단 **뒤**에
 놓입니다. 문단 번호는 아래 본문에 적힌 것을 그대로 씁니다.`;
 
 function paraBlock(
@@ -140,9 +141,10 @@ function allowedNumbers(md: string): string {
   return nums.length ? nums.join(", ") : "없음";
 }
 
-export function buildUserPrompt(title: string, s: FigureSections): string {
+export function buildUserPrompt(title: string, s: FigureSections, note?: string): string {
   return [
     `# ${title}`,
+    ...(note ? ["", note] : []),
     "",
     "## 한국어 본문 (문단 번호 = after 값)",
     paraBlock("ko", s.ko),
@@ -230,10 +232,12 @@ export function parseFigureReply(
 export async function generateFigures(
   title: string,
   sections: FigureSections,
+  /** 글 종류에 따른 덧붙임 — 소개 글은 구조 그림을 적어도 한 장 그리게 한다 */
+  note?: string,
 ): Promise<FigureResult> {
   const client = new Anthropic();
   const messages: Anthropic.MessageParam[] = [
-    { role: "user", content: buildUserPrompt(title, sections) },
+    { role: "user", content: buildUserPrompt(title, sections, note) },
   ];
   // 스트리밍으로 받는다. 상한을 32000으로 올리자 SDK가 "10분을 넘길 수 있는
   // 요청은 스트리밍이 필수"라며 요청을 보내기도 전에 거절했다 (백필 #116, 4편

@@ -82,6 +82,18 @@ const RULES: Record<SafetyKind, RegExp[]> = {
 };
 
 /**
+ * 비밀 키처럼 생긴 값을 가린다 — 소개 글이 레포 코드를 AI에게 넘기기 전에 쓴다
+ * (scripts/intro.ts). 코드에는 설정값이 그대로 박혀 있을 수 있어서, 글이 그 값을
+ * 옮겨 적을 여지를 처음부터 없앤다. 발행 전 검사(checkSafety)는 그대로 한 번 더 돈다.
+ */
+export function maskSecrets(text: string): string {
+  return RULES.secret.reduce(
+    (t, re) => t.replace(new RegExp(re.source, re.flags.includes("g") ? re.flags : re.flags + "g"), "[가린 값]"),
+    text,
+  );
+}
+
+/**
  * 공개해도 되는 메일 주소 — 커밋 서명(Co-Authored-By: … <noreply@…>)과 GitHub가 만드는
  * 익명 주소는 개인 연락처가 아니다. 커밋 메시지를 검사할 때 이것까지 걸리면 모든 커밋이 빠진다.
  */

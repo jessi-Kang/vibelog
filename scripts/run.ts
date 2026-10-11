@@ -33,6 +33,18 @@ import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
 import { assignColors } from "../lib/project-color";
+import { Octokit } from "@octokit/rest";
+import {
+  checkIntro,
+  enoughCode,
+  gatherCode,
+  hasIntro,
+  introDate,
+  writeIntro,
+  writeIntroFigures,
+  writeIntroPost,
+  type Intro,
+} from "./intro";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
@@ -178,11 +190,23 @@ function autoStatus(
   return days <= 30 ? "building" : "paused";
 }
 
-async function updateProjects(activities: RepoActivity[]): Promise<void> {
+async function updateProjects(
+  activities: RepoActivity[],
+  /** 이 실행에서 쓴 소개 글 — 서비스 이름과 프로젝트 설명을 projects.json에 적는다 */
+  intros: Map<string, Intro> = new Map(),
+): Promise<void> {
   // 설명 번역 캐시 — 원문이 안 바뀐 레포는 이전 번역을 재사용한다 (API 절약)
   const prev = new Map<
     string,
-    { description?: string; descriptionEn?: string; color?: string }
+    {
+      description?: string;
+      descriptionEn?: string;
+      color?: string;
+      serviceName?: string;
+      serviceNameEn?: string;
+      about?: string;
+      aboutEn?: string;
+    }
   >();
   try {
     for (const p of JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"))) {
@@ -215,10 +239,31 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     activities.map((a) => a.repo),
     Object.fromEntries([...prev].map(([slug, p]) => [slug, p.color])),
   );
-  const projects = activities.map((a) => ({
+  // 소개 글이 코드에서 찾은 서비스 이름·프로젝트 설명 — 한 번 적으면 이어받는다 (scripts/intro.ts)
+  const introOf = (repo: string) => {
+    const it = intros.get(repo);
+    const p = prev.get(repo);
+    return {
+      serviceName: it?.name ?? p?.serviceName,
+      serviceNameEn: it?.nameEn ?? p?.serviceNameEn,
+      about: it?.about ?? p?.about,
+      aboutEn: it?.aboutEn ?? p?.aboutEn,
+    };
+  };
+  const projects = activities.map((a) => {
+    const intro = introOf(a.repo);
+    // 화면 이름 — vibelog.json name > 소개 글이 코드에서 찾은 서비스 이름 > 레포 이름
+    const name = a.vibelogJson?.name ?? intro.serviceName ?? a.repo;
+    const nameEn = a.vibelogJson?.name ? undefined : intro.serviceNameEn;
+    return {
     slug: a.repo,
     ...(colors[a.repo] ? { color: colors[a.repo] } : {}),
-    name: a.vibelogJson?.name ?? a.repo,
+    name,
+    ...(nameEn ? { nameEn } : {}),
+    ...(intro.serviceName ? { serviceName: intro.serviceName } : {}),
+    ...(intro.serviceNameEn ? { serviceNameEn: intro.serviceNameEn } : {}),
+    ...(intro.about ? { about: intro.about } : {}),
+    ...(intro.aboutEn ? { aboutEn: intro.aboutEn } : {}),
     description: a.description,
     ...(descriptionEn.has(a.repo)
       ? { descriptionEn: descriptionEn.get(a.repo) }
@@ -244,7 +289,8 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     countsDate: todayKST(),
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
     ...(a.theme ? { theme: a.theme } : {}),
-  }));
+    };
+  });
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
   // 녹화용 실제 주소 (live 전 주소 포함) — 커밋하지 않는 파일. 같은 실행의 쇼츠가 읽는다
   savePrivateHomepages(
@@ -595,8 +641,83 @@ async function main(): Promise<void> {
 
   let failed = 0;
   const published: string[] = [];
+
+  // 소개 글 — 소개 글이 없는 프로젝트는 레포 코드를 읽고 "무엇을 만드는 프로젝트인가"를
+  // 먼저 쓴다 (scripts/intro.ts). 새 프로젝트는 이 글이 첫 글이 되고, 그 밤의 일반 글은
+  // 다음 밤으로 넘긴다 — 같은 날짜에 글이 둘이면 주소가 겹친다. 그날 커밋은 처리 위치를
+  // 옮기지 않으므로 다음 밤 글에 그대로 들어간다.
+  const intros = new Map<string, Intro>();
+  const introTonight = new Set<string>();
+  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  for (const a of activities) {
+    if (hasIntro(a.repo)) continue;
+    // AI가 "무엇을 만드는지 아직 모르겠다"고 한 레포는 새로 푸시될 때까지 다시 묻지 않는다
+    if (state[a.repo]?.introDeferredAt && state[a.repo]?.introDeferredAt === a.pushedAt) continue;
+    try {
+      const m = await gatherCode(octokit, a.owner, a.repo, a.description);
+      if (!enoughCode(m)) {
+        console.log(`- ${a.repo}: 판단할 코드가 아직 없어 소개 글을 미룸`);
+        runLines.push({
+          text: `skip     · ${a.repo} 판단할 코드가 아직 없어 소개 글을 미룹니다`,
+          textEn: `skip     · ${a.repo} not enough code yet to tell what it is — intro post waits`,
+        });
+        continue;
+      }
+      const r = await writeIntro(m);
+      if (r.status === "deferred") {
+        state[a.repo] = { ...state[a.repo], introDeferredAt: a.pushedAt };
+        console.log(`- ${a.repo}: 무엇을 만드는지 아직 알 수 없다는 답 — 소개 글을 미룸`);
+        runLines.push({
+          text: `skip     · ${a.repo} 무엇을 만드는지 아직 알 수 없어 소개 글을 미룹니다`,
+          textEn: `skip     · ${a.repo} can't tell what it is yet — intro post waits for new code`,
+        });
+        continue;
+      }
+      // live 전 사이트 주소가 글에 옮겨졌으면 내지 않는다 — 공개 파일에는 live 주소만 둔다
+      const hidden = a.homepage && !publicHomepageOf(a) ? new URL(a.homepage).host : null;
+      await checkIntro(r.intro, hidden);
+      const day = introDate(a.repo, date);
+      writeIntroPost(a.repo, day, r.intro);
+      intros.set(a.repo, r.intro);
+      if (day === date) introTonight.add(a.repo);
+      console.log(`- ${a.repo}/${day}.md 소개 글: ${r.intro.title}`);
+      runLines.push({
+        text: `intro    · ${a.repo}/${day} 소개 글 (ko, en) · ${fmtTally(takeUsage("intro"))}`,
+        textEn: `intro    · ${a.repo}/${day} intro post (ko, en) · ${fmtTally(takeUsage("intro"))}`,
+      });
+      const f = await writeIntroFigures(a.repo, day, r.intro);
+      for (const why of f.dropped) {
+        runLines.push({
+          text: `warn     · ${a.repo}/${day} 삽화 제외 — ${why}`,
+          textEn: `warn     · ${a.repo}/${day} figure dropped — ${why}`,
+        });
+      }
+      const tok = fmtTally(takeUsage("figures"));
+      runLines.push({
+        text: `figures  · ${a.repo}/${day} ${f.count}장 · ${tok}`,
+        textEn: `figures  · ${a.repo}/${day} ${f.count} figure${f.count === 1 ? "" : "s"} · ${tok}`,
+      });
+    } catch (err) {
+      if (err instanceof SafetyBlockError) {
+        runLines.push({
+          text: `block    · ${a.repo} ${err.message}`,
+          textEn: `block    · ${a.repo} intro post withheld by the safety check — ${err.flags.join(", ")}`,
+          kind: "fail",
+        });
+        continue;
+      }
+      // 소개 글이 실패해도 그 밤의 일반 글은 막지 않는다
+      console.error(`- ${a.repo} 소개 글 실패:`, hideHosts(err));
+      runLines.push({ text: `intro    · ${a.repo} 실패 — 일반 글은 계속`, textEn: `intro    · ${a.repo} failed — regular posts continue`, kind: "fail" });
+    }
+  }
+
   for (const a of activities) {
     if (!a.hasActivity) continue;
+    if (introTonight.has(a.repo)) {
+      console.log(`- ${a.repo}: 오늘 밤은 소개 글을 썼다 — 일반 글은 다음 밤에`);
+      continue;
+    }
     const file = devlogPath(a.repo, date);
     if (isProtected(file)) {
       console.log(`- ${a.repo}/${date}.md: manual 보호 — 건너뜀`);
@@ -642,6 +763,8 @@ async function main(): Promise<void> {
       }
     }
     state[a.repo] = {
+      // 소개 글을 미룬 표시(introDeferredAt)처럼 이 자리가 쓰지 않는 값은 이어받는다
+      ...state[a.repo],
       lastSha: a.latestSha ?? state[a.repo]?.lastSha,
       lastRun: new Date().toISOString(),
       // 같은 날 재실행이 같은 창을 다시 쓰도록 날짜 버킷과 창 시작을 남긴다
@@ -653,7 +776,7 @@ async function main(): Promise<void> {
   // 쇼츠보다 먼저 projects.json을 갱신한다 — 쇼츠(script.ts)가 여기서
   // homepage(데모 URL)·theme을 읽으므로, 이 실행에서 처음 감지된 배포
   // 주소가 그날 쇼츠에 바로 쓰여야 한다. 뒤에 두면 하루 밀린다.
-  await updateProjects(activities);
+  await updateProjects(activities, intros);
   writeCommitHours(activities);
 
   // 쇼츠 단계 (2단계) — 실패해도 데브로그 발행은 막지 않는다

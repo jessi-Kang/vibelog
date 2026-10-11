@@ -17,7 +17,8 @@
  */
 
 /** 삽화가 들어갈 수 있는 섹션 — 글의 고정 구조와 같다 */
-export const FIG_SECTIONS = ["did", "why", "fail", "next"] as const;
+// built는 소개 글에만 있다 — "지금까지 만든 것" (scripts/intro.ts)
+export const FIG_SECTIONS = ["did", "why", "fail", "next", "built"] as const;
 export type FigSection = (typeof FIG_SECTIONS)[number];
 
 /**

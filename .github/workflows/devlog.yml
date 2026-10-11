@@ -37,6 +37,10 @@ on:
         description: "이미 발행된 글에 삽화 붙이기 — all 또는 vibelog/2026-09-15,apart/2026-09-14. 글은 안 건드리고 .figures.json만 새로 만든다 (Opus 호출 글당 1–2번)"
         required: false
         default: ""
+      intro:
+        description: "프로젝트 소개 글만 쓰기 — all 또는 apart,Anchor. 레포 코드를 읽고 소개 글·서비스 이름·프로젝트 설명을 쓴다. 이미 글이 있는 프로젝트는 첫 글 하루 전 날짜로 들어간다 (Opus 호출 프로젝트당 1–2번 + 삽화)"
+        required: false
+        default: ""
       preview:
         description: "글을 지금 지시문으로 다시 써서 원래 글과 나란히 보기 — 예: vibelog/2026-09-22,apart/2026-09-21. 발행 안 함, 결과는 실행 요약에 (글당 Opus 1–2번)"
         required: false
@@ -95,6 +99,9 @@ jobs:
           if [ -n "$PREVIEW" ]; then
             # 미리보기 — 다시 쓴 글을 실행 요약에만 남긴다. content/는 안 건드린다
             npx tsx scripts/devlog-preview.ts "$PREVIEW"
+          elif [ -n "$INTRO" ]; then
+            # 소개 글 — 레포 코드를 읽고 쓴다 (scripts/intro.ts). 일반 글·쇼츠는 안 건드린다
+            npx tsx scripts/intro.ts "$INTRO"
           elif [ -n "$FIGURES" ]; then
             # 삽화 백필 — 이미 발행된 글에 삽화만 붙인다 (글·쇼츠는 안 건드린다)
             npx tsx scripts/figures-backfill.ts "$FIGURES"
@@ -116,6 +123,7 @@ jobs:
           NEW_SCRIPT: ${{ inputs.new_script }}
           POSTER: ${{ inputs.poster }}
           FIGURES: ${{ inputs.figures }}
+          INTRO: ${{ inputs.intro }}
           PREVIEW: ${{ inputs.preview }}
           # 예약 회차와, 예약을 대신하는 호출(Vercel Cron → guard: true)에만
           # 켠다 — 이 밤에 이미 발행했으면 조용히 종료해 이중 발행·TTS 중복
@@ -154,6 +162,7 @@ jobs:
           REGEN: ${{ inputs.regen }}
           POSTER: ${{ inputs.poster }}
           FIGURES: ${{ inputs.figures }}
+          INTRO: ${{ inputs.intro }}
         run: |
           git config user.name "vibelog-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -161,7 +170,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋 생략"
           else
-            if [ -n "$FIGURES" ]; then
+            if [ -n "$INTRO" ]; then
+              git commit -m "chore: 프로젝트 소개 글 ($INTRO)"
+            elif [ -n "$FIGURES" ]; then
               git commit -m "chore: 글 삽화 붙임 ($FIGURES)"
             elif [ -n "$POSTER" ]; then
               git commit -m "chore: 쇼츠 썸네일 재추출 ($POSTER)"

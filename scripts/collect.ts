@@ -124,6 +124,11 @@ export interface RepoState {
   lastDate?: string;
   /** lastDate 글이 다루는 수집 창의 시작 (ISO) — 같은 날 재실행이 이 창을 다시 쓴다 */
   daySince?: string;
+  /**
+   * 소개 글을 미룬 때의 레포 마지막 푸시 시각 — AI가 "무엇을 만드는지 아직 모르겠다"고
+   * 답한 레포는 새로 푸시될 때까지 다시 묻지 않는다 (밤마다 같은 질문에 돈을 쓰지 않게)
+   */
+  introDeferredAt?: string;
 }
 
 export type State = Record<string, RepoState>;

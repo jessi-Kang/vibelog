@@ -11,7 +11,12 @@ export interface Project {
   slug: string; // 레포 이름
   /** 프로젝트 식별색 — 파이프라인이 한 번 정하면 바꾸지 않는다 (lib/project-color.ts) */
   color?: string;
+  /** 화면에 쓰는 이름 — vibelog.json name > 소개 글이 코드에서 찾은 서비스 이름 > 레포 이름 */
   name: string;
+  nameEn?: string;
+  /** 소개 글이 코드를 읽고 쓴 프로젝트 설명 한두 문장 — 글 제목 아래에 붙고, 누르면 소개 글로 간다 */
+  about?: string;
+  aboutEn?: string;
   description: string;
   /** 파이프라인이 만든 영어 번역 — 없으면 UI가 ko로 폴백 */
   descriptionEn?: string;
@@ -33,6 +38,8 @@ export interface DevlogSections {
   why?: string;
   fail?: string;
   next?: string;
+  /** 소개 글에만 — "지금까지 만든 것" */
+  built?: string;
 }
 
 export interface DevlogEntry {
@@ -59,6 +66,12 @@ export interface DevlogEntry {
   figures?: PostFigure[];
   /** 이 글이 이어 가는 같은 레포 지난 글의 날짜 (frontmatter continues). 그 글이 있을 때만 */
   continues?: string;
+  /**
+   * 프로젝트 소개 글 (frontmatter intro: true) — 그 프로젝트의 첫 글. 커밋이 아니라 레포
+   * 코드를 읽고 쓴다 (scripts/intro.ts). day 번호를 세지 않는다(0): 소개 글을 나중에
+   * 넣은 프로젝트는 번호가 밀려, 이미 만든 쇼츠에 박힌 DAY 번호와 어긋나기 때문이다.
+   */
+  intro?: boolean;
 }
 
 export interface ShortsMeta {
@@ -121,6 +134,13 @@ const SECTION_MAP: Record<string, keyof DevlogSections> = {
   왜: "why",
   "삽질 포인트": "fail",
   "다음 할 것": "next",
+  // 소개 글 (scripts/intro.ts) — 요약은 "어떤 프로젝트인가" 첫 문장에서 나온다
+  "어떤 프로젝트인가": "did",
+  "누구를 위해, 왜": "why",
+  "지금까지 만든 것": "built",
+  "what it is": "did",
+  "who it's for, and why": "why",
+  "what's built so far": "built",
   "what i did": "did",
   why: "why",
   "rabbit holes": "fail",
@@ -209,9 +229,12 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       .readdirSync(dir)
       .filter((f) => /\.mdx?$/.test(f))
       .sort(); // 오래된 순 — day 번호 계산용
-    files.forEach((f, i) => {
+    let dayNo = 0;
+    files.forEach((f) => {
       const raw = fs.readFileSync(path.join(dir, f), "utf8");
       const { data, content } = matter(raw);
+      const intro = data.intro === true;
+      if (!intro) dayNo++;
       const date = String(data.date ?? f.replace(/\.mdx?$/, ""));
       const [ko, en] = content.split(/<!--\s*en\s*-->/);
       const body = ko.trim();
@@ -254,7 +277,8 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         ...(shasEn ? { shasEn } : {}),
         ...(figures?.length ? { figures } : {}),
         ...(typeof data.continues === "string" ? { continues: data.continues } : {}),
-        day: i + 1,
+        day: intro ? 0 : dayNo,
+        ...(intro ? { intro: true } : {}),
       });
     });
   }
@@ -366,4 +390,9 @@ export function getRunLog(): RunLog | null {
   } catch {
     return null;
   }
+}
+
+/** 그 프로젝트의 소개 글 — 없으면 undefined. 글 제목 아래 프로젝트 설명이 이 글로 간다 */
+export function introPost(repo: string): DevlogEntry | undefined {
+  return getDevlogs(repo).find((d) => d.intro);
 }
