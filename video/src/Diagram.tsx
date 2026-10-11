@@ -387,6 +387,9 @@ export const DiagramScene: React.FC<{
     // 겹쳐 두었더니 paper 테마에서 글자 대비가 1.6:1이라 사실상 안 보였다
     // ("…" — Jessi). 색은 본문색(th.ink) 그대로
     // 두고 흐리기만 0.55까지 내린다 — 같은 자리에서 4:1이 나온다.
+    // 흐리는 건 **글자와 아이콘만**이다. 박스째 흐리면 테두리(th.line)가 원래 배경과 차이가 작아서 0.55에서
+    // … 박스·화살표는
+    // 그대로 두고 안의 글자만 물러나게 한다.
     const dim = 1 - 0.45 * seg(t, 1.4, 0.5);
     const TOP = 800;
     const BOT = 1120;
@@ -397,9 +400,7 @@ export const DiagramScene: React.FC<{
           width={1080}
           height={1920}
         >
-          <g opacity={dim}>
-            <Arrow x0={452} x1={556} y={TOP + 55} p={ar1} color={th.line} />
-          </g>
+          <Arrow x0={452} x1={556} y={TOP + 55} p={ar1} color={th.line} />
           <Arrow x0={452} x1={556} y={BOT + 55} p={ar2} color={th.accent} />
         </svg>
         <div
@@ -424,11 +425,13 @@ export const DiagramScene: React.FC<{
             width: 340,
             height: 110,
             ...rise(a),
-            opacity: a * dim,
+            opacity: a,
           }}
         >
-          <BoxIcon icon={ic(0)} color={th.ink} />
-          {l(0)}
+          <span style={{ display: "inline-flex", alignItems: "center", opacity: dim }}>
+            <BoxIcon icon={ic(0)} color={th.ink} />
+            {l(0)}
+          </span>
         </div>
         <div
           style={{
@@ -438,11 +441,13 @@ export const DiagramScene: React.FC<{
             width: 374,
             height: 110,
             ...rise(a),
-            opacity: a * dim,
+            opacity: a,
           }}
         >
-          <BoxIcon icon={ic(1)} color={th.ink} />
-          {l(1)}
+          <span style={{ display: "inline-flex", alignItems: "center", opacity: dim }}>
+            <BoxIcon icon={ic(1)} color={th.ink} />
+            {l(1)}
+          </span>
         </div>
         <div
           style={{
