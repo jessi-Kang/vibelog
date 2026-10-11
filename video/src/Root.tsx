@@ -8,6 +8,7 @@ import {
   DIAGRAM_SLOT_SEC,
 } from "./DiagramSheet";
 import { MotifSheet, type MotifSheetProps, SHEET_SLOT_SEC } from "./MotifSheet";
+import { CaptionSheet } from "./CaptionSheet";
 import { RemocnSheet, type RemocnSheetProps, REMOCN_SHEET_FRAMES } from "./RemocnSheet";
 import { ShipIt, type ShipItProps } from "./ShipIt";
 import {
@@ -92,6 +93,16 @@ export const RemotionRoot: React.FC = () => {
       fps={FPS}
       durationInFrames={REMOCN_SHEET_FRAMES}
       defaultProps={{ theme: "terminal" } as RemocnSheetProps}
+    />
+    {/* 검수용 — 자막 표시 방식 시안. 실제 대본·타이밍을 props로 넘긴다 */}
+    <Composition
+      id="CaptionSheet"
+      component={CaptionSheet as unknown as React.FC<Record<string, unknown>>}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={14 * FPS}
+      defaultProps={{ ...defaults, style: "now" } as unknown as Record<string, unknown>}
     />
     </>
   );
