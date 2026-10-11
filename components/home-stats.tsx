@@ -48,7 +48,7 @@ function Fact({ n, label }: { n: number | string; label: ReactNode }) {
     <span className="inline-flex items-baseline gap-1.5 md:flex-col md:items-start md:gap-1">
       <b
         suppressHydrationWarning // 실시간 값은 클라이언트에서 갱신된다
-        className={`font-sans text-md font-bold leading-none tabular-nums tracking-[-.01em] md:text-xl lg:text-2xl ${
+        className={`font-sans text-md font-semibold leading-none tabular-nums tracking-[-.01em] md:text-xl lg:text-2xl ${
           zero ? "text-muted" : "text-accent"
         }`}
       >

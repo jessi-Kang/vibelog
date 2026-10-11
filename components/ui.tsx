@@ -60,17 +60,18 @@ export function SectionHeader({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-3 px-1">
-      <h2 className="text-md font-bold text-ink">{title}</h2>
+      {/* 섹션 제목은 이름표 — 내용보다 약하게 (10/11 Jessi: "…", 시안 2안) */}
+      <h2 className="text-base font-medium text-muted">{title}</h2>
       {aside &&
         (href ? (
           <Link
             href={href}
-            className="font-mono text-2xs text-accent transition-opacity duration-150 hover:opacity-85"
+            className="font-sans text-xs text-accent transition-opacity duration-150 hover:opacity-85"
           >
             {aside}
           </Link>
         ) : (
-          <span className="font-mono text-2xs text-muted">{aside}</span>
+          <span className="font-sans text-xs tabular-nums text-muted">{aside}</span>
         ))}
     </div>
   );
@@ -131,7 +132,7 @@ export function StatusBadge({ status }: { status: string }) {
   const s = STATUS_META[status] ?? STATUS_META.building;
   return (
     <span
-      className={`whitespace-nowrap font-mono text-2xs font-bold uppercase tracking-[.08em] ${s.text}`}
+      className={`whitespace-nowrap font-mono text-2xs font-medium uppercase tracking-[.08em] ${s.text}`}
     >
       ● {s.label}
     </span>
@@ -147,7 +148,7 @@ export function MonoMeta({
 }) {
   return (
     <div
-      className={`flex flex-wrap gap-x-2.5 font-mono text-2xs text-muted ${className}`}
+      className={`flex flex-wrap gap-x-2.5 font-sans text-2xs tabular-nums text-muted ${className}`}
     >
       {items.map((m, i) => {
         const t = typeof m === "string" ? { text: m } : m;

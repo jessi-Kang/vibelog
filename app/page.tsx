@@ -150,7 +150,7 @@ export default function Home() {
       {/* 통계 줄은 전 구간 동일 — 제목 아래 왼쪽 정렬 + 위 구분선 (Jessi 지시) */}
       <section className="grid items-end gap-4 border-b border-dashed border-line pb-6 pt-1 md:gap-5 md:pt-3 lg:pt-5">
         <div className="flex flex-col gap-2 md:gap-3">
-          <h1 className="m-0 max-w-[22ch] text-[24px] font-bold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
+          <h1 className="m-0 max-w-[22ch] text-[24px] font-semibold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
             <T
               ko={
                 <>

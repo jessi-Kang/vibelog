@@ -40,7 +40,7 @@ export function ProjectCard({ project }: { project: Project }) {
           카드 위의 상태색 띠가 흔한 AI 디자인처럼 보여서 뺐고, 이름 줄은 이름만 둔다 (10/11 Jessi, C안) */}
       <div className="flex flex-col gap-0.5">
         <div className="flex items-center justify-between gap-3">
-          <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-bold text-ink">
+          <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-semibold text-ink">
             <ProjectIcon icon={project.icon} size={20} style={{ color: projectColor(project.slug) }} />
             <span className="truncate">
               {lang === "en" ? (project.nameEn ?? project.name) : project.name}
@@ -55,7 +55,7 @@ export function ProjectCard({ project }: { project: Project }) {
             : project.description}
         </p>
       )}
-      <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-mono text-2xs text-muted">
+      <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-sans text-xs tabular-nums text-muted">
         <StatusBadge status={project.status} />
         <span className="min-w-0 flex-1 truncate">{meta.join(" · ")}</span>
         {publicHomepage(project) && (
@@ -81,7 +81,7 @@ function emphasizeRepo(text: string): ReactNode {
   return (
     <>
       {m[1]}
-      <span className="font-bold text-ink">{m[2]}</span>
+      <span className="font-medium text-ink">{m[2]}</span>
       {m[3]}
     </>
   );
@@ -167,19 +167,20 @@ export function DevlogTimelineEntry({
         }
       />
       <div className="flex flex-col gap-1.5">
-        <div className="flex gap-2.5 font-mono text-xs text-muted">
+        {/* 프로젝트 이름은 색만 — 굵게까지 하면 제목과 힘을 다툰다. 한글이 들어 있어 한글 글꼴로 */}
+        <div className="flex gap-2.5 font-sans text-xs tabular-nums text-muted">
           {repo && (
-            <span className="font-bold" style={{ color: projectColor(repo) }}>
+            <span style={{ color: projectColor(repo) }}>
               <T ko={projectName(repo)} en={projectName(repo, true)} />
             </span>
           )}
           <span>{date}</span>
         </div>
-        <h3 className="m-0 text-lg font-bold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
+        <h3 className="m-0 text-lg font-semibold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
           {title}
         </h3>
         {summary && (
-          <p className="m-0 text-base leading-relaxed text-muted [text-wrap:pretty]">
+          <p className="m-0 text-base leading-relaxed text-ink-soft [text-wrap:pretty]">
             {summary}
           </p>
         )}
@@ -216,7 +217,7 @@ export function DevlogCompactEntry({
         {date}
       </div>
       <div className="flex min-w-0 flex-col gap-1">
-        <div className="text-md font-bold leading-snug text-ink [text-wrap:pretty]">
+        <div className="text-md font-medium leading-snug text-ink [text-wrap:pretty]">
           {title}
         </div>
         {/* 프로젝트 이름은 전체 피드와 같은 식별색 — 여러 프로젝트가 섞인 목록에서 색만 봐도 구분된다 */}
@@ -226,7 +227,7 @@ export function DevlogCompactEntry({
               ? [
                   {
                     text: (
-                      <span className="font-bold" style={{ color: projectColor(repo) }}>
+                      <span style={{ color: projectColor(repo) }}>
                         <T ko={projectName(repo)} en={projectName(repo, true)} />
                       </span>
                     ),

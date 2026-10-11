@@ -83,7 +83,7 @@ export function ProjectFilter({
             type="button"
             aria-pressed={on}
             onClick={() => onChange(p.slug)}
-            className={`hit min-h-8 flex-none cursor-pointer whitespace-nowrap rounded-full border px-3 font-mono text-xs transition-colors duration-150 ${
+            className={`hit min-h-8 flex-none cursor-pointer whitespace-nowrap rounded-full border px-3 font-sans text-xs transition-colors duration-150 ${
               on
                 ? "border-line-strong bg-panel2 font-bold text-ink"
                 : "border-line bg-transparent font-medium text-muted"
@@ -101,7 +101,7 @@ export function ProjectFilter({
             )}
             {en ? (p.nameEn ?? p.name) : p.name}
             {counts[p.slug] != null && (
-              <span className="ml-1.5 text-muted">{counts[p.slug]}</span>
+              <span className="ml-1.5 tabular-nums text-muted">{counts[p.slug]}</span>
             )}
           </button>
         );
