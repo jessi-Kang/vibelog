@@ -56,17 +56,37 @@ export const THEME_PAPER: Record<string, { accent: string; light: boolean }> = {
   highlighter: { accent: "#FFD84D", light: false },
 };
 
-export function styleFor(theme?: string | null): string {
+/**
+ * 보관해 둔 그림체 — 오려 붙인 종이 콜라주 (10/11 2차 시안 B안). 지금은 쓰지 않는다.
+ * Jessi가 둥근 평면을 골랐지만 이것도 좋다고 해서 지시문을 남겨 둔다. 켜려면 ART_STYLE=papercut.
+ * 시안 그림은 docs/art-styles.html.
+ */
+const PAPERCUT_BASE =
+  "Flat paper cutout collage: the subject is made of a few hand-cut paper shapes with slightly irregular scissor edges " +
+  "and visible paper fiber texture, glued flat, with only a faint shadow along the edges. " +
+  "Isolated object on a fully transparent background: no backdrop, no floor, no frame, no vignette. " +
+  "Absolutely no text, no letters, no numbers, no logos, no people, no hands. " +
+  "One centered subject with generous empty space around it. Square composition. ";
+
+export type ArtStyle = "flat" | "papercut";
+
+export function styleFor(
+  theme?: string | null,
+  style: ArtStyle = process.env.ART_STYLE === "papercut" ? "papercut" : "flat",
+): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
   // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
-  // 먹색은 혼자 무겁게 떴다 (10/11 Jessi 두 번). 큰 면은 중간 회색대에서만 고른다
+  // 먹색은 혼자 무겁게 떴다 (10/11 Jessi 두 번). 처음엔 짙은 슬레이트까지 내렸더니 이번엔 조금
+  // 어두웠다 (Jessi: "조금 밝게") — 큰 면은 밝은 중간 회색에서 슬레이트 사이에서만 고른다
   const neutrals = t.light
-    ? "medium gray (#A3AAB4), slate gray (#7A828E) and dark slate (#5A6270) shapes; white only for tiny highlights, " +
-      "never large white or very light gray areas (they vanish on the light gray background), nothing darker than #4A5260"
-    : "off-white, light gray and slate gray shapes";
+    ? "light-medium gray (#BAC0C8), medium gray (#9CA3AD) and slate gray (#7A828E); white only for tiny highlights, " +
+      "never large white or near-white areas (they vanish on the light gray background), nothing darker than #6B7380"
+    : "off-white, light gray and slate gray";
+  const base = style === "papercut" ? PAPERCUT_BASE : STYLE_BASE;
+  const what = style === "papercut" ? "papers" : "shapes";
   // 5개 테마 시안(10/11)에서 강조색이 아닌 색과 빛 번짐·반짝임 선이 끼어들었다
   return (
-    `${STYLE_BASE}Colors: ${neutrals}, with exactly one ${t.accent} colored part on the focal object. ` +
+    `${base}Colors: ${neutrals} ${what}, with exactly one ${t.accent} colored part on the focal object. ` +
     "No other saturated colors anywhere. No glow, no light beams, no sparkle or motion lines. Subject: "
   );
 }
