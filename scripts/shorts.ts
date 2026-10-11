@@ -6,6 +6,7 @@
  * 필요 환경변수: ANTHROPIC_API_KEY, ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
  * 선택: BLOB_READ_WRITE_TOKEN (없으면 업로드 생략, mp4는 로컬에만 남음)
  */
+import { resolveHomepage } from "./homepage";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -50,7 +51,9 @@ export async function runShorts(repo: string, date: string): Promise<void> {
   console.log(`[shorts] 내레이션·음악 생성`);
   await generateAudio(repo, date, ["ko", "en"]);
 
-  if (script.demo.url) {
+  // live 전 사이트는 대본 JSON에 주소가 없다 — 녹화할 때만 비공개 파일에서 찾는다
+  const demoUrl = script.demo.url || (await resolveHomepage(repo));
+  if (demoUrl) {
     // 언어별로 따로 녹화 — 사이트를 그 언어 모드로 켜서, 영어 영상에
     // 한국어 화면이 나오지 않게 한다 (Jessi 지시)
     for (const lang of ["ko", "en"] as const) {
@@ -60,7 +63,7 @@ export async function runShorts(repo: string, date: string): Promise<void> {
           "utf8",
         ),
       );
-      console.log(`[shorts] 화면 녹화 (${script.demo.url}, ${lang})`);
+      console.log(`[shorts] 화면 녹화 (${lang})`);
       await record(repo, date, Math.ceil(timing.duration) + 2, lang);
     }
   } else {

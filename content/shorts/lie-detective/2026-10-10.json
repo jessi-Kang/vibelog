@@ -198,7 +198,7 @@
     }
   ],
   "demo": {
-    "url": "https://lie-detective.vercel.app",
+    "url": "",
     "steps": []
   },
   "failCard": {
@@ -374,7 +374,7 @@
     ]
   ],
   "commitCount": 20,
-  "handle": "lie-detective.vercel.app",
+  "handle": "lie-detective",
   "captions": {
     "ko": "추리 게임의 정답이 소스 보기에 그대로 보였습니다. 용의자의 답변 규칙을 서버로 옮긴 날의 기록입니다.",
     "en": "The mystery's answers were sitting in view source. Here's the day I moved the suspects' answer rules to the server."

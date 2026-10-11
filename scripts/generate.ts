@@ -297,10 +297,10 @@ export async function generateDevlog(
         : { before: 0, after: null, rewritten: false, unclear },
     };
   }
-  console.log(
-    `[review] 막힌 문장 ${unclear.length}개:\n` +
-      unclear.map((u) => `  - "${u.sentence}" → ${u.why}`).join("\n"),
-  );
+  // 문장은 로그에 적지 않는다 — 이 레포는 공개라 Actions 로그도 공개고, 이 원고는
+  // 발행 전 안전 검사를 거치기 전이다. 검사에 걸려 발행이 막힌 글의 문장도 로그에는
+  // 남던 틈이었다 (10/11). 개수만 남긴다.
+  console.log(`[review] 막힌 문장 ${unclear.length}개 — 다시 쓴다`);
 
   let fixed: GeneratedDevlog;
   try {

@@ -78,6 +78,7 @@ vibelog/
 │   ├─ generate.ts               # 수집 결과 → 데브로그 MDX (KR/EN) + 처음 읽는 사람의 읽기 검사
 │   ├─ korean-style.ts · check-korean.ts  # 어색한 한국어 표현 목록과 그 검사기 (문서·커밋·실행 기록 문구)
 │   ├─ readability.ts            # 처음 보는 사람 역할의 검사 모델 호출 (글·대본이 같이 씀)
+│   ├─ homepage.ts               # live 전 주소는 공개 파일에 안 남기고 녹화 때만 찾는다
 │   ├─ safety.ts                 # 발행 전 안전 검사 (Jev + 모양 규칙) — jev-*-trial.ts가 그 시험 기록
 │   ├─ commit-rule.ts · check-commit.ts  # 커밋 규칙을 코드로 — 밤 수집과 .githooks/commit-msg가 같이 씀
 │   ├─ devlog-preview.ts         # 지난 글을 지금 지시문으로 다시 써서 나란히 보기 (발행 안 함, `preview` 입력)
@@ -135,7 +136,9 @@ vibelog/
 1개 이상 발행**하고 주소가 **Vercel 기본 주소(`*.vercel.app`)가 아니면** **live**
 (`scripts/run.ts` `isVercelDefault`) — 정식 공개는 자기 도메인을 단 뒤 Release를 내는 것이다.
 **사이트 주소는 live일 때만 화면에 건다** (`lib/public-homepage.ts` — 홈 카드 "열기"와
-프로젝트 페이지). 쇼츠 녹화가 주소를 쓰므로 `projects.json`에는 남는다 (10/10).
+프로젝트 페이지). 공개 레포라 `projects.json`·쇼츠 JSON·쇼츠 마지막 장면의 주소 버튼에도
+live 주소만 남긴다. live 전 주소는 커밋하지 않는 `.private/homepages.json`에 두고 녹화할 때만
+읽는다 (`scripts/homepage.ts`, 10/11).
 About Website는 주소 지정용일 뿐 상태와 무관 (주소만 채워도 live가 되던 사고의 교훈).
 배포가 없으면 30일 내 커밋 building, 넘으면 paused. `vibelog.json`의 status가
 있으면 언제나 그게 우선 — 예외적 강제 지정용 (vibelog 자신이 이걸로 live 고정).

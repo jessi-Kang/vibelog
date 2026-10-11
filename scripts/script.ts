@@ -6,6 +6,7 @@
  *
  * 사용: npx tsx scripts/script.ts <repo> <date>
  */
+import { isPublicStatus, resolveHomepage } from "./homepage";
 import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
@@ -197,7 +198,9 @@ ${MOTIF_MENU}
 
 interface ProjectMeta {
   slug: string;
+  /** live일 때만 들어 있다 — 아니면 실제 주소는 resolveHomepage가 비공개 파일에서 찾는다 */
   homepage?: string;
+  status?: string;
   /** 레포가 vibelog.json으로 고른 쇼츠 테마 */
   theme?: string;
 }
@@ -698,7 +701,11 @@ export async function generateScript(
   }
   const { data, content } = matter(fs.readFileSync(devlogFile, "utf8"));
   const meta = getProjectMeta(repo);
-  const demoUrl = meta.homepage ?? "";
+  // 녹화에 쓰는 실제 주소와, 공개 파일·영상에 남겨도 되는 주소를 나눈다. live 전
+  // 사이트는 대본 JSON에도, 마지막 장면의 주소 버튼에도, 실행 기록에도 주소를 남기지
+  // 않는다 — 이 레포와 실행 기록은 공개다 (scripts/homepage.ts)
+  const demoUrl = await resolveHomepage(repo, meta.homepage);
+  const shownUrl = isPublicStatus(meta.status) ? demoUrl : "";
   // 레포가 고른 테마 — 알 수 없는 값은 기본(terminal)으로
   const theme = SHORTS_THEMES.includes(
     meta.theme as (typeof SHORTS_THEMES)[number],
@@ -717,7 +724,7 @@ export async function generateScript(
   if (screens.length < 2) {
     throw new NoScreensError(
       demoUrl
-        ? `로그인 없이 볼 수 있는 화면이 첫 화면 하나뿐이라 쇼츠를 만들지 않습니다 (${demoUrl})`
+        ? `로그인 없이 볼 수 있는 화면이 첫 화면 하나뿐이라 쇼츠를 만들지 않습니다${shownUrl ? ` (${shownUrl})` : ""}`
         : "배포 주소가 없어 쇼츠를 만들지 않습니다",
     );
   }
@@ -736,7 +743,9 @@ export async function generateScript(
         d.length ? " (가급적 다른 종류로)" : ""
       }`;
     })(),
-    `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
+    demoUrl && !shownUrl
+      ? "배포 URL: (정식 공개 전이라 비공개 — 대본·자막에 사이트 주소를 쓰지 않는다)"
+      : `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
     ...(screens.length >= 2
       ? [
           [
@@ -841,8 +850,8 @@ export async function generateScript(
   }
   if (unclear.length > 0) {
     console.warn(
-      `[listen] 알아듣기 막힌 문장 ${unclear.length}개:\n` +
-        unclear.map((u) => `  - "${u.sentence}" → ${u.why}`).join("\n"),
+      // 문장은 적지 않는다 — 공개 로그이고 안전 검사 전의 대본이다 (generate.ts와 같은 이유)
+      `[listen] 알아듣기 막힌 문장 ${unclear.length}개`,
     );
   }
   if (blanks.length > 0 || unclear.length > 0) {
@@ -965,12 +974,12 @@ export async function generateScript(
     // 다이어그램 개수 상한은 없앴다 — 그림이 내용을 더 잘 설명하면 더 쓰는 게
     // 맞다 (Jessi). 빈 화면은 위에서 막았다 (한 번 교정, 안 되면 예외).
     lines,
-    demo: { url: demoUrl, steps: [] },
+    demo: { url: shownUrl, steps: [] },
     ...(failCard ? { failCard } : {}),
     ...(commits.length ? { commits } : {}),
     ...(commitsEn.length ? { commitsEn } : {}),
     ...(commitCount ? { commitCount } : {}),
-    handle: demoUrl.replace(/^https?:\/\//, "").replace(/\/$/, "") || repo,
+    handle: shownUrl.replace(/^https?:\/\//, "").replace(/\/$/, "") || repo,
     captions: {
       ko: typeof captions.ko === "string" ? captions.ko : "",
       en: typeof captions.en === "string" ? captions.en : "",

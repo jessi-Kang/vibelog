@@ -31,6 +31,7 @@ import { followsCommitRule } from "./commit-rule";
 import { enoughForPost } from "./collect";
 import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
+import { isPublicStatus, savePrivateHomepages } from "./homepage";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
@@ -158,6 +159,11 @@ export function isVercelDefault(url: string): boolean {
   }
 }
 
+/** 공개 파일에 써도 되는 주소 — live일 때만 (scripts/homepage.ts) */
+function publicHomepageOf(a: RepoActivity): string | undefined {
+  return a.homepage && isPublicStatus(a.vibelogJson?.status ?? autoStatus(a)) ? a.homepage : undefined;
+}
+
 function autoStatus(
   a: RepoActivity,
 ): "building" | "preview" | "live" | "paused" {
@@ -213,7 +219,9 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     status: a.vibelogJson?.status ?? autoStatus(a),
     stack: a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
     repoUrl: a.repoUrl,
-    ...(a.homepage ? { homepage: a.homepage } : {}),
+    // 주소는 live일 때만 공개 파일에 쓴다 — 이 레포는 공개라 projects.json도 공개다.
+    // 녹화용 실제 주소는 .private/에 따로 둔다 (scripts/homepage.ts)
+    ...(publicHomepageOf(a) ? { homepage: publicHomepageOf(a) } : {}),
     ...(a.language ? { language: a.language } : {}),
     // 마지막 활동 날짜는 KST 기준 — UTC로 자르면 밤 커밋이 "어제"로 밀린다
     lastActivity: new Date(
@@ -231,6 +239,10 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     ...(a.theme ? { theme: a.theme } : {}),
   }));
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
+  // 녹화용 실제 주소 (live 전 주소 포함) — 커밋하지 않는 파일. 같은 실행의 쇼츠가 읽는다
+  savePrivateHomepages(
+    Object.fromEntries(activities.filter((a) => a.homepage).map((a) => [a.repo, a.homepage as string])),
+  );
 }
 
 /** 홈 "지난 실행" 패널이 읽는 실행 로그 */
@@ -491,7 +503,7 @@ async function main(): Promise<void> {
       JSON.stringify([
         a.vibelogJson?.name ?? a.repo,
         a.description,
-        a.homepage ?? "",
+        publicHomepageOf(a) ?? "",
         a.vibelogJson?.status ?? autoStatus(a),
         a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
         a.theme ?? "",
