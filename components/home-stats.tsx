@@ -151,8 +151,10 @@ export function HomeStats({
           (Jessi 지시: …) */}
       {/* 데스크톱은 잔디 옆에 나란히 세로 가운데로 맞추는데, 잔디 밑의 시각 눈금 줄(9px + 간격 6px)까지
           높이로 쳐서 통계가 칸보다 14px 아래로 처졌다 (Jessi, 10/11). 같은 15px을 아래에 비워 칸 덩어리의
-          가운데에 맞춘다 — 눈금 줄 높이는 commit-heatmap.tsx에서 9px로 못 박았다 */}
-      <div className="grid grid-cols-2 gap-x-5 gap-y-3.5 font-mono text-xs leading-snug text-muted md:max-w-[340px] md:flex-1 md:gap-x-7 md:gap-y-4 md:pb-[15px] lg:max-w-[380px] lg:gap-y-5">
+          가운데에 맞춘다 — 눈금 줄 높이는 commit-heatmap.tsx에서 9px로 못 박았다.
+          거기서 조금 더 내린다(데스크톱 4px, 태블릿 2px): 글자 픽셀로는 위아래가 19px씩 같았는데, 위는 크고
+          밝은 숫자·아래는 작고 옅은 이름이라 눈에는 위로 치우쳐 보였다 (Jessi, 10/11) */}
+      <div className="grid grid-cols-2 gap-x-5 gap-y-3.5 font-mono text-xs leading-snug text-muted md:max-w-[340px] md:flex-1 md:gap-x-7 md:gap-y-4 md:pb-[11px] lg:max-w-[380px] lg:gap-y-5 lg:pb-[7px]">
         {facts.map(([k, n, l]) => (
           <Fact key={k} n={n} label={l} />
         ))}
