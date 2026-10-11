@@ -2,7 +2,7 @@
  {
   "section": "fail",
   "after": 0,
-  "alt": "글 끝 링크에 꼬리표를 붙여 다른 글로 보내고, 통계에서 꼬리표 붙은 방문만 골라 넘어간 수를 세는 흐름",
+  "alt": "글 맨 아래에 있는 링크 주소에 꼬리표를 붙여 다른 글로 보내고, 통계에서 꼬리표 붙은 방문만 골라 넘어간 수를 세는 흐름",
   "altEn": "The end-of-post link carries a tag to another post, and filtering the stats to tagged visits gives the number of people who moved on.",
   "caption": "누른 횟수를 셀 수 없어서, 링크에 꼬리표를 달고 꼬리표 붙은 방문만 골라 셉니다.",
   "captionEn": "Clicks can't be counted, so the link carries a tag and only tagged visits are counted.",
@@ -16,7 +16,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "글 끝 링크에 붙인 꼬리표로, 통계에서 넘어간 방문만 골라내는 흐름"
+     "text": "글 맨 아래에 있는 링크에 붙인 꼬리표로, 통계에서 넘어간 방문만 골라내는 흐름"
     },
     {
      "tag": "rect",
@@ -97,7 +97,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "글 끝 링크"
+     "text": "맨 아래 링크"
     },
     {
      "tag": "rect",

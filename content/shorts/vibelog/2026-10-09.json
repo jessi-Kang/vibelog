@@ -8,10 +8,10 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "글 끝 링크를 누르는지 셉니다",
+      "ko": "글을 다 읽고 넘어가는지 셉니다",
       "en": "I started counting end-of-post clicks",
       "keywords": [
-        "누르는지"
+        "넘어가는지"
       ],
       "keywordsEn": [
         "counting"
@@ -234,7 +234,7 @@
   "commitCount": 5,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "글 끝 링크를 누르고 다른 글로 넘어가는 사람이 있을까요? 무료 요금제의 한계를 링크 꼬리표로 넘어 세기 시작했습니다.",
+    "ko": "글을 끝까지 읽고 다른 날 글로 넘어가는 사람이 있을까요? 무료 요금제로는 못 세는 클릭을, 링크 주소에 꼬리표를 달아 세기 시작했습니다.",
     "en": "Does anyone click the link at the end of a post? The free plan couldn't count clicks, so I tagged the link instead."
   },
   "hashtags": [
