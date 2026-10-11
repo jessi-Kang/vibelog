@@ -148,7 +148,9 @@ export const DiagramScene: React.FC<{
   lang: "ko" | "en";
   /** 장면이 시작되는 영상 시각(초) */
   fromSec: number;
-}> = ({ spec, th, lang, fromSec }) => {
+  /** 겹친 원의 긴 겹친 값 배치 — 검수·시안용 (line 지금 / chip 아래 칩 / tick 아래 글자) */
+  setsVariant?: "line" | "chip" | "tick";
+}> = ({ spec, th, lang, fromSec, setsVariant = "line" }) => {
   const { fps } = useVideoConfig();
   const t = useCurrentFrame() / fps - fromSec;
   const L =
@@ -504,6 +506,9 @@ export const DiagramScene: React.FC<{
   if (spec.kind === "sets") {
     // [왼쪽 집합, 오른쪽 집합, 겹친 값] — 원은 12시부터 시계방향으로 그려진다
     const R = 230;
+    // 두 원이 만나는 높이 — 중심 사이 280의 절반 140에서 √(230²−140²). 190으로 박아 두었을 때는
+    // 겹친 자리 색이 원 밖으로 삐져나와 테두리가 두 겹으로 보였다
+    const LENS_H = Math.sqrt(R * R - 140 * 140);
     const a = seg(t, 0.2, 0.5);
     const b = seg(t, 0.6, 0.5);
     const inter = seg(t, 1.3, 0.5);
@@ -516,6 +521,59 @@ export const DiagramScene: React.FC<{
       strokeDashoffset: 1 - p,
       opacity: p > 0 ? 1 : 0,
     });
+    if (!inside && setsVariant !== "line") {
+      // 시안 — 집합 이름 둘은 원 위에, 겹친 값은 원 아래 가운데에 (사선 없이)
+      const chip = setsVariant === "chip";
+      return (
+        <>
+          <svg style={{ position: "absolute", inset: 0 }} width={1080} height={1920}>
+            <circle cx={420} cy={CY} r={R} fill={th.panel} opacity={a * a} />
+            <circle cx={700} cy={CY} r={R} fill={tint(th, 0.1)} opacity={b * b} />
+            <path
+              d={`M560 ${CY - LENS_H} A${R} ${R} 0 0 1 560 ${CY + LENS_H} A${R} ${R} 0 0 1 560 ${CY - LENS_H} Z`}
+              fill={th.accent}
+              opacity={inter * 0.38 + num * 0.22}
+            />
+            <circle cx={420} cy={CY} r={R} fill="none" stroke={th.ink} strokeWidth={5} pathLength={1}
+              transform={`rotate(-90 420 ${CY})`} style={ring(a)} />
+            <circle cx={700} cy={CY} r={R} fill="none" stroke={th.accent} strokeWidth={5} pathLength={1}
+              transform={`rotate(-90 700 ${CY})`} style={ring(b)} />
+            {!chip && (
+              <path
+                d={`M560 ${CY + LENS_H + 14} V${CY + 262}`}
+                stroke={th.accent}
+                strokeWidth={4}
+                strokeLinecap="round"
+                pathLength={1}
+                style={{ strokeDasharray: "1 2", strokeDashoffset: 1.06 * (1 - num) }}
+              />
+            )}
+          </svg>
+          <div style={{ ...labelStyle(th, th.ink), left: 96, width: 420, top: CY - 316, fontWeight: 700,
+            fontSize: fitFont(l(0), 30, 420), ...rise(seg(t, 0.5, 0.4), 16) }}>{l(0)}</div>
+          <div style={{ ...labelStyle(th, th.accent), right: 96, width: 420, top: CY - 316, fontWeight: 700,
+            textAlign: "right", fontSize: fitFont(l(1), 30, 420), ...rise(seg(t, 0.9, 0.4), 16) }}>{l(1)}</div>
+          <div style={{ position: "absolute", left: 140, width: 840, top: CY + (chip ? 290 : 280), display: "flex",
+            justifyContent: "center", ...rise(num, 16) }}>
+            <span
+              style={{
+                fontFamily: FONT_SANS,
+                fontWeight: 900,
+                fontSize: fitFont(l(2), chip ? 40 : 44, 760, 1),
+                wordBreak: "keep-all",
+                color: chip ? th.accentInk : th.accent,
+                background: chip ? th.accent : "transparent",
+                borderRadius: chip ? 999 : 0,
+                padding: chip ? "14px 34px" : 0,
+                lineHeight: 1.2,
+              }}
+            >
+              {l(2)}
+            </span>
+          </div>
+        </>
+      );
+    }
     return (
       <>
         <svg
@@ -526,7 +584,7 @@ export const DiagramScene: React.FC<{
           <circle cx={420} cy={CY} r={R} fill={th.panel} opacity={a * a} />
           <circle cx={700} cy={CY} r={R} fill={tint(th, 0.1)} opacity={b * b} />
           <path
-            d={`M560 ${CY - 190} A${R} ${R} 0 0 1 560 ${CY + 190} A${R} ${R} 0 0 1 560 ${CY - 190} Z`}
+            d={`M560 ${CY - LENS_H} A${R} ${R} 0 0 1 560 ${CY + LENS_H} A${R} ${R} 0 0 1 560 ${CY - LENS_H} Z`}
             fill={th.accent}
             opacity={inter * 0.38}
           />
