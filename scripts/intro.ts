@@ -19,6 +19,7 @@
  * 소개 글을 바로 붙일 때 쓴다 (Run workflow의 `intro` 입력):
  *   npx tsx scripts/intro.ts all          # 소개 글이 없는 프로젝트 전부
  *   npx tsx scripts/intro.ts apart,Anchor # 이 둘만
+ *   npx tsx scripts/intro.ts icons        # 소개 글은 있는데 아이콘이 없는 프로젝트에 아이콘만
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -416,6 +417,50 @@ export async function checkIntro(it: Intro, hiddenHost: string | null): Promise<
   if (flags.length > 0) throw new SafetyBlockError("소개 글", [...new Set(flags)]);
 }
 
+/* ---------- 아이콘만 다시 고르기 ---------- */
+
+/**
+ * 아이콘이 생기기 전에 쓴 소개 글(10/11의 5편)에 아이콘만 붙인다. 코드를 다시 읽지 않고
+ * 소개 글이 쓴 프로젝트 설명만 작은 모델에게 보여 준다 — 아이콘은 "무엇인지"를 보여 주는
+ * 것이라 설명이면 충분하다.
+ */
+async function iconsOnly(): Promise<{ text: string }[]> {
+  const list: Record<string, unknown>[] = JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"));
+  const client = new Anthropic();
+  const lines: { text: string }[] = [];
+  for (const p of list) {
+    if (p.icon || typeof p.about !== "string") continue;
+    const res = await client.messages.create({
+      model: "claude-sonnet-5-5",
+      max_tokens: 300,
+      messages: [
+        {
+          role: "user",
+          content: [
+            "아래 프로젝트에 붙일 Tabler 아이콘(tabler-icons.io) 이름 후보를 3–5개, 좋은 순서로 JSON 배열 하나만 내 주세요.",
+            "프로젝트가 무엇인지를 사용하는 사람 눈으로 보여 주는 것을 고릅니다. 기술 스택이 아닙니다. 영어 소문자와 하이픈만.",
+            `이름: ${String(p.name)}`,
+            `설명: ${p.about}`,
+          ].join("\n"),
+        },
+      ],
+    });
+    const text = res.content.filter((b) => b.type === "text").map((b) => (b as Anthropic.TextBlock).text).join("");
+    let cands: unknown = [];
+    try {
+      cands = JSON.parse(text.slice(text.indexOf("["), text.lastIndexOf("]") + 1));
+    } catch {
+      // 못 읽으면 아이콘 없이 둔다
+    }
+    const icon = pickIcon(cands);
+    if (icon) p.icon = icon;
+    console.log(`- ${String(p.slug)}: ${icon?.name ?? "맞는 아이콘 없음"}`);
+    lines.push({ text: `icon     · ${String(p.slug)} ${icon ? icon.name.replace("tabler:", "") : "맞는 아이콘 없음"}` });
+  }
+  fs.writeFileSync(PROJECTS_FILE, JSON.stringify(list, null, 2) + "\n");
+  return lines;
+}
+
 /* ---------- 단독 실행 (Run workflow의 intro 입력) ---------- */
 
 async function main(): Promise<void> {
@@ -423,6 +468,18 @@ async function main(): Promise<void> {
   if (!arg) {
     console.error("사용: npx tsx scripts/intro.ts all | repo[,repo]");
     process.exit(1);
+  }
+  if (arg === "icons") {
+    const lines = await iconsOnly();
+    fs.writeFileSync(
+      path.join(process.cwd(), "content", "run.json"),
+      JSON.stringify(
+        { at: new Date().toISOString(), lines: [{ text: "npx tsx scripts/intro.ts icons", kind: "cmd" }, ...lines] },
+        null,
+        2,
+      ) + "\n",
+    );
+    return;
   }
   const projects: { slug: string; description?: string; status?: string; homepage?: string }[] = JSON.parse(
     fs.readFileSync(PROJECTS_FILE, "utf8"),
