@@ -1,0 +1,50 @@
+name: art-try
+
+# 이미지 생성 API 확인용 — 손으로만 돌린다. Gemini·OpenAI에서 한 장씩 만들어
+# 아티팩트로 올린다. 키가 맞는지, 모델 이름이 아직 살아 있는지 볼 때 쓴다.
+# 아무것도 커밋하지 않는다.
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "그릴 것 (영어 한 문장)"
+        required: false
+        default: "a small lighthouse on a calm sea at night"
+
+permissions:
+  contents: read
+
+jobs:
+  try:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # 한쪽이 실패해도 다른 쪽은 돌린다
+      - name: Gemini
+        continue-on-error: true
+        run: npx tsx scripts/art.ts --try "$PROMPT" gemini
+        env:
+          PROMPT: ${{ inputs.prompt }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: OpenAI
+        continue-on-error: true
+        run: npx tsx scripts/art.ts --try "$PROMPT" openai
+        env:
+          PROMPT: ${{ inputs.prompt }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: art-try
+          path: art-try-*.png
+          if-no-files-found: warn
