@@ -1,0 +1,502 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "AI와 코딩해서 남긴 커밋이 매일 밤 저절로 데브로그와 쇼츠가 되고, 읽는 분이 그것을 하루하루 따라 보는 흐름도.",
+  "altEn": "A flow diagram: commits from coding with AI become a devlog and a Shorts clip every night on their own, and readers follow along day by day.",
+  "caption": "코딩만 하면 커밋이 밤마다 저절로 글과 영상이 됩니다",
+  "captionEn": "Just keep coding, and each night the commits turn into a story and a clip on their own",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 404",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "AI와 코딩해서 남긴 커밋이 매일 밤 저절로 데브로그와 쇼츠가 되어 읽는 분에게 닿는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "16",
+      "width": "200",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI와 코딩"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "64",
+      "x2": "195",
+      "y2": "86",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,86 201,86 195,96",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "96",
+      "width": "200",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "126",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "144",
+      "x2": "195",
+      "y2": "190",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "207",
+      "y": "174",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "매일 밤 저절로"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "195,190 105,190 105,202",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "195,190 285,190 285,202",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,202 111,202 105,212",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "279,202 291,202 285,212",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "212",
+      "width": "150",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "242",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "데브로그"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "212",
+      "width": "150",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "242",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "쇼츠"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "105,260 105,290 285,290 285,260",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "290",
+      "x2": "195",
+      "y2": "316",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,316 201,316 195,326",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "326",
+      "width": "250",
+      "height": "62",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "352",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "읽는 분"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "376",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "하루하루 따라 보기"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 404",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Commits from coding with AI become a devlog and a Shorts clip every night on their own, reaching readers"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "16",
+      "width": "200",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Coding with AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "64",
+      "x2": "195",
+      "y2": "86",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,86 201,86 195,96",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "95",
+      "y": "96",
+      "width": "200",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "126",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commits"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "144",
+      "x2": "195",
+      "y2": "190",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "205",
+      "y": "174",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "nightly, on its own"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "195,190 105,190 105,202",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "195,190 285,190 285,202",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,202 111,202 105,212",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "279,202 291,202 285,212",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "212",
+      "width": "150",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "242",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Devlog"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "212",
+      "width": "150",
+      "height": "48",
+      "rx": "10",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "242",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Shorts"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "105,260 105,290 285,290 285,260",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "290",
+      "x2": "195",
+      "y2": "316",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "189,316 201,316 195,326",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "70",
+      "y": "326",
+      "width": "250",
+      "height": "62",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "352",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Readers"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "376",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "follow along day by day"
+    }
+   ]
+  }
+ }
+]
