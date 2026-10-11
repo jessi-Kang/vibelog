@@ -1,21 +1,69 @@
 {
-  "at": "2026-10-11T09:34:59.911Z",
+  "at": "2026-10-11T14:18:27.737Z",
   "lines": [
     {
-      "text": "npx tsx scripts/intro.ts vibelog,agency",
+      "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "intro    · vibelog/2026-09-07 소개 글 · 토큰 in 9,935 · out 2,300",
-      "textEn": "intro    · vibelog/2026-09-07 intro post · tokens in 9,935 · out 2,300"
+      "text": "collect  · 6 repos, 2 active"
     },
     {
-      "text": "figures  · vibelog/2026-09-07 1장 · 토큰 in 997 · out 4,617",
-      "textEn": "figures  · vibelog/2026-09-07 1 figure · tokens in 997 · out 4,617"
+      "text": "skip     · agency 판단할 코드가 아직 없어 소개 글을 미룹니다",
+      "textEn": "skip     · agency not enough code yet to tell what it is — intro post waits"
     },
     {
-      "text": "skip     · agency 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다",
-      "textEn": "skip     · agency no plan doc or code yet to tell what it is — intro post postponed"
+      "text": "safety   · vibelog 재료 12개 통과 · Jev 토큰 9,550",
+      "textEn": "safety   · vibelog 12 inputs passed · Jev tokens 9,550"
+    },
+    {
+      "text": "generate · vibelog/2026-10-11.md (ko, en) · 토큰 in 20,660 · out 5,400 · cache 4,763",
+      "textEn": "generate · vibelog/2026-10-11.md (ko, en) · tokens in 20,660 · out 5,400 · cache 4,763"
+    },
+    {
+      "text": "review   · vibelog/2026-10-11 막힌 문장 6개 → 다시 씀 → 남은 것 3개 · 토큰 in 3,524 · out 1,116",
+      "textEn": "review   · vibelog/2026-10-11 6 unclear → rewritten → 3 left · tokens in 3,524 · out 1,116"
+    },
+    {
+      "text": "figures  · vibelog/2026-10-11 2장 · 토큰 in 5,654 · out 9,489 · cache 1,646",
+      "textEn": "figures  · vibelog/2026-10-11 2 figures · tokens in 5,654 · out 9,489 · cache 1,646"
+    },
+    {
+      "text": "safety   · apart 재료 19개 통과 · Jev 토큰 18,826",
+      "textEn": "safety   · apart 19 inputs passed · Jev tokens 18,826"
+    },
+    {
+      "text": "generate · apart/2026-10-11.md (ko, en) · 토큰 in 39,588 · out 6,368 · cache 9,526",
+      "textEn": "generate · apart/2026-10-11.md (ko, en) · tokens in 39,588 · out 6,368 · cache 9,526"
+    },
+    {
+      "text": "review   · apart/2026-10-11 막힌 문장 5개 → 다시 씀 → 남은 것 6개 · 토큰 in 3,768 · out 2,124",
+      "textEn": "review   · apart/2026-10-11 5 unclear → rewritten → 6 left · tokens in 3,768 · out 2,124"
+    },
+    {
+      "text": "figures  · apart/2026-10-11 1장 · 토큰 in 1,986 · out 4,341 · cache 1,646",
+      "textEn": "figures  · apart/2026-10-11 1 figure · tokens in 1,986 · out 4,341 · cache 1,646"
+    },
+    {
+      "text": "shorts   · vibelog/2026-10-11 (ko, en) · 대본 토큰 in 10,650 · out 8,195 · cache 7,712",
+      "textEn": "shorts   · vibelog/2026-10-11 (ko, en) · script tokens in 10,650 · out 8,195 · cache 7,712"
+    },
+    {
+      "text": "listen   · vibelog/2026-10-11 막힌 문장 5개 → 다시 씀 → 남은 것 3개 · 토큰 in 2,365 · out 1,263",
+      "textEn": "listen   · vibelog/2026-10-11 5 unclear → rewritten → 3 left · tokens in 2,365 · out 1,263"
+    },
+    {
+      "text": "shorts   · apart/2026-10-11 (ko, en) · 대본 토큰 in 10,820 · out 12,319 · cache 15,424",
+      "textEn": "shorts   · apart/2026-10-11 (ko, en) · script tokens in 10,820 · out 12,319 · cache 15,424"
+    },
+    {
+      "text": "listen   · apart/2026-10-11 막힌 문장 6개 → 다시 씀 → 남은 것 3개 · 토큰 in 2,435 · out 2,047",
+      "textEn": "listen   · apart/2026-10-11 6 unclear → rewritten → 3 left · tokens in 2,435 · out 2,047"
+    },
+    {
+      "text": "warn     · apart/2026-10-11 데모 화면 중복 — 같은 자리를 두 번 보여줍니다 (/n, /o, 정류장 5개)",
+      "textEn": "warn     · apart/2026-10-11 duplicate demo screen — same view shown twice (/n, /o, 5 stops)",
+      "kind": "fail"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

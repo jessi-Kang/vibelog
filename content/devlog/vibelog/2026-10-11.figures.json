@@ -1,0 +1,578 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "지시문에 강조색만 적었을 때는 노란 물건과 빛줄기가 끼어들었고, 다른 색과 빛을 금지하자 한 가지 색으로 그려진 비교 그림.",
+  "altEn": "Comparison: with only the accent color named, a yellow object and light streaks crept in; after forbidding other colors and light, the picture used one color.",
+  "caption": "금지하는 말을 더하자 그림이 한 가지 색으로 정리됐습니다.",
+  "captionEn": "Adding what not to use brought the picture down to one color.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 265",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "처음 지시문은 다른 색과 빛줄기가 섞였고, 금지를 더한 지시문은 한 가지 색으로 그려졌다"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "15",
+      "x2": "195",
+      "y2": "250",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "처음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "고친 뒤"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "60",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "강조색만 적음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "60",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "+ 다른 색·빛 금지"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "85",
+      "cy": "150",
+      "r": "38",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "128",
+      "y": "160",
+      "width": "34",
+      "height": "34",
+      "rx": "8",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M40 100 L52 112 M85 92 V104 M130 100 L118 112 M30 150 H42",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "275",
+      "cy": "150",
+      "r": "38",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "318",
+      "y": "160",
+      "width": "34",
+      "height": "34",
+      "rx": "8",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "240",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "노란 물건·빛줄기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "240",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "한 가지 색"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 265",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The first instructions let other colors and light streaks in; the fixed instructions gave one color"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "15",
+      "x2": "195",
+      "y2": "250",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "first try"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "after fix"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "60",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "accent color only"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "60",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "+ no other colors"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "85",
+      "cy": "150",
+      "r": "38",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "128",
+      "y": "160",
+      "width": "34",
+      "height": "34",
+      "rx": "8",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M40 100 L52 112 M85 92 V104 M130 100 L118 112 M30 150 H42",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "275",
+      "cy": "150",
+      "r": "38",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "318",
+      "y": "160",
+      "width": "34",
+      "height": "34",
+      "rx": "8",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "240",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "yellow + streaks"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "240",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "one color"
+    }
+   ]
+  }
+ },
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "매일 밤 커밋을 읽어 글과 30~45초 쇼츠가 만들어지지만, 쇼츠의 그림 기능은 꺼져 있었다는 흐름도.",
+  "altEn": "Flow diagram: each night the commits are read to make a post and a 30–45 second short, but pictures in the short were switched off.",
+  "caption": "커밋에서 글과 쇼츠가 저절로 나옵니다. 쇼츠의 그림만 꺼져 있었습니다.",
+  "captionEn": "Commits turn into a post and a short on their own. Only the short's pictures were off.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "매일 밤 커밋에서 글과 쇼츠가 만들어지고, 쇼츠의 그림은 꺼져 있다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "85",
+      "width": "100",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M120 110 H175 M175 62 V157 M175 62 H198 M175 157 H198",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "198,57 206,62 198,67",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "198,152 206,157 198,162",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "147",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "매일 밤"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "206",
+      "y": "40",
+      "width": "164",
+      "height": "45",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "206",
+      "y": "135",
+      "width": "164",
+      "height": "45",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "163",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "쇼츠 30~45초"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "206",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "그림: 꺼 둠"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Each night commits become a post and a short, with the short's pictures switched off"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "85",
+      "width": "100",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "116",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "commits"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M120 110 H175 M175 62 V157 M175 62 H198 M175 157 H198",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "198,57 206,62 198,67",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "198,152 206,157 198,162",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "147",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "nightly"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "206",
+      "y": "40",
+      "width": "164",
+      "height": "45",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "68",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "post"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "206",
+      "y": "135",
+      "width": "164",
+      "height": "45",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "163",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "short 30–45s"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "288",
+      "y": "206",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "pictures: off"
+    }
+   ]
+  }
+ }
+]
