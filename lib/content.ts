@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import type { PostFigure } from "../scripts/figure-types";
+import { firstTermsOnly, plainTerms, termsOnly } from "./term-marker";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -239,8 +240,9 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       if (!intro) dayNo++;
       const date = String(data.date ?? f.replace(/\.mdx?$/, ""));
       const [ko, en] = content.split(/<!--\s*en\s*-->/);
-      const body = ko.trim();
-      const bodyEn = en?.trim();
+      // 같은 용어의 설명 표시([[용어|설명]])는 글에서 처음 한 번만 — 언어마다 따로 센다
+      const body = firstTermsOnly(ko.trim());
+      const bodyEn = en ? firstTermsOnly(en.trim()) : undefined;
       const sections = parseSections(body);
       const sectionsEn = bodyEn ? parseSections(bodyEn) : {};
       const parseShas = (v: unknown): [string, string][] | undefined =>
@@ -260,8 +262,8 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       entries.push({
         repo: r,
         date,
-        title: String(data.title ?? date),
-        ...(data.titleEn ? { titleEn: String(data.titleEn) } : {}),
+        title: termsOnly(String(data.title ?? date)),
+        ...(data.titleEn ? { titleEn: termsOnly(String(data.titleEn)) } : {}),
         manual: data.manual === true,
         body,
         ...(bodyEn ? { bodyEn } : {}),
@@ -271,8 +273,9 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         // frontmatter failStory). 전에는 삽질 섹션이 있으면 붙였는데, 형식상 늘
         // 채워져 27편 전부에 붙었다. 값이 없는 글은 안 붙인다.
         hasFail: data.failStory === true,
-        summary: firstSentence(sections.did),
-        ...(sectionsEn.did ? { summaryEn: firstSentence(sectionsEn.did) } : {}),
+        // 요약은 목록·RSS·링크 미리보기 카드에 쓰여 말풍선을 못 띄운다 — 괄호 표기로
+        summary: firstSentence(sections.did && plainTerms(sections.did)),
+        ...(sectionsEn.did ? { summaryEn: firstSentence(plainTerms(sectionsEn.did)) } : {}),
         ...(typeof data.commits === "number" ? { commits: data.commits } : {}),
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
         ...(shas ? { shas } : {}),
@@ -317,7 +320,7 @@ export function recentPosts(
     .map((d) => ({
       date: d.date,
       title: d.title,
-      ...(d.sections.next ? { next: d.sections.next.replace(/\s+/g, " ").slice(0, 300) } : {}),
+      ...(d.sections.next ? { next: plainTerms(d.sections.next).replace(/\s+/g, " ").slice(0, 300) } : {}),
     }));
 }
 

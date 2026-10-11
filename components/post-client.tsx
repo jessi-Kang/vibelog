@@ -8,13 +8,15 @@ import Link from "next/link";
 import { projectColor, withAlpha } from "@/lib/project-color";
 import { hasRealFail } from "@/lib/has-fail";
 import { useEffect, useState, type AnchorHTMLAttributes } from "react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
 import { keepBackslashes } from "@/lib/md-backslash";
 import { setPostRepo } from "@/lib/nav-memory";
 import { ProjectIcon } from "./project-icon";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
 import { allowedPostLink } from "@/lib/md-links";
+import { remarkTerms } from "@/lib/remark-terms";
+import { TermTip } from "./term-tip";
 import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
@@ -83,7 +85,11 @@ const mdComponents = {
       <span>{children}</span>
     ),
   img: () => null,
-};
+  // 용어 설명 표시 [[용어|설명]] → 점선 밑줄 + 누르면 말풍선 (lib/remark-terms.ts)
+  "term-tip": ({ note, children }: { note?: string; children?: React.ReactNode }) => (
+    <TermTip note={note ?? ""}>{children}</TermTip>
+  ),
+} as Components;
 
 /**
  * 물결표 하나짜리 취소선을 끈다.
@@ -95,7 +101,7 @@ const mdComponents = {
  * 잘못된 것도 아니다. 그래서 문장을 escape하는 대신 파서에서 끈다.
  * `~~두 개~~`는 그대로 취소선이라, 정말 그을 일이 생기면 그때 쓴다.
  */
-const REMARK: PluggableList = [[remarkGfm, { singleTilde: false }]];
+const REMARK: PluggableList = [[remarkGfm, { singleTilde: false }], remarkTerms];
 
 function Md({ children }: { children: string }) {
   return (

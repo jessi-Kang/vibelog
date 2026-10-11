@@ -16,6 +16,7 @@ import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear }
 import { checkSafety, SafetyBlockError } from "./safety";
 import { CORE_TERMS_REVIEW, CORE_TERMS_RULE_SPOKEN, styleRulesForPrompt } from "./korean-style";
 import matter from "gray-matter";
+import { plainTerms } from "../lib/term-marker";
 import { pickIcon } from "./icons";
 import type { ProjectIcon } from "../lib/project-icon";
 import {
@@ -753,7 +754,10 @@ export async function generateScript(
   if (!fs.existsSync(devlogFile)) {
     throw new Error(`데브로그가 없습니다: ${devlogFile}`);
   }
-  const { data, content } = matter(fs.readFileSync(devlogFile, "utf8"));
+  const devlogMd = matter(fs.readFileSync(devlogFile, "utf8"));
+  const data = devlogMd.data;
+  // 용어 설명 표시는 괄호 표기로 — 내레이션은 말풍선을 띄울 수 없다
+  const content = plainTerms(devlogMd.content);
   const meta = getProjectMeta(repo);
   // 녹화에 쓰는 실제 주소와, 공개 파일·영상에 남겨도 되는 주소를 나눈다. live 전
   // 사이트는 대본 JSON에도, 마지막 장면의 주소 버튼에도, 실행 기록에도 주소를 남기지

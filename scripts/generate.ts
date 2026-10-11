@@ -8,6 +8,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
 import { createMessage } from "./models";
 import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
+import { plainTerms } from "../lib/term-marker";
 import { CORE_TERMS_REVIEW, CORE_TERMS_RULE, styleRulesForPrompt } from "./korean-style";
 
 export type { Readability, Unclear };
@@ -230,7 +231,8 @@ function textOf(content: Anthropic.ContentBlock[]): string {
 
 /** 처음 읽는 독자 역할로 한국어 원고를 읽고, 막히는 문장을 돌려준다 */
 export function reviewReadability(d: GeneratedDevlog): Promise<Unclear[]> {
-  return askReader(REVIEW_SYSTEM, `# ${d.title}\n\n${d.ko}`, "review");
+  // 독자에게는 화면에서 말풍선이 뜨는 자리를 괄호로 풀어 보여 준다 — 설명이 붙은 용어를 막힌 말로 고르지 않게
+  return askReader(REVIEW_SYSTEM, `# ${d.title}\n\n${plainTerms(d.ko)}`, "review");
 }
 
 function rewriteAsk(unclear: Unclear[]): string {
@@ -240,9 +242,10 @@ function rewriteAsk(unclear: Unclear[]): string {
     ...unclear.map((u, i) => `${i + 1}. "${u.sentence}"\n   → ${u.why}`),
     "",
     "이 문장들을 고쳐 글 전체를 다시 내 주세요.",
-    "- 기술 용어는 그대로 두고 처음 나올 때 괄호로 설명을 붙입니다. 내부에서만 쓰는 이름이면 독자가 보는 이름으로 바꿉니다.",
+    "- 기술 용어는 그대로 두고 처음 나올 때 [[용어|설명]] 표시로 설명을 붙입니다. 내부에서만 쓰는 이름이면 독자가 보는 이름으로 바꿉니다.",
+    "- 독자는 [[용어|설명]] 표시를 \"용어(설명)\"로 읽었습니다. 고칠 때는 표시를 그대로 씁니다.",
     "- 이야기에 꼭 필요하지 않은 내부 설명(기준값, 프로그램이 안에서 판단하는 방식)이면 고치지 말고 뺍니다.",
-    "- 기술 용어(커밋, 레포, 배포, 도구 이름 등)는 다른 말로 바꾸거나 빼지 않습니다. 설명이 필요하면 처음 나올 때 괄호로 붙입니다: \"커밋(작업 메모)\".",
+    "- 기술 용어(커밋, 레포, 배포, 도구 이름 등)는 다른 말로 바꾸거나 빼지 않습니다. 설명이 필요하면 처음 나올 때 표시로 붙입니다: \"[[커밋|작업을 한 덩어리씩 저장하는 지점]]\".",
     "- 재료에 없는 사실을 새로 넣지 않습니다. 첫 문장 길이와 섹션 구조 규칙은 그대로입니다.",
     "- 영어(en)도 같이 맞춥니다.",
     "같은 JSON 형식 하나만 출력합니다.",
@@ -288,7 +291,7 @@ export async function generateDevlog(
     reviewError = err.message;
     return [] as Unclear[];
   });
-  const unclear = mergeUnclear(reviewed, styleUnclear(`${draft.title}\n${draft.ko}`));
+  const unclear = mergeUnclear(reviewed, styleUnclear(`${draft.title}\n${plainTerms(draft.ko)}`));
   if (unclear.length === 0) {
     return {
       ...draft,
@@ -326,7 +329,7 @@ export async function generateDevlog(
     };
   }
   const left = await reviewReadability(fixed).catch(() => null);
-  const leftStyle = styleUnclear(`${fixed.title}\n${fixed.ko}`);
+  const leftStyle = styleUnclear(`${fixed.title}\n${plainTerms(fixed.ko)}`);
   return {
     ...fixed,
     readability: {
