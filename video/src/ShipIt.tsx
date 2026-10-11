@@ -672,7 +672,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
           letterSpacing: "0.06em",
         }}
       >
-        <span>© {new Date(script.date).getFullYear()} vibelog · Jessi</span>
+        {/* 날짜 글자의 앞 네 자리 — Date로 읽으면 UTC 자정이 렌더하는 컴퓨터의 시간대로
+            바뀌어, UTC보다 늦은 곳에서는 1월 1일 글이 전년도로 찍힌다 */}
+        <span>© {script.date.slice(0, 4)} vibelog · Jessi</span>
         <span>
           {fmt(t)} / {fmt(total)}
         </span>
