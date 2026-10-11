@@ -1,0 +1,168 @@
+<title>데브로그 댓글 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0e14; --panel:#141b24; --panel2:#1b2430; --line:#26313f; --line-strong:#3a4656; --ink:#f3efe6; --ink-soft:#c9cfd8; --muted:#8c98a8; --accent:#5ee1c3; --accent-ink:#06261f; --accent-soft:rgba(94,225,195,.15); --warn:#ffb454; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "Noto Sans KR", system-ui, sans-serif; margin: 0; word-break: keep-all; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 64px; display: flex; flex-direction: column; gap: 28px; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .tag { font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+  .lead { display: flex; flex-direction: column; gap: 12px; }
+  .lead h1 { margin: 0; font-size: 26px; text-wrap: balance; }
+  .lead p { margin: 0; color: var(--ink-soft); line-height: 1.7; max-width: 72ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .col h2 { margin: 0; font-size: 16px; }
+  .col p.d { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .phone { border: 1px solid var(--line); border-radius: 18px; padding: 20px 18px 24px; max-width: 390px; width: 100%; display: flex; flex-direction: column; gap: 14px; }
+  .tail { font-size: 15px; line-height: 1.8; color: var(--ink-soft); margin: 0; opacity: .55; }
+  .sec { display: flex; align-items: baseline; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 16px; }
+  .sec h3 { margin: 0; font-size: 15px; }
+  .sec span { font-size: 11px; color: var(--muted); }
+  .c { display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+  .av { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--bg); }
+  .who { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+  .who b { color: var(--ink); }
+  .who time { color: var(--muted); font-size: 11px; font-family: "JetBrains Mono", monospace; }
+  .badge { font-size: 10px; letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 7px; font-family: "JetBrains Mono", monospace; }
+  .txt { margin: 4px 0 0; font-size: 14px; line-height: 1.7; color: var(--ink-soft); white-space: pre-wrap; }
+  .reply { margin-left: 38px; }
+  .acts { display: flex; gap: 14px; margin-top: 4px; font-size: 12px; color: var(--muted); }
+  .acts button { all: unset; cursor: pointer; padding: 6px 0; }
+  .acts button:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 10px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; border: 1px solid var(--line-strong); background: var(--panel2); color: var(--ink); }
+  .btn.pri { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn.ghost { background: transparent; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .gate { background: var(--panel); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .gate p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .box.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .box textarea { all: unset; display: block; width: 100%; min-height: 72px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
+  .box .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .count { font-size: 11px; color: var(--muted); font-family: "JetBrains Mono", monospace; }
+  .ai { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { min-height: 32px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; position: relative; }
+  .chip::after { content: ""; position: absolute; inset: -6px; }
+  .chip:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .chip svg { width: 14px; height: 14px; }
+  .draftnote { font-size: 11px; color: var(--warn); font-family: "JetBrains Mono", monospace; letter-spacing: .04em; }
+  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+  .note b { color: var(--ink); } .note ul { margin: 6px 0 0; padding-left: 18px; }
+  .note h3 { margin: 0 0 4px; font-size: 15px; color: var(--ink); }
+  code { font-family: "JetBrains Mono", monospace; font-size: .9em; background: var(--panel2); padding: 1px 5px; border-radius: 4px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <div class="lead">
+    <span class="tag mono">VIBELOG · 데브로그 댓글</span>
+    <h1>글 아래에 Google 로그인 댓글, Jessi의 답글엔 AI 초안</h1>
+    <p>글을 다 읽은 자리, "이 이야기의 앞뒤" 바로 아래에 댓글을 둡니다. 읽기는 누구나, 쓰기는 Google 로그인한 사람만. Jessi가 답글을 달 때는 AI가 그 글과 댓글을 읽고 초안을 써 주지만, 올리는 건 언제나 Jessi가 직접 누릅니다. 아래 예시는 10/10 거짓말 탐정 글에 달릴 법한 댓글이고, 세 번째 칸의 버튼은 눌러 볼 수 있습니다.</p>
+  </div>
+
+  <div class="grid">
+    <!-- A -->
+    <div class="col">
+      <span class="tag mono">① 방문자 · 로그인 전</span><h2>읽기는 그냥, 쓰기는 로그인</h2>
+      <p class="d">댓글 목록은 로그인 없이 보입니다. 쓰는 칸 대신 로그인 버튼 하나만 둡니다.</p>
+      <div class="phone">
+        <p class="tail">…다음 글에서는 수사 기록을 다른 기기에서 이어 보는 화면을 다듬겠습니다.</p>
+        <div class="sec"><h3>댓글 2</h3><span class="mono">오래된 순</span></div>
+        <div class="c"><div class="av" style="background:#8FB8FF">민</div><div>
+          <div class="who"><b>민지</b><time>10/10 23:41</time></div>
+          <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
+        </div></div>
+        <div class="c reply"><div class="av" style="background:#5ee1c3">J</div><div>
+          <div class="who"><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+          <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 정하는 데 걸리는 시간에 비하면 거의 차이가 없었습니다. 직접 해 보시고 느리면 알려 주세요!</p>
+        </div></div>
+        <div class="gate">
+          <button class="btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2-1.9 3.2-4.7 3.2-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.2a6.6 6.6 0 0 1 0-4.3V7.1H2.1a11 11 0 0 0 0 9.9l3.7-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg>Google로 로그인하고 댓글 쓰기</button>
+          <p>이름과 프로필 사진만 댓글에 보입니다. 메일 주소는 보이지 않습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="col">
+      <span class="tag mono">② 방문자 · 로그인 후</span><h2>쓰는 칸에 내 이름</h2>
+      <p class="d">Google 이름과 사진이 그대로 쓰입니다. 글자만 쓸 수 있고(링크는 눌리지 않는 글자로), 1,000자까지. 내가 쓴 댓글은 내가 지울 수 있습니다.</p>
+      <div class="phone">
+        <div class="sec"><h3>댓글 2</h3><span class="mono">오래된 순</span></div>
+        <div class="c"><div class="av" style="background:#8FB8FF">민</div><div>
+          <div class="who"><b>민지</b><time>10/10 23:41</time></div>
+          <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
+        </div></div>
+        <div class="c reply"><div class="av" style="background:#5ee1c3">J</div><div>
+          <div class="who"><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+          <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 정하는 데 걸리는 시간에 비하면 거의 차이가 없었습니다.</p>
+          <div class="acts"><button>답글</button></div>
+        </div></div>
+        <div class="box focus">
+          <div class="who"><div class="av" style="background:#FF9EC7;width:22px;height:22px;font-size:10px">도</div><b>도윤</b><span style="color:var(--muted);font-size:11px">· 로그인함</span></div>
+          <textarea aria-label="댓글">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</textarea>
+          <div class="row"><span class="count">33 / 1,000</span><button class="btn pri">올리기</button></div>
+        </div>
+        <div class="acts" style="justify-content:flex-end"><button>로그아웃</button></div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="col">
+      <span class="tag mono">③ Jessi · 답글 쓰기</span><h2>AI 초안 → 고쳐서 → 직접 올리기</h2>
+      <p class="d"…"답글" 아래에 AI 버튼 셋이 붙습니다. 초안은 쓰는 칸에 들어갈 뿐 저절로 올라가지 않습니다.</p>
+      <div class="phone" id="jessi">
+        <div class="c"><div class="av" style="background:#FF9EC7">도</div><div>
+          <div class="who"><b>도윤</b><time>10/11 10:05</time></div>
+          <p class="txt">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
+          <div class="acts"><button>숨기기</button><button>지우기</button></div>
+        </div></div>
+        <div class="box focus reply" style="margin-left:0">
+          <div class="row"><span class="draftnote" id="dn" hidden>AI 초안 — 고친 뒤 올리세요</span></div>
+          <textarea id="ta" aria-label="답글" placeholder="답글을 쓰거나 AI 초안을 받아 보세요"></textarea>
+          <div class="ai" role="group" aria-label="AI 도움">
+            <button class="chip" data-k="draft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z"/></svg>초안 쓰기</button>
+            <button class="chip" data-k="polish">다듬기</button>
+            <button class="chip" data-k="short">짧게</button>
+          </div>
+          <div class="row"><span class="count" id="ct">0 / 1,000</span><button class="btn pri">답글 올리기</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <h3>AI 도움이 하는 일</h3>
+    <ul>
+      <li><b>초안 쓰기</b> — 그 글 본문과 댓글을 읽고 Jessi 말투(존댓말, "저"…"확인해 보겠습니다"로 둡니다. 영어 댓글이면 영어로 씁니다.</li>
+      <li><b>다듬기</b> — Jessi가 쓴 답을 뜻은 그대로 두고 문장만 고칩니다. <b>짧게</b> — 두세 문장으로 줄입니다.</li>
+      <li>올리는 건 늘 Jessi가 누릅니다. AI가 쓴 답이 사람 확인 없이 나가는 길은 만들지 않습니다 — 이 사이트의 글은 사람이 읽기 전에 나가지만, 댓글은 사람에게 하는 대답이라서입니다.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <h3>정해 두는 것</h3>
+    <ul>
+      <li><b>자리</b>: 글 맨 아래, "이 이야기의 앞뒤" 다음. 한국어·영어 탭이 같은 댓글을 봅니다(번역하지 않습니다).</li>
+      <li><b>보이는 것</b>: Google 이름과 사진만. 메일 주소는 저장하되 화면·응답에 내보내지 않습니다.</li>
+      <li><b>쓰기 안전</b>: 댓글은 글자로만 그립니다 — 마크다운·HTML을 해석하지 않아 남의 사이트 링크나 스크립트가 걸리지 않습니다. 한 사람당 1분에 3개까지. 발행 전 안전 검사(비밀 키·개인 연락처)는 댓글에도 돌려, 걸리면 올리지 않고 이유를 알려 줍니다.</li>
+      <li><b>관리</b>: Jessi는 아무 댓글이나 숨기거나 지울 수 있습니다. 숨긴 댓글은 쓴 사람에게만 보입니다.</li>
+      <li><b>알림</b>: 새 댓글이 달리면 Jessi에게 알려야 할까요? 처음엔 홈 "지난 실행" 줄처럼 사이트 안에만 숫자를 띄우고, 메일 알림은 원하시면 붙입니다.</li>
+      <li><b>저장</b>: Neon(데이터베이스) — 2단계 승인 큐에서 쓰기로 했던 것을 여기서 먼저 씁니다.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const ta = document.getElementById("ta"), ct = document.getElementById("ct"), dn = document.getElementById("dn");
+  const T = {
+    draft: "아직은 표정까지는 바뀌지 않습니다. 지금은 대답하는 말에서만 단서를 찾게 되어 있어요. 표정도 단서가 되면 재미있을 것 같아서, 만들게 되면 데브로그에 남기겠습니다. 기다려 주셔서 고맙습니다!",
+    polish: "표정은 아직 바뀌지 않습니다. 지금은 말에서만 단서를 찾을 수 있어요. 표정을 넣게 되면 데브로그에 남기겠습니다. 기다려 주셔서 고맙습니다!",
+    short: "표정은 아직 안 바뀌고, 말에서만 단서를 찾습니다. 넣게 되면 글로 알려 드릴게요!",
+  };
+  const upd = () => { ct.textContent = `${ta.value.length} / 1,000`; };
+  ta.addEventListener("input", () => { dn.hidden = true; upd(); });
+  document.querySelectorAll("#jessi .chip").forEach((b) => b.addEventListener("click", () => { ta.value = T[b.dataset.k]; dn.hidden = false; upd(); ta.focus(); }));
+</script>
