@@ -390,9 +390,10 @@ export const DiagramScene: React.FC<{
     // 흐리는 건 **글자와 아이콘만**이다. 박스째 흐리면 테두리(th.line)가 원래 배경과 차이가 작아서 0.55에서
     // … 박스·화살표는
     // 그대로 두고 안의 글자만 물러나게 한다.
-    // 그래도 연하다는 지적(10/11)에 — 글자는 0.7까지만 흐리고, 박스 테두리·화살표는 가장 옅은 선 색(th.line) 대신
-    // 중간 회색(th.muted)으로 그린다. 테두리는 흐려지지 않으니 물러남은 글자 흐리기 하나로만 난다.
-    const dim = 1 - 0.3 * seg(t, 1.4, 0.5);
+    // 박스 테두리·화살표는 가장 옅은 선 색(th.line) 대신 중간 회색(th.muted)으로 그리고, 줄 전체(박스·글자·화살표)를
+    // **아주 조금만**(0.8까지) 흐린다 — 0.55는 박스가 사라졌고, 글자만 0.7로 흐리면 아직 연하다고 했고,
+    // 테두리를 진하게 하자 이번엔 물러나는 느낌이 너무 약하다고 했다 (Jessi, 10/11).
+    const dim = 1 - 0.2 * seg(t, 1.4, 0.5);
     const TOP = 800;
     const BOT = 1120;
     return (
@@ -402,7 +403,9 @@ export const DiagramScene: React.FC<{
           width={1080}
           height={1920}
         >
-          <Arrow x0={452} x1={556} y={TOP + 55} p={ar1} color={th.muted} />
+          <g opacity={dim}>
+            <Arrow x0={452} x1={556} y={TOP + 55} p={ar1} color={th.muted} />
+          </g>
           <Arrow x0={452} x1={556} y={BOT + 55} p={ar2} color={th.accent} />
         </svg>
         <div
@@ -428,10 +431,10 @@ export const DiagramScene: React.FC<{
             height: 110,
             borderColor: th.muted,
             ...rise(a),
-            opacity: a,
+            opacity: a * dim,
           }}
         >
-          <span style={{ display: "inline-flex", alignItems: "center", opacity: dim }}>
+          <span style={{ display: "inline-flex", alignItems: "center" }}>
             <BoxIcon icon={ic(0)} color={th.ink} />
             {l(0)}
           </span>
@@ -445,10 +448,10 @@ export const DiagramScene: React.FC<{
             height: 110,
             borderColor: th.muted,
             ...rise(a),
-            opacity: a,
+            opacity: a * dim,
           }}
         >
-          <span style={{ display: "inline-flex", alignItems: "center", opacity: dim }}>
+          <span style={{ display: "inline-flex", alignItems: "center" }}>
             <BoxIcon icon={ic(1)} color={th.ink} />
             {l(1)}
           </span>
