@@ -168,6 +168,13 @@ export const STYLE_RULES: StyleRule[] = [
     level: "strong",
     why: "영어식 비유입니다. '~만으로는 글이 나오지 않는다'처럼 씁니다.",
   },
+  {
+    // 10/9 글 제목이 "글 끝 링크를 누르는 사람이…"로 나갔다. 원료가 된 커밋 제목이 이 말을 만들었다
+    id: "글 끝 링크",
+    re: /글\s?끝\s?링크|링크\s?꼬리표/g,
+    level: "strong",
+    why: "명사를 붙여 만든 말입니다. '글 맨 아래에 있는 링크', '링크 주소에 붙인 꼬리표'처럼 조사를 살려 씁니다.",
+  },
 ];
 
 export interface StyleHit {
