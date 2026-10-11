@@ -62,6 +62,8 @@ vibelog/
 ├─ lib/                          # content 로더 · 포맷 · SITE_URL
 │                                #   · commit-hours.ts (홈 통계·잔디 셈, 최근 7일 판정 activeThisWeek)
 │                                #   · public-homepage.ts (사이트 주소는 live일 때만 화면에)
+│                                #   · md-links.ts (글 본문 링크는 이 사이트·GitHub만, 본문 그림은 안 그림)
+│                                #   · ld-json.ts (<script>에 넣는 JSON은 여기를 거친다)
 ├─ public/sw.js                  # 서비스 워커 (없으면 안드로이드가 앱 대신 바로가기를 만든다)
 ├─ content/                      # 파이프라인 산출물 — 손으로 고치지 않는다
 │   ├─ projects.json             #   레포 메타 기반 카드
@@ -196,11 +198,13 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
   `GH_PAT`는 [fine-grained PAT](https://github.com/settings/personal-access-tokens/new)에
   `jessi-Kang/vibelog`의 **Actions: Read and write**. `CRON_SECRET`은 임의 문자열
   (`openssl rand -hex 32`).
-- 설정이 들어갔는지는 라우트를 그냥 불러 보면 안다 —
-  `curl -i https://vibelog.space/api/cron/devlog`:
-  503 `CRON_SECRET 미설정` → 시크릿 없음 / 503 `GH_PAT 없음` → 토큰 없음 /
-  **403 `forbidden` → 둘 다 됐다**(인증만 없는 것이니 설정은 끝).
-  아무나 부르면 Actions 분을 태울 수 있으니 시크릿 없이는 아예 띄우지 않는다.
+- 인증 없이 부르면 설정 상태와 상관없이 **401 `Unauthorized`만** 돌려준다. 전에는
+  "시크릿 없음 / 토큰 없음"을 본문으로 알려 줬는데, 익명 방문자에게 자동 발행이
+  살아 있는지를 말해 주는 셈이라 레드팀 점검에서 걷어냈다. 설정이 들어갔는지는
+  [Vercel 함수 로그](https://vercel.com/jessikang/vibelog/logs)의 `[cron] 인증 실패 —
+  CRON_SECRET 있음/없음 / GH_PAT 있음/없음` 줄로 본다. 비밀값은 걸리는 시간이 새지 않는
+  방식(`timingSafeEqual`)으로 비교한다. 아무나 부르면 Actions 분을 태울 수 있으니
+  시크릿 없이는 아예 띄우지 않는다.
 - `guard: true`는 워크플로의 `SCHEDULE_GUARD`를 켠다. 마지막 발행이 12시간
   안이면 조용히 끝나므로 백업 회차가 겹쳐도 이중 발행·TTS 중복 비용이 없다.
   Jessi가 손으로 돌리는 Run workflow는 가드가 없다 (일부러 다시 돌리는 경우다).
