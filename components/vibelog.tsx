@@ -9,7 +9,7 @@ import { publicHomepage } from "@/lib/public-homepage";
 import { humanizeLastActive } from "@/lib/format";
 import { projectColor } from "@/lib/project-color";
 import { T, useLang } from "./lang";
-import { projectName } from "@/lib/project-name";
+import { projectIconOf, projectName } from "@/lib/project-name";
 import { ProjectIcon } from "./project-icon";
 import { Card, MonoMeta, StatusBadge } from "./ui";
 
@@ -169,11 +169,7 @@ export function DevlogTimelineEntry({
       <div className="flex flex-col gap-1.5">
         {/* 프로젝트 이름은 색만 — 굵게까지 하면 제목과 힘을 다툰다. 한글이 들어 있어 한글 글꼴로 */}
         <div className="flex gap-2.5 font-sans text-xs tabular-nums text-muted">
-          {repo && (
-            <span style={{ color: projectColor(repo) }}>
-              <T ko={projectName(repo)} en={projectName(repo, true)} />
-            </span>
-          )}
+          {repo && <ProjectTag repo={repo} />}
           <span>{date}</span>
         </div>
         <h3 className="m-0 text-lg font-semibold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
@@ -226,11 +222,7 @@ export function DevlogCompactEntry({
             ...(repo
               ? [
                   {
-                    text: (
-                      <span style={{ color: projectColor(repo) }}>
-                        <T ko={projectName(repo)} en={projectName(repo, true)} />
-                      </span>
-                    ),
+                    text: <ProjectTag repo={repo} />,
                   },
                 ]
               : []),
@@ -239,5 +231,15 @@ export function DevlogCompactEntry({
         />
       </div>
     </Link>
+  );
+}
+
+/** 글 목록의 프로젝트 이름 — 앞에 작은 프로젝트 아이콘, 둘 다 프로젝트 색 (10/11 Jessi, 시안 A안) */
+function ProjectTag({ repo }: { repo: string }) {
+  return (
+    <span className="inline-flex items-center gap-1" style={{ color: projectColor(repo) }}>
+      <ProjectIcon icon={projectIconOf(repo)} size={12} />
+      <T ko={projectName(repo)} en={projectName(repo, true)} />
+    </span>
   );
 }
