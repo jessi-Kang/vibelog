@@ -9,6 +9,11 @@ import {
 } from "./DiagramSheet";
 import { MotifSheet, type MotifSheetProps, SHEET_SLOT_SEC } from "./MotifSheet";
 import { ShipIt, type ShipItProps } from "./ShipIt";
+import {
+  TransitionSheet,
+  type TransitionSheetProps,
+  sheetFrames,
+} from "./TransitionSheet";
 import { COLD_OPEN_SEC, totalSeconds } from "./theme";
 import { MOTIFS } from "../../scripts/shorts-types";
 import sampleScript from "../fixtures/sample.json";
@@ -63,6 +68,19 @@ export const RemotionRoot: React.FC = () => {
       fps={FPS}
       durationInFrames={Math.ceil(DIAGRAM_SHEET_SLOTS * DIAGRAM_SLOT_SEC * FPS)}
       defaultProps={{ theme: "paper", lang: "ko" } as DiagramSheetProps}
+    />
+    {/* 검수용 — 장면 전환 비교 (cut·fade·slide·wipe·mix). 길이는 전환만큼 겹쳐 변형마다 다르다 */}
+    <Composition
+      id="TransitionSheet"
+      component={TransitionSheet}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={sheetFrames("cut")}
+      defaultProps={{ variant: "cut", theme: "terminal" } as TransitionSheetProps}
+      calculateMetadata={({ props }) => ({
+        durationInFrames: sheetFrames((props as TransitionSheetProps).variant ?? "cut"),
+      })}
     />
     </>
   );
