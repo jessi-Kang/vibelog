@@ -461,6 +461,42 @@ async function getDeployedUrl(
   return null;
 }
 
+/**
+ * 배포 주소를 고른다. 우선순위: About Website(커스텀 의도) → Vercel API(고정 도메인)
+ * → GitHub Deployments 기록. Jessi가 아무것도 안 채워도 배포되는 순간 live 판정·카드
+ * 링크·쇼츠 데모 URL이 생긴다 ("수동이네" 지적). 단, About Website가 *.vercel.app이면
+ * "커스텀 도메인 의도"가 아니라 예전에 적어 둔 기본 주소다 — 커스텀 도메인을 붙인 뒤에도
+ * 옛 주소가 카드·녹화에 남는다 (vibelog.space 전환 때 확인). 이때는 자동 감지가 이긴다.
+ *
+ * 고른 주소는 로그에 적지 않는다 — 이 레포는 공개라 Actions 로그도 공개다. live 전
+ * 주소는 숨기기로 했다 (10/11, scripts/homepage.ts).
+ */
+async function pickHomepage(
+  octokit: Octokit,
+  owner: string,
+  repo: string,
+  about: string | null | undefined,
+  vercelProjects: Map<string, string>,
+): Promise<string | null> {
+  const vercelUrl = await getVercelUrl(vercelProjects.get(repo.toLowerCase()));
+  const stalePreset = /^https?:\/\/[^/]+\.vercel\.app\/?$/i.test(about ?? "");
+  const preferred = stalePreset && vercelUrl ? vercelUrl : about;
+  const homepage = preferred || vercelUrl || (await getDeployedUrl(octokit, owner, repo));
+  if (!about && homepage) console.log(`- ${repo}: 배포 주소 자동 감지`);
+  else if (stalePreset && vercelUrl && vercelUrl !== about)
+    console.log(`- ${repo}: About Website가 기본 주소라 커스텀 도메인 우선`);
+  return homepage || null;
+}
+
+/** 레포 하나의 배포 주소를 지금 찾는다 — 쇼츠만 다시 만드는 실행처럼 수집을 안 거친 경우 */
+export async function lookupHomepage(repo: string): Promise<string | null> {
+  const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
+  const octokit = new Octokit({ auth });
+  const owner = await getOwner(octokit);
+  const { data } = await octokit.rest.repos.get({ owner, repo });
+  return pickHomepage(octokit, owner, repo, data.homepage, await getVercelProjectMap());
+}
+
 export async function collect(state: State, date?: string): Promise<RepoActivity[]> {
   const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
   const octokit = new Octokit({ auth });
@@ -487,23 +523,8 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     const vibelogJson = await getVibelogJson(octokit, owner, repo);
     if (vibelogJson?.hide) continue;
 
-    // 배포 주소 우선순위: About Website(커스텀 의도) → Vercel API(고정 도메인)
-    // → GitHub Deployments 기록. Jessi가 아무것도 안 채워도 배포되는 순간
-    // live 판정·카드 링크·쇼츠 데모 URL이 생긴다 ("수동이네" 지적).
-    // 단, About Website가 *.vercel.app이면 "커스텀 도메인 의도"가 아니라
-    // 예전에 적어 둔 기본 주소다 — 커스텀 도메인을 붙인 뒤에도 옛 주소가
-    // 카드·녹화에 남는다 (vibelog.space 전환 때 확인). 이때는 자동 감지가
-    // 이긴다. 사람이 손으로 고칠 일을 만들지 않는다.
-    const vercelUrl = await getVercelUrl(vercelProjects.get(repo.toLowerCase()));
-    const stalePreset = /^https?:\/\/[^/]+\.vercel\.app\/?$/i.test(r.homepage ?? "");
-    const preferred = stalePreset && vercelUrl ? vercelUrl : r.homepage;
-    const homepage =
-      preferred || vercelUrl || (await getDeployedUrl(octokit, owner, repo));
-    if (!r.homepage && homepage) {
-      console.log(`- ${repo}: 배포 주소 자동 감지 → ${homepage}`);
-    } else if (stalePreset && vercelUrl && vercelUrl !== r.homepage) {
-      console.log(`- ${repo}: About Website가 기본 주소라 커스텀 도메인 우선 → ${homepage}`);
-    }
+    // 배포 주소 — 고르는 순서와 이유는 pickHomepage
+    const homepage = await pickHomepage(octokit, owner, repo, r.homepage, vercelProjects);
     // 릴리즈 선언은 GitHub Release 발행 하나뿐. 처음엔 About Website 채움도
     // 선언으로 쳤는데, Website는 "주소 지정"과 겸직이라 다른 세션이 레포를
     // 정리하며 주소만 채워도 live로 승격되는 사고가 났다 (apart — Jessi가

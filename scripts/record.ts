@@ -10,6 +10,7 @@
  *
  * 사용: npx tsx scripts/record.ts <repo> <date> [durationSec]
  */
+import { resolveHomepage } from "./homepage";
 import fs from "node:fs";
 import path from "node:path";
 import { chromium, type Page } from "playwright";
@@ -321,6 +322,9 @@ export async function record(
       "utf8",
     ),
   );
+  // live 전 사이트는 대본 JSON에 주소를 남기지 않는다 (scripts/homepage.ts).
+  // 녹화하는 동안만 메모리에 채운다 — 파일에는 다시 쓰지 않는다
+  if (!script.demo.url) script.demo.url = await resolveHomepage(repo);
   if (!script.demo.url) {
     throw new Error(
       `demo.url이 없습니다 — 레포 homepage를 채워주세요 (${repo})`,
