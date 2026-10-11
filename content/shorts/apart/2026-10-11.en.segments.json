@@ -4,24 +4,24 @@
       "path": "/n",
       "find": "fake name request",
       "focusY": 0.211,
-      "start": 1.08,
-      "end": 9.1
+      "start": 1.06,
+      "end": 9.58
     },
     {
       "path": "/n",
-      "start": 9.43,
-      "end": 17.69
+      "start": 9.9,
+      "end": 19.16
     },
     {
       "path": "/o",
       "find": "real or fake by name",
-      "start": 18.6,
-      "end": 26.99
+      "start": 20.09,
+      "end": 28.48
     },
     {
       "path": "/o",
-      "start": 27.3,
-      "end": 35.61
+      "start": 28.79,
+      "end": 38.21
     }
   ]
 }

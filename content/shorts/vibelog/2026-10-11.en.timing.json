@@ -1,477 +1,437 @@
 {
   "lang": "en",
-  "duration": 28.88,
+  "duration": 27.854999999999997,
   "sentences": [
     {
       "index": 0,
       "start": 0,
-      "end": 2.8,
+      "end": 2.183,
       "words": [
         {
-          "text": "Extra",
+          "text": "AI",
           "start": 0,
-          "end": 0.4
+          "end": 0.302
         },
         {
-          "text": "colors",
-          "start": 0.48,
-          "end": 0.88
+          "text": "slipped",
+          "start": 0.395,
+          "end": 0.697
         },
         {
-          "text": "crept",
-          "start": 0.96,
-          "end": 1.2
+          "text": "yellow",
+          "start": 0.766,
+          "end": 1.022
         },
         {
           "text": "into",
-          "start": 1.28,
-          "end": 1.44
+          "start": 1.08,
+          "end": 1.242
         },
         {
           "text": "my",
-          "start": 1.52,
-          "end": 1.68
+          "start": 1.312,
+          "end": 1.382
         },
         {
-          "text": "AI",
-          "start": 1.76,
-          "end": 2.08
+          "text": "blue",
+          "start": 1.44,
+          "end": 1.625
         },
         {
-          "text": "pictures.",
-          "start": 2.16,
-          "end": 2.8
+          "text": "picture.",
+          "start": 1.649,
+          "end": 2.183
         }
       ]
     },
     {
       "index": 1,
-      "start": 3.36,
-      "end": 5.88,
+      "start": 2.7329999999999997,
+      "end": 5.02,
       "words": [
         {
+          "text": "It",
+          "start": 2.7329999999999997,
+          "end": 2.8600000000000003
+        },
+        {
+          "text": "was",
+          "start": 2.907,
+          "end": 3.0229999999999997
+        },
+        {
+          "text": "an",
+          "start": 3.069,
+          "end": 3.127
+        },
+        {
           "text": "AI",
-          "start": 3.36,
-          "end": 3.6
+          "start": 3.1849999999999996,
+          "end": 3.4639999999999995
         },
         {
-          "text": "drew",
-          "start": 3.68,
-          "end": 3.84
+          "text": "picture",
+          "start": 3.534,
+          "end": 3.859
         },
         {
-          "text": "sample",
-          "start": 3.92,
-          "end": 4.24
-        },
-        {
-          "text": "pictures",
-          "start": 4.32,
-          "end": 4.72
+          "text": "meant",
+          "start": 3.9050000000000002,
+          "end": 4.079
         },
         {
           "text": "for",
-          "start": 4.8,
-          "end": 4.88
+          "start": 4.114,
+          "end": 4.218999999999999
         },
         {
-          "text": "the",
-          "start": 4.92,
-          "end": 4.96
+          "text": "my",
+          "start": 4.265,
+          "end": 4.346
         },
         {
           "text": "shorts.",
-          "start": 5.04,
-          "end": 5.88
+          "start": 4.4159999999999995,
+          "end": 5.02
         }
       ]
     },
     {
       "index": 2,
-      "start": 6.16,
-      "end": 9.68,
+      "start": 5.715999999999999,
+      "end": 8.572,
       "words": [
         {
-          "text": "In",
-          "start": 6.16,
-          "end": 6.32
-        },
-        {
-          "text": "my",
-          "start": 6.4,
-          "end": 6.48
-        },
-        {
-          "text": "written",
-          "start": 6.6,
-          "end": 6.72
-        },
-        {
-          "text": "instructions,",
-          "start": 6.8,
-          "end": 7.68
-        },
-        {
           "text": "I",
-          "start": 7.76,
-          "end": 7.84
+          "start": 5.715999999999999,
+          "end": 5.774
         },
         {
-          "text": "gave",
-          "start": 7.88,
-          "end": 8
+          "text": "named",
+          "start": 5.89,
+          "end": 6.111
         },
         {
           "text": "the",
-          "start": 8.08,
-          "end": 8.16
+          "start": 6.1339999999999995,
+          "end": 6.204
         },
         {
-          "text": "AI",
-          "start": 8.24,
-          "end": 8.56
+          "text": "color",
+          "start": 6.239,
+          "end": 6.459
         },
         {
-          "text": "just",
-          "start": 8.64,
-          "end": 8.88
+          "text": "to",
+          "start": 6.5169999999999995,
+          "end": 6.598999999999999
         },
         {
-          "text": "one",
-          "start": 9.04,
-          "end": 9.2
+          "text": "use,",
+          "start": 6.691999999999999,
+          "end": 7.178999999999999
         },
         {
-          "text": "color.",
-          "start": 9.28,
-          "end": 9.68
+          "text": "not",
+          "start": 7.388,
+          "end": 7.550999999999999
+        },
+        {
+          "text": "the",
+          "start": 7.574,
+          "end": 7.644
+        },
+        {
+          "text": "ones",
+          "start": 7.702,
+          "end": 7.8759999999999994
+        },
+        {
+          "text": "to",
+          "start": 7.922,
+          "end": 7.9799999999999995
+        },
+        {
+          "text": "avoid.",
+          "start": 8.049999999999999,
+          "end": 8.572
         }
       ]
     },
     {
       "index": 3,
-      "start": 10.08,
-      "end": 12.48,
+      "start": 9.524,
+      "end": 12.705,
       "words": [
         {
-          "text": "It",
-          "start": 10.08,
-          "end": 10.16
+          "text": "I",
+          "start": 9.524,
+          "end": 9.581999999999999
         },
         {
-          "text": "never",
-          "start": 10.32,
-          "end": 10.56
+          "text": "added:",
+          "start": 9.698,
+          "end": 10.116
         },
         {
-          "text": "said",
-          "start": 10.64,
-          "end": 10.88
-        },
-        {
-          "text": "not",
-          "start": 10.96,
-          "end": 11.12
-        },
-        {
-          "text": "to",
-          "start": 11.2,
-          "end": 11.28
-        },
-        {
-          "text": "use",
-          "start": 11.36,
-          "end": 11.44
+          "text": "no",
+          "start": 10.5,
+          "end": 10.616
         },
         {
           "text": "other",
-          "start": 11.52,
-          "end": 11.68
+          "start": 10.685,
+          "end": 10.847999999999999
         },
         {
-          "text": "colors.",
-          "start": 11.76,
-          "end": 12.48
+          "text": "colors,",
+          "start": 10.906,
+          "end": 11.498
+        },
+        {
+          "text": "no",
+          "start": 11.671999999999999,
+          "end": 11.799999999999999
+        },
+        {
+          "text": "light",
+          "start": 11.87,
+          "end": 12.044
+        },
+        {
+          "text": "effects.",
+          "start": 12.078999999999999,
+          "end": 12.705
         }
       ]
     },
     {
       "index": 4,
-      "start": 12.72,
-      "end": 15.2,
+      "start": 13.255,
+      "end": 14.729,
       "words": [
         {
-          "text": "Once",
-          "start": 12.72,
-          "end": 12.88
-        },
-        {
-          "text": "I",
-          "start": 12.92,
-          "end": 12.96
-        },
-        {
-          "text": "wrote",
-          "start": 13,
-          "end": 13.2
-        },
-        {
-          "text": "that",
-          "start": 13.28,
-          "end": 13.36
-        },
-        {
-          "text": "in,",
-          "start": 13.48,
-          "end": 13.84
+          "text": "Now",
+          "start": 13.255,
+          "end": 13.429
         },
         {
           "text": "it",
-          "start": 13.92,
-          "end": 14
+          "start": 13.498,
+          "end": 13.568
         },
         {
-          "text": "stuck",
-          "start": 14.08,
-          "end": 14.32
+          "text": "draws",
+          "start": 13.615,
+          "end": 13.847
         },
         {
-          "text": "to",
-          "start": 14.4,
-          "end": 14.48
+          "text": "in",
+          "start": 13.905,
+          "end": 13.963
         },
         {
-          "text": "one",
-          "start": 14.56,
-          "end": 14.72
+          "text": "blue",
+          "start": 14.021,
+          "end": 14.241
         },
         {
-          "text": "color.",
-          "start": 14.8,
-          "end": 15.2
+          "text": "alone.",
+          "start": 14.265,
+          "end": 14.729
         }
       ]
     },
     {
       "index": 5,
-      "start": 15.76,
-      "end": 18.6,
+      "start": 16.255,
+      "end": 18.750999999999998,
       "words": [
         {
-          "text": "I",
-          "start": 15.76,
-          "end": 15.92
+          "text": "Each",
+          "start": 16.255,
+          "end": 16.475
         },
         {
-          "text": "settled",
-          "start": 16.04,
-          "end": 16.24
+          "text": "project's",
+          "start": 16.533,
+          "end": 16.963
         },
         {
-          "text": "on",
-          "start": 16.32,
-          "end": 16.4
+          "text": "shorts",
+          "start": 16.998,
+          "end": 17.346
         },
         {
-          "text": "rounded",
-          "start": 16.48,
-          "end": 16.88
+          "text": "use",
+          "start": 17.427,
+          "end": 17.613
         },
         {
-          "text": "shapes",
-          "start": 16.96,
-          "end": 17.28
+          "text": "a",
+          "start": 17.636,
+          "end": 17.671
         },
         {
-          "text": "with",
-          "start": 17.36,
-          "end": 17.44
+          "text": "different",
+          "start": 17.706,
+          "end": 18.008
         },
         {
-          "text": "no",
-          "start": 17.52,
-          "end": 17.68
+          "text": "color",
+          "start": 18.054,
+          "end": 18.275
         },
         {
-          "text": "outlines.",
-          "start": 17.76,
-          "end": 18.6
+          "text": "theme.",
+          "start": 18.320999999999998,
+          "end": 18.750999999999998
         }
       ]
     },
     {
       "index": 6,
-      "start": 18.8,
-      "end": 21.6,
+      "start": 19.301,
+      "end": 21.413999999999998,
       "words": [
         {
-          "text": "These",
-          "start": 18.8,
-          "end": 18.96
+          "text": "I'll",
+          "start": 19.301,
+          "end": 19.485999999999997
         },
         {
-          "text": "pictures",
-          "start": 19.04,
-          "end": 19.36
-        },
-        {
-          "text": "will",
-          "start": 19.44,
-          "end": 19.52
-        },
-        {
-          "text": "go",
-          "start": 19.6,
-          "end": 19.68
-        },
-        {
-          "text": "on",
-          "start": 19.76,
-          "end": 20
-        },
-        {
-          "text": "every",
-          "start": 20.08,
-          "end": 20.32
-        },
-        {
-          "text": "scene",
-          "start": 20.4,
-          "end": 20.64
-        },
-        {
-          "text": "of",
-          "start": 20.68,
-          "end": 20.72
+          "text": "draw",
+          "start": 19.520999999999997,
+          "end": 19.660999999999998
         },
         {
           "text": "the",
-          "start": 20.76,
-          "end": 20.8
+          "start": 19.706999999999997,
+          "end": 19.776999999999997
         },
         {
-          "text": "shorts.",
-          "start": 20.88,
-          "end": 21.6
+          "text": "picture",
+          "start": 19.810999999999996,
+          "end": 20.147999999999996
+        },
+        {
+          "text": "in",
+          "start": 20.194999999999997,
+          "end": 20.263999999999996
+        },
+        {
+          "text": "all",
+          "start": 20.321999999999996,
+          "end": 20.437999999999995
+        },
+        {
+          "text": "5",
+          "start": 20.519999999999996,
+          "end": 20.728999999999996
+        },
+        {
+          "text": "themes.",
+          "start": 20.798,
+          "end": 21.413999999999998
         }
       ]
     },
     {
       "index": 7,
-      "start": 21.84,
-      "end": 25.28,
+      "start": 22.301,
+      "end": 24.368,
       "words": [
         {
-          "text": "Next,",
-          "start": 21.84,
-          "end": 22.4
+          "text": "Then",
+          "start": 22.301,
+          "end": 22.499
         },
         {
-          "text": "I'll",
-          "start": 22.44,
-          "end": 22.56
+          "text": "every",
+          "start": 22.557,
+          "end": 22.753999999999998
         },
         {
-          "text": "draw",
-          "start": 22.68,
-          "end": 22.8
+          "text": "scene",
+          "start": 22.788999999999998,
+          "end": 22.986
         },
         {
-          "text": "this",
-          "start": 22.88,
-          "end": 22.96
+          "text": "of",
+          "start": 23.009999999999998,
+          "end": 23.067999999999998
         },
         {
-          "text": "style",
-          "start": 23.16,
-          "end": 23.36
+          "text": "the",
+          "start": 23.114,
+          "end": 23.184
         },
         {
-          "text": "in",
-          "start": 23.48,
-          "end": 23.6
+          "text": "shorts",
+          "start": 23.218999999999998,
+          "end": 23.486
         },
         {
-          "text": "all",
-          "start": 23.72,
-          "end": 23.84
+          "text": "gets",
+          "start": 23.532,
+          "end": 23.695
         },
         {
-          "text": "5",
-          "start": 24,
-          "end": 24.24
+          "text": "a",
+          "start": 23.729,
+          "end": 23.764
         },
         {
-          "text": "color",
-          "start": 24.32,
-          "end": 24.56
-        },
-        {
-          "text": "themes.",
-          "start": 24.8,
-          "end": 25.28
+          "text": "picture.",
+          "start": 23.811,
+          "end": 24.368
         }
       ]
     },
     {
       "index": 8,
-      "start": 25.52,
-      "end": 28.88,
+      "start": 25.301,
+      "end": 27.854999999999997,
       "words": [
         {
-          "text": "With",
-          "start": 25.52,
-          "end": 25.68
-        },
-        {
-          "text": "AI,",
-          "start": 25.76,
-          "end": 26.4
+          "text": "If",
+          "start": 25.301,
+          "end": 25.428999999999995
         },
         {
           "text": "you",
-          "start": 26.48,
-          "end": 26.56
+          "start": 25.463999999999995,
+          "end": 25.532999999999998
         },
         {
-          "text": "have",
-          "start": 26.64,
-          "end": 26.72
+          "text": "don't",
+          "start": 25.567999999999998,
+          "end": 25.741999999999997
         },
         {
-          "text": "to",
-          "start": 26.8,
-          "end": 26.88
+          "text": "say",
+          "start": 25.776999999999997,
+          "end": 25.927999999999997
         },
         {
-          "text": "write",
-          "start": 27,
-          "end": 27.12
+          "text": "no,",
+          "start": 25.985999999999997,
+          "end": 26.484999999999996
         },
         {
-          "text": "what",
-          "start": 27.2,
-          "end": 27.36
+          "text": "AI",
+          "start": 26.728999999999996,
+          "end": 27.065999999999995
         },
         {
-          "text": "not",
-          "start": 27.52,
-          "end": 27.76
+          "text": "does",
+          "start": 27.123999999999995,
+          "end": 27.298
         },
         {
-          "text": "to",
-          "start": 27.84,
-          "end": 27.92
-        },
-        {
-          "text": "do,",
-          "start": 28,
-          "end": 28.24
-        },
-        {
-          "text": "too.",
-          "start": 28.4,
-          "end": 28.88
+          "text": "it.",
+          "start": 27.355999999999998,
+          "end": 27.854999999999997
         }
       ]
     }
