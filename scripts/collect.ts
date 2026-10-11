@@ -138,7 +138,14 @@ export interface RepoState {
 
 export type State = Record<string, RepoState>;
 
-const MAX_COMMITS = 20;
+/**
+ * 수집 창의 커밋은 개수로 자르지 않는다 — 20개로 자르던 때 10/11 vibelog는 사람 커밋 121개 중
+ * 최근 20개만 읽혀, 댓글 기능 커밋 19개가 글에서 통째로 빠졌다. 처리 위치는 이미 지나가서
+ * 다시 읽히지도 않았다. 이 값은 끝없이 받지 않으려는 안전장치일 뿐이다 (100개씩 10장).
+ */
+const COMMIT_PAGES = 10;
+/** 파일 목록은 커밋마다 따로 불러야 해서 최근 것만 받는다. 나머지 커밋은 메시지만 재료가 된다 */
+const COMMIT_FILES = 20;
 const MAX_PRS = 10;
 const MAX_DEVLOG_FILES = 5;
 const README_MAX_CHARS = 3000;
@@ -196,25 +203,27 @@ async function getCommits(
   repo: string,
   since: string,
 ): Promise<RepoCommit[]> {
-  const { data } = await octokit.rest.repos.listCommits({
-    owner,
-    repo,
-    since,
-    per_page: MAX_COMMITS,
-  });
+  const data: Awaited<ReturnType<typeof octokit.rest.repos.listCommits>>["data"] = [];
+  for (let page = 1; page <= COMMIT_PAGES; page++) {
+    const { data: part } = await octokit.rest.repos.listCommits({ owner, repo, since, per_page: 100, page });
+    data.push(...part);
+    if (part.length < 100) break;
+  }
   const commits: RepoCommit[] = [];
-  for (const c of data) {
-    // 파일 목록은 커밋별 추가 호출이 필요하다. 데브로그 재료로 쓸 만큼만.
+  for (const [i, c] of data.entries()) {
+    // 파일 목록은 커밋별 추가 호출이 필요하다. 최근 COMMIT_FILES개만 (목록은 최신순)
     let files: string[] = [];
-    try {
-      const { data: detail } = await octokit.rest.repos.getCommit({
-        owner,
-        repo,
-        ref: c.sha,
-      });
-      files = (detail.files ?? []).map((f) => f.filename).slice(0, 30);
-    } catch {
-      // 파일 목록 없이도 데브로그는 쓸 수 있다
+    if (i < COMMIT_FILES) {
+      try {
+        const { data: detail } = await octokit.rest.repos.getCommit({
+          owner,
+          repo,
+          ref: c.sha,
+        });
+        files = (detail.files ?? []).map((f) => f.filename).slice(0, 30);
+      } catch {
+        // 파일 목록 없이도 데브로그는 쓸 수 있다
+      }
     }
     commits.push({
       sha: c.sha,
@@ -232,9 +241,8 @@ async function getCommits(
 /**
  * 커밋 시각만 훑어 온다 — 홈의 커밋 잔디(시간 × 날) 재료.
  *
- * 글 재료를 가져오는 getCommits는 MAX_COMMITS(20)로 자른다. 그건 글을 쓰기에
- * 충분한 분량이라는 뜻이지 그날 커밋 수가 아니다 — 실제로는 하루 150개도
- * 넘는다. 잔디는 진짜 밀도를 보여 줘야 하므로 여기서 따로, 파일 목록 없이
+ * 글 재료를 가져오는 getCommits는 수집 창(마지막 처리 뒤)만 본다. 잔디는 지난
+ * HOURS_DAYS일의 진짜 밀도를 보여 줘야 하므로 여기서 따로, 파일 목록 없이
  * 시각만 모두 받는다 (페이지당 100개, 최대 HOURS_PAGES장).
  */
 const HOURS_PAGES = 4;
