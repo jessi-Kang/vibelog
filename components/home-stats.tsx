@@ -48,13 +48,14 @@ function Fact({ n, label }: { n: number | string; label: ReactNode }) {
     <span className="inline-flex items-baseline gap-1.5 md:flex-col md:items-start md:gap-1">
       <b
         suppressHydrationWarning // 실시간 값은 클라이언트에서 갱신된다
-        className={`font-sans text-md font-bold leading-none tabular-nums tracking-[-.01em] md:text-xl ${
+        className={`font-sans text-md font-bold leading-none tabular-nums tracking-[-.01em] md:text-xl lg:text-2xl ${
           zero ? "text-muted" : "text-accent"
         }`}
       >
         {typeof n === "number" ? fmtNum(n) : n}
       </b>
-      <span className="md:text-2xs">{label}</span>
+      {/* 이름은 한글 글꼴로 — 코딩용 글꼴엔 한글이 없어 기기마다 다른 글꼴로 바뀌었다. 데스크톱은 숫자를 키운 만큼 이름도 키운다 (시안 docs/home-stats-size.html A안) */}
+      <span className="font-sans md:text-2xs lg:text-sm">{label}</span>
     </span>
   );
 }
@@ -148,7 +149,7 @@ export function HomeStats({
     <div className="flex flex-col gap-4 border-t border-line pt-6 md:flex-row md:items-center md:justify-between md:gap-8">
       {/* 좁은 화면에서도 2단 격자 — 한 줄로 흘리면 "3 + 1"로 애매하게 끊긴다
           (Jessi 지시: …) */}
-      <div className="grid grid-cols-2 gap-x-5 gap-y-3.5 font-mono text-xs leading-snug text-muted md:max-w-[340px] md:flex-1 md:gap-x-7 md:gap-y-4">
+      <div className="grid grid-cols-2 gap-x-5 gap-y-3.5 font-mono text-xs leading-snug text-muted md:max-w-[340px] md:flex-1 md:gap-x-7 md:gap-y-4 lg:max-w-[380px] lg:gap-y-5">
         {facts.map(([k, n, l]) => (
           <Fact key={k} n={n} label={l} />
         ))}
