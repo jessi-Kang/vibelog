@@ -121,7 +121,8 @@
   .em-c .h time { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; color: #8a93a2; }
   /* 밝은 판 위의 아이콘 — 옅은 바탕만 깔면 경계가 흐려서, 같은 색의 얇은 테를 두른다 */
   .em-c .av { --c: #888; background: color-mix(in srgb, var(--c) 22%, white); color: color-mix(in srgb, var(--c) 72%, black); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 55%, white); }
-  .em-c p { margin: 0; font-size: 15px; line-height: 1.75; color: #2b3340; white-space: pre-wrap; }
+  /* 메일 본문 줄 간격은 1.6 — 1.75는 짧은 댓글에서 줄 사이가 벌어져 보였다 (Jessi) */
+  .em-c p { margin: 0; font-size: 15px; line-height: 1.6; color: #2b3340; white-space: pre-wrap; }
   .em-c.quiet p { font-size: 13px; color: #6b7482; }
   .em-c.quiet { padding: 14px 16px; background: #f5f6f8; border-radius: 10px; }
   /* 댓글·답글 본문도 판 위에 얹는다 — 맨바탕에 두면 제목과 버튼 사이에 떠 보였다 */

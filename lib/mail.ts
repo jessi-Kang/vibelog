@@ -97,7 +97,7 @@ function commentBlock(c: MailComment, tone: "main" | "quiet" | "jessi", label?: 
 <td width="32" valign="middle">${personIcon(c)}</td>
 <td valign="middle" style="${FONT};font-size:13px;font-weight:700;color:#1d2430">${esc(label ?? c.name)}${badge}</td>
 <td align="right" style="${MONO};font-size:11px;color:#8a93a2">${esc(c.time)}</td></tr></table>
-<div style="${FONT};${text};line-height:1.75;margin-top:8px;white-space:pre-wrap;word-break:keep-all">${esc(c.body)}</div>
+<div style="${FONT};${text};line-height:1.6;margin-top:8px;white-space:pre-wrap;word-break:keep-all">${esc(c.body)}</div>
 </td></tr></table></td></tr>`;
 }
 
