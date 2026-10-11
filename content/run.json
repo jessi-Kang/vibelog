@@ -1,42 +1,13 @@
 {
-  "at": "2026-10-10T14:08:17.502Z",
+  "at": "2026-10-11T02:55:08.602Z",
   "lines": [
     {
-      "text": "npx tsx scripts/run.ts",
+      "text": "npx tsx scripts/shorts.ts lie-detective/2026-10-10",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 1 active"
-    },
-    {
-      "text": "skip     · vibelog 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · vibelog only 1 of 1 commit have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · apart 봇이 남긴 커밋뿐이라 글을 쓰지 않습니다",
-      "textEn": "skip     · apart only bot commits — no post"
-    },
-    {
-      "text": "safety   · lie-detective 재료 20개 통과 · Jev 토큰 13,994",
-      "textEn": "safety   · lie-detective 20 inputs passed · Jev tokens 13,994"
-    },
-    {
-      "text": "generate · lie-detective/2026-10-10.md (ko, en) · 토큰 in 17,484 · out 5,640 · cache 4,224"
-    },
-    {
-      "text": "review   · lie-detective/2026-10-10 막힌 문장 5개 → 다시 씀 → 남은 것 4개 · 토큰 in 3,385 · out 984",
-      "textEn": "review   · lie-detective/2026-10-10 5 unclear → rewritten → 4 left · 토큰 in 3,385 · out 984"
-    },
-    {
-      "text": "figures  · lie-detective/2026-10-10 2장 · 토큰 in 1,674 · out 6,536",
-      "textEn": "figures  · lie-detective/2026-10-10 2 figures · 토큰 in 1,674 · out 6,536"
-    },
-    {
-      "text": "shorts   · lie-detective/2026-10-10 (ko, en) · 대본 토큰 in 9,233 · out 9,404 · cache 7,153"
-    },
-    {
-      "text": "listen   · lie-detective/2026-10-10 막힌 문장 3개 → 다시 씀 → 남은 것 6개 · 토큰 in 2,389 · out 1,503",
-      "textEn": "listen   · lie-detective/2026-10-10 3 unclear → rewritten → 6 left · 토큰 in 2,389 · out 1,503"
+      "text": "shorts   · lie-detective/2026-10-10 다시 만듦 (ko, en) — 대본 그대로",
+      "textEn": "shorts   · lie-detective/2026-10-10 remade (ko, en) — same script"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

@@ -1,11 +1,11 @@
 {
   "lang": "en",
-  "duration": 29.815,
+  "duration": 28.467,
   "sentences": [
     {
       "index": 0,
       "start": 0,
-      "end": 2.717,
+      "end": 2.624,
       "words": [
         {
           "text": "Every",
@@ -14,466 +14,466 @@
         },
         {
           "text": "suspect's",
-          "start": 0.325,
-          "end": 0.72
+          "start": 0.313,
+          "end": 0.731
         },
         {
           "text": "lie",
-          "start": 0.778,
-          "end": 0.964
+          "start": 0.801,
+          "end": 1.033
         },
         {
           "text": "in",
-          "start": 1.01,
-          "end": 1.08
+          "start": 1.068,
+          "end": 1.138
         },
         {
           "text": "my",
-          "start": 1.138,
-          "end": 1.207
+          "start": 1.196,
+          "end": 1.265
         },
         {
           "text": "mystery",
-          "start": 1.277,
-          "end": 1.602
+          "start": 1.335,
+          "end": 1.649
         },
         {
           "text": "game",
-          "start": 1.66,
-          "end": 1.869
+          "start": 1.695,
+          "end": 1.892
         },
         {
           "text": "was",
-          "start": 1.892,
-          "end": 2.009
+          "start": 1.916,
+          "end": 2.02
         },
         {
           "text": "visible.",
           "start": 2.067,
-          "end": 2.717
+          "end": 2.624
         }
       ]
     },
     {
       "index": 1,
-      "start": 3.529,
-      "end": 5.329,
+      "start": 3.135,
+      "end": 4.923,
       "words": [
         {
           "text": "Just",
-          "start": 3.529,
-          "end": 3.727
+          "start": 3.135,
+          "end": 3.367
         },
         {
           "text": "open",
-          "start": 3.773,
-          "end": 3.982
+          "start": 3.413,
+          "end": 3.599
         },
         {
           "text": "the",
-          "start": 4.029,
-          "end": 4.098
+          "start": 3.646,
+          "end": 3.715
         },
         {
           "text": "code",
-          "start": 4.145,
-          "end": 4.389
+          "start": 3.762,
+          "end": 3.971
         },
         {
           "text": "with",
-          "start": 4.412,
-          "end": 4.551
+          "start": 3.994,
+          "end": 4.122
         },
         {
           "text": "view",
-          "start": 4.609,
-          "end": 4.772
+          "start": 4.168,
+          "end": 4.331
         },
         {
           "text": "source.",
-          "start": 4.841,
-          "end": 5.329
+          "start": 4.4,
+          "end": 4.923
         }
       ]
     },
     {
       "index": 2,
-      "start": 5.84,
-      "end": 7.814,
+      "start": 5.364,
+      "end": 7.488,
       "words": [
         {
           "text": "So",
-          "start": 5.84,
-          "end": 5.979
+          "start": 5.364,
+          "end": 5.515
         },
         {
           "text": "I",
-          "start": 6.049,
-          "end": 6.072
+          "start": 5.584,
+          "end": 5.608
         },
         {
           "text": "moved",
-          "start": 6.153,
-          "end": 6.339
+          "start": 5.677,
+          "end": 5.875
         },
         {
           "text": "the",
-          "start": 6.362,
-          "end": 6.432
+          "start": 5.898,
+          "end": 5.968
         },
         {
           "text": "answer",
-          "start": 6.478,
-          "end": 6.734
+          "start": 6.026,
+          "end": 6.304
         },
         {
           "text": "rules",
-          "start": 6.769,
-          "end": 6.978
+          "start": 6.362,
+          "end": 6.606
         },
         {
           "text": "to",
-          "start": 7.012,
-          "end": 7.07
+          "start": 6.653,
+          "end": 6.711
         },
         {
           "text": "the",
-          "start": 7.14,
-          "end": 7.21
+          "start": 6.78,
+          "end": 6.85
         },
         {
           "text": "server.",
-          "start": 7.256,
-          "end": 7.814
+          "start": 6.896,
+          "end": 7.488
         }
       ]
     },
     {
       "index": 3,
-      "start": 8.417,
-      "end": 11.262,
+      "start": 8.092,
+      "end": 10.495,
       "words": [
         {
           "text": "Before",
-          "start": 8.417,
-          "end": 8.754
+          "start": 8.092,
+          "end": 8.382
         },
         {
           "text": "each",
-          "start": 8.789,
-          "end": 8.951
+          "start": 8.417,
+          "end": 8.557
         },
         {
           "text": "deploy,",
-          "start": 8.998,
-          "end": 9.648
+          "start": 8.603,
+          "end": 9.114
         },
         {
           "text": "a",
-          "start": 9.892,
-          "end": 9.961
+          "start": 9.183,
+          "end": 9.253
         },
         {
           "text": "check",
-          "start": 10.031,
-          "end": 10.252
+          "start": 9.311,
+          "end": 9.52
         },
         {
           "text": "runs",
-          "start": 10.321,
-          "end": 10.542
+          "start": 9.567,
+          "end": 9.764
         },
         {
           "text": "on",
-          "start": 10.588,
-          "end": 10.67
+          "start": 9.81,
+          "end": 9.88
         },
         {
           "text": "its",
-          "start": 10.716,
-          "end": 10.832
+          "start": 9.927,
+          "end": 10.043
         },
         {
           "text": "own.",
-          "start": 10.879,
-          "end": 11.262
+          "start": 10.089,
+          "end": 10.495
         }
       ]
     },
     {
       "index": 4,
-      "start": 11.865,
-      "end": 14.373,
+      "start": 10.937,
+      "end": 13.433,
       "words": [
         {
           "text": "If",
-          "start": 11.865,
-          "end": 12.005
+          "start": 10.937,
+          "end": 11.088
         },
         {
           "text": "browser",
-          "start": 12.063,
-          "end": 12.399
+          "start": 11.146,
+          "end": 11.471
         },
         {
           "text": "code",
-          "start": 12.457,
-          "end": 12.666
+          "start": 11.505,
+          "end": 11.726
         },
         {
           "text": "holds",
-          "start": 12.701,
-          "end": 12.934
+          "start": 11.761,
+          "end": 11.993
         },
         {
           "text": "the",
-          "start": 12.957,
-          "end": 13.026
+          "start": 12.028,
+          "end": 12.098
         },
         {
           "text": "answers,",
-          "start": 13.073,
-          "end": 13.537
+          "start": 12.156,
+          "end": 12.632
         },
         {
           "text": "it",
-          "start": 13.595,
-          "end": 13.723
+          "start": 12.666,
+          "end": 12.783
         },
         {
           "text": "stops.",
-          "start": 13.769,
-          "end": 14.373
+          "start": 12.817,
+          "end": 13.433
         }
       ]
     },
     {
       "index": 5,
-      "start": 15.07,
-      "end": 16.742,
+      "start": 13.874,
+      "end": 15.522,
       "words": [
         {
           "text": "Then",
-          "start": 15.07,
-          "end": 15.256
+          "start": 13.874,
+          "end": 14.048
         },
         {
           "text": "uploading",
-          "start": 15.314,
-          "end": 15.697
+          "start": 14.106,
+          "end": 14.477
         },
         {
           "text": "to",
-          "start": 15.743,
-          "end": 15.79
+          "start": 14.524,
+          "end": 14.57
         },
         {
           "text": "Vercel",
-          "start": 15.848,
-          "end": 16.185
+          "start": 14.628,
+          "end": 14.907
         },
         {
           "text": "stopped.",
-          "start": 16.266,
-          "end": 16.742
+          "start": 14.965,
+          "end": 15.522
         }
       ]
     },
     {
       "index": 6,
-      "start": 17.439,
-      "end": 19.691,
+      "start": 16.126,
+      "end": 18.297,
       "words": [
         {
           "text": "One",
-          "start": 17.439,
-          "end": 17.682
+          "start": 16.126,
+          "end": 16.347
         },
         {
           "text": "backslash",
-          "start": 17.729,
-          "end": 18.205
+          "start": 16.393,
+          "end": 16.834
         },
         {
           "text": "symbol",
-          "start": 18.24,
-          "end": 18.518
+          "start": 16.869,
+          "end": 17.159
         },
         {
           "text": "before",
-          "start": 18.576,
-          "end": 18.867
+          "start": 17.217,
+          "end": 17.473
         },
         {
           "text": "a",
-          "start": 18.89,
-          "end": 18.913
+          "start": 17.496,
+          "end": 17.519
         },
         {
           "text": "quote",
-          "start": 18.971,
-          "end": 19.203
+          "start": 17.566,
+          "end": 17.798
         },
         {
           "text": "did",
-          "start": 19.238,
-          "end": 19.377
+          "start": 17.821,
+          "end": 17.949
         },
         {
           "text": "it.",
-          "start": 19.424,
-          "end": 19.691
+          "start": 18.007,
+          "end": 18.297
         }
       ]
     },
     {
       "index": 7,
-      "start": 20.202,
-      "end": 23.371,
+      "start": 18.994,
+      "end": 22.314,
       "words": [
         {
           "text": "The",
-          "start": 20.202,
-          "end": 20.341
+          "start": 18.994,
+          "end": 19.121
         },
         {
           "text": "build,",
-          "start": 20.399,
-          "end": 20.887
+          "start": 19.179,
+          "end": 19.574
         },
         {
           "text": "which",
-          "start": 21.096,
-          "end": 21.305
+          "start": 19.609,
+          "end": 19.818
         },
         {
           "text": "bundles",
-          "start": 21.351,
-          "end": 21.653
+          "start": 19.876,
+          "end": 20.201
         },
         {
           "text": "code,",
-          "start": 21.699,
-          "end": 22.082
+          "start": 20.259,
+          "end": 20.735
         },
         {
           "text": "lost",
-          "start": 22.257,
-          "end": 22.489
+          "start": 21.014,
+          "end": 21.292
         },
         {
           "text": "the",
-          "start": 22.524,
-          "end": 22.593
+          "start": 21.339,
+          "end": 21.409
         },
         {
           "text": "command's",
-          "start": 22.64,
-          "end": 22.976
+          "start": 21.455,
+          "end": 21.803
         },
         {
           "text": "end.",
-          "start": 23.023,
-          "end": 23.371
+          "start": 21.873,
+          "end": 22.314
         }
       ]
     },
     {
       "index": 8,
-      "start": 24.184,
-      "end": 26.994,
+      "start": 23.127,
+      "end": 25.553,
       "words": [
         {
           "text": "Next,",
-          "start": 24.184,
-          "end": 24.799
+          "start": 23.127,
+          "end": 23.464
         },
         {
           "text": "I'll",
-          "start": 24.95,
-          "end": 25.136
+          "start": 23.487,
+          "end": 23.626
         },
         {
           "text": "play",
-          "start": 25.171,
-          "end": 25.333
+          "start": 23.661,
+          "end": 23.823
         },
         {
           "text": "it",
-          "start": 25.368,
-          "end": 25.415
+          "start": 23.858,
+          "end": 23.916
         },
         {
           "text": "start",
-          "start": 25.449,
-          "end": 25.693
+          "start": 23.963,
+          "end": 24.195
         },
         {
           "text": "to",
-          "start": 25.716,
-          "end": 25.774
+          "start": 24.218,
+          "end": 24.265
         },
         {
           "text": "finish",
-          "start": 25.821,
-          "end": 26.1
+          "start": 24.323,
+          "end": 24.613
         },
         {
           "text": "on",
-          "start": 26.169,
-          "end": 26.25
+          "start": 24.659,
+          "end": 24.729
         },
         {
           "text": "a",
-          "start": 26.297,
-          "end": 26.32
+          "start": 24.775,
+          "end": 24.799
         },
         {
           "text": "real",
-          "start": 26.378,
-          "end": 26.552
+          "start": 24.857,
+          "end": 25.019
         },
         {
           "text": "phone.",
-          "start": 26.599,
-          "end": 26.994
+          "start": 25.066,
+          "end": 25.553
         }
       ]
     },
     {
       "index": 9,
-      "start": 27.806,
-      "end": 29.815,
+      "start": 26.25,
+      "end": 28.467,
       "words": [
         {
           "text": "Now",
-          "start": 27.806,
-          "end": 27.98
+          "start": 26.25,
+          "end": 26.424
         },
         {
           "text": "view",
-          "start": 28.05,
-          "end": 28.213
+          "start": 26.505,
+          "end": 26.668
         },
         {
           "text": "source",
-          "start": 28.271,
-          "end": 28.538
+          "start": 26.726,
+          "end": 26.993
         },
         {
           "text": "holds",
-          "start": 28.572,
-          "end": 28.816
+          "start": 27.039,
+          "end": 27.306
         },
         {
           "text": "no",
-          "start": 28.874,
-          "end": 28.967
+          "start": 27.388,
+          "end": 27.515
         },
         {
           "text": "answers.",
-          "start": 29.037,
-          "end": 29.815
+          "start": 27.597,
+          "end": 28.467
         }
       ]
     }

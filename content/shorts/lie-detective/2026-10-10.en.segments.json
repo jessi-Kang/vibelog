@@ -2,8 +2,8 @@
   "screens": [
     {
       "path": "/home",
-      "start": 1.3,
-      "end": 33.4
+      "start": 1.16,
+      "end": 33.15
     }
   ]
 }
