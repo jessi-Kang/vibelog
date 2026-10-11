@@ -44,6 +44,13 @@ export const metadata: Metadata = {
   },
 };
 
+/** 블로그가 시작한 해 — 푸터는 "시작한 해–올해"로 적는다 (같은 해면 한 번만) */
+const FIRST_YEAR = 2026;
+// 빌드할 때 정해진다. 밤마다 발행 커밋이 다시 배포하므로 해가 바뀌면 하루 안에 따라간다.
+// 연도는 KST로 센다 — UTC로 세면 1월 1일 오전 9시 전 빌드가 전년도로 남는다
+const THIS_YEAR = new Date(Date.now() + 9 * 3600_000).getUTCFullYear();
+const COPYRIGHT_YEARS = THIS_YEAR > FIRST_YEAR ? `${FIRST_YEAR}–${THIS_YEAR}` : `${FIRST_YEAR}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
@@ -82,7 +89,7 @@ export default function RootLayout({
                 href="mailto:jihyun.kang@me.com"
                 className="hit text-muted transition-colors duration-150 hover:text-ink"
               >
-                © 2026 Jessi
+                © {COPYRIGHT_YEARS} Jessi
               </a>
               <span className="flex items-center">
                 <ShareLink />
