@@ -1,0 +1,112 @@
+<title>프로젝트 페이지 소개 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14; --panel: #141b24; --panel2: #1b2430; --line: #26313f; --line-strong: #3a4656;
+    --ink: #f3efe6; --ink-soft: #c9cfd8; --muted: #8c98a8; --accent: #5ee1c3; --warn: #ffb454;
+    --proj: #6fd3f2; --proj-line: rgba(111, 211, 242, .4);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "Noto Sans KR", system-ui, sans-serif; margin: 0; word-break: keep-all; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 64px; display: flex; flex-direction: column; gap: 32px; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .tag { font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+  .lead { display: flex; flex-direction: column; gap: 12px; }
+  .lead h1 { margin: 0; font-size: 26px; text-wrap: balance; }
+  .lead p { margin: 0; color: var(--ink-soft); line-height: 1.7; max-width: 72ch; }
+  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; align-items: start; }
+  .opt { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .opt > .label h2 { margin: 2px 0 4px; font-size: 17px; }
+  .opt > .label p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .opt.pick > .label .tag { color: var(--accent); }
+  .phone { border: 1px solid var(--line); border-radius: 22px; padding: 18px 16px 22px; display: flex; flex-direction: column; gap: 22px; max-width: 390px; width: 100%; }
+  .opt.pick .phone { border-color: var(--accent); }
+  .crumb { font-size: 12px; color: var(--muted); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .pname { margin: 0; font-size: 22px; font-weight: 700; color: var(--accent); }
+  .slug { font-size: 12px; color: var(--muted); margin-top: -8px; }
+  .about { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; }
+  .links a { text-decoration: none; }
+  .read { color: var(--proj); }
+  .gh { color: var(--muted); }
+  dl { margin: 0; display: grid; grid-template-columns: auto minmax(0,1fr); gap: 6px 16px; border-top: 1px solid var(--line); padding-top: 14px; font-size: 12px; }
+  dt { color: var(--muted); } dd { margin: 0; }
+  .sh { margin: 0; font-size: 16px; font-weight: 700; }
+  .tl { display: flex; flex-direction: column; gap: 22px; }
+  .ent { position: relative; padding-left: 20px; display: flex; flex-direction: column; gap: 5px; }
+  .ent::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--proj); }
+  .ent .d { font-size: 11px; color: var(--muted); }
+  .ent .t { font-size: 15px; font-weight: 700; line-height: 1.4; }
+  .ent .s { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .ent .m { font-size: 11px; color: var(--muted); display: flex; gap: 10px; }
+  .badge { font-size: 11px; color: var(--ink-soft); }
+  .ent.intro::before { background: transparent; border: 2px solid var(--proj); width: 9px; height: 9px; }
+  .introcard { background: var(--panel); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 3px minmax(0,1fr); gap: 14px; }
+  .introcard .bar { background: var(--proj); opacity: .55; border-radius: 2px; }
+  .introcard h3 { margin: 0 0 6px; font-size: 15px; line-height: 1.4; }
+  .introcard ul { margin: 0 0 8px; padding-left: 18px; font-size: 14px; line-height: 1.75; color: var(--ink-soft); }
+  .introcard .k { font-size: 11px; color: var(--muted); margin-bottom: 6px; display: block; }
+  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+  .note b { color: var(--ink); } .note ul { margin: 6px 0 0; padding-left: 18px; }
+</style>
+
+<div class="wrap">
+  <div class="lead">
+    <span class="tag mono">VIBELOG · 프로젝트 페이지</span>
+    <h1>프로젝트 페이지에서 소개 글을 보여 주는 방법</h1>
+    <p>거짓말 탐정(lie-detective) 페이지로 그렸습니다. 프로젝트 설명은 지금 글에 나오는 문장을 예시로 썼고, 실제로는 소개 글이 코드를 읽고 쓴 문장이 들어갑니다. 지금은 레포 설명 한 줄("AI 자유 심문과 증거 조사를 결합한…")이 이 자리에 있습니다.</p>
+  </div>
+
+  <div class="opts">
+    <div class="opt pick">
+      <div class="label"><span class="tag mono">A · 권장</span><h2>정보 카드에 설명 + 소개 글 링크</h2><p>레포 설명 자리를 코드를 읽고 쓴 설명으로 바꾸고, 바로 아래에 "소개 글 읽기"를 둡니다. 데브로그 목록에서는 소개 글이 맨 아래(가장 오래된 자리)에 빈 점과 "프로젝트 소개" 표시로 남습니다.</p></div>
+      <div class="phone">
+        <div class="crumb mono">← projects / lie-detective</div>
+        <div class="card">
+          <h1 class="pname">거짓말 탐정</h1>
+          <div class="slug mono">lie-detective</div>
+          <p class="about">거짓말 탐정은 인물들에게 자유롭게 질문하며 사건의 진실을 밝히는 모바일 웹 추리 게임입니다.</p>
+          <div class="links mono"><a class="read" href="#">소개 글 읽기 →</a><a class="gh" href="#">github ↗</a></div>
+          <dl class="mono"><dt>상태</dt><dd style="color:var(--warn)">● PREVIEW</dd><dt>데브로그</dt><dd>1편</dd><dt>시작일</dt><dd>2026-10-10</dd></dl>
+        </div>
+        <h2 class="sh">데브로그</h2>
+        <div class="tl">
+          <div class="ent"><span class="d mono">2026-10-10 · 토</span><span class="t">용의자의 답변 규칙을 서버로 옮겼습니다</span><span class="s">용의자의 답변 규칙을 브라우저에서 서버로 옮겼습니다.</span><span class="m mono">커밋 20 · 쇼츠 ▶</span></div>
+          <div class="ent intro"><span class="d mono">2026-10-09 · 금</span><span class="t">AI 용의자를 심문하는 추리 게임을 만들고 있습니다</span><span class="s">인물에게 직접 질문하며 사건의 진실을 찾는 게임입니다.</span><span class="m mono"><span class="badge">프로젝트 소개</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="label"><span class="tag mono">B</span><h2>데브로그 위에 소개 카드</h2><p>정보 카드 아래, 데브로그 위에 소개 글의 "지금까지 만든 것"을 펼쳐 둡니다. 데브로그 목록에서는 소개 글을 뺍니다. 처음 온 사람이 더 많이 알고 들어가지만, 페이지가 길어지고 소개 글이 오래되면 지금 모습과 달라집니다.</p></div>
+      <div class="phone">
+        <div class="crumb mono">← projects / lie-detective</div>
+        <div class="card">
+          <h1 class="pname">거짓말 탐정</h1>
+          <div class="slug mono">lie-detective</div>
+          <p class="about">거짓말 탐정은 인물들에게 자유롭게 질문하며 사건의 진실을 밝히는 모바일 웹 추리 게임입니다.</p>
+          <div class="links mono"><a class="gh" href="#">github ↗</a></div>
+          <dl class="mono"><dt>상태</dt><dd style="color:var(--warn)">● PREVIEW</dd><dt>데브로그</dt><dd>1편</dd><dt>시작일</dt><dd>2026-10-10</dd></dl>
+        </div>
+        <div class="introcard">
+          <span class="bar"></span>
+          <div><span class="k mono">이 프로젝트 소개 · 처음 시작할 때 쓴 글</span><h3>AI 용의자를 심문하는 추리 게임을 만들고 있습니다</h3><ul><li>사건 현장과 인물 소개 화면</li><li>인물에게 자유롭게 질문하는 심문 화면</li><li>모은 단서를 정리하는 수사 기록</li></ul><a class="read mono" href="#" style="font-size:13px;text-decoration:none">소개 글 전체 →</a></div>
+        </div>
+        <h2 class="sh">데브로그</h2>
+        <div class="tl">
+          <div class="ent"><span class="d mono">2026-10-10 · 토</span><span class="t">용의자의 답변 규칙을 서버로 옮겼습니다</span><span class="s">용의자의 답변 규칙을 브라우저에서 서버로 옮겼습니다.</span><span class="m mono">커밋 20 · 쇼츠 ▶</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note"><b>두 안에 같이 들어가는 것</b><ul>
+    <li>제목은 서비스 이름, 그 아래에 레포 이름을 작게 둡니다. GitHub에서 찾아갈 이름입니다.</li>
+    <li>"데브로그 N편"과 "시작일"은 소개 글을 빼고 셉니다. 나중에 넣은 소개 글은 날짜를 첫 글 하루 전으로 붙인 것이라, 시작일로 쓰면 실제와 어긋납니다.</li>
+    <li>소개 글이 아직 없으면 지금처럼 레포 설명 한 줄이 나오고, 소개 글 링크는 없습니다.</li>
+    <li>두 안의 소개 글 제목과 B의 "지금까지 만든 것" 목록은 모양을 보이려고 넣은 예시입니다. lie-detective의 코드는 아직 읽지 않았고, 실제 문장은 소개 글이 씁니다.</li>
+  </ul></div>
+</div>
