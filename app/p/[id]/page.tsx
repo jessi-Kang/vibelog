@@ -88,6 +88,7 @@ export default async function DevlogPostPage({ params }: Props) {
             about: project?.about,
             aboutEn: project?.aboutEn,
             introHref: intro ? postPath(intro) : undefined,
+            icon: project?.icon,
           },
           short: d.short
             ? {
