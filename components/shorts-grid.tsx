@@ -1,5 +1,6 @@
 "use client";
 /** 쇼츠 그리드 — 영상이 있으면 카드가 레이어 팝업으로 재생, 없으면 글로 이동 */
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useLang } from "./lang";
@@ -37,8 +38,14 @@ export function Thumb({ s }: { s: ThumbData }) {
   if (s.poster) {
     return (
       <div className="relative aspect-[9/16] overflow-hidden rounded-lg border border-line bg-bg-deep transition-colors duration-150 group-hover:border-line-strong">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={s.poster} alt="" className="h-full w-full object-cover" />
+        {/* 원본(1080px)을 카드 크기로 미리 줄여 받는다 — 브라우저가 한 번에 크게 줄이면 글자가 깨졌다 */}
+        <Image
+          src={s.poster}
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 280px, (min-width: 640px) 33vw, 50vw"
+          className="object-cover"
+        />
         <PlayOverlay />
       </div>
     );
