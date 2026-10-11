@@ -373,16 +373,26 @@ export async function composeIntro(
   tonight: string,
   date = introDate(repo, tonight),
 ): Promise<{ date: string; r: IntroResult | null }> {
-  const later = date === tonight ? undefined : date;
-  let m = await gatherCode(octokit, owner, repo, description, later);
-  let r = enoughCode(m) ? await writeIntro(m) : null;
-  if (later && (!r || r.status === "deferred")) {
-    const next = new Date(`${later}T00:00:00Z`);
-    next.setUTCDate(next.getUTCDate() + 1);
-    m = await gatherCode(octokit, owner, repo, description, next.toISOString().slice(0, 10));
-    r = enoughCode(m) ? await writeIntro(m) : null;
+  if (date === tonight) {
+    const m = await gatherCode(octokit, owner, repo, description);
+    return { date, r: enoughCode(m) ? await writeIntro(m) : null };
   }
-  return { date, r };
+  // 나중에 넣는 예외 — 소개 글 날짜의 코드부터 보고, 판단할 코드가 없었으면 그 레포 글 날짜를
+  // 차례로 넘기며 처음으로 판단할 수 있던 때의 코드로 쓴다. vibelog는 첫 글(9/8) 무렵 레포가
+  // 거의 기획 문서뿐이라 첫 글 날짜만 보면 밤마다 같은 이유로 미뤄졌다.
+  const dir = path.join(DEVLOG_DIR, repo);
+  const postDates = fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f)).map((f) => f.slice(0, 10)).sort()
+    : [];
+  for (const at of [date, ...postDates.filter((d) => d > date)].slice(0, 8)) {
+    const m = await gatherCode(octokit, owner, repo, description, at);
+    if (!enoughCode(m)) continue;
+    const r = await writeIntro(m);
+    if (r.status === "written") return { date, r };
+    // 코드는 있는데 무엇인지 모르겠다는 답 — 다음 날짜의 코드로 한 번 더 (AI 호출이 느니 두 번까지만)
+    if (at !== date) return { date, r };
+  }
+  return { date, r: null };
 }
 
 /* ---------- 파일 쓰기 ---------- */
