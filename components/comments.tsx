@@ -168,7 +168,8 @@ function SubmitButton({ busy, disabled, children }: { busy: boolean; disabled: b
       disabled={disabled || busy}
       className="relative inline-flex min-h-[30px] cursor-pointer items-center rounded-lg bg-accent px-3 text-sm font-bold text-accent-ink transition-opacity duration-150 after:absolute after:inset-x-0 after:top-1/2 after:h-11 after:-translate-y-1/2 hover:opacity-90 disabled:cursor-default disabled:opacity-50"
     >
-      <Lift by={-1}>{children}</Lift>
+      {/* 2배·3배 화면에서 글자 잉크의 위아래 여백을 재서 맞췄다 — 1px은 위로 떴다 (10/11) */}
+      <Lift by={-0.5}>{children}</Lift>
     </button>
   );
 }
@@ -308,7 +309,9 @@ function ReplyBox({ comment, onDone }: { comment: C; onDone: () => void }) {
         aria-label={en ? "Reply" : "답글"}
         placeholder={en ? "Write a reply or get an AI draft" : "답글을 쓰거나 AI 초안을 받아 보세요"}
         rows={2}
-        className="block w-full resize-none bg-transparent pr-1.5 text-base leading-relaxed text-ink outline-none placeholder:text-muted"
+        className="block w-full resize-none bg-transparent pr-1.5 text-base leading-relaxed text-ink placeholder:text-muted"
+        // 칸 전체가 포커스를 보여 준다 — 사이트 공통 :focus-visible 테두리가 글 칸에 한 겹 더 그려졌다
+        style={{ outline: "none", boxShadow: "none" }}
       />
       {fromAi && read.length > 0 && (
         <span className="text-2xs text-muted">
@@ -355,7 +358,7 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
     if (r.ok) onMe({ ...me, mailReplies: !me.mailReplies });
   };
   return (
-    <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border border-line-strong bg-panel py-3 pl-3.5 pr-2 pb-2 focus-within:border-accent focus-within:shadow-[0_0_0_3px_var(--color-accent-soft)]">
+    <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border border-line-strong bg-panel py-3 pl-3.5 pr-2 pb-2 transition-colors duration-150 focus-within:border-accent">
       {/* Jessi의 쓰는 칸에는 이름 줄을 두지 않는다 — 쓰는 사람이 늘 Jessi이고, 로그아웃할 일도 없다 */}
       {!me.isAdmin && <div className="flex items-center gap-2 border-b border-line pb-2 pr-1.5">
         <PersonIcon icon={me.icon} color={me.color} />
@@ -375,7 +378,9 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
         aria-label={en ? "Comment" : "댓글"}
         placeholder={en ? "Leave a comment" : "댓글을 남겨 보세요"}
         rows={2}
-        className="block w-full resize-none bg-transparent pr-1.5 text-base leading-relaxed text-ink outline-none placeholder:text-muted"
+        className="block w-full resize-none bg-transparent pr-1.5 text-base leading-relaxed text-ink placeholder:text-muted"
+        // 칸 전체가 포커스를 보여 준다 — 사이트 공통 :focus-visible 테두리가 글 칸에 한 겹 더 그려졌다
+        style={{ outline: "none", boxShadow: "none" }}
       />
       <div className="flex items-center justify-end gap-2.5">
         <Count n={text.length} />
