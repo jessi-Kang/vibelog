@@ -393,6 +393,7 @@ Opus 호출이 늘지 않는다. 대본 다음이 목소리 생성·녹화·렌�
   - 음절 수는 보존되므로 자막 정렬(alignment)에는 영향이 없다.
   - 확정 설정(승인된 샘플 기준): speed 1.00 / stability 0.50 / similarity_boost 0.75 / style 0 / speaker_boost on.
   - 모델: 먼저 `eleven_v4`로 만들고, 실패하면(크레딧을 다 쓴 경우 등) 예전처럼 `eleven_multilingual_v2`로 다시 만든다 (10/11 Jessi). v4에는 style·speed 조절이 없어서 그 둘은 빼고 보낸다 — 둘 다 기본값이라 읽기는 같다. 어느 모델로 만들었는지는 Actions 로그의 `[audio] … 목소리 모델` 줄에 남는다.
+  - v4의 오디오 태그(`[sighs]`·`[excited]` 등)는 쓰지 않는다. 10/11 같은 문장을 태그 있이·없이 Jessi 클론 목소리로 만들어 비교했더니, 한숨·웃음은 실제로 들어갔지만 태그를 넣으면 완전히 다른 목소리가 됐다 (Jessi 판단). 대본은 태그 없이 그대로 보낸다.
   - 같은 설정이라도 테이크마다 길이가 ±1초 정도 달라진다 → 타이밍은 항상 생성된 음성의 타임스탬프로 잡는다. 텍스트를 미리 자막에 박아두고 음성을 맞추지 않는다.
   - Secrets: `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`
 
