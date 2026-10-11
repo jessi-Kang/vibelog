@@ -19,6 +19,7 @@ import {
   type TimedSentence,
 } from "../../scripts/shorts-types";
 import { Captions } from "./Captions";
+import { safeIcon, type ProjectIcon } from "../../lib/project-icon";
 import { DiagramScene } from "./Diagram";
 import { MotifScene } from "./Motif";
 import {
@@ -53,6 +54,8 @@ export type ShipItProps = {
   artFiles?: Record<string, string> | null;
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
   theme?: string | null;
+  /** 머리글에 쓰는 서비스 이름과 아이콘 (projects.json, 소개 글이 정한다) — 없으면 "vibelog" */
+  project?: { name: string; icon?: ProjectIcon | null } | null;
   /** 화면별 녹화 구간 (readyAt 기준 초) — 문장의 screen과 매칭. 없으면 시간순 */
   segments?:
     | {
@@ -378,8 +381,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
   artFiles = null,
   theme = null,
   segments = null,
+  project = null,
 }) => {
   const th = getTheme(theme);
+  const icon = safeIcon(project?.icon);
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -581,9 +586,42 @@ export const ShipIt: React.FC<ShipItProps> = ({
           textTransform: "uppercase",
         }}
       >
-        <span>
-          <span style={{ color: th.accent }}>vibelog</span> · day{" "}
-          {String(script.day).padStart(2, "0")}
+        {/* 아이콘 + 서비스 이름 · DAY NN (docs/project-icon-places.html ③). 이름이 길면 줄여서
+            "…"로 끝낸다 — 오른쪽 템플릿 배지와 겹치지 않게. 아이콘이 없으면 예전처럼 vibelog */}
+        <span style={{ display: "flex", alignItems: "center", gap: 14, minWidth: 0, flex: 1, marginRight: 24 }}>
+          {icon && (
+            <svg
+              viewBox="0 0 24 24"
+              width={40}
+              height={40}
+              fill="none"
+              stroke={th.accent}
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ flex: "none" }}
+            >
+              {icon.paths.map((p, i) => (
+                <path key={i} d={p.d} {...(p.filled ? { fill: th.accent } : {})} />
+              ))}
+            </svg>
+          )}
+          <span
+            style={{
+              color: th.accent,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              minWidth: 0,
+              textTransform: project ? "none" : "uppercase",
+              letterSpacing: project ? "0.02em" : undefined,
+            }}
+          >
+            {project?.name ?? "vibelog"}
+          </span>
+          <span style={{ flex: "none", whiteSpace: "nowrap" }}>
+            · day {String(script.day).padStart(2, "0")}
+          </span>
         </span>
         <span
           style={{
@@ -593,6 +631,8 @@ export const ShipIt: React.FC<ShipItProps> = ({
             color: th.badgeFill ? th.accentInk : th.ink,
             background: th.badgeFill ? th.accent : "transparent",
             fontWeight: 700,
+            flex: "none",
+            whiteSpace: "nowrap",
           }}
         >
           {script.template.replace("-", " ")}
