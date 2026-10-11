@@ -161,10 +161,12 @@ ${styleRulesForPrompt()}
   "글이 사라졌다"처럼 짧아도 자연스러운 구로). 각각의 영어판 beforeEn·afterEn·titleEn도 반드시 채운다 — 영문 영상에 그대로 표시된다.
 - captions: 유튜브/인스타 설명문 (ko/en 각 1~2문장 + 줄바꿈 없이).
 - hashtags: 5~8개, # 포함, 한국어·영어 섞어서.
-- art: 화면으로도 그림(diagram)으로도 보여줄 수 없는 장면에만, 그 장면을 은유하는 일러스트를 영어 한 문장으로
-  묘사한다 (예: "a tiny robot stacking glowing building blocks into a tower").
-  구체적 사물 하나 중심, 은유는 문장 내용에서. 글자·로고·UI 스크린샷 묘사 금지.
-  hook 등 다른 장면에는 art를 쓰지 않는다.
+- **art: 화면도 그림(diagram)도 없는 문장이 무언가 하나를 크게 보여 줘야 할 때.** 그 문장을 은유하는
+  일러스트를 영어 한 문장으로 묘사한다 (예: "a tiny robot stacking building blocks into a tower").
+  구체적 사물 하나 중심, 은유는 문장 내용에서. 글자·로고·UI 스크린샷 묘사 금지. build·demo·next 장면에서만
+  (hook·end·fail은 제 카드가 있다). 글자 없는 모티프보다 먼저 고른다 — 모티프는 모양만 보여 주고, 그림은
+  무엇인지를 보여 준다. 개수 제한은 없다. 그림은 만들다 실패할 수 있으니 art를 쓴 문장에도 icon이나
+  motif를 하나 같이 넣는다 (실패하면 그쪽이 나온다).
 - **diagram: 화면으로는 못 보여주는 "원리"를 그림으로.** 원인·구조·전후를
   말로만 설명하는 문장(주로 fail의 원인, build의 해결 방식)에 붙인다.
   화면 녹화로 보여줄 수 있는 것(기능·동작)에는 붙이지 않는다 — 그건 demo다.
@@ -600,7 +602,8 @@ export function blankScenes(lines: ShortsLine[]): ShortsLine[] {
       !l.find &&
       !l.diagram &&
       !l.icon &&
-      !l.motif,
+      !l.motif &&
+      !l.art,
   );
 }
 
@@ -942,9 +945,11 @@ export async function generateScript(
         "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
         "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
         "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
-        "③ 둘 다 아니지만 문장의 **모양**이 아래 어휘 중 하나와 맞으면",
+        "③ 둘 다 아니고 무언가 하나를 크게 보여 줘야 하면 art(은유 그림 묘사, 영어 한 문장)를 넣고,",
+        "   실패할 때를 위해 icon이나 motif도 하나 같이 넣는다.",
+        "   그것도 아니지만 문장의 **모양**이 아래 어휘 중 하나와 맞으면",
         "   icon(대상 하나를 보여 주는 Tabler 아이콘 이름 후보 배열)이나 motif를 넣는다",
-        "   (대상이 분명하면 icon, 모양만 있으면 motif. 화면·그림이 있으면 그쪽이 이긴다).",
+        "   (대상이 분명하면 icon, 모양만 있으면 motif. 화면·그림·art가 있으면 그쪽이 이긴다).",
         MOTIF_MENU,
         "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
         "   없는 문장은 영상에 자리가 없습니다.",

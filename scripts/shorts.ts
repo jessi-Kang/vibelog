@@ -13,7 +13,7 @@ import { hideHosts, resolveHomepage } from "./homepage";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-// import { generateArt } from "./art"; // 그래픽 보류 — 레퍼런스 확정 시 복원
+import { generateArt } from "./art";
 import { generateScript } from "./script";
 import { generateAudio } from "./audio";
 import { blobDel, blobGet, blobPut } from "./blob-cache";
@@ -83,10 +83,9 @@ export async function runShorts(
     script = await loadScript(repo, date);
   }
 
-  // 생성 그래픽은 보류 — Jessi가 스타일 레퍼런스를 줄 때까지 쓰지 않는다.
-  // 시안 3종(라인·플랫·듀오톤)이 전부 반려됐다. 레퍼런스가 오면 art.ts의
-  // STYLE을 그에 맞춰 고정하고 아래 한 줄을 되살린다.
-  // await generateArt(repo, date);
+  // 생성 그림 — 하나를 크게 보여 줄 문장마다 (10/11 Jessi, 둥근 평면 · 강조색 한 가지, 투명 배경).
+  // 키가 없거나 실패하면 그 문장은 함께 고른 아이콘·모티프로 간다
+  await generateArt(repo, date);
 
   console.log(`[shorts] 내레이션·음악 생성`);
   await generateAudio(repo, date, ["ko", "en"]);
