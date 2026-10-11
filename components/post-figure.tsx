@@ -25,8 +25,11 @@ function draw(n: FigNode, key: number): React.ReactNode {
   if (!FIG_TAGS.includes(n.tag)) return null;
   const allowed = FIG_ATTRS[n.tag as FigTag];
   const props: Record<string, string> = {};
+  // 저장은 SVG 이름(font-size)으로, 그릴 때는 React 이름(fontSize)으로 — 그대로 넘기면
+  // React가 "Invalid DOM property" 경고를 낸다. aria-·data-는 원래 이름 그대로다
   for (const [k, v] of Object.entries(n.attrs ?? {}))
-    if (allowed.includes(k)) props[k] = v;
+    if (allowed.includes(k))
+      props[/^(aria|data)-/.test(k) ? k : k.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())] = v;
 
   const kids = (n.children ?? []).map((c, i) => draw(c, i));
   const Tag = n.tag as keyof React.JSX.IntrinsicElements;
