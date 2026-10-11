@@ -56,6 +56,15 @@ export interface ShortsLine {
   keywords: string[];
   /** en 문장에서 강조할 단어 */
   keywordsEn: string[];
+  /**
+   * 화면에 나갈 줄 나눔 — 문장을 뜻 덩어리로 끊은 줄들 (이어 붙이면 ko와 같다).
+   * 폭으로만 자르면 "추리 게임 / 속 용의자의"처럼 한 덩어리 말이 갈렸다 (10/11 Jessi:
+   * "…"). 대본 모델이 문장을 쓰며
+   * 같이 끊는다. 없거나 문장과 안 맞으면 렌더가 폭으로 자른다 (`lineStarts`)
+   */
+  koLines?: string[];
+  /** en 문장의 줄 나눔 — koLines와 같다 */
+  enLines?: string[];
   /** 하나를 크게 보여 줄 문장의 은유 그림 묘사(영어) — art.ts가 이미지로 만든다. build·demo·next */
   art?: string;
   /** 숫자 모먼트 — 문장 속 숫자+단위("16개","52초"). 말하는 순간 카운터로 박힌다.
@@ -439,4 +448,40 @@ export function narrationPath(
  */
 export function templateBadge(template: string): string {
   return template === "before-after" ? "changed" : template.replace("-", " ");
+}
+
+/**
+ * 줄 나눔(koLines·enLines)을 낱말 번호로 바꾼다 — 새 줄이 시작되는 낱말들의 번호.
+ * 낱말은 자막·헤드라인이 그리는 단위(공백으로 나눈 낱말, 또는 음성 타이밍의 낱말)다.
+ * 띄어쓰기를 뺀 글자를 이어 맞춰 보므로 문장부호·공백 차이에 흔들리지 않는다.
+ * 줄을 이어 붙인 것이 문장과 다르거나 줄 경계가 낱말 한가운데에 떨어지면 null — 폭으로 자른다.
+ */
+export function lineStarts(words: string[], lines: string[] | undefined): number[] | null {
+  if (!lines || lines.length < 2) return null;
+  const squash = (x: string) => x.replace(/\s+/g, "");
+  if (squash(words.join("")) !== squash(lines.join(""))) return null;
+  const ends: number[] = [];
+  let acc = 0;
+  for (const l of lines.slice(0, -1)) ends.push((acc += squash(l).length));
+  const starts: number[] = [];
+  let pos = 0;
+  for (let i = 0; i < words.length; i++) {
+    if (ends.includes(pos) && i > 0) starts.push(i);
+    pos += squash(words[i]).length;
+  }
+  return starts.length === lines.length - 1 ? starts : null;
+}
+
+/** 줄들 중 가장 긴 줄의 폭(글자 크기 배수) — 굵은 Noto Sans KR로 재 본 값: 한글 0.92, 띄어쓰기 0.28,
+ *  영문·숫자 0.56. 렌더가 이 값으로 가장 긴 줄이 폭에 들어갈 글자 크기를 정한다 */
+export function longestLine(words: string[], starts: number[]): number {
+  const cut = [0, ...starts, words.length];
+  let max = 0;
+  for (let k = 0; k + 1 < cut.length; k++) {
+    const text = words.slice(cut[k], cut[k + 1]).join(" ");
+    let n = 0;
+    for (const ch of text) n += /[가-힣ㄱ-ㅎ一-鿿]/.test(ch) ? 0.92 : ch === " " ? 0.28 : 0.56;
+    max = Math.max(max, n);
+  }
+  return max;
 }

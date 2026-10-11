@@ -22,6 +22,7 @@ import type { ProjectIcon } from "../lib/project-icon";
 import {
   type DiagramSpec,
   type MotifName,
+  lineStarts,
   motifMenu,
   MOTIFS,
   MUSIC_MOODS,
@@ -143,6 +144,12 @@ ${styleRulesForPrompt()}
   diagram을 붙인 문장에도 붙이지 않는다 — 그림이 화면 가운데를 쓰고 있어
   카운터가 그 위에 겹친다. 숫자는 다이어그램 라벨로 보여준다.
   날짜("9월 9일")는 stat이 아니다 — 세거나 잴 수 있는 양·시간·횟수만.
+- koLines·enLines: 화면에 나갈 **줄 나눔**. 문장을 뜻 덩어리로 끊은 줄 배열이고, 이어 붙이면 ko·en과
+  글자 하나 다르지 않아야 한다 (어긋나면 버리고 폭으로 자른다). 폭으로 자르면 "추리 게임 / 속 용의자의"처럼
+  한 덩어리 말이 갈린다. 꾸미는 말과 꾸밈 받는 말, "게임 속"·"할 수"처럼 붙어 다니는 말은 같은 줄에 둔다.
+  영어도 같다 — 관사·전치사·소유격은 뒤 낱말과 같은 줄("in my / mystery game" 금지).
+  hook: 2~3줄, 줄마다 한글 7자 안팎(영어 14자 안팎) — 화면 가득 큰 헤드라인이라, 줄이 길면 글자가 작아진다.
+  그 밖 문장(자막): 한 줄에 다 들어가면(한글 15자, 영어 30자 이하) 생략, 넘으면 2줄로 나눈다.
 - keywords: 각 ko 문장에서 강조할 곳 1~3개. 문장에 실제로 등장하는 단어(공백 단위
   토큰) 또는 연속된 단어 구("두 번", "밤 11시에")와 정확히 일치해야 한다.
   의미 단위를 통째로 — "두 번"에서 "번"만 강조하면 어색하다. keywordsEn도 en 문장에 대해 동일.
@@ -214,7 +221,7 @@ ${MOTIF_MENU}
   (그럼 그 문장은 다시 쓰게 된다).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","icon":["...","..."],"motif":"loop","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2,"icons":["...",null,"..."]}}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"koLines":["...","..."],"enLines":["...","..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","icon":["...","..."],"motif":"loop","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2,"icons":["...",null,"..."]}}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -405,6 +412,13 @@ function resolveScreen(raw: string, screenPaths: Set<string>): string | null {
   return null;
 }
 
+/** 대본이 준 줄 나눔이 문장과 글자 하나 다르지 않을 때만 남긴다 (띄어쓰기 차이는 본다 — 낱말을 가르면 안 된다) */
+function lineSplit(key: "koLines" | "enLines", raw: unknown, text: string): Record<string, string[]> {
+  if (!Array.isArray(raw) || raw.length < 2 || !raw.every((x) => typeof x === "string" && x.trim())) return {};
+  const lines = (raw as string[]).map((x) => x.trim());
+  return lineStarts(text.split(/\s+/), lines) ? { [key]: lines } : {};
+}
+
 function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
   if (!Array.isArray(raw) || raw.length < 4) {
     throw new Error("lines가 너무 적습니다");
@@ -460,6 +474,9 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         maxSpans,
         strip,
       ),
+      // 줄 나눔 — 이어 붙여 문장과 같을 때만 받는다 (lineStarts가 렌더에서 한 번 더 본다)
+      ...lineSplit("koLines", l.koLines, l.ko),
+      ...lineSplit("enLines", l.enLines, l.en),
       // +알파 그래픽용 장면 은유 묘사 — 여기서 떨어뜨리면 art.ts가 만들 게 없다
       ...(typeof l.art === "string" && l.art.trim()
         ? { art: l.art.trim() }
@@ -986,7 +1003,7 @@ export async function generateScript(
         "  살려 관계를 밝힙니다. 데브로그 본문에 없는 복합명사를 새로 만들지 않습니다.",
         "- 자막 길이가 넘치면 줄이지 말고 문장을 쪼갭니다. 문장 수 상한은 그대로입니다.",
         "- 기술 용어(커밋, 레포, 배포, 도구 이름 등)는 다른 말로 바꾸거나 빼지 않습니다. 처음 나올 때만 짧게 풀어 말합니다.",
-        "- 고친 문장의 keywords·stat·en도 고친 문장에 맞춥니다. 화면·그림 지정은 유지합니다.",
+        "- 고친 문장의 keywords·stat·en·koLines·enLines도 고친 문장에 맞춥니다. 화면·그림 지정은 유지합니다.",
         "",
       );
     }
