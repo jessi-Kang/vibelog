@@ -49,9 +49,12 @@
   .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
   .box.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   .box textarea { all: unset; display: block; width: 100%; min-height: 72px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
-  /* 글자 수는 900자를 넘을 때만 버튼 옆에 띄운다 — 평소엔 버튼만 오른쪽에 */
+  /* 아래 줄: 글자 수와 올리기 버튼을 오른쪽에 한 덩어리로, 세로 가운데를 맞춘다 */
   .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
-  .count { font-size: 11px; color: var(--muted); font-family: "JetBrains Mono", monospace; }
+  .count { font-size: 12px; line-height: 1; color: var(--muted); font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  /* AI 버튼은 쓰는 칸 위 도구 줄로 — 아래 줄은 다른 댓글 칸과 같은 모양이 된다 */
+  .ai { padding-bottom: 10px; border-bottom: 1px solid var(--line); align-items: center; }
+  .ai-label { font-size: 11px; letter-spacing: .08em; color: var(--muted); font-family: "JetBrains Mono", monospace; margin-right: 2px; }
   .ai { display: flex; gap: 6px; flex-wrap: wrap; }
   .chip { min-height: 32px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); font: inherit; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; position: relative; }
   .chip::after { content: ""; position: absolute; inset: -6px; }
@@ -76,7 +79,7 @@
   <div class="grid">
     <div class="col">
       <span class="tag mono">① 로그인 전</span><h2>글은 보이고, 누가 썼는지는 안 보입니다</h2>
-      <p class="d">회색 아이콘과 "방문자 1, 2"로만 나옵니다. 이름은 서버가 아예 보내지 않습니다.</p>
+      <p class="d">방문자는 회색 아이콘과 "방문자 1, 2"로만 나옵니다. Jessi는 이름까지 보입니다.</p>
       <div class="phone">
         <p class="tail">…다음 글에서는 수사 기록을 다른 기기에서 이어 보는 화면을 다듬겠습니다.</p>
         <div class="sec"><h3>댓글 2</h3></div>
@@ -84,7 +87,7 @@
           <div class="who"><span class="av anon" data-i="user" aria-hidden="true"></span><span class="anon-name">방문자 1</span><time>10/10 23:41</time></div>
           <p class="txt">서버로 옮기면 질문할 때마다 조금 느려지지 않나요? 체감은 어떤지 궁금해요.</p>
           <div class="reply">
-            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
+            <div class="who"><span class="av" data-i="terminal" style="--c:#5ee1c3" aria-hidden="true"></span><b>Jessi</b><span class="badge">만든 사람</span><time>10/11 09:12</time></div>
             <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 고르는 시간에 비하면 거의 차이가 없었습니다.</p>
           </div>
         </div>
@@ -109,7 +112,7 @@
         </div>
         <div class="box focus">
           <textarea aria-label="댓글">용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</textarea>
-          <div class="row"><button class="btn pri">올리기</button></div>
+          <div class="row"><span class="count">33 / 1,000</span><button class="btn pri">올리기</button></div>
         </div>
       </div>
     </div>
@@ -124,15 +127,15 @@
           <div class="acts"><button>숨기기</button><button>지우기</button></div>
         </div>
         <div class="box focus">
-          <span class="draftnote" id="dn" hidden>AI 초안 — 고친 뒤 올리세요</span>
-          <textarea id="ta" aria-label="답글" placeholder="답글을 쓰거나 AI 초안을 받아 보세요"></textarea>
-          <div class="read" id="rd" hidden>읽은 것 · <b>이 글</b> · <b>그날 커밋 20개</b> · <b>소개 글</b> · <b>지난 글 3편</b></div>
-          <div class="ai" role="group" aria-label="AI 도움">
+          <div class="ai" role="group" aria-label="AI 도움"><span class="ai-label">AI</span>
             <button class="chip" data-k="draft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z"/></svg>초안 쓰기</button>
             <button class="chip" data-k="polish">다듬기</button>
             <button class="chip" data-k="short">짧게</button>
           </div>
-          <div class="row"><span class="count" id="ct" hidden></span><button class="btn pri">답글 올리기</button></div>
+          <span class="draftnote" id="dn" hidden>AI 초안 — 고친 뒤 올리세요</span>
+          <textarea id="ta" aria-label="답글" placeholder="답글을 쓰거나 AI 초안을 받아 보세요"></textarea>
+          <div class="read" id="rd" hidden>읽은 것 · <b>이 글</b> · <b>그날 커밋 20개</b> · <b>소개 글</b> · <b>지난 글 3편</b></div>
+          <div class="row"><span class="count" id="ct">0 / 1,000</span><button class="btn pri">답글 올리기</button></div>
         </div>
       </div>
     </div>
@@ -153,7 +156,7 @@
     <ul>
       <li>Google 프로필 사진은 받지도 저장하지도 않습니다. 얼굴이 사이트에 남지 않고, 프로젝트 아이콘·쇼츠 아이콘과 한 세트로 보입니다.</li>
       <li>아이콘은 아래 42개 중 하나, 색은 프로젝트 색 9가지 중 하나 — 계정마다 정해져 378가지 조합이 됩니다. 같은 사람은 어느 글에서나 같은 아이콘입니다.</li>
-      <li>Jessi는 터미널 아이콘에 vibelog 민트색으로 고정합니다(다른 아이콘을 원하시면 고르시면 됩니다). 로그인 전에도 "만든 사람" 표시와 같이 보입니다.</li>
+      <li>Jessi는 터미널 아이콘에 vibelog 민트색으로 고정합니다(다른 아이콘을 원하시면 고르시면 됩니다). 이름과 아이콘은 로그인 전에도 보입니다.</li>
     </ul>
     <div class="pool" id="pool"></div>
   </div>
@@ -162,7 +165,7 @@
     <h3>정해 두는 것</h3>
     <ul>
       <li><b>자리</b>: 글 맨 아래, "이 이야기의 앞뒤" 다음. 한국어·영어 탭이 같은 댓글을 봅니다.</li>
-      <li><b>로그인 전</b>: 댓글 글자는 보이고, 쓴 사람의 이름·아이콘은 서버가 보내지 않습니다. "만든 사람" 표시만 보입니다.</li>
+      <li><b>로그인 전</b>: 댓글 글자는 보이고, 쓴 사람의 이름·아이콘은 서버가 보내지 않습니다. Jessi의 이름과 아이콘만 보입니다.</li>
       <li><b>메일 주소</b>: 로그인 확인과 관리자 판별에만 씁니다. 화면·응답·커밋·로그 어디에도 내보내지 않고, 관리자 메일은 코드가 아니라 Vercel 환경변수에 둡니다.</li>
       <li><b>쓰기 안전</b>: 댓글은 글자로만 그립니다(마크다운·HTML 해석 안 함). 한 사람당 1분에 3개까지. 비밀 키·연락처가 걸리면 올리지 않고 이유를 알려 줍니다.</li>
       <li><b>관리</b>: Jessi는 아무 댓글이나 숨기거나 지울 수 있습니다.</li>
@@ -185,7 +188,7 @@
     polish: "표정은 아직 바뀌지 않고, 지금은 말에서만 단서를 찾을 수 있어요. 이번에 대답을 서버가 정하게 바꿨으니, 표정도 같이 정하게 할 수 있을 것 같습니다. 만들면 데브로그에 남길게요!",
     short: "표정은 아직 안 바뀌고 말에서만 단서를 찾습니다. 넣게 되면 글로 알려 드릴게요!",
   };
-  const upd = () => { const n = ta.value.length; ct.hidden = n < 900; ct.textContent = `${n} / 1,000`; };
+  const upd = () => { ct.textContent = `${ta.value.length.toLocaleString("en-US")} / 1,000`; };
   ta.addEventListener("input", () => { dn.hidden = true; upd(); });
   document.querySelectorAll("#jessi .chip").forEach((b) => b.addEventListener("click", () => { ta.value = T[b.dataset.k]; dn.hidden = false; rd.hidden = b.dataset.k !== "draft"; upd(); ta.focus(); }));
 </script>
