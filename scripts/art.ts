@@ -73,6 +73,7 @@ export type ArtStyle = "flat" | "papercut";
 export function styleFor(
   theme?: string | null,
   style: ArtStyle = process.env.ART_STYLE === "papercut" ? "papercut" : "flat",
+  { wide = false }: { wide?: boolean } = {},
 ): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
   // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
@@ -83,7 +84,16 @@ export function styleFor(
     ? "light gray (#D3D7DD), soft gray (#BAC0C8) and medium gray (#A3AAB4), with #8A919B only for small details; " +
       "white only for tiny highlights, never large white areas, nothing darker than #8A919B"
     : "off-white, light gray and slate gray";
-  const base = style === "papercut" ? PAPERCUT_BASE : STYLE_BASE;
+  // 블로그 글에 넣는 그림은 가로로 긴 판형이다 — 쇼츠처럼 가운데 물건 하나를 세로로 세우면
+  // 글 칼럼에서 위아래로 길쭉해졌다 (10/11 Jessi: "…"). 글의 삽화(가로 390 × 세로 가운데값
+  // 225, 약 16:9)와 같은 판에 같은 비율로 놓이므로 16:9로 그리고, 물건 두세 개를 옆으로 늘어놓는다
+  const base = (style === "papercut" ? PAPERCUT_BASE : STYLE_BASE).replace(
+    "One centered subject with generous empty space around it. Square composition. ",
+    wide
+      ? "A small scene of two or three related objects arranged side by side along a horizontal line, low and wide, " +
+          "with generous empty space above and below. Very wide landscape composition (16:9), nothing tall or stacked high. "
+      : "One centered subject with generous empty space around it. Square composition. ",
+  );
   const what = style === "papercut" ? "papers" : "shapes";
   // 5개 테마 시안(10/11)에서 강조색이 아닌 색과 빛 번짐·반짝임 선이 끼어들었다
   return (
@@ -100,7 +110,7 @@ class ModelNotFound extends Error {}
 
 type Image = { data: Buffer; ext: "png" | "jpg" };
 
-async function geminiOnce(model: string, prompt: string): Promise<Image> {
+async function geminiOnce(model: string, prompt: string, wide = false): Promise<Image> {
   const res = await fetch("https://generativelanguage.googleapis.com/v1beta/interactions", {
     method: "POST",
     headers: {
@@ -111,7 +121,7 @@ async function geminiOnce(model: string, prompt: string): Promise<Image> {
       model,
       input: prompt,
       // Nano Banana 2.1은 JPEG만 낸다 — PNG를 달라고 하면 400 (10/11 art-try에서 확인)
-      response_format: { type: "image", mime_type: "image/jpeg", aspect_ratio: "1:1", image_size: "1K" },
+      response_format: { type: "image", mime_type: "image/jpeg", aspect_ratio: wide ? "16:9" : "1:1", image_size: "1K" },
     }),
   });
   if (res.status === 404) throw new ModelNotFound(`Gemini ${model} 없음`);
@@ -135,7 +145,7 @@ async function geminiOnce(model: string, prompt: string): Promise<Image> {
   return { data: Buffer.from(b64, "base64"), ext: "jpg" };
 }
 
-async function openaiOnce(model: string, prompt: string, transparent = false): Promise<Image> {
+async function openaiOnce(model: string, prompt: string, transparent = false, wide = false): Promise<Image> {
   const res = await fetch("https://api.openai.com/v1/images/generations", {
     method: "POST",
     headers: {
@@ -145,7 +155,8 @@ async function openaiOnce(model: string, prompt: string, transparent = false): P
     body: JSON.stringify({
       model,
       prompt,
-      size: "1024x1024",
+      // OpenAI의 가장 넓은 판형이 3:2라 위아래를 비우게 그리고, 화면은 16:9 판에 맞춰 넣는다
+      size: wide ? "1536x1024" : "1024x1024",
       output_format: "png",
       n: 1,
       ...(transparent ? { background: "transparent" } : {}),
@@ -173,12 +184,13 @@ async function fromProvider(
   provider: Provider,
   prompt: string,
   transparent: boolean,
+  wide = false,
 ): Promise<Image & { model: string }> {
   const models = provider === "gemini" ? GEMINI_MODELS : OPENAI_MODELS;
   let last: unknown;
   for (const model of models) {
     try {
-      const img = provider === "gemini" ? await geminiOnce(model, prompt) : await openaiOnce(model, prompt, transparent);
+      const img = provider === "gemini" ? await geminiOnce(model, prompt, wide) : await openaiOnce(model, prompt, transparent, wide);
       return { ...img, model };
     } catch (err) {
       last = err;
@@ -199,7 +211,7 @@ export function providerOrder(): Provider[] {
 export async function generateImage(
   prompt: string,
   order: Provider[] = providerOrder(),
-  { transparent = false }: { transparent?: boolean } = {},
+  { transparent = false, wide = false }: { transparent?: boolean; wide?: boolean } = {},
 ): Promise<Image & { provider: Provider; model: string }> {
   // 투명 배경은 OpenAI만 된다
   const usable = transparent ? order.filter((p) => p === "openai") : order;
@@ -207,7 +219,7 @@ export async function generateImage(
   let last: unknown;
   for (const provider of usable) {
     try {
-      const r = await fromProvider(provider, prompt, transparent);
+      const r = await fromProvider(provider, prompt, transparent, wide);
       return { ...r, provider };
     } catch (err) {
       last = err;

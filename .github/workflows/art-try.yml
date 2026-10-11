@@ -3,13 +3,14 @@ name: art-try
 # 이미지 생성 API 확인용 — 손으로만 돌린다. 아무것도 커밋하지 않는다.
 #   try:     Gemini·OpenAI에서 한 장씩 (키·모델 이름 확인)
 #   samples: 둥근 평면(한 색) 시안 — 테마 5 × 장면 2 = 10장, 투명 배경(OpenAI) (scripts/art-samples.ts)
+#   intro:   소개 글 머리 그림 시안 — 소개 글마다 가로 그림 한 장 (scripts/intro-art-samples.ts)
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "try = 한 장씩 확인 / samples = 테마별 시안 10장"
+        description: "try = 한 장씩 확인 / samples = 테마별 시안 10장 / intro = 소개 글 머리 그림"
         type: choice
-        options: [samples, try]
+        options: [samples, intro, try]
         default: samples
       prompt:
         description: "try일 때 그릴 것 (영어 한 문장)"
@@ -61,6 +62,15 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
+      - name: Intro
+        id: intro
+        if: inputs.mode == 'intro'
+        continue-on-error: true
+        run: npx tsx scripts/intro-art-samples.ts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
       - uses: actions/upload-artifact@v4
         with:
           name: art-${{ inputs.mode }}
@@ -72,7 +82,7 @@ jobs:
       # 위 단계들은 실패해도 넘어가게 해 두었으므로, 실패를 여기서 빨갛게 보인다
       - name: Result
         run: |
-          echo "gemini: ${{ steps.gemini.outcome }} · openai: ${{ steps.openai.outcome }} · samples: ${{ steps.samples.outcome }}"
-          for o in "${{ steps.gemini.outcome }}" "${{ steps.openai.outcome }}" "${{ steps.samples.outcome }}"; do
+          echo "gemini: ${{ steps.gemini.outcome }} · openai: ${{ steps.openai.outcome }} · samples: ${{ steps.samples.outcome }} · intro: ${{ steps.intro.outcome }}"
+          for o in "${{ steps.gemini.outcome }}" "${{ steps.openai.outcome }}" "${{ steps.samples.outcome }}" "${{ steps.intro.outcome }}"; do
             test "$o" != failure
           done
