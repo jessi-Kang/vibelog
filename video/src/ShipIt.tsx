@@ -486,9 +486,9 @@ export const ShipIt: React.FC<ShipItProps> = ({
     script.day ?? 0,
   );
 
-  // 머리글 크기 — 30px일 때 데스크톱 카드(폭 240)에서 글자가 7px로 줄어 뭉개졌다.
-  // 42px·굵게로 키웠다 (10/11 Jessi, 시안 B안)
-  const EB = { fs: 42, ls: "0.04em" };
+  // 머리글 크기 — 42px로 키웠다가 예전 30px로 되돌렸다 (10/11 Jessi: "…").
+  // 데스크톱 카드에서 작게 보일 때의 뭉개짐은 작게 줄인 썸네일·영상 사본이 맡는다
+  const EB = { fs: 30, ls: "0.08em" };
 
   return (
     <AbsoluteFill style={{ background: th.bg }}>
