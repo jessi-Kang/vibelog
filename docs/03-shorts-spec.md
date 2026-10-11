@@ -12,7 +12,7 @@
 
 ## 레이아웃 (Ship it 템플릿)
 
-- 상단 eyebrow: `VIBELOG · DAY NN` (좌) / 템플릿 태그 pill `SHIP IT`·`FAIL`·`CHANGED`(before-after) (우), 모노 폰트 42px 굵게. 프로젝트 이름은 넣지 않는다 (10/11 넣었다가 되돌림)
+- 상단 eyebrow: `VIBELOG · DAY NN` (좌) / 템플릿 태그 pill `SHIP IT`·`FAIL`·`CHANGED`(before-after) (우), 모노 폰트 30px. 프로젝트 이름은 넣지 않는다 (10/11 넣었다가 되돌림)
 - 중앙: 폰 프레임(760×1250, 라운드 70) 안에 배포 사이트 녹화. 장면에 따라 훅 카드 / 삽질 카드로 교체
 - 하단: 자막(2줄 이내) → 진행 바 → 푸터 `© {year} vibelog · Jessi` (좌) / 타임코드 (우)
 - 워터마크 없음 (시도해봤으나 어색해서 제외). 카피라이트는 푸터 한 줄로 충분.
