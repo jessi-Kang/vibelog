@@ -8,255 +8,266 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "AI가 파란 그림에 노란색을 넣었습니다.",
-      "en": "AI slipped yellow into my blue picture.",
+      "ko": "파란색만 원했는데 노란색이 끼었습니다",
+      "en": "I wanted only blue, but yellow crept in",
       "keywords": [
-        "노란색을"
+        "노란색이"
       ],
       "keywordsEn": [
         "yellow"
       ],
       "koLines": [
-        "AI가 파란 그림에",
-        "노란색을",
-        "넣었습니다."
+        "파란색만 원했는데",
+        "노란색이",
+        "끼었습니다"
       ],
       "enLines": [
-        "AI slipped yellow",
-        "into my blue picture."
+        "I wanted only blue,",
+        "but yellow",
+        "crept in"
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "쇼츠에 넣으려던 AI 그림이었습니다",
+      "en": "It was an AI picture for my shorts",
+      "keywords": [
+        "AI"
+      ],
+      "keywordsEn": [
+        "AI"
+      ],
+      "koLines": [
+        "쇼츠에 넣으려던",
+        "AI 그림이었습니다"
+      ],
+      "enLines": [
+        "It was an AI picture",
+        "for my shorts"
       ]
     },
     {
       "scene": "fail",
-      "ko": "쇼츠에 넣으려고 AI에게 시킨 그림이었습니다.",
-      "en": "It was an AI picture meant for my shorts.",
+      "ko": "AI에게 다른 색은 쓰지 말라고 안 했습니다.",
+      "en": "I never told the AI not to use other colors.",
       "keywords": [
-        "쇼츠에",
-        "AI에게"
+        "다른 색은"
       ],
       "keywordsEn": [
-        "AI picture",
-        "shorts."
+        "other colors."
       ],
       "koLines": [
-        "쇼츠에 넣으려고",
-        "AI에게 시킨 그림이었습니다."
+        "AI에게 다른 색은",
+        "쓰지 말라고 안 했습니다."
       ],
       "enLines": [
-        "It was an AI picture",
-        "meant for my shorts."
-      ],
-      "screen": "/shorts",
-      "shot": "whole"
-    },
-    {
-      "scene": "fail",
-      "ko": "쓸 색은 적었는데, 쓰지 말 색은 안 적었습니다.",
-      "en": "I named the color to use, not the ones to avoid.",
-      "keywords": [
-        "쓰지 말 색은"
-      ],
-      "keywordsEn": [
-        "ones to avoid."
-      ],
-      "koLines": [
-        "쓸 색은 적었는데,",
-        "쓰지 말 색은 안 적었습니다."
-      ],
-      "enLines": [
-        "I named the color to use,",
-        "not the ones to avoid."
+        "I never told the AI",
+        "not to use other colors."
       ],
       "diagram": {
         "kind": "fork",
         "labels": [
-          "AI에게 준 지시문",
-          "파란색",
-          "노란색·빛줄기",
-          "적은 색",
-          "안 막은 색"
+          "파란 테마 그림",
+          "노란 물건",
+          "파란색 하나",
+          "금지 없이",
+          "금지 추가"
         ],
         "labelsEn": [
-          "Instructions to AI",
-          "Blue",
-          "Yellow, light streaks",
-          "Named",
-          "Not ruled out"
+          "Blue-theme picture",
+          "Yellow object",
+          "Blue only",
+          "No ban",
+          "Ban added"
         ]
       }
     },
     {
       "scene": "build",
-      "ko": "다른 색과 빛 효과는 쓰지 말라고 더했습니다.",
-      "en": "I added: no other colors, no light effects.",
+      "ko": "그 말을 더하니 한 가지 색으로 그려졌습니다.",
+      "en": "Once I added that, it stuck to one color.",
       "keywords": [
-        "쓰지 말라고"
+        "한 가지 색으로"
       ],
       "keywordsEn": [
-        "no other colors,"
+        "one color."
       ],
       "koLines": [
-        "다른 색과 빛 효과는",
-        "쓰지 말라고 더했습니다."
+        "그 말을 더하니",
+        "한 가지 색으로 그려졌습니다."
       ],
       "enLines": [
-        "I added: no other colors,",
-        "no light effects."
+        "Once I added that,",
+        "it stuck to one color."
       ],
+      "art": "a single paintbrush resting beside one lone paint pot",
       "icon": {
-        "name": "tabler:ban",
+        "name": "tabler:brush",
         "paths": [
           {
-            "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m2.7-6.3l12.6 12.6"
+            "d": "M3 21v-4a4 4 0 1 1 4 4z"
+          },
+          {
+            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
+          },
+          {
+            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
           }
         ]
-      },
-      "motif": "remove"
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "외곽선 없는 둥근 그림체로 정했습니다.",
+      "en": "I chose a rounded style with no outlines.",
+      "keywords": [
+        "외곽선 없는"
+      ],
+      "keywordsEn": [
+        "rounded",
+        "no outlines."
+      ],
+      "koLines": [
+        "외곽선 없는 둥근 그림체로",
+        "정했습니다."
+      ],
+      "enLines": [
+        "I chose a rounded style",
+        "with no outlines."
+      ],
+      "art": "a simple tree made only of plain round shapes with no outlines",
+      "icon": {
+        "name": "tabler:circle",
+        "paths": [
+          {
+            "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"
+          }
+        ]
+      }
     },
     {
       "scene": "demo",
-      "ko": "이제 파란색 하나로만 그려집니다.",
-      "en": "Now it draws in blue alone.",
+      "ko": "쇼츠는 장면이 빨리 지나갑니다.",
+      "en": "Scenes in a short go by fast.",
       "keywords": [
-        "파란색 하나로만"
+        "빨리"
       ],
       "keywordsEn": [
-        "blue alone."
+        "fast."
       ],
       "koLines": [
-        "이제 파란색 하나로만",
-        "그려집니다."
+        "쇼츠는 장면이",
+        "빨리 지나갑니다."
       ],
-      "art": "a single rounded flat rocket drawn in one shade of blue with no outlines on a plain background",
-      "icon": {
-        "name": "tabler:brush",
-        "paths": [
-          {
-            "d": "M3 21v-4a4 4 0 1 1 4 4z"
-          },
-          {
-            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
-          },
-          {
-            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
-          }
-        ]
-      },
-      "motif": "refine"
+      "screen": "/shorts",
+      "shot": "whole"
     },
     {
-      "scene": "next",
-      "ko": "쇼츠는 프로젝트마다 색 테마가 다릅니다.",
-      "en": "Each project's shorts use a different color theme.",
+      "scene": "demo",
+      "ko": "작게 스쳐도 알아볼 수 있어야 합니다.",
+      "en": "Even a small flash has to be recognizable.",
       "keywords": [
-        "색 테마가"
+        "알아볼 수"
       ],
       "keywordsEn": [
-        "color theme."
+        "recognizable."
       ],
       "koLines": [
-        "쇼츠는 프로젝트마다",
-        "색 테마가 다릅니다."
+        "작게 스쳐도",
+        "알아볼 수 있어야 합니다."
       ],
       "enLines": [
-        "Each project's shorts use",
-        "a different color theme."
+        "Even a small flash",
+        "has to be recognizable."
       ],
+      "art": "a tiny round bird shape darting past, still easy to recognize",
       "icon": {
-        "name": "tabler:palette",
+        "name": "tabler:eye",
         "paths": [
           {
-            "d": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"
+            "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"
           },
           {
-            "d": "M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0"
+            "d": "M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"
           }
         ]
-      },
-      "motif": "tile"
+      }
     },
     {
       "scene": "next",
-      "ko": "테마 5가지에 맞춰 모두 그려 보겠습니다.",
-      "en": "I'll draw the picture in all 5 themes.",
+      "ko": "쇼츠에는 색 테마가 5가지 있습니다.",
+      "en": "Shorts come in 5 color themes.",
       "keywords": [
-        "5가지에"
+        "5가지"
       ],
       "keywordsEn": [
-        "all 5 themes."
+        "5 color themes."
       ],
       "koLines": [
-        "테마 5가지에 맞춰",
-        "모두 그려 보겠습니다."
+        "쇼츠에는 색 테마가",
+        "5가지 있습니다."
       ],
       "enLines": [
-        "I'll draw the picture",
-        "in all 5 themes."
+        "Shorts come in",
+        "5 color themes."
       ],
+      "stat": "5가지",
+      "statEn": "5 themes",
       "icon": {
-        "name": "tabler:brush",
+        "name": "tabler:color-swatch",
         "paths": [
           {
-            "d": "M3 21v-4a4 4 0 1 1 4 4z"
+            "d": "M19 3h-4a2 2 0 0 0-2 2v12a4 4 0 0 0 8 0V5a2 2 0 0 0-2-2"
           },
           {
-            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
+            "d": "m13 7.35l-2-2a2 2 0 0 0-2.828 0L5.344 8.178a2 2 0 0 0 0 2.828l9 9"
           },
           {
-            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
+            "d": "M7.3 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h12m0-4v.01"
           }
         ]
-      },
-      "motif": "scan"
+      }
     },
     {
       "scene": "next",
-      "ko": "그다음 쇼츠 장면마다 그림을 넣습니다.",
-      "en": "Then every scene of the shorts gets a picture.",
+      "ko": "테마마다 그려 본 뒤 장면마다 그림을 넣겠습니다.",
+      "en": "I'll test each theme, then add a picture to every scene.",
       "keywords": [
         "장면마다"
       ],
       "keywordsEn": [
-        "every scene"
+        "every scene."
       ],
       "koLines": [
-        "그다음 쇼츠 장면마다",
-        "그림을 넣습니다."
+        "테마마다 그려 본 뒤",
+        "장면마다 그림을 넣겠습니다."
       ],
       "enLines": [
-        "Then every scene of the shorts",
-        "gets a picture."
+        "I'll test each theme, then",
+        "add a picture to every scene."
       ],
-      "icon": {
-        "name": "tabler:toggle-right",
-        "paths": [
-          {
-            "d": "M14 12a2 2 0 1 0 4 0a2 2 0 1 0-4 0"
-          },
-          {
-            "d": "M2 12a6 6 0 0 1 6-6h8a6 6 0 0 1 6 6a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6"
-          }
-        ]
-      },
-      "motif": "gate"
+      "screen": "/shorts",
+      "find": "쇼츠 27",
+      "findEn": "Shorts 27",
+      "shot": "focus"
     },
     {
       "scene": "end",
-      "ko": "AI는 하지 말란 말이 없으면 합니다.",
-      "en": "If you don't say no, AI does it.",
+      "ko": "하지 말라는 한 줄이 색을 지켰습니다.",
+      "en": "A single 'don't' line fixed the colors.",
       "keywords": [
-        "하지 말란"
+        "한 줄이"
       ],
       "keywordsEn": [
-        "say no,"
+        "single 'don't' line"
       ],
       "koLines": [
-        "AI는 하지 말란 말이",
-        "없으면 합니다."
+        "하지 말라는 한 줄이",
+        "색을 지켰습니다."
       ],
       "enLines": [
-        "If you don't say no,",
-        "AI does it."
+        "A single 'don't' line",
+        "fixed the colors."
       ]
     }
   ],
@@ -267,10 +278,10 @@
   "failCard": {
     "title": "다른 색이 끼어들었다",
     "titleEn": "Other colors crept in",
-    "before": "파란 그림에 노란 물건과 빛줄기",
-    "after": "쓰지 말 색을 적자 한 색으로",
-    "beforeEn": "A yellow object and light streaks in a blue picture",
-    "afterEn": "Ruled out other colors, got one color"
+    "before": "강조색만 적은 지시문",
+    "after": "다른 색은 쓰지 말라고 적음",
+    "beforeEn": "Instructions named only the accent color",
+    "afterEn": "Added: don't use other colors"
   },
   "commits": [
     [
@@ -375,8 +386,8 @@
   "commitCount": 12,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "쇼츠에 넣을 AI 그림에 파란색만 쓰라고 했는데 노란 물건이 끼어들었습니다. 쓰지 말 색까지 적어 주니 한 가지 색으로 그려졌습니다.",
-    "en": "I told the AI to draw my shorts pictures in blue, and a yellow object showed up anyway. Once I wrote which colors not to use, it stuck to one color."
+    "ko": "쇼츠에 넣을 AI 그림 시안에 파란 테마인데 노란 물건이 끼어들었습니다. 다른 색은 쓰지 말라는 한 줄을 더해 둥근 평면 그림체를 정한 이야기입니다.",
+    "en": "A yellow object kept crashing the blue-themed AI pictures for my shorts. One line telling the AI not to use other colors fixed it, and I settled on a rounded flat style."
   },
   "hashtags": [
     "#vibelog",
@@ -388,11 +399,11 @@
     "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv43gt6z",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv43gvtt",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv43id0l",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv43ies6",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.sm.mp4?v=mv43h3f6",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.sm.mp4?v=mv43im0y"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv451wqm",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv451yw1",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.sm.mp4?v=mv4524f3",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv45334t",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv45352c",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.sm.mp4?v=mv453a4e"
   }
 }

@@ -1,6 +1,6 @@
 {
   "template": "fail",
-  "music": "playful",
+  "music": "tense",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-10-11",
@@ -8,41 +8,40 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "꼼수 하나로 30문제를 다 맞혔습니다",
-      "en": "One trick got me all 30 right.",
+      "ko": "퀴즈 답이 새고 있었습니다.",
+      "en": "The quiz was leaking its answers.",
       "keywords": [
-        "다 맞혔습니다"
+        "새고"
       ],
       "keywordsEn": [
-        "all 30"
+        "leaking"
       ],
       "koLines": [
-        "꼼수 하나로",
-        "30문제를",
-        "다 맞혔습니다"
+        "퀴즈 답이",
+        "새고 있었습니다."
       ],
       "enLines": [
-        "One trick got",
-        "me all 30 right."
+        "The quiz was",
+        "leaking its answers."
       ]
     },
     {
       "scene": "fail",
-      "ko": "가짜 아파트 이름을 짓는 코너를 열었는데요",
-      "en": "I opened a corner for making up fake apartment names.",
+      "ko": "작명소는 가짜 이름을 짓는 코너입니다.",
+      "en": "The Naming Office is where you make up fake names.",
       "keywords": [
-        "가짜 아파트"
+        "가짜 이름을"
       ],
       "keywordsEn": [
-        "fake apartment"
+        "fake names"
       ],
       "koLines": [
-        "가짜 아파트 이름을 짓는",
-        "코너를 열었는데요"
+        "작명소는 가짜 이름을",
+        "짓는 코너입니다."
       ],
       "enLines": [
-        "I opened a corner for",
-        "making up fake apartment names."
+        "The Naming Office is",
+        "where you make up fake names."
       ],
       "screen": "/n",
       "find": "가짜 단지명 작명 신청",
@@ -51,42 +50,80 @@
     },
     {
       "scene": "fail",
-      "ko": "이 코너는 겹치는 이름이 있으면 알려 줍니다",
-      "en": "It warns you if a name overlaps with an existing one.",
+      "ko": "진짜 단지와 비슷한 이름이면 안내가 떴습니다.",
+      "en": "If a name was close to a real complex, it warned.",
       "keywords": [
-        "겹치는 이름이"
+        "비슷한"
       ],
       "keywordsEn": [
-        "overlaps"
+        "close"
       ],
       "koLines": [
-        "이 코너는",
-        "겹치는 이름이 있으면 알려 줍니다"
+        "진짜 단지와 비슷한 이름이면",
+        "안내가 떴습니다."
       ],
       "enLines": [
-        "It warns you if a name",
-        "overlaps with an existing one."
+        "If a name was close",
+        "to a real complex, it warned."
       ],
       "screen": "/n",
       "shot": "whole"
     },
     {
       "scene": "fail",
-      "ko": "퀴즈에 뜬 이름에 '동'을 붙여 넣었습니다",
-      "en": "I took a quiz name, added 'dong', and entered it.",
+      "ko": "가짜 이름과는 똑같아야만 떴습니다.",
+      "en": "For fake names, only an exact match warned.",
       "keywords": [
-        "'동'을"
+        "똑같아야만"
       ],
       "keywordsEn": [
-        "'dong'"
+        "exact match"
       ],
       "koLines": [
-        "퀴즈에 뜬 이름에",
-        "'동'을 붙여 넣었습니다"
+        "가짜 이름과는",
+        "똑같아야만 떴습니다."
       ],
       "enLines": [
-        "I took a quiz name,",
-        "added 'dong', and entered it."
+        "For fake names,",
+        "only an exact match warned."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "새 이름 확인",
+          "비슷해도 안내",
+          "똑같아야 안내",
+          "진짜 단지",
+          "가짜 이름"
+        ],
+        "labelsEn": [
+          "Name check",
+          "Warns if similar",
+          "Warns if exact",
+          "Real complex",
+          "Fake name"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "퀴즈 이름에 '동'을 붙이면 진짜만 안내가 떴습니다.",
+      "en": "Add one syllable to a quiz name, and only real ones warned.",
+      "keywords": [
+        "'동'을",
+        "진짜만"
+      ],
+      "keywordsEn": [
+        "one syllable",
+        "only real ones"
+      ],
+      "koLines": [
+        "퀴즈 이름에 '동'을 붙이면",
+        "진짜만 안내가 떴습니다."
+      ],
+      "enLines": [
+        "Add one syllable to a quiz name,",
+        "and only real ones warned."
       ],
       "screen": "/o",
       "find": "이름만 보고 진짜/가짜",
@@ -95,112 +132,68 @@
     },
     {
       "scene": "fail",
-      "ko": "진짜면 겹친다고 뜨고, 가짜면 통과했습니다",
-      "en": "Real names got a warning; fake ones just passed.",
+      "ko": "이 방법으로 제가 30문제를 다 맞혔습니다.",
+      "en": "That way, I got all 30 questions right.",
       "keywords": [
-        "진짜면",
-        "가짜면"
+        "30문제를"
       ],
       "keywordsEn": [
-        "Real names",
-        "fake ones"
+        "all 30 questions"
       ],
       "koLines": [
-        "진짜면 겹친다고 뜨고,",
-        "가짜면 통과했습니다"
+        "이 방법으로 제가",
+        "30문제를 다 맞혔습니다."
       ],
       "enLines": [
-        "Real names got a warning;",
-        "fake ones just passed."
+        "That way,",
+        "I got all 30 questions right."
       ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "이름 + '동'",
-          "그냥 통과",
-          "겹친다고 뜸",
-          "가짜",
-          "진짜"
-        ],
-        "labelsEn": [
-          "Name + 'dong'",
-          "Passed",
-          "Warning",
-          "Fake",
-          "Real"
-        ]
-      }
+      "stat": "30문제",
+      "statEn": "30 questions",
+      "screen": "/f",
+      "shot": "whole"
     },
     {
       "scene": "build",
-      "ko": "이제는 진짜든 가짜든 같은 안내가 뜹니다",
-      "en": "Now real or fake, you get the same message.",
+      "ko": "이제 진짜와 가짜를 같은 기준으로 비교합니다.",
+      "en": "Now real and fake names are checked the same way.",
       "keywords": [
-        "같은 안내가"
+        "같은 기준으로"
       ],
       "keywordsEn": [
-        "the same message"
+        "the same way"
       ],
       "koLines": [
-        "이제는 진짜든 가짜든",
-        "같은 안내가 뜹니다"
+        "이제 진짜와 가짜를",
+        "같은 기준으로 비교합니다."
       ],
       "enLines": [
-        "Now real or fake,",
-        "you get the same message."
+        "Now real and fake names",
+        "are checked the same way."
       ],
-      "diagram": {
-        "kind": "beforeafter",
-        "labels": [
-          "진짜만 안내",
-          "답이 갈림",
-          "둘 다 안내",
-          "답이 안 보임"
-        ],
-        "labelsEn": [
-          "Only real warned",
-          "Answers split",
-          "Both warned",
-          "Answer hidden"
-        ],
-        "icons": [
+      "art": "a balance scale holding two identical blocks perfectly level",
+      "icon": {
+        "name": "tabler:scale",
+        "paths": [
           {
-            "name": "tabler:arrows-split",
-            "paths": [
-              {
-                "d": "M21 17h-8l-3.5-5H3m18-5h-8l-3.495 5"
-              },
-              {
-                "d": "m18 10l3-3l-3-3m0 16l3-3l-3-3"
-              }
-            ]
-          },
-          null,
-          {
-            "name": "tabler:equal",
-            "paths": [
-              {
-                "d": "M5 10h14M5 14h14"
-              }
-            ]
-          },
-          null
+            "d": "M7 20h10M6 6l6-1l6 1m-6-3v17m-3-8L6 6l-3 6a3 3 0 0 0 6 0m12 0l-3-6l-3 6a3 3 0 0 0 6 0"
+          }
         ]
       }
     },
     {
       "scene": "demo",
-      "ko": "다시 해 보니 절반도 못 맞혔습니다",
+      "ko": "다시 해 보니 절반도 못 맞혔습니다.",
       "en": "Trying again, I got fewer than half right.",
       "keywords": [
-        "절반도 못"
+        "절반도"
       ],
       "keywordsEn": [
         "fewer than half"
       ],
       "koLines": [
         "다시 해 보니",
-        "절반도 못 맞혔습니다"
+        "절반도 못 맞혔습니다."
       ],
       "enLines": [
         "Trying again,",
@@ -211,57 +204,27 @@
     },
     {
       "scene": "next",
-      "ko": "진짜와 가짜가 반반인지 매주 잽니다",
-      "en": "Every week, I check if it's half real, half fake.",
+      "ko": "진짜와 가짜가 반반인지 매주 잽니다.",
+      "en": "A weekly check now measures the real-fake split.",
       "keywords": [
         "매주"
       ],
       "keywordsEn": [
-        "Every week"
+        "weekly check"
       ],
       "koLines": [
         "진짜와 가짜가 반반인지",
-        "매주 잽니다"
+        "매주 잽니다."
       ],
       "enLines": [
-        "Every week, I check",
-        "if it's half real, half fake."
+        "A weekly check now measures",
+        "the real-fake split."
       ],
       "icon": {
-        "name": "tabler:calendar-week",
+        "name": "tabler:calendar-check",
         "paths": [
           {
-            "d": "M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16M7 14h.013m2.997 0h.005m2.995 0h.005m3 0h.005m-3.005 3h.005m-6.01 0h.005m2.995 0h.005"
-          }
-        ]
-      }
-    },
-    {
-      "scene": "next",
-      "ko": "이 점검이 월요일 아침에 처음 저절로 돕니다",
-      "en": "That check runs on its own for the first time Monday morning.",
-      "keywords": [
-        "월요일 아침에"
-      ],
-      "keywordsEn": [
-        "Monday morning"
-      ],
-      "koLines": [
-        "이 점검이 월요일 아침에",
-        "처음 저절로 돕니다"
-      ],
-      "enLines": [
-        "That check runs on its own",
-        "for the first time Monday morning."
-      ],
-      "icon": {
-        "name": "tabler:alarm",
-        "paths": [
-          {
-            "d": "M5 13a7 7 0 1 0 14 0a7 7 0 1 0-14 0"
-          },
-          {
-            "d": "M12 10v3h2M7 4L4.25 6M17 4l2.75 2"
+            "d": "M11.5 21H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M16 3v4M8 3v4m-4 4h16m-5 8l2 2l4-4"
           }
         ]
       },
@@ -269,17 +232,21 @@
     },
     {
       "scene": "end",
-      "ko": "이제 꼼수는 안 통합니다",
-      "en": "That trick doesn't work anymore.",
+      "ko": "월요일 아침, 첫 점검이 저절로 돕니다.",
+      "en": "On Monday morning, the first check runs itself.",
       "keywords": [
-        "안 통합니다"
+        "저절로"
       ],
       "keywordsEn": [
-        "doesn't work"
+        "runs itself"
+      ],
+      "koLines": [
+        "월요일 아침,",
+        "첫 점검이 저절로 돕니다."
       ],
       "enLines": [
-        "That trick",
-        "doesn't work anymore."
+        "On Monday morning,",
+        "the first check runs itself."
       ]
     }
   ],
@@ -288,12 +255,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "정답이 새고 있었다",
-    "titleEn": "The answers leaked",
-    "before": "이름에 '동'을 붙이면 정답이 보였다",
+    "title": "퀴즈 답이 새고 있었다",
+    "titleEn": "The quiz leaked answers",
+    "before": "'동'만 붙이면 진짜와 가짜가 갈렸다",
     "after": "진짜와 가짜를 같은 기준으로 비교",
-    "beforeEn": "Adding 'dong' to a name gave away the answer",
-    "afterEn": "Real and fake names now checked the same way"
+    "beforeEn": "One added syllable split real from fake",
+    "afterEn": "Both are compared the same way"
   },
   "commits": [
     [
@@ -454,25 +421,24 @@
   "commitCount": 19,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "가짜 아파트 이름을 짓는 코너를 열었더니, 이름 뒤에 '동' 한 글자만 붙이면 정답이 보였습니다. 진짜와 가짜를 같은 기준으로 비교하게 고쳐서 이제 그 꼼수는 안 통합니다.",
-    "en": "I opened the fake apartment name corner and found that adding one syllable to a name gave away the answer. Now real and fake names are checked the same way, so the trick no longer works."
+    "ko": "작명소를 모두에게 열자마자, 이름 뒤에 '동' 한 글자만 붙이면 퀴즈 답이 보이는 구멍을 찾았습니다. 그 방법으로 30문제를 다 맞혔고, 고친 뒤엔 절반도 못 맞혔습니다.",
+    "en": "Right after opening the Naming Office to everyone, I found that adding one syllable to a quiz name revealed the answer. I got all 30 right that way, and after the fix, fewer than half."
   },
   "hashtags": [
     "#아파트감별사",
     "#데브로그",
-    "#버그",
-    "#사이드프로젝트",
+    "#버그수정",
+    "#퀴즈게임",
     "#devlog",
-    "#indiedev",
-    "#AI",
-    "#vibelog"
+    "#gamedev",
+    "#indiedev"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.poster.jpg?v=mv43aojr",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.mp4?v=mv43aqtl",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.sm.mp4?v=mv43ayz8",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.poster.jpg?v=mv43cb0i",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.mp4?v=mv43cd0e",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.sm.mp4?v=mv43ckpv"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.poster.jpg?v=mv44t7go",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.mp4?v=mv44t9wo",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.sm.mp4?v=mv44th5a",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.poster.jpg?v=mv44uguy",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.mp4?v=mv44ujt0",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.sm.mp4?v=mv44upbt"
   }
 }
