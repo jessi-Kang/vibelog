@@ -57,6 +57,8 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
+  /** 머리글 배치 — 검수·시안용 (one 지금 / tier 이름만 크게 / stack 두 줄) */
+  eyebrowLayout?: "one" | "tier" | "stack";
   /** 템플릿 배지 글자 — 검수·시안용. 없으면 템플릿 이름 */
   badgeLabel?: string;
   /** 훅 헤드라인 낱말 움직임 — 검수·시안용. 없으면 기본(HookCard) */
@@ -402,6 +404,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   artFiles = null,
   hookMotion,
   badgeLabel,
+  eyebrowLayout = "one",
   theme = null,
   segments = null,
   project = null,
@@ -504,6 +507,23 @@ export const ShipIt: React.FC<ShipItProps> = ({
   const shownName =
     project?.short && headerUnits(fullName) > headerNameBudget(script.template) ? project.short : fullName;
   const hangulName = /[가-힣]/.test(shownName);
+  const badge = (fs: number, padding: string) => (
+    <span
+      style={{
+        border: `2px solid ${th.badgeFill ? th.accent : th.line}`,
+        borderRadius: th.badgeRadius,
+        padding,
+        fontSize: fs,
+        color: th.badgeFill ? th.accentInk : th.ink,
+        background: th.badgeFill ? th.accent : "transparent",
+        fontWeight: 700,
+        flex: "none",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {badgeLabel ?? script.template.replace("-", " ")}
+    </span>
+  );
 
   return (
     <AbsoluteFill style={{ background: th.bg }}>
@@ -626,12 +646,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
       <div
         style={{
           position: "absolute",
-          top: 88,
+          top: eyebrowLayout === "stack" ? 72 : 88,
           left: 80,
           right: 80,
           display: "flex",
+          flexDirection: eyebrowLayout === "stack" ? "column" : "row",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: eyebrowLayout === "stack" ? "flex-start" : "center",
+          rowGap: 14,
           fontFamily: FONT_MONO,
           fontSize: EB.fs,
           fontWeight: 700,
@@ -676,24 +698,20 @@ export const ShipIt: React.FC<ShipItProps> = ({
           >
             {shownName}
           </span>
-          <span style={{ flex: "none", whiteSpace: "nowrap" }}>
-            · day {String(script.day).padStart(2, "0")}
+          {eyebrowLayout !== "stack" && (
+            <span style={{ flex: "none", whiteSpace: "nowrap", ...(eyebrowLayout === "tier" ? { fontSize: 30, fontWeight: 600 } : {}) }}>
+              · day {String(script.day).padStart(2, "0")}
+            </span>
+          )}
+        </span>
+        {eyebrowLayout === "stack" && (
+          <span style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 28, marginLeft: EB.icon + EB.gap }}>
+            <span style={{ whiteSpace: "nowrap" }}>day {String(script.day).padStart(2, "0")}</span>
+            {badge(28, "6px 16px")}
           </span>
-        </span>
-        <span
-          style={{
-            border: `2px solid ${th.badgeFill ? th.accent : th.line}`,
-            borderRadius: th.badgeRadius,
-            padding: "10px 24px",
-            color: th.badgeFill ? th.accentInk : th.ink,
-            background: th.badgeFill ? th.accent : "transparent",
-            fontWeight: 700,
-            flex: "none",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {badgeLabel ?? script.template.replace("-", " ")}
-        </span>
+        )}
+        {eyebrowLayout === "one" && badge(EB.fs, "10px 24px")}
+        {eyebrowLayout === "tier" && badge(28, "8px 18px")}
       </div>
 
       {/* 숫자 모먼트 — 내레이션이 stat을 말하는 순간의 카운터 인서트.
