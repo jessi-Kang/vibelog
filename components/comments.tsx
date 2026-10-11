@@ -82,7 +82,7 @@ function Notice({ problem, retryLabel }: { problem: Problem | null; retryLabel: 
     <div role="status" aria-live="polite" className="empty:hidden">
       {problem && (
         <div className="mr-1.5 flex items-start gap-2 rounded-lg bg-warn-soft py-2 pl-3 pr-2 text-sm leading-normal text-ink-soft">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden className="mt-[4px] flex-none text-warn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden className="mt-[3px] flex-none text-warn">
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4M12 16h.01" />
           </svg>
