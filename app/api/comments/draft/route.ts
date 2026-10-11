@@ -18,6 +18,6 @@ export async function POST(req: Request) {
     if (e instanceof CommentError) return Response.json({ error: e.message }, { status: e.status });
     // AI 쪽 오류 문장은 잘리지 않게 남긴다 — 120자에서 끊었더니 원인(키 설정)이 반쯤 잘려 나왔다
     console.error(`[draft] 실패: ${(e as Error).message.slice(0, 400)}`);
-    return Response.json({ error: "초안을 만들지 못했습니다. 잠시 뒤 다시 눌러 주세요" }, { status: 502 });
+    return Response.json({ error: "초안을 만들지 못했습니다" }, { status: 502 });
   }
 }
