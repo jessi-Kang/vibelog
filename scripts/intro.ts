@@ -59,8 +59,12 @@ const CONFIG_FILE =
   /(^|\/)((next|vite|tailwind|postcss|eslint|prettier|jest|vitest|babel|webpack|svelte|astro|remotion)\.config\.[a-z]+|tsconfig[^/]*\.json|\.eslintrc[^/]*|next-env\.d\.ts)$/i;
 /** 이만큼은 코드가 있어야 무엇을 만드는지 판단할 수 있다 — README·설정만 있는 레포는 여기서 멈춘다 */
 const MIN_CODE_BYTES = 1500;
-const PER_FILE_CHARS = 8000;
-const TOTAL_CHARS = 60000;
+/**
+ * 읽는 양 — 개요를 쓰는 데는 README와 화면의 입구 몇 개면 된다. 6만 자를 읽히던 때는 글이
+ * 기능·화면·내부 동작을 늘어놓았다 (10/11). 많이 읽힐수록 많이 쓴다.
+ */
+const PER_FILE_CHARS = 5000;
+const TOTAL_CHARS = 20000;
 
 /** 먼저 읽을 파일 — 사람이 보는 이름·화면이 있는 자리 */
 const FIRST = [
@@ -91,17 +95,31 @@ function codeRank(p: string): number {
   return 50 + p.split("/").length;
 }
 
+/**
+ * 그 날짜(KST)가 끝날 때의 레포 — 나중에 넣는 소개 글도 그 시점의 코드로 쓴다. 그때 레포가
+ * 아직 없었으면 첫 커밋. 날짜가 없으면 지금(새 프로젝트는 등록한 그 밤이 곧 그 시점이다).
+ */
+async function treeAt(octokit: Octokit, owner: string, repo: string, branch: string, at?: string): Promise<string> {
+  if (!at) return branch;
+  const { data } = await octokit.rest.repos.listCommits({ owner, repo, sha: branch, until: `${at}T23:59:59+09:00`, per_page: 1 });
+  if (data[0]) return data[0].commit.tree.sha;
+  const all = await octokit.paginate(octokit.rest.repos.listCommits, { owner, repo, sha: branch, per_page: 100 });
+  return all.at(-1)?.commit.tree.sha ?? branch;
+}
+
 export async function gatherCode(
   octokit: Octokit,
   owner: string,
   repo: string,
   description: string,
+  /** 이 날짜가 끝날 때의 코드를 읽는다 (나중에 넣는 소개 글) */
+  at?: string,
 ): Promise<CodeMaterial> {
   const { data: meta } = await octokit.rest.repos.get({ owner, repo });
   const { data: tree } = await octokit.rest.git.getTree({
     owner,
     repo,
-    tree_sha: meta.default_branch,
+    tree_sha: await treeAt(octokit, owner, repo, meta.default_branch, at),
     recursive: "true",
   });
   const blobs = tree.tree.filter(
@@ -164,61 +182,62 @@ const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. vibelog�
 방식)으로 만드는 프로젝트들의 제작기를 매일 밤 저절로 올리는 블로그입니다. 지금은 한
 프로젝트의 **소개 글**을 씁니다 — 이 프로젝트의 첫 글이고, 이후의 모든 글이 이 글로 이어집니다.
 
-## 재료
-레포의 파일 목록과 코드 일부, README를 받습니다. 커밋이 아니라 **코드**를 읽고 이 프로젝트가
-무엇인지 판단합니다. 코드에 없는 기능·숫자·계획을 지어내지 않습니다. README에 적힌 계획은
-"하려고 합니다"로만 씁니다. 코드에서 확인한 것만 "만들었습니다"로 씁니다.
+## 이 글이 쓰이는 때
+프로젝트를 블로그에 등록한 **직후**, 무엇을 만드는지 판단할 코드가 처음 올라온 밤에 씁니다.
+받은 코드는 **그 시점의 레포**입니다. 대개 막 시작한 상태라 만들어 둔 것이 거의 없습니다.
+그 시점의 사람이 "이런 걸 만들려고 합니다"라고 소개하는 글입니다. 진행 상황(시험판인지,
+어디까지 됐는지), 만든 기능, 남은 일은 쓰지 않습니다 — 그건 이후의 하루 글이 매일 이야기합니다.
 
 ## 판단할 수 없으면 쓰지 않습니다
 코드가 템플릿 그대로이거나(새 프로젝트 기본 화면, 예제 코드) 무엇을 만드는지 알 수 없으면
 글을 쓰지 말고 {"ready": false, "why": "한 문장"}만 냅니다. 억지로 쓴 소개는 소개가 없는 것보다 나쁩니다.
 
+## 공개하지 않는 것
+이 글은 누구나 읽는 공개 블로그에 사람이 읽기 전에 올라갑니다. 코드에서 보았더라도 아래는 쓰지 않습니다.
+- 게임·퀴즈의 정답, 사건의 진상, 인물의 비밀, 문제를 푸는 방법 — 쓰면 그 프로젝트가 망가집니다.
+- 내부 동작 방식(데이터가 어디에 있는지, 어떤 규칙으로 답하는지, 어떤 AI를 어떻게 부르는지).
+- 보안상 약점이나 아직 막지 않은 부분, 접속 방법·토큰·관리 화면.
+- 공개 전 계획, 일정, 시험 방법.
+- 사이트 주소(URL). 코드에 있어도 옮기지 않습니다.
+알 수 있는 것은 "무엇을 하는 것인지"까지입니다. 이 프로젝트를 쓸 사람이 가게 앞 간판을 보고 아는 정도만 씁니다.
+
 ## 이 글을 읽는 사람
-개발을 모르는 사람이 이 프로젝트를 처음 봅니다. 무엇을 하는 것인지, 누가 쓰는지, 어디까지
-만들어졌는지를 이 글 한 편으로 알아야 합니다.
+개발을 모르는 사람이 이 프로젝트를 처음 봅니다.
 ${CORE_TERMS_RULE}
-- 파일 이름·함수 이름·폴더 구조는 쓰지 않습니다. 화면에서 사용하는 사람이 보는 이름으로 부릅니다.
+- 파일 이름·함수 이름·폴더 구조는 쓰지 않습니다.
 - 말하는 사람은 만든 사람 한 명("저")입니다. 존댓말로 씁니다.
 - 개념에 짧은 이름을 새로 붙이지 않고, 명사를 이어 붙여 줄임말을 만들지 않습니다. 조사를 살려
   관계를 밝힙니다 ("글 맨 아래에 있는 링크" ○ / "글 끝 링크" ✗).
-- 사이트 주소(URL)는 쓰지 않습니다. 코드에 있어도 옮기지 않습니다.
 - 어색한 표현 목록 — 아래 말투는 쓰지 않습니다:
 ${styleRulesForPrompt()}
 
 ## 서비스 이름
 레포 이름과 실제 서비스 이름은 다를 수 있습니다. 사용하는 사람이 실제로 보는 자리 — 페이지
 <title>, 앱 manifest의 name, 첫 화면 헤더나 로고 글자 — 에서 이름을 찾아 name(한국어)과
-nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 그대로 쓰거나 자연스럽게 옮깁니다.
-그런 자리에서 찾지 못했으면 둘 다 null입니다 — 레포 이름을 다듬어 지어내지 않습니다.
-nameFrom에는 찾은 자리를 짧게 적습니다 ("index.html의 title").
+nameEn(영어)에 넣습니다. 한쪽만 있으면 다른 쪽은 그 이름을 그대로 씁니다. 찾지 못했으면
+둘 다 null입니다 — 레포 이름을 다듬어 지어내지 않습니다. nameFrom에는 찾은 자리를 짧게 적습니다.
 
 ## 프로젝트 설명 (about)
-이후의 모든 글 제목 아래에 붙는 한두 문장입니다. "<서비스 이름>은(는) …입니다."로 시작해
-무엇을 하는 것인지 말합니다. 80자 안팎. 그날그날 바뀌는 이야기가 아니라 프로젝트 자체를 말합니다.
+이후의 모든 글 제목 아래에 붙는 한 문장입니다. "<서비스 이름>은(는) …입니다."로 무엇을 하는
+것인지만 말합니다. 60자 안팎. 위 "공개하지 않는 것"을 똑같이 지킵니다.
 
 ## 아이콘 (icons)
-프로젝트 페이지와 홈 카드에 붙는 작은 선 아이콘입니다. Tabler 아이콘 세트(tabler-icons.io)의
-이름으로 이 프로젝트가 **무엇인지** 가장 잘 보여 주는 것을 3–5개, 좋은 순서로 냅니다
-(예: 추리 게임 → ["spy", "search", "fingerprint"], 아파트 퀴즈 → ["building-community", "buildings"]).
-영어 소문자와 하이픈만 씁니다. 기술 스택(react, database)이 아니라 사용하는 사람이 보는 것을 고릅니다.
+이 프로젝트가 **무엇인지** 보여 주는 Tabler 아이콘(tabler-icons.io) 이름 후보를 3–5개, 좋은
+순서로 냅니다 (예: 추리 게임 → ["spy", "search"], 아파트 퀴즈 → ["building-community", "buildings"]).
+영어 소문자와 하이픈만. 기술 스택이 아니라 사용하는 사람이 보는 것을 고릅니다.
 
 ## 글 — 개요만
-이 글은 프로젝트를 **처음 시작할 때** 쓰는 소개입니다. 그 시점에는 만들어 둔 것이 거의 없습니다.
-그래서 무엇을 만드는 프로젝트인지 **개요만** 씁니다. 코드에서 본 화면·기능·진행 상황은
-"무엇을 만드는지" 판단하는 근거로만 쓰고 글에 늘어놓지 않습니다 — 기능 목록, 화면 목록,
-지금까지 만든 것, 남은 일, 사건 이름 같은 세부 내용은 쓰지 않습니다. 그날그날 만든 것은
-이후의 하루 글이 이야기합니다.
-- title: "…를 만들고 있습니다"처럼 무엇을 만드는지가 드러나는 한 문장.
-- ko: 아래 두 섹션의 마크다운. 전체 250–450자. 목록(-)을 쓰지 않고 문단으로 씁니다.
-  "## 어떤 프로젝트인가" — 첫 문장은 25–45자로 무엇인지 한 문장. 글 목록의 요약으로 그대로 쓰입니다.
-    이어서 사용하는 사람이 이것으로 무엇을 하게 되는지 한두 문장.
-  "## 누구를 위해, 왜" — 누가 어떤 불편이나 재미 때문에 쓰는지, 왜 만들기 시작했는지.
-    코드와 README에서 읽히는 만큼만.
+- title: "…를 만들고 있습니다"처럼 무엇을 만드는지만 드러나는 한 문장.
+- ko: 아래 두 섹션의 마크다운. 전체 200–350자. 목록(-) 없이 문단으로 씁니다.
+  "## 어떤 프로젝트인가" — 첫 문장은 25–45자로 무엇인지 한 문장. 글 목록의 요약으로 그대로
+    쓰입니다. 이어서 사용하는 사람이 이것으로 무엇을 하게 되는지 한 문장.
+  "## 누구를 위해, 왜" — 누가 어떤 불편이나 재미 때문에 쓰게 되는지, 왜 만들기 시작했는지.
+    README에 적힌 만큼만 쓰고, 없으면 무엇을 만드는지에서 자연스럽게 읽히는 만큼 한두 문장.
 - en: 같은 구조의 영어 — "## What it is", "## Who it's for, and why".
 
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
 {"ready": true, "name": "서비스 이름 또는 null", "nameEn": "Service name or null", "nameFrom": "찾은 자리", "icons": ["후보", "후보", "후보"],
- "about": "한두 문장", "aboutEn": "one or two sentences", "title": "한국어 제목", "titleEn": "English title",
+ "about": "한 문장", "aboutEn": "one sentence", "title": "한국어 제목", "titleEn": "English title",
  "ko": "한국어 마크다운", "en": "English markdown"}`;
 
 const REVIEW_SYSTEM = `당신은 개발을 전혀 모르는 독자입니다. 처음 보는 프로젝트의 소개 글을 읽습니다.
@@ -338,6 +357,32 @@ export async function writeIntro(m: CodeMaterial): Promise<IntroResult> {
     console.warn(`[intro] 다시 쓰기 실패 — 첫 원고를 냅니다: ${(err as Error).message.slice(0, 120)}`);
   }
   return { status: "written", intro: draft, reviewed: { before: unclear.length, rewritten: false } };
+}
+
+/**
+ * 소개 글 하나를 그 시점의 코드로 쓴다 — 밤 실행과 단독 실행이 같이 쓴다.
+ * 새 프로젝트는 그 밤의 코드로 그 밤 날짜에, 이미 글이 있던 프로젝트(나중에 넣는 예외)는
+ * 첫 글 하루 전 날짜에 그날의 코드로 쓴다. 그때 판단할 코드가 없었으면 첫 글 날짜의 코드로 한 번 더.
+ * r이 null이면 판단할 코드가 없어 AI를 부르지 않았다.
+ */
+export async function composeIntro(
+  octokit: Octokit,
+  owner: string,
+  repo: string,
+  description: string,
+  tonight: string,
+  date = introDate(repo, tonight),
+): Promise<{ date: string; r: IntroResult | null }> {
+  const later = date === tonight ? undefined : date;
+  let m = await gatherCode(octokit, owner, repo, description, later);
+  let r = enoughCode(m) ? await writeIntro(m) : null;
+  if (later && (!r || r.status === "deferred")) {
+    const next = new Date(`${later}T00:00:00Z`);
+    next.setUTCDate(next.getUTCDate() + 1);
+    m = await gatherCode(octokit, owner, repo, description, next.toISOString().slice(0, 10));
+    r = enoughCode(m) ? await writeIntro(m) : null;
+  }
+  return { date, r };
 }
 
 /* ---------- 파일 쓰기 ---------- */
@@ -526,13 +571,15 @@ async function main(): Promise<void> {
       continue;
     }
     try {
-      const m = await gatherCode(octokit, owner, repo, p.description ?? "");
-      if (!enoughCode(m)) {
+      const { date, r } = await composeIntro(
+        octokit, owner, repo, p.description ?? "", tonight,
+        (redo ? introDateOf(repo) : null) ?? introDate(repo, tonight),
+      );
+      if (!r) {
         lines.push({ text: `skip     · ${repo} 판단할 코드가 아직 없어 소개 글을 미룹니다` });
-        console.log(`- ${repo}: 코드 ${m.codeBytes}바이트 — 미룸`);
+        console.log(`- ${repo}: 판단할 코드가 아직 없음 — 미룸`);
         continue;
       }
-      const r = await writeIntro(m);
       if (r.status === "deferred") {
         lines.push({ text: `skip     · ${repo} 무엇을 만드는지 아직 알 수 없어 소개 글을 미룹니다` });
         // 모델이 적은 이유는 로그에 남기지 않는다 — 공개 로그이고 검사 전의 글이다
@@ -543,7 +590,6 @@ async function main(): Promise<void> {
       const { resolveHomepage, isPublicStatus } = await import("./homepage");
       const real = isPublicStatus(p.status) ? null : await resolveHomepage(repo).catch(() => null);
       await checkIntro(r.intro, real ? new URL(real).host : null);
-      const date = (redo ? introDateOf(repo) : null) ?? introDate(repo, tonight);
       writeIntroPost(repo, date, r.intro);
       saveIntroMeta(repo, r.intro);
       lines.push({ text: `intro    · ${repo}/${date} 소개 글 · ${fmtTally(takeUsage("intro"))}` });
