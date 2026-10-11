@@ -1,39 +1,18 @@
 {
-  "at": "2026-10-11T05:11:57.515Z",
+  "at": "2026-10-11T09:34:59.911Z",
   "lines": [
     {
-      "text": "npx tsx scripts/intro.ts all",
+      "text": "npx tsx scripts/intro.ts vibelog,agency",
       "kind": "cmd"
     },
     {
-      "text": "skip     · vibelog 판단할 코드가 아직 없어 소개 글을 미룹니다"
+      "text": "intro    · vibelog/2026-09-07 소개 글 · 토큰 in 9,935 · out 2,300"
     },
     {
-      "text": "intro    · apart/2026-09-09 소개 글 · 토큰 in 11,177 · out 1,521"
+      "text": "figures  · vibelog/2026-09-07 1장 · 토큰 in 997 · out 4,617"
     },
     {
-      "text": "figures  · apart/2026-09-09 1장 · 토큰 in 892 · out 4,530"
-    },
-    {
-      "text": "intro    · lie-detective/2026-10-09 소개 글 · 토큰 in 11,207 · out 1,813 · cache 3,091"
-    },
-    {
-      "text": "figures  · lie-detective/2026-10-09 1장 · 토큰 in 897 · out 3,132 · cache 1,646"
-    },
-    {
-      "text": "intro    · Anchor/2026-09-19 소개 글 · 토큰 in 25,532 · out 3,162 · cache 6,182"
-    },
-    {
-      "text": "figures  · Anchor/2026-09-19 1장 · 토큰 in 917 · out 3,395 · cache 1,646"
-    },
-    {
-      "text": "intro    · portfolio-tmp/2026-10-11 소개 글 · 토큰 in 10,584 · out 1,827 · cache 3,091"
-    },
-    {
-      "text": "figures  · portfolio-tmp/2026-10-11 1장 · 토큰 in 909 · out 4,028 · cache 1,646"
-    },
-    {
-      "text": "skip     · agency 판단할 코드가 아직 없어 소개 글을 미룹니다"
+      "text": "skip     · agency 무엇을 만드는지 알 수 있는 기획서나 코드가 아직 없어 소개 글을 미룹니다"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포"
