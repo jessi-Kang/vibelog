@@ -1,13 +1,18 @@
 name: art-try
 
-# 이미지 생성 API 확인용 — 손으로만 돌린다. Gemini·OpenAI에서 한 장씩 만들어
-# 아티팩트로 올린다. 키가 맞는지, 모델 이름이 아직 살아 있는지 볼 때 쓴다.
-# 아무것도 커밋하지 않는다.
+# 이미지 생성 API 확인용 — 손으로만 돌린다. 아무것도 커밋하지 않는다.
+#   try:     Gemini·OpenAI에서 한 장씩 (키·모델 이름 확인)
+#   samples: 스타일 시안 — 스타일 3 × 장면 2 × 회사 2 = 12장 (scripts/art-samples.ts)
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: "try = 한 장씩 확인 / samples = 스타일 시안 12장"
+        type: choice
+        options: [samples, try]
+        default: samples
       prompt:
-        description: "그릴 것 (영어 한 문장)"
+        description: "try일 때 그릴 것 (영어 한 문장)"
         required: false
         default: "a small lighthouse on a calm sea at night"
 
@@ -17,7 +22,7 @@ permissions:
 jobs:
   try:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -31,6 +36,7 @@ jobs:
       # 한쪽이 실패해도 다른 쪽은 돌린다
       - name: Gemini
         id: gemini
+        if: inputs.mode == 'try'
         continue-on-error: true
         run: npx tsx scripts/art.ts --try "$PROMPT" gemini
         env:
@@ -39,20 +45,34 @@ jobs:
 
       - name: OpenAI
         id: openai
+        if: inputs.mode == 'try'
         continue-on-error: true
         run: npx tsx scripts/art.ts --try "$PROMPT" openai
         env:
           PROMPT: ${{ inputs.prompt }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
+      - name: Samples
+        id: samples
+        if: inputs.mode == 'samples'
+        continue-on-error: true
+        run: npx tsx scripts/art-samples.ts
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
       - uses: actions/upload-artifact@v4
         with:
-          name: art-try
-          path: art-try-*
+          name: art-${{ inputs.mode }}
+          path: |
+            art-try-*
+            art-samples/
           if-no-files-found: warn
 
-      # 위 두 단계는 실패해도 넘어가게 해 두었으므로, 실패를 여기서 빨갛게 보인다
+      # 위 단계들은 실패해도 넘어가게 해 두었으므로, 실패를 여기서 빨갛게 보인다
       - name: Result
         run: |
-          echo "gemini: ${{ steps.gemini.outcome }} · openai: ${{ steps.openai.outcome }}"
-          test "${{ steps.gemini.outcome }}" = success && test "${{ steps.openai.outcome }}" = success
+          echo "gemini: ${{ steps.gemini.outcome }} · openai: ${{ steps.openai.outcome }} · samples: ${{ steps.samples.outcome }}"
+          for o in "${{ steps.gemini.outcome }}" "${{ steps.openai.outcome }}" "${{ steps.samples.outcome }}"; do
+            test "$o" != failure
+          done

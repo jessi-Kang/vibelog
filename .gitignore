@@ -32,3 +32,5 @@ content/shorts/**/*.jpg
 
 # live 전 사이트 주소 — 공개 레포에 남기지 않는다 (scripts/homepage.ts)
 .private/
+art-samples/
+art-try-*
