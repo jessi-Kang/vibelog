@@ -186,6 +186,12 @@ export async function focusOn(
       }
       if (!best) return undefined;
       best.scrollIntoView({ block: "center", behavior: "instant" });
+      // 넘친 부분을 숨긴 상자(손으로는 못 미는 상자)가 옆으로 밀렸으면 되돌린다 — 화면 밖으로
+      // 삐져나온 도장 그림을 가운데로 끌어오느라 글이 왼쪽으로 잘렸다 (apart 10/11)
+      for (let a = best.parentElement; a; a = a.parentElement) {
+        const ox = getComputedStyle(a).overflowX;
+        if ((ox === "hidden" || ox === "clip") && a.scrollLeft) a.scrollLeft = 0;
+      }
       const box = best.getBoundingClientRect();
       return (box.top + box.bottom) / 2 / window.innerHeight;
     });
@@ -197,6 +203,11 @@ export async function focusOn(
       // 화면 가운데에 둔다. 렌더가 이 지점을 크롭의 가운데로 잡으므로(focusY),
       // 여기서 위아래로 밀 필요가 없다 — 밀면 크롭 경계에 걸려 잘린다
       el.scrollIntoView({ block: "center", behavior: "instant" });
+      // 넘친 부분을 숨긴 상자가 옆으로 밀렸으면 되돌린다 (위 그림 분기와 같은 이유)
+      for (let a = el.parentElement; a; a = a.parentElement) {
+        const ox = getComputedStyle(a).overflowX;
+        if ((ox === "hidden" || ox === "clip") && a.scrollLeft) a.scrollLeft = 0;
+      }
       const box = el.getBoundingClientRect();
       return (box.top + box.bottom) / 2 / window.innerHeight;
     })
@@ -410,7 +421,10 @@ export async function record(
   // 화면을 훑는다 — 문장은 화면 전체를 말하는데 화면이 버튼 하나에 멈춰
   // 있으면 어긋난다.
   // (표시를 얹던 시절의 이름이다. 이제 테두리는 그리지 않는다 — focusOn 주석)
-  const stops: { path?: string; find?: string; point?: boolean }[] = [];
+  // alt: 영어 영상이 영어 문구(findEn)로 못 찾을 때 다시 찾아볼 한국어 문구. 한국어만 있는 사이트
+  // (apart 등)에서 영어 문구로 찾다 못 찾고 큰 그림으로 떨어졌다 (10/11). text: 실제로 찾은 문구 —
+  // find는 렌더가 대본 문장과 구간을 맞추는 열쇠라 바꾸지 않는다
+  const stops: { path?: string; find?: string; alt?: string; text?: string; point?: boolean }[] = [];
   for (const l of script.lines) {
     const find = (lang === "en" ? l.findEn || l.find : l.find) || undefined;
     if (!l.screen && !find) continue;
@@ -419,10 +433,23 @@ export async function record(
       stops.push({
         ...(l.screen ? { path: l.screen } : {}),
         ...(find ? { find } : {}),
+        ...(lang === "en" && l.find && l.find !== find ? { alt: l.find } : {}),
         ...(find && l.shot !== "whole" ? { point: true } : {}),
       });
     }
   }
+  /** 정류장의 문구로 찾고, 못 찾으면 한국어 문구(alt)로 한 번 더 — 글자·이름으로만 */
+  const locateStop = async (stop: (typeof stops)[number]) => {
+    for (const text of [stop.find, stop.alt]) {
+      if (!text) continue;
+      const hit = await locateOnPage(page, text);
+      if (hit) {
+        stop.text = text;
+        return hit;
+      }
+    }
+    return null;
+  };
   // **정류장이 한 화면뿐이면 다른 화면을 하나 더 녹화한다.** 렌더가 duo(두 폰)
   // 샷을 쓸 때 재료가 하나뿐이면 똑같은 화면이 두 번 겹쳐 나온다 (Jessi 지적).
   const hintPaths = new Set(stops.map((st) => st.path).filter(Boolean));
@@ -522,8 +549,7 @@ export async function record(
         // 지정된 화면에서만 찾는다 (글자·이름 → 그림)
         if (await go(stop.path)) {
           const hit =
-            (await locateOnPage(page, stop.find)) ??
-            (await locateOnPage(page, stop.find, true));
+            (await locateStop(stop)) ?? (await locateOnPage(page, stop.find, true));
           if (hit) {
             kind = hit.kind;
             if (hit.ambiguous) stop.point = false;
@@ -535,7 +561,7 @@ export async function record(
         // 첫 화면에서 순회가 멈춰 엉뚱한 요소에 테두리가 간다.
         for (const cand of candidates) {
           if (!(await go(cand))) continue;
-          const hit = await locateOnPage(page, stop.find);
+          const hit = await locateStop(stop);
           if (hit) {
             path = cand;
             kind = hit.kind;
@@ -604,7 +630,7 @@ export async function record(
         await page.evaluate(() => window.scrollTo({ top: 0 }));
         await page.waitForTimeout(200);
       } else if (kind && stop.find) {
-        focusY = await focusOn(page, stop.find, kind).catch(() => {
+        focusY = await focusOn(page, stop.text ?? stop.find, kind).catch(() => {
           kind = null;
           return undefined;
         });
