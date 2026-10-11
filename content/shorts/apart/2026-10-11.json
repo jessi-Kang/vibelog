@@ -1,0 +1,354 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-10-11",
+  "day": 10,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "아파트 퀴즈 30문제를 꼼수로 다 맞혔습니다.",
+      "en": "I aced all 30 apartment quiz questions with a trick.",
+      "keywords": [
+        "꼼수로"
+      ],
+      "keywordsEn": [
+        "trick."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "작명소는 가짜 아파트 이름을 짓는 코너입니다.",
+      "en": "The Naming Office is where you make up fake apartment names.",
+      "keywords": [
+        "작명소는"
+      ],
+      "keywordsEn": [
+        "Naming Office"
+      ],
+      "screen": "/n",
+      "find": "가짜 단지명 직접 짓기",
+      "findEn": "make up a fake complex name",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "비슷한 진짜 단지가 있으면 경고해 줍니다.",
+      "en": "It warns you if a similar real complex exists.",
+      "keywords": [
+        "경고해"
+      ],
+      "keywordsEn": [
+        "warns you"
+      ],
+      "screen": "/n",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "퀴즈에 뜬 이름에 '동'을 붙여 넣어 봤습니다.",
+      "en": "I took a quiz name, added one syllable, and checked it.",
+      "keywords": [
+        "'동'을 붙여"
+      ],
+      "keywordsEn": [
+        "added one syllable,"
+      ],
+      "screen": "/f",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "진짜면 경고가 뜨고, 가짜면 그냥 통과했습니다.",
+      "en": "Real names got the warning; fake ones just passed.",
+      "keywords": [
+        "진짜면",
+        "가짜면"
+      ],
+      "keywordsEn": [
+        "Real",
+        "fake"
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "이름+동",
+          "경고 뜸",
+          "그냥 통과",
+          "진짜",
+          "가짜"
+        ],
+        "labelsEn": [
+          "Name + 1 syllable",
+          "Warning",
+          "Passes",
+          "Real",
+          "Fake"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 가짜 이름도 비슷하면 똑같이 경고합니다.",
+      "en": "Now fake names get the same warning when they're similar.",
+      "keywords": [
+        "똑같이"
+      ],
+      "keywordsEn": [
+        "same warning"
+      ],
+      "motif": "merge"
+    },
+    {
+      "scene": "demo",
+      "ko": "다시 해 보니 절반도 못 맞혔습니다.",
+      "en": "Trying again, I got fewer than half right.",
+      "keywords": [
+        "절반도"
+      ],
+      "keywordsEn": [
+        "fewer than half"
+      ],
+      "screen": "/o",
+      "find": "이름만 보고 진짜/가짜",
+      "findEn": "real or fake from the name alo",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "그냥 찍는 것과 같은 결과입니다.",
+      "en": "That's no better than guessing.",
+      "keywords": [
+        "그냥 찍는"
+      ],
+      "keywordsEn": [
+        "guessing."
+      ],
+      "screen": "/o",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "퀴즈에 진짜와 가짜가 반반 나오는지 매주 잽니다.",
+      "en": "Every week, I now check that the quiz shows real and fake half and half.",
+      "keywords": [
+        "반반",
+        "매주"
+      ],
+      "keywordsEn": [
+        "half and half.",
+        "Every week,"
+      ],
+      "icon": {
+        "name": "tabler:scale",
+        "paths": [
+          {
+            "d": "M7 20h10M6 6l6-1l6 1m-6-3v17m-3-8L6 6l-3 6a3 3 0 0 0 6 0m12 0l-3-6l-3 6a3 3 0 0 0 6 0"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "작명소는 이제 로그인하면 누구나 씁니다.",
+      "en": "The Naming Office is now open to anyone logged in.",
+      "keywords": [
+        "누구나"
+      ],
+      "keywordsEn": [
+        "anyone"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "정답이 새어 나갔다",
+    "titleEn": "The answers leaked",
+    "before": "진짜만 비슷해도 경고가 떠서 답이 보였다",
+    "after": "진짜든 가짜든 같은 기준으로 비교한다",
+    "beforeEn": "Only real names warned on near matches, giving away the answer",
+    "afterEn": "Real and fake names are now compared the same way"
+  },
+  "commits": [
+    [
+      "b8afff2",
+      "feat: 방문 집계 자리를 만든다 (클라우드플레어 웹 분석, 토큰 대기)"
+    ],
+    [
+      "9e3b780",
+      "fix: 작명소에서 이름을 바꿔도 지난 접수 실패 안내가 남던 것을 고친다"
+    ],
+    [
+      "cd6636e",
+      "fix: 작명소 확인 기능으로 감별 정답을 캘 수 있던 것을 막는다"
+    ],
+    [
+      "c621f05",
+      "fix: 조립 미끼 조각이 모양만으로 걸러지던 것을 막는다"
+    ],
+    [
+      "c03e2ed",
+      "feat: 주간 점검 리포트를 reports/weekly에 쌓는다"
+    ],
+    [
+      "25e02e1",
+      "feat: 주간 점검을 세 창구 모두로 넓힌다"
+    ],
+    [
+      "8b462bc",
+      "docs: CLAUDE.md의 배경음 설명을 코드에 맞춘다"
+    ],
+    [
+      "9e57b87",
+      "docs: 도전장·항공사진·작명소 전개·주간 점검을 문서에 반영한다"
+    ],
+    [
+      "6e8dcbd",
+      "fix: 구역을 고르면 겉모양만 보고 진짜·가짜를 찍을 수 있던 것을 막는다"
+    ],
+    [
+      "2df7236",
+      "feat: 진짜·가짜 비율을 매주 잰다"
+    ],
+    [
+      "6a9f096",
+      "feat: 작명소를 연다"
+    ],
+    [
+      "95eee21",
+      "feat: 도전장과 항공사진을 세 창구(감별·조립·찾기) 모두로 넓힌다"
+    ],
+    [
+      "3463f83",
+      "feat: 항공사진 가운데에 단지 핀을 찍고, 카카오맵 단지 사진·로드뷰로 잇는다"
+    ],
+    [
+      "dc90afb",
+      "fix: 정답 공개 칸의 항공사진이 아래로 처져 보이던 것을 시안 자리로 올린다"
+    ],
+    [
+      "75791e1",
+      "feat: 진짜 단지의 정답 공개 칸에 항공사진을 붙인다 (키가 들어오면 켜진다)"
+    ],
+    [
+      "c8eb76a",
+      "design: 실단지 항공사진 시안 — 정답 공개 칸에 작은 사진, 눌러서 크게"
+    ],
+    [
+      "c96a9ea",
+      "fix: 호수를 뺀 뒤 홈 머리줄 오른쪽에 날짜만 덩그러니 남던 칸을 걷는다"
+    ],
+    [
+      "c82a225",
+      "fix: 기록 열람실 표 밑 안내가 표 테두리에 붙어 있던 것을 고치고, 붙은 글자를 QA가 잡게 한다"
+    ],
+    [
+      "aa80380",
+      "fix: 단추 바로 밑 안내 문구가 단추에 붙어 있던 것을 고친다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "b8afff2",
+      "feat: add visit aggregation slot (Cloudflare Web Analytics, token wait)"
+    ],
+    [
+      "9e3b780",
+      "fix: stop old intake-failure notice from remaining after changing name at naming office"
+    ],
+    [
+      "cd6636e",
+      "fix: block naming office check from revealing answers in identification game"
+    ],
+    [
+      "c621f05",
+      "fix: stop assembly bait pieces from being filtered by shape alone"
+    ],
+    [
+      "c03e2ed",
+      "feat: accumulate weekly check reports in reports/weekly"
+    ],
+    [
+      "25e02e1",
+      "feat: extend weekly check to all three channels"
+    ],
+    [
+      "8b462bc",
+      "docs: align CLAUDE.md background music description with code"
+    ],
+    [
+      "9e57b87",
+      "docs: reflect challenge letters, aerial photos, naming office progression, and weekly check in docs"
+    ],
+    [
+      "6e8dcbd",
+      "fix: stop real/fake being identifiable from outer appearance when selecting a district"
+    ],
+    [
+      "2df7236",
+      "feat: measure real/fake ratio weekly"
+    ],
+    [
+      "6a9f096",
+      "feat: open naming office"
+    ],
+    [
+      "95eee21",
+      "feat: extend challenge letters and aerial photos to all three channels (identify, assemble, find)"
+    ],
+    [
+      "3463f83",
+      "feat: place complex pin on aerial photo center, linking to Kakao Map complex photos and roadview"
+    ],
+    [
+      "dc90afb",
+      "fix: move aerial photo in answer reveal slot up to mockup position instead of sagging below"
+    ],
+    [
+      "75791e1",
+      "feat: attach aerial photo to answer reveal slot for real complexes (activates when key is provided)"
+    ],
+    [
+      "c8eb76a",
+      "design: real complex aerial photo mockup — small photo in answer reveal slot, tap to enlarge"
+    ],
+    [
+      "c96a9ea",
+      "fix: remove date-only leftover on right of home header line after removing unit number"
+    ],
+    [
+      "c82a225",
+      "fix: fix record room table footnote sticking to table border, and have QA catch clipped text"
+    ],
+    [
+      "aa80380",
+      "fix: fix notice text directly below button sticking to the button"
+    ]
+  ],
+  "commitCount": 19,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "작명소에 이름을 넣어 보는 것만으로 퀴즈 30문제의 정답이 보였습니다. 같은 기준으로 비교하게 고쳤더니 이제는 찍는 것과 다르지 않습니다.",
+    "en": "Just checking names in the Naming Office gave away all 30 quiz answers. Now both kinds are compared the same way, and it's no better than guessing."
+  },
+  "hashtags": [
+    "#아파트감별사",
+    "#vibelog",
+    "#개발일지",
+    "#버그",
+    "#indiedev",
+    "#devlog",
+    "#AI",
+    "#webgame"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.poster.jpg?v=mv3wq5nq",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.mp4?v=mv3wq776",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.poster.jpg?v=mv3wrrf4",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.mp4?v=mv3wrtog"
+  }
+}
