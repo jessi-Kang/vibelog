@@ -2,6 +2,9 @@
   {
     "slug": "vibelog",
     "name": "vibelog",
+    "nameEn": "vibelog",
+    "serviceName": "vibelog",
+    "serviceNameEn": "vibelog",
     "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
     "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
     "status": "live",
@@ -12,18 +15,18 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-11",
-    "weekCommits": 81,
-    "todayCommits": 15,
-    "totalCommits": 509,
-    "countsDate": "2026-10-11",
-    "serviceName": "vibelog",
-    "serviceNameEn": "vibelog",
-    "nameEn": "vibelog"
+    "weekCommits": 120,
+    "todayCommits": 55,
+    "totalCommits": 549,
+    "countsDate": "2026-10-11"
   },
   {
     "slug": "apart",
     "color": "#B9A7FF",
     "name": "아파트 감별사",
+    "nameEn": "Apartment Detective",
+    "serviceName": "아파트 감별사",
+    "serviceNameEn": "Apartment Detective",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
     "status": "live",
@@ -34,19 +37,19 @@
     "homepage": "https://apt-game.app",
     "language": "TypeScript",
     "lastActivity": "2026-10-11",
-    "weekCommits": 15,
-    "todayCommits": 4,
-    "totalCommits": 217,
+    "weekCommits": 26,
+    "todayCommits": 15,
+    "totalCommits": 228,
     "countsDate": "2026-10-11",
-    "theme": "paper",
-    "serviceName": "아파트 감별사",
-    "serviceNameEn": "Apartment Detective",
-    "nameEn": "Apartment Detective"
+    "theme": "paper"
   },
   {
     "slug": "lie-detective",
     "color": "#6FD3F2",
     "name": "거짓말 탐정",
+    "nameEn": "Lie Detective",
+    "serviceName": "거짓말 탐정",
+    "serviceNameEn": "Lie Detective",
     "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
     "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
     "status": "preview",
@@ -60,15 +63,14 @@
     "todayCommits": 0,
     "totalCommits": 49,
     "countsDate": "2026-10-11",
-    "theme": "highlighter",
-    "serviceName": "거짓말 탐정",
-    "serviceNameEn": "Lie Detective",
-    "nameEn": "Lie Detective"
+    "theme": "highlighter"
   },
   {
     "slug": "Anchor",
     "color": "#C9E579",
     "name": "Anchor",
+    "serviceName": "Anchor",
+    "serviceNameEn": "Anchor",
     "description": "기존과 다른 언어학습 앱",
     "descriptionEn": "A language learning app with a different approach",
     "status": "building",
@@ -88,10 +90,7 @@
     "todayCommits": 0,
     "totalCommits": 1075,
     "countsDate": "2026-10-11",
-    "theme": "blueprint",
-    "serviceName": "Anchor",
-    "serviceNameEn": "Anchor",
-    "nameEn": "Anchor"
+    "theme": "blueprint"
   },
   {
     "slug": "portfolio-tmp",
