@@ -9,12 +9,15 @@
  * 사용: npx tsx scripts/audio.ts <repo> <date> [ko|en|both]
  * 필요 환경변수: ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
  */
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { blobGet, blobPut } from "./blob-cache";
 import {
+  holdGaps,
   narrationPath,
+  shiftTiming,
   shortsJsonPath,
   timingJsonPath,
   type ShortsScript,
@@ -407,6 +410,29 @@ async function cachedTtsWith(
   return fresh;
 }
 
+/**
+ * 내레이션 mp3의 문장 사이에 무음을 넣는다. 자르는 자리는 앞 문장 끝과 다음 문장 시작의 가운데 —
+ * 숨소리가 반쪽으로 잘리지 않게. 녹음은 다시 사지 않고 받은 파일만 고친다.
+ */
+export function padNarration(mp3: string, timing: ShortsTiming, gaps: number[]): void {
+  const ss = timing.sentences;
+  const cuts = [0];
+  for (let i = 0; i + 1 < ss.length; i++) cuts.push((ss[i].end + ss[i + 1].start) / 2);
+  const parts: string[] = [];
+  const labels: string[] = [];
+  cuts.forEach((from, k) => {
+    const to = cuts[k + 1];
+    const trim = to === undefined ? `atrim=start=${from.toFixed(3)}` : `atrim=start=${from.toFixed(3)}:end=${to.toFixed(3)}`;
+    const pad = gaps[k] > 0.05 ? `,apad=pad_dur=${gaps[k].toFixed(3)}` : "";
+    parts.push(`[0:a]${trim},asetpts=PTS-STARTPTS${pad}[s${k}]`);
+    labels.push(`[s${k}]`);
+  });
+  const filter = `${parts.join(";")};${labels.join("")}concat=n=${labels.length}:v=0:a=1[out]`;
+  const tmp = mp3.replace(/\.mp3$/, ".padded.mp3");
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-i", mp3, "-filter_complex", filter, "-map", "[out]", "-c:a", "libmp3lame", "-q:a", "2", tmp]);
+  fs.renameSync(tmp, mp3);
+}
+
 async function generateNarration(
   script: ShortsScript,
   lang: "ko" | "en",
@@ -416,11 +442,20 @@ async function generateNarration(
   // 발음 교정본으로 녹음하고, 자막(timing.words)은 표시용 원문을 유지한다
   const spoken = sentences.map((s) => speakable(s, lang)).join(SENTENCE_GAP);
   const { audio, alignment } = await cachedTts(script, lang, spoken);
-  const timing = toTiming(sentences, lineIndexes, alignment, lang);
+  let timing = toTiming(sentences, lineIndexes, alignment, lang);
 
   const mp3 = path.join(process.cwd(), narrationPath(script.repo, script.date, lang));
   fs.mkdirSync(path.dirname(mp3), { recursive: true });
   fs.writeFileSync(mp3, audio);
+  // 그림이 다 그려지기 전에 다음 문장으로 넘어가는 자리에 틈을 넣는다 (shorts-types의 holdGaps)
+  const gaps = holdGaps(script.lines, timing);
+  if (gaps.some((g) => g > 0.05)) {
+    padNarration(mp3, timing, gaps);
+    timing = shiftTiming(timing, gaps);
+    console.log(
+      `${lang} 그림을 읽을 틈 ${gaps.reduce((a, b) => a + b, 0).toFixed(1)}초 (${gaps.filter((g) => g > 0.05).length}곳)`,
+    );
+  }
   fs.writeFileSync(
     path.join(process.cwd(), timingJsonPath(script.repo, script.date, lang)),
     JSON.stringify(timing, null, 2) + "\n",

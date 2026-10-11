@@ -485,3 +485,69 @@ export function longestLine(words: string[], starts: number[]): number {
   }
   return max;
 }
+
+/**
+ * 그림이 다 그려지는 시각(장면 시작부터 초) — video/src/Diagram.tsx·Motif.tsx의 시간표와 같은 값.
+ * 그쪽 박자를 바꾸면 여기도 고친다.
+ */
+export function sceneDrawnSec(line: Pick<ShortsLine, "diagram" | "motif">): number {
+  const d = line.diagram;
+  if (d) {
+    if (d.kind === "numberline") return 2.65;
+    if (d.kind === "fork") return 2.15;
+    if (d.kind === "beforeafter") return 2.0;
+    if (d.kind === "sets") return 1.95;
+    // pipeline — 칸마다 0.35초씩 늦게 얹힌다
+    return 0.4 + (Math.min(d.labels.length, 5) - 1) * 0.35 + 0.4;
+  }
+  // 모티프는 한 편 2.2초 중 70%에서 뜻이 박힌다
+  if (line.motif) return 1.55;
+  return 0;
+}
+
+/** 다 그려진 그림을 읽는 시간 + 장면이 사라지는 시간 */
+const READ_SEC = 1.0;
+const FADE_SEC = 0.45;
+/** 한 문장 뒤에 넣는 틈의 상한과 한 편 전체 상한 — 영상 규격(45초)을 넘기지 않게 */
+const GAP_MAX = 1.5;
+const GAPS_TOTAL_MAX = 4;
+/** 내레이션 앞뒤로 붙는 콜드오픈·시작 지연·엔드카드 (docs/03 "포맷") */
+const OUTSIDE_NARRATION = 5.5;
+
+/**
+ * 문장 뒤에 넣을 틈(초) — 문장 번호(timing.sentences 순서)마다.
+ * 장면은 그 문장을 말하는 동안만 화면에 있어서, 문장이 짧으면 그림이 다 그려지기도 전에
+ * 다음 장면으로 넘어갔다 (거짓말 탐정 10/10 갈림길 그림 — 2.5초 문장에 그리는 데만 2.15초).
+ * 그림이 다 그려지고 READ_SEC 동안 읽힌 뒤 사라질 만큼 내레이션 사이를 벌린다.
+ */
+export function holdGaps(lines: Pick<ShortsLine, "diagram" | "motif">[], timing: ShortsTiming): number[] {
+  const ss = timing.sentences;
+  const gaps = ss.map((s, i) => {
+    const next = ss[i + 1];
+    if (!next) return 0;
+    const drawn = sceneDrawnSec(lines[s.index] ?? {});
+    if (!drawn) return 0;
+    const need = drawn + READ_SEC + FADE_SEC;
+    return Math.min(GAP_MAX, Math.max(0, need - (next.start - s.start)));
+  });
+  // 한 편 전체 상한 — 큰 틈부터 깎지 않고 같은 비율로 줄인다
+  const room = Math.max(0, Math.min(GAPS_TOTAL_MAX, 45 - OUTSIDE_NARRATION - timing.duration));
+  const sum = gaps.reduce((a, b) => a + b, 0);
+  return sum > room ? gaps.map((g) => (g * room) / sum) : gaps;
+}
+
+/** 틈만큼 뒤 문장들의 시각을 민다 */
+export function shiftTiming(timing: ShortsTiming, gaps: number[]): ShortsTiming {
+  let acc = 0;
+  const sentences = timing.sentences.map((s, i) => {
+    const moved = {
+      ...s,
+      start: s.start + acc,
+      end: s.end + acc,
+      words: s.words.map((w) => ({ ...w, start: w.start + acc, end: w.end + acc })),
+    };
+    acc += gaps[i] ?? 0;
+    return moved;
+  });
+  return { ...timing, duration: timing.duration + acc, sentences };
+}
