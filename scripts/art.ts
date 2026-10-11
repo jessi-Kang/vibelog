@@ -60,7 +60,11 @@ export function styleFor(theme?: string | null): string {
   const papers = t.light
     ? "white, very light gray and medium gray (#9AA1AB) papers — nothing darker than medium gray, no charcoal, no black"
     : "off-white, light warm gray and slate gray papers";
-  return `${STYLE_BASE}Paper colors: ${papers}, with exactly one ${t.accent} colored paper piece on the focal part. Subject: `;
+  // 5개 테마 시안(10/11)에서 강조색이 아닌 색(파란 테마에 노란 토큰)과 빛 번짐·반짝임 선이 끼어들었다
+  return (
+    `${STYLE_BASE}Paper colors: ${papers}, with exactly one ${t.accent} colored paper piece on the focal part. ` +
+    "No other saturated colors anywhere. No glow, no light beams, no sparkle or motion lines — only cut paper. Subject: "
+  );
 }
 
 export function artDir(repo: string, date: string): string {

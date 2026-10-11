@@ -7,7 +7,8 @@
  *   fade  @remotion/transitions fade
  *   slide @remotion/transitions slide (오른쪽에서)
  *   wipe  @remotion/transitions wipe (왼쪽에서)
- *   mix   fade + 그림이 들어올 때 @remotion/motion-blur + @remotion/light-leaks 빛 번짐
+ *   mix   fade + 그림이 들어올 때 @remotion/motion-blur
+ *         (빛 번짐 @remotion/light-leaks도 넣어 봤다가 뺐다 — 번쩍하는 게 이상했다, 10/11 Jessi)
  *
  * 그림은 video/public/sheet/에 넣어 둔다 (커밋하지 않는다 — art-try 워크플로의 시안 그림).
  * 렌더: cd video && npx remotion render TransitionSheet out.mp4 --props='{"variant":"fade"}'
@@ -33,7 +34,6 @@ import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
 import { wipe } from "@remotion/transitions/wipe";
 import { CameraMotionBlur } from "@remotion/motion-blur";
-import { LightLeak } from "@remotion/light-leaks";
 import type { ProjectIcon } from "../../lib/project-icon";
 import { MotifScene } from "./Motif";
 import { IconScene } from "./IconScene";
@@ -101,11 +101,7 @@ const Caption: React.FC<{ th: ShortsTheme; before: string; key_: string; after: 
   );
 };
 
-/** 빛 번짐 색·세기 — terminal 민트와 가장 가까운 청록(200°). 0.3만 돼도 화면 전체가 물들었다 */
-const LEAK_HUE = 200;
-const LEAK_OPACITY = 0.14;
-
-/** 생성 그림 장면 — 판 없이 바탕 위에. mix에서는 아래에서 올라오며 모션 블러, 빛 번짐 한 번 */
+/** 생성 그림 장면 — 판 없이 바탕 위에. mix에서는 아래에서 올라오며 모션 블러 */
 const ArtScene: React.FC<{ file: string; rich: boolean }> = ({ file, rich }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -135,10 +131,6 @@ const ArtScene: React.FC<{ file: string; rich: boolean }> = ({ file, rich }) => 
       <CameraMotionBlur shutterAngle={180} samples={8}>
         <AbsoluteFill>{img((1 - p) * 260, push)}</AbsoluteFill>
       </CameraMotionBlur>
-      {/* 빛 번짐은 아주 옅게, 테마 강조색 쪽 색으로 — 세게 두면 화면 전체가 물들어 그림을 덮었다 */}
-      <AbsoluteFill style={{ opacity: LEAK_OPACITY, mixBlendMode: "screen" }}>
-        <LightLeak durationInFrames={30} seed={4} hueShift={LEAK_HUE} />
-      </AbsoluteFill>
     </>
   );
 };

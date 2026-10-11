@@ -8,7 +8,6 @@
   "dependencies": {
     "@remotion/cli": "^4.0.245",
     "@remotion/google-fonts": "^4.0.245",
-    "@remotion/light-leaks": "4.0.523",
     "@remotion/motion-blur": "4.0.523",
     "@remotion/transitions": "4.0.523",
     "react": "^19.1.1",
