@@ -38,7 +38,7 @@ on:
         required: false
         default: ""
       intro:
-        description: "프로젝트 소개 글만 쓰기 — all 또는 apart,Anchor. 레포 코드를 읽고 소개 글·서비스 이름·프로젝트 설명을 쓴다. 이미 글이 있는 프로젝트는 첫 글 하루 전 날짜로 들어간다 (Opus 호출 프로젝트당 1–2번 + 삽화)"
+        description: "프로젝트 소개 글만 쓰기 — all 또는 apart,Anchor (icons면 소개 글은 두고 아이콘만 붙인다). 레포 코드를 읽고 소개 글·서비스 이름·프로젝트 설명을 쓴다. 이미 글이 있는 프로젝트는 첫 글 하루 전 날짜로 들어간다 (Opus 호출 프로젝트당 1–2번 + 삽화)"
         required: false
         default: ""
       preview:
