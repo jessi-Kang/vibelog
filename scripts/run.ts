@@ -32,6 +32,7 @@ import { enoughForPost } from "./collect";
 import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
+import { assignColors } from "../lib/project-color";
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
@@ -181,7 +182,7 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
   // 설명 번역 캐시 — 원문이 안 바뀐 레포는 이전 번역을 재사용한다 (API 절약)
   const prev = new Map<
     string,
-    { description?: string; descriptionEn?: string }
+    { description?: string; descriptionEn?: string; color?: string }
   >();
   try {
     for (const p of JSON.parse(fs.readFileSync(PROJECTS_FILE, "utf8"))) {
@@ -209,8 +210,14 @@ async function updateProjects(activities: RepoActivity[]): Promise<void> {
     }
   }
 
+  // 프로젝트 식별색 — 한 번 정한 색은 그대로 두고 새 프로젝트만 빈 색을 받는다 (lib/project-color.ts)
+  const colors = assignColors(
+    activities.map((a) => a.repo),
+    Object.fromEntries([...prev].map(([slug, p]) => [slug, p.color])),
+  );
   const projects = activities.map((a) => ({
     slug: a.repo,
+    ...(colors[a.repo] ? { color: colors[a.repo] } : {}),
     name: a.vibelogJson?.name ?? a.repo,
     description: a.description,
     ...(descriptionEn.has(a.repo)

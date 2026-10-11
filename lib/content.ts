@@ -9,6 +9,8 @@ export type ProjectStatus = "idea" | "building" | "preview" | "live" | "paused";
 
 export interface Project {
   slug: string; // 레포 이름
+  /** 프로젝트 식별색 — 파이프라인이 한 번 정하면 바꾸지 않는다 (lib/project-color.ts) */
+  color?: string;
   name: string;
   description: string;
   /** 파이프라인이 만든 영어 번역 — 없으면 UI가 ko로 폴백 */

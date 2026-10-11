@@ -52,6 +52,7 @@ scripts/usage.ts            모든 Opus 호출의 토큰 합 — 홈 "지난 실
 scripts/blob-cache.ts       쇼츠 대본 초안·내레이션 음성을 Blob에 저장해 다시 쓴다 — 다시 만들기가 앞 단계를 또 사지 않게
 lib/has-fail.ts             삽질 섹션에 이야기가 있나 — 글 페이지 접기·삽화 생성이 같이 쓰는 순수 함수
 lib/commit-hours.ts         홈 통계·잔디 셈 + 최근 7일 판정(activeThisWeek) — 카드 접기와 "만드는 중"이 같이 쓴다
+lib/project-color.ts        프로젝트 식별색 9색 — 파이프라인이 projects.json에 한 번 적으면 바꾸지 않고, 새 프로젝트는 빈 색을 받는다
 lib/public-homepage.ts      사이트 주소는 live일 때만 화면에 — 홈 카드 "열기"·프로젝트 페이지
 scripts/homepage.ts         live 전 사이트 주소를 공개 파일에 남기지 않고 녹화 때만 찾아 쓴다 (.private/는 커밋 안 함)
 lib/md-links.ts             글 본문(모델이 쓴 마크다운)의 링크는 이 사이트·GitHub만 살리고, 본문 그림은 그리지 않는다

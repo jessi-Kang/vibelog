@@ -19,6 +19,7 @@
   },
   {
     "slug": "apart",
+    "color": "#B9A7FF",
     "name": "apart",
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
@@ -38,6 +39,7 @@
   },
   {
     "slug": "lie-detective",
+    "color": "#6FD3F2",
     "name": "lie-detective",
     "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
     "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
@@ -56,6 +58,7 @@
   },
   {
     "slug": "Anchor",
+    "color": "#C9E579",
     "name": "Anchor",
     "description": "기존과 다른 언어학습 앱",
     "descriptionEn": "A language learning app with a different approach",
@@ -80,6 +83,7 @@
   },
   {
     "slug": "portfolio-tmp",
+    "color": "#FF9EC7",
     "name": "portfolio-tmp",
     "description": "포트폴리오 템플릿 페이지",
     "descriptionEn": "Portfolio Template Page",
@@ -98,6 +102,7 @@
   },
   {
     "slug": "agency",
+    "color": "#3BACDA",
     "name": "agency",
     "description": "아이디어 발굴을 위한 Agency 개발 실험",
     "descriptionEn": "Experimental development of an Agency for idea discovery and generation",
