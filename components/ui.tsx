@@ -127,10 +127,6 @@ const STATUS_META: Record<
   paused: { label: "paused", text: "text-muted", stripe: "#3a4656" },
 };
 
-export function statusStripe(status: string): string {
-  return (STATUS_META[status] ?? STATUS_META.building).stripe;
-}
-
 export function StatusBadge({ status }: { status: string }) {
   const s = STATUS_META[status] ?? STATUS_META.building;
   return (

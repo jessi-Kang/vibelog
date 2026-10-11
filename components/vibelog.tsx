@@ -11,7 +11,7 @@ import { projectColor } from "@/lib/project-color";
 import { T, useLang } from "./lang";
 import { projectName } from "@/lib/project-name";
 import { ProjectIcon } from "./project-icon";
-import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
+import { Card, MonoMeta, StatusBadge } from "./ui";
 
 export function ProjectCard({ project }: { project: Project }) {
   const { lang } = useLang();
@@ -22,7 +22,6 @@ export function ProjectCard({ project }: { project: Project }) {
   ].filter(Boolean) as string[];
   return (
     <Card
-      stripe={statusStripe(project.status)}
       dim={project.status === "paused"}
       className="relative flex h-full flex-col gap-2.5 px-5 py-[18px] transition-colors duration-150 hover:border-line-strong"
     >
@@ -36,8 +35,9 @@ export function ProjectCard({ project }: { project: Project }) {
         aria-label={`${project.name} 상세 보기`}
         className="absolute inset-0 z-0 rounded-lg"
       />
-      {/* 아이콘 + 서비스 이름 | 상태 (docs/project-icon-places.html ①). 레포 이름은 홈에서 뺐다 —
-          GitHub에서 찾아갈 이름은 프로젝트 페이지에 있다 (Jessi, 10/11) */}
+      {/* 아이콘 + 서비스 이름 (docs/project-icon-places.html ①). 레포 이름은 홈에서 뺐다 —
+          GitHub에서 찾아갈 이름은 프로젝트 페이지에 있다 (Jessi, 10/11). 상태는 맨 아래 줄 맨 앞으로 내렸다 —
+          카드 위의 상태색 띠가 흔한 AI 디자인처럼 보여서 뺐고, 이름 줄은 이름만 둔다 (10/11 Jessi, C안) */}
       <div className="flex flex-col gap-0.5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-bold text-ink">
@@ -46,7 +46,6 @@ export function ProjectCard({ project }: { project: Project }) {
               {lang === "en" ? (project.nameEn ?? project.name) : project.name}
             </span>
           </h3>
-          <StatusBadge status={project.status} />
         </div>
       </div>
       {project.description && (
@@ -57,6 +56,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </p>
       )}
       <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-mono text-2xs text-muted">
+        <StatusBadge status={project.status} />
         <span className="min-w-0 flex-1 truncate">{meta.join(" · ")}</span>
         {publicHomepage(project) && (
           <a
