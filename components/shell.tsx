@@ -1,7 +1,7 @@
 "use client";
 /**
  * Shell — 핸드오프 ui_kits/blog/Shell.jsx 재구현.
- * 모바일(<720): 헤더 1줄(워드마크 — 상세에서는 ← 경로) + 하단 고정 탭바.
+ * 모바일(<720): 헤더 1줄(워드마크 — 상세에서는 ← 돌아갈 목록) + 하단 고정 탭바.
  *   앱처럼 엄지 닿는 곳에 메뉴를 (Jessi 지시). 상세에서도 탭바는 유지.
  * 태블릿·데스크톱: 한 줄(워드마크 | 탭), 상세 뒤로는 헤더 아래 줄.
  * "다음 실행 23:00" 표시는 제거 — 경로와 붙어 헷갈리고 꼭 필요하지 않다 (Jessi 지시).
@@ -10,6 +10,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LangSwitch, useLang } from "./lang";
+import { backTarget, cameFrom, currentPostRepo, onPostRepo, rememberPage, type BackTarget } from "@/lib/nav-memory";
 import { Wordmark } from "./ui";
 
 const TABS = [
@@ -35,13 +36,6 @@ function useRoute() {
   // 뿌리 — 주소를 옮길 때 여기를 안 고쳤다). 프로젝트 이름은 글 머리가 말한다.
   const postById = pathname.startsWith("/p/");
   const detail = Boolean(project || post || postById);
-  const crumb = project
-    ? `projects / ${decodeURIComponent(project[1])}`
-    : post
-      ? `log / ${decodeURIComponent(post[1])} / ${post[2]}`
-      : postById
-        ? "log"
-        : "";
   // 글 주소는 `/p/<id>`다. `/log/<repo>/<date>`는 옛 주소로 301만 한다 —
   // 주소를 옮길 때(0eb702d) 여기를 같이 안 고쳐서, 글을 보는 동안 어느 탭에도
   // 안 걸리고 마지막 폴백인 "/"로 떨어져 **프로젝트**에 밑줄이 그어져 있었다
@@ -54,7 +48,7 @@ function useRoute() {
         : pathname.startsWith("/about")
           ? "/about"
           : "/";
-  return { detail, crumb, tab: project ? "/" : tab };
+  return { detail, tab: project ? "/" : tab };
 }
 
 function Tabs({
@@ -132,23 +126,44 @@ function Tabs({
   );
 }
 
-function BackRow({ crumb }: { crumb: string }) {
+/**
+ * 뒤로 — 직전 페이지가 아니라 들어온 목록으로 간다 (lib/nav-memory.ts). 글자는 갈 곳 이름이다:
+ * "← 데브로그 · 거짓말 탐정". 서버에서는 기본 목적지로 그리고, 화면에 붙은 뒤 이 탭에서
+ * 들어온 목록으로 바꾼다. 직전 페이지가 바로 그 목록이면 진짜 뒤로를 써서 스크롤을 지킨다.
+ */
+function BackRow() {
   const router = useRouter();
+  const pathname = usePathname();
+  const { lang } = useLang();
+  const [target, setTarget] = useState<BackTarget>(() => backTarget(pathname, undefined, false));
+  useEffect(() => {
+    const update = () => setTarget(backTarget(pathname, currentPostRepo()));
+    update();
+    return onPostRepo(update);
+  }, [pathname]);
+  const label = lang === "en" ? target.en : target.ko;
   return (
-    <div className="flex items-center gap-1">
-      <button
-        type="button"
-        aria-label="뒤로"
-        onClick={() => router.back()}
-        className="hit grid h-8 w-8 cursor-pointer place-items-center rounded-md font-mono text-sm font-bold text-muted transition-colors duration-150 hover:bg-panel2"
-      >
-        ←
-      </button>
-      <span className="whitespace-nowrap font-mono text-xs text-muted">
-        {crumb}
-      </span>
-    </div>
+    <Link
+      href={target.href}
+      aria-label={lang === "en" ? `Back to ${label}` : `${label}(으)로 돌아가기`}
+      onClick={(e) => {
+        if (cameFrom(target.href)) {
+          e.preventDefault();
+          router.back();
+        }
+      }}
+      className="hit -ml-1.5 flex min-h-8 min-w-0 items-center gap-1.5 rounded-md px-1.5 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2 hover:text-ink"
+    >
+      <span aria-hidden className="text-sm font-bold">←</span>
+      <span className="truncate">{label}</span>
+    </Link>
   );
+}
+
+/** 주소가 바뀔 때마다 지금 페이지를 남긴다 — 뒤로가 들어온 목록을 알게 */
+function useRememberPage() {
+  const pathname = usePathname();
+  useEffect(() => rememberPage(pathname, window.location.search), [pathname]);
 }
 
 /** 스크롤 내리면 true, 올리거나 상단 근처면 false — 하단 탭바 숨김용 */
@@ -193,8 +208,9 @@ function useScrollingDown() {
  * 본문에는 10·20을 쓰지 않는다. 크롬을 넘어야 할 일이 생기면 이 목록을 고친다.
  */
 export function SiteHeader({ counts }: { counts?: TabCounts }) {
-  const { detail, crumb, tab } = useRoute();
+  const { detail, tab } = useRoute();
   const scrollingDown = useScrollingDown();
+  useRememberPage();
   return (
     <>
       <header className="sticky top-0 z-30 border-b border-line bg-bg">
@@ -202,8 +218,8 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
           <div className="flex min-h-8 items-center justify-between gap-4">
             {detail ? (
               <>
-                <span className="md:hidden">
-                  <BackRow crumb={crumb} />
+                <span className="min-w-0 md:hidden">
+                  <BackRow />
                 </span>
                 <Link href="/" className="hidden md:block">
                   <Wordmark />
@@ -244,7 +260,7 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
       </div>
       {detail && (
         <div className="mx-auto hidden w-full max-w-[1120px] px-6 pt-[18px] md:block lg:px-8">
-          <BackRow crumb={crumb} />
+          <BackRow />
         </div>
       )}
     </>

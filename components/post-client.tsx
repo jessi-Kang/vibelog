@@ -7,9 +7,10 @@
 import Link from "next/link";
 import { projectColor, withAlpha } from "@/lib/project-color";
 import { hasRealFail } from "@/lib/has-fail";
-import { useState, type AnchorHTMLAttributes } from "react";
+import { useEffect, useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import { keepBackslashes } from "@/lib/md-backslash";
+import { setPostRepo } from "@/lib/nav-memory";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
 import { allowedPostLink } from "@/lib/md-links";
@@ -151,6 +152,11 @@ function H({ warn, children }: { warn?: boolean; children: string }) {
 
 export function PostClient({ post }: { post: PostData }) {
   const { lang, setLang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치
+  // 바깥에서 바로 들어온 글의 뒤로는 그 글의 프로젝트 페이지로 (lib/nav-memory.ts)
+  useEffect(() => {
+    setPostRepo(post.repo);
+    return () => setPostRepo(undefined);
+  }, [post.repo]);
   const [media, setMedia] = useState<LightboxMedia | null>(null);
   // 원료 git log — 10개 넘는 날은 접어서 시작 (frontmatter엔 전부 실려 있다)
   const [showAllShas, setShowAllShas] = useState(false);
