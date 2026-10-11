@@ -101,12 +101,13 @@
   .ihead > span:last-child { min-width: 0; }
   .ihead .pre { display: block; color: #7a8494; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .em { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(20,30,45,.06); }
-  .em-top { background: #0a0e14; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; }
+  .em-top { background: #0a0e14; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
   .em-top .wm { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 16px; color: #f3efe6; }
   .em-top .kind { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; color: #5ee1c3; }
-  .em-body { padding: 24px 22px 8px; display: flex; flex-direction: column; gap: 16px; }
+  /* 메일 여백은 한 값(24px)으로 — 위·양옆·버튼 아래가 같고, 덩어리 사이는 20px */
+  .em-body { padding: 24px 24px 0; display: flex; flex-direction: column; gap: 20px; }
   .em h4 { margin: 0; font-size: 20px; line-height: 1.45; color: #111722; text-wrap: balance; }
-  .em-post { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: center; padding: 12px; border: 1px solid #e6e9ee; border-radius: 10px; text-decoration: none; }
+  .em-post { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; padding: 12px 16px; border: 1px solid #e6e9ee; border-radius: 10px; text-decoration: none; }
   .em-post .pi { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 18%, white); color: color-mix(in srgb, var(--c) 70%, black); }
   .em-post .pi svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .em-post span { font-size: 12px; color: #5b6573; line-height: 1.5; min-width: 0; }
@@ -117,13 +118,13 @@
   .em-c .av { --c: #888; background: color-mix(in srgb, var(--c) 18%, white); color: color-mix(in srgb, var(--c) 70%, black); }
   .em-c p { margin: 0; font-size: 15px; line-height: 1.75; color: #2b3340; white-space: pre-wrap; }
   .em-c.quiet p { font-size: 13px; color: #6b7482; }
-  .em-c.quiet { padding: 12px 14px; background: #f5f6f8; border-radius: 10px; }
-  .em-c.main { padding-top: 2px; }
+  .em-c.quiet { padding: 14px 16px; background: #f5f6f8; border-radius: 10px; }
+
   .mb { color: #0f8f75; border: 1px solid #0f8f75; border-radius: 999px; padding: 0 7px; font-size: 10px; font-family: "JetBrains Mono", monospace; }
-  .em-cta { padding: 8px 22px 24px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .em-cta { padding: 24px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
   .em-cta a.btn2 { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #0f8f75; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
   .em-cta a.sub { font-size: 13px; color: #5b6573; }
-  .em-foot { border-top: 1px solid #eef0f3; padding: 14px 22px 18px; font-size: 12px; color: #8a93a2; line-height: 1.7; }
+  .em-foot { border-top: 1px solid #eef0f3; padding: 16px 24px; font-size: 12px; color: #8a93a2; line-height: 1.7; }
   .em-foot a { color: #5b6573; }
   .acts { display: flex; gap: 16px; font-size: 12px; color: var(--muted); }
   .acts button { all: unset; cursor: pointer; padding: 6px 0; }
@@ -310,8 +311,8 @@
             <p>용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
           </div>
         </div>
-        <div class="em-cta"><a class="btn2" href="#">답글 쓰기</a><a class="sub" href="#">…</a></div>
-        <div class="em-foot">…. <a href="#">새 댓글 메일 끄기</a><br>© 2026 vibelog · Jessi</div>
+        <div class="em-cta"><a class="btn2" href="#">답글 쓰기</a></div>
+        <div class="em-foot"><a href="#">새 댓글 메일 끄기</a><br>© 2026 vibelog · Jessi</div>
       </div>
     </div>
 
