@@ -30,13 +30,38 @@ const OPENAI_MODELS = ["gpt-image-2.5-flare", "gpt-image-2.5-sunburst"];
 
 type Provider = "gemini" | "openai";
 
-/** 스타일 고정 — 쇼츠 팔레트(다크 + 민트 단일 강조), 글자 금지 */
-const STYLE =
-  "Flat minimal vector-style illustration. Very dark navy background (#0a0e14). " +
-  "One single mint green accent color (#5EE1C3) plus soft desaturated grays. " +
-  "Absolutely no text, no letters, no numbers, no logos. " +
-  "One centered subject, generous negative space, clean geometric shapes, subtle glow. " +
-  "Square composition. Subject: ";
+/**
+ * 그림 스타일 — 오려 붙인 종이 콜라주, 투명 배경 (10/11 Jessi, 시안 B안).
+ * 쇼츠 테마 바탕 위에 얹으므로 종이 색은 그 레포의 테마를 따른다: 강조 종이는 테마 강조색 한 장,
+ * 나머지는 무채색 종이. 밝은 테마는 짙은 종이를 중간 회색까지만 쓴다 — 먹색은 밝은 바탕에서
+ * 혼자 무겁게 떴다 (Jessi: "…").
+ */
+const STYLE_BASE =
+  "Flat paper cutout collage: the subject is made of a few hand-cut paper shapes with slightly irregular scissor edges " +
+  "and visible paper fiber texture, glued flat, with only a faint shadow along the edges. " +
+  "Isolated object on a fully transparent background: no backdrop, no floor, no frame, no vignette. " +
+  "Absolutely no text, no letters, no numbers, no logos, no people, no hands. " +
+  "One centered subject with generous empty space around it. Square composition. ";
+
+/**
+ * 테마별 강조색·밝기 — video/src/theme.ts와 같은 값. theme.ts는 불러올 때 글꼴을 받아 와서
+ * 노드 스크립트에서 가져오지 않고 여기 적는다. 테마를 더하거나 색을 바꾸면 같이 고친다.
+ */
+export const THEME_PAPER: Record<string, { accent: string; light: boolean }> = {
+  terminal: { accent: "#5EE1C3", light: false },
+  blueprint: { accent: "#7FB0FF", light: false },
+  signal: { accent: "#FF6B35", light: false },
+  paper: { accent: "#0F7B5F", light: true },
+  highlighter: { accent: "#FFD84D", light: false },
+};
+
+export function styleFor(theme?: string | null): string {
+  const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
+  const papers = t.light
+    ? "white, very light gray and medium gray (#9AA1AB) papers — nothing darker than medium gray, no charcoal, no black"
+    : "off-white, light warm gray and slate gray papers";
+  return `${STYLE_BASE}Paper colors: ${papers}, with exactly one ${t.accent} colored paper piece on the focal part. Subject: `;
+}
 
 export function artDir(repo: string, date: string): string {
   return path.join(process.cwd(), shortsDir(repo), `${date}.art`);
@@ -182,7 +207,7 @@ export async function generateArt(repo: string, date: string): Promise<void> {
   fs.mkdirSync(dir, { recursive: true });
   for (const l of targets) {
     try {
-      const r = await generateImage(STYLE + (l.art as string), undefined, { transparent: true });
+      const r = await generateImage(styleFor(script.theme) + (l.art as string), undefined, { transparent: true });
       fs.writeFileSync(path.join(dir, `${l.scene}.${r.ext}`), r.data);
       console.log(`[art] ${l.scene}.${r.ext} 생성 (${r.provider} ${r.model})`);
     } catch (err) {
@@ -195,7 +220,7 @@ if (process.argv[1]?.endsWith("art.ts") && process.argv[2] === "--try") {
   // 한 장만 만들어 본다 — 키·모델 이름이 맞는지 확인할 때
   const prompt = process.argv[3] ?? "a small lighthouse on a calm sea at night";
   const only = process.argv[4] as Provider | undefined;
-  generateImage(STYLE + prompt, only ? [only] : undefined)
+  generateImage(styleFor() + prompt, only ? [only] : undefined)
     .then((r) => {
       const out = path.join(process.cwd(), `art-try-${r.provider}.${r.ext}`);
       fs.writeFileSync(out, r.data);
