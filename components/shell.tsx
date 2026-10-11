@@ -10,6 +10,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LangSwitch, useLang } from "./lang";
+import { NotifyBell } from "./notify-bell";
 import { backTarget, cameFrom, currentPostRepo, onPostRepo, rememberPage, type BackTarget } from "@/lib/nav-memory";
 import { Wordmark } from "./ui";
 
@@ -231,7 +232,8 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
               </Link>
             )}
             {/* 전역 KO/EN — 모바일은 첫 줄 우측(상세에서도 보인다) */}
-            <span className="md:hidden">
+            <span className="flex items-center gap-2 md:hidden">
+              <NotifyBell />
               <LangSwitch />
             </span>
           </div>
@@ -240,7 +242,8 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
               토글이 "소개"에 붙어 한 묶음처럼 보였다 (Jessi 지적) */}
           <div className="hidden items-center gap-4 md:flex md:gap-10">
             <Tabs active={tab} counts={counts} />
-            <span className="hidden md:block">
+            <span className="hidden items-center gap-2 md:flex">
+              <NotifyBell />
               <LangSwitch />
             </span>
           </div>
