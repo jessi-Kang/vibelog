@@ -8,6 +8,7 @@ import {
   DIAGRAM_SLOT_SEC,
 } from "./DiagramSheet";
 import { MotifSheet, type MotifSheetProps, SHEET_SLOT_SEC } from "./MotifSheet";
+import { RemocnSheet, type RemocnSheetProps, REMOCN_SHEET_FRAMES } from "./RemocnSheet";
 import { ShipIt, type ShipItProps } from "./ShipIt";
 import {
   TransitionSheet,
@@ -81,6 +82,16 @@ export const RemotionRoot: React.FC = () => {
       calculateMetadata={({ props }) => ({
         durationInFrames: sheetFrames((props as TransitionSheetProps).variant ?? "cut"),
       })}
+    />
+    {/* 검수용 — remocn 효과를 섞은 쇼츠 시안 */}
+    <Composition
+      id="RemocnSheet"
+      component={RemocnSheet}
+      width={1080}
+      height={1920}
+      fps={FPS}
+      durationInFrames={REMOCN_SHEET_FRAMES}
+      defaultProps={{ theme: "terminal" } as RemocnSheetProps}
     />
     </>
   );
