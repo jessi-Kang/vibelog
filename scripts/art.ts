@@ -227,20 +227,29 @@ export async function generateArt(repo: string, date: string): Promise<void> {
     fs.readFileSync(path.join(process.cwd(), shortsJsonPath(repo, date)), "utf8"),
   );
   // 타이틀(훅)에는 그래픽을 넣지 않는다 (Jessi 지시) — next 장면 전용
-  const targets = script.lines.filter((l) => l.art && l.scene === "next");
+  // 하나를 크게 보여 줄 문장마다 (10/11 — 예전엔 "다음 할 것"에만). 제 카드가 있는 장면과,
+  // 화면·다이어그램을 고른 문장은 그쪽이 이기므로 만들지 않는다 (돈만 든다)
+  const targets = script.lines
+    .map((l, index) => ({ l, index }))
+    .filter(
+      ({ l }) =>
+        l.art && !["hook", "end", "fail"].includes(l.scene) && !l.diagram && !l.screen && !l.find,
+    );
   if (targets.length === 0) {
     console.log("[art] 대본에 art 묘사가 없음 — 건너뜀");
     return;
   }
   const dir = artDir(repo, date);
   fs.mkdirSync(dir, { recursive: true });
-  for (const l of targets) {
+  for (const { l, index } of targets) {
+    const name = `line-${index}`;
     try {
       const r = await generateImage(styleFor(script.theme) + (l.art as string), undefined, { transparent: true });
-      fs.writeFileSync(path.join(dir, `${l.scene}.${r.ext}`), r.data);
-      console.log(`[art] ${l.scene}.${r.ext} 생성 (${r.provider} ${r.model})`);
+      fs.writeFileSync(path.join(dir, `${name}.${r.ext}`), r.data);
+      console.log(`[art] ${name}.${r.ext} 생성 (${r.provider} ${r.model})`);
     } catch (err) {
-      console.warn(`[art] ${l.scene} 생성 실패 — 그 장면은 그래픽 없이:`, err);
+      // 그 문장은 함께 고른 아이콘·모티프로 간다
+      console.warn(`[art] ${name} 생성 실패 — 그 문장은 아이콘·모티프로:`, err instanceof Error ? err.message : err);
     }
   }
 }

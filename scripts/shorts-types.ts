@@ -56,7 +56,7 @@ export interface ShortsLine {
   keywords: string[];
   /** en 문장에서 강조할 단어 */
   keywordsEn: string[];
-  /** 이 장면을 은유하는 일러스트 묘사(영어) — art.ts가 이미지로 만든다. hook·next만 */
+  /** 하나를 크게 보여 줄 문장의 은유 그림 묘사(영어) — art.ts가 이미지로 만든다. build·demo·next */
   art?: string;
   /** 숫자 모먼트 — 문장 속 숫자+단위("16개","52초"). 말하는 순간 카운터로 박힌다.
    *  hook·end 장면에는 안 띄운다 — 헤드라인·엔드카드 위에 겹친다 */

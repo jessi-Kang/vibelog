@@ -23,7 +23,7 @@ import { iconOrDefault, type ProjectIcon } from "../../lib/project-icon";
 import { DiagramScene } from "./Diagram";
 import { MotifScene } from "./Motif";
 import { IconScene } from "./IconScene";
-import { Enter, enterOf } from "./Enter";
+import { Enter, enterEffects } from "./Enter";
 import {
   ArtCard,
   Background,
@@ -113,6 +113,8 @@ interface Seg {
   motif?: MotifName;
   /** plain 장면이 그릴 대상 아이콘 (Tabler) — 모티프보다 먼저 */
   icon?: ProjectIcon;
+  /** art 장면이 보여 줄 생성 그림 파일 (public/ 안) */
+  art?: string;
 }
 
 /** 이 문장이 가리킨 글자 (en은 findEn 우선) */
@@ -132,7 +134,7 @@ function findOf(
  */
 function kindOf(
   scene: string,
-  hasNextArt: boolean,
+  hasArt: boolean,
   hasScreen = false,
   hasMotif = false,
 ): Kind {
@@ -143,8 +145,9 @@ function kindOf(
   // 문장은 그대로 카드다 — 원인 설명은 카드가 낫다.
   if (scene === "fail") return hasScreen ? "phone" : "fail";
   if (scene === "end") return "end";
-  // "다음 할 것"은 데모 화면 대신 생성 일러스트 장면으로 — 그래픽이 있을 때만
-  if (scene === "next" && hasNextArt) return "art";
+  // 하나를 크게 보여 줘야 하는 문장은 생성 그림 — 화면을 고르지 않았고 그 문장의 그림이 있을 때만.
+  // 예전엔 "다음 할 것"에만 썼다. 이제 문장마다 (10/11 Jessi: …)
+  if (hasArt && !hasScreen) return "art";
   // 그래픽이 보류인 동안 next가 폰으로 떨어져, 아무 화면이나 붙어 돌았다
   // ("…" — Jessi). 대본이 화면을 고르지
   // 않았으면 화면을 쓰지 않는다.
@@ -187,7 +190,7 @@ export function buildSegments(
   script: ShortsScript,
   timing: ShortsTiming,
   total: number,
-  hasNextArt: boolean,
+  artFor: (lineIndex: number) => string | undefined,
   offset: number,
   coldOpen: number,
   lang: "ko" | "en",
@@ -210,14 +213,16 @@ export function buildSegments(
     diagram?: DiagramSpec;
     motif?: MotifName;
     icon?: ProjectIcon;
+    art?: string;
   }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
   for (const s of timing.sentences) {
     const line = script.lines[s.index];
+    const art = line?.diagram ? undefined : artFor(s.index);
     const kind = kindOf(
       line?.scene ?? "build",
-      hasNextArt,
+      !!art,
       !!(line?.screen || findOf(line, lang)),
       !!(line?.motif || line?.icon),
     );
@@ -243,6 +248,9 @@ export function buildSegments(
         from: raw.length === 0 ? 0 : from,
         diagram: dia,
       });
+    } else if (kind === "art" && art) {
+      // 그림도 문장마다 제 블록을 가진다 — 앞 블록에 합치면 그림이 버려진다
+      raw.push({ kind: "art", from: raw.length === 0 ? 0 : from, art });
     } else if (kind === "plain" && (line?.icon || line?.motif)) {
       // 아이콘·모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다.
       // 둘 다 있으면 아이콘이 이긴다 (대상이 분명한 문장이다)
@@ -409,7 +417,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
     script,
     timing,
     total,
-    Boolean(artFiles?.next),
+    // 문장마다 그림 (art.ts가 line-<순번>으로 저장). 예전 대본의 next 그림은 "다음 할 것" 문장이 받는다
+    (idx) =>
+      artFiles?.[`line-${idx}`] ??
+      (script.lines[idx]?.scene === "next" ? (artFiles?.next ?? undefined) : undefined),
     offset,
     coldOpen,
     lang,
@@ -470,13 +481,19 @@ export const ShipIt: React.FC<ShipItProps> = ({
     return fadeIn * fadeOut;
   };
 
+  // 장면마다 들어오는 효과 — 편 번호와 순번으로 골라 같은 편은 늘 같다 (Enter.tsx)
+  const effects = enterEffects(
+    segs.map((g) => g.kind),
+    script.day ?? 0,
+  );
+
   return (
     <AbsoluteFill style={{ background: th.bg }}>
       <Background th={th} />
 
       {segs.map((seg, i) => {
         // 들어오는 효과는 장면 종류가 고른다 (Enter.tsx) — 나가는 쪽은 예전처럼 다 사라진 뒤 다음이 온다
-        const effect = seg.from > 0 ? enterOf(seg.kind, i > 0 ? segs[i - 1].kind : null) : "none";
+        const effect = seg.from > 0 ? effects[i] : "none";
         const opacity = effect === "none" ? opacityOf(seg) : fadeOutOf(seg);
         if (opacity <= 0 || t < seg.from) return null;
         return (
@@ -529,7 +546,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
             {seg.kind === "plain" && !seg.icon && seg.motif && (
               <MotifScene name={seg.motif} th={th} fromSec={seg.from} />
             )}
-            {seg.kind === "art" && artFiles?.next && (
+            {seg.kind === "art" && seg.art && (
               // 정지 그림이 2초를 못 버틴다 — 장면 내내 아주 천천히 다가온다 (remocn drift)
               <AbsoluteFill
                 style={{
@@ -539,7 +556,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
                   })})`,
                 }}
               >
-                <ArtCard file={artFiles.next} th={th} />
+                <ArtCard file={seg.art} th={th} />
               </AbsoluteFill>
             )}
             {seg.kind === "phone" && (
