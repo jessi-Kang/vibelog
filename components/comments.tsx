@@ -279,7 +279,7 @@ function ReplyBox({ comment, onDone }: { comment: C; onDone: () => void }) {
   ];
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border border-accent bg-panel py-3 pl-3.5 pr-2 pb-2 shadow-[0_0_0_3px_var(--color-accent-soft)]">
+    <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border border-line-strong bg-panel py-3 pl-3.5 pr-2 pb-2 transition-colors duration-150 focus-within:border-accent">
       <div role="group" aria-label={en ? "AI help" : "AI 도움"} className="flex flex-wrap items-center gap-1.5 border-b border-line pb-2.5 pr-1.5">
         {chips.map(([m, label]) => (
           <button
@@ -439,7 +439,8 @@ export function Comments({ postId }: { postId: string }) {
     load();
   }, [load]);
 
-  // 알림·메일에서 #c-12로 들어오면 그 댓글로 내려가 잠깐 밝힌다
+  // 알림·메일에서 #c-12로 들어오면 그 댓글로 내려가 잠깐 밝힌다. 밝히는 판은 글자보다 사방 12px 넓다 —
+  // 글자 끝에 딱 맞춰 칠하면 선택이 아니라 잘못 그려진 상자처럼 보였다 (10/11)
   useEffect(() => {
     if (!state || !location.hash.startsWith("#c-")) return;
     const el = document.getElementById(location.hash.slice(1));
@@ -476,7 +477,7 @@ export function Comments({ postId }: { postId: string }) {
           {tops.map((c) => {
             const rs = replies(c.id);
             return (
-              <li key={c.id} id={`c-${c.id}`} className="flex scroll-mt-24 flex-col gap-1.5 rounded-lg transition-colors duration-700 data-[flash]:bg-accent-soft">
+              <li key={c.id} id={`c-${c.id}`} className="-mx-3 -my-2.5 flex scroll-mt-24 flex-col gap-1.5 rounded-xl px-3 py-2.5 transition-colors duration-700 data-[flash]:bg-accent-soft">
                 <Who c={c} me={me} onHide={hide} onDelete={del} />
                 <Body c={c} />
                 {rs.map((r) => (
