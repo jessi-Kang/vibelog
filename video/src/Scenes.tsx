@@ -1,4 +1,5 @@
 /** 장면 컴포넌트 — 프로토타입 레이아웃 + 테마 토큰(팔레트·형태·키워드 규칙) */
+import { RollingInline } from "./remocn/rolling-number";
 import React from "react";
 import {
   AbsoluteFill,
@@ -1200,9 +1201,7 @@ export const StatPunch: React.FC<{
   // 콤마 앞 "2"에서 끊겨 카운터가 2에서 멈추던 버그
   const num = Number(stat.replace(/,/g, "").match(/\d+/)?.[0] ?? 0);
   const suffix = stat.replace(/^[\d,.]+/, "");
-  const shown = Math.round(
-    interpolate(t, [startSec + 0.05, startSec + 0.6], [0, num], clamp),
-  );
+  const rollP = interpolate(t, [startSec + 0.05, startSec + 0.75], [0, 1], clamp);
   const scale = interpolate(t, [startSec, startSec + 0.35], [0.72, 1], {
     ...clamp,
     easing: Easing.out(Easing.back(1.6)),
@@ -1228,13 +1227,10 @@ export const StatPunch: React.FC<{
         }}
       >
         <span
-          style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent }}
+          style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent, display: "inline-block", verticalAlign: "bottom" }}
         >
-          {
-            shown.toLocaleString(
-              "en-US",
-            ) /* 천 단위 콤마 — 렌더 환경 로케일에 안 흔들리게 고정 */
-          }
+          {/* 자릿수마다 다른 속도로 굴러 멈춘다 (remocn rolling-number). 천 단위 콤마 포함 */}
+          <RollingInline to={num} progress={rollP} fontSize={240} />
         </span>
         <span style={{ fontSize: 100 }}>{suffix}</span>
       </div>
