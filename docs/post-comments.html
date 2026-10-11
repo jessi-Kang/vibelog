@@ -63,11 +63,13 @@
   .right { display: flex; gap: 8px; align-items: center; margin-left: auto; }
   .sh nav + .right { margin-left: 0; }
   .lang { display: flex; gap: 2px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 2px; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; }
-  .lang span { padding: 4px 8px; border-radius: 5px; color: var(--muted); } .lang .on { background: var(--panel2); color: var(--ink); }
-  .bell { all: unset; position: relative; width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); display: grid; place-items: center; color: var(--ink-soft); cursor: pointer; box-sizing: border-box; }
-  .bell::after { content: ""; position: absolute; inset: -6px; }
+  /* 실제 머리글의 KO/EN과 같은 크기 — 라이브에서 잰 높이 30px */
+  .lang span { min-height: 24px; display: grid; place-items: center; padding: 0 8px; border-radius: 6px; color: var(--muted); } .lang .on { background: var(--panel2); color: var(--ink); }
+  /* 종은 KO/EN 묶음과 같은 높이(30px)·같은 모서리. 누르는 영역은 ::after로 44px */
+  .bell { all: unset; position: relative; width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); display: grid; place-items: center; color: var(--ink-soft); cursor: pointer; box-sizing: border-box; }
+  .bell::after { content: ""; position: absolute; inset: -7px; }
   .bell[aria-expanded="true"] { background: var(--panel2); color: var(--ink); }
-  .bell svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .bell svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .bell .n { position: absolute; top: -5px; right: -5px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: 10px; font-weight: 700; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; box-sizing: border-box; }
   .np { position: absolute; right: 12px; top: calc(100% + 6px); width: min(340px, calc(100% - 24px)); z-index: 6; background: var(--panel2); border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; box-shadow: 0 12px 28px rgba(5,8,12,.6); }
   .np-h { display: flex; align-items: center; justify-content: space-between; padding: 6px 14px; border-bottom: 1px solid var(--line); font-size: 13px; }
@@ -133,12 +135,13 @@
   .gate:hover { border-color: var(--line-strong); }
   .gate .ph { flex: 1; font-size: 14px; color: var(--muted); }
   .gate .g { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
-  .gate .g svg { width: 14px; height: 14px; }
-  .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 12px 10px 14px; display: flex; flex-direction: column; gap: 8px; }
+  /* 한글 글자는 줄 상자 가운데보다 아래에 잉크가 앉는다 — 로고를 그만큼(2.5px) 내려 눈으로 보이는 가운데를 맞춘다 */
+  .gate .g svg { width: 14px; height: 14px; transform: translateY(2.5px); }
+  .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 8px 8px 14px; display: flex; flex-direction: column; gap: 8px; }
   .box.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   .box textarea { all: unset; display: block; width: 100%; min-height: 48px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
   /* 아래 줄: 글자 수와 올리기 버튼을 오른쪽에 한 덩어리로, 세로 가운데를 맞춘다 */
-  .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin: -2px -2px -2px 0; }
+  .box .row { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
   /* 쓰는 칸 안의 버튼은 AI 버튼과 같은 30px — 보이는 크기만 줄이고 누르는 영역은 ::after로 44px */
   .box .btn { min-height: 30px; padding: 0 12px; border-radius: 8px; font-size: 13px; position: relative; }
   .box .btn::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: max(44px, calc(100% + 8px)); height: 44px; }
