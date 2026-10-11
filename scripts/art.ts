@@ -31,16 +31,17 @@ const OPENAI_MODELS = ["gpt-image-2.5-flare", "gpt-image-2.5-sunburst"];
 type Provider = "gemini" | "openai";
 
 /**
- * 그림 스타일 — 오려 붙인 종이 콜라주, 투명 배경 (10/11 Jessi, 시안 B안).
- * 쇼츠 테마 바탕 위에 얹으므로 종이 색은 그 레포의 테마를 따른다: 강조 종이는 테마 강조색 한 장,
- * 나머지는 무채색 종이. 밝은 테마는 짙은 종이를 중간 회색까지만 쓴다 — 먹색은 밝은 바탕에서
- * 혼자 무겁게 떴다 (Jessi: "…").
+ * 그림 스타일 — 둥근 평면 그림, 강조색 한 가지, 투명 배경 (10/11 Jessi, 3차 시안 "한 색").
+ * 종이 콜라주(2차 시안 B안)와 겨뤄 이쪽을 골랐다 — 형태가 단순해 쇼츠에서 작게 지나가도 읽힌다.
+ * 회사 이름(듀오링고)은 지시문에 넣지 않는다 — 넣으면 그 마스코트를 그대로 그리기 쉽다.
+ * 쇼츠 테마 바탕 위에 얹으므로 색은 그 레포의 테마를 따른다: 강조색 한 군데 + 무채색.
  */
 const STYLE_BASE =
-  "Flat paper cutout collage: the subject is made of a few hand-cut paper shapes with slightly irregular scissor edges " +
-  "and visible paper fiber texture, glued flat, with only a faint shadow along the edges. " +
+  "Friendly flat vector illustration: chunky rounded geometric shapes, no outlines, " +
+  "shading only as one flat darker shade of each color, soft rounded corners everywhere, playful slightly stubby proportions, " +
+  "clean and simple like a modern learning app illustration. " +
   "Isolated object on a fully transparent background: no backdrop, no floor, no frame, no vignette. " +
-  "Absolutely no text, no letters, no numbers, no logos, no people, no hands. " +
+  "Absolutely no text, no letters, no numbers, no logos, no people, no hands, no animals, no mascots. " +
   "One centered subject with generous empty space around it. Square composition. ";
 
 /**
@@ -57,13 +58,16 @@ export const THEME_PAPER: Record<string, { accent: string; light: boolean }> = {
 
 export function styleFor(theme?: string | null): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
-  const papers = t.light
-    ? "white, very light gray and medium gray (#9AA1AB) papers — nothing darker than medium gray, no charcoal, no black"
-    : "off-white, light warm gray and slate gray papers";
-  // 5개 테마 시안(10/11)에서 강조색이 아닌 색(파란 테마에 노란 토큰)과 빛 번짐·반짝임 선이 끼어들었다
+  // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
+  // 먹색은 혼자 무겁게 떴다 (10/11 Jessi 두 번). 큰 면은 중간 회색대에서만 고른다
+  const neutrals = t.light
+    ? "medium gray (#A3AAB4), slate gray (#7A828E) and dark slate (#5A6270) shapes; white only for tiny highlights, " +
+      "never large white or very light gray areas (they vanish on the light gray background), nothing darker than #4A5260"
+    : "off-white, light gray and slate gray shapes";
+  // 5개 테마 시안(10/11)에서 강조색이 아닌 색과 빛 번짐·반짝임 선이 끼어들었다
   return (
-    `${STYLE_BASE}Paper colors: ${papers}, with exactly one ${t.accent} colored paper piece on the focal part. ` +
-    "No other saturated colors anywhere. No glow, no light beams, no sparkle or motion lines — only cut paper. Subject: "
+    `${STYLE_BASE}Colors: ${neutrals}, with exactly one ${t.accent} colored part on the focal object. ` +
+    "No other saturated colors anywhere. No glow, no light beams, no sparkle or motion lines. Subject: "
   );
 }
 
