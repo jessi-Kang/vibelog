@@ -175,8 +175,9 @@ export function DevlogTimelineEntry({
         <h3 className="m-0 text-lg font-semibold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
           {title}
         </h3>
+        {/* 요약은 라이트(300) — 제목 600과 세 단계 차이로 한 발 물러난다 (10/11 Jessi) */}
         {summary && (
-          <p className="m-0 text-base leading-relaxed text-ink-soft [text-wrap:pretty]">
+          <p className="m-0 text-base font-light leading-relaxed text-ink-soft [text-wrap:pretty]">
             {summary}
           </p>
         )}
