@@ -50,18 +50,29 @@
   .hid { font-size: 10px; letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 1px 7px; font-family: "JetBrains Mono", monospace; }
   .me { display: flex; gap: 8px; align-items: center; font-size: 13px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
   .me b { color: var(--ink); }
-  /* 알림 — 머리글 오른쪽 종, 누르면 아래로 목록 */
-  .hdr { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-  .hdr .wm { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 14px; color: var(--ink); }
-  .hdr .wm i { color: var(--accent); font-style: normal; }
-  .bell { all: unset; position: relative; margin-left: auto; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--ink); background: var(--panel2); cursor: pointer; }
-  .bell::after { content: ""; position: absolute; inset: -4px; }
-  .bell svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .bell .n { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 700; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; }
-  .np { background: var(--panel2); border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; }
-  .np-h { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  /* 사이트 머리글 — 실제 vibelog 머리글과 같은 구성(돌아가기·탭·KO/EN)에 종만 더한다 */
+  .site { border: 1px solid var(--line); border-radius: 14px; overflow: visible; background: var(--bg); width: 100%; }
+  .site.m { max-width: 390px; }
+  .sh { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-bottom: 1px solid var(--line); position: relative; }
+  .sh .back { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; min-width: 0; }
+  .sh .back b { font-size: 13px; }
+  .sh .wm { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 18px; color: var(--ink); }
+  .sh nav { display: flex; gap: 28px; margin-left: auto; margin-right: 24px; font-size: 13px; font-weight: 700; color: var(--muted); }
+  .sh nav span small { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 400; margin-left: 4px; }
+  .sh nav .on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); padding-bottom: 2px; }
+  .right { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+  .sh nav + .right { margin-left: 0; }
+  .lang { display: flex; gap: 2px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 2px; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; }
+  .lang span { padding: 4px 8px; border-radius: 5px; color: var(--muted); } .lang .on { background: var(--panel2); color: var(--ink); }
+  .bell { all: unset; position: relative; width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); display: grid; place-items: center; color: var(--ink-soft); cursor: pointer; box-sizing: border-box; }
+  .bell::after { content: ""; position: absolute; inset: -6px; }
+  .bell[aria-expanded="true"] { background: var(--panel2); color: var(--ink); }
+  .bell svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .bell .n { position: absolute; top: -5px; right: -5px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: 10px; font-weight: 700; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; box-sizing: border-box; }
+  .np { position: absolute; right: 12px; top: calc(100% + 6px); width: min(340px, calc(100% - 24px)); z-index: 6; background: var(--panel2); border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; box-shadow: 0 12px 28px rgba(5,8,12,.6); }
+  .np-h { display: flex; align-items: center; justify-content: space-between; padding: 6px 14px; border-bottom: 1px solid var(--line); font-size: 13px; }
   .np-h b { color: var(--ink); }
-  .np-h button { all: unset; cursor: pointer; font-size: 12px; color: var(--muted); padding: 8px 0; }
+  .np-h button { all: unset; cursor: pointer; font-size: 12px; color: var(--muted); padding: 10px 0; }
   .ni { display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; align-items: start; }
   .ni:last-child { border-bottom: 0; }
   .ni:hover { background: var(--line); }
@@ -69,26 +80,46 @@
   .ni .t b { color: var(--ink); }
   .ni .q { display: block; margin-top: 2px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ni time { font-size: 11px; color: var(--muted); font-family: "JetBrains Mono", monospace; }
-  .ni .dot { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin: 6px auto 0; }
+  .ni .dot { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin: 6px 0 0 auto; }
   .ni.read .dot { visibility: hidden; } .ni.read .t { color: var(--muted); }
-  /* 메일 — 메일 앱은 대개 밝은 화면이라 메일만 밝게 */
-  @media (min-width: 760px) { .col.wide { grid-column: span 2; } }
-  .mail { background: #f6f7f9; border-radius: 14px; padding: 20px 16px; max-width: 520px; width: 100%; color: #1d2430; font-family: "Noto Sans KR", system-ui, sans-serif; }
-  .mail .subj { font-size: 13px; color: #5b6573; padding-bottom: 12px; border-bottom: 1px solid #e3e6eb; margin-bottom: 16px; line-height: 1.6; }
-  .mail .subj b { color: #1d2430; }
-  .mcard { background: #fff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
-  .mcard .from { font-family: "JetBrains Mono", monospace; font-size: 12px; color: #5b6573; }
-  .mcard .from i { color: #0f8f75; font-style: normal; font-weight: 700; }
-  .mcard h4 { margin: 0; font-size: 17px; line-height: 1.5; color: #1d2430; }
-  .mcard .post { font-size: 13px; color: #5b6573; }
-  .mq { background: #f1f3f6; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
-  .mq .who, .mq .who b { color: #1d2430; } .mq .who time { color: #7a8494; }
-  .mq p { margin: 0; font-size: 14px; line-height: 1.7; color: #2b3340; }
-  .mq.mine p { color: #5b6573; }
-  .mbadge { color: #0f8f75; border-color: #0f8f75; }
-  .mbtn { align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 10px; background: #0f8f75; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
-  .mfoot { font-size: 12px; color: #7a8494; line-height: 1.7; margin-top: 14px; }
-  .mfoot a { color: #5b6573; }
+  .page-ghost { padding: 20px; display: flex; flex-direction: column; gap: 10px; min-height: 340px; }
+  .page-ghost i { display: block; height: 10px; border-radius: 4px; background: var(--panel); }
+  .site.d .page-ghost { min-height: 300px; }
+  @media (max-width: 640px) { .site.d nav { display: none; } }
+
+  /* 메일 — 메일 앱은 대개 밝은 화면이라 밝게. 메일 앱이 지우는 SVG 대신 아이콘은 PNG로 보낸다 */
+  .mails { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 24px; align-items: start; }
+  .inbox { background: #eef0f3; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; color: #1d2430; font-family: "Noto Sans KR", system-ui, sans-serif; }
+  .ihead { display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: center; font-size: 13px; color: #5b6573; line-height: 1.5; }
+  .ihead .logo { width: 36px; height: 36px; border-radius: 10px; background: #0a0e14; color: #5ee1c3; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 13px; }
+  .ihead b { color: #1d2430; font-size: 14px; }
+  .ihead > span:last-child { min-width: 0; }
+  .ihead .pre { display: block; color: #7a8494; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .em { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(20,30,45,.06); }
+  .em-top { background: #0a0e14; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; }
+  .em-top .wm { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 16px; color: #f3efe6; }
+  .em-top .kind { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; color: #5ee1c3; }
+  .em-body { padding: 24px 22px 8px; display: flex; flex-direction: column; gap: 16px; }
+  .em h4 { margin: 0; font-size: 20px; line-height: 1.45; color: #111722; text-wrap: balance; }
+  .em-post { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: center; padding: 12px; border: 1px solid #e6e9ee; border-radius: 10px; text-decoration: none; }
+  .em-post .pi { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: color-mix(in srgb, var(--c) 18%, white); color: color-mix(in srgb, var(--c) 70%, black); }
+  .em-post .pi svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .em-post span { font-size: 12px; color: #5b6573; line-height: 1.5; min-width: 0; }
+  .em-post b { display: block; font-size: 14px; color: #1d2430; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .em-c { display: flex; flex-direction: column; gap: 8px; }
+  .em-c .h { display: flex; gap: 8px; align-items: center; font-size: 13px; color: #1d2430; }
+  .em-c .h time { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; color: #8a93a2; }
+  .em-c .av { --c: #888; background: color-mix(in srgb, var(--c) 18%, white); color: color-mix(in srgb, var(--c) 70%, black); }
+  .em-c p { margin: 0; font-size: 15px; line-height: 1.75; color: #2b3340; white-space: pre-wrap; }
+  .em-c.quiet p { font-size: 13px; color: #6b7482; }
+  .em-c.quiet { padding: 12px 14px; background: #f5f6f8; border-radius: 10px; }
+  .em-c.main { padding-top: 2px; }
+  .mb { color: #0f8f75; border: 1px solid #0f8f75; border-radius: 999px; padding: 0 7px; font-size: 10px; font-family: "JetBrains Mono", monospace; }
+  .em-cta { padding: 8px 22px 24px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .em-cta a.btn2 { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #0f8f75; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
+  .em-cta a.sub { font-size: 13px; color: #5b6573; }
+  .em-foot { border-top: 1px solid #eef0f3; padding: 14px 22px 18px; font-size: 12px; color: #8a93a2; line-height: 1.7; }
+  .em-foot a { color: #5b6573; }
   .acts { display: flex; gap: 16px; font-size: 12px; color: var(--muted); }
   .acts button { all: unset; cursor: pointer; padding: 6px 0; }
   .acts button:hover { color: var(--ink); }
@@ -97,8 +128,12 @@
   .btn.pri { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
   .btn.wide { width: 100%; }
   .btn svg { width: 18px; height: 18px; flex: none; }
-  .gate { display: flex; flex-direction: column; gap: 8px; align-items: center; }
-  .gate p { margin: 0; font-size: 12px; color: var(--muted); }
+  /* 로그인 전 — 버튼 대신 빈 댓글 칸처럼. 어디를 눌러도 Google 로그인으로 간다 */
+  .gate { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; min-height: 44px; display: flex; align-items: center; gap: 10px; padding: 0 12px 0 14px; border: 1px solid var(--line); border-radius: 12px; }
+  .gate:hover { border-color: var(--line-strong); }
+  .gate .ph { flex: 1; font-size: 14px; color: var(--muted); }
+  .gate .g { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
+  .gate .g svg { width: 14px; height: 14px; }
   .box { background: var(--panel); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 12px 10px 14px; display: flex; flex-direction: column; gap: 8px; }
   .box.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   .box textarea { all: unset; display: block; width: 100%; min-height: 48px; field-sizing: content; font-size: 14px; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
@@ -126,7 +161,7 @@
 
 <div class="wrap">
   <div class="lead">
-    <span class="tag mono">VIBELOG · 데브로그 댓글 · 4안</span>
+    <span class="tag mono">VIBELOG · 데브로그 댓글 · 5안</span>
     <h1>글 아래에 Google 로그인 댓글, Jessi의 답글엔 AI 초안</h1>
     <p>프로필 사진 대신 vibelog 아이콘 세트로 사람을 나타냅니다. 계정마다 아이콘과 색이 하나씩 정해집니다. 세 번째 칸의 버튼은 눌러 볼 수 있습니다.</p>
   </div>
@@ -146,9 +181,7 @@
             <p class="txt">질문 한 번에 서버를 한 번 거치게 됐지만, 답을 고르는 시간에 비하면 거의 차이가 없었습니다.</p>
           </div>
         </div>
-        <div class="gate">
-          <button class="btn wide"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2-1.9 3.2-4.7 3.2-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.2a6.6 6.6 0 0 1 0-4.3V7.1H2.1a11 11 0 0 0 0 9.9l3.7-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg>Google로 로그인하고 댓글 쓰기</button>
-        </div>
+        <button class="gate" aria-label="Google로 로그인하고 댓글 쓰기"><span class="ph">댓글 쓰기</span><span class="g"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2-1.9 3.2-4.7 3.2-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.2a6.6 6.6 0 0 1 0-4.3V7.1H2.1a11 11 0 0 0 0 9.9l3.7-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg>Google로 로그인</span></button>
       </div>
     </div>
 
@@ -201,57 +234,83 @@
   </div>
 
 
+  <div class="col">
+    <span class="tag mono">④ 알림 — 사이트 머리글</span><h2>머리글의 KO/EN 왼쪽에 종</h2>
+    <p class="d">로그인한 사람에게만 나옵니다. Jessi에게는 새 댓글, 방문자에게는 내 댓글에 달린 답글. 누르면 머리글 바로 아래에 목록이 열리고, 항목을 누르면 그 댓글로 갑니다.</p>
+  </div>
   <div class="grid">
     <div class="col">
-      <span class="tag mono">④ 알림 영역</span><h2>머리글 오른쪽 종</h2>
-      <p class="d">로그인한 사람에게만 보입니다. Jessi에게는 새 댓글, 방문자에게는 내 댓글에 달린 답글이 옵니다. 누르면 그 댓글로 갑니다.</p>
-      <div class="phone">
-        <div class="hdr"><span class="wm"><i>&gt;_</i> vibelog</span><button class="bell" aria-label="알림 3개" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg><span class="n">3</span></button></div>
-        <div class="np" role="region" aria-label="알림">
-          <div class="np-h"><b>알림</b><button>모두 읽음</button></div>
-          <a class="ni" href="#"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><span class="t"><b>도윤</b> · 거짓말 탐정 10/10 글<span class="q">용의자가 거짓말할 때 표정도 바뀌나요?</span></span><span><time>2분</time><span class="dot"></span></span></a>
-          <a class="ni" href="#"><span class="av" data-i="cat" style="--c:#8FB8FF" aria-hidden="true"></span><span class="t"><b>민지</b> · vibelog 10/9 글<span class="q">방문 통계는 어디서 보세요?</span></span><span><time>1시간</time><span class="dot"></span></span></a>
-          <a class="ni" href="#"><span class="av" data-i="leaf" style="--c:#81D584" aria-hidden="true"></span><span class="t"><b>하늘</b> · 아파트 감별사 9/21 글<span class="q">우리 동네도 넣어 주실 수 있나요</span></span><span><time>어제</time><span class="dot"></span></span></a>
-          <a class="ni read" href="#"><span class="av" data-i="coffee" style="--c:#B9A7FF" aria-hidden="true"></span><span class="t"><b>서연</b> · Anchor 9/27 글<span class="q">로그인 화면이 깔끔하네요</span></span><span><time>3일</time><span class="dot"></span></span></a>
+      <span class="tag mono">모바일</span>
+      <div class="site m">
+        <div class="sh"><span class="back"><b>←</b>거짓말 탐정</span><span class="right"><button class="bell" aria-label="알림 3개" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg><span class="n">3</span></button><span class="lang" aria-hidden="true"><span class="on">KO</span><span>EN</span></span></span>
+          <div class="np" role="region" aria-label="알림">
+            <div class="np-h"><b>알림</b><button>모두 읽음</button></div>
+            <a class="ni" href="#"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><span class="t"><b>도윤</b> · 거짓말 탐정 10/10 글<span class="q">용의자가 거짓말할 때 표정도 바뀌나요?</span></span><span><time>2분</time><span class="dot"></span></span></a>
+            <a class="ni" href="#"><span class="av" data-i="cat" style="--c:#8FB8FF" aria-hidden="true"></span><span class="t"><b>민지</b> · vibelog 10/9 글<span class="q">방문 통계는 어디서 보세요?</span></span><span><time>1시간</time><span class="dot"></span></span></a>
+            <a class="ni" href="#"><span class="av" data-i="leaf" style="--c:#81D584" aria-hidden="true"></span><span class="t"><b>하늘</b> · 아파트 감별사 9/21 글<span class="q">우리 동네도 넣어 주실 수 있나요</span></span><span><time>어제</time><span class="dot"></span></span></a>
+            <a class="ni read" href="#"><span class="av" data-i="coffee" style="--c:#B9A7FF" aria-hidden="true"></span><span class="t"><b>서연</b> · Anchor 9/27 글<span class="q">로그인 화면이 깔끔하네요</span></span><span><time>3일</time><span class="dot"></span></span></a>
+          </div>
         </div>
+        <div class="page-ghost" aria-hidden="true"><i style="width:70%"></i><i style="width:92%"></i><i style="width:84%"></i><i style="width:60%"></i></div>
+      </div>
+    </div>
+    <div class="col wide">
+      <span class="tag mono">데스크톱</span>
+      <div class="site d">
+        <div class="sh"><span class="wm">vibelog</span><nav aria-hidden="true"><span>프로젝트<small>6</small></span><span class="on">데브로그<small>36</small></span><span>쇼츠<small>25</small></span><span>소개</span></nav><span class="right"><button class="bell" aria-label="알림 3개" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg><span class="n">3</span></button><span class="lang" aria-hidden="true"><span class="on">KO</span><span>EN</span></span></span>
+          <div class="np" role="region" aria-label="알림">
+            <div class="np-h"><b>알림</b><button>모두 읽음</button></div>
+            <a class="ni" href="#"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><span class="t"><b>도윤</b> · 거짓말 탐정 10/10 글<span class="q">용의자가 거짓말할 때 표정도 바뀌나요?</span></span><span><time>2분</time><span class="dot"></span></span></a>
+            <a class="ni" href="#"><span class="av" data-i="cat" style="--c:#8FB8FF" aria-hidden="true"></span><span class="t"><b>민지</b> · vibelog 10/9 글<span class="q">방문 통계는 어디서 보세요?</span></span><span><time>1시간</time><span class="dot"></span></span></a>
+            <a class="ni" href="#"><span class="av" data-i="leaf" style="--c:#81D584" aria-hidden="true"></span><span class="t"><b>하늘</b> · 아파트 감별사 9/21 글<span class="q">우리 동네도 넣어 주실 수 있나요</span></span><span><time>어제</time><span class="dot"></span></span></a>
+            <a class="ni read" href="#"><span class="av" data-i="coffee" style="--c:#B9A7FF" aria-hidden="true"></span><span class="t"><b>서연</b> · Anchor 9/27 글<span class="q">로그인 화면이 깔끔하네요</span></span><span><time>3일</time><span class="dot"></span></span></a>
+          </div>
+        </div>
+        <div class="page-ghost" aria-hidden="true"><i style="width:70%"></i><i style="width:92%"></i><i style="width:84%"></i><i style="width:60%"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <span class="tag mono">⑤ 메일</span><h2>알림 메일 두 가지</h2>
+    <p class="d">위는 받은편지함에 보이는 모습(보낸 사람·제목·미리보기 글), 아래는 연 모습입니다. 10분 안에 댓글이 여러 개 달리면 한 통으로 묶습니다.</p>
+  </div>
+  <div class="mails">
+    <div class="inbox">
+      <div class="ihead"><span class="logo">&gt;_</span><span><b>vibelog</b> · 새 댓글 — 거짓말 탐정<span class="pre">도윤: 용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도…</span></span></div>
+      <div class="em">
+        <div class="em-top"><span class="wm">vibelog</span><span class="kind">새 댓글</span></div>
+        <div class="em-body">
+          <h4>도윤 님이 댓글을 남겼습니다</h4>
+          <a class="em-post" href="#" style="--c:#6FD3F2"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M4 17a3 3 0 1 0 6 0a3 3 0 1 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-4 0h4"/></svg></span><span>거짓말 탐정 · 10/10<b>용의자의 답변 규칙을 서버로 옮겼습니다</b></span></a>
+          <div class="em-c main">
+            <div class="h"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>도윤</b><time>10/11 10:05</time></div>
+            <p>용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
+          </div>
+        </div>
+        <div class="em-cta"><a class="btn2" href="#">답글 쓰기</a><a class="sub" href="#">…</a></div>
+        <div class="em-foot">…. <a href="#">새 댓글 메일 끄기</a><br>© 2026 vibelog · Jessi</div>
       </div>
     </div>
 
-    <div class="col wide">
-      <span class="tag mono">⑤ 메일</span><h2>새 댓글 메일 — Jessi에게</h2>
-      <p class="d">댓글이 달리면 관리자 메일로 한 통. 10분 안에 여러 개 달리면 묶어서 한 통으로 보냅니다. 메일 앱은 대개 밝은 화면이라 메일만 밝게 만들었습니다.</p>
-      <div class="mail">
-        <div class="subj">보낸 사람 <b>vibelog</b><br>제목 <b>[vibelog] 거짓말 탐정 글에 새 댓글 — 도윤</b></div>
-        <div class="mcard">
-          <span class="from"><i>&gt;_</i> vibelog · 새 댓글</span>
-          <h4>용의자의 답변 규칙을 서버로 옮겼습니다</h4>
-          <span class="post">거짓말 탐정 · 10/10 글</span>
-          <div class="mq">
-            <div class="who"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>도윤</b><time>10/11 10:05</time></div>
+    <div class="inbox">
+      <div class="ihead"><span class="logo">&gt;_</span><span><b>vibelog</b> · Jessi가 내 댓글에 답글을 달았습니다<span class="pre">아직 표정은 바뀌지 않고, 지금은 말에서만 단서를 찾을 수…</span></span></div>
+      <div class="em">
+        <div class="em-top"><span class="wm">vibelog</span><span class="kind">답글</span></div>
+        <div class="em-body">
+          <h4>Jessi가 내 댓글에 답글을 달았습니다</h4>
+          <div class="em-c quiet">
+            <div class="h"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>내 댓글</b><time>10/11 10:05</time></div>
             <p>용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
           </div>
-          <a class="mbtn" href="#">답글 쓰러 가기</a>
-        </div>
-        <div class="mfoot">이 댓글에 바로 이어지는 화면으로 열립니다. AI 초안은 거기서 받을 수 있습니다.<br><a href="#">이 알림 메일 끄기</a></div>
-      </div>
-      <h2 style="margin-top:14px">답글 메일 — 댓글 쓴 사람에게</h2>
-      <p class="d">Jessi가 답글을 달면 그 댓글을 쓴 사람의 Google 메일로 한 통. 메일 주소는 이 알림에만 쓰고 화면에는 내보내지 않습니다. 받기 싫으면 메일 아래 링크나 내 이름 메뉴에서 끕니다.</p>
-      <div class="mail">
-        <div class="subj">보낸 사람 <b>vibelog</b><br>제목 <b>[vibelog] Jessi가 내 댓글에 답글을 달았습니다</b></div>
-        <div class="mcard">
-          <span class="from"><i>&gt;_</i> vibelog · 내 댓글에 답글</span>
-          <span class="post">거짓말 탐정 · 10/10 글 — 용의자의 답변 규칙을 서버로 옮겼습니다</span>
-          <div class="mq mine">
-            <div class="who"><span class="av" data-i="rocket" style="--c:#FF9EC7" aria-hidden="true"></span><b>도윤</b><time>10/11 10:05</time></div>
-            <p>용의자가 거짓말할 때 표정도 바뀌나요? 다음 글도 기다릴게요</p>
-          </div>
-          <div class="mq">
-            <div class="who"><span class="av" data-i="terminal" style="--c:#0f8f75" aria-hidden="true"></span><b>Jessi</b><span class="badge mbadge">만든 사람</span><time>10/11 12:30</time></div>
+          <div class="em-c main">
+            <div class="h"><span class="av" data-i="terminal" style="--c:#0f8f75" aria-hidden="true"></span><b>Jessi</b><span class="mb">만든 사람</span><time>10/11 12:30</time></div>
             <p>아직 표정은 바뀌지 않고, 지금은 말에서만 단서를 찾을 수 있어요. 이번에 대답을 서버가 정하게 바꿨으니 표정도 같이 정하게 할 수 있을 것 같습니다. 만들면 데브로그에 남길게요!</p>
           </div>
-          <a class="mbtn" href="#">답글 보러 가기</a>
+          <a class="em-post" href="#" style="--c:#6FD3F2"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M4 17a3 3 0 1 0 6 0a3 3 0 1 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-4 0h4"/></svg></span><span>거짓말 탐정 · 10/10<b>용의자의 답변 규칙을 서버로 옮겼습니다</b></span></a>
         </div>
-        <div class="mfoot">vibelog에 댓글을 남겨서 받는 메일입니다.<br><a href="#">답글 메일 받지 않기</a></div>
+        <div class="em-cta"><a class="btn2" href="#">답글 보러 가기</a></div>
+        <div class="em-foot">vibelog 글에 댓글을 남겨서 받는 메일입니다. <a href="#">답글 메일 받지 않기</a><br>© 2026 vibelog · Jessi</div>
       </div>
     </div>
   </div>
