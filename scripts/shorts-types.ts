@@ -508,14 +508,20 @@ export function sceneDrawnSec(line: Pick<ShortsLine, "diagram" | "motif">): numb
 /** 다 그려진 그림을 읽는 시간 + 장면이 사라지는 시간 */
 const READ_SEC = 1.0;
 const FADE_SEC = 0.45;
+/**
+ * 문장 사이 쉼의 하한(초). 9월 쇼츠들은 문장 사이를 평균 0.45–0.75초 쉬었는데, 10/11 vibelog 편은
+ * 0.18초뿐이라 말이 쉬지 않고 이어져 빨라진 것처럼 들렸다 (Jessi: "…").
+ * 한 음절을 읽는 빠르기는 9월과 같았다(초당 5.3–6.4음절) — 빨라진 것은 쉼이었다
+ */
+const MIN_PAUSE = 0.55;
 /** 한 문장 뒤에 넣는 틈의 상한과 한 편 전체 상한 — 영상 규격(45초)을 넘기지 않게 */
 const GAP_MAX = 1.5;
-const GAPS_TOTAL_MAX = 4;
+const GAPS_TOTAL_MAX = 5;
 /** 내레이션 앞뒤로 붙는 콜드오픈·시작 지연·엔드카드 (docs/03 "포맷") */
 const OUTSIDE_NARRATION = 5.5;
 
 /**
- * 문장 뒤에 넣을 틈(초) — 문장 번호(timing.sentences 순서)마다.
+ * 문장 뒤에 넣을 틈(초) — 문장 번호(timing.sentences 순서)마다. 숨 쉴 틈(MIN_PAUSE)과 그림을 읽을 틈 중 큰 쪽.
  * 장면은 그 문장을 말하는 동안만 화면에 있어서, 문장이 짧으면 그림이 다 그려지기도 전에
  * 다음 장면으로 넘어갔다 (거짓말 탐정 10/10 갈림길 그림 — 2.5초 문장에 그리는 데만 2.15초).
  * 그림이 다 그려지고 READ_SEC 동안 읽힌 뒤 사라질 만큼 내레이션 사이를 벌린다.
@@ -525,10 +531,12 @@ export function holdGaps(lines: Pick<ShortsLine, "diagram" | "motif">[], timing:
   const gaps = ss.map((s, i) => {
     const next = ss[i + 1];
     if (!next) return 0;
+    // 숨 쉴 틈 — 문장 사이 쉼이 너무 짧으면
+    const pause = Math.max(0, MIN_PAUSE - (next.start - s.end));
+    // 그림을 읽을 틈 — 그림이 다 그려지고 읽히기 전에 문장이 끝나면
     const drawn = sceneDrawnSec(lines[s.index] ?? {});
-    if (!drawn) return 0;
-    const need = drawn + READ_SEC + FADE_SEC;
-    return Math.min(GAP_MAX, Math.max(0, need - (next.start - s.start)));
+    const read = drawn ? Math.max(0, drawn + READ_SEC + FADE_SEC - (next.start - s.start)) : 0;
+    return Math.min(GAP_MAX, Math.max(pause, read));
   });
   // 한 편 전체 상한 — 큰 틈부터 깎지 않고 같은 비율로 줄인다
   const room = Math.max(0, Math.min(GAPS_TOTAL_MAX, 45 - OUTSIDE_NARRATION - timing.duration));
