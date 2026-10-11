@@ -122,10 +122,11 @@ export async function renderShort(
   const artFiles: Record<string, string> = {};
   const artSrc = path.join(process.cwd(), shortsDir(repo), `${date}.art`);
   if (fs.existsSync(artSrc)) {
-    for (const f of fs.readdirSync(artSrc).filter((f) => f.endsWith(".png"))) {
+    // Gemini는 jpg, OpenAI는 png로 낸다 (scripts/art.ts)
+    for (const f of fs.readdirSync(artSrc).filter((f) => /\.(png|jpg)$/.test(f))) {
       const name = `art.${f}`;
       fs.copyFileSync(path.join(artSrc, f), path.join(publicDir, name));
-      artFiles[f.replace(/\.png$/, "")] = name;
+      artFiles[f.replace(/\.(png|jpg)$/, "")] = name;
     }
   }
 
