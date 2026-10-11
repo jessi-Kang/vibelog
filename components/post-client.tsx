@@ -11,6 +11,7 @@ import { useEffect, useState, type AnchorHTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import { keepBackslashes } from "@/lib/md-backslash";
 import { setPostRepo } from "@/lib/nav-memory";
+import { ProjectIcon } from "./project-icon";
 import { useLang } from "./lang";
 import remarkGfm from "remark-gfm";
 import { allowedPostLink } from "@/lib/md-links";
@@ -48,6 +49,8 @@ export interface PostData {
     aboutEn?: string;
     /** 소개 글 주소 — 이 글이 소개 글이거나 소개 글이 아직 없으면 없다 */
     introHref?: string;
+    /** 프로젝트 아이콘 (lib/project-icon.ts) */
+    icon?: import("@/lib/project-icon").ProjectIcon;
   };
   hasEn: boolean;
   body: string; // 섹션 파싱 실패 시 폴백
@@ -238,9 +241,13 @@ export function PostClient({ post }: { post: PostData }) {
       {about && post.project.introHref && (
         <Link
           href={post.project.introHref}
-          className="group mt-1 grid grid-cols-[3px_minmax(0,1fr)] gap-3 py-0.5"
+          className={`group mt-1 grid ${post.project.icon ? "grid-cols-[20px_minmax(0,1fr)]" : "grid-cols-[3px_minmax(0,1fr)]"} gap-3 py-0.5`}
         >
-          <span className="rounded-sm opacity-55" style={{ background: color }} aria-hidden />
+          {/* 아이콘을 위에, 그 아래로 색 세로선을 잇는다 (docs/project-icon-places.html ②) */}
+          <span className="flex flex-col items-center gap-1.5" aria-hidden>
+            <ProjectIcon icon={post.project.icon} size={20} style={{ color }} />
+            <span className="w-[3px] flex-1 rounded-sm opacity-55" style={{ background: color }} />
+          </span>
           <span className="flex flex-col gap-1">
             <span className="text-sm leading-relaxed text-ink-soft [text-wrap:pretty]">{about}</span>
             <span className="font-mono text-xs transition-opacity duration-150 group-hover:opacity-85" style={{ color }}>
