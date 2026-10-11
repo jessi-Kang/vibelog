@@ -16,6 +16,8 @@ import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear }
 import { checkSafety, SafetyBlockError } from "./safety";
 import { CORE_TERMS_REVIEW, CORE_TERMS_RULE_SPOKEN, styleRulesForPrompt } from "./korean-style";
 import matter from "gray-matter";
+import { pickIcon } from "./icons";
+import type { ProjectIcon } from "../lib/project-icon";
 import {
   type DiagramSpec,
   type MotifName,
@@ -185,10 +187,18 @@ ${styleRulesForPrompt()}
   · pipeline — 단계가 순서대로 흐를 때. labels: [단계 2~5개]
     예: ["커밋을 읽고","글을 쓰고","영상으로 만들고","올린다"]
   labelsEn도 같은 순서로 채운다. 라벨은 짧게 — 한 칸에 한글 10자 안팎.
+  pipeline·beforeafter에는 라벨마다 그 칸의 대상을 보여 주는 Tabler 아이콘(tabler-icons.io)
+  이름을 icons에 같은 순서로 낼 수 있다 (예: ["package","barrier-block","cloud-off"]). 맞는 것이
+  없는 칸은 null. 아이콘은 라벨을 돕는 것이지 대신하지 않는다 — 라벨은 그대로 채운다.
   종류는 **문장이 말하는 구조**로 고른다. 이웃 편과 같은 종류가 되는 것 자체는
   문제가 아니다 — 내용이 그 구조라면 그걸 쓴다. 어느 종류든 똑같이 맞는
   경우에만 이웃과 다른 쪽을 고른다 (아래 이웃 정보 참고).
-- **motif: 마지막 수단.** 화면(screen/find)도 그림(diagram)도 못 고른 문장에만
+- **icon: 화면도 그림도 없는 문장이 구체적인 대상 하나를 말할 때.** 서버·휴대폰·상자·방패처럼
+  눈에 보이는 물건으로 그 문장의 대상이 바로 떠오르면, Tabler 아이콘(tabler-icons.io) 이름 후보
+  2–3개를 배열로 낸다 (예: "검사가 저절로 돕니다" → ["shield-check","checklist"]). build·demo·next
+  장면에서만. motif보다 먼저 고른다 — 아이콘은 "무엇", 모티프는 "어떤 모양의 일"이다. 대상이 없고
+  반복·기다림 같은 모양만 있으면 icon을 비우고 motif를 쓴다. 영어 소문자와 하이픈만.
+- **motif: 마지막 수단.** 화면(screen/find)도 그림(diagram)도 아이콘(icon)도 못 고른 문장에만
   붙인다. build·demo·next 장면에서만 쓴다 (hook·end·fail은 제 카드가 그 자리를
   쓰므로 붙여도 안 나온다). 라벨 없는 아이콘 하나가 뜬다 — 설명이 아니라 문장의 **모양**이다.
   보여줄 화면이 있으면 화면이 이기고, 설명할 원리가 있으면 diagram이 이긴다.
@@ -198,7 +208,7 @@ ${MOTIF_MENU}
   (그럼 그 문장은 다시 쓰게 된다).
 
 반드시 아래 JSON 하나만 출력 (코드펜스 없이):
-{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","motif":"loop","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2}}],
+{"template":"ship-it","music":"ship-it","lines":[{"scene":"hook","ko":"...","en":"...","keywords":["..."],"keywordsEn":["..."],"stat":"16개","art":"...","screen":"/","find":"오늘 커밋","findEn":"commits today","shot":"focus","icon":["...","..."],"motif":"loop","diagram":{"kind":"fork","labels":["...","...","..."],"labelsEn":["...","...","..."],"pick":2,"icons":["...",null,"..."]}}],
  "failCard":{"title":"...","titleEn":"...","before":"...","after":"...","beforeEn":"...","afterEn":"..."},
  "captions":{"ko":"...","en":"..."},"hashtags":["#..."]}`;
 
@@ -475,8 +485,22 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         : {}),
       // 다이어그램 — 어휘에 있고 라벨 수가 맞는 것만 (자유 작도 금지)
       ...((): { diagram?: DiagramSpec } => {
-        const d = validDiagram(l.diagram);
+        // 칸마다 낸 아이콘 이름 후보를 세트에 있는 좌표로 바꾼다 — 없는 이름은 null(그 칸은 아이콘 없이)
+        const raw =
+          l.diagram && typeof l.diagram === "object" && Array.isArray(l.diagram.icons)
+            ? {
+                ...l.diagram,
+                icons: l.diagram.icons.map((c: unknown) => pickIcon(Array.isArray(c) ? c : [c])),
+              }
+            : l.diagram;
+        const d = validDiagram(raw);
         return d ? { diagram: d } : {};
+      })(),
+      // 대상 아이콘 — 모티프와 같은 자리(build·demo·next)에만. 세트에 없는 이름이면 비운다
+      ...((): { icon?: ProjectIcon } => {
+        if (!MOTIF_SCENES.has(l.scene)) return {};
+        const ic = pickIcon(Array.isArray(l.icon) ? l.icon : [l.icon]);
+        return ic ? { icon: ic } : {};
       })(),
       // 모티프 — MOTIFS 어휘에 있는 이름만 (자유 작도 금지). 그리고 **그려지는
       // 자리에만** 받는다: hook·end는 제 카드가, fail은 삽질 카드가 그 자리를
@@ -574,6 +598,7 @@ export function blankScenes(lines: ShortsLine[]): ShortsLine[] {
       !l.screen &&
       !l.find &&
       !l.diagram &&
+      !l.icon &&
       !l.motif,
   );
 }
@@ -914,7 +939,8 @@ export async function generateScript(
         "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
         "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
         "③ 둘 다 아니지만 문장의 **모양**이 아래 어휘 중 하나와 맞으면",
-        "   motif를 넣는다 (라벨 없는 아이콘. 화면·그림이 있으면 그쪽이 이긴다).",
+        "   icon(대상 하나를 보여 주는 Tabler 아이콘 이름 후보 배열)이나 motif를 넣는다",
+        "   (대상이 분명하면 icon, 모양만 있으면 motif. 화면·그림이 있으면 그쪽이 이긴다).",
         MOTIF_MENU,
         "④ 셋 다 정말 아니라면 그 문장 자체를 바꾸거나 빼세요 — 보여줄 것이",
         "   없는 문장은 영상에 자리가 없습니다.",

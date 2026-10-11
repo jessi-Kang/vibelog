@@ -14,6 +14,8 @@
  * content/shorts/<repo>/<date>.<lang>.timing.json ← audio.ts가 생성
  */
 
+import { safeIcon, type ProjectIcon } from "../lib/project-icon";
+
 export type ShortsTemplate = "ship-it" | "fail" | "before-after";
 
 /**
@@ -123,6 +125,13 @@ export interface ShortsLine {
    * 원리가 있으면 다이어그램이 이긴다. 셋 다 없을 때만 고른다.
    */
   motif?: MotifName;
+  /**
+   * 문장이 말하는 **대상 하나**를 보여 주는 Tabler 선 아이콘 — 머리글의 프로젝트 아이콘과
+   * 같은 세트다 (docs/shorts-icons.html A안, 10/11). 모티프가 "어떤 모양의 일"이라면 아이콘은
+   * "무엇"이다. 화면도 그림도 없을 때 모티프보다 먼저 쓴다. 대본은 이름 후보만 내고,
+   * 세트에 실제로 있는 것만 좌표로 바꿔 여기 담는다 (scripts/icons.ts).
+   */
+  icon?: ProjectIcon;
 }
 
 /**
@@ -235,6 +244,11 @@ export interface DiagramSpec {
    * 마지막에 두기 때문이다 (numberline의 고친 값, beforeafter의 후).
    */
   pick?: 1 | 2;
+  /**
+   * 라벨마다 얹는 아이콘 (labels와 같은 순서, 없으면 null) — pipeline 단계, beforeafter
+   * 네 칸에 쓴다 (docs/shorts-icons.html B·C안). 아이콘이 없는 칸은 지금 모습 그대로다.
+   */
+  icons?: (ProjectIcon | null)[];
 }
 
 /** 종류별 [최소, 최대] 라벨 수 — 대본 검증과 렌더가 같은 표를 본다 */
@@ -266,6 +280,9 @@ export function validDiagram(v: unknown): DiagramSpec | undefined {
       ? { labelsEn: labelsEn.slice(0, range[1]) }
       : {}),
     ...(d.pick === 1 || d.pick === 2 ? { pick: d.pick } : {}),
+    ...(Array.isArray(d.icons) && d.icons.some((x) => safeIcon(x))
+      ? { icons: labels.slice(0, range[1]).map((_, i) => safeIcon(d.icons?.[i])) }
+      : {}),
   };
 }
 

@@ -22,6 +22,7 @@ import { Captions } from "./Captions";
 import { safeIcon, type ProjectIcon } from "../../lib/project-icon";
 import { DiagramScene } from "./Diagram";
 import { MotifScene } from "./Motif";
+import { IconScene } from "./IconScene";
 import {
   ArtCard,
   Background,
@@ -109,6 +110,8 @@ interface Seg {
   diagram?: DiagramSpec;
   /** plain 장면이 그릴 라벨 없는 아이콘 — 대본이 고른 이름 */
   motif?: MotifName;
+  /** plain 장면이 그릴 대상 아이콘 (Tabler) — 모티프보다 먼저 */
+  icon?: ProjectIcon;
 }
 
 /** 이 문장이 가리킨 글자 (en은 findEn 우선) */
@@ -205,6 +208,7 @@ export function buildSegments(
     shot?: "whole" | "focus" | "compare";
     diagram?: DiagramSpec;
     motif?: MotifName;
+    icon?: ProjectIcon;
   }[] = [];
   // 커밋 콜드오픈 — 내레이션 전 무음 구간을 터미널 장면이 채운다
   if (coldOpen > 0) raw.push({ kind: "cold", from: 0 });
@@ -214,7 +218,7 @@ export function buildSegments(
       line?.scene ?? "build",
       hasNextArt,
       !!(line?.screen || findOf(line, lang)),
-      !!line?.motif,
+      !!(line?.motif || line?.icon),
     );
     let from = s.start + offset;
     // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
@@ -238,12 +242,13 @@ export function buildSegments(
         from: raw.length === 0 ? 0 : from,
         diagram: dia,
       });
-    } else if (kind === "plain" && line?.motif) {
-      // 모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다
+    } else if (kind === "plain" && (line?.icon || line?.motif)) {
+      // 아이콘·모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다.
+      // 둘 다 있으면 아이콘이 이긴다 (대상이 분명한 문장이다)
       raw.push({
         kind: "plain",
         from: raw.length === 0 ? 0 : from,
-        motif: line.motif,
+        ...(line.icon ? { icon: line.icon } : { motif: line.motif }),
       });
     } else if (raw.length === 0) {
       // 첫 장면은 0초부터
@@ -519,7 +524,10 @@ export const ShipIt: React.FC<ShipItProps> = ({
                 fromSec={seg.from}
               />
             )}
-            {seg.kind === "plain" && seg.motif && (
+            {seg.kind === "plain" && seg.icon && (
+              <IconScene icon={seg.icon} th={th} fromSec={seg.from} />
+            )}
+            {seg.kind === "plain" && !seg.icon && seg.motif && (
               <MotifScene name={seg.motif} th={th} fromSec={seg.from} />
             )}
             {seg.kind === "art" && artFiles?.next && (
@@ -652,7 +660,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
           "1개"가, apart 편의 gate 위에 "3,151건"이 얹혔다. 같은 자리를 쓰는
           장면이 하나 늘었으면 이 목록도 같이 늘어야 한다. */}
       {script.lines.map((l, i) => {
-        if (!l.stat || l.scene === "hook" || l.diagram || l.motif) return null;
+        if (!l.stat || l.scene === "hook" || l.diagram || l.motif || l.icon) return null;
         const sent = timing.sentences.find((x) => x.index === i);
         if (!sent) return null;
         const statAt = statStartOf(script, sent, lang);
