@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { projectColor } from "@/lib/project-color";
+import { ProjectIcon } from "@/components/project-icon";
 import { PageContainer } from "@/components/page-container";
 import { T } from "@/components/lang";
 import { Card, EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
@@ -71,9 +72,17 @@ export default async function ProjectPage({ params }: Props) {
     <Card className="p-5 lg:p-6">
       <section className="flex flex-col items-start gap-4 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-10 md:gap-y-4 lg:flex lg:flex-col">
       <div className="flex flex-col gap-3">
-        <h1 className="m-0 text-xl font-bold tracking-[-.01em] text-accent lg:text-[26px]">
-          <T ko={project.name} en={project.nameEn ?? project.name} />
-        </h1>
+        {/* 아이콘은 오른쪽 위, 이름 첫 줄과 높이를 맞춘다 (시안 docs/project-icons.html B안) */}
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="m-0 text-xl font-bold tracking-[-.01em] text-accent lg:text-[26px]">
+            <T ko={project.name} en={project.nameEn ?? project.name} />
+          </h1>
+          <ProjectIcon
+            icon={project.icon}
+            className="mt-0.5 lg:mt-1"
+            style={{ color: projectColor(project.slug) }}
+          />
+        </div>
         {project.name !== project.slug && (
           <span className="-mt-2 font-mono text-xs text-muted">{project.slug}</span>
         )}

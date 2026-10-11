@@ -17,6 +17,8 @@ export interface Project {
   /** 소개 글이 코드를 읽고 쓴 프로젝트 설명 한두 문장 — 글 제목 아래에 붙고, 누르면 소개 글로 간다 */
   about?: string;
   aboutEn?: string;
+  /** 프로젝트 아이콘 (Tabler outline) — 소개 글이 고른다 (lib/project-icon.ts) */
+  icon?: import("./project-icon").ProjectIcon;
   description: string;
   /** 파이프라인이 만든 영어 번역 — 없으면 UI가 ko로 폴백 */
   descriptionEn?: string;
