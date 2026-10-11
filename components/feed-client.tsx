@@ -7,7 +7,7 @@
  * 이미 프로젝트별로 줄여 준다. 버튼 뒤에 숨은 글은 검색·스크롤 어느 쪽에서도
  * 없는 글이었다.
  */
-import { useState } from "react";
+import { useProjectFilter } from "@/lib/use-project-filter";
 import { useLang } from "./lang";
 import { ProjectFilter } from "./project-filter";
 import { EmptyState, SectionHeader } from "./ui";
@@ -47,14 +47,13 @@ export function FeedClient({
 }) {
   const { lang } = useLang();
   const en = lang === "en";
-  const [filter, setFilter] = useState("all");
+  const [filter, pick] = useProjectFilter(projects.map((p) => p.slug));
 
   const counts: Record<string, number> = { all: items.length };
   for (const d of items) counts[d.repo] = (counts[d.repo] ?? 0) + 1;
   const list = items.filter((d) => filter === "all" || d.repo === filter);
   const proj = projects.find((p) => p.slug === filter);
 
-  const pick = (v: string) => setFilter(v);
 
   return (
     <>

@@ -8,7 +8,7 @@
  * 채널 인트로 카드는 "전체"일 때만 붙인다 — 어느 프로젝트의 쇼츠도 아니라서,
  * 한 프로젝트를 골라 놓고 인트로가 섞여 나오면 그 프로젝트 것으로 읽힌다.
  */
-import { useState } from "react";
+import { useProjectFilter } from "@/lib/use-project-filter";
 import { useLang } from "./lang";
 import { ProjectFilter, type FilterProject } from "./project-filter";
 import { ShortsGrid } from "./shorts-grid";
@@ -29,7 +29,7 @@ export function ShortsClient({
 }) {
   const { lang } = useLang();
   const en = lang === "en";
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useProjectFilter(projects.map((p) => p.slug));
 
   const counts: Record<string, number> = { all: shorts.length };
   for (const s of shorts) counts[s.repo] = (counts[s.repo] ?? 0) + 1;
