@@ -11,7 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { noteUsage } from "./usage";
-import { createMessage } from "./models";
+import { streamMessage } from "./models";
 import { askReader, mergeUnclear, styleUnclear, type Readability, type Unclear } from "./readability";
 import { checkSafety, SafetyBlockError } from "./safety";
 import { CORE_TERMS_REVIEW, CORE_TERMS_RULE_SPOKEN, styleRulesForPrompt } from "./korean-style";
@@ -48,6 +48,12 @@ const MODEL = "claude-opus-5-5";
  */
 const EFFORT_FIRST = "medium" as const;
 const EFFORT_RETRY = "high" as const;
+/**
+ * 답 상한 — 다시 쓸 때(high)는 thinking이 길어 16000에서 답이 잘렸다. 잘린 답은
+ * 글자가 비어 통째로 못 쓴다 (10/11 lie-detective 다시 만들기가 이걸로 실패했다).
+ * 삽화와 같은 32000이고, 이 크기는 SDK가 스트리밍을 요구해 streamMessage로 부른다.
+ */
+const MAX_TOKENS = 32000;
 
 /** 어휘 목록은 shorts-types가 단일 진실이다 — 첫 프롬프트와 재작성 요청이 같은 것을 본다 */
 const MOTIF_MENU = motifMenu();
@@ -810,9 +816,9 @@ export async function generateScript(
   const SYSTEM_CACHED: Anthropic.TextBlockParam[] = [
     { type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } },
   ];
-  const response = await createMessage(client, {
+  const response = await streamMessage(client, {
     model: MODEL,
-    max_tokens: 16000,
+    max_tokens: MAX_TOKENS,
     output_config: { effort: EFFORT_FIRST },
     system: SYSTEM_CACHED,
     messages: [{ role: "user", content: userPrompt }],
@@ -824,6 +830,12 @@ export async function generateScript(
       .map((b) => b.text)
       .join("");
 
+  const cutCheck = (r: Anthropic.Messages.Message, which: string) => {
+    if (r.stop_reason === "max_tokens") {
+      throw new Error(`${which} 답이 ${MAX_TOKENS} 토큰 상한에서 잘렸습니다 — 대본을 읽을 수 없습니다`);
+    }
+  };
+  cutCheck(response, "대본");
   let text = readText(response);
   let parsed = parseJson(text);
   let lines = validateLines(
@@ -896,9 +908,9 @@ export async function generateScript(
       );
     }
     ask.push("전체 JSON을 같은 형식으로 다시 출력하세요 (말한 문장 말고는 그대로).");
-    const retry = await createMessage(client, {
+    const retry = await streamMessage(client, {
       model: MODEL,
-      max_tokens: 16000,
+      max_tokens: MAX_TOKENS,
       output_config: { effort: EFFORT_RETRY },
       system: SYSTEM_CACHED,
       messages: [
@@ -908,6 +920,7 @@ export async function generateScript(
       ],
     });
     noteUsage("script", retry.usage);
+    cutCheck(retry, "다시 쓴 대본");
     text = readText(retry);
     parsed = parseJson(text);
     lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
