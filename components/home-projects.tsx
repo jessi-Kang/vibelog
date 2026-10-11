@@ -84,7 +84,7 @@ export function HomeProjects({
               className="flex items-baseline gap-3 border-b border-line px-[18px] py-3 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2"
             >
               <span className="min-w-0 flex-1 truncate font-sans text-base font-bold text-ink-soft">
-                {p.name}
+                {lang === "en" ? (p.nameEn ?? p.name) : p.name}
               </span>
               <StatusBadge status={p.status} />
               <span className="w-[52px] text-right">

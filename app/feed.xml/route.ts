@@ -1,3 +1,4 @@
+import { projectName } from "@/lib/project-name";
 import { getDevlogs } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { postPath } from "@/lib/post-id";
@@ -26,7 +27,7 @@ export function GET() {
       const pubDate = new Date(`${d.date}T14:00:00Z`).toUTCString();
       const desc = d.summary ?? d.title;
       return `    <item>
-      <title>${esc(`${d.repo} — ${d.title}`)}</title>
+      <title>${esc(`${projectName(d.repo)} — ${d.title}`)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>

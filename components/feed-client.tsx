@@ -27,6 +27,7 @@ export interface FeedItem {
   prs?: number;
   hasFail: boolean;
   hasShort: boolean;
+  intro?: boolean;
 }
 
 export interface FeedProject {
@@ -89,8 +90,8 @@ export function FeedClient({
                 ? `No commits since ${proj.lastActiveEn ?? proj.lastActive}. When it moves again, a post goes up that night.`
                 : `${proj.lastActive}부터 커밋이 없습니다. 다시 움직이면 그날 밤 글이 올라옵니다.`
               : en
-                ? "New commits appear here after the next 23:00 run."
-                : "커밋이 생기면 다음 23:00 실행에 올라옵니다."
+                ? "The first post introduces the project — it goes up the night code lands in the repo. After that, a post comes on each night that gathers 5 commits with a written body."
+                : "첫 글은 프로젝트 소개 글로, 레포에 코드가 올라온 밤에 나옵니다. 그다음부터는 본문을 쓴 커밋이 5개 모인 밤마다 글이 올라옵니다."
           }
           action={
             <button
@@ -114,6 +115,8 @@ export function FeedClient({
               summary={en ? (d.summaryEn ?? d.summary) : d.summary}
               last={i === list.length - 1}
               meta={[
+                // 소개 글은 커밋 수가 없다 — 대신 무슨 글인지 붙인다
+                ...(d.intro ? [{ text: en ? "project intro" : "프로젝트 소개", tone: "soft" as const }] : []),
                 ...(d.commits
                   ? [
                       en

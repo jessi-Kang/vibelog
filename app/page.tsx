@@ -97,8 +97,8 @@ export default function Home() {
           title={<T ko="아직 글이 없습니다" en="No posts yet" />}
           body={
             <T
-              ko="topic이 달린 레포에 커밋이 생기면 그날 밤 첫 글이 올라옵니다. 활동 없는 날은 건너뜁니다."
-              en="Commit to a repo with the topic, and the first post goes up that night. Quiet days are skipped."
+              ko="topic이 달린 레포에 코드가 올라오면 그날 밤 그 프로젝트를 소개하는 첫 글이 올라옵니다. 그다음부터는 본문을 쓴 커밋이 5개 모인 밤마다 글이 올라옵니다."
+              en="Once code lands in a repo with the topic, a post introducing that project goes up that night. After that, posts go up on nights that gather 5 commits with a written body."
             />
           }
         />
@@ -113,6 +113,9 @@ export default function Home() {
               title={<T ko={d.title} en={d.titleEn ?? d.title} />}
               last={i === a.length - 1}
               meta={[
+                ...(d.intro
+                  ? [{ text: <T ko="프로젝트 소개" en="project intro" />, tone: "soft" as const }]
+                  : []),
                 ...(d.commits
                   ? [
                       {

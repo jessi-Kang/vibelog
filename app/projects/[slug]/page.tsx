@@ -47,6 +47,8 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   const logs = getDevlogs(project.slug);
+  // 소개 글은 그날 한 일이 아니라 숫자에 넣지 않는다 — 나중에 넣은 소개 글은 날짜도 첫 글 하루 전으로 지어 붙인 것이다
+  const dayLogs = logs.filter((d) => !d.intro);
   const homepage = publicHomepage(project);
   const lastActive = humanizeLastActive(project.lastActivity);
   const lastActiveEn = humanizeLastActive(project.lastActivity, "en");
@@ -57,8 +59,8 @@ export default async function ProjectPage({ params }: Props) {
     ["c", <T key="k7" ko="누적 커밋" en="total commits" />, <LiveRepoStat key="v7" repoUrl={project.repoUrl} kind="total" fallback={project.totalCommits} />],
     ["w", <T key="k3" ko="이번 주 커밋" en="commits this week" />, <LiveRepoStat key="v3" repoUrl={project.repoUrl} kind="week" fallback={project.weekCommits ?? 0} />],
     ["l", <T key="k4" ko="마지막 활동" en="last active" />, <LiveLastActive key="v4" repoUrl={project.repoUrl} iso={project.lastActivity} />],
-    ["d", <T key="k5" ko="데브로그" en="devlogs" />, <T key="v5" ko={`${logs.length}편`} en={String(logs.length)} />],
-    ["b", <T key="k6" ko="시작일" en="started" />, logs.length ? logs[logs.length - 1].date : "—"],
+    ["d", <T key="k5" ko="데브로그" en="devlogs" />, <T key="v5" ko={`${dayLogs.length}편`} en={String(dayLogs.length)} />],
+    ["b", <T key="k6" ko="시작일" en="started" />, dayLogs.length ? dayLogs[dayLogs.length - 1].date : "—"],
   ];
 
   const head = (
@@ -67,8 +69,11 @@ export default async function ProjectPage({ params }: Props) {
       <section className="flex flex-col items-start gap-4 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-10 md:gap-y-4 lg:flex lg:flex-col">
       <div className="flex flex-col gap-3">
         <h1 className="m-0 text-xl font-bold tracking-[-.01em] text-accent lg:text-[26px]">
-          {project.name}
+          <T ko={project.name} en={project.nameEn ?? project.name} />
         </h1>
+        {project.name !== project.slug && (
+          <span className="-mt-2 font-mono text-xs text-muted">{project.slug}</span>
+        )}
         <p className="m-0 text-md leading-[1.6] text-ink-soft [text-wrap:pretty]">
           {project.description ? (
             <T
@@ -140,13 +145,13 @@ export default async function ProjectPage({ params }: Props) {
               <T ko="아직 이 프로젝트의 글이 없습니다" en="No posts for this project yet" />
             )
           }
+          // 첫 글은 소개 글이다 (scripts/intro.ts) — "커밋이 생기면 첫 글"이던 안내는 그 전의 규칙이었다
           body={
             <T
-              ko="활동이 없는 날은 건너뜁니다. 커밋이 생기면 다음 23:00 실행에 첫 글이 올라옵니다. 커밋 본문에 '왜'를 쓰면 글이 덜 밍밍해집니다."
-              en="Quiet days are skipped. Commit, and the first post goes up on the next 23:00 run. Writing the why in commit bodies makes posts less bland."
+              ko="첫 글은 이 프로젝트를 소개하는 글입니다. 레포에 코드가 올라오면 그날 밤 23:00 실행이 코드를 읽고 씁니다. 그다음부터는 본문을 쓴 커밋이 5개 모인 밤마다 그날 한 일이 글로 올라옵니다."
+              en="The first post introduces this project. Once code lands in the repo, the 23:00 run that night reads it and writes the intro. After that, a post goes up on each night that gathers 5 commits with a written body."
             />
           }
-          hint={`git log --since=today ${project.slug}`}
         />
       ) : (
         <div className="flex flex-col gap-7">

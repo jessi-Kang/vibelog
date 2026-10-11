@@ -16,6 +16,7 @@ import { useLang } from "./lang";
 export interface FilterProject {
   slug: string;
   name: string;
+  nameEn?: string;
 }
 
 const MAX_CHIPS = 8;
@@ -56,7 +57,7 @@ export function ProjectFilter({
         >
           {options.map((p) => (
             <option key={p.slug} value={p.slug}>
-              {p.name}
+              {en ? (p.nameEn ?? p.name) : p.name}
               {counts[p.slug] != null ? `  ·  ${counts[p.slug]}` : ""}
             </option>
           ))}
@@ -98,7 +99,7 @@ export function ProjectFilter({
                 ●
               </span>
             )}
-            {p.name}
+            {en ? (p.nameEn ?? p.name) : p.name}
             {counts[p.slug] != null && (
               <span className="ml-1.5 text-muted">{counts[p.slug]}</span>
             )}

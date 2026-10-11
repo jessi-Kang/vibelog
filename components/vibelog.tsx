@@ -8,7 +8,8 @@ import type { Project, RunLogLine } from "@/lib/content";
 import { publicHomepage } from "@/lib/public-homepage";
 import { humanizeLastActive } from "@/lib/format";
 import { projectColor } from "@/lib/project-color";
-import { useLang } from "./lang";
+import { T, useLang } from "./lang";
+import { projectName } from "@/lib/project-name";
 import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -35,8 +36,14 @@ export function ProjectCard({ project }: { project: Project }) {
         className="absolute inset-0 z-0 rounded-lg"
       />
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="min-w-0 truncate text-lg font-bold text-ink">
-          {project.name}
+        {/* 서비스 이름을 크게, 레포 이름은 작게 — GitHub에서 찾아갈 이름도 남긴다 (docs/project-intro.html ③) */}
+        <h3 className="flex min-w-0 items-baseline gap-2 text-lg font-bold text-ink">
+          <span className="truncate">
+            {lang === "en" ? (project.nameEn ?? project.name) : project.name}
+          </span>
+          {project.name !== project.slug && (
+            <span className="truncate font-mono text-2xs font-normal text-muted">{project.slug}</span>
+          )}
         </h3>
         <StatusBadge status={project.status} />
       </div>
@@ -152,7 +159,7 @@ export function DevlogTimelineEntry({
         <div className="flex gap-2.5 font-mono text-xs text-muted">
           {repo && (
             <span className="font-bold" style={{ color: projectColor(repo) }}>
-              {repo}
+              <T ko={projectName(repo)} en={projectName(repo, true)} />
             </span>
           )}
           <span>{date}</span>
@@ -209,7 +216,7 @@ export function DevlogCompactEntry({
                   {
                     text: (
                       <span className="font-bold" style={{ color: projectColor(repo) }}>
-                        {repo}
+                        <T ko={projectName(repo)} en={projectName(repo, true)} />
                       </span>
                     ),
                   },

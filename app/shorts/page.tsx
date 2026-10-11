@@ -25,7 +25,7 @@ export default function ShortsPage() {
   const has = new Set(shorts.map((s) => s.repo));
   const projects = getProjects()
     .filter((p) => has.has(p.slug))
-    .map((p) => ({ slug: p.slug, name: p.name }));
+    .map((p) => ({ slug: p.slug, name: p.name, ...(p.nameEn ? { nameEn: p.nameEn } : {}) }));
 
   return (
     <PageContainer>

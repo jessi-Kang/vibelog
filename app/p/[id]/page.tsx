@@ -1,9 +1,10 @@
+import { projectName } from "@/lib/project-name";
 import { ldJson } from "@/lib/ld-json";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
 import { PostClient } from "@/components/post-client";
-import { fmtDate, getDevlogs } from "@/lib/content";
+import { fmtDate, getDevlogs, getProject } from "@/lib/content";
 import { findByPostId, postId, postPath } from "@/lib/post-id";
 
 interface Props {
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const d = findByPostId(getDevlogs(), id);
   if (!d) return { title: "데브로그" };
-  const description = d.summary ?? `${d.repo} 데브로그 — ${d.title}`;
+  const description = d.summary ?? `${projectName(d.repo)} 데브로그 — ${d.title}`;
   const path = postPath(d);
   return {
     title: d.title,
@@ -39,8 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DevlogPostPage({ params }: Props) {
   const { id } = await params;
-  const d = findByPostId(getDevlogs(), id);
+  const all = getDevlogs();
+  const d = findByPostId(all, id);
   if (!d) notFound();
+  const project = getProject(d.repo);
+  // 소개 글 — 이 글 제목 아래 프로젝트 설명이 여기로 간다. 소개 글 자신에는 붙이지 않는다
+  const intro = d.intro ? undefined : all.find((x) => x.repo === d.repo && x.intro);
 
   return (
     <PageContainer>
@@ -76,6 +81,14 @@ export default async function DevlogPostPage({ params }: Props) {
           hasEn: Boolean(d.bodyEn),
           body: d.body,
           figures: d.figures,
+          intro: d.intro,
+          project: {
+            name: project?.name ?? d.repo,
+            nameEn: project?.nameEn,
+            about: project?.about,
+            aboutEn: project?.aboutEn,
+            introHref: intro ? postPath(intro) : undefined,
+          },
           short: d.short
             ? {
                 template: d.short.template,

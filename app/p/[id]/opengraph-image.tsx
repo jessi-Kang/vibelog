@@ -1,3 +1,4 @@
+import { projectName } from "@/lib/project-name";
 import { OG_CONTENT_TYPE, OG_SIZE, ogCard } from "@/lib/og";
 import { getDevlogs } from "@/lib/content";
 import { findByPostId, postId } from "@/lib/post-id";
@@ -22,6 +23,6 @@ export default async function Image({
     eyebrow: "devlog",
     title: d?.title ?? "devlog",
     sub: d?.summary,
-    meta: d ? `${d.repo} \u00b7 ${d.date}` : "vibelog",
+    meta: d ? `${projectName(d.repo)} \u00b7 ${d.date}` : "vibelog",
   });
 }

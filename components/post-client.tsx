@@ -35,8 +35,19 @@ export interface PostData {
   prs?: number;
   shas?: [string, string][];
   shasEn?: [string, string][];
-  sections: { did?: string; why?: string; fail?: string; next?: string };
-  sectionsEn: { did?: string; why?: string; fail?: string; next?: string };
+  sections: { did?: string; why?: string; fail?: string; next?: string; built?: string };
+  sectionsEn: { did?: string; why?: string; fail?: string; next?: string; built?: string };
+  /** 프로젝트 소개 글 — 커밋이 아니라 레포 코드를 읽고 쓴 그 프로젝트의 첫 글 (scripts/intro.ts) */
+  intro?: boolean;
+  /** 화면에 쓰는 프로젝트 이름과, 소개 글이 코드를 읽고 쓴 프로젝트 설명 */
+  project: {
+    name: string;
+    nameEn?: string;
+    about?: string;
+    aboutEn?: string;
+    /** 소개 글 주소 — 이 글이 소개 글이거나 소개 글이 아직 없으면 없다 */
+    introHref?: string;
+  };
   hasEn: boolean;
   body: string; // 섹션 파싱 실패 시 폴백
   /** 문단 사이에 들어가는 삽화 (검증 통과분만) */
@@ -154,9 +165,16 @@ export function PostClient({ post }: { post: PostData }) {
   // 이어지면 본문(과 삽화)을 그대로 보여 준다
   const noFail = !hasRealFail(s.fail);
 
-  const headings = en
-    ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up" }
-    : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것" };
+  const headings = post.intro
+    ? en
+      ? { did: "What it is", why: "Who it's for, and why", fail: "", next: "Next up", built: "What's built so far" }
+      : { did: "어떤 프로젝트인가", why: "누구를 위해, 왜", fail: "", next: "다음 할 것", built: "지금까지 만든 것" }
+    : en
+      ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up", built: "" }
+      : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것", built: "" };
+  const color = projectColor(post.repo);
+  const projectName = en ? (post.project.nameEn ?? post.project.name) : post.project.name;
+  const about = en ? (post.project.aboutEn ?? post.project.about) : post.project.about;
 
   const openShort = (v: "ko" | "en") =>
     setMedia({
@@ -172,6 +190,14 @@ export function PostClient({ post }: { post: PostData }) {
   // 알 길이 없었다. 누르면 그 프로젝트 페이지로 간다.
   const head = (
     <section className="flex flex-col gap-3">
+      {post.intro && (
+        <span
+          className="self-start rounded-full border px-2.5 py-0.5 text-2xs font-bold"
+          style={{ color, borderColor: withAlpha(color, 0.4) }}
+        >
+          {en ? "Project intro" : "프로젝트 소개"}
+        </span>
+      )}
       <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
         {en && post.titleEn ? post.titleEn : post.title}
       </h1>
@@ -181,21 +207,42 @@ export function PostClient({ post }: { post: PostData }) {
           href={`/projects/${post.repo}`}
           className="hit relative font-bold underline decoration-1 underline-offset-[3px] transition-opacity duration-150 hover:opacity-85"
           style={{
-            color: projectColor(post.repo),
-            textDecorationColor: withAlpha(projectColor(post.repo), 0.4),
+            color,
+            textDecorationColor: withAlpha(color, 0.4),
           }}
         >
-          {post.repo}
+          {projectName}
         </Link>
         {" · "}
-        {post.commits != null
+        {post.intro
+          ? en
+            ? "Written by AI from the repo's code · intro"
+            : "AI가 레포 코드를 읽고 작성 · 소개"
+          : null}
+        {!post.intro && post.commits != null
           ? en
             ? `Written by AI from ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `
             : `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
           : ""}
-        day {String(post.day).padStart(2, "0")}
+        {!post.intro && <>day {String(post.day).padStart(2, "0")}</>}
         {post.short ? (en ? " · has short" : " · 쇼츠 있음") : ""}
       </div>
+      {/* 프로젝트 설명 — 처음 들어온 사람이 이 프로젝트가 무엇인지 알고 읽게. 소개 글이
+          코드를 읽고 쓴 한두 문장이고, 누르면 소개 글로 간다 (docs/project-intro.html ②) */}
+      {about && post.project.introHref && (
+        <Link
+          href={post.project.introHref}
+          className="group mt-1 grid grid-cols-[3px_minmax(0,1fr)] gap-3 py-0.5"
+        >
+          <span className="rounded-sm opacity-55" style={{ background: color }} aria-hidden />
+          <span className="flex flex-col gap-1">
+            <span className="text-sm leading-relaxed text-ink-soft [text-wrap:pretty]">{about}</span>
+            <span className="font-mono text-xs transition-opacity duration-150 group-hover:opacity-85" style={{ color }}>
+              {en ? "About this project →" : "이 프로젝트 소개 →"}
+            </span>
+          </span>
+        </Link>
+      )}
     </section>
   );
 
@@ -241,6 +288,13 @@ export function PostClient({ post }: { post: PostData }) {
                   <Body md={s.why} figures={figsOf("why")} en={en} />
                 </div>
               )}
+              {post.intro && s.built && (
+                <div>
+                  <H>{headings.built}</H>
+                  <Body md={s.built} figures={figsOf("built")} en={en} />
+                </div>
+              )}
+              {!post.intro && (
               <div>
                 <H warn>{headings.fail}</H>
                 {noFail ? (
@@ -260,6 +314,7 @@ export function PostClient({ post }: { post: PostData }) {
                   />
                 )}
               </div>
+              )}
               {s.next && (
                 <div>
                   <H>{headings.next}</H>
@@ -368,12 +423,12 @@ export function PostClient({ post }: { post: PostData }) {
         </section>
       )}
       <Link
-        // utm_source로 글 끝 링크를 눌렀는지 센다 — 무료 요금제의 방문 통계는 클릭
+        // utm_source로 글 맨 아래에 있는 이 링크를 눌렀는지 센다 — 무료 요금제의 방문 통계는 클릭
         // 이벤트를 못 받지만 들어온 주소의 utm 값은 나눠서 보여 준다
         href={`/projects/${post.repo}?utm_source=post-end`}
         className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
       >
-        {en ? `More days of ${post.repo} →` : `${post.repo}의 다른 날 →`}
+        {en ? `More days of ${projectName} →` : `${projectName}의 다른 날 →`}
       </Link>
     </div>
   );

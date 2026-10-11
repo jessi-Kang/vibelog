@@ -28,10 +28,12 @@ export default function LogPage() {
     prs: d.prs,
     hasFail: d.hasFail,
     hasShort: Boolean(d.short),
+    intro: Boolean(d.intro),
   }));
   const projects = getProjects().map((p) => ({
     slug: p.slug,
     name: p.name,
+    ...(p.nameEn ? { nameEn: p.nameEn } : {}),
     status: p.status,
     lastActive: humanizeLastActive(p.lastActivity),
     lastActiveEn: humanizeLastActive(p.lastActivity, "en"),
