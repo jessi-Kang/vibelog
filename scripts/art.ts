@@ -18,9 +18,11 @@
  * 사용: npx tsx scripts/art.ts <repo> <date>
  *       npx tsx scripts/art.ts --try "<묘사>" [gemini|openai]   # 한 장만 만들어 보기
  */
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { shortsDir, shortsJsonPath, type ShortsScript } from "./shorts-types";
+import { blobGet, blobPut } from "./blob-cache";
 import { noteUsage } from "./usage";
 
 /** Gemini — Interactions API. Nano Banana 2.1 → Nano Banana 2 */
@@ -253,17 +255,93 @@ export async function generateArt(repo: string, date: string): Promise<void> {
   }
   const dir = artDir(repo, date);
   fs.mkdirSync(dir, { recursive: true });
-  for (const { l, index } of targets) {
-    const name = `line-${index}`;
+  const theme = script.theme ?? "terminal";
+  const style: ArtStyle = process.env.ART_STYLE === "papercut" ? "papercut" : "flat";
+  const index = await loadArtIndex();
+  let added = false;
+  for (const { l, index: lineIndex } of targets) {
+    const name = `line-${lineIndex}`;
+    const art = l.art as string;
+    // 비슷한 그림을 이미 만들었으면 그것을 다시 쓴다 — 같은 테마·그림체에서 묘사의 낱말이 많이 겹치면
+    const hit = findSimilarArt(index, theme, style, art);
+    if (hit) {
+      const data = await blobGet(`${ART_DIR}/${hit.entry.id}.${hit.entry.ext}`);
+      if (data) {
+        fs.writeFileSync(path.join(dir, `${name}.${hit.entry.ext}`), data);
+        console.log(`[art] ${name}.${hit.entry.ext} 비슷한 그림을 다시 씀 (낱말 겹침 ${hit.score.toFixed(2)})`);
+        continue;
+      }
+    }
     try {
-      const r = await generateImage(styleFor(script.theme) + (l.art as string), undefined, { transparent: true });
+      const r = await generateImage(styleFor(theme) + art, undefined, { transparent: true });
       fs.writeFileSync(path.join(dir, `${name}.${r.ext}`), r.data);
       console.log(`[art] ${name}.${r.ext} 생성 (${r.provider} ${r.model})`);
+      const id = createHash("sha256").update(`${theme}|${style}|${art}`).digest("hex").slice(0, 16);
+      await blobPut(`${ART_DIR}/${id}.${r.ext}`, r.data);
+      index.push({ id, ext: r.ext, theme, style, art });
+      added = true;
     } catch (err) {
       // 그 문장은 함께 고른 아이콘·모티프로 간다
       console.warn(`[art] ${name} 생성 실패 — 그 문장은 아이콘·모티프로:`, err instanceof Error ? err.message : err);
     }
   }
+  if (added) await blobPut(ART_INDEX, JSON.stringify(index));
+}
+
+/**
+ * 만든 그림 목록 — Blob에 그림과 함께 둔다. 쇼츠 그림은 한 장에 돈이 들고, 대본은 비슷한 장면을
+ * 자주 쓴다(돋보기, 문 앞의 경비, 쌓인 서류…). 비슷하면 다시 쓰자고 했다 (10/11 Jessi).
+ */
+const ART_DIR = "shorts/art";
+const ART_INDEX = `${ART_DIR}/index.json`;
+type ArtEntry = { id: string; ext: string; theme: string; style: ArtStyle; art: string };
+
+async function loadArtIndex(): Promise<ArtEntry[]> {
+  const raw = await blobGet(ART_INDEX);
+  if (!raw) return [];
+  try {
+    const list = JSON.parse(raw.toString("utf8"));
+    return Array.isArray(list) ? list : [];
+  } catch {
+    return [];
+  }
+}
+
+/** 뜻이 없는 낱말은 빼고 센다 — "a", "the", "on"이 겹친다고 비슷한 그림이 아니다 */
+const STOP = new Set(
+  "a an the of on in at to by for from with and or its their his her into onto over under beside next small single one two three side".split(" "),
+);
+export function artWords(art: string): Set<string> {
+  return new Set(
+    art
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, " ")
+      .split(/\s+/)
+      .map((w) => w.replace(/(ies)$/, "y").replace(/([^s])s$/, "$1"))
+      .filter((w) => w.length > 1 && !STOP.has(w)),
+  );
+}
+
+/** 낱말 겹침(자카드) 이 값 이상이면 같은 그림으로 친다 */
+const SIMILAR_AT = 0.6;
+
+export function findSimilarArt(
+  index: ArtEntry[],
+  theme: string,
+  style: ArtStyle,
+  art: string,
+): { entry: ArtEntry; score: number } | null {
+  const a = artWords(art);
+  let best: { entry: ArtEntry; score: number } | null = null;
+  for (const e of index) {
+    if (e.theme !== theme || e.style !== style) continue;
+    const b = artWords(e.art);
+    let both = 0;
+    for (const w of a) if (b.has(w)) both++;
+    const score = both / (a.size + b.size - both || 1);
+    if (score >= SIMILAR_AT && (!best || score > best.score)) best = { entry: e, score };
+  }
+  return best;
 }
 
 if (process.argv[1]?.endsWith("art.ts") && process.argv[2] === "--try") {
