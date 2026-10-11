@@ -76,11 +76,13 @@ export function styleFor(
 ): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
   // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
-  // 먹색은 혼자 무겁게 떴다 (10/11 Jessi 두 번). 처음엔 짙은 슬레이트까지 내렸더니 이번엔 조금
-  // 어두웠다 (Jessi: "조금 밝게") — 큰 면은 밝은 중간 회색에서 슬레이트 사이에서만 고른다
+  // 먹색은 혼자 무겁게 떴다 (10/11 Jessi 두 번). 짙은 슬레이트까지 내렸다가 두 번 더 "어둡다"를
+  // 들었다 — 큰 면은 옅은 회색에서 중간 회색까지, 가장 짙은 색도 테마의 보조 글자색(#8A919B)까지.
+  // 바탕에 묻히지 않게 하는 일은 어두운 색이 아니라 …
   const neutrals = t.light
-    ? "light-medium gray (#BAC0C8), medium gray (#9CA3AD) and slate gray (#7A828E); white only for tiny highlights, " +
-      "never large white or near-white areas (they vanish on the light gray background), nothing darker than #6B7380"
+    ? "light gray (#D3D7DD), soft gray (#BAC0C8) and medium gray (#A3AAB4), with #8A919B only for small details; " +
+      "every shape gets one slightly darker flat shade on its lower side so it separates from the light background; " +
+      "white only for tiny highlights, never large white areas, nothing darker than #8A919B"
     : "off-white, light gray and slate gray";
   const base = style === "papercut" ? PAPERCUT_BASE : STYLE_BASE;
   const what = style === "papercut" ? "papers" : "shapes";
