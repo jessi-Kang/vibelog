@@ -238,7 +238,7 @@ function Body({ c }: { c: C }) {
 
 type Mode = "draft" | "polish" | "short";
 
-function ReplyBox({ comment, onDone }: { comment: C; onDone: () => void }) {
+function ReplyBox({ comment, onDone, onCancel }: { comment: C; onDone: () => void; onCancel: () => void }) {
   const { lang } = useLang();
   const en = lang === "en";
   const [text, setText] = useState("");
@@ -320,6 +320,9 @@ function ReplyBox({ comment, onDone }: { comment: C; onDone: () => void }) {
       )}
       <div className="flex items-center justify-end gap-2.5">
         <Count n={text.length} />
+        <button type="button" onClick={onCancel} className="hit cursor-pointer px-1 text-sm text-muted transition-colors duration-150 hover:text-ink">
+          <Lift by={-0.5}>{en ? "Cancel" : "취소"}</Lift>
+        </button>
         <SubmitButton busy={busy} disabled={!text.trim() || text.length > MAX}>
           {en ? "Post reply" : "답글 올리기"}
         </SubmitButton>
@@ -384,6 +387,12 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
       />
       <div className="flex items-center justify-end gap-2.5">
         <Count n={text.length} />
+        {/* 댓글 칸은 늘 열려 있으니 쓴 글이 있을 때만 지우기로 보인다 */}
+        {text && (
+          <button type="button" onClick={() => setText("")} className="hit cursor-pointer px-1 text-sm text-muted transition-colors duration-150 hover:text-ink">
+            <Lift by={-0.5}>{en ? "Cancel" : "취소"}</Lift>
+          </button>
+        )}
         <SubmitButton busy={busy} disabled={!text.trim() || text.length > MAX}>
           {en ? "Post" : "올리기"}
         </SubmitButton>
@@ -491,6 +500,7 @@ export function Comments({ postId }: { postId: string }) {
                     <div className="mt-1.5">
                       <ReplyBox
                         comment={c}
+                        onCancel={() => setReplyTo(null)}
                         onDone={() => {
                           setReplyTo(null);
                           load();
