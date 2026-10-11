@@ -759,31 +759,23 @@ export const EndCard: React.FC<{
   );
 };
 
-/** +알파 그래픽 장면 — 생성 일러스트 (현재 보류, 레퍼런스 확정 시 재개) */
-export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({
-  file,
-  th,
-}) => (
-  <div
+/**
+ * +알파 그래픽 장면 — 생성 일러스트 (scripts/art.ts). 투명 배경 종이 콜라주라 판·테두리 없이
+ * 테마 바탕 위에 그대로 얹는다 — 판에 넣으면 종이를 오려 붙인 느낌이 사라졌다 (10/11 시안 B안).
+ */
+export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({ file }) => (
+  <Img
+    src={staticFile(file)}
     style={{
       position: "absolute",
       left: "50%",
       top: "46%",
       transform: "translate(-50%, -50%)",
-      width: 860,
-      height: 860,
-      borderRadius: 70,
-      overflow: "hidden",
-      border: `2px solid ${th.line}`,
-      boxShadow: "0 40px 120px rgba(0,0,0,.6)",
-      background: th.panel,
+      width: 820,
+      height: 820,
+      objectFit: "contain",
     }}
-  >
-    <Img
-      src={staticFile(file)}
-      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-    />
-  </div>
+  />
 );
 
 /**
