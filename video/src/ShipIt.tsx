@@ -37,6 +37,7 @@ import {
 import {
   COLD_OPEN_SEC,
   FONT_MONO,
+  FONT_SANS,
   getTheme,
   NARRATION_DELAY,
   SCENE_FADE,
@@ -54,6 +55,8 @@ export type ShipItProps = {
   videoStartSec?: number;
   /** +알파 그래픽 — {scene: public/ 밑 파일명} (art.ts 산출물, 없으면 미사용) */
   artFiles?: Record<string, string> | null;
+  /** 머리글 크기 — 검수·시안용 (now 지금 / a 한 단계 / b 두 단계) */
+  eyebrowSize?: "now" | "a" | "b";
   /** 훅 헤드라인 낱말 움직임 — 검수·시안용. 없으면 기본(HookCard) */
   hookMotion?: "rise" | "fade" | "still";
   /** 레포가 고른 테마 이름 (vibelog.json "theme") — 없으면 terminal */
@@ -396,6 +399,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
   videoStartSec = 0,
   artFiles = null,
   hookMotion,
+  eyebrowSize = "now",
   theme = null,
   segments = null,
   project = null,
@@ -489,6 +493,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
     segs.map((g) => g.kind),
     script.day ?? 0,
   );
+
+  // 머리글 크기 — 데스크톱에서 작게 보이면 글자·아이콘 선이 뭉개졌다 (10/11 시안)
+  const EB = {
+    now: { fs: 30, ls: "0.08em", icon: 40, stroke: 2, gap: 14, sansName: false },
+    a: { fs: 36, ls: "0.04em", icon: 48, stroke: 2.6, gap: 16, sansName: false },
+    b: { fs: 42, ls: "0.02em", icon: 56, stroke: 2.8, gap: 18, sansName: true },
+  }[eyebrowSize];
+  const hangulName = /[가-힣]/.test(project?.name ?? "");
 
   return (
     <AbsoluteFill style={{ background: th.bg }}>
@@ -618,24 +630,24 @@ export const ShipIt: React.FC<ShipItProps> = ({
           justifyContent: "space-between",
           alignItems: "center",
           fontFamily: FONT_MONO,
-          fontSize: 30,
+          fontSize: EB.fs,
           fontWeight: 700,
-          letterSpacing: "0.08em",
+          letterSpacing: EB.ls,
           color: th.muted,
           textTransform: "uppercase",
         }}
       >
         {/* 아이콘 + 서비스 이름 · DAY NN (docs/project-icon-places.html ③). 이름이 길면 줄여서
             "…"로 끝낸다 — 오른쪽 템플릿 배지와 겹치지 않게. 아이콘이 없으면 예전처럼 vibelog */}
-        <span style={{ display: "flex", alignItems: "center", gap: 14, minWidth: 0, flex: 1, marginRight: 24 }}>
+        <span style={{ display: "flex", alignItems: "center", gap: EB.gap, minWidth: 0, flex: 1, marginRight: 24 }}>
           {icon && (
             <svg
               viewBox="0 0 24 24"
-              width={40}
-              height={40}
+              width={EB.icon}
+              height={EB.icon}
               fill="none"
               stroke={th.accent}
-              strokeWidth={2}
+              strokeWidth={EB.stroke}
               strokeLinecap="round"
               strokeLinejoin="round"
               style={{ flex: "none" }}
@@ -654,6 +666,8 @@ export const ShipIt: React.FC<ShipItProps> = ({
               minWidth: 0,
               textTransform: project ? "none" : "uppercase",
               letterSpacing: project ? "0.02em" : undefined,
+              // 한글 이름은 고정폭 글꼴에 한글이 없어 기기마다 다른 글꼴로 바뀐다 — 한글 글꼴로
+              ...((EB.sansName || hangulName) && project ? { fontFamily: FONT_SANS, fontWeight: 800, letterSpacing: 0 } : {}),
             }}
           >
             {project?.name ?? "vibelog"}
