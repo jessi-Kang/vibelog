@@ -1,0 +1,85 @@
+<title>용어 툴팁 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0e14; --panel:#141b24; --panel2:#1b2430; --line:#26313f; --line-strong:#3a4656; --ink:#f3efe6; --ink-soft:#c9cfd8; --muted:#8c98a8; --accent:#5ee1c3; --warn:#ffb454; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "Noto Sans KR", system-ui, sans-serif; margin: 0; word-break: keep-all; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 64px; display: flex; flex-direction: column; gap: 28px; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .tag { font-size: 11px; letter-spacing: .08em; color: var(--muted); }
+  .lead { display: flex; flex-direction: column; gap: 12px; }
+  .lead h1 { margin: 0; font-size: 26px; text-wrap: balance; }
+  .lead p { margin: 0; color: var(--ink-soft); line-height: 1.7; max-width: 72ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .col.pick .tag { color: var(--accent); }
+  .col h2 { margin: 0; font-size: 16px; }
+  .col p.d { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .phone { border: 1px solid var(--line); border-radius: 18px; padding: 22px 18px 26px; max-width: 390px; width: 100%; }
+  .phone h3 { margin: 0 0 8px; font-size: 15px; color: var(--warn); }
+  .body { margin: 0; font-size: 16px; line-height: 1.85; color: var(--ink-soft); }
+  .term { position: relative; cursor: pointer; border: 0; background: none; padding: 0; font: inherit; color: var(--ink); border-bottom: 1px dotted var(--muted); }
+  .term:hover, .term[aria-expanded="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+  .tip { position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%); width: max-content; max-width: min(240px, 80vw); background: var(--panel2); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 11px; font-size: 13px; line-height: 1.5; color: var(--ink-soft); text-align: left; box-shadow: 0 8px 20px rgba(5,8,12,.5); z-index: 2; white-space: normal; }
+  .tip b { display: block; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .08em; color: var(--accent); margin-bottom: 2px; }
+  .tip::after { content: ""; position: absolute; left: 50%; top: 100%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--line-strong); }
+  .tip[hidden] { display: none; }
+  .spacer { height: 64px; }
+  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.8; }
+  .note b { color: var(--ink); } .note ul { margin: 6px 0 0; padding-left: 18px; }
+  code { font-family: "JetBrains Mono", monospace; font-size: .9em; background: var(--panel2); padding: 1px 5px; border-radius: 4px; }
+</style>
+
+<div class="wrap">
+  <div class="lead">
+    <span class="tag mono">VIBELOG · 용어 툴팁</span>
+    <h1>글의 용어 설명을 괄호 대신 말풍선으로</h1>
+    <p>소개 페이지처럼 용어에 점선 밑줄만 긋고, 설명은 누르면 그 낱말 위에 말풍선으로 뜹니다. 문장이 괄호로 끊기지 않아 한 번에 읽힙니다. 아래 문단은 10/10 거짓말 탐정 글의 삽질 포인트 그대로이고, 오른쪽 두 칸은 실제로 눌러 볼 수 있습니다.</p>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <span class="tag mono">지금</span><h2>괄호 안 설명</h2>
+      <p class="d">설명이 문장 가운데를 끊어 놓습니다. 아는 사람에게는 걸림돌, 모르는 사람에게도 문장이 길어집니다.</p>
+      <div class="phone"><h3>삽질 포인트</h3>
+        <p class="body">Vercel(배포를 맡아 주는 서비스)에 올리려는데 빌드(배포 전에 코드를 묶는 단계)에서 멈췄습니다. 문제는 로그인과 수사 기록 저장을 맡은 서버 코드에 있었습니다.</p>
+      </div>
+    </div>
+    <div class="col pick">
+      <span class="tag mono">제안 · 닫힌 상태</span><h2>점선 밑줄만</h2>
+      <p class="d">설명이 있는 용어에만 점선을 긋습니다. 소개 페이지와 같은 표시입니다.</p>
+      <div class="phone"><div class="spacer"></div><h3>삽질 포인트</h3>
+        <p class="body"><button class="term" aria-expanded="false" data-tip="t1">Vercel<span class="tip" id="t1" role="tooltip" hidden><b>VERCEL</b>배포를 맡아 주는 서비스</span></button>에 올리려는데 <button class="term" aria-expanded="false" data-tip="t2">빌드<span class="tip" id="t2" role="tooltip" hidden><b>빌드</b>배포 전에 코드를 묶는 단계</span></button>에서 멈췄습니다. 문제는 로그인과 수사 기록 저장을 맡은 서버 코드에 있었습니다.</p>
+      </div>
+    </div>
+    <div class="col pick">
+      <span class="tag mono">제안 · 누른 상태</span><h2>낱말 위에 말풍선</h2>
+      <p class="d">누르면 그 낱말 바로 위에 뜹니다. 다른 곳을 누르거나 다시 누르면 닫힙니다. 화면 가장자리에서는 안쪽으로 밀어 넣어 잘리지 않게 합니다.</p>
+      <div class="phone"><div class="spacer"></div><h3>삽질 포인트</h3>
+        <p class="body"><button class="term" aria-expanded="false" data-tip="t3">Vercel<span class="tip" id="t3" role="tooltip" hidden><b>VERCEL</b>배포를 맡아 주는 서비스</span></button>에 올리려는데 <button class="term" aria-expanded="true" data-tip="t4">빌드<span class="tip" id="t4" role="tooltip"><b>빌드</b>배포 전에 코드를 묶는 단계</span></button>에서 멈췄습니다. 문제는 로그인과 수사 기록 저장을 맡은 서버 코드에 있었습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note"><b>정해 두는 것</b><ul>
+    <li><b>괄호를 글자로 찾아내지 않습니다.</b> 지난 글을 보면 <code>열었고(로그인 없이도 낼 수 있습니다)</code>, <code>A(접수 서류)</code>처럼 용어 설명이 아닌 괄호가 많아 잘못 잡힙니다. 그래서 글 모델이 용어 설명을 따로 표시해 쓰게 하고(<code>[[빌드|배포 전에 코드를 묶는 단계]]</code>), 화면은 그 표시만 말풍선으로 그립니다.</li>
+    <li>글 목록의 요약, RSS 피드, 링크 미리보기 카드처럼 말풍선을 못 띄우는 자리에서는 지금처럼 괄호로 풀어 씁니다.</li>
+    <li>마우스를 올리는 것만으로는 열지 않습니다 — 소개 페이지와 같이 휴대폰에서 되는 동작(누르기)으로 엽니다. 키보드로는 Tab으로 가서 Enter, Esc로 닫습니다.</li>
+    <li>같은 용어가 한 글에 여러 번 나오면 처음 한 번만 표시합니다.</li>
+    <li>이미 나간 글은 괄호 그대로 둡니다. 다음 글부터 적용합니다.</li>
+  </ul></div>
+</div>
+
+<script>
+  document.querySelectorAll(".term").forEach((b) => {
+    b.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const tip = document.getElementById(b.dataset.tip);
+      const open = b.getAttribute("aria-expanded") === "true";
+      b.closest(".phone").querySelectorAll(".term").forEach((x) => { x.setAttribute("aria-expanded", "false"); document.getElementById(x.dataset.tip).hidden = true; });
+      if (!open) { b.setAttribute("aria-expanded", "true"); tip.hidden = false; }
+    });
+  });
+  document.addEventListener("click", () => document.querySelectorAll(".phone:not(:last-child) .term").forEach((x) => { x.setAttribute("aria-expanded", "false"); document.getElementById(x.dataset.tip).hidden = true; }));
+</script>
