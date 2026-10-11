@@ -10,6 +10,7 @@ import { humanizeLastActive } from "@/lib/format";
 import { projectColor } from "@/lib/project-color";
 import { T, useLang } from "./lang";
 import { projectName } from "@/lib/project-name";
+import { ProjectIcon } from "./project-icon";
 import { Card, MonoMeta, StatusBadge, statusStripe } from "./ui";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -35,17 +36,21 @@ export function ProjectCard({ project }: { project: Project }) {
         aria-label={`${project.name} 상세 보기`}
         className="absolute inset-0 z-0 rounded-lg"
       />
-      <div className="flex items-baseline justify-between gap-3">
-        {/* 서비스 이름을 크게, 레포 이름은 작게 — GitHub에서 찾아갈 이름도 남긴다 (docs/project-intro.html ③) */}
-        <h3 className="flex min-w-0 items-baseline gap-2 text-lg font-bold text-ink">
-          <span className="truncate">
-            {lang === "en" ? (project.nameEn ?? project.name) : project.name}
-          </span>
-          {project.name !== project.slug && (
-            <span className="truncate font-mono text-2xs font-normal text-muted">{project.slug}</span>
-          )}
-        </h3>
-        <StatusBadge status={project.status} />
+      {/* 아이콘 + 서비스 이름 | 상태. 레포 이름은 이름 아래 줄로 — 한 줄에 셋을 두면 좁은
+          화면에서 이름이 잘렸다 (docs/project-icon-places.html ①) */}
+      <div className="flex flex-col gap-0.5">
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-bold text-ink">
+            <ProjectIcon icon={project.icon} size={20} style={{ color: projectColor(project.slug) }} />
+            <span className="truncate">
+              {lang === "en" ? (project.nameEn ?? project.name) : project.name}
+            </span>
+          </h3>
+          <StatusBadge status={project.status} />
+        </div>
+        {project.name !== project.slug && (
+          <span className={`truncate font-mono text-2xs text-muted ${project.icon ? "pl-7" : ""}`}>{project.slug}</span>
+        )}
       </div>
       {project.description && (
         <p className="m-0 text-base leading-[1.55] text-muted [text-wrap:pretty]">

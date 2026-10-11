@@ -17,6 +17,8 @@ import { humanizeLastActive } from "@/lib/format";
 import { useLang } from "./lang";
 import { Card, SectionHeader, StatusBadge, EmptyState } from "./ui";
 import { ProjectCard } from "./vibelog";
+import { ProjectIcon } from "./project-icon";
+import { projectColor } from "@/lib/project-color";
 
 export function HomeProjects({
   projects,
@@ -81,10 +83,11 @@ export function HomeProjects({
             <Link
               key={p.slug}
               href={`/projects/${p.slug}`}
-              className="flex items-baseline gap-3 border-b border-line px-[18px] py-3 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2"
+              className="flex items-center gap-3 border-b border-line px-[18px] py-3 font-mono text-xs text-muted transition-colors duration-150 hover:bg-panel2"
             >
-              <span className="min-w-0 flex-1 truncate font-sans text-base font-bold text-ink-soft">
-                {lang === "en" ? (p.nameEn ?? p.name) : p.name}
+              <span className="flex min-w-0 flex-1 items-center gap-2 font-sans text-base font-bold text-ink-soft">
+                <ProjectIcon icon={p.icon} size={16} className="self-center" style={{ color: projectColor(p.slug) }} />
+                <span className="truncate">{lang === "en" ? (p.nameEn ?? p.name) : p.name}</span>
               </span>
               <StatusBadge status={p.status} />
               <span className="w-[52px] text-right">
