@@ -90,7 +90,9 @@
   .page-ghost { padding: 20px; display: flex; flex-direction: column; gap: 10px; min-height: 340px; }
   .page-ghost i { display: block; height: 10px; border-radius: 4px; background: var(--panel); }
   .site.d .page-ghost { min-height: 300px; }
-  @media (max-width: 640px) { .site.d nav { display: none; } }
+  /* 시안 칸이 좁으면(태블릿에서 칸이 반으로 갈릴 때) 탭을 접는다 — 화면 폭이 아니라 칸 폭으로 본다 */
+  .site.d { container-type: inline-size; }
+  @container (max-width: 700px) { .site.d nav { display: none; } }
 
   /* 메일 — 메일 앱은 대개 밝은 화면이라 밝게. 메일 앱이 지우는 SVG 대신 아이콘은 PNG로 보낸다 */
   .mails { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 24px; align-items: start; }
