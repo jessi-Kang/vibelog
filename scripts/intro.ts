@@ -33,6 +33,8 @@ import { checkSafety, maskSecrets, SafetyBlockError } from "./safety";
 import { generateFigures } from "./figures";
 import { getOwner } from "./collect";
 import { parseSections } from "../lib/content";
+import { pickIcon } from "./icons";
+import type { ProjectIcon } from "../lib/project-icon";
 
 const MODEL = "claude-opus-5-5";
 const MAX_TOKENS = 32000;
@@ -192,6 +194,12 @@ nameFrom에는 찾은 자리를 짧게 적습니다 ("index.html의 title").
 이후의 모든 글 제목 아래에 붙는 한두 문장입니다. "<서비스 이름>은(는) …입니다."로 시작해
 무엇을 하는 것인지 말합니다. 80자 안팎. 그날그날 바뀌는 이야기가 아니라 프로젝트 자체를 말합니다.
 
+## 아이콘 (icons)
+프로젝트 페이지와 홈 카드에 붙는 작은 선 아이콘입니다. Tabler 아이콘 세트(tabler-icons.io)의
+이름으로 이 프로젝트가 **무엇인지** 가장 잘 보여 주는 것을 3–5개, 좋은 순서로 냅니다
+(예: 추리 게임 → ["spy", "search", "fingerprint"], 아파트 퀴즈 → ["building-community", "buildings"]).
+영어 소문자와 하이픈만 씁니다. 기술 스택(react, database)이 아니라 사용하는 사람이 보는 것을 고릅니다.
+
 ## 글
 - title: "…를 만들고 있습니다"처럼 무엇을 만드는지가 드러나는 한 문장.
 - ko: 아래 네 섹션의 마크다운. 전체 400–800자.
@@ -202,7 +210,7 @@ nameFrom에는 찾은 자리를 짧게 적습니다 ("index.html의 title").
 - en: 같은 구조의 영어 — "## What it is", "## Who it's for, and why", "## What's built so far", "## Next up".
 
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
-{"ready": true, "name": "서비스 이름 또는 null", "nameEn": "Service name or null", "nameFrom": "찾은 자리",
+{"ready": true, "name": "서비스 이름 또는 null", "nameEn": "Service name or null", "nameFrom": "찾은 자리", "icons": ["후보", "후보", "후보"],
  "about": "한두 문장", "aboutEn": "one or two sentences", "title": "한국어 제목", "titleEn": "English title",
  "ko": "한국어 마크다운", "en": "English markdown"}`;
 
@@ -217,6 +225,8 @@ export interface Intro {
   name: string | null;
   nameEn: string | null;
   nameFrom: string;
+  /** Tabler 세트에서 찾은 아이콘 — 후보가 하나도 없으면 null */
+  icon: ProjectIcon | null;
   about: string;
   aboutEn: string;
   title: string;
@@ -259,6 +269,7 @@ export function parseIntro(text: string): Intro | { why: string } {
     name: nm(j.name),
     nameEn: nm(j.nameEn),
     nameFrom: typeof j.nameFrom === "string" ? j.nameFrom.slice(0, 80) : "",
+    icon: pickIcon(j.icons),
     about: j.about.trim(),
     aboutEn: j.aboutEn.trim(),
     title: j.title.trim(),
@@ -379,6 +390,7 @@ export function saveIntroMeta(repo: string, it: Intro): void {
   }
   p.about = it.about;
   p.aboutEn = it.aboutEn;
+  if (it.icon) p.icon = it.icon;
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(list, null, 2) + "\n");
 }
 

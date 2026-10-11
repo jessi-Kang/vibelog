@@ -33,6 +33,7 @@ import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
 import { assignColors } from "../lib/project-color";
+import { safeIcon } from "../lib/project-icon";
 import { Octokit } from "@octokit/rest";
 import {
   checkIntro,
@@ -206,6 +207,7 @@ async function updateProjects(
       serviceNameEn?: string;
       about?: string;
       aboutEn?: string;
+      icon?: unknown;
     }
   >();
   try {
@@ -248,6 +250,8 @@ async function updateProjects(
       serviceNameEn: it?.nameEn ?? p?.serviceNameEn,
       about: it?.about ?? p?.about,
       aboutEn: it?.aboutEn ?? p?.aboutEn,
+      // 아이콘도 한 번 정하면 그대로 — 소개 글이 다시 고를 때만 바뀐다
+      icon: safeIcon(it?.icon ?? p?.icon),
     };
   };
   const projects = activities.map((a) => {
@@ -264,6 +268,7 @@ async function updateProjects(
     ...(intro.serviceNameEn ? { serviceNameEn: intro.serviceNameEn } : {}),
     ...(intro.about ? { about: intro.about } : {}),
     ...(intro.aboutEn ? { aboutEn: intro.aboutEn } : {}),
+    ...(intro.icon ? { icon: intro.icon } : {}),
     description: a.description,
     ...(descriptionEn.has(a.repo)
       ? { descriptionEn: descriptionEn.get(a.repo) }
