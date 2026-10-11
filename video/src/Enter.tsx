@@ -5,8 +5,9 @@
  * …
  * 그래서 장면 종류마다 어울리는 효과 몇 가지를 두고 장면마다 하나를 고른다. 바로 앞 장면과 같은
  * 효과는 피한다. 고르는 값은 편 번호(day)와 장면 순번에서 나와, 같은 편을 다시 렌더해도 같다.
- * 타자 커서(caret)만은 예외다 — 맨 앞(커밋 터미널 → 훅)과 맨 끝(마무리)에만 쓴다. 자주 쓰면
- * 지나쳤다 (Jessi: "…").
+ * 훅(인트로 글)과 마무리 카드에는 장면 효과를 덧씌우지 않는다 — 글자가 제 움직임을 따로 정해 두었다
+ * (훅은 제자리에서 옅게→또렷하게, 자막은 그대로). 처음엔 그 둘에 타자 커서가 화면을 쓸며 드러내는 효과를
+ * …
  * 흐림(blur) 필터는 쓰지 않는다. 나가는 쪽은 예전처럼 다 사라진 뒤 다음 장면이 들어온다 —
  * 겹치는 크로스페이드는 레이아웃이 다른 장면끼리 애매하게 겹쳐 보였다 (Jessi).
  */
@@ -16,7 +17,7 @@ import type { ShortsTheme } from "./theme";
 
 export type EnterEffect =
   | "none"
-  …
+  | "fade" // 제자리에서 나타나기만 — 움직임 없음. 훅·마무리처럼 글자가 제 움직임을 가진 장면
   | "push-right" // 오른쪽에서 밀려 들어온다 (remocn short-slide)
   | "push-left"
   | "rise" // 아래에서 올라오며 자리 잡는다
@@ -33,13 +34,13 @@ type SceneKind = "cold" | "hook" | "phone" | "fail" | "end" | "art" | "diagram" 
 /** 장면 종류마다 어울리는 효과들 — 이 안에서 고른다 */
 const POOL: Record<SceneKind, EnterEffect[]> = {
   cold: ["zoom-in"],
-  hook: ["zoom-in", "mask-up", "split"],
+  hook: ["fade"],
   phone: ["push-right", "push-left", "rise", "mask-up", "zoom-out"],
   diagram: ["zoom-in", "iris", "rise", "split", "mask-up"],
   plain: ["zoom-in", "iris", "rise", "zoom-out", "drop"],
   art: ["drop", "iris", "zoom-out", "rise"],
   fail: ["stamp", "split", "zoom-out"],
-  end: ["caret"],
+  end: ["fade"],
 };
 
 /** 편 번호와 장면 순번으로 고르는 정수 — 같은 편은 늘 같은 값 */
@@ -55,8 +56,6 @@ export function enterEffects(kinds: SceneKind[], day: number): EnterEffect[] {
   const out: EnterEffect[] = [];
   kinds.forEach((kind, i) => {
     if (i === 0) return out.push("none");
-    // 커밋 터미널 다음의 훅 — 맨 앞의 타자 커서
-    if (kind === "hook" && kinds[i - 1] === "cold") return out.push("caret");
     const pool = POOL[kind] ?? POOL.plain;
     let e = pool[pickIndex(day, i, pool.length)];
     if (e === out[i - 1] && pool.length > 1) e = pool[(pool.indexOf(e) + 1) % pool.length];
@@ -70,7 +69,7 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 /** 들어오는 데 걸리는 시간(초) */
 export const ENTER_SEC: Record<EnterEffect, number> = {
   none: 0,
-  caret: 0.55,
+  fade: 0.3,
   "push-right": 0.45,
   "push-left": 0.45,
   rise: 0.45,
@@ -98,32 +97,10 @@ export const Enter: React.FC<{
   if (effect === "none" || local >= dur + 0.05) return <AbsoluteFill>{children}</AbsoluteFill>;
   const p = interpolate(local, [0, dur], [0, 1], clamp);
 
-  if (effect === "caret") {
-    const e = interpolate(p, [0, 1], [0, 1], { ...clamp, easing: Easing.bezier(0.65, 0, 0.35, 1) });
-    const x = e * 100;
-    const caretOpacity = interpolate(p, [0, 0.08, 0.92, 1], [0, 1, 1, 0], clamp);
-    return (
-      <AbsoluteFill>
-        <AbsoluteFill style={{ clipPath: `inset(0 ${100 - x}% 0 0)` }}>{children}</AbsoluteFill>
-        <div
-          style={{
-            position: "absolute",
-            left: `${x}%`,
-            top: "29%",
-            height: "42%",
-            width: 6,
-            translate: "-50%",
-            borderRadius: 6,
-            background: th.accent,
-            opacity: caretOpacity,
-          }}
-        />
-      </AbsoluteFill>
-    );
-  }
-
   const ease = interpolate(p, [0, 1], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
   const wrap = (style: React.CSSProperties) => <AbsoluteFill style={style}>{children}</AbsoluteFill>;
+
+  if (effect === "fade") return wrap({ opacity: ease });
 
   if (effect === "push-right" || effect === "push-left") {
     const dir = effect === "push-right" ? 1 : -1;
