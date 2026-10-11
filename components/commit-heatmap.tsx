@@ -89,7 +89,9 @@ export function CommitHeatmap({
 
       {/* 축 눈금과 고른 칸을 한 줄에 — 위에 요약 줄을 따로 두면 바로 옆
           통계 줄과 같은 숫자가 두 번 적힌다. 숫자는 통계 줄이 맡는다. */}
-      <figcaption className="flex items-baseline justify-between gap-3 font-mono text-[9px] leading-none text-muted">
+      {/* 높이를 9px로 못 박는다 — 위 칸과의 간격 6px과 합친 15px만큼 옆 통계 줄이 아래 여백을 둬서
+          통계가 칸 덩어리의 가운데에 오게 한다 (home-stats.tsx의 HEAT_CAPTION) */}
+      <figcaption className="flex h-[9px] items-baseline justify-between gap-3 font-mono text-[9px] leading-none text-muted">
         <span aria-hidden className="flex flex-1">
           {[0, 6, 12, 18].map((h) => (
             <span key={h} className="flex-1">
