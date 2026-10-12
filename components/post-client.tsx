@@ -311,15 +311,6 @@ export function PostClient({ post }: { post: PostData }) {
                   <Body md={s.did} figures={figsOf("did")} en={en} />
                 </div>
               )}
-              {/* 그 밖의 소식 — 이야기 하나에 못 담은 큰 작업 (docs/post-other-work.html A안). 소식마다
-                  굵은 첫 문장이 무엇이 생겼나, 끝의 기울임(_커밋 25개_)이 든 커밋 수다 — 기울임은 이
-                  섹션에서만 작은 회색 글자로 그린다. 한글이 섞여 고정폭 글꼴을 쓰지 않는다 */}
-              {!post.intro && s.news && (
-                <div className="[&_em]:ml-1.5 [&_em]:whitespace-nowrap [&_em]:font-sans [&_em]:text-xs [&_em]:tabular-nums [&_em]:not-italic [&_em]:text-muted [&_strong]:text-ink">
-                  <H>{headings.news}</H>
-                  <Md>{s.news}</Md>
-                </div>
-              )}
               {s.why && (
                 <div>
                   <H>{headings.why}</H>
@@ -357,6 +348,16 @@ export function PostClient({ post }: { post: PostData }) {
                 <div>
                   <H>{headings.next}</H>
                   <Body md={s.next} figures={figsOf("next")} en={en} />
+                </div>
+              )}
+              {/* 그 밖의 소식 — 이야기 하나에 못 담은 큰 작업 (docs/post-other-work.html A안). 본문 이야기(뭘 했나→왜→삽질→다음)가 끝난 뒤, git log 바로 위에 둔다 —
+                  "왜" 위에 두었더니 이야기가 끊겼다 (Jessi). 소식마다
+                  굵은 첫 문장이 무엇이 생겼나, 끝의 기울임(_커밋 25개_)이 든 커밋 수다 — 기울임은 이
+                  섹션에서만 작은 회색 글자로 그린다. 한글이 섞여 고정폭 글꼴을 쓰지 않는다 */}
+              {!post.intro && s.news && (
+                <div className="[&_em]:ml-1.5 [&_em]:whitespace-nowrap [&_em]:font-sans [&_em]:text-xs [&_em]:tabular-nums [&_em]:not-italic [&_em]:text-muted [&_strong]:text-ink">
+                  <H>{headings.news}</H>
+                  <Md>{s.news}</Md>
                 </div>
               )}
             </section>
