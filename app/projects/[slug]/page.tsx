@@ -211,7 +211,7 @@ export default async function ProjectPage({ params }: Props) {
                   ? [{ text: <T ko="삽질" en="rabbit hole" />, tone: "warn" as const }]
                   : []),
                 ...(d.short
-                  ? [{ text: <T ko={<ShortMark label="쇼츠 있음" />} en={<ShortMark label="has short" />} /> }]
+                  ? [{ text: <T ko={<ShortMark label="쇼츠 있음" inRow />} en={<ShortMark label="has short" inRow />} /> }]
                   : []),
               ]}
             />

@@ -127,7 +127,7 @@ export function FeedClient({
                   ? [{ text: en ? "rabbit hole" : "삽질", tone: "warn" as const }]
                   : []),
                 ...(d.hasShort
-                  ? [{ text: <ShortMark label={en ? "has short" : "쇼츠 있음"} /> }]
+                  ? [{ text: <ShortMark label={en ? "has short" : "쇼츠 있음"} inRow /> }]
                   : []),
               ]}
             />

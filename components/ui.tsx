@@ -144,9 +144,11 @@ export function StatusBadge({ status }: { status: string }) {
  * 쇼츠가 없는 글에는 아무것도 붙이지 않는다. SVG의 <title>은 React 19 SSR에서 비므로
  * 이름은 aria-label, 마우스를 올렸을 때 뜨는 설명은 바깥 span의 title로 남긴다.
  */
-export function ShortMark({ label, size = 12 }: { label: string; size?: number }) {
+export function ShortMark({ label, size = 12, inRow = false }: { label: string; size?: number; inRow?: boolean }) {
   return (
-    <span className="inline-flex text-accent" title={label}>
+    // inRow: 글 목록의 메타 줄(MonoMeta)은 줄 상자 가운데에 맞추는데, 옆 글자의 잉크가 줄 상자 가운데보다
+    // 아래에 앉아 아이콘이 1.9px 떠 보였다 (4배 화면에서 잰 값, Jessi). 그만큼 내린다
+    <span className={`inline-flex text-accent${inRow ? " translate-y-[2px]" : ""}`} title={label}>
       <svg
         role="img"
         aria-label={label}
