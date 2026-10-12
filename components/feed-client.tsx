@@ -10,7 +10,7 @@
 import { useProjectFilter } from "@/lib/use-project-filter";
 import { useLang } from "./lang";
 import { ProjectFilter } from "./project-filter";
-import { EmptyState, SectionHeader } from "./ui";
+import { EmptyState, SectionHeader, ShortMark } from "./ui";
 import { DevlogTimelineEntry } from "./vibelog";
 import { postPath } from "@/lib/post-id";
 
@@ -127,7 +127,7 @@ export function FeedClient({
                   ? [{ text: en ? "rabbit hole" : "삽질", tone: "warn" as const }]
                   : []),
                 ...(d.hasShort
-                  ? [{ text: en ? "short ▶" : "쇼츠 ▶", tone: "accent" as const }]
+                  ? [{ text: <ShortMark label={en ? "has short" : "쇼츠 있음"} /> }]
                   : []),
               ]}
             />

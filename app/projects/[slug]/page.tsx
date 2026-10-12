@@ -5,7 +5,7 @@ import { projectColor } from "@/lib/project-color";
 import { ProjectIcon } from "@/components/project-icon";
 import { PageContainer } from "@/components/page-container";
 import { T } from "@/components/lang";
-import { Card, EmptyState, SectionHeader, StatusBadge } from "@/components/ui";
+import { Card, EmptyState, SectionHeader, ShortMark, StatusBadge } from "@/components/ui";
 import { DevlogTimelineEntry } from "@/components/vibelog";
 import { LiveLastActive, LiveRepoStat } from "@/components/live-stats";
 import {
@@ -211,7 +211,7 @@ export default async function ProjectPage({ params }: Props) {
                   ? [{ text: <T ko="삽질" en="rabbit hole" />, tone: "warn" as const }]
                   : []),
                 ...(d.short
-                  ? [{ text: <T ko="쇼츠 ▶" en="short ▶" />, tone: "accent" as const }]
+                  ? [{ text: <T ko={<ShortMark label="쇼츠 있음" />} en={<ShortMark label="has short" />} /> }]
                   : []),
               ]}
             />
