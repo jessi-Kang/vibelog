@@ -197,15 +197,16 @@ export async function getReadme(
   }
 }
 
-async function getCommits(
+export async function getCommits(
   octokit: Octokit,
   owner: string,
   repo: string,
   since: string,
+  until?: string,
 ): Promise<RepoCommit[]> {
   const data: Awaited<ReturnType<typeof octokit.rest.repos.listCommits>>["data"] = [];
   for (let page = 1; page <= COMMIT_PAGES; page++) {
-    const { data: part } = await octokit.rest.repos.listCommits({ owner, repo, since, per_page: 100, page });
+    const { data: part } = await octokit.rest.repos.listCommits({ owner, repo, since, ...(until ? { until } : {}), per_page: 100, page });
     data.push(...part);
     if (part.length < 100) break;
   }
@@ -272,7 +273,7 @@ export async function getCommitTimes(
   return out;
 }
 
-async function getMergedPRs(
+export async function getMergedPRs(
   octokit: Octokit,
   owner: string,
   repo: string,
@@ -515,6 +516,24 @@ export async function lookupHomepage(repo: string): Promise<string | null> {
   return pickHomepage(octokit, owner, repo, data.homepage, await getVercelProjectMap());
 }
 
+/** 글 재료가 되는 커밋인가 — 밤 수집과 지난 글 다시 쓰기(run.ts --rewrite)가 같이 쓴다 */
+export function isMaterialCommit(c: RepoCommit): boolean {
+  return (
+    // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
+    // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
+    !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦|쇼츠 썸네일 재추출|새 프로젝트 인식|지난 글 다시 씀)/.test(c.message) &&
+    // 머지 커밋은 git 자동 메시지라 재료가 아니다 — 글 원료에 브랜치
+    // 주소가 그대로 노출되기도 한다 (Jessi 지적)
+    !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message) &&
+    // 레포를 만들 때 GitHub가 찍는 첫 커밋은 일이 아니다 — agency·portfolio-tmp가
+    // "Initial commit" 하나로 글·쇼츠가 됐다 (9/24). 커밋 규칙(타입: 요약 + 왜)에
+    // 맞지 않는 유일하게 확실한 꼴이라 이것만 거른다
+    !/^Initial commit$/i.test(c.message.trim()) &&
+    // 봇 커밋은 글 재료도, 활동도 아니다 (isBotCommit 주석)
+    !isBotCommit(c)
+  );
+}
+
 export async function collect(state: State, date?: string): Promise<RepoActivity[]> {
   const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
   const octokit = new Octokit({ auth });
@@ -601,21 +620,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
 
     // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
     // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
-    const commits = allCommits.filter(
-      (c) =>
-        !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦|쇼츠 썸네일 재추출|새 프로젝트 인식)/.test(
-          c.message,
-        ) &&
-        // 머지 커밋은 git 자동 메시지라 재료가 아니다 — 글 원료에 브랜치
-        // 주소가 그대로 노출되기도 한다 (Jessi 지적)
-        !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message) &&
-        // 레포를 만들 때 GitHub가 찍는 첫 커밋은 일이 아니다 — agency·portfolio-tmp가
-        // "Initial commit" 하나로 글·쇼츠가 됐다 (9/24). 커밋 규칙(타입: 요약 + 왜)에
-        // 맞지 않는 유일하게 확실한 꼴이라 이것만 거른다
-        !/^Initial commit$/i.test(c.message.trim()) &&
-        // 봇 커밋은 글 재료도, 활동도 아니다 (isBotCommit 주석)
-        !isBotCommit(c),
-    );
+    const commits = allCommits.filter(isMaterialCommit);
     const botCommits = allCommits.length - commits.length;
 
     // 활동 판정은 체크포인트 sha "이후" 커밋만 센다 (목록은 최신순).
