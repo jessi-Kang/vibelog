@@ -1,44 +1,13 @@
 {
-  "at": "2026-10-12T14:10:29.795Z",
+  "at": "2026-10-12T16:43:12.016Z",
   "lines": [
     {
-      "text": "npx tsx scripts/run.ts",
+      "text": "npx tsx scripts/shorts.ts vibelog/2026-10-11 --new-script",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 1 active"
-    },
-    {
-      "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · apart only 4 of 4 commits have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · agency 판단할 코드가 아직 없어 소개 글을 미룹니다",
-      "textEn": "skip     · agency not enough code yet to tell what it is — intro post waits"
-    },
-    {
-      "text": "safety   · vibelog 재료 47개 통과 · Jev 토큰 37,038",
-      "textEn": "safety   · vibelog 47 inputs passed · Jev tokens 37,038"
-    },
-    {
-      "text": "generate · vibelog/2026-10-12.md (ko, en) · 토큰 in 47,953 · out 4,895 · cache 4,763",
-      "textEn": "generate · vibelog/2026-10-12.md (ko, en) · tokens in 47,953 · out 4,895 · cache 4,763"
-    },
-    {
-      "text": "review   · vibelog/2026-10-12 막힌 문장 1개 → 다시 씀 → 남은 것 4개 · 토큰 in 3,058 · out 1,363",
-      "textEn": "review   · vibelog/2026-10-12 1 unclear → rewritten → 4 left · tokens in 3,058 · out 1,363"
-    },
-    {
-      "text": "figures  · vibelog/2026-10-12 1장 · 토큰 in 1,317 · out 3,244",
-      "textEn": "figures  · vibelog/2026-10-12 1 figure · tokens in 1,317 · out 3,244"
-    },
-    {
-      "text": "shorts   · vibelog/2026-10-12 (ko, en) · 대본 토큰 in 9,978 · out 9,077 · cache 8,584",
-      "textEn": "shorts   · vibelog/2026-10-12 (ko, en) · script tokens in 9,978 · out 9,077 · cache 8,584"
-    },
-    {
-      "text": "listen   · vibelog/2026-10-12 막힌 문장 2개 → 다시 씀 → 남은 것 1개 · 토큰 in 2,401 · out 1,154",
-      "textEn": "listen   · vibelog/2026-10-12 2 unclear → rewritten → 1 left · tokens in 2,401 · out 1,154"
+      "text": "shorts   · vibelog/2026-10-11 다시 만듦 (ko, en) — 대본 새로 씀",
+      "textEn": "shorts   · vibelog/2026-10-11 remade (ko, en) — new script"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

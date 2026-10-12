@@ -1,6 +1,6 @@
 {
-  "template": "fail",
-  "music": "playful",
+  "template": "before-after",
+  "music": "calm",
   "theme": "terminal",
   "repo": "vibelog",
   "date": "2026-10-11",
@@ -8,266 +8,337 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "파란색만 원했는데 노란색이 끼었습니다",
-      "en": "I wanted only blue, but yellow crept in",
+      "ko": "첫 글이 프로젝트를 소개하지 않았습니다.",
+      "en": "The first post never said what the project was.",
       "keywords": [
-        "노란색이"
+        "소개하지 않았습니다."
       ],
       "keywordsEn": [
-        "yellow"
+        "never said"
       ],
       "koLines": [
-        "파란색만 원했는데",
-        "노란색이",
-        "끼었습니다"
+        "첫 글이",
+        "프로젝트를",
+        "소개하지 않았습니다."
       ],
       "enLines": [
-        "I wanted only blue,",
-        "but yellow",
-        "crept in"
+        "The first post",
+        "never said what",
+        "the project was."
       ]
     },
     {
-      "scene": "hook",
-      "ko": "쇼츠에 넣으려던 AI 그림이었습니다",
-      "en": "It was an AI picture for my shorts",
+      "scene": "build",
+      "ko": "이제 새 프로젝트는 소개 글로 시작합니다.",
+      "en": "Now new projects start with an introduction post.",
       "keywords": [
-        "AI"
+        "소개 글로"
       ],
       "keywordsEn": [
-        "AI"
+        "an introduction post."
       ],
       "koLines": [
-        "쇼츠에 넣으려던",
-        "AI 그림이었습니다"
+        "이제 새 프로젝트는",
+        "소개 글로 시작합니다."
       ],
       "enLines": [
-        "It was an AI picture",
-        "for my shorts"
-      ]
+        "Now new projects start",
+        "with an introduction post."
+      ],
+      "art": "a small open book whose first page swings open like a front door",
+      "icon": {
+        "name": "tabler:book",
+        "paths": [
+          {
+            "d": "M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13m9-13v13m9-13v13"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "AI가 레포, 그러니까 저장소를 읽고 씁니다.",
+      "en": "The AI reads the repo, the project's storage, and writes it.",
+      "keywords": [
+        "저장소를 읽고"
+      ],
+      "keywordsEn": [
+        "reads the repo,"
+      ],
+      "koLines": [
+        "AI가 레포, 그러니까",
+        "저장소를 읽고 씁니다."
+      ],
+      "enLines": [
+        "The AI reads the repo,",
+        "the project's storage, and writes it."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "레포를 읽고",
+          "소개 글을 쓰고",
+          "첫 글로 올린다"
+        ],
+        "labelsEn": [
+          "Read the repo",
+          "Write the intro",
+          "Post it first"
+        ],
+        "icons": [
+          {
+            "name": "tabler:folder-code",
+            "paths": [
+              {
+                "d": "M11 19H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4l3 3h7a2 2 0 0 1 2 2v4m-1 8l2-2l-2-2m-3 0l-2 2l2 2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:pencil",
+            "paths": [
+              {
+                "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:upload",
+            "paths": [
+              {
+                "d": "M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5l5 5m-5-5v12"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 소개 글부터 읽으면 됩니다.",
+      "en": "Now the introduction comes first.",
+      "keywords": [
+        "소개 글부터"
+      ],
+      "keywordsEn": [
+        "introduction"
+      ],
+      "koLines": [
+        "이제 소개 글부터",
+        "읽으면 됩니다."
+      ],
+      "screen": "/projects/Anchor",
+      "find": "소개 글 읽기 →",
+      "findEn": "Read the introduction",
+      "shot": "focus"
     },
     {
       "scene": "fail",
-      "ko": "AI에게 다른 색은 쓰지 말라고 안 했습니다.",
-      "en": "I never told the AI not to use other colors.",
+      "ko": "써 본 소개 글 5편이 너무 자세했습니다.",
+      "en": "The 5 intro posts I tried were too detailed.",
       "keywords": [
-        "다른 색은"
+        "너무 자세했습니다."
       ],
       "keywordsEn": [
-        "other colors."
+        "too detailed."
       ],
       "koLines": [
-        "AI에게 다른 색은",
-        "쓰지 말라고 안 했습니다."
+        "써 본 소개 글 5편이",
+        "너무 자세했습니다."
       ],
       "enLines": [
-        "I never told the AI",
-        "not to use other colors."
+        "The 5 intro posts I tried",
+        "were too detailed."
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "알맞은 자세함",
+          "파일까지",
+          "계획만"
+        ],
+        "labelsEn": [
+          "Right amount of detail",
+          "File names",
+          "Just the plan"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "거짓말 탐정은 정답을 맞히는 서비스입니다.",
+      "en": "Lie Detective is a service where you guess the answers.",
+      "keywords": [
+        "정답을 맞히는"
+      ],
+      "keywordsEn": [
+        "guess the answers."
+      ],
+      "koLines": [
+        "거짓말 탐정은",
+        "정답을 맞히는 서비스입니다."
+      ],
+      "enLines": [
+        "Lie Detective is a service",
+        "where you guess the answers."
       ],
       "diagram": {
         "kind": "fork",
         "labels": [
-          "파란 테마 그림",
-          "노란 물건",
-          "파란색 하나",
-          "금지 없이",
-          "금지 추가"
+          "정답",
+          "사용자가 맞힌다",
+          "서비스가 숨긴다",
+          "사용자",
+          "서비스"
         ],
         "labelsEn": [
-          "Blue-theme picture",
-          "Yellow object",
-          "Blue only",
-          "No ban",
-          "Ban added"
+          "The answers",
+          "Users guess them",
+          "The service hides them",
+          "Users",
+          "Service"
         ]
       }
     },
     {
-      "scene": "build",
-      "ko": "그 말을 더하니 한 가지 색으로 그려졌습니다.",
-      "en": "Once I added that, it stuck to one color.",
+      "scene": "fail",
+      "ko": "정답을 정하는 규칙이 든 파일까지 적었습니다.",
+      "en": "The post even named the file holding the answer rules.",
       "keywords": [
-        "한 가지 색으로"
+        "파일까지"
       ],
       "keywordsEn": [
-        "one color."
+        "named the file"
       ],
       "koLines": [
-        "그 말을 더하니",
-        "한 가지 색으로 그려졌습니다."
+        "정답을 정하는 규칙이 든",
+        "파일까지 적었습니다."
       ],
       "enLines": [
-        "Once I added that,",
-        "it stuck to one color."
+        "The post even named the file",
+        "holding the answer rules."
       ],
-      "art": "a single paintbrush resting beside one lone paint pot",
-      "icon": {
-        "name": "tabler:brush",
-        "paths": [
-          {
-            "d": "M3 21v-4a4 4 0 1 1 4 4z"
-          },
-          {
-            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
-          },
-          {
-            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
-          }
-        ]
-      }
-    },
-    {
-      "scene": "build",
-      "ko": "외곽선 없는 둥근 그림체로 정했습니다.",
-      "en": "I chose a rounded style with no outlines.",
-      "keywords": [
-        "외곽선 없는"
-      ],
-      "keywordsEn": [
-        "rounded",
-        "no outlines."
-      ],
-      "koLines": [
-        "외곽선 없는 둥근 그림체로",
-        "정했습니다."
-      ],
-      "enLines": [
-        "I chose a rounded style",
-        "with no outlines."
-      ],
-      "art": "a simple tree made only of plain round shapes with no outlines",
-      "icon": {
-        "name": "tabler:circle",
-        "paths": [
-          {
-            "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"
-          }
-        ]
-      }
-    },
-    {
-      "scene": "demo",
-      "ko": "쇼츠는 장면이 빨리 지나갑니다.",
-      "en": "Scenes in a short go by fast.",
-      "keywords": [
-        "빨리"
-      ],
-      "keywordsEn": [
-        "fast."
-      ],
-      "koLines": [
-        "쇼츠는 장면이",
-        "빨리 지나갑니다."
-      ],
-      "screen": "/shorts",
-      "shot": "whole"
-    },
-    {
-      "scene": "demo",
-      "ko": "작게 스쳐도 알아볼 수 있어야 합니다.",
-      "en": "Even a small flash has to be recognizable.",
-      "keywords": [
-        "알아볼 수"
-      ],
-      "keywordsEn": [
-        "recognizable."
-      ],
-      "koLines": [
-        "작게 스쳐도",
-        "알아볼 수 있어야 합니다."
-      ],
-      "enLines": [
-        "Even a small flash",
-        "has to be recognizable."
-      ],
-      "art": "a tiny round bird shape darting past, still easy to recognize",
-      "icon": {
-        "name": "tabler:eye",
-        "paths": [
-          {
-            "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"
-          },
-          {
-            "d": "M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"
-          }
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "소개 글에 쓴 것",
+          "숨겨야 할 정답",
+          "파일 위치"
+        ],
+        "labelsEn": [
+          "What the post said",
+          "Answers to hide",
+          "File location"
         ]
       }
     },
     {
       "scene": "next",
-      "ko": "쇼츠에는 색 테마가 5가지 있습니다.",
-      "en": "Shorts come in 5 color themes.",
+      "ko": "프로젝트가 막 들어온 날의 레포만 봅니다.",
+      "en": "Now the AI only looks at the repo from the day the project arrived.",
       "keywords": [
-        "5가지"
+        "막 들어온 날의"
       ],
       "keywordsEn": [
-        "5 color themes."
+        "the day the project arrived."
       ],
       "koLines": [
-        "쇼츠에는 색 테마가",
-        "5가지 있습니다."
+        "프로젝트가 막 들어온",
+        "날의 레포만 봅니다."
       ],
       "enLines": [
-        "Shorts come in",
-        "5 color themes."
+        "Now the AI only looks at the repo",
+        "from the day the project arrived."
       ],
-      "stat": "5가지",
-      "statEn": "5 themes",
-      "icon": {
-        "name": "tabler:color-swatch",
-        "paths": [
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "지금 코드",
+          "정답까지 적음",
+          "처음 들어온 레포",
+          "만들 계획만"
+        ],
+        "labelsEn": [
+          "Today's code",
+          "Answers leaked",
+          "Repo on day one",
+          "Just the plan"
+        ],
+        "icons": [
           {
-            "d": "M19 3h-4a2 2 0 0 0-2 2v12a4 4 0 0 0 8 0V5a2 2 0 0 0-2-2"
+            "name": "tabler:code",
+            "paths": [
+              {
+                "d": "m7 8l-4 4l4 4m10-8l4 4l-4 4M14 4l-4 16"
+              }
+            ]
           },
+          null,
           {
-            "d": "m13 7.35l-2-2a2 2 0 0 0-2.828 0L5.344 8.178a2 2 0 0 0 0 2.828l9 9"
+            "name": "tabler:folder",
+            "paths": [
+              {
+                "d": "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2"
+              }
+            ]
           },
-          {
-            "d": "M7.3 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h12m0-4v.01"
-          }
+          null
         ]
       }
     },
     {
       "scene": "next",
-      "ko": "테마마다 그려 본 뒤 장면마다 그림을 넣겠습니다.",
-      "en": "I'll test each theme, then add a picture to every scene.",
+      "ko": "내린 소개 글 5편도 그렇게 다시 씁니다.",
+      "en": "I'll rewrite the 5 posts I took down that way.",
       "keywords": [
-        "장면마다"
+        "다시 씁니다."
       ],
       "keywordsEn": [
-        "every scene."
+        "rewrite"
       ],
       "koLines": [
-        "테마마다 그려 본 뒤",
-        "장면마다 그림을 넣겠습니다."
+        "내린 소개 글 5편도",
+        "그렇게 다시 씁니다."
       ],
       "enLines": [
-        "I'll test each theme, then",
-        "add a picture to every scene."
+        "I'll rewrite the 5 posts",
+        "I took down that way."
       ],
-      "screen": "/shorts",
-      "find": "쇼츠 27",
-      "findEn": "Shorts 27",
-      "shot": "focus"
+      "art": "a hand rewriting a page that was crumpled and then smoothed flat",
+      "stat": "5편",
+      "statEn": "5 posts",
+      "icon": {
+        "name": "tabler:file-pencil",
+        "paths": [
+          {
+            "d": "M14 3v4a1 1 0 0 0 1 1h4"
+          },
+          {
+            "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"
+          },
+          {
+            "d": "m10 18l5-5a1.414 1.414 0 0 0-2-2l-5 5v2z"
+          }
+        ]
+      }
     },
     {
       "scene": "end",
-      "ko": "하지 말라는 한 줄이 색을 지켰습니다.",
-      "en": "A single 'don't' line fixed the colors.",
+      "ko": "코드에 보여도 정답은 쓰지 않습니다.",
+      "en": "Answers stay out, even if the code shows them.",
       "keywords": [
-        "한 줄이"
+        "정답은"
       ],
       "keywordsEn": [
-        "single 'don't' line"
+        "stay out,"
       ],
       "koLines": [
-        "하지 말라는 한 줄이",
-        "색을 지켰습니다."
+        "코드에 보여도",
+        "정답은 쓰지 않습니다."
       ],
       "enLines": [
-        "A single 'don't' line",
-        "fixed the colors."
+        "Answers stay out,",
+        "even if the code shows them."
       ]
     }
   ],
@@ -276,12 +347,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "다른 색이 끼어들었다",
-    "titleEn": "Other colors crept in",
-    "before": "강조색만 적은 지시문",
-    "after": "다른 색은 쓰지 말라고 적음",
-    "beforeEn": "Instructions named only the accent color",
-    "afterEn": "Added: don't use other colors"
+    "title": "소개 글이 정답을 흘렸다",
+    "titleEn": "The intro leaked the answers",
+    "before": "정답 규칙이 든 파일까지 적었다",
+    "after": "등록할 때의 레포로 계획만 쓴다",
+    "beforeEn": "It named the file holding the answer rules",
+    "afterEn": "It writes only the plan, from the repo at signup"
   },
   "commits": [
     [
@@ -331,6 +402,446 @@
     [
       "b9ab522",
       "feat: 이미지 생성에 Gemini와 OpenAI를 둘 다 최신 모델로 쓴다"
+    ],
+    [
+      "10a41b9",
+      "fix: 영어 화면의 프로젝트 이름을 영어로 옮긴다"
+    ],
+    [
+      "9c04cbb",
+      "fix: 영어 화면의 지난 실행이 한국어로 나오던 것을 고친다"
+    ],
+    [
+      "a87dc9a",
+      "design: 굵기를 덜어 내고 숫자를 글자 기준선에 맞춘다"
+    ],
+    [
+      "1d99419",
+      "design: 잔디 아래 시각 글자를 한글 글꼴로 바꾼다"
+    ],
+    [
+      "ab393a3",
+      "docs: 오늘 바뀐 소개 글·댓글·홈·쇼츠 규칙을 문서에 맞춘다"
+    ],
+    [
+      "e4eb389",
+      "design: 쇼츠 전후 그림의 \"전\" 줄을 아주 조금만 흐린다"
+    ],
+    [
+      "e7f8dda",
+      "design: 쇼츠 전후 그림의 \"전\" 박스를 중간 회색 테두리로 또렷하게"
+    ],
+    [
+      "bfa8039",
+      "fix: 쇼츠 전후 그림에서 물러나는 박스가 사라지지 않게 글자만 흐린다"
+    ],
+    [
+      "84a40ff",
+      "design: 홈 통계를 눈으로 보이는 가운데로 조금 내린다"
+    ],
+    [
+      "44da131",
+      "design: 홈 프로젝트 목록 아래의 등록 방법 안내 문구를 뺀다"
+    ],
+    [
+      "7619494",
+      "design: 홈 프로젝트 카드 위의 상태색 띠를 빼고 상태를 아래 줄로 내린다"
+    ],
+    [
+      "5ab132c",
+      "fix: 홈 통계를 잔디 칸의 세로 가운데에 맞춘다"
+    ],
+    [
+      "5be6af8",
+      "design: 데스크톱 홈 통계 숫자를 34px로 키우고 이름을 한글 글꼴로"
+    ],
+    [
+      "7091814",
+      "docs: 데스크톱 홈 통계 글씨 크기 시안을 둔다"
+    ],
+    [
+      "ed24b93",
+      "design: 아이콘을 고를 재료가 없는 프로젝트에 코드 꺾쇠 아이콘을 그린다"
+    ],
+    [
+      "1b6e291",
+      "docs: 기획서가 없는 프로젝트에 붙일 기본 아이콘 시안을 둔다"
+    ],
+    [
+      "0f5b5bd",
+      "feat: 기획서가 바뀐 밤에 서비스 이름을 기획서에 맞춰 고친다"
+    ],
+    [
+      "6b084a2",
+      "fix: 소개 글이 기획서를 코드보다 먼저 따르게 한다"
+    ],
+    [
+      "cddf3eb",
+      "docs: 쇼츠 목소리에 v4 오디오 태그를 쓰지 않기로 한 것을 남긴다"
+    ],
+    [
+      "08546ee",
+      "chore: 작은 모델을 Haiku 5.5로 올리고 못 찾으면 4.5로 넘어간다"
+    ],
+    [
+      "c5e1bea",
+      "chore: 답글 초안 모델을 Opus에서 Sonnet으로 내린다"
+    ],
+    [
+      "d9ea2b2",
+      "fix: 실패 안내의 느낌표 아이콘을 글자 가운데에 맞춘다"
+    ],
+    [
+      "d3d8032",
+      "feat: 쇼츠 목소리를 Eleven v4로 만들고 실패하면 v2로 다시 만든다"
+    ],
+    [
+      "c9046d8",
+      "design: 댓글·답글·AI 초안 실패 안내를 칸 안의 주황 한 줄로 바꾼다"
+    ],
+    [
+      "f7dfe6a",
+      "docs: AI 초안 실패 표시 시안 세 가지를 둔다"
+    ],
+    [
+      "fbeb15e",
+      "feat: 답글 칸과 댓글 칸에 취소를 둔다"
+    ],
+    [
+      "c55cdda",
+      "fix: 답글 칸과 알림으로 들어온 댓글 표시를 차분하게 바꾼다"
+    ],
+    [
+      "052a429",
+      "fix: 용어 말풍선을 글자 바로 위에 붙인다"
+    ],
+    [
+      "a5e164b",
+      "feat: 새 댓글 메일을 받을 주소를 따로 정할 수 있게 한다"
+    ],
+    [
+      "7fe7c83",
+      "fix: 댓글 쓰는 칸의 겹 테두리를 없애고 올리기 글자를 가운데로"
+    ],
+    [
+      "0109194",
+      "chore: DB 안내 메시지를 함수 로그에 남기지 않는다"
+    ],
+    [
+      "ce7dc1f",
+      "fix: Jessi도 글 아래에 댓글을 쓸 수 있게 한다"
+    ],
+    [
+      "855f54a",
+      "design: 메일 속 댓글의 줄 간격을 1.75에서 1.6으로 좁힌다"
+    ],
+    [
+      "f489fce",
+      "feat: 글 아래 댓글과 머리글 알림 종을 붙인다"
+    ],
+    [
+      "14fb0b7",
+      "feat: 데브로그 댓글의 서버 쪽 — Google 로그인, 댓글 저장, 알림, 메일, AI 초안"
+    ],
+    [
+      "ce840e1",
+      "design: 작은 표시와 버튼의 한글을 눈으로 보이는 가운데에 맞춘다"
+    ],
+    [
+      "929de39",
+      "design: 댓글 시안의 가짜 머리글을 태블릿 폭에서도 넘치지 않게 한다"
+    ],
+    [
+      "f4a140b",
+      "design: 메일 속 댓글과 답글을 판 위에 얹는다"
+    ],
+    [
+      "c981d0f",
+      "design: 메일의 안내 문구를 빼고 여백을 한 값으로 맞춘다"
+    ],
+    [
+      "21d3222",
+      "design: 로그인 글씨를 올려 맞추고 알림 뱃지 규칙을 정한다"
+    ],
+    [
+      "8de3fed",
+      "design: 로그인 글씨·올리기 버튼·알림 종의 정렬과 크기를 맞춘다"
+    ],
+    [
+      "76f1b33",
+      "design: 알림 종을 사이트 머리글에 두고 메일과 로그인 칸을 다듬는다"
+    ],
+    [
+      "63d81f3",
+      "design: ⋯ 버튼을 없애고 이름을 누르면 메뉴가 열리게 한다"
+    ],
+    [
+      "488b8eb",
+      "design: Jessi의 답글 칸에서 이름 줄을 뺀다"
+    ],
+    [
+      "bbe98dc",
+      "design: 댓글 쓴 사람에게 답글 메일을 보내는 시안을 더한다"
+    ],
+    [
+      "5d46785",
+      "design: 댓글 시안에 ⋯ 메뉴, 알림 종, 새 댓글 메일을 더한다"
+    ],
+    [
+      "143b3e7",
+      "design: 댓글 쓰는 칸의 버튼을 줄이고 빈 여백을 걷어 낸다"
+    ],
+    [
+      "471c6ac",
+      "design: 댓글 시안 4안 — AI 버튼을 위로 올리고 글자 수를 버튼과 맞춘다"
+    ],
+    [
+      "9dbb545",
+      "docs: 환경변수 안내에 비밀값인지 설정값인지 적는 규칙을 더한다"
+    ],
+    [
+      "36272a2",
+      "design: 댓글 시안 3안 — 프로필 사진 대신 vibelog 아이콘으로 사람을 나타낸다"
+    ],
+    [
+      "b66a180",
+      "design: 댓글 시안 2안 — 로그인 전엔 이름을 가리고 답글을 안으로 밀지 않는다"
+    ],
+    [
+      "55afb12",
+      "docs: 데브로그 댓글과 AI 도움 답글 시안을 만든다"
+    ],
+    [
+      "c98e5a9",
+      "chore: 지난 글 17편의 용어에 말풍선 설명을 붙인다"
+    ],
+    [
+      "8e98764",
+      "feat: 글의 용어 설명을 괄호 대신 누르면 뜨는 말풍선으로 보여 준다"
+    ],
+    [
+      "226bf68",
+      "fix: 프로젝트 페이지 숫자를 못 읽은 이유를 함수 로그에 남긴다"
+    ],
+    [
+      "6484c39",
+      "feat: 기획서만 있는 레포도 소개 글과 아이콘을 쓴다"
+    ],
+    [
+      "b24026d",
+      "fix: 비공개 레포의 프로젝트 페이지 숫자를 서버가 토큰으로 읽는다"
+    ],
+    [
+      "73d1501",
+      "docs: 아이콘 한 세트 규칙과 겹친 원 라벨 규칙을 CLAUDE.md에 적는다"
+    ],
+    [
+      "9bc8137",
+      "fix: 겹친 원 그림의 겹친 값이 길면 선을 끌어내 바깥에 쓴다"
+    ],
+    [
+      "f7e7acb",
+      "feat: 쇼츠 본문을 Tabler 아이콘으로 그린다"
+    ],
+    [
+      "74b61e0",
+      "docs: 글의 용어 설명을 말풍선으로 띄우는 시안을 만든다"
+    ],
+    [
+      "e28e720",
+      "design: 홈의 레포 이름과 쉬는 프로젝트 펼치기를 빼고 글의 프로젝트 설명에 바탕을 깐다"
+    ],
+    [
+      "f722075",
+      "fix: 나중에 넣는 소개 글이 판단할 코드가 생긴 첫 시점까지 날짜를 넘겨 보게 한다"
+    ],
+    [
+      "0b25618",
+      "docs: 쇼츠 본문을 Tabler 아이콘으로 그리는 시안을 만든다"
+    ],
+    [
+      "a40e21b",
+      "design: 쇼츠 머리글을 아이콘과 서비스 이름으로 바꾸고 긴 이름은 줄여 쓴다"
+    ],
+    [
+      "d4ba584",
+      "design: 글 제목 아래 프로젝트 설명에 아이콘을 얹고 그 아래로 색 세로선을 잇는다"
+    ],
+    [
+      "f134c4d",
+      "design: 홈 카드에 프로젝트 아이콘을 넣고 레포 이름을 이름 아래 줄로 내린다"
+    ],
+    [
+      "fabec58",
+      "fix: 소개 글을 프로젝트 시작 시점의 글로 쓰고 비밀을 공개하지 않게 한다"
+    ],
+    [
+      "2700615",
+      "fix: 너무 자세하게 쓴 소개 글 5편을 내린다"
+    ],
+    [
+      "b2e8704",
+      "fix: 소개 글을 개요만 쓰게 하고, 이미 쓴 소개 글을 다시 쓰는 실행을 둔다"
+    ],
+    [
+      "9d19c8f",
+      "docs: 프로젝트 아이콘을 홈·글·쇼츠에 넣는 시안을 만든다"
+    ],
+    [
+      "af706f1",
+      "feat: 소개 글은 두고 아이콘만 붙이는 실행을 둔다"
+    ],
+    [
+      "8716d69",
+      "fix: 소개 글이 있는 날짜에 밤 실행이 일반 글을 덮어쓰지 않게 한다"
+    ],
+    [
+      "33a9582",
+      "feat: 소개 글이 프로젝트 아이콘을 골라 프로젝트 페이지 정보 카드에 붙인다"
+    ],
+    [
+      "04451d4",
+      "docs: 프로젝트 정보 카드에 붙일 아이콘 시안을 만든다"
+    ],
+    [
+      "bc7a345",
+      "design: 프로젝트 페이지 정보 카드에 코드로 쓴 설명과 소개 글 링크를 둔다"
+    ],
+    [
+      "39334aa",
+      "fix: 글 삽화의 SVG 속성을 React 이름으로 넘겨 경고를 없앤다"
+    ],
+    [
+      "8bfeb5e",
+      "fix: 데브로그·쇼츠의 프로젝트 필터를 주소에 둬서 돌아와도 풀리지 않게 한다"
+    ],
+    [
+      "68b2472",
+      "fix: 뒤로 버튼이 직전 페이지가 아니라 들어온 목록으로 가게 한다"
+    ],
+    [
+      "7496c27",
+      "docs: 소개 글 규칙을 CLAUDE.md에 적는다"
+    ],
+    [
+      "af07ee3",
+      "docs: 프로젝트 페이지에서 소개 글을 보여 주는 시안을 만든다"
+    ],
+    [
+      "f323a07",
+      "design: 글 제목 아래 프로젝트 설명과 서비스 이름을 화면에 건다"
+    ],
+    [
+      "dafb220",
+      "feat: 새 프로젝트의 첫 글을 레포 코드를 읽고 쓴 소개 글로 만든다"
+    ],
+    [
+      "c12c69f",
+      "docs: 소개 글에 붙일 그림 시안을 만든다"
+    ],
+    [
+      "90583c7",
+      "fix: 글 본문의 역슬래시가 화면에서 사라지던 것을 고친다"
+    ],
+    [
+      "d8370e8",
+      "docs: 소개 글 시안에 레포 이름 대신 서비스 이름을 쓰는 화면을 더한다"
+    ],
+    [
+      "a8ef9db",
+      "docs: 새 프로젝트의 첫 글을 코드로 쓴 소개 글로 바꾸는 시안을 만든다"
+    ],
+    [
+      "7b0a62f",
+      "design: 프로젝트 식별색을 9색으로 늘리고 한 번 정한 색은 바꾸지 않는다"
+    ],
+    [
+      "39f9a15",
+      "docs: 프로젝트 식별색을 9색으로 늘리는 시안을 만든다"
+    ],
+    [
+      "77f96a1",
+      "docs: 명사를 붙여 만든 줄임말을 쓰지 않는다는 규칙을 한국어 스킬에 못 박는다"
+    ],
+    [
+      "156af74",
+      "design: 홈 최근 데브로그의 프로젝트 이름에 프로젝트 식별색을 입힌다"
+    ],
+    [
+      "f63cc99",
+      "feat: \"글 끝 링크\"를 어색한 한국어 목록에 넣는다"
+    ],
+    [
+      "719a374",
+      "fix: 10/9 글의 \"글 끝 링크\"를 무슨 링크인지 알 수 있게 풀어 쓴다"
+    ],
+    [
+      "ac4cf6b",
+      "fix: 쇼츠 푸터 연도를 날짜 글자에서 바로 읽는다"
+    ],
+    [
+      "ddfc400",
+      "fix: 사이트 푸터 연도가 해가 바뀌어도 2026에 머물던 것을 고친다"
+    ],
+    [
+      "9f9fe6d",
+      "fix: 녹화가 실패할 때 오류 메시지로 live 전 사이트 주소가 로그에 남지 않게 한다"
+    ],
+    [
+      "2197619",
+      "docs: 쇼츠 다시 만들기의 비용 구조를 문서에 맞춘다"
+    ],
+    [
+      "4945b79",
+      "feat: 쇼츠 대본을 다시 쓸 때 걸린 문장만 돌려받는다"
+    ],
+    [
+      "8692756",
+      "feat: 쇼츠 다시 만들기는 저장된 대본을 쓰고, 대본은 new_script를 켤 때만 새로 쓴다"
+    ],
+    [
+      "0b2f44f",
+      "feat: 쇼츠 내레이션 음성을 Blob에 저장해 같은 문장이면 다시 쓴다"
+    ],
+    [
+      "492319c",
+      "fix: 쇼츠 대본을 다시 쓸 때 답이 잘려 빈 대본이 되던 것을 고친다"
+    ],
+    [
+      "ef1a333",
+      "fix: live 전 사이트 주소와 검사 전 원고를 공개 레포·로그에 남기지 않는다"
+    ],
+    [
+      "745801b",
+      "docs: 보안 점검에서 바꾼 것을 문서에 맞춘다"
+    ],
+    [
+      "bb2bb65",
+      "fix: 글 본문에서 남의 사이트 링크와 그림을 걸지 않는다"
+    ],
+    [
+      "70036fa",
+      "design: 소개 글의 어색한 말과 지금과 다른 설명을 고친다"
+    ],
+    [
+      "01ff778",
+      "docs: 문서를 지금 코드에 맞춘다 — 상태 판정, 주소 공개, 이어지는 글, 안전 검사"
+    ],
+    [
+      "25cd5c1",
+      "feat: 사이트 주소는 live일 때만 보이고, Vercel 기본 주소로는 live가 되지 않는다"
+    ],
+    [
+      "606f7d4",
+      "fix: 홈 \"만드는 중\" 숫자도 최근 7일 커밋으로 센다"
+    ],
+    [
+      "2bbf9e0",
+      "fix: 홈 프로젝트를 최근 7일 커밋 유무로 접는다"
+    ],
+    [
+      "97fbf70",
+      "docs: 복붙용 커밋 규칙 문구를 지금 기준에 맞춘다"
     ]
   ],
   "commitsEn": [
@@ -383,27 +894,27 @@
       "feat: Use the latest models for both Gemini and OpenAI for image generation"
     ]
   ],
-  "commitCount": 12,
+  "commitCount": 122,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "쇼츠에 넣을 AI 그림 시안에 파란 테마인데 노란 물건이 끼어들었습니다. 다른 색은 쓰지 말라는 한 줄을 더해 둥근 평면 그림체를 정한 이야기입니다.",
-    "en": "A yellow object kept crashing the blue-themed AI pictures for my shorts. One line telling the AI not to use other colors fixed it, and I settled on a rounded flat style."
+    "ko": "새 프로젝트의 첫 글이 이제 소개 글로 나옵니다. 처음 써 본 소개 글이 정답 규칙이 든 파일까지 적어서, 등록할 때의 레포만 보고 쓰게 고쳤습니다.",
+    "en": "New projects now open with an introduction post. The first drafts revealed which file held the answer rules, so now the AI writes only from the repo as it was at registration."
   },
   "hashtags": [
     "#vibelog",
     "#데브로그",
-    "#AI그림",
-    "#프롬프트",
+    "#개발일지",
+    "#AI",
     "#devlog",
-    "#AIart",
-    "#buildinpublic"
+    "#buildinpublic",
+    "#사이드프로젝트"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv451wqm",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv451yw1",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.sm.mp4?v=mv4524f3",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv45334t",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv45352c",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.sm.mp4?v=mv453a4e"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv5hbs5h",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv5hbu3f",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.sm.mp4?v=mv5hc2z3",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv5hdip2",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv5hdkk2",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.sm.mp4?v=mv5hdt5a"
   }
 }

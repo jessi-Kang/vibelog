@@ -1,484 +1,549 @@
 {
   "lang": "en",
-  "duration": 29.142999999999997,
+  "duration": 33.941,
   "sentences": [
     {
       "index": 0,
       "start": 0,
-      "end": 2.531,
+      "end": 2.426,
       "words": [
         {
-          "text": "I",
+          "text": "The",
           "start": 0,
-          "end": 0.081
+          "end": 0.151
         },
         {
-          "text": "wanted",
-          "start": 0.174,
+          "text": "first",
+          "start": 0.209,
           "end": 0.441
         },
         {
-          "text": "only",
+          "text": "post",
           "start": 0.488,
-          "end": 0.662
+          "end": 0.72
         },
         {
-          "text": "blue,",
-          "start": 0.72,
-          "end": 1.254
+          "text": "never",
+          "start": 0.778,
+          "end": 0.998
         },
         {
-          "text": "but",
-          "start": 1.533,
-          "end": 1.707
+          "text": "said",
+          "start": 1.045,
+          "end": 1.242
         },
         {
-          "text": "yellow",
-          "start": 1.765,
-          "end": 2.02
+          "text": "what",
+          "start": 1.289,
+          "end": 1.44
         },
         {
-          "text": "crept",
-          "start": 2.067,
-          "end": 2.322
+          "text": "the",
+          "start": 1.474,
+          "end": 1.544
         },
         {
-          "text": "in",
-          "start": 2.368,
-          "end": 2.531
+          "text": "project",
+          "start": 1.591,
+          "end": 1.927
+        },
+        {
+          "text": "was.",
+          "start": 1.962,
+          "end": 2.426
         }
       ]
     },
     {
       "index": 1,
-      "start": 3.831,
-      "end": 5.608,
+      "start": 2.976,
+      "end": 5.321000000000001,
       "words": [
         {
-          "text": "It",
-          "start": 3.831,
-          "end": 3.971
+          "text": "Now",
+          "start": 2.976,
+          "end": 3.138
         },
         {
-          "text": "was",
-          "start": 4.005,
-          "end": 4.11
+          "text": "new",
+          "start": 3.1960000000000006,
+          "end": 3.3240000000000007
+        },
+        {
+          "text": "projects",
+          "start": 3.37,
+          "end": 3.7540000000000004
+        },
+        {
+          "text": "start",
+          "start": 3.777,
+          "end": 3.9860000000000007
+        },
+        {
+          "text": "with",
+          "start": 4.021,
+          "end": 4.1370000000000005
         },
         {
           "text": "an",
-          "start": 4.156,
-          "end": 4.214
+          "start": 4.171,
+          "end": 4.218000000000001
         },
         {
-          "text": "AI",
-          "start": 4.272,
-          "end": 4.505
+          "text": "introduction",
+          "start": 4.264,
+          "end": 4.74
         },
         {
-          "text": "picture",
-          "start": 4.574,
-          "end": 4.876
-        },
-        {
-          "text": "for",
-          "start": 4.899,
-          "end": 5.004
-        },
-        {
-          "text": "my",
-          "start": 5.05,
-          "end": 5.132
-        },
-        {
-          "text": "shorts",
-          "start": 5.19,
-          "end": 5.608
+          "text": "post.",
+          "start": 4.798000000000001,
+          "end": 5.321000000000001
         }
       ]
     },
     {
       "index": 2,
-      "start": 6.304,
-      "end": 8.464,
+      "start": 5.871,
+      "end": 9.969,
       "words": [
         {
-          "text": "I",
-          "start": 6.304,
-          "end": 6.374
-        },
-        {
-          "text": "never",
-          "start": 6.467,
-          "end": 6.641
-        },
-        {
-          "text": "told",
-          "start": 6.699,
-          "end": 6.873
-        },
-        {
-          "text": "the",
-          "start": 6.896,
-          "end": 6.966
+          "text": "The",
+          "start": 5.871,
+          "end": 5.9990000000000006
         },
         {
           "text": "AI",
-          "start": 7.012,
-          "end": 7.221
+          "start": 6.045,
+          "end": 6.312
         },
         {
-          "text": "not",
-          "start": 7.291,
-          "end": 7.419
+          "text": "reads",
+          "start": 6.405,
+          "end": 6.602
         },
         {
-          "text": "to",
-          "start": 7.442,
-          "end": 7.488
+          "text": "the",
+          "start": 6.626,
+          "end": 6.695
         },
         {
-          "text": "use",
-          "start": 7.558,
-          "end": 7.709
+          "text": "repo,",
+          "start": 6.753,
+          "end": 7.392
         },
         {
-          "text": "other",
-          "start": 7.744,
-          "end": 7.883
+          "text": "the",
+          "start": 7.636,
+          "end": 7.74
         },
         {
-          "text": "colors.",
-          "start": 7.918,
-          "end": 8.464
+          "text": "project's",
+          "start": 7.787,
+          "end": 8.205
+        },
+        {
+          "text": "storage,",
+          "start": 8.239,
+          "end": 8.948
+        },
+        {
+          "text": "and",
+          "start": 9.099,
+          "end": 9.261000000000001
+        },
+        {
+          "text": "writes",
+          "start": 9.319,
+          "end": 9.586
+        },
+        {
+          "text": "it.",
+          "start": 9.656,
+          "end": 9.969
         }
       ]
     },
     {
       "index": 3,
-      "start": 9.904,
-      "end": 11.936,
+      "start": 10.782,
+      "end": 12.419,
       "words": [
         {
-          "text": "Once",
-          "start": 9.904,
-          "end": 10.16
+          "text": "Now",
+          "start": 10.782,
+          "end": 10.933
         },
         {
-          "text": "I",
-          "start": 10.195,
-          "end": 10.218
+          "text": "the",
+          "start": 10.979000000000001,
+          "end": 11.049
         },
         {
-          "text": "added",
-          "start": 10.276,
-          "end": 10.496
+          "text": "introduction",
+          "start": 11.095,
+          "end": 11.56
         },
         {
-          "text": "that,",
-          "start": 10.531,
-          "end": 10.751999999999999
+          "text": "comes",
+          "start": 11.606,
+          "end": 11.804
         },
         {
-          "text": "it",
-          "start": 10.798,
-          "end": 10.914
-        },
-        {
-          "text": "stuck",
-          "start": 10.961,
-          "end": 11.158
-        },
-        {
-          "text": "to",
-          "start": 11.205,
-          "end": 11.251
-        },
-        {
-          "text": "one",
-          "start": 11.321,
-          "end": 11.437
-        },
-        {
-          "text": "color.",
-          "start": 11.472,
-          "end": 11.936
+          "text": "first.",
+          "start": 11.873,
+          "end": 12.419
         }
       ]
     },
     {
       "index": 4,
-      "start": 12.888,
-      "end": 14.978,
+      "start": 13.116,
+      "end": 15.449,
       "words": [
         {
+          "text": "The",
+          "start": 13.116,
+          "end": 13.243
+        },
+        {
+          "text": "5",
+          "start": 13.325000000000001,
+          "end": 13.499
+        },
+        {
+          "text": "intro",
+          "start": 13.557,
+          "end": 13.766
+        },
+        {
+          "text": "posts",
+          "start": 13.801,
+          "end": 14.079
+        },
+        {
           "text": "I",
-          "start": 12.888,
-          "end": 12.946
+          "start": 14.126,
+          "end": 14.16
         },
         {
-          "text": "chose",
-          "start": 13.039,
-          "end": 13.270999999999999
+          "text": "tried",
+          "start": 14.253,
+          "end": 14.497
         },
         {
-          "text": "a",
-          "start": 13.294,
-          "end": 13.318
+          "text": "were",
+          "start": 14.532,
+          "end": 14.66
         },
         {
-          "text": "rounded",
-          "start": 13.363999999999999,
-          "end": 13.654
+          "text": "too",
+          "start": 14.683,
+          "end": 14.799
         },
         {
-          "text": "style",
-          "start": 13.689,
-          "end": 13.968
-        },
-        {
-          "text": "with",
-          "start": 13.991,
-          "end": 14.119
-        },
-        {
-          "text": "no",
-          "start": 14.165,
-          "end": 14.247
-        },
-        {
-          "text": "outlines.",
-          "start": 14.305,
-          "end": 14.978
+          "text": "detailed.",
+          "start": 14.857,
+          "end": 15.449
         }
       ]
     },
     {
       "index": 5,
-      "start": 15.528,
-      "end": 17.258,
+      "start": 17.216,
+      "end": 19.781,
       "words": [
         {
-          "text": "Scenes",
-          "start": 15.528,
-          "end": 15.853
+          "text": "Lie",
+          "start": 17.216,
+          "end": 17.424999999999997
         },
         {
-          "text": "in",
-          "start": 15.888,
-          "end": 15.946
+          "text": "Detective",
+          "start": 17.448,
+          "end": 17.877
+        },
+        {
+          "text": "is",
+          "start": 17.912,
+          "end": 17.982
         },
         {
           "text": "a",
-          "start": 15.981,
-          "end": 16.003999999999998
+          "start": 18.028,
+          "end": 18.063
         },
         {
-          "text": "short",
-          "start": 16.038999999999998,
-          "end": 16.247999999999998
+          "text": "service",
+          "start": 18.121,
+          "end": 18.468999999999998
         },
         {
-          "text": "go",
-          "start": 16.282999999999998,
-          "end": 16.41
+          "text": "where",
+          "start": 18.493,
+          "end": 18.619999999999997
         },
         {
-          "text": "by",
-          "start": 16.48,
-          "end": 16.596
+          "text": "you",
+          "start": 18.654999999999998,
+          "end": 18.724999999999998
         },
         {
-          "text": "fast.",
-          "start": 16.666,
-          "end": 17.258
+          "text": "guess",
+          "start": 18.782999999999998,
+          "end": 18.956999999999997
+        },
+        {
+          "text": "the",
+          "start": 18.991999999999997,
+          "end": 19.061999999999998
+        },
+        {
+          "text": "answers.",
+          "start": 19.119999999999997,
+          "end": 19.781
         }
       ]
     },
     {
       "index": 6,
-      "start": 17.953999999999997,
-      "end": 20.310999999999996,
+      "start": 20.816,
+      "end": 23.497999999999998,
       "words": [
         {
-          "text": "Even",
-          "start": 17.953999999999997,
-          "end": 18.220999999999997
+          "text": "The",
+          "start": 20.816,
+          "end": 20.932
         },
         {
-          "text": "a",
-          "start": 18.255999999999997,
-          "end": 18.278999999999996
+          "text": "post",
+          "start": 20.99,
+          "end": 21.246
         },
         {
-          "text": "small",
-          "start": 18.325999999999997,
-          "end": 18.592999999999996
+          "text": "even",
+          "start": 21.304,
+          "end": 21.488999999999997
         },
         {
-          "text": "flash",
-          "start": 18.662999999999997,
-          "end": 18.988
+          "text": "named",
+          "start": 21.535999999999998,
+          "end": 21.721999999999998
         },
         {
-          "text": "has",
-          "start": 19.034,
-          "end": 19.162
+          "text": "the",
+          "start": 21.744999999999997,
+          "end": 21.814
         },
         {
-          "text": "to",
-          "start": 19.208,
-          "end": 19.255
+          "text": "file",
+          "start": 21.861,
+          "end": 22.186
         },
         {
-          "text": "be",
-          "start": 19.301,
-          "end": 19.371
+          "text": "holding",
+          "start": 22.232,
+          "end": 22.523
         },
         {
-          "text": "recognizable.",
-          "start": 19.416999999999998,
-          "end": 20.310999999999996
+          "text": "the",
+          "start": 22.569,
+          "end": 22.639
+        },
+        {
+          "text": "answer",
+          "start": 22.685,
+          "end": 22.951999999999998
+        },
+        {
+          "text": "rules.",
+          "start": 22.999,
+          "end": 23.497999999999998
         }
       ]
     },
     {
       "index": 7,
-      "start": 21.008,
-      "end": 22.912,
+      "start": 24.216,
+      "end": 27.64,
       "words": [
         {
-          "text": "Shorts",
-          "start": 21.008,
-          "end": 21.343999999999998
+          "text": "Now",
+          "start": 24.216,
+          "end": 24.366
         },
         {
-          "text": "come",
-          "start": 21.413999999999998,
-          "end": 21.599999999999998
+          "text": "the",
+          "start": 24.413,
+          "end": 24.483
         },
         {
-          "text": "in",
-          "start": 21.622999999999998,
-          "end": 21.692999999999998
+          "text": "AI",
+          "start": 24.541,
+          "end": 24.901
         },
         {
-          "text": "5",
-          "start": 21.808999999999997,
-          "end": 22.017999999999997
+          "text": "only",
+          "start": 24.982,
+          "end": 25.144
         },
         {
-          "text": "color",
-          "start": 22.098999999999997,
-          "end": 22.331
+          "text": "looks",
+          "start": 25.191,
+          "end": 25.377
         },
         {
-          "text": "themes.",
-          "start": 22.377999999999997,
-          "end": 22.912
+          "text": "at",
+          "start": 25.411,
+          "end": 25.480999999999998
+        },
+        {
+          "text": "the",
+          "start": 25.504,
+          "end": 25.573999999999998
+        },
+        {
+          "text": "repo",
+          "start": 25.632,
+          "end": 25.945
+        },
+        {
+          "text": "from",
+          "start": 26.003,
+          "end": 26.143
+        },
+        {
+          "text": "the",
+          "start": 26.178,
+          "end": 26.247
+        },
+        {
+          "text": "day",
+          "start": 26.305,
+          "end": 26.445
+        },
+        {
+          "text": "the",
+          "start": 26.491,
+          "end": 26.561
+        },
+        {
+          "text": "project",
+          "start": 26.607,
+          "end": 26.944
+        },
+        {
+          "text": "arrived.",
+          "start": 26.979,
+          "end": 27.64
         }
       ]
     },
     {
       "index": 8,
-      "start": 23.462,
-      "end": 26.375999999999998,
+      "start": 28.189999999999998,
+      "end": 30.522999999999996,
       "words": [
         {
           "text": "I'll",
-          "start": 23.462,
-          "end": 23.647
+          "start": 28.189999999999998,
+          "end": 28.375
         },
         {
-          "text": "test",
-          "start": 23.682,
-          "end": 23.88
+          "text": "rewrite",
+          "start": 28.433,
+          "end": 28.747
         },
         {
-          "text": "each",
-          "start": 23.926,
-          "end": 24.099999999999998
+          "text": "the",
+          "start": 28.769999999999996,
+          "end": 28.839999999999996
         },
         {
-          "text": "theme,",
-          "start": 24.147,
-          "end": 24.599
+          "text": "5",
+          "start": 28.909,
+          "end": 29.083999999999996
         },
         {
-          "text": "then",
-          "start": 24.925,
-          "end": 25.087
+          "text": "posts",
+          "start": 29.176000000000002,
+          "end": 29.455
         },
         {
-          "text": "add",
-          "start": 25.134,
-          "end": 25.226
+          "text": "I",
+          "start": 29.490000000000002,
+          "end": 29.512999999999998
         },
         {
-          "text": "a",
-          "start": 25.261,
-          "end": 25.284
+          "text": "took",
+          "start": 29.583,
+          "end": 29.734
         },
         {
-          "text": "picture",
-          "start": 25.342,
-          "end": 25.633
+          "text": "down",
+          "start": 29.78,
+          "end": 29.92
         },
         {
-          "text": "to",
-          "start": 25.668,
-          "end": 25.714
+          "text": "that",
+          "start": 29.954,
+          "end": 30.07
         },
         {
-          "text": "every",
-          "start": 25.784,
-          "end": 25.969
-        },
-        {
-          "text": "scene.",
-          "start": 26.003999999999998,
-          "end": 26.375999999999998
+          "text": "way.",
+          "start": 30.128999999999998,
+          "end": 30.522999999999996
         }
       ]
     },
     {
       "index": 9,
-      "start": 26.926,
-      "end": 29.142999999999997,
+      "start": 31.072999999999997,
+      "end": 33.941,
       "words": [
         {
-          "text": "A",
-          "start": 26.926,
-          "end": 27.006999999999998
+          "text": "Answers",
+          "start": 31.072999999999997,
+          "end": 31.468
         },
         {
-          "text": "single",
-          "start": 27.087999999999997,
-          "end": 27.378999999999998
+          "text": "stay",
+          "start": 31.491,
+          "end": 31.689
         },
         {
-          "text": "'don't'",
-          "start": 27.413999999999998,
-          "end": 27.726999999999997
+          "text": "out,",
+          "start": 31.747,
+          "end": 32.095
         },
         {
-          "text": "line",
-          "start": 27.772999999999996,
-          "end": 27.993999999999996
+          "text": "even",
+          "start": 32.374,
+          "end": 32.618
         },
         {
-          "text": "fixed",
-          "start": 28.040999999999997,
-          "end": 28.284
+          "text": "if",
+          "start": 32.652,
+          "end": 32.722
         },
         {
           "text": "the",
-          "start": 28.307999999999996,
-          "end": 28.377
+          "start": 32.768,
+          "end": 32.838
         },
         {
-          "text": "colors.",
-          "start": 28.412,
-          "end": 29.142999999999997
+          "text": "code",
+          "start": 32.885,
+          "end": 33.14
+        },
+        {
+          "text": "shows",
+          "start": 33.175,
+          "end": 33.419
+        },
+        {
+          "text": "them.",
+          "start": 33.465,
+          "end": 33.941
         }
       ]
     }
