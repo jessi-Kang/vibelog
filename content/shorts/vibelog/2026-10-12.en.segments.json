@@ -1,0 +1,22 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "Pipeline",
+      "focusY": 0.223,
+      "start": 1.05,
+      "end": 12.57
+    },
+    {
+      "path": "/log",
+      "start": 13.49,
+      "end": 25.95
+    },
+    {
+      "path": "/",
+      "find": "latest devlogs",
+      "start": 26.89,
+      "end": 39.37
+    }
+  ]
+}

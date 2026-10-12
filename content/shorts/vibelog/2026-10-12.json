@@ -1,0 +1,698 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-12",
+  "day": 18,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "어제 글에서 댓글 이야기가 빠졌습니다.",
+      "en": "Yesterday's post left out the comments.",
+      "keywords": [
+        "빠졌습니다."
+      ],
+      "keywordsEn": [
+        "left out"
+      ],
+      "koLines": [
+        "어제 글에서",
+        "댓글 이야기가",
+        "빠졌습니다."
+      ],
+      "enLines": [
+        "Yesterday's post",
+        "left out",
+        "the comments."
+      ]
+    },
+    {
+      "scene": "hook",
+      "ko": "그날 가장 크게 바뀐 기능이었습니다.",
+      "en": "It was the day's biggest change.",
+      "keywords": [
+        "가장 크게"
+      ],
+      "keywordsEn": [
+        "biggest"
+      ],
+      "koLines": [
+        "그날 가장 크게",
+        "바뀐 기능이었습니다."
+      ],
+      "enLines": [
+        "It was the day's",
+        "biggest change."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "AI가 작업 기록인 커밋을 읽고 글을 씁니다.",
+      "en": "AI reads my commits, my work records, and writes the post.",
+      "keywords": [
+        "AI가",
+        "커밋을"
+      ],
+      "keywordsEn": [
+        "AI",
+        "commits"
+      ],
+      "koLines": [
+        "AI가 작업 기록인 커밋을",
+        "읽고 글을 씁니다."
+      ],
+      "enLines": [
+        "AI reads my commits, my work records,",
+        "and writes the post."
+      ],
+      "screen": "/about",
+      "find": "파이프라인",
+      "findEn": "Pipeline",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 커밋을 최근 20개만 읽었습니다.",
+      "en": "But it only read the latest 20 commits.",
+      "keywords": [
+        "20개만"
+      ],
+      "keywordsEn": [
+        "latest 20"
+      ],
+      "koLines": [
+        "그런데 커밋을",
+        "최근 20개만 읽었습니다."
+      ],
+      "enLines": [
+        "But it only read",
+        "the latest 20 commits."
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "읽는 커밋 수",
+          "20개",
+          "전부"
+        ],
+        "labelsEn": [
+          "Commits read",
+          "20",
+          "All"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그날 커밋 121개 중 101개가 빠졌습니다.",
+      "en": "Of 121 commits that day, 101 were left out.",
+      "keywords": [
+        "101개가"
+      ],
+      "keywordsEn": [
+        "101"
+      ],
+      "koLines": [
+        "그날 커밋 121개 중",
+        "101개가 빠졌습니다."
+      ],
+      "enLines": [
+        "Of 121 commits that day,",
+        "101 were left out."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "커밋 121개",
+          "20개",
+          "101개",
+          "읽음",
+          "빠짐"
+        ],
+        "labelsEn": [
+          "121 commits",
+          "20",
+          "101",
+          "Read",
+          "Left out"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "빠진 커밋은 다음 날도 안 읽어 영영 빠집니다.",
+      "en": "Missed commits aren't read the next day either, so they're gone for good.",
+      "keywords": [
+        "영영 빠집니다."
+      ],
+      "keywordsEn": [
+        "gone for good."
+      ],
+      "koLines": [
+        "빠진 커밋은 다음 날도",
+        "안 읽어 영영 빠집니다."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "오늘 밤 빠짐",
+          "다음 날 밤",
+          "다시 안 읽음"
+        ],
+        "labelsEn": [
+          "Missed tonight",
+          "Next night",
+          "Not read again"
+        ],
+        "icons": [
+          {
+            "name": "tabler:moon",
+            "paths": [
+              {
+                "d": "M12 3h.393a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 2.992z"
+              }
+            ]
+          },
+          {
+            "name": "tabler:calendar",
+            "paths": [
+              {
+                "d": "M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16m-9 4h1m0 0v3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:eye-off",
+            "paths": [
+              {
+                "d": "M10.585 10.587a2 2 0 0 0 2.829 2.828"
+              },
+              {
+                "d": "M16.681 16.673A8.7 8.7 0 0 1 12 18q-5.4 0-9-6q1.908-3.18 4.32-4.674m2.86-1.146A9 9 0 0 1 12 6q5.4 0 9 6q-1 1.665-2.138 2.87M3 3l18 18"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 그날 커밋을 끝까지 다 읽습니다.",
+      "en": "Now it reads every commit of the day.",
+      "keywords": [
+        "끝까지"
+      ],
+      "keywordsEn": [
+        "every commit"
+      ],
+      "koLines": [
+        "이제 그날 커밋을",
+        "끝까지 다 읽습니다."
+      ],
+      "enLines": [
+        "Now it reads",
+        "every commit of the day."
+      ],
+      "art": "a small robot reading a very long unrolled scroll all the way to its last end",
+      "icon": {
+        "name": "tabler:list-check",
+        "paths": [
+          {
+            "d": "M3.5 5.5L5 7l2.5-2.5m-4 7L5 13l2.5-2.5m-4 7L5 19l2.5-2.5M11 6h9m-9 6h9m-9 6h9"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이미 올라간 글도 다시 쓸 수 있게 했습니다.",
+      "en": "Posts already up can now be rewritten too.",
+      "keywords": [
+        "다시 쓸 수"
+      ],
+      "keywordsEn": [
+        "rewritten"
+      ],
+      "koLines": [
+        "이미 올라간 글도",
+        "다시 쓸 수 있게 했습니다."
+      ],
+      "enLines": [
+        "Posts already up",
+        "can now be rewritten too."
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "어제 글부터 다시 쓰겠습니다.",
+      "en": "I'll rewrite yesterday's post first.",
+      "keywords": [
+        "어제 글부터"
+      ],
+      "keywordsEn": [
+        "yesterday's post"
+      ],
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "latest devlogs",
+      "shot": "focus"
+    },
+    {
+      "scene": "end",
+      "ko": "댓글 이야기를 꼭 되살리겠습니다.",
+      "en": "I'll bring the comments story back.",
+      "keywords": [
+        "되살리겠습니다."
+      ],
+      "keywordsEn": [
+        "back."
+      ],
+      "koLines": [
+        "댓글 이야기를",
+        "꼭 되살리겠습니다."
+      ],
+      "enLines": [
+        "I'll bring the comments",
+        "story back."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "댓글 이야기가 빠졌다",
+    "titleEn": "The comments story went missing",
+    "before": "최근 커밋 20개만 읽음",
+    "after": "그날 커밋을 끝까지 읽음",
+    "beforeEn": "Read only the latest 20 commits",
+    "afterEn": "Reads every commit of the day"
+  },
+  "commits": [
+    [
+      "f1d4c8b",
+      "feat: 재료가 빠진 지난 글을 그날 커밋 전부로 다시 쓰는 입력을 만든다"
+    ],
+    [
+      "1f9447d",
+      "fix: 글 재료 커밋을 20개로 자르지 않는다"
+    ],
+    [
+      "d9dbae5",
+      "design: 쇼츠 그림 장면의 그림을 40px 내린다"
+    ],
+    [
+      "bbaafcb",
+      "chore: 쇼츠 그림 장면의 세로 자리를 견줘 보는 시안으로 바꾼다"
+    ],
+    [
+      "d33226b",
+      "chore: 쇼츠 그림·아이콘 장면에 글을 함께 두는 시안을 만든다"
+    ],
+    [
+      "fe8be4e",
+      "feat: 쇼츠 대본에서 아이콘·모티프만 있는 장면이 연달아 오면 다시 고르게 한다"
+    ],
+    [
+      "2dd5466",
+      "fix: 쇼츠에서 가운데 아이콘 장면이 연달아 반복되지 않게 한다"
+    ],
+    [
+      "b006d4f",
+      "fix: 쇼츠 훅 아래에 DAY 번호가 머리글과 겹쳐 나오던 것을 뺀다"
+    ],
+    [
+      "bf78847",
+      "docs: 쇼츠 그림체를 지시문 그대로 자세히 적고 그림 묘사에 색을 쓰지 않게 한다"
+    ],
+    [
+      "20c0a2c",
+      "docs: 오늘 바뀐 쇼츠·운영 방법을 문서 전체에 맞춘다"
+    ],
+    [
+      "9a082d6",
+      "fix: 쇼츠 훅을 뜻으로 끊어도 글자 크기는 줄이지 않는다"
+    ],
+    [
+      "4ec94b8",
+      "feat: 쇼츠 그림은 비슷한 것을 이미 만들었으면 다시 쓴다"
+    ],
+    [
+      "be534cd",
+      "fix: 쇼츠 문장 사이 쉼을 0.55초 아래로 줄이지 않는다"
+    ],
+    [
+      "0bc2a22",
+      "fix: 쇼츠 그림이 다 그려지기 전에 넘어가지 않게 내레이션 사이에 틈을 넣는다"
+    ],
+    [
+      "d2b281b",
+      "fix: 대본 문장을 고쳐 받을 때 화면·그림 지정이 빠지면 원래 것을 잇는다"
+    ],
+    [
+      "9e3ca2b",
+      "feat: 쇼츠 여러 편을 한 번의 실행으로 다시 만든다"
+    ],
+    [
+      "eebc6e9",
+      "fix: 쇼츠 훅과 마무리 카드에 닦이듯 나타나는 효과를 얹지 않는다"
+    ],
+    [
+      "ce395fb",
+      "docs: 오늘 바뀐 쇼츠 장면 효과·생성 그림·작은 사본을 문서에 맞춘다"
+    ],
+    [
+      "06d818d",
+      "chore: 쇼츠 내레이션 목소리 모델을 다시 v2 하나로 쓴다"
+    ],
+    [
+      "cd31cc7",
+      "fix: 소개 글 그림 시안이 색을 멋대로 쓰고 빈 묘사로 그려지던 것을 고친다"
+    ],
+    [
+      "6f6d7b4",
+      "feat: 소개 글 머리 그림을 블로그용 가로 판형으로 만들어 보는 시안을 둔다"
+    ],
+    [
+      "8ffacbd",
+      "docs: 모티프에는 아이콘을 얹지 않는다고 적어 둔다"
+    ],
+    [
+      "14a9d5e",
+      "chore: 모티프에 아이콘을 얹는 시안을 걷어 낸다"
+    ],
+    [
+      "28039ed",
+      "chore: 모티프에 대상 아이콘을 얹는 두 방식을 견줘 볼 수 있게 한다"
+    ],
+    [
+      "d3014aa",
+      "feat: 쇼츠 헤드라인과 자막을 폭이 아니라 뜻 덩어리로 줄바꿈한다"
+    ],
+    [
+      "f49e050",
+      "design: 겹친 원의 긴 겹친 값을 원 아래에 두고 곧은 선으로 잇는다"
+    ],
+    [
+      "c027fde",
+      "fix: 겹친 원 그림에서 겹친 자리 색이 원 밖으로 삐져나오던 것을 고친다"
+    ],
+    [
+      "58f37a4",
+      "fix: 쇼츠 훅이 길면 다시 쓰게 하고 헤드라인 줄바꿈을 자연스럽게 한다"
+    ],
+    [
+      "c0b6242",
+      "design: 쇼츠 카드 재생 버튼 원판을 다시 어두운 색으로 한다"
+    ],
+    [
+      "3b521d4",
+      "design: 쇼츠 카드 재생 버튼을 민트 원판의 아이콘으로 바꾼다"
+    ],
+    [
+      "cf24d6b",
+      "design: 쇼츠 머리글 글자를 예전 크기 30px로 되돌린다"
+    ],
+    [
+      "0e0afa6",
+      "design: 쇼츠 머리글을 VIBELOG로 되돌리고 BEFORE AFTER 배지를 CHANGED로 바꾼다"
+    ],
+    [
+      "389ca8a",
+      "chore: 쇼츠 머리글 배치를 바꿔 볼 수 있게 한다"
+    ],
+    [
+      "56ca148",
+      "chore: 쇼츠 템플릿 배지 글자를 바꿔 볼 수 있게 한다"
+    ],
+    [
+      "efa1c44",
+      "design: 쇼츠 머리글을 42px로 키우고 긴 이름은 짧은 이름으로 바꾼다"
+    ],
+    [
+      "b724c3b",
+      "design: 쇼츠 헤더 크기 시안을 고를 수 있게 하고 한글 이름은 한글 글꼴로"
+    ],
+    [
+      "254b9e7",
+      "fix: 데스크톱 팝업에는 작게 줄인 쇼츠 영상을 띄운다"
+    ],
+    [
+      "d76f583",
+      "fix: 데스크톱에서 쇼츠 썸네일 글자가 깨지던 것을 고치고 훅 제목을 차분하게 한다"
+    ],
+    [
+      "8f53c68",
+      "chore: 훅 제목 낱말 움직임을 바꿔 볼 수 있게 한다"
+    ],
+    [
+      "ac758cb",
+      "fix: 쇼츠 녹화가 화면을 옆으로 밀어 글이 잘리던 것을 고친다"
+    ],
+    [
+      "12c6da0",
+      "feat: 자막 표시 방식을 견주는 검수용 영상을 만든다"
+    ],
+    [
+      "073f776",
+      "feat: 쇼츠에 생성 그림을 켜고 장면 효과를 다양하게 고른다"
+    ],
+    [
+      "827c505",
+      "feat: 쇼츠 장면이 종류에 따라 다르게 들어오게 한다"
+    ],
+    [
+      "58929fe",
+      "fix: 밝은 테마 그림 지시문에서 짙은 그림자 면을 뺀다"
+    ],
+    [
+      "67961b1",
+      "fix: 밝은 테마 그림을 한 단계 더 밝힌다"
+    ],
+    [
+      "3169c48",
+      "feat: remocn 효과를 섞은 쇼츠 시안 영상을 만든다"
+    ],
+    [
+      "bf0f54d",
+      "fix: 밝은 테마 그림을 조금 밝게 하고 종이 콜라주 지시문을 보관한다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "f1d4c8b",
+      "feat: Create input that rewrites past posts missing material as the full set of commits from that day"
+    ],
+    [
+      "1f9447d",
+      "fix: Do not truncate post material commits to 20"
+    ],
+    [
+      "d9dbae5",
+      "design: Lower the Shorts drawing scene's drawing by 40px"
+    ],
+    [
+      "bbaafcb",
+      "chore: Switch the Shorts drawing scene's vertical position to a comparison draft"
+    ],
+    [
+      "d33226b",
+      "chore: Create a draft that places text together with the Shorts drawing and icon scenes"
+    ],
+    [
+      "fe8be4e",
+      "feat: When icon- or motif-only scenes come back to back in the Shorts script, ask for regeneration"
+    ],
+    [
+      "2dd5466",
+      "fix: Prevent the center icon scene from repeating consecutively in Shorts"
+    ],
+    [
+      "b006d4f",
+      "fix: Remove the DAY number that overlapped the header below the Shorts hook"
+    ],
+    [
+      "bf78847",
+      "docs: Describe the Shorts drawing style exactly as the instructions say and forbid color in drawing descriptions"
+    ],
+    [
+      "20c0a2c",
+      "docs: Align the whole document with today's changes to Shorts and the operating method"
+    ],
+    [
+      "9a082d6",
+      "fix: Do not reduce font size when splitting the Shorts hook by meaning"
+    ],
+    [
+      "4ec94b8",
+      "feat: Regenerate Shorts drawings when a similar one has already been made"
+    ],
+    [
+      "be534cd",
+      "fix: Do not shrink the pause between Shorts sentences below 0.55 seconds"
+    ],
+    [
+      "0bc2a22",
+      "fix: Insert a gap between narrations so the Shorts drawing does not move on before it is fully drawn"
+    ],
+    [
+      "d2b281b",
+      "fix: When a revised script sentence drops screen or drawing specifications, carry over the original ones"
+    ],
+    [
+      "9e3ca2b",
+      "feat: Regenerate multiple Shorts videos in a single run"
+    ],
+    [
+      "eebc6e9",
+      "fix: Do not apply the wipe-in effect to the Shorts hook and closing card"
+    ],
+    [
+      "ce395fb",
+      "docs: Align the document with today's Shorts scene effects, generated drawings, and small copies"
+    ],
+    [
+      "06d818d",
+      "chore: Use only the v2 voice model for Shorts narration"
+    ],
+    [
+      "cd31cc7",
+      "fix: Fix the intro post drawing draft that used colors arbitrarily and was drawn with an empty description"
+    ],
+    [
+      "6f6d7b4",
+      "feat: Add a draft that makes the intro post header image in a horizontal blog format"
+    ],
+    [
+      "8ffacbd",
+      "docs: Note that icons are not placed on motifs"
+    ],
+    [
+      "14a9d5e",
+      "chore: Remove the draft that places icons on motifs"
+    ],
+    [
+      "28039ed",
+      "chore: Make it possible to compare two ways of placing target icons on motifs"
+    ],
+    [
+      "d3014aa",
+      "feat: Wrap the Shorts headline and captions by meaning chunks rather than width"
+    ],
+    [
+      "f49e050",
+      "design: Place the overlapping circles' long overlap value below the circles and connect them with straight lines"
+    ],
+    [
+      "c027fde",
+      "fix: Keep the overlap color in the overlapping circle drawing from spilling outside the circles"
+    ],
+    [
+      "58f37a4",
+      "fix: When the Shorts hook is long, ask for a rewrite and make the headline line breaks natural"
+    ],
+    [
+      "c0b6242",
+      "design: Change the Shorts card play button disc back to a dark color"
+    ],
+    [
+      "3b521d4",
+      "design: Change the Shorts card play button to an icon on a mint disc"
+    ],
+    [
+      "cf24d6b",
+      "design: Restore the Shorts header font size to the previous 30px"
+    ],
+    [
+      "0e0afa6",
+      "design: Revert the Shorts header to VIBELOG and change the BEFORE AFTER badge to CHANGED"
+    ],
+    [
+      "389ca8a",
+      "chore: Make it possible to try different Shorts header layouts"
+    ],
+    [
+      "56ca148",
+      "chore: Make it possible to try different Shorts template badge text"
+    ],
+    [
+      "efa1c44",
+      "design: Enlarge the Shorts header to 42px and replace long names with short names"
+    ],
+    [
+      "b724c3b",
+      "design: Let the Shorts header size draft be selected and use a Korean font for Korean names"
+    ],
+    [
+      "254b9e7",
+      "fix: Show a smaller-scaled Shorts video in the desktop popup"
+    ],
+    [
+      "d76f583",
+      "fix: Fix Shorts thumbnail text breaking on desktop and make the hook title calmer"
+    ],
+    [
+      "8f53c68",
+      "chore: Make it possible to try different word motion for the hook title"
+    ],
+    [
+      "ac758cb",
+      "fix: Fix Shorts recording pushing the screen sideways and cutting off text"
+    ],
+    [
+      "12c6da0",
+      "feat: make a review video comparing subtitle display styles"
+    ],
+    [
+      "073f776",
+      "feat: enable generated images for Shorts and diversify scene effects"
+    ],
+    [
+      "827c505",
+      "feat: make Shorts scenes enter differently depending on type"
+    ],
+    [
+      "58929fe",
+      "fix: remove dark shadow planes from light theme image prompt"
+    ],
+    [
+      "67961b1",
+      "fix: brighten light theme images one more step"
+    ],
+    [
+      "3169c48",
+      "feat: create Shorts draft video mixing remocn effects"
+    ],
+    [
+      "bf0f54d",
+      "fix: slightly brighten light theme images and keep paper collage prompt"
+    ]
+  ],
+  "commitCount": 47,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "어제 글에 그날 만든 댓글 기능 이야기가 하나도 없었습니다. 커밋을 최근 20개만 읽고 있었던 탓이라, 끝까지 읽게 고치고 지나간 글도 다시 쓸 수 있게 했습니다.",
+    "en": "Yesterday's post never mentioned the comments feature I built that day. It was only reading the latest 20 commits, so now it reads them all and can rewrite past posts."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#개발일지",
+    "#AI",
+    "#자동화",
+    "#devlog",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-12.poster.jpg?v=mv5bv4dl",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-12.ko.mp4?v=mv5bv7g3",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-12.ko.sm.mp4?v=mv5bvg9g",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-12.en.poster.jpg?v=mv5bx3tr",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-12.en.mp4?v=mv5bx6bq",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-12.en.sm.mp4?v=mv5bxfpf"
+  }
+}

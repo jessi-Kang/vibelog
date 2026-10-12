@@ -1,0 +1,266 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "그날 커밋 121개 가운데 최근 20개만 글 재료로 들어가고 101개는 빠졌다.",
+  "altEn": "Of the day's 121 commits, only the latest 20 reached the post; 101 were left out.",
+  "caption": "최근 20개만 읽혀서, 댓글 기능을 만든 커밋은 글 재료에 들어가지 못했습니다.",
+  "captionEn": "Only the latest 20 were read, so the commits that built comments never reached the post.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "그날 커밋 121개 중 최근 20개만 글 재료가 되고 101개는 빠진 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "38",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그날 커밋 121개"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "56",
+      "width": "275",
+      "height": "44",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "305",
+      "y": "56",
+      "width": "55",
+      "height": "44",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "167",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "101개 빠짐"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "332",
+      "y1": "100",
+      "x2": "332",
+      "y2": "166",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "326,166 338,166 332,176",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "322",
+      "y": "148",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "최근 20개"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "277",
+      "y": "178",
+      "width": "90",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "322",
+      "y": "203",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글 재료"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "203",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "다음 날 밤에도 안 읽음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Of the day's 121 commits, only the latest 20 became post material and 101 were left out"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "38",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "121 commits that day"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "56",
+      "width": "275",
+      "height": "44",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "305",
+      "y": "56",
+      "width": "55",
+      "height": "44",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "167",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "101 left out"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "332",
+      "y1": "100",
+      "x2": "332",
+      "y2": "166",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "326,166 338,166 332,176",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "322",
+      "y": "148",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "latest 20"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "277",
+      "y": "178",
+      "width": "90",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "322",
+      "y": "203",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "the post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "30",
+      "y": "203",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "not reread next night"
+    }
+   ]
+  }
+ }
+]
