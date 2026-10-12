@@ -1,0 +1,126 @@
+<title>그 밖에 한 일 시안</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0a0e14; --panel: #141b24; --panel2: #1b2430; --line: #26313f; --line-strong: #3a4656;
+    --ink: #f3efe6; --ink-soft: #c9cfd8; --muted: #8c98a8; --accent: #5ee1c3; --warn: #ffb454;
+    --sans: "Noto Sans KR", "Noto Sans CJK KR", ui-sans-serif, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); margin: 0; word-break: keep-all; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 40px 16px 64px; display: grid; gap: 28px; }
+  h1 { font-size: 22px; margin: 0; text-wrap: balance; }
+  .lede { color: var(--ink-soft); font-size: 14px; line-height: 1.75; margin: 8px 0 0; max-width: 70ch; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 18px; align-items: start; }
+  .opt { border: 1px solid var(--line); border-radius: 12px; padding: 20px 18px; display: grid; gap: 22px; min-width: 0; }
+  .opt.pick { border-color: var(--accent); }
+  .tag { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+  .rec { color: var(--accent); margin-left: 6px; }
+  .opt h2 { margin: 4px 0 0; font-size: 16px; }
+  .why { margin: 0; font-size: 13px; line-height: 1.7; color: var(--ink-soft); }
+  .why b { color: var(--ink); }
+  /* 글 본문 — post-client.tsx 본문 모양 */
+  .post h3 { margin: 0 0 8px; font-size: 17px; }
+  .post p { margin: 0 0 10px; font-size: 15px; line-height: 1.75; color: var(--ink-soft); text-wrap: pretty; }
+  .post ul { margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .fade { opacity: .45; }
+  .news { display: grid; gap: 14px; }
+  .item b { color: var(--ink); font-weight: 700; }
+  .count { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-left: 6px; white-space: nowrap; }
+  .chip { font-family: var(--mono); font-size: 11px; color: var(--accent); border: 1px solid rgba(94,225,195,.35); border-radius: 999px; padding: 1px 8px; margin-left: 6px; white-space: nowrap; }
+  /* git log 카드 */
+  .log h4 { margin: 0 0 10px; font-size: 15px; }
+  .card { background: var(--panel); border-radius: 10px; padding: 4px 16px; }
+  .row { display: flex; gap: 12px; padding: 9px 0; font-size: 13px; line-height: 1.5; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .sha { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 2px; flex: none; }
+  .msg { color: var(--ink-soft); min-width: 0; }
+  .grp { font-size: 12px; color: var(--accent); font-weight: 700; padding: 12px 0 4px; display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); }
+  .grp span { font-family: var(--mono); font-weight: 400; color: var(--muted); }
+  .more { font-family: var(--mono); font-size: 12px; color: var(--muted); padding: 10px 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>"이 밖에 한 일" — git log와 겹치지 않게</h1>
+    <p class="lede">10/11 vibelog(커밋 122개)로 그렸습니다. 이야기는 소개 글 하나로 쓰고, 댓글 기능·쇼츠 그림체·홈 화면 정리가 "그 밖의 큰 작업"입니다. 각 안의 아래쪽은 글 맨 밑 "원료 · git log" 카드입니다 — 위의 목록과 얼마나 겹치는지 같이 보도록 붙였습니다. 소식 문장과 커밋 수는 시안용 예시입니다 — 실제로는 글 모델이 커밋 본문의 "왜"에서 씁니다. 재료에 이유가 없으면 이유 문장을 쓰지 않습니다.</p>
+  </header>
+
+  <div class="grid">
+    <!-- 지금 넣은 규칙 -->
+    <section class="opt">
+      <div><span class="tag">지금 규칙 · 한 줄 목록</span><h2>무엇이 달라졌는지만 한 줄씩</h2></div>
+      <div class="post">
+        <p class="fade">…이제 새 프로젝트의 첫 글은 그 프로젝트가 무엇인지부터 말합니다.</p>
+        <p>이 밖에 한 일입니다.</p>
+        <ul>
+          <li>글 아래에 댓글을 달 수 있게 했습니다.</li>
+          <li>쇼츠 그림을 둥근 평면 그림체로 정했습니다.</li>
+          <li>홈 프로젝트 카드를 다시 꾸몄습니다.</li>
+        </ul>
+      </div>
+      <div class="log">
+        <h4>원료 · git log</h4>
+        <div class="card">
+          <div class="row"><span class="sha">f489fce</span><span class="msg">feat: 글 아래 댓글과 머리글 알림 종을 붙인다</span></div>
+          <div class="row"><span class="sha">a0d32b8</span><span class="msg">feat: 쇼츠 그림을 둥근 평면 한 색으로 정하고 밝은 테마 색을 고친다</span></div>
+          <div class="row"><span class="sha">7619494</span><span class="msg">design: 홈 프로젝트 카드 위의 상태색 띠를 빼고 상태를 아래 줄로 내린다</span></div>
+          <div class="more">커밋 122개 전부 보기 ↓</div>
+        </div>
+      </div>
+      <p class="why">목록 세 줄이 git log의 커밋 제목과 거의 같은 말입니다. 왜 했는지, 읽는 사람에게 무엇이 생겼는지가 없습니다.</p>
+    </section>
+
+    <!-- A -->
+    <section class="opt pick">
+      <div><span class="tag">A · 짧은 소식<span class="rec">추천</span></span><h2>한 일마다 두 문장 — 무엇이 생겼나 + 왜</h2></div>
+      <div class="post">
+        <p class="fade">…이제 새 프로젝트의 첫 글은 그 프로젝트가 무엇인지부터 말합니다.</p>
+        <h3>그 밖의 소식</h3>
+        <div class="news">
+          <p class="item"><b>글 아래에 댓글을 달 수 있습니다.</b> Google 계정으로 로그인하면 누구나 남길 수 있고, 제가 답글을 달면 메일로 알려 드립니다. 글이 혼자 말하는 곳이 아니라 이야기를 주고받는 곳이 되었으면 해서입니다.<span class="count">커밋 25개</span></p>
+          <p class="item"><b>쇼츠에 그림이 들어갑니다.</b> 화면으로 보여 줄 수 없는 문장에 둥근 도형 그림을 띄웁니다. 그림체를 세 차례 시안으로 비교해 테마 색 하나만 쓰는 모양으로 정했습니다.<span class="count">커밋 12개</span></p>
+          <p class="item"><b>홈 화면이 조금 조용해졌습니다.</b> 프로젝트 카드 위의 색 띠를 빼고 상태는 카드 아래로 옮겼습니다. 흔한 AI 디자인처럼 보여서입니다.<span class="count">커밋 9개</span></p>
+        </div>
+      </div>
+      <div class="log">
+        <h4>원료 · git log</h4>
+        <div class="card">
+          <div class="row"><span class="sha">f489fce</span><span class="msg">feat: 글 아래 댓글과 머리글 알림 종을 붙인다</span></div>
+          <div class="row"><span class="sha">a0d32b8</span><span class="msg">feat: 쇼츠 그림을 둥근 평면 한 색으로 정하고 밝은 테마 색을 고친다</span></div>
+          <div class="more">커밋 122개 전부 보기 ↓</div>
+        </div>
+      </div>
+      <p class="why"><b>git log는 "어떻게 고쳤나", 소식은 "읽는 사람에게 무엇이 생겼나"</b>를 말합니다. 커밋 25개를 한 소식으로 묶어 주는 것이 git log가 못 하는 일입니다. 많아야 3개, 소식마다 2문장. 본문 이야기 하나는 그대로 둡니다.</p>
+    </section>
+
+    <!-- B -->
+    <section class="opt">
+      <div><span class="tag">B · 소식 + git log 묶기</span><h2>A에 더해, git log를 소식별로 묶는다</h2></div>
+      <div class="post">
+        <p class="fade">…이제 새 프로젝트의 첫 글은 그 프로젝트가 무엇인지부터 말합니다.</p>
+        <h3>그 밖의 소식</h3>
+        <div class="news">
+          <p class="item"><b>글 아래에 댓글을 달 수 있습니다.</b> Google 계정으로 로그인하면 누구나 남길 수 있고, 제가 답글을 달면 메일로 알려 드립니다.<span class="chip">커밋 25개 ↓</span></p>
+          <p class="item"><b>쇼츠에 그림이 들어갑니다.</b> 화면으로 보여 줄 수 없는 문장에 둥근 도형 그림을 띄웁니다.<span class="chip">커밋 12개 ↓</span></p>
+        </div>
+      </div>
+      <div class="log">
+        <h4>원료 · git log</h4>
+        <div class="card">
+          <div class="grp">소개 글 — 오늘의 이야기<span>18</span></div>
+          <div class="row"><span class="sha">0f5b5bd</span><span class="msg">feat: 기획서가 바뀐 밤에 서비스 이름을 기획서에 맞춰 고친다</span></div>
+          <div class="grp">댓글<span>25</span></div>
+          <div class="row"><span class="sha">f489fce</span><span class="msg">feat: 글 아래 댓글과 머리글 알림 종을 붙인다</span></div>
+          <div class="row"><span class="sha">14fb0b7</span><span class="msg">feat: 데브로그 댓글의 서버 쪽 — Google 로그인, 댓글 저장, 알림, 메일, AI 초안</span></div>
+          <div class="grp">쇼츠 그림<span>12</span></div>
+          <div class="row"><span class="sha">a0d32b8</span><span class="msg">feat: 쇼츠 그림을 둥근 평면 한 색으로 정하고 밝은 테마 색을 고친다</span></div>
+          <div class="grp">그 밖<span>67</span></div>
+          <div class="more">펼치기 ↓</div>
+        </div>
+      </div>
+      <p class="why">소식의 "커밋 25개 ↓"를 누르면 git log의 그 묶음으로 내려갑니다. 커밋 122개가 한 줄로 늘어서던 git log가 무엇을 하느라 생긴 커밋인지 보입니다. 대신 글 모델이 커밋마다 어느 소식인지 골라야 해서 출력이 늘고(비용), 잘못 묶으면 그대로 나갑니다.</p>
+    </section>
+  </div>
+</div>
