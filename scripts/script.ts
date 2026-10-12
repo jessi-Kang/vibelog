@@ -93,7 +93,9 @@ const SYSTEM = `당신은 "vibelog" 쇼츠(30~45초 세로 영상)의 대본 작
 - "before-after" (어제와 오늘의 차이가 또렷한 날): hook(어제의 문제 한 마디)
   → build(오늘 바뀐 것) → demo(달라진 화면) → fail → next → end.
   문장을 더 짧게 — 화면이 말하게 한다.
-장면당 1~2문장. 전체 8~10문장, 말했을 때 **26~34초 분량 (상한 38초 — 넘길 바엔 문장을 뺀다)**.
+장면당 1~2문장 — **단 hook은 딱 한 문장이다.** 훅 카드는 한 문장짜리 헤드라인이라, 둘째 문장을
+두면 헤드라인이 중간에 바뀌어 훅이 두 번 나온다 (10/11·10/12 vibelog). 덧붙이고 싶은 배경은 다음 장면의
+첫 문장으로 보낸다. 전체 8~10문장, 말했을 때 **26~34초 분량 (상한 38초 — 넘길 바엔 문장을 뺀다)**.
 내레이션 앞뒤로 콜드오픈·시작 지연·엔드카드가 5.5초 붙는다 — 내레이션이 38초를
 넘으면 완성 영상이 규격(45초)을 넘어간다.
 문장은 짧게 — 화면 자막 두 줄(공백 포함 ~24자)을 넘기지 않는다.
@@ -960,6 +962,10 @@ export async function generateScript(
   // (lie-detective 10/10, Jessi). 넘친 훅은 같은 한 번의 다시 쓰기에 합친다
   const longHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook" && [...l.ko].length > HOOK_MAX);
   let longs = longHooks(lines);
+  // 훅은 한 문장 — "장면당 1~2문장"을 훅에도 적용해 두 문장 훅이 나왔다. 훅 카드는 둘째 문장이 오면
+  // 헤드라인을 바꿔 띄워 훅이 두 번 나온다 (10/11·10/12 vibelog, Jessi: "…"). 같은 한 번의 다시 쓰기에 합친다
+  const extraHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook").slice(1);
+  let extras = extraHooks(lines);
   // 아이콘·모티프만 있는 장면이 연달아 오는 문장 — 가운데 그림 하나가 이어져 같은 화면처럼 보였다
   // … 같은 한 번의 다시 쓰기에 합친다
   let runs = graphicRuns(lines);
@@ -985,7 +991,7 @@ export async function generateScript(
       `[listen] 알아듣기 막힌 문장 ${unclear.length}개`,
     );
   }
-  if (blanks.length > 0 || unclear.length > 0 || longs.length > 0 || runs.length > 0) {
+  if (blanks.length > 0 || unclear.length > 0 || longs.length > 0 || runs.length > 0 || extras.length > 0) {
     if (blanks.length > 0) {
       // 문장은 적지 않는다 — 공개 로그이고 안전 검사 전의 대본이다
       console.warn(`[script] 빈 화면 ${blanks.length}문장 — 다시 씁니다: ${blanks.map((l) => `#${lines.indexOf(l)} ${l.scene}`).join(", ")}`);
@@ -1029,7 +1035,18 @@ export async function generateScript(
         ...longs.map((l) => `  - #${lines.indexOf(l)} [hook] ${l.ko} (${[...l.ko].length}자)`),
         "",
         `${HOOK_MAX}자 이하로 줄이세요. 배경 설명은 빼고 사건을 바로 칩니다. 뜻이 흐려지게 주어를 지우거나`,
-        "새 말을 만들지 않습니다 — 안 되면 두 문장으로 쪼개 둘째 문장도 hook으로 둡니다.",
+        "새 말을 만들지 않습니다. hook은 한 문장뿐입니다 — 안 들어가는 배경은 다음 장면 문장으로 보냅니다.",
+        "",
+      );
+    }
+    if (extras.length > 0) {
+      ask.push(
+        "hook이 두 문장 이상입니다. hook은 한 문장뿐입니다 — 둘째 문장부터는 헤드라인이 바뀌어 훅이 두 번 나옵니다.",
+        ...extras.map((l) => `  - #${lines.indexOf(l)} [hook] ${l.ko}`),
+        "",
+        "이 문장을 빼거나, 다음 장면(build·fail) 문장으로 바꾸세요. 다음 장면으로 옮기면 그 장면 문장처럼",
+        "화면(screen/find)·다이어그램·그림(art) 중 하나를 붙입니다 — 아무것도 없으면 빈 화면이 됩니다.",
+        "첫 hook 문장만으로 무슨 일이 났는지 통하지 않으면 첫 문장도 함께 고칩니다.",
         "",
       );
     }
@@ -1077,6 +1094,8 @@ export async function generateScript(
     blanks = blankScenes(lines);
     longs = longHooks(lines);
     runs = graphicRuns(lines);
+    extras = extraHooks(lines);
+    if (extras.length > 0) console.warn(`[script] 훅이 아직 ${extras.length + 1}문장입니다`);
     if (longs.length > 0) console.warn(`[script] 훅이 아직 ${HOOK_MAX}자를 넘습니다 (${longs.length}문장) — 렌더가 글자를 줄여 받는다`);
     if (unclear.length > 0) {
       const left = await listenTo(title, lines).catch(() => null);
