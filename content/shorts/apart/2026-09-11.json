@@ -1,6 +1,6 @@
 {
   "template": "before-after",
-  "music": "ship-it",
+  "music": "upbeat",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-09-11",
@@ -8,111 +8,263 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "설치한 앱에서 로그인이 막혔습니다.",
-      "en": "Sign-in was blocked in the installed app.",
+      "ko": "10문제를 풀면 할 게 없었습니다.",
+      "en": "After 10 questions, nothing left to do.",
       "keywords": [
-        "막혔습니다"
+        "없었습니다"
       ],
       "keywordsEn": [
-        "blocked"
+        "nothing left"
+      ],
+      "koLines": [
+        "10문제를 풀면",
+        "할 게 없었습니다."
+      ],
+      "enLines": [
+        "After 10 questions,",
+        "nothing left to do."
       ]
     },
     {
       "scene": "build",
-      "ko": "주소를 하나로 합쳤더니 바로 풀렸습니다.",
-      "en": "I merged everything into one address and it worked.",
+      "ko": "아파트 이름이 진짜인지 맞히는 퀴즈입니다.",
+      "en": "Guess if an apartment name is real.",
       "keywords": [
-        "하나로",
-        "풀렸습니다"
+        "진짜인지"
       ],
       "keywordsEn": [
-        "one address"
-      ]
-    },
-    {
-      "scene": "build",
-      "ko": "이제 앱에서도 구글 로그인이 됩니다.",
-      "en": "Now sign-in works inside the installed app too.",
-      "keywords": [
-        "앱에서도"
+        "real"
       ],
-      "keywordsEn": [
-        "works"
+      "koLines": [
+        "아파트 이름이 진짜인지",
+        "맞히는 퀴즈입니다."
       ],
-      "screen": "/"
-    },
-    {
-      "scene": "demo",
-      "ko": "로그인하면 내 기록과 순위가 한 화면에 보입니다.",
-      "en": "Once signed in, your records and ranking sit on one page.",
-      "keywords": [
-        "기록과 순위가"
+      "enLines": [
+        "Guess if",
+        "an apartment name is real."
       ],
-      "keywordsEn": [
-        "records and ranking"
-      ],
-      "screen": "/record"
-    },
-    {
-      "scene": "fail",
-      "ko": "원인은 사이트 주소가 두 개였던 겁니다.",
-      "en": "The cause: the site had two addresses.",
-      "keywords": [
-        "두 개였던"
-      ],
-      "keywordsEn": [
-        "two addresses"
-      ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "같은 사이트",
-          "로그인 막힘",
-          "로그인 됨",
-          "옛 주소",
-          "새 주소"
-        ],
-        "labelsEn": [
-          "Same site",
-          "Sign-in blocked",
-          "Sign-in works",
-          "Old address",
-          "New address"
+      "screen": "/opengraph-image?f2c0039925850c95",
+      "shot": "whole",
+      "icon": {
+        "name": "tabler:building",
+        "paths": [
+          {
+            "d": "M3 21h18M9 8h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"
+          }
         ]
       }
     },
     {
-      "scene": "fail",
-      "ko": "먼저 설치한 앱은 옛 주소를 붙잡고 있었습니다.",
-      "en": "Apps installed earlier were still holding the old address.",
+      "scene": "build",
+      "ko": "이제 들어가자마자 끝없이 풀 수 있습니다.",
+      "en": "Now you can play endlessly the moment you enter.",
       "keywords": [
-        "옛 주소를"
+        "끝없이"
       ],
       "keywordsEn": [
-        "old address"
-      ]
+        "endlessly"
+      ],
+      "koLines": [
+        "이제 들어가자마자",
+        "끝없이 풀 수 있습니다."
+      ],
+      "enLines": [
+        "Now you can play endlessly",
+        "the moment you enter."
+      ],
+      "screen": "/",
+      "find": "무한",
+      "findEn": "Endless",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "맞히는 동안 문제가 계속 나옵니다.",
+      "en": "Questions keep coming while you're right.",
+      "keywords": [
+        "계속"
+      ],
+      "keywordsEn": [
+        "keep coming"
+      ],
+      "koLines": [
+        "맞히는 동안",
+        "문제가 계속 나옵니다."
+      ],
+      "enLines": [
+        "Questions keep coming",
+        "while you're right."
+      ],
+      "screen": "/o",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "공식전은 원하는 사람만 푸는 매일 10문제입니다.",
+      "en": "The official match is the daily 10, only if you want it.",
+      "keywords": [
+        "원하는 사람만"
+      ],
+      "keywordsEn": [
+        "only if you want it"
+      ],
+      "koLines": [
+        "공식전은 원하는 사람만 푸는",
+        "매일 10문제입니다."
+      ],
+      "enLines": [
+        "The official match is the daily 10,",
+        "only if you want it."
+      ],
+      "screen": "/",
+      "find": "공식전",
+      "findEn": "Official match",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 10문제를 끝내야 더 풀 수 있었습니다.",
+      "en": "At first, you had to finish the 10 to keep playing.",
+      "keywords": [
+        "끝내야"
+      ],
+      "keywordsEn": [
+        "had to finish"
+      ],
+      "koLines": [
+        "처음엔 10문제를 끝내야",
+        "더 풀 수 있었습니다."
+      ],
+      "enLines": [
+        "At first, you had to finish",
+        "the 10 to keep playing."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "10문제 풀기",
+          "끝없이 풀기"
+        ],
+        "labelsEn": [
+          "Solve the daily 10",
+          "Play endlessly"
+        ],
+        "icons": [
+          {
+            "name": "tabler:list-numbers",
+            "paths": [
+              {
+                "d": "M11 6h9m-9 6h9m-8 6h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:infinity",
+            "paths": [
+              {
+                "d": "M9.828 9.172a4 4 0 1 0 0 5.656A10 10 0 0 0 12 12a10 10 0 0 1 2.172-2.828a4 4 0 1 1 0 5.656A10 10 0 0 1 12 12a10 10 0 0 0-2.172-2.828"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "scene": "next",
-      "ko": "공개 순위표 전에, 점수를 서버에서 검사하게 만들 차례입니다.",
-      "en": "Before a public leaderboard, scores need checking on the server.",
+      "ko": "지금은 휴대폰이 보낸 점수를 그대로 받습니다.",
+      "en": "Right now, I accept whatever score the phone sends.",
       "keywords": [
-        "서버에서"
+        "그대로"
       ],
       "keywordsEn": [
-        "on the server"
+        "whatever score"
       ],
-      "art": "a small guard robot inspecting glowing score tokens on a conveyor belt"
+      "koLines": [
+        "지금은 휴대폰이 보낸",
+        "점수를 그대로 받습니다."
+      ],
+      "enLines": [
+        "Right now, I accept",
+        "whatever score the phone sends."
+      ],
+      "icon": {
+        "name": "tabler:device-mobile",
+        "paths": [
+          {
+            "d": "M6 5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm5-1h2m-1 13v.01"
+          }
+        ]
+      },
+      "motif": "leak"
+    },
+    {
+      "scene": "next",
+      "ko": "점수를 부풀려 보내도 알 수 없습니다.",
+      "en": "An inflated score would get through.",
+      "keywords": [
+        "부풀려"
+      ],
+      "keywordsEn": [
+        "inflated"
+      ],
+      "koLines": [
+        "점수를 부풀려 보내도",
+        "알 수 없습니다."
+      ],
+      "enLines": [
+        "An inflated score",
+        "would get through."
+      ],
+      "icon": {
+        "name": "tabler:trending-up",
+        "paths": [
+          {
+            "d": "m3 17l6-6l4 4l8-8"
+          },
+          {
+            "d": "M14 7h7v7"
+          }
+        ]
+      },
+      "motif": "leak"
+    },
+    {
+      "scene": "next",
+      "ko": "다음엔 사이트를 돌리는 서버가 확인합니다.",
+      "en": "Next, the server that runs the site will check it.",
+      "keywords": [
+        "서버가"
+      ],
+      "keywordsEn": [
+        "the server"
+      ],
+      "koLines": [
+        "다음엔 사이트를 돌리는",
+        "서버가 확인합니다."
+      ],
+      "enLines": [
+        "Next, the server that runs",
+        "the site will check it."
+      ],
+      "art": "a referee checking a scorecard with a magnifying glass",
+      "icon": {
+        "name": "tabler:server",
+        "paths": [
+          {
+            "d": "M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zm0 8a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zm4-7v.01M7 16v.01"
+          }
+        ]
+      }
     },
     {
       "scene": "end",
-      "ko": "주소가 하나여야 기록도 하나로 남습니다.",
-      "en": "One address, one set of records.",
+      "ko": "이제 게임이 끊기지 않습니다.",
+      "en": "Now the game doesn't stop.",
       "keywords": [
-        "하나여야"
+        "끊기지"
       ],
       "keywordsEn": [
-        "One address"
+        "doesn't stop"
       ]
     }
   ],
@@ -121,12 +273,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "주소가 둘이었습니다",
-    "titleEn": "There were two addresses",
-    "before": "설치한 앱에서 구글 로그인이 차단됐습니다.",
-    "after": "주소를 하나로 모으니 로그인이 풀렸습니다.",
-    "beforeEn": "Google sign-in was blocked inside the installed app.",
-    "afterEn": "Folding the site into one address fixed sign-in."
+    "title": "10문제 뒤에 숨어 있었다",
+    "titleEn": "Hidden behind the daily 10",
+    "before": "10문제를 다 풀어야 무한 감별",
+    "after": "들어가자마자 무한 감별",
+    "beforeEn": "Endless mode only after the daily 10",
+    "afterEn": "Endless mode from the start"
   },
   "commits": [
     [
@@ -208,6 +360,302 @@
     [
       "87e8415",
       "chore: 배포 워크플로에 수동 실행 버튼 추가"
+    ],
+    [
+      "5f621dc",
+      "fix: 배포가 안 되던 진짜 원인은 계정 하루 배포 한도였다"
+    ],
+    [
+      "c37662a",
+      "chore: 시안 임시 공개 경로 철거 + 확정 방향 기록"
+    ],
+    [
+      "b3074fd",
+      "feat: 앱 설치 안내 토스트 — 브라우저 배너를 기다리지 않는다"
+    ],
+    [
+      "8fea321",
+      "design: 공유 카드를 접수증 영수증으로 (확정 시안 share3-s2)"
+    ],
+    [
+      "1b21e9b",
+      "design: 결과 화면을 판정 통지서 서식으로 (확정 시안 result3-r1)"
+    ],
+    [
+      "e718c62",
+      "fix: 크롬 앱 설치 안 되던 문제 — 매니페스트 링크를 head에 직접 배치"
+    ],
+    [
+      "e5cb066",
+      "chore: 배포 웹훅 사망에 대한 근본 대책 — Actions가 Deploy Hook을 쏜다"
+    ],
+    [
+      "774b725",
+      "asset: 가짜 풀 2차 배치 +50건 — 무한 본편 시대의 탄약 보충"
+    ],
+    [
+      "76dd02f",
+      "feat: 무한이 본편으로 — 데일리는 \"공식전\"으로 강등"
+    ],
+    [
+      "00cf20b",
+      "design: 결과·공유 시안 3종씩 — 검증 후 개발하기로"
+    ],
+    [
+      "7d6e8f6",
+      "asset: 가짜 이름 풀에 숫자 문법 30건 추가 — 2단지·3차도 훼이크가 된다"
+    ],
+    [
+      "0a6feb4",
+      "design: 초성 힌트를 조각당 한 글자 랜덤 공개로 — 한 칸을 다 열면 반칙"
+    ],
+    [
+      "184b93b",
+      "design: 결과 화면 다이어트와 무한 직행 — 판정 다섯 건 일괄 반영"
+    ],
+    [
+      "dd992ed",
+      "fix: 앱 설치 버튼이 반응하지 않던 문제 — 설치 이벤트 선점"
+    ],
+    [
+      "b3eba5f",
+      "design: 완료 도장을 \"무한 개장\"으로 — 게임은 닫히지 않는다"
+    ],
+    [
+      "66d10dd",
+      "feat: 조립에 초성 힌트와 속도 점수 — 빨리 맞출수록 높다"
+    ],
+    [
+      "22f79a5",
+      "feat: 무한 세션에도 결과 통지서 발급 — 판 단위 자랑거리"
+    ],
+    [
+      "d230b85",
+      "fix: 오른쪽이 비었는데 문장이 일찍 꺾이던 문제 — ch 단위 함정"
+    ],
+    [
+      "6ff509c",
+      "design: 관인 워터마크 부활 + 회차 표기 다듬기"
+    ],
+    [
+      "05d65e8",
+      "design: 홈을 접수 대장 서식으로 — 창구 목록에 현황 도장이 찍힌다"
+    ],
+    [
+      "7850bd5",
+      "fix: 시안 버튼의 모바일 기본 외형 제거"
+    ],
+    [
+      "7fed196",
+      "fix: 접수 대장 시안의 괘선 이중선"
+    ],
+    [
+      "1370932",
+      "chore: 홈 시안 3종을 라이브 경로에 임시 공개"
+    ],
+    [
+      "4df66f1",
+      "design: 홈 개선 시안 3종 — 접수 대장 / 창구 타일 / 공고 포스터"
+    ],
+    [
+      "ccbf141",
+      "design: 홈 만듦새 다듬기 — 결재 밑줄, 목록 리듬, 살아있는 입장"
+    ],
+    [
+      "5a75feb",
+      "design: 링크 밑줄을 잉크 농도 대비로 교체"
+    ],
+    [
+      "ceb637b",
+      "design: 카피라이트를 © 2026 Jessi로 압축"
+    ],
+    [
+      "698497b",
+      "design: 홈 안내 문구 대청소 — 부연은 한 곳에 한 번만"
+    ],
+    [
+      "6902407",
+      "chore: 푸터 앱 설치 링크를 SSR에도 노출"
+    ],
+    [
+      "e6f6d04",
+      "feat: 푸터에 상시 \"앱 설치\" 링크 — 어느 페이지서든 설치 가능"
+    ],
+    [
+      "67d7f4b",
+      "design: 관인 글리프를 \"감\" 전각으로 — 도장에는 글자가 새겨진다"
+    ],
+    [
+      "b07715c",
+      "feat: 구글 로그인과 기록 동기화 — 비회원은 지금처럼, 로그인하면 기기를 넘어"
+    ],
+    [
+      "690e6e4",
+      "design: 관인 글리프를 아늑한 한 동으로 — 을씨년스러움 걷어내기"
+    ],
+    [
+      "748c35d",
+      "fix: 앱 설치 배너가 안 뜨는 문제 — 서비스 워커 + 홈 설치 버튼"
+    ],
+    [
+      "bdb0df2",
+      "design: 파비콘을 관인 도장으로 리디자인"
+    ],
+    [
+      "81242cc",
+      "feat: PWA 설치 지원 + 파비콘 고해상도 대응"
+    ],
+    [
+      "45c92d5",
+      "design: 도장은 반듯하게 찍히지 않는다 — 통지서 관인에 기울기"
+    ],
+    [
+      "af92ad2",
+      "design: 공유 통지서 도장 농도 밸런스 — 주인공은 하나면 된다"
+    ],
+    [
+      "afad873",
+      "design: 푸터 통일, 본편 정답 리스트 제거, 낡은 표기 일괄 정리"
+    ],
+    [
+      "9d1b7dc",
+      "feat: 감별사 레벨 — 날짜를 넘어 쌓이는 성장축"
+    ],
+    [
+      "2bb4048",
+      "design: 어제의 정답 대장 폐지 — 정답을 외우게 하는 문을 닫는다"
+    ],
+    [
+      "60f3bfe",
+      "fix: 결과 워터마크가 시트 밖으로 새고 가로 스크롤을 만들던 문제"
+    ],
+    [
+      "c5026c5",
+      "feat: 결과 화면 연출 — 카운트업, 등급 사다리, 기록 게이지, 관인 워터마크"
+    ],
+    [
+      "a7fb8d3",
+      "fix: 무한 모드에서 X로 나가도 세션 결과를 보여준다"
+    ],
+    [
+      "caf714e",
+      "design: 공유 통지서도 절취선으로 판정부/기록부 구분"
+    ],
+    [
+      "3092c4b",
+      "design: 결과 화면 시각 정리 — 도장과 판정 그리드 사이에 절취선"
+    ],
+    [
+      "f4a8da4",
+      "design: 푸터 카피라이트를 이메일 노출 대신 이름 링크로"
+    ],
+    [
+      "a5218a1",
+      "feat: 모든 게임에 통지서 이미지 공유 — 조립·진짜 찾기도 등급이 생겼다"
+    ],
+    [
+      "978e612",
+      "design: 효과음 토글 제거 — 항상 켠다"
+    ],
+    [
+      "7f3187f",
+      "design: 세션 결과에서 복사 버튼 제거"
+    ],
+    [
+      "e4b651c",
+      "feat: 무한 모드 세션 결과 — 끝낸 만큼 정산해 준다"
+    ],
+    [
+      "37f9ddd",
+      "docs: 배포 웹훅 유실 시 복구 절차를 가이드에 기록"
+    ],
+    [
+      "bada909",
+      "docs: 게임 모드 문서를 10문제·무한 모드·제한시간 체제로 현행화"
+    ],
+    [
+      "e8d03f2",
+      "fix: 타임바를 width 대신 transform으로 — 레이아웃 재계산 제거"
+    ],
+    [
+      "67ea74e",
+      "feat: 조립·진짜 찾기 10문제 확장, 제한시간, 무한 모드 시간 기록"
+    ],
+    [
+      "f81fe63",
+      "feat: 무한 모드 — 데일리가 끝나도 게임은 안 끝난다"
+    ],
+    [
+      "f55cb57",
+      "design: 도장 품질 통일 — 공유 이미지도 웹과 같은 SVG 필터로 찍는다"
+    ],
+    [
+      "37fbcad",
+      "design: 카피라이트 표기 추가, 본편 텍스트 복사 버튼 제거"
+    ],
+    [
+      "7b5f000",
+      "design: 공유 통지서의 등급 도장에 웹과 같은 거친 질감"
+    ],
+    [
+      "a84b725",
+      "feat: 판정 효과음과 게임 닫기 버튼"
+    ],
+    [
+      "774935f",
+      "fix: 관인 링 텍스트를 필터 밖으로 — 실기기 깨짐 2차 수정"
+    ],
+    [
+      "d800e4f",
+      "feat: 다시 하기 — 세 게임 전부 연습 재도전 추가"
+    ],
+    [
+      "2345053",
+      "feat: 결과 통지서 공유 이미지 — 갤러리에 저장되는 감별 결과"
+    ],
+    [
+      "f061fd8",
+      "fix: 관인 링 텍스트가 휴대폰에서 깨지는 문제 — textPath를 버렸다"
+    ],
+    [
+      "b5c7503",
+      "design: 창구 홈 리디자인 — 관인·이중 괘선·창구 번호판"
+    ],
+    [
+      "56d214b",
+      "fix: 모바일 줄바꿈·오버플로 정리 — 푸터 스택, 긴 단지명 래핑, 그리드 한 줄"
+    ],
+    [
+      "7bd65f4",
+      "design: 게임 중 모션 — 서류가 놓이고 도장이 내리찍힌다"
+    ],
+    [
+      "02fb2bb",
+      "feat: 어제 전국 정답률 노출 — 홈 하이라이트와 정답 대장"
+    ],
+    [
+      "06c54c7",
+      "feat: 진짜 찾기 4지선다 — 세 번째 데일리 게임"
+    ],
+    [
+      "c19538f",
+      "docs: 데이터 파이프라인 현행화 — 실데이터·가짜 풀 절차를 가이드에 반영"
+    ],
+    [
+      "ff09f58",
+      "feat: 가짜 이름 풀을 16개에서 120개로 확장"
+    ],
+    [
+      "8efac41",
+      "feat: 출제 풀을 K-apt 실데이터 서울 2,889개 단지로 교체"
+    ],
+    [
+      "e7f9851",
+      "fix: 수집기 중복 판정·이름 길이 필터를 검증기와 일치시킴"
+    ],
+    [
+      "eeb8404",
+      "fix: K-apt 수집 스크립트를 현행 API(목록 V4·기본정보 V5)로 교체"
     ]
   ],
   "commitsEn": [
@@ -290,29 +738,325 @@
     [
       "87e8415",
       "chore: add manual trigger button to deployment workflow"
+    ],
+    [
+      "5f621dc",
+      "fix: The real reason deployments failed was the account's daily deploy limit"
+    ],
+    [
+      "c37662a",
+      "chore: Remove temporary public mockup routes and record the confirmed direction"
+    ],
+    [
+      "b3074fd",
+      "feat: App install guide toast — no longer waits for the browser banner"
+    ],
+    [
+      "8fea321",
+      "design: Share card as a receipt slip (confirmed mockup share3-s2)"
+    ],
+    [
+      "1b21e9b",
+      "design: Result screen as a verdict notice format (confirmed mockup result3-r1)"
+    ],
+    [
+      "e718c62",
+      "fix: Chrome app install not working — place manifest link directly in head"
+    ],
+    [
+      "e5cb066",
+      "chore: Permanent fix for dead deploy webhook — Actions fires the Deploy Hook"
+    ],
+    [
+      "774b725",
+      "asset: Fake name pool second batch +50 entries — ammo refill for the infinite main era"
+    ],
+    [
+      "76dd02f",
+      "feat: Infinite mode becomes the main game — daily demoted to \"official match\""
+    ],
+    [
+      "00cf20b",
+      "design: 3 variants each for result and share mockups — will develop after validation"
+    ],
+    [
+      "7d6e8f6",
+      "asset: Added 30 numeric-pattern entries to fake name pool — \"Complex 2\" and \"3rd batch\" also become decoys"
+    ],
+    [
+      "0a6feb4",
+      "design: Chosung hint reveals one random letter per fragment — opening a whole slot is cheating"
+    ],
+    [
+      "184b93b",
+      "design: Slimmed result screen and direct infinite entry — five verdict changes applied at once"
+    ],
+    [
+      "dd992ed",
+      "fix: App install button not responding — claimed the install event early"
+    ],
+    [
+      "b3eba5f",
+      "design: Completion stamp changed to \"infinite open\" — the game never closes"
+    ],
+    [
+      "66d10dd",
+      "feat: Chosung hints and speed score for assembly — the faster you match, the higher the score"
+    ],
+    [
+      "22f79a5",
+      "feat: Issue result notices for infinite sessions too — per-round bragging material"
+    ],
+    [
+      "d230b85",
+      "fix: Sentence breaking early although right side was empty — ch unit pitfall"
+    ],
+    [
+      "6ff509c",
+      "design: Official seal watermark revived and round numbering refined"
+    ],
+    [
+      "05d65e8",
+      "design: Home as a reception register format — status stamps on the counter list"
+    ],
+    [
+      "7850bd5",
+      "fix: Removed default mobile appearance from mockup buttons"
+    ],
+    [
+      "7fed196",
+      "fix: Double ruled line in reception register mockup"
+    ],
+    [
+      "1370932",
+      "chore: Temporarily expose 3 home mockups on the live route"
+    ],
+    [
+      "4df66f1",
+      "design: Home mockups x3 — reception register / counter tiles / notice poster"
+    ],
+    [
+      "ccbf141",
+      "design: Home polish — approval underline, list rhythm, living entry"
+    ],
+    [
+      "5a75feb",
+      "design: Replace link underline with ink-density contrast"
+    ],
+    [
+      "ceb637b",
+      "design: Condense copyright to © 2026 Jessi"
+    ],
+    [
+      "698497b",
+      "design: Home copy cleanup — elaboration appears only once in one place"
+    ],
+    [
+      "6902407",
+      "chore: Expose footer app install link in SSR too"
+    ],
+    [
+      "e6f6d04",
+      "feat: Persistent \"Install App\" link in footer — installable from any page"
+    ],
+    [
+      "67d7f4b",
+      "design: Official seal glyph as a full-width \"gam\" character — the stamp carries an engraved character"
+    ],
+    [
+      "b07715c",
+      "feat: Google login and record sync — guests stay as-is, logged-in users carry across devices"
+    ],
+    [
+      "690e6e4",
+      "design: Official seal glyph as a cozy single block — removing the eerie feel"
+    ],
+    [
+      "748c35d",
+      "fix: App install banner not appearing — service worker + home install button"
+    ],
+    [
+      "bdb0df2",
+      "design: Redesign favicon as an official seal stamp"
+    ],
+    [
+      "81242cc",
+      "feat: PWA install support + high-resolution favicon support"
+    ],
+    [
+      "45c92d5",
+      "design: Stamps are never printed straight — tilt the seal on notices"
+    ],
+    [
+      "af92ad2",
+      "design: Shared notice stamp ink density balance — only one should be the focus"
+    ],
+    [
+      "afad873",
+      "design: Unify footer, remove main-game answer list, clean up outdated notation"
+    ],
+    [
+      "9d1b7dc",
+      "feat: Detective level — a growth axis that accumulates across days"
+    ],
+    [
+      "2bb4048",
+      "design: Remove yesterday's answer ledger — closes the door that let people memorize answers"
+    ],
+    [
+      "60f3bfe",
+      "fix: Result watermark leaked outside the sheet and caused horizontal scrolling"
+    ],
+    [
+      "c5026c5",
+      "feat: Result screen animations — count-up, grade ladder, record gauge, seal watermark"
+    ],
+    [
+      "a7fb8d3",
+      "fix: Infinite mode shows session results even when exiting via X"
+    ],
+    [
+      "caf714e",
+      "design: Distinguish judgment and record sections with a perforated line on the share notice"
+    ],
+    [
+      "3092c4b",
+      "design: Clean up result screen layout — perforated line between stamp and verdict grid"
+    ],
+    [
+      "f4a8da4",
+      "design: Footer copyright links to name instead of showing email"
+    ],
+    [
+      "a5218a1",
+      "feat: Share notice image for all games — assembly and find-the-real now have grades"
+    ],
+    [
+      "978e612",
+      "design: Remove sound effect toggle — always on"
+    ],
+    [
+      "7f3187f",
+      "design: Remove copy button from session results"
+    ],
+    [
+      "e4b651c",
+      "feat: Infinite mode session results — settles up whatever you completed"
+    ],
+    [
+      "37f9ddd",
+      "docs: Document recovery procedure for lost deployment webhooks"
+    ],
+    [
+      "bada909",
+      "docs: Update game mode docs to current 10-question, infinite mode, and time-limit system"
+    ],
+    [
+      "e8d03f2",
+      "fix: Use transform instead of width for time bar — removes layout recalculation"
+    ],
+    [
+      "67ea74e",
+      "feat: Expand assembly and find-the-real to 10 questions, add time limit and infinite mode time records"
+    ],
+    [
+      "f81fe63",
+      "feat: Infinite mode — the game doesn't end when the daily ends"
+    ],
+    [
+      "f55cb57",
+      "design: Unify stamp quality — share images use the same SVG filter as web"
+    ],
+    [
+      "37fbcad",
+      "design: Add copyright notice, remove copy button from main text"
+    ],
+    [
+      "7b5f000",
+      "design: Add web-like rough texture to grade stamp on share notice"
+    ],
+    [
+      "a84b725",
+      "feat: Judgment sound effect and game close button"
+    ],
+    [
+      "774935f",
+      "fix: Move seal ring text outside filter — second fix for broken rendering on real devices"
+    ],
+    [
+      "d800e4f",
+      "feat: Retry — practice retry added for all three games"
+    ],
+    [
+      "2345053",
+      "feat: Result notice share image — identification result saved to gallery"
+    ],
+    [
+      "f061fd8",
+      "fix: Seal ring text broken on mobile — dropped textPath"
+    ],
+    [
+      "b5c7503",
+      "design: Home screen redesign for counter — seal, double rules, counter number plate"
+    ],
+    [
+      "56d214b",
+      "fix: Mobile line break and overflow cleanup — stacked footer, wrapping long complex names, single-line grid"
+    ],
+    [
+      "7bd65f4",
+      "design: In-game motion — documents placed and stamps pressed down"
+    ],
+    [
+      "02fb2bb",
+      "feat: Show yesterday's nationwide accuracy — home highlight and answer ledger"
+    ],
+    [
+      "06c54c7",
+      "feat: Find-the-real with 4 choices — third daily game"
+    ],
+    [
+      "c19538f",
+      "docs: Update data pipeline — real data and fake pool procedures reflected in guide"
+    ],
+    [
+      "ff09f58",
+      "feat: Expand fake name pool from 16 to 120"
+    ],
+    [
+      "8efac41",
+      "feat: Replace question pool with real K-apt data, 2,889 complexes in Seoul"
+    ],
+    [
+      "e7f9851",
+      "fix: Align collector duplicate check and name length filter with validator"
+    ],
+    [
+      "eeb8404",
+      "fix: Replace K-apt collection script with current API (list V4, basic info V5)"
     ]
   ],
-  "commitCount": 20,
+  "commitCount": 94,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "설치한 앱에서만 구글 로그인이 막혔습니다. 사이트 주소가 두 개였고, 하나로 모으니 풀렸습니다.",
-    "en": "Google sign-in failed only inside the installed app. The site had two addresses; folding them into one fixed it."
+    "ko": "하루 10문제로 끝나던 아파트 감별사 퀴즈를 끝없이 이어지는 게임으로 바꿨습니다. 매일의 10문제는 공식전으로 남겼습니다.",
+    "en": "I turned a 10-question daily apartment-name quiz into an endless game. The daily 10 stay on as the official match."
   },
   "hashtags": [
-    "#개발일지",
-    "#로그인",
-    "#PWA",
+    "#vibelog",
+    "#데브로그",
+    "#아파트감별사",
+    "#인디게임",
     "#devlog",
-    "#buildinpublic",
-    "#아파트게임",
-    "#webdev"
+    "#webgame",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mtx4yh1q",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mtx4yjno",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mtx4zv9j",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mtx4zx3t",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.sm.mp4?v=mv3y8kmr",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.sm.mp4?v=mv3y8shm"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.poster.jpg?v=mv5t1o4n",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.mp4?v=mv5t1rfv",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.ko.sm.mp4?v=mv5t1z0b",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.poster.jpg?v=mv5t35tw",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.mp4?v=mv5t3906",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-11.en.sm.mp4?v=mv5t3fdb"
   }
 }

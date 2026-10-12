@@ -1,42 +1,31 @@
 [
  {
-  "section": "fail",
+  "section": "did",
   "after": 0,
-  "alt": "퀴즈에 뜬 이름 뒤에 '동'을 붙여 확인하면 원래 진짜일 때는 안내가 뜨고 가짜일 때는 그냥 통과했지만, 고친 뒤에는 어느 쪽이든 같은 안내가 뜬다는 그림.",
-  "altEn": "Diagram: adding a syllable to a quiz name and checking it showed a warning if the original was real and passed if it was fake; after the fix, both get the same message.",
-  "caption": "글자 하나 붙여 확인하면 답이 갈리던 구멍, 그리고 고친 뒤",
-  "captionEn": "Adding one syllable split the answers, until both were compared the same way",
+  "alt": "내가 연속으로 맞힌 문제가 도전장 링크로 친구에게 가고, 친구가 같은 순서로 풀다 한 번 틀리면 끝나 승리·무승부·패배 도장이 찍히는 흐름",
+  "altEn": "The questions I answered in a row go to a friend through a challenge link. The friend plays them in the same order, one wrong answer ends it, and a win, draw, or loss stamp is given.",
+  "caption": "도전장은 내가 맞힌 문제를 친구가 같은 순서로 다시 푸는 것입니다",
+  "captionEn": "A challenge means a friend replays the questions I got right, in the same order",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 350",
+    "viewBox": "0 0 390 330",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "이름 뒤에 '동'을 붙여 확인하면 진짜와 가짜에서 결과가 갈렸지만, 고친 뒤에는 같은 안내가 뜬다."
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "15",
-      "y": "30",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "고치기 전"
+     "text": "내가 맞힌 문제가 도전장 링크로 친구에게 가고, 친구가 같은 순서로 풀어 승리·무승부·패배 도장을 받는 흐름"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "115",
-      "y": "16",
-      "width": "190",
-      "height": "44",
-      "rx": "8",
+      "x": "60",
+      "y": "30",
+      "width": "270",
+      "height": "50",
+      "rx": "10",
       "fill": "var(--color-panel)",
       "stroke": "var(--color-line-strong)"
      }
@@ -44,164 +33,468 @@
     {
      "tag": "text",
      "attrs": {
-      "x": "210",
-      "y": "44",
+      "x": "195",
+      "y": "61",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "퀴즈 이름 + '동'"
+     "text": "내가 연속으로 맞힌 문제"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "210",
-      "y1": "60",
-      "x2": "100",
-      "y2": "100",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
+      "x1": "195",
+      "y1": "80",
+      "x2": "195",
+      "y2": "120",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,118 202,118 195,128",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "210",
+      "y": "109",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "도전장 링크"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "130",
+      "width": "270",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "친구가 같은 순서로 풂"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "210",
-      "y1": "60",
-      "x2": "290",
-      "y2": "100",
+      "x1": "195",
+      "y1": "180",
+      "x2": "195",
+      "y2": "220",
       "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
+      "stroke-width": "2"
      }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,218 202,218 195,228",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "210",
+      "y": "209",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "한 번 틀리면 끝"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "95",
+      "cy": "278",
+      "r": "36",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "284",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "승리"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "278",
+      "r": "36",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "284",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "무승부"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "295",
+      "cy": "278",
+      "r": "36",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "284",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "패배"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 330",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The questions I got right go to a friend through a challenge link, the friend plays them in the same order, and gets a win, draw, or loss stamp"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "30",
+      "width": "270",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "61",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Questions I got in a row"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "80",
+      "x2": "195",
+      "y2": "120",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,118 202,118 195,128",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "210",
+      "y": "109",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "challenge link"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "130",
+      "width": "270",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Friend plays, same order"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "180",
+      "x2": "195",
+      "y2": "220",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,218 202,218 195,228",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "210",
+      "y": "209",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "one miss ends it"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "95",
+      "cy": "278",
+      "r": "36",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "284",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Win"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "278",
+      "r": "36",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "284",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Draw"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "295",
+      "cy": "278",
+      "r": "36",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "284",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Loss"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "전에는 '오늘의 문제'라는 문구가 오늘 몫은 끝났다는 신호가 됐고, 이제는 친구의 도전장이 다시 들어올 이유가 된다는 비교",
+  "altEn": "Before, the phrase 'Today's questions' signaled that today's share was done; now a friend's challenge becomes the reason to come back.",
+  "caption": "날짜 문구는 끝내라는 신호였고, 도전장은 돌아오라는 신호입니다",
+  "captionEn": "The date wording said 'you're done'; a challenge says 'come back'",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "날짜 문구는 오늘 몫이 끝났다는 신호였고, 친구의 도전장은 다시 들어올 이유가 된다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전: 날짜 문구"
     },
     {
      "tag": "rect",
      "attrs": {
       "x": "20",
-      "y": "100",
-      "width": "160",
-      "height": "40",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
+      "y": "45",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "100",
-      "y": "126",
+      "x": "95",
+      "y": "76",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "원래 진짜"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "210",
-      "y": "100",
-      "width": "160",
-      "height": "40",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "126",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "원래 가짜"
+     "text": "오늘의 문제"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "100",
-      "y1": "140",
-      "x2": "100",
-      "y2": "170",
+      "x1": "174",
+      "y1": "70",
+      "x2": "208",
+      "y2": "70",
       "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "line",
+     "tag": "polygon",
      "attrs": {
-      "x1": "290",
-      "y1": "140",
-      "x2": "290",
-      "y2": "170",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
+      "points": "206,63 216,70 206,77",
+      "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "170",
-      "width": "160",
-      "height": "44",
-      "rx": "8",
-      "fill": "none",
+      "x": "220",
+      "y": "45",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
       "stroke": "var(--color-warn)",
-      "stroke-width": "1.5"
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "100",
-      "y": "198",
+      "x": "295",
+      "y": "76",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "16",
       "fill": "var(--color-warn)"
      },
-     "text": "안내 뜸"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "210",
-      "y": "170",
-      "width": "160",
-      "height": "44",
-      "rx": "8",
-      "fill": "none",
-      "stroke": "var(--color-warn)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "198",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-warn)"
-     },
-     "text": "그냥 통과"
+     "text": "오늘 몫 끝"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "15",
-      "y1": "242",
-      "x2": "375",
-      "y2": "242",
+      "x1": "20",
+      "y1": "124",
+      "x2": "370",
+      "y2": "124",
       "stroke": "var(--color-line)",
       "stroke-dasharray": "4 4"
      }
@@ -209,58 +502,506 @@
     {
      "tag": "text",
      "attrs": {
-      "x": "15",
-      "y": "272",
+      "x": "20",
+      "y": "157",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "고친 뒤"
+     "text": "후: 도전장"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "60",
-      "y": "285",
-      "width": "270",
-      "height": "48",
-      "rx": "8",
-      "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)",
-      "stroke-width": "1.5"
+      "x": "20",
+      "y": "170",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "315",
+      "x": "95",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "친구의 도전장"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "174",
+      "y1": "195",
+      "x2": "208",
+      "y2": "195",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,188 216,195 206,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "170",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "201",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "16",
       "fill": "var(--color-accent)"
      },
-     "text": "어느 쪽이든 같은 안내"
+     "text": "다시 들어옴"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 350",
+    "viewBox": "0 0 390 240",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "Adding a syllable to a quiz name split the results between real and fake; after the fix, both get the same message."
+     "text": "The date wording signaled that today's share was done, while a friend's challenge becomes the reason to come back"
     },
     {
      "tag": "text",
      "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before: date wording"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Today's questions"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "174",
+      "y1": "70",
+      "x2": "208",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,63 216,70 206,77",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "45",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Done for today"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "124",
+      "x2": "370",
+      "y2": "124",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "157",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After: challenges"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Friend's challenge"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "174",
+      "y1": "195",
+      "x2": "208",
+      "y2": "195",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "206,188 216,195 206,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "170",
+      "width": "150",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Come back again"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "진 쪽이 같은 문제로 다시 도전하면 예전에는 외운 답으로 승리 도장과 경험치를 받았지만, 이제는 다시 친 판이 기록과 경험치에서 빠지고 화면에도 알려 준다는 비교",
+  "altEn": "When the loser retries the same questions, they used to win a stamp and experience points with memorized answers; now replays don't count toward records or experience points, and the screen says so.",
+  "caption": "같은 문제를 다시 치면 답을 외울 수 있으니, 그 판은 셈하지 않습니다",
+  "captionEn": "A retry lets you memorize the answers, so that game no longer counts",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 280",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "같은 문제로 다시 도전한 판이 예전에는 승리 도장과 경험치를 받았지만 이제는 기록과 경험치에서 빠진다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "25",
+      "width": "300",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "진 쪽이 같은 문제로 다시 도전"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 75 V100 M105 100 H285 M105 100 V137 M285 100 V137",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "98,135 112,135 105,145",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "278,135 292,135 285,145",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "126",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "예전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "275",
+      "y": "126",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "이제"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
       "x": "15",
-      "y": "30",
+      "y": "148",
+      "width": "175",
+      "height": "80",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "181",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "외운 답으로 다 맞힘"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "208",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "승리 도장·경험치"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "148",
+      "width": "175",
+      "height": "80",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "181",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "다시 친 판은"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "208",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기록·경험치 제외"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "258",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "화면에도 알려 줌"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 280",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A retry with the same questions used to earn a win stamp and experience points, but now it is left out of records and experience points"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "25",
+      "width": "300",
+      "height": "50",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "56",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Loser retries same questions"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M195 75 V100 M105 100 H285 M105 100 V137 M285 100 V137",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "98,135 112,135 105,145",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "278,135 292,135 285,145",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "126",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
@@ -268,217 +1009,102 @@
      "text": "Before"
     },
     {
-     "tag": "rect",
-     "attrs": {
-      "x": "115",
-      "y": "16",
-      "width": "190",
-      "height": "44",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
      "tag": "text",
      "attrs": {
-      "x": "210",
-      "y": "44",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "Quiz name + syllable"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "210",
-      "y1": "60",
-      "x2": "100",
-      "y2": "100",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "210",
-      "y1": "60",
-      "x2": "290",
-      "y2": "100",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "100",
-      "width": "160",
-      "height": "40",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "100",
+      "x": "275",
       "y": "126",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "Was real"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "210",
-      "y": "100",
-      "width": "160",
-      "height": "40",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "126",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "Was fake"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "100",
-      "y1": "140",
-      "x2": "100",
-      "y2": "170",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "290",
-      "y1": "140",
-      "x2": "290",
-      "y2": "170",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "170",
-      "width": "160",
-      "height": "44",
-      "rx": "8",
-      "fill": "none",
-      "stroke": "var(--color-warn)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "100",
-      "y": "198",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-warn)"
-     },
-     "text": "Warning shows"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "210",
-      "y": "170",
-      "width": "160",
-      "height": "44",
-      "rx": "8",
-      "fill": "none",
-      "stroke": "var(--color-warn)",
-      "stroke-width": "1.5"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "198",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-warn)"
-     },
-     "text": "Just passes"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "15",
-      "y1": "242",
-      "x2": "375",
-      "y2": "242",
-      "stroke": "var(--color-line)",
-      "stroke-dasharray": "4 4"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "15",
-      "y": "272",
+      "text-anchor": "end",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "After"
+     "text": "Now"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "60",
-      "y": "285",
-      "width": "270",
-      "height": "48",
-      "rx": "8",
-      "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)",
-      "stroke-width": "1.5"
+      "x": "15",
+      "y": "148",
+      "width": "175",
+      "height": "80",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "315",
+      "x": "102",
+      "y": "181",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "16",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Memorized answers"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "208",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Win stamp + XP"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "148",
+      "width": "175",
+      "height": "80",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "181",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
       "fill": "var(--color-accent)"
      },
-     "text": "Same message either way"
+     "text": "Replays don't count"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "208",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "for records or XP"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "258",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Screen says so"
     }
    ]
   }

@@ -1,0 +1,16 @@
+{
+  "screens": [
+    {
+      "path": "/shorts",
+      "start": 1.04,
+      "end": 17.66
+    },
+    {
+      "path": "/",
+      "find": "last run",
+      "focusY": 0.5,
+      "start": 18.67,
+      "end": 34.71
+    }
+  ]
+}

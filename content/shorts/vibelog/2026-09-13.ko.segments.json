@@ -1,28 +1,27 @@
 {
   "screens": [
     {
-      "path": "/log",
-      "start": 0.87,
-      "end": 9.08
+      "path": "/",
+      "start": 0.9,
+      "end": 10.54
+    },
+    {
+      "path": "/about",
+      "find": "파이프라인",
+      "focusY": 0.223,
+      "start": 11.54,
+      "end": 20.56
     },
     {
       "path": "/",
-      "find": "최근 데브로그",
-      "focusY": 0.5,
-      "start": 10.05,
-      "end": 18.07
-    },
-    {
-      "path": "/",
-      "find": "지난 실행",
-      "focusY": 0.5,
-      "start": 18.58,
-      "end": 26.6
+      "find": "454",
+      "start": 21.44,
+      "end": 31.1
     },
     {
       "path": "/shorts",
-      "start": 27.53,
-      "end": 35.83
+      "start": 32.02,
+      "end": 41.69
     }
   ]
 }

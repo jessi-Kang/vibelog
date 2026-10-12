@@ -1,1040 +1,436 @@
 [
  {
-  "section": "did",
-  "after": 1,
-  "alt": "프로젝트에 표시를 달면 30분 안에 목록에 나타나는 흐름",
-  "altEn": "Flow from tagging a project to it appearing in the list within 30 minutes",
-  "caption": "표시만 달면 30분 안에 목록에 오릅니다.",
-  "captionEn": "Tag it once, and it shows up within 30 minutes.",
+  "section": "fail",
+  "after": 0,
+  "alt": "마침표가 붙은 started.는 강조할 낱말 started와 달라 색이 안 칠해졌고, 문장부호를 무시하자 같아져 색이 칠해지는 전후 비교",
+  "altEn": "Before the fix, started. with a period didn't match the key word started; after ignoring punctuation they match and get colored",
+  "caption": "마침표 하나 때문에 같은 낱말을 다른 말로 봤습니다",
+  "captionEn": "One period made the same word look like a different one",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 170",
+    "viewBox": "0 0 390 270",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "표시를 달면 30분 안에 목록에 나타난다"
+     "text": "고치기 전에는 started.와 started가 달라 색이 안 칠해지고, 문장부호를 무시한 뒤에는 같아져 색이 칠해지는 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "고치기 전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "58",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "문장 속"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "58",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "강조할 말"
     },
     {
      "tag": "rect",
      "attrs": {
       "x": "20",
-      "y": "50",
+      "y": "68",
       "width": "130",
-      "height": "54",
-      "rx": "8",
+      "height": "40",
+      "rx": "6",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "85",
-      "y": "83",
+      "y": "94",
       "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "표시 달기"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "155",
-      "y1": "77",
-      "x2": "228",
-      "y2": "77",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "236,77 228,72 228,82",
-      "fill": "var(--color-muted)"
-     }
+     "text": "started."
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "192",
-      "y": "62",
+      "x": "195",
+      "y": "96",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "22",
+      "fill": "var(--color-warn)"
      },
-     "text": "30분 이내"
+     "text": "≠"
     },
     {
      "tag": "rect",
      "attrs": {
       "x": "240",
-      "y": "50",
+      "y": "68",
       "width": "130",
-      "height": "54",
-      "rx": "8",
+      "height": "40",
+      "rx": "6",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-accent)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "305",
-      "y": "83",
+      "y": "94",
       "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-accent)"
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "목록에 뜸"
+     "text": "started"
     },
     {
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "140",
+      "y": "134",
       "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "색 안 칠해짐"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "152",
+      "x2": "370",
+      "y2": "152",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "176",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "설명은 나중에 채워도 반영"
-    }
-   ]
-  },
-  "nodeEn": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 170",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "A tagged project appears in the list within 30 minutes"
+     "text": "고친 뒤: 문장부호 무시"
     },
     {
      "tag": "rect",
      "attrs": {
       "x": "20",
-      "y": "50",
+      "y": "188",
       "width": "130",
-      "height": "54",
-      "rx": "8",
+      "height": "40",
+      "rx": "6",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "85",
-      "y": "83",
+      "y": "214",
       "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "tag it"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "155",
-      "y1": "77",
-      "x2": "228",
-      "y2": "77",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "236,77 228,72 228,82",
-      "fill": "var(--color-muted)"
-     }
+     "text": "started"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "192",
-      "y": "62",
+      "x": "195",
+      "y": "216",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "font-size": "22",
       "fill": "var(--color-muted)"
      },
-     "text": "within 30 min"
+     "text": "="
     },
     {
      "tag": "rect",
      "attrs": {
       "x": "240",
-      "y": "50",
+      "y": "188",
       "width": "130",
-      "height": "54",
-      "rx": "8",
+      "height": "40",
+      "rx": "6",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-accent)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "305",
-      "y": "83",
+      "y": "214",
       "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-accent)"
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "in the list"
+     "text": "started"
     },
     {
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "140",
+      "y": "256",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-muted)"
+      "fill": "var(--color-accent)"
      },
-     "text": "description can come later"
+     "text": "색 칠해짐"
     }
    ]
-  }
- },
- {
-  "section": "why",
-  "after": 0,
-  "alt": "글에 쓴 커밋 16개와 목록에 보인 커밋 8개를 막대로 비교",
-  "altEn": "Bars comparing 16 commits written in the post with 8 shown in the list",
-  "caption": "쓴 것과 보여 준 것이 어긋났습니다.",
-  "captionEn": "What I wrote and what I showed did not match.",
-  "node": {
+  },
+  "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 195",
+    "viewBox": "0 0 390 270",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "글에 쓴 커밋 16개와 목록에 보인 커밋 8개의 차이"
+     "text": "Before the fix, started. and started don't match so nothing is colored; after ignoring punctuation they match and get colored"
     },
     {
      "tag": "text",
      "attrs": {
       "x": "20",
-      "y": "42",
+      "y": "28",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-ink-soft)"
+      "fill": "var(--color-muted)"
      },
-     "text": "글에 썼다"
+     "text": "Before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "58",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "In sentence"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "58",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Key word"
     },
     {
      "tag": "rect",
      "attrs": {
       "x": "20",
-      "y": "54",
-      "width": "240",
-      "height": "30",
-      "rx": "4",
-      "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)"
+      "y": "68",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "272",
-      "y": "76",
+      "x": "85",
+      "y": "94",
+      "text-anchor": "middle",
       "font-family": "var(--font-mono)",
       "font-size": "17",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "16"
+     "text": "started."
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "20",
-      "y": "122",
+      "x": "195",
+      "y": "96",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
+      "font-size": "22",
+      "fill": "var(--color-warn)"
      },
-     "text": "목록에 보였다"
+     "text": "≠"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
+      "x": "240",
+      "y": "68",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "94",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "started"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
       "y": "134",
-      "width": "120",
-      "height": "30",
-      "rx": "4",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "152",
-      "y": "156",
-      "font-family": "var(--font-mono)",
-      "font-size": "17",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
       "fill": "var(--color-warn)"
      },
-     "text": "8"
+     "text": "Not colored"
     },
     {
-     "tag": "text",
+     "tag": "line",
      "attrs": {
-      "x": "370",
-      "y": "186",
-      "text-anchor": "end",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "앞뒤가 안 맞는다"
-    }
-   ]
-  },
-  "nodeEn": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 195",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "16 commits written in the post versus 8 shown in the list"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "42",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "written in the post"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "54",
-      "width": "240",
-      "height": "30",
-      "rx": "4",
-      "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "272",
-      "y": "76",
-      "font-family": "var(--font-mono)",
-      "font-size": "17",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "16"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "122",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "shown in the list"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "134",
-      "width": "120",
-      "height": "30",
-      "rx": "4",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "152",
-      "y": "156",
-      "font-family": "var(--font-mono)",
-      "font-size": "17",
-      "fill": "var(--color-warn)"
-     },
-     "text": "8"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "370",
-      "y": "186",
-      "text-anchor": "end",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "it did not add up"
-    }
-   ]
-  }
- },
- {
-  "section": "fail",
-  "after": 1,
-  "alt": "주소만 있으면 미리보기, 공개를 선언하면 공개됨으로 갈라지는 두 갈래",
-  "altEn": "A split: address alone means preview, an actual release means live",
-  "caption": "주소가 있다고 다 공개는 아닙니다.",
-  "captionEn": "Having an address is not the same as being live.",
-  "node": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 200",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "주소만 있으면 미리보기, 공개 선언이 있으면 공개됨"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "120",
-      "y": "18",
-      "width": "150",
-      "height": "44",
-      "rx": "8",
-      "fill": "var(--color-panel)",
+      "x1": "20",
+      "y1": "152",
+      "x2": "370",
+      "y2": "152",
       "stroke": "var(--color-line)"
      }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "176",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After: punctuation ignored"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "188",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "214",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "started"
     },
     {
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "46",
+      "y": "216",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "주소를 찾음"
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "195,62 195,82 95,82 95,104",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "195,62 195,82 295,82 295,104",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "104",
-      "width": "150",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "133",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "미리보기"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "220",
-      "y": "104",
-      "width": "150",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "133",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-accent)"
-     },
-     "text": "공개됨"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "176",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "font-size": "22",
       "fill": "var(--color-muted)"
      },
-     "text": "주소만 있을 때"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "176",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "공개를 선언하면"
-    }
-   ]
-  },
-  "nodeEn": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 200",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "Address alone means preview, a release announcement means live"
+     "text": "="
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "120",
-      "y": "18",
-      "width": "150",
-      "height": "44",
-      "rx": "8",
+      "x": "240",
+      "y": "188",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "214",
+      "text-anchor": "middle",
+      "font-family": "var(--font-mono)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "started"
     },
     {
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "46",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "address found"
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "195,62 195,82 95,82 95,104",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "195,62 195,82 295,82 295,104",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "104",
-      "width": "150",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "133",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "preview"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "220",
-      "y": "104",
-      "width": "150",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "133",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-accent)"
-     },
-     "text": "live"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "176",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "address only"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "176",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "release announced"
-    }
-   ]
-  }
- },
- {
-  "section": "fail",
-  "after": 0,
-  "alt": "새 프로젝트가 안 보인 두 이유: 검색에 의존한 것과 밤 11시에만 확인한 것",
-  "altEn": "Two reasons the new project stayed invisible: relying on search, and checking only at 11pm",
-  "caption": "이유는 찾는 방식과 확인 시점, 두 겹이었습니다.",
-  "captionEn": "Two layers: how it looked, and when it looked.",
-  "node": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 245",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "검색 의존과 밤 11시 확인, 두 가지 이유"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "30",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "찾는 방식"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "40",
-      "width": "152",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "96",
-      "y": "69",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "검색으로 찾기"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "180",
-      "y1": "63",
-      "x2": "204",
-      "y2": "63",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "212,63 204,58 204,68",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "218",
-      "y": "40",
-      "width": "152",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "294",
-      "y": "69",
+      "y": "256",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-accent)"
      },
-     "text": "목록 직접 훑기"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "110",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "새 프로젝트는 검색에 늦게 뜬다"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "152",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "확인 시점"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "30",
-      "y1": "192",
-      "x2": "360",
-      "y2": "192",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "72",
-      "cy": "192",
-      "r": "6",
-      "fill": "var(--color-ink-soft)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "72",
-      "y": "222",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "낮 등록"
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "326",
-      "cy": "192",
-      "r": "6",
-      "fill": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "326",
-      "y": "222",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "밤 11시"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "199",
-      "y": "180",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "기다림"
-    }
-   ]
-  },
-  "nodeEn": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 245",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "Two reasons: relying on search, and checking only at 11pm"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "30",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "how it looked"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "40",
-      "width": "152",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "96",
-      "y": "69",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "rely on search"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "180",
-      "y1": "63",
-      "x2": "204",
-      "y2": "63",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "212,63 204,58 204,68",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "218",
-      "y": "40",
-      "width": "152",
-      "height": "46",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "294",
-      "y": "69",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
-     },
-     "text": "walk my list"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "110",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "new projects reach search late"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "152",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "when it looked"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "30",
-      "y1": "192",
-      "x2": "360",
-      "y2": "192",
-      "stroke": "var(--color-line-strong)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "72",
-      "cy": "192",
-      "r": "6",
-      "fill": "var(--color-ink-soft)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "72",
-      "y": "222",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "daytime"
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "326",
-      "cy": "192",
-      "r": "6",
-      "fill": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "326",
-      "y": "222",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "11pm job"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "199",
-      "y": "180",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "waiting"
+     "text": "Colored"
     }
    ]
   }

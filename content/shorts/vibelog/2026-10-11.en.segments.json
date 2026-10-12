@@ -2,14 +2,15 @@
   "screens": [
     {
       "path": "/projects/Anchor",
-      "find": "Read the introduction",
-      "start": 0.96,
-      "end": 19.78
+      "find": "Read the intro",
+      "focusY": 0.262,
+      "start": 1.04,
+      "end": 16.08
     },
     {
       "path": "/",
-      "start": 20.66,
-      "end": 39.66
+      "start": 16.96,
+      "end": 32.18
     }
   ]
 }

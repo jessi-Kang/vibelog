@@ -1,5 +1,5 @@
 {
-  "template": "ship-it",
+  "template": "before-after",
   "music": "ship-it",
   "theme": "terminal",
   "repo": "vibelog",
@@ -8,136 +8,352 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "글 제목에 기호 하나면 사이트가 뚫렸습니다.",
-      "en": "A symbol in a post title broke the site.",
+      "ko": "말과 화면이 따로 놀았습니다.",
+      "en": "Words and screen didn't match.",
       "keywords": [
-        "기호 하나면"
+        "따로"
       ],
       "keywordsEn": [
-        "broke"
+        "didn't"
       ],
-      "screen": "/log",
+      "koLines": [
+        "말과 화면이",
+        "따로 놀았습니다."
+      ],
+      "enLines": [
+        "Words and screen",
+        "didn't match."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "숫자를 말하는 동안 화면은 지나갔습니다.",
+      "en": "While I talked about a number, the screen scrolled past.",
+      "keywords": [
+        "지나갔습니다."
+      ],
+      "keywordsEn": [
+        "scrolled past."
+      ],
+      "koLines": [
+        "숫자를 말하는 동안",
+        "화면은 지나갔습니다."
+      ],
+      "enLines": [
+        "While I talked about a number,",
+        "the screen scrolled past."
+      ],
+      "screen": "/",
       "shot": "whole"
     },
     {
       "scene": "build",
-      "ko": "기호를 걸러 내는 방법은 언젠가 뚫립니다.",
-      "en": "Filtering the symbols always loses eventually.",
+      "ko": "AI가 문장마다 보여 줄 글자를 적습니다.",
+      "en": "The AI notes text to show for each line.",
       "keywords": [
-        "걸러 내는"
+        "문장마다"
       ],
       "keywordsEn": [
-        "Filtering"
+        "text to show"
       ],
-      "motif": "leak"
-    },
-    {
-      "scene": "build",
-      "ko": "그래서 문장이 들어갈 자리 자체를 막았습니다.",
-      "en": "So I sealed the spot the sentence goes into.",
-      "keywords": [
-        "자리 자체를"
+      "koLines": [
+        "AI가 문장마다",
+        "보여 줄 글자를 적습니다."
       ],
-      "keywordsEn": [
-        "sealed the spot"
-      ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "AI가 쓴 제목",
-          "언젠가 뚫림",
-          "그냥 글자",
-          "걸러 내기",
-          "자리 막기"
-        ],
-        "labelsEn": [
-          "AI-written title",
-          "broken eventually",
-          "just text",
-          "filtering",
-          "sealing the spot"
-        ],
-        "pick": 2
-      }
-    },
-    {
-      "scene": "demo",
-      "ko": "이제는 어떤 기호를 넣어도 그냥 글자로만 보입니다.",
-      "en": "Now any symbol just shows up as text and nothing more.",
-      "keywords": [
-        "그냥 글자로만"
-      ],
-      "keywordsEn": [
-        "as text"
-      ],
-      "screen": "/",
-      "find": "최근 데브로그",
-      "findEn": "recent devlog",
-      "shot": "focus"
-    },
-    {
-      "scene": "fail",
-      "ko": "그 사이 영상 만들기는 3번 연속 실패했습니다.",
-      "en": "Meanwhile the video build failed 3 times in a row.",
-      "keywords": [
-        "3번 연속"
-      ],
-      "keywordsEn": [
-        "3 times"
-      ],
-      "stat": "3번",
-      "statEn": "3 failures",
-      "screen": "/",
-      "find": "지난 실행",
-      "findEn": "last run",
-      "shot": "focus"
-    },
-    {
-      "scene": "fail",
-      "ko": "전날 넣은 검사 기능을 영상 쪽이 읽지 못했습니다.",
-      "en": "The video side couldn't read a check I had added the day before.",
-      "keywords": [
-        "검사 기능을"
-      ],
-      "keywordsEn": [
-        "couldn't read"
+      "enLines": [
+        "The AI notes text to show",
+        "for each line."
       ],
       "diagram": {
         "kind": "pipeline",
         "labels": [
-          "검사 기능 추가",
-          "영상 쪽도 같이 읽음",
-          "부품을 못 읽음",
-          "영상 만들기 실패"
+          "대본 문장",
+          "보여 줄 글자",
+          "화면에서 찾기",
+          "멈춰서 테두리"
         ],
         "labelsEn": [
-          "added a check",
-          "video side reads it too",
-          "can't read the part",
-          "video build fails"
+          "Script line",
+          "Text to show",
+          "Find on screen",
+          "Hold and outline"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:typography",
+            "paths": [
+              {
+                "d": "M4 20h3m7 0h7M6.9 15h6.9m-3.6-8.7L16 20M5 20l6-16h2l7 16"
+              }
+            ]
+          },
+          {
+            "name": "tabler:search",
+            "paths": [
+              {
+                "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:focus-2",
+            "paths": [
+              {
+                "d": "M11.5 12a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0",
+                "filled": true
+              },
+              {
+                "d": "M5 12a7 7 0 1 0 14 0a7 7 0 1 0-14 0m7-9v2m-9 7h2m7 7v2m7-9h2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "녹화할 때 그 글자를 찾아 테두리를 칩니다.",
+      "en": "While recording, it finds that text and outlines it.",
+      "keywords": [
+        "테두리를"
+      ],
+      "keywordsEn": [
+        "outlines it."
+      ],
+      "koLines": [
+        "녹화할 때 그 글자를 찾아",
+        "테두리를 칩니다."
+      ],
+      "enLines": [
+        "While recording, it finds that text",
+        "and outlines it."
+      ],
+      "screen": "/about",
+      "find": "파이프라인",
+      "findEn": "Pipeline",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "숫자 이야기엔 이제 숫자가 나옵니다.",
+      "en": "Now when I talk numbers, the number shows.",
+      "keywords": [
+        "숫자가 나옵니다."
+      ],
+      "keywordsEn": [
+        "the number shows."
+      ],
+      "koLines": [
+        "숫자 이야기엔",
+        "이제 숫자가 나옵니다."
+      ],
+      "enLines": [
+        "Now when I talk numbers,",
+        "the number shows."
+      ],
+      "screen": "/",
+      "find": "454",
+      "findEn": "454",
+      "shot": "focus"
+    },
+    {
+      "scene": "fail",
+      "ko": "apart는 아파트 이름 맞히는 게임입니다.",
+      "en": "apart is a game where you guess apartment names.",
+      "keywords": [
+        "게임입니다."
+      ],
+      "keywordsEn": [
+        "game"
+      ],
+      "koLines": [
+        "apart는 아파트 이름",
+        "맞히는 게임입니다."
+      ],
+      "enLines": [
+        "apart is a game where",
+        "you guess apartment names."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "보여 줄 것",
+          "글자",
+          "도장 그림",
+          "찾음",
+          "못 찾음"
+        ],
+        "labelsEn": [
+          "What to show",
+          "Text",
+          "Stamp picture",
+          "Found",
+          "Not found"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "첫 화면의 큰 도장이 영상에 안 나왔습니다.",
+      "en": "The big stamp on its front page never appeared.",
+      "keywords": [
+        "큰 도장이"
+      ],
+      "keywordsEn": [
+        "big stamp"
+      ],
+      "koLines": [
+        "첫 화면의 큰 도장이",
+        "영상에 안 나왔습니다."
+      ],
+      "enLines": [
+        "The big stamp on its front page",
+        "never appeared."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "보여 줄 것",
+          "글자",
+          "도장 그림",
+          "찾음",
+          "못 찾음"
+        ],
+        "labelsEn": [
+          "What to show",
+          "Text",
+          "Stamp picture",
+          "Found",
+          "Not found"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "글자가 없으면 가장 큰 그림을 찾습니다.",
+      "en": "If there's no text, it finds the largest picture.",
+      "keywords": [
+        "가장 큰 그림을"
+      ],
+      "keywordsEn": [
+        "largest picture."
+      ],
+      "koLines": [
+        "글자가 없으면",
+        "가장 큰 그림을 찾습니다."
+      ],
+      "enLines": [
+        "If there's no text,",
+        "it finds the largest picture."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "글자로 찾기",
+          "도장 못 찾음",
+          "가장 큰 그림",
+          "도장 찾음"
+        ],
+        "labelsEn": [
+          "Search by text",
+          "Stamp missed",
+          "Largest picture",
+          "Stamp found"
+        ],
+        "icons": [
+          {
+            "name": "tabler:search",
+            "paths": [
+              {
+                "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:photo-off",
+            "paths": [
+              {
+                "d": "M15 8h.01M7 3h11a3 3 0 0 1 3 3v11m-.856 3.099A3 3 0 0 1 18 21H6a3 3 0 0 1-3-3V6c0-.845.349-1.608.91-2.153"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5m.33-3.662c.574-.054 1.155.166 1.67.662l3 3M3 3l18 18"
+              }
+            ]
+          },
+          {
+            "name": "tabler:photo",
+            "paths": [
+              {
+                "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+              },
+              {
+                "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:rubber-stamp",
+            "paths": [
+              {
+                "d": "M21 17.85H3c0-4.05 1.421-4.05 3.79-4.05C12 13.8 8 9.21 8 7a4 4 0 1 1 8 0c0 2.21-4 6.8 1.21 6.8c2.369 0 3.79 0 3.79 4.05M5 21h14"
+              }
+            ]
+          }
         ]
       }
     },
     {
       "scene": "next",
-      "ko": "다음은 장면에 넣을 움직이는 그림을 고릅니다.",
-      "en": "Next I'll pick moving drawings for the scenes.",
-      "keywords": [],
+      "ko": "오늘 밤 새 쇼츠에서 정말 맞는지 봅니다.",
+      "en": "Tonight I'll check the new shorts really match.",
+      "keywords": [
+        "오늘 밤"
+      ],
       "keywordsEn": [
-        "moving drawings"
+        "Tonight"
+      ],
+      "koLines": [
+        "오늘 밤 새 쇼츠에서",
+        "정말 맞는지 봅니다."
+      ],
+      "enLines": [
+        "Tonight I'll check",
+        "the new shorts really match."
       ],
       "screen": "/shorts",
       "shot": "whole"
     },
     {
       "scene": "end",
-      "ko": "구멍 하나 막았고, 오늘 글도 알아서 올라갑니다.",
-      "en": "One hole closed, and today's post goes up on its own.",
+      "ko": "말하는 것이 이제 화면에 보입니다.",
+      "en": "What I say now shows on screen.",
       "keywords": [
-        "구멍 하나"
+        "화면에"
       ],
       "keywordsEn": [
-        "on its own"
+        "on screen."
+      ],
+      "koLines": [
+        "말하는 것이",
+        "이제 화면에 보입니다."
+      ],
+      "enLines": [
+        "What I say",
+        "now shows on screen."
       ]
     }
   ],
@@ -146,12 +362,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "영상이 3번 연속 실패",
-    "titleEn": "3 builds failed in a row",
-    "before": "전날 넣은 검사 기능을 영상 쪽이 읽지 못했습니다.",
-    "after": "검사 기능을 다른 자리로 옮기고, 미리 잡는 점검을 만들었습니다.",
-    "beforeEn": "The video side couldn't read a check added the day before.",
-    "afterEn": "I moved the check elsewhere and built an inspection that catches it early."
+    "title": "도장이 안 나왔다",
+    "titleEn": "The stamp never showed",
+    "before": "글자 없는 도장 그림을 못 찾음",
+    "after": "가장 큰 그림을 가리킴",
+    "beforeEn": "Couldn't find a stamp with no text",
+    "afterEn": "Points at the largest picture"
   },
   "commits": [
     [
@@ -205,6 +421,86 @@
     [
       "fa161ed",
       "문서: 취소선으로 먹는 물결표 표기를 걷어내고, 문서도 검사에 넣는다"
+    ],
+    [
+      "0f82687",
+      "쇼츠: 말하는 문장에 그 화면을 붙인다 (focusY + 삽질 문장 면제 제거)"
+    ],
+    [
+      "fbf5170",
+      "녹화: 붙잡을 때 완전히 멈추고, 가리킨 것을 살짝 아래에 둔다"
+    ],
+    [
+      "f8af837",
+      "헤더 간격과 쇼츠 재생 화면 컨트롤 크기"
+    ],
+    [
+      "d91bfc8",
+      "빈 화면은 장애다 — 한 번 교정하고, 그래도 비면 영상을 만들지 않는다"
+    ],
+    [
+      "d3fea0c",
+      "쇼츠: 구성을 정하던 규칙들을 걷어낸다 — 내용이 정한다"
+    ],
+    [
+      "74a5437",
+      "찾기 로직을 실제로 시험할 수 있게 내보낸다"
+    ],
+    [
+      "3f1e49a",
+      "쇼츠: 대본이 화면을 맞히지 않고, 녹화기가 찾는다"
+    ],
+    [
+      "2bf6df9",
+      "쇼츠: 가리킨 것을 붙잡고, 화면에 표시한다"
+    ],
+    [
+      "87199c8",
+      "대본 프롬프트: 관련 없는 화면을 채우지 않는다"
+    ],
+    [
+      "e3406a8",
+      "쇼츠 연출을 내용이 정한다 — 샷 로테이션 폐지"
+    ],
+    [
+      "284c351",
+      "쇼츠: 같은 화면 둘로 duo를 쓰지 않고, 마무리에 아무 화면이나 붙이지 않는다"
+    ],
+    [
+      "98749e2",
+      "쇼츠: 문장이 화면의 \"어디\"를 가리키게, 삽질 문장도 화면을 띄운다"
+    ],
+    [
+      "39306f4",
+      "쇼츠: 강조를 답 쪽에, 화면이 바뀌면 블록을 끊는다"
+    ],
+    [
+      "f637481",
+      "홈: 마스트헤드와 본문 사이에 점선 하나"
+    ],
+    [
+      "6a024ad",
+      "본문의 물결표가 취소선으로 먹히던 것 — 파서를 고치고 검사기를 붙인다"
+    ],
+    [
+      "d0be4f1",
+      "쇼츠 발음: \"7자리\"를 \"일곱자리\"로 — 고유어 단위 네 개 추가"
+    ],
+    [
+      "3e2c204",
+      "커밋 메시지 날짜도 \"그 밤\" 기준으로"
+    ],
+    [
+      "069f288",
+      "cron 확인 화면을 사람 말로 바꾼다"
+    ],
+    [
+      "c48f89c",
+      "cron 라우트가 설정 상태를 구분해 알려 준다"
+    ],
+    [
+      "9a90f5e",
+      "자동 실행의 시계를 Vercel Cron으로 옮긴다"
     ]
   ],
   "commitsEn": [
@@ -259,29 +555,110 @@
     [
       "fa161ed",
       "Docs: Remove strikethrough wavy mark notation, add docs to checks"
+    ],
+    [
+      "0f82687",
+      "shorts: pin each spoken sentence to its screen (remove focusY and the struggle-sentence exemption)"
+    ],
+    [
+      "fbf5170",
+      "recording: fully stop when grabbing, and place the pointed-at thing slightly lower"
+    ],
+    [
+      "f8af837",
+      "header spacing and shorts playback control size"
+    ],
+    [
+      "d91bfc8",
+      "an empty screen is a failure — correct once, and if still empty, don't produce the video"
+    ],
+    [
+      "d3fea0c",
+      "shorts: remove the rules that dictated composition — content decides"
+    ],
+    [
+      "74a5437",
+      "export the find logic so it can actually be tested"
+    ],
+    [
+      "3f1e49a",
+      "shorts: the script doesn't match the screen, the recorder finds it"
+    ],
+    [
+      "2bf6df9",
+      "shorts: grab what's pointed at and display it on screen"
+    ],
+    [
+      "87199c8",
+      "script prompt: don't fill with unrelated screens"
+    ],
+    [
+      "e3406a8",
+      "shorts direction: content decides — abolish shot rotation"
+    ],
+    [
+      "284c351",
+      "shorts: don't use duo with the same screen twice, and don't attach arbitrary screens at the ending"
+    ],
+    [
+      "98749e2",
+      "shorts: make sentences point to the \"where\" on screen; struggle sentences also show a screen"
+    ],
+    [
+      "39306f4",
+      "shorts: put emphasis on the answer side, and cut the block when the screen changes"
+    ],
+    [
+      "f637481",
+      "home: one dotted line between masthead and body"
+    ],
+    [
+      "6a024ad",
+      "body tildes were being eaten as strikethrough — fix the parser and add a checker"
+    ],
+    [
+      "d0be4f1",
+      "shorts pronunciation: \"7자리\" to \"일곱자리\" — add four native-Korean counter units"
+    ],
+    [
+      "3e2c204",
+      "commit message dates also based on \"that night\""
+    ],
+    [
+      "069f288",
+      "change the cron check screen into plain language"
+    ],
+    [
+      "c48f89c",
+      "cron route reports configuration status distinctly"
+    ],
+    [
+      "9a90f5e",
+      "move the automatic run's timing to Vercel Cron"
     ]
   ],
-  "commitCount": 13,
+  "commitCount": 33,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "사람 검토 없이 글이 올라가는 블로그라, 제목에 섞인 기호가 명령으로 읽힐 수 있었습니다. 걸러 내는 대신 문장이 들어갈 자리 자체를 막았습니다.",
-    "en": "Posts here go live without review, so a symbol in a title could be read as an instruction. Instead of filtering input, I sealed the spot the sentence goes into."
+    "ko": "쇼츠에서 말하는 내용과 화면이 따로 놀던 문제를 고쳤습니다. 이제 문장마다 보여 줄 글자를 찾아 그 자리에 멈춥니다.",
+    "en": "The shorts used to show one thing while saying another. Now each line finds its text on screen and holds there."
   },
   "hashtags": [
     "#vibelog",
-    "#개발일지",
-    "#보안",
-    "#websecurity",
-    "#devlog",
+    "#데브로그",
+    "#쇼츠",
+    "#AI",
     "#자동화",
-    "#buildinpublic"
+    "#devlog",
+    "#buildinpublic",
+    "#Remotion"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.poster.jpg?v=mtzz4lkn",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.mp4?v=mtzz4mvy",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.poster.jpg?v=mtzz5w5o",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.mp4?v=mtzz5yfw",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.sm.mp4?v=mv3yfe0q",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.sm.mp4?v=mv3yfmy2"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.poster.jpg?v=mv5sncle",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.mp4?v=mv5snfjc",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.ko.sm.mp4?v=mv5snpva",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.poster.jpg?v=mv5spftn",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.mp4?v=mv5spic0",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-09-13.en.sm.mp4?v=mv5sprbk"
   }
 }

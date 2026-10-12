@@ -1,32 +1,36 @@
 {
   "screens": [
     {
-      "path": "/n",
-      "find": "가짜 단지명 작명 신청",
-      "focusY": 0.211,
-      "start": 1.47,
-      "end": 8.99
+      "path": "/opengraph-image?f2c0039925850c95",
+      "focusY": 0.5,
+      "aspect": 1.9048,
+      "start": 8.73,
+      "end": 15.75
     },
     {
-      "path": "/n",
-      "start": 9.27,
-      "end": 17.39
+      "path": "/me",
+      "find": "기록 열람",
+      "focusY": 0.08,
+      "start": 16.8,
+      "end": 23.82
+    },
+    {
+      "path": "/me",
+      "find": "Lv. 1 견습 감별사",
+      "focusY": 0.211,
+      "start": 24.26,
+      "end": 31.28
     },
     {
       "path": "/o",
-      "find": "이름만 보고 진짜/가짜",
-      "start": 18.29,
-      "end": 26.65
+      "start": 32.19,
+      "end": 39.19
     },
     {
       "path": "/f",
-      "start": 27.48,
-      "end": 35.8
-    },
-    {
-      "path": "/o",
-      "start": 36.66,
-      "end": 45
+      "find": "넷 중 진짜는 하나",
+      "start": 40.07,
+      "end": 46.95
     }
   ]
 }

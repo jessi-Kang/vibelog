@@ -1,6 +1,6 @@
 {
   "lang": "en",
-  "duration": 24.938,
+  "duration": 32.388,
   "sentences": [
     {
       "index": 0,
@@ -8,415 +8,567 @@
       "end": 1.962,
       "words": [
         {
-          "text": "The",
+          "text": "Install",
           "start": 0,
-          "end": 0.139
+          "end": 0.383
         },
         {
-          "text": "video",
-          "start": 0.186,
-          "end": 0.418
+          "text": "this",
+          "start": 0.43,
+          "end": 0.557
         },
         {
-          "text": "cut",
-          "start": 0.464,
-          "end": 0.627
+          "text": "blog",
+          "start": 0.592,
+          "end": 0.789
         },
         {
-          "text": "off",
-          "start": 0.673,
-          "end": 0.778
+          "text": "on",
+          "start": 0.836,
+          "end": 0.906
         },
         {
-          "text": "5",
-          "start": 0.848,
-          "end": 1.022
+          "text": "your",
+          "start": 0.94,
+          "end": 1.045
         },
         {
-          "text": "seconds",
-          "start": 1.08,
-          "end": 1.393
+          "text": "phone",
+          "start": 1.068,
+          "end": 1.3
         },
         {
-          "text": "early.",
-          "start": 1.451,
+          "text": "like",
+          "start": 1.335,
+          "end": 1.486
+        },
+        {
+          "text": "an",
+          "start": 1.521,
+          "end": 1.591
+        },
+        {
+          "text": "app",
+          "start": 1.672,
           "end": 1.962
         }
       ]
     },
     {
       "index": 1,
-      "start": 2.403,
-      "end": 5.387,
+      "start": 2.512,
+      "end": 5.949,
       "words": [
         {
-          "text": "Every",
-          "start": 2.403,
-          "end": 2.67
+          "text": "On",
+          "start": 2.512,
+          "end": 2.6510000000000002
         },
         {
-          "text": "background",
-          "start": 2.705,
-          "end": 3.053
+          "text": "your",
+          "start": 2.698,
+          "end": 2.802
         },
         {
-          "text": "music",
-          "start": 3.1,
-          "end": 3.344
+          "text": "first",
+          "start": 2.849,
+          "end": 3.0580000000000003
         },
         {
-          "text": "file",
-          "start": 3.402,
-          "end": 3.564
+          "text": "visit,",
+          "start": 3.104,
+          "end": 3.615
         },
         {
-          "text": "was",
-          "start": 3.599,
-          "end": 3.715
+          "text": "an",
+          "start": 3.94,
+          "end": 4.068
         },
         {
-          "text": "exactly",
-          "start": 3.773,
-          "end": 4.18
+          "text": "install",
+          "start": 4.138,
+          "end": 4.463000000000001
         },
         {
-          "text": "45",
-          "start": 4.238,
-          "end": 4.667
+          "text": "prompt",
+          "start": 4.509,
+          "end": 4.753
         },
         {
-          "text": "seconds.",
-          "start": 4.725,
-          "end": 5.387
+          "text": "pops",
+          "start": 4.811,
+          "end": 5.055
+        },
+        {
+          "text": "up",
+          "start": 5.09,
+          "end": 5.182
+        },
+        {
+          "text": "at",
+          "start": 5.228999999999999,
+          "end": 5.287000000000001
+        },
+        {
+          "text": "the",
+          "start": 5.322000000000001,
+          "end": 5.391
+        },
+        {
+          "text": "bottom.",
+          "start": 5.426,
+          "end": 5.949
         }
       ]
     },
     {
       "index": 2,
-      "start": 6.084,
-      "end": 8.603,
+      "start": 6.4990000000000006,
+      "end": 9.134,
       "words": [
         {
-          "text": "The",
-          "start": 6.084,
-          "end": 6.211
+          "text": "Tap",
+          "start": 6.4990000000000006,
+          "end": 6.7540000000000004
         },
         {
-          "text": "merge",
-          "start": 6.269,
-          "end": 6.548
+          "text": "it,",
+          "start": 6.824000000000001,
+          "end": 7.033
         },
         {
-          "text": "trimmed",
-          "start": 6.571,
-          "end": 6.838
+          "text": "and",
+          "start": 7.079000000000001,
+          "end": 7.219
         },
         {
-          "text": "everything",
-          "start": 6.896,
-          "end": 7.256
+          "text": "an",
+          "start": 7.265000000000001,
+          "end": 7.323
         },
         {
-          "text": "to",
-          "start": 7.303,
-          "end": 7.361
+          "text": "icon",
+          "start": 7.393000000000001,
+          "end": 7.7410000000000005
         },
         {
-          "text": "the",
-          "start": 7.43,
-          "end": 7.5
+          "text": "lands",
+          "start": 7.822000000000001,
+          "end": 8.113
         },
         {
-          "text": "shorter",
-          "start": 7.546,
-          "end": 7.848
+          "text": "on",
+          "start": 8.171,
+          "end": 8.252
         },
         {
-          "text": "of",
-          "start": 7.895,
-          "end": 7.953
+          "text": "your",
+          "start": 8.298,
+          "end": 8.391
         },
         {
-          "text": "the",
-          "start": 7.999,
-          "end": 8.069
+          "text": "home",
+          "start": 8.426,
+          "end": 8.589
         },
         {
-          "text": "two.",
-          "start": 8.104,
-          "end": 8.603
+          "text": "screen.",
+          "start": 8.612,
+          "end": 9.134
         }
       ]
     },
     {
       "index": 3,
-      "start": 9.207,
-      "end": 11.517,
+      "start": 9.831,
+      "end": 11.979,
       "words": [
         {
-          "text": "Now",
-          "start": 9.207,
-          "end": 9.381
+          "text": "I",
+          "start": 9.831,
+          "end": 9.889
+        },
+        {
+          "text": "moved",
+          "start": 9.982,
+          "end": 10.179
         },
         {
           "text": "the",
-          "start": 9.427,
-          "end": 9.497
+          "start": 10.202,
+          "end": 10.272
         },
         {
-          "text": "music",
-          "start": 9.543,
-          "end": 9.799
+          "text": "menu",
+          "start": 10.33,
+          "end": 10.586
         },
         {
-          "text": "repeats",
-          "start": 9.868,
-          "end": 10.182
+          "text": "down",
+          "start": 10.644,
+          "end": 10.818
         },
         {
-          "text": "as",
-          "start": 10.217,
-          "end": 10.298
+          "text": "where",
+          "start": 10.853,
+          "end": 10.98
         },
         {
-          "text": "many",
-          "start": 10.344,
-          "end": 10.53
+          "text": "your",
+          "start": 11.014999999999999,
+          "end": 11.107999999999999
         },
         {
-          "text": "times",
-          "start": 10.577,
-          "end": 10.809
+          "text": "thumb",
+          "start": 11.142999999999999,
+          "end": 11.328999999999999
         },
         {
-          "text": "as",
-          "start": 10.855,
-          "end": 10.937
-        },
-        {
-          "text": "needed.",
-          "start": 11.006,
-          "end": 11.517
+          "text": "reaches.",
+          "start": 11.387,
+          "end": 11.979
         }
       ]
     },
     {
       "index": 4,
-      "start": 12.121,
-      "end": 14.895,
+      "start": 12.583,
+      "end": 14.799999999999999,
       "words": [
         {
-          "text": "However",
-          "start": 12.121,
-          "end": 12.504
+          "text": "The",
+          "start": 12.583,
+          "end": 12.699
         },
         {
-          "text": "long",
-          "start": 12.562,
-          "end": 12.713
+          "text": "installed",
+          "start": 12.745,
+          "end": 13.093
         },
         {
-          "text": "the",
-          "start": 12.759,
-          "end": 12.829
+          "text": "app",
+          "start": 13.151,
+          "end": 13.349
         },
         {
-          "text": "video",
-          "start": 12.864,
-          "end": 13.096
+          "text": "opens",
+          "start": 13.418,
+          "end": 13.697
         },
         {
-          "text": "runs,",
-          "start": 13.142,
-          "end": 13.456
+          "text": "with",
+          "start": 13.732,
+          "end": 13.86
         },
         {
-          "text": "the",
-          "start": 13.479,
-          "end": 13.584
+          "text": "no",
+          "start": 13.918,
+          "end": 14.011
         },
         {
-          "text": "sound",
-          "start": 13.642,
-          "end": 13.85
+          "text": "address",
+          "start": 14.068999999999999,
+          "end": 14.347999999999999
         },
         {
-          "text": "follows",
-          "start": 13.908,
-          "end": 14.21
-        },
-        {
-          "text": "to",
-          "start": 14.245,
-          "end": 14.303
-        },
-        {
-          "text": "the",
-          "start": 14.373,
-          "end": 14.442
-        },
-        {
-          "text": "end.",
-          "start": 14.512,
-          "end": 14.895
+          "text": "bar.",
+          "start": 14.394,
+          "end": 14.799999999999999
         }
       ]
     },
     {
       "index": 5,
-      "start": 15.592,
-      "end": 17.287,
+      "start": 15.35,
+      "end": 17.997,
       "words": [
         {
-          "text": "The",
-          "start": 15.592,
-          "end": 15.708
+          "text": "But",
+          "start": 15.35,
+          "end": 15.512
         },
         {
-          "text": "closing",
-          "start": 15.754,
-          "end": 16.079
+          "text": "at",
+          "start": 15.558,
+          "end": 15.628
         },
         {
-          "text": "screen",
-          "start": 16.126,
-          "end": 16.393
+          "text": "first,",
+          "start": 15.686,
+          "end": 16.081
         },
         {
-          "text": "shows",
-          "start": 16.439,
-          "end": 16.648
+          "text": "the",
+          "start": 16.139,
+          "end": 16.255000000000003
         },
         {
-          "text": "up",
-          "start": 16.695,
-          "end": 16.788
+          "text": "icon",
+          "start": 16.313000000000002,
+          "end": 16.592
         },
         {
-          "text": "again.",
-          "start": 16.846,
-          "end": 17.287
+          "text": "opened",
+          "start": 16.638,
+          "end": 16.859
+        },
+        {
+          "text": "a",
+          "start": 16.894,
+          "end": 16.917
+        },
+        {
+          "text": "plain",
+          "start": 16.952,
+          "end": 17.149
+        },
+        {
+          "text": "browser",
+          "start": 17.196,
+          "end": 17.509
+        },
+        {
+          "text": "tab.",
+          "start": 17.555,
+          "end": 17.997
         }
       ]
     },
     {
       "index": 6,
-      "start": 17.728,
-      "end": 20.004,
+      "start": 18.8,
+      "end": 21.911,
       "words": [
         {
-          "text": "The",
-          "start": 17.728,
-          "end": 17.844
+          "text": "A",
+          "start": 18.8,
+          "end": 18.869000000000003
         },
         {
-          "text": "videos",
-          "start": 17.879,
-          "end": 18.204
+          "text": "script",
+          "start": 18.951,
+          "end": 19.183000000000003
         },
         {
-          "text": "publish",
-          "start": 18.262,
-          "end": 18.587
+          "text": "that",
+          "start": 19.206000000000003,
+          "end": 19.311
         },
         {
-          "text": "automatically",
-          "start": 18.634,
-          "end": 19.214
+          "text": "runs",
+          "start": 19.357000000000003,
+          "end": 19.554000000000002
         },
         {
-          "text": "every",
-          "start": 19.284,
-          "end": 19.527
+          "text": "in",
+          "start": 19.589000000000002,
+          "end": 19.647000000000002
         },
         {
-          "text": "night.",
-          "start": 19.586,
-          "end": 20.004
+          "text": "the",
+          "start": 19.67,
+          "end": 19.740000000000002
+        },
+        {
+          "text": "background,",
+          "start": 19.775000000000002,
+          "end": 20.181
+        },
+        {
+          "text": "the",
+          "start": 20.205000000000002,
+          "end": 20.274
+        },
+        {
+          "text": "service",
+          "start": 20.321,
+          "end": 20.611
+        },
+        {
+          "text": "worker,",
+          "start": 20.646,
+          "end": 21.087000000000003
+        },
+        {
+          "text": "was",
+          "start": 21.215000000000003,
+          "end": 21.377000000000002
+        },
+        {
+          "text": "missing.",
+          "start": 21.447000000000003,
+          "end": 21.911
         }
       ]
     },
     {
       "index": 7,
-      "start": 20.445,
-      "end": 22.662,
+      "start": 22.515,
+      "end": 25.533,
       "words": [
         {
-          "text": "I'll",
-          "start": 20.445,
-          "end": 20.619
+          "text": "Without",
+          "start": 22.515,
+          "end": 22.863000000000003
         },
         {
-          "text": "keep",
-          "start": 20.654,
-          "end": 20.793
+          "text": "it,",
+          "start": 22.91,
+          "end": 23.188000000000002
         },
         {
-          "text": "refining",
-          "start": 20.851,
-          "end": 21.292
+          "text": "Chrome",
+          "start": 23.362000000000002,
+          "end": 23.618000000000002
         },
         {
-          "text": "how",
-          "start": 21.35,
-          "end": 21.455
+          "text": "makes",
+          "start": 23.641000000000002,
+          "end": 23.838
         },
         {
-          "text": "numbers",
-          "start": 21.536,
-          "end": 21.803
+          "text": "only",
+          "start": 23.873,
+          "end": 24.047
         },
         {
-          "text": "get",
-          "start": 21.838,
-          "end": 21.966
+          "text": "a",
+          "start": 24.094,
+          "end": 24.117
         },
         {
-          "text": "read",
-          "start": 22.012,
-          "end": 22.151
+          "text": "shortcut,",
+          "start": 24.164,
+          "end": 24.721
         },
         {
-          "text": "aloud.",
-          "start": 22.198,
-          "end": 22.662
+          "text": "not",
+          "start": 24.779000000000003,
+          "end": 24.941000000000003
+        },
+        {
+          "text": "an",
+          "start": 24.976000000000003,
+          "end": 25.046000000000003
+        },
+        {
+          "text": "app.",
+          "start": 25.092000000000002,
+          "end": 25.533
         }
       ]
     },
     {
       "index": 8,
-      "start": 23.173,
-      "end": 24.938,
+      "start": 26.115,
+      "end": 29.075,
       "words": [
         {
-          "text": "Another",
-          "start": 23.173,
-          "end": 23.487
+          "text": "Tonight",
+          "start": 26.115,
+          "end": 26.462999999999997
         },
         {
-          "text": "one",
-          "start": 23.533,
-          "end": 23.637
+          "text": "I'll",
+          "start": 26.485999999999997,
+          "end": 26.613999999999997
         },
         {
-          "text": "goes",
-          "start": 23.661,
-          "end": 23.823
+          "text": "watch",
+          "start": 26.648999999999997,
+          "end": 26.846
         },
         {
-          "text": "up",
-          "start": 23.87,
-          "end": 23.951
+          "text": "if",
+          "start": 26.892999999999997,
+          "end": 26.962
         },
         {
-          "text": "tomorrow",
-          "start": 23.997,
-          "end": 24.299
+          "text": "the",
+          "start": 27.009,
+          "end": 27.078
         },
         {
-          "text": "night.",
-          "start": 24.346,
-          "end": 24.938
+          "text": "shorts",
+          "start": 27.113,
+          "end": 27.392
+        },
+        {
+          "text": "with",
+          "start": 27.427,
+          "end": 27.554
+        },
+        {
+          "text": "new",
+          "start": 27.624,
+          "end": 27.727999999999998
+        },
+        {
+          "text": "diagrams",
+          "start": 27.762999999999998,
+          "end": 28.273999999999997
+        },
+        {
+          "text": "come",
+          "start": 28.331999999999997,
+          "end": 28.494999999999997
+        },
+        {
+          "text": "out",
+          "start": 28.529,
+          "end": 28.634
+        },
+        {
+          "text": "right.",
+          "start": 28.68,
+          "end": 29.075
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 29.625,
+      "end": 32.388,
+      "words": [
+        {
+          "text": "Already",
+          "start": 29.625,
+          "end": 29.973
+        },
+        {
+          "text": "installed?",
+          "start": 30.008,
+          "end": 30.519
+        },
+        {
+          "text": "Remove",
+          "start": 30.693,
+          "end": 31.03
+        },
+        {
+          "text": "it",
+          "start": 31.065,
+          "end": 31.146
+        },
+        {
+          "text": "and",
+          "start": 31.204,
+          "end": 31.309
+        },
+        {
+          "text": "install",
+          "start": 31.378,
+          "end": 31.645
+        },
+        {
+          "text": "it",
+          "start": 31.703,
+          "end": 31.773
+        },
+        {
+          "text": "again.",
+          "start": 31.808,
+          "end": 32.388
         }
       ]
     }

@@ -1,6 +1,6 @@
 {
   "template": "fail",
-  "music": "tense",
+  "music": "playful",
   "theme": "paper",
   "repo": "apart",
   "date": "2026-10-11",
@@ -8,245 +8,211 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "퀴즈 답이 새고 있었습니다.",
-      "en": "The quiz was leaking its answers.",
+      "ko": "외운 답으로 퀴즈를 이겼습니다",
+      "en": "Memorized answers won the quiz.",
       "keywords": [
-        "새고"
+        "외운 답으로"
       ],
       "keywordsEn": [
-        "leaking"
+        "Memorized answers"
       ],
       "koLines": [
-        "퀴즈 답이",
-        "새고 있었습니다."
+        "외운 답으로",
+        "퀴즈를 이겼습니다"
       ],
       "enLines": [
-        "The quiz was",
-        "leaking its answers."
+        "Memorized answers",
+        "won the quiz."
       ]
     },
     {
       "scene": "fail",
-      "ko": "작명소는 가짜 이름을 짓는 코너입니다.",
-      "en": "The Naming Office is where you make up fake names.",
+      "ko": "도전장을 받은 친구는 같은 문제를 풉니다.",
+      "en": "A friend who gets the challenge plays the same questions.",
       "keywords": [
-        "가짜 이름을"
+        "같은 문제를"
       ],
       "keywordsEn": [
-        "fake names"
+        "the same questions"
       ],
       "koLines": [
-        "작명소는 가짜 이름을",
-        "짓는 코너입니다."
+        "도전장을 받은 친구는",
+        "같은 문제를 풉니다."
       ],
       "enLines": [
-        "The Naming Office is",
-        "where you make up fake names."
+        "A friend who gets the challenge",
+        "plays the same questions."
       ],
-      "screen": "/n",
-      "find": "가짜 단지명 작명 신청",
-      "findEn": "fake name request",
-      "shot": "focus"
-    },
-    {
-      "scene": "fail",
-      "ko": "진짜 단지와 비슷한 이름이면 안내가 떴습니다.",
-      "en": "If a name was close to a real complex, it warned.",
-      "keywords": [
-        "비슷한"
-      ],
-      "keywordsEn": [
-        "close"
-      ],
-      "koLines": [
-        "진짜 단지와 비슷한 이름이면",
-        "안내가 떴습니다."
-      ],
-      "enLines": [
-        "If a name was close",
-        "to a real complex, it warned."
-      ],
-      "screen": "/n",
+      "screen": "/opengraph-image?f2c0039925850c95",
       "shot": "whole"
     },
     {
       "scene": "fail",
-      "ko": "가짜 이름과는 똑같아야만 떴습니다.",
-      "en": "For fake names, only an exact match warned.",
+      "ko": "진 쪽이 답을 외워 다시 이겼습니다.",
+      "en": "The loser memorized the answers and won the replay.",
       "keywords": [
-        "똑같아야만"
+        "답을 외워"
       ],
       "keywordsEn": [
-        "exact match"
+        "memorized the answers"
       ],
       "koLines": [
-        "가짜 이름과는",
-        "똑같아야만 떴습니다."
+        "진 쪽이 답을 외워",
+        "다시 이겼습니다."
       ],
       "enLines": [
-        "For fake names,",
-        "only an exact match warned."
+        "The loser memorized the answers",
+        "and won the replay."
       ],
       "diagram": {
-        "kind": "fork",
+        "kind": "sets",
         "labels": [
-          "새 이름 확인",
-          "비슷해도 안내",
-          "똑같아야 안내",
-          "진짜 단지",
-          "가짜 이름"
+          "첫 판의 문제",
+          "다시 친 판의 문제",
+          "전부"
         ],
         "labelsEn": [
-          "Name check",
-          "Warns if similar",
-          "Warns if exact",
-          "Real complex",
-          "Fake name"
+          "First game",
+          "Replay",
+          "All of them"
         ]
       }
-    },
-    {
-      "scene": "fail",
-      "ko": "퀴즈 이름에 '동'을 붙이면 진짜만 안내가 떴습니다.",
-      "en": "Add one syllable to a quiz name, and only real ones warned.",
-      "keywords": [
-        "'동'을",
-        "진짜만"
-      ],
-      "keywordsEn": [
-        "one syllable",
-        "only real ones"
-      ],
-      "koLines": [
-        "퀴즈 이름에 '동'을 붙이면",
-        "진짜만 안내가 떴습니다."
-      ],
-      "enLines": [
-        "Add one syllable to a quiz name,",
-        "and only real ones warned."
-      ],
-      "screen": "/o",
-      "find": "이름만 보고 진짜/가짜",
-      "findEn": "real or fake by name",
-      "shot": "focus"
-    },
-    {
-      "scene": "fail",
-      "ko": "이 방법으로 제가 30문제를 다 맞혔습니다.",
-      "en": "That way, I got all 30 questions right.",
-      "keywords": [
-        "30문제를"
-      ],
-      "keywordsEn": [
-        "all 30 questions"
-      ],
-      "koLines": [
-        "이 방법으로 제가",
-        "30문제를 다 맞혔습니다."
-      ],
-      "enLines": [
-        "That way,",
-        "I got all 30 questions right."
-      ],
-      "stat": "30문제",
-      "statEn": "30 questions",
-      "screen": "/f",
-      "shot": "whole"
     },
     {
       "scene": "build",
-      "ko": "이제 진짜와 가짜를 같은 기준으로 비교합니다.",
-      "en": "Now real and fake names are checked the same way.",
+      "ko": "같은 문제를 또 풀면 기록에 안 남습니다.",
+      "en": "Now if you replay the same questions, it doesn't go on your record.",
       "keywords": [
-        "같은 기준으로"
+        "또 풀면"
       ],
       "keywordsEn": [
-        "the same way"
+        "replay the same questions"
       ],
       "koLines": [
-        "이제 진짜와 가짜를",
-        "같은 기준으로 비교합니다."
+        "같은 문제를 또 풀면",
+        "기록에 안 남습니다."
       ],
       "enLines": [
-        "Now real and fake names",
-        "are checked the same way."
+        "Now if you replay the same questions,",
+        "it doesn't go on your record."
       ],
-      "art": "a balance scale holding two identical blocks perfectly level",
-      "icon": {
-        "name": "tabler:scale",
-        "paths": [
-          {
-            "d": "M7 20h10M6 6l6-1l6 1m-6-3v17m-3-8L6 6l-3 6a3 3 0 0 0 6 0m12 0l-3-6l-3 6a3 3 0 0 0 6 0"
-          }
-        ]
-      }
+      "screen": "/me",
+      "find": "기록 열람",
+      "findEn": "records",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "맞힐 때마다 쌓이는 경험치도 안 줍니다.",
+      "en": "You don't get the experience points you earn for each right answer, either.",
+      "keywords": [
+        "경험치도"
+      ],
+      "keywordsEn": [
+        "experience points"
+      ],
+      "koLines": [
+        "맞힐 때마다 쌓이는",
+        "경험치도 안 줍니다."
+      ],
+      "enLines": [
+        "You don't get the experience points",
+        "you earn for each right answer, either."
+      ],
+      "screen": "/me",
+      "find": "Lv. 1 견습 감별사",
+      "findEn": "Lv. 1",
+      "shot": "focus"
     },
     {
       "scene": "demo",
-      "ko": "다시 해 보니 절반도 못 맞혔습니다.",
-      "en": "Trying again, I got fewer than half right.",
+      "ko": "도전장은 진짜·가짜를 고르는 게임에 붙였습니다.",
+      "en": "Challenges work in the game where you pick real or fake.",
       "keywords": [
-        "절반도"
+        "진짜·가짜를"
       ],
       "keywordsEn": [
-        "fewer than half"
+        "real or fake"
       ],
       "koLines": [
-        "다시 해 보니",
-        "절반도 못 맞혔습니다."
+        "도전장은 진짜·가짜를",
+        "고르는 게임에 붙였습니다."
       ],
       "enLines": [
-        "Trying again,",
-        "I got fewer than half right."
+        "Challenges work in the game",
+        "where you pick real or fake."
       ],
       "screen": "/o",
       "shot": "whole"
     },
     {
-      "scene": "next",
-      "ko": "진짜와 가짜가 반반인지 매주 잽니다.",
-      "en": "A weekly check now measures the real-fake split.",
+      "scene": "demo",
+      "ko": "이름 넷 중 진짜를 찾는 게임에도 붙였습니다.",
+      "en": "I added them to the game where you find the one real name out of four, too.",
       "keywords": [
-        "매주"
+        "넷 중 진짜를"
       ],
       "keywordsEn": [
-        "weekly check"
+        "the one real name out of four"
       ],
       "koLines": [
-        "진짜와 가짜가 반반인지",
-        "매주 잽니다."
+        "이름 넷 중 진짜를 찾는",
+        "게임에도 붙였습니다."
       ],
       "enLines": [
-        "A weekly check now measures",
-        "the real-fake split."
+        "I added them to the game where you find",
+        "the one real name out of four, too."
       ],
+      "screen": "/f",
+      "find": "넷 중 진짜는 하나",
+      "findEn": "one of four is real",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "도전장이 얼마나 오가는지 세어 볼 겁니다.",
+      "en": "Next, I'll count how many challenges go back and forth.",
+      "keywords": [
+        "세어 볼"
+      ],
+      "keywordsEn": [
+        "count"
+      ],
+      "koLines": [
+        "도전장이 얼마나 오가는지",
+        "세어 볼 겁니다."
+      ],
+      "enLines": [
+        "Next, I'll count how many",
+        "challenges go back and forth."
+      ],
+      "art": "a hand-held tally counter beside paper planes flying between two small houses",
       "icon": {
-        "name": "tabler:calendar-check",
+        "name": "tabler:chart-line",
         "paths": [
           {
-            "d": "M11.5 21H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M16 3v4M8 3v4m-4 4h16m-5 8l2 2l4-4"
+            "d": "M4 19h16M4 15l4-6l4 2l4-5l4 4"
           }
         ]
-      },
-      "motif": "loop"
+      }
     },
     {
       "scene": "end",
-      "ko": "월요일 아침, 첫 점검이 저절로 돕니다.",
-      "en": "On Monday morning, the first check runs itself.",
+      "ko": "이제 승리는 첫 판에서만 인정됩니다.",
+      "en": "Now only the first game counts as a win.",
       "keywords": [
-        "저절로"
+        "첫 판에서만"
       ],
       "keywordsEn": [
-        "runs itself"
+        "the first game"
       ],
       "koLines": [
-        "월요일 아침,",
-        "첫 점검이 저절로 돕니다."
+        "이제 승리는",
+        "첫 판에서만 인정됩니다."
       ],
       "enLines": [
-        "On Monday morning,",
-        "the first check runs itself."
+        "Now only the first game",
+        "counts as a win."
       ]
     }
   ],
@@ -255,12 +221,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "퀴즈 답이 새고 있었다",
-    "titleEn": "The quiz leaked answers",
-    "before": "'동'만 붙이면 진짜와 가짜가 갈렸다",
-    "after": "진짜와 가짜를 같은 기준으로 비교",
-    "beforeEn": "One added syllable split real from fake",
-    "afterEn": "Both are compared the same way"
+    "title": "외운 답으로 이겼다",
+    "titleEn": "Won by memorizing",
+    "before": "다시 친 판도 승리와 경험치를 받았다",
+    "after": "다시 친 판은 기록과 경험치에서 빠진다",
+    "beforeEn": "Replays earned wins and experience points",
+    "afterEn": "Replays no longer count toward records or XP"
   },
   "commits": [
     [
@@ -338,6 +304,66 @@
     [
       "aa80380",
       "fix: 단추 바로 밑 안내 문구가 단추에 붙어 있던 것을 고친다"
+    ],
+    [
+      "700b08d",
+      "fix: 같은 도전장을 다시 치면 아는 답으로 경험치를 쌓을 수 있던 것을 막는다"
+    ],
+    [
+      "811913d",
+      "fix: 도전장 결과 화면의 '연속 2'·'분패'가 무슨 뜻인지 안 읽히던 것을 고친다"
+    ],
+    [
+      "3c5a9e3",
+      "feat: 감별 O/X에 도전장을 붙인다 — 내 판을 같은 순서로 남에게 치게 보낸다"
+    ],
+    [
+      "38a2f9a",
+      "feat: 화면에서 호수와 '매일' 투의 문구를 걷는다"
+    ],
+    [
+      "c311438",
+      "design: 도전장 시안 — 내 판을 같은 순서로 남에게 치게 보내는 흐름"
+    ],
+    [
+      "54f819a",
+      "fix: 푸터 저작권 연도가 해가 바뀌어도 2026에 멈춰 있을 것을 고친다"
+    ],
+    [
+      "6497226",
+      "docs: Vercel이 Pro이고 여러 서비스가 계정을 나눠 쓴다는 것을 적는다"
+    ],
+    [
+      "c20c749",
+      "chore: 정적 파일에 미들웨어를 안 태우고 캐시를 건다"
+    ],
+    [
+      "764c81f",
+      "chore: 안 해도 되는 빌드와 설치를 뺀다"
+    ],
+    [
+      "bd710cb",
+      "docs: 보안 점검 뒤로 바뀐 것을 문서에 맞춘다"
+    ],
+    [
+      "9d1146f",
+      "docs: 보안 점검에서 생긴 규칙 셋을 남긴다"
+    ],
+    [
+      "a2345d8",
+      "chore: 레드팀 점검에 보안 헤더와 경험치 위조를 넣는다"
+    ],
+    [
+      "e2faed0",
+      "chore: 의존성 취약점을 패치 범위에서 올린다"
+    ],
+    [
+      "e633a5b",
+      "fix: 보안 헤더가 하나도 없던 것을 채운다"
+    ],
+    [
+      "3dd024d",
+      "fix: 구역 명부 1위를 아무나 적어 넣을 수 있던 것을 막는다"
     ]
   ],
   "commitsEn": [
@@ -416,29 +442,89 @@
     [
       "aa80380",
       "fix: fix notice text directly below button sticking to the button"
+    ],
+    [
+      "700b08d",
+      "fix: prevent XP farming by replaying the same challenge with known answers"
+    ],
+    [
+      "811913d",
+      "fix: clarify the '연속 2' and '분패' labels on the challenge result screen"
+    ],
+    [
+      "3c5a9e3",
+      "feat: attach a challenge to the O/X verdict, sending my board to others in the same order"
+    ],
+    [
+      "38a2f9a",
+      "feat: remove the cafe-name and 'daily' style copy from the screen"
+    ],
+    [
+      "c311438",
+      "design: challenge mockup — flow that sends my board to others in the same order"
+    ],
+    [
+      "54f819a",
+      "fix: footer copyright year stuck at 2026 instead of updating with the new year"
+    ],
+    [
+      "6497226",
+      "docs: note that Vercel is on Pro and several services share the account"
+    ],
+    [
+      "c20c749",
+      "chore: skip middleware for static files and add caching"
+    ],
+    [
+      "764c81f",
+      "chore: remove unnecessary build and install steps"
+    ],
+    [
+      "bd710cb",
+      "docs: update docs to match changes after the security review"
+    ],
+    [
+      "9d1146f",
+      "docs: record three rules from the security review"
+    ],
+    [
+      "a2345d8",
+      "chore: add security headers and XP forgery checks to red-team review"
+    ],
+    [
+      "e2faed0",
+      "chore: bump dependency vulnerabilities out of patch range"
+    ],
+    [
+      "e633a5b",
+      "fix: add missing security headers (none were set)"
+    ],
+    [
+      "3dd024d",
+      "fix: prevent anyone from writing in a 1st-place entry on the district leaderboard"
     ]
   ],
-  "commitCount": 19,
+  "commitCount": 34,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "작명소를 모두에게 열자마자, 이름 뒤에 '동' 한 글자만 붙이면 퀴즈 답이 보이는 구멍을 찾았습니다. 그 방법으로 30문제를 다 맞혔고, 고친 뒤엔 절반도 못 맞혔습니다.",
-    "en": "Right after opening the Naming Office to everyone, I found that adding one syllable to a quiz name revealed the answer. I got all 30 right that way, and after the fix, fewer than half."
+    "ko": "친구에게 같은 문제로 도전장을 보낼 수 있게 했는데, 진 쪽이 답을 외워 다시 이기는 구멍이 있었습니다. 이제 다시 친 판은 기록과 경험치에 들어가지 않습니다.",
+    "en": "I added challenges you can send a friend with the same questions, but the loser could replay from memory and win. Now replayed games don't count toward records or experience points."
   },
   "hashtags": [
+    "#vibelog",
+    "#개발일지",
     "#아파트감별사",
-    "#데브로그",
-    "#버그수정",
-    "#퀴즈게임",
+    "#인디게임",
     "#devlog",
-    "#gamedev",
-    "#indiedev"
+    "#indiedev",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.poster.jpg?v=mv44t7go",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.mp4?v=mv44t9wo",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.sm.mp4?v=mv44th5a",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.poster.jpg?v=mv44uguy",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.mp4?v=mv44ujt0",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.sm.mp4?v=mv44upbt"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.poster.jpg?v=mv5trxsc",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.mp4?v=mv5ts0pd",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.ko.sm.mp4?v=mv5ts8c9",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.poster.jpg?v=mv5ttp0v",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.mp4?v=mv5ttr9u",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-11.en.sm.mp4?v=mv5ttzd2"
   }
 }
