@@ -22,7 +22,7 @@ import { postId } from "@/lib/post-id";
 import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
-import { Card, EmptyState } from "./ui";
+import { Card, EmptyState, ShortMark } from "./ui";
 import { PostFigure as Figure } from "./post-figure";
 import {
   splitParas,
@@ -242,7 +242,14 @@ export function PostClient({ post }: { post: PostData }) {
             : `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
           : ""}
         {!post.intro && <>day {String(post.day).padStart(2, "0")}</>}
-        {post.short ? (en ? " · has short" : " · 쇼츠 있음") : ""}
+        {post.short && (
+          <span className="whitespace-nowrap">
+            {" · "}
+            <span className="inline-block align-[-2px]">
+              <ShortMark label={en ? "has short" : "쇼츠 있음"} size={13} />
+            </span>
+          </span>
+        )}
       </div>
       {/* 프로젝트 설명 — 처음 들어온 사람이 이 프로젝트가 무엇인지 알고 읽게. 소개 글이
           코드를 읽고 쓴 한두 문장이고, 누르면 소개 글로 간다 (docs/project-intro.html ②) */}

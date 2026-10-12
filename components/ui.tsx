@@ -139,6 +139,33 @@ export function StatusBadge({ status }: { status: string }) {
   );
 }
 
+/**
+ * 쇼츠가 있는 글 표시 — 글자("쇼츠 ▶") 대신 Tabler `movie` 아이콘 (시안 docs/post-short-icon.html D안, Jessi).
+ * 쇼츠가 없는 글에는 아무것도 붙이지 않는다. SVG의 <title>은 React 19 SSR에서 비므로
+ * 이름은 aria-label, 마우스를 올렸을 때 뜨는 설명은 바깥 span의 title로 남긴다.
+ */
+export function ShortMark({ label, size = 12 }: { label: string; size?: number }) {
+  return (
+    <span className="inline-flex text-accent" title={label}>
+      <svg
+        role="img"
+        aria-label={label}
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="block shrink-0"
+      >
+        <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4-2v16m8-16v16M4 8h4m-4 8h4m-4-4h16m-4-4h4m-4 8h4" />
+      </svg>
+    </span>
+  );
+}
+
 export function MonoMeta({
   items,
   className = "",
@@ -148,7 +175,7 @@ export function MonoMeta({
 }) {
   return (
     <div
-      className={`flex flex-wrap gap-x-2.5 font-sans text-2xs tabular-nums text-muted ${className}`}
+      className={`flex flex-wrap items-center gap-x-2.5 font-sans text-2xs tabular-nums text-muted ${className}`}
     >
       {items.map((m, i) => {
         const t = typeof m === "string" ? { text: m } : m;
