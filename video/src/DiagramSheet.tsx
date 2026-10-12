@@ -60,6 +60,14 @@ const SAMPLES: { spec: DiagramSpec; said: string }[] = [
     said: "표시를 달아 둔 레포만 골라 읽습니다.",
   },
   {
+    // 겹친 값이 한글 낱말이면 원 아래로 — 안에 욱여넣던 자리 (10/11 vibelog)
+    spec: {
+      kind: "sets",
+      labels: ["소개 글에 쓴 것", "숨겨야 할 정답", "파일 위치"],
+    },
+    said: "소개 글이 정답이 든 파일 위치까지 적었습니다.",
+  },
+  {
     spec: {
       kind: "pipeline",
       labels: ["이름을 짓고", "검수를 거쳐", "퀴즈 문제로"],
