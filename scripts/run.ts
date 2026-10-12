@@ -12,7 +12,7 @@ import { checkDevlogs } from "./check-markdown";
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { MIN_HUMAN_COMMITS, collect, HOURS_DAYS, type RepoActivity, type State } from "./collect";
+import { MIN_HUMAN_COMMITS, collect, getCommits, getMergedPRs, getOwner, getReadme, HOURS_DAYS, isMaterialCommit, type RepoActivity, type State } from "./collect";
 import {
   generateDevlog,
   type Readability,
@@ -22,7 +22,7 @@ import {
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
 import { fmtNum } from "../lib/format";
-import { parseSections, recentPosts } from "../lib/content";
+import { getDevlog, getDevlogs, getProject, parseSections, recentPosts } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
 import { NoScreensError, takeListenCheck } from "./script";
@@ -513,7 +513,73 @@ function writeCommitHours(activities: RepoActivity[]): void {
   );
 }
 
+/**
+ * 지난 글을 그날 커밋 전부로 다시 쓴다 — `npx tsx scripts/run.ts --rewrite vibelog/2026-10-11`.
+ *
+ * 수집이 커밋을 20개로 자르던 때 10/11 vibelog 글은 사람 커밋 121개 중 최근 20개만 읽어
+ * 댓글 기능 이야기가 통째로 빠졌다. 처리 위치는 이미 지나가서 밤 실행은 그 커밋을 다시 읽지
+ * 않는다. 그래서 창을 글에서 되짚는다: 바로 앞 글의 가장 새 커밋 뒤부터 이 글의 가장 새
+ * 커밋까지. 날짜·state.json·run.json은 건드리지 않는다. 쇼츠는 워크플로가 이어서
+ * 대본부터 다시 만든다 (`rewrite` 입력).
+ */
+async function rewritePosts(arg: string): Promise<void> {
+  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  const owner = await getOwner(octokit);
+  let failed = 0;
+  for (const id of arg.split(/[\s,]+/).filter(Boolean)) {
+    const [repo, date] = id.split("/");
+    const post = repo && date ? getDevlog(repo, date) : undefined;
+    const file = post ? devlogPath(repo, date) : "";
+    if (!post || post.intro || isProtected(file) || !post.shas?.length) {
+      console.error(`- ${id}: 다시 쓸 글이 아니다 (없음·소개 글·manual·원료 없음)`);
+      failed++;
+      continue;
+    }
+    try {
+      const commitDate = async (sha: string) => {
+        const { data } = await octokit.rest.repos.getCommit({ owner, repo, ref: sha });
+        return data.commit.committer?.date ?? data.commit.author?.date ?? "";
+      };
+      const prev = getDevlogs(repo)
+        .filter((d) => !d.intro && d.date < date && d.shas?.length)
+        .sort((x, y) => y.date.localeCompare(x.date))[0];
+      const until = await commitDate(post.shas[0][0]);
+      const prevSha = prev?.shas?.[0][0];
+      const since = prevSha ? await commitDate(prevSha) : new Date(new Date(until).getTime() - 7 * 86400000).toISOString();
+      const commits = (await getCommits(octokit, owner, repo, since, until))
+        .filter(isMaterialCommit)
+        .filter((c) => !prevSha || !c.sha.startsWith(prevSha));
+      const mergedPRs = (await getMergedPRs(octokit, owner, repo, since)).filter((p) => p.mergedAt <= until);
+      console.log(`- ${id}: 창 ${since} – ${until}, 커밋 ${commits.length}개 (지금 글은 ${post.shas.length}개), PR ${mergedPRs.length}`);
+      const a = {
+        repo,
+        owner,
+        description: getProject(repo)?.description ?? "",
+        readme: await getReadme(octokit, owner, repo),
+        commits,
+        mergedPRs,
+        devlogFiles: [],
+      } as unknown as RepoActivity;
+      const input = await screenInput(a);
+      console.log(input.line.text);
+      if (!input.material) throw new Error("안전 검사로 빼고 나니 글을 쓸 커밋이 모자라다");
+      const devlog = await generateDevlog(input.material, date, { recent: recentPosts(repo, date) });
+      const out = await checkSafety([devlog.title, devlog.titleEn, devlog.ko, devlog.en].join("\n\n"));
+      if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
+      await writeDevlog(repo, date, devlog, input.material);
+      console.log(`- ${id} 다시 씀: ${devlog.title} · ${fmtTally(takeUsage("generate"))}`);
+      await writeFigures(repo, date, devlog, []);
+    } catch (err) {
+      failed++;
+      console.error(`- ${id} 다시 쓰기 실패:`, err instanceof SafetyBlockError ? err.message : err);
+    }
+  }
+  if (failed > 0) process.exitCode = 1;
+}
+
 async function main(): Promise<void> {
+  const rewriteAt = process.argv.indexOf("--rewrite");
+  if (rewriteAt !== -1) return rewritePosts(process.argv[rewriteAt + 1] ?? "");
   const collectOnly = process.argv.includes("--collect-only");
   const projectsOnly = process.argv.includes("--projects-only");
   const state = loadState();

@@ -29,6 +29,10 @@ on:
         required: false
         type: boolean
         default: false
+      rewrite:
+        description: "지난 글을 그날 커밋 전부로 다시 쓰고 쇼츠도 대본부터 다시 만들기 — 예: vibelog/2026-10-11. 창은 바로 앞 글의 마지막 커밋 뒤부터 이 글의 마지막 커밋까지. 글(Opus)·삽화·대본·목소리 비용이 든다"
+        required: false
+        default: ""
       poster:
         description: "썸네일만 다시 뽑을 글 — 예: vibelog/2026-09-09. 기존 영상에서 프레임만 재추출 (대본·음성 재생성 없음, 비용 0)"
         required: false
@@ -66,7 +70,7 @@ jobs:
   devlog:
     runs-on: ubuntu-latest
     # Remotion 렌더(ko/en 두 편) 여유 포함. 쇼츠 여러 편 다시 만들기는 편마다 시간이 드니 길게 둔다
-    timeout-minutes: ${{ inputs.regen != '' && 150 || 45 }}
+    timeout-minutes: ${{ (inputs.regen != '' || inputs.rewrite != '') && 150 || 45 }}
     env:
       # secrets 컨텍스트는 if: 조건에서 직접 못 쓴다 — env로 우회
       HAS_ELEVENLABS: ${{ secrets.ELEVENLABS_API_KEY != '' }}
@@ -104,6 +108,16 @@ jobs:
           if [ -n "$PREVIEW" ]; then
             # 미리보기 — 다시 쓴 글을 실행 요약에만 남긴다. content/는 안 건드린다
             npx tsx scripts/devlog-preview.ts "$PREVIEW"
+          elif [ -n "$REWRITE" ]; then
+            # 지난 글 다시 쓰기 — 그날 커밋 전부로 글·삽화를 다시 쓰고(run.ts --rewrite), 쇼츠는 대본부터.
+            # 글이 실패하면 쇼츠는 건드리지 않는다
+            for t in $(echo "$REWRITE" | tr ',' ' '); do
+              if npx tsx scripts/run.ts --rewrite "$t"; then
+                npx tsx scripts/shorts.ts "$t" --new-script || echo "REGEN_FAILED=$REGEN_FAILED $t" >> "$GITHUB_ENV"
+              else
+                echo "REGEN_FAILED=$REGEN_FAILED $t" >> "$GITHUB_ENV"
+              fi
+            done
           elif [ -n "$INTRO" ]; then
             # 소개 글 — 레포 코드를 읽고 쓴다 (scripts/intro.ts). 일반 글·쇼츠는 안 건드린다
             npx tsx scripts/intro.ts "$INTRO"
@@ -138,6 +152,7 @@ jobs:
           FIGURES: ${{ inputs.figures }}
           INTRO: ${{ inputs.intro }}
           PREVIEW: ${{ inputs.preview }}
+          REWRITE: ${{ inputs.rewrite }}
           # 예약 회차와, 예약을 대신하는 호출(Vercel Cron → guard: true)에만
           # 켠다 — 이 밤에 이미 발행했으면 조용히 종료해 이중 발행·TTS 중복
           # 비용을 막는다. Jessi가 손으로 돌리는 Run workflow는 가드 없음.
@@ -179,6 +194,7 @@ jobs:
           SMALL: ${{ inputs.small }}
           FIGURES: ${{ inputs.figures }}
           INTRO: ${{ inputs.intro }}
+          REWRITE: ${{ inputs.rewrite }}
         run: |
           git config user.name "vibelog-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -186,7 +202,9 @@ jobs:
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋 생략"
           else
-            if [ -n "$INTRO" ]; then
+            if [ -n "$REWRITE" ]; then
+              git commit -m "chore: 지난 글 다시 씀 ($REWRITE)"
+            elif [ -n "$INTRO" ]; then
               git commit -m "chore: 프로젝트 소개 글 ($INTRO)"
             elif [ -n "$FIGURES" ]; then
               git commit -m "chore: 글 삽화 붙임 ($FIGURES)"

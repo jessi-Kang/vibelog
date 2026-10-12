@@ -84,6 +84,7 @@ vibelog/
 │   ├─ safety.ts                 # 발행 전 안전 검사 (Jev + 모양 규칙) — jev-*-trial.ts가 그 시험 기록
 │   ├─ commit-rule.ts · check-commit.ts  # 커밋 규칙을 코드로 — 밤 수집과 .githooks/commit-msg가 같이 씀
 │   ├─ devlog-preview.ts         # 지난 글을 지금 지시문으로 다시 써서 나란히 보기 (발행 안 함, `preview` 입력)
+│   ├─ run.ts --rewrite          # 재료가 빠진 지난 글을 그날 커밋 전부로 다시 쓰기 (발행함, `rewrite` 입력 — 쇼츠는 대본부터)
 │   ├─ figures.ts · figure-types.ts  # 글 삽화 생성·검증 (허용 목록 파서) · check-figures.ts 검사기
 │   ├─ figures-backfill.ts        # 지난 글에 삽화만 붙인다 (Run workflow `figures` 입력)
 │   ├─ script.ts                 # 데브로그 → 쇼츠 대본 (템플릿·다이어그램 선택)
