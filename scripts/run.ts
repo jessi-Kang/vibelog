@@ -364,6 +364,9 @@ async function writeFigures(
     // 화면에 안 나온다. 그리지 않는다 (9/21 apart에서 1장이 그렇게 사라졌다).
     const ko = parseSections(d.ko);
     const en = parseSections(d.en);
+    // 그 밖의 소식은 두 문장짜리 소식들이라 삽화 자리가 아니다
+    delete ko.news;
+    delete en.news;
     if (!hasRealFail(ko.fail)) {
       delete ko.fail;
       delete en.fail;

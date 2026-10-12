@@ -43,6 +43,8 @@ export interface DevlogSections {
   next?: string;
   /** 소개 글에만 — "지금까지 만든 것" */
   built?: string;
+  /** 그 밖의 소식 — 이야기 하나에 못 담은 큰 작업, 소식마다 두 문장 (docs/post-other-work.html A안) */
+  news?: string;
 }
 
 export interface DevlogEntry {
@@ -138,6 +140,8 @@ const SECTION_MAP: Record<string, keyof DevlogSections> = {
   왜: "why",
   "삽질 포인트": "fail",
   "다음 할 것": "next",
+  "그 밖의 소식": "news",
+  "other news": "news",
   // 소개 글 (scripts/intro.ts) — 요약은 "어떤 프로젝트인가" 첫 문장에서 나온다
   "어떤 프로젝트인가": "did",
   "누구를 위해, 왜": "why",

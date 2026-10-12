@@ -41,8 +41,8 @@ export interface PostData {
   prs?: number;
   shas?: [string, string][];
   shasEn?: [string, string][];
-  sections: { did?: string; why?: string; fail?: string; next?: string; built?: string };
-  sectionsEn: { did?: string; why?: string; fail?: string; next?: string; built?: string };
+  sections: { did?: string; why?: string; fail?: string; next?: string; built?: string; news?: string };
+  sectionsEn: { did?: string; why?: string; fail?: string; next?: string; built?: string; news?: string };
   /** 프로젝트 소개 글 — 커밋이 아니라 레포 코드를 읽고 쓴 그 프로젝트의 첫 글 (scripts/intro.ts) */
   intro?: boolean;
   /** 화면에 쓰는 프로젝트 이름과, 소개 글이 코드를 읽고 쓴 프로젝트 설명 */
@@ -184,11 +184,11 @@ export function PostClient({ post }: { post: PostData }) {
 
   const headings = post.intro
     ? en
-      ? { did: "What it is", why: "Who it's for, and why", fail: "", next: "Next up", built: "What's built so far" }
-      : { did: "어떤 프로젝트인가", why: "누구를 위해, 왜", fail: "", next: "다음 할 것", built: "지금까지 만든 것" }
+      ? { did: "What it is", why: "Who it's for, and why", fail: "", next: "Next up", built: "What's built so far", news: "" }
+      : { did: "어떤 프로젝트인가", why: "누구를 위해, 왜", fail: "", next: "다음 할 것", built: "지금까지 만든 것", news: "" }
     : en
-      ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up", built: "" }
-      : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것", built: "" };
+      ? { did: "What I did", why: "Why", fail: "Rabbit holes", next: "Next up", built: "", news: "Other news" }
+      : { did: "뭘 했다", why: "왜", fail: "삽질 포인트", next: "다음 할 것", built: "", news: "그 밖의 소식" };
   const color = projectColor(post.repo);
   const projectName = en ? (post.project.nameEn ?? post.project.name) : post.project.name;
   const about = en ? (post.project.aboutEn ?? post.project.about) : post.project.about;
@@ -309,6 +309,15 @@ export function PostClient({ post }: { post: PostData }) {
                 <div>
                   <H>{headings.did}</H>
                   <Body md={s.did} figures={figsOf("did")} en={en} />
+                </div>
+              )}
+              {/* 그 밖의 소식 — 이야기 하나에 못 담은 큰 작업 (docs/post-other-work.html A안). 소식마다
+                  굵은 첫 문장이 무엇이 생겼나, 끝의 기울임(_커밋 25개_)이 든 커밋 수다 — 기울임은 이
+                  섹션에서만 작은 회색 글자로 그린다. 한글이 섞여 고정폭 글꼴을 쓰지 않는다 */}
+              {!post.intro && s.news && (
+                <div className="[&_em]:ml-1.5 [&_em]:whitespace-nowrap [&_em]:font-sans [&_em]:text-xs [&_em]:tabular-nums [&_em]:not-italic [&_em]:text-muted [&_strong]:text-ink">
+                  <H>{headings.news}</H>
+                  <Md>{s.news}</Md>
                 </div>
               )}
               {s.why && (
