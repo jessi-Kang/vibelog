@@ -1,0 +1,23 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "파이프라인",
+      "focusY": 0.223,
+      "start": 1.07,
+      "end": 13.1
+    },
+    {
+      "path": "/log",
+      "start": 13.98,
+      "end": 26.44
+    },
+    {
+      "path": "/",
+      "find": "최근 데브로그",
+      "focusY": 0.5,
+      "start": 27.46,
+      "end": 39.49
+    }
+  ]
+}
