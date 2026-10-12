@@ -513,8 +513,11 @@ export const DiagramScene: React.FC<{
     const num = seg(t, 1.5, 0.45);
     // 겹친 값이 숫자 몇 자면 겹친 자리 안에 크게 쓴다. 그보다 길면 원 아래 가운데에 쓰고,
     // 겹친 자리 한가운데의 점에서 곧은 세로선으로 잇는다 (10/11 Jessi, 시안 B). 사선을 꺾어
-    // 왼쪽 아래로 끌어내던 때는 보기 안 좋았다. 길 때는 집합 이름 둘을 원 위로 올려 아래를 비운다
-    const inside = visualLen(l(2)) <= 5;
+    // 왼쪽 아래로 끌어내던 때는 보기 안 좋았다. 길 때는 집합 이름 둘을 원 위로 올려 아래를 비운다.
+    // 기준은 "겹친 자리 폭(180)에 글자를 줄이지 않고 들어가는가"다 — 보이는 길이 5까지 안에 두던 때는
+    // 한글 "파일 위치"(4.5)가 안으로 들어가 40px까지 줄어 욱여넣어졌다 (10/11 vibelog, Jessi).
+    // 영어 "File location"(6.5)은 바깥으로 빠져 한글판만 그랬다. 72px로 180에 드는 2.5까지만 안에 쓴다
+    const inside = visualLen(l(2)) <= 2.5;
     const ring = (p: number): React.CSSProperties => ({
       strokeDasharray: 1,
       strokeDashoffset: 1 - p,
