@@ -2,28 +2,28 @@
  {
   "section": "did",
   "after": 0,
-  "alt": "새 프로젝트가 등록되면 AI가 기획서와 코드를 읽고 소개 글과 짧은 설명을 씁니다. 그다음 글에는 레포 이름 대신 서비스 이름과 그 설명이 붙습니다.",
-  "altEn": "When a new project is registered, the AI reads its plan and code, then writes an intro post and short summary. Later posts show the service name and that summary instead of the repo name.",
-  "caption": "소개 글이 먼저 나오고, 그 설명이 이후 글마다 따라붙습니다",
-  "captionEn": "The intro comes first, and its summary follows every later post",
+  "alt": "새 프로젝트가 들어오면 AI가 기획서와 코드를 읽고 첫 글로 소개 글을 쓰며, 다음 글의 프로젝트 설명을 누르면 소개 글로 이어지는 흐름도",
+  "altEn": "Flow: a new project comes in, the AI reads its plan and code, writes an intro as the first post, and the blurb on every later post links back to that intro.",
+  "caption": "첫 글은 소개 글, 다음 글은 모두 소개 글로 이어집니다",
+  "captionEn": "The first post is the intro; every later post links back to it",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 360",
+    "viewBox": "0 0 390 330",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "새 프로젝트가 소개 글과 짧은 설명을 거쳐 이후 글의 제목 부분에 서비스 이름으로 나오는 흐름"
+     "text": "새 프로젝트가 들어오면 AI가 기획서와 코드를 읽고 소개 글을 첫 글로 쓰며, 다음 글들은 설명을 통해 소개 글로 이어집니다."
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "55",
-      "y": "20",
-      "width": "280",
+      "x": "105",
+      "y": "16",
+      "width": "180",
       "height": "40",
       "rx": "8",
       "fill": "var(--color-panel)",
@@ -34,37 +34,38 @@
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "45",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "42",
       "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "새 프로젝트 등록"
+     "text": "새 프로젝트"
     },
     {
      "tag": "line",
      "attrs": {
       "x1": "195",
-      "y1": "60",
+      "y1": "56",
       "x2": "195",
-      "y2": "82",
-      "stroke": "var(--color-muted)"
+      "y2": "76",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "polygon",
      "attrs": {
-      "points": "189,82 201,82 195,90",
+      "points": "195,83 190,74 200,74",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "55",
-      "y": "90",
-      "width": "280",
+      "x": "60",
+      "y": "84",
+      "width": "270",
       "height": "40",
       "rx": "8",
       "fill": "var(--color-panel)",
@@ -75,10 +76,10 @@
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "115",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "110",
       "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
      "text": "AI가 기획서·코드를 읽음"
@@ -87,146 +88,187 @@
      "tag": "line",
      "attrs": {
       "x1": "195",
-      "y1": "130",
+      "y1": "124",
       "x2": "195",
-      "y2": "152",
-      "stroke": "var(--color-muted)"
+      "y2": "144",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "polygon",
      "attrs": {
-      "points": "189,152 201,152 195,160",
+      "points": "195,151 190,142 200,142",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "55",
-      "y": "160",
-      "width": "280",
-      "height": "40",
+      "x": "85",
+      "y": "152",
+      "width": "220",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)"
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "185",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "180",
       "text-anchor": "middle",
-      "fill": "var(--color-ink)"
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
      },
-     "text": "소개 글 + 짧은 설명"
+     "text": "첫 글: 소개 글"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "195",
-      "y1": "200",
-      "x2": "195",
-      "y2": "224",
-      "stroke": "var(--color-muted)"
+      "x1": "100",
+      "y1": "240",
+      "x2": "145",
+      "y2": "201",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 4"
      }
     },
     {
      "tag": "polygon",
      "attrs": {
-      "points": "189,224 201,224 195,232",
+      "points": "150,197 146.2,206.4 140.2,199.6",
       "fill": "var(--color-muted)"
      }
     },
     {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "240",
+      "x2": "245",
+      "y2": "201",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "240,197 249.8,199.6 243.8,206.4",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "229",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "누르면 이동"
+    },
+    {
      "tag": "rect",
      "attrs": {
-      "x": "40",
-      "y": "232",
-      "width": "310",
-      "height": "110",
+      "x": "20",
+      "y": "242",
+      "width": "160",
+      "height": "70",
       "rx": "8",
-      "fill": "var(--color-panel2)",
+      "fill": "var(--color-panel)",
       "stroke": "var(--color-line)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "56",
-      "y": "258",
+      "x": "100",
+      "y": "268",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "그다음 글의 제목 부분"
+     "text": "다음 글"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "56",
-      "y": "292",
-      "font-family": "var(--font-mono)",
+      "x": "100",
+      "y": "294",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "lie-detective"
+     "text": "프로젝트 설명"
     },
     {
-     "tag": "line",
+     "tag": "rect",
      "attrs": {
-      "x1": "56",
-      "y1": "287",
-      "x2": "175",
-      "y2": "287",
-      "stroke": "var(--color-muted)"
+      "x": "210",
+      "y": "242",
+      "width": "160",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "188",
-      "y": "292",
+      "x": "290",
+      "y": "268",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "→ 거짓말 탐정"
+     "text": "다음 글"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "56",
-      "y": "324",
+      "x": "290",
+      "y": "294",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-ink-soft)"
+      "fill": "var(--color-muted)"
      },
-     "text": "↳ 프로젝트 짧은 설명"
+     "text": "프로젝트 설명"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 360",
+    "viewBox": "0 0 390 330",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "A new project flows through an intro post and short summary into the title area of later posts, shown by its service name"
+     "text": "When a new project comes in, the AI reads its plan and code, writes an intro as the first post, and later posts link back to it through their blurb."
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "55",
-      "y": "20",
-      "width": "280",
+      "x": "105",
+      "y": "16",
+      "width": "180",
       "height": "40",
       "rx": "8",
       "fill": "var(--color-panel)",
@@ -237,37 +279,38 @@
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "45",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "42",
       "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "New project registered"
+     "text": "New project"
     },
     {
      "tag": "line",
      "attrs": {
       "x1": "195",
-      "y1": "60",
+      "y1": "56",
       "x2": "195",
-      "y2": "82",
-      "stroke": "var(--color-muted)"
+      "y2": "76",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "polygon",
      "attrs": {
-      "points": "189,82 201,82 195,90",
+      "points": "195,83 190,74 200,74",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "55",
-      "y": "90",
-      "width": "280",
+      "x": "60",
+      "y": "84",
+      "width": "270",
       "height": "40",
       "rx": "8",
       "fill": "var(--color-panel)",
@@ -278,137 +321,178 @@
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "115",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "110",
       "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "AI reads plan and code"
+     "text": "AI reads plan + code"
     },
     {
      "tag": "line",
      "attrs": {
       "x1": "195",
-      "y1": "130",
+      "y1": "124",
       "x2": "195",
-      "y2": "152",
-      "stroke": "var(--color-muted)"
+      "y2": "144",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "polygon",
      "attrs": {
-      "points": "189,152 201,152 195,160",
+      "points": "195,151 190,142 200,142",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "55",
-      "y": "160",
-      "width": "280",
-      "height": "40",
+      "x": "85",
+      "y": "152",
+      "width": "220",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)"
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "195",
-      "y": "185",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "180",
       "text-anchor": "middle",
-      "fill": "var(--color-ink)"
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
      },
-     "text": "Intro post + short summary"
+     "text": "First post: intro"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "195",
-      "y1": "200",
-      "x2": "195",
-      "y2": "224",
-      "stroke": "var(--color-muted)"
+      "x1": "100",
+      "y1": "240",
+      "x2": "145",
+      "y2": "201",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 4"
      }
     },
     {
      "tag": "polygon",
      "attrs": {
-      "points": "189,224 201,224 195,232",
+      "points": "150,197 146.2,206.4 140.2,199.6",
       "fill": "var(--color-muted)"
      }
     },
     {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "240",
+      "x2": "245",
+      "y2": "201",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "240,197 249.8,199.6 243.8,206.4",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "229",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "tap → intro"
+    },
+    {
      "tag": "rect",
      "attrs": {
-      "x": "40",
-      "y": "232",
-      "width": "310",
-      "height": "110",
+      "x": "20",
+      "y": "242",
+      "width": "160",
+      "height": "70",
       "rx": "8",
-      "fill": "var(--color-panel2)",
+      "fill": "var(--color-panel)",
       "stroke": "var(--color-line)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "56",
-      "y": "258",
+      "x": "100",
+      "y": "268",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "Title area of later posts"
+     "text": "Later post"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "56",
-      "y": "292",
-      "font-family": "var(--font-mono)",
+      "x": "100",
+      "y": "294",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "lie-detective"
+     "text": "project blurb"
     },
     {
-     "tag": "line",
+     "tag": "rect",
      "attrs": {
-      "x1": "56",
-      "y1": "287",
-      "x2": "175",
-      "y2": "287",
-      "stroke": "var(--color-muted)"
+      "x": "210",
+      "y": "242",
+      "width": "160",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "188",
-      "y": "292",
+      "x": "290",
+      "y": "268",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "→ Lie Detective"
+     "text": "Later post"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "56",
-      "y": "324",
+      "x": "290",
+      "y": "294",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-ink-soft)"
+      "fill": "var(--color-muted)"
      },
-     "text": "↳ short project summary"
+     "text": "project blurb"
     }
    ]
   }
@@ -416,407 +500,375 @@
  {
   "section": "fail",
   "after": 0,
-  "alt": "고치기 전에는 AI가 지금 코드를 보고 정답 위치까지 담긴 너무 자세한 글을 썼습니다. 고친 뒤에는 등록할 무렵의 레포를 보고 만들려는 것만 씁니다.",
-  "altEn": "Before the fix, the AI read today's code and wrote overly detailed posts, down to where the answers live. After the fix, it reads the repo as of registration and writes only what it plans to build.",
-  "caption": "무엇을 보고 쓰느냐를 바꾸자 글의 내용도 바뀌었습니다",
-  "captionEn": "Changing what the AI reads changed what it writes",
+  "alt": "프로젝트 시간선에서 예전 지시는 꽤 만든 뒤를 보고 있었고, 고친 지시는 등록할 때를 보도록 바뀐 그림",
+  "altEn": "A project timeline: the old instructions looked at a project already well along, while the fixed ones look at the moment of registration.",
+  "caption": "지시가 엉뚱한 때를 보고 있어서 소개 글 5편을 내렸습니다",
+  "captionEn": "The instructions looked at the wrong moment, so 5 intro posts came down",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 290",
+    "viewBox": "0 0 390 240",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "AI가 지금 코드를 볼 때와 등록할 무렵 레포를 볼 때 나오는 소개 글의 차이"
+     "text": "예전 지시는 꽤 만든 뒤의 프로젝트를 보았고, 고친 지시는 등록할 때의 프로젝트만 봅니다."
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "110",
+      "x2": "352",
+      "y2": "110",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "362,110 352,105 352,115",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "80",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-accent)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "20",
-      "y": "30",
+      "x": "80",
+      "y": "86",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "고치기 전"
+     "text": "등록할 때"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "290",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "86",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "꽤 만든 뒤"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "80",
+      "y1": "160",
+      "x2": "80",
+      "y2": "130",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "80,121 75,131 85,131",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "160",
+      "x2": "290",
+      "y2": "130",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "290,121 285,131 295,131",
+      "fill": "var(--color-warn)"
+     }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "44",
-      "width": "150",
-      "height": "50",
+      "x": "10",
+      "y": "160",
+      "width": "170",
+      "height": "64",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line-strong)"
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "95",
-      "y": "74",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "지금 코드"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "174",
-      "y1": "69",
-      "x2": "200",
-      "y2": "69",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "200,63 208,69 200,75",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "210",
-      "y": "44",
-      "width": "160",
-      "height": "50",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "74",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "너무 자세한 글"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "118",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-warn)"
-     },
-     "text": "정답 위치까지"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "20",
-      "y1": "142",
-      "x2": "370",
-      "y2": "142",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "172",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "고친 뒤"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
       "y": "186",
-      "width": "160",
-      "height": "50",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "100",
-      "y": "216",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
       "text-anchor": "middle",
-      "fill": "var(--color-ink-soft)"
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
      },
-     "text": "등록할 무렵 레포"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "184",
-      "y1": "211",
-      "x2": "205",
-      "y2": "211",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "205,205 213,211 205,217",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "215",
-      "y": "186",
-      "width": "155",
-      "height": "50",
-      "rx": "8",
-      "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)"
-     }
+     "text": "고친 지시"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "292",
-      "y": "216",
+      "x": "95",
+      "y": "210",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-ink)"
+      "fill": "var(--color-muted)"
      },
      "text": "만들려는 것만"
     },
     {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "160",
+      "width": "180",
+      "height": "64",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
      "tag": "text",
      "attrs": {
-      "x": "292",
-      "y": "262",
+      "x": "290",
+      "y": "186",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "예전 지시"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "210",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "text-anchor": "middle",
       "fill": "var(--color-muted)"
      },
-     "text": "정답·비공개는 빼기"
+     "text": "만든 것·다음 할 일"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 290",
+    "viewBox": "0 0 390 240",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "How the intro post differs when the AI reads today's code versus the repo as of registration"
+     "text": "The old instructions looked at a project already well along; the fixed ones look only at the project as it was at registration."
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "30",
+      "y1": "110",
+      "x2": "352",
+      "y2": "110",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "362,110 352,105 352,115",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "80",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-accent)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "20",
-      "y": "30",
+      "x": "80",
+      "y": "86",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "Before"
+     "text": "At registration"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "290",
+      "cy": "110",
+      "r": "7",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "86",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Well along"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "80",
+      "y1": "160",
+      "x2": "80",
+      "y2": "130",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "80,121 75,131 85,131",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "160",
+      "x2": "290",
+      "y2": "130",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "290,121 285,131 295,131",
+      "fill": "var(--color-warn)"
+     }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "44",
-      "width": "150",
-      "height": "50",
+      "x": "10",
+      "y": "160",
+      "width": "170",
+      "height": "64",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line-strong)"
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "95",
-      "y": "74",
+      "y": "186",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Fixed"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "210",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "Today's code"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "174",
-      "y1": "69",
-      "x2": "200",
-      "y2": "69",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "200,63 208,69 200,75",
       "fill": "var(--color-muted)"
-     }
+     },
+     "text": "only the aim"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "210",
-      "y": "44",
-      "width": "160",
-      "height": "50",
+      "x": "200",
+      "y": "160",
+      "width": "180",
+      "height": "64",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-warn)"
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
      }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "290",
-      "y": "74",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "y": "186",
       "text-anchor": "middle",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "Too detailed"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "290",
-      "y": "118",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
+      "font-size": "16",
       "fill": "var(--color-warn)"
      },
-     "text": "even where answers are"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "20",
-      "y1": "142",
-      "x2": "370",
-      "y2": "142",
-      "stroke": "var(--color-line)"
-     }
+     "text": "Old"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "20",
-      "y": "172",
+      "x": "290",
+      "y": "210",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "After"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "20",
-      "y": "186",
-      "width": "160",
-      "height": "50",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "100",
-      "y": "216",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "Repo at signup"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "184",
-      "y1": "211",
-      "x2": "205",
-      "y2": "211",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "205,205 213,211 205,217",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "215",
-      "y": "186",
-      "width": "155",
-      "height": "50",
-      "rx": "8",
-      "fill": "var(--color-accent-soft)",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "292",
-      "y": "216",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-ink)"
-     },
-     "text": "Only the plan"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "292",
-      "y": "262",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "text-anchor": "middle",
-      "fill": "var(--color-muted)"
-     },
-     "text": "answers stay out"
+     "text": "built + next steps"
     }
    ]
   }

@@ -8,160 +8,301 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "링크를 붙여도 아무것도 안 떴습니다.",
-      "en": "Pasting the link showed nothing at all.",
+      "ko": "지역마다 순위표가 생겼습니다.",
+      "en": "Each region now has a leaderboard.",
       "keywords": [
-        "아무것도"
+        "지역마다"
       ],
       "keywordsEn": [
-        "nothing at all"
+        "Each region"
       ],
-      "screen": "/",
-      "shot": "whole"
+      "koLines": [
+        "지역마다",
+        "순위표가 생겼습니다."
+      ],
+      "enLines": [
+        "Each region now",
+        "has a leaderboard."
+      ]
     },
     {
       "scene": "build",
-      "ko": "이름과 설명, 미리보기 그림을 붙였습니다.",
-      "en": "I added a name, a description, and a preview picture.",
+      "ko": "아파트 이름이 진짜인지 맞히는 퀴즈입니다.",
+      "en": "It's a quiz on whether apartment names are real.",
       "keywords": [
-        "미리보기 그림을"
+        "진짜인지"
       ],
       "keywordsEn": [
-        "preview picture"
+        "are real."
       ],
-      "screen": "/opengraph-image?f2c0039925850c95",
-      "shot": "whole"
+      "koLines": [
+        "아파트 이름이 진짜인지",
+        "맞히는 퀴즈입니다."
+      ],
+      "enLines": [
+        "It's a quiz on whether",
+        "apartment names are real."
+      ],
+      "screen": "/o",
+      "find": "이름만 보고 진짜/가짜",
+      "findEn": "real or fake by name alone",
+      "shot": "focus"
     },
     {
       "scene": "build",
-      "ko": "결과를 보낼 때도 글 안에 주소를 같이 넣었습니다.",
-      "en": "Sharing a result now carries the address inside the text.",
+      "ko": "같은 지역 문제를 푼 사람끼리 겨룹니다.",
+      "en": "Players of the same region compete together.",
       "keywords": [
-        "주소를"
+        "같은 지역"
       ],
       "keywordsEn": [
-        "the address"
+        "same region"
       ],
-      "diagram": {
-        "kind": "pipeline",
-        "labels": [
-          "결과를 보내면",
-          "글 한 줄에",
-          "주소가 함께"
-        ],
-        "labelsEn": [
-          "send a result",
-          "one line of text",
-          "address included"
+      "koLines": [
+        "같은 지역 문제를 푼",
+        "사람끼리 겨룹니다."
+      ],
+      "enLines": [
+        "Players of the same region",
+        "compete together."
+      ],
+      "art": "a small winners' podium standing on top of a map of a single province",
+      "icon": {
+        "name": "tabler:trophy",
+        "paths": [
+          {
+            "d": "M8 21h8m-4-4v4M7 4h10m0 0v8a5 5 0 0 1-10 0V4M3 9a2 2 0 1 0 4 0a2 2 0 1 0-4 0m14 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0"
+          }
         ]
       }
     },
     {
       "scene": "demo",
-      "ko": "카드 가운데에는 도장이 찍혀 있습니다.",
-      "en": "The card has a stamp in the middle.",
+      "ko": "내 자리가 240명 중 137위처럼 뜹니다.",
+      "en": "Your spot shows up like 137th of 240.",
       "keywords": [
-        "도장이"
+        "내 자리가"
       ],
       "keywordsEn": [
-        "a stamp"
+        "Your spot"
       ],
-      "screen": "/opengraph-image?f2c0039925850c95",
-      "shot": "whole"
+      "koLines": [
+        "내 자리가",
+        "240명 중 137위처럼 뜹니다."
+      ],
+      "enLines": [
+        "Your spot shows up",
+        "like 137th of 240."
+      ],
+      "art": "a giant arrow pointing at one person standing in a long line of people",
+      "icon": {
+        "name": "tabler:list-numbers",
+        "paths": [
+          {
+            "d": "M11 6h9m-9 6h9m-8 6h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이름은 가운데 글자를 가립니다.",
+      "en": "Names have their middle letter hidden.",
+      "keywords": [
+        "가운데 글자를"
+      ],
+      "keywordsEn": [
+        "middle letter hidden."
+      ],
+      "enLines": [
+        "Names have their",
+        "middle letter hidden."
+      ],
+      "art": "a blank name tag with a strip of tape covering its middle",
+      "icon": {
+        "name": "tabler:eye-off",
+        "paths": [
+          {
+            "d": "M10.585 10.587a2 2 0 0 0 2.829 2.828"
+          },
+          {
+            "d": "M16.681 16.673A8.7 8.7 0 0 1 12 18q-5.4 0-9-6q1.908-3.18 4.32-4.674m2.86-1.146A9 9 0 0 1 12 6q5.4 0 9 6q-1 1.665-2.138 2.87M3 3l18 18"
+          }
+        ]
+      }
     },
     {
       "scene": "fail",
-      "ko": "처음엔 글자 없는 동그라미만 번졌습니다.",
-      "en": "At first only a blurry letterless circle came out.",
+      "ko": "그런데 지역을 바꾸면 점수가 사라졌습니다.",
+      "en": "But switching regions wiped out your score.",
       "keywords": [
-        "글자 없는"
+        "점수가 사라졌습니다."
       ],
       "keywordsEn": [
-        "letterless circle"
+        "wiped out"
+      ],
+      "koLines": [
+        "그런데 지역을 바꾸면",
+        "점수가 사라졌습니다."
+      ],
+      "enLines": [
+        "But switching regions",
+        "wiped out your score."
       ],
       "diagram": {
         "kind": "beforeafter",
         "labels": [
-          "도장을 찍으면",
-          "글자 없는 동그라미",
-          "도장을 찍으면",
-          "글자까지 또렷이"
+          "마지막 지역 하나",
+          "바꾸면 사라짐",
+          "지역마다 따로",
+          "그대로 남음"
         ],
         "labelsEn": [
-          "stamp it",
-          "letterless circle",
-          "stamp it",
-          "letters come out"
+          "Last region only",
+          "Lost on switch",
+          "Each region apart",
+          "Score stays"
+        ],
+        "icons": [
+          {
+            "name": "tabler:map-pin",
+            "paths": [
+              {
+                "d": "M9 11a3 3 0 1 0 6 0a3 3 0 0 0-6 0"
+              },
+              {
+                "d": "M17.657 16.657L13.414 20.9a2 2 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:trash",
+            "paths": [
+              {
+                "d": "M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:map-pins",
+            "paths": [
+              {
+                "d": "M10.828 9.828a4 4 0 1 0-5.656 0L8 12.657zM8 7v.01m10.828 10.818a4 4 0 1 0-5.656 0L16 20.657zM16 15v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:check",
+            "paths": [
+              {
+                "d": "m5 12l5 5L20 7"
+              }
+            ]
+          }
         ]
       }
     },
     {
       "scene": "fail",
-      "ko": "그림을 그려 주는 쪽에 한글 글꼴이 없었습니다.",
-      "en": "The tool drawing the picture had no Korean font.",
+      "ko": "그래서 지역마다 점수를 따로 쌓게 했습니다.",
+      "en": "So now each region keeps its own score.",
       "keywords": [
-        "한글 글꼴이"
+        "따로"
       ],
       "keywordsEn": [
-        "no Korean font"
+        "its own score."
+      ],
+      "koLines": [
+        "그래서 지역마다",
+        "점수를 따로 쌓게 했습니다."
+      ],
+      "enLines": [
+        "So now each region",
+        "keeps its own score."
       ],
       "diagram": {
         "kind": "fork",
         "labels": [
-          "도장",
-          "네모로 깨짐",
-          "또렷한 글자",
-          "글자도 그림으로",
-          "글자는 따로"
+          "푼 점수",
+          "서울 순위표",
+          "부산 순위표",
+          "서울",
+          "부산"
         ],
         "labelsEn": [
-          "the stamp",
-          "broken boxes",
-          "clean letters",
-          "letters in image",
-          "letters on top"
-        ],
-        "pick": 2
-      }
-    },
-    {
-      "scene": "next",
-      "ko": "어떤 이름에 사람들이 많이 속는지 모으기 시작했습니다.",
-      "en": "I started collecting which names fool people most.",
-      "keywords": [
-        "많이 속는지"
-      ],
-      "keywordsEn": [
-        "fool people most"
-      ],
-      "diagram": {
-        "kind": "pipeline",
-        "labels": [
-          "속은 이름을 모으고",
-          "30번 넘은 것만",
-          "순위로 공개"
-        ],
-        "labelsEn": [
-          "collect fooling names",
-          "only past 30 times",
-          "publish the ranking"
+          "Your score",
+          "Seoul board",
+          "Busan board",
+          "Seoul",
+          "Busan"
         ]
       }
     },
     {
-      "scene": "end",
-      "ko": "버그 제보 창구도 로그인 없이 열어 뒀습니다.",
-      "en": "I also opened a bug report desk, no sign-in needed.",
+      "scene": "next",
+      "ko": "10명이 모인 지역부터 순위표가 열립니다.",
+      "en": "Boards open once a region has 10 players.",
       "keywords": [
-        "버그 제보 창구도"
+        "10명이 모인"
       ],
       "keywordsEn": [
-        "bug report desk"
+        "10 players."
       ],
-      "screen": "/bug",
-      "find": "접수하기",
-      "findEn": "submit",
-      "shot": "focus"
+      "koLines": [
+        "10명이 모인 지역부터",
+        "순위표가 열립니다."
+      ],
+      "enLines": [
+        "Boards open once",
+        "a region has 10 players."
+      ],
+      "art": "a door that swings open as a crowd of small figures gathers in front of it",
+      "stat": "10명",
+      "statEn": "10 players",
+      "icon": {
+        "name": "tabler:users-group",
+        "paths": [
+          {
+            "d": "M10 13a2 2 0 1 0 4 0a2 2 0 0 0-4 0m-2 8v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1M15 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0m2 5h2a2 2 0 0 1 2 2v1M5 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0m-2 8v-1a2 2 0 0 1 2-2h2"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "그때까진 저만 열어 보며 다듬겠습니다.",
+      "en": "Until then, only I can open them while I polish.",
+      "keywords": [
+        "저만"
+      ],
+      "keywordsEn": [
+        "only I"
+      ],
+      "koLines": [
+        "그때까진 저만",
+        "열어 보며 다듬겠습니다."
+      ],
+      "enLines": [
+        "Until then, only I can",
+        "open them while I polish."
+      ],
+      "screen": "/me",
+      "shot": "whole"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 혼자 치는 게임이 아닙니다.",
+      "en": "It's no longer a game you play alone.",
+      "keywords": [
+        "혼자"
+      ],
+      "keywordsEn": [
+        "alone."
+      ],
+      "enLines": [
+        "It's no longer",
+        "a game you play alone."
+      ]
     }
   ],
   "demo": {
@@ -169,12 +310,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "글자 없는 도장",
-    "titleEn": "A stamp with no letters",
-    "before": "도장에 글자가 안 나와 얼룩처럼 번졌습니다.",
-    "after": "동그라미만 그림으로 깔고 글자는 따로 얹었습니다.",
-    "beforeEn": "The stamp lost its letters and looked like a smudge.",
-    "afterEn": "I laid the circle down as a picture and drew the letters on top."
+    "title": "지역을 바꾸면 점수가 사라졌다",
+    "titleEn": "Switching regions lost scores",
+    "before": "마지막에 고른 지역에만 점수를 올림",
+    "after": "지역마다 점수를 따로 쌓음",
+    "beforeEn": "Scores went only to the last region picked",
+    "afterEn": "Scores now pile up per region"
   },
   "commits": [
     [
@@ -256,6 +397,98 @@
     [
       "091c216",
       "feat: 링크를 붙이면 이름과 그림이 제대로 뜨게 했다"
+    ],
+    [
+      "9258f61",
+      "fix: 조립 힌트가 이미 채운 칸에 떨어지던 것을 고쳤다"
+    ],
+    [
+      "9036d19",
+      "fix: 좁은 폰에서 직급 이름이 칸을 넘던 것을 고쳤다"
+    ],
+    [
+      "0d90194",
+      "feat: 같은 구역 감별사 순위를 보는 구역 명부를 열었다"
+    ],
+    [
+      "9a9f5c8",
+      "fix: 조립에 \"1,\" 같은 조각이 나오던 것을 막았다"
+    ],
+    [
+      "44f8c43",
+      "design: 홈의 '기록 보관' 버튼에도 구글 로고를 붙였다"
+    ],
+    [
+      "3fd1e21",
+      "feat: 로그아웃하면 접수 창구로 돌려보낸다"
+    ],
+    [
+      "e539e88",
+      "fix: 레이아웃 검사가 멀쩡한 한 줄을 두 줄로 세던 것을 고쳤다"
+    ],
+    [
+      "e7c24c5",
+      "feat: 무한 화면에서 공식전으로 건너가던 칩을 없앴다"
+    ],
+    [
+      "f74f685",
+      "design: 치른 공식전에 진짜로 도장이 찍히게 했다"
+    ],
+    [
+      "ce7274e",
+      "docs: 레이아웃 규칙이 코드와 어긋나 있던 것을 고쳤다"
+    ],
+    [
+      "8804bcb",
+      "chore: 반복해서 눈으로 잡던 결함을 거르는 qa 스킬을 넣었다"
+    ],
+    [
+      "38fa925",
+      "fix: 등급 도장의 좌우 선만 얇던 것을 고쳤다"
+    ],
+    [
+      "2e3c500",
+      "feat: 창구·공식전 안내를 손이 가는 쪽으로 고쳤다"
+    ],
+    [
+      "428e9a8",
+      "feat: 공식전 성적을 창구별로 갈라 보여준다 + 신분증에 담당 구역을 묶었다"
+    ],
+    [
+      "ce56645",
+      "fix: 공식전이 전국 공통이라던 안내를 지웠다 — 이제 사실이 아니다"
+    ],
+    [
+      "8908dd3",
+      "feat: 공식전을 구역별·창구별로 나누고 순위도 그 단위로 집계한다"
+    ],
+    [
+      "87aed32",
+      "docs: 공식전이 구역을 따르지 않는다는 것을 화면이 말하게 했다"
+    ],
+    [
+      "a503c50",
+      "fix: 오른쪽이 안 차던 진짜 원인은 내가 건 text-wrap이었다"
+    ],
+    [
+      "0ba66a9",
+      "feat: 제주·강원·충청·전북·경상 추가 — 출제 풀이 시도 15곳 7,532건"
+    ],
+    [
+      "cf4e173",
+      "fix: 오른쪽이 비는 문구를 기본값으로 막고, 구역을 시·도로 통일했다"
+    ],
+    [
+      "ec2dd25",
+      "docs: 문서에 남아 있던 옛 수치를 실제 풀과 맞췄다"
+    ],
+    [
+      "1c49478",
+      "docs: 수집 범위와 이어서 할 일을 파이프라인 문서에 적었다"
+    ],
+    [
+      "25f94b5",
+      "feat: 공식전 출전구를 홈으로 끌어올리고 출제 풀을 전국으로 넓혔다"
     ]
   ],
   "commitsEn": [
@@ -338,29 +571,121 @@
     [
       "091c216",
       "feat: properly display name and image when pasting link"
+    ],
+    [
+      "9258f61",
+      "fix: assembly hint could land on an already-filled slot"
+    ],
+    [
+      "9036d19",
+      "fix: rank title overflowed on narrow phones"
+    ],
+    [
+      "0d90194",
+      "feat: opened district roster showing appraiser rankings within the same district"
+    ],
+    [
+      "9a9f5c8",
+      "fix: assembly no longer produces fragments like \"1,\""
+    ],
+    [
+      "44f8c43",
+      "design: added Google logo to the 'Record Archive' button on home"
+    ],
+    [
+      "3fd1e21",
+      "feat: logging out now returns to the reception desk"
+    ],
+    [
+      "e539e88",
+      "fix: layout check no longer treats a single line as two lines"
+    ],
+    [
+      "e7c24c5",
+      "feat: removed the chip that jumped from the endless screen to the official exam"
+    ],
+    [
+      "f74f685",
+      "design: completed official exams now get a real stamp"
+    ],
+    [
+      "ce7274e",
+      "docs: fixed layout rules that had drifted out of sync with the code"
+    ],
+    [
+      "8804bcb",
+      "chore: added a qa skill to filter out defects previously caught by eye"
+    ],
+    [
+      "38fa925",
+      "fix: grade stamp's left and right borders were too thin"
+    ],
+    [
+      "2e3c500",
+      "feat: reworked reception and official exam guidance to follow user's flow"
+    ],
+    [
+      "428e9a8",
+      "feat: official exam records split by desk, ID card linked to assigned district"
+    ],
+    [
+      "ce56645",
+      "fix: removed guidance claiming official exams were nationwide, since it's no longer true"
+    ],
+    [
+      "8908dd3",
+      "feat: official exams split by district and desk, rankings aggregated per unit"
+    ],
+    [
+      "87aed32",
+      "docs: screen now states that official exams don't follow districts"
+    ],
+    [
+      "a503c50",
+      "fix: the real cause of the right side not filling was the text-wrap I had applied"
+    ],
+    [
+      "0ba66a9",
+      "feat: added Jeju, Gangwon, Chungcheong, Jeonbuk, Gyeongsang; question pools from 15 sites, 7,532 records"
+    ],
+    [
+      "cf4e173",
+      "fix: blocked default text that left the right side empty, and unified districts to city/province"
+    ],
+    [
+      "ec2dd25",
+      "docs: updated stale figures in docs to match the actual pool"
+    ],
+    [
+      "1c49478",
+      "docs: documented collection scope and next steps in the pipeline doc"
+    ],
+    [
+      "25f94b5",
+      "feat: moved official exam entry to home and expanded question pool nationwide"
     ]
   ],
-  "commitCount": 20,
+  "commitCount": 43,
   "handle": "apt-game.app",
   "captions": {
-    "ko": "게임 주소를 붙여 넣으면 주소 글자만 덜렁 나오던 걸 고쳤습니다. 이름과 설명, 도장 찍힌 미리보기 그림이 함께 뜹니다.",
-    "en": "Pasting the game link used to show nothing but the bare address. Now the name, description, and a stamped preview picture come with it."
+    "ko": "아파트 감별사에 지역마다 순위표가 생겼습니다. 지역을 바꾸면 점수가 사라지던 문제도 고쳤습니다.",
+    "en": "Apartment Detective now has a leaderboard for each region. I also fixed scores vanishing when you switched regions."
   },
   "hashtags": [
-    "#개발일지",
-    "#인디게임",
-    "#devlog",
-    "#buildinpublic",
+    "#vibelog",
+    "#데브로그",
     "#아파트감별사",
-    "#opengraph",
-    "#웹개발"
+    "#순위표",
+    "#leaderboard",
+    "#indiedev",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mtz61aar",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mtz61cut",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mtz62f2z",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mtz62i23",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.sm.mp4?v=mv3y92d1",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.sm.mp4?v=mv3y9b6d"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.poster.jpg?v=mv5teqbz",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.mp4?v=mv5tesh3",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.ko.sm.mp4?v=mv5tf0j8",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.poster.jpg?v=mv5tg8g2",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.mp4?v=mv5tgatv",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-09-12.en.sm.mp4?v=mv5tgi0n"
   }
 }

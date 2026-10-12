@@ -4,13 +4,13 @@
       "path": "/projects/Anchor",
       "find": "소개 글 읽기 →",
       "focusY": 0.234,
-      "start": 1,
-      "end": 19.05
+      "start": 1.03,
+      "end": 17.07
     },
     {
       "path": "/",
-      "start": 19.91,
-      "end": 38.76
+      "start": 17.97,
+      "end": 34.58
     }
   ]
 }

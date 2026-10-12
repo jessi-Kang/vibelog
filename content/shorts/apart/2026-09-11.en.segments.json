@@ -1,14 +1,30 @@
 {
   "screens": [
     {
-      "path": "/",
-      "start": 0.78,
-      "end": 14.63
+      "path": "/opengraph-image?f2c0039925850c95",
+      "focusY": 0.5,
+      "aspect": 1.9048,
+      "start": 0.71,
+      "end": 8.23
     },
     {
-      "path": "/record",
-      "start": 15.23,
-      "end": 29.04
+      "path": "/",
+      "find": "Endless",
+      "focusY": 0.791,
+      "start": 9.27,
+      "end": 16.79
+    },
+    {
+      "path": "/o",
+      "start": 17.58,
+      "end": 25.95
+    },
+    {
+      "path": "/",
+      "find": "Official match",
+      "focusY": 0.814,
+      "start": 26.95,
+      "end": 34.48
     }
   ]
 }

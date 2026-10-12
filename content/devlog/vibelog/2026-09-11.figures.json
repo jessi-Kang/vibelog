@@ -1,614 +1,308 @@
 [
  {
-  "section": "did",
+  "section": "why",
   "after": 0,
-  "alt": "배경 음악이 45.024초에서 끝나 50초 영상이 45초에서 잘리던 구조와, 음악을 반복해 채운 뒤의 비교",
-  "altEn": "Before and after: the 45.024-second music track cut the 50-second video short, until the music was looped to fill the length",
-  "caption": "짧은 쪽에 맞춰 자르니, 음악이 끝나는 순간 영상도 끝났습니다.",
-  "captionEn": "Trimming to the shorter track meant the video ended when the music did.",
+  "alt": "폰 두 대를 비교한 그림. 왼쪽은 메뉴가 위에 있어 엄지가 닿는 곳에서 멀고, 오른쪽은 탭바가 아래에 있어 엄지가 닿는 곳 안에 있다.",
+  "altEn": "Two phones compared: on the left the menu sits at the top, far from where the thumb reaches; on the right the tab bar sits at the bottom, inside the thumb's reach.",
+  "caption": "메뉴를 위에서 아래로 내려 엄지가 닿는 자리에 두었습니다.",
+  "captionEn": "The menu moved from the top to the bottom, where the thumb can reach it.",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 230",
+    "viewBox": "0 0 390 270",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "음악 길이에 맞춰 잘리던 영상과, 음악을 반복해 채운 뒤의 비교"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "24",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "전"
+     "text": "위쪽 메뉴는 엄지가 닿는 곳에서 멀고, 아래로 옮긴 탭바는 엄지가 닿는 곳에 있다"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "70",
-      "y": "32",
-      "width": "270",
-      "height": "20",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "78",
-      "y": "47",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "화면 50초"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "60",
-      "width": "243",
-      "height": "20",
+      "x": "45",
+      "y": "20",
+      "width": "110",
+      "height": "200",
+      "rx": "14",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "text",
+     "tag": "rect",
      "attrs": {
-      "x": "78",
-      "y": "75",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "소리 45.024초"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "313",
-      "y1": "28",
-      "x2": "313",
-      "y2": "112",
+      "x": "55",
+      "y": "34",
+      "width": "90",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
       "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "100",
+      "cy": "175",
+      "rx": "42",
+      "ry": "28",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
       "stroke-dasharray": "4 4"
      }
     },
     {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "88",
-      "width": "243",
-      "height": "20",
-      "fill": "none",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
      "tag": "text",
      "attrs": {
-      "x": "78",
-      "y": "103",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "결과 45초에서 끊김"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "130",
+      "x": "100",
+      "y": "181",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "후"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "138",
-      "width": "270",
-      "height": "20",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
+     "text": "엄지"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "78",
-      "y": "153",
+      "x": "195",
+      "y": "128",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
+      "font-size": "20",
+      "fill": "var(--color-muted)"
      },
-     "text": "화면 50초"
+     "text": "→"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "70",
-      "y": "166",
-      "width": "243",
-      "height": "20",
+      "x": "235",
+      "y": "20",
+      "width": "110",
+      "height": "200",
+      "rx": "14",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "rect",
+     "tag": "ellipse",
      "attrs": {
-      "x": "313",
-      "y": "166",
-      "width": "27",
-      "height": "20",
-      "fill": "none",
-      "stroke": "var(--color-line)",
+      "cx": "290",
+      "cy": "175",
+      "rx": "42",
+      "ry": "28",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
       "stroke-dasharray": "4 4"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "78",
-      "y": "181",
+      "x": "290",
+      "y": "168",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
-      "fill": "var(--color-ink-soft)"
+      "fill": "var(--color-muted)"
      },
-     "text": "음악 반복 + 무음"
+     "text": "엄지"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "70",
-      "y": "194",
-      "width": "270",
-      "height": "20",
-      "fill": "none",
-      "stroke": "var(--color-accent)"
+      "x": "245",
+      "y": "186",
+      "width": "90",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "78",
-      "y": "209",
+      "x": "100",
+      "y": "252",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "결과 50초 전부 재생"
+     "text": "위쪽 메뉴"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "252",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "아래 탭바"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 230",
+    "viewBox": "0 0 390 270",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "The video cut short by the music length, compared with the looped-music version"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "24",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "Before"
+     "text": "The top menu is far from the thumb's reach, while the bottom tab bar sits right where the thumb reaches"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "70",
-      "y": "32",
-      "width": "270",
-      "height": "20",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "78",
-      "y": "47",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "picture 50s"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "60",
-      "width": "243",
-      "height": "20",
+      "x": "45",
+      "y": "20",
+      "width": "110",
+      "height": "200",
+      "rx": "14",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "text",
+     "tag": "rect",
      "attrs": {
-      "x": "78",
-      "y": "75",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "sound 45.024s"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "313",
-      "y1": "28",
-      "x2": "313",
-      "y2": "112",
+      "x": "55",
+      "y": "34",
+      "width": "90",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
       "stroke": "var(--color-warn)",
-      "stroke-dasharray": "4 4"
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "rect",
+     "tag": "ellipse",
      "attrs": {
-      "x": "70",
-      "y": "88",
-      "width": "243",
-      "height": "20",
-      "fill": "none",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "78",
-      "y": "103",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "result: stops at 45s"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "20",
-      "y": "130",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "After"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "138",
-      "width": "270",
-      "height": "20",
+      "cx": "100",
+      "cy": "175",
+      "rx": "42",
+      "ry": "28",
       "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "78",
-      "y": "153",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "picture 50s"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "166",
-      "width": "243",
-      "height": "20",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "313",
-      "y": "166",
-      "width": "27",
-      "height": "20",
-      "fill": "none",
-      "stroke": "var(--color-line)",
+      "stroke": "var(--color-line-strong)",
       "stroke-dasharray": "4 4"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "78",
+      "x": "100",
       "y": "181",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "music looped + silence"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "70",
-      "y": "194",
-      "width": "270",
-      "height": "20",
-      "fill": "none",
-      "stroke": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "78",
-      "y": "209",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
-     },
-     "text": "result: full 50s plays"
-    }
-   ]
-  }
- },
- {
-  "section": "did",
-  "after": 1,
-  "alt": "완성본 한 편은 내레이션 26~34초에 시작 화면과 끝 화면 5.5초가 앞뒤로 더 붙은 구성",
-  "altEn": "A finished episode is 26–34 seconds of narration with 5.5 seconds of opening and closing screens added around it",
-  "caption": "말하는 시간만 재면 길이를 놓칩니다. 앞뒤가 더 붙습니다.",
-  "captionEn": "Measuring only the spoken part misses the length — screens get added at both ends.",
-  "node": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 170",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "완성본 한 편의 구성: 내레이션 앞뒤에 시작 화면과 끝 화면이 붙는다"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "30",
-      "y": "38",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "완성본 한 편"
+     "text": "thumb"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "128",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "20",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "30",
-      "y": "56",
-      "width": "22",
-      "height": "28",
+      "x": "235",
+      "y": "20",
+      "width": "110",
+      "height": "200",
+      "rx": "14",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "rect",
+     "tag": "ellipse",
      "attrs": {
-      "x": "52",
-      "y": "56",
-      "width": "286",
-      "height": "28",
+      "cx": "290",
+      "cy": "175",
+      "rx": "42",
+      "ry": "28",
       "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "338",
-      "y": "56",
-      "width": "22",
-      "height": "28",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 4"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "76",
+      "x": "290",
+      "y": "168",
       "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "내레이션 26–34초"
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "41,90 41,106 195,106",
-      "fill": "none",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "349,90 349,106 195,106",
-      "fill": "none",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "195",
-      "y1": "106",
-      "x2": "195",
-      "y2": "118",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "195",
-      "y": "140",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
-     },
-     "text": "시작 화면 + 끝 화면 5.5초"
-    }
-   ]
-  },
-  "nodeEn": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 170",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "How one finished episode is made up: narration with an opening and closing screen around it"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "30",
-      "y": "38",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "one finished episode"
+     "text": "thumb"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "30",
-      "y": "56",
-      "width": "22",
-      "height": "28",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "52",
-      "y": "56",
-      "width": "286",
-      "height": "28",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "338",
-      "y": "56",
-      "width": "22",
-      "height": "28",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "x": "245",
+      "y": "186",
+      "width": "90",
+      "height": "22",
+      "rx": "4",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "76",
+      "x": "100",
+      "y": "252",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "narration 26–34s"
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "41,90 41,106 195,106",
-      "fill": "none",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polyline",
-     "attrs": {
-      "points": "349,90 349,106 195,106",
-      "fill": "none",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "195",
-      "y1": "106",
-      "x2": "195",
-      "y2": "118",
-      "stroke": "var(--color-muted)"
-     }
+     "text": "Top menu"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "140",
+      "x": "290",
+      "y": "252",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "opening + closing 5.5s"
+     "text": "Bottom tab bar"
     }
    ]
   }
@@ -616,10 +310,10 @@
  {
   "section": "fail",
   "after": 0,
-  "alt": "숫자 읽기 문제를 고치려다 두 번 헛짚고, 특별 규칙을 지우자 해결된 순서",
-  "altEn": "Two wrong fixes for the number-reading problem, then the fix: deleting the special rule",
-  "caption": "고치려 덧댄 규칙이 문제였습니다. 지우니 맞았습니다.",
-  "captionEn": "The patch was the problem. Deleting it fixed the reading.",
+  "alt": "앱 설치가 두 갈래로 나뉘는 그림. 서비스 워커가 없으면 바로가기가 되어 주소창이 있는 브라우저 탭으로 열리고, 있으면 앱이 되어 주소창 없는 앱 창으로 열린다.",
+  "altEn": "Installing splits two ways: with no service worker it becomes a shortcut that opens a browser tab with an address bar; with one it becomes an app that opens in an app window without an address bar.",
+  "caption": "서비스 워커가 있어야 바로가기가 아니라 앱으로 설치됩니다.",
+  "captionEn": "Only with a service worker does it install as an app instead of a shortcut.",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -630,190 +324,206 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "숫자 읽기 문제와 두 번의 헛짚음, 그리고 특별 규칙 삭제로 해결된 과정"
+     "text": "서비스 워커가 없으면 바로가기가 되어 브라우저 탭으로 열리고, 있으면 앱이 되어 앱 창으로 열린다"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "24",
-      "width": "350",
-      "height": "52",
+      "x": "135",
+      "y": "14",
+      "width": "120",
+      "height": "36",
+      "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "45",
+      "x": "195",
+      "y": "38",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "문제"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "34",
-      "y": "67",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "긴 숫자를 뭉개서 읽음"
+     "text": "앱 설치"
     },
     {
-     "tag": "line",
+     "tag": "polyline",
      "attrs": {
-      "x1": "195",
-      "y1": "76",
-      "x2": "195",
-      "y2": "92",
-      "stroke": "var(--color-muted)"
+      "points": "195,50 195,64 100,64 100,80",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "polygon",
+     "tag": "polyline",
      "attrs": {
-      "points": "189,92 201,92 195,100",
-      "fill": "var(--color-muted)"
+      "points": "195,64 290,64 290,80",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "rect",
+     "tag": "text",
      "attrs": {
-      "x": "20",
+      "x": "100",
       "y": "100",
-      "width": "350",
-      "height": "52",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "서비스 워커 없음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "서비스 워커 있음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "112",
+      "width": "140",
+      "height": "34",
+      "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-warn)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "121",
+      "x": "100",
+      "y": "135",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "헛짚음 — 단위를 세게"
+     "text": "바로가기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "112",
+      "width": "140",
+      "height": "34",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "143",
+      "x": "290",
+      "y": "135",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "단위만 툭 튀어나옴"
+     "text": "앱"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "195",
-      "y1": "152",
-      "x2": "195",
-      "y2": "168",
-      "stroke": "var(--color-muted)"
+      "x1": "100",
+      "y1": "146",
+      "x2": "100",
+      "y2": "166",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "polygon",
+     "tag": "line",
      "attrs": {
-      "points": "189,168 201,168 195,176",
-      "fill": "var(--color-muted)"
+      "x1": "290",
+      "y1": "146",
+      "x2": "290",
+      "y2": "166",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
+      "x": "55",
+      "y": "166",
+      "width": "90",
+      "height": "110",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "63",
       "y": "176",
-      "width": "350",
-      "height": "52",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "34",
-      "y": "197",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "다시 헛짚음 — 그걸 뺌"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "34",
-      "y": "219",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "띄어쓰기가 어긋남"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "195",
-      "y1": "228",
-      "x2": "195",
-      "y2": "244",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "189,244 201,244 195,252",
-      "fill": "var(--color-muted)"
+      "width": "74",
+      "height": "16",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "252",
-      "width": "350",
-      "height": "52",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-accent)"
+      "x": "245",
+      "y": "166",
+      "width": "90",
+      "height": "110",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "273",
+      "x": "100",
+      "y": "304",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "해결 — 특별 규칙 삭제"
+     "text": "브라우저 탭"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "295",
+      "x": "290",
+      "y": "304",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "일반 규칙이 맞게 읽음"
+     "text": "앱 창"
     }
    ]
   },
@@ -827,190 +537,206 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "The number-reading problem, two failed attempts, and the fix of deleting the special rule"
+     "text": "With no service worker it becomes a shortcut that opens a browser tab; with one it becomes an app that opens in an app window"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "24",
-      "width": "350",
-      "height": "52",
+      "x": "135",
+      "y": "14",
+      "width": "120",
+      "height": "36",
+      "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "45",
+      "x": "195",
+      "y": "38",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "Problem"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "34",
-      "y": "67",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "long numbers came out mangled"
+     "text": "Install app"
     },
     {
-     "tag": "line",
+     "tag": "polyline",
      "attrs": {
-      "x1": "195",
-      "y1": "76",
-      "x2": "195",
-      "y2": "92",
-      "stroke": "var(--color-muted)"
+      "points": "195,50 195,64 100,64 100,80",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "polygon",
+     "tag": "polyline",
      "attrs": {
-      "points": "189,92 201,92 195,100",
-      "fill": "var(--color-muted)"
+      "points": "195,64 290,64 290,80",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "rect",
+     "tag": "text",
      "attrs": {
-      "x": "20",
+      "x": "100",
       "y": "100",
-      "width": "350",
-      "height": "52",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "No service worker"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "100",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Service worker"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "112",
+      "width": "140",
+      "height": "34",
+      "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-warn)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "121",
+      "x": "100",
+      "y": "135",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "Wrong turn — harden the unit"
+     "text": "Shortcut"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "112",
+      "width": "140",
+      "height": "34",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "143",
+      "x": "290",
+      "y": "135",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "only the unit popped out"
+     "text": "App"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "195",
-      "y1": "152",
-      "x2": "195",
-      "y2": "168",
-      "stroke": "var(--color-muted)"
+      "x1": "100",
+      "y1": "146",
+      "x2": "100",
+      "y2": "166",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
-     "tag": "polygon",
+     "tag": "line",
      "attrs": {
-      "points": "189,168 201,168 195,176",
-      "fill": "var(--color-muted)"
+      "x1": "290",
+      "y1": "146",
+      "x2": "290",
+      "y2": "166",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
+      "x": "55",
+      "y": "166",
+      "width": "90",
+      "height": "110",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "63",
       "y": "176",
-      "width": "350",
-      "height": "52",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-warn)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "34",
-      "y": "197",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "Wrong again — remove it"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "34",
-      "y": "219",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "spacing broke instead"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "195",
-      "y1": "228",
-      "x2": "195",
-      "y2": "244",
-      "stroke": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "189,244 201,244 195,252",
-      "fill": "var(--color-muted)"
+      "width": "74",
+      "height": "16",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "20",
-      "y": "252",
-      "width": "350",
-      "height": "52",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-accent)"
+      "x": "245",
+      "y": "166",
+      "width": "90",
+      "height": "110",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "273",
+      "x": "100",
+      "y": "304",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "Fix — delete the special rule"
+     "text": "Browser tab"
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "34",
-      "y": "295",
+      "x": "290",
+      "y": "304",
+      "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-accent)"
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
      },
-     "text": "general rule read it right"
+     "text": "App window"
     }
    ]
   }

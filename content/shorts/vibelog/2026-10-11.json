@@ -1,6 +1,6 @@
 {
-  "template": "before-after",
-  "music": "calm",
+  "template": "ship-it",
+  "music": "ship-it",
   "theme": "terminal",
   "repo": "vibelog",
   "date": "2026-10-11",
@@ -8,337 +8,303 @@
   "lines": [
     {
       "scene": "hook",
-      "ko": "첫 글이 프로젝트를 소개하지 않았습니다.",
-      "en": "The first post never said what the project was.",
+      "ko": "첫 글이 이제 소개 글입니다.",
+      "en": "The first post is now an intro.",
       "keywords": [
-        "소개하지 않았습니다."
+        "소개 글입니다."
       ],
       "keywordsEn": [
-        "never said"
+        "intro."
       ],
       "koLines": [
-        "첫 글이",
-        "프로젝트를",
-        "소개하지 않았습니다."
+        "첫 글이 이제",
+        "소개 글입니다."
       ],
       "enLines": [
         "The first post",
-        "never said what",
-        "the project was."
+        "is now an intro."
       ]
     },
     {
       "scene": "build",
-      "ko": "이제 새 프로젝트는 소개 글로 시작합니다.",
-      "en": "Now new projects start with an introduction post.",
+      "ko": "전에는 첫 글이 그날 한 일부터 말했습니다.",
+      "en": "Before, first posts opened with that day's work.",
       "keywords": [
-        "소개 글로"
+        "그날 한 일부터"
       ],
       "keywordsEn": [
-        "an introduction post."
+        "that day's work."
       ],
       "koLines": [
-        "이제 새 프로젝트는",
-        "소개 글로 시작합니다."
+        "전에는 첫 글이",
+        "그날 한 일부터 말했습니다."
       ],
       "enLines": [
-        "Now new projects start",
-        "with an introduction post."
+        "Before, first posts opened",
+        "with that day's work."
       ],
-      "art": "a small open book whose first page swings open like a front door",
-      "icon": {
-        "name": "tabler:book",
-        "paths": [
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "예전 첫 글",
+          "그날 한 일",
+          "이제 첫 글",
+          "소개 글"
+        ],
+        "labelsEn": [
+          "Old first post",
+          "Day's work",
+          "New first post",
+          "Intro"
+        ],
+        "icons": [
           {
-            "d": "M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13m9-13v13m9-13v13"
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:info-circle",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m9-3h.01"
+              },
+              {
+                "d": "M11 12h1v4h1"
+              }
+            ]
           }
         ]
       }
     },
     {
       "scene": "build",
-      "ko": "AI가 레포, 그러니까 저장소를 읽고 씁니다.",
-      "en": "The AI reads the repo, the project's storage, and writes it.",
+      "ko": "이제 AI가 코드를 읽고 소개 글부터 씁니다.",
+      "en": "Now AI reads the code and writes an intro first.",
       "keywords": [
-        "저장소를 읽고"
+        "소개 글부터"
       ],
       "keywordsEn": [
-        "reads the repo,"
+        "an intro first."
       ],
       "koLines": [
-        "AI가 레포, 그러니까",
-        "저장소를 읽고 씁니다."
+        "이제 AI가 코드를 읽고",
+        "소개 글부터 씁니다."
       ],
       "enLines": [
-        "The AI reads the repo,",
-        "the project's storage, and writes it."
+        "Now AI reads the code",
+        "and writes an intro first."
       ],
-      "diagram": {
-        "kind": "pipeline",
-        "labels": [
-          "레포를 읽고",
-          "소개 글을 쓰고",
-          "첫 글로 올린다"
-        ],
-        "labelsEn": [
-          "Read the repo",
-          "Write the intro",
-          "Post it first"
-        ],
-        "icons": [
+      "art": "a small robot reading a tall stack of code pages before writing a short note",
+      "icon": {
+        "name": "tabler:robot",
+        "paths": [
           {
-            "name": "tabler:folder-code",
-            "paths": [
-              {
-                "d": "M11 19H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4l3 3h7a2 2 0 0 1 2 2v4m-1 8l2-2l-2-2m-3 0l-2 2l2 2"
-              }
-            ]
-          },
-          {
-            "name": "tabler:pencil",
-            "paths": [
-              {
-                "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
-              }
-            ]
-          },
-          {
-            "name": "tabler:upload",
-            "paths": [
-              {
-                "d": "M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5l5 5m-5-5v12"
-              }
-            ]
+            "d": "M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6-4v2m-3 8v9m6-9v9M5 16l4-2m6 0l4 2M9 18h6M10 8v.01M14 8v.01"
           }
         ]
       }
     },
     {
       "scene": "demo",
-      "ko": "이제 소개 글부터 읽으면 됩니다.",
-      "en": "Now the introduction comes first.",
+      "ko": "소개 글 읽기를 누르면 바로 열립니다.",
+      "en": "Tap Read the intro and it opens.",
       "keywords": [
-        "소개 글부터"
+        "소개 글 읽기를"
       ],
       "keywordsEn": [
-        "introduction"
+        "Read the intro"
       ],
       "koLines": [
-        "이제 소개 글부터",
-        "읽으면 됩니다."
+        "소개 글 읽기를",
+        "누르면 바로 열립니다."
+      ],
+      "enLines": [
+        "Tap Read the intro",
+        "and it opens."
       ],
       "screen": "/projects/Anchor",
       "find": "소개 글 읽기 →",
-      "findEn": "Read the introduction",
+      "findEn": "Read the intro",
       "shot": "focus"
     },
     {
       "scene": "fail",
-      "ko": "써 본 소개 글 5편이 너무 자세했습니다.",
-      "en": "The 5 intro posts I tried were too detailed.",
+      "ko": "처음 쓴 소개 글 5편이 너무 자세했습니다.",
+      "en": "My first 5 intro posts were far too detailed.",
       "keywords": [
         "너무 자세했습니다."
       ],
       "keywordsEn": [
-        "too detailed."
+        "far too detailed."
       ],
       "koLines": [
-        "써 본 소개 글 5편이",
+        "처음 쓴 소개 글 5편이",
         "너무 자세했습니다."
       ],
       "enLines": [
-        "The 5 intro posts I tried",
-        "were too detailed."
+        "My first 5 intro posts",
+        "were far too detailed."
       ],
       "diagram": {
         "kind": "numberline",
         "labels": [
-          "알맞은 자세함",
-          "파일까지",
-          "계획만"
+          "소개 글에 쓸 내용",
+          "기능 목록",
+          "만들 것만"
         ],
         "labelsEn": [
-          "Right amount of detail",
-          "File names",
-          "Just the plan"
+          "What an intro covers",
+          "Feature list",
+          "Goal only"
         ]
       }
     },
     {
       "scene": "fail",
-      "ko": "거짓말 탐정은 정답을 맞히는 서비스입니다.",
-      "en": "Lie Detective is a service where you guess the answers.",
+      "ko": "정답을 맞히는 서비스엔 정답까지 적혔습니다.",
+      "en": "A guess-the-answer service even had its answers written out.",
       "keywords": [
-        "정답을 맞히는"
+        "정답까지"
       ],
       "keywordsEn": [
-        "guess the answers."
+        "its answers"
       ],
       "koLines": [
-        "거짓말 탐정은",
-        "정답을 맞히는 서비스입니다."
+        "정답을 맞히는 서비스엔",
+        "정답까지 적혔습니다."
       ],
       "enLines": [
-        "Lie Detective is a service",
-        "where you guess the answers."
-      ],
-      "diagram": {
-        "kind": "fork",
-        "labels": [
-          "정답",
-          "사용자가 맞힌다",
-          "서비스가 숨긴다",
-          "사용자",
-          "서비스"
-        ],
-        "labelsEn": [
-          "The answers",
-          "Users guess them",
-          "The service hides them",
-          "Users",
-          "Service"
-        ]
-      }
-    },
-    {
-      "scene": "fail",
-      "ko": "정답을 정하는 규칙이 든 파일까지 적었습니다.",
-      "en": "The post even named the file holding the answer rules.",
-      "keywords": [
-        "파일까지"
-      ],
-      "keywordsEn": [
-        "named the file"
-      ],
-      "koLines": [
-        "정답을 정하는 규칙이 든",
-        "파일까지 적었습니다."
-      ],
-      "enLines": [
-        "The post even named the file",
-        "holding the answer rules."
+        "A guess-the-answer service",
+        "even had its answers written out."
       ],
       "diagram": {
         "kind": "sets",
         "labels": [
           "소개 글에 쓴 것",
-          "숨겨야 할 정답",
-          "파일 위치"
+          "숨겨야 할 것",
+          "정답"
         ],
         "labelsEn": [
-          "What the post said",
-          "Answers to hide",
-          "File location"
+          "What the intro said",
+          "What should stay hidden",
+          "The answers"
         ]
       }
     },
     {
-      "scene": "next",
-      "ko": "프로젝트가 막 들어온 날의 레포만 봅니다.",
-      "en": "Now the AI only looks at the repo from the day the project arrived.",
+      "scene": "fail",
+      "ko": "그래서 만들려는 것만 쓰게 고쳤습니다.",
+      "en": "So I changed it to say only what it sets out to build.",
       "keywords": [
-        "막 들어온 날의"
+        "만들려는 것만"
       ],
       "keywordsEn": [
-        "the day the project arrived."
+        "only what it sets out to build."
       ],
       "koLines": [
-        "프로젝트가 막 들어온",
-        "날의 레포만 봅니다."
+        "그래서 만들려는 것만",
+        "쓰게 고쳤습니다."
       ],
       "enLines": [
-        "Now the AI only looks at the repo",
-        "from the day the project arrived."
+        "So I changed it to say only",
+        "what it sets out to build."
       ],
       "diagram": {
-        "kind": "beforeafter",
+        "kind": "fork",
         "labels": [
-          "지금 코드",
-          "정답까지 적음",
-          "처음 들어온 레포",
-          "만들 계획만"
+          "코드를 본 AI",
+          "정답까지",
+          "만들려는 것만",
+          "예전 지시",
+          "고친 지시"
         ],
         "labelsEn": [
-          "Today's code",
-          "Answers leaked",
-          "Repo on day one",
-          "Just the plan"
+          "AI that saw code",
+          "Even answers",
+          "Only the goal",
+          "Old instructions",
+          "New instructions"
         ],
-        "icons": [
-          {
-            "name": "tabler:code",
-            "paths": [
-              {
-                "d": "m7 8l-4 4l4 4m10-8l4 4l-4 4M14 4l-4 16"
-              }
-            ]
-          },
-          null,
-          {
-            "name": "tabler:folder",
-            "paths": [
-              {
-                "d": "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2"
-              }
-            ]
-          },
-          null
-        ]
+        "pick": 2
       }
     },
     {
       "scene": "next",
-      "ko": "내린 소개 글 5편도 그렇게 다시 씁니다.",
-      "en": "I'll rewrite the 5 posts I took down that way.",
+      "ko": "다시 쓴 글에 정답이 없는지 보겠습니다.",
+      "en": "Next, I'll check the rewrites leave the answers out.",
       "keywords": [
-        "다시 씁니다."
+        "정답이 없는지"
       ],
       "keywordsEn": [
-        "rewrite"
+        "leave the answers out."
       ],
       "koLines": [
-        "내린 소개 글 5편도",
-        "그렇게 다시 씁니다."
+        "다시 쓴 글에",
+        "정답이 없는지 보겠습니다."
       ],
       "enLines": [
-        "I'll rewrite the 5 posts",
-        "I took down that way."
+        "Next, I'll check the rewrites",
+        "leave the answers out."
       ],
-      "art": "a hand rewriting a page that was crumpled and then smoothed flat",
-      "stat": "5편",
-      "statEn": "5 posts",
+      "art": "a magnifying glass hovering over an open notebook with a small key hidden between its pages",
       "icon": {
-        "name": "tabler:file-pencil",
+        "name": "tabler:file-search",
         "paths": [
           {
             "d": "M14 3v4a1 1 0 0 0 1 1h4"
           },
           {
-            "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"
+            "d": "M12 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v4.5"
           },
           {
-            "d": "m10 18l5-5a1.414 1.414 0 0 0-2-2l-5 5v2z"
+            "d": "M14 17.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0m4.5 2L21 22"
           }
         ]
       }
     },
     {
       "scene": "end",
-      "ko": "코드에 보여도 정답은 쓰지 않습니다.",
-      "en": "Answers stay out, even if the code shows them.",
+      "ko": "이제 첫 글부터 뭘 만드는지 압니다.",
+      "en": "Now you know what it is from the first post.",
       "keywords": [
-        "정답은"
+        "첫 글부터"
       ],
       "keywordsEn": [
-        "stay out,"
+        "from the first post."
       ],
       "koLines": [
-        "코드에 보여도",
-        "정답은 쓰지 않습니다."
+        "이제 첫 글부터",
+        "뭘 만드는지 압니다."
       ],
       "enLines": [
-        "Answers stay out,",
-        "even if the code shows them."
+        "Now you know what it is",
+        "from the first post."
       ]
     }
   ],
@@ -347,12 +313,12 @@
     "steps": []
   },
   "failCard": {
-    "title": "소개 글이 정답을 흘렸다",
-    "titleEn": "The intro leaked the answers",
-    "before": "정답 규칙이 든 파일까지 적었다",
-    "after": "등록할 때의 레포로 계획만 쓴다",
-    "beforeEn": "It named the file holding the answer rules",
-    "afterEn": "It writes only the plan, from the repo at signup"
+    "title": "소개 글이 너무 자세했다",
+    "titleEn": "Intros said too much",
+    "before": "기능 목록에 정답까지 썼다",
+    "after": "만들려는 것만 쓰게 고쳤다",
+    "beforeEn": "Listed features, even the answers",
+    "afterEn": "Now says only what it sets out to build"
   },
   "commits": [
     [
@@ -897,24 +863,24 @@
   "commitCount": 122,
   "handle": "vibelog.space",
   "captions": {
-    "ko": "새 프로젝트의 첫 글이 이제 소개 글로 나옵니다. 처음 써 본 소개 글이 정답 규칙이 든 파일까지 적어서, 등록할 때의 레포만 보고 쓰게 고쳤습니다.",
-    "en": "New projects now open with an introduction post. The first drafts revealed which file held the answer rules, so now the AI writes only from the repo as it was at registration."
+    "ko": "새 프로젝트가 들어오면 이제 AI가 코드를 먼저 읽고 무엇을 누구에게 만드는지 소개 글부터 씁니다. 처음 쓴 5편은 정답까지 털어놔서 다시 썼습니다.",
+    "en": "When a new project arrives, the AI now reads the code and writes an intro first: what it builds, and for whom. The first 5 gave away too much, answers included, so I rewrote them."
   },
   "hashtags": [
     "#vibelog",
+    "#바이브코딩",
     "#데브로그",
-    "#개발일지",
     "#AI",
     "#devlog",
-    "#buildinpublic",
-    "#사이드프로젝트"
+    "#vibecoding",
+    "#buildinpublic"
   ],
   "media": {
-    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv5hbs5h",
-    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv5hbu3f",
-    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.sm.mp4?v=mv5hc2z3",
-    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv5hdip2",
-    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv5hdkk2",
-    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.sm.mp4?v=mv5hdt5a"
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.poster.jpg?v=mv5rkc0n",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.mp4?v=mv5rke8x",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.ko.sm.mp4?v=mv5rklgx",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.poster.jpg?v=mv5rlvae",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.mp4?v=mv5rlxna",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-11.en.sm.mp4?v=mv5rm4tf"
   }
 }

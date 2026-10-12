@@ -1,14 +1,30 @@
 {
   "screens": [
     {
-      "path": "/",
-      "start": 0.92,
-      "end": 16.14
+      "path": "/opengraph-image?f2c0039925850c95",
+      "focusY": 0.5,
+      "aspect": 1.9048,
+      "start": 8.73,
+      "end": 17.75
     },
     {
-      "path": "/record",
-      "start": 16.81,
-      "end": 32.02
+      "path": "/",
+      "find": "무한",
+      "focusY": 0.791,
+      "start": 19.36,
+      "end": 28.39
+    },
+    {
+      "path": "/o",
+      "start": 29.19,
+      "end": 38.99
+    },
+    {
+      "path": "/",
+      "find": "공식전",
+      "focusY": 0.814,
+      "start": 39.99,
+      "end": 49.02
     }
   ]
 }

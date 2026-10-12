@@ -1,14 +1,14 @@
 {
   "screens": [
     {
-      "path": "/shorts",
-      "start": 0.69,
-      "end": 15.9
+      "path": "/",
+      "start": 0.91,
+      "end": 21.31
     },
     {
-      "path": "/",
-      "start": 16.61,
-      "end": 31.78
+      "path": "/shorts",
+      "start": 22.23,
+      "end": 42.98
     }
   ]
 }

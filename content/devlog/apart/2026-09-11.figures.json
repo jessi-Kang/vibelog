@@ -1,654 +1,65 @@
 [
  {
-  "section": "why",
+  "section": "did",
   "after": 0,
-  "alt": "바꾸기 전에는 가짜 이름이 동네 밖에도 있었고, 바꾼 뒤에는 진짜와 가짜가 모두 같은 동네 안에 있다.",
-  "altEn": "Before, fake names came from anywhere in the city; after, real and fake names all sit inside the same area.",
-  "caption": "가짜도 같은 동네 이름이어야 공짜 힌트가 사라집니다.",
-  "captionEn": "The free hint disappears only when fakes share the same area.",
+  "alt": "어제는 10문제를 풀면 그날이 끝났지만, 지금은 무한 감별이 먼저 시작되고 공식전 10문제는 원하는 사람만 출전합니다.",
+  "altEn": "Yesterday the game ended after 10 questions; now endless mode starts first and the daily 10 are an optional official match.",
+  "caption": "끝나던 하루 10문제가, 끝없이 이어지는 무한 감별 뒤의 선택지가 됐습니다",
+  "captionEn": "The daily 10 that used to end the day are now an option beside endless mode",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 230",
+    "viewBox": "0 0 390 300",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "가짜 이름을 같은 구역 안으로 좁히기 전과 후"
+     "text": "어제는 10문제 뒤 끝, 지금은 무한 감별이 계속 이어지고 공식전은 선택"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "어제"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "55",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
       "x": "95",
-      "y": "28",
+      "y": "83",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "16",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "바꾸기 전"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "28",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "바꾼 뒤"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "15",
-      "y": "42",
-      "width": "160",
-      "height": "118",
-      "rx": "10",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "35",
-      "y": "62",
-      "width": "80",
-      "height": "70",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "55",
-      "cy": "80",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "85",
-      "cy": "95",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "65",
-      "cy": "115",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "145",
-      "cy": "62",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "155",
-      "cy": "105",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "135",
-      "cy": "142",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "75",
-      "y": "152",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "우리 동네"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "215",
-      "y": "42",
-      "width": "160",
-      "height": "118",
-      "rx": "10",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "235",
-      "y": "62",
-      "width": "80",
-      "height": "70",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "255",
-      "cy": "80",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "285",
-      "cy": "95",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "265",
-      "cy": "115",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "297",
-      "cy": "75",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "300",
-      "cy": "118",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "247",
-      "cy": "100",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "275",
-      "y": "152",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "우리 동네"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "182",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "가짜는 딴 동네"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "182",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "가짜도 같은 동네"
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "128",
-      "cy": "210",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "142",
-      "y": "215",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "진짜"
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "210",
-      "cy": "210",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "224",
-      "y": "215",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "가짜"
-    }
-   ]
-  },
-  "nodeEn": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 230",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "Fake names before and after being narrowed to the chosen area"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "28",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "before"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "28",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "16",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "after"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "15",
-      "y": "42",
-      "width": "160",
-      "height": "118",
-      "rx": "10",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "35",
-      "y": "62",
-      "width": "80",
-      "height": "70",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "55",
-      "cy": "80",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "85",
-      "cy": "95",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "65",
-      "cy": "115",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "145",
-      "cy": "62",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "155",
-      "cy": "105",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "135",
-      "cy": "142",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "75",
-      "y": "152",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "my area"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "215",
-      "y": "42",
-      "width": "160",
-      "height": "118",
-      "rx": "10",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "235",
-      "y": "62",
-      "width": "80",
-      "height": "70",
-      "rx": "8",
-      "fill": "var(--color-panel2)",
-      "stroke": "var(--color-line-strong)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "255",
-      "cy": "80",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "285",
-      "cy": "95",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "265",
-      "cy": "115",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "297",
-      "cy": "75",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "300",
-      "cy": "118",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "247",
-      "cy": "100",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "275",
-      "y": "152",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "my area"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "95",
-      "y": "182",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "fakes: anywhere"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "295",
-      "y": "182",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "fakes: same area"
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "126",
-      "cy": "210",
-      "r": "5",
-      "fill": "var(--color-accent)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "140",
-      "y": "215",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "real"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "200",
-      "y": "215",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-muted)"
-     },
-     "text": "fake"
-    },
-    {
-     "tag": "circle",
-     "attrs": {
-      "cx": "186",
-      "cy": "210",
-      "r": "5",
-      "fill": "none",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    }
-   ]
-  }
- },
- {
-  "section": "fail",
-  "after": 0,
-  "alt": "설치한 앱은 옛 주소로 이어져 로그인이 막혔고, 브라우저는 새 주소로 이어져 열렸다. 주소는 하나로 모았다.",
-  "altEn": "The installed app pointed at the old address and sign-in was blocked, while the browser pointed at the new one and worked. Everything was folded into one address.",
-  "caption": "주소가 둘이면 같은 사람의 기록도 둘로 갈립니다.",
-  "captionEn": "Two addresses split one person's records in two.",
-  "node": {
-   "tag": "svg",
-   "attrs": {
-    "viewBox": "0 0 390 250",
-    "role": "img"
-   },
-   "children": [
-    {
-     "tag": "title",
-     "attrs": {},
-     "text": "설치한 앱은 옛 주소, 브라우저는 새 주소로 갈렸고 주소를 하나로 모았다"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "6",
-      "y": "30",
-      "width": "108",
-      "height": "42",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "60",
-      "y": "57",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "설치한 앱"
+     "text": "10문제"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "120",
-      "y1": "51",
-      "x2": "138",
-      "y2": "51",
+      "x1": "170",
+      "y1": "77",
+      "x2": "212",
+      "y2": "77",
       "stroke": "var(--color-muted)",
       "stroke-width": "2"
      }
@@ -656,142 +67,65 @@
     {
      "tag": "polygon",
      "attrs": {
-      "points": "146,51 138,46 138,56",
+      "points": "220,77 211,72 211,82",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "150",
-      "y": "30",
-      "width": "108",
-      "height": "42",
+      "x": "220",
+      "y": "55",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "204",
-      "y": "57",
+      "x": "295",
+      "y": "83",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "옛 주소"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "270",
-      "y": "57",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "차단"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "6",
-      "y": "100",
-      "width": "108",
-      "height": "42",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "60",
-      "y": "127",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "브라우저"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "120",
-      "y1": "121",
-      "x2": "138",
-      "y2": "121",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "146,121 138,116 138,126",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "150",
-      "y": "100",
-      "width": "108",
-      "height": "42",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "204",
-      "y": "127",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "새 주소"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "270",
-      "y": "127",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
+      "font-size": "16",
       "fill": "var(--color-muted)"
      },
-     "text": "열림"
+     "text": "오늘은 끝"
     },
     {
      "tag": "line",
      "attrs": {
       "x1": "20",
-      "y1": "168",
+      "y1": "125",
       "x2": "370",
-      "y2": "168",
+      "y2": "125",
       "stroke": "var(--color-line)",
       "stroke-width": "1"
      }
     },
     {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "160",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
+    },
+    {
      "tag": "rect",
      "attrs": {
-      "x": "40",
-      "y": "186",
-      "width": "310",
-      "height": "46",
-      "rx": "10",
-      "fill": "var(--color-panel2)",
+      "x": "20",
+      "y": "175",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
       "stroke": "var(--color-accent)",
       "stroke-width": "2"
      }
@@ -799,60 +133,154 @@
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "215",
+      "x": "95",
+      "y": "203",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "16",
       "fill": "var(--color-accent)"
      },
-     "text": "주소 하나로 모음"
+     "text": "무한 감별"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "197",
+      "x2": "212",
+      "y2": "197",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "220,197 211,192 211,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "175",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "203",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다음 문제"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M295,175 Q200,130 112,170",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "113,175 104,167 115,164",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "245",
+      "width": "350",
+      "height": "40",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "271",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "공식전 10문제 · 원하면 출전"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 250",
+    "viewBox": "0 0 390 300",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "The installed app went to the old address, the browser to the new one, then both were folded into one"
+     "text": "Yesterday it ended after 10 questions; now endless mode keeps going and the official match is optional"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Yesterday"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "6",
-      "y": "30",
-      "width": "108",
-      "height": "42",
+      "x": "20",
+      "y": "55",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "60",
-      "y": "57",
+      "x": "95",
+      "y": "83",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "installed app"
+     "text": "10 questions"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "120",
-      "y1": "51",
-      "x2": "138",
-      "y2": "51",
+      "x1": "170",
+      "y1": "77",
+      "x2": "212",
+      "y2": "77",
       "stroke": "var(--color-muted)",
       "stroke-width": "2"
      }
@@ -860,142 +288,65 @@
     {
      "tag": "polygon",
      "attrs": {
-      "points": "146,51 138,46 138,56",
+      "points": "220,77 211,72 211,82",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "150",
-      "y": "30",
-      "width": "108",
-      "height": "42",
+      "x": "220",
+      "y": "55",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "204",
-      "y": "57",
+      "x": "295",
+      "y": "83",
       "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "old address"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "266",
-      "y": "57",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "blocked"
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "6",
-      "y": "100",
-      "width": "108",
-      "height": "42",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "60",
-      "y": "127",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "browser"
-    },
-    {
-     "tag": "line",
-     "attrs": {
-      "x1": "120",
-      "y1": "121",
-      "x2": "138",
-      "y2": "121",
-      "stroke": "var(--color-muted)",
-      "stroke-width": "2"
-     }
-    },
-    {
-     "tag": "polygon",
-     "attrs": {
-      "points": "146,121 138,116 138,126",
-      "fill": "var(--color-muted)"
-     }
-    },
-    {
-     "tag": "rect",
-     "attrs": {
-      "x": "150",
-      "y": "100",
-      "width": "108",
-      "height": "42",
-      "rx": "8",
-      "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
-     }
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "204",
-      "y": "127",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-ink-soft)"
-     },
-     "text": "new address"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "266",
-      "y": "127",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-muted)"
      },
-     "text": "works"
+     "text": "done for today"
     },
     {
      "tag": "line",
      "attrs": {
       "x1": "20",
-      "y1": "168",
+      "y1": "125",
       "x2": "370",
-      "y2": "168",
+      "y2": "125",
       "stroke": "var(--color-line)",
       "stroke-width": "1"
      }
     },
     {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "160",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now"
+    },
+    {
      "tag": "rect",
      "attrs": {
-      "x": "40",
-      "y": "186",
-      "width": "310",
-      "height": "46",
-      "rx": "10",
-      "fill": "var(--color-panel2)",
+      "x": "20",
+      "y": "175",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
       "stroke": "var(--color-accent)",
       "stroke-width": "2"
      }
@@ -1003,14 +354,97 @@
     {
      "tag": "text",
      "attrs": {
-      "x": "195",
-      "y": "215",
+      "x": "95",
+      "y": "203",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
-      "font-size": "16",
+      "font-size": "15",
       "fill": "var(--color-accent)"
      },
-     "text": "folded into one address"
+     "text": "endless mode"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "197",
+      "x2": "212",
+      "y2": "197",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "220,197 211,192 211,202",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "175",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "203",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "next question"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M295,175 Q200,130 112,170",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "113,175 104,167 115,164",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "245",
+      "width": "350",
+      "height": "40",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "271",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "official match · daily 10 · optional"
     }
    ]
   }
@@ -1018,53 +452,64 @@
  {
   "section": "next",
   "after": 0,
-  "alt": "사용자 기기가 보낸 점수가 곧바로 순위표로 가고, 그 사이의 서버 점수 검사 자리는 아직 비어 있다.",
-  "altEn": "Scores sent by the player's own device go straight to the leaderboard, with the server-side score check still missing in between.",
-  "caption": "순위표보다 점수 검사가 먼저입니다.",
-  "captionEn": "The score check has to come before the leaderboard.",
+  "alt": "지금은 기기가 보낸 기록을 그대로 믿지만, 다음에는 서버가 기록을 확인한 뒤에 순위표에 올립니다.",
+  "altEn": "Right now records from the device are taken on trust; next, the server checks them before they reach a leaderboard.",
+  "caption": "순위표 앞에 서버의 확인을 한 단계 끼워 넣을 계획입니다",
+  "captionEn": "The plan: put a server check in front of the leaderboard",
   "node": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 170",
+    "viewBox": "0 0 390 270",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "기기가 보낸 점수와 순위표 사이에 서버 검사가 아직 없다"
+     "text": "지금은 기기의 기록을 그대로 받고, 다음에는 서버가 확인한 뒤 순위표로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "6",
-      "y": "48",
-      "width": "108",
-      "height": "48",
+      "x": "20",
+      "y": "42",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "60",
-      "y": "78",
+      "x": "95",
+      "y": "70",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "사용자 기기"
+     "text": "휴대폰·컴퓨터"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "118",
-      "y1": "72",
-      "x2": "136",
-      "y2": "72",
+      "x1": "170",
+      "y1": "64",
+      "x2": "212",
+      "y2": "64",
       "stroke": "var(--color-muted)",
       "stroke-width": "2"
      }
@@ -1072,55 +517,88 @@
     {
      "tag": "polygon",
      "attrs": {
-      "points": "144,72 136,67 136,77",
+      "points": "220,64 211,59 211,69",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "148",
-      "y": "40",
-      "width": "100",
-      "height": "64",
+      "x": "220",
+      "y": "42",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "none",
       "stroke": "var(--color-warn)",
-      "stroke-width": "2",
-      "stroke-dasharray": "6 5"
+      "stroke-dasharray": "5 4"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "198",
-      "y": "68",
+      "x": "295",
+      "y": "70",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-warn)"
      },
-     "text": "점수 검사"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "198",
-      "y": "90",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "(서버)"
+     "text": "그대로 믿음"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "252",
-      "y1": "72",
-      "x2": "270",
-      "y2": "72",
+      "x1": "20",
+      "y1": "105",
+      "x2": "370",
+      "y2": "105",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "128",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "다음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "140",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "휴대폰·컴퓨터"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "162",
+      "x2": "212",
+      "y2": "162",
       "stroke": "var(--color-muted)",
       "stroke-width": "2"
      }
@@ -1128,91 +606,133 @@
     {
      "tag": "polygon",
      "attrs": {
-      "points": "278,72 270,67 270,77",
+      "points": "220,162 211,157 211,167",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "282",
-      "y": "48",
-      "width": "102",
-      "height": "48",
+      "x": "220",
+      "y": "140",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "333",
-      "y": "78",
+      "x": "295",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "서버가 확인"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "295",
+      "y1": "184",
+      "x2": "295",
+      "y2": "207",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "295,215 290,206 300,206",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "215",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "241",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
      "text": "순위표"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "198",
-      "y": "136",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "아직 없음"
     }
    ]
   },
   "nodeEn": {
    "tag": "svg",
    "attrs": {
-    "viewBox": "0 0 390 170",
+    "viewBox": "0 0 390 270",
     "role": "img"
    },
    "children": [
     {
      "tag": "title",
      "attrs": {},
-     "text": "The server-side score check between device and leaderboard is still missing"
+     "text": "Now device records are taken on trust; next the server checks them before the leaderboard"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now"
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "6",
-      "y": "48",
-      "width": "108",
-      "height": "48",
+      "x": "20",
+      "y": "42",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-line-strong)"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "60",
-      "y": "78",
+      "x": "95",
+      "y": "70",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "player device"
+     "text": "phone/computer"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "118",
-      "y1": "72",
-      "x2": "136",
-      "y2": "72",
+      "x1": "170",
+      "y1": "64",
+      "x2": "212",
+      "y2": "64",
       "stroke": "var(--color-muted)",
       "stroke-width": "2"
      }
@@ -1220,55 +740,88 @@
     {
      "tag": "polygon",
      "attrs": {
-      "points": "144,72 136,67 136,77",
+      "points": "220,64 211,59 211,69",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "148",
-      "y": "40",
-      "width": "100",
-      "height": "64",
+      "x": "220",
+      "y": "42",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "none",
       "stroke": "var(--color-warn)",
-      "stroke-width": "2",
-      "stroke-dasharray": "6 5"
+      "stroke-dasharray": "5 4"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "198",
-      "y": "68",
+      "x": "295",
+      "y": "70",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-warn)"
      },
-     "text": "score check"
-    },
-    {
-     "tag": "text",
-     "attrs": {
-      "x": "198",
-      "y": "90",
-      "text-anchor": "middle",
-      "font-family": "var(--font-sans)",
-      "font-size": "15",
-      "fill": "var(--color-warn)"
-     },
-     "text": "(server)"
+     "text": "taken on trust"
     },
     {
      "tag": "line",
      "attrs": {
-      "x1": "252",
-      "y1": "72",
-      "x2": "270",
-      "y2": "72",
+      "x1": "20",
+      "y1": "105",
+      "x2": "370",
+      "y2": "105",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "128",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Next"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "140",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "phone/computer"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "170",
+      "y1": "162",
+      "x2": "212",
+      "y2": "162",
       "stroke": "var(--color-muted)",
       "stroke-width": "2"
      }
@@ -1276,45 +829,714 @@
     {
      "tag": "polygon",
      "attrs": {
-      "points": "278,72 270,67 270,77",
+      "points": "220,162 211,157 211,167",
       "fill": "var(--color-muted)"
      }
     },
     {
      "tag": "rect",
      "attrs": {
-      "x": "282",
-      "y": "48",
-      "width": "102",
-      "height": "48",
+      "x": "220",
+      "y": "140",
+      "width": "150",
+      "height": "44",
       "rx": "8",
       "fill": "var(--color-panel)",
-      "stroke": "var(--color-line)"
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
      }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "333",
-      "y": "78",
+      "x": "295",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "server checks"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "295",
+      "y1": "184",
+      "x2": "295",
+      "y2": "207",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "295,215 290,206 300,206",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "215",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "241",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
      "text": "leaderboard"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "코드를 한 번 올리면 원래 길과 새 길로 배포가 두 번 나갔고, 하루 한도 100번은 이 프로젝트의 48번이 아니라 계정 전체 합계였습니다.",
+  "altEn": "Each push went out through both the original and new route, and the 100-a-day limit counted the whole account, not just this project's 48.",
+  "caption": "길이 둘이라 배포가 두 배로 나갔고, 한도는 계정 전체에서 이미 바닥났습니다",
+  "captionEn": "Two routes doubled every deploy, and the account-wide limit was already used up",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 375",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "코드 한 번에 배포가 두 길로 나가고, 계정 전체 한도 100 중 이 프로젝트는 48"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "125",
+      "y": "20",
+      "width": "140",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
     },
     {
      "tag": "text",
      "attrs": {
-      "x": "198",
+      "x": "195",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "코드 올림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "175",
+      "y1": "60",
+      "x2": "95",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "215",
+      "y1": "60",
+      "x2": "295",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "110",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
       "y": "136",
       "text-anchor": "middle",
       "font-family": "var(--font-sans)",
       "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "원래 길"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "110",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "136",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "새 길"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "95",
+      "y1": "150",
+      "x2": "95",
+      "y2": "180",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "295",
+      "y1": "150",
+      "x2": "295",
+      "y2": "180",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "85",
+      "y1": "157",
+      "x2": "105",
+      "y2": "173",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "157",
+      "x2": "85",
+      "y2": "173",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "171",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
       "fill": "var(--color-warn)"
      },
-     "text": "not there yet"
+     "text": "끔"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "180",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "206",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "배포"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "180",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "206",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "배포"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "245",
+      "x2": "370",
+      "y2": "245",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "274",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "하루 배포 한도"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "287",
+      "width": "350",
+      "height": "24",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "287",
+      "width": "168",
+      "height": "24",
+      "rx": "4",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "336",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "이 프로젝트"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "336",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "48"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "286",
+      "y": "360",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "계정 합계"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "324",
+      "y": "360",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "100"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "360",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "다 씀"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 375",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "One push deploys through two routes, and of the account-wide limit of 100 this project used 48"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "125",
+      "y": "20",
+      "width": "140",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "46",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "push code"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "175",
+      "y1": "60",
+      "x2": "95",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "215",
+      "y1": "60",
+      "x2": "295",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "110",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "136",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "original route"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "110",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "136",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "new route"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "95",
+      "y1": "150",
+      "x2": "95",
+      "y2": "180",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "295",
+      "y1": "150",
+      "x2": "295",
+      "y2": "180",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "85",
+      "y1": "157",
+      "x2": "105",
+      "y2": "173",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "157",
+      "x2": "85",
+      "y2": "173",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "171",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "off"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "180",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "206",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "deploy"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "180",
+      "width": "150",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "206",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "deploy"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "245",
+      "x2": "370",
+      "y2": "245",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "274",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "daily deploy limit"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "287",
+      "width": "350",
+      "height": "24",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "287",
+      "width": "168",
+      "height": "24",
+      "rx": "4",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "336",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "this project"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "120",
+      "y": "336",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "48"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "266",
+      "y": "360",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "account total"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "304",
+      "y": "360",
+      "text-anchor": "end",
+      "font-family": "var(--font-mono)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "100"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "360",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "used up"
     }
    ]
   }
