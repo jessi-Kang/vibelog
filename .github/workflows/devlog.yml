@@ -70,7 +70,9 @@ jobs:
   devlog:
     runs-on: ubuntu-latest
     # Remotion 렌더(ko/en 두 편) 여유 포함. 쇼츠 여러 편 다시 만들기는 편마다 시간이 드니 길게 둔다
-    timeout-minutes: ${{ (inputs.regen != '' || inputs.rewrite != '') && 150 || 45 }}
+    # 지난 글 다시 쓰기는 편마다 글·삽화·대본·목소리·녹화·렌더를 다 해서 12분쯤 든다 (10/11 vibelog 실측).
+    # 일곱 편을 한 번에 돌릴 수 있게 길게 둔다 — 시간이 다 되면 마지막 커밋 단계까지 못 가 전부 날아간다
+    timeout-minutes: ${{ inputs.rewrite != '' && 300 || inputs.regen != '' && 150 || 45 }}
     env:
       # secrets 컨텍스트는 if: 조건에서 직접 못 쓴다 — env로 우회
       HAS_ELEVENLABS: ${{ secrets.ELEVENLABS_API_KEY != '' }}
