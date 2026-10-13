@@ -13,6 +13,9 @@
  *
  * 우리 글은 문단·목록·소제목·코드·링크만 쓴다. 굵게·기울임·취소선·표·raw HTML은
  * 쓸 일이 없으므로, 그게 나왔다면 모델이 흘린 기호가 서식으로 먹힌 것이다.
+ * 하나 예외가 "그 밖의 소식" 섹션이다 — 소식의 첫 문장을 굵게, 든 커밋 수를 기울임으로
+ * 쓰기로 정했다 (docs/post-other-work.html A안). 그 섹션의 굵게·기울임까지 걸었더니
+ * 다시 쓴 글 7편에서 경고 90여 줄이 홈 "지난 실행"을 덮었다 (10/13 Jessi).
  *
  *   npx tsx scripts/check-markdown.ts            # content/devlog 전체
  *   npx tsx scripts/check-markdown.ts <파일…>
@@ -48,6 +51,10 @@ export interface MarkdownFinding {
   snippet: string;
 }
 
+/** "그 밖의 소식" 섹션 제목 — 이 섹션 안에서만 굵게·기울임을 허락한다 */
+const NEWS_HEADING = /^(그 밖의 소식|other news)$/i;
+const NEWS_ALLOWED = new Set(["strong", "emphasis"]);
+
 /** frontmatter를 떼고 본문만 — `---` 블록은 서식 검사 대상이 아니다 */
 function bodyOf(source: string): string {
   const m = source.match(/^---\n[\s\S]*?\n---\n/);
@@ -73,14 +80,18 @@ export function checkMarkdown(file: string, source: string): MarkdownFinding[] {
     mdastExtensions: [gfmFromMarkdown()],
   });
   const out: MarkdownFinding[] = [];
+  let inNews = false;
   const walk = (node: Node) => {
+    if (node.type === "heading" && (node as Node & { depth?: number }).depth === 2) {
+      inNews = NEWS_HEADING.test(textOf(node).trim());
+    }
     // `<!-- en -->`는 KO/EN 구분자다 (lib/content.ts가 이걸로 자른다)
     const isComment =
       node.type === "html" &&
       "value" in node &&
       typeof node.value === "string" &&
       /^<!--[\s\S]*-->$/.test(node.value.trim());
-    if (!ALLOWED.has(node.type) && !isComment) {
+    if (!ALLOWED.has(node.type) && !isComment && !(inNews && NEWS_ALLOWED.has(node.type))) {
       const text = textOf(node).replace(/\s+/g, " ").trim();
       out.push({
         file,
