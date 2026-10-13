@@ -594,7 +594,21 @@ export async function record(
       // 그림의 가로세로비를 남긴다. 렌더는 그 비율의 카드로 잘라 보여 준다.
       let aspect: number | undefined;
       let focusY: number | undefined;
-      const picture = await page
+      // 브라우저는 큰 그림 주소를 열면 그림 전체가 보이게 화면을 축소해 둔다(그림 문서의 viewport가
+      // minimum-scale=0.1) — 1200px 그림이면 화면이 1200 폭으로 보인다. 그 상태로 100vw(=390)에 맞추자
+      // 그림이 화면의 3분의 1 크기로 왼쪽에 작게 찍혀 흐리게 나갔다 (apart 10/11 도전장 카드, Jessi).
+      // 축소를 풀고(배율 1로 고정) 화면이 다시 잡힐 때까지 기다린 뒤 폭을 맞춘다
+      const isPicture = await page
+        .evaluate(() => {
+          if (!document.contentType?.startsWith("image/")) return false;
+          document
+            .querySelector('meta[name="viewport"]')
+            ?.setAttribute("content", "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1");
+          return true;
+        })
+        .catch(() => false);
+      if (isPicture) await page.waitForTimeout(300);
+      const picture = !isPicture ? null : await page
         .evaluate(() => {
           if (!document.contentType?.startsWith("image/")) return null;
           const img = document.images[0];
