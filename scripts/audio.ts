@@ -257,9 +257,19 @@ export function speakToken(tok: string): string {
 }
 
 /** 문장 전체의 발음용 변환 — 토큰 순서·공백 구분은 유지된다 (타이밍 정렬용) */
+/**
+ * 목소리가 잘못 읽은 낱말 — 들어 보고 찾은 것만 적는다. 소리 나는 대로 고쳐 보내고, 음절 수는 그대로라
+ * 자막 정렬이 어긋나지 않는다. ㅚ는 [웨]로도 읽는 것이 표준 발음이라 "웨"로 적는다.
+ *   외운 → 웨운 (apart 10/11 훅 "외운 답으로"를 "오운 답으로"로 읽었다, Jessi)
+ */
+const MISREAD: [RegExp, string][] = [[/^외(우|운|워|울|웠|움)/u, "웨$1"]];
+function respell(tok: string): string {
+  return MISREAD.reduce((t, [re, to]) => t.replace(re, to), tok);
+}
+
 function speakable(sentence: string, lang: "ko" | "en"): string {
   if (lang !== "ko") return sentence;
-  return sentence.split(/\s+/).filter(Boolean).map(speakToken).join(" ");
+  return sentence.split(/\s+/).filter(Boolean).map((w) => respell(speakToken(w))).join(" ");
 }
 
 async function tts(
