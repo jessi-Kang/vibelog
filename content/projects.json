@@ -1,5 +1,36 @@
 [
   {
+    "slug": "vibelog",
+    "name": "바이브 로그",
+    "nameEn": "Vibelog",
+    "serviceName": "바이브 로그",
+    "serviceNameEn": "Vibelog",
+    "about": "바이브 로그는 바이브 코딩 프로젝트들의 제작기를 매일 밤 저절로 올리는 블로그입니다.",
+    "aboutEn": "Vibelog is a blog that automatically publishes build diaries of vibe-coded projects every night.",
+    "icon": {
+      "name": "tabler:notebook",
+      "paths": [
+        {
+          "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
+        }
+      ]
+    },
+    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
+    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
+    "status": "live",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/vibelog",
+    "homepage": "https://vibelog.space",
+    "language": "TypeScript",
+    "lastActivity": "2026-10-13",
+    "weekCommits": 357,
+    "todayCommits": 32,
+    "totalCommits": 805,
+    "countsDate": "2026-10-13"
+  },
+  {
     "slug": "apart",
     "color": "#B9A7FF",
     "name": "아파트 감별사",
@@ -31,37 +62,6 @@
     "totalCommits": 255,
     "countsDate": "2026-10-13",
     "theme": "paper"
-  },
-  {
-    "slug": "vibelog",
-    "name": "바이브 로그",
-    "nameEn": "Vibelog",
-    "serviceName": "바이브 로그",
-    "serviceNameEn": "Vibelog",
-    "about": "바이브 로그는 바이브 코딩 프로젝트들의 제작기를 매일 밤 저절로 올리는 블로그입니다.",
-    "aboutEn": "Vibelog is a blog that automatically publishes build diaries of vibe-coded projects every night.",
-    "icon": {
-      "name": "tabler:notebook",
-      "paths": [
-        {
-          "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
-        }
-      ]
-    },
-    "description": "바이브 코딩 프로젝트들의 제작기·현황을 자동 발행하는 블로그",
-    "descriptionEn": "A blog that auto-publishes the build logs and status of vibe-coded projects",
-    "status": "live",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/vibelog",
-    "homepage": "https://vibelog.space",
-    "language": "TypeScript",
-    "lastActivity": "2026-10-13",
-    "weekCommits": 356,
-    "todayCommits": 31,
-    "totalCommits": 804,
-    "countsDate": "2026-10-13"
   },
   {
     "slug": "lie-detective",
