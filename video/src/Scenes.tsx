@@ -65,7 +65,15 @@ export const HookCard: React.FC<{
   }
   const words = hook[lang].split(/\s+/);
   // 대본이 뜻 덩어리로 끊어 둔 줄 — 있으면 그대로 끊고, 가장 긴 줄이 폭에 들어가게 글자를 맞춘다
-  const breaks = lineStarts(words, lang === "ko" ? hook.koLines : hook.enLines);
+  const lines = lang === "ko" ? hook.koLines : hook.enLines;
+  // 뜻으로 끊은 줄이 132px에서 폭(920)을 넘으면 그 줄 안에서 접혀 낱말 하나가 혼자 남았다
+  // ("그날 가장 크게 / 바뀐 / 기능이었습니다.", 10/12 vibelog, Jessi: "…").
+  // 글자를 줄에 맞춰 계속 줄이지는 않는다(영어 훅이 68px까지 작아졌다) — 긴 훅에 쓰던 104px로 한 단계만 내린다.
+  // 104px에서도 넘치는 줄이 있으면 그 줄 나눔은 버리고 폭으로 자른다.
+  // 굵은 한글 한 자는 글자 크기의 0.89배 폭이다 (10/12 영상에서 잰 값) — 132px면 한 줄 7.7자, 104px면 9.8자
+  const longestLine = lines?.length ? Math.max(...lines.map((x) => visualLen(x))) : 0;
+  const hookSize = visualLen(hook[lang]) > 24 || longestLine > 7.6 ? 104 : 132;
+  const breaks = longestLine > 9.6 ? null : lineStarts(words, lines);
   // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다
   const kwOn = keywordIndices(
     words,
@@ -96,7 +104,7 @@ export const HookCard: React.FC<{
           // 기준은 시각 폭(한글 1·영문 0.5) — 영어가 억울하게 줄지 않게.
           // 줄 나눔이 있어도 글자 크기는 줄이지 않는다 — 가장 긴 줄에 맞춰 줄였더니 영어 훅이 68px까지
           // … 폭을 넘는 줄은 그 줄 안에서 낱말 단위로 접힌다
-          fontSize: visualLen(hook[lang]) > 24 ? 104 : 132,
+          fontSize: hookSize,
           // 마커칠 키워드는 배경 상자가 글자 박스만큼 높다 — 줄간이 좁으면
           // 이웃 줄 글자를 덮는다 (Jessi 지적). 마커 테마만 줄간을 벌린다.
           lineHeight: th.keyword === "marker" ? 1.3 : 1.14,
