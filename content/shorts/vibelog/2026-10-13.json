@@ -1,0 +1,448 @@
+{
+  "template": "before-after",
+  "music": "calm",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-13",
+  "day": 19,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "댓글 기능이 글에서 빠졌습니다.",
+      "en": "The comments feature vanished from the post.",
+      "keywords": [
+        "빠졌습니다."
+      ],
+      "keywordsEn": [
+        "vanished"
+      ],
+      "koLines": [
+        "댓글 기능이",
+        "글에서",
+        "빠졌습니다."
+      ],
+      "enLines": [
+        "The comments",
+        "feature vanished",
+        "from the post."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "그날 커밋, 그러니까 작업 기록은 122개였습니다.",
+      "en": "That day had 122 commits, saved chunks of work.",
+      "keywords": [
+        "122개였습니다."
+      ],
+      "keywordsEn": [
+        "122 commits"
+      ],
+      "koLines": [
+        "그날 커밋, 그러니까",
+        "작업 기록은 122개였습니다."
+      ],
+      "enLines": [
+        "That day had 122 commits,",
+        "saved chunks of work."
+      ],
+      "art": "a tall messy pile of paper sheets stacked on a desk",
+      "stat": "122개",
+      "statEn": "122 commits",
+      "icon": {
+        "name": "tabler:stack-2",
+        "paths": [
+          {
+            "d": "M12 4L4 8l8 4l8-4zm-8 8l8 4l8-4M4 16l8 4l8-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "AI는 그중 이야기 하나만 골라 글을 썼습니다.",
+      "en": "AI picked just one story from them for the post.",
+      "keywords": [
+        "하나만"
+      ],
+      "keywordsEn": [
+        "just one story"
+      ],
+      "koLines": [
+        "AI는 그중 이야기 하나만",
+        "골라 글을 썼습니다."
+      ],
+      "enLines": [
+        "AI picked just one story",
+        "from them for the post."
+      ],
+      "art": "a hand pulling a single card out of a tall pile of cards",
+      "icon": {
+        "name": "tabler:hand-finger",
+        "paths": [
+          {
+            "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 1 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+          },
+          {
+            "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 글 끝에 그 밖의 소식 섹션을 만들었습니다.",
+      "en": "So I added an Other news section at the end of each post.",
+      "keywords": [
+        "그 밖의 소식 섹션을"
+      ],
+      "keywordsEn": [
+        "Other news section"
+      ],
+      "koLines": [
+        "그래서 글 끝에",
+        "그 밖의 소식 섹션을 만들었습니다."
+      ],
+      "enLines": [
+        "So I added an Other news section",
+        "at the end of each post."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "이야기 하나",
+          "댓글이 빠짐",
+          "이야기 + 소식",
+          "댓글도 남음"
+        ],
+        "labelsEn": [
+          "One story",
+          "Comments dropped",
+          "Story + news",
+          "Comments stay"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:message-off",
+            "paths": [
+              {
+                "d": "M8 9h1m4 0h3m-8 4h5M8 4h10a3 3 0 0 1 3 3v8c0 .577-.163 1.116-.445 1.573M18 18h-5l-5 3v-3H6a3 3 0 0 1-3-3V7c0-1.085.576-2.036 1.439-2.562M3 3l18 18"
+              }
+            ]
+          },
+          {
+            "name": "tabler:file-plus",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2m-5-10v6m-3-3h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:message-check",
+            "paths": [
+              {
+                "d": "M8 9h8m-8 4h6m-3.01 6.206L8 21v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6m-6 6l2 2l4-4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "무엇이 왜 생겼는지 두 문장으로 씁니다.",
+      "en": "Each item says what's new and why in two sentences.",
+      "keywords": [
+        "두 문장으로"
+      ],
+      "keywordsEn": [
+        "two sentences"
+      ],
+      "koLines": [
+        "무엇이 왜 생겼는지",
+        "두 문장으로 씁니다."
+      ],
+      "enLines": [
+        "Each item says what's new",
+        "and why in two sentences."
+      ],
+      "art": "an open notebook lying beside a freshly unwrapped gift box",
+      "icon": {
+        "name": "tabler:notes",
+        "paths": [
+          {
+            "d": "M5 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm4 2h6m-6 4h6m-6 4h4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "커밋이 몇 개 들었는지도 함께 적습니다.",
+      "en": "It also notes how many commits went in.",
+      "keywords": [
+        "몇 개"
+      ],
+      "keywordsEn": [
+        "how many commits"
+      ],
+      "koLines": [
+        "커밋이 몇 개 들었는지도",
+        "함께 적습니다."
+      ],
+      "enLines": [
+        "It also notes how many",
+        "commits went in."
+      ],
+      "icon": {
+        "name": "tabler:git-commit",
+        "paths": [
+          {
+            "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 큰 작업을 한 줄씩 목록으로 적었습니다.",
+      "en": "At first I listed the big work one line each.",
+      "keywords": [
+        "한 줄씩"
+      ],
+      "keywordsEn": [
+        "one line each"
+      ],
+      "koLines": [
+        "처음엔 큰 작업을",
+        "한 줄씩 목록으로 적었습니다."
+      ],
+      "enLines": [
+        "At first I listed the big work",
+        "one line each."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "큰 작업",
+          "한 줄씩",
+          "두 문장으로",
+          "처음 안",
+          "고른 안"
+        ],
+        "labelsEn": [
+          "Big work",
+          "One line each",
+          "Two sentences",
+          "First try",
+          "Final pick"
+        ],
+        "pick": 1
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그건 커밋 제목과 거의 같은 말이었습니다.",
+      "en": "It said almost the same as the commit titles.",
+      "keywords": [
+        "거의 같은"
+      ],
+      "keywordsEn": [
+        "almost the same"
+      ],
+      "koLines": [
+        "그건 커밋 제목과",
+        "거의 같은 말이었습니다."
+      ],
+      "enLines": [
+        "It said almost the same",
+        "as the commit titles."
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "한 줄 목록",
+          "커밋 제목 목록",
+          "거의 같은 말"
+        ],
+        "labelsEn": [
+          "One-line list",
+          "Commit titles",
+          "Nearly the same"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "지난 글 7편도 이 방식으로 영상까지 다시 만듭니다.",
+      "en": "I'll remake 7 older posts this way, videos included.",
+      "keywords": [
+        "7편도",
+        "영상까지"
+      ],
+      "keywordsEn": [
+        "7 older posts"
+      ],
+      "koLines": [
+        "지난 글 7편도 이 방식으로",
+        "영상까지 다시 만듭니다."
+      ],
+      "enLines": [
+        "I'll remake 7 older posts this way,",
+        "videos included."
+      ],
+      "stat": "7편",
+      "statEn": "7 posts",
+      "screen": "/shorts",
+      "shot": "whole"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 큰 작업은 글에서 안 빠집니다.",
+      "en": "Now big work stays in the post.",
+      "keywords": [
+        "안 빠집니다."
+      ],
+      "keywordsEn": [
+        "stays"
+      ],
+      "koLines": [
+        "이제 큰 작업은",
+        "글에서 안 빠집니다."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "목록이 커밋 제목과 겹쳤다",
+    "titleEn": "The list repeated the titles",
+    "before": "한 줄 목록이 커밋 제목과 같은 말",
+    "after": "커밋을 묶어 무엇이 생겼나를 씀",
+    "beforeEn": "One-line list echoed the commit titles",
+    "afterEn": "Group commits and say what's new"
+  },
+  "commits": [
+    [
+      "f6b2604",
+      "design: \"그 밖의 소식\"을 글 맨 끝, git log 바로 위로 옮긴다"
+    ],
+    [
+      "a30418d",
+      "feat: 이야기 하나에 못 담은 큰 작업을 \"그 밖의 소식\" 섹션에 쓴다"
+    ],
+    [
+      "41e3829",
+      "docs: \"이 밖에 한 일\"이 git log와 겹치지 않게 하는 시안을 만든다"
+    ],
+    [
+      "073d547",
+      "feat: 글에 이야기 하나 말고도 큰 작업이 있으면 \"이 밖에 한 일\" 목록을 둔다"
+    ],
+    [
+      "5721472",
+      "chore: 지난 글 다시 쓰기 실행의 시간 상한을 늘린다"
+    ],
+    [
+      "2b98bc3",
+      "fix: 겹친 원의 한글 값을 겹친 자리 안에 욱여넣지 않는다"
+    ],
+    [
+      "0e52976",
+      "fix: 글 목록의 필름 아이콘이 옆 글자보다 떠 보이던 것을 맞춘다"
+    ],
+    [
+      "b0031e7",
+      "fix: 쇼츠 훅을 한 문장으로 제한한다"
+    ],
+    [
+      "bb4c143",
+      "design: 쇼츠가 있는 글 표시를 필름 아이콘으로 바꾼다"
+    ],
+    [
+      "0e592e4",
+      "design: 쇼츠가 있는 글 표시를 아이콘으로 바꾸는 시안을 만든다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "f6b2604",
+      "design: Move the \"Other news\" section to the very end of the post, right above git log"
+    ],
+    [
+      "a30418d",
+      "feat: Add an \"Other news\" section for large work that doesn't fit in the single story"
+    ],
+    [
+      "41e3829",
+      "docs: Draft a mockup so \"Other work\" doesn't overlap with git log"
+    ],
+    [
+      "073d547",
+      "feat: Add an \"Other work\" list when a post has large work beyond one story"
+    ],
+    [
+      "5721472",
+      "chore: Raise the time limit for the re-run of rewriting past posts"
+    ],
+    [
+      "2b98bc3",
+      "fix: Stop squeezing Korean values of overlapping circles into the overlap area"
+    ],
+    [
+      "0e52976",
+      "fix: Align the film icon in the post list that appeared to sit higher than adjacent text"
+    ],
+    [
+      "b0031e7",
+      "fix: Limit the Shorts hook to a single sentence"
+    ],
+    [
+      "bb4c143",
+      "design: Change the Shorts marker on posts to a film icon"
+    ],
+    [
+      "0e592e4",
+      "design: Draft a mockup that replaces the Shorts marker on posts with an icon"
+    ]
+  ],
+  "commitCount": 10,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "커밋 122개 중 이야기 하나만 고르다 보니 댓글 기능이 글에서 빠졌습니다. 이제 데브로그 맨 끝에 '그 밖의 소식'이 붙습니다.",
+    "en": "With 122 commits and only one story per post, the comments feature got left out. Now every devlog ends with an 'Other news' section."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#devlog",
+    "#AI",
+    "#자동화",
+    "#buildinpublic",
+    "#개발일지"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-13.poster.jpg?v=mv6rcwfo",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-13.ko.mp4?v=mv6rcy6j",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-13.ko.sm.mp4?v=mv6rd5dt",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-13.en.poster.jpg?v=mv6reelc",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-13.en.mp4?v=mv6regf5",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-13.en.sm.mp4?v=mv6renb2"
+  }
+}
