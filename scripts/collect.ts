@@ -507,10 +507,31 @@ async function pickHomepage(
   return homepage || null;
 }
 
+/**
+ * GitHub를 부르는 클라이언트 — 서버 쪽 오류(5xx)는 두 번까지 다시 묻는다.
+ * GitHub가 커밋 목록 한 번에 500을 돌려준 것만으로 30분짜리 인식 실행 전체가
+ * 실패로 끝나고 실패 메일이 왔다 (10/14 02:00, Anchor 커밋 목록). 잠깐 난 오류라
+ * 몇 초 뒤 다시 물으면 된다. 4xx(권한·없음)는 다시 물어도 같으므로 그대로 던진다.
+ */
+export function githubClient(): Octokit {
+  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  octokit.hook.wrap("request", async (request, options) => {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        return await request(options);
+      } catch (err) {
+        const status = (err as { status?: number }).status ?? 0;
+        if (status < 500 || attempt >= 2) throw err;
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+      }
+    }
+  });
+  return octokit;
+}
+
 /** 레포 하나의 배포 주소를 지금 찾는다 — 쇼츠만 다시 만드는 실행처럼 수집을 안 거친 경우 */
 export async function lookupHomepage(repo: string): Promise<string | null> {
-  const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
-  const octokit = new Octokit({ auth });
+  const octokit = githubClient();
   const owner = await getOwner(octokit);
   const { data } = await octokit.rest.repos.get({ owner, repo });
   return pickHomepage(octokit, owner, repo, data.homepage, await getVercelProjectMap());
@@ -535,8 +556,7 @@ export function isMaterialCommit(c: RepoCommit): boolean {
 }
 
 export async function collect(state: State, date?: string): Promise<RepoActivity[]> {
-  const auth = process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined;
-  const octokit = new Octokit({ auth });
+  const octokit = githubClient();
   const owner = await getOwner(octokit);
 
   const repos = await listVibelogRepos(octokit, owner);

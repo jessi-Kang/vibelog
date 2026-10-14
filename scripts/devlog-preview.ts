@@ -16,7 +16,7 @@
 import fs from "node:fs";
 import { Octokit } from "@octokit/rest";
 import { getDevlog, getProject, recentPosts } from "../lib/content";
-import { getOwner, getReadme, type RepoCommit } from "./collect";
+import { getOwner, getReadme, githubClient, type RepoCommit } from "./collect";
 import { generateDevlog } from "./generate";
 import { fmtReadability } from "./readability";
 import { fmtTally, takeUsage } from "./usage";
@@ -33,7 +33,7 @@ async function main() {
     console.error("사용법: npx tsx scripts/devlog-preview.ts <repo>/<date>[,<repo>/<date>…]");
     process.exit(1);
   }
-  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  const octokit = githubClient();
   const owner = await getOwner(octokit);
   const out: string[] = ["# 데브로그 미리보기 — 지금 글 vs 새 지시문 (발행 안 함)", ""];
   let failed = 0;
