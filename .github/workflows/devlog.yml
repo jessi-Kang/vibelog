@@ -227,8 +227,14 @@ jobs:
             # run.json은 "가장 최근 실행" 스냅샷이라 연속 regen이 둘 다 다시 쓰면
             # 반드시 충돌하는데, 최신 실행 것이 맞다 (run #34가 여기서 죽어
             # 영상은 업로드되고 json은 옛것인 불일치가 났었다).
-            git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}"
-            git push
+            # 받아 와서 올리는 사이에 다른 실행·세션이 먼저 올리면 푸시가 거절된다 ("cannot lock ref",
+            # 10/11 09:00 인식 실행). 그때는 다시 받아 와 세 번까지 올린다 — 실패 메일은 진짜 실패에만 오게
+            ok=0
+            for i in 1 2 3; do
+              if git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" && git push; then ok=1; break; fi
+              sleep $((i * 5))
+            done
+            [ "$ok" = 1 ]
           fi
 
       # 여러 편 다시 만들기에서 실패한 편이 있으면 — 만든 편은 위에서 커밋했고, 여기서 실행을 빨갛게 표시한다
