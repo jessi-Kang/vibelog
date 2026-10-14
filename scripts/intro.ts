@@ -34,7 +34,7 @@ import { askReader, mergeUnclear, styleUnclear, type Unclear } from "./readabili
 import { CORE_TERMS_RULE, CORE_TERMS_REVIEW, styleRulesForPrompt } from "./korean-style";
 import { checkSafety, maskSecrets, SafetyBlockError } from "./safety";
 import { generateFigures } from "./figures";
-import { getOwner } from "./collect";
+import { getOwner, githubClient } from "./collect";
 import { parseSections } from "../lib/content";
 import { plainTerms } from "../lib/term-marker";
 import { pickIcon } from "./icons";
@@ -626,7 +626,7 @@ async function main(): Promise<void> {
     : arg === "all"
       ? projects.filter((p) => !hasIntro(p.slug)).map((p) => p.slug)
       : arg.split(",").map((s) => s.trim());
-  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  const octokit = githubClient();
   const owner = await getOwner(octokit);
   const lines: { text: string; textEn?: string; kind?: string }[] = [{ text: `npx tsx scripts/intro.ts ${arg}`, kind: "cmd" }];
   const tonight = new Date(Date.now() + 9 * 3600_000 - 6 * 3600_000).toISOString().slice(0, 10);

@@ -29,7 +29,7 @@ import { NoScreensError, takeListenCheck } from "./script";
 import { checkSafety, checkSafetyMany, fmtSafety, inputFlags, SafetyBlockError, withoutTrailers, type SafetyKind } from "./safety";
 import { followsCommitRule } from "./commit-rule";
 import { planNameIfChanged, type PlanName } from "./plan-name";
-import { enoughForPost } from "./collect";
+import { enoughForPost, githubClient } from "./collect";
 import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
@@ -526,7 +526,7 @@ function writeCommitHours(activities: RepoActivity[]): void {
  * 대본부터 다시 만든다 (`rewrite` 입력).
  */
 async function rewritePosts(arg: string): Promise<void> {
-  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  const octokit = githubClient();
   const owner = await getOwner(octokit);
   let failed = 0;
   for (const id of arg.split(/[\s,]+/).filter(Boolean)) {
@@ -742,7 +742,7 @@ async function main(): Promise<void> {
   // 옮기지 않으므로 다음 밤 글에 그대로 들어간다.
   const intros = new Map<string, Intro>();
   const introTonight = new Set<string>();
-  const octokit = new Octokit({ auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined });
+  const octokit = githubClient();
   for (const a of activities) {
     if (hasIntro(a.repo)) continue;
     // AI가 "무엇을 만드는지 아직 모르겠다"고 한 레포는 새로 푸시될 때까지 다시 묻지 않는다
