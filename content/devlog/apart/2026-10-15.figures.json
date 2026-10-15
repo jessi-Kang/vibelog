@@ -1,0 +1,758 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "대화에서 나온 말이 커밋에 들어가기 전에 검사에서 걸러지고, 커밋은 데브로그에 그대로 공개되어 되돌리기 어렵다는 흐름 그림.",
+  "altEn": "A flow showing chat text being checked before it reaches a commit, because commits are published as-is in the devlog and are hard to undo.",
+  "caption": "한번 공개되면 되돌리기 어려우니, 커밋 앞에서 거릅니다",
+  "captionEn": "Once published it's hard to undo, so the filter sits before the commit",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "대화의 말은 커밋 전에 검사에서 걸러지고, 커밋은 데브로그에 그대로 공개된다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "60",
+      "width": "86",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "53",
+      "y": "91",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대화"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "96",
+      "y1": "85",
+      "x2": "154",
+      "y2": "85",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,85 152,80 152,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "128",
+      "y1": "48",
+      "x2": "128",
+      "y2": "122",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "128",
+      "y": "36",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "검사"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "128",
+      "y": "150",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "제 말로 풀어 씀"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "160",
+      "y": "60",
+      "width": "86",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "203",
+      "y": "91",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "246",
+      "y1": "85",
+      "x2": "286",
+      "y2": "85",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,85 284,80 284,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "292",
+      "y": "60",
+      "width": "88",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "336",
+      "y": "91",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "데브로그"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "380",
+      "y": "140",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "그대로 공개"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "380",
+      "y": "162",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "되돌리기 어려움"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Chat text is checked before the commit, because commits are published as-is in the devlog"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "60",
+      "width": "86",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "53",
+      "y": "91",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Chat"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "96",
+      "y1": "85",
+      "x2": "154",
+      "y2": "85",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "160,85 152,80 152,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "128",
+      "y1": "48",
+      "x2": "128",
+      "y2": "122",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "128",
+      "y": "36",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Check"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "128",
+      "y": "150",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "In my own words"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "160",
+      "y": "60",
+      "width": "86",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "203",
+      "y": "91",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commit"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "246",
+      "y1": "85",
+      "x2": "286",
+      "y2": "85",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,85 284,80 284,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "292",
+      "y": "60",
+      "width": "88",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "336",
+      "y": "91",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Devlog"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "380",
+      "y": "140",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Published as-is"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "380",
+      "y": "162",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Hard to undo"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "두 줄에 걸친 인용을 한 줄씩 볼 때는 놓치고 문단 단위로 볼 때는 잡으며, 지난 6주 커밋에서 실제 문제 2개를 잡았다는 비교 그림.",
+  "altEn": "A comparison: a quote spanning two lines is missed when checked line by line but caught when checked by paragraph, which found 2 real problems in the last 6 weeks of commits.",
+  "caption": "따옴표가 두 줄에 나뉘면 한 줄씩 봐서는 짝을 못 찾습니다",
+  "captionEn": "When the quote marks split across two lines, a line-by-line check can't pair them",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "한 줄씩 검사하면 두 줄에 걸친 인용을 놓치고, 문단 단위로 검사하면 잡는다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "한 줄씩"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "48",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "150",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "“"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "84",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "놓침"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "문단 단위"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "207",
+      "y": "41",
+      "width": "166",
+      "height": "76",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "48",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "340",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "“"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "84",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "250",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "잡음"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "172",
+      "x2": "370",
+      "y2": "172",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지난 6주 커밋 → 실제 문제 2개"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A line-by-line check misses a quote spanning two lines; a paragraph check catches it"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Line by line"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "48",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "150",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "“"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "84",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Missed"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "By paragraph"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "207",
+      "y": "41",
+      "width": "166",
+      "height": "76",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "48",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "340",
+      "y": "68",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "“"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "84",
+      "width": "150",
+      "height": "26",
+      "rx": "4",
+      "fill": "var(--color-panel2)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "250",
+      "y": "104",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "145",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Caught"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "172",
+      "x2": "370",
+      "y2": "172",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Last 6 weeks of commits → 2 real problems"
+    }
+   ]
+  }
+ }
+]
