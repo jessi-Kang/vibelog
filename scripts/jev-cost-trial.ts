@@ -195,7 +195,7 @@ async function main() {
   const allNo = [...new Set(ok.map((s) => s.id))].filter((id) => ok.filter((s) => s.id === id).every((s) => !yes(s)));
   line();
   line(`모든 섹션에 Jev가 "불필요"라고 한 글: ${allNo.length}편 ${allNo.join(", ")} — 이 글들은 삽화 단계를 통째로 건너뛸 수 있었다`);
-  line(`Jev가 "불필요"라고 했는데 실제로 그림이 붙은 섹션 ${fn}개는 건너뛰면 그 그림을 잃는다`);
+  line(`Jev가 불필요로 판정했는데 실제로 그림이 붙은 섹션 ${fn}개는 건너뛰면 그 그림을 잃는다`);
 
   const md = out.join("\n");
   console.log(md);
