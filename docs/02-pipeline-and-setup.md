@@ -192,6 +192,12 @@ GitHub 예약은 못 믿는다. 30분 주기인 `projects.yml`이 실제로는 4
 `devlog.yml`의 23:00 KST 회차는 통째로 안 떴다. 백업 회차를 더 깔아도 같이
 밀리므로 슬롯으로는 못 이긴다.
 
+**잠깐 난 실패로 실행 전체를 죽이지 않는다.** GitHub가 커밋 목록 한 번에 500을 돌려준 것만으로
+30분짜리 인식 실행이 실패하고 실패 메일이 왔다 (10/14). GitHub를 부르는 클라이언트는 한 곳
+(`scripts/collect.ts`의 `githubClient`)에서 만들고, 5xx는 2초·4초 쉬고 두 번까지 다시 묻는다
+(4xx는 그대로 던진다). 결과를 올릴 때 다른 실행이 먼저 올려 푸시가 거절되면("cannot lock ref",
+10/11) 다시 받아 와 세 번까지 올린다 — devlog.yml·projects.yml 둘 다.
+
 그래서 **시각은 Vercel Cron이 재고, 실행은 그대로 Actions에서** 한다 —
 ffmpeg·Playwright·Remotion을 45분까지 돌리는 일이라 서버리스로 옮길 것이 아니다.
 
