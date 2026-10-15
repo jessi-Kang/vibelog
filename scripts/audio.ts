@@ -28,7 +28,7 @@ import {
 
 const API = "https://api.elevenlabs.io/v1";
 /**
- * 목소리 모델 — eleven_multilingual_v2 하나 (10/11 Jessi: "…").
+ * 목소리 모델 — eleven_multilingual_v2 하나 (10/11 Jessi의 결정으로 v2로 되돌렸다).
  * 같은 날 Eleven v4를 먼저 부르고 실패하면 v2로 넘어가게 했다가 되돌렸다. v4로 돌아가려면
  * MODELS 앞에 { id: "eleven_v4", settings: style·speed를 뺀 설정 }을 다시 넣는다 — v4에는 style·speed가 없다.
  */
@@ -141,7 +141,7 @@ function unitSay(unit: string): string {
 /**
  * 연음 — 받침이 뒤 음절의 빈 초성(ㅇ)으로 넘어가는 것을 미리 적는다.
  * "이백이십이껀이"를 그대로 보내면 TTS가 음절을 또박또박 끊어 읽는다
- * (Jessi: "…"). "이백이십이꺼니"로 적어 보낸다.
+ * (연음이 안 된다는 Jessi의 지적). "이백이십이꺼니"로 적어 보낸다.
  *
  * 홑받침만 옮긴다. 겹받침은 앞뒤를 쪼개야 해서 규칙이 커지고, 숫자+단위
  * 조합에서는 나오지 않는다. ㅇ 받침은 넘어가지 않고(영이→영이), ㄷ·ㅌ은

@@ -1,0 +1,4 @@
+#!/bin/sh
+# 대화 인용 검사 — 올린 파일에 대화 속 Jessi의 말을 따옴표로 옮겨 적은 곳이 있으면 커밋을 막는다.
+# 규칙: CLAUDE.md "대화를 옮겨 적지 않는다" (scripts/quote-rule.ts)
+exec npx --no-install tsx scripts/check-quotes.ts --staged

@@ -477,7 +477,7 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         return false;
       };
     // hook은 화면 가득 찬 헤드라인이라 강조를 하나로 — 두 개만 돼도
-    // 짧은 문장이 통째로 칠해진다 (Jessi 지적: "…")
+    // 짧은 문장이 통째로 칠해진다 (훅 전체가 칠해졌다는 Jessi의 지적)
     const maxSpans = l.scene === "hook" ? 1 : 3;
     return {
       scene: l.scene,
@@ -616,8 +616,8 @@ export function capCoverage(
  * 아무것도 못 보여주는 문장을 찾는다 — **이건 장애다.**
  *
  * 화면(screen/find)도 그림(diagram)도 없는 문장은 배경과 자막만 뜬 빈 화면으로
- * 나간다. 경고만 남기면 아무도 안 보고 그대로 발행된다 (Jessi: "대본이 화면도
- * 그림도 안 고르면 장애야. 그럼 영상이 만들어지면 안 되지. 아주 치명적이야").
+ * 나간다. 경고만 남기면 아무도 안 보고 그대로 발행된다 (화면도 그림도
+ * 안 고른 대본은 장애이고, 그때는 영상을 만들면 안 된다는 Jessi의 판단).
  *
  * 그래서 대본을 받으면 여기서 막는다 — 한 번은 이 문장들을 집어 다시 쓰게 하고,
  * 그래도 비어 있으면 예외를 던져 **영상을 만들지 않는다.** 쇼츠가 없는 날이
@@ -628,8 +628,8 @@ export function capCoverage(
  * fail은 예외에서 **뺐다.** 삽질 카드(failCard)는 문제·해결을 적은 제목 카드일
  * 뿐이어서, 그 문장이 말하는 것을 보여주지는 않는다. 이 예외 때문에 "미리보기
  * 도장이 얼룩처럼 번졌습니다" 같은 문장이 화면도 그림도 없이 통과했고, 정작
- * 도장은 옆 문장(게임 설명)이 가리킨 화면에 딸려 나왔다 (Jessi: "스탬프 말할
- * 땐 안 나오고 진짜 가짜 게임이라는 설명할 때 나오고 있어"). 삽질 문장도 둘 중
+ * 도장은 옆 문장(게임 설명)이 가리킨 화면에 딸려 나왔다 (도장 이야기를
+ * 할 때가 아니라 게임 설명을 할 때 도장이 나온다는 Jessi의 지적). 삽질 문장도 둘 중
  * 하나를 고른다 — 그것을 화면에서 가리키거나(find), 원인을 그린다(diagram).
  * failCard는 콜드오픈 재료로 그대로 쓴다.
  */
@@ -963,11 +963,11 @@ export async function generateScript(
   const longHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook" && [...l.ko].length > HOOK_MAX);
   let longs = longHooks(lines);
   // 훅은 한 문장 — "장면당 1~2문장"을 훅에도 적용해 두 문장 훅이 나왔다. 훅 카드는 둘째 문장이 오면
-  // 헤드라인을 바꿔 띄워 훅이 두 번 나온다 (10/11·10/12 vibelog, Jessi: "…"). 같은 한 번의 다시 쓰기에 합친다
+  // 헤드라인을 바꿔 띄워 훅이 두 번 나온다 (10/11·10/12 vibelog, 두 문장 훅이 잦다는 Jessi의 지적). 같은 한 번의 다시 쓰기에 합친다
   const extraHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook").slice(1);
   let extras = extraHooks(lines);
   // 아이콘·모티프만 있는 장면이 연달아 오는 문장 — 가운데 그림 하나가 이어져 같은 화면처럼 보였다
-  // … 같은 한 번의 다시 쓰기에 합친다
+  // (10/11 vibelog, 아이콘·모티프도 연달아 두지 말자는 Jessi의 요청). 같은 한 번의 다시 쓰기에 합친다
   let runs = graphicRuns(lines);
   // 듣기 검사가 고른 문장이 대본의 몇 번째인지 — 검사 모델이 문장을 조금 다르게 옮겨 올 수 있다
   const lineOf = (sentence: string): number => {

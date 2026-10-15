@@ -12,11 +12,15 @@
  *
  * 한국어 표현 검사(scripts/korean-style.ts)의 "강"도 같이 본다. 커밋 메시지는 밤마다
  * 글의 재료라서, 커밋이 어려우면 글도 어려워진다.
+ *
+ * 대화 속 Jessi의 말을 따옴표로 옮겨 적은 곳도 막는다 (scripts/quote-rule.ts). 커밋 메시지는
+ * 공개 블로그에 그대로 나간다 — 무엇을 왜 정했는지 뜻만 풀어 쓴다.
  */
 import fs from "node:fs";
 import { execSync } from "node:child_process";
 import { commitProblems } from "./commit-rule";
 import { findStyleHits } from "./korean-style";
+import { findUserQuotes } from "./quote-rule";
 
 const file = process.argv[2];
 const message = file ? fs.readFileSync(file, "utf8") : execSync("git log -1 --format=%B").toString();
@@ -24,6 +28,10 @@ const message = file ? fs.readFileSync(file, "utf8") : execSync("git log -1 --fo
 const problems = commitProblems(message);
 for (const h of findStyleHits(message).filter((x) => x.rule.level === "strong")) {
   problems.push(`「${h.match}」 ${h.rule.why} — ${h.sentence.slice(0, 60)}`);
+}
+
+for (const q of findUserQuotes(message)) {
+  problems.push(`대화를 따옴표로 옮겨 적었습니다 — 뜻만 풀어 씁니다: ${q.text.slice(0, 60)}`);
 }
 
 if (problems.length === 0) {
