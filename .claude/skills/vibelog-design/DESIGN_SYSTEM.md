@@ -110,7 +110,7 @@ topic 하나로 등록되므로 프로젝트 수는 통제 밖이다. 3개에서
 - **Wordmark** — 로고 부재를 대신하는 타입 마크.
 - **RunLog · Eyebrow · Caption** — 쇼츠 프로토타입에 있던 패턴을 컴포넌트화. **StatPanel**은 4단계 현황판용으로 남겨두되 기본 홈에서는 쓰지 않는다.
 - **EmptyState** — 빈 자리 규칙. 소스에 없음.
-- **Dialog · Toast · Tooltip · 폼 세트** — 소스에 없음. 사용자 요청("표준 세트까지")으로 추가. 3단계 승인 봇·설정 화면용.
+- **Dialog · Toast · Tooltip · 폼 세트** — 소스에 없음. 표준 세트까지 갖춰 달라는 요청으로 추가. 3단계 승인 봇·설정 화면용.
 
 ### Caveats
 - 폰트는 Google Fonts @import. 렌더 환경(Remotion/Playwright)에는 Noto Sans CJK KR 로컬 설치 필수 (spec 문서 그대로). 폰트 바이너리는 포함하지 않았다.
