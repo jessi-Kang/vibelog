@@ -141,7 +141,7 @@ function kindOf(
   if (scene === "hook") return "hook";
   // 삽질 문장도 화면을 지정했으면 폰을 보여준다. 카드·다이어그램만 띄우던
   // 탓에 도장 이야기를 하는데 도장 화면이 한 번도 안 나오는 편이
-  // 구조적으로 보장돼 있었다 (…였다). 화면을 안 고른 삽질
+  // 구조적으로 보장돼 있었다. 화면을 안 고른 삽질
   // 문장은 그대로 카드다 — 원인 설명은 카드가 낫다.
   if (scene === "fail") return hasScreen ? "phone" : "fail";
   if (scene === "end") return "end";
