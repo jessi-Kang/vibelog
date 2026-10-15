@@ -25,6 +25,6 @@ for (const f of files) {
 }
 if (n === 0) console.log("대화 인용 검사: 걸린 곳 없음");
 else {
-  console.error(`대화 인용 검사: ${n}곳 — 대화 속 말을 따옴표로 옮겨 적지 않습니다. 무엇을 왜 정했는지 뜻만 풀어 씁니다 (CLAUDE.md "대화를 옮겨 적지 않는다")`);
+  console.error(`대화 인용 검사: ${n}곳 — 대화 속 말을 옮겨 적거나 이름을 출처로 달지 않습니다. 무엇을 왜 정했는지 뜻만 풀어 씁니다 (CLAUDE.md "대화를 옮겨 적지 않는다")`);
   process.exit(1);
 }

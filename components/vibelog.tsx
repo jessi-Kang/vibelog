@@ -36,8 +36,8 @@ export function ProjectCard({ project }: { project: Project }) {
         className="absolute inset-0 z-0 rounded-lg"
       />
       {/* 아이콘 + 서비스 이름 (docs/project-icon-places.html ①). 레포 이름은 홈에서 뺐다 —
-          GitHub에서 찾아갈 이름은 프로젝트 페이지에 있다 (Jessi, 10/11). 상태는 맨 아래 줄 맨 앞으로 내렸다 —
-          카드 위의 상태색 띠가 흔한 AI 디자인처럼 보여서 뺐고, 이름 줄은 이름만 둔다 (10/11 Jessi, C안) */}
+          GitHub에서 찾아갈 이름은 프로젝트 페이지에 있다 (10/11). 상태는 맨 아래 줄 맨 앞으로 내렸다 —
+          카드 위의 상태색 띠가 흔한 AI 디자인처럼 보여서 뺐고, 이름 줄은 이름만 둔다 (10/11, C안) */}
       <div className="flex flex-col gap-0.5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-semibold text-ink">
@@ -150,7 +150,7 @@ export function DevlogTimelineEntry({
 }) {
   return (
     // 전체 피드(repo 있음)는 타임라인 점을 프로젝트 식별색으로 — 이름도 같은
-    // 색이라 점만 봐도 구분된다 (…을 쓰자는 Jessi의 요청).
+    // 색이라 점만 봐도 구분된다 (…).
     // 프로젝트 상세 타임라인(repo 없음)은 기존 민트 점.
     <Link href={href} className="group relative block pl-[22px]">
       {!last && (
@@ -175,7 +175,7 @@ export function DevlogTimelineEntry({
         <h3 className="m-0 text-lg font-semibold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
           {title}
         </h3>
-        {/* 요약은 라이트(300) — 제목 600과 세 단계 차이로 한 발 물러난다 (10/11 Jessi) */}
+        {/* 요약은 라이트(300) — 제목 600과 세 단계 차이로 한 발 물러난다 (10/11) */}
         {summary && (
           <p className="m-0 text-base font-light leading-relaxed text-ink-soft [text-wrap:pretty]">
             {summary}
@@ -235,7 +235,7 @@ export function DevlogCompactEntry({
   );
 }
 
-/** 글 목록의 프로젝트 이름 — 앞에 작은 프로젝트 아이콘, 둘 다 프로젝트 색 (10/11 Jessi, 시안 A안) */
+/** 글 목록의 프로젝트 이름 — 앞에 작은 프로젝트 아이콘, 둘 다 프로젝트 색 (10/11, 시안 A안) */
 function ProjectTag({ repo }: { repo: string }) {
   return (
     <span className="inline-flex items-center gap-1" style={{ color: projectColor(repo) }}>

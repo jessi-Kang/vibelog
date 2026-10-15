@@ -2,11 +2,11 @@
 /**
  * 앱 설치 안내 — 브라우저가 beforeinstallprompt로 설치 자격을 알려올 때만 나타난다.
  * 설치 확인창 자체는 브라우저(OS) 영역이라 꾸밀 수 없어서, 그 창을 부르는
- * 초대만 사이트 톤으로 만든다 (Jessi 요청).
+ * 초대만 사이트 톤으로 만든다.
  *
- * - InstallToast: 하단 슬림 토스트. 첫 방문 즉시 (Jessi 지시).
+ * - InstallToast: 하단 슬림 토스트. 첫 방문 즉시.
  *   "나중에"를 누르면 일주일 쉬고, 그다음 노출에는 "다시 보지 않기"를 준다
- *   — 두 번 거절한 사람에게 계속 묻지 않는다 (Jessi 지시).
+ *   — 두 번 거절한 사람에게 계속 묻지 않는다.
  * - InstallAppLink: 푸터의 조용한 상시 진입점.
  * 둘 다 같은 이벤트를 쓰므로 모듈 단위로 한 번만 잡아 공유한다.
  */
@@ -190,7 +190,7 @@ export function InstallAppLink() {
       onClick={() => void promptInstall()}
       // 푸터의 세 링크는 같은 문법이어야 한다 — 하나만 글자면 이질적으로
       // 보이고, 설치 링크는 자격이 있을 때만 나타나서 줄이 들썩인다
-      // (Jessi 지적). 아이콘으로 맞추면 나타나도 폭이 거의 안 변한다.
+      //. 아이콘으로 맞추면 나타나도 폭이 거의 안 변한다.
       aria-label={lang === "ko" ? "앱으로 설치" : "Install as an app"}
       className="hit -my-2.5 flex cursor-pointer p-2.5 text-muted transition-colors duration-150 hover:text-ink"
     >

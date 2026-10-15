@@ -69,7 +69,7 @@ export interface PostData {
   };
 }
 
-// 본문 속 링크는 새 창으로 — 읽던 글을 잃지 않게 (Jessi 지시).
+// 본문 속 링크는 새 창으로 — 읽던 글을 잃지 않게.
 // 모델이 쓴 링크는 이 사이트와 GitHub만 살리고, 본문 그림은 그리지 않는다 (lib/md-links.ts).
 // `node`는 react-markdown이 넘기는 구문 트리라 DOM 속성으로 내보내지 않는다.
 const mdComponents = {
@@ -98,7 +98,7 @@ const mdComponents = {
  *
  * remark-gfm은 `~단어~`도 취소선으로 먹는데, 우리 글은 물결표를 **범위**에
  * 쓴다 — "둘 중 하나는 6~12점, 넷 중 하나는 9~16점"이 "6[12점, 넷 중 하나는
- * 9]16점"으로 가운데가 통째로 그어져 나갔다 (Jessi가 9/12 apart 글에서 잡았다).
+ * 9]16점"으로 가운데가 통째로 그어져 나갔다 (9/12 apart 글에서 드러났다).
  * 글은 사람이 고칠 수 없다 — 파이프라인이 매일 쓰는 문장이고, 범위 표기가
  * 잘못된 것도 아니다. 그래서 문장을 escape하는 대신 파서에서 끈다.
  * `~~두 개~~`는 그대로 취소선이라, 정말 그을 일이 생기면 그때 쓴다.
@@ -201,7 +201,7 @@ export function PostClient({ post }: { post: PostData }) {
       label: `${post.title} 쇼츠`,
     });
 
-  // 프로젝트 이름은 메타 줄 맨 앞에 둔다 (Jessi가 시안 B를 골랐다 —
+  // 프로젝트 이름은 메타 줄 맨 앞에 둔다 (시안 B —
   // docs/post-project-and-kind.html). 전에는 "상단 경로가 이미 말한다"며 뺐는데,
   // 글 주소가 /p/<id>로 바뀐 뒤 그 경로 줄이 안 떠서 글을 열면 누구 글인지
   // 알 길이 없었다. 누르면 그 프로젝트 페이지로 간다.
@@ -218,7 +218,7 @@ export function PostClient({ post }: { post: PostData }) {
       <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
         {en && post.titleEn ? post.titleEn : post.title}
       </h1>
-      {/* 언어 토글은 헤더의 전역 스위치로 올라갔다 (Jessi 지시) */}
+      {/* 언어 토글은 헤더의 전역 스위치로 올라갔다 */}
       <div className="font-mono text-xs text-muted">
         <Link
           href={`/projects/${post.repo}`}
@@ -256,7 +256,7 @@ export function PostClient({ post }: { post: PostData }) {
       {about && post.project.introHref && (
         <Link
           href={post.project.introHref}
-          // 연한 바탕을 깐다 — 본문과 다른, 프로젝트에 대한 말이라는 것이 보이게 (Jessi, 10/11)
+          // 연한 바탕을 깐다 — 본문과 다른, 프로젝트에 대한 말이라는 것이 보이게 (10/11)
           className={`group mt-1 grid rounded-md bg-panel px-3.5 py-3 grid-cols-[20px_minmax(0,1fr)] gap-3`}
         >
           {/* 아이콘을 위에, 그 아래로 색 세로선을 잇는다 (docs/project-icon-places.html ②) */}
@@ -351,7 +351,7 @@ export function PostClient({ post }: { post: PostData }) {
                 </div>
               )}
               {/* 그 밖의 소식 — 이야기 하나에 못 담은 큰 작업 (docs/post-other-work.html A안). 본문 이야기(뭘 했나→왜→삽질→다음)가 끝난 뒤, git log 바로 위에 둔다 —
-                  "왜" 위에 두었더니 이야기가 끊겼다 (Jessi). 소식마다
+                  "왜" 위에 두었더니 이야기가 끊겼다. 소식마다
                   굵은 첫 문장이 무엇이 생겼나, 끝의 기울임(_커밋 25개_)이 든 커밋 수다 — 기울임은 이
                   섹션에서만 작은 회색 글자로 그린다. 한글이 섞여 고정폭 글꼴을 쓰지 않는다 */}
               {!post.intro && s.news && (
@@ -373,7 +373,7 @@ export function PostClient({ post }: { post: PostData }) {
     </div>
   );
 
-  // 쇼츠가 없으면 영역 자체를 뺀다 (Jessi 지시). 스크린샷 섹션은 삭제 —
+  // 쇼츠가 없으면 영역 자체를 뺀다. 스크린샷 섹션은 삭제 —
   // 정보가 얇았고(어제의 이 사이트 모습), 실제 화면은 쇼츠 데모가 보여준다.
   const thumb = post.short && (
     <Thumb
@@ -424,7 +424,7 @@ export function PostClient({ post }: { post: PostData }) {
                 줄 사이 선은 **다음에 올 것이 있을 때만** 긋는다. 마지막 줄에도
                 긋던 건 아래 "전부 보기" 버튼과 가르려던 것인데, 조건이
                 `!showAllShas`뿐이라 버튼이 없는 열 개 이하짜리 글에서도 그어졌다
-                — 카드 테두리 바로 위에 선이 하나 떠 있었다 (Jessi 지적).
+                — 카드 테두리 바로 위에 선이 하나 떠 있었다.
                 대부분의 글이 이 경우다. */}
             {(showAllShas ? post.shas : post.shas.slice(0, 10)).map(
               ([sha, msg], i, visible) => (

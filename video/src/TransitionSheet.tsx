@@ -8,7 +8,7 @@
  *   slide @remotion/transitions slide (오른쪽에서)
  *   wipe  @remotion/transitions wipe (왼쪽에서)
  *   mix   fade + 그림이 들어올 때 @remotion/motion-blur
- *         (빛 번짐 @remotion/light-leaks도 넣어 봤다가 뺐다 — 번쩍하는 게 이상했다, 10/11 Jessi)
+ *         (빛 번짐 @remotion/light-leaks도 넣어 봤다가 뺐다 — 번쩍하는 게 이상했다, 10/11)
  *
  * 그림은 video/public/sheet/에 넣어 둔다 (커밋하지 않는다 — art-try 워크플로의 시안 그림).
  * 렌더: cd video && npx remotion render TransitionSheet out.mp4 --props='{"variant":"fade"}'

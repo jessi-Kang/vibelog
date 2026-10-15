@@ -3,13 +3,13 @@
 1단계 세션 1–3은 `02-pipeline-and-setup.md` 7번 항목. 이 문서는 그 다음부터 완성(4단계)까지.
 각 세션은 "Claude Code 한 번 앉아서 끝낼 크기"로 쪼갰다. 세션 시작 시 CLAUDE.md와 해당 단계 문서를 읽게 한다.
 
-"완성"의 정의: Jessi가 코딩만 하면 → 다음 날 아침 블로그 글 + 쇼츠 영상이 승인 큐에 와 있고 → 텔레그램에서 ✅ 누르면 블로그·유튜브·인스타에 올라가고 → 블로그 현황판에 조회수까지 자동으로 붙는 상태.
+"완성"의 정의: 코딩만 하면 → 다음 날 아침 블로그 글 + 쇼츠 영상이 승인 큐에 와 있고 → 텔레그램에서 ✅ 누르면 블로그·유튜브·인스타에 올라가고 → 블로그 현황판에 조회수까지 자동으로 붙는 상태.
 
 ---
 
 ## 2단계 — 쇼츠 파이프라인 (영상은 나오지만 업로드는 수동)
 
-### 사전 준비 (Jessi)
+### 사전 준비
 
 - ElevenLabs 보이스 클론은 이미 있음: `ELEVENLABS_VOICE_ID=pwjMkbtUbj1hBa0RkN5N`. `ELEVENLABS_API_KEY`와 함께 레포 Secrets에
 - (선택) 음악을 매번 생성하지 않을 거면 템플릿별 mp3 3개를 `video/assets/music/`에 넣기
@@ -71,13 +71,13 @@ devlog.yml에 ffmpeg, Chromium 설치 스텝 추가. 렌더 시간 측정해서 
 실패해도 데브로그 글 발행은 막지 않게 — 쇼츠 단계는 try/catch로 분리.
 ```
 
-2단계 완료 조건: 매일 밤 Action이 글 + mp4(ko/en)를 만들어 놓는다. 업로드는 아직 Jessi가 손으로.
+2단계 완료 조건: 매일 밤 Action이 글 + mp4(ko/en)를 만들어 놓는다. 업로드는 아직 손으로.
 
 ---
 
 ## 3단계 — 승인 큐 + 자동 게시
 
-### 사전 준비 (Jessi)
+### 사전 준비
 
 - 텔레그램 봇 토큰 + 내 chat_id → Secrets `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 - YouTube Data API OAuth → refresh token → Secrets `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`
@@ -97,7 +97,7 @@ scripts/run.ts 끝에서 생성물마다 pending row를 넣어. content/ 커밋�
 
 ```
 Vercel 서버리스 함수 api/telegram/webhook으로 봇을 만들자.
-run.ts가 pending row를 만들 때마다 봇이 Jessi에게 메시지: 글 요약 + 영상 파일 + 인라인 버튼 [✅ 게시] [✏️ 수정] [❌ 버림].
+run.ts가 pending row를 만들 때마다 봇이 관리자에게 메시지: 글 요약 + 영상 파일 + 인라인 버튼 [✅ 게시] [✏️ 수정] [❌ 버림].
 ✅ → status=approved. ❌ → rejected. ✏️ → 답장 텍스트를 받아 Claude API로 글/대본을 수정하고 다시 미리보기.
 setWebhook은 스크립트로. 봇 토큰은 환경변수.
 ```
@@ -112,7 +112,7 @@ Vercel Cron(10분마다) 또는 텔레그램 ✅ 직후에 도는 api/publish:
 - 성공 시 platform_ids에 video id 저장, 실패 시 텔레그램으로 에러 알림 + status 유지(재시도 가능).
 ```
 
-3단계 완료 조건: 아침에 텔레그램 열어서 ✅ 누르면 끝. Jessi가 브라우저 열 일 없음.
+3단계 완료 조건: 아침에 텔레그램 열어서 ✅ 누르면 끝. 브라우저 열 일 없음.
 
 ---
 
@@ -159,7 +159,7 @@ devlog.yml에 스텝 추가.
 세션 14 항목 중 **OG 이미지 자동 생성은 이미 끝났다** (`lib/og.tsx` — 글·프로젝트·
 홈의 공유 카드를 서버에서 그린다). 남은 것은 `/en` 라우트와 전자동 게시 토글이다.
 
-3단계를 시작하려면 Jessi가 먼저 채울 것: 텔레그램 봇 토큰·chat_id, YouTube OAuth
+3단계를 시작하려면 먼저 채울 것: 텔레그램 봇 토큰·chat_id, YouTube OAuth
 refresh token, Instagram 장기 토큰. Neon은 이미 연결돼 있다.
 
 ## 미리 알아둘 리스크

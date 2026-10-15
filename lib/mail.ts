@@ -1,7 +1,7 @@
 /**
  * 댓글 알림 메일 — 시안 docs/post-comments.html ⑤ (10/11 승인).
  *
- * 두 가지만 보낸다: Jessi에게 새 댓글, 댓글 쓴 사람에게 Jessi의 답글.
+ * 두 가지만 보낸다: 관리자에게 새 댓글, 댓글 쓴 사람에게 관리자의 답글.
  * 발송은 Resend(`RESEND_API_KEY` 비밀값, `MAIL_FROM` 설정값). 키가 없으면 보내지 않고 조용히
  * 넘어간다 — 메일이 없어도 댓글과 종 알림은 그대로 돈다.
  *
@@ -129,7 +129,7 @@ ${o.rows}
 </table></td></tr></table></body></html>`;
 }
 
-/** Jessi에게 — 새 댓글 (여러 개면 묶어서) */
+/** 관리자에게 — 새 댓글 (여러 개면 묶어서) */
 export function adminMail(items: { post: MailPost; comment: MailComment; anchor: string }[], unsubscribe: string) {
   const first = items[0];
   const many = items.length > 1;
@@ -150,7 +150,7 @@ export function adminMail(items: { post: MailPost; comment: MailComment; anchor:
   return { subject, html };
 }
 
-/** 댓글 쓴 사람에게 — Jessi의 답글 */
+/** 댓글 쓴 사람에게 — 관리자의 답글 */
 export function replyMail(post: MailPost, mine: MailComment, reply: MailComment, anchor: string, unsubscribe: string) {
   const html = frame({
     kind: "답글",

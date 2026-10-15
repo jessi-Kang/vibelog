@@ -1,10 +1,10 @@
 /**
- * Jessi의 답글 AI 초안 — "초안 쓰기 / 다듬기 / 짧게" (시안 docs/post-comments.html ③).
+ * 관리자의 답글 AI 초안 — "초안 쓰기 / 다듬기 / 짧게" (시안 docs/post-comments.html ③).
  *
  * 개발 내용을 아는 채로 답하게 한다: 그 글 본문, 그날 커밋 제목 전부, 프로젝트 소개 글, 같은
  * 프로젝트의 지난 글 몇 편(제목과 첫 문장). 커밋 목록은 발행 때 안전 검사를 지난 것이다.
  *
- * 초안은 쓰는 칸에만 들어가고 올리기는 Jessi가 누른다. 그래도 공개 답글이 될 글이라 소개 글과
+ * 초안은 쓰는 칸에만 들어가고 올리기는 관리자가 누른다. 그래도 공개 답글이 될 글이라 소개 글과
  * 같은 "공개하지 않는 것"을 지키게 하고, 나온 초안에 안전 검사를 한 번 더 돌린다.
  * 댓글은 아무나 쓰는 글이라 지시가 아니라 자료로만 넘긴다.
  */
@@ -17,7 +17,7 @@ import { plainTerms } from "./term-marker";
 import { projectName } from "./project-name";
 import { findPost, CommentError } from "./comments";
 
-// 답글 초안은 짧은 글이라 Opus까지 쓰지 않는다 — 비용을 줄이려고 Sonnet으로 내렸다 (10/11 Jessi).
+// 답글 초안은 짧은 글이라 Opus까지 쓰지 않는다 — 비용을 줄이려고 Sonnet으로 내렸다 (10/11).
 // 앞 것을 못 찾으면(모델 이름이 바뀌는 등) 다음 것으로 한다. 더 비싼 모델로는 넘어가지 않는다.
 const MODELS = ["claude-sonnet-5-5", ...HAIKU_MODELS];
 

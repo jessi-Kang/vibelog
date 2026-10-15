@@ -3,7 +3,7 @@
  *
  * Google 프로필 사진은 받지도 저장하지도 않는다. 얼굴이 사이트에 남지 않고, 프로젝트 아이콘·
  * 쇼츠 아이콘과 한 세트로 보인다. 42개 × 9색 = 378가지라 같은 글에서 겹칠 일이 드물다.
- * Jessi는 터미널 아이콘에 vibelog 민트색으로 고정한다.
+ * 관리자는 터미널 아이콘에 vibelog 민트색으로 고정한다.
  */
 import { AVATAR_POOL } from "./avatar-icons";
 import { PALETTE } from "./project-color";

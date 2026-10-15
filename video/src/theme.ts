@@ -1,5 +1,5 @@
 /**
- * 테마 시스템 — 레포마다 다른 얼굴, 같은 문법 (Jessi 승인 시안 5종).
+ * 테마 시스템 — 레포마다 다른 얼굴, 같은 문법 (승인된 시안 5종).
  * 채널 아이덴티티(장면 구조·자막 규칙·푸터·진행 바)는 모든 테마가 공유하고,
  * 팔레트·키워드 강조 방식·카드/배지 형태·배경 처리만 테마가 바꾼다.
  * 레포는 vibelog.json의 "theme" 한 줄로 고른다. 기본값은 terminal.
@@ -111,8 +111,7 @@ export function keywordStyle(th: ShortsTheme, scale = 1): CSSProperties {
 
 /**
  * 토큰 비교용 정규화 — 양끝 문장부호를 뗀다. "never started"를 강조하려는데
- * 문장 토큰이 "started."라서 못 켜지던 문제 (영문 훅 하이라이트 누락 —
- * Jessi 지적). scripts/script.ts의 검증과 같은 규칙이어야 한다.
+ * 문장 토큰이 "started."라서 못 켜지던 문제 (영문 훅 하이라이트 누락). scripts/script.ts의 검증과 같은 규칙이어야 한다.
  */
 export function stripPunct(w: string): string {
   return w.replace(/^[.,!?…:;"'“”‘’()[\]]+|[.,!?…:;"'“”‘’()[\]]+$/g, "");
@@ -120,7 +119,7 @@ export function stripPunct(w: string): string {
 
 /**
  * 키워드가 켜지는 단어 인덱스 — "두 번"처럼 연속된 여러 단어 구도 키워드가
- * 될 수 있다 (한 단어만 허용하면 "번"만 켜져 어색하다 — Jessi 지적).
+ * 될 수 있다 (한 단어만 허용하면 "번"만 켜져 어색하다).
  * 구의 모든 토큰이 문장에 연속으로 나타나는 자리를 전부 켠다.
  */
 export function keywordIndices(
@@ -143,7 +142,7 @@ export function keywordIndices(
 /**
  * 시각 폭 기준 글자 수 — 한글(전각)은 1, 영문·숫자(반각)는 0.5로 센다.
  * "긴 문장은 글자를 줄인다" 기준을 글자 수로 재면 영어가 억울해진다:
- * 같은 폭에 라틴 글자가 두 배쯤 들어가기 때문 (Jessi 확인 질문에서 발견).
+ * 같은 폭에 라틴 글자가 두 배쯤 들어가기 때문 (확인 질문에서 발견).
  */
 export function visualLen(text: string): number {
   let n = 0;

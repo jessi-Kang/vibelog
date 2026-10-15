@@ -13,7 +13,7 @@
  * 한국어 표현 검사(scripts/korean-style.ts)의 "강"도 같이 본다. 커밋 메시지는 밤마다
  * 글의 재료라서, 커밋이 어려우면 글도 어려워진다.
  *
- * 대화 속 Jessi의 말을 따옴표로 옮겨 적은 곳도 막는다 (scripts/quote-rule.ts). 커밋 메시지는
+ * 대화 속 말을 따옴표로 옮겨 적은 곳도 막는다 (scripts/quote-rule.ts). 커밋 메시지는
  * 공개 블로그에 그대로 나간다 — 무엇을 왜 정했는지 뜻만 풀어 쓴다.
  */
 import fs from "node:fs";

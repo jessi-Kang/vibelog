@@ -58,7 +58,7 @@ export function PostFigure({
   const kids = node.children ?? [];
   const label = kids.find((c) => c.tag === "title")?.text ?? "";
   return (
-    // 은은한 바탕판 (Jessi가 시안 A를 골랐다 — docs/post-figures-frame.html).
+    // 은은한 바탕판 (시안 A — docs/post-figures-frame.html).
     // 테두리는 없다: 두르면 카드가 되어 본문에서 떨어져 나온다. 바탕색 한 단계로
     // "여기는 그림"만 읽히게 한다.
     //

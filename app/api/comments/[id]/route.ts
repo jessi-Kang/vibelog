@@ -1,4 +1,4 @@
-/** 댓글 숨기기·다시 보이기(PATCH, Jessi만)와 지우기(DELETE, Jessi와 쓴 사람) */
+/** 댓글 숨기기·다시 보이기(PATCH, 관리자만)와 지우기(DELETE, 관리자와 쓴 사람) */
 import { CommentError, removeComment, setHidden } from "@/lib/comments";
 import { sameOrigin, viewer } from "@/lib/session";
 

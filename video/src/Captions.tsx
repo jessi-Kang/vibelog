@@ -64,9 +64,9 @@ export const Captions: React.FC<{
   const line = script.lines[win.sentence.index];
   if (!line) return null;
   // 훅 문장은 자막을 끈다 — 같은 문장이 화면 중앙 헤드라인으로 이미 크게
-  // 떠 있어 중복된다 (Jessi 지시). 헤드라인은 HookCard가 말 따라 갱신.
+  // 떠 있어 중복된다. 헤드라인은 HookCard가 말 따라 갱신.
   if (line.scene === "hook") return null;
-  // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다 (Jessi 지적)
+  // "두 번" 같은 여러 단어 구 키워드도 통째로 켜진다
   // 대본이 뜻 덩어리로 끊어 둔 줄 — 있으면 그 자리에서 끊는다. 없으면 폭으로 고르게 나눈다
   const texts = win.sentence.words.map((w) => w.text);
   const breaks = lineStarts(texts, lang === "ko" ? line.koLines : line.enLines);
@@ -77,7 +77,7 @@ export const Captions: React.FC<{
 
   return (
     // 자막 안전 구역: 폰 프레임 하단(1390) 아래에서만 논다 — 데모 화면을
-    // 가리지 않게 크기도 62→52로 (Jessi 지적)
+    // 가리지 않게 크기도 62→52로
     <div
       style={{
         position: "absolute",
@@ -102,7 +102,7 @@ export const Captions: React.FC<{
           wordBreak: "keep-all",
           textWrap: "balance",
           // 글자 그림자(다크 검은 그림자·라이트 흰 글로우)는 하이라이트 상자
-          // 주변이 뿌옇게 번져 보여 제거 (Jessi 지시). 자막은 폰 프레임 아래
+          // 주변이 뿌옇게 번져 보여 제거. 자막은 폰 프레임 아래
           // 안전 구역에만 놓이므로 그림자 없이도 배경과 안 겹친다.
           color: th.ink,
         }}
@@ -112,7 +112,7 @@ export const Captions: React.FC<{
           const progress = Math.min(1, Math.max(0, (t - w.start) / WORD_FADE));
           const on = progress > 0;
           const isKeyword = kwOn.has(i);
-          // 자막은 정적으로 — 흐림→또렷 페이드만, 상승·팝 금지 (Jessi 지시).
+          // 자막은 정적으로 — 흐림→또렷 페이드만, 상승·팝 금지.
           // 움직임은 훅·콜드오픈·인서트 등 다른 영역이 맡는다.
           return (
             <React.Fragment key={i}>

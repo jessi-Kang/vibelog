@@ -36,7 +36,7 @@ async function shot(page: Page, dir: string, n: number): Promise<number> {
 /**
  * 언어 전환 완료 대기 — SSR은 항상 ko로 그려지고 마운트 후 저장값으로
  * 전환된다(components/lang.tsx). en 녹화에서 이 전환을 기다리지 않으면
- * 한국어 화면이 소재에 섞인다 (Jessi 지적). lang.tsx가 <html lang>을
+ * 한국어 화면이 소재에 섞인다. lang.tsx가 <html lang>을
  * 갱신하므로 그걸 신호로 쓴다.
  *
  * 신호는 vibelog 사이트 것이다 — 다른 프로젝트 사이트(apart 등)는 이 신호가
@@ -73,10 +73,10 @@ async function slowScroll(page: Page, px: number): Promise<void> {
  * 본 적이 없으니 엉뚱한 화면을 고르거나(공유 글 이야기에 게임 모드 화면),
  * 글자 없는 그림은 아예 가리킬 수 없었다 (apart의 도장은 홈 배경의 SVG다).
  * 그래서 뒤집는다 — 대본은 문장이 말하는 것을 적고, **찾는 일은 녹화기가**
- * 한다 (대본에 맞는 화면을 찾아서 써야 한다는 Jessi의 지적).
+ * 한다 (…).
  *
  * 찾는 순서는 웹 표준과 크기뿐이다 — 사이트별 사전을 만들지 않는다
- * (사이트마다 매번 맞춤으로 짜면 안 된다는 Jessi의 지적).
+ * (…).
  *   1) 눈에 보이는 **글자**가 그 말을 담고 있는 요소
  *   2) **접근 이름**(aria-label·alt·title)이 그 말을 담고 있는 요소 —
  *      그림에 이름을 붙이는 웹의 표준 방식이다
@@ -92,7 +92,7 @@ export async function locateOnPage(
    * **화면들을 훑는 동안은 반드시 false다.** 켜 두면 글자를 못 찾아도 큰 그림이
    * 있는 첫 화면에서 "찾았다"가 되어 탐색이 거기서 멈춘다 — 실제로 그 때문에
    * `/o`의 제목("이름만 보고")을 찾으러 갔는데 홈의 엉뚱한 요소에 테두리가
-   * 그려졌다 (무엇을 보여 주려던 것인지 모르겠다는 Jessi의 지적). 그림 폴백은 모든 화면에서
+   * 그려졌다 (…). 그림 폴백은 모든 화면에서
    * 글자·이름을 찾는 데 실패한 **뒤에만** 쓴다.
    */
   allowGraphic = false,
@@ -151,7 +151,7 @@ export async function locateOnPage(
  * 막을 그려 넣었다 — 제대로 찾았을 때는 좋지만, 엉뚱한 것을 가리키면 그
  * 잘못이 화면 한가운데에 강조되어 나간다. 이 사이트는 사람이 보기 전에
  * 발행되므로 그걸 잡을 사람이 없다 (잘못 나온 것을 잡을 수 없을 거라는
- * Jessi의 지적). 틀렸을 때 조용한 쪽이 낫다 — 화면은 여전히 그 자리를 보여 주고,
+ * 지적). 틀렸을 때 조용한 쪽이 낫다 — 화면은 여전히 그 자리를 보여 주고,
  * 다만 틀린 곳에 동그라미를 치지 않는다.
  */
 export async function focusOn(
@@ -260,7 +260,7 @@ async function defaultTour(
 
   // 상위 내부 링크 1~2개 방문 — 링크를 "클릭"해서 클라이언트 네비게이션으로
   // 이동한다. page.goto(풀 리로드)는 페이지마다 SSR 한국어가 다시 그려져
-  // en 녹화 중간에 한국어가 번쩍인다 (Jessi 지적). 클릭이면 React 상태가
+  // en 녹화 중간에 한국어가 번쩍인다. 클릭이면 React 상태가
   // 유지되어 언어가 흔들리지 않는다.
   const links = await page
     .locator("a[href^='/']")
@@ -351,7 +351,7 @@ export async function record(
   const shotsDir = path.join(outDir, `${date}.shots`);
   fs.mkdirSync(shotsDir, { recursive: true });
   // en 데모는 사이트를 영어 모드로 켜고 따로 찍는다 — 영어 영상에 한국어
-  // 화면이 나오지 않게 (Jessi 지시). ko는 기존 파일명 유지.
+  // 화면이 나오지 않게. ko는 기존 파일명 유지.
   const webm = path.join(
     outDir,
     lang === "ko" ? `${date}.webm` : `${date}.en.webm`,
@@ -406,7 +406,7 @@ export async function record(
 
   // 프리워밍: 투어가 방문할 페이지를 미리 한 바퀴 돌아 이미지·라우트 캐시를
   // 데운다 — 쇼츠 페이지 썸네일(원격 Blob 이미지)이 투어 중 카메라 앞에서
-  // 뒤늦게 하나씩 뜨는 번쩍임 방지 (Jessi 지적). readyAt 이전 구간이라
+  // 뒤늦게 하나씩 뜨는 번쩍임 방지. readyAt 이전 구간이라
   // 최종 영상에서는 통째로 잘려 나간다.
   // 대본이 문장마다 지정한 화면 목록 (내레이션 등장 순서, 중복 제거) —
   // 있으면 투어가 이 순서대로 돌고 구간 시각을 남긴다 (내용↔화면 매칭)
@@ -451,7 +451,7 @@ export async function record(
     return null;
   };
   // **정류장이 한 화면뿐이면 다른 화면을 하나 더 녹화한다.** 렌더가 duo(두 폰)
-  // 샷을 쓸 때 재료가 하나뿐이면 똑같은 화면이 두 번 겹쳐 나온다 (Jessi 지적).
+  // 샷을 쓸 때 재료가 하나뿐이면 똑같은 화면이 두 번 겹쳐 나온다.
   const hintPaths = new Set(stops.map((st) => st.path).filter(Boolean));
   if (hintPaths.size <= 1) {
     const only = [...hintPaths][0];
@@ -491,7 +491,7 @@ export async function record(
   await page.waitForTimeout(800);
 
   // en이면 언어 전환(SSR ko → 저장값 en)이 끝날 때까지 기다린 뒤에야
-  // "준비됨"이다 — 안 기다리면 한국어 화면이 readyAt 뒤에 남는다 (Jessi 지적)
+  // "준비됨"이다 — 안 기다리면 한국어 화면이 readyAt 뒤에 남는다
   await waitForLang(page, lang);
   await page.waitForTimeout(300);
   // 녹화 시작~페이지 준비까지의 구간은 로딩 화면이다. Remotion이 이 지점부터
@@ -596,7 +596,7 @@ export async function record(
       let focusY: number | undefined;
       // 브라우저는 큰 그림 주소를 열면 그림 전체가 보이게 화면을 축소해 둔다(그림 문서의 viewport가
       // minimum-scale=0.1) — 1200px 그림이면 화면이 1200 폭으로 보인다. 그 상태로 100vw(=390)에 맞추자
-      // 그림이 화면의 3분의 1 크기로 왼쪽에 작게 찍혀 흐리게 나갔다 (apart 10/11 도전장 카드, Jessi).
+      // 그림이 화면의 3분의 1 크기로 왼쪽에 작게 찍혀 흐리게 나갔다 (apart 10/11 도전장 카드).
       // 축소를 풀고(배율 1로 고정) 화면이 다시 잡힐 때까지 기다린 뒤 폭을 맞춘다
       const isPicture = await page
         .evaluate(() => {
@@ -663,9 +663,9 @@ export async function record(
       const until = Date.now() + perMs;
       if (kind || picture) {
         // 가리킨 것을 붙잡고, 또는 그림 한 장을 띄운 채 **완전히 멈춘다.** 계속 스크롤하면 문장이 말하는
-        // 동안 화면이 그 요소를 지나쳐 흘러간다 (보여 줄 곳을 지나쳐 버린다는 Jessi의 지적).
+        // 동안 화면이 그 요소를 지나쳐 흘러간다 (…).
         // 프레임이 죽어 보이지 않게 6px씩 흔들어 봤는데 그게 주춤거리며
-        // 스크롤하는 것처럼 보였다 (Jessi의 지적) — 움직임은 렌더가 주는
+        // 스크롤하는 것처럼 보였다 — 움직임은 렌더가 주는
         // 느린 줌으로 충분하다. 여기서는 아무것도 하지 않는다.
         while (Date.now() < until) await page.waitForTimeout(500);
       } else {

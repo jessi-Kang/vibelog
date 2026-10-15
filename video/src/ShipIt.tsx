@@ -98,15 +98,14 @@ interface Seg {
   shot?: "whole" | "focus" | "compare";
   /** 가리킨 요소가 녹화 화면에서 세로로 어디였는지 (0~1). band 크롭은
    *  가운데 띠만 보이므로 이 지점을 크롭의 기준으로 잡는다 — 안 그러면
-   *  제대로 표시한 요소가 영상에서 잘린다 (도장이 영상에서
-   *  잘렸다는 Jessi의 지적) */
+   *  제대로 표시한 요소가 영상에서 잘린다 (…) */
   focusY?: number;
   /** 그림 한 장짜리 화면(링크 미리보기 카드 등)의 가로세로비. 있으면 폰 프레임이
    *  아니라 그 비율의 카드로 보여 준다 — 가로로 긴 그림을 세로 폰에 cover로
    *  넣으면 억지로 늘어나고 잘린다 */
   aspect?: number;
   /** duo 샷의 보조 폰이 틀 다른 화면의 시작 시각 — 주 화면과 같은
-   *  화면이 좌우에 반복되지 않게 (Jessi 지적). 녹화가 한 화면뿐이면 없음 */
+   *  화면이 좌우에 반복되지 않게. 녹화가 한 화면뿐이면 없음 */
   duoAltOffset?: number;
   /** diagram 장면이 그릴 그림 — 대본이 고른 종류와 라벨 */
   diagram?: DiagramSpec;
@@ -142,15 +141,15 @@ function kindOf(
   if (scene === "hook") return "hook";
   // 삽질 문장도 화면을 지정했으면 폰을 보여준다. 카드·다이어그램만 띄우던
   // 탓에 도장 이야기를 하는데 도장 화면이 한 번도 안 나오는 편이
-  // … 화면을 안 고른 삽질
+  // 구조적으로 보장돼 있었다 (…였다). 화면을 안 고른 삽질
   // 문장은 그대로 카드다 — 원인 설명은 카드가 낫다.
   if (scene === "fail") return hasScreen ? "phone" : "fail";
   if (scene === "end") return "end";
   // 하나를 크게 보여 줘야 하는 문장은 생성 그림 — 화면을 고르지 않았고 그 문장의 그림이 있을 때만.
-  // 예전엔 "다음 할 것"에만 썼다. 이제 문장마다 (10/11, … 쓰자는 Jessi의 요청)
+  // 예전엔 "다음 할 것"에만 썼다. 이제 문장마다 (…)
   if (hasArt && !hasScreen) return "art";
   // 그래픽이 보류인 동안 next가 폰으로 떨어져, 아무 화면이나 붙어 돌았다
-  // (왜 마지막엔 늘 그 화면이냐는 Jessi의 지적). 대본이 화면을 고르지
+  // (…). 대본이 화면을 고르지
   // 않았으면 화면을 쓰지 않는다.
   //
   // 모티프가 붙었고 화면을 안 골랐으면 모티프를 그린다 — next만이 아니다.
@@ -158,7 +157,7 @@ function kindOf(
   // 화면도 안 고른 그 문장에 아무 녹화나 붙어 돌게 된다 (plain으로 안 가니
   // phone으로 떨어진다). hook·end·fail은 제 카드가 있어 여기 오지 않는다.
   if (!hasScreen && hasMotif) return "plain";
-  // plain은 **마지막 수단**이다 — 자막만 뜬 빈 화면이 된다 (Jessi 지적).
+  // plain은 **마지막 수단**이다 — 자막만 뜬 빈 화면이 된다.
   // 채울 것은 내용에서 나와야 하므로(콜드오픈 모양을 그대로 재사용하는 것은
   // 짜맞추기다) 대본이 그런 문장에 diagram이나 motif를 붙이게 한다 — 그럼 이
   // 분기까지 오지 않는다. 그래도 비면 배경과 자막만 (엉뚱한 화면보다는 낫다).
@@ -229,7 +228,7 @@ export function buildSegments(
     );
     let from = s.start + offset;
     // end 문장에 stat이 있으면 카운터가 먼저 박히고, 엔드카드는 그 뒤에
-    // 들어온다 — 겹치면 마무리 화면이 어색하다 (Jessi 지시)
+    // 들어온다 — 겹치면 마무리 화면이 어색하다
     if (kind === "end") {
       const statAt = statStartOf(script, s, lang);
       if (statAt != null) {
@@ -240,7 +239,7 @@ export function buildSegments(
       }
     }
     // 다이어그램이 붙은 문장은 화면 녹화 대신 그림이 뜬다 — 원리를 말하는
-    // 문장이라 녹화로는 보여줄 게 없다 (Jessi 지시). 그림은 문장마다 달라서
+    // 문장이라 녹화로는 보여줄 게 없다. 그림은 문장마다 달라서
     // 앞 블록과 합치지 않고 항상 제 블록을 갖는다.
     const dia = line?.diagram;
     if (dia) {
@@ -256,7 +255,7 @@ export function buildSegments(
       // 아이콘·모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다.
       // 둘 다 있으면 아이콘이 이긴다 (대상이 분명한 문장이다). 다만 바로 앞 장면도 아이콘이었으면
       // 모티프를 쓴다 — 가운데 판 위 아이콘 하나가 서너 번 이어져 같은 화면이 반복됐다
-      // (10/11 vibelog 편, 가운데 아이콘 하나가 반복된다는 Jessi의 지적)
+      // (…)
       const prev = raw[raw.length - 1];
       const useMotif = !!line.motif && (!line.icon || (prev?.kind === "plain" && !!prev.icon));
       raw.push({
@@ -279,7 +278,7 @@ export function buildSegments(
       // 문장이 고른 화면이 통째로 버려진다 — 9/12 vibelog 편에서 demo 두
       // 문장("첫 화면의 숫자" → /, "글 주소도 7자리" → /log)이 한 블록으로
       // 합쳐져 둘 다 홈만 돌았다. 대본이 문장마다 화면을 고르는 의미가 없어진다
-      // (이야기와 화면이 따로 논다는 Jessi의 지적)
+      // (…)
       (kind === "phone" &&
         !!(line?.screen || findOf(line, lang)) &&
         !!(raw[raw.length - 1].screen || raw[raw.length - 1].find) &&
@@ -342,7 +341,7 @@ export function buildSegments(
       }
       if (!m && segMap?.size) {
         // 화면 미지정 블록: 아직 가장 덜 쓴 녹화 화면을 골라 앞 블록과
-        // 같은 화면만 반복되는 것을 피한다 (같은 화면을 두 번 보여 주는 건 의미가 없다는 Jessi의 지적)
+        // 같은 화면만 반복되는 것을 피한다 (…)
         for (const [p, cand] of segMap) {
           if (
             !m ||
@@ -430,15 +429,14 @@ export const ShipIt: React.FC<ShipItProps> = ({
     segMap,
   );
   // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
-  // 같은 데모 연출이 연속되지 않는다 (Jessi 지시)
+  // 같은 데모 연출이 연속되지 않는다
   /**
    * 이 데모 블록을 어떻게 보여줄지. **내용이 정한다** — 대본이 문장마다 고른
    * shot을 그대로 쓴다 (focus/whole/compare).
    *
    * 전에는 (day + 장면 순번) % 3으로 폰/밴드/듀오를 돌렸다. 내용과 무관한
    * 로테이션이라 격자를 가리키는 문장에 전체 화면이 붙고, 녹화 화면이 하나뿐인
-   * 편에 두 폰이 겹쳐 나왔다 (정해 둔 순서를
-   * 돌리지 말고 내용에 맞춰 구성하라는 Jessi의 지적). 로테이션은 없앴다.
+   * 편에 두 폰이 겹쳐 나왔다 (…). 로테이션은 없앴다.
    *
    * 대본이 안 골랐으면 데이터로 유추한다 — 가리킨 것(find)이 있으면 그것을
    * 크게(focus), 없으면 화면 전체(whole).
@@ -458,7 +456,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
 
   // 순차 페이드 — 나가는 장면은 경계 전에 다 사라지고, 들어오는 장면은
   // 경계부터 뜬다. 크로스페이드는 레이아웃이 다른 장면끼리 애매하게
-  // 겹쳐 보였다 (Jessi 지적).
+  // 겹쳐 보였다.
   const fadeOutOf = (seg: Seg): number =>
     seg.to >= total
       ? 1
@@ -490,7 +488,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
     script.day ?? 0,
   );
 
-  // 머리글 크기 — 42px로 키웠다가 예전 30px로 되돌렸다 (10/11 Jessi의 결정).
+  // 머리글 크기 — 42px로 키웠다가 예전 30px로 되돌렸다 (10/11 결정).
   // 데스크톱 카드에서 작게 보일 때의 뭉개짐은 작게 줄인 썸네일·영상 사본이 맡는다
   const EB = { fs: 30, ls: "0.08em" };
 
@@ -612,7 +610,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
       })}
 
       {/* eyebrow — VIBELOG · DAY NN / 템플릿 배지. 프로젝트 이름·아이콘으로 바꿨다가 되돌렸다:
-          42px로 키우자 이름·DAY·배지가 한 줄에 빽빽했고 긴 이름은 잘렸다 (10/11 Jessi) */}
+          42px로 키우자 이름·DAY·배지가 한 줄에 빽빽했고 긴 이름은 잘렸다 (10/11) */}
       <div
         style={{
           position: "absolute",
@@ -654,7 +652,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
           **그림이 붙은 문장에는 안 띄운다** — 다이어그램이든 모티프든 화면
           가운데를 쓰고 있어 카운터가 그 위에 겹쳐 찍힌다. 집합 다이어그램은
           겹친 값을 제 안에 크게 적기까지 해서 숫자가 두 번 나왔다 ("7"과 "개"가
-          겹쳐 에러처럼 보임 — Jessi 지적). 숫자는 그림이 말하게 둔다.
+          겹쳐 에러처럼 보임). 숫자는 그림이 말하게 둔다.
 
           모티프를 넣으면서 이 조건에 diagram만 두고 motif를 빠뜨렸다. 9/13
           첫 실전 회차에서 바로 드러났다 — vibelog 편의 stack 막대 한가운데에

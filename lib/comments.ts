@@ -1,11 +1,11 @@
 /**
  * 댓글의 규칙 — 누가 무엇을 보고, 누가 무엇을 할 수 있는가. 라우트는 이 함수들만 부른다.
- * 시안 docs/post-comments.html (10/11 Jessi 승인).
+ * 시안 docs/post-comments.html (10/11 승인).
  *
  * - 읽기는 누구나. 로그인 전에는 쓴 사람의 이름·아이콘을 **서버가 보내지 않는다** —
- *   "방문자 1, 2"(그 글 안에서 처음 나온 순서)와 회색 아이콘만. Jessi는 이름까지 보인다.
- * - 쓰기는 Google 로그인한 사람. 답글은 Jessi만 단다.
- * - 숨긴 댓글은 Jessi와 쓴 사람에게만 보인다. 지우기는 Jessi와 쓴 사람.
+ *   "방문자 1, 2"(그 글 안에서 처음 나온 순서)와 회색 아이콘만. 관리자는 이름까지 보인다.
+ * - 쓰기는 Google 로그인한 사람. 답글은 관리자만 단다.
+ * - 숨긴 댓글은 관리자와 쓴 사람에게만 보인다. 지우기는 관리자와 쓴 사람.
  * - 메일 주소는 응답에 넣지 않는다.
  */
 import { isAdminEmail } from "@/auth";
@@ -150,7 +150,7 @@ export async function addComment(
   const id = Number(row.id);
 
   if (viewer.isAdmin) {
-    // Jessi의 답글 → 그 댓글을 쓴 사람에게 (Jessi 자신이면 알리지 않는다)
+    // 관리자의 답글 → 그 댓글을 쓴 사람에게 (관리자 자신이면 알리지 않는다)
     const to = parentAuthor && parentAuthor !== viewer.id ? [parentAuthor] : [];
     for (const u of to) await sql`insert into notifications (user_id, comment_id, kind) values (${u}, ${id}, 'reply')`;
     return { id, notify: { kind: "reply", to } };

@@ -35,7 +35,7 @@ export function fmtShort(date: string): string {
   return date.slice(5).replace("-", ".");
 }
 
-/** 1,234 — 천 단위 콤마 (Jessi 규칙). 로케일 고정: 서버·클라이언트가 갈리면 hydration이 깨진다 */
+/** 1,234 — 천 단위 콤마. 로케일 고정: 서버·클라이언트가 갈리면 hydration이 깨진다 */
 export function fmtNum(n: number): string {
   return n.toLocaleString("en-US");
 }

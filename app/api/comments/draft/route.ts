@@ -1,4 +1,4 @@
-/** Jessi의 답글 AI 초안 (POST { commentId, mode, current }) — Jessi만. 초안은 돌려주기만 하고 올리지 않는다 */
+/** 관리자의 답글 AI 초안 (POST { commentId, mode, current }) — 관리자만. 초안은 돌려주기만 하고 올리지 않는다 */
 import { draftReply, type DraftMode } from "@/lib/comment-draft";
 import { CommentError } from "@/lib/comments";
 import { sameOrigin, viewer } from "@/lib/session";

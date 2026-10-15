@@ -7,7 +7,7 @@
  * 두 경로 다 막힌 환경(권한 차단·비보안 컨텍스트)에서는 조용히 실패하지 않고
  * "복사 실패"를 보여 준다 — 눌렀는데 아무 일도 안 나는 게 제일 나쁘다.
  *
- * 공유 대상은 어느 페이지에서 누르든 **사이트 메인**이다 (Jessi 지시).
+ * 공유 대상은 어느 페이지에서 누르든 **사이트 메인**이다.
  * 푸터는 모든 페이지에 있으니 "이 사이트를 알린다"는 뜻으로 고정한다.
  */
 import { useEffect, useRef, useState } from "react";
@@ -40,7 +40,7 @@ export function ShareLink() {
       try {
         // 주소만 보낸다. 제목·설명을 같이 넘기면 카톡 같은 앱이 그걸 글자로
         // 한 번 붙이고 미리보기 카드에서 또 보여 준다 — "소개 · vibelog -
-        // https://..."처럼 애매한 이름이 붙어 나갔다 (Jessi 지적).
+        // https://..."처럼 애매한 이름이 붙어 나갔다.
         // 이름과 설명은 카드가 말하게 두는 편이 깔끔하다.
         await navigator.share({ url });
       } catch {
@@ -67,7 +67,7 @@ export function ShareLink() {
     <button
       type="button"
       onClick={() => void share()}
-      // 아이콘만 (Jessi 지시) — 이름이 글자로 안 남으니 aria-label로 남기고,
+      // 아이콘만 — 이름이 글자로 안 남으니 aria-label로 남기고,
       // 결과는 라벨이 바뀌는 것으로 알린다. 탭 영역은 음수 마진으로 푸터 줄
       // 높이를 안 밀면서 넓힌다.
       aria-label={label[lang]}

@@ -183,7 +183,7 @@ function autoStatus(
   // 배포 주소가 있어도 릴리즈 선언(GitHub Release 발행) 전이면 preview —
   // 가배포와 정식 공개를 구분한다. 강제 지정은 vibelog.json status.
   // 주소가 Vercel 기본 주소(*.vercel.app)면 Release가 있어도 preview다 — 정식 공개는
-  // 자기 도메인을 단 뒤다 (10/10, Vercel 주소가 아니어야 live라는 Jessi의 기준). live일 때만
+  // 자기 도메인을 단 뒤다 (…). live일 때만
   // 화면에 주소를 건다 (lib/content.ts publicHomepage).
   if (a.homepage) return a.released && !isVercelDefault(a.homepage) ? "live" : "preview";
   const days = (Date.now() - new Date(a.pushedAt).getTime()) / 86400000;
@@ -226,7 +226,7 @@ async function updateProjects(
       descriptionEn.set(a.repo, cached.descriptionEn);
       continue;
     }
-    // 사이트가 EN 모드일 때 카드 설명도 영어로 (Jessi 지시). 번역 실패가
+    // 사이트가 EN 모드일 때 카드 설명도 영어로. 번역 실패가
     // 발행을 막지 않게 격리 — 없으면 UI가 ko로 폴백한다.
     try {
       descriptionEn.set(a.repo, await translateLine(a.description));
@@ -294,7 +294,7 @@ async function updateProjects(
     todayCommits: a.todayCommits,
     totalCommits: a.totalCommits,
     // 이 카운트들이 어느 날(KST) 기준인지 — 화면이 "오늘 커밋"을 보여줄 때
-    // 방문 시점의 오늘과 비교해, 자정이 지났으면 0부터 다시 센다 (Jessi 지시)
+    // 방문 시점의 오늘과 비교해, 자정이 지났으면 0부터 다시 센다
     countsDate: todayKST(),
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
     ...(a.theme ? { theme: a.theme } : {}),
@@ -415,7 +415,7 @@ async function writeDevlog(
   fs.mkdirSync(path.dirname(file), { recursive: true });
   // 원료 메타 — "AI가 커밋 N개로 작성" 표기와 본문의 "원료 · git log"에 쓰인다.
   // 자르지 않는다: "커밋 16개로 썼다"면서 원료에 8개만 보이면 말이 안 맞는다
-  // (Jessi 지적). 화면 쪽이 10개 이상은 접어서 보여준다.
+  //. 화면 쪽이 10개 이상은 접어서 보여준다.
   const shas = a.commits.map((c) => [
     c.sha.slice(0, 7),
     c.message.split("\n")[0],

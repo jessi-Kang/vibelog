@@ -40,7 +40,7 @@ export function isBotCommit(c: Pick<RepoCommit, "author" | "authorName" | "autho
  * 처음엔 "커밋 1개 이상"이었다. apart의 야간 자동 수집 커밋 하나가 12밤 연속으로
  * 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 낭비). 그래서 봇 커밋을 빼고,
  * 필요한 커밋 수를 5개로 올렸다 — 5개가 모이기 전에는 글과 쇼츠를 만들지
- * 않기로 Jessi가 정했다. PR·세션 요약이 있어도 마찬가지다.
+ * 않기로 정했다. PR·세션 요약이 있어도 마찬가지다.
  *
  * 5개가 안 된 레포는 처리 위치(lastRun·lastSha)를 옮기지 않는다. 그래서 그 커밋들은
  * 다음 밤에 다시 읽히고, 5개가 차는 밤의 글에 한꺼번에 들어간다.
@@ -101,7 +101,7 @@ export interface RepoActivity {
   latestSha: string | null;
   /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
   weekCommits: number;
-  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (레포 개수가 아니라 커밋 수를 세자는 Jessi의 요청) */
+  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (…) */
   todayCommits: number;
   /** 레포 전체 누적 커밋 수 — 프로젝트 상세의 "누적 커밋" */
   totalCommits: number;
@@ -111,7 +111,7 @@ export interface RepoActivity {
   theme?: string;
   /**
    * 릴리즈 선언 여부 — GitHub Release가 하나라도 있으면 true. 없으면 배포돼
-   * 있어도 preview (라이브처럼 보여도 릴리즈 전이면 preview라는 Jessi의 기준). About Website는
+   * 있어도 preview (…). About Website는
    * 주소 지정용일 뿐 상태와 무관 — 강제 지정은 vibelog.json status로.
    */
   released: boolean;
@@ -482,8 +482,8 @@ async function getDeployedUrl(
 
 /**
  * 배포 주소를 고른다. 우선순위: About Website(커스텀 의도) → Vercel API(고정 도메인)
- * → GitHub Deployments 기록. Jessi가 아무것도 안 채워도 배포되는 순간 live 판정·카드
- * 링크·쇼츠 데모 URL이 생긴다 ("…" 지적). 단, About Website가 *.vercel.app이면
+ * → GitHub Deployments 기록. 아무것도 안 채워도 배포되는 순간 live 판정·카드
+ * 링크·쇼츠 데모 URL이 생긴다 (…). 단, About Website가 *.vercel.app이면
  * "커스텀 도메인 의도"가 아니라 예전에 적어 둔 기본 주소다 — 커스텀 도메인을 붙인 뒤에도
  * 옛 주소가 카드·녹화에 남는다 (vibelog.space 전환 때 확인). 이때는 자동 감지가 이긴다.
  *
@@ -544,7 +544,7 @@ export function isMaterialCommit(c: RepoCommit): boolean {
     // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
     !/^chore: (데브로그 자동 발행|쇼츠 다시 만듦|쇼츠 썸네일 재추출|새 프로젝트 인식|지난 글 다시 씀)/.test(c.message) &&
     // 머지 커밋은 git 자동 메시지라 재료가 아니다 — 글 원료에 브랜치
-    // 주소가 그대로 노출되기도 한다 (Jessi 지적)
+    // 주소가 그대로 노출되기도 한다
     !/^Merge (branch|remote-tracking branch|pull request)/.test(c.message) &&
     // 레포를 만들 때 GitHub가 찍는 첫 커밋은 일이 아니다 — agency·portfolio-tmp가
     // "Initial commit" 하나로 글·쇼츠가 됐다 (9/24). 커밋 규칙(타입: 요약 + 왜)에
@@ -584,15 +584,14 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     const homepage = await pickHomepage(octokit, owner, repo, r.homepage, vercelProjects);
     // 릴리즈 선언은 GitHub Release 발행 하나뿐. 처음엔 About Website 채움도
     // 선언으로 쳤는데, Website는 "주소 지정"과 겸직이라 다른 세션이 레포를
-    // 정리하며 주소만 채워도 live로 승격되는 사고가 났다 (apart — Jessi가
+    // 정리하며 주소만 채워도 live로 승격되는 사고가 났다 (apart — 주소를
     // 비웠는데 다시 채워져 live 복귀). 강제 지정은 vibelog.json status로.
     const released = await octokit.rest.repos
       .listReleases({ owner, repo, per_page: 1 })
       .then((res) => res.data.length > 0)
       .catch(() => false);
 
-    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (파일 만들기보다
-    // topic이 손품이 덜하다는 Jessi의 판단). vibelog.json이 있으면 그게 우선.
+    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (…). vibelog.json이 있으면 그게 우선.
     const topicTheme = (r.topics ?? [])
       .find((t) => t.startsWith("vibelog-theme-"))
       ?.slice("vibelog-theme-".length);
