@@ -60,7 +60,7 @@ export function SectionHeader({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-3 px-1">
-      {/* 섹션 제목은 이름표 — 내용보다 약하게 (10/11 Jessi: "…", 시안 2안) */}
+      {/* 섹션 제목은 이름표 — 내용보다 약하게 (10/11, 전부 굵어서 문제라는 Jessi의 지적, 시안 2안) */}
       <h2 className="text-base font-medium text-muted">{title}</h2>
       {aside &&
         (href ? (

@@ -1,0 +1,53 @@
+/**
+ * quote-rule.ts — 대화에서 Jessi가 한 말을 따옴표로 그대로 옮겨 적은 곳을 찾는다.
+ *
+ * 이 레포는 공개이고, 커밋 메시지는 밤마다 글의 재료가 된다. 그런데 문서·코드 주석·커밋
+ * 메시지에 대화 속 말을 따옴표째 옮겨 적은 곳이 쌓였다 (10/15에 찾아 보니 수백 줄).
+ * 대화는 공개하려고 한 말이 아니다 — 무엇을 왜 정했는지 뜻만 풀어 쓴다.
+ * 커밋 검사(check-commit.ts)와 파일 검사(check-quotes.ts)가 같이 쓴다.
+ *
+ * 찾는 꼴은 셋이다. "Jessi: …"처럼 이름 뒤 쌍점(따옴표가 없어도 말을 옮긴 꼴), Jessi가 "…",
+ * 그리고 닫는 따옴표 바로 뒤에 괄호·줄표와 이름이 오는 "…" (Jessi). 주석이 여러 줄에 걸쳐도 잡도록 줄바꿈과 주석 기호를 지운
+ * 글에서 찾는다. 메일 제목 "Jessi가 내 댓글에 답글을 달았습니다"처럼 화면에 쓰는
+ * 글자는 걸리지 않는다.
+ */
+const NAME = "Jessi";
+const OPEN = `"“「‘`;
+const CLOSE = `"”」’`;
+const PATTERNS: RegExp[] = [
+  // "Jessi: …", "Jessi 지적: …", "10/11 Jessi: …" — 따옴표가 없어도 말을 옮긴 꼴이다
+  new RegExp(`${NAME}(?:\\s*(?:지시|지적|요청|의견|말))?\\s*[:：]\\s*[^\\s)]`, "g"),
+  // Jessi가 "…", Jessi는 "…"
+  new RegExp(`${NAME}(?:가|는|이|께서)\\s+[${OPEN}]`, "g"),
+  // "…" (Jessi …), "…" — Jessi
+  new RegExp(`[${CLOSE}]\\s*[)\\]]?\\s*(?:\\(|—|,)\\s*(?:\\d{1,2}/\\d{1,2}\\s*)?${NAME}`, "g"),
+];
+
+export interface QuoteHit {
+  line: number;
+  text: string;
+}
+
+export function findUserQuotes(text: string): QuoteHit[] {
+  // 줄바꿈과 다음 줄 앞의 주석 기호(//, *, #, >)를 공백 하나로 — 원래 줄 번호는 따로 기억한다
+  let flat = "";
+  const lineOf: number[] = [];
+  const lines = text.split("\n");
+  lines.forEach((l, i) => {
+    const body = i === 0 ? l : l.replace(/^\s*(?:\/\/+|\*+|#+|>+)?\s*/, "");
+    const piece = (i === 0 ? "" : " ") + body;
+    for (let k = 0; k < piece.length; k++) lineOf.push(i + 1);
+    flat += piece;
+  });
+  const seen = new Set<number>();
+  const hits: QuoteHit[] = [];
+  for (const re of PATTERNS) {
+    for (const m of flat.matchAll(re)) {
+      const ln = lineOf[m.index ?? 0];
+      if (seen.has(ln)) continue;
+      seen.add(ln);
+      hits.push({ line: ln, text: lines[ln - 1].trim().slice(0, 120) });
+    }
+  }
+  return hits.sort((a, b) => a.line - b.line);
+}

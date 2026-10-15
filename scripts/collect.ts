@@ -39,8 +39,8 @@ export function isBotCommit(c: Pick<RepoCommit, "author" | "authorName" | "autho
  *
  * 처음엔 "커밋 1개 이상"이었다. apart의 야간 자동 수집 커밋 하나가 12밤 연속으로
  * 글·삽화·쇼츠를 만들었다 (9/23–10/5, 편당 $0.4쯤 낭비). 그래서 봇 커밋을 빼고,
- * 필요한 커밋 수를 5개로 올렸다: "…"
- * (Jessi). PR·세션 요약이 있어도 마찬가지다.
+ * 필요한 커밋 수를 5개로 올렸다 — 5개가 모이기 전에는 글과 쇼츠를 만들지
+ * 않기로 Jessi가 정했다. PR·세션 요약이 있어도 마찬가지다.
  *
  * 5개가 안 된 레포는 처리 위치(lastRun·lastSha)를 옮기지 않는다. 그래서 그 커밋들은
  * 다음 밤에 다시 읽히고, 5개가 차는 밤의 글에 한꺼번에 들어간다.
@@ -101,7 +101,7 @@ export interface RepoActivity {
   latestSha: string | null;
   /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
   weekCommits: number;
-  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (Jessi 지시: …) */
+  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (레포 개수가 아니라 커밋 수를 세자는 Jessi의 요청) */
   todayCommits: number;
   /** 레포 전체 누적 커밋 수 — 프로젝트 상세의 "누적 커밋" */
   totalCommits: number;
@@ -111,7 +111,7 @@ export interface RepoActivity {
   theme?: string;
   /**
    * 릴리즈 선언 여부 — GitHub Release가 하나라도 있으면 true. 없으면 배포돼
-   * 있어도 preview (Jessi: "…"). About Website는
+   * 있어도 preview (라이브처럼 보여도 릴리즈 전이면 preview라는 Jessi의 기준). About Website는
    * 주소 지정용일 뿐 상태와 무관 — 강제 지정은 vibelog.json status로.
    */
   released: boolean;
@@ -591,8 +591,8 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       .then((res) => res.data.length > 0)
       .catch(() => false);
 
-    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (Jessi 지시:
-    …). vibelog.json이 있으면 그게 우선.
+    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (파일 만들기보다
+    // topic이 손품이 덜하다는 Jessi의 판단). vibelog.json이 있으면 그게 우선.
     const topicTheme = (r.topics ?? [])
       .find((t) => t.startsWith("vibelog-theme-"))
       ?.slice("vibelog-theme-".length);

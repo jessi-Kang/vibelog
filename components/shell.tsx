@@ -102,7 +102,7 @@ function Tabs({
             className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
               on
                 ? bottom
-                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (Jessi: …)
+                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (눈에 …는 Jessi의 지적)
                   : "text-ink"
                 : "text-muted hover:text-ink-soft"
             }`}

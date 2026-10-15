@@ -183,7 +183,7 @@ function autoStatus(
   // 배포 주소가 있어도 릴리즈 선언(GitHub Release 발행) 전이면 preview —
   // 가배포와 정식 공개를 구분한다. 강제 지정은 vibelog.json status.
   // 주소가 Vercel 기본 주소(*.vercel.app)면 Release가 있어도 preview다 — 정식 공개는
-  // 자기 도메인을 단 뒤다 (10/10 Jessi: "…"). live일 때만
+  // 자기 도메인을 단 뒤다 (10/10, Vercel 주소가 아니어야 live라는 Jessi의 기준). live일 때만
   // 화면에 주소를 건다 (lib/content.ts publicHomepage).
   if (a.homepage) return a.released && !isVercelDefault(a.homepage) ? "live" : "preview";
   const days = (Date.now() - new Date(a.pushedAt).getTime()) / 86400000;
