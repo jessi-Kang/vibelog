@@ -1,6 +1,6 @@
 "use client";
 /**
- * 사이트 전역 언어 설정 (Jessi 지시 — 페이지마다 흩어진 토글을 하나로).
+ * 사이트 전역 언어 설정 (페이지마다 흩어진 토글을 하나로).
  * 선택은 localStorage("vibelog-lang")에 저장되어 다음 방문에도 유지된다.
  * 서버 렌더는 항상 ko — 마운트 후 저장값으로 전환한다 (hydration 불일치 방지).
  */
@@ -33,7 +33,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // <html lang>에 반영 — 스크린리더·검색엔진용이자, 쇼츠 녹화(record.ts)가
     // "영어 전환이 끝났다"를 확인하는 신호. SSR은 ko라 전환 전 화면이 영문
-    // 녹화에 섞이는 문제가 있었다 (Jessi 지적).
+    // 녹화에 섞이는 문제가 있었다.
     document.documentElement.lang = lang;
   }, [lang]);
   const setLang = (v: Lang) => {

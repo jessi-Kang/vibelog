@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { ReactNode, CSSProperties } from "react";
 
 export function Wordmark({ size = 18 }: { size?: number }) {
-  // 헤더 로고는 모노 — 터미널 톤과 맞춘다 (Jessi 지시)
+  // 헤더 로고는 모노 — 터미널 톤과 맞춘다
   return (
     <span
       className="font-mono font-bold leading-none tracking-[.01em] text-ink"
@@ -60,7 +60,7 @@ export function SectionHeader({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-3 px-1">
-      {/* 섹션 제목은 이름표 — 내용보다 약하게 (10/11, 전부 굵어서 문제라는 Jessi의 지적, 시안 2안) */}
+      {/* 섹션 제목은 이름표 — 내용보다 약하게 (…) */}
       <h2 className="text-base font-medium text-muted">{title}</h2>
       {aside &&
         (href ? (
@@ -140,14 +140,14 @@ export function StatusBadge({ status }: { status: string }) {
 }
 
 /**
- * 쇼츠가 있는 글 표시 — 글자("쇼츠 ▶") 대신 Tabler `movie` 아이콘 (시안 docs/post-short-icon.html D안, Jessi).
+ * 쇼츠가 있는 글 표시 — 글자("쇼츠 ▶") 대신 Tabler `movie` 아이콘 (시안 docs/post-short-icon.html D안).
  * 쇼츠가 없는 글에는 아무것도 붙이지 않는다. SVG의 <title>은 React 19 SSR에서 비므로
  * 이름은 aria-label, 마우스를 올렸을 때 뜨는 설명은 바깥 span의 title로 남긴다.
  */
 export function ShortMark({ label, size = 12, inRow = false }: { label: string; size?: number; inRow?: boolean }) {
   return (
     // inRow: 글 목록의 메타 줄(MonoMeta)은 줄 상자 가운데에 맞추는데, 옆 글자의 잉크가 줄 상자 가운데보다
-    // 아래에 앉아 아이콘이 1.9px 떠 보였다 (4배 화면에서 잰 값, Jessi). 그만큼 내린다
+    // 아래에 앉아 아이콘이 1.9px 떠 보였다 (4배 화면에서 잰 값). 그만큼 내린다
     <span className={`inline-flex text-accent${inRow ? " translate-y-[2px]" : ""}`} title={label}>
       <svg
         role="img"

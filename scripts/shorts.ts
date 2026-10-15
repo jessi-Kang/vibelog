@@ -84,7 +84,7 @@ export async function runShorts(
     script = await loadScript(repo, date);
   }
 
-  // 생성 그림 — 하나를 크게 보여 줄 문장마다 (10/11 Jessi, 둥근 평면 · 강조색 한 가지, 투명 배경).
+  // 생성 그림 — 하나를 크게 보여 줄 문장마다 (10/11, 둥근 평면 · 강조색 한 가지, 투명 배경).
   // 키가 없거나 실패하면 그 문장은 함께 고른 아이콘·모티프로 간다
   await generateArt(repo, date);
 
@@ -95,7 +95,7 @@ export async function runShorts(
   const demoUrl = script.demo.url || (await resolveHomepage(repo));
   if (demoUrl) {
     // 언어별로 따로 녹화 — 사이트를 그 언어 모드로 켜서, 영어 영상에
-    // 한국어 화면이 나오지 않게 한다 (Jessi 지시)
+    // 한국어 화면이 나오지 않게 한다
     for (const lang of ["ko", "en"] as const) {
       const timing: ShortsTiming = JSON.parse(
         fs.readFileSync(
@@ -115,7 +115,7 @@ export async function runShorts(
     console.log(`[shorts] 렌더 (${lang})`);
     const mp4 = await renderShort(repo, date, lang);
     // 썸네일 = 훅 헤드라인이 다 켜진 순간의 프레임 (CSS 재현 대신 진짜 프레임 —
-    // Jessi 지시. 훅이 언어별로 다르므로 en도 따로 뽑는다).
+    // 훅이 언어별로 다르므로 en도 따로 뽑는다).
     // 첫 프레임은 안 된다: 콜드오픈이 있으면 타이핑이 막 시작된 빈 터미널이다.
     {
       const posterKey =

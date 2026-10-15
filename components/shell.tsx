@@ -2,9 +2,9 @@
 /**
  * Shell — 핸드오프 ui_kits/blog/Shell.jsx 재구현.
  * 모바일(<720): 헤더 1줄(워드마크 — 상세에서는 ← 돌아갈 목록) + 하단 고정 탭바.
- *   앱처럼 엄지 닿는 곳에 메뉴를 (Jessi 지시). 상세에서도 탭바는 유지.
+ *   앱처럼 엄지 닿는 곳에 메뉴를. 상세에서도 탭바는 유지.
  * 태블릿·데스크톱: 한 줄(워드마크 | 탭), 상세 뒤로는 헤더 아래 줄.
- * "다음 실행 23:00" 표시는 제거 — 경로와 붙어 헷갈리고 꼭 필요하지 않다 (Jessi 지시).
+ * "다음 실행 23:00" 표시는 제거 — 경로와 붙어 헷갈리고 꼭 필요하지 않다.
  */
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -21,7 +21,7 @@ const TABS = [
   { href: "/about", ko: "소개", en: "About" },
 ];
 
-/** 메뉴 옆 개수 — 프로젝트·데브로그 (Jessi 지시). layout이 서버에서 세서 넘긴다 */
+/** 메뉴 옆 개수 — 프로젝트·데브로그. layout이 서버에서 세서 넘긴다 */
 export interface TabCounts {
   projects?: number;
   devlogs?: number;
@@ -40,7 +40,7 @@ function useRoute() {
   // 글 주소는 `/p/<id>`다. `/log/<repo>/<date>`는 옛 주소로 301만 한다 —
   // 주소를 옮길 때(0eb702d) 여기를 같이 안 고쳐서, 글을 보는 동안 어느 탭에도
   // 안 걸리고 마지막 폴백인 "/"로 떨어져 **프로젝트**에 밑줄이 그어져 있었다
-  // (Jessi 지적). 글은 데브로그다.
+  //. 글은 데브로그다.
   const tab =
     post || pathname.startsWith("/p/") || pathname.startsWith("/log")
       ? "/log"
@@ -73,7 +73,7 @@ function Tabs({
           : undefined;
   // 페이지 이동 링크다 — tab 롤이 아니라 nav + aria-current가 맞다.
   // 박스 안에 박스(세그먼트 컨트롤)는 무겁다 — 텍스트 + 민트 언더라인의
-  // 조용한 탭으로 (Jessi 지시, taste 패스)
+  // 조용한 탭으로 (taste 패스)
   return (
     <nav
       aria-label="주요 메뉴"
@@ -102,7 +102,7 @@ function Tabs({
             className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
               on
                 ? bottom
-                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (눈에 …는 Jessi의 지적)
+                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (…)
                   : "text-ink"
                 : "text-muted hover:text-ink-soft"
             }`}
@@ -239,7 +239,7 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
           </div>
           {/* 상단 탭은 데스크톱만 — 모바일은 아래 고정 탭바가 담당 */}
           {/* 탭 사이(28px)보다 탭↔토글 간격이 더 넓어야 한다 — 20px였더니
-              토글이 "소개"에 붙어 한 묶음처럼 보였다 (Jessi 지적) */}
+              토글이 "소개"에 붙어 한 묶음처럼 보였다 */}
           <div className="hidden items-center gap-4 md:flex md:gap-10">
             <Tabs active={tab} counts={counts} />
             <span className="hidden items-center gap-2 md:flex">
@@ -250,8 +250,8 @@ export function SiteHeader({ counts }: { counts?: TabCounts }) {
         </div>
       </header>
       {/* 모바일 하단 탭바 — 홈 인디케이터 영역(safe-area)만큼 아래 여백.
-          본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리 (Jessi 피드백).
-          스크롤 내리면 아래로 내려가 숨고, 올리면 복귀 (Jessi 지시). 모션 축소 설정은 즉시 전환 */}
+          본문과 같은 배경이면 묻힌다 — 패널색 + 위쪽 그림자로 층을 분리.
+          스크롤 내리면 아래로 내려가 숨고, 올리면 복귀. 모션 축소 설정은 즉시 전환 */}
       <div
         className={`fixed inset-x-0 bottom-0 z-30 border-t border-line-strong bg-panel/85 pb-[env(safe-area-inset-bottom)] shadow-[0_-10px_24px_rgba(5,8,12,0.55)] backdrop-blur-md transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
           scrollingDown ? "translate-y-full" : "translate-y-0"

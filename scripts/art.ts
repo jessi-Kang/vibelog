@@ -4,7 +4,7 @@
  * 텍스트+실제 화면 녹화 위에 얹는 "+알파" 그래픽이다. 데모 화면은 여전히
  * 실제 배포 사이트 녹화만 쓴다.
  *
- * Gemini와 OpenAI를 둘 다 쓴다 (10/11 Jessi). 먼저 부르는 쪽은 ART_PROVIDER
+ * Gemini와 OpenAI를 둘 다 쓴다 (10/11). 먼저 부르는 쪽은 ART_PROVIDER
  * (openai | gemini, 기본 openai)로 고르고, 그쪽이 실패하면 다른 쪽으로 넘어간다.
  * 쇼츠 그림은 테마 바탕 위에 얹으므로 투명 배경이어야 하는데, 투명 배경은 OpenAI만
  * 된다 (Gemini 최신 모델은 JPEG만 낸다). 그래서 투명 배경을 달라고 하면 OpenAI만 부르고,
@@ -33,7 +33,7 @@ const OPENAI_MODELS = ["gpt-image-2.5-flare", "gpt-image-2.5-sunburst"];
 type Provider = "gemini" | "openai";
 
 /**
- * 그림 스타일 — 둥근 평면 그림, 강조색 한 가지, 투명 배경 (10/11 Jessi, 3차 시안 "한 색").
+ * 그림 스타일 — 둥근 평면 그림, 강조색 한 가지, 투명 배경 (10/11, 3차 시안 "한 색").
  * 종이 콜라주(2차 시안 B안)와 겨뤄 이쪽을 골랐다 — 형태가 단순해 쇼츠에서 작게 지나가도 읽힌다.
  * 회사 이름(듀오링고)은 지시문에 넣지 않는다 — 넣으면 그 마스코트를 그대로 그리기 쉽다.
  * 쇼츠 테마 바탕 위에 얹으므로 색은 그 레포의 테마를 따른다: 강조색 한 군데 + 무채색.
@@ -60,7 +60,7 @@ export const THEME_PAPER: Record<string, { accent: string; light: boolean }> = {
 
 /**
  * 보관해 둔 그림체 — 오려 붙인 종이 콜라주 (10/11 2차 시안 B안). 지금은 쓰지 않는다.
- * Jessi가 둥근 평면을 골랐지만 이것도 좋다고 해서 지시문을 남겨 둔다. 켜려면 ART_STYLE=papercut.
+ * 둥근 평면으로 정했지만 이것도 후보로 남겨 둔다. 켜려면 ART_STYLE=papercut.
  * 시안 그림은 docs/art-styles.html.
  */
 const PAPERCUT_BASE =
@@ -79,15 +79,15 @@ export function styleFor(
 ): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
   // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
-  // 먹색은 혼자 무겁게 떴다 (10/11 Jessi 두 번). 짙은 슬레이트까지 내렸다가 두 번 더 "어둡다"를
+  // 먹색은 혼자 무겁게 떴다 (10/11 두 번). 짙은 슬레이트까지 내렸다가 두 번 더 "어둡다"를
   // 들었다 — 큰 면은 옅은 회색에서 중간 회색까지, 가장 짙은 색도 테마의 보조 글자색(#8A919B)까지.
-  // 짙은 그림자 면을 따로 넣지 않는다 (Jessi). 색 후보는 그림을 만들기 전에 바탕 위에서 먼저 견준다
+  // 짙은 그림자 면을 따로 넣지 않는다. 색 후보는 그림을 만들기 전에 바탕 위에서 먼저 견준다
   const neutrals = t.light
     ? "light gray (#D3D7DD), soft gray (#BAC0C8) and medium gray (#A3AAB4), with #8A919B only for small details; " +
       "white only for tiny highlights, never large white areas, nothing darker than #8A919B"
     : "off-white, light gray and slate gray";
   // 블로그 글에 넣는 그림은 가로로 긴 판형이다 — 쇼츠처럼 가운데 물건 하나를 세로로 세우면
-  // 글 칼럼에서 위아래로 길쭉해졌다 (10/11, 블로그에 맞는 판형으로 하자는 Jessi의 요청). 글의 삽화(가로 390 × 세로 가운데값
+  // 글 칼럼에서 위아래로 길쭉해졌다 (…). 글의 삽화(가로 390 × 세로 가운데값
   // 225, 약 16:9)와 같은 판에 같은 비율로 놓이므로 16:9로 그리고, 물건 두세 개를 옆으로 늘어놓는다
   const base = (style === "papercut" ? PAPERCUT_BASE : STYLE_BASE).replace(
     "One centered subject with generous empty space around it. Square composition. ",
@@ -240,7 +240,7 @@ export async function generateArt(repo: string, date: string): Promise<void> {
   const script: ShortsScript = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), shortsJsonPath(repo, date)), "utf8"),
   );
-  // 타이틀(훅)에는 그래픽을 넣지 않는다 (Jessi 지시) — next 장면 전용
+  // 타이틀(훅)에는 그래픽을 넣지 않는다 — next 장면 전용
   // 하나를 크게 보여 줄 문장마다 (10/11 — 예전엔 "다음 할 것"에만). 제 카드가 있는 장면과,
   // 화면·다이어그램을 고른 문장은 그쪽이 이기므로 만들지 않는다 (돈만 든다)
   const targets = script.lines
@@ -290,7 +290,7 @@ export async function generateArt(repo: string, date: string): Promise<void> {
 
 /**
  * 만든 그림 목록 — Blob에 그림과 함께 둔다. 쇼츠 그림은 한 장에 돈이 들고, 대본은 비슷한 장면을
- * 자주 쓴다(돋보기, 문 앞의 경비, 쌓인 서류…). 비슷하면 다시 쓰자고 했다 (10/11 Jessi).
+ * 자주 쓴다(돋보기, 문 앞의 경비, 쌓인 서류…). 비슷하면 다시 쓰자고 했다 (10/11).
  */
 const ART_DIR = "shorts/art";
 const ART_INDEX = `${ART_DIR}/index.json`;

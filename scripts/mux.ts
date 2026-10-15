@@ -27,7 +27,7 @@ export function mux(
     `[1:a]adelay=${DELAY}|${DELAY},apad=whole_dur=${DUR},asplit=2[n1][n2];` +
     // 음악은 45초짜리 고정 트랙이라 영상이 더 길면 거기서 끊긴다 — 그러면
     // -shortest가 영상까지 잘라 엔드카드가 통째로 날아간다 (apart 9/10에서
-    // 50초 영상이 45초로 잘림, Jessi 지적). 루프로 이어 붙이고, 그래도 모자라면
+    // 50초 영상이 45초로 잘림). 루프로 이어 붙이고, 그래도 모자라면
     // 무음으로 채워 오디오 길이가 항상 영상 길이와 같게 만든다.
     `[2:a]aloop=loop=-1:size=2147483647,atrim=0:${DUR},asetpts=N/SR/TB,` +
     `apad=whole_dur=${DUR},volume=0.20,` +

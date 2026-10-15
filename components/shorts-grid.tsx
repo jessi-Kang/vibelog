@@ -18,14 +18,14 @@ export interface ThumbData {
   hookKeywords: string[];
   template: string;
   duration?: number;
-  /** 영상 첫 프레임 이미지 URL — 있으면 CSS 재현 대신 이걸 쓴다 (Jessi 지시) */
+  /** 영상 첫 프레임 이미지 URL — 있으면 CSS 재현 대신 이걸 쓴다 */
   poster?: string;
 }
 
 /**
  * 호버 시 재생 표시 — "이건 영상"이라는 신호. 정지 상태에선 조용히.
  * 글자 "▶"는 기기마다 글꼴이 달라 모양·자리가 흔들려서 Tabler player-play-filled로 바꿨다
- * (10/11 Jessi, 시안 A — 지금의 어두운 원판 그대로). 삼각형은 상자 가운데가 아니라 무게중심을 원 가운데에
+ * (10/11, 시안 A — 지금의 어두운 원판 그대로). 삼각형은 상자 가운데가 아니라 무게중심을 원 가운데에
  * 맞춘다 — 상자로 맞추면 왼쪽으로 쏠려 보인다. translate 0.9는 4배 화면에서 잰 값이다.
  */
 function PlayOverlay() {
@@ -153,7 +153,7 @@ export function ShortsGrid({
           );
         })}
         {introSrc && (
-          // 채널 인트로는 맨 끝 — 새로 만들어진 쇼츠가 항상 왼쪽에 온다 (Jessi 지시)
+          // 채널 인트로는 맨 끝 — 새로 만들어진 쇼츠가 항상 왼쪽에 온다
           <div className="flex flex-col gap-2">
             <button
               type="button"

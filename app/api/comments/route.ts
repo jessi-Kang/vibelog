@@ -1,7 +1,7 @@
 /**
  * 댓글 목록(GET ?post=)과 쓰기(POST). 규칙은 lib/comments.ts.
  * 쓰기는 안전 검사(비밀 키·개인 연락처·AI에게 끼워 넣은 지시)를 지나야 올라간다 —
- * Jessi의 AI 초안이 댓글을 읽으므로 끼워 넣은 지시도 막는다.
+ * 관리자의 AI 초안이 댓글을 읽으므로 끼워 넣은 지시도 막는다.
  */
 import { after } from "next/server";
 import { checkSafety, fmtSafety } from "@/scripts/safety";

@@ -44,7 +44,7 @@ export class NoScreensError extends Error {
 
 /** 훅 문장 상한(공백 포함 글자 수) — 넘으면 한 번 다시 쓰게 한다 */
 const HOOK_MAX = 22;
-// 대본도 글과 같은 모델 — 내레이션은 시청자가 직접 듣는 원고다 (10/5 Jessi)
+// 대본도 글과 같은 모델 — 내레이션은 시청자가 직접 듣는 원고다 (10/5)
 const MODEL = "claude-opus-5-5";
 /**
  * 생각의 깊이 — 처음도 다시 쓸 때도 medium. 대본은 문장 9개짜리 JSON이라 thinking이
@@ -477,7 +477,7 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
         return false;
       };
     // hook은 화면 가득 찬 헤드라인이라 강조를 하나로 — 두 개만 돼도
-    // 짧은 문장이 통째로 칠해진다 (훅 전체가 칠해졌다는 Jessi의 지적)
+    // 짧은 문장이 통째로 칠해진다 (…)
     const maxSpans = l.scene === "hook" ? 1 : 3;
     return {
       scene: l.scene,
@@ -567,8 +567,7 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
  * 강조 분량 제한 — 켜지는 단어가 문장의 절반을 넘지 않게 앞에서부터 담는다.
  *
  * 개수만 1~3개로 막아 뒀더니, 한국어 훅은 애초에 서너 단어라 두 개만 걸려도
- * 문장이 통째로 칠해졌다 ("지어낸 이름이 진짜 아파트였습니다."가 전부 하이라이트 —
- * Jessi 지적). 강조가 배경이 되면 강조가 아니다.
+ * 문장이 통째로 칠해졌다 ("지어낸 이름이 진짜 아파트였습니다."가 전부 하이라이트였다). 강조가 배경이 되면 강조가 아니다.
  *
  * 단어 매칭 규칙은 video/src/theme.ts의 keywordIndices와 같아야 한다 —
  * 여기서 통과시킨 것이 저기서 켜지는 것과 달라지면 계산이 어긋난다.
@@ -616,8 +615,7 @@ export function capCoverage(
  * 아무것도 못 보여주는 문장을 찾는다 — **이건 장애다.**
  *
  * 화면(screen/find)도 그림(diagram)도 없는 문장은 배경과 자막만 뜬 빈 화면으로
- * 나간다. 경고만 남기면 아무도 안 보고 그대로 발행된다 (화면도 그림도
- * 안 고른 대본은 장애이고, 그때는 영상을 만들면 안 된다는 Jessi의 판단).
+ * 나간다. 경고만 남기면 아무도 안 보고 그대로 발행된다 (…).
  *
  * 그래서 대본을 받으면 여기서 막는다 — 한 번은 이 문장들을 집어 다시 쓰게 하고,
  * 그래도 비어 있으면 예외를 던져 **영상을 만들지 않는다.** 쇼츠가 없는 날이
@@ -628,8 +626,7 @@ export function capCoverage(
  * fail은 예외에서 **뺐다.** 삽질 카드(failCard)는 문제·해결을 적은 제목 카드일
  * 뿐이어서, 그 문장이 말하는 것을 보여주지는 않는다. 이 예외 때문에 "미리보기
  * 도장이 얼룩처럼 번졌습니다" 같은 문장이 화면도 그림도 없이 통과했고, 정작
- * 도장은 옆 문장(게임 설명)이 가리킨 화면에 딸려 나왔다 (도장 이야기를
- * 할 때가 아니라 게임 설명을 할 때 도장이 나온다는 Jessi의 지적). 삽질 문장도 둘 중
+ * 도장은 옆 문장(게임 설명)이 가리킨 화면에 딸려 나왔다 (…). 삽질 문장도 둘 중
  * 하나를 고른다 — 그것을 화면에서 가리키거나(find), 원인을 그린다(diagram).
  * failCard는 콜드오픈 재료로 그대로 쓴다.
  */
@@ -959,15 +956,15 @@ export async function generateScript(
   const title = String(data.title ?? "");
   let blanks = blankScenes(lines);
   // 훅 길이 — "20자 안팎"을 지시문에만 적어 두었더니 26자 훅이 나가 화면에 네 줄로 꽉 찼다
-  // (lie-detective 10/10, Jessi). 넘친 훅은 같은 한 번의 다시 쓰기에 합친다
+  // (lie-detective 10/10). 넘친 훅은 같은 한 번의 다시 쓰기에 합친다
   const longHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook" && [...l.ko].length > HOOK_MAX);
   let longs = longHooks(lines);
   // 훅은 한 문장 — "장면당 1~2문장"을 훅에도 적용해 두 문장 훅이 나왔다. 훅 카드는 둘째 문장이 오면
-  // 헤드라인을 바꿔 띄워 훅이 두 번 나온다 (10/11·10/12 vibelog, 두 문장 훅이 잦다는 Jessi의 지적). 같은 한 번의 다시 쓰기에 합친다
+  // 헤드라인을 바꿔 띄워 훅이 두 번 나온다 (…). 같은 한 번의 다시 쓰기에 합친다
   const extraHooks = (ls: ShortsLine[]) => ls.filter((l) => l.scene === "hook").slice(1);
   let extras = extraHooks(lines);
   // 아이콘·모티프만 있는 장면이 연달아 오는 문장 — 가운데 그림 하나가 이어져 같은 화면처럼 보였다
-  // (10/11 vibelog, 아이콘·모티프도 연달아 두지 말자는 Jessi의 요청). 같은 한 번의 다시 쓰기에 합친다
+  // (…). 같은 한 번의 다시 쓰기에 합친다
   let runs = graphicRuns(lines);
   // 듣기 검사가 고른 문장이 대본의 몇 번째인지 — 검사 모델이 문장을 조금 다르게 옮겨 올 수 있다
   const lineOf = (sentence: string): number => {
@@ -1158,7 +1155,7 @@ export async function generateScript(
     date,
     day: dayNumber(repo, date),
     // 다이어그램 개수 상한은 없앴다 — 그림이 내용을 더 잘 설명하면 더 쓰는 게
-    // 맞다 (Jessi). 빈 화면은 위에서 막았다 (한 번 교정, 안 되면 예외).
+    // 맞다. 빈 화면은 위에서 막았다 (한 번 교정, 안 되면 예외).
     lines,
     demo: { url: shownUrl, steps: [] },
     ...(failCard ? { failCard } : {}),

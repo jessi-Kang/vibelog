@@ -24,7 +24,7 @@ const D = /^[MmLlHhVvCcSsQqTtAaZz0-9.,\s-]+$/;
 
 /**
  * 아이콘을 고를 재료가 없을 때(소개 글이 아직 없거나, 세트에 맞는 아이콘이 없을 때) 그리는 기본 아이콘 —
- * Tabler `code` (시안 docs/project-icon-default.html C안, 10/11 Jessi). projects.json에는 적지 않는다 —
+ * Tabler `code` (시안 docs/project-icon-default.html C안, 10/11). projects.json에는 적지 않는다 —
  * 적으면 나중에 소개 글이 고른 아이콘과 구별이 안 된다. 화면에서만 대신 그린다.
  */
 export const DEFAULT_PROJECT_ICON: ProjectIcon = {

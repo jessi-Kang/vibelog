@@ -29,7 +29,7 @@ import {
 } from "./theme";
 
 /**
- * hook 문장에서 키워드를 강조한 큰 타이틀. 타이포만 — 그래픽 금지 (Jessi 지시).
+ * hook 문장에서 키워드를 강조한 큰 타이틀. 타이포만 — 그래픽 금지.
  * 훅 장면에서는 하단 자막을 끄므로(중복), 훅이 2문장이면 헤드라인이
  * 지금 말하는 문장으로 갱신된다 — 화면에 안 보이는 말이 없게.
  */
@@ -41,7 +41,7 @@ export const HookCard: React.FC<{
   /** 화면 시간 → 오디오 시간 변환 오프셋 (콜드오픈 포함) */
   offsetSec?: number;
   /** 낱말이 켜지는 방식 — fade(제자리에서 옅게→또렷, 기본) / rise(떠오르며·키워드 팝) / still(처음부터 다).
-   *  예전 기본이던 rise는 글씨가 튀어 오르며 바뀌는 게 이상했다 (10/11 Jessi, 세 가지를 견줘 fade로) */
+   *  예전 기본이던 rise는 글씨가 튀어 오르며 바뀌는 게 이상했다 (10/11, 세 가지를 견줘 fade로) */
   motion?: "rise" | "fade" | "still";
 }> = ({ script, lang, timing, th, offsetSec = NARRATION_DELAY, motion = "fade" }) => {
   const frame = useCurrentFrame();
@@ -67,7 +67,7 @@ export const HookCard: React.FC<{
   // 대본이 뜻 덩어리로 끊어 둔 줄 — 있으면 그대로 끊고, 가장 긴 줄이 폭에 들어가게 글자를 맞춘다
   const lines = lang === "ko" ? hook.koLines : hook.enLines;
   // 뜻으로 끊은 줄이 132px에서 폭(920)을 넘으면 그 줄 안에서 접혀 낱말 하나가 혼자 남았다
-  // (10/12 vibelog 훅에서 낱말 하나가 혼자 한 줄에 남았다는 Jessi의 지적).
+  // (…).
   // 글자를 줄에 맞춰 계속 줄이지는 않는다(영어 훅이 68px까지 작아졌다) — 긴 훅에 쓰던 104px로 한 단계만 내린다.
   // 104px에서도 넘치는 줄이 있으면 그 줄 나눔은 버리고 폭으로 자른다.
   // 굵은 한글 한 자는 글자 크기의 0.89배 폭이다 (10/12 영상에서 잰 값) — 132px면 한 줄 7.7자, 104px면 9.8자
@@ -100,19 +100,19 @@ export const HookCard: React.FC<{
           fontFamily: FONT_SANS,
           fontWeight: 900,
           // 긴 훅은 줄여서 — 132px 고정이면 25자 넘는 문장이 글자 벽이 된다
-          // (Jessi 지적). 대본 규칙은 20자 안팎이지만 렌더도 방어한다.
+          //. 대본 규칙은 20자 안팎이지만 렌더도 방어한다.
           // 기준은 시각 폭(한글 1·영문 0.5) — 영어가 억울하게 줄지 않게.
           // 줄 나눔이 있어도 글자 크기는 줄이지 않는다 — 가장 긴 줄에 맞춰 줄였더니 영어 훅이 68px까지
-          // 작아졌다 …. 폭을 넘는 줄은 그 줄 안에서 낱말 단위로 접힌다
+          // 작아졌다 (…). 폭을 넘는 줄은 그 줄 안에서 낱말 단위로 접힌다
           fontSize: hookSize,
           // 마커칠 키워드는 배경 상자가 글자 박스만큼 높다 — 줄간이 좁으면
-          // 이웃 줄 글자를 덮는다 (Jessi 지적). 마커 테마만 줄간을 벌린다.
+          // 이웃 줄 글자를 덮는다. 마커 테마만 줄간을 벌린다.
           lineHeight: th.keyword === "marker" ? 1.3 : 1.14,
           letterSpacing: "-0.01em",
           margin: 0,
           wordBreak: "keep-all",
           // balance는 줄 길이를 고르게 맞추느라 "추리 게임 / 속 용의자의"처럼 한 덩어리 말을
-          // 갈랐다 (10/11 Jessi). 앞에서부터 채우고, 마지막 줄에 낱말 하나만 남는 것만 막는다
+          // 갈랐다 (10/11). 앞에서부터 채우고, 마지막 줄에 낱말 하나만 남는 것만 막는다
           textWrap: "pretty",
           color: th.ink,
         }}
@@ -160,14 +160,14 @@ export const HookCard: React.FC<{
           color: th.muted,
         }}
       >
-        {/* DAY 번호는 머리글(VIBELOG · DAY NN)에 이미 있어 레포 이름만 둔다 — 둘 다 적던 때는 한 화면에 두 번 나왔다 (10/11 Jessi) */}
+        {/* DAY 번호는 머리글(VIBELOG · DAY NN)에 이미 있어 레포 이름만 둔다 — 둘 다 적던 때는 한 화면에 두 번 나왔다 (10/11) */}
         {script.repo}
       </p>
     </div>
   );
 };
 
-/** 데모 샷 종류 — 매 데모 장면이 같은 폰 컷이면 중반이 늘어진다 (Jessi 지시).
+/** 데모 샷 종류 — 매 데모 장면이 같은 폰 컷이면 중반이 늘어진다.
  *  phone(베젤+켄 번스) / band(와이드 밴드 크롭+세로 팬) / duo(두 시점 겹치기).
  *  녹화가 390×844라 1080 풀블리드는 화질이 무너진다 — 셋 다 업스케일 ~2배 이내. */
 export type DemoShot = "phone" | "band" | "duo" | "card";
@@ -277,10 +277,10 @@ export const PhoneFrame: React.FC<{
     // 와이드 밴드 크롭 — 베젤 없이 화면 중앙을 크게.
     // **가리킨 것이 있으면 프레임 안에서도 팬하지 않는다** — 녹화가 그 자리에
     // 머물러 있는데 크롭이 위아래로 움직이면 결국 요소가 프레임에서 빠져나간다
-    // (보여 줄 곳을 지나쳐 버린다는 Jessi의 지적). 움직임은 미세한 줌만 남긴다.
+    // (…). 움직임은 미세한 줌만 남긴다.
     // 붙잡은 요소가 있으면 그 세로 위치를 크롭의 기준점으로 삼는다. 가운데
     // (50%)로 고정하면 화면 위쪽·아래쪽에 있는 요소가 띠 밖으로 잘려 나간다
-    // (제대로 표시한 것이 영상에서 잘렸다는 Jessi의 지적).
+    // (…).
     const panY = held
       ? focusY != null
         ? Math.min(88, Math.max(12, focusY * 100))
@@ -331,7 +331,7 @@ export const PhoneFrame: React.FC<{
   if (videoFile && shot === "duo") {
     // 두 시점 겹치기 — 폰 두 대. 앞(왼쪽) 폰은 내레이션과 매칭된 주 화면,
     // 뒤(오른쪽) 폰은 녹화된 '다른' 화면(duoAltOffsetSec) — 같은 화면이
-    // 좌우에 반복되면 의미가 없다 (Jessi 지적). 다른 화면 녹화가 없는
+    // 좌우에 반복되면 의미가 없다. 다른 화면 녹화가 없는
     // 옛 영상만 같은 화면 +3초 폴백. 작게 그려서 오히려 선명하다 (~1.2배)
     const lift = span ? interpolate(t, [...span], [8, -8], clamp0) : 0;
     const altStart = duoAltOffsetSec ?? sourceOffsetSec + 3;
@@ -405,7 +405,7 @@ export const PhoneFrame: React.FC<{
   }
   // 정지된 폰은 3초만 지나도 밋밋하다 — 장면마다 방향을 바꾸는 느린 줌
   // (1.0↔1.12)에 수직 드리프트를 겹쳐 켄 번스식 촬영감을 준다.
-  // 1.05는 전혀 안 느껴졌다 (Jessi 지적) — 줌 폭과 틸트를 키웠다.
+  // 1.05는 전혀 안 느껴졌다 — 줌 폭과 틸트를 키웠다.
   const clamp = {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -454,7 +454,7 @@ export const PhoneFrame: React.FC<{
           : `0 40px 120px rgba(0,0,0,.6), 0 0 0 2px ${th.bg}`,
       }}
     >
-      {/* 노치 없음 — 화면 콘텐츠를 가리지 않는다 (Jessi 지시) */}
+      {/* 노치 없음 — 화면 콘텐츠를 가리지 않는다 */}
       <div
         style={{
           position: "absolute",
@@ -588,7 +588,7 @@ export const FailCard: React.FC<{
   const title = lang === "ko" ? card.title : card.titleEn;
   return (
     // 세로 중앙 정렬 — top 고정이면 내용이 짧을 때(특히 split 2열) 화면
-    // 하단이 통째로 비어 보인다 (Jessi 지적)
+    // 하단이 통째로 비어 보인다
     <div
       style={{
         position: "absolute",
@@ -615,7 +615,7 @@ export const FailCard: React.FC<{
           fontWeight: 900,
           letterSpacing: "-0.02em",
           // 긴 제목은 줄여서 — 110px 고정이면 "두 번" 같은 의미 단위
-          // 한가운데서 줄이 꺾인다 (Jessi 지적). 작아지면 쉼표·어절
+          // 한가운데서 줄이 꺾인다. 작아지면 쉼표·어절
           // 경계에서 자연스럽게 나뉜다. 기준은 시각 폭(한글 1·영문 0.5).
           fontSize: visualLen(title) > 10 ? 88 : 110,
           lineHeight: 1.08,
@@ -784,7 +784,7 @@ export const EndCard: React.FC<{
  * +알파 그래픽 장면 — 생성 일러스트 (scripts/art.ts). 투명 배경 종이 콜라주라 판·테두리 없이
  * 테마 바탕 위에 그대로 얹는다 — 판에 넣으면 종이를 오려 붙인 느낌이 사라졌다 (10/11 시안 B안).
  */
-/** 그림 가운데 높이 — 46%(883px)일 때 위로 치우쳐 보여 40px 내렸다 (10/11 Jessi, 시안에서 골랐다) */
+/** 그림 가운데 높이 — 46%(883px)일 때 위로 치우쳐 보여 40px 내렸다 (10/11, 시안에서 골랐다) */
 const ART_CENTER_Y = 923;
 
 export const ArtCard: React.FC<{ file: string; th: ShortsTheme }> = ({ file }) => (
@@ -847,7 +847,7 @@ export const Background: React.FC<{ th: ShortsTheme }> = ({ th }) => {
 };
 
 /**
- * 콜드오픈 — 내레이션 전 2초를 템플릿의 문법으로 연다 (Jessi 승인 A안 + 템플릿 3종).
+ * 콜드오픈 — 내레이션 전 2초를 템플릿의 문법으로 연다 (승인 A안 + 템플릿 3종).
  *   log(ship-it): 그날의 실제 커밋 로그가 터미널에 촤르륵 — "커밋이 곧 콘텐츠"
  *   error(fail): ✗ 와 사고 한 줄이 탁 박힌다 — 사고 리포트의 첫 컷
  *   diff(before-after): git diff의 -어제 +오늘 두 줄 — 변화 대비의 첫 컷
@@ -998,7 +998,7 @@ export const ColdOpen: React.FC<{
     );
   }
 
-  // log 변형 — 같은 오프닝이 연속되면 안 된다 (Jessi 지시). 스타일 3종을
+  // log 변형 — 같은 오프닝이 연속되면 안 된다. 스타일 3종을
   // day로 돌린다: graph(커밋 레일) / list(텍스트 나열) / count(대형 카운터).
   // 재료는 전부 실물 — 타입(feat/fix)은 실제 커밋 메시지 prefix에서 파싱,
   // 색은 테마 토큰이라 5테마에 자동으로 맞는다.
@@ -1204,7 +1204,7 @@ export const ColdOpen: React.FC<{
 
 /**
  * 숫자 모먼트 — 내레이션이 숫자를 말하는 순간, 카운터가 탁 박히는 1.5초
- * 인서트 (Jessi 승인 B안). stat은 대본이 마킹한 "숫자+단위" 문자열.
+ * 인서트 (승인 B안). stat은 대본이 마킹한 "숫자+단위" 문자열.
  */
 export const StatPunch: React.FC<{
   stat: string;

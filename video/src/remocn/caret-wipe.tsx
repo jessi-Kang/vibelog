@@ -126,7 +126,7 @@ const CaretWipePresentation: React.FC<
             translate: "-50%",
             background: caretColor,
             borderRadius: caretWidth,
-            // 원본의 강한 빛 번짐은 줄였다 — 번쩍이는 효과를 빼기로 했다 (10/11 Jessi)
+            // 원본의 강한 빛 번짐은 줄였다 — 번쩍이는 효과를 빼기로 했다 (10/11)
             boxShadow: `0 0 6px ${caretColor}`,
           }}
         />

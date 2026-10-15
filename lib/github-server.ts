@@ -2,7 +2,7 @@
  * 서버에서 GitHub를 읽는 공용 함수 — `/api/commits`(홈)와 `/api/repo-stats`(프로젝트 상세)가 같이 쓴다.
  *
  * 토큰(`GH_PAT`/`GITHUB_TOKEN`)으로 읽어야 비공개 레포가 보인다. 브라우저가 GitHub를
- * 직접 부르던 상세 페이지는 비공개 레포에서 늘 404였다 (10/11 Jessi 지적).
+ * 직접 부르던 상세 페이지는 비공개 레포에서 늘 404였다 (10/11 지적).
  */
 const API = "https://api.github.com";
 

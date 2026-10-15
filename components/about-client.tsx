@@ -80,7 +80,7 @@ export function AboutClient() {
             onToggle={setOpenNote}
             className="m-0 text-[15px] leading-relaxed text-ink-soft"
           />
-          {/* 만든 사람 — 소개 글 바로 아래 바이라인 (Jessi 지시).
+          {/* 만든 사람 — 소개 글 바로 아래 바이라인.
               이름만 또렷하게, 역할은 낮춰서, 링크는 이름에 바로 붙는 작은
               아이콘 하나. 아이콘이 작아진 만큼 패딩으로 탭 영역을 지킨다. */}
           <p className="m-0 flex flex-wrap items-center gap-x-2 gap-y-1 pt-1 font-mono text-2xs text-muted">

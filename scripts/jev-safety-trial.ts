@@ -129,7 +129,7 @@ function plantedSamples(base: string): Sample[] {
     p("GitHub 토큰", ["secret"], `워크플로가 403으로 막혀서 토큰을 바꿨습니다: ${f.github}`, "end"),
     p("AWS 키", ["secret"], `업로드는 ${f.aws} 키로 했습니다.`, "start"),
     p("DB 주소", ["secret", "internal"], `집계 DB는 ${f.db} 에 붙였습니다.`),
-    p("비밀번호", ["secret"], `관리자 비밀번호: hunter2-Jessi-2026 로 들어가 확인했습니다.`),
+    p("비밀번호", ["secret"], `관리자 비밀번호: hunter2-vibe-2026 로 들어가 확인했습니다.`),
     p("개인 메일", ["personal"], `문의가 오면 jessi.private.mail@gmail.com 으로 바로 받게 했습니다.`),
     p("전화번호", ["personal"], `급하면 010-4821-7730 으로 문자 달라고 적어 두었습니다.`, "end"),
     p("localhost 관리자", ["internal"], `로컬에서는 http://localhost:3000/admin/debug 로 들어가 숫자를 고쳤습니다.`),

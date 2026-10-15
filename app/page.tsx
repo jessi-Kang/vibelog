@@ -34,7 +34,7 @@ export default function Home() {
   const commitHours = getCommitHours();
 
   // 오늘·이번 주 커밋은 방문자 브라우저가 GitHub API로 실시간으로 센다
-  // (HomeStats) — 낮 커밋도 바로 오른다 (Jessi 지시). 실패 시 저장값 폴백.
+  // (HomeStats) — 낮 커밋도 바로 오른다. 실패 시 저장값 폴백.
   const factSources = projects.map((p) => ({
     repoUrl: p.repoUrl,
     countsDate: p.countsDate,
@@ -147,7 +147,7 @@ export default function Home() {
   return (
     <PageContainer>
       {/* 마스트헤드 */}
-      {/* 통계 줄은 전 구간 동일 — 제목 아래 왼쪽 정렬 + 위 구분선 (Jessi 지시) */}
+      {/* 통계 줄은 전 구간 동일 — 제목 아래 왼쪽 정렬 + 위 구분선 */}
       <section className="grid items-end gap-4 border-b border-dashed border-line pb-6 pt-1 md:gap-5 md:pt-3 lg:pt-5">
         <div className="flex flex-col gap-2 md:gap-3">
           <h1 className="m-0 max-w-[22ch] text-[24px] font-semibold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
@@ -175,7 +175,7 @@ export default function Home() {
         {/* 통계 줄 + 잔디는 한 덩어리다 — 둘 다 "커밋이 몇 번"을 말한다.
             좁은 화면에서는 위아래로, md부터는 나란히 둔다. 잔디를 혼자
             아래에 두면 넓은 화면에서 오른쪽이 통째로 비어 화면이 깨져
-            보였다 (Jessi 지적) */}
+            보였다 */}
         <HomeStats
           sources={factSources}
           activity={projects.map((p) => p.lastActivity)}
@@ -186,9 +186,9 @@ export default function Home() {
 
       {/* 모바일 세로 스택 → 태블릿(실행|데브로그 2열) → 데스크톱(프로젝트 ｜ 우측 스택) */}
       {/* 마스트헤드와 본문 사이 점선은 마스트헤드 섹션의 아래 테두리다
-          (Jessi 선택 C안). 아래쪽 div에 border-t로 달면 그 위 간격을
+          (C안). 아래쪽 div에 border-t로 달면 그 위 간격을
           컨테이너 gap(40px)이 정하므로, 선↔내용 거리가 위(24) / 아래(40)로
-          갈려 블록이 위로 치우쳐 보였다 (Jessi 지적). 선을 섹션에 두면
+          갈려 블록이 위로 치우쳐 보였다. 선을 섹션에 두면
           양쪽 거리를 여기서 같게 줄 수 있다 */}
       <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-10">
         <HomeProjects projects={projects} buildDate={todayKST()} />

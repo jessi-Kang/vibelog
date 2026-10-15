@@ -1,13 +1,13 @@
 "use client";
 /**
- * 데브로그 댓글 — 시안 docs/post-comments.html (10/11 Jessi 승인).
+ * 데브로그 댓글 — 시안 docs/post-comments.html (10/11 승인).
  *
  * - 읽기는 누구나. 로그인 전에는 쓴 사람이 "방문자 1, 2"와 회색 아이콘으로만 나온다 (서버가 이름을 안 보낸다).
  * - 로그인 전 쓰는 칸은 빈 댓글 칸 모양 — 어디를 눌러도 Google 로그인으로 간다.
  * - 메뉴는 이름을 누르면 열린다: 방문자는 내 이름 → 답글 메일 끄기·로그아웃, 내 댓글 → 지우기.
- *   Jessi는 댓글 쓴 사람의 이름 → 숨기기(다시 보이기)·지우기. 따로 ⋯ 버튼을 두지 않는다.
- * - 답글은 Jessi만, 안으로 밀지 않고 같은 폭에 바탕만 깐다 (모바일에서 본문 폭이 줄지 않게).
- * - Jessi의 답글 칸 위에는 AI 버튼(초안 쓰기·다듬기·짧게). 초안은 칸에만 들어가고 올리기는 Jessi가 누른다.
+ *   관리자는 댓글 쓴 사람의 이름 → 숨기기(다시 보이기)·지우기. 따로 ⋯ 버튼을 두지 않는다.
+ * - 답글은 관리자만, 안으로 밀지 않고 같은 폭에 바탕만 깐다 (모바일에서 본문 폭이 줄지 않게).
+ * - 관리자의 답글 칸 위에는 AI 버튼(초안 쓰기·다듬기·짧게). 초안은 칸에만 들어가고 올리기는 관리자가 누른다.
  * - 한글이 든 버튼·표시는 글자를 재서 눈으로 보이는 가운데에 맞췄다 (lift 값들).
  *
  * DB가 없는 배포(DATABASE_URL 없음)에서는 아무것도 그리지 않는다.
@@ -410,7 +410,7 @@ function Writer({ me, onDone, onMe }: { me: Me; onDone: () => void; onMe: (m: Me
   };
   return (
     <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border border-line-strong bg-panel py-3 pl-3.5 pr-2 pb-2 transition-colors duration-150 focus-within:border-accent">
-      {/* Jessi의 쓰는 칸에는 이름 줄을 두지 않는다 — 쓰는 사람이 늘 Jessi이고, 로그아웃할 일도 없다 */}
+      {/* 관리자의 쓰는 칸에는 이름 줄을 두지 않는다 — 쓰는 사람이 늘 관리자이고, 로그아웃할 일도 없다 */}
       {!me.isAdmin && <div className="flex items-center gap-2 border-b border-line pb-2 pr-1.5">
         <PersonIcon icon={me.icon} color={me.color} />
         <NameMenu
@@ -571,7 +571,7 @@ export function Comments({ postId }: { postId: string }) {
           })}
         </ol>
       )}
-      {/* Jessi도 댓글을 쓴다 — 처음엔 답글만 달게 했는데, 자기 블로그에 먼저 한마디 남길 자리가 없었다 (10/11) */}
+      {/* 관리자도 댓글을 쓴다 — 처음엔 답글만 달게 했는데, 자기 블로그에 먼저 한마디 남길 자리가 없었다 (10/11) */}
       {me ? <Writer me={me} onDone={load} onMe={(m) => setState({ ...state, me: m })} /> : <Gate />}
       <p aria-live="polite" className="sr-only">
         {flash}

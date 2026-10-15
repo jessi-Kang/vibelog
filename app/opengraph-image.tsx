@@ -7,7 +7,7 @@ export const alt = "vibelog";
 
 /**
  * 사이트 기본 카드. 손으로 만든 /og.png를 쓰다가 여백이 글 카드와 따로
- * 놀았다 (Jessi 지적) — 같은 ogCard로 그려 한 세트로 맞춘다.
+ * 놀았다 — 같은 ogCard로 그려 한 세트로 맞춘다.
  * 글·프로젝트 라우트는 각자 opengraph-image.tsx가 이걸 덮어쓴다.
  */
 export default async function Image() {

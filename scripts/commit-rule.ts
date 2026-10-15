@@ -17,7 +17,7 @@ export const RULE_BODY_MIN = 40;
 /**
  * 커밋 끝에 붙는 서명 줄. 본문 길이를 셀 때 뺀다.
  * 빼지 않던 때는 제목 한 줄에 "Co-Authored-By: …" 서명만 붙은 커밋도 본문이 40자를
- * 넘어 "본문 있는 커밋"으로 셌다. Jessi의 커밋은 Claude와 같이 써서 늘 서명이 붙는다.
+ * 넘어 "본문 있는 커밋"으로 셌다. 이 레포의 커밋은 Claude와 같이 써서 늘 서명이 붙는다.
  */
 const TRAILER = /^(Co-Authored-By|Claude-Session|Signed-off-by|Reviewed-by|Generated-by|Change-Id):/i;
 

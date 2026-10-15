@@ -4,7 +4,7 @@
  * 데스크톱(md+): 어두운 스크림 위 중앙 패널, 컨트롤은 패널 밖 모서리(항상 표시).
  * 모바일: 진짜 풀스크린. 컨트롤(닫기·한/영)은 오버레이로 떠 있다가 몇 초 뒤
  * 자동으로 사라지고, 화면을 탭하면 다시 나타난다 — 쇼츠 플랫폼과 같은 문법.
- * (상단 바로 분리하는 안은 풀스크린 몰입을 깨서 반려 — Jessi 지시)
+ * (상단 바로 분리하는 안은 풀스크린 몰입을 깨서 반려)
  * 닫기: ✕ 버튼 · ESC · 스크림 클릭. 열려 있는 동안 페이지 스크롤 잠금.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -112,7 +112,7 @@ export function MediaLightbox({
                 pokeUi();
               }}
               // 태블릿·데스크탑에서는 크게 — 큰 화면에 폰만큼 작은 버튼이
-              // 떠 있어 눌러야 할 것으로 안 읽혔다 (Jessi 지적. 모바일은 그대로)
+              // 떠 있어 눌러야 할 것으로 안 읽혔다 (모바일은 그대로)
               className={`min-h-7 cursor-pointer rounded-[7px] px-2.5 font-sans text-sm font-bold transition-colors duration-150 md:min-h-13 md:px-4 md:text-md ${
                 lang === v
                   ? "bg-panel2 text-ink"

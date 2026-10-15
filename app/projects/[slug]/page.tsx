@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: Props) {
   ];
 
   const head = (
-    // 프로젝트 정보 블록은 카드로 — 아래 데브로그 타임라인과 딱 구분되게 (Jessi 지시)
+    // 프로젝트 정보 블록은 카드로 — 아래 데브로그 타임라인과 딱 구분되게
     <Card className="p-5 lg:p-6">
       <section className="flex flex-col items-start gap-4 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-10 md:gap-y-4 lg:flex lg:flex-col">
       {/* 칸 폭을 다 쓴다 — 바깥이 items-start라, 설명이 짧으면 이 칸이 글자만큼 좁아져 아이콘이 오른쪽 끝에 못 갔다 */}
@@ -120,7 +120,7 @@ export default async function ProjectPage({ params }: Props) {
               {homepage.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
             </a>
           )}
-          {/* 레포 링크는 주소 대신 간결하게 (Jessi 지시) — 배포 주소보다 한 톤 낮게 */}
+          {/* 레포 링크는 주소 대신 간결하게 — 배포 주소보다 한 톤 낮게 */}
           <a
             href={project.repoUrl}
             target="_blank"
