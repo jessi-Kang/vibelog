@@ -1,0 +1,634 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "대화 속 말이 커밋 메모를 거쳐 매일 밤 블로그 글로 흘러갈 수 있는 길을 보여 주는 그림",
+  "altEn": "A diagram showing how words from a chat could flow through commit notes into a blog post every night",
+  "caption": "대화의 말이 메모에 남으면, 밤마다 글로 옮겨질 수 있었습니다",
+  "captionEn": "Words left in commit notes could be carried into a post each night",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 150",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "대화 속 말이 커밋 메모를 거쳐 매일 밤 블로그 글로 흘러갈 수 있는 길"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "60",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "60",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "60",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "95",
+      "x2": "133",
+      "y2": "95",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "140,95 132,90 132,100",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "250",
+      "y1": "95",
+      "x2": "263",
+      "y2": "95",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,95 262,90 262,100",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "260",
+      "y": "45",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "매일 밤"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대화"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋 메모"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "블로그 글"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "“…”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "“…”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "“…”"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 150",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Words from a chat could flow through commit notes into a blog post every night"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "60",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "60",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "270",
+      "y": "60",
+      "width": "110",
+      "height": "70",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "120",
+      "y1": "95",
+      "x2": "133",
+      "y2": "95",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "140,95 132,90 132,100",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "250",
+      "y1": "95",
+      "x2": "263",
+      "y2": "95",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,95 262,90 262,100",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "260",
+      "y": "45",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "nightly"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Chat"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commit note"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "92",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Blog post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "“…”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "“…”"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "118",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "“…”"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "처음 검사는 이름 뒤 따옴표 말만 막고, 이름 없는 따옴표 말은 통과시켜서 14곳을 더 찾아 검사를 넓혔다는 그림",
+  "altEn": "The first check blocked quotes after my name but let unnamed quotes slip through, so 14 more were found and the check was widened",
+  "caption": "이름 없는 따옴표 말은 처음 검사를 그대로 빠져나갔습니다",
+  "captionEn": "Quotes without a name slipped right past the first check",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "처음 검사는 이름 뒤 따옴표 말만 막고 이름 없는 말은 통과시켰다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "50",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "처음 검사"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "185",
+      "y": "65",
+      "width": "20",
+      "height": "110",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "96",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이름 + “말”"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "130",
+      "y1": "90",
+      "x2": "177",
+      "y2": "90",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "185,90 177,85 177,95",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "96",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "막힘"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "156",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "“말”만"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "130",
+      "y1": "150",
+      "x2": "262",
+      "y2": "150",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,150 262,145 262,155",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "278",
+      "y": "156",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "통과"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "14곳 더 찾아 검사를 넓힘"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The first check blocked quotes after my name but let unnamed quotes through"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "50",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "First check"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "185",
+      "y": "65",
+      "width": "20",
+      "height": "110",
+      "rx": "4",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "12",
+      "y": "96",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Name + “quote”"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "135",
+      "y1": "90",
+      "x2": "177",
+      "y2": "90",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "185,90 177,85 177,95",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "220",
+      "y": "96",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Blocked"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "12",
+      "y": "156",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "“quote” only"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "135",
+      "y1": "150",
+      "x2": "262",
+      "y2": "150",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "270,150 262,145 262,155",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "276",
+      "y": "156",
+      "text-anchor": "start",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Slipped by"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Found 14 more, widened the check"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,394 @@
+{
+  "template": "fail",
+  "music": "calm",
+  "theme": "paper",
+  "repo": "apart",
+  "date": "2026-10-15",
+  "day": 11,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "AI와 나눈 말이 커밋에 실렸습니다",
+      "en": "My AI chats ended up in commits",
+      "keywords": [
+        "커밋에"
+      ],
+      "keywordsEn": [
+        "in commits"
+      ],
+      "koLines": [
+        "AI와 나눈 말이",
+        "커밋에 실렸습니다"
+      ],
+      "enLines": [
+        "My AI chats",
+        "ended up in commits"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "커밋 메시지는 데브로그에 그대로 공개됩니다.",
+      "en": "Commit messages are published as-is in the devlog.",
+      "keywords": [
+        "그대로 공개됩니다."
+      ],
+      "keywordsEn": [
+        "published as-is"
+      ],
+      "koLines": [
+        "커밋 메시지는",
+        "데브로그에 그대로 공개됩니다."
+      ],
+      "enLines": [
+        "Commit messages are published",
+        "as-is in the devlog."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "AI와 대화",
+          "커밋 메시지",
+          "데브로그 공개"
+        ],
+        "labelsEn": [
+          "AI chat",
+          "Commit message",
+          "Devlog post"
+        ],
+        "icons": [
+          {
+            "name": "tabler:message-chatbot",
+            "paths": [
+              {
+                "d": "M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM9.5 9h.01m4.99 0h.01"
+              },
+              {
+                "d": "M9.5 13a3.5 3.5 0 0 0 5 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:git-commit",
+            "paths": [
+              {
+                "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:world",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8"
+              },
+              {
+                "d": "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 커밋 전에 인용을 걸러 내게 했습니다.",
+      "en": "So now quotes get caught before a commit.",
+      "keywords": [
+        "커밋 전에",
+        "걸러"
+      ],
+      "keywordsEn": [
+        "caught",
+        "before a commit."
+      ],
+      "koLines": [
+        "그래서 커밋 전에",
+        "인용을 걸러 내게 했습니다."
+      ],
+      "enLines": [
+        "So now quotes get caught",
+        "before a commit."
+      ],
+      "art": "a small sieve catching speech bubbles before they fall into a box",
+      "icon": {
+        "name": "tabler:filter",
+        "paths": [
+          {
+            "d": "M4 4h16v2.172a2 2 0 0 1-.586 1.414L15 12v7l-6 2v-8.5L4.52 7.572A2 2 0 0 1 4 6.227z"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "처음엔 두 줄에 걸친 인용을 놓쳤습니다.",
+      "en": "At first, it missed quotes spanning two lines.",
+      "keywords": [
+        "두 줄에",
+        "놓쳤습니다."
+      ],
+      "keywordsEn": [
+        "missed",
+        "two lines."
+      ],
+      "koLines": [
+        "처음엔 두 줄에 걸친",
+        "인용을 놓쳤습니다."
+      ],
+      "enLines": [
+        "At first, it missed",
+        "quotes spanning two lines."
+      ],
+      "motif": "leak"
+    },
+    {
+      "scene": "demo",
+      "ko": "문단 단위로 바꿔 6주치 커밋에 돌렸습니다.",
+      "en": "I switched to paragraphs and ran 6 weeks of commits.",
+      "keywords": [
+        "문단 단위로"
+      ],
+      "keywordsEn": [
+        "paragraphs"
+      ],
+      "koLines": [
+        "문단 단위로 바꿔",
+        "6주치 커밋에 돌렸습니다."
+      ],
+      "enLines": [
+        "I switched to paragraphs",
+        "and ran 6 weeks of commits."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "한 줄씩 검사",
+          "두 줄 인용 놓침",
+          "문단 단위 검사",
+          "2개 잡음"
+        ],
+        "labelsEn": [
+          "Line by line",
+          "Missed 2-line quotes",
+          "By paragraph",
+          "Caught 2"
+        ],
+        "icons": [
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:align-justified",
+            "paths": [
+              {
+                "d": "M4 6h16M4 12h16M4 18h12"
+              }
+            ]
+          },
+          null
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "실제 문제였던 2개를 잡았습니다.",
+      "en": "It caught the 2 real problems.",
+      "keywords": [
+        "2개를"
+      ],
+      "keywordsEn": [
+        "the 2"
+      ],
+      "koLines": [
+        "실제 문제였던",
+        "2개를 잡았습니다."
+      ],
+      "stat": "2개",
+      "statEn": "2 commits",
+      "icon": {
+        "name": "tabler:git-commit",
+        "paths": [
+          {
+            "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "제가 만드는 퀴즈엔 도전장이 있습니다.",
+      "en": "The quiz I'm building has challenges.",
+      "keywords": [
+        "도전장이"
+      ],
+      "keywordsEn": [
+        "challenges."
+      ],
+      "koLines": [
+        "제가 만드는 퀴즈엔",
+        "도전장이 있습니다."
+      ],
+      "enLines": [
+        "The quiz I'm building",
+        "has challenges."
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "친구에게 같은 문제를 보내 겨룹니다.",
+      "en": "You send a friend the same questions.",
+      "keywords": [
+        "같은 문제를"
+      ],
+      "keywordsEn": [
+        "the same questions."
+      ],
+      "koLines": [
+        "친구에게 같은 문제를",
+        "보내 겨룹니다."
+      ],
+      "enLines": [
+        "You send a friend",
+        "the same questions."
+      ],
+      "screen": "/opengraph-image?f2c0039925850c95",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "도전장이 얼마나 오가는지 지켜보겠습니다.",
+      "en": "I'll watch how often challenges get sent.",
+      "keywords": [
+        "얼마나 오가는지"
+      ],
+      "keywordsEn": [
+        "how often"
+      ],
+      "koLines": [
+        "도전장이 얼마나 오가는지",
+        "지켜보겠습니다."
+      ],
+      "enLines": [
+        "I'll watch how often",
+        "challenges get sent."
+      ],
+      "art": "a person with binoculars watching paper airplanes fly back and forth between two houses",
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 커밋엔 제 말만 남습니다.",
+      "en": "Now only my own words stay in commits.",
+      "keywords": [
+        "제 말만"
+      ],
+      "keywordsEn": [
+        "my own words"
+      ],
+      "koLines": [
+        "이제 커밋엔",
+        "제 말만 남습니다."
+      ],
+      "enLines": [
+        "Now only my own words",
+        "stay in commits."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://apt-game.app",
+    "steps": []
+  },
+  "failCard": {
+    "title": "대화가 커밋에 실렸다",
+    "titleEn": "Chats landed in commits",
+    "before": "AI에게 한 말이 따옴표째 커밋에 들어감",
+    "after": "커밋 전에 인용을 문단 단위로 걸러 냄",
+    "beforeEn": "Words said to the AI went into commits, quotes and all",
+    "afterEn": "Quotes now get caught by paragraph before each commit"
+  },
+  "commits": [
+    [
+      "2983108",
+      "chore: 대화에서 들은 말이 커밋·문서에 따옴표째 실리지 않게 막는다"
+    ],
+    [
+      "28ca84c",
+      "docs: 대화에서 받은 말을 그대로 옮긴 인용을 문서에서 걷는다"
+    ],
+    [
+      "8f3026a",
+      "docs: 작명 대조 규칙·방화벽·작명 신청서 말투를 문서에 반영한다"
+    ],
+    [
+      "0187c6e",
+      "design: 작명소 문구를 \"이름 짓기\"에서 \"작명 신청서\"로 바꾼다"
+    ],
+    [
+      "80d451e",
+      "docs: 방문 집계(클라우드플레어 웹 분석)를 문서에 적는다"
+    ],
+    [
+      "600e224",
+      "feat: 클라우드플레어 방문 집계를 켠다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "2983108",
+      "chore: prevent words heard in conversation from being committed or documented verbatim with quotes"
+    ],
+    [
+      "28ca84c",
+      "docs: remove direct quotes from conversation in documentation"
+    ],
+    [
+      "8f3026a",
+      "docs: reflect naming verification rules, firewall, and naming request wording in docs"
+    ],
+    [
+      "0187c6e",
+      "design: change naming shop copy from \"name making\" to \"naming request\""
+    ],
+    [
+      "80d451e",
+      "docs: document visitor analytics (Cloudflare Web Analytics) in docs"
+    ],
+    [
+      "600e224",
+      "feat: enable Cloudflare visitor analytics"
+    ]
+  ],
+  "commitCount": 6,
+  "handle": "apt-game.app",
+  "captions": {
+    "ko": "AI와 나눈 말이 커밋 메시지에 그대로 들어가 데브로그에 공개될 뻔했습니다. 이제 커밋 전에 인용을 걸러 냅니다.",
+    "en": "Things I said to the AI slipped into commit messages that get published in the devlog. Now quotes get caught before each commit."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#개발일지",
+    "#커밋",
+    "#AI코딩",
+    "#devlog",
+    "#git",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-15.poster.jpg?v=mv9mjv17",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-15.ko.mp4?v=mv9mjxsb",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-15.ko.sm.mp4?v=mv9mk5az",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-15.en.poster.jpg?v=mv9ml71m",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-15.en.mp4?v=mv9ml98z",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/apart/2026-10-15.en.sm.mp4?v=mv9mlg2r"
+  }
+}

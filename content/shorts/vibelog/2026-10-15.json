@@ -1,0 +1,440 @@
+{
+  "template": "fail",
+  "music": "calm",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-15",
+  "day": 20,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "제 대화가 공개 레포에 있었습니다.",
+      "en": "My chats were sitting in a public repo.",
+      "keywords": [
+        "공개 레포에"
+      ],
+      "keywordsEn": [
+        "public repo"
+      ],
+      "koLines": [
+        "제 대화가",
+        "공개 레포에",
+        "있었습니다."
+      ],
+      "enLines": [
+        "My chats were",
+        "sitting in",
+        "a public repo."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "AI와 나눈 말이 84곳에 남아 있었습니다.",
+      "en": "Things I said to the AI were left in 84 places.",
+      "keywords": [
+        "84곳에"
+      ],
+      "keywordsEn": [
+        "84 places"
+      ],
+      "koLines": [
+        "AI와 나눈 말이",
+        "84곳에 남아 있었습니다."
+      ],
+      "enLines": [
+        "Things I said to the AI",
+        "were left in 84 places."
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "레포 속 문서",
+          "AI와 나눈 말",
+          "84곳"
+        ],
+        "labelsEn": [
+          "Docs in the repo",
+          "My AI chats",
+          "84 places"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "작업을 저장하는 커밋에는 메모를 붙입니다.",
+      "en": "Each commit, a saved chunk of work, gets a note.",
+      "keywords": [
+        "커밋에는"
+      ],
+      "keywordsEn": [
+        "commit"
+      ],
+      "koLines": [
+        "작업을 저장하는",
+        "커밋에는 메모를 붙입니다."
+      ],
+      "enLines": [
+        "Each commit, a saved chunk",
+        "of work, gets a note."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "대화 속 말",
+          "커밋 메모에",
+          "밤마다 글로",
+          "누구나 읽음"
+        ],
+        "labelsEn": [
+          "Chat words",
+          "Commit notes",
+          "Nightly post",
+          "Anyone reads"
+        ],
+        "icons": [
+          {
+            "name": "tabler:message",
+            "paths": [
+              {
+                "d": "M8 9h8m-8 4h6m4-9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z"
+              }
+            ]
+          },
+          {
+            "name": "tabler:git-commit",
+            "paths": [
+              {
+                "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:article",
+            "paths": [
+              {
+                "d": "M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm4 2h10M7 12h10M7 16h10"
+              }
+            ]
+          },
+          {
+            "name": "tabler:world",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8"
+              },
+              {
+                "d": "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그 메모가 밤마다 글이 되어 누구나 읽습니다.",
+      "en": "Those notes become posts every night that anyone can read.",
+      "keywords": [
+        "누구나"
+      ],
+      "keywordsEn": [
+        "anyone"
+      ],
+      "koLines": [
+        "그 메모가 밤마다 글이 되어",
+        "누구나 읽습니다."
+      ],
+      "enLines": [
+        "Those notes become posts",
+        "every night that anyone can read."
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "build",
+      "ko": "무엇을 왜 정했는지만 남기고 고쳐 썼습니다.",
+      "en": "I rewrote them, keeping only what was decided and why.",
+      "keywords": [
+        "정했는지만"
+      ],
+      "keywordsEn": [
+        "what was decided"
+      ],
+      "koLines": [
+        "무엇을 왜 정했는지만",
+        "남기고 고쳐 썼습니다."
+      ],
+      "enLines": [
+        "I rewrote them, keeping only",
+        "what was decided and why."
+      ],
+      "art": "a pencil eraser rubbing out scribbles on a sheet of paper, leaving one tidy line behind",
+      "icon": {
+        "name": "tabler:pencil",
+        "paths": [
+          {
+            "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "대화 속 말이 들어가면 커밋을 막게 했습니다.",
+      "en": "If chat words get in, the commit is blocked.",
+      "keywords": [
+        "커밋을 막게"
+      ],
+      "keywordsEn": [
+        "blocked"
+      ],
+      "koLines": [
+        "대화 속 말이 들어가면",
+        "커밋을 막게 했습니다."
+      ],
+      "enLines": [
+        "If chat words get in,",
+        "the commit is blocked."
+      ],
+      "icon": {
+        "name": "tabler:shield-check",
+        "paths": [
+          {
+            "d": "M11.46 20.846A12 12 0 0 1 3.5 6A12 12 0 0 0 12 3a12 12 0 0 0 8.5 3a12 12 0 0 1-.09 7.06M15 19l2 2l4-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이름 없이 따옴표만 남은 말은 빠져나갔습니다.",
+      "en": "Quotes left without my name slipped through.",
+      "keywords": [
+        "이름 없이"
+      ],
+      "keywordsEn": [
+        "without my name"
+      ],
+      "koLines": [
+        "이름 없이 따옴표만 남은 말은",
+        "빠져나갔습니다."
+      ],
+      "enLines": [
+        "Quotes left without my name",
+        "slipped through."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "따옴표 속 말",
+          "잡음",
+          "놓침",
+          "이름 붙음",
+          "이름 없음"
+        ],
+        "labelsEn": [
+          "Quoted words",
+          "Caught",
+          "Missed",
+          "With name",
+          "No name"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "14곳을 더 찾아 고쳤습니다.",
+      "en": "I found and fixed 14 more places.",
+      "keywords": [
+        "14곳을 더"
+      ],
+      "keywordsEn": [
+        "14 more places"
+      ],
+      "enLines": [
+        "I found and fixed",
+        "14 more places."
+      ],
+      "stat": "14곳",
+      "statEn": "14 places",
+      "screen": "/about",
+      "find": "레포",
+      "findEn": "repo",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "앞으로 쓰는 문서와 커밋을 지켜보겠습니다.",
+      "en": "I'll keep watching new docs and commits.",
+      "keywords": [
+        "문서와 커밋을"
+      ],
+      "keywordsEn": [
+        "watching"
+      ],
+      "koLines": [
+        "앞으로 쓰는",
+        "문서와 커밋을 지켜보겠습니다."
+      ],
+      "enLines": [
+        "I'll keep watching",
+        "new docs and commits."
+      ],
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "recent devlogs",
+      "shot": "focus"
+    },
+    {
+      "scene": "end",
+      "ko": "레포에는 정한 이유만 남깁니다.",
+      "en": "The repo keeps only the reasons.",
+      "keywords": [
+        "이유만"
+      ],
+      "keywordsEn": [
+        "only the reasons"
+      ],
+      "koLines": [
+        "레포에는",
+        "정한 이유만 남깁니다."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "대화가 공개돼 있었다",
+    "titleEn": "My chats were public",
+    "before": "AI와 나눈 말이 공개 레포 84곳에",
+    "after": "무엇을 왜 정했는지만 남겼다",
+    "beforeEn": "My AI chat words in 84 places in a public repo",
+    "afterEn": "Kept only what was decided and why"
+  },
+  "commits": [
+    [
+      "0f9b935",
+      "chore: 문서와 주석에서 사용자 이름을 출처로 단 곳을 지우고 검사로 막는다"
+    ],
+    [
+      "75b901c",
+      "docs: CLAUDE.md에 남아 있던 대화 말투 인용을 마저 풀어 쓴다"
+    ],
+    [
+      "89fd89d",
+      "chore: 이름 없이 옮겨 적은 대화도 풀어 쓰고 검사가 그 꼴도 잡게 한다"
+    ],
+    [
+      "2514da1",
+      "chore: 대화 속 말을 따옴표째 옮겨 적은 곳을 풀어 쓰고 커밋 훅으로 막는다"
+    ],
+    [
+      "e123fae",
+      "docs: 최근에 바뀐 쇼츠·발행 규칙을 문서에 맞춘다"
+    ],
+    [
+      "a1af062",
+      "fix: 글 본문이 제목 아래 프로젝트 설명을 한 번 더 말하지 않게 한다"
+    ],
+    [
+      "a0580d1",
+      "fix: 다른 실행과 동시에 올리다 푸시가 거절되면 다시 받아 와 올린다"
+    ],
+    [
+      "c6f16d1",
+      "fix: GitHub가 잠깐 500을 돌려주면 다시 묻는다"
+    ],
+    [
+      "81e69f8",
+      "fix: 링크 미리보기 그림이 화면의 3분의 1 크기로 작게 찍히던 것을 고친다"
+    ],
+    [
+      "91c2363",
+      "fix: 내레이션이 \"외운\"을 \"오운\"으로 읽던 것을 고친다"
+    ],
+    [
+      "7b0c0a3",
+      "fix: 훅의 뜻으로 끊은 줄이 넘치면 낱말 하나가 혼자 남던 것을 막는다"
+    ],
+    [
+      "95b6244",
+      "fix: \"그 밖의 소식\"의 굵게·기울임을 의도 없는 서식으로 보지 않는다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "0f9b935",
+      "chore: remove user-name attributions from docs and comments and block them with a check"
+    ],
+    [
+      "75b901c",
+      "docs: finish rewriting leftover conversational quotes in CLAUDE.md"
+    ],
+    [
+      "89fd89d",
+      "chore: rewrite unattributed conversation excerpts and have the check catch that form too"
+    ],
+    [
+      "2514da1",
+      "chore: rewrite verbatim quoted speech from conversations and block it with a commit hook"
+    ],
+    [
+      "e123fae",
+      "docs: align documentation with recent Shorts and publishing rule changes"
+    ],
+    [
+      "a1af062",
+      "fix: stop the post body from restating the project description under the title"
+    ],
+    [
+      "a0580d1",
+      "fix: when push is rejected due to a concurrent run, fetch and retry the push"
+    ],
+    [
+      "c6f16d1",
+      "fix: retry when GitHub briefly returns a 500 error"
+    ],
+    [
+      "81e69f8",
+      "fix: correct link preview image rendering at one-third of screen size"
+    ],
+    [
+      "91c2363",
+      "fix: stop narration reading \"외운\" as \"오운\""
+    ],
+    [
+      "7b0c0a3",
+      "fix: prevent a single word from being left alone on a line when hook-based line breaks overflow"
+    ],
+    [
+      "95b6244",
+      "fix: stop treating bold and italics in \"그 밖의 소식\" as unintentional formatting"
+    ]
+  ],
+  "commitCount": 12,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "공개 레포에 AI와 나눈 제 말이 84곳이나 남아 있었습니다. 풀어 쓰고 커밋을 막는 검사까지 붙였는데, 처음 검사가 놓친 14곳을 더 찾아 고쳤습니다.",
+    "en": "Things I said to an AI were sitting in my public repo in 84 places. I rewrote them and added a commit check, then found 14 more places the first check missed."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#개발일지",
+    "#AI코딩",
+    "#devlog",
+    "#privacy",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-15.poster.jpg?v=mv9mb5qk",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-15.ko.mp4?v=mv9mb9dq",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-15.ko.sm.mp4?v=mv9mbid2",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-15.en.poster.jpg?v=mv9mczcb",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-15.en.mp4?v=mv9md1vl",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-15.en.sm.mp4?v=mv9mdamy"
+  }
+}
