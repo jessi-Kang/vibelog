@@ -39,8 +39,8 @@ function useRoute() {
   const detail = Boolean(project || post || postById);
   // 글 주소는 `/p/<id>`다. `/log/<repo>/<date>`는 옛 주소로 301만 한다 —
   // 주소를 옮길 때(0eb702d) 여기를 같이 안 고쳐서, 글을 보는 동안 어느 탭에도
-  // 안 걸리고 마지막 폴백인 "/"로 떨어져 **프로젝트**에 밑줄이 그어져 있었다
-  //. 글은 데브로그다.
+  // 안 걸리고 마지막 폴백인 "/"로 떨어져 **프로젝트**에 밑줄이 그어져 있었다.
+  // 글은 데브로그다.
   const tab =
     post || pathname.startsWith("/p/") || pathname.startsWith("/log")
       ? "/log"
@@ -102,7 +102,7 @@ function Tabs({
             className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
               on
                 ? bottom
-                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에 (…)
+                  ? "text-accent" // 하단 탭바의 현재 위치는 민트로 — 한눈에
                   : "text-ink"
                 : "text-muted hover:text-ink-soft"
             }`}

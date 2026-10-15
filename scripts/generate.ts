@@ -25,7 +25,7 @@ export interface GeneratedDevlog {
   continues: string | null;
 }
 
-// 글은 독자가 직접 읽는 원고라 가장 좋은 모델로 쓴다 (…). 삽화는 검증기가 받쳐 주므로 Opus 5 그대로다.
+// 글은 독자가 직접 읽는 원고라 가장 좋은 모델로 쓴다 (10/5). 삽화는 검증기가 받쳐 주므로 Opus 5 그대로다.
 const MODEL = "claude-opus-5-5";
 
 const SYSTEM = `당신은 "vibelog"의 데브로그 작성자입니다. 바이브 코딩(AI와 같이 코딩하는 방식)으로

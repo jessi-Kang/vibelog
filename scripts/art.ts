@@ -87,7 +87,7 @@ export function styleFor(
       "white only for tiny highlights, never large white areas, nothing darker than #8A919B"
     : "off-white, light gray and slate gray";
   // 블로그 글에 넣는 그림은 가로로 긴 판형이다 — 쇼츠처럼 가운데 물건 하나를 세로로 세우면
-  // 글 칼럼에서 위아래로 길쭉해졌다 (…). 글의 삽화(가로 390 × 세로 가운데값
+  // 글 칼럼에서 위아래로 길쭉해졌다 (10/11). 글의 삽화(가로 390 × 세로 가운데값
   // 225, 약 16:9)와 같은 판에 같은 비율로 놓이므로 16:9로 그리고, 물건 두세 개를 옆으로 늘어놓는다
   const base = (style === "papercut" ? PAPERCUT_BASE : STYLE_BASE).replace(
     "One centered subject with generous empty space around it. Square composition. ",
