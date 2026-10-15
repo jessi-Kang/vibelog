@@ -29,7 +29,7 @@ import {
   type PostFigure,
 } from "./figure-types";
 
-// 글·대본과 같은 모델로 맞춘다 (…).
+// 글·대본과 같은 모델로 맞춘다 (10/5).
 // 못 찾으면 models.ts가 Opus 5로 넘어간다.
 const MODEL = "claude-opus-5-5";
 /**

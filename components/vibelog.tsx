@@ -150,7 +150,7 @@ export function DevlogTimelineEntry({
 }) {
   return (
     // 전체 피드(repo 있음)는 타임라인 점을 프로젝트 식별색으로 — 이름도 같은
-    // 색이라 점만 봐도 구분된다 (…).
+    // 색이라 점만 봐도 구분된다.
     // 프로젝트 상세 타임라인(repo 없음)은 기존 민트 점.
     <Link href={href} className="group relative block pl-[22px]">
       {!last && (

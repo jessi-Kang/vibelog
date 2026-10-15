@@ -183,7 +183,7 @@ function autoStatus(
   // 배포 주소가 있어도 릴리즈 선언(GitHub Release 발행) 전이면 preview —
   // 가배포와 정식 공개를 구분한다. 강제 지정은 vibelog.json status.
   // 주소가 Vercel 기본 주소(*.vercel.app)면 Release가 있어도 preview다 — 정식 공개는
-  // 자기 도메인을 단 뒤다 (…). live일 때만
+  // 자기 도메인을 단 뒤다 (10/10). live일 때만
   // 화면에 주소를 건다 (lib/content.ts publicHomepage).
   if (a.homepage) return a.released && !isVercelDefault(a.homepage) ? "live" : "preview";
   const days = (Date.now() - new Date(a.pushedAt).getTime()) / 86400000;
@@ -414,8 +414,8 @@ async function writeDevlog(
   const file = devlogPath(repo, date);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   // 원료 메타 — "AI가 커밋 N개로 작성" 표기와 본문의 "원료 · git log"에 쓰인다.
-  // 자르지 않는다: "커밋 16개로 썼다"면서 원료에 8개만 보이면 말이 안 맞는다
-  //. 화면 쪽이 10개 이상은 접어서 보여준다.
+  // 자르지 않는다: "커밋 16개로 썼다"면서 원료에 8개만 보이면 말이 안 맞는다.
+  // 화면 쪽이 10개 이상은 접어서 보여준다.
   const shas = a.commits.map((c) => [
     c.sha.slice(0, 7),
     c.message.split("\n")[0],

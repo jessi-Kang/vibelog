@@ -98,7 +98,7 @@ interface Seg {
   shot?: "whole" | "focus" | "compare";
   /** 가리킨 요소가 녹화 화면에서 세로로 어디였는지 (0~1). band 크롭은
    *  가운데 띠만 보이므로 이 지점을 크롭의 기준으로 잡는다 — 안 그러면
-   *  제대로 표시한 요소가 영상에서 잘린다 (…) */
+   *  제대로 표시한 요소가 영상에서 잘린다 */
   focusY?: number;
   /** 그림 한 장짜리 화면(링크 미리보기 카드 등)의 가로세로비. 있으면 폰 프레임이
    *  아니라 그 비율의 카드로 보여 준다 — 가로로 긴 그림을 세로 폰에 cover로
@@ -146,10 +146,10 @@ function kindOf(
   if (scene === "fail") return hasScreen ? "phone" : "fail";
   if (scene === "end") return "end";
   // 하나를 크게 보여 줘야 하는 문장은 생성 그림 — 화면을 고르지 않았고 그 문장의 그림이 있을 때만.
-  // 예전엔 "다음 할 것"에만 썼다. 이제 문장마다 (…)
+  // 예전엔 "다음 할 것"에만 썼다. 이제 문장마다 (10/11)
   if (hasArt && !hasScreen) return "art";
-  // 그래픽이 보류인 동안 next가 폰으로 떨어져, 아무 화면이나 붙어 돌았다
-  // (…). 대본이 화면을 고르지
+  // 그래픽이 보류인 동안 next가 폰으로 떨어져, 아무 화면이나 붙어 돌았다.
+  // 대본이 화면을 고르지
   // 않았으면 화면을 쓰지 않는다.
   //
   // 모티프가 붙었고 화면을 안 골랐으면 모티프를 그린다 — next만이 아니다.
@@ -255,7 +255,7 @@ export function buildSegments(
       // 아이콘·모티프가 붙은 문장도 제 그림을 가진다 — 앞 블록에 합치면 그림이 버려진다.
       // 둘 다 있으면 아이콘이 이긴다 (대상이 분명한 문장이다). 다만 바로 앞 장면도 아이콘이었으면
       // 모티프를 쓴다 — 가운데 판 위 아이콘 하나가 서너 번 이어져 같은 화면이 반복됐다
-      // (…)
+      // (10/11 vibelog 편)
       const prev = raw[raw.length - 1];
       const useMotif = !!line.motif && (!line.icon || (prev?.kind === "plain" && !!prev.icon));
       raw.push({
@@ -278,7 +278,6 @@ export function buildSegments(
       // 문장이 고른 화면이 통째로 버려진다 — 9/12 vibelog 편에서 demo 두
       // 문장("첫 화면의 숫자" → /, "글 주소도 7자리" → /log)이 한 블록으로
       // 합쳐져 둘 다 홈만 돌았다. 대본이 문장마다 화면을 고르는 의미가 없어진다
-      // (…)
       (kind === "phone" &&
         !!(line?.screen || findOf(line, lang)) &&
         !!(raw[raw.length - 1].screen || raw[raw.length - 1].find) &&
@@ -341,7 +340,7 @@ export function buildSegments(
       }
       if (!m && segMap?.size) {
         // 화면 미지정 블록: 아직 가장 덜 쓴 녹화 화면을 골라 앞 블록과
-        // 같은 화면만 반복되는 것을 피한다 (…)
+        // 같은 화면만 반복되는 것을 피한다
         for (const [p, cand] of segMap) {
           if (
             !m ||
@@ -436,7 +435,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
    *
    * 전에는 (day + 장면 순번) % 3으로 폰/밴드/듀오를 돌렸다. 내용과 무관한
    * 로테이션이라 격자를 가리키는 문장에 전체 화면이 붙고, 녹화 화면이 하나뿐인
-   * 편에 두 폰이 겹쳐 나왔다 (…). 로테이션은 없앴다.
+   * 편에 두 폰이 겹쳐 나왔다. 로테이션은 없앴다.
    *
    * 대본이 안 골랐으면 데이터로 유추한다 — 가리킨 것(find)이 있으면 그것을
    * 크게(focus), 없으면 화면 전체(whole).

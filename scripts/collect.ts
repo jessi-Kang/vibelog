@@ -101,7 +101,7 @@ export interface RepoActivity {
   latestSha: string | null;
   /** 최근 7일 커밋 수 — 프로젝트 카드의 "이번 주 커밋" */
   weekCommits: number;
-  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" (…) */
+  /** 오늘(KST) 커밋 수 — 홈의 "오늘 움직임" */
   todayCommits: number;
   /** 레포 전체 누적 커밋 수 — 프로젝트 상세의 "누적 커밋" */
   totalCommits: number;
@@ -111,7 +111,7 @@ export interface RepoActivity {
   theme?: string;
   /**
    * 릴리즈 선언 여부 — GitHub Release가 하나라도 있으면 true. 없으면 배포돼
-   * 있어도 preview (…). About Website는
+   * 있어도 preview. About Website는
    * 주소 지정용일 뿐 상태와 무관 — 강제 지정은 vibelog.json status로.
    */
   released: boolean;
@@ -483,7 +483,7 @@ async function getDeployedUrl(
 /**
  * 배포 주소를 고른다. 우선순위: About Website(커스텀 의도) → Vercel API(고정 도메인)
  * → GitHub Deployments 기록. 아무것도 안 채워도 배포되는 순간 live 판정·카드
- * 링크·쇼츠 데모 URL이 생긴다 (…). 단, About Website가 *.vercel.app이면
+ * 링크·쇼츠 데모 URL이 생긴다. 단, About Website가 *.vercel.app이면
  * "커스텀 도메인 의도"가 아니라 예전에 적어 둔 기본 주소다 — 커스텀 도메인을 붙인 뒤에도
  * 옛 주소가 카드·녹화에 남는다 (vibelog.space 전환 때 확인). 이때는 자동 감지가 이긴다.
  *
@@ -591,7 +591,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       .then((res) => res.data.length > 0)
       .catch(() => false);
 
-    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼 (…). vibelog.json이 있으면 그게 우선.
+    // 테마 지정도 topic 한 개로 — "vibelog-theme-signal"처럼. vibelog.json이 있으면 그게 우선.
     const topicTheme = (r.topics ?? [])
       .find((t) => t.startsWith("vibelog-theme-"))
       ?.slice("vibelog-theme-".length);
