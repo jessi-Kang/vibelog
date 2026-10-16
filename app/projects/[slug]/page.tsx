@@ -16,6 +16,7 @@ import {
   humanizeLastActive,
 } from "@/lib/content";
 import { postPath } from "@/lib/post-id";
+import { projectBlurb } from "@/lib/project-name";
 import { publicHomepage } from "@/lib/public-homepage";
 
 interface Props {
@@ -32,14 +33,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!p) return { title: slug };
   return {
     title: p.name,
-    description: p.description,
+    description: projectBlurb(p),
     alternates: { canonical: `/projects/${slug}` },
-    openGraph: { url: `/projects/${slug}`, title: p.name, description: p.description },
+    openGraph: { url: `/projects/${slug}`, title: p.name, description: projectBlurb(p) },
     // 부모의 twitter 태그를 덮어쓴다 (안 적으면 프로젝트명 대신 사이트 이름이 뜬다)
     twitter: {
       card: "summary_large_image",
       title: p.name,
-      description: p.description,
+      description: projectBlurb(p),
     },
   };
 }

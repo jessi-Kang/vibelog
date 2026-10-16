@@ -20,3 +20,17 @@ export function projectName(slug: string, en = false): string {
 export function projectIconOf(slug: string): ProjectIcon | undefined {
   return BY_SLUG.get(slug)?.icon;
 }
+
+/**
+ * 프로젝트 설명 한두 문장 — 소개 글이 기획서를 읽고 쓴 설명(about)이 먼저, 없으면 레포 설명.
+ * 프로젝트 페이지만 about을 쓰고 홈 카드·링크 미리보기는 레포 설명을 쓰던 때는, 소개 글이
+ * 설명을 고친 뒤에도 홈에 옛 문구가 남아 두 곳이 다른 말을 했다 (apart, 10/17)
+ */
+export function projectBlurb(
+  p: { about?: string; aboutEn?: string; description?: string; descriptionEn?: string },
+  en = false,
+): string | undefined {
+  const ko = p.about || p.description || undefined;
+  if (!en) return ko;
+  return (p.about ? p.aboutEn : p.descriptionEn) || ko;
+}
