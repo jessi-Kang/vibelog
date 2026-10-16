@@ -453,6 +453,45 @@ export function templateBadge(template: string): string {
  * 띄어쓰기를 뺀 글자를 이어 맞춰 보므로 문장부호·공백 차이에 흔들리지 않는다.
  * 줄을 이어 붙인 것이 문장과 다르거나 줄 경계가 낱말 한가운데에 떨어지면 null — 폭으로 자른다.
  */
+/** 한글·한자 1, 그 밖 0.5 — video/src/theme.ts의 visualLen과 같은 셈 (theme.ts는 글꼴을 불러와 여기서 못 쓴다) */
+function hookLen(text: string): number {
+  let n = 0;
+  for (const ch of text) n += /[ᄀ-ᇿ　-鿿가-힯豈-﫿]/.test(ch) ? 1 : 0.5;
+  return n;
+}
+
+/**
+ * 훅의 뜻으로 끊은 줄 중 한 줄에 안 드는 줄을 낱말 경계에서 둘로 나눈다 — 두 쪽이 모두 한 줄에
+ * 들 때만. 넘치는 줄 하나 때문에 훅 전체를 132px에서 104px로 줄이던 때는 "AI와 나눈 말이 /
+ * 커밋에 실렸습니다"처럼 두 줄짜리 훅이 다른 편보다 눈에 띄게 작았다 (apart 10/15). 나눌 곳은
+ * 두 쪽 중 긴 쪽이 가장 짧아지는 자리다. 나눠서도 안 들거나 줄이 maxLines를 넘으면 그대로 돌려준다 — 영어 훅을 네 줄로 잘게 쪼개면 104px 두 줄보다 읽기 어렵다.
+ */
+export function fitHookLines(lines: string[] | undefined, max: number, maxLines = 4): string[] | undefined {
+  if (!lines?.length) return lines;
+  const out: string[] = [];
+  for (const line of lines) {
+    const words = line.split(/\s+/).filter(Boolean);
+    if (hookLen(line) <= max || words.length < 2) {
+      out.push(line);
+      continue;
+    }
+    let best: [string, string] | null = null;
+    let bestLen = Infinity;
+    for (let i = 1; i < words.length; i++) {
+      const a = words.slice(0, i).join(" ");
+      const b = words.slice(i).join(" ");
+      const worst = Math.max(hookLen(a), hookLen(b));
+      if (worst <= max && worst < bestLen) {
+        best = [a, b];
+        bestLen = worst;
+      }
+    }
+    if (!best) return lines;
+    out.push(...best);
+  }
+  return out.length > maxLines ? lines : out;
+}
+
 export function lineStarts(words: string[], lines: string[] | undefined): number[] | null {
   if (!lines || lines.length < 2) return null;
   const squash = (x: string) => x.replace(/\s+/g, "");

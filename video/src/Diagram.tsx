@@ -47,7 +47,7 @@ function tint(th: ShortsTheme, ratio = 0.14): string {
 /**
  * 두 줄을 넘길 만큼 긴 라벨은 글자를 줄인다 — "범위 밖의 큰 수"가 마지막
  * 한 글자만 떨어져 나가 원 위에 얹히던 문제. 줄바꿈 자체는
- * wrap 규칙(아래 balance·keep-all)이 고르게 나누고, 그래도 넘칠 때만 줄인다.
+ * wrap 규칙(아래 pretty·keep-all)이 나누고, 그래도 넘칠 때만 줄인다.
  */
 /** 겹친 자리 안에 글자가 차지해도 되는 폭 — 겹친 자리 가장 넓은 곳(180)에서 양옆을 20씩 비운다 */
 const INSIDE_W = 140;
@@ -70,10 +70,11 @@ function fitFont(text: string, base: number, width: number, lines = 2): number {
   return Math.max(Math.round(base * 0.6), Math.floor((width * lines) / len));
 }
 
-/** 줄바꿈은 두 줄로 고르게 — 단어 중간에서 끊지 않고, 한 글자 고아를 막는다 */
+/** 줄바꿈 — 단어 중간에서 끊지 않고, 한 글자 고아만 막는다. 두 줄을 같은 길이로 맞추지 않는다
+ *  (balance는 한 덩어리 말을 갈랐다 — 훅·자막과 같은 규칙) */
 const WRAP: React.CSSProperties = {
   wordBreak: "keep-all",
-  textWrap: "balance",
+  textWrap: "pretty",
   lineHeight: 1.2,
 } as React.CSSProperties;
 

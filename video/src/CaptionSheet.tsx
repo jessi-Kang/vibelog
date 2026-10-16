@@ -61,7 +61,7 @@ const Box: React.FC<{ th: ShortsTheme; children: React.ReactNode; size?: number 
         fontWeight: 900,
         lineHeight: 1.42,
         wordBreak: "keep-all",
-        textWrap: "balance",
+        textWrap: "pretty",
         color: th.ink,
       }}
     >
