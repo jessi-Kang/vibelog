@@ -8,7 +8,7 @@
  */
 import { HEATMAP_DAYS, addDays, todayKst } from "@/lib/commit-hours";
 import { getProject } from "@/lib/content";
-import { countFromLink, countSince, ghGet, repoOf } from "@/lib/github-server";
+import { ghGet, humanTimesSince, humanTotal, repoOf } from "@/lib/github-server";
 
 export interface RepoStats {
   total: number;
@@ -25,17 +25,19 @@ export async function GET(req: Request) {
   try {
     // "이번 주"는 홈 통계·잔디와 같은 창 — 오늘 포함 7일, KST 자정 기준
     const weekStart = `${addDays(todayKst(), -(HEATMAP_DAYS - 1))}T00:00:00+09:00`;
-    const [allRes, week] = await Promise.all([
+    // 커밋 수는 사람 커밋만 — 홈 통계와 같은 기준 (lib/bot-commit.ts)
+    const [latestRes, week, total] = await Promise.all([
       ghGet(`/repos/${repo}/commits?per_page=1`),
-      countSince(repo, weekStart),
+      humanTimesSince(repo, weekStart),
+      humanTotal(repo),
     ]);
-    const all = (await allRes.json()) as {
+    const latest = (await latestRes.json()) as {
       commit?: { committer?: { date?: string }; author?: { date?: string } };
     }[];
     const body: RepoStats = {
-      total: countFromLink(allRes, all.length),
-      week,
-      latest: all[0]?.commit?.committer?.date ?? all[0]?.commit?.author?.date,
+      total,
+      week: week.length,
+      latest: latest[0]?.commit?.committer?.date ?? latest[0]?.commit?.author?.date,
     };
     // 5분 — 홈 /api/commits와 같은 간격. 방문자 수와 무관하게 GitHub 요청이 일정하다
     return Response.json(body, {
