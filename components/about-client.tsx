@@ -9,7 +9,12 @@ interface Section {
   label: string;
   title: { ko: string; en: string };
   body: { ko: string; en: string }[];
+  /** 본문 아래에 붙는 바깥 링크 하나 */
+  link?: { href: string; ko: string; en: string };
 }
+
+/** 프로젝트 레포에 붙이는 커밋 규칙·쇼츠 테마 — 공개 공유한 아티팩트 페이지 */
+const RULES_URL = "https://claude.ai/artifact/Y6ACwrzxGKPLEBdtRm1kXg";
 
 const INTRO = {
   ko: "안녕하세요. 저는 제시, 바이브 코딩을 즐기는 바이브 코더입니다. 여기는 제가 만들고 있는 것들의 기록이죠. 여기 올라오는 글은 제가 쓰지 않습니다. [[commit]]이 곧 콘텐츠가 되도록, [[pipeline]]이 매일 밤 대신 씁니다. 단, 이 소개만은 예외입니다. 부디 같이 즐겨주세요.",
@@ -48,6 +53,12 @@ const SECTIONS: Section[] = [
         en: "Registering a new project takes one label (a [[repo]] [[topic]]) — nothing gets installed in the project itself. Add the topic and a card appears within 30 minutes; the build log starts piling up on the first night with five commits that explain why.",
       },
     ],
+    // 커밋이 곧 글이 되는 구조라, 어떤 규칙으로 커밋을 쓰는지가 이 섹션의 나머지 절반이다
+    link: {
+      href: RULES_URL,
+      ko: "제가 레포에 붙이는 커밋 규칙과 쇼츠 테마 보기",
+      en: "See the commit rules and Shorts themes I add to each repo",
+    },
   },
   {
     label: "next",
@@ -125,6 +136,16 @@ export function AboutClient() {
                 className="m-0 text-[15px] leading-relaxed text-ink-soft"
               />
             ))}
+            {s.link && (
+              <a
+                href={s.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hit self-start text-sm font-medium text-accent transition-opacity duration-150 hover:opacity-85"
+              >
+                {s.link[lang]} ↗
+              </a>
+            )}
           </div>
         ))}
       </section>
