@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
 import { PostClient } from "@/components/post-client";
-import { fmtDate, getDevlogs, getProject } from "@/lib/content";
+import { fmtDate, fmtShort, getDevlogs, getProject } from "@/lib/content";
 import { findByPostId, postId, postPath } from "@/lib/post-id";
 
 interface Props {
@@ -44,6 +44,27 @@ export default async function DevlogPostPage({ params }: Props) {
   const d = findByPostId(all, id);
   if (!d) notFound();
   const project = getProject(d.repo);
+  // 글 끝 "최근 데브로그" — 홈과 같은 순서에서 이 글의 앞 1편·뒤 2편. 맨 앞·맨 뒤 글이면
+  // 모자란 만큼 반대쪽에서 채워 늘 3편을 보인다
+  const at = all.indexOf(d);
+  const NEARBY = 3;
+  let from = Math.max(0, at - 1);
+  if (at + 1 + (NEARBY - (at - from)) > all.length) from = Math.max(0, all.length - 1 - NEARBY);
+  const nearby = all
+    .slice(from, from + NEARBY + 1)
+    .filter((x) => x !== d)
+    .slice(0, NEARBY)
+    .map((x) => ({
+      href: postPath(x),
+      date: fmtShort(x.date),
+      repo: x.repo,
+      title: x.title,
+      titleEn: x.titleEn,
+      commits: x.commits,
+      prs: x.prs,
+      intro: x.intro,
+      hasFail: x.hasFail,
+    }));
   // 소개 글 — 이 글 제목 아래 프로젝트 설명이 여기로 간다. 소개 글 자신에는 붙이지 않는다
   const intro = d.intro ? undefined : all.find((x) => x.repo === d.repo && x.intro);
 
@@ -65,6 +86,7 @@ export default async function DevlogPostPage({ params }: Props) {
         }}
       />
       <PostClient
+        nearby={nearby}
         post={{
           repo: d.repo,
           date: d.date,

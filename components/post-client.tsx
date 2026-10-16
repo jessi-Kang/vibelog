@@ -22,13 +22,27 @@ import { postId } from "@/lib/post-id";
 import type { PluggableList } from "unified";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
-import { Card, EmptyState, ShortMark } from "./ui";
+import { Card, EmptyState, SectionHeader, ShortMark } from "./ui";
+import { DevlogCompactEntry } from "./vibelog";
 import { PostFigure as Figure } from "./post-figure";
 import {
   splitParas,
   type FigSection,
   type PostFigure,
 } from "../scripts/figure-types";
+
+/** 글 끝 "최근 데브로그" 한 줄 — 홈 목록과 같은 모양 (docs/post-feed-next.html B안) */
+export interface NearbyPost {
+  href: string;
+  date: string;
+  repo: string;
+  title: string;
+  titleEn?: string;
+  commits?: number;
+  prs?: number;
+  intro?: boolean;
+  hasFail?: boolean;
+}
 
 export interface PostData {
   repo: string;
@@ -161,7 +175,7 @@ function H({ warn, children }: { warn?: boolean; children: string }) {
   );
 }
 
-export function PostClient({ post }: { post: PostData }) {
+export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: NearbyPost[] }) {
   const { lang, setLang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치
   // 바깥에서 바로 들어온 글의 뒤로는 그 글의 프로젝트 페이지로 (lib/nav-memory.ts)
   useEffect(() => {
@@ -414,6 +428,41 @@ export function PostClient({ post }: { post: PostData }) {
 
   const footer = (
     <div className="mx-auto flex w-full max-w-[680px] flex-col gap-10 lg:col-start-1 lg:mx-0 lg:max-w-none">
+      {/* 이어 읽기 — 홈에서 최근 글을 보고 들어온 사람이 홈으로 돌아가지 않고 다음 글로 간다.
+          홈과 같은 모든 프로젝트 최신순에서 이 글의 앞뒤만 (지금 글은 빼고). git log·댓글이 길어서
+          맨 아래에 두면 안 보이므로 본문 바로 아래에 둔다 (docs/post-feed-next.html B안) */}
+      {nearby.length > 0 && (
+        <section className="flex flex-col gap-3.5">
+          <SectionHeader
+            title={en ? "Recent devlogs" : "최근 데브로그"}
+            aside={en ? "all →" : "전체 →"}
+            href="/log"
+          />
+          <Card className="p-0">
+            {nearby.map((d, i, a) => (
+              <DevlogCompactEntry
+                key={d.href}
+                href={d.href}
+                date={d.date}
+                repo={d.repo}
+                title={en ? (d.titleEn ?? d.title) : d.title}
+                last={i === a.length - 1}
+                meta={[
+                  ...(d.intro ? [{ text: en ? "project intro" : "프로젝트 소개", tone: "soft" as const }] : []),
+                  ...(d.commits
+                    ? [
+                        en
+                          ? `${d.commits} commit${d.commits === 1 ? "" : "s"}${d.prs ? ` · ${d.prs} PR${d.prs === 1 ? "" : "s"}` : ""}`
+                          : `커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`,
+                      ]
+                    : []),
+                  ...(d.hasFail ? [{ text: en ? "rabbit hole" : "삽질", tone: "warn" as const }] : []),
+                ]}
+              />
+            ))}
+          </Card>
+        </section>
+      )}
       {post.shas && post.shas.length > 0 && (
         <section className="flex flex-col gap-3.5">
           <h2 className="m-0 px-1 text-md font-bold text-ink">
