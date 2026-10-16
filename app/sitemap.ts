@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/log`, lastModified: latest, priority: 0.8 },
     { url: `${SITE_URL}/shorts`, lastModified: latest, priority: 0.6 },
     { url: `${SITE_URL}/about`, priority: 0.4 },
+    { url: `${SITE_URL}/about/rules`, priority: 0.3 },
     ...getProjects().map((p) => ({
       url: `${SITE_URL}/projects/${p.slug}`,
       lastModified: new Date(p.lastActivity),
