@@ -44,16 +44,11 @@ export default async function DevlogPostPage({ params }: Props) {
   const d = findByPostId(all, id);
   if (!d) notFound();
   const project = getProject(d.repo);
-  // 글 끝 "최근 데브로그" — 홈과 같은 순서에서 이 글의 앞 1편·뒤 2편. 맨 앞·맨 뒤 글이면
-  // 모자란 만큼 반대쪽에서 채워 늘 3편을 보인다
+  // 글 끝 "최근 데브로그" — 홈과 같은 순서에서 이 글의 바로 앞 1편·바로 뒤 1편.
+  // 맨 앞·맨 뒤 글이면 있는 쪽 한 편만 보인다
   const at = all.indexOf(d);
-  const NEARBY = 3;
-  let from = Math.max(0, at - 1);
-  if (at + 1 + (NEARBY - (at - from)) > all.length) from = Math.max(0, all.length - 1 - NEARBY);
-  const nearby = all
-    .slice(from, from + NEARBY + 1)
-    .filter((x) => x !== d)
-    .slice(0, NEARBY)
+  const nearby = [all[at - 1], all[at + 1]]
+    .filter((x): x is (typeof all)[number] => Boolean(x))
     .map((x) => ({
       href: postPath(x),
       date: fmtShort(x.date),
