@@ -424,6 +424,32 @@ async function cachedTtsWith(
  * 내레이션 mp3의 문장 사이에 무음을 넣는다. 자르는 자리는 앞 문장 끝과 다음 문장 시작의 가운데 —
  * 숨소리가 반쪽으로 잘리지 않게. 녹음은 다시 사지 않고 받은 파일만 고친다.
  */
+/**
+ * 마지막 글자 뒤의 소리를 잘라 낸다. 목소리가 대본에 없는 말을 끝에 덧붙일 때가 있다 —
+ * 10/15 vibelog 편은 "남깁니다."를 "남깁니다만."으로 읽었다. 타이밍은 대본 글자에 맞춘 것이라
+ * 덧붙은 소리는 자막에 없고 소리로만 튀어나온다. 마지막 글자(마침표 말고 소리 나는 글자)가 끝난
+ * 시각 + 0.12초에서 자르고, 끊기는 소리가 나지 않게 0.08초 동안 줄인다. 마침표의 끝 시각은
+ * 덧붙은 소리 쪽으로 늘어나 있어 기준으로 쓰지 않는다.
+ */
+function lastLetterEnd(a: Alignment): number | null {
+  for (let i = a.characters.length - 1; i >= 0; i--) {
+    if (/[\p{L}\p{N}]/u.test(a.characters[i])) return a.character_end_times_seconds[i] ?? null;
+  }
+  return null;
+}
+
+export function trimTail(mp3: string, lastEnd: number): void {
+  if (!(lastEnd > 0)) return;
+  const end = lastEnd + 0.12;
+  const tmp = mp3.replace(/\.mp3$/, ".trim.mp3");
+  execFileSync("ffmpeg", [
+    "-y", "-loglevel", "error", "-i", mp3,
+    "-af", `atrim=end=${end.toFixed(3)},afade=t=out:st=${(end - 0.08).toFixed(3)}:d=0.08`,
+    "-c:a", "libmp3lame", "-q:a", "2", tmp,
+  ]);
+  fs.renameSync(tmp, mp3);
+}
+
 export function padNarration(mp3: string, timing: ShortsTiming, gaps: number[]): void {
   const ss = timing.sentences;
   const cuts = [0];
@@ -457,6 +483,7 @@ async function generateNarration(
   const mp3 = path.join(process.cwd(), narrationPath(script.repo, script.date, lang));
   fs.mkdirSync(path.dirname(mp3), { recursive: true });
   fs.writeFileSync(mp3, audio);
+  trimTail(mp3, lastLetterEnd(alignment) ?? timing.duration);
   // 그림이 다 그려지기 전에 다음 문장으로 넘어가는 자리에 틈을 넣는다 (shorts-types의 holdGaps)
   const gaps = holdGaps(script.lines, timing);
   if (gaps.some((g) => g > 0.05)) {

@@ -60,6 +60,14 @@ const SAMPLES: { spec: DiagramSpec; said: string }[] = [
     said: "표시를 달아 둔 레포만 골라 읽습니다.",
   },
   {
+    // 숫자 + 한글 단위 — 보이는 길이로 재던 때 86px로 들어가 두 줄로 접혔다 (10/15 vibelog)
+    spec: {
+      kind: "sets",
+      labels: ["레포 속 문서", "AI와 나눈 말", "84곳"],
+    },
+    said: "AI와 나눈 말이 84곳에 남아 있었습니다.",
+  },
+  {
     // 겹친 값이 한글 낱말이면 원 아래로 — 안에 욱여넣던 자리 (10/11 vibelog)
     spec: {
       kind: "sets",
@@ -94,7 +102,7 @@ export const DiagramSheet: React.FC<DiagramSheetProps> = ({ theme, lang }) => {
         const kind = spec.kind as DiagramKind;
         const [lo, hi] = DIAGRAM_LABELS[kind];
         return (
-          <Sequence key={kind} from={i * slot} durationInFrames={slot}>
+          <Sequence key={i} from={i * slot} durationInFrames={slot}>
             <AbsoluteFill>
               <div
                 style={{
