@@ -1,0 +1,600 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-16",
+  "day": 21,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "다 읽고 나면 갈 곳이 없었습니다.",
+      "en": "After reading, there was nowhere to go.",
+      "keywords": [
+        "갈 곳이"
+      ],
+      "keywordsEn": [
+        "nowhere"
+      ],
+      "koLines": [
+        "다 읽고 나면",
+        "갈 곳이",
+        "없었습니다."
+      ],
+      "enLines": [
+        "After reading,",
+        "there was",
+        "nowhere to go."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "다른 글은 홈으로 돌아가야 보였습니다.",
+      "en": "To see other posts, you had to go back home.",
+      "keywords": [
+        "홈으로"
+      ],
+      "keywordsEn": [
+        "go back"
+      ],
+      "koLines": [
+        "다른 글은 홈으로",
+        "돌아가야 보였습니다."
+      ],
+      "enLines": [
+        "To see other posts,",
+        "you had to go back home."
+      ],
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "Recent devlogs",
+      "shot": "focus"
+    },
+    {
+      "scene": "build",
+      "ko": "이제 글 맨 아래에 앞뒤 글이 붙습니다.",
+      "en": "Now the previous and next posts sit at the bottom.",
+      "keywords": [
+        "앞뒤 글이"
+      ],
+      "keywordsEn": [
+        "previous and next"
+      ],
+      "koLines": [
+        "이제 글 맨 아래에",
+        "앞뒤 글이 붙습니다."
+      ],
+      "enLines": [
+        "Now the previous and next posts",
+        "sit at the bottom."
+      ],
+      "art": "a reader stepping off the last page of one open book straight onto the first page of the next book",
+      "icon": {
+        "name": "tabler:arrows-left-right",
+        "paths": [
+          {
+            "d": "M21 17H3m3-7L3 7l3-3M3 7h18m-3 13l3-3l-3-3"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "홈 화면에 보이는 글 순서 그대로 이어집니다.",
+      "en": "They follow the same order as the home page.",
+      "keywords": [
+        "순서 그대로"
+      ],
+      "keywordsEn": [
+        "same order"
+      ],
+      "koLines": [
+        "홈 화면에 보이는 글 순서",
+        "그대로 이어집니다."
+      ],
+      "enLines": [
+        "They follow the same order",
+        "as the home page."
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 본문 밑에 최근 글 3편을 달았습니다.",
+      "en": "At first, I put 3 recent posts under the body.",
+      "keywords": [
+        "최근 글 3편을"
+      ],
+      "keywordsEn": [
+        "3 recent posts"
+      ],
+      "koLines": [
+        "처음엔 본문 밑에",
+        "최근 글 3편을 달았습니다."
+      ],
+      "enLines": [
+        "At first, I put 3 recent posts",
+        "under the body."
+      ],
+      "stat": "3편",
+      "statEn": "3 posts",
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "본문",
+          "최근 글 3편",
+          "댓글"
+        ],
+        "labelsEn": [
+          "Post",
+          "3 recent posts",
+          "Comments"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:message-circle",
+            "paths": [
+              {
+                "d": "m3 20l1.3-3.9C1.976 12.663 2.874 8.228 6.4 5.726c3.526-2.501 8.59-2.296 11.845.48c3.255 2.777 3.695 7.266 1.029 10.501S11.659 20.922 7.7 19z"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "다 읽기도 전에 그 목록이 끼어들었습니다.",
+      "en": "That list cut in before you finished reading.",
+      "keywords": [
+        "다 읽기도 전에"
+      ],
+      "keywordsEn": [
+        "cut in"
+      ],
+      "koLines": [
+        "다 읽기도 전에",
+        "그 목록이 끼어들었습니다."
+      ],
+      "enLines": [
+        "That list cut in",
+        "before you finished reading."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "본문",
+          "최근 글 3편",
+          "댓글"
+        ],
+        "labelsEn": [
+          "Post",
+          "3 recent posts",
+          "Comments"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:message-circle",
+            "paths": [
+              {
+                "d": "m3 20l1.3-3.9C1.976 12.663 2.874 8.228 6.4 5.726c3.526-2.501 8.59-2.296 11.845.48c3.255 2.777 3.695 7.266 1.029 10.501S11.659 20.922 7.7 19z"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그래서 그 목록을 댓글 아래로 옮겼습니다.",
+      "en": "So I moved that list below the comments.",
+      "keywords": [
+        "댓글 아래로"
+      ],
+      "keywordsEn": [
+        "below the comments"
+      ],
+      "koLines": [
+        "그래서 그 목록을",
+        "댓글 아래로 옮겼습니다."
+      ],
+      "enLines": [
+        "So I moved that list",
+        "below the comments."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "본문 다음 목록",
+          "읽다 끊김",
+          "댓글 다음 목록",
+          "다 읽고 고름"
+        ],
+        "labelsEn": [
+          "List after post",
+          "Reading cut off",
+          "List after comments",
+          "Pick after reading"
+        ],
+        "icons": [
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:player-pause",
+            "paths": [
+              {
+                "d": "M6 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm8 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"
+              }
+            ]
+          },
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:circle-check",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0"
+              },
+              {
+                "d": "m9 12l2 2l4-4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "3편도 많아서 앞뒤 한 편씩만 남겼습니다.",
+      "en": "Three was too many, so I kept one before and one after.",
+      "keywords": [
+        "한 편씩만"
+      ],
+      "keywordsEn": [
+        "one before"
+      ],
+      "koLines": [
+        "3편도 많아서",
+        "앞뒤 한 편씩만 남겼습니다."
+      ],
+      "enLines": [
+        "Three was too many,",
+        "so I kept one before and one after."
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "고를 글 수",
+          "3편",
+          "1편씩"
+        ],
+        "labelsEn": [
+          "Posts to pick",
+          "3",
+          "1 each"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음 글로 넘어가는 사람이 늘지 지켜보겠습니다.",
+      "en": "Next, I'll watch whether more people move on.",
+      "keywords": [
+        "늘지"
+      ],
+      "keywordsEn": [
+        "more people"
+      ],
+      "koLines": [
+        "다음 글로 넘어가는 사람이",
+        "늘지 지켜보겠습니다."
+      ],
+      "enLines": [
+        "Next, I'll watch whether",
+        "more people move on."
+      ],
+      "icon": {
+        "name": "tabler:chart-line",
+        "paths": [
+          {
+            "d": "M4 19h16M4 15l4-6l4 2l4-5l4 4"
+          }
+        ]
+      },
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 다 읽으면 바로 다음 글입니다.",
+      "en": "Now, finish one and the next is right there.",
+      "keywords": [
+        "바로"
+      ],
+      "keywordsEn": [
+        "right"
+      ],
+      "koLines": [
+        "이제 다 읽으면",
+        "바로 다음 글입니다."
+      ],
+      "enLines": [
+        "Now, finish one and",
+        "the next is right there."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "목록이 너무 일찍 떴다",
+    "titleEn": "The list came too early",
+    "before": "본문 바로 아래 최근 글 3편이 읽기를 끊었다",
+    "after": "댓글 아래에 앞뒤 글 한 편씩",
+    "beforeEn": "Three recent posts right under the body cut into reading",
+    "afterEn": "One post before and one after, below the comments"
+  },
+  "commits": [
+    [
+      "16fc555",
+      "fix: 쇼츠 훅이 줄 하나 때문에 통째로 작아지던 것과 영상 글자의 고르게 맞추는 줄바꿈"
+    ],
+    [
+      "dd4e01b",
+      "design: 글 머리 메타 줄에서 구분점이 줄 끝에 홀로 남지 않게"
+    ],
+    [
+      "ec2ea38",
+      "design: 글 끝 최근 데브로그는 바로 앞뒤 한 편씩, 글 머리 작성 표시는 짧게"
+    ],
+    [
+      "87877ce",
+      "design: 글 머리 프로젝트 설명의 소개 링크 줄을 옅은 회색으로"
+    ],
+    [
+      "eae9d39",
+      "design: 글 끝 최근 데브로그를 댓글 다음으로 옮긴다"
+    ],
+    [
+      "14a8668",
+      "feat: 글 끝에 최근 데브로그 앞뒤 3편을 붙인다"
+    ],
+    [
+      "78850db",
+      "docs: 글 끝에서 다른 최근 글로 이어 읽는 시안 두 가지"
+    ],
+    [
+      "924bc1b",
+      "fix: 홈 카드의 프로젝트 설명이 프로젝트 페이지와 달랐던 것"
+    ],
+    [
+      "5e3fd0b",
+      "feat: 커밋 규칙과 쇼츠 테마를 사이트 페이지로 연다"
+    ],
+    [
+      "2ac405d",
+      "fix: 글 목록의 요약이 제목을 거의 그대로 되풀이하던 것"
+    ],
+    [
+      "83a52c4",
+      "design: 폰에서 줄이 일찍 꺾이던 제목·요약·본문을 폭대로 채운다"
+    ],
+    [
+      "6466ad3",
+      "fix: 커밋 수와 잔디에서 봇 커밋을 뺀다"
+    ],
+    [
+      "bcedd63",
+      "fix: 쇼츠 숫자 카운터의 단위가 숫자보다 처지던 것"
+    ],
+    [
+      "d175bcf",
+      "chore: Anchor가 다시 쓴 기록에 맞춰 Anchor 글 속 커밋 해시를 새 값으로 바꾼다"
+    ],
+    [
+      "c4b0886",
+      "feat: 소개 페이지의 어떻게 돌아가나에 커밋 규칙과 쇼츠 테마 페이지 링크를 단다"
+    ],
+    [
+      "1dfc107",
+      "docs: 새 프로젝트 커밋 규칙 블록에 대화 비공개 규칙을 함께 넣는다"
+    ],
+    [
+      "7d4711a",
+      "chore: 다시 쓴 기록에 맞춰 글과 쇼츠 속 vibelog 커밋 해시를 새 값으로 바꾼다"
+    ],
+    [
+      "ff9a3c4",
+      "chore: apart 9/12 글의 커밋 목록을 apart가 다시 쓴 커밋 제목과 해시로 맞춘다"
+    ],
+    [
+      "6b66c86",
+      "fix: 쇼츠 끝에 목소리가 덧붙인 소리를 자르고, 겹친 원 안의 숫자를 한 줄로 쓴다"
+    ],
+    [
+      "8ece198",
+      "chore: 원격 기록이 다시 쓰였으면 자동 실행이 결과를 올리지 않고 멈추게 한다"
+    ],
+    [
+      "2ddbcd5",
+      "chore: 문서와 주석에 남은 대화 말투 세 곳을 더 고친다"
+    ],
+    [
+      "20b4b40",
+      "chore: 대화의 말을 풀어 옮긴 메모 꼴도 커밋 검사로 막는다"
+    ],
+    [
+      "2cc6958",
+      "chore: 대화에서 나온 말을 풀어 적은 메모도 지워 결정과 이유만 남긴다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "16fc555",
+      "fix: Shorts hook no longer shrinks entirely due to one line, and video text wraps evenly"
+    ],
+    [
+      "dd4e01b",
+      "design: In post header meta line, separator dot no longer dangles alone at line end"
+    ],
+    [
+      "ec2ea38",
+      "design: Post footer shows only the adjacent recent devlogs (one prev/next); header write-date shortened"
+    ],
+    [
+      "87877ce",
+      "design: Project intro link line in post header set to light gray"
+    ],
+    [
+      "eae9d39",
+      "design: Move recent devlogs in post footer below comments"
+    ],
+    [
+      "14a8668",
+      "feat: Add 3 recent devlogs before/after to post footer"
+    ],
+    [
+      "78850db",
+      "docs: Two mockups for continuing reading from post footer to other recent posts"
+    ],
+    [
+      "924bc1b",
+      "fix: Home card project description differed from project page"
+    ],
+    [
+      "5e3fd0b",
+      "feat: Open commit rules and Shorts theme as site pages"
+    ],
+    [
+      "2ac405d",
+      "fix: Post list summary nearly repeated the title"
+    ],
+    [
+      "83a52c4",
+      "design: Fill title, summary, and body to full width on mobile where lines wrapped too early"
+    ],
+    [
+      "6466ad3",
+      "fix: Exclude bot commits from commit count and contribution graph"
+    ],
+    [
+      "bcedd63",
+      "fix: Shorts number counter unit sat lower than the number"
+    ],
+    [
+      "d175bcf",
+      "chore: Update commit hashes in Anchor post to match Anchor's rewritten history"
+    ],
+    [
+      "c4b0886",
+      "feat: Add links to commit rules and Shorts theme pages in intro page's 'How it works'"
+    ],
+    [
+      "1dfc107",
+      "docs: Include conversation-privacy rule in the new project commit rules block"
+    ],
+    [
+      "7d4711a",
+      "chore: Update commit hashes in post and Shorts to match rewritten vibelog history"
+    ],
+    [
+      "ff9a3c4",
+      "chore: Align apart 9/12 post's commit list with apart's rewritten commit titles and hashes"
+    ],
+    [
+      "6b66c86",
+      "fix: Trim voice-added sound at Shorts end; write number in overlapping circles on one line"
+    ],
+    [
+      "8ece198",
+      "chore: Automation stops without posting results if remote history was rewritten"
+    ],
+    [
+      "2ddbcd5",
+      "chore: Fix three remaining conversational phrasings in docs and comments"
+    ],
+    [
+      "20b4b40",
+      "chore: Block memo-style rewording of conversation text via commit check"
+    ],
+    [
+      "2cc6958",
+      "chore: Remove memos rewording conversation statements, keeping only decisions and reasons"
+    ]
+  ],
+  "commitCount": 23,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "글을 다 읽으면 이제 맨 아래에서 바로 앞뒤 데브로그로 넘어갈 수 있습니다. 처음엔 최근 글 3편을 본문 바로 아래에 붙였다가, 댓글 아래 한 편씩으로 줄였습니다.",
+    "en": "When you finish a post, the previous and next devlogs are now right at the bottom. I first put three recent posts under the body, then cut it to one each, below the comments."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#devlog",
+    "#웹개발",
+    "#UX",
+    "#buildinpublic",
+    "#개발일지"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-16.poster.jpg?v=mvbetbcy",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-16.ko.mp4?v=mvbetdi7",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-16.ko.sm.mp4?v=mvbetj76",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-16.en.poster.jpg?v=mvbeum3w",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-16.en.mp4?v=mvbeuo3o",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-16.en.sm.mp4?v=mvbeuu8b"
+  }
+}

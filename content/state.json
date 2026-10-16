@@ -1,9 +1,9 @@
 {
   "vibelog": {
-    "lastSha": "27a0d6a30d58511993ee3c409ff656a9dce0d236",
-    "lastRun": "2026-10-15T14:03:48.296Z",
-    "lastDate": "2026-10-15",
-    "daySince": "2026-10-13T14:03:51.096Z",
+    "lastSha": "16fc55572b19da88a4acac815457425276975aaf",
+    "lastRun": "2026-10-16T20:13:04.435Z",
+    "lastDate": "2026-10-16",
+    "daySince": "2026-10-15T14:03:48.296Z",
     "planSha": "docs/01-concept.md:391a6dbf5a0d7a48dff21fa30c44d4aee77663ed,docs/03-shorts-spec.md:acff5a5bcfb59fb7678a9df798e2e35694d861b9,README.md:6693d7362f80c7aad4536e15502e31c46433079e"
   },
   "apart": {
@@ -11,7 +11,7 @@
     "lastRun": "2026-10-15T14:06:08.226Z",
     "lastDate": "2026-10-15",
     "daySince": "2026-10-11T14:05:43.746Z",
-    "planSha": "docs/01-service-overview.md:1c01e38d9ff3df5c3137b7af422926b12b8e6f02,docs/04-tech-spec.md:6240ae1dac0c3e0f3216af6958423a826b4831c4,README.md:99a60c88cfa49c4ccbf7c4d993eae01eacedcbe1"
+    "planSha": "docs/01-service-overview.md:2ec861b633ae6397fac2b1c4dacdd1e9edf2acff,docs/04-tech-spec.md:6240ae1dac0c3e0f3216af6958423a826b4831c4,README.md:99a60c88cfa49c4ccbf7c4d993eae01eacedcbe1"
   },
   "Anchor": {
     "lastSha": "f6532933ff03d7dd159ed053092847f65b1688c8",
@@ -30,7 +30,8 @@
     "lastSha": "c7cc41742884d3903d5a4684376aab1dbbb59c32",
     "lastRun": "2026-09-24T14:06:06.025Z",
     "lastDate": "2026-09-24",
-    "daySince": "2026-09-17T14:01:22.944Z"
+    "daySince": "2026-09-17T14:01:22.944Z",
+    "introDeferredAt": "2026-10-16T15:27:17Z"
   },
   "lie-detective": {
     "lastSha": "1136d88d63b3ab5f660f0893028bab3ebc1a783f",
