@@ -1247,13 +1247,22 @@ export const StatPunch: React.FC<{
           color: th.ink,
         }}
       >
-        <span
-          style={{ fontSize: 240, letterSpacing: "-0.02em", color: th.accent, display: "inline-block", verticalAlign: "bottom" }}
-        >
-          {/* 자릿수마다 다른 속도로 굴러 멈춘다 (remocn rolling-number). 천 단위 콤마 포함 */}
-          <RollingInline to={num} progress={rollP} fontSize={240} />
+        {/* 숫자와 단위는 같은 기준선에 앉힌다. 숫자 칸은 240px 글자를 줄 높이
+            264px 상자 가운데에 두는데, 단위를 바깥 줄에 따로 두면 그 줄의
+            기준선이 숫자 상자 바닥 쪽에 잡혀 "곳"·"commits"가 숫자보다 아래로
+            처졌다. 단위도 같은 240px·264px 상자에 넣어 기준선을 맞추고,
+            글자만 100px로 줄인다 */}
+        <span style={{ display: "inline-flex", alignItems: "flex-start", fontSize: 240 }}>
+          <span style={{ display: "flex", letterSpacing: "-0.02em", color: th.accent }}>
+            {/* 자릿수마다 다른 속도로 굴러 멈춘다 (remocn rolling-number). 천 단위 콤마 포함 */}
+            <RollingInline to={num} progress={rollP} fontSize={240} />
+          </span>
+          {suffix && (
+            <span style={{ height: 264, lineHeight: "264px", whiteSpace: "pre" }}>
+              <span style={{ fontSize: 100, verticalAlign: "baseline" }}>{suffix}</span>
+            </span>
+          )}
         </span>
-        <span style={{ fontSize: 100 }}>{suffix}</span>
       </div>
     </AbsoluteFill>
   );
