@@ -49,6 +49,20 @@ function tint(th: ShortsTheme, ratio = 0.14): string {
  * 한 글자만 떨어져 나가 원 위에 얹히던 문제. 줄바꿈 자체는
  * wrap 규칙(아래 balance·keep-all)이 고르게 나누고, 그래도 넘칠 때만 줄인다.
  */
+/** 겹친 자리 안에 글자가 차지해도 되는 폭 — 겹친 자리 가장 넓은 곳(180)에서 양옆을 20씩 비운다 */
+const INSIDE_W = 140;
+/** 굵은 글꼴(900)에서 글자 폭을 글자 크기의 배수로 — 한글 1, 숫자 0.62, 영문 0.6, 공백 0.3 (렌더해서 잰 근삿값) */
+function boldEm(text: string): number {
+  let n = 0;
+  for (const ch of text) {
+    if (/[ᄀ-ᇿ　-鿿가-힯豈-﫿]/.test(ch)) n += 1;
+    else if (/[0-9]/.test(ch)) n += 0.62;
+    else if (ch === " ") n += 0.3;
+    else n += 0.6;
+  }
+  return Math.max(n, 0.5);
+}
+
 function fitFont(text: string, base: number, width: number, lines = 2): number {
   const len = visualLen(text);
   const perLine = width / base; // 한 줄에 들어가는 전각 글자 수(근사)
@@ -516,8 +530,11 @@ export const DiagramScene: React.FC<{
     // 왼쪽 아래로 끌어내던 때는 보기 안 좋았다. 길 때는 집합 이름 둘을 원 위로 올려 아래를 비운다.
     // 기준은 "겹친 자리 폭(180)에 글자를 줄이지 않고 들어가는가"다 — 보이는 길이 5까지 안에 두던 때는
     // 한글 "파일 위치"(4.5)가 안으로 들어가 40px까지 줄어 욱여넣어졌다 (10/11 vibelog).
-    // 영어 "File location"(6.5)은 바깥으로 빠져 한글판만 그랬다. 72px로 180에 드는 2.5까지만 안에 쓴다
-    const inside = visualLen(l(2)) <= 2.5;
+    // 영어 "File location"(6.5)은 바깥으로 빠져 한글판만 그랬다.
+    // 보이는 길이(한글 1·영문 0.5)로 재던 때는 굵은 숫자가 반 칸보다 넓어 "84곳"(2)이 86px로 들어가
+    // 두 줄로 접히고 아랫줄이 원 밖으로 나갔다 (10/15 vibelog). 굵은 글자의 실제 폭으로 재고, 한 줄로 고정한다
+    const insideSize = Math.min(86, Math.floor(INSIDE_W / boldEm(l(2))));
+    const inside = insideSize >= 56;
     const ring = (p: number): React.CSSProperties => ({
       strokeDasharray: 1,
       strokeDashoffset: 1 - p,
@@ -611,7 +628,8 @@ export const DiagramScene: React.FC<{
               textAlign: "center",
               fontFamily: FONT_SANS,
               fontWeight: 900,
-              fontSize: fitFont(l(2), 86, 180, 1),
+              fontSize: insideSize,
+              whiteSpace: "nowrap",
               color: th.accent,
               ...popIn(num),
             }}
