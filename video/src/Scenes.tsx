@@ -11,6 +11,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import {
+  fitHookLines,
   lineStarts,
   templateBadge,
   type ShortsScript,
@@ -65,7 +66,8 @@ export const HookCard: React.FC<{
   }
   const words = hook[lang].split(/\s+/);
   // 대본이 뜻 덩어리로 끊어 둔 줄 — 있으면 그대로 끊고, 가장 긴 줄이 폭에 들어가게 글자를 맞춘다
-  const lines = lang === "ko" ? hook.koLines : hook.enLines;
+  // 132px 한 줄에 안 드는 줄은 먼저 낱말 경계에서 둘로 나눠 본다 — 나눠서 들면 글자를 줄이지 않는다
+  const lines = fitHookLines(lang === "ko" ? hook.koLines : hook.enLines, 7.6, 3);
   // 뜻으로 끊은 줄이 132px에서 폭(920)을 넘으면 그 줄 안에서 접혀 낱말 하나가 혼자 남았다.
   // 글자를 줄에 맞춰 계속 줄이지는 않는다(영어 훅이 68px까지 작아졌다) — 긴 훅에 쓰던 104px로 한 단계만 내린다.
   // 104px에서도 넘치는 줄이 있으면 그 줄 나눔은 버리고 폭으로 자른다.
@@ -619,7 +621,8 @@ export const FailCard: React.FC<{
           lineHeight: 1.08,
           margin: "20px 0 60px",
           wordBreak: "keep-all",
-          textWrap: "balance",
+          // 훅과 같다 — balance는 줄 길이를 고르게 맞추느라 한 덩어리 말을 가른다
+          textWrap: "pretty",
           color: th.ink,
         }}
       >
