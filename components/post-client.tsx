@@ -247,13 +247,13 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
         {" · "}
         {post.intro
           ? en
-            ? "Written by AI from the repo's code · intro"
-            : "AI가 레포 코드를 읽고 작성 · 소개"
+            ? "AI-written · intro"
+            : "AI 작성 · 소개 글"
           : null}
         {!post.intro && post.commits != null
           ? en
-            ? `Written by AI from ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `
-            : `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
+            ? `AI-written · ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `
+            : `AI 작성 · 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""} · `
           : ""}
         {!post.intro && <span className="whitespace-nowrap">day {String(post.day).padStart(2, "0")}</span>}
         {post.short && (
