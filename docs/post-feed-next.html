@@ -1,0 +1,120 @@
+<title>글 끝 이어 읽기 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 사이트 토큰 그대로 (app/globals.css). 사이트가 다크 한 벌이라 이 시안도 한 벌. */
+:root {
+  --bg: #0a0e14; --bg-deep: #05080c; --panel: #141b24; --panel2: #1b2430;
+  --line: #26313f; --line-strong: #3a4656;
+  --ink: #f3efe6; --ink-soft: #c9cfd8; --muted: #8c98a8;
+  --accent: #5ee1c3; --warn: #ffb454;
+  --c-vibelog: #5ee1c3; --c-apart: #b9a7ff;
+  --sans: "Noto Sans KR", "Noto Sans CJK KR", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html { font-size: 14px; }
+body { background: var(--bg-deep); color: var(--ink); font-family: var(--sans); margin: 0; word-break: keep-all; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: flex; flex-direction: column; gap: 32px; }
+h1.page { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
+.lede { color: var(--ink-soft); margin: 8px 0 0; line-height: 1.7; max-width: 66ch; }
+.lede b { color: var(--ink); }
+.row { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); align-items: start; }
+.opt { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tag { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.tag b { color: var(--ink); font-size: 1rem; font-family: var(--sans); }
+.note { font-size: .88rem; color: var(--muted); line-height: 1.7; margin: 0; }
+.note b { color: var(--ink-soft); font-weight: 500; }
+
+/* 폰 화면 (390 폭) */
+.phone { width: 100%; max-width: 390px; background: var(--bg); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+.screen { padding: 20px 20px 26px; display: flex; flex-direction: column; gap: 22px; }
+.sec h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.sec p { margin: 0; color: var(--ink-soft); line-height: 1.75; font-size: 1.05rem; }
+.fade { opacity: .45; }
+.label { font-size: .86rem; color: var(--muted); padding-inline: 4px; }
+
+/* A — 위·아래 두 칸 */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cell { background: var(--panel); border-radius: 12px; padding: 12px 13px 13px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.cell .dir { font-size: .8rem; color: var(--muted); }
+.cell .dir.next { color: var(--accent); }
+.cell .t { font-size: .95rem; font-weight: 700; line-height: 1.45; color: var(--ink); }
+.proj { display: flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--muted); }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+
+/* B — 최근 글 목록 */
+.list { background: var(--panel); border-radius: 12px; }
+.item { padding: 12px 14px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.item:last-child { border-bottom: 0; }
+.item .meta { display: flex; gap: 8px; align-items: center; font-size: .8rem; color: var(--muted); }
+.item .t { font-size: .98rem; font-weight: 600; line-height: 1.45; }
+.item.here { background: var(--panel2); }
+.item.here .t { color: var(--muted); font-weight: 500; }
+.here-tag { font-size: .74rem; color: var(--accent); }
+.more { display: flex; justify-content: space-between; font-size: .86rem; color: var(--accent); padding-inline: 4px; }
+
+/* 함께 — 지금 있는 링크 */
+.plink { font-family: var(--mono); font-size: .86rem; color: var(--accent); padding-inline: 4px; }
+.cut { height: 40px; background: linear-gradient(var(--bg), var(--bg-deep)); }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1 class="page">글 끝에서 다른 최근 글로 이어 읽기</h1>
+    <p class="lede">지금은 글을 다 읽으면 <b>그 프로젝트의 다른 날</b> 링크 하나뿐이라, 홈에서 최근 글을 보고 들어온 사람이 다음 최근 글로 넘어가려면 홈으로 돌아가야 합니다. 두 안 모두 <b>글 본문이 끝난 바로 아래, git log 위</b>에 둡니다 — git log와 댓글이 길어서 맨 아래에 두면 안 보입니다. 순서는 홈·전체 피드와 같은 <b>모든 프로젝트 최신순</b>입니다. 예시는 바이브 로그 10/15 글을 다 읽은 자리입니다.</p>
+  </header>
+
+  <div class="row">
+    <section class="opt">
+      <div class="tag">A <b>앞뒤 글 두 칸</b></div>
+      <div class="phone"><div class="screen">
+        <div class="sec fade"><h3>다음 할 것</h3><p>앞으로 쓰는 문서와 커밋에 대화 속 말이 다시 쌓이지 않는지 지켜보겠습니다.</p></div>
+        <div class="pair">
+          <div class="cell">
+            <span class="dir">← 더 최근</span>
+            <span class="proj"><i class="dot" style="background:var(--c-apart)"></i>아파트 감별사 · 10/15</span>
+            <span class="t">AI와 나눈 대화가 커밋에 그대로 실리지 않게 했습니다</span>
+          </div>
+          <div class="cell">
+            <span class="dir next">다음 글 →</span>
+            <span class="proj"><i class="dot" style="background:var(--c-vibelog)"></i>바이브 로그 · 10/13</span>
+            <span class="t">큰 작업이 글에서 빠지지 않게 '그 밖의 소식'을 만들었습니다</span>
+          </div>
+        </div>
+        <span class="plink">바이브 로그의 다른 날 →</span>
+        <div class="label fade">원료 · git log</div>
+      </div><div class="cut"></div></div>
+      <p class="note">홈 목록을 위에서 아래로 읽는 순서 그대로, <b>다음 글은 한 편 더 옛 글</b>입니다. 제목만 두고 요약은 뺍니다(320에서 두 칸이 길어집니다). 가장 새 글이면 왼쪽 칸이 비고, 가장 옛 글이면 오른쪽이 빕니다. 할 일이 하나로 분명합니다.</p>
+    </section>
+
+    <section class="opt">
+      <div class="tag">B <b>최근 글 목록, 지금 글 표시</b></div>
+      <div class="phone"><div class="screen">
+        <div class="sec fade"><h3>다음 할 것</h3><p>앞으로 쓰는 문서와 커밋에 대화 속 말이 다시 쌓이지 않는지 지켜보겠습니다.</p></div>
+        <div class="label">최근 데브로그</div>
+        <div class="list">
+          <div class="item">
+            <span class="meta"><i class="dot" style="background:var(--c-apart)"></i>10/15 · 아파트 감별사</span>
+            <span class="t">AI와 나눈 대화가 커밋에 그대로 실리지 않게 했습니다</span>
+          </div>
+          <div class="item here">
+            <span class="meta"><i class="dot" style="background:var(--c-vibelog)"></i>10/15 · 바이브 로그 <span class="here-tag">· 지금 읽은 글</span></span>
+            <span class="t">공개 레포에 적혀 있던 제 대화 속 말을 지웠습니다</span>
+          </div>
+          <div class="item">
+            <span class="meta"><i class="dot" style="background:var(--c-vibelog)"></i>10/13 · 바이브 로그</span>
+            <span class="t">큰 작업이 글에서 빠지지 않게 '그 밖의 소식'을 만들었습니다</span>
+          </div>
+          <div class="item">
+            <span class="meta"><i class="dot" style="background:var(--c-vibelog)"></i>10/12 · 바이브 로그</span>
+            <span class="t">어제 글에서 댓글 기능 이야기가 빠진 이유를 찾았습니다</span>
+          </div>
+        </div>
+        <div class="more"><span>바이브 로그의 다른 날 →</span><span>전체 →</span></div>
+        <div class="label fade">원료 · git log</div>
+      </div><div class="cut"></div></div>
+      <p class="note">홈의 <b>최근 데브로그 목록을 글 끝에 다시 펼친 것</b>입니다. 지금 글 앞뒤로 4편(앞 1·뒤 2, 맨 앞 글이면 뒤 3)을 보이고 지금 글은 옅게 표시합니다. 고를 거리가 많지만 화면을 더 차지합니다.</p>
+    </section>
+  </div>
+</div>
