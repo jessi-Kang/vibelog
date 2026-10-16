@@ -408,7 +408,16 @@ async function writeFigures(
 async function writeDevlog(
   repo: string,
   date: string,
-  d: { title: string; titleEn: string; ko: string; en: string; failStory?: boolean; continues?: string | null },
+  d: {
+    title: string;
+    titleEn: string;
+    summary?: string;
+    summaryEn?: string;
+    ko: string;
+    en: string;
+    failStory?: boolean;
+    continues?: string | null;
+  },
   a: RepoActivity,
 ): Promise<void> {
   const file = devlogPath(repo, date);
@@ -452,6 +461,8 @@ async function writeDevlog(
     "---",
     `title: ${JSON.stringify(d.title)}`,
     `titleEn: ${JSON.stringify(d.titleEn)}`,
+    ...(d.summary ? [`summary: ${JSON.stringify(d.summary)}`] : []),
+    ...(d.summaryEn ? [`summaryEn: ${JSON.stringify(d.summaryEn)}`] : []),
     `date: "${date}"`,
     `repo: ${JSON.stringify(repo)}`,
     `commits: ${a.commits.length}`,
@@ -567,7 +578,7 @@ async function rewritePosts(arg: string): Promise<void> {
       console.log(input.line.text);
       if (!input.material) throw new Error("안전 검사로 빼고 나니 글을 쓸 커밋이 모자라다");
       const devlog = await generateDevlog(input.material, date, { recent: recentPosts(repo, date) });
-      const out = await checkSafety([devlog.title, devlog.titleEn, devlog.ko, devlog.en].join("\n\n"));
+      const out = await checkSafety([devlog.title, devlog.titleEn, devlog.summary ?? "", devlog.summaryEn ?? "", devlog.ko, devlog.en].join("\n\n"));
       if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
       await writeDevlog(repo, date, devlog, input.material);
       console.log(`- ${id} 다시 씀: ${devlog.title} · ${fmtTally(takeUsage("generate"))}`);
@@ -826,7 +837,7 @@ async function main(): Promise<void> {
         if (!input.material) continue; // 걸러 내고 나니 글을 쓸 만큼 안 남았다 — 다음 밤에 다시 본다
         const devlog = await generateDevlog(input.material, date, { recent: recentPosts(a.repo, date) });
         // 안전 검사 ② — 완성된 글을 발행하기 전에 본다. 걸리면 그날 글을 내지 않는다
-        const out = await checkSafety([devlog.title, devlog.titleEn, devlog.ko, devlog.en].join("\n\n"));
+        const out = await checkSafety([devlog.title, devlog.titleEn, devlog.summary ?? "", devlog.summaryEn ?? "", devlog.ko, devlog.en].join("\n\n"));
         if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
         await writeDevlog(a.repo, date, devlog, input.material);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);

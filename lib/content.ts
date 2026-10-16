@@ -183,11 +183,41 @@ export function parseSections(markdown: string): DevlogSections {
 const SUMMARY_MAX = 55;
 const SUMMARY_CUT = 50;
 
-function firstSentence(text?: string): string | undefined {
+/** 글자 두 개씩 묶은 조각이 얼마나 겹치나 (0–1). 띄어쓰기·문장부호는 보지 않는다 */
+export function bigramOverlap(a: string, b: string): number {
+  const grams = (t: string) => {
+    const s = t.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+    const out = new Map<string, number>();
+    for (let i = 0; i < s.length - 1; i++) out.set(s.slice(i, i + 2), (out.get(s.slice(i, i + 2)) ?? 0) + 1);
+    return out;
+  };
+  const ga = grams(a);
+  const gb = grams(b);
+  let both = 0;
+  let total = 0;
+  for (const [g, n] of ga) {
+    both += Math.min(n, gb.get(g) ?? 0);
+    total += n;
+  }
+  for (const n of gb.values()) total += n;
+  return total ? (2 * both) / total : 0;
+}
+
+/** 요약이 제목을 거의 다시 말하는가 — 이 정도 겹치면 목록에서 같은 말이 두 줄로 보인다 */
+const SAME_AS_TITLE = 0.55;
+
+function firstSentence(text?: string, title?: string): string | undefined {
   if (!text) return undefined;
   const plain = text.replace(/\s+/g, " ").trim();
-  const m = plain.match(/^.{10,}?\.(?=\s|$)/);
-  const one = (m ? m[0] : plain.slice(0, 90)).trim();
+  // 첫 문장이 제목을 거의 그대로 되풀이하면 다음 문장을 요약으로 쓴다. 글 모델은
+  // 제목과 "뭘 했나" 첫 문장을 같은 호출에서 쓰는데, 둘 다 "달라진 것 하나"를 말하라고
+  // 해서 목록에 "하루 10문제 퀴즈를 끝없이 이어지는 게임으로 바꿨습니다" 아래
+  // "하루 10문제 퀴즈를 끝없이 풀 수 있는 게임으로 바꿨습니다."가 붙었다 (10/16)
+  const sentences = plain.match(/.{10,}?\.(?=\s|$)/g) ?? [];
+  const fresh = title
+    ? sentences.find((x) => bigramOverlap(x, title) < SAME_AS_TITLE)
+    : undefined;
+  const one = (fresh ?? sentences[0] ?? plain.slice(0, 90)).trim();
   if (one.length <= SUMMARY_MAX) return one;
   const head = one.slice(0, SUMMARY_CUT);
   // 쉼표·줄표 같은 절 경계가 있으면 거기서, 없으면 낱말 경계에서 끊는다
@@ -279,8 +309,17 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
         // 채워져 27편 전부에 붙었다. 값이 없는 글은 안 붙인다.
         hasFail: data.failStory === true,
         // 요약은 목록·RSS·링크 미리보기 카드에 쓰여 말풍선을 못 띄운다 — 괄호 표기로
-        summary: firstSentence(sections.did && plainTerms(sections.did)),
-        ...(sectionsEn.did ? { summaryEn: firstSentence(plainTerms(sectionsEn.did)) } : {}),
+        // 글 모델이 따로 쓴 요약(frontmatter summary)이 먼저다 — 제목이 말하지 않은 것을
+        // 말하라고 시킨 한 문장이다. 없는 글은 "뭘 했나"에서 제목과 다른 첫 문장을 쓴다
+        summary:
+          typeof data.summary === "string" && data.summary
+            ? plainTerms(data.summary)
+            : firstSentence(sections.did && plainTerms(sections.did), String(data.title ?? "")),
+        ...(typeof data.summaryEn === "string" && data.summaryEn
+          ? { summaryEn: plainTerms(data.summaryEn) }
+          : sectionsEn.did
+            ? { summaryEn: firstSentence(plainTerms(sectionsEn.did), data.titleEn ? String(data.titleEn) : undefined) }
+            : {}),
         ...(typeof data.commits === "number" ? { commits: data.commits } : {}),
         ...(typeof data.prs === "number" ? { prs: data.prs } : {}),
         ...(shas ? { shas } : {}),
