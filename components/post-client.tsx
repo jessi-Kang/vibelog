@@ -255,7 +255,7 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
             ? `Written by AI from ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `
             : `AI가 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}로 작성 · `
           : ""}
-        {!post.intro && <>day {String(post.day).padStart(2, "0")}</>}
+        {!post.intro && <span className="whitespace-nowrap">day {String(post.day).padStart(2, "0")}</span>}
         {post.short && (
           <span className="whitespace-nowrap">
             {" · "}
@@ -280,7 +280,9 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
           </span>
           <span className="flex flex-col gap-1">
             <span className="text-sm leading-relaxed text-ink-soft">{about}</span>
-            <span className="font-mono text-xs transition-opacity duration-150 group-hover:opacity-85" style={{ color }}>
+            {/* 상자 전체가 링크라 이 줄은 갈 곳만 알린다 — 프로젝트 색으로 칠하면 본문보다 눈에 띄어
+                옅은 회색으로 두고, 누르려 할 때만 프로젝트 색이 든다 (10/17). 한글이라 고정폭 글꼴을 쓰지 않는다 */}
+            <span className="font-sans text-xs text-muted transition-colors duration-150 group-hover:text-[var(--pc)]" style={{ ["--pc" as string]: color }}>
               {en ? "About this project →" : "이 프로젝트 소개 →"}
             </span>
           </span>
