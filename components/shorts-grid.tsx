@@ -73,7 +73,7 @@ export function Thumb({ s }: { s: ThumbData }) {
         <b className="text-accent">vibelog</b> ·{" "}
         {s.tag ?? `day ${String(s.day ?? 1).padStart(2, "0")}`}
       </div>
-      <div className="absolute left-3.5 right-3.5 top-[38%] text-left text-[17px] font-black leading-[1.15] tracking-[-.01em] [text-wrap:balance]">
+      <div className="absolute left-3.5 right-3.5 top-[38%] text-left text-[17px] font-black leading-[1.15] tracking-[-.01em]">
         {s.hook.split(/\s+/).map((w, i) => (
           <span key={i} className={s.hookKeywords.includes(w) ? "text-accent" : ""}>
             {w}{" "}

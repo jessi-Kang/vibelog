@@ -150,7 +150,7 @@ export default function Home() {
       {/* 통계 줄은 전 구간 동일 — 제목 아래 왼쪽 정렬 + 위 구분선 */}
       <section className="grid items-end gap-4 border-b border-dashed border-line pb-6 pt-1 md:gap-5 md:pt-3 lg:pt-5">
         <div className="flex flex-col gap-2 md:gap-3">
-          <h1 className="m-0 max-w-[22ch] text-[24px] font-semibold leading-[1.25] tracking-[-.015em] [text-wrap:balance] md:text-[28px] lg:text-[34px]">
+          <h1 className="m-0 max-w-[22ch] text-[24px] font-semibold leading-[1.25] tracking-[-.015em] md:text-[28px] lg:text-[34px]">
             <T
               ko={
                 <>
@@ -165,7 +165,7 @@ export default function Home() {
               }
             />
           </h1>
-          <p className="m-0 text-md leading-relaxed text-muted [text-wrap:pretty] md:whitespace-nowrap md:text-[16px]">
+          <p className="m-0 text-md leading-relaxed text-muted md:whitespace-nowrap md:text-[16px]">
             <T
               ko="바이브 코딩으로 만드는 서비스들의 제작기. 데브로그는 매일 밤 커밋에서 자동으로 만들어집니다."
               en="Build logs of vibe-coded services. Devlogs are generated automatically from commits, every night."

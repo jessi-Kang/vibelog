@@ -49,7 +49,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
       {project.description && (
-        <p className="m-0 text-base leading-[1.55] text-muted [text-wrap:pretty]">
+        <p className="m-0 text-base leading-[1.55] text-muted">
           {lang === "en"
             ? (project.descriptionEn ?? project.description)
             : project.description}
@@ -172,12 +172,12 @@ export function DevlogTimelineEntry({
           {repo && <ProjectTag repo={repo} />}
           <span>{date}</span>
         </div>
-        <h3 className="m-0 text-lg font-semibold leading-[1.35] text-ink transition-colors duration-150 [text-wrap:pretty] group-hover:text-accent">
+        <h3 className="m-0 text-lg font-semibold leading-[1.35] text-ink transition-colors duration-150 group-hover:text-accent">
           {title}
         </h3>
         {/* 요약은 라이트(300) — 제목 600과 세 단계 차이로 한 발 물러난다 (10/11) */}
         {summary && (
-          <p className="m-0 text-base font-light leading-relaxed text-ink-soft [text-wrap:pretty]">
+          <p className="m-0 text-base font-light leading-relaxed text-ink-soft">
             {summary}
           </p>
         )}
@@ -214,7 +214,7 @@ export function DevlogCompactEntry({
         {date}
       </div>
       <div className="flex min-w-0 flex-col gap-1">
-        <div className="text-md font-medium leading-snug text-ink [text-wrap:pretty]">
+        <div className="text-md font-medium leading-snug text-ink">
           {title}
         </div>
         {/* 프로젝트 이름은 전체 피드와 같은 식별색 — 여러 프로젝트가 섞인 목록에서 색만 봐도 구분된다 */}
