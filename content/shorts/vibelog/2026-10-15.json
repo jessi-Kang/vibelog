@@ -316,101 +316,101 @@
   },
   "commits": [
     [
-      "0f9b935",
+      "27a0d6a",
       "chore: 문서와 주석에서 사용자 이름을 출처로 단 곳을 지우고 검사로 막는다"
     ],
     [
-      "75b901c",
+      "9ed1284",
       "docs: CLAUDE.md에 남아 있던 대화 말투 인용을 마저 풀어 쓴다"
     ],
     [
-      "89fd89d",
+      "1ab51f1",
       "chore: 이름 없이 옮겨 적은 대화도 풀어 쓰고 검사가 그 꼴도 잡게 한다"
     ],
     [
-      "2514da1",
+      "1a99010",
       "chore: 대화 속 말을 따옴표째 옮겨 적은 곳을 풀어 쓰고 커밋 훅으로 막는다"
     ],
     [
-      "e123fae",
+      "8a3903e",
       "docs: 최근에 바뀐 쇼츠·발행 규칙을 문서에 맞춘다"
     ],
     [
-      "a1af062",
+      "d4720c0",
       "fix: 글 본문이 제목 아래 프로젝트 설명을 한 번 더 말하지 않게 한다"
     ],
     [
-      "a0580d1",
+      "cb37f5c",
       "fix: 다른 실행과 동시에 올리다 푸시가 거절되면 다시 받아 와 올린다"
     ],
     [
-      "c6f16d1",
+      "da489a8",
       "fix: GitHub가 잠깐 500을 돌려주면 다시 묻는다"
     ],
     [
-      "81e69f8",
+      "b9254ed",
       "fix: 링크 미리보기 그림이 화면의 3분의 1 크기로 작게 찍히던 것을 고친다"
     ],
     [
-      "91c2363",
+      "29409cf",
       "fix: 내레이션이 \"외운\"을 \"오운\"으로 읽던 것을 고친다"
     ],
     [
-      "7b0c0a3",
+      "2817398",
       "fix: 훅의 뜻으로 끊은 줄이 넘치면 낱말 하나가 혼자 남던 것을 막는다"
     ],
     [
-      "95b6244",
+      "780e281",
       "fix: \"그 밖의 소식\"의 굵게·기울임을 의도 없는 서식으로 보지 않는다"
     ]
   ],
   "commitsEn": [
     [
-      "0f9b935",
+      "27a0d6a",
       "chore: remove user-name attributions from docs and comments and block them with a check"
     ],
     [
-      "75b901c",
+      "9ed1284",
       "docs: finish rewriting leftover conversational quotes in CLAUDE.md"
     ],
     [
-      "89fd89d",
+      "1ab51f1",
       "chore: rewrite unattributed conversation excerpts and have the check catch that form too"
     ],
     [
-      "2514da1",
+      "1a99010",
       "chore: rewrite verbatim quoted speech from conversations and block it with a commit hook"
     ],
     [
-      "e123fae",
+      "8a3903e",
       "docs: align documentation with recent Shorts and publishing rule changes"
     ],
     [
-      "a1af062",
+      "d4720c0",
       "fix: stop the post body from restating the project description under the title"
     ],
     [
-      "a0580d1",
+      "cb37f5c",
       "fix: when push is rejected due to a concurrent run, fetch and retry the push"
     ],
     [
-      "c6f16d1",
+      "da489a8",
       "fix: retry when GitHub briefly returns a 500 error"
     ],
     [
-      "81e69f8",
+      "b9254ed",
       "fix: correct link preview image rendering at one-third of screen size"
     ],
     [
-      "91c2363",
+      "29409cf",
       "fix: stop narration reading \"외운\" as \"오운\""
     ],
     [
-      "7b0c0a3",
+      "2817398",
       "fix: prevent a single word from being left alone on a line when hook-based line breaks overflow"
     ],
     [
-      "95b6244",
+      "780e281",
       "fix: stop treating bold and italics in \"그 밖의 소식\" as unintentional formatting"
     ]
   ],

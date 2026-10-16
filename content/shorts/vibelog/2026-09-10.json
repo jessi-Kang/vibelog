@@ -332,813 +332,813 @@
   },
   "commits": [
     [
-      "964979a",
+      "5d76128",
       "feat: preview 상태 — 배포됐지만 릴리즈 전인 프로젝트를 구분 + 본문 링크 새 창"
     ],
     [
-      "1443676",
+      "ed745e7",
       "chore: 배포 주소 자동 감지에 진단 로그"
     ],
     [
-      "b0bfb18",
+      "da0d68e",
       "fix: 다음 프로젝트 온보딩 검증에서 나온 구멍 4개"
     ],
     [
-      "738008b",
+      "d62e1b2",
       "feat: 배포 주소 감지에 Vercel API 경로 추가 — CLI 배포도 잡는다"
     ],
     [
-      "42598f0",
+      "51cac36",
       "feat: 배포 주소 자동 감지 — About Website 안 채워도 live가 된다"
     ],
     [
-      "fedd009",
+      "e1cf41f",
       "feat: 천 단위 콤마(fmtNum) + 지난 실행 줄에 프로젝트 이름 강조"
     ],
     [
-      "2650fc7",
+      "3d59152",
       "fix: 이번 주·오늘 커밋 수가 100에서 포화 — Link 헤더로 정확히 센다"
     ],
     [
-      "fb50ea3",
+      "27d2cc8",
       "docs: CLAUDE.md에 새 프로젝트 등록 체크리스트"
     ],
     [
-      "c8590a9",
+      "9e39e4f",
       "docs: 프로젝트 레포용 커밋 메시지 규약 문구 추가 (복붙 블록)"
     ],
     [
-      "95d504a",
+      "56f8188",
       "fix: 인식 배치가 프로젝트 메타 변경도 감지 — slug만 비교하던 구멍"
     ],
     [
-      "85f9e30",
+      "48779ce",
       "feat: 새 프로젝트 인식을 search에서 직접 나열로 + 30분 주기 인식 배치"
     ],
     [
-      "95439e0",
+      "d1615eb",
       "fix: 원료 git log에 그날 커밋 전부 — 8개 상한 제거"
     ],
     [
-      "0a98847",
+      "0e87562",
       "feat: 썸네일만 재추출하는 poster 경로 — regen 없이 비용 0으로"
     ],
     [
-      "8d8357c",
+      "348070b",
       "fix: 어두운 썸네일 — 포스터를 장면 페이드 전 밝은 창에서 추출"
     ],
     [
-      "8cb3cd8",
+      "8350806",
       "fix: 연속 실행의 run.json 리베이스 충돌 — 커밋 단계가 통째로 죽었다"
     ],
     [
-      "bc19a35",
+      "d3c2fb3",
       "fix: 키워드 매칭을 문장부호 관용으로 — 영문 훅 하이라이트가 통째로 빠졌다"
     ],
     [
-      "be9fab9",
+      "eef4029",
       "feat: 프로젝트 상세의 정보 블록을 카드로 — 타임라인과 딱 구분"
     ],
     [
-      "ab5cfb4",
+      "c18cec8",
       "fix: 에피소드 대본이 채널 소개를 반복하지 않게"
     ],
     [
-      "c11f1ca",
+      "60a46e0",
       "fix: statEn 표기 규칙 — 카운터 단독으로 자연스러운 형태로"
     ],
     [
-      "c23c295",
+      "d236c46",
       "fix: 길이 기준을 영어에도 공정하게 + 훅 키워드가 미리 커져 있던 버그"
     ],
     [
-      "12d27eb",
+      "67a7e74",
       "fix: 훅 길이 규칙에 균형추 — 짧게 하려고 뜻을 흐리면 더 나쁘다"
     ],
     [
-      "edaa1f2",
+      "317044d",
       "fix: 훅이 점점 길어지던 문제 — 20자 규칙 + 렌더 자동 축소"
     ],
     [
-      "bf6af40",
+      "1aa45fb",
       "fix: end 문장의 숫자 카운터 — 카운터가 먼저, 엔드카드는 그 뒤에"
     ],
     [
-      "90658f7",
+      "1b8bb7d",
       "fix: 숫자 카운터가 엔드카드를 덮던 것 + 영문 영상의 한국어 단위"
     ],
     [
-      "a2c1acf",
+      "2503cfc",
       "fix: 9/10 글의 그림 보류 문장에 이유 추가 + \"결정엔 이유\" 규칙"
     ],
     [
-      "7394c74",
+      "f06924f",
       "fix: \"자동에 맡기다\" 표현 손질 — 개념 명사를 사람 취급하지 않기"
     ],
     [
-      "442f9e7",
+      "c7cf45a",
       "fix: 9/9 글 문체 손질 — \"기계\" 작명과 조어를 걷어냄 (manual)"
     ],
     [
-      "e7b54d7",
+      "51ee0bb",
       "fix: 삽질 카드 구도 — 세로 중앙 정렬 + 긴 제목 자동 축소"
     ],
     [
-      "1d70c9a",
+      "a68832d",
       "fix: 글·대본의 사물 작명(\"기계\")과 압축 조어(\"밤 발행\") 금지"
     ],
     [
-      "6b5f39c",
+      "f5e6238",
       "fix: fail 템플릿의 훅 warn색 제거 — 키워드 색은 템플릿이 못 바꾼다"
     ],
     [
-      "389f892",
+      "bab7695",
       "fix: 쇼츠 페이지 썸네일이 녹화 중 뒤늦게 뜨는 번쩍임 — 투어 경로 프리워밍"
     ],
     [
-      "ffc199b",
+      "ec56509",
       "fix: 영문 녹화에 한국어 화면이 섞이던 문제 — 언어 전환 대기 + 클릭 네비게이션"
     ],
     [
-      "824f298",
+      "388b9a1",
       "feat: 데모 샷 3종 로테이션 — phone / band / duo"
     ],
     [
-      "827eea1",
+      "f8257f2",
       "feat: 콜드오픈 스타일 로테이션(그래프/나열/카운터) + 자막 정적 복원"
     ],
     [
-      "0bbb889",
+      "1424db5",
       "docs: 모션 문법 섹션 — 직전 커밋에서 앵커 불일치로 빠진 스펙 기록"
     ],
     [
-      "50f4c62",
+      "c558185",
       "feat: 모션 문법 추가 — 말 따라 떠오르는 타이포 + 키워드 팝 + 앰비언트"
     ],
     [
-      "95e570c",
+      "4125f02",
       "feat: 쇼츠 구성 템플릿 3종 구현 + 자동 로테이션 / 키워드 구 단위 강조"
     ],
     [
-      "0ce23ba",
+      "4dca4a9",
       "fix: 카메라워크 체감 강화 + 썸네일을 첫 프레임 대신 훅 완성 순간으로"
     ],
     [
-      "61394be",
+      "08ebab2",
       "docs: 쇼츠 스펙에 구성 인서트 3종(콜드오픈·숫자 모먼트·카메라워크) 기록"
     ],
     [
-      "d99d79e",
+      "d22b5e3",
       "feat: 영상 구성 3안 합본 — 커밋 콜드오픈 + 숫자 모먼트 + 데모 카메라워크"
     ],
     [
-      "56ff343",
+      "d46c2f0",
       "fix: 모바일에서 숨은 팝업 컨트롤을 다시 부를 수 없던 문제"
     ],
     [
-      "c6d825c",
+      "643fa7a",
       "fix: 팝업을 풀스크린으로 복원 — 컨트롤은 자동 숨김 오버레이로"
     ],
     [
-      "4af051a",
+      "119733b",
       "fix: 팝업 컨트롤이 쇼츠 상단을 가리던 문제 — 전용 바로 분리"
     ],
     [
-      "e8ee2de",
+      "4b7d531",
       "feat: 테마도 topic으로 고른다 — vibelog-theme-<이름>"
     ],
     [
-      "b2fc348",
+      "538f084",
       "fix: 자막 글자 그림자 제거 — 하이라이트 주변이 뿌옇게 번졌다"
     ],
     [
-      "566222d",
+      "8bcead8",
       "fix: 마커칠 키워드가 이웃 줄 글자를 가리던 문제"
     ],
     [
-      "3358977",
+      "16936f0",
       "feat: 쇼츠 테마 5종 — 레포가 vibelog.json 한 줄로 고른다"
     ],
     [
-      "631e2be",
+      "cb0b8d3",
       "feat: 프로젝트 등록 방식 안내 — 홈 프로젝트 섹션 + 소개"
     ],
     [
-      "1ddf2a8",
+      "4f11733",
       "fix: 쇼츠 페이지 인접 중복 정리"
     ],
     [
-      "fb75d2f",
+      "a6c660f",
       "feat: 쇼츠 메뉴에도 개수 표시"
     ],
     [
-      "11caa7e",
+      "9cfd7ce",
       "feat: 인트로 영어판 영어 화면 재녹화 + 통계 재배치 + 실행 로그 번역"
     ],
     [
-      "46ceaa8",
+      "0975abe",
       "fix: 홈 '오늘 움직임'을 프로젝트 수에서 오늘 커밋 수로"
     ],
     [
-      "c25055c",
+      "21f46a1",
       "feat: 원료 git log도 언어 설정에 맞춰 — 커밋 메시지 번역(shasEn)"
     ],
     [
-      "8b7d03a",
+      "02c4450",
       "feat: 레포 설명도 파이프라인이 번역 — EN 모드 카드가 영어로"
     ],
     [
-      "7f530d8",
+      "d327e92",
       "feat: 사이트 전역 언어 설정 — 헤더 KO/EN 스위치 하나가 전부를 바꾼다"
     ],
     [
-      "b39cc6e",
+      "b19cb4b",
       "feat: 영어 썸네일 — en 영상 첫 프레임도 뽑아 EN 화면에 사용"
     ],
     [
-      "32e4c6b",
+      "eadc94a",
       "fix: 글의 한/영 설정을 쇼츠 재생 언어에 연결"
     ],
     [
-      "76e77ed",
+      "031e6ab",
       "fix: 내레이션 숫자 오독 교정 — '2대'를 '이대'로 읽던 문제"
     ],
     [
-      "03e7f36",
+      "be68ccc",
       "fix: 삽질 카드 before/after에 영어판 — 영문 영상에 한국어가 나왔다"
     ],
     [
-      "441f112",
+      "cfc27d8",
       "fix: day 1·2 글에도 원료 표기 — 커밋 수와 git log 채움"
     ],
     [
-      "94b3a7e",
+      "2fea56e",
       "feat: 소개 페이지·인트로 영어판·배경음악 5종 무드 선곡"
     ],
     [
-      "0d04ea7",
+      "2eed309",
       "fix: 재실행이 그날 기록을 지우던 치명 버그 + ko 업로드 실패 + 캐시 스테일"
     ],
     [
-      "5579570",
+      "7eaa053",
       "feat: 인트로 영상 재제작 — 새 내레이션 + 현행 렌더 규칙 + 실사이트 데모"
     ],
     [
-      "b2f9642",
+      "46ef158",
       "asset: 인트로 내레이션 음성 (Jessi 클론 보이스, 확정 설정)"
     ],
     [
-      "ed0778f",
+      "c33ff01",
       "chore: 생성 그래픽 보류 — 레퍼런스 확정 전까지 사용 중지"
     ],
     [
-      "b5f1301",
+      "258d534",
       "fix: 영상 자막 안전 구역·순차 전환 + 비유 절제 규칙 + 인트로 썸네일"
     ],
     [
-      "790bc14",
+      "2546590",
       "fix: 모바일 점검 2건 — 글 머리 고아 단어, 팝업 safe-area"
     ],
     [
-      "2ac59a6",
+      "24dc3e2",
       "fix: 크롬 저장소 제거를 와일드카드로 + update 실패를 치명으로 안 본다"
     ],
     [
-      "0584d71",
+      "b1589e4",
       "fix: 메뉴를 세그먼트 박스에서 텍스트 + 민트 언더라인 탭으로"
     ],
     [
-      "e617b75",
+      "414c6a2",
       "fix: 오늘 글이 있으면 밤 실행 전에도 '오늘 움직임'으로 카운트"
     ],
     [
-      "9f685e7",
+      "c8bd2d1",
       "fix: 안 쓰는 크롬·엣지 apt 저장소 제거 + apt-get update 재시도"
     ],
     [
-      "bb926d2",
+      "f3ce909",
       "fix: 프로젝트 마지막 활동 날짜를 KST로 — \"오늘 움직임\"이 0으로 밀리던 원인"
     ],
     [
-      "b171093",
+      "99e3b2a",
       "fix: 쇼츠 안내 문구를 '다른 날 →' 링크 위로"
     ],
     [
-      "fd7fee9",
+      "7384121",
       "fix: 타이틀(훅) 장면에서 그래픽 제거 — next 장면 전용으로"
     ],
     [
-      "e7502fa",
+      "9eaede5",
       "fix: 훅 장면에서 자막 제거 — 헤드라인과 같은 문장이 두 번 보였다"
     ],
     [
-      "54e39ef",
+      "86edb4d",
       "fix: 타이틀 민트는 프로젝트 상세의 프로젝트명에만 — 나머지는 화이트로 복원"
     ],
     [
-      "9b25cf7",
+      "0a3a89a",
       "feat: 쇼츠 썸네일을 영상 첫 프레임으로 + 중복 제목 제거 + 실행 시각 KST 통일"
     ],
     [
-      "44be9cb",
+      "7503efe",
       "fix: 쇼츠 페이지·타이틀 강조·헤더 정리 — Jessi 피드백 배치"
     ],
     [
-      "e6200c3",
+      "1697971",
       "content: 9/8·9/9 글을 새 기준으로 재작성 + 영어판 추가"
     ],
     [
-      "f0193a1",
+      "81dcecb",
       "refactor: 글의 스크린샷 섹션 삭제, 쇼츠는 9:16 썸네일로"
     ],
     [
-      "8ffa988",
+      "7d7386d",
       "fix: 실행 #11 실패 원인 두 가지 — 음악 크레딧 의존 제거, art 필드 유실"
     ],
     [
-      "ca13e32",
+      "1f7a7ea",
       "feat: 쇼츠 +알파 그래픽 — 장면 은유 일러스트를 Gemini로 생성해 합성"
     ],
     [
-      "b70a987",
+      "f7d2e02",
       "fix: 글 상세 머리의 중복 정보 정리"
     ],
     [
-      "1e1f3ce",
+      "f002e61",
       "fix: 데브로그 프롬프트 — 개발을 모르는 독자 기준으로 전면 강화"
     ],
     [
-      "0eb9fdb",
+      "be74a38",
       "feat: 스크린샷·쇼츠 레이어 팝업 + 글 상세 2열 + 쇼츠 인트로 카드"
     ],
     [
-      "ee160eb",
+      "8ce3bfb",
       "fix: 홈 데스크톱 정렬 — 우측 카드 폭 통일 + 통계 줄을 전 구간 동일하게"
     ],
     [
-      "8aa5d79",
+      "899695a",
       "fix: 루트 타입 검사에서 video/ 제외 — Vercel 빌드 3시간째 전멸 원인"
     ],
     [
-      "546c790",
+      "bfe9909",
       "polish: 브라우저 기본 부품·호버 촉감 다듬기 (taste 패스)"
     ],
     [
-      "91cdab4",
+      "185133d",
       "feat: 쇼츠 재생성 모드 — Run workflow 입력 하나로 기존 영상 덮어쓰기"
     ],
     [
-      "c26986e",
+      "12e7ae6",
       "fix: 워크플로 푸시 전에 rebase — 세션 푸시와의 경합 방지"
     ],
     [
-      "21ee183",
+      "a32c2b9",
       "fix: 쇼츠 폰 프레임에서 노치 제거"
     ],
     [
-      "26a65b0",
+      "f0f0df5",
       "fix: 숫자 표기 규칙 명시 — 아라비아 숫자 + 단위"
     ],
     [
-      "8b1837d",
+      "58e1397",
       "fix: 디자인 점검(critique)에서 나온 문제 전부 수정"
     ],
     [
-      "52aafe3",
+      "53cd1bf",
       "chore: impeccable 런타임 상태 디렉토리 gitignore"
     ],
     [
-      "3b62ba3",
+      "fa3717d",
       "fix: 쇼츠 대본을 나열형에서 이야기 하나로"
     ],
     [
-      "97fa49c",
+      "205908e",
       "fix: 데브로그·쇼츠 대본을 독자의 말로 — 개발자 축약어 번역 규칙 추가"
     ],
     [
-      "583de44",
+      "c130450",
       "fix: 업로드 실패 격리 + 대본 길이 상한 강화"
     ],
     [
-      "92c04dc",
+      "7efb398",
       "chore: impeccable·taste 스킬을 레포 스킬로 설치"
     ],
     [
-      "42f8158",
+      "1d76728",
       "feat: ship-it 템플릿 고정 배경음악 트랙 추가"
     ],
     [
-      "d4278c5",
+      "af3e664",
       "fix: 커밋 스텝 pathspec 오류와 음악 모델명 422 수정"
     ],
     [
-      "ad63ce6",
+      "b3a77ac",
       "feat: 디자인 핸드오프 적용 — 블로그 5화면 재구현"
     ]
   ],
   "commitsEn": [
     [
-      "964979a",
+      "5d76128",
       "feat: preview state — distinguish deployed but unreleased projects + open body links in new tab"
     ],
     [
-      "1443676",
+      "ed745e7",
       "chore: add diagnostic logging to deployment address auto-detection"
     ],
     [
-      "b0bfb18",
+      "da0d68e",
       "fix: fix 4 holes found in next project onboarding validation"
     ],
     [
-      "738008b",
+      "d62e1b2",
       "feat: add Vercel API path to deployment address detection — catches CLI deployments too"
     ],
     [
-      "42598f0",
+      "51cac36",
       "feat: auto-detect deployment address — live without filling in About Website"
     ],
     [
-      "fedd009",
+      "e1cf41f",
       "feat: thousand separator formatting (fmtNum) + highlight project name in last run line"
     ],
     [
-      "2650fc7",
+      "3d59152",
       "fix: this week/today commit count saturates at 100 — count accurately with Link header"
     ],
     [
-      "fb50ea3",
+      "27d2cc8",
       "docs: add new project registration checklist to CLAUDE.md"
     ],
     [
-      "c8590a9",
+      "9e39e4f",
       "docs: add commit message convention guidelines for project repo (copy-paste block)"
     ],
     [
-      "95d504a",
+      "56f8188",
       "fix: recognition batch detects project meta changes — holes from only comparing slug"
     ],
     [
-      "85f9e30",
+      "48779ce",
       "feat: new project recognition from search to direct listing + 30-minute recognition batch cycle"
     ],
     [
-      "95439e0",
+      "d1615eb",
       "fix: include all commits from that day in raw git log — remove 8-item limit"
     ],
     [
-      "0a98847",
+      "0e87562",
       "feat: thumbnail-only poster path — re-extract without regen at zero cost"
     ],
     [
-      "8d8357c",
+      "348070b",
       "fix: dark thumbnails — extract poster from bright frame before scene fade"
     ],
     [
-      "8cb3cd8",
+      "8350806",
       "fix: run.json rebase conflict on consecutive runs — commit step died entirely"
     ],
     [
-      "bc19a35",
+      "d3c2fb3",
       "fix: keyword matching tolerant of punctuation — English hook highlights were dropped entirely"
     ],
     [
-      "be9fab9",
+      "eef4029",
       "feat: project detail info block as cards — clearly distinct from timeline"
     ],
     [
-      "ab5cfb4",
+      "c18cec8",
       "fix: episode script no longer repeats channel intro"
     ],
     [
-      "c11f1ca",
+      "60a46e0",
       "fix: statEn notation rule — counter stands alone in natural form"
     ],
     [
-      "c23c295",
+      "d236c46",
       "fix: fair length criteria for English + hook keywords were pre-enlarged bug"
     ],
     [
-      "12d27eb",
+      "67a7e74",
       "fix: counterweight to hook length rule — shortening by blurring meaning is worse"
     ],
     [
-      "edaa1f2",
+      "317044d",
       "fix: hooks growing longer over time — 20-char rule + automatic shrink on render"
     ],
     [
-      "bf6af40",
+      "1aa45fb",
       "fix: numeric counter in end sentence — counter first, end card after"
     ],
     [
-      "90658f7",
+      "1b8bb7d",
       "fix: numeric counter covering end card + Korean units in English video"
     ],
     [
-      "a2c1acf",
+      "2503cfc",
       "fix: add reasoning to deferred image sentence in post 9/10 + \"reasons behind decisions\" rule"
     ],
     [
-      "7394c74",
+      "f06924f",
       "fix: refine \"leave to automation\" phrasing — don't treat concept nouns as people"
     ],
     [
-      "442f9e7",
+      "c7cf45a",
       "fix: post 9/9 style cleanup — removed \"machine\" naming and coined terms (manual)"
     ],
     [
-      "e7b54d7",
+      "51ee0bb",
       "fix: failure card composition — vertically centered + auto-shrink long titles"
     ],
     [
-      "1d70c9a",
+      "a68832d",
       "fix: ban object naming (\"machine\") and compressed coinages (\"night publish\") in posts and scripts"
     ],
     [
-      "6b5f39c",
+      "f5e6238",
       "fix: removed hook warn color from fail template — template can't override keyword color"
     ],
     [
-      "389f892",
+      "bab7695",
       "fix: shorts page thumbnail flashing late during recording — prewarm tour path"
     ],
     [
-      "ffc199b",
+      "ec56509",
       "fix: Korean screens mixing into English recordings — wait for language switch + click navigation"
     ],
     [
-      "824f298",
+      "388b9a1",
       "feat: demo shot rotation across 3 types — phone / band / duo"
     ],
     [
-      "827eea1",
+      "f8257f2",
       "feat: cold-open style rotation (graph/list/counter) + restored static subtitles"
     ],
     [
-      "0bbb889",
+      "1424db5",
       "docs: motion grammar section — spec omitted in prior commit due to anchor mismatch"
     ],
     [
-      "50f4c62",
+      "c558185",
       "feat: add motion grammar — words rising with speech + keyword pop + ambient"
     ],
     [
-      "95e570c",
+      "4125f02",
       "feat: implement 3 short-form structure templates + auto rotation / keyword phrase-unit emphasis"
     ],
     [
-      "0ce23ba",
+      "4dca4a9",
       "fix: strengthen camera work feel + thumbnail at hook completion instead of first frame"
     ],
     [
-      "61394be",
+      "08ebab2",
       "docs: record 3 structure inserts for shorts spec (cold open, number moment, camera work)"
     ],
     [
-      "d99d79e",
+      "d22b5e3",
       "feat: merge 3 video structure proposals — commit cold open + number moment + demo camera work"
     ],
     [
-      "56ff343",
+      "d46c2f0",
       "fix: hidden popup controls on mobile could not be recalled"
     ],
     [
-      "c6d825c",
+      "643fa7a",
       "fix: restore popup to fullscreen — controls as auto-hiding overlay"
     ],
     [
-      "4af051a",
+      "119733b",
       "fix: popup controls covering top of shorts — separated into dedicated bar"
     ],
     [
-      "e8ee2de",
+      "4b7d531",
       "feat: pick theme by topic too — vibelog-theme-<name>"
     ],
     [
-      "b2fc348",
+      "538f084",
       "fix: remove subtitle text shadow — highlight surroundings were blurred"
     ],
     [
-      "566222d",
+      "8bcead8",
       "fix: marker-highlighted keywords covering adjacent line's text"
     ],
     [
-      "3358977",
+      "16936f0",
       "feat: 5 shorts themes — repo selects via one line in vibelog.json"
     ],
     [
-      "631e2be",
+      "cb0b8d3",
       "feat: project registration guide — home projects section + intro"
     ],
     [
-      "1ddf2a8",
+      "4f11733",
       "fix: clean up adjacent duplicates on shorts page"
     ],
     [
-      "fb75d2f",
+      "a6c660f",
       "feat: show count on shorts menu too"
     ],
     [
-      "11caa7e",
+      "9cfd7ce",
       "feat: re-record English intro screens + reposition stats + translate run log"
     ],
     [
-      "46ceaa8",
+      "0975abe",
       "fix: home \"today's activity\" from project count to today's commit count"
     ],
     [
-      "c25055c",
+      "21f46a1",
       "feat: translate git log messages with language setting (shasEn)"
     ],
     [
-      "8b7d03a",
+      "02c4450",
       "feat: pipeline translates repo descriptions so EN mode cards show English"
     ],
     [
-      "7f530d8",
+      "d327e92",
       "feat: site-wide language setting, header KO/EN switch changes everything"
     ],
     [
-      "b39cc6e",
+      "b19cb4b",
       "feat: English thumbnails, first frame of en video used on EN screen"
     ],
     [
-      "32e4c6b",
+      "eadc94a",
       "fix: link post KO/EN setting to Shorts playback language"
     ],
     [
-      "76e77ed",
+      "031e6ab",
       "fix: narration number misreading, '2대' was read as '이대'"
     ],
     [
-      "03e7f36",
+      "be68ccc",
       "fix: struggle card before/after English version, English video showed Korean"
     ],
     [
-      "441f112",
+      "cfc27d8",
       "fix: add ingredient notation to day 1·2 posts, commit count and git log filled in"
     ],
     [
-      "94b3a7e",
+      "2fea56e",
       "feat: intro page and intro English version, background music selection across 5 moods"
     ],
     [
-      "0d04ea7",
+      "2eed309",
       "fix: rerun erased that day's record (critical bug), ko upload failure, stale cache"
     ],
     [
-      "5579570",
+      "7eaa053",
       "feat: regenerate intro video with new narration, current render rules, live site demo"
     ],
     [
-      "b2f9642",
+      "46ef158",
       "asset: intro narration voice (Jessi clone voice, final settings)"
     ],
     [
-      "ed0778f",
+      "c33ff01",
       "chore: pause generated graphics until reference is finalized"
     ],
     [
-      "b5f1301",
+      "258d534",
       "fix: subtitle safe zones and sequential transitions for video, metaphor restraint rule, intro thumbnail"
     ],
     [
-      "790bc14",
+      "2546590",
       "fix: two mobile checks, orphan word at start of post, popup safe-area"
     ],
     [
-      "2ac59a6",
+      "24dc3e2",
       "fix: remove Chrome repo with wildcard, don't treat update failure as fatal"
     ],
     [
-      "0584d71",
+      "b1589e4",
       "fix: menu changed from segmented box to text with mint underline tab"
     ],
     [
-      "e617b75",
+      "414c6a2",
       "fix: count today's post as 'today's activity' even before nightly run"
     ],
     [
-      "9f685e7",
+      "c8bd2d1",
       "fix: remove unused Chrome and Edge apt repos, add apt-get update retry"
     ],
     [
-      "bb926d2",
+      "f3ce909",
       "fix: project last activity date now in KST, cause of 'today's activity' dropping to 0"
     ],
     [
-      "b171093",
+      "99e3b2a",
       "fix: Shorts guide text moved above 'other day →' link"
     ],
     [
-      "fd7fee9",
+      "7384121",
       "fix: remove graphics from title (hook) scene, reserved for next scenes only"
     ],
     [
-      "e7502fa",
+      "9eaede5",
       "fix: remove subtitles from hook scene, same sentence as headline was shown twice"
     ],
     [
-      "54e39ef",
+      "86edb4d",
       "fix: title mint only on project name in project detail, rest restored to white"
     ],
     [
-      "9b25cf7",
+      "0a3a89a",
       "feat: Shorts thumbnail from first video frame, remove duplicate title, unify run time to KST"
     ],
     [
-      "44be9cb",
+      "7503efe",
       "fix: Shorts page, title emphasis, header cleanup, batch of Jessi feedback"
     ],
     [
-      "e6200c3",
+      "1697971",
       "content: rewrite 9/8·9/9 posts to new standard, add English version"
     ],
     [
-      "f0193a1",
+      "81dcecb",
       "refactor: remove post screenshot section, Shorts use 9:16 thumbnail"
     ],
     [
-      "8ffa988",
+      "7d7386d",
       "fix: two causes of run #11 failure, remove music credit dependency, art field lost"
     ],
     [
-      "ca13e32",
+      "1f7a7ea",
       "feat: Shorts plus-alpha graphics, metaphor illustrations generated with Gemini and composited"
     ],
     [
-      "b70a987",
+      "f7d2e02",
       "fix: clean up duplicate info at top of post detail"
     ],
     [
-      "1e1f3ce",
+      "f002e61",
       "fix: devlog prompt, strengthened fully for readers with no development background"
     ],
     [
-      "0eb9fdb",
+      "be74a38",
       "feat: screenshot and Shorts layer popup, post detail two columns, Shorts intro card"
     ],
     [
-      "ee160eb",
+      "8ce3bfb",
       "fix: home desktop alignment, unify right card width, stats line identical across all breakpoints"
     ],
     [
-      "8aa5d79",
+      "899695a",
       "fix: exclude video/ from root type check, cause of Vercel build wiped out for 3 hours"
     ],
     [
-      "546c790",
+      "bfe9909",
       "polish: browser default components and hover feel refined (taste pass)"
     ],
     [
-      "91cdab4",
+      "185133d",
       "feat: Shorts regenerate mode, overwrite existing video with one Run workflow input"
     ],
     [
-      "c26986e",
+      "12e7ae6",
       "fix: rebase before workflow push, prevent race with session push"
     ],
     [
-      "21ee183",
+      "a32c2b9",
       "fix: remove notch from Shorts phone frame"
     ],
     [
-      "26a65b0",
+      "f0f0df5",
       "fix: state number notation rule, Arabic numerals plus units"
     ],
     [
-      "8b1837d",
+      "58e1397",
       "fix: resolve all issues raised in design critique"
     ],
     [
-      "52aafe3",
+      "53cd1bf",
       "chore: gitignore impeccable runtime state directory"
     ],
     [
-      "3b62ba3",
+      "fa3717d",
       "fix: rewrite Shorts script from list format into a single story"
     ],
     [
-      "97fa49c",
+      "205908e",
       "fix: write devlog and Shorts scripts in plain reader language; add rule to translate developer abbreviations"
     ],
     [
-      "583de44",
+      "c130450",
       "fix: isolate upload failures and enforce stricter script length limit"
     ],
     [
-      "92c04dc",
+      "7efb398",
       "chore: install impeccable and taste skills as repo skills"
     ],
     [
-      "42f8158",
+      "1d76728",
       "feat: add fixed background music track to ship-it template"
     ],
     [
-      "d4278c5",
+      "af3e664",
       "fix: correct commit step pathspec error and music model name 422 error"
     ],
     [
-      "ad63ce6",
+      "b3a77ac",
       "feat: apply design handoff; reimplement 5 blog screens"
     ]
   ],
