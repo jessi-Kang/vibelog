@@ -1,0 +1,818 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "처음에는 최근 글 목록이 본문과 댓글 사이에 끼어 있었고, 지금은 앞뒤 글이 댓글 아래에 놓인 모습",
+  "altEn": "At first the recent-posts list sat between the post and the comments; now the previous and next posts sit below the comments.",
+  "caption": "목록을 본문 바로 아래에서 댓글 아래로 옮겼습니다",
+  "captionEn": "The list moved from right under the post to below the comments",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "처음에는 최근 글 목록이 본문과 댓글 사이에 있었고, 지금은 앞뒤 글이 댓글 아래에 있습니다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "처음"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "155",
+      "height": "90",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "본문"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "145",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "175",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "최근 글 목록"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "205",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "235",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "댓글"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "285",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "읽는 도중 끼어듦"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "45",
+      "width": "155",
+      "height": "90",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "본문"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "145",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "175",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "댓글"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "205",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "235",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "앞뒤 글"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "285",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "다 읽은 뒤"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "At first the recent-posts list sat between the post and the comments; now the previous and next posts are below the comments"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "28",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "45",
+      "width": "155",
+      "height": "90",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Post"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "145",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "175",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Recent posts"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "205",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "235",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Comments"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "285",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Cuts into reading"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "45",
+      "width": "155",
+      "height": "90",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Post"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "145",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "175",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Comments"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "205",
+      "width": "155",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "235",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Prev / Next"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "293",
+      "y": "285",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After reading"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "최근 글 3편이던 목록을 바로 앞 글과 바로 뒤 글만 남기도록 줄인 모습",
+  "altEn": "The list of three recent posts was cut down to just the previous post and the next post.",
+  "caption": "3편 대신 바로 앞과 바로 뒤만 남겼습니다",
+  "captionEn": "Instead of a list, just the post before and the post after",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "최근 글 3편을 바로 앞 글과 바로 뒤 글로 줄였습니다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "처음 · 3편"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "50",
+      "width": "140",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "73",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "최근 글"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "94",
+      "width": "140",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "117",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "최근 글"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "138",
+      "width": "140",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "최근 글"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "112",
+      "x2": "212",
+      "y2": "112",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "204,105 213,112 204,119",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "55",
+      "width": "140",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "85",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "바로 앞 글"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "120",
+      "width": "140",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "150",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "바로 뒤 글"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "고를 것이 적을수록 넘어가기 쉽다"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The recent-posts list was cut down to the previous post and the next post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "50",
+      "width": "140",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "73",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Recent post"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "94",
+      "width": "140",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "117",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Recent post"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "138",
+      "width": "140",
+      "height": "36",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "90",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Recent post"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "112",
+      "x2": "212",
+      "y2": "112",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "204,105 213,112 204,119",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "55",
+      "width": "140",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "85",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Previous post"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "120",
+      "width": "140",
+      "height": "50",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "150",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Next post"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Fewer choices, easier to move on"
+    }
+   ]
+  }
+ }
+]
