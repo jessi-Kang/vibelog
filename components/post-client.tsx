@@ -252,10 +252,18 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
           : null}
         {!post.intro && post.commits != null
           ? en
-            ? `AI-written · ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""} · `
-            : `AI 작성 · 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""} · `
+            ? `AI-written · ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""}`
+            : `AI 작성 · 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}`
           : ""}
-        {!post.intro && <span className="whitespace-nowrap">day {String(post.day).padStart(2, "0")}</span>}
+        {/* 구분점은 뒤 항목에 붙여 묶는다 — 줄 끝에 점 하나만 남지 않게 */}
+        {!post.intro && (
+          <>
+            {" "}
+            <span className="whitespace-nowrap">
+              {post.commits != null ? "· " : ""}day {String(post.day).padStart(2, "0")}
+            </span>
+          </>
+        )}
         {post.short && (
           <span className="whitespace-nowrap">
             {" · "}
