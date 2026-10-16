@@ -1,5 +1,6 @@
 import { OG_CONTENT_TYPE, OG_SIZE, ogCard } from "@/lib/og";
 import { getDevlogs, getProject, getProjects } from "@/lib/content";
+import { projectBlurb } from "@/lib/project-name";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
@@ -21,7 +22,7 @@ export default async function Image({
   return ogCard({
     eyebrow: p?.status ?? "project",
     title: p?.name ?? slug,
-    sub: p?.description,
+    sub: p ? projectBlurb(p) : undefined,
     meta: `${count} devlogs`,
   });
 }

@@ -9,7 +9,7 @@ import { publicHomepage } from "@/lib/public-homepage";
 import { humanizeLastActive } from "@/lib/format";
 import { projectColor } from "@/lib/project-color";
 import { T, useLang } from "./lang";
-import { projectIconOf, projectName } from "@/lib/project-name";
+import { projectBlurb, projectIconOf, projectName } from "@/lib/project-name";
 import { ProjectIcon } from "./project-icon";
 import { Card, MonoMeta, StatusBadge } from "./ui";
 
@@ -48,11 +48,9 @@ export function ProjectCard({ project }: { project: Project }) {
           </h3>
         </div>
       </div>
-      {project.description && (
+      {projectBlurb(project) && (
         <p className="m-0 text-base leading-[1.55] text-muted">
-          {lang === "en"
-            ? (project.descriptionEn ?? project.description)
-            : project.description}
+          {projectBlurb(project, lang === "en")}
         </p>
       )}
       <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-sans text-xs tabular-nums text-muted">
