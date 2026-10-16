@@ -1,20 +1,13 @@
 {
-  "at": "2026-10-16T14:01:24.521Z",
+  "at": "2026-10-16T19:38:38.956Z",
   "lines": [
     {
-      "text": "npx tsx scripts/run.ts",
+      "text": "npx tsx scripts/shorts.ts apart/2026-10-15",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 0 active"
-    },
-    {
-      "text": "skip     · vibelog 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · vibelog only 3 of 3 commits have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · agency 판단할 코드가 아직 없어 소개 글을 미룹니다",
-      "textEn": "skip     · agency not enough code yet to tell what it is — intro post waits"
+      "text": "shorts   · apart/2026-10-15 다시 만듦 (ko, en) — 대본 그대로",
+      "textEn": "shorts   · apart/2026-10-15 remade (ko, en) — same script"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
