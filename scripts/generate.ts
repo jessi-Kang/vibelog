@@ -17,6 +17,9 @@ import type { RepoActivity } from "./collect";
 export interface GeneratedDevlog {
   title: string;
   titleEn: string;
+  /** 글 목록에서 제목 아래 붙는 한 문장 — 제목이 말하지 않은 것 */
+  summary?: string;
+  summaryEn?: string;
   ko: string;
   en: string;
   /** 그날 이야기의 중심이 삽질이었나 — 목록의 "삽질" 배지 (docs/post-project-and-kind.html C안) */
@@ -124,6 +127,17 @@ ${styleRulesForPrompt()}
   "## Next up".
   "## 그 밖의 소식"은 "## Other news"로, 기울임 커밋 수는 "_25 commits_"로 둡니다.
 
+## summary
+글 목록에서 제목 바로 아래 붙는 한 문장(25–45자, …습니다 체)입니다. 제목을 다시 말하지
+않습니다 — 제목이 무엇이 달라졌는지 말하니, 요약은 제목이 말하지 않은 것 하나를 씁니다:
+왜 했는지, 그래서 무엇이 됐는지, 무엇이 문제였는지. 목록에 제목과 거의 같은 문장이 두 줄로
+붙어 나가던 글이 24편이었습니다 (10/16).
+  ✗ 제목 "하루 10문제 퀴즈를 끝없이 이어지는 게임으로 바꿨습니다" /
+    요약 "하루 10문제 퀴즈를 끝없이 풀 수 있는 게임으로 바꿨습니다."
+  ○ 요약 "10문제를 풀고 나면 내일까지 할 게 없었습니다."
+그 문장만 읽어도 뜻이 통해야 합니다 — "이제 검사를 두 번 합니다"처럼 본문을 읽어야 아는 말은
+쓰지 않습니다. 영어(summaryEn)도 같은 규칙입니다.
+
 ## failStory
 그날 이야기의 **중심**이 삽질이었으면 true. 무언가가 고장 나 있었고 그 원인을 찾아
 고친 것이 하루의 줄기일 때입니다 (제목이 "…안 뜬 이유를 찾았습니다", "…끊기던 것을
@@ -138,7 +152,7 @@ ${styleRulesForPrompt()}
 이야기이거나 확실하지 않으면 null — 잘못 이은 링크는 링크가 없는 것보다 나쁩니다.
 
 반드시 아래 JSON 하나만 출력합니다 (코드펜스 없이):
-{"title": "한국어 제목 (…했습니다 체)", "titleEn": "English title", "ko": "한국어 마크다운", "en": "English markdown", "failStory": false, "continues": null}`;
+{"title": "한국어 제목 (…했습니다 체)", "titleEn": "English title", "summary": "한국어 요약 한 문장", "summaryEn": "English summary sentence", "ko": "한국어 마크다운", "en": "English markdown", "failStory": false, "continues": null}`;
 
 /** 글 재료 중 생성에 쓰는 부분 — 지난 글을 다시 써 보는 미리보기도 같은 꼴로 만든다 */
 export type DevlogMaterial = Pick<
@@ -213,6 +227,10 @@ function parseJson(text: string, ctx?: PostContext): GeneratedDevlog {
     if (typeof parsed[key] !== "string" || parsed[key].length === 0) {
       throw new Error(`데브로그 JSON에 ${key}가 없습니다`);
     }
+  }
+  // 요약은 없어도 글은 낸다 — 화면이 "뭘 했나"에서 제목과 다른 문장을 고른다 (lib/content.ts)
+  for (const key of ["summary", "summaryEn"] as const) {
+    if (typeof parsed[key] !== "string" || !parsed[key].trim()) delete parsed[key];
   }
   // 빠졌거나 이상한 값이면 false — 배지는 확실할 때만 붙인다
   parsed.failStory = parsed.failStory === true;
