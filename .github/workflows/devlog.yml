@@ -229,6 +229,10 @@ jobs:
             # 영상은 업로드되고 json은 옛것인 불일치가 났었다).
             # 받아 와서 올리는 사이에 다른 실행·세션이 먼저 올리면 푸시가 거절된다 ("cannot lock ref",
             # 10/11 09:00 인식 실행). 그때는 다시 받아 와 세 번까지 올린다 — 실패 메일은 진짜 실패에만 오게
+            # 받아 온 기록에 이 실행의 출발점이 없으면 기록이 다시 쓰인 것이다 — 그대로 리베이스하면
+            # 옛 파일로 덮어쓴다. 올리지 않고 멈춘다 (다음 실행이 새 기록에서 다시 만든다)
+            git fetch -q origin "${GITHUB_REF_NAME}"
+            if ! git merge-base HEAD FETCH_HEAD >/dev/null; then echo "원격 기록이 다시 쓰였습니다 — 이번 결과는 올리지 않습니다"; exit 0; fi
             ok=0
             for i in 1 2 3; do
               if git pull --rebase --autostash -X theirs origin "${GITHUB_REF_NAME}" && git push; then ok=1; break; fi
