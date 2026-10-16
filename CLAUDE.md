@@ -29,6 +29,7 @@
 
 ```
 app/                        Next.js 페이지 (카드 그리드 / 프로젝트 상세 / 전체 피드)
+app/about/rules/            커밋 규칙과 쇼츠 테마 공개 페이지 — 소개 페이지에서 들어온다. 복사 블록은 docs/02 §3을 빌드 때 읽는다
 components/project-filter.tsx  피드·쇼츠가 같이 쓰는 프로젝트 칩 필터 (2개 미만이면 안 그린다)
 content/projects.json       Action이 생성·갱신. 레포 메타 기반
 content/devlog/<repo>/<date>.md   Action이 생성. frontmatter manual: true면 덮어쓰지 않음
