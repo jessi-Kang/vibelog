@@ -59,6 +59,7 @@ scripts/art.ts              쇼츠 그림 — 둥근 평면·강조색 한 군�
 scripts/small-video.ts      데스크톱 팝업용 540×960 사본 (Run workflow의 `small` 입력은 scripts/small-backfill.ts)
 video/src/Enter.tsx         장면이 들어오는 효과 — 장면마다 다르게, 흐림 없음, 훅·마무리 카드는 제자리에서 나타나기만
 lib/has-fail.ts             삽질 섹션에 이야기가 있나 — 글 페이지 접기·삽화 생성이 같이 쓰는 순수 함수
+lib/bot-commit.ts           봇 커밋 판정 — 글 재료 고르기와 홈·프로젝트의 커밋 수가 같이 쓴다 (커밋 수는 사람 커밋만)
 lib/commit-hours.ts         홈 통계·잔디 셈 + 최근 7일 판정(activeThisWeek) — 카드 접기와 "만드는 중"이 같이 쓴다
 lib/project-color.ts        프로젝트 식별색 9색 — 파이프라인이 projects.json에 한 번 적으면 바꾸지 않고, 새 프로젝트는 빈 색을 받는다
 lib/public-homepage.ts      사이트 주소는 live일 때만 화면에 — 홈 카드 "열기"·프로젝트 페이지

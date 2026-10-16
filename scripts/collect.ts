@@ -5,6 +5,7 @@
  * 체크포인트(content/state.json)의 lastRun 이후 활동만 모은다.
  */
 import { Octokit } from "@octokit/rest";
+import { PIPELINE_BOT_EMAIL, humanCommitTimes, isBotCommit } from "../lib/bot-commit";
 
 export interface RepoCommit {
   sha: string;
@@ -18,21 +19,8 @@ export interface RepoCommit {
   authorEmail?: string;
 }
 
-/**
- * 봇이 남긴 커밋인가. 로그인·이름·메일 로컬파트에 "bot"이 낱말로 들어 있으면
- * 봇이다 — github-actions[bot], dependabot[bot], apt-gam-bot, vibelog-bot,
- * bot@users.noreply.github.com. "Botond" 같은 이름은 낱말 경계로 비껴간다.
- *
- * 사이트별 목록을 두지 않는다 — 어느 레포의 자동 커밋이든 같은 규칙으로 걸러야
- * 새 프로젝트에서 또 새지 않는다.
- */
-const BOT_WORD = /(^|[^a-z0-9])bot([^a-z0-9]|$)/i;
-export function isBotCommit(c: Pick<RepoCommit, "author" | "authorName" | "authorEmail">): boolean {
-  // 계정 이름과 커밋에 적힌 이름을 둘 다 본다. 계정 이름만 보던 때는 vibelog 밤 실행이
-  // 남기는 커밋(이름 vibelog-bot, 계정 actions)을 사람 커밋으로 셌다 (Jev 시험에서 드러났다).
-  const local = (c.authorEmail ?? "").split("@")[0];
-  return BOT_WORD.test(c.author ?? "") || BOT_WORD.test(c.authorName ?? "") || BOT_WORD.test(local);
-}
+// 봇 판정은 홈·프로젝트의 커밋 수와 같이 쓴다 (lib/bot-commit.ts)
+export { isBotCommit } from "../lib/bot-commit";
 
 /**
  * 글 한 편을 쓸 만큼 활동이 있었나 — 본문을 쓴 사람 커밋이 **5개 이상** 모여야 쓴다.
@@ -246,7 +234,8 @@ export async function getCommits(
  * HOURS_DAYS일의 진짜 밀도를 보여 줘야 하므로 여기서 따로, 파일 목록 없이
  * 시각만 모두 받는다 (페이지당 100개, 최대 HOURS_PAGES장).
  */
-const HOURS_PAGES = 4;
+// 봇 커밋도 페이지를 차지하므로 넉넉히 받는다 — vibelog는 2주에 1,000개가 넘는다
+const HOURS_PAGES = 15;
 /** 잔디가 다시 채우는 기간 — 매 실행이 이 기간을 통째로 새로 계산해 덮는다 */
 export const HOURS_DAYS = 14;
 export async function getCommitTimes(
@@ -264,10 +253,7 @@ export async function getCommitTimes(
       per_page: 100,
       page,
     });
-    for (const c of data) {
-      const t = c.commit.committer?.date ?? c.commit.author?.date;
-      if (t) out.push(t);
-    }
+    out.push(...humanCommitTimes(data));
     if (data.length < 100) break; // 마지막 장
   }
   return out;
@@ -603,22 +589,25 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     // per_page=1로 요청하면 Link 헤더의 마지막 페이지 번호가 총 개수다.
     // 한 페이지(100개)를 받아 length를 세면 100에서 포화한다 — 이번 주 커밋이
     // 100개를 넘던 날 "이번 주"와 "오늘"이 똑같이 100으로 잘렸다.
-    const countCommits = (since?: string) =>
+    const countCommits = (author?: string) =>
       octokit.rest.repos
-        .listCommits({ owner, repo, ...(since ? { since } : {}), per_page: 1 })
+        .listCommits({ owner, repo, ...(author ? { author } : {}), per_page: 1 })
         .then((r) => {
           const m = r.headers.link?.match(/[?&]page=(\d+)>; rel="last"/);
           return m ? Number(m[1]) : r.data.length;
         })
         .catch(() => 0);
-    const countAllCommits = () => countCommits();
+    // 커밋 수는 사람 커밋만 센다. 봇 커밋까지 세던 때는 30분마다 도는 프로젝트 인식이
+    // 남긴 커밋이 vibelog 자신의 수를 바꾸고, 바뀐 수를 적으러 다음 회차가 또 커밋해
+    // 하루 50개씩 쌓였다 — 홈의 이번 주 커밋이 584개, 잔디는 새벽까지 전부 칠해졌다.
+    // 누적은 전체에서 파이프라인 커밋 수를 뺀다 (전부 받아 세기엔 너무 많다)
+    const countHumanTotal = async () =>
+      Math.max(0, (await countCommits()) - (await countCommits(PIPELINE_BOT_EMAIL)));
     const [
       allCommits,
       mergedPRs,
       devlogFiles,
       readme,
-      weekCommits,
-      todayCommits,
       totalCommits,
       commitTimes,
     ] = await Promise.all([
@@ -626,9 +615,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       getMergedPRs(octokit, owner, repo, since),
       getDevlogFiles(octokit, owner, repo, since),
       getReadme(octokit, owner, repo),
-      countCommits(weekAgo),
-      countCommits(new Date(kstMidnight).toISOString()),
-      countAllCommits(),
+      countHumanTotal(),
       getCommitTimes(
         octokit,
         owner,
@@ -636,6 +623,11 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
         new Date(Date.now() - HOURS_DAYS * 24 * 3600 * 1000).toISOString(),
       ).catch(() => [] as string[]),
     ]);
+
+    // 이번 주·오늘은 잔디와 같은 사람 커밋 시각 목록에서 센다
+    const weekCommits = commitTimes.filter((t) => t >= weekAgo).length;
+    const todayStart = new Date(kstMidnight).getTime();
+    const todayCommits = commitTimes.filter((t) => new Date(t).getTime() >= todayStart).length;
 
     // 파이프라인 자신의 발행 커밋은 재료도 활동도 아니다 — 끼면 글이
     // "자동 발행했다"를 자동 발행하는 자기 인용이 되고, 활동 판정도 헛돈다
