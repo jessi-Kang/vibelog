@@ -107,7 +107,7 @@ const REMARK: PluggableList = [[remarkGfm, { singleTilde: false }], remarkTerms]
 
 function Md({ children }: { children: string }) {
   return (
-    <div className="text-md leading-[1.75] text-ink-soft [text-wrap:pretty] [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
+    <div className="text-md leading-[1.75] text-ink-soft [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
       <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
         {keepBackslashes(children)}
       </ReactMarkdown>
@@ -215,7 +215,7 @@ export function PostClient({ post }: { post: PostData }) {
           {en ? "Project intro" : "프로젝트 소개"}
         </span>
       )}
-      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] [text-wrap:balance] md:text-[28px]">
+      <h1 className="m-0 text-xl font-bold leading-[1.3] tracking-[-.01em] md:text-[28px]">
         {en && post.titleEn ? post.titleEn : post.title}
       </h1>
       {/* 언어 토글은 헤더의 전역 스위치로 올라갔다 */}
@@ -265,7 +265,7 @@ export function PostClient({ post }: { post: PostData }) {
             <span className="w-[3px] flex-1 rounded-sm opacity-55" style={{ background: color }} />
           </span>
           <span className="flex flex-col gap-1">
-            <span className="text-sm leading-relaxed text-ink-soft [text-wrap:pretty]">{about}</span>
+            <span className="text-sm leading-relaxed text-ink-soft">{about}</span>
             <span className="font-mono text-xs transition-opacity duration-150 group-hover:opacity-85" style={{ color }}>
               {en ? "About this project →" : "이 프로젝트 소개 →"}
             </span>

@@ -102,7 +102,7 @@ export function EmptyState({
     >
       <TitleTag className="m-0 text-md font-bold leading-snug">{title}</TitleTag>
       {body && (
-        <p className="m-0 max-w-[48ch] text-base leading-relaxed text-muted [text-wrap:pretty]">
+        <p className="m-0 max-w-[48ch] text-base leading-relaxed text-muted">
           {body}
         </p>
       )}

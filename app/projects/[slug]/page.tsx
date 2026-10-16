@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: Props) {
           <span className="-mt-2 font-mono text-xs text-muted">{project.slug}</span>
         )}
         {/* 소개 글이 코드를 읽고 쓴 설명이 있으면 그것을, 없으면 레포 설명 한 줄 (docs/project-page-intro.html A안) */}
-        <p className="m-0 text-md leading-[1.6] text-ink-soft [text-wrap:pretty]">
+        <p className="m-0 text-md leading-[1.6] text-ink-soft">
           {project.about ? (
             <T ko={project.about} en={project.aboutEn ?? project.about} />
           ) : project.description ? (
