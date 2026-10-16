@@ -156,13 +156,13 @@
   },
   "commits": [
     [
-      "bd5c215",
+      "6caa291",
       "삽화 토큰 합을 실행 기록(run.json)에도 남긴다 — 홈의 \"지난 실행\"에서 비용이 보인다"
     ]
   ],
   "commitsEn": [
     [
-      "bd5c215",
+      "6caa291",
       "feat: log illustration token sum to run.json — show cost in home's \"past runs\""
     ]
   ],

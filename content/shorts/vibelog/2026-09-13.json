@@ -371,269 +371,269 @@
   },
   "commits": [
     [
-      "d130d08",
+      "9d5c700",
       "모티프가 next 밖에서도 그려지게 — 안 그러면 빈 화면 검사가 빈 화면을 통과시킨다"
     ],
     [
-      "7567431",
+      "439674b",
       "모티프 16종을 쇼츠 파이프라인에 넣는다"
     ],
     [
-      "ac2588b",
+      "d7eb6c0",
       "Lottie: 포인트 색만 테마 색으로 바꾼다"
     ],
     [
-      "f639c4c",
+      "0d28d69",
       "Lottie 후보를 고를 수 있게 먼저 거르는 도구"
     ],
     [
-      "0f0ff96",
+      "31b9443",
       "그림 한 장짜리 화면을 폰 프레임에 넣지 않는다"
     ],
     [
-      "3b49941",
+      "8be2a39",
       "레드팀 스킬을 만들고 돌렸다 — 글 페이지 스크립트 이탈(XSS) 하나를 막았다"
     ],
     [
-      "a463065",
+      "45bfaf2",
       "projects 배치가 30분마다 실패하던 것 — 쓴 파일을 다 담지 않았다"
     ],
     [
-      "1dbe81b",
+      "42ec48b",
       "영상 렌더를 죽인 node:fs를 걷어내고, 같은 일을 막는 검사를 붙인다"
     ],
     [
-      "12fb4aa",
+      "6917ffc",
       "쇼츠: 대본이 고른 화면을 녹화가 버리지 않는다"
     ],
     [
-      "38c7a49",
+      "b4fd4f7",
       "층 순서를 정한다 — 본문이 고정 탭바 위로 올라오던 것"
     ],
     [
-      "965d39a",
+      "c1f0846",
       "쇼츠 대본: 줄이려고 두 명사를 붙여 말을 만들지 않는다"
     ],
     [
-      "71d0a65",
+      "3d35984",
       "쇼츠: 테두리는 가리키는 문장만, 가리킬 말은 화면에 하나뿐일 때만"
     ],
     [
-      "fa161ed",
+      "a99226b",
       "문서: 취소선으로 먹는 물결표 표기를 걷어내고, 문서도 검사에 넣는다"
     ],
     [
-      "0f82687",
+      "a4a1097",
       "쇼츠: 말하는 문장에 그 화면을 붙인다 (focusY + 삽질 문장 면제 제거)"
     ],
     [
-      "fbf5170",
+      "7871b8f",
       "녹화: 붙잡을 때 완전히 멈추고, 가리킨 것을 살짝 아래에 둔다"
     ],
     [
-      "f8af837",
+      "be78ceb",
       "헤더 간격과 쇼츠 재생 화면 컨트롤 크기"
     ],
     [
-      "d91bfc8",
+      "968ce5a",
       "빈 화면은 장애다 — 한 번 교정하고, 그래도 비면 영상을 만들지 않는다"
     ],
     [
-      "d3fea0c",
+      "1ce699f",
       "쇼츠: 구성을 정하던 규칙들을 걷어낸다 — 내용이 정한다"
     ],
     [
-      "74a5437",
+      "1ac6e61",
       "찾기 로직을 실제로 시험할 수 있게 내보낸다"
     ],
     [
-      "3f1e49a",
+      "97a5457",
       "쇼츠: 대본이 화면을 맞히지 않고, 녹화기가 찾는다"
     ],
     [
-      "2bf6df9",
+      "c0276d0",
       "쇼츠: 가리킨 것을 붙잡고, 화면에 표시한다"
     ],
     [
-      "87199c8",
+      "8e98651",
       "대본 프롬프트: 관련 없는 화면을 채우지 않는다"
     ],
     [
-      "e3406a8",
+      "b81a7d5",
       "쇼츠 연출을 내용이 정한다 — 샷 로테이션 폐지"
     ],
     [
-      "284c351",
+      "b7a2f8d",
       "쇼츠: 같은 화면 둘로 duo를 쓰지 않고, 마무리에 아무 화면이나 붙이지 않는다"
     ],
     [
-      "98749e2",
+      "763c6f4",
       "쇼츠: 문장이 화면의 \"어디\"를 가리키게, 삽질 문장도 화면을 띄운다"
     ],
     [
-      "39306f4",
+      "a3318f8",
       "쇼츠: 강조를 답 쪽에, 화면이 바뀌면 블록을 끊는다"
     ],
     [
-      "f637481",
+      "a8d8233",
       "홈: 마스트헤드와 본문 사이에 점선 하나"
     ],
     [
-      "6a024ad",
+      "fdf71d7",
       "본문의 물결표가 취소선으로 먹히던 것 — 파서를 고치고 검사기를 붙인다"
     ],
     [
-      "d0be4f1",
+      "7285532",
       "쇼츠 발음: \"7자리\"를 \"일곱자리\"로 — 고유어 단위 네 개 추가"
     ],
     [
-      "3e2c204",
+      "33d8d68",
       "커밋 메시지 날짜도 \"그 밤\" 기준으로"
     ],
     [
-      "069f288",
+      "e5b4525",
       "cron 확인 화면을 사람 말로 바꾼다"
     ],
     [
-      "c48f89c",
+      "58442ca",
       "cron 라우트가 설정 상태를 구분해 알려 준다"
     ],
     [
-      "9a90f5e",
+      "3b29029",
       "자동 실행의 시계를 Vercel Cron으로 옮긴다"
     ]
   ],
   "commitsEn": [
     [
-      "d130d08",
+      "9d5c700",
       "Draw motifs outside next as well — otherwise empty screen checks pass empty screens"
     ],
     [
-      "7567431",
+      "439674b",
       "Add 16 motifs to shorts pipeline"
     ],
     [
-      "ac2588b",
+      "d7eb6c0",
       "Lottie: Change only point color to theme color"
     ],
     [
-      "f639c4c",
+      "0d28d69",
       "Add filtering tool to select Lottie candidates first"
     ],
     [
-      "0f0ff96",
+      "31b9443",
       "Don't fit single-image screens into phone frame"
     ],
     [
-      "3b49941",
+      "8be2a39",
       "Create and run red team skill — fixed one XSS vulnerability in text page script"
     ],
     [
-      "a463065",
+      "45bfaf2",
       "Fix projects batch failing every 30 minutes — wasn't including all written files"
     ],
     [
-      "1dbe81b",
+      "42ec48b",
       "Remove node:fs that kills video render, add check to prevent same issue"
     ],
     [
-      "12fb4aa",
+      "6917ffc",
       "Shorts: Recording doesn't discard screens chosen by script"
     ],
     [
-      "38c7a49",
+      "b4fd4f7",
       "Define layer order — body was rising above fixed tab bar"
     ],
     [
-      "965d39a",
+      "c1f0846",
       "Shorts script: Don't create words by combining two nouns to shorten"
     ],
     [
-      "71d0a65",
+      "3d35984",
       "Shorts: Border only for pointing sentences, pointing target only when there's one on screen"
     ],
     [
-      "fa161ed",
+      "a99226b",
       "Docs: Remove strikethrough wavy mark notation, add docs to checks"
     ],
     [
-      "0f82687",
+      "a4a1097",
       "shorts: pin each spoken sentence to its screen (remove focusY and the struggle-sentence exemption)"
     ],
     [
-      "fbf5170",
+      "7871b8f",
       "recording: fully stop when grabbing, and place the pointed-at thing slightly lower"
     ],
     [
-      "f8af837",
+      "be78ceb",
       "header spacing and shorts playback control size"
     ],
     [
-      "d91bfc8",
+      "968ce5a",
       "an empty screen is a failure — correct once, and if still empty, don't produce the video"
     ],
     [
-      "d3fea0c",
+      "1ce699f",
       "shorts: remove the rules that dictated composition — content decides"
     ],
     [
-      "74a5437",
+      "1ac6e61",
       "export the find logic so it can actually be tested"
     ],
     [
-      "3f1e49a",
+      "97a5457",
       "shorts: the script doesn't match the screen, the recorder finds it"
     ],
     [
-      "2bf6df9",
+      "c0276d0",
       "shorts: grab what's pointed at and display it on screen"
     ],
     [
-      "87199c8",
+      "8e98651",
       "script prompt: don't fill with unrelated screens"
     ],
     [
-      "e3406a8",
+      "b81a7d5",
       "shorts direction: content decides — abolish shot rotation"
     ],
     [
-      "284c351",
+      "b7a2f8d",
       "shorts: don't use duo with the same screen twice, and don't attach arbitrary screens at the ending"
     ],
     [
-      "98749e2",
+      "763c6f4",
       "shorts: make sentences point to the \"where\" on screen; struggle sentences also show a screen"
     ],
     [
-      "39306f4",
+      "a3318f8",
       "shorts: put emphasis on the answer side, and cut the block when the screen changes"
     ],
     [
-      "f637481",
+      "a8d8233",
       "home: one dotted line between masthead and body"
     ],
     [
-      "6a024ad",
+      "fdf71d7",
       "body tildes were being eaten as strikethrough — fix the parser and add a checker"
     ],
     [
-      "d0be4f1",
+      "7285532",
       "shorts pronunciation: \"7자리\" to \"일곱자리\" — add four native-Korean counter units"
     ],
     [
-      "3e2c204",
+      "33d8d68",
       "commit message dates also based on \"that night\""
     ],
     [
-      "069f288",
+      "e5b4525",
       "change the cron check screen into plain language"
     ],
     [
-      "c48f89c",
+      "58442ca",
       "cron route reports configuration status distinctly"
     ],
     [
-      "9a90f5e",
+      "3b29029",
       "move the automatic run's timing to Vercel Cron"
     ]
   ],

@@ -182,125 +182,125 @@
   },
   "commits": [
     [
-      "89cc11b",
+      "285075a",
       "한국어 표현 검사기가 두 줄에 걸친 인용을 제대로 건너뛰게 한다"
     ],
     [
-      "56d9905",
+      "c4b834d",
       "한국어를 처음 읽는 사람이 알아듣게 쓰도록 규칙·검사기·밤 검사를 더한다"
     ],
     [
-      "e0ca3f1",
+      "de450f6",
       "삽화도 Opus 5.5로 그린다 — Opus로 만드는 것을 한 모델로 맞춘다"
     ],
     [
-      "9bbfc8e",
+      "6ccc9cc",
       "글·쇼츠 대본을 Opus 5.5로 쓴다 — 못 찾으면 Opus 5로 넘어간다"
     ],
     [
-      "090d3e5",
+      "81146da",
       "쇼츠 대본도 목소리를 만들기 전에 한 번 듣고, 글은 Jessi 한 명이 \"저\"로 말한다"
     ],
     [
-      "83397e3",
+      "e79981b",
       "데브로그가 처음 읽는 사람에게 읽히게 — 지시문을 고치고 읽기 검사를 넣는다"
     ],
     [
-      "1b38022",
+      "12e8e79",
       "문서·실행 기록의 어려운 말을 쉬운 한국어로 바꾼다"
     ],
     [
-      "826a8ec",
+      "2a1b4af",
       "문서 최신화 — 글 문턱·쇼츠 화면 조건·비용 실측을 지금 코드에 맞춘다"
     ],
     [
-      "1df21f7",
+      "9e79b73",
       "글을 열면 프로젝트가 보이게, \"삽질\" 배지는 삽질이 중심인 날만"
     ],
     [
-      "e8ed9d2",
+      "f4aefcf",
       "Anchor 쇼츠를 내린다 — 로그인 화면 하나만 되풀이되는 영상"
     ],
     [
-      "b312dc0",
+      "bf7a4fb",
       "돈을 쓰기 전에 거는 규칙 둘 — 규칙 따른 커밋만 세고, 화면 없는 사이트는 대본을 안 쓴다"
     ],
     [
-      "bcf822a",
+      "fd911e3",
       "레포만 만든 글을 지우고, \"Initial commit\"은 세지 않는다"
     ],
     [
-      "7d9c4de",
+      "8cfa4ec",
       "apart의 봇 커밋 글을 지운다 — 야간 자동 수집 커밋 하나로 나간 글·삽화·쇼츠"
     ],
     [
-      "cbd0673",
+      "ca6f73e",
       "글·쇼츠 문턱을 사람 커밋 5개로 — 모일 때까지 만들지 않는다"
     ],
     [
-      "6df08ff",
+      "f234fdd",
       "봇 커밋은 세지 않고, 사람 커밋 1개로는 글을 쓰지 않는다"
     ]
   ],
   "commitsEn": [
     [
-      "89cc11b",
+      "285075a",
       "Korean expression checker properly skips multi-line quotes"
     ],
     [
-      "56d9905",
+      "c4b834d",
       "Add rules, checkers, and night checks for Korean beginners to understand"
     ],
     [
-      "e0ca3f1",
+      "de450f6",
       "Draw illustrations with Opus 5.5 — align Opus creation to a single model"
     ],
     [
-      "9bbfc8e",
+      "6ccc9cc",
       "Write posts and shorts scripts with Opus 5.5 — fall back to Opus 5 if not found"
     ],
     [
-      "090d3e5",
+      "81146da",
       "Listen to shorts script once before voice generation, posts narrated by Jessi alone as \"I\""
     ],
     [
-      "83397e3",
+      "e79981b",
       "Make devlog readable for first-time readers — fix instructions and add readability checks"
     ],
     [
-      "1b38022",
+      "12e8e79",
       "Replace difficult words in docs and execution logs with simple Korean"
     ],
     [
-      "826a8ec",
+      "2a1b4af",
       "Update docs — align post threshold, shorts screen conditions, and actual costs to current code"
     ],
     [
-      "1df21f7",
+      "9e79b73",
       "Show project when opening posts, \"trial and error\" badge only on days centered on trial and error"
     ],
     [
-      "e8ed9d2",
+      "f4aefcf",
       "Remove Anchor shorts — video with only repeated login screen"
     ],
     [
-      "b312dc0",
+      "bf7a4fb",
       "Two rules before spending money — count only rule-following commits, don't write scripts for sites without pages"
     ],
     [
-      "bcf822a",
+      "fd911e3",
       "Delete posts created from repo alone, don't count \"Initial commit\""
     ],
     [
-      "7d9c4de",
+      "8cfa4ec",
       "Remove apart bot commit messages — one night auto-collection commit for posts, illustrations, shorts"
     ],
     [
-      "cbd0673",
+      "ca6f73e",
       "Post and shorts threshold at 5 human commits — don't create until ready"
     ],
     [
-      "6df08ff",
+      "f234fdd",
       "Don't count bot commits, don't write posts with 1 human commit"
     ]
   ],

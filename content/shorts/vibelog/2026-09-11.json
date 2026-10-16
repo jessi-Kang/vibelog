@@ -357,313 +357,313 @@
   },
   "commits": [
     [
-      "aca34bc",
+      "0f28a74",
       "쇼츠: 발음 교정에 시각·복합 수사 케이스 추가"
     ],
     [
-      "0b14ae5",
+      "1aacaa9",
       "쇼츠: 발음용 텍스트를 소리 나는 대로 — 숫자 전부 풀고, 된소리·연음 반영"
     ],
     [
-      "49d4ae3",
+      "9dccc10",
       "쇼츠: 다이어그램 위에 숫자 카운터가 겹쳐 찍히던 것"
     ],
     [
-      "1cc1472",
+      "b5b47c6",
       "쇼츠: 훅이 통째로 하이라이트되던 것 — 강조 분량에 상한"
     ],
     [
-      "a8f6fe9",
+      "8499670",
       "쇼츠: 한글로 푼 숫자와 단위를 붙여 쓴다"
     ],
     [
-      "0c37d85",
+      "14b163b",
       "쇼츠: \"건\"의 특별 대우를 없앤다 — 두 번 헛짚은 발음 교정"
     ],
     [
-      "eb488c1",
+      "b6d52f2",
       "쇼츠: 숫자선 값 라벨이 범위 밴드에 걸치던 것 — 밴드 밖으로 뺀다"
     ],
     [
-      "c39768f",
+      "b79fea6",
       "PWA: 서비스 워커 추가 — 설치한 앱이 브라우저 탭으로 열리던 문제"
     ],
     [
-      "38f75a1",
+      "66e2b0c",
       "쇼츠: \"N건\"의 된소리 강제를 뺀다 — 읽을 때 어색했다"
     ],
     [
-      "074f370",
+      "a4b2bf2",
       "쇼츠: 다이어그램 라벨 줄바꿈 규칙 — 한 글자가 떨어져 나가던 문제"
     ],
     [
-      "da49005",
+      "edec577",
       "쇼츠: 다이어그램 모서리를 테마 값으로 — 템플릿마다 형태가 따로 놀던 문제"
     ],
     [
-      "9d91729",
+      "912bf41",
       "쇼츠: 내레이션 예산을 26~34초로 — 완성 길이가 규격을 넘지 않게"
     ],
     [
-      "5bfad36",
+      "c1f3fdf",
       "쇼츠: 음악이 짧으면 영상이 잘리던 믹스 버그 수정"
     ],
     [
-      "cfdc925",
+      "d19a24c",
       "쇼츠: 다이어그램 라벨을 본문 폰트로 — 한글이 대체 글꼴로 떨어지던 문제"
     ],
     [
-      "6daf0b7",
+      "4a7ad18",
       "feat: 설치 토스트 두 번째 노출은 \"다시 보지 않기\""
     ],
     [
-      "f88f808",
+      "584cb24",
       "feat: 쇼츠에 다이어그램 5종 — 원리를 말하는 문장에 그림을 붙인다"
     ],
     [
-      "f3edc8a",
+      "0ea4bdc",
       "feat: 앱 설치 토스트 — 첫 방문 즉시, 사이트 톤으로"
     ],
     [
-      "762fb32",
+      "e08e990",
       "docs: 레포 README 신설 — 무엇인지·어떻게 도는지 한 장"
     ],
     [
-      "a9914f3",
+      "6f764bc",
       "fix: About Website가 기본 vercel.app 주소면 커스텀 도메인이 이긴다"
     ],
     [
-      "47088ac",
+      "9ee7c95",
       "chore: 사이트 주소를 vibelog.space로 변경"
     ],
     [
-      "f4e03a9",
+      "a1286f6",
       "fix: 배포 가드의 Vercel API 호출 — project 필드 누락·오류 은폐 수정"
     ],
     [
-      "f68a35c",
+      "8b511df",
       "fix: 앱 아이콘 v_ 크기 축소 (여백 11→15)"
     ],
     [
-      "e0c63c4",
+      "c8f440a",
       "feat: Vercel 배포 자가 복구 가드 — 웹훅 누락 시 API로 직접 배포"
     ],
     [
-      "8cd1cf9",
+      "a816607",
       "fix: 아이콘을 v_ 원형(자연 모노 간격)으로 확정 — 정렬만 보정"
     ],
     [
-      "c05a696",
+      "7a23e6a",
       "feat: 앱 아이콘·파비콘을 커밋 로그 심볼로 교체"
     ],
     [
-      "df1a40d",
+      "25cf429",
       "fix: duo 샷 좌우 폰이 같은 화면을 틀던 것 — 보조 폰은 다른 화면"
     ],
     [
-      "dc1b472",
+      "00dd29c",
       "fix: 앱 설치 수락 후 \"설치 중\" 안내 — 무소식 구간 해소"
     ],
     [
-      "bbc7c82",
+      "e9c2b8c",
       "fix: 화면 선택 우선순위를 원칙대로 — 내용 매칭 1순위, 반복 시 차선 화면"
     ],
     [
-      "a8c256b",
+      "bc261c5",
       "fix: 폰 데모 두 블록이 같은 화면만 반복되던 것 — 화면 다양화 3층"
     ],
     [
-      "b539fbf",
+      "e9dbf86",
       "fix: 숫자 발음 위험 케이스 6종 선제 보강"
     ],
     [
-      "227488d",
+      "1f1c4b0",
       "fix: 콤마 숫자(2,889곳)가 발음·스탯 카운터를 깨던 것"
     ],
     [
-      "9e14132",
+      "bbe28b0",
       "docs: 웹훅 누락 운영 노트에 장기 중단 관측 추가"
     ],
     [
-      "9845f98",
+      "b3c47b4",
       "docs: Vercel 웹훅 누락 운영 노트 — 판별법과 복구 경로"
     ],
     [
-      "cf311f2",
+      "a4e512e",
       "fix: 파비콘 광학 커닝 — 커서를 v에 붙여 한 덩어리로"
     ],
     [
-      "7eede1f",
+      "4d1ed4f",
       "fix: 홈 화면 아이콘(maskable) 글자 확대 — 52%→67%"
     ],
     [
-      "8495ab4",
+      "e799b50",
       "docs: vibelog 민트 고정은 의도된 결정임을 명시"
     ],
     [
-      "1c5e2c4",
+      "ff7c1c1",
       "fix: 피드 타임라인 마커를 이니셜 박스에서 색 점으로"
     ],
     [
-      "9e0c80b",
+      "6321e18",
       "fix: 파비콘을 워드마크 글자꼴(JetBrains Mono Bold)로"
     ],
     [
-      "941f81e",
+      "ddebf8e",
       "feat: 프로젝트 식별색 + 상세 카드 github 링크"
     ],
     [
-      "7da76b0",
+      "fc9be95",
       "feat: 데브로그 피드에 프로젝트 이니셜 마커 — 섞여도 한눈에 구분"
     ],
     [
-      "0115fa0",
+      "9fe41d9",
       "feat: 하단 탭바 스크롤 내릴 때 숨김 — 올리면 복귀"
     ],
     [
-      "0b86a13",
+      "9081e74",
       "fix: 재탭 스크롤에 모션 축소 설정 반영 + impeccable 검증 규칙 명문화"
     ],
     [
-      "3eed5e9",
+      "b376572",
       "feat: 하단 탭바 마이크로 인터랙션 — 재탭 스크롤톱·눌림 피드백·블러"
     ],
     [
-      "7ad3f97",
+      "560ae35",
       "fix: 모바일 하단 탭바 시인성 — 패널 배경·60px 높이·민트 활성 탭"
     ],
     [
-      "4b5244b",
+      "0ac9f5d",
       "feat: 모바일 메뉴를 하단 고정 탭바로 — 앱 문법"
     ],
     [
-      "20fcd24",
+      "2f7e6b6",
       "feat: 푸터에 상시 \"앱 설치\" 링크"
     ],
     [
-      "6b3cca9",
+      "26eefd1",
       "feat: 앱 설치 지원(PWA 매니페스트) + 파비콘 PNG 폴백"
     ],
     [
-      "ccb048f",
+      "602be23",
       "feat: 파비콘·SEO — 아이콘 세트, 메타데이터, sitemap·robots·RSS, OG 카드"
     ],
     [
-      "731002a",
+      "f663ef2",
       "feat: 푸터 카피라이트에 메일 링크"
     ],
     [
-      "1f487f8",
+      "e4b43d6",
       "docs: 상태값 초안 목록에 preview 추가"
     ],
     [
-      "5cad289",
+      "24ad123",
       "fix: 릴리즈 선언을 GitHub Release로만 — About Website 겸직 해제"
     ],
     [
-      "11609cf",
+      "2310caf",
       "fix: TTS 숫자 발음을 한글로 전부 풀어 보낸다 — \"22엉개\"·\"영엉건\" 사고"
     ],
     [
-      "6ba3091",
+      "2bdaa98",
       "feat: 프로젝트 상세 수치도 실시간 — 누적·주간 커밋, 마지막 활동"
     ],
     [
-      "abb679e",
+      "6b3a582",
       "feat: 홈 오늘·이번 주 커밋을 방문 시점 실시간으로 — 브라우저가 직접 센다"
     ],
     [
-      "f63c25b",
+      "9bdf5f8",
       "fix: TTS가 \"222건\"을 평음 [건]으로 읽던 것 — 발음용 텍스트를 \"껀\"으로"
     ],
     [
-      "ffba373",
+      "c4df8b8",
       "feat: svg-creator 스킬 설치 — 벡터 그래픽 제작 (upbrew-tech, Apache 2.0)"
     ],
     [
-      "157b315",
+      "4ca678d",
       "feat: 데모 화면을 내레이션 내용과 매칭 — screen 지정·구간 녹화·구간 렌더"
     ],
     [
-      "02d5c49",
+      "8e3d5ac",
       "fix: TTS가 \"10문제\"를 \"십 문제\"로 읽던 것 — 고유어 단위에 문제 추가"
     ],
     [
-      "5e3c4d5",
+      "b461fec",
       "fix: 머지 커밋을 데브로그 원료에서 제외"
     ],
     [
-      "f775bf4",
+      "a99c2bc",
       "feat: \"오늘\" 지표를 KST 자정 기준으로 리셋 — countsDate + 클라이언트 판정"
     ],
     [
-      "a6afc2e",
+      "e70f80b",
       "fix: 쇼츠 대본에도 정체불명 숫자 금지 — \"3을 주고 멈추게\" 재발 방지"
     ],
     [
-      "75bb2a1",
+      "248ec2c",
       "fix: \"3을 돌려주게\" 문장 손질 + 정체불명 숫자 금지 규칙"
     ],
     [
-      "9114fb6",
+      "ee46f9e",
       "feat: 밤 발행 백업 회차(23:45) — cron이 빠져도 사람이 안 누른다"
     ]
   ],
   "commitsEn": [
     [
-      "aca34bc",
+      "0f28a74",
       "shorts: add visual and complex number cases to pronunciation correction"
     ],
     [
-      "0b14ae5",
+      "1aacaa9",
       "shorts: pronunciation text as spoken — expand all numbers, reflect tensification and liaison"
     ],
     [
-      "49d4ae3",
+      "9dccc10",
       "shorts: fix number counter overlapping on diagram"
     ],
     [
-      "1cc1472",
+      "b5b47c6",
       "shorts: fix hook being fully highlighted — cap emphasis range"
     ],
     [
-      "a8f6fe9",
+      "8499670",
       "shorts: concatenate Korean-written numbers and units"
     ],
     [
-      "0c37d85",
+      "14b163b",
       "shorts: remove special treatment of \"건\" — pronunciation correction from double miss"
     ],
     [
-      "eb488c1",
+      "b6d52f2",
       "shorts: move number line value labels outside range band — fix overlap"
     ],
     [
-      "c39768f",
+      "b79fea6",
       "PWA: add service worker — fix installed app opening in browser tab"
     ],
     [
-      "38f75a1",
+      "66e2b0c",
       "shorts: remove forced tensification of \"N건\" — felt awkward when read"
     ],
     [
-      "074f370",
+      "a4b2bf2",
       "shorts: fix diagram label line-break rule — single character separating"
     ],
     [
-      "da49005",
+      "edec577",
       "shorts: use theme values for diagram corners — fix inconsistent shapes across templates"
     ],
     [
-      "9d91729",
+      "912bf41",
       "shorts: set narration budget to 26-34 seconds — ensure final length stays within spec"
     ],
     [
-      "5bfad36",
+      "c1f3fdf",
       "shorts: fix mix bug where video cuts when music is short"
     ],
     [
-      "cfdc925",
+      "d19a24c",
       "shorts: use body font for diagram labels — fix Korean falling back to fallback font"
     ]
   ],

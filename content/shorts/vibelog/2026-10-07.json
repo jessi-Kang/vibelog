@@ -196,85 +196,85 @@
   },
   "commits": [
     [
-      "c29bbf2",
+      "5572271",
       "docs: 이어지는 이야기 1안을 원료 다음 자리로 옮겨 다시 그린다"
     ],
     [
-      "8333a20",
+      "a6d30ce",
       "feat: 글 모델이 이어지는 지난 글을 같은 호출에서 고른다"
     ],
     [
-      "e12aa46",
+      "3b676fc",
       "design: 쇼츠가 없는 글 아래의 안내 문구를 지운다"
     ],
     [
-      "2d4805b",
+      "e460ba9",
       "docs: 이어지는 글·글 종류 시안을 올리고 시험 워크플로를 지운다"
     ],
     [
-      "35e231e",
+      "c4ffbb9",
       "feat: 이어지는 글과 글 종류를 Jev가 고를 수 있는지 시험한다"
     ],
     [
-      "9ac84f4",
+      "7db6f0f",
       "feat: 발행 전 안전 검사를 밤 실행에 넣는다"
     ],
     [
-      "5ceb3eb",
+      "75cee52",
       "feat: 안전 검사 모듈을 만들고, 실제 커밋으로 잘못 막는 비율을 잰다"
     ],
     [
-      "a94184b",
+      "f8f549f",
       "feat: 쇼츠·삽화를 만들기 전에 Jev가 먼저 판단하는 시험을 더한다"
     ],
     [
-      "247c843",
+      "a4aa347",
       "feat: Jev 발행 전 안전 검사 시험을 더한다"
     ],
     [
-      "b99bfb8",
+      "f3cc02a",
       "chore: Jev 화면 고르기 시험 워크플로를 지운다 — 시험이 끝났다"
     ]
   ],
   "commitsEn": [
     [
-      "c29bbf2",
+      "5572271",
       "docs: Move draft 1 of continuing story to next section and redraw"
     ],
     [
-      "8333a20",
+      "a6d30ce",
       "feat: Post model selects continuing previous post in same call"
     ],
     [
-      "e12aa46",
+      "3b676fc",
       "design: Remove guidance text below post without shorts"
     ],
     [
-      "2d4805b",
+      "e460ba9",
       "docs: Upload continuing post and post type draft, remove test workflow"
     ],
     [
-      "35e231e",
+      "c4ffbb9",
       "feat: Test if Jev can select continuing post and post type"
     ],
     [
-      "9ac84f4",
+      "7db6f0f",
       "feat: Add pre-publication safety check to night run"
     ],
     [
-      "5ceb3eb",
+      "75cee52",
       "feat: Create safety check module and measure false rejection rate against actual commits"
     ],
     [
-      "a94184b",
+      "f8f549f",
       "feat: Add test for Jev to judge first before creating shorts and illustrations"
     ],
     [
-      "247c843",
+      "a4aa347",
       "feat: Add test for Jev pre-publication safety check"
     ],
     [
-      "b99bfb8",
+      "f3cc02a",
       "chore: Remove Jev screen selection test workflow — testing complete"
     ]
   ],
