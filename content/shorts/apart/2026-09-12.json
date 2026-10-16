@@ -343,8 +343,8 @@
       "fix: 미리보기 카드의 관인에 글자를 되찾고, 공유·접수 창구를 서류 세계관에 맞춘다"
     ],
     [
-      "01ccdb9",
-      …
+      "e1a5aef",
+      "docs: 요청 한 번으로 문서를 최신화하는 규칙을 적어 둔다"
     ],
     [
       "b7f894f",
@@ -517,8 +517,8 @@
       "fix: restore text in preview card stamp and align sharing/intake window to document worldview"
     ],
     [
-      "01ccdb9",
-      "docs: update documentation rule with single phrase \"update document\""
+      "e1a5aef",
+      "docs: add a rule to refresh the docs with a single request"
     ],
     [
       "b7f894f",
