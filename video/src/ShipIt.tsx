@@ -203,6 +203,8 @@ export function buildSegments(
       aspect?: number;
     }
   >,
+  /** 커밋 장면 그림 (public/ 밑 파일명) — git 아이콘 하나만 뜨던 장면을 대신한다 */
+  commitArt?: string,
 ): Seg[] {
   const raw: {
     kind: Kind;
@@ -258,11 +260,17 @@ export function buildSegments(
       // (10/11 vibelog 편)
       const prev = raw[raw.length - 1];
       const useMotif = !!line.motif && (!line.icon || (prev?.kind === "plain" && !!prev.icon));
-      raw.push({
-        kind: "plain",
-        from: raw.length === 0 ? 0 : from,
-        ...(useMotif ? { motif: line.motif } : { icon: line.icon }),
-      });
+      // git 아이콘(git-commit 등)은 세로선과 동그라미뿐이라 판 위에 혼자 크게 뜨면 오류 표시처럼
+      // 보였다 (10/17). 그 장면만 미리 만든 메모 그림으로 바꾼다 — 다이어그램 칸 안의 작은 아이콘은 그대로
+      if (!useMotif && commitArt && line.icon?.name.startsWith("tabler:git-")) {
+        raw.push({ kind: "art", from: raw.length === 0 ? 0 : from, art: commitArt });
+      } else {
+        raw.push({
+          kind: "plain",
+          from: raw.length === 0 ? 0 : from,
+          ...(useMotif ? { motif: line.motif } : { icon: line.icon }),
+        });
+      }
     } else if (raw.length === 0) {
       // 첫 장면은 0초부터
       raw.push({
@@ -426,6 +434,7 @@ export const ShipIt: React.FC<ShipItProps> = ({
     coldOpen,
     lang,
     segMap,
+    artFiles?.commit,
   );
   // 데모 샷 로테이션 — day + 장면 순번. 한 편 안에서도, 에피소드 사이에서도
   // 같은 데모 연출이 연속되지 않는다
