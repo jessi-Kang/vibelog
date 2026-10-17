@@ -133,6 +133,15 @@ vibelog/
   ③ GitHub Deployments 기록 — Vercel git 연동 배포가 남기는 기록의 environment_url
   (배포별 해시 주소라 배포마다 바뀌는 게 흠, 토큰 없을 때의 폴백)
 - (선택) `vibelog.json` — `{ "name": "...", "status": "live", "stack": ["Next.js"], "hide": false }`
+- (선택) topic `vibelog-theme-<이름>` — 쇼츠 테마 (terminal 기본/blueprint/signal/paper/highlighter)
+- (선택) topic `vibelog-hidden` — 공개 전까지 숨기기 (`lib/hidden-projects.ts`). 방문자에게는 이름 없는
+  "미공개 프로젝트 A" 카드만 보이고(누를 수 없다) 글·쇼츠는 목록에서 빠진다. 잔디·커밋 수에는 들어가고,
+  지난 실행 줄에는 별칭으로 나간다. 관리자가 Google로 로그인하면 전부 "숨김" 칩과 함께 보인다.
+  숨긴 글·프로젝트 페이지는 `/private/p/<id>`·`/private/projects/<slug>`에 따로 있고, 방문자 화면에는
+  그 주소로 가는 링크가 없다. 주소를 알고 직접 들어오면 볼 때마다 로그인을 확인해 관리자가 아니면
+  404를 낸다 — "권한 없음"을 보이면 거기 무언가 숨어 있다는 사실이 드러난다. 글은 계속 쌓이고,
+  topic을 떼면 30분 안에 지난 글까지 공개된다. `vibelog.json`의 `"hide": true`는 이것과 다르다 —
+  그 레포를 아예 수집하지 않는다 (카드도 잔디도 없다).
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 
 상태 자동 판정 (`scripts/run.ts` `autoStatus`, 10/17 — 시안 `docs/project-status-and-private.html`).
