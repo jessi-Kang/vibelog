@@ -8,6 +8,7 @@ import {
   fmtShort,
   getCommitHours,
   getDevlogs,
+  getAllProjects,
   getProjects,
   getRunLog,
 } from "@/lib/content";
@@ -35,8 +36,9 @@ export default function Home() {
 
   // 오늘·이번 주 커밋은 방문자 브라우저가 GitHub API로 실시간으로 센다
   // (HomeStats) — 낮 커밋도 바로 오른다. 실패 시 저장값 폴백.
-  const factSources = projects.map((p) => ({
-    repoUrl: p.repoUrl,
+  // 숨긴 프로젝트의 커밋도 센다 — 잔디·커밋 수는 이름이 나오지 않는다 (lib/hidden-projects.ts)
+  // 레포 주소는 넘기지 않는다 — 페이지 데이터에 실려 숨긴 프로젝트 이름이 드러난다
+  const factSources = getAllProjects().map((p) => ({
     countsDate: p.countsDate,
     todayCommits: p.todayCommits,
     weekCommits: p.weekCommits,

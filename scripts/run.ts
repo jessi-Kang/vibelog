@@ -22,7 +22,6 @@ import {
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
 import { fmtNum } from "../lib/format";
-import { isHiddenProject } from "../lib/hidden-projects";
 import { getDevlog, getDevlogs, getProject, parseSections, recentPosts, includeHiddenProjects } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
@@ -35,6 +34,7 @@ import { fmtReadability } from "./readability";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
 import { assignColors } from "../lib/project-color";
+import { writePublicProjects } from "./public-projects";
 import { safeIcon } from "../lib/project-icon";
 import { Octokit } from "@octokit/rest";
 import {
@@ -302,9 +302,12 @@ async function updateProjects(
     countsDate: todayKST(),
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
     ...(a.theme ? { theme: a.theme } : {}),
+    // topic vibelog-hidden — 사이트가 이름·글·쇼츠를 숨긴다. topic을 떼면 다음 인식(30분 안)에 다시 보인다
+    ...(a.hidden ? { hidden: true } : {}),
     };
   });
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");
+  writePublicProjects();
   // 녹화용 실제 주소 (live 전 주소 포함) — 커밋하지 않는 파일. 같은 실행의 쇼츠가 읽는다
   savePrivateHomepages(
     Object.fromEntries(activities.filter((a) => a.homepage).map((a) => [a.repo, a.homepage as string])),
@@ -500,8 +503,7 @@ function writeCommitHours(activities: RepoActivity[]): void {
   }
   const fresh: Record<string, number[]> = {};
   for (const a of activities) {
-    // 사이트에서 잠시 숨긴 프로젝트는 홈 잔디에서도 뺀다 (lib/hidden-projects.ts)
-    if (isHiddenProject(a.repo)) continue;
+    // 숨긴 프로젝트(topic vibelog-hidden)도 잔디에는 센다 — 이름이 나오지 않는 숫자라서
     for (const iso of a.commitTimes) {
       const t = new Date(iso);
       if (Number.isNaN(t.getTime())) continue;

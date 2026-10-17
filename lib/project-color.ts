@@ -7,7 +7,8 @@
  * 헷갈리지 않게 — 삽질 오렌지(#FFB454)·실패 레드(#FF6B6B)와 겹치는
  * 난색 계열은 뺐다.
  */
-import projects from "../content/projects.json";
+// 숨긴 프로젝트를 뺀 사본 — 이 파일은 브라우저로 내려간다 (scripts/public-projects.ts)
+import projects from "../content/projects.public.json";
 
 const MINT = "#5EE1C3";
 

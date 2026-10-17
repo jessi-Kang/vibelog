@@ -59,7 +59,8 @@ scripts/audio.ts            내레이션(eleven_multilingual_v2) + 타이밍 + �
 scripts/art.ts              쇼츠 그림 — 둥근 평면·강조색 한 군데·투명 배경(OpenAI). 비슷한 그림은 Blob에서 다시 쓴다 (art-try.yml로 시안)
 scripts/small-video.ts      데스크톱 팝업용 540×960 사본 (Run workflow의 `small` 입력은 scripts/small-backfill.ts)
 video/src/Enter.tsx         장면이 들어오는 효과 — 장면마다 다르게, 흐림 없음, 훅·마무리 카드는 제자리에서 나타나기만
-lib/hidden-projects.ts      잠시 숨긴 프로젝트(portfolio-tmp·Anchor, 10/17) — 사이트에서만 빠지고 파이프라인은 그대로 돈다 (스크립트는 includeHiddenProjects())
+lib/hidden-projects.ts      숨긴 프로젝트 — 레포 topic `vibelog-hidden`. 이름·카드·글·쇼츠는 빠지고 잔디·커밋 수·지난 실행(이름은 "비공개 프로젝트")은 남는다. 파이프라인은 그대로 돈다 (스크립트는 includeHiddenProjects())
+content/projects.public.json  브라우저로 내려가는 프로젝트 목록 — 숨긴 프로젝트를 뺀 사본 (scripts/public-projects.ts, prebuild). 화면 코드는 projects.json을 직접 import하지 않는다
 lib/has-fail.ts             삽질 섹션에 이야기가 있나 — 글 페이지 접기·삽화 생성이 같이 쓰는 순수 함수
 lib/bot-commit.ts           봇 커밋 판정 — 글 재료 고르기와 홈·프로젝트의 커밋 수가 같이 쓴다 (커밋 수는 사람 커밋만)
 lib/commit-hours.ts         홈 통계·잔디 셈 + 최근 7일 판정(activeThisWeek) — 카드 접기와 "만드는 중"이 같이 쓴다
@@ -87,6 +88,7 @@ video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 2. description 채우기 — 카드에 그대로 쓴다. 나중에 채워도 인식 배치가 반영한다. homepage는 자동 — 배포(Vercel 등)가 GitHub Deployments에 남긴 주소를 감지한다. About Website를 채우면 그게 우선(커스텀 도메인용).
 3. **그 레포 CLAUDE.md에 커밋 규칙 블록 복붙** — 문구는 `docs/02-pipeline-and-setup.md` §3 "커밋 메시지 규약 문구". 블록 끝의 **대화 비공개** 부분까지 함께 붙인다 — 커밋 메시지가 그대로 공개 글이 되므로, 대화에서 나온 말이 커밋에 들어가면 그날 밤 발행된다. 커밋 메시지가 글·쇼츠의 원료라서 이게 품질을 결정한다. **본문 없이 제목 한 줄만 쓴 커밋은 글을 쓸 만한 커밋으로 치지 않으므로**, 이 블록이 없으면 글이 아예 나오지 않을 수 있다.
 4. (선택) 테마 고르기 — topic `vibelog-theme-<이름>` 하나 추가. (선택) `vibelog.json`.
+5. (선택) 공개 전까지 숨기기 — topic `vibelog-hidden` 추가. 사이트에서 이름·글·쇼츠가 빠지고(잔디·커밋 수는 남는다) 글은 계속 쌓인다. 떼면 30분 안에 지난 글까지 한꺼번에 보인다.
 
 첫 글은 레포에 기획서나 코드가 올라온 밤 23:00 실행이 그것을 읽고 쓰는 **소개 글**이다 — 기획서 한 편만 있는 레포도 된다 (`scripts/intro.ts`). 그다음 글은 규칙에 맞는 사람 커밋이 5개 모인 밤에 나온다 (첫 수집은 최근 7일 커밋). 쇼츠는 로그인 없이 볼 수 있는 화면이 둘 이상이어야 나온다 — 첫 화면이 로그인뿐인 사이트(Anchor)는 글·삽화만 나간다. 공개 데모 화면이 생기면 그날부터 녹화한다.
 
