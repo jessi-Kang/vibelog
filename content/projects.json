@@ -5,8 +5,8 @@
     "nameEn": "Vibelog",
     "serviceName": "바이브 로그",
     "serviceNameEn": "Vibelog",
-    "about": "바이브 로그는 바이브 코딩 프로젝트들의 제작기를 매일 밤 저절로 올리는 블로그입니다.",
-    "aboutEn": "Vibelog is a blog that automatically publishes build diaries of vibe-coded projects every night.",
+    "about": "바이브 코딩 프로젝트들의 제작기를 매일 밤 저절로 올리는 블로그입니다.",
+    "aboutEn": "A blog that automatically publishes build diaries of vibe-coded projects every night.",
     "icon": {
       "name": "tabler:notebook",
       "paths": [
@@ -37,8 +37,8 @@
     "nameEn": "Apartment Authenticator",
     "serviceName": "아파트 감별사",
     "serviceNameEn": "Apartment Authenticator",
-    "about": "아파트 감별사는 진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
-    "aboutEn": "Apartment Authenticator is a daily quiz where you tell real apartment names from ones made up by AI.",
+    "about": "진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
+    "aboutEn": "A daily quiz where you tell real apartment names from ones made up by AI.",
     "icon": {
       "name": "tabler:building-community",
       "paths": [
@@ -69,8 +69,8 @@
     "name": "Anchor",
     "serviceName": "Anchor",
     "serviceNameEn": "Anchor",
-    "about": "Anchor는 내 자료와 못 한 말에서 출발해 영어·일본어·스페인어로 말하게 돕는 앱입니다.",
-    "aboutEn": "Anchor is an app that helps you speak English, Japanese, and Spanish, starting from your own materials and the things you couldn't say.",
+    "about": "내 자료와 못 한 말에서 출발해 영어·일본어·스페인어로 말하게 돕는 앱입니다.",
+    "aboutEn": "An app that helps you speak English, Japanese, and Spanish, starting from your own materials and the things you couldn't say.",
     "icon": {
       "name": "tabler:anchor",
       "paths": [
@@ -120,8 +120,8 @@
     "slug": "portfolio-tmp",
     "color": "#FF9EC7",
     "name": "portfolio-tmp",
-    "about": "이 프로젝트는 허락한 사람에게만 열리는 개인 포트폴리오 사이트를 만드는 템플릿입니다.",
-    "aboutEn": "This project is a template for building a personal portfolio site that opens only to the people you invite.",
+    "about": "허락한 사람에게만 열리는 개인 포트폴리오 사이트를 만드는 템플릿입니다.",
+    "aboutEn": "A template for building a personal portfolio site that opens only to the people you invite.",
     "icon": {
       "name": "tabler:briefcase",
       "paths": [
@@ -155,8 +155,8 @@
     "nameEn": "Lie Detective",
     "serviceName": "거짓말 탐정",
     "serviceNameEn": "Lie Detective",
-    "about": "거짓말 탐정은 현장을 살피고 사진을 찍고 인물에게 직접 질문하며 사건을 푸는 모바일 추리 게임입니다.",
-    "aboutEn": "Lie Detective is a mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
+    "about": "현장을 살피고 사진을 찍고 인물에게 직접 질문하며 사건을 푸는 모바일 추리 게임입니다.",
+    "aboutEn": "A mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
     "icon": {
       "name": "tabler:spy",
       "paths": [
