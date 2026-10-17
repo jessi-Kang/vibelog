@@ -35,10 +35,13 @@ import { CORE_TERMS_RULE, CORE_TERMS_REVIEW, styleRulesForPrompt } from "./korea
 import { checkSafety, maskSecrets, SafetyBlockError } from "./safety";
 import { generateFigures } from "./figures";
 import { getOwner, githubClient } from "./collect";
-import { parseSections } from "../lib/content";
+import { parseSections, includeHiddenProjects } from "../lib/content";
 import { plainTerms } from "../lib/term-marker";
 import { pickIcon } from "./icons";
 import type { ProjectIcon } from "../lib/project-icon";
+
+// 파이프라인은 사이트에서 잠시 숨긴 프로젝트(lib/hidden-projects.ts)도 전부 본다
+includeHiddenProjects();
 
 const MODEL = "claude-opus-5-5";
 const MAX_TOKENS = 32000;

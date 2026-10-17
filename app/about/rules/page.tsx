@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import { RulesClient } from "@/components/rules-client";
+import { getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "커밋 규칙과 쇼츠 테마",
@@ -44,5 +45,11 @@ function reflow(text: string): string {
 
 export default function RulesPage() {
   const rules = ruleBlock();
-  return <RulesClient rules={rules} display={reflow(rules)} />;
+  // 테마 카드의 "지금 쓰는 레포" — 손으로 적어 두면 테마를 바꾸거나 프로젝트를 숨길 때 낡는다.
+  // topic이 없는 레포는 기본값 terminal이다
+  const uses: Record<string, { ko: string; en: string }[]> = {};
+  for (const p of getProjects()) {
+    (uses[p.theme ?? "terminal"] ??= []).push({ ko: p.name, en: p.nameEn ?? p.name });
+  }
+  return <RulesClient rules={rules} display={reflow(rules)} uses={uses} />;
 }

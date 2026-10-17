@@ -16,8 +16,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { parseSections } from "../lib/content";
+import { parseSections, includeHiddenProjects } from "../lib/content";
 import { generateFigures } from "./figures";
+
+// 파이프라인은 사이트에서 잠시 숨긴 프로젝트(lib/hidden-projects.ts)도 전부 본다
+includeHiddenProjects();
 
 const DEVLOG = path.join(process.cwd(), "content", "devlog");
 

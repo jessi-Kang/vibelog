@@ -11,7 +11,10 @@
  * 쇼츠 유무)를 나란히 적어 사람이 읽고 맞는지 본다. 결과는 실행 요약에 남는다.
  */
 import fs from "node:fs";
-import { getDevlogs, type DevlogEntry } from "../lib/content";
+import { getDevlogs, type DevlogEntry, includeHiddenProjects } from "../lib/content";
+
+// 파이프라인은 사이트에서 잠시 숨긴 프로젝트(lib/hidden-projects.ts)도 전부 본다
+includeHiddenProjects();
 
 const JEV_URL = process.env.JEV_URL ?? "https://api.typesafe.ai/v1/systemone";
 const PRICE_PER_MTOK = 0.042;
