@@ -9,15 +9,15 @@
       "path": "/about",
       "find": "레포",
       "focusY": 0.499,
-      "start": 15.74,
-      "end": 28.78
+      "start": 15.76,
+      "end": 28.79
     },
     {
       "path": "/",
       "find": "최근 데브로그",
       "focusY": 0.5,
-      "start": 29.81,
-      "end": 42.84
+      "start": 29.82,
+      "end": 42.85
     }
   ]
 }
