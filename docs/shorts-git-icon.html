@@ -1,0 +1,97 @@
+<title>쇼츠 커밋 아이콘 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 쇼츠 terminal 테마 토큰 그대로 (video/src/theme.ts). 영상이 다크 한 벌이라 시안도 한 벌 */
+:root {
+  --bg: #0A0E14; --bg-deep: #05080c; --panel: #141B24; --panel2: #1B2430; --line: #26313F;
+  --ink: #F3EFE6; --ink-soft: #c9cfd8; --muted: #8C98A8; --accent: #5EE1C3; --warn: #FFB454;
+  --sans: "Noto Sans KR", "Noto Sans CJK KR", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html { font-size: 14px; }
+body { background: var(--bg-deep); color: var(--ink); font-family: var(--sans); margin: 0; word-break: keep-all; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: flex; flex-direction: column; gap: 32px; }
+h1 { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
+.lede { color: var(--ink-soft); margin: 8px 0 0; line-height: 1.7; max-width: 68ch; }
+.lede b { color: var(--ink); }
+.row { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); align-items: start; }
+.opt { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tag { font-family: var(--mono); font-size: .8rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.tag b { color: var(--ink); font-size: 1rem; font-family: var(--sans); }
+.tag .rec { color: var(--accent); font-family: var(--sans); }
+.note { font-size: .88rem; color: var(--muted); line-height: 1.7; margin: 0; }
+.note b { color: var(--ink-soft); font-weight: 500; }
+.cap { font-size: .78rem; color: var(--muted); }
+.phone { width: 100%; max-width: 300px; border-radius: 18px; border: 1px solid var(--line); overflow: hidden; background: var(--bg); }
+.phone > svg { display: block; width: 100%; height: auto; }
+.box { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 2px solid var(--accent); border-radius: 12px; padding: 10px 14px; width: fit-content; font-weight: 700; font-size: 1.05rem; }
+.box svg { flex: none; }
+.pending { display: grid; place-items: center; text-align: center; color: var(--muted); font-size: .86rem; line-height: 1.6; padding: 16px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>쇼츠의 커밋 아이콘을 바꾸기</h1>
+    <p class="lede">대본이 "커밋"을 말하면 Tabler의 <b>git-commit</b> 아이콘(세로선 가운데 동그라미)이 나옵니다. 선 하나와 동그라미만 있어 무엇인지 읽히지 않고, 크게 띄우면 <b>금지·오류 표시처럼</b> 보입니다. 지금까지 3편에 4번 나왔습니다 (vibelog 10/13·10/15, apart 10/15). 아래는 1080×1920 화면을 줄인 것입니다 — 위는 아이콘 장면(판 420px·아이콘 220px), 아래는 다이어그램 칸 안의 작은 아이콘(44px)입니다.</p>
+  </header>
+
+  <div class="row">
+    <!-- 지금 -->
+    <section class="opt">
+      <div class="tag">지금 <b>git-commit</b></div>
+      <div class="phone"><svg viewBox="0 0 1080 1100" aria-label="지금의 아이콘 장면">
+        <rect x="330" y="600" width="420" height="420" rx="28" fill="#141B24" stroke="#26313F" stroke-width="4"/>
+        <svg x="430" y="700" width="220" height="220" viewBox="0 0 24 24" fill="none" stroke="#5EE1C3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"/></svg>
+        <text x="540" y="200" fill="#F3EFE6" font-size="58" font-weight="700" text-anchor="middle" font-family="Noto Sans KR, sans-serif">커밋 메모가 그대로</text>
+        <text x="540" y="280" fill="#F3EFE6" font-size="58" font-weight="700" text-anchor="middle" font-family="Noto Sans KR, sans-serif">글이 됩니다</text>
+      </svg></div>
+      <span class="cap">다이어그램 칸</span>
+      <div class="box"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#5EE1C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"/></svg>커밋 메모</div>
+      <p class="note">세로로 선 막대와 동그라미 — 커밋을 아는 사람도 이 모양으로는 커밋을 떠올리지 않습니다.</p>
+    </section>
+
+    <!-- A -->
+    <section class="opt">
+      <div class="tag">A <b>메모 아이콘으로 바꾸기</b></div>
+      <div class="phone"><svg viewBox="0 0 1080 1100" aria-label="A안 아이콘 장면">
+        <rect x="330" y="600" width="420" height="420" rx="28" fill="#141B24" stroke="#26313F" stroke-width="4"/>
+        <svg x="430" y="700" width="220" height="220" viewBox="0 0 24 24" fill="none" stroke="#5EE1C3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm4 2h6m-6 4h6m-6 4h4"/></svg>
+        <text x="540" y="200" fill="#F3EFE6" font-size="58" font-weight="700" text-anchor="middle" font-family="Noto Sans KR, sans-serif">커밋 메모가 그대로</text>
+        <text x="540" y="280" fill="#F3EFE6" font-size="58" font-weight="700" text-anchor="middle" font-family="Noto Sans KR, sans-serif">글이 됩니다</text>
+      </svg></div>
+      <span class="cap">다이어그램 칸</span>
+      <div class="box"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#5EE1C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm4 2h6m-6 4h6m-6 4h4"/></svg>커밋 메모</div>
+      <p class="note">git 아이콘이 고르면 같은 세트의 <b>notes</b>로 바꿔 저장합니다. 가장 작은 수정이고 비용이 없습니다. 다만 "글"·"문서"와 모양이 비슷해, 커밋과 글이 한 문장에 같이 나오면 구별이 약합니다.</p>
+    </section>
+
+    <!-- B -->
+    <section class="opt">
+      <div class="tag">B <b>커밋 레일을 코드로 그리기</b> <span class="rec">추천</span></div>
+      <div class="phone"><svg viewBox="0 0 1080 1100" aria-label="B안 아이콘 장면">
+        <rect x="330" y="600" width="420" height="420" rx="28" fill="#141B24" stroke="#26313F" stroke-width="4"/>
+        <line x1="380" y1="810" x2="700" y2="810" stroke="#26313F" stroke-width="10" stroke-linecap="round"/>
+        <line x1="380" y1="810" x2="640" y2="810" stroke="#8C98A8" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="420" cy="810" r="24" fill="#141B24" stroke="#8C98A8" stroke-width="10"/>
+        <circle cx="530" cy="810" r="24" fill="#141B24" stroke="#8C98A8" stroke-width="10"/>
+        <circle cx="640" cy="810" r="34" fill="#5EE1C3"/>
+        <text x="640" y="905" fill="#5EE1C3" font-size="40" font-weight="700" text-anchor="middle" font-family="JetBrains Mono, monospace">a1b2c3d</text>
+        <text x="540" y="200" fill="#F3EFE6" font-size="58" font-weight="700" text-anchor="middle" font-family="Noto Sans KR, sans-serif">커밋 메모가 그대로</text>
+        <text x="540" y="280" fill="#F3EFE6" font-size="58" font-weight="700" text-anchor="middle" font-family="Noto Sans KR, sans-serif">글이 됩니다</text>
+      </svg></div>
+      <span class="cap">다이어그램 칸</span>
+      <div class="box"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="2" y1="12" x2="22" y2="12" stroke="#8C98A8" stroke-width="2"/><circle cx="6" cy="12" r="2.4" fill="#1B2430" stroke="#8C98A8" stroke-width="2"/><circle cx="12" cy="12" r="2.4" fill="#1B2430" stroke="#8C98A8" stroke-width="2"/><circle cx="18.5" cy="12" r="3.4" fill="#5EE1C3"/></svg>커밋 메모</div>
+      <p class="note">쇼츠 첫 장면의 <b>커밋 그래프와 같은 모양</b>입니다 — 가로 선 위 점 셋, 마지막 점만 강조색. 시청자가 영상 첫머리에서 "이게 커밋"이라고 이미 본 그림이라 따로 설명이 필요 없습니다. 코드로 그려서 5테마 색에 저절로 맞고, 두 크기에서 모두 읽히고, 비용이 없습니다. 아래 짧은 번호는 그날의 실제 커밋 번호를 씁니다.</p>
+    </section>
+
+    <!-- C -->
+    <section class="opt">
+      <div class="tag">C <b>미리 만든 그림</b></div>
+      <div class="phone"><div class="pending" style="aspect-ratio:1080/1100">그림 생성(OpenAI)은 Actions에서만 돌아<br>이 시안에는 실물을 넣지 못했습니다.<br><br>쇼츠 그림체 — 둥근 평면, 강조색 한 군데,<br>투명 배경 — 로 "커밋"을 그린 한 장을<br>테마 5개마다 한 번씩 만들어 둡니다.</div></div>
+      <span class="cap">다이어그램 칸</span>
+      <div class="box" style="border-style:dashed;border-color:var(--line);color:var(--muted)">44px에는 그림이 들어가지 않음</div>
+      <p class="note">큰 장면에는 어울리지만 <b>다이어그램 칸의 작은 아이콘 자리에는 쓸 수 없어</b> 그쪽은 A나 B가 따로 필요합니다. "커밋"은 손에 잡히는 물건이 아니라 그림으로 그리면 결국 종이·체크 표시가 되어 무엇인지 흐려집니다. 테마마다 그림을 사고, 마음에 드는지 한 장씩 봐야 합니다.</p>
+    </section>
+  </div>
+</div>
