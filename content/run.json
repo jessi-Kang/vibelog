@@ -1,60 +1,13 @@
 {
-  "at": "2026-10-16T20:19:04.515Z",
+  "at": "2026-10-17T11:33:52.543Z",
   "lines": [
     {
-      "text": "npx tsx scripts/run.ts",
+      "text": "npx tsx scripts/shorts.ts vibelog/2026-10-13",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 1 active"
-    },
-    {
-      "text": "skip     · apart 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · apart only 3 of 3 commits have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · Anchor 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · Anchor only 3 of 3 commits have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · agency 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · agency only 1 of 1 commit have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · portfolio-tmp 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · portfolio-tmp only 1 of 1 commit have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · lie-detective 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · lie-detective only 1 of 1 commit have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · agency 무엇을 만드는지 아직 알 수 없어 소개 글을 미룹니다",
-      "textEn": "skip     · agency can't tell what it is yet — intro post waits for new code"
-    },
-    {
-      "text": "safety   · vibelog 재료 23개 통과 · Jev 토큰 17,329",
-      "textEn": "safety   · vibelog 23 inputs passed · Jev tokens 17,329"
-    },
-    {
-      "text": "generate · vibelog/2026-10-16.md (ko, en) · 토큰 in 29,780 · out 7,241 · cache 6,325",
-      "textEn": "generate · vibelog/2026-10-16.md (ko, en) · tokens in 29,780 · out 7,241 · cache 6,325"
-    },
-    {
-      "text": "review   · vibelog/2026-10-16 막힌 문장 5개 → 다시 씀 → 남은 것 6개 · 토큰 in 3,776 · out 1,476",
-      "textEn": "review   · vibelog/2026-10-16 5 unclear → rewritten → 6 left · tokens in 3,776 · out 1,476"
-    },
-    {
-      "text": "figures  · vibelog/2026-10-16 2장 · 토큰 in 1,175 · out 6,533",
-      "textEn": "figures  · vibelog/2026-10-16 2 figures · tokens in 1,175 · out 6,533"
-    },
-    {
-      "text": "shorts   · vibelog/2026-10-16 (ko, en) · 대본 토큰 in 10,413 · out 10,235 · cache 8,718",
-      "textEn": "shorts   · vibelog/2026-10-16 (ko, en) · script tokens in 10,413 · out 10,235 · cache 8,718"
-    },
-    {
-      "text": "listen   · vibelog/2026-10-16 막힌 문장 4개 → 다시 씀 → 남은 것 0개 · 토큰 in 2,432 · out 1,300",
-      "textEn": "listen   · vibelog/2026-10-16 4 unclear → rewritten → 0 left · tokens in 2,432 · out 1,300"
+      "text": "shorts   · vibelog/2026-10-13 다시 만듦 (ko, en) — 대본 그대로",
+      "textEn": "shorts   · vibelog/2026-10-13 remade (ko, en) — same script"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
