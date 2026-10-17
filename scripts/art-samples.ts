@@ -22,14 +22,15 @@ const SCENES: Record<string, string> = {
 
 /**
  * 커밋을 말하는 장면에 쓸 고정 그림 후보 (10/17). Tabler의 git-commit 아이콘은 세로선과 동그라미뿐이라
- * 크게 띄우면 오류 표시처럼 보였다. 글자·로고를 못 넣는 그림체라 git 로고 대신 "기록을 하나 더한다"를
- * 물건으로 그린다. 그림은 한 장마다 돈이 들어서 어두운 테마 하나·밝은 테마 하나로만 먼저 본다
+ * 크게 띄우면 오류 표시처럼 보였다. 글자·로고를 못 넣는 그림체라 git 로고 대신 "한 일을 적어 남긴다"를
+ * 물건으로 그린다. 커밋을 모르는 사람도 뜻을 짐작할 수 있어야 한다 — 첫 후보의 구슬은 커밋 그래프를
+ * 본 사람만 알아봤다. 그림은 한 장마다 돈이 들어서 어두운 테마 하나·밝은 테마 하나로만 먼저 본다
  */
 const COMMIT_SCENES: Record<string, string> = {
-  beads: "three round beads threaded on a short horizontal rod, the last bead larger and set slightly apart from the others",
+  note: "a small paper note with a few written lines and a pencil resting on it, one round check mark seal in the corner",
+  pile: "a neat stack of paper note cards with one new card being placed on top of the stack",
+  box: "a small archive box with one sheet of paper sliding down into it",
   stamp: "a small rubber stamp pressing a round seal onto a single sheet of paper",
-  milestone: "a small flag planted on top of a round milestone stone beside a short winding path",
-  notebook: "a small open notebook with a ribbon bookmark and one round pin marking a fresh entry",
 };
 const COMMIT_THEMES = ["terminal", "paper"];
 
