@@ -549,6 +549,16 @@ const OUTSIDE_NARRATION = 5.5;
  * 다음 장면으로 넘어갔다 (거짓말 탐정 10/10 갈림길 그림 — 2.5초 문장에 그리는 데만 2.15초).
  * 그림이 다 그려지고 READ_SEC 동안 읽힌 뒤 사라질 만큼 내레이션 사이를 벌린다.
  */
+/**
+ * 두 문장이 같은 그림을 골랐나 — 종류와 라벨이 같으면 같은 그림이다. 대본이 한 그림을 두 문장에 걸쳐
+ * 설명하면(10/16 vibelog 편의 "본문 → 최근 글 3편 → 댓글") 렌더가 같은 그림을 처음부터 다시 그려,
+ * 같은 다이어그램이 두 번 나온 것처럼 보였다. 이어진 두 문장이면 한 장면으로 이어 둔다
+ */
+export function sameDiagram(a?: DiagramSpec, b?: DiagramSpec): boolean {
+  if (!a || !b || a.kind !== b.kind) return false;
+  return JSON.stringify(a.labels) === JSON.stringify(b.labels);
+}
+
 export function holdGaps(lines: Pick<ShortsLine, "diagram" | "motif">[], timing: ShortsTiming): number[] {
   const ss = timing.sentences;
   const gaps = ss.map((s, i) => {
@@ -557,7 +567,9 @@ export function holdGaps(lines: Pick<ShortsLine, "diagram" | "motif">[], timing:
     // 숨 쉴 틈 — 문장 사이 쉼이 너무 짧으면
     const pause = Math.max(0, MIN_PAUSE - (next.start - s.end));
     // 그림을 읽을 틈 — 그림이 다 그려지고 읽히기 전에 문장이 끝나면
-    const drawn = sceneDrawnSec(lines[s.index] ?? {});
+    // 다음 문장이 같은 그림을 이어 말하면 그림이 화면에 남으므로 기다리지 않는다
+    const sameNext = sameDiagram(lines[s.index]?.diagram, lines[next.index]?.diagram);
+    const drawn = sameNext ? 0 : sceneDrawnSec(lines[s.index] ?? {});
     const read = drawn ? Math.max(0, drawn + READ_SEC + FADE_SEC - (next.start - s.start)) : 0;
     return Math.min(GAP_MAX, Math.max(pause, read));
   });
