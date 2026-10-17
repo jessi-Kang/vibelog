@@ -4,13 +4,13 @@
       "path": "/",
       "find": "Endless",
       "focusY": 0.791,
-      "start": 1.55,
-      "end": 17.59
+      "start": 1.1,
+      "end": 17.14
     },
     {
       "path": "/me",
-      "start": 18.41,
-      "end": 34.88
+      "start": 17.96,
+      "end": 34.54
     }
   ]
 }

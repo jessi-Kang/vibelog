@@ -2,13 +2,13 @@
   "screens": [
     {
       "path": "/shorts",
-      "start": 0.95,
-      "end": 15.77
+      "start": 1.02,
+      "end": 16.25
     },
     {
       "path": "/",
-      "start": 16.64,
-      "end": 31.49
+      "start": 17.14,
+      "end": 32.15
     }
   ]
 }

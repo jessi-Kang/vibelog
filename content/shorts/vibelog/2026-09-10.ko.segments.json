@@ -3,14 +3,14 @@
     {
       "path": "/shorts",
       "start": 0.93,
-      "end": 18.91
+      "end": 18.93
     },
     {
       "path": "/",
       "find": "지난 실행",
       "focusY": 0.5,
-      "start": 19.88,
-      "end": 36.93
+      "start": 19.93,
+      "end": 36.98
     }
   ]
 }

@@ -2,20 +2,20 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.84,
-      "end": 14.68
+      "start": 0.9,
+      "end": 13.36
     },
     {
       "path": "/",
       "find": "지난 실행",
       "focusY": 0.5,
-      "start": 15.18,
-      "end": 28.21
+      "start": 13.87,
+      "end": 26.41
     },
     {
       "path": "/log",
-      "start": 29.05,
-      "end": 42.91
+      "start": 27.28,
+      "end": 39.75
     }
   ]
 }

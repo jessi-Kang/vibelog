@@ -2,26 +2,26 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.9,
-      "end": 10.54
+      "start": 0.88,
+      "end": 10.56
     },
     {
       "path": "/about",
       "find": "파이프라인",
       "focusY": 0.223,
-      "start": 11.54,
-      "end": 20.56
+      "start": 11.55,
+      "end": 20.57
     },
     {
       "path": "/",
       "find": "454",
       "start": 21.44,
-      "end": 31.1
+      "end": 31.12
     },
     {
       "path": "/shorts",
-      "start": 32.02,
-      "end": 41.69
+      "start": 32.04,
+      "end": 41.74
     }
   ]
 }
