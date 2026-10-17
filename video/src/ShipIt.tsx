@@ -12,6 +12,7 @@ import {
 } from "remotion";
 import {
   coldOpenKind,
+  sameDiagram,
   templateBadge,
   type DiagramSpec,
   type MotifName,
@@ -242,9 +243,14 @@ export function buildSegments(
     }
     // 다이어그램이 붙은 문장은 화면 녹화 대신 그림이 뜬다 — 원리를 말하는
     // 문장이라 녹화로는 보여줄 게 없다. 그림은 문장마다 달라서
-    // 앞 블록과 합치지 않고 항상 제 블록을 갖는다.
+    // 앞 블록과 합치지 않고 항상 제 블록을 갖는다. 다만 바로 앞 문장과 같은
+    // 그림이면 새 블록을 만들지 않는다 — 같은 그림이 처음부터 다시 그려져
+    // 똑같은 다이어그램이 두 번 나온 것처럼 보였다 (10/16 vibelog 편)
     const dia = line?.diagram;
-    if (dia) {
+    const prevRaw = raw[raw.length - 1];
+    if (dia && prevRaw?.kind === "diagram" && sameDiagram(prevRaw.diagram, dia)) {
+      // 앞 블록이 이 문장 끝까지 이어진다
+    } else if (dia) {
       raw.push({
         kind: "diagram",
         from: raw.length === 0 ? 0 : from,
