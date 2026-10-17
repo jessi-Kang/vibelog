@@ -3,8 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { PostFigure } from "../scripts/figure-types";
 import { firstTermsOnly, plainTerms, termsOnly } from "./term-marker";
-import { HIDDEN_PROJECTS, isHiddenProject } from "./hidden-projects";
-import { projectName } from "./project-name";
+import { hiddenSlugs, isHiddenProject } from "./hidden-projects";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -110,13 +109,20 @@ export interface RunLog {
 
 /* ---------- projects ---------- */
 
-// 잠시 숨긴 프로젝트(lib/hidden-projects.ts)는 사이트에서 빠진다. 파이프라인 스크립트는
+// 숨긴 프로젝트(topic vibelog-hidden, lib/hidden-projects.ts)는 사이트에서 빠진다. 파이프라인 스크립트는
 // 시작할 때 includeHiddenProjects()를 불러 전부 본다 — 숨긴 레포도 글은 계속 쌓인다
 let showHidden = false;
 export function includeHiddenProjects(): void {
   showHidden = true;
 }
 const visible = (slug: string) => showHidden || !isHiddenProject(slug);
+
+/** 숨긴 프로젝트까지 — 이름이 나오지 않는 숫자(홈 커밋 수·잔디)만 쓴다 */
+export function getAllProjects(): Project[] {
+  const file = path.join(CONTENT_DIR, "projects.json");
+  if (!fs.existsSync(file)) return [];
+  return JSON.parse(fs.readFileSync(file, "utf8")) as Project[];
+}
 
 export function getProjects(): Project[] {
   const file = path.join(CONTENT_DIR, "projects.json");
@@ -451,9 +457,24 @@ export function getRunLog(): RunLog | null {
   try {
     const log = JSON.parse(fs.readFileSync(file, "utf8")) as RunLog;
     if (showHidden) return log;
-    // 숨긴 프로젝트를 말하는 줄은 홈 "지난 실행"에서도 뺀다 — 레포 이름이나 화면 이름이 든 줄
-    const names = [...HIDDEN_PROJECTS].flatMap((slug) => [slug, projectName(slug), projectName(slug, true)]);
-    return { ...log, lines: log.lines.filter((l) => !names.some((n) => `${l.text} ${l.textEn ?? ""}`.includes(n))) };
+    // 숨긴 프로젝트를 말하는 줄은 남기되 이름만 가린다 — 레포 이름과 화면 이름 둘 다
+    // 화면용 이름 목록(project-name.ts)에는 숨긴 프로젝트가 없으므로 projects.json에서 읽는다
+    const all = getAllProjects();
+    const names = hiddenSlugs()
+      .flatMap((slug) => {
+        const p = all.find((x) => x.slug === slug);
+        return [slug, p?.name, p?.nameEn].filter((n): n is string => Boolean(n));
+      })
+      .sort((a, b) => b.length - a.length);
+    const mask = (t: string, word: string) => names.reduce((x, n) => x.split(n).join(word), t);
+    return {
+      ...log,
+      lines: log.lines.map((l) => ({
+        ...l,
+        text: mask(l.text, "비공개 프로젝트"),
+        ...(l.textEn ? { textEn: mask(l.textEn, "private project") } : {}),
+      })),
+    };
   } catch {
     return null;
   }

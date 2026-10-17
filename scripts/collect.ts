@@ -6,6 +6,7 @@
  */
 import { Octokit } from "@octokit/rest";
 import { PIPELINE_BOT_EMAIL, humanCommitTimes, isBotCommit } from "../lib/bot-commit";
+import { HIDDEN_TOPIC } from "../lib/hidden-projects";
 
 export interface RepoCommit {
   sha: string;
@@ -97,6 +98,8 @@ export interface RepoActivity {
   commitTimes: string[];
   /** 쇼츠 테마 — vibelog.json "theme" 우선, 없으면 topic "vibelog-theme-<이름>" */
   theme?: string;
+  /** topic vibelog-hidden이 달렸나 — 사이트에서 이름·글·쇼츠를 숨긴다 (lib/hidden-projects.ts) */
+  hidden: boolean;
   /**
    * 릴리즈 선언 여부 — GitHub Release가 하나라도 있으면 true. 없으면 배포돼
    * 있어도 preview. About Website는
@@ -669,6 +672,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       totalCommits,
       commitTimes,
       ...(theme ? { theme } : {}),
+      hidden: (r.topics ?? []).includes(HIDDEN_TOPIC),
       released,
     });
   }

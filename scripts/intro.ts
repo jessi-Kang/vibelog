@@ -24,6 +24,7 @@
  *   npx tsx scripts/intro.ts redo         # 이미 있는 소개 글을 지금 지시문으로 같은 날짜에 다시 쓴다
  */
 import fs from "node:fs";
+import { writePublicProjects } from "./public-projects";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import matter from "gray-matter";
@@ -530,6 +531,7 @@ export function saveIntroMeta(repo: string, it: Intro): void {
   p.aboutEn = plainTerms(it.aboutEn);
   if (it.icon) p.icon = it.icon;
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(list, null, 2) + "\n");
+  writePublicProjects();
 }
 
 /** 소개 글은 코드 구조를 설명하는 그림을 붙인다 — 화면 캡처는 하지 않는다 */
@@ -600,6 +602,7 @@ async function iconsOnly(): Promise<{ text: string; textEn?: string }[]> {
     });
   }
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(list, null, 2) + "\n");
+  writePublicProjects();
   return lines;
 }
 

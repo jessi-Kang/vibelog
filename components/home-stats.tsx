@@ -33,7 +33,6 @@ import { CommitHeatmap } from "./commit-heatmap";
 import { T } from "./lang";
 
 export interface FactSource {
-  repoUrl: string;
   /** 저장된 카운트의 기준 날짜(KST) — 오늘이 아니면 todayCommits는 어제 것 */
   countsDate?: string;
   todayCommits?: number;

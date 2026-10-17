@@ -1,4 +1,5 @@
-import projects from "../content/projects.json";
+// 숨긴 프로젝트를 뺀 사본 — 이 파일은 브라우저로 내려간다 (scripts/public-projects.ts)
+import projects from "../content/projects.public.json";
 import type { ProjectIcon } from "./project-icon";
 
 /**

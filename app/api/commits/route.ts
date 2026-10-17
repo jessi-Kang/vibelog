@@ -21,7 +21,7 @@ import {
   todayKst,
   type LiveCounts,
 } from "@/lib/commit-hours";
-import { getProjects } from "@/lib/content";
+import { getAllProjects } from "@/lib/content";
 import { humanTimesSince, repoOf } from "@/lib/github-server";
 
 /** 5분 — 예전 클라이언트 재조회 간격과 같고, 무인증 한도 안에 든다 */
@@ -29,7 +29,8 @@ export const revalidate = 300;
 
 export async function GET() {
   const date = todayKst();
-  const repos = getProjects()
+  // 숨긴 프로젝트도 센다 — 이름이 나오지 않는 숫자다 (lib/hidden-projects.ts)
+  const repos = getAllProjects()
     .map((p) => repoOf(p.repoUrl))
     .filter((r): r is string => r !== null);
 
@@ -39,7 +40,17 @@ export async function GET() {
     // 사람 커밋만 센다 — 봇 커밋까지 세던 때는 30분마다 도는 프로젝트 인식의 커밋이
     // 하루 50개씩 끼어 이번 주가 584개, 잔디가 새벽까지 칠해졌다 (10/16).
     // 한 주치 시각 목록 하나에서 오늘 줄과 이번 주 수를 같이 센다
-    const week = (await Promise.all(repos.map((repo) => humanTimesSince(repo, weekStart)))).flat();
+    // 한 레포를 못 읽어도(토큰 권한·비공개) 나머지는 센다 — 하나 때문에 통계 전체가 저장값으로 떨어지지 않게
+    const week = (
+      await Promise.all(
+        repos.map((repo) =>
+          humanTimesSince(repo, weekStart).catch((e) => {
+            console.error(`[commits] ${repo}: ${e instanceof Error ? e.message : e}`);
+            return [] as string[];
+          }),
+        ),
+      )
+    ).flat();
     const todayStart = new Date(midnight).getTime();
     const times = week.filter((t) => new Date(t).getTime() >= todayStart);
     const body: LiveCounts = {
