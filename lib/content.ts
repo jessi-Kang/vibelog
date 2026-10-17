@@ -162,7 +162,7 @@ export function getProjects(opts: ContentOpts = {}): Project[] {
 
 /**
  * 홈 프로젝트 목록 — 보이는 프로젝트 + 숨긴 프로젝트의 익명 카드. 익명 카드에는 상태·마지막
- * 활동만 남기고 레포 이름이 드러나는 칸(slug·레포 주소·스택·설명·아이콘)을 비운다 — 이 값은
+ * 활동·스택만 남기고 레포 이름이 드러나는 칸(slug·레포 주소·설명·아이콘)을 비운다 — 이 값은
  * 페이지 데이터로 브라우저에 그대로 실린다 (시안 docs/project-status-and-private.html)
  */
 export function getProjectCards(): Project[] {
@@ -178,7 +178,8 @@ export function getProjectCards(): Project[] {
         nameEn: aliasName(a, true),
         description: "",
         status: (p.status as string) === "paused" ? "resting" : p.status,
-        stack: [],
+        // 스택은 보인다 — 무엇으로 만드는지는 이름 없이도 "만들고 있구나"를 말해 준다 (10/17)
+        stack: p.stack ?? [],
         repoUrl: "",
         lastActivity: p.lastActivity,
         alias: a,

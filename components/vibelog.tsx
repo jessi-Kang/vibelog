@@ -24,7 +24,7 @@ function LockIcon({ size = 20 }: { size?: number }) {
 }
 
 /**
- * 방문자에게 보이는 미공개 프로젝트 — 이름 대신 "미공개 프로젝트 A", 설명·주소·스택 없이 상태와 마지막
+ * 방문자에게 보이는 미공개 프로젝트 — 이름 대신 "미공개 프로젝트 A", 설명·주소 없이 상태·스택·마지막
  * 활동만. 누를 수 없다(상세 페이지 없음). 점선 테두리에 바탕 없이 한 단계 물러나 보이게 한다
  * (시안 docs/project-status-and-private.html)
  */
@@ -40,7 +40,11 @@ export function AnonProjectCard({ project }: { project: Project }) {
       </h3>
       <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-sans text-xs tabular-nums text-muted">
         <StatusBadge status={project.status} />
-        <span className="min-w-0 flex-1 truncate">{humanizeLastActive(project.lastActivity, lang)}</span>
+        <span className="min-w-0 flex-1 truncate">
+          {[project.stack.join(" · ").toLowerCase(), humanizeLastActive(project.lastActivity, lang)]
+            .filter(Boolean)
+            .join(" · ")}
+        </span>
       </div>
     </div>
   );
