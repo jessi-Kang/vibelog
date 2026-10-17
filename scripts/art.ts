@@ -75,17 +75,17 @@ export type ArtStyle = "flat" | "papercut";
 export function styleFor(
   theme?: string | null,
   style: ArtStyle = process.env.ART_STYLE === "papercut" ? "papercut" : "flat",
-  { wide = false }: { wide?: boolean } = {},
+  { wide = false, neutrals: neutralsOverride }: { wide?: boolean; neutrals?: string } = {},
 ): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
   // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
   // 먹색은 혼자 무겁게 떴다 (10/11 두 번). 짙은 슬레이트까지 내렸다가 두 번 더 "어둡다"를
   // 들었다 — 큰 면은 옅은 회색에서 중간 회색까지, 가장 짙은 색도 테마의 보조 글자색(#8A919B)까지.
   // 짙은 그림자 면을 따로 넣지 않는다. 색 후보는 그림을 만들기 전에 바탕 위에서 먼저 견준다
-  const neutrals = t.light
+  const neutrals = neutralsOverride ?? (t.light
     ? "light gray (#D3D7DD), soft gray (#BAC0C8) and medium gray (#A3AAB4), with #8A919B only for small details; " +
       "white only for tiny highlights, never large white areas, nothing darker than #8A919B"
-    : "off-white, light gray and slate gray";
+    : "off-white, light gray and slate gray");
   // 블로그 글에 넣는 그림은 가로로 긴 판형이다 — 쇼츠처럼 가운데 물건 하나를 세로로 세우면
   // 글 칼럼에서 위아래로 길쭉해졌다 (10/11). 글의 삽화(가로 390 × 세로 가운데값
   // 225, 약 16:9)와 같은 판에 같은 비율로 놓이므로 16:9로 그리고, 물건 두세 개를 옆으로 늘어놓는다
