@@ -2,26 +2,26 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.89,
-      "end": 10.55
+      "start": 0.86,
+      "end": 10.51
     },
     {
       "path": "/about",
       "find": "Pipeline",
       "focusY": 0.223,
-      "start": 11.55,
-      "end": 20.57
+      "start": 11.47,
+      "end": 20.49
     },
     {
       "path": "/",
       "find": "454",
-      "start": 21.49,
-      "end": 31.15
+      "start": 21.38,
+      "end": 31.07
     },
     {
       "path": "/shorts",
-      "start": 32.1,
-      "end": 41.8
+      "start": 32.04,
+      "end": 41.72
     }
   ]
 }

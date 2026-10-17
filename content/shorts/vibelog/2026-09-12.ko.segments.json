@@ -2,20 +2,20 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.85,
-      "end": 11.81
+      "start": 0.88,
+      "end": 11.94
     },
     {
       "path": "/",
       "find": "22",
-      "focusY": 0.276,
-      "start": 12.33,
-      "end": 23.36
+      "focusY": 0.275,
+      "start": 12.45,
+      "end": 23.48
     },
     {
       "path": "/log",
-      "start": 24.23,
-      "end": 35.26
+      "start": 24.34,
+      "end": 35.42
     }
   ]
 }
