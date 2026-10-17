@@ -1,0 +1,537 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-17",
+  "day": 22,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "숨긴 프로젝트 이름이 새고 있었습니다.",
+      "en": "My hidden projects' names were leaking.",
+      "keywords": [
+        "새고"
+      ],
+      "keywordsEn": [
+        "leaking."
+      ],
+      "koLines": [
+        "숨긴 프로젝트",
+        "이름이 새고",
+        "있었습니다."
+      ],
+      "enLines": [
+        "My hidden",
+        "projects' names",
+        "were leaking."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "화면엔 없어도 페이지 코드엔 다 있었습니다.",
+      "en": "Not on screen, but all there in the page code.",
+      "keywords": [
+        "페이지 코드엔"
+      ],
+      "keywordsEn": [
+        "page code."
+      ],
+      "koLines": [
+        "화면엔 없어도",
+        "페이지 코드엔 다 있었습니다."
+      ],
+      "enLines": [
+        "Not on screen,",
+        "but all there in the page code."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "전체 목록",
+          "안 보임",
+          "다 읽힘",
+          "화면",
+          "페이지 코드"
+        ],
+        "labelsEn": [
+          "Full list",
+          "Hidden",
+          "All readable",
+          "Screen",
+          "Page code"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "빌드, 즉 코드를 묶는 단계를 손봤습니다.",
+      "en": "I changed the build, the step that bundles the code.",
+      "keywords": [
+        "빌드,"
+      ],
+      "keywordsEn": [
+        "the build,"
+      ],
+      "koLines": [
+        "빌드, 즉",
+        "코드를 묶는 단계를 손봤습니다."
+      ],
+      "enLines": [
+        "I changed the build,",
+        "the step that bundles the code."
+      ],
+      "icon": {
+        "name": "tabler:package",
+        "paths": [
+          {
+            "d": "m12 3l8 4.5v9L12 21l-8-4.5v-9zm0 9l8-4.5M12 12v9m0-9L4 7.5m12-2.25l-8 4.5"
+          }
+        ]
+      },
+      "motif": "merge"
+    },
+    {
+      "scene": "build",
+      "ko": "숨긴 프로젝트를 뺀 목록을 따로 만듭니다.",
+      "en": "It now makes a separate list without hidden projects.",
+      "keywords": [
+        "숨긴 프로젝트를 뺀"
+      ],
+      "keywordsEn": [
+        "without hidden projects."
+      ],
+      "koLines": [
+        "숨긴 프로젝트를 뺀",
+        "목록을 따로 만듭니다."
+      ],
+      "enLines": [
+        "It now makes a separate list",
+        "without hidden projects."
+      ],
+      "art": "a hand pulling two cards out of a deck before handing the deck over",
+      "icon": {
+        "name": "tabler:filter",
+        "paths": [
+          {
+            "d": "M4 4h16v2.172a2 2 0 0 1-.586 1.414L15 12v7l-6 2v-8.5L4.52 7.572A2 2 0 0 1 4 6.227z"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "화면은 이제 그 목록만 읽습니다.",
+      "en": "The page now reads only that list.",
+      "keywords": [
+        "그 목록만"
+      ],
+      "keywordsEn": [
+        "only that list."
+      ],
+      "koLines": [
+        "화면은 이제",
+        "그 목록만 읽습니다."
+      ],
+      "enLines": [
+        "The page now reads",
+        "only that list."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "전체 목록",
+          "이름이 샘",
+          "숨긴 것 뺀 목록",
+          "카드만 감"
+        ],
+        "labelsEn": [
+          "Full list",
+          "Names leak",
+          "Filtered list",
+          "Cards only"
+        ],
+        "icons": [
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:eye",
+            "paths": [
+              {
+                "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"
+              },
+              {
+                "d": "M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:filter",
+            "paths": [
+              {
+                "d": "M4 4h16v2.172a2 2 0 0 1-.586 1.414L15 12v7l-6 2v-8.5L4.52 7.572A2 2 0 0 1 4 6.227z"
+              }
+            ]
+          },
+          {
+            "name": "tabler:lock",
+            "paths": [
+              {
+                "d": "M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"
+              },
+              {
+                "d": "M11 16a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "topic, 그러니까 꼬리표 하나로 숨깁니다.",
+      "en": "One topic, a tag on the repo, hides it.",
+      "keywords": [
+        "꼬리표 하나로"
+      ],
+      "keywordsEn": [
+        "One topic,"
+      ],
+      "koLines": [
+        "topic, 그러니까",
+        "꼬리표 하나로 숨깁니다."
+      ],
+      "enLines": [
+        "One topic, a tag",
+        "on the repo, hides it."
+      ],
+      "screen": "/about",
+      "find": "표식(topic)",
+      "findEn": "topic",
+      "shot": "focus"
+    },
+    {
+      "scene": "demo",
+      "ko": "홈에는 이름 대신 '미공개 프로젝트 A'가 뜹니다.",
+      "en": "The home page shows \"Unreleased project A\" instead of the name.",
+      "keywords": [
+        "이름 대신"
+      ],
+      "keywordsEn": [
+        "instead of the name."
+      ],
+      "koLines": [
+        "홈에는 이름 대신",
+        "'미공개 프로젝트 A'가 뜹니다."
+      ],
+      "enLines": [
+        "The home page shows \"Unreleased project A\"",
+        "instead of the name."
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "숨겨도 그날 작업을 정리한 글은 밤마다 쌓입니다.",
+      "en": "Even hidden, a post on each day's work piles up every night.",
+      "keywords": [
+        "밤마다"
+      ],
+      "keywordsEn": [
+        "every night."
+      ],
+      "koLines": [
+        "숨겨도 그날 작업을 정리한 글은",
+        "밤마다 쌓입니다."
+      ],
+      "enLines": [
+        "Even hidden, a post on each day's work",
+        "piles up every night."
+      ],
+      "screen": "/log",
+      "find": "데브로그 36",
+      "findEn": "devlog",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "topic을 떼는 날 다 열리는지 보겠습니다.",
+      "en": "When I remove the topic, I'll check they all open.",
+      "keywords": [
+        "다 열리는지"
+      ],
+      "keywordsEn": [
+        "all open."
+      ],
+      "koLines": [
+        "topic을 떼는 날",
+        "다 열리는지 보겠습니다."
+      ],
+      "enLines": [
+        "When I remove the topic,",
+        "I'll check they all open."
+      ],
+      "icon": {
+        "name": "tabler:lock-open",
+        "paths": [
+          {
+            "d": "M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"
+          },
+          {
+            "d": "M11 16a1 1 0 1 0 2 0a1 1 0 1 0-2 0m-3-5V6a4 4 0 0 1 8 0"
+          }
+        ]
+      },
+      "motif": "fanout"
+    },
+    {
+      "scene": "end",
+      "ko": "안 보이는 것과 없는 것은 달랐습니다.",
+      "en": "Unseen and gone turned out to be different.",
+      "keywords": [
+        "없는 것은"
+      ],
+      "keywordsEn": [
+        "gone"
+      ],
+      "koLines": [
+        "안 보이는 것과",
+        "없는 것은 달랐습니다."
+      ],
+      "enLines": [
+        "Unseen and gone turned",
+        "out to be different."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "숨긴 이름이 새고 있었다",
+    "titleEn": "Hidden names were leaking",
+    "before": "화면 코드가 전체 목록을 읽음",
+    "after": "숨긴 것을 뺀 목록만 읽음",
+    "beforeEn": "The page code read the full list",
+    "afterEn": "It now reads only the filtered list"
+  },
+  "commits": [
+    [
+      "6ec78c5",
+      "design: 글 머리 날짜를 글 목록과 같은 꼴로, 커밋 수의 \"개\"는 뺐다"
+    ],
+    [
+      "9f7c175",
+      "fix: 프로젝트 칩 줄을 가로로 밀 때 위아래로도 흔들리던 것"
+    ],
+    [
+      "657d819",
+      "fix: 이어진 두 문장의 같은 다이어그램이 두 번 그려지던 것"
+    ],
+    [
+      "f387327",
+      "design: 글 머리 정보에서 AI 작성을 빼고 글 날짜를 적는다"
+    ],
+    [
+      "0b6920c",
+      "asset: 커밋 장면 메모 그림과 밝은 테마 그림 색"
+    ],
+    [
+      "fcb4b61",
+      "docs: 커밋 메모 그림을 다섯 테마로 그린 시안"
+    ],
+    [
+      "8509901",
+      "feat: git 아이콘 하나만 뜨는 쇼츠 장면을 메모 그림으로"
+    ],
+    [
+      "4d2cf80",
+      "chore: 커밋 그림을 메모로 정하고 다섯 테마를 한 번에 그린다"
+    ],
+    [
+      "1f369b8",
+      "chore: 밝은 테마 그림의 색 후보를 뽑는 시안 모드"
+    ],
+    [
+      "3f264fb",
+      "docs: 쇼츠 커밋 그림 후보 2차 시안"
+    ],
+    [
+      "58eb2e8",
+      "chore: 커밋 그림 후보를 커밋을 모르는 사람도 읽는 물건으로"
+    ],
+    [
+      "7fc9243",
+      "docs: 쇼츠 커밋 장면 그림 후보 시안"
+    ],
+    [
+      "a564ee8",
+      "chore: 커밋 장면에 쓸 고정 그림 후보를 뽑는 시안 모드"
+    ],
+    [
+      "0bca9f9",
+      "docs: 쇼츠 커밋 아이콘 시안"
+    ],
+    [
+      "95b3eb8",
+      "docs: 숨김 topic과 관리자 전용 주소를 문서에 적기"
+    ],
+    [
+      "269f3e9",
+      "chore: 손으로 숨기던 두 레포를 topic으로 넘기고 목록을 비운다"
+    ],
+    [
+      "95a5f14",
+      "docs: README의 상태 설명을 Release 기준과 미공개 topic에 맞춘다"
+    ],
+    [
+      "3613521",
+      "design: 미공개 프로젝트 카드에도 스택을 보인다"
+    ],
+    [
+      "9d303b4",
+      "feat: 상태값을 Release 기준으로 가르고, 미공개 프로젝트를 이름 없는 카드로 보인다"
+    ],
+    [
+      "c187697",
+      "docs: 상태값 기준과 미공개 프로젝트 표시 시안"
+    ],
+    [
+      "891533b",
+      "feat: 레포에 topic vibelog-hidden을 달면 사이트에서 숨긴다"
+    ],
+    [
+      "d5a09fb",
+      "fix: 프로젝트 설명이 바로 위 프로젝트 이름을 되풀이하던 것"
+    ],
+    [
+      "9f098c4",
+      "feat: 포트폴리오 템플릿과 Anchor를 사이트에서 잠시 숨긴다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6ec78c5",
+      "design: move the post date into the same format as the post list, drop the \"개\" from the commit count"
+    ],
+    [
+      "9f7c175",
+      "fix: horizontal swipe of the project chip row also shaking vertically"
+    ],
+    [
+      "657d819",
+      "fix: same diagram rendered twice in consecutive sentences"
+    ],
+    [
+      "f387327",
+      "design: remove AI authorship from post header, show post date"
+    ],
+    [
+      "0b6920c",
+      "asset: commit scene memo illustration and light theme illustration colors"
+    ],
+    [
+      "fcb4b61",
+      "docs: memo-style commit illustration, five theme mockups"
+    ],
+    [
+      "8509901",
+      "feat: shorts scene showing only the git icon changed to a memo illustration"
+    ],
+    [
+      "4d2cf80",
+      "chore: settle commit illustration as a memo, draw all five themes at once"
+    ],
+    [
+      "1f369b8",
+      "chore: mockup mode to pick light theme illustration color candidates"
+    ],
+    [
+      "3f264fb",
+      "docs: second round mockups of shorts commit illustration candidates"
+    ],
+    [
+      "58eb2e8",
+      "chore: commit illustration candidates as objects readable without knowing commits"
+    ],
+    [
+      "7fc9243",
+      "docs: mockups of shorts commit scene illustration candidates"
+    ],
+    [
+      "a564ee8",
+      "chore: mockup mode to pick fixed illustration candidates for commit scene"
+    ],
+    [
+      "0bca9f9",
+      "docs: mockups of shorts commit icon"
+    ],
+    [
+      "95b3eb8",
+      "docs: document hidden topic and admin-only URL"
+    ],
+    [
+      "269f3e9",
+      "chore: move two manually hidden repos to topic and empty the list"
+    ],
+    [
+      "95a5f14",
+      "docs: align README status description with Release basis and unpublished topic"
+    ],
+    [
+      "3613521",
+      "design: show stack on unpublished project cards too"
+    ],
+    [
+      "9d303b4",
+      "feat: split status by Release basis, show unpublished projects as unnamed cards"
+    ],
+    [
+      "c187697",
+      "docs: status criteria and unpublished project display mockup"
+    ],
+    [
+      "891533b",
+      "feat: hide repos with topic vibelog-hidden on the site"
+    ],
+    [
+      "d5a09fb",
+      "fix: project description repeating the name of the project right above"
+    ],
+    [
+      "9f098c4",
+      "feat: temporarily hide portfolio template and Anchor from the site"
+    ]
+  ],
+  "commitCount": 23,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "공개 전 프로젝트를 이름 없는 카드로 숨겼는데, 페이지 코드에는 이름이 그대로 남아 있었습니다. 빌드 직전에 숨긴 것을 뺀 목록을 따로 만들어 막았습니다.",
+    "en": "I hid unreleased projects behind nameless cards, but their names were still sitting in the page code. Now a filtered list is built right before the build, and the page reads only that."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#개발일지",
+    "#devlog",
+    "#webdev",
+    "#buildinpublic",
+    "#삽질"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-17.poster.jpg?v=mvch45m9",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-17.ko.mp4?v=mvch48c8",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-17.ko.sm.mp4?v=mvch4h6n",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-17.en.poster.jpg?v=mvch634m",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-17.en.mp4?v=mvch65r7",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-17.en.sm.mp4?v=mvch6eci"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "표식(topic)",
+      "focusY": 0.5,
+      "start": 1.04,
+      "end": 14.08
+    },
+    {
+      "path": "/",
+      "start": 14.96,
+      "end": 28.71
+    },
+    {
+      "path": "/log",
+      "find": "데브로그 36",
+      "start": 29.62,
+      "end": 43.47
+    }
+  ]
+}

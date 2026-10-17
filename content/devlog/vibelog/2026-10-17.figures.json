@@ -1,0 +1,1032 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "방문자에게는 이름 없이 상태와 만드는 도구만 남은 카드가 보이고, Google로 로그인하면 이름·설명·글·쇼츠까지 모두 보이는 비교 그림",
+  "altEn": "A comparison: visitors see a nameless card with only status and what it's built with, while signing in with Google shows the name, description, posts and shorts too",
+  "caption": "같은 프로젝트라도 방문자에게는 이름 없는 카드만 보입니다",
+  "captionEn": "The same project shows up as a nameless card to visitors",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "방문자는 이름 없는 카드만 보고, Google로 로그인하면 모든 내용이 보입니다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "방문자"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Google 로그인"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "44",
+      "width": "180",
+      "height": "200",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "44",
+      "width": "180",
+      "height": "200",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "미공개 프로젝트 A"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "96",
+      "width": "140",
+      "height": "22",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "128",
+      "width": "140",
+      "height": "22",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "22",
+      "y1": "166",
+      "x2": "178",
+      "y2": "166",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "상태"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "만드는 도구"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "이름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "112",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "설명"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "144",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글 · 쇼츠"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "212",
+      "y1": "166",
+      "x2": "368",
+      "y2": "166",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "상태"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "만드는 도구"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Visitors see only a nameless card, while signing in with Google shows everything"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Visitor"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Google sign-in"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "44",
+      "width": "180",
+      "height": "200",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "200",
+      "y": "44",
+      "width": "180",
+      "height": "200",
+      "rx": "10",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Unreleased project A"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "96",
+      "width": "140",
+      "height": "22",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "128",
+      "width": "140",
+      "height": "22",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "22",
+      "y1": "166",
+      "x2": "178",
+      "y2": "166",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Status"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Built with"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "78",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Name"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "112",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Description"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "144",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Posts · shorts"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "212",
+      "y1": "166",
+      "x2": "368",
+      "y2": "166",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Status"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "222",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Built with"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "전에는 화면 코드가 숨긴 것까지 든 전체 목록을 브라우저로 보냈고, 후에는 빌드 직전에 숨긴 것을 뺀 목록만 브라우저로 간다는 비교 그림",
+  "altEn": "Before, the screen code sent the full list including hidden projects to the browser; after, only a list without the hidden ones, made right before the build, reaches the browser",
+  "caption": "화면에 안 보여도 브라우저로 내려가면 읽힙니다 — 그래서 목록을 미리 걸렀습니다",
+  "captionEn": "Off screen isn't hidden if it reaches the browser — so the list is filtered first",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "전에는 전체 목록이 브라우저로 갔고, 후에는 숨긴 것을 뺀 목록만 갑니다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "15",
+      "x2": "195",
+      "y2": "255",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "48",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "73",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전체 목록"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "97",
+      "y1": "88",
+      "x2": "97",
+      "y2": "104",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "97,112 92,104 102,104",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "112",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "137",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "화면 코드"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "97",
+      "y1": "152",
+      "x2": "97",
+      "y2": "168",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "97,176 92,168 102,168",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "176",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "브라우저"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "245",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "숨긴 이름도 읽힘"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "48",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "73",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전체 목록"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "292",
+      "y1": "88",
+      "x2": "292",
+      "y2": "104",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,112 287,104 297,104",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "105",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "빌드 직전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "112",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "137",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "숨긴 것 뺀 목록"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "292",
+      "y1": "152",
+      "x2": "292",
+      "y2": "168",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,176 287,168 297,168",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "176",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "브라우저"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "245",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "숨긴 것은 안 감"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 270",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before, the full list reached the browser; after, only the list without hidden projects does"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "30",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "15",
+      "x2": "195",
+      "y2": "255",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "48",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "73",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Full list"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "97",
+      "y1": "88",
+      "x2": "97",
+      "y2": "104",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "97,112 92,104 102,104",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "112",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "137",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Screen code"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "97",
+      "y1": "152",
+      "x2": "97",
+      "y2": "168",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "97,176 92,168 102,168",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "176",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Browser"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "245",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Names readable"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "48",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "73",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Full list"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "292",
+      "y1": "88",
+      "x2": "292",
+      "y2": "104",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,112 287,104 297,104",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "105",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "pre-build"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "112",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "137",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "List minus hidden"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "292",
+      "y1": "152",
+      "x2": "292",
+      "y2": "168",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "292,176 287,168 297,168",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "176",
+      "width": "165",
+      "height": "40",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "201",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Browser"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "245",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Hidden ones stay out"
+    }
+   ]
+  }
+ }
+]
