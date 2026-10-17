@@ -63,6 +63,7 @@ function Tabs({
   bottom?: boolean;
 }) {
   const { lang } = useLang();
+  const pathname = usePathname();
   const countOf = (href: string) =>
     href === "/"
       ? counts?.projects
@@ -87,16 +88,15 @@ function Tabs({
             href={t.href}
             aria-current={on ? "page" : undefined}
             onClick={(e) => {
-              // 앱 표준: 현재 탭을 다시 탭하면 맨 위로 (모션 축소 설정이면 즉시 점프)
-              if (bottom && on) {
+              // 지금 보고 있는 그 페이지의 메뉴를 다시 누르면 페이지를 새로 연다 — 맨 위에서, 고른 필터
+              // (?project=)도 풀고, 새 글·쇼츠도 받는다. 같은 주소라 Next 링크로는 아무 일도 안 일어났고,
+              // 하단 탭바만 맨 위로 올리기만 했다 (10/17). 글 안에서 누른 "데브로그"는 목록으로 가는
+              // 이동이라 그대로 둔다
+              if (pathname === t.href) {
                 e.preventDefault();
-                const reduce = window.matchMedia(
-                  "(prefers-reduced-motion: reduce)",
-                ).matches;
-                window.scrollTo({
-                  top: 0,
-                  behavior: reduce ? "auto" : "smooth",
-                });
+                window.history.scrollRestoration = "manual";
+                window.scrollTo(0, 0);
+                window.location.assign(t.href);
               }
             }}
             className={`hit flex ${bottom ? "min-h-[60px] text-[15px] transition-[color,transform] active:scale-95" : "min-h-9 text-sm transition-colors"} flex-1 items-center justify-center font-bold duration-150 md:flex-none ${
