@@ -264,15 +264,13 @@ export function PostClient({
           </>
         )}
         {" · "}
-        {post.intro
-          ? en
-            ? "AI-written · intro"
-            : "AI 작성 · 소개 글"
-          : null}
+        {/* 글 날짜는 YYMMDD — "AI 작성"은 모든 글에 같은 말이라 자리만 차지했다 (10/17) */}
+        <span className="whitespace-nowrap">{post.date.slice(2).replaceAll("-", "")}</span>
+        {post.intro ? (en ? " · intro" : " · 소개 글") : null}
         {!post.intro && post.commits != null
           ? en
-            ? `AI-written · ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""}`
-            : `AI 작성 · 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}`
+            ? ` · ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""}`
+            : ` · 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}`
           : ""}
         {/* 구분점은 뒤 항목에 붙여 묶는다 — 줄 끝에 점 하나만 남지 않게 */}
         {!post.intro && (
