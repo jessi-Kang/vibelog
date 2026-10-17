@@ -25,9 +25,9 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-17",
-    "weekCommits": 236,
-    "todayCommits": 25,
-    "totalCommits": 543,
+    "weekCommits": 239,
+    "todayCommits": 28,
+    "totalCommits": 546,
     "countsDate": "2026-10-17"
   },
   {
@@ -116,7 +116,9 @@
     "todayCommits": 1,
     "totalCommits": 2,
     "countsDate": "2026-10-17",
-    "theme": "highlighter"
+    "theme": "highlighter",
+    "hidden": true,
+    "alias": "C"
   },
   {
     "slug": "portfolio-tmp",
