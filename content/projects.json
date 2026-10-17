@@ -25,10 +25,10 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-17",
-    "weekCommits": 251,
-    "todayCommits": 43,
+    "weekCommits": 250,
+    "todayCommits": 0,
     "totalCommits": 561,
-    "countsDate": "2026-10-17"
+    "countsDate": "2026-10-18"
   },
   {
     "slug": "apart",
@@ -58,9 +58,9 @@
     "language": "TypeScript",
     "lastActivity": "2026-10-17",
     "weekCommits": 43,
-    "todayCommits": 2,
+    "todayCommits": 0,
     "totalCommits": 262,
-    "countsDate": "2026-10-17",
+    "countsDate": "2026-10-18",
     "theme": "paper"
   },
   {
@@ -95,9 +95,9 @@
     "language": "TypeScript",
     "lastActivity": "2026-10-17",
     "weekCommits": 3,
-    "todayCommits": 3,
+    "todayCommits": 0,
     "totalCommits": 1078,
-    "countsDate": "2026-10-17",
+    "countsDate": "2026-10-18",
     "theme": "blueprint",
     "hidden": true,
     "alias": "A"
@@ -113,9 +113,9 @@
     "repoUrl": "https://github.com/jessi-Kang/agency",
     "lastActivity": "2026-10-17",
     "weekCommits": 1,
-    "todayCommits": 1,
+    "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-17",
+    "countsDate": "2026-10-18",
     "theme": "highlighter",
     "hidden": true,
     "alias": "C"
@@ -147,9 +147,9 @@
     "language": "JavaScript",
     "lastActivity": "2026-10-17",
     "weekCommits": 1,
-    "todayCommits": 1,
+    "todayCommits": 0,
     "totalCommits": 3,
-    "countsDate": "2026-10-17",
+    "countsDate": "2026-10-18",
     "theme": "blueprint",
     "hidden": true,
     "alias": "B"
@@ -181,9 +181,9 @@
     "language": "JavaScript",
     "lastActivity": "2026-10-17",
     "weekCommits": 1,
-    "todayCommits": 1,
+    "todayCommits": 0,
     "totalCommits": 50,
-    "countsDate": "2026-10-17",
+    "countsDate": "2026-10-18",
     "theme": "highlighter"
   }
 ]
