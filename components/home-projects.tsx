@@ -19,6 +19,13 @@ import { Card, SectionHeader, EmptyState } from "./ui";
 import { ProjectCard } from "./vibelog";
 import { ProjectIcon } from "./project-icon";
 import { projectColor } from "@/lib/project-color";
+import { HiddenChip, usePrivate } from "./private-data";
+
+/** 자물쇠 (Tabler lock) — 접힌 목록의 미공개 프로젝트 줄 */
+const LOCK = {
+  name: "tabler:lock",
+  paths: [{ d: "M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm6 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4" }],
+};
 
 export function HomeProjects({
   projects,
@@ -29,6 +36,12 @@ export function HomeProjects({
   buildDate: string;
 }) {
   const { lang } = useLang();
+  // 관리자면 익명 카드를 원래 카드로 바꾼다 — 별칭 글자로 짝을 찾는다 (components/private-data.tsx)
+  const priv = usePrivate();
+  if (priv) {
+    const real = new Map(priv.projects.map((p) => [p.alias, p]));
+    projects = projects.map((p) => (p.anon && p.alias && real.get(p.alias)) || p);
+  }
   // 페이지는 빌드 때 만들어진다. 며칠 빌드가 없으면 그사이 7일을 넘긴 프로젝트가
   // 펼쳐진 채 남으므로, 화면이 뜬 뒤 방문자의 오늘로 다시 가른다
   const [today, setToday] = useState(buildDate);
@@ -83,22 +96,32 @@ export function HomeProjects({
           <div className="border-b border-line px-[18px] py-2.5 font-sans text-xs text-muted">
             {lang === "ko" ? "쉬는 프로젝트 · 최근 7일 커밋 없음" : "Resting · no commits in 7 days"}
           </div>
-          {rest.map((p, i) => (
-            <Link
-              key={p.slug}
-              href={`/projects/${p.slug}`}
-              className={`flex items-center gap-3 px-[18px] py-3 font-sans text-xs tabular-nums text-muted transition-colors duration-150 hover:bg-panel2 ${i < rest.length - 1 ? "border-b border-line" : ""}`}
-            >
-              <span className="flex min-w-0 flex-1 items-center gap-2 font-sans text-base font-medium text-ink-soft">
-                {/* 아이콘이 없는 프로젝트는 기본 아이콘(코드 꺾쇠)을 그린다 — 빈자리로 두면 이름 시작이 어긋나 보였다 */}
-                <ProjectIcon icon={p.icon} size={16} className="self-center" style={{ color: projectColor(p.slug) }} />
-                <span className="truncate">{lang === "en" ? (p.nameEn ?? p.name) : p.name}</span>
-              </span>
-              <span className="flex-none text-right">
-                {humanizeLastActive(p.lastActivity, lang)}
-              </span>
-            </Link>
-          ))}
+          {rest.map((p, i) => {
+            const row = `flex items-center gap-3 px-[18px] py-3 font-sans text-xs tabular-nums text-muted ${i < rest.length - 1 ? "border-b border-line" : ""}`;
+            const body = (
+              <>
+                <span className="flex min-w-0 flex-1 items-center gap-2 font-sans text-base font-medium text-ink-soft">
+                  {/* 아이콘이 없는 프로젝트는 기본 아이콘(코드 꺾쇠)을 그린다 — 빈자리로 두면 이름 시작이 어긋나 보였다 */}
+                  <ProjectIcon icon={p.anon ? LOCK : p.icon} size={16} className="self-center" style={{ color: p.anon ? undefined : (p.color ?? projectColor(p.slug)) }} />
+                  <span className="truncate">{lang === "en" ? (p.nameEn ?? p.name) : p.name}</span>
+                  {p.hidden && <HiddenChip />}
+                </span>
+                <span className="flex-none text-right">
+                  {humanizeLastActive(p.lastActivity, lang)}
+                </span>
+              </>
+            );
+            // 미공개 프로젝트는 누를 수 없다 — 상세 페이지가 없다
+            return p.anon ? (
+              <div key={p.slug} className={row}>
+                {body}
+              </div>
+            ) : (
+              <Link key={p.slug} href={p.href ?? `/projects/${p.slug}`} className={`${row} transition-colors duration-150 hover:bg-panel2`}>
+                {body}
+              </Link>
+            );
+          })}
         </Card>
       )}
     </section>

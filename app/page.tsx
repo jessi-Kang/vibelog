@@ -1,15 +1,16 @@
 import { PageContainer } from "@/components/page-container";
 import { HomeStats } from "@/components/home-stats";
 import { HomeProjects } from "@/components/home-projects";
+import { HomeRecent } from "@/components/home-recent";
 import { T } from "@/components/lang";
-import { Card, EmptyState, SectionHeader } from "@/components/ui";
-import { DevlogCompactEntry, RunLog } from "@/components/vibelog";
+import { EmptyState, SectionHeader } from "@/components/ui";
+import { RunLog } from "@/components/vibelog";
 import {
   fmtShort,
   getCommitHours,
   getDevlogs,
   getAllProjects,
-  getProjects,
+  getProjectCards,
   getRunLog,
 } from "@/lib/content";
 import { postPath } from "@/lib/post-id";
@@ -29,7 +30,8 @@ function fmtKstStamp(iso: string): string {
 }
 
 export default function Home() {
-  const projects = getProjects();
+  // 숨긴 프로젝트는 이름 없는 "미공개 프로젝트 A" 카드로 섞여 나온다 — 무언가 만들고 있다는 건 보이게
+  const projects = getProjectCards();
   const devlogs = getDevlogs();
   const run = getRunLog();
   const commitHours = getCommitHours();
@@ -105,43 +107,21 @@ export default function Home() {
           }
         />
       ) : (
-        <Card className="p-0">
-          {devlogs.slice(0, RECENT_MAX).map((d, i, a) => (
-            <DevlogCompactEntry
-              key={`${d.repo}/${d.date}`}
-              href={postPath(d)}
-              date={fmtShort(d.date)}
-              repo={d.repo}
-              title={<T ko={d.title} en={d.titleEn ?? d.title} />}
-              last={i === a.length - 1}
-              meta={[
-                ...(d.intro
-                  ? [{ text: <T ko="프로젝트 소개" en="project intro" />, tone: "soft" as const }]
-                  : []),
-                ...(d.commits
-                  ? [
-                      {
-                        text: (
-                          <T
-                            ko={`커밋 ${d.commits}${d.prs ? ` · PR ${d.prs}` : ""}`}
-                            en={`${d.commits} commit${d.commits === 1 ? "" : "s"}${d.prs ? ` · ${d.prs} PR${d.prs === 1 ? "" : "s"}` : ""}`}
-                          />
-                        ),
-                      },
-                    ]
-                  : []),
-                ...(d.hasFail
-                  ? [
-                      {
-                        text: <T ko="삽질" en="rabbit hole" />,
-                        tone: "warn" as const,
-                      },
-                    ]
-                  : []),
-              ]}
-            />
-          ))}
-        </Card>
+        <HomeRecent
+          max={RECENT_MAX}
+          items={devlogs.slice(0, RECENT_MAX).map((d) => ({
+            href: postPath(d),
+            repo: d.repo,
+            date: d.date,
+            dateShort: fmtShort(d.date),
+            title: d.title,
+            ...(d.titleEn ? { titleEn: d.titleEn } : {}),
+            ...(d.commits ? { commits: d.commits } : {}),
+            ...(d.prs ? { prs: d.prs } : {}),
+            ...(d.intro ? { intro: true } : {}),
+            ...(d.hasFail ? { hasFail: true } : {}),
+          }))}
+        />
       )}
     </section>
   );

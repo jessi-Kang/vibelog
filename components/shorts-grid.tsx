@@ -8,6 +8,7 @@ import type { ShortsMeta } from "@/lib/content";
 import { fmtShort } from "@/lib/format";
 import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { postPath } from "@/lib/post-id";
+import { HiddenChip } from "./private-data";
 
 /** 9:16 쇼츠 썸네일 — 쇼츠 페이지와 글 상세가 같은 문법을 쓴다 (영상 훅 프레임의 포스터) */
 export interface ThumbData {
@@ -109,7 +110,7 @@ export function ShortsGrid({
     <>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
         {shorts.map((s) => {
-          const href = postPath(s);
+          const href = s.href ?? postPath(s);
           // EN이면 영어 훅 프레임 썸네일 — 아직 없으면(구버전) ko 폴백
           const data = {
             ...s,
@@ -149,6 +150,11 @@ export function ShortsGrid({
                 {/* 레포명은 썸네일 상단(vibelog · day NN)이 이미 말한다 */}
                 {fmtShort(s.date)} · {en ? "read the post →" : "글 보기 →"}
               </Link>
+              {s.hidden && (
+                <span className="-mt-1">
+                  <HiddenChip />
+                </span>
+              )}
             </div>
           );
         })}

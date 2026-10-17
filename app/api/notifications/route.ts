@@ -8,7 +8,8 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   const v = hasDb() ? await viewer() : null;
   if (!v) return Response.json({ signedIn: false, unread: 0, items: [] }, { headers: { "cache-control": "private, no-store" } });
-  return Response.json({ signedIn: true, ...(await listNotes(v)) }, { headers: { "cache-control": "private, no-store" } });
+  // admin — 화면이 숨긴 프로젝트를 /api/private에서 받아 올지 정한다 (components/private-data.tsx)
+  return Response.json({ signedIn: true, admin: v.isAdmin, ...(await listNotes(v)) }, { headers: { "cache-control": "private, no-store" } });
 }
 
 export async function POST(req: Request) {

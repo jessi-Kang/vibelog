@@ -20,6 +20,9 @@
   --color-accent-soft: rgba(94, 225, 195, 0.15);
   --color-warn: #ffb454;
   --color-warn-soft: rgba(255, 180, 84, 0.15);
+  --color-preview: #7fb0ff;
+  /* 쉬는 중(RESTING) — 끝난 것처럼 보이는 회색 대신, 다시 돌아올 프로젝트라는 옅은 보라 (10/17) */
+  --color-rest: #b8a6e8;
   --color-danger: #ff6b6b;
   --color-danger-soft: rgba(255, 107, 107, 0.15);
 

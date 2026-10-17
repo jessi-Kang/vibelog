@@ -8,6 +8,8 @@
  */
 import { HEATMAP_DAYS, addDays, todayKst } from "@/lib/commit-hours";
 import { getProject } from "@/lib/content";
+import { hasDb } from "@/lib/db";
+import { viewer } from "@/lib/session";
 import { ghGet, humanTimesSince, humanTotal, repoOf } from "@/lib/github-server";
 
 export interface RepoStats {
@@ -19,7 +21,14 @@ export interface RepoStats {
 
 export async function GET(req: Request) {
   const slug = new URL(req.url).searchParams.get("slug") ?? "";
-  const repo = repoOf(getProject(slug)?.repoUrl ?? "");
+  // 숨긴 프로젝트는 관리자에게만 — 그 응답은 공용 캐시에 두지 않는다
+  let project = getProject(slug);
+  let privateOnly = false;
+  if (!project && hasDb() && (await viewer())?.isAdmin) {
+    project = getProject(slug, { all: true });
+    privateOnly = Boolean(project);
+  }
+  const repo = repoOf(project?.repoUrl ?? "");
   if (!repo) return Response.json({ error: "unknown project" }, { status: 404 });
 
   try {
@@ -41,7 +50,9 @@ export async function GET(req: Request) {
     };
     // 5분 — 홈 /api/commits와 같은 간격. 방문자 수와 무관하게 GitHub 요청이 일정하다
     return Response.json(body, {
-      headers: { "cache-control": "public, s-maxage=300, stale-while-revalidate=600" },
+      headers: {
+        "cache-control": privateOnly ? "private, no-store" : "public, s-maxage=300, stale-while-revalidate=600",
+      },
     });
   } catch (e) {
     // 못 세면 화면은 저장값을 그대로 쓴다. 실패는 짧게만 캐시한다. 이유(토큰 권한 등)는

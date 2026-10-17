@@ -31,3 +31,36 @@ export function isHiddenProject(slug: string): boolean {
 export function hiddenSlugs(): string[] {
   return [...new Set([...BY_HAND_HIDDEN, ...BY_TOPIC])];
 }
+
+/**
+ * 방문자에게 보이는 별칭 글자 — "미공개 프로젝트 A". 색처럼 한 번 정하면 projects.json에 적어 두고
+ * 바꾸지 않는다 (글자가 날마다 바뀌면 A가 어제의 A인지 알 수 없다). 새로 숨긴 프로젝트는 비어
+ * 있는 가장 앞 글자를 받는다. 레포 이름 순서로 정하지 않는다 — 순서에서 이름을 짐작할 수 있다.
+ */
+export function assignAliases(
+  hidden: string[],
+  kept: Record<string, string | undefined>,
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  const used = new Set<string>();
+  for (const s of hidden) {
+    const a = kept[s];
+    if (a && /^[A-Z]{1,2}$/.test(a) && !used.has(a)) {
+      out[s] = a;
+      used.add(a);
+    }
+  }
+  const letters = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+  for (const s of hidden) {
+    if (out[s]) continue;
+    const a = letters.find((l) => !used.has(l)) ?? `Z${used.size}`;
+    out[s] = a;
+    used.add(a);
+  }
+  return out;
+}
+
+/** 화면에 쓰는 별칭 이름 */
+export function aliasName(alias: string, en = false): string {
+  return en ? `Private project ${alias}` : `미공개 프로젝트 ${alias}`;
+}

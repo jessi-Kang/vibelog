@@ -3,11 +3,11 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { PostFigure } from "../scripts/figure-types";
 import { firstTermsOnly, plainTerms, termsOnly } from "./term-marker";
-import { hiddenSlugs, isHiddenProject } from "./hidden-projects";
+import { aliasName, hiddenSlugs, isHiddenProject } from "./hidden-projects";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
-export type ProjectStatus = "idea" | "building" | "preview" | "live" | "paused";
+export type ProjectStatus = "idea" | "building" | "preview" | "live" | "resting";
 
 export interface Project {
   slug: string; // 레포 이름
@@ -36,6 +36,13 @@ export interface Project {
   totalCommits?: number; // 레포 전체 누적 커밋 — 프로젝트 상세
   /** 쇼츠 테마 — topic vibelog-theme-<이름>에서. 없으면 terminal */
   theme?: string;
+  /** topic vibelog-hidden — 방문자에게는 이름 대신 "미공개 프로젝트 <alias>" (lib/hidden-projects.ts) */
+  hidden?: boolean;
+  alias?: string;
+  /** 방문자용 익명 카드 — 이름·설명·주소가 없고 누를 수 없다 (getProjectCards) */
+  anon?: boolean;
+  /** 카드가 가는 곳 — 관리자 화면의 숨긴 프로젝트는 /private/projects/<slug> */
+  href?: string;
 }
 
 /** 데브로그 본문의 고정 구조 — "뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것" */
@@ -83,6 +90,9 @@ export interface DevlogEntry {
 }
 
 export interface ShortsMeta {
+  /** 관리자 화면의 숨긴 쇼츠 — "숨김" 칩, 글 주소는 /private/p/… (components/private-data.tsx) */
+  hidden?: boolean;
+  href?: string;
   repo: string;
   date: string;
   template: string;
@@ -115,7 +125,11 @@ let showHidden = false;
 export function includeHiddenProjects(): void {
   showHidden = true;
 }
-const visible = (slug: string) => showHidden || !isHiddenProject(slug);
+const visible = (slug: string, all?: boolean) => showHidden || all === true || !isHiddenProject(slug);
+/** all: 숨긴 프로젝트까지 — 관리자 전용 화면(/private, /api/private)만 쓴다 */
+export interface ContentOpts {
+  all?: boolean;
+}
 
 /** 숨긴 프로젝트까지 — 이름이 나오지 않는 숫자(홈 커밋 수·잔디)만 쓴다 */
 export function getAllProjects(): Project[] {
@@ -124,14 +138,16 @@ export function getAllProjects(): Project[] {
   return JSON.parse(fs.readFileSync(file, "utf8")) as Project[];
 }
 
-export function getProjects(): Project[] {
+export function getProjects(opts: ContentOpts = {}): Project[] {
   const file = path.join(CONTENT_DIR, "projects.json");
   if (!fs.existsSync(file)) return [];
   const projects: Project[] = JSON.parse(fs.readFileSync(file, "utf8"));
+  // 옛 상태 이름 — 다음 인식이 다시 적기 전까지 resting으로 읽는다
+  for (const p of projects) if ((p.status as string) === "paused") p.status = "resting";
   // 마지막 활동은 저장값과 최신 데브로그 날짜 중 더 최근 것 — 오늘 글이
   // 나왔으면 밤 실행을 기다리지 않고도 "오늘 움직임"으로 잡힌다
   const latestPost = new Map<string, string>();
-  for (const d of getDevlogs()) {
+  for (const d of getDevlogs(undefined, opts)) {
     const cur = latestPost.get(d.repo);
     if (!cur || d.date > cur) latestPost.set(d.repo, d.date);
   }
@@ -139,13 +155,41 @@ export function getProjects(): Project[] {
     const post = latestPost.get(p.slug);
     if (post && post > p.lastActivity) p.lastActivity = post;
   }
-  return projects.filter((p) => visible(p.slug)).sort((a, b) =>
+  return projects.filter((p) => visible(p.slug, opts.all)).sort((a, b) =>
     b.lastActivity.localeCompare(a.lastActivity),
   );
 }
 
-export function getProject(slug: string): Project | undefined {
-  return getProjects().find((p) => p.slug === slug);
+/**
+ * 홈 프로젝트 목록 — 보이는 프로젝트 + 숨긴 프로젝트의 익명 카드. 익명 카드에는 상태·마지막
+ * 활동만 남기고 레포 이름이 드러나는 칸(slug·레포 주소·스택·설명·아이콘)을 비운다 — 이 값은
+ * 페이지 데이터로 브라우저에 그대로 실린다 (시안 docs/project-status-and-private.html)
+ */
+export function getProjectCards(): Project[] {
+  const shown = getProjects();
+  if (showHidden) return shown;
+  const anon: Project[] = getAllProjects()
+    .filter((p) => isHiddenProject(p.slug))
+    .map((p) => {
+      const a = p.alias ?? "?";
+      return {
+        slug: `private-${a.toLowerCase()}`,
+        name: aliasName(a),
+        nameEn: aliasName(a, true),
+        description: "",
+        status: (p.status as string) === "paused" ? "resting" : p.status,
+        stack: [],
+        repoUrl: "",
+        lastActivity: p.lastActivity,
+        alias: a,
+        anon: true,
+      };
+    });
+  return [...shown, ...anon].sort((a, b) => b.lastActivity.localeCompare(a.lastActivity));
+}
+
+export function getProject(slug: string, opts: ContentOpts = {}): Project | undefined {
+  return getProjects(opts).find((p) => p.slug === slug);
 }
 
 export { DOW, fmtDate, fmtShort, humanizeLastActive } from "./format";
@@ -266,7 +310,7 @@ function readFigures(dir: string, mdFile: string): PostFigure[] {
   }
 }
 
-export function getDevlogs(repo?: string): DevlogEntry[] {
+export function getDevlogs(repo?: string, opts: ContentOpts = {}): DevlogEntry[] {
   const devlogDir = path.join(CONTENT_DIR, "devlog");
   if (!fs.existsSync(devlogDir)) return [];
 
@@ -277,7 +321,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
           .readdirSync(devlogDir, { withFileTypes: true })
           .filter((d) => d.isDirectory())
           .map((d) => d.name)
-  ).filter(visible);
+  ).filter((r) => visible(r, opts.all));
 
   const entries: DevlogEntry[] = [];
   for (const r of repos) {
@@ -360,7 +404,7 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
       delete e.continues;
   }
   // 쇼츠 연결
-  const shorts = getShorts();
+  const shorts = getShorts(opts);
   for (const e of sorted) {
     const s = shorts.find((x) => x.repo === e.repo && x.date === e.date);
     if (s) e.short = s;
@@ -400,18 +444,18 @@ export function storyThread(
   };
 }
 
-export function getDevlog(repo: string, date: string): DevlogEntry | undefined {
-  return getDevlogs(repo).find((d) => d.date === date);
+export function getDevlog(repo: string, date: string, opts: ContentOpts = {}): DevlogEntry | undefined {
+  return getDevlogs(repo, opts).find((d) => d.date === date);
 }
 
 /* ---------- shorts ---------- */
 
-export function getShorts(): ShortsMeta[] {
+export function getShorts(opts: ContentOpts = {}): ShortsMeta[] {
   const dir = path.join(CONTENT_DIR, "shorts");
   if (!fs.existsSync(dir)) return [];
   const out: ShortsMeta[] = [];
   for (const repo of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (!repo.isDirectory() || !visible(repo.name)) continue;
+    if (!repo.isDirectory() || !visible(repo.name, opts.all)) continue;
     const rdir = path.join(dir, repo.name);
     for (const f of fs.readdirSync(rdir)) {
       if (!/^\d{4}-\d{2}-\d{2}\.json$/.test(f)) continue;
@@ -451,28 +495,36 @@ export function getShorts(): ShortsMeta[] {
 
 /* ---------- run log ---------- */
 
-export function getRunLog(): RunLog | null {
+export function getRunLog(opts: ContentOpts = {}): RunLog | null {
   const file = path.join(CONTENT_DIR, "run.json");
   if (!fs.existsSync(file)) return null;
   try {
     const log = JSON.parse(fs.readFileSync(file, "utf8")) as RunLog;
-    if (showHidden) return log;
-    // 숨긴 프로젝트를 말하는 줄은 남기되 이름만 가린다 — 레포 이름과 화면 이름 둘 다
+    if (showHidden || opts.all) return log;
+    // 숨긴 프로젝트를 말하는 줄은 남기되 이름을 "미공개 프로젝트 A"로 바꾼다. 글 주소
+    // (Anchor/2026-10-17.md)도 날짜까지 통째로 바꾼다 — 주소에 레포 이름이 들어 있다.
     // 화면용 이름 목록(project-name.ts)에는 숨긴 프로젝트가 없으므로 projects.json에서 읽는다
     const all = getAllProjects();
-    const names = hiddenSlugs()
-      .flatMap((slug) => {
-        const p = all.find((x) => x.slug === slug);
-        return [slug, p?.name, p?.nameEn].filter((n): n is string => Boolean(n));
-      })
-      .sort((a, b) => b.length - a.length);
-    const mask = (t: string, word: string) => names.reduce((x, n) => x.split(n).join(word), t);
+    const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const rules = hiddenSlugs().flatMap((slug) => {
+      const p = all.find((x) => x.slug === slug);
+      const a = p?.alias ?? "?";
+      const names = [slug, p?.name, p?.nameEn].filter((n): n is string => Boolean(n));
+      return names
+        .sort((x, y) => y.length - x.length)
+        .map((n) => ({
+          re: new RegExp(`${esc(n)}(?:/\\d{4}-\\d{2}-\\d{2}(?:\\.mdx?)?)?`, "g"),
+          ko: aliasName(a),
+          en: aliasName(a, true),
+        }));
+    });
+    const mask = (t: string, en: boolean) => rules.reduce((x, r) => x.replace(r.re, en ? r.en : r.ko), t);
     return {
       ...log,
       lines: log.lines.map((l) => ({
         ...l,
-        text: mask(l.text, "비공개 프로젝트"),
-        ...(l.textEn ? { textEn: mask(l.textEn, "private project") } : {}),
+        text: mask(l.text, false),
+        ...(l.textEn ? { textEn: mask(l.textEn, true) } : {}),
       })),
     };
   } catch {
@@ -481,6 +533,6 @@ export function getRunLog(): RunLog | null {
 }
 
 /** 그 프로젝트의 소개 글 — 없으면 undefined. 글 제목 아래 프로젝트 설명이 이 글로 간다 */
-export function introPost(repo: string): DevlogEntry | undefined {
-  return getDevlogs(repo).find((d) => d.intro);
+export function introPost(repo: string, opts: ContentOpts = {}): DevlogEntry | undefined {
+  return getDevlogs(repo, opts).find((d) => d.intro);
 }
