@@ -34,11 +34,58 @@ const COMMIT_SCENES: Record<string, string> = {
 };
 const COMMIT_THEMES = ["terminal", "paper"];
 
+/**
+ * 밝은 테마(paper) 그림의 색 후보 (10/17). 지금 규칙(옅은 회색–중간 회색)으로 그리면 회색 바탕 위에
+ * 회색 물건이 놓여 칙칙했다. 전에는 흰색이 바탕에 묻히고 짙은 색이 무거웠다 — 그래서 흰 면에는
+ * 그림자 면을 꼭 붙여 모양을 세우고, 짙은 색은 여전히 쓰지 않는다. 그림 두 가지 × 색 세 가지
+ */
+const LIGHT_SCENES: Record<string, string> = {
+  note: COMMIT_SCENES.note,
+  review: SCENES.review,
+};
+const LIGHT_PALETTES: Record<string, string> = {
+  // 지금 규칙 그대로 — 견줄 기준
+  now: "",
+  // 흰 면 + 옅은 회색 그림자 면
+  white:
+    "pure white (#FFFFFF) main surfaces, each with one soft cool gray shadow side (#DDE1E7), " +
+    "small details in #B4BAC3; no medium or dark gray areas",
+  // 흰 면 + 강조색을 아주 옅게 푼 그림자 면 — 한 색 계열 안에서 밝게
+  tint:
+    "pure white (#FFFFFF) main surfaces, shadow sides in a very pale tint of the accent color (#D6EDE6), " +
+    "small details in a soft tint (#A8D5C7); no gray areas at all",
+};
+
+async function lightSamples(dir: string): Promise<string[]> {
+  const failed: string[] = [];
+  for (const [scene, sc] of Object.entries(LIGHT_SCENES)) {
+    for (const [pal, neutrals] of Object.entries(LIGHT_PALETTES)) {
+      const id = `light-${pal}-${scene}`;
+      try {
+        const style = styleFor("paper", "flat", neutrals ? { neutrals } : {});
+        const r = await generateImage(style + sc, ["openai"], { transparent: true });
+        fs.writeFileSync(path.join(dir, `${id}.${r.ext}`), r.data);
+        console.log(`- ${id} (${r.model})`);
+      } catch (err) {
+        failed.push(id);
+        console.warn(`- ${id} 실패:`, err instanceof Error ? err.message : err);
+      }
+    }
+  }
+  return failed;
+}
+
 async function main(): Promise<void> {
   const dir = path.join(process.cwd(), "art-samples");
   fs.mkdirSync(dir, { recursive: true });
   const failed: string[] = [];
   let made = 0;
+  if (process.env.ART_SET === "light") {
+    const bad = await lightSamples(dir);
+    console.log(`실패 ${bad.length}장${bad.length ? ` — ${bad.join(", ")}` : ""}`);
+    if (bad.length) process.exit(1);
+    return;
+  }
   const commit = process.env.ART_SET === "commit";
   const scenes = commit ? COMMIT_SCENES : SCENES;
   // 밤 실행과 같은 스타일 문장(styleFor)으로 테마 5종을 다 그린다

@@ -4,14 +4,15 @@ name: art-try
 #   try:     Gemini·OpenAI에서 한 장씩 (키·모델 이름 확인)
 #   samples: 둥근 평면(한 색) 시안 — 테마 5 × 장면 2 = 10장, 투명 배경(OpenAI) (scripts/art-samples.ts)
 #   commit:  커밋 장면 고정 그림 후보 — 4종 × 어두운·밝은 테마 = 8장 (scripts/art-samples.ts, ART_SET=commit)
+#   light:   밝은 테마(paper) 그림 색 후보 — 그림 2 × 색 3 = 6장 (ART_SET=light)
 #   intro:   소개 글 머리 그림 시안 — 소개 글마다 가로 그림 한 장 (scripts/intro-art-samples.ts)
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "try = 한 장씩 확인 / samples = 테마별 시안 10장 / commit = 커밋 그림 후보 8장 / intro = 소개 글 머리 그림"
+        description: "try = 한 장씩 확인 / samples = 테마별 시안 10장 / commit = 커밋 그림 후보 8장 / light = 밝은 테마 색 후보 6장 / intro = 소개 글 머리 그림"
         type: choice
-        options: [samples, commit, intro, try]
+        options: [samples, commit, light, intro, try]
         default: samples
       prompt:
         description: "try일 때 그릴 것 (영어 한 문장)"
@@ -56,11 +57,11 @@ jobs:
 
       - name: Samples
         id: samples
-        if: inputs.mode == 'samples' || inputs.mode == 'commit'
+        if: inputs.mode == 'samples' || inputs.mode == 'commit' || inputs.mode == 'light'
         continue-on-error: true
         run: npx tsx scripts/art-samples.ts
         env:
-          ART_SET: ${{ inputs.mode == 'commit' && 'commit' || '' }}
+          ART_SET: ${{ (inputs.mode == 'commit' || inputs.mode == 'light') && inputs.mode || '' }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
