@@ -70,10 +70,13 @@ export function ProjectFilter({
   }
 
   return (
+    // 가로로만 흐른다 — overflow-x를 열면 세로도 auto가 되는데, 칩(28px)의 터치 영역(.hit, 44px)이
+    // 위아래로 8px씩 나와 세로로 2px가 넘쳐서, 가로로 밀 때 위아래로도 조금씩 흔들렸다 (10/17).
+    // 세로는 막고, 위아래 여백을 8px로 두어 터치 영역이 잘리지 않게 한다 (py-2는 html 글자 크기에 따라 7px가 된다)
     <div
       role="group"
       aria-label={label}
-      className="-mx-1 flex gap-1.5 overflow-x-auto px-1 py-1.5 [scrollbar-width:none]"
+      className="-mx-1 flex gap-1.5 overflow-x-auto overflow-y-hidden px-1 py-[8px] [scrollbar-width:none]"
     >
       {options.map((p) => {
         const on = p.slug === value;
