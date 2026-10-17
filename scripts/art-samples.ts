@@ -21,28 +21,20 @@ const SCENES: Record<string, string> = {
 };
 
 /**
- * 커밋을 말하는 장면에 쓸 고정 그림 후보 (10/17). Tabler의 git-commit 아이콘은 세로선과 동그라미뿐이라
+ * 커밋을 말하는 장면에 쓸 고정 그림 (10/17). Tabler의 git-commit 아이콘은 세로선과 동그라미뿐이라
  * 크게 띄우면 오류 표시처럼 보였다. 글자·로고를 못 넣는 그림체라 git 로고 대신 "한 일을 적어 남긴다"를
- * 물건으로 그린다. 커밋을 모르는 사람도 뜻을 짐작할 수 있어야 한다 — 첫 후보의 구슬은 커밋 그래프를
- * 본 사람만 알아봤다. 그림은 한 장마다 돈이 들어서 어두운 테마 하나·밝은 테마 하나로만 먼저 본다
+ * 물건으로 그린다 — 커밋을 모르는 사람도 뜻을 짐작할 수 있어야 한다. 구슬(커밋 그래프를 본 사람만
+ * 알아봤다)·카드 더미(블록처럼 보였다)·보관 상자(투표함으로도 읽혔다)·도장(기록보다 승인)을 거쳐
+ * 연필이 놓인 메모로 정했다. 시안은 docs/shorts-commit-art.html
  */
-const COMMIT_SCENES: Record<string, string> = {
-  note: "a small paper note with a few written lines and a pencil resting on it, one round check mark seal in the corner",
-  pile: "a neat stack of paper note cards with one new card being placed on top of the stack",
-  box: "a small archive box with one sheet of paper sliding down into it",
-  stamp: "a small rubber stamp pressing a round seal onto a single sheet of paper",
-};
-const COMMIT_THEMES = ["terminal", "paper"];
+const COMMIT_ART =
+  "a small paper note with a few written lines and a pencil resting on it, one round check mark seal in the corner";
 
 /**
  * 밝은 테마(paper) 그림의 색 후보 (10/17). 지금 규칙(옅은 회색–중간 회색)으로 그리면 회색 바탕 위에
  * 회색 물건이 놓여 칙칙했다. 전에는 흰색이 바탕에 묻히고 짙은 색이 무거웠다 — 그래서 흰 면에는
- * 그림자 면을 꼭 붙여 모양을 세우고, 짙은 색은 여전히 쓰지 않는다. 그림 두 가지 × 색 세 가지
+ * 그림자 면을 꼭 붙여 모양을 세우고, 짙은 색은 여전히 쓰지 않는다
  */
-const LIGHT_SCENES: Record<string, string> = {
-  note: COMMIT_SCENES.note,
-  review: SCENES.review,
-};
 const LIGHT_PALETTES: Record<string, string> = {
   // 지금 규칙 그대로 — 견줄 기준
   now: "",
@@ -56,14 +48,16 @@ const LIGHT_PALETTES: Record<string, string> = {
     "small details in a soft tint (#A8D5C7); no gray areas at all",
 };
 
-async function lightSamples(dir: string): Promise<string[]> {
+/** 커밋 그림 — 테마 5개, 밝은 테마는 색 후보마다 한 장 (모두 7장) */
+async function commitSamples(dir: string): Promise<string[]> {
   const failed: string[] = [];
-  for (const [scene, sc] of Object.entries(LIGHT_SCENES)) {
-    for (const [pal, neutrals] of Object.entries(LIGHT_PALETTES)) {
-      const id = `light-${pal}-${scene}`;
+  for (const theme of Object.keys(THEME_PAPER)) {
+    const palettes = THEME_PAPER[theme].light ? Object.entries(LIGHT_PALETTES) : [["", ""]];
+    for (const [pal, neutrals] of palettes) {
+      const id = `commit-${theme}${pal ? `-${pal}` : ""}`;
       try {
-        const style = styleFor("paper", "flat", neutrals ? { neutrals } : {});
-        const r = await generateImage(style + sc, ["openai"], { transparent: true });
+        const style = styleFor(theme, "flat", neutrals ? { neutrals } : {});
+        const r = await generateImage(style + COMMIT_ART, ["openai"], { transparent: true });
         fs.writeFileSync(path.join(dir, `${id}.${r.ext}`), r.data);
         console.log(`- ${id} (${r.model})`);
       } catch (err) {
@@ -80,17 +74,15 @@ async function main(): Promise<void> {
   fs.mkdirSync(dir, { recursive: true });
   const failed: string[] = [];
   let made = 0;
-  if (process.env.ART_SET === "light") {
-    const bad = await lightSamples(dir);
+  if (process.env.ART_SET === "commit") {
+    const bad = await commitSamples(dir);
     console.log(`실패 ${bad.length}장${bad.length ? ` — ${bad.join(", ")}` : ""}`);
     if (bad.length) process.exit(1);
     return;
   }
-  const commit = process.env.ART_SET === "commit";
-  const scenes = commit ? COMMIT_SCENES : SCENES;
   // 밤 실행과 같은 스타일 문장(styleFor)으로 테마 5종을 다 그린다
-  for (const theme of commit ? COMMIT_THEMES : Object.keys(THEME_PAPER)) {
-    for (const [scene, sc] of Object.entries(scenes)) {
+  for (const theme of Object.keys(THEME_PAPER)) {
+    for (const [scene, sc] of Object.entries(SCENES)) {
       const id = `flat-${theme}-${scene}`;
       try {
         const r = await generateImage(styleFor(theme) + sc, ["openai"], { transparent: true });
