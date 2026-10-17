@@ -1,0 +1,176 @@
+<title>상태값과 미공개 프로젝트 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 사이트 토큰 그대로 (app/globals.css). 사이트가 다크 한 벌이라 이 시안도 한 벌. */
+:root {
+  --bg: #0a0e14; --bg-deep: #05080c; --panel: #141b24; --panel2: #1b2430;
+  --line: #26313f; --line-strong: #3a4656;
+  --ink: #f3efe6; --ink-soft: #c9cfd8; --muted: #8c98a8;
+  --accent: #5ee1c3; --warn: #ffb454; --blue: #7fb0ff; --rest: #b8a6e8;
+  --sans: "Noto Sans KR", "Noto Sans CJK KR", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html { font-size: 14px; }
+body { background: var(--bg-deep); color: var(--ink); font-family: var(--sans); margin: 0; word-break: keep-all; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: flex; flex-direction: column; gap: 44px; }
+h1 { font-size: 1.6rem; margin: 0; }
+h2 { font-size: 1.2rem; margin: 0 0 6px; }
+.lede, .why { color: var(--ink-soft); margin: 8px 0 0; line-height: 1.7; max-width: 70ch; }
+.why { color: var(--muted); margin: 0 0 16px; }
+.why b, .lede b { color: var(--ink); font-weight: 500; }
+.tag { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+.tag b { color: var(--ink); font-family: var(--sans); font-size: 1rem; }
+
+/* 표 */
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .92rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.6; }
+th { font-family: var(--mono); font-size: .75rem; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td { color: var(--ink-soft); }
+.st { font-family: var(--mono); font-size: .78rem; font-weight: 500; letter-spacing: .08em; white-space: nowrap; }
+.live { color: var(--accent); } .preview { color: var(--blue); } .building { color: var(--warn); } .rest { color: var(--rest); } .muted { color: var(--muted); }
+
+/* 이름 후보 */
+.opts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.opt { background: var(--panel); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.opt .st { font-size: .85rem; }
+.opt p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+/* 폰 */
+.row { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); align-items: start; }
+.col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.phone { width: 100%; max-width: 390px; background: var(--bg); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+.screen { padding: 18px 18px 24px; display: flex; flex-direction: column; gap: 12px; }
+.sec { font-size: .95rem; color: var(--muted); padding: 6px 4px 0; display: flex; justify-content: space-between; }
+.card { border: 1px solid var(--line); background: var(--panel); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.card .name { display: flex; align-items: center; gap: 8px; font-size: 1.12rem; font-weight: 600; }
+.card .desc { color: var(--muted); font-size: .95rem; line-height: 1.55; margin: 0; }
+.card .meta { display: flex; gap: 10px; align-items: baseline; font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+.card.anon { background: transparent; border-style: dashed; }
+.card.anon .name { color: var(--ink-soft); font-weight: 500; }
+.ico { width: 18px; height: 18px; flex: none; }
+.pill { font-family: var(--sans); font-size: .72rem; font-weight: 500; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); }
+.note { color: var(--muted); font-size: .86rem; line-height: 1.7; margin: 0; }
+.note b { color: var(--ink-soft); font-weight: 500; }
+
+.log { background: var(--panel); border-radius: 12px; padding: 14px 16px; font-family: var(--mono); font-size: .8rem; line-height: 1.8; color: var(--ink-soft); }
+.log .ok { color: var(--accent); }
+.log .anonname { color: var(--muted); font-family: var(--sans); }
+
+.list { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+.item { padding: 12px 16px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 12px; }
+.item:last-child { border-bottom: 0; }
+.item .d { font-family: var(--mono); font-size: .74rem; color: var(--muted); padding-top: 2px; }
+.item .t { font-size: .95rem; font-weight: 500; line-height: 1.45; }
+.item .m { font-size: .78rem; color: var(--muted); display: flex; gap: 8px; align-items: center; margin-top: 3px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>상태값과 미공개 프로젝트</h1>
+    <p class="lede">두 가지를 정합니다. ① 상태값 넷을 <b>무엇으로 가를지</b>와 멈춘 상태의 이름. ② 숨긴 프로젝트를 방문자에게는 <b>이름 없이 "미공개 프로젝트 A"로</b>, 로그인한 관리자에게는 전부 보이게 하는 모양.</p>
+  </header>
+
+  <section>
+    <h2>① 상태값 — 무엇으로 가르나</h2>
+    <p class="why">사람이 할 일을 늘리지 않으려고 <b>GitHub Release 하나를 "다 만들었다"는 선언</b>으로 씁니다 (지금도 live 판정에 쓰는 것). 배포 주소가 있다는 것만으로는 "다 만들었다"가 아니어서, 지금 거짓말 탐정은 만드는 중인데 PREVIEW로 나옵니다.</p>
+    <div class="tbl"><table>
+      <tr><th>상태</th><th>뜻</th><th>판정</th><th>지금 프로젝트</th></tr>
+      <tr><td><span class="st live">● LIVE</span></td><td>다 만들고 공개</td><td>Release 있음 + 자기 도메인 주소</td><td>바이브 로그, 아파트 감별사</td></tr>
+      <tr><td><span class="st preview">● PREVIEW</span></td><td>다 만들었지만 공개 전</td><td>Release 있음 + 자기 도메인 없음 (주소가 없거나 *.vercel.app)</td><td>없음</td></tr>
+      <tr><td><span class="st building">● BUILDING</span></td><td>계속 만드는 중</td><td>Release 없음 + 최근 14일 안에 커밋</td><td>거짓말 탐정, agency, Anchor, 포트폴리오 템플릿</td></tr>
+      <tr><td><span class="st rest">● RESTING</span></td><td>만들다 멈춤</td><td>Release 없음 + 14일 넘게 커밋 없음</td><td>없음</td></tr>
+    </table></div>
+    <p class="note" style="margin-top:10px">PREVIEW·LIVE 프로젝트에 다시 커밋이 쌓여도 상태는 그대로입니다 (다 만든 것을 고치는 중). 지금처럼 <b>vibelog.json의 status가 있으면 그게 언제나 이깁니다.</b> 14일은 지금 30일보다 짧게 잡은 값입니다 — 두 주 조용하면 "쉬는 중"으로 보는 편이 실제와 가깝습니다.</p>
+  </section>
+
+  <section>
+    <h2>멈춘 상태의 이름 — 셋 중 하나</h2>
+    <p class="why">지금 PAUSED는 회색이라 끝난 것처럼 보입니다. 다시 돌아올 프로젝트라는 느낌이 나게, 경고색(주황)·실패색이 아닌 옅은 보라를 씁니다.</p>
+    <div class="opts">
+      <div class="opt"><span class="st rest">● RESTING</span><b>쉬는 중</b><p>잠깐 쉬고 다시 온다는 뜻이 가장 또렷합니다. <b style="color:var(--ink-soft);font-weight:500">추천.</b></p></div>
+      <div class="opt"><span class="st rest">● ON HOLD</span><b>잠시 멈춤</b><p>멈춘 이유가 있다는 느낌. 업무 말투에 가깝습니다.</p></div>
+      <div class="opt"><span class="st rest">● SLEEPING</span><b>잠든 중</b><p>가장 가볍고 귀엽습니다. 다른 셋과 말투가 조금 다릅니다.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>② 미공개 프로젝트 — 방문자와 관리자가 보는 것</h2>
+    <p class="why">레포에 topic <code>vibelog-hidden</code>을 달면 방문자에게는 <b>이름 대신 "미공개 프로젝트 A"</b>가 카드로 보입니다. 설명·아이콘·주소는 없고 누를 수 없습니다(상세 페이지 없음). 상태와 마지막 활동은 보여서 "뭔가 만들고 있구나"는 알 수 있습니다. 글자 A·B는 한 번 정하면 바뀌지 않습니다(색처럼 projects.json에 적어 둔다). Google로 로그인한 관리자에게는 원래 카드가 그대로 보이고 이름 옆에 <b>숨김</b> 표시가 붙습니다.</p>
+    <div class="row">
+      <div class="col">
+        <span class="tag">방문자 · <b>홈 프로젝트 목록</b></span>
+        <div class="phone"><div class="screen">
+          <div class="sec"><span>프로젝트</span><span>최근 활동순 · 6</span></div>
+          <div class="card">
+            <div class="name"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#5ee1c3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"/></svg>바이브 로그</div>
+            <p class="desc">바이브 코딩 프로젝트들의 제작기를 매일 밤 저절로 올리는 블로그입니다.</p>
+            <div class="meta"><span class="st live">● LIVE</span><span>typescript · 오늘</span></div>
+          </div>
+          <div class="card anon">
+            <div class="name"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#8c98a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm6 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4"/></svg>미공개 프로젝트 A</div>
+            <div class="meta"><span class="st building">● BUILDING</span><span>오늘</span></div>
+          </div>
+          <div class="card anon">
+            <div class="name"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#8c98a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm6 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4"/></svg>미공개 프로젝트 B</div>
+            <div class="meta"><span class="st building">● BUILDING</span><span>어제</span></div>
+          </div>
+        </div></div>
+        <p class="note">미공개 카드는 <b>점선 테두리에 바탕 없이</b>, 자물쇠 아이콘·회색 이름으로 한 단계 물러나 보이게 합니다. 언어 사용 표시(typescript 등)도 빼서 무엇인지 짐작할 단서를 줄입니다.</p>
+      </div>
+
+      <div class="col">
+        <span class="tag">관리자(로그인) · <b>홈 프로젝트 목록</b></span>
+        <div class="phone"><div class="screen">
+          <div class="sec"><span>프로젝트</span><span>최근 활동순 · 6</span></div>
+          <div class="card">
+            <div class="name"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9e579" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9a3 3 0 1 0 0-6a3 3 0 0 0 0 6m0 0v12m-7-8H3a9 9 0 0 0 18 0h-2"/></svg>Anchor <span class="pill">숨김</span></div>
+            <p class="desc">내 자료와 못 한 말에서 출발해 영어·일본어·스페인어로 말하게 돕는 앱입니다.</p>
+            <div class="meta"><span class="st building">● BUILDING</span><span>typescript · 오늘</span></div>
+          </div>
+          <div class="card">
+            <div class="name"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm5-2V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>portfolio-tmp <span class="pill">숨김</span></div>
+            <p class="desc">허락한 사람에게만 열리는 개인 포트폴리오 사이트를 만드는 템플릿입니다.</p>
+            <div class="meta"><span class="st building">● BUILDING</span><span>javascript · 어제</span></div>
+          </div>
+        </div></div>
+        <p class="note">로그인하면 원래 카드로 바뀌고 누르면 상세 페이지로 갑니다. <b>숨김</b> 표시는 이름 옆 작은 회색 칩 하나 — 지금 방문자에게는 안 보인다는 것만 알립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="row">
+      <div class="col">
+        <span class="tag">방문자 · <b>지난 실행</b></span>
+        <div class="log">
+          <div><span class="ok">✓</span> collect · 6 repos, 2 active</div>
+          <div><span class="ok">✓</span> skip · <span class="anonname">미공개 프로젝트 A</span> 본문을 쓴 커밋이 아직 3개 — 5개가 모이면 글을 씁니다</div>
+          <div><span class="ok">✓</span> generate · <span class="anonname">미공개 프로젝트 B</span> 글 1편</div>
+          <div><span class="ok">✓</span> generate · vibelog/2026-10-16.md (ko, en)</div>
+        </div>
+        <p class="note">이름 자리에 "미공개 프로젝트 A"가 들어가고 날짜·글 주소는 빠집니다. 잔디와 오늘·이번 주 커밋 수에는 그대로 셉니다.</p>
+      </div>
+      <div class="col">
+        <span class="tag">관리자(로그인) · <b>지난 실행·최근 데브로그</b></span>
+        <div class="log">
+          <div><span class="ok">✓</span> skip · Anchor 본문을 쓴 커밋이 아직 3개 — 5개가 모이면 글을 씁니다</div>
+          <div><span class="ok">✓</span> generate · portfolio-tmp/2026-10-17.md (ko, en)</div>
+        </div>
+        <div class="list">
+          <div class="item"><span class="d">10.17</span><div><div class="t">허락한 사람에게만 열리는 첫 화면을 만들었습니다</div><div class="m"><span style="color:#ff9ec7">portfolio-tmp</span><span>커밋 9</span><span class="pill">숨김</span></div></div></div>
+          <div class="item"><span class="d">10.16</span><div><div class="t">글을 다 읽고 바로 다음 글로 넘어갈 수 있게 했습니다</div><div class="m"><span style="color:#5ee1c3">바이브 로그</span><span>커밋 23</span></div></div></div>
+        </div>
+        <p class="note">로그인하면 숨긴 프로젝트의 글·쇼츠가 목록에 섞여 나오고 <b>숨김</b> 칩이 붙습니다. 글 페이지 머리에도 같은 칩이 붙습니다. (위 예시 글 제목은 모양을 보이려고 지어낸 것입니다.)</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>만드는 방식 — 미리 알아 둘 것</h2>
+    <p class="why">지금 홈·글·쇼츠 페이지는 미리 만들어 둔 화면을 모두에게 같게 보냅니다(빠르고 서버 비용이 거의 없다). 관리자에게만 다르게 보이려면 <b>페이지가 열린 뒤 브라우저가 "관리자인가"를 물어</b>, 관리자면 숨긴 내용을 따로 받아 끼워 넣습니다. 방문자 화면은 지금처럼 빠르고, 숨긴 글 자체는 로그인 확인을 거쳐야만 내려가므로 페이지 소스에도 남지 않습니다. 숨긴 글의 페이지는 따로 로그인을 확인하는 주소로 열립니다.</p>
+  </section>
+</div>
