@@ -118,6 +118,14 @@ export async function renderShort(
     }
   }
 
+  // 커밋 장면 그림 — git 아이콘 하나만 뜨던 장면을 대신한다. 테마마다 한 장을 만들어 고정해 두었다
+  // (video/assets/commit/<테마>.png, 시안 docs/shorts-commit-art.html). 그 테마 그림이 없으면 아이콘 그대로
+  const commitSrc = path.join(VIDEO_DIR, "assets", "commit", `${script.theme ?? "terminal"}.png`);
+  if (fs.existsSync(commitSrc)) {
+    fs.copyFileSync(commitSrc, path.join(publicDir, "commit-art.png"));
+    artFiles.commit = "commit-art.png";
+  }
+
   const propsFile = path.join(publicDir, `props.${lang}.json`);
   fs.writeFileSync(
     propsFile,
