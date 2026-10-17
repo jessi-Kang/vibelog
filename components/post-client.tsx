@@ -24,6 +24,7 @@ import { MediaLightbox, type LightboxMedia } from "./lightbox";
 import { Thumb } from "./shorts-grid";
 import { Card, EmptyState, SectionHeader, ShortMark } from "./ui";
 import { DevlogCompactEntry } from "./vibelog";
+import { HiddenChip } from "./private-data";
 import { PostFigure as Figure } from "./post-figure";
 import {
   splitParas,
@@ -175,7 +176,17 @@ function H({ warn, children }: { warn?: boolean; children: string }) {
   );
 }
 
-export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: NearbyPost[] }) {
+export function PostClient({
+  post,
+  nearby = [],
+  hidden = false,
+}: {
+  post: PostData;
+  nearby?: NearbyPost[];
+  /** 숨긴 프로젝트의 글 — 관리자 전용 주소(/private/p/…)로만 열린다. "숨김" 칩을 달고 댓글은 두지 않는다 */
+  hidden?: boolean;
+}) {
+  const projectHref = hidden ? `/private/projects/${post.repo}` : `/projects/${post.repo}`;
   const { lang, setLang } = useLang(); // 전역 설정 — 헤더의 KO/EN 스위치
   // 바깥에서 바로 들어온 글의 뒤로는 그 글의 프로젝트 페이지로 (lib/nav-memory.ts)
   useEffect(() => {
@@ -235,7 +246,7 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
       {/* 언어 토글은 헤더의 전역 스위치로 올라갔다 */}
       <div className="font-mono text-xs text-muted">
         <Link
-          href={`/projects/${post.repo}`}
+          href={projectHref}
           className="hit relative font-bold underline decoration-1 underline-offset-[3px] transition-opacity duration-150 hover:opacity-85"
           style={{
             color,
@@ -244,6 +255,14 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
         >
           {projectName}
         </Link>
+        {hidden && (
+          <>
+            {" "}
+            <span className="inline-block align-[1px]">
+              <HiddenChip />
+            </span>
+          </>
+        )}
         {" · "}
         {post.intro
           ? en
@@ -485,7 +504,8 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
           </Card>
         </section>
       )}
-      <Comments postId={postId(post.repo, post.date)} />
+      {/* 숨긴 글에는 댓글을 두지 않는다 — 방문자가 볼 수 없는 글이다 */}
+      {!hidden && <Comments postId={postId(post.repo, post.date)} />}
       {/* 이어 읽기 — 홈에서 최근 글을 보고 들어온 사람이 홈으로 돌아가지 않고 다음 글로 간다.
           홈과 같은 모든 프로젝트 최신순에서 이 글의 앞뒤만 (지금 글은 빼고). 자리는 댓글 다음
           (docs/post-feed-next.html B안) */}
@@ -524,7 +544,7 @@ export function PostClient({ post, nearby = [] }: { post: PostData; nearby?: Nea
       <Link
         // utm_source로 글 맨 아래에 있는 이 링크를 눌렀는지 센다 — 무료 요금제의 방문 통계는 클릭
         // 이벤트를 못 받지만 들어온 주소의 utm 값은 나눠서 보여 준다
-        href={`/projects/${post.repo}?utm_source=post-end`}
+        href={hidden ? projectHref : `/projects/${post.repo}?utm_source=post-end`}
         className="font-mono text-sm text-accent transition-opacity duration-150 hover:opacity-85"
       >
         {en ? `More days of ${projectName} →` : `${projectName}의 다른 날 →`}

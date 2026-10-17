@@ -1,10 +1,9 @@
 import { projectName } from "@/lib/project-name";
-import { ldJson } from "@/lib/ld-json";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/page-container";
-import { PostClient } from "@/components/post-client";
-import { fmtDate, fmtShort, getDevlogs, getProject } from "@/lib/content";
+import { PostView } from "@/components/post-view";
+import { getDevlogs } from "@/lib/content";
 import { findByPostId, postId, postPath } from "@/lib/post-id";
 
 interface Props {
@@ -43,81 +42,9 @@ export default async function DevlogPostPage({ params }: Props) {
   const all = getDevlogs();
   const d = findByPostId(all, id);
   if (!d) notFound();
-  const project = getProject(d.repo);
-  // 글 끝 "최근 데브로그" — 홈과 같은 순서에서 이 글의 바로 앞 1편·바로 뒤 1편.
-  // 맨 앞·맨 뒤 글이면 있는 쪽 한 편만 보인다
-  const at = all.indexOf(d);
-  const nearby = [all[at - 1], all[at + 1]]
-    .filter((x): x is (typeof all)[number] => Boolean(x))
-    .map((x) => ({
-      href: postPath(x),
-      date: fmtShort(x.date),
-      repo: x.repo,
-      title: x.title,
-      titleEn: x.titleEn,
-      commits: x.commits,
-      prs: x.prs,
-      intro: x.intro,
-      hasFail: x.hasFail,
-    }));
-  // 소개 글 — 이 글 제목 아래 프로젝트 설명이 여기로 간다. 소개 글 자신에는 붙이지 않는다
-  const intro = d.intro ? undefined : all.find((x) => x.repo === d.repo && x.intro);
-
   return (
     <PageContainer>
-      <script
-        type="application/ld+json"
-        // 검색엔진용 글 정보 — 발행일·작성 주체를 구조화해 노출
-        dangerouslySetInnerHTML={{
-          __html: ldJson({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: d.title,
-            datePublished: `${d.date}T14:00:00Z`,
-            inLanguage: "ko",
-            author: { "@type": "Person", name: "Jessi" },
-            ...(d.summary ? { description: d.summary } : {}),
-          }),
-        }}
-      />
-      <PostClient
-        nearby={nearby}
-        post={{
-          repo: d.repo,
-          date: d.date,
-          dateLabel: fmtDate(d.date),
-          title: d.title,
-          titleEn: d.titleEn,
-          day: d.day,
-          commits: d.commits,
-          prs: d.prs,
-          shas: d.shas,
-          shasEn: d.shasEn,
-          sections: d.sections,
-          sectionsEn: d.sectionsEn,
-          hasEn: Boolean(d.bodyEn),
-          body: d.body,
-          figures: d.figures,
-          intro: d.intro,
-          project: {
-            name: project?.name ?? d.repo,
-            nameEn: project?.nameEn,
-            about: project?.about,
-            aboutEn: project?.aboutEn,
-            introHref: intro ? postPath(intro) : undefined,
-            icon: project?.icon,
-          },
-          short: d.short
-            ? {
-                template: d.short.template,
-                duration: d.short.duration,
-                media: d.short.media,
-                hook: d.short.hook,
-                hookKeywords: d.short.hookKeywords,
-              }
-            : undefined,
-        }}
-      />
+      <PostView d={d} all={all} />
     </PageContainer>
   );
 }

@@ -30,8 +30,8 @@ const EVERY = 2 * 60 * 1000;
  * 머리글에 종이 두 번 들어간다(모바일 줄·데스크톱 줄 — 하나는 숨겨진다). 같은 순간의 요청은
  * 하나로 합쳐 DB에 두 번 묻지 않게 한다.
  */
-let inflight: Promise<{ signedIn: boolean; unread: number; items: Note[] } | null> | null = null;
-function fetchNotes(fresh = false) {
+let inflight: Promise<{ signedIn: boolean; admin?: boolean; unread: number; items: Note[] } | null> | null = null;
+export function fetchNotes(fresh = false) {
   if (fresh) inflight = null;
   inflight ??= fetch("/api/notifications")
     .then((r) => (r.ok ? r.json() : null))

@@ -12,6 +12,8 @@ import { ProjectFilter } from "./project-filter";
 import { EmptyState, SectionHeader, ShortMark } from "./ui";
 import { DevlogTimelineEntry } from "./vibelog";
 import { postPath } from "@/lib/post-id";
+import { fmtDate, humanizeLastActive } from "@/lib/format";
+import { HiddenChip, usePrivate } from "./private-data";
 
 export interface FeedItem {
   repo: string;
@@ -27,6 +29,9 @@ export interface FeedItem {
   hasFail: boolean;
   hasShort: boolean;
   intro?: boolean;
+  /** 관리자 화면의 숨긴 글 — "숨김" 칩, 주소는 /private/p/… */
+  hidden?: boolean;
+  href?: string;
 }
 
 export interface FeedProject {
@@ -38,14 +43,51 @@ export interface FeedProject {
 }
 
 export function FeedClient({
-  items,
-  projects,
+  items: publicItems,
+  projects: publicProjects,
 }: {
   items: FeedItem[];
   projects: FeedProject[];
 }) {
   const { lang } = useLang();
   const en = lang === "en";
+  // 관리자에게는 숨긴 프로젝트의 글과 칩을 섞는다 (components/private-data.tsx)
+  const priv = usePrivate();
+  const items: FeedItem[] = priv
+    ? [
+        ...publicItems,
+        ...priv.devlogs.map((d) => ({
+          repo: d.repo,
+          date: d.date,
+          dateLabel: fmtDate(d.date),
+          dateLabelEn: fmtDate(d.date, "en"),
+          title: d.title,
+          titleEn: d.titleEn,
+          summary: d.summary,
+          summaryEn: d.summaryEn,
+          commits: d.commits,
+          prs: d.prs,
+          hasFail: Boolean(d.hasFail),
+          hasShort: Boolean(d.short),
+          intro: d.intro,
+          hidden: true,
+          href: d.href,
+        })),
+      ].sort((a, b) => b.date.localeCompare(a.date))
+    : publicItems;
+  const projects: FeedProject[] = priv
+    ? [
+        ...publicProjects,
+        ...priv.projects.map((p) => ({
+          slug: p.slug,
+          name: p.name,
+          ...(p.nameEn ? { nameEn: p.nameEn } : {}),
+          status: p.status,
+          lastActive: humanizeLastActive(p.lastActivity),
+          lastActiveEn: humanizeLastActive(p.lastActivity, "en"),
+        })),
+      ]
+    : publicProjects;
   const [filter, pick] = useProjectFilter(projects.map((p) => p.slug));
 
   const counts: Record<string, number> = { all: items.length };
@@ -83,7 +125,7 @@ export function FeedClient({
                 : "아직 글이 없습니다"
           }
           body={
-            proj && proj.status === "paused"
+            proj && proj.status === "resting"
               ? en
                 ? `No commits since ${proj.lastActiveEn ?? proj.lastActive}. When it moves again, a post goes up that night.`
                 : `${proj.lastActive}부터 커밋이 없습니다. 다시 움직이면 그날 밤 글이 올라옵니다.`
@@ -106,13 +148,14 @@ export function FeedClient({
           {list.map((d, i) => (
             <DevlogTimelineEntry
               key={`${d.repo}/${d.date}`}
-              href={postPath(d)}
+              href={d.href ?? postPath(d)}
               date={en ? (d.dateLabelEn ?? d.dateLabel) : d.dateLabel}
               repo={d.repo}
               title={en ? (d.titleEn ?? d.title) : d.title}
               summary={en ? (d.summaryEn ?? d.summary) : d.summary}
               last={i === list.length - 1}
               meta={[
+                ...(d.hidden ? [{ text: <HiddenChip /> }] : []),
                 // 소개 글은 커밋 수가 없다 — 대신 무슨 글인지 붙인다
                 ...(d.intro ? [{ text: en ? "project intro" : "프로젝트 소개", tone: "soft" as const }] : []),
                 ...(d.commits

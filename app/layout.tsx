@@ -7,7 +7,7 @@ import { InstallAppLink, InstallToast } from "@/components/install-app";
 import { LangProvider, T } from "@/components/lang";
 import { ShareLink } from "@/components/share";
 import { ServiceWorker } from "@/components/service-worker";
-import { getDevlogs, getProjects, getShorts } from "@/lib/content";
+import { getDevlogs, getProjectCards, getShorts } from "@/lib/content";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -73,7 +73,7 @@ export default function RootLayout({
           </a>
           <SiteHeader
             counts={{
-              projects: getProjects().length,
+              projects: getProjectCards().length,
               devlogs: getDevlogs().length,
               // 쇼츠 **편수**만. 인트로 카드는 채널 소개지 쇼츠가 아니다.
               // 쇼츠 페이지에 프로젝트 필터가 붙으면서 탭의 "쇼츠 10"과

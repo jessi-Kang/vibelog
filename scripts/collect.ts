@@ -57,7 +57,8 @@ export interface RepoDevlogFile {
 
 export interface VibelogJson {
   name?: string;
-  status?: "idea" | "building" | "preview" | "live" | "paused";
+  /** "paused"는 옛 이름 — resting으로 읽는다 */
+  status?: "idea" | "building" | "preview" | "live" | "resting" | "paused";
   stack?: string[];
   hide?: boolean;
   demo?: unknown;

@@ -12,9 +12,43 @@ import { T, useLang } from "./lang";
 import { projectBlurb, projectIconOf, projectName } from "@/lib/project-name";
 import { ProjectIcon } from "./project-icon";
 import { Card, MonoMeta, StatusBadge } from "./ui";
+import { HiddenChip, usePrivate } from "./private-data";
+
+/** 자물쇠 (Tabler lock) — 미공개 프로젝트 카드 */
+function LockIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg aria-hidden width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="block shrink-0">
+      <path d="M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm6 3a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4" />
+    </svg>
+  );
+}
+
+/**
+ * 방문자에게 보이는 미공개 프로젝트 — 이름 대신 "미공개 프로젝트 A", 설명·주소·스택 없이 상태와 마지막
+ * 활동만. 누를 수 없다(상세 페이지 없음). 점선 테두리에 바탕 없이 한 단계 물러나 보이게 한다
+ * (시안 docs/project-status-and-private.html)
+ */
+export function AnonProjectCard({ project }: { project: Project }) {
+  const { lang } = useLang();
+  return (
+    <div className="flex h-full flex-col gap-2.5 rounded-lg border border-dashed border-line px-5 py-[18px]">
+      <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-medium text-ink-soft">
+        <span className="text-muted">
+          <LockIcon />
+        </span>
+        <span className="truncate">{lang === "en" ? (project.nameEn ?? project.name) : project.name}</span>
+      </h3>
+      <div className="mt-auto flex items-baseline gap-3 pt-0.5 font-sans text-xs tabular-nums text-muted">
+        <StatusBadge status={project.status} />
+        <span className="min-w-0 flex-1 truncate">{humanizeLastActive(project.lastActivity, lang)}</span>
+      </div>
+    </div>
+  );
+}
 
 export function ProjectCard({ project }: { project: Project }) {
   const { lang } = useLang();
+  if (project.anon) return <AnonProjectCard project={project} />;
   // 이번 주 커밋은 홈 통계 줄과 인접 중복이라 뺐다 — 상세의 사실 목록에 있다
   const meta = [
     project.stack.join(" · ").toLowerCase(),
@@ -22,7 +56,6 @@ export function ProjectCard({ project }: { project: Project }) {
   ].filter(Boolean) as string[];
   return (
     <Card
-      dim={project.status === "paused"}
       className="relative flex h-full flex-col gap-2.5 px-5 py-[18px] transition-colors duration-150 hover:border-line-strong"
     >
       {/* 카드 전체 = 상세 링크(스트레치). "열기 ↗"만 그 위로 떠서 실제 외부 링크.
@@ -31,7 +64,7 @@ export function ProjectCard({ project }: { project: Project }) {
           올라와 "소개" 자리에 "열기 ↗"가 겹쳐 찍혔다. 층 순서는
           components/shell.tsx 위쪽 주석에 적어 뒀다 */}
       <Link
-        href={`/projects/${project.slug}`}
+        href={project.href ?? `/projects/${project.slug}`}
         aria-label={`${project.name} 상세 보기`}
         className="absolute inset-0 z-0 rounded-lg"
       />
@@ -41,10 +74,12 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-col gap-0.5">
         <div className="flex items-center justify-between gap-3">
           <h3 className="m-0 flex min-w-0 items-center gap-2 text-lg font-semibold text-ink">
-            <ProjectIcon icon={project.icon} size={20} style={{ color: projectColor(project.slug) }} />
+            <ProjectIcon icon={project.icon} size={20} style={{ color: project.color ?? projectColor(project.slug) }} />
             <span className="truncate">
               {lang === "en" ? (project.nameEn ?? project.name) : project.name}
             </span>
+            {/* 관리자 화면의 숨긴 프로젝트 — 지금 방문자에게는 안 보인다는 것만 알린다 */}
+            {project.hidden && <HiddenChip />}
           </h3>
         </div>
       </div>
@@ -94,8 +129,11 @@ export function LastActive({ iso }: { iso: string }) {
   );
 }
 
-export function RunLog({ lines }: { lines: RunLogLine[] }) {
+export function RunLog({ lines: publicLines }: { lines: RunLogLine[] }) {
   const { lang } = useLang();
+  // 관리자에게는 미공개 프로젝트 이름을 가리지 않은 원래 줄 (components/private-data.tsx)
+  const priv = usePrivate();
+  const lines = priv?.run?.lines ?? publicLines;
   const pick = (l: RunLogLine) =>
     emphasizeRepo(lang === "en" ? (l.textEn ?? l.text) : l.text);
   return (

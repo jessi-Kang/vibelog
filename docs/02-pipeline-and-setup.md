@@ -135,15 +135,24 @@ vibelog/
 - (선택) `vibelog.json` — `{ "name": "...", "status": "live", "stack": ["Next.js"], "hide": false }`
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 
-상태 자동 판정 기본값: 배포 주소가 있으면 **preview**(가배포), GitHub **Release를
-1개 이상 발행**하고 주소가 **Vercel 기본 주소(`*.vercel.app`)가 아니면** **live**
-(`scripts/run.ts` `isVercelDefault`) — 정식 공개는 자기 도메인을 단 뒤 Release를 내는 것이다.
+상태 자동 판정 (`scripts/run.ts` `autoStatus`, 10/17 — 시안 `docs/project-status-and-private.html`).
+GitHub **Release 발행이 "다 만들었다"는 선언**이다. 배포 주소가 있다는 것만으로 preview를 붙이던
+때는 아직 만드는 중인 프로젝트가 다 만든 것처럼 보였다.
+
+| 상태 | 뜻 | 판정 |
+|---|---|---|
+| **live** | 다 만들고 공개 | Release 있음 + 자기 도메인 (`*.vercel.app`이 아닌 주소, `isVercelDefault`) |
+| **preview** | 다 만들었지만 공개 전 | Release 있음 + 자기 도메인 없음 |
+| **building** | 계속 만드는 중 | Release 없음 + 14일 안에 커밋 |
+| **resting** | 만들다 멈춤 (쉬는 중) | Release 없음 + 14일 넘게 커밋 없음 |
+
+live·preview는 다시 커밋이 쌓여도 그대로다. 옛 이름 paused는 resting으로 읽는다.
 **사이트 주소는 live일 때만 화면에 건다** (`lib/public-homepage.ts` — 홈 카드 "열기"와
 프로젝트 페이지). 공개 레포라 `projects.json`·쇼츠 JSON·쇼츠 마지막 장면의 주소 버튼에도
 live 주소만 남긴다. live 전 주소는 커밋하지 않는 `.private/homepages.json`에 두고 녹화할 때만
 읽는다 (`scripts/homepage.ts`, 10/11).
 About Website는 주소 지정용일 뿐 상태와 무관 (주소만 채워도 live가 되던 사고의 교훈).
-배포가 없으면 30일 내 커밋 building, 넘으면 paused. `vibelog.json`의 status가
+`vibelog.json`의 status가
 있으면 언제나 그게 우선 — 예외적 강제 지정용 (vibelog 자신이 이걸로 live 고정).
 
 ### 커밋 메시지 규약 문구 (프로젝트 레포 CLAUDE.md에 복붙)

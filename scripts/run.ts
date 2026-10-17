@@ -35,6 +35,7 @@ import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
 import { assignColors } from "../lib/project-color";
 import { writePublicProjects } from "./public-projects";
+import { BY_HAND_HIDDEN, assignAliases } from "../lib/hidden-projects";
 import { safeIcon } from "../lib/project-icon";
 import { Octokit } from "@octokit/rest";
 import {
@@ -183,15 +184,18 @@ function publicHomepageOf(a: RepoActivity): string | undefined {
 
 function autoStatus(
   a: RepoActivity,
-): "building" | "preview" | "live" | "paused" {
-  // 배포 주소가 있어도 릴리즈 선언(GitHub Release 발행) 전이면 preview —
-  // 가배포와 정식 공개를 구분한다. 강제 지정은 vibelog.json status.
-  // 주소가 Vercel 기본 주소(*.vercel.app)면 Release가 있어도 preview다 — 정식 공개는
-  // 자기 도메인을 단 뒤다 (10/10). live일 때만
-  // 화면에 주소를 건다 (lib/content.ts publicHomepage).
-  if (a.homepage) return a.released && !isVercelDefault(a.homepage) ? "live" : "preview";
+): "building" | "preview" | "live" | "resting" {
+  // GitHub Release 발행이 "다 만들었다"는 선언이다. 배포 주소가 있다는 것만으로 preview를 붙이던
+  // 때는 아직 만드는 중인 거짓말 탐정이 다 만든 것처럼 보였다 (10/17, 시안
+  // docs/project-status-and-private.html).
+  //   Release + 자기 도메인 → live (다 만들고 공개)
+  //   Release, 자기 도메인 없음(주소 없음·*.vercel.app) → preview (다 만들었지만 공개 전)
+  //   Release 없음 + 14일 안에 커밋 → building, 14일 넘게 조용하면 resting
+  // 다 만든 것(live·preview)은 다시 커밋이 쌓여도 그대로다. 강제 지정은 vibelog.json status.
+  // live일 때만 화면에 주소를 건다 (lib/public-homepage.ts).
+  if (a.released) return a.homepage && !isVercelDefault(a.homepage) ? "live" : "preview";
   const days = (Date.now() - new Date(a.pushedAt).getTime()) / 86400000;
-  return days <= 30 ? "building" : "paused";
+  return days <= 14 ? "building" : "resting";
 }
 
 async function updateProjects(
@@ -213,6 +217,7 @@ async function updateProjects(
       about?: string;
       aboutEn?: string;
       icon?: unknown;
+      alias?: string;
     }
   >();
   try {
@@ -245,6 +250,12 @@ async function updateProjects(
   const colors = assignColors(
     activities.map((a) => a.repo),
     Object.fromEntries([...prev].map(([slug, p]) => [slug, p.color])),
+  );
+  // 숨긴 프로젝트(topic vibelog-hidden, 또는 손으로 적어 둔 목록)의 별칭 글자 — 한 번 정하면 이어받는다
+  const isHidden = (a: RepoActivity) => a.hidden || BY_HAND_HIDDEN.has(a.repo);
+  const aliases = assignAliases(
+    activities.filter(isHidden).map((a) => a.repo),
+    Object.fromEntries([...prev].map(([slug, p]) => [slug, p.alias])),
   );
   // 소개 글이 코드에서 찾은 서비스 이름·프로젝트 설명 — 한 번 적으면 이어받는다 (scripts/intro.ts)
   const introOf = (repo: string) => {
@@ -281,7 +292,7 @@ async function updateProjects(
     ...(descriptionEn.has(a.repo)
       ? { descriptionEn: descriptionEn.get(a.repo) }
       : {}),
-    status: a.vibelogJson?.status ?? autoStatus(a),
+    status: (a.vibelogJson?.status === "paused" ? "resting" : a.vibelogJson?.status) ?? autoStatus(a),
     stack: a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
     repoUrl: a.repoUrl,
     // 주소는 live일 때만 공개 파일에 쓴다 — 이 레포는 공개라 projects.json도 공개다.
@@ -303,7 +314,8 @@ async function updateProjects(
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
     ...(a.theme ? { theme: a.theme } : {}),
     // topic vibelog-hidden — 사이트가 이름·글·쇼츠를 숨긴다. topic을 떼면 다음 인식(30분 안)에 다시 보인다
-    ...(a.hidden ? { hidden: true } : {}),
+    // 방문자에게는 이름 대신 "미공개 프로젝트 <alias>"로 보인다 (lib/hidden-projects.ts)
+    ...(isHidden(a) ? { hidden: true, alias: aliases[a.repo] } : {}),
     };
   });
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify(projects, null, 2) + "\n");

@@ -14,10 +14,11 @@ import { ProjectFilter, type FilterProject } from "./project-filter";
 import { ShortsGrid } from "./shorts-grid";
 import { EmptyState, SectionHeader } from "./ui";
 import type { ShortsMeta } from "@/lib/content";
+import { usePrivate } from "./private-data";
 
 export function ShortsClient({
-  shorts,
-  projects,
+  shorts: publicShorts,
+  projects: publicProjects,
   introSrc,
   introEnSrc,
 }: {
@@ -29,6 +30,19 @@ export function ShortsClient({
 }) {
   const { lang } = useLang();
   const en = lang === "en";
+  // 관리자에게는 숨긴 프로젝트의 쇼츠와 칩을 섞는다 (components/private-data.tsx)
+  const priv = usePrivate();
+  const shorts: ShortsMeta[] = priv
+    ? [...publicShorts, ...priv.shorts.map((s) => ({ ...s, hidden: true }))].sort((a, b) => b.date.localeCompare(a.date))
+    : publicShorts;
+  const projects: FilterProject[] = priv
+    ? [
+        ...publicProjects,
+        ...priv.projects
+          .filter((p) => priv.shorts.some((s) => s.repo === p.slug))
+          .map((p) => ({ slug: p.slug, name: p.name, ...(p.nameEn ? { nameEn: p.nameEn } : {}) })),
+      ]
+    : publicProjects;
   const [filter, setFilter] = useProjectFilter(projects.map((p) => p.slug));
 
   const counts: Record<string, number> = { all: shorts.length };
