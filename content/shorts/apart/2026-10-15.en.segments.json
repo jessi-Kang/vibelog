@@ -2,15 +2,15 @@
   "screens": [
     {
       "path": "/",
-      "start": 0.97,
-      "end": 16.2
+      "start": 0.9,
+      "end": 15.73
     },
     {
       "path": "/opengraph-image?f2c0039925850c95",
       "focusY": 0.5,
       "aspect": 1.9048,
-      "start": 17.23,
-      "end": 31.26
+      "start": 16.76,
+      "end": 30.8
     }
   ]
 }
