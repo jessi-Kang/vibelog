@@ -1,0 +1,22 @@
+{
+  "screens": [
+    {
+      "path": "/about",
+      "find": "topic",
+      "focusY": 0.5,
+      "start": 1,
+      "end": 13.03
+    },
+    {
+      "path": "/",
+      "start": 13.92,
+      "end": 26.2
+    },
+    {
+      "path": "/log",
+      "find": "devlog",
+      "start": 27.12,
+      "end": 39.55
+    }
+  ]
+}
