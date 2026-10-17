@@ -17,8 +17,11 @@ import projects from "../content/projects.json";
  */
 export const HIDDEN_TOPIC = "vibelog-hidden";
 
-/** topic을 달기 전부터 숨기던 것 — 그 레포에 topic을 달면 여기서 지운다 */
-export const BY_HAND_HIDDEN: ReadonlySet<string> = new Set(["portfolio-tmp", "Anchor"]);
+/**
+ * topic 말고 손으로 숨길 레포 — 평소에는 비워 둔다. topic을 달 수 없을 때만 잠깐 쓴다
+ * (10/17 portfolio-tmp·Anchor를 여기 두었다가 두 레포에 topic을 단 뒤 비웠다)
+ */
+export const BY_HAND_HIDDEN: ReadonlySet<string> = new Set<string>();
 
 const BY_TOPIC = new Set(
   (projects as { slug: string; hidden?: boolean }[]).filter((p) => p.hidden).map((p) => p.slug),
