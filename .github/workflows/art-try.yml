@@ -3,13 +3,13 @@ name: art-try
 # 이미지 생성 API 확인용 — 손으로만 돌린다. 아무것도 커밋하지 않는다.
 #   try:     Gemini·OpenAI에서 한 장씩 (키·모델 이름 확인)
 #   samples: 둥근 평면(한 색) 시안 — 테마 5 × 장면 2 = 10장, 투명 배경(OpenAI) (scripts/art-samples.ts)
-#   commit:  커밋 장면 고정 그림(연필이 놓인 메모) — 테마 5개, 밝은 테마는 색 후보 3가지 = 7장 (ART_SET=commit)
+#   commit:  커밋 장면 고정 그림(연필이 놓인 메모) — 테마 5개 = 5장 (ART_SET=commit). 고른 그림은 video/assets/commit/
 #   intro:   소개 글 머리 그림 시안 — 소개 글마다 가로 그림 한 장 (scripts/intro-art-samples.ts)
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "try = 한 장씩 확인 / samples = 테마별 시안 10장 / commit = 커밋 그림 7장 / intro = 소개 글 머리 그림"
+        description: "try = 한 장씩 확인 / samples = 테마별 시안 10장 / commit = 커밋 그림 5장 / intro = 소개 글 머리 그림"
         type: choice
         options: [samples, commit, intro, try]
         default: samples

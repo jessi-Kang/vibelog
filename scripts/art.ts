@@ -75,17 +75,19 @@ export type ArtStyle = "flat" | "papercut";
 export function styleFor(
   theme?: string | null,
   style: ArtStyle = process.env.ART_STYLE === "papercut" ? "papercut" : "flat",
-  { wide = false, neutrals: neutralsOverride }: { wide?: boolean; neutrals?: string } = {},
+  { wide = false }: { wide?: boolean } = {},
 ): string {
   const t = THEME_PAPER[theme ?? ""] ?? THEME_PAPER.terminal;
-  // 밝은 테마는 양 끝을 다 뺀다 — 흰색·아주 옅은 회색은 밝은 바탕(#EFF1F4)에 묻혀 흐려 보였고,
-  // 먹색은 혼자 무겁게 떴다 (10/11 두 번). 짙은 슬레이트까지 내렸다가 두 번 더 "어둡다"를
-  // 들었다 — 큰 면은 옅은 회색에서 중간 회색까지, 가장 짙은 색도 테마의 보조 글자색(#8A919B)까지.
-  // 짙은 그림자 면을 따로 넣지 않는다. 색 후보는 그림을 만들기 전에 바탕 위에서 먼저 견준다
-  const neutrals = neutralsOverride ?? (t.light
-    ? "light gray (#D3D7DD), soft gray (#BAC0C8) and medium gray (#A3AAB4), with #8A919B only for small details; " +
-      "white only for tiny highlights, never large white areas, nothing darker than #8A919B"
-    : "off-white, light gray and slate gray");
+  // 밝은 테마는 흰 면에 강조색을 아주 옅게 푼 그림자 면이다 (10/17). 그 전에는 회색만 썼다 — 흰색이 밝은
+  // 바탕(#EFF1F4)에 묻히고 먹색이 혼자 무겁게 떠서(10/11 두 번) 옅은 회색–중간 회색으로 좁혔는데, 회색 바탕
+  // 위에 회색 물건이 놓여 칙칙하고 면끼리 명도가 비슷해 구분되지 않았다. 흰 면 + 옅은 회색 그림자도
+  // 같았다. 흰 면에 옅은 초록 그림자를 붙이자 바탕에서 떠오르고 면도 갈렸다 (시안 docs/shorts-commit-art.html).
+  // 이 색은 paper의 강조색(#0F7B5F)을 푼 것이라, 밝은 테마를 더하면 그 강조색으로 다시 정한다.
+  // 색 후보는 그림을 만들기 전에 바탕 위에서 먼저 견준다
+  const neutrals = t.light
+    ? "pure white (#FFFFFF) main surfaces, shadow sides in a very pale tint of the accent color (#D6EDE6), " +
+      "small details in a soft tint (#A8D5C7); no gray areas at all"
+    : "off-white, light gray and slate gray";
   // 블로그 글에 넣는 그림은 가로로 긴 판형이다 — 쇼츠처럼 가운데 물건 하나를 세로로 세우면
   // 글 칼럼에서 위아래로 길쭉해졌다 (10/11). 글의 삽화(가로 390 × 세로 가운데값
   // 225, 약 16:9)와 같은 판에 같은 비율로 놓이므로 16:9로 그리고, 물건 두세 개를 옆으로 늘어놓는다
@@ -278,7 +280,7 @@ export async function generateArt(repo: string, date: string): Promise<void> {
       console.log(`[art] ${name}.${r.ext} 생성 (${r.provider} ${r.model})`);
       const id = createHash("sha256").update(`${theme}|${style}|${art}`).digest("hex").slice(0, 16);
       await blobPut(`${ART_DIR}/${id}.${r.ext}`, r.data);
-      index.push({ id, ext: r.ext, theme, style, art });
+      index.push({ id, ext: r.ext, theme, style, art, palette: paletteOf(theme) });
       added = true;
     } catch (err) {
       // 그 문장은 함께 고른 아이콘·모티프로 간다
@@ -294,7 +296,15 @@ export async function generateArt(repo: string, date: string): Promise<void> {
  */
 const ART_DIR = "shorts/art";
 const ART_INDEX = `${ART_DIR}/index.json`;
-type ArtEntry = { id: string; ext: string; theme: string; style: ArtStyle; art: string };
+type ArtEntry = { id: string; ext: string; theme: string; style: ArtStyle; art: string; palette?: number };
+
+/**
+ * 그림 색 규칙의 판. 밝은 테마 색을 10/17에 회색에서 흰 면 + 옅은 강조색 그림자로 바꿨다 — 그 전에 만든
+ * 회색 그림을 "비슷하다"고 다시 쓰면 바꾼 색이 나오지 않는다. 판이 다른 그림은 다시 쓰지 않는다
+ */
+function paletteOf(theme: string): number {
+  return THEME_PAPER[theme]?.light ? 2 : 1;
+}
 
 async function loadArtIndex(): Promise<ArtEntry[]> {
   const raw = await blobGet(ART_INDEX);
@@ -334,7 +344,7 @@ export function findSimilarArt(
   const a = artWords(art);
   let best: { entry: ArtEntry; score: number } | null = null;
   for (const e of index) {
-    if (e.theme !== theme || e.style !== style) continue;
+    if (e.theme !== theme || e.style !== style || (e.palette ?? 1) !== paletteOf(theme)) continue;
     const b = artWords(e.art);
     let both = 0;
     for (const w of a) if (b.has(w)) both++;
