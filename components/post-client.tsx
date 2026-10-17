@@ -264,13 +264,14 @@ export function PostClient({
           </>
         )}
         {" · "}
-        {/* 글 날짜는 YYMMDD — "AI 작성"은 모든 글에 같은 말이라 자리만 차지했다 (10/17) */}
-        <span className="whitespace-nowrap">{post.date.slice(2).replaceAll("-", "")}</span>
+        {/* 글 날짜는 글 목록과 같은 꼴에서 연도만 두 자리로(26-10-16) — "AI 작성"은 모든 글에 같은
+            말이라 자리만 차지했다 (10/17). 320 화면에서 한 줄에 들도록 "커밋 23개"의 "개"도 뺐다 */}
+        <span className="whitespace-nowrap">{post.date.slice(2)}</span>
         {post.intro ? (en ? " · intro" : " · 소개 글") : null}
         {!post.intro && post.commits != null
           ? en
             ? ` · ${post.commits} commit${post.commits === 1 ? "" : "s"}${post.prs ? ` · ${post.prs} PR${post.prs === 1 ? "" : "s"}` : ""}`
-            : ` · 커밋 ${post.commits}개${post.prs ? ` · PR ${post.prs}개` : ""}`
+            : ` · 커밋 ${post.commits}${post.prs ? ` · PR ${post.prs}` : ""}`
           : ""}
         {/* 구분점은 뒤 항목에 붙여 묶는다 — 줄 끝에 점 하나만 남지 않게 */}
         {!post.intro && (
