@@ -3,6 +3,8 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { PostFigure } from "../scripts/figure-types";
 import { firstTermsOnly, plainTerms, termsOnly } from "./term-marker";
+import { HIDDEN_PROJECTS, isHiddenProject } from "./hidden-projects";
+import { projectName } from "./project-name";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -33,6 +35,8 @@ export interface Project {
   todayCommits?: number; // 오늘(KST) 커밋 수 — 홈 "오늘 커밋"
   countsDate?: string; // 위 카운트들의 기준 날짜(KST) — 자정 지나면 화면이 0으로 판정
   totalCommits?: number; // 레포 전체 누적 커밋 — 프로젝트 상세
+  /** 쇼츠 테마 — topic vibelog-theme-<이름>에서. 없으면 terminal */
+  theme?: string;
 }
 
 /** 데브로그 본문의 고정 구조 — "뭘 했다 / 왜 / 삽질 포인트 / 다음 할 것" */
@@ -106,6 +110,14 @@ export interface RunLog {
 
 /* ---------- projects ---------- */
 
+// 잠시 숨긴 프로젝트(lib/hidden-projects.ts)는 사이트에서 빠진다. 파이프라인 스크립트는
+// 시작할 때 includeHiddenProjects()를 불러 전부 본다 — 숨긴 레포도 글은 계속 쌓인다
+let showHidden = false;
+export function includeHiddenProjects(): void {
+  showHidden = true;
+}
+const visible = (slug: string) => showHidden || !isHiddenProject(slug);
+
 export function getProjects(): Project[] {
   const file = path.join(CONTENT_DIR, "projects.json");
   if (!fs.existsSync(file)) return [];
@@ -121,7 +133,7 @@ export function getProjects(): Project[] {
     const post = latestPost.get(p.slug);
     if (post && post > p.lastActivity) p.lastActivity = post;
   }
-  return [...projects].sort((a, b) =>
+  return projects.filter((p) => visible(p.slug)).sort((a, b) =>
     b.lastActivity.localeCompare(a.lastActivity),
   );
 }
@@ -252,12 +264,14 @@ export function getDevlogs(repo?: string): DevlogEntry[] {
   const devlogDir = path.join(CONTENT_DIR, "devlog");
   if (!fs.existsSync(devlogDir)) return [];
 
-  const repos = repo
-    ? [repo]
-    : fs
-        .readdirSync(devlogDir, { withFileTypes: true })
-        .filter((d) => d.isDirectory())
-        .map((d) => d.name);
+  const repos = (
+    repo
+      ? [repo]
+      : fs
+          .readdirSync(devlogDir, { withFileTypes: true })
+          .filter((d) => d.isDirectory())
+          .map((d) => d.name)
+  ).filter(visible);
 
   const entries: DevlogEntry[] = [];
   for (const r of repos) {
@@ -391,7 +405,7 @@ export function getShorts(): ShortsMeta[] {
   if (!fs.existsSync(dir)) return [];
   const out: ShortsMeta[] = [];
   for (const repo of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (!repo.isDirectory()) continue;
+    if (!repo.isDirectory() || !visible(repo.name)) continue;
     const rdir = path.join(dir, repo.name);
     for (const f of fs.readdirSync(rdir)) {
       if (!/^\d{4}-\d{2}-\d{2}\.json$/.test(f)) continue;
@@ -435,7 +449,11 @@ export function getRunLog(): RunLog | null {
   const file = path.join(CONTENT_DIR, "run.json");
   if (!fs.existsSync(file)) return null;
   try {
-    return JSON.parse(fs.readFileSync(file, "utf8")) as RunLog;
+    const log = JSON.parse(fs.readFileSync(file, "utf8")) as RunLog;
+    if (showHidden) return log;
+    // 숨긴 프로젝트를 말하는 줄은 홈 "지난 실행"에서도 뺀다 — 레포 이름이나 화면 이름이 든 줄
+    const names = [...HIDDEN_PROJECTS].flatMap((slug) => [slug, projectName(slug), projectName(slug, true)]);
+    return { ...log, lines: log.lines.filter((l) => !names.some((n) => `${l.text} ${l.textEn ?? ""}`.includes(n))) };
   } catch {
     return null;
   }

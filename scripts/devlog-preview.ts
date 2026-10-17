@@ -15,11 +15,14 @@
  */
 import fs from "node:fs";
 import { Octokit } from "@octokit/rest";
-import { getDevlog, getProject, recentPosts } from "../lib/content";
+import { getDevlog, getProject, recentPosts, includeHiddenProjects } from "../lib/content";
 import { getOwner, getReadme, githubClient, type RepoCommit } from "./collect";
 import { generateDevlog } from "./generate";
 import { fmtReadability } from "./readability";
 import { fmtTally, takeUsage } from "./usage";
+
+// 파이프라인은 사이트에서 잠시 숨긴 프로젝트(lib/hidden-projects.ts)도 전부 본다
+includeHiddenProjects();
 
 /** 글의 섹션 제목(##)이 미리보기의 글 단위 제목(##)과 같은 층이 되지 않게 내린다 */
 function demote(md: string): string {

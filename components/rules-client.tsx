@@ -15,7 +15,6 @@ const THEMES: {
   key: string;
   name: L;
   note: L;
-  uses: L;
   bg: string;
   panel: string;
   ink: string;
@@ -31,7 +30,6 @@ const THEMES: {
     key: "terminal",
     name: { ko: "터미널", en: "Terminal" },
     note: { ko: "기본값. 도구·자동화", en: "The default. Tools and automation" },
-    uses: { ko: "vibelog (지정 없음)", en: "vibelog (none set)" },
     bg: "#0A0E14", panel: "#141B24", ink: "#F3EFE6", muted: "#8C98A8", accent: "#5EE1C3", accentInk: "#06261F",
     keyword: "color", backdrop: "glow", badgeFill: false, badgeRadius: 999,
   },
@@ -39,7 +37,6 @@ const THEMES: {
     key: "blueprint",
     name: { ko: "블루프린트", en: "Blueprint" },
     note: { ko: "격자와 파란 밑줄, 각진 모서리. 인프라·API", en: "Grid and blue underline, square corners. Infra and APIs" },
-    uses: { ko: "Anchor, portfolio-tmp", en: "Anchor, portfolio-tmp" },
     bg: "#0D1B2E", panel: "#122540", ink: "#EDF2FA", muted: "#6D84A3", accent: "#7FB0FF", accentInk: "#071426",
     keyword: "underline", backdrop: "grid", badgeFill: false, badgeRadius: 8,
   },
@@ -47,7 +44,6 @@ const THEMES: {
     key: "signal",
     name: { ko: "시그널", en: "Signal" },
     note: { ko: "주황 상단 띠와 채운 배지. 소비자 앱·운동", en: "Orange top bar and filled badge. Consumer apps and fitness" },
-    uses: { ko: "아직 없음", en: "None yet" },
     bg: "#131110", panel: "#1C1815", ink: "#F5EFE8", muted: "#8A807A", accent: "#FF6B35", accentInk: "#1B0E06",
     keyword: "color", backdrop: "edge", badgeFill: true, badgeRadius: 999,
   },
@@ -55,7 +51,6 @@ const THEMES: {
     key: "paper",
     name: { ko: "페이퍼", en: "Paper" },
     note: { ko: "하나뿐인 밝은 테마, 초록 형광펜. 글쓰기·정리 도구", en: "The only light theme, green highlighter. Writing and note tools" },
-    uses: { ko: "apart", en: "apart" },
     bg: "#EFF1F4", panel: "#FFFFFF", ink: "#171A1F", muted: "#8A919B", accent: "#0F7B5F", accentInk: "#F2FBF8",
     keyword: "marker", backdrop: "flat", badgeFill: false, badgeRadius: 999,
   },
@@ -63,7 +58,6 @@ const THEMES: {
     key: "highlighter",
     name: { ko: "하이라이터", en: "Highlighter" },
     note: { ko: "흑백에 노랑 마커. 실험작·장난감", en: "Black and white with a yellow marker. Experiments and toys" },
-    uses: { ko: "agency", en: "agency" },
     bg: "#0C0C0D", panel: "#161618", ink: "#FAFAF7", muted: "#77777B", accent: "#FFD84D", accentInk: "#0C0C0D",
     keyword: "marker", backdrop: "flat", badgeFill: true, badgeRadius: 4,
   },
@@ -147,7 +141,16 @@ function CopyButton({ done, label, onClick, ghost }: { done: boolean; label: str
   );
 }
 
-export function RulesClient({ rules, display }: { rules: string; display: string }) {
+export function RulesClient({
+  rules,
+  display,
+  uses,
+}: {
+  rules: string;
+  display: string;
+  /** 테마별로 지금 그 테마를 쓰는 프로젝트 이름 — 사이트에 보이는 프로젝트만 (app/about/rules/page.tsx) */
+  uses: Record<string, L[]>;
+}) {
   const { lang } = useLang();
   const [live, setLive] = useState("");
   const { done, copy } = useCopy(setLive, lang);
@@ -300,7 +303,13 @@ export function RulesClient({ rules, display }: { rules: string; display: string
                     </div>
                     <span className="text-xs text-muted">
                       {lang === "ko" ? "지금 쓰는 레포: " : "Used by: "}
-                      <span className="text-ink-soft">{t(th.uses)}</span>
+                      <span className="text-ink-soft">
+                        {uses[th.key]?.length
+                          ? uses[th.key].map(t).join(", ")
+                          : lang === "ko"
+                            ? "아직 없음"
+                            : "None yet"}
+                      </span>
                     </span>
                   </div>
                 </article>

@@ -22,7 +22,8 @@ import {
 import { generateFigures } from "./figures";
 import { fmtTally, takeUsage } from "./usage";
 import { fmtNum } from "../lib/format";
-import { getDevlog, getDevlogs, getProject, parseSections, recentPosts } from "../lib/content";
+import { isHiddenProject } from "../lib/hidden-projects";
+import { getDevlog, getDevlogs, getProject, parseSections, recentPosts, includeHiddenProjects } from "../lib/content";
 import { hasRealFail } from "../lib/has-fail";
 import { runShorts } from "./shorts";
 import { NoScreensError, takeListenCheck } from "./script";
@@ -44,6 +45,9 @@ import {
   writeIntroPost,
   type Intro,
 } from "./intro";
+
+// 파이프라인은 사이트에서 잠시 숨긴 프로젝트(lib/hidden-projects.ts)도 전부 본다
+includeHiddenProjects();
 
 /** 홈의 "지난 실행"에 찍히는 한 줄 — content/run.json */
 type RunLine = { text: string; textEn?: string; kind?: "cmd" | "ok" | "fail" };
@@ -496,6 +500,8 @@ function writeCommitHours(activities: RepoActivity[]): void {
   }
   const fresh: Record<string, number[]> = {};
   for (const a of activities) {
+    // 사이트에서 잠시 숨긴 프로젝트는 홈 잔디에서도 뺀다 (lib/hidden-projects.ts)
+    if (isHiddenProject(a.repo)) continue;
     for (const iso of a.commitTimes) {
       const t = new Date(iso);
       if (Number.isNaN(t.getTime())) continue;
