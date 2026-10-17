@@ -30,40 +30,18 @@ const SCENES: Record<string, string> = {
 const COMMIT_ART =
   "a small paper note with a few written lines and a pencil resting on it, one round check mark seal in the corner";
 
-/**
- * 밝은 테마(paper) 그림의 색 후보 (10/17). 지금 규칙(옅은 회색–중간 회색)으로 그리면 회색 바탕 위에
- * 회색 물건이 놓여 칙칙했다. 전에는 흰색이 바탕에 묻히고 짙은 색이 무거웠다 — 그래서 흰 면에는
- * 그림자 면을 꼭 붙여 모양을 세우고, 짙은 색은 여전히 쓰지 않는다
- */
-const LIGHT_PALETTES: Record<string, string> = {
-  // 지금 규칙 그대로 — 견줄 기준
-  now: "",
-  // 흰 면 + 옅은 회색 그림자 면
-  white:
-    "pure white (#FFFFFF) main surfaces, each with one soft cool gray shadow side (#DDE1E7), " +
-    "small details in #B4BAC3; no medium or dark gray areas",
-  // 흰 면 + 강조색을 아주 옅게 푼 그림자 면 — 한 색 계열 안에서 밝게
-  tint:
-    "pure white (#FFFFFF) main surfaces, shadow sides in a very pale tint of the accent color (#D6EDE6), " +
-    "small details in a soft tint (#A8D5C7); no gray areas at all",
-};
-
-/** 커밋 그림 — 테마 5개, 밝은 테마는 색 후보마다 한 장 (모두 7장) */
+/** 커밋 그림 — 테마 5개. 고른 그림은 video/assets/commit/<테마>.png에 둔다 (렌더가 읽는다) */
 async function commitSamples(dir: string): Promise<string[]> {
   const failed: string[] = [];
   for (const theme of Object.keys(THEME_PAPER)) {
-    const palettes = THEME_PAPER[theme].light ? Object.entries(LIGHT_PALETTES) : [["", ""]];
-    for (const [pal, neutrals] of palettes) {
-      const id = `commit-${theme}${pal ? `-${pal}` : ""}`;
-      try {
-        const style = styleFor(theme, "flat", neutrals ? { neutrals } : {});
-        const r = await generateImage(style + COMMIT_ART, ["openai"], { transparent: true });
-        fs.writeFileSync(path.join(dir, `${id}.${r.ext}`), r.data);
-        console.log(`- ${id} (${r.model})`);
-      } catch (err) {
-        failed.push(id);
-        console.warn(`- ${id} 실패:`, err instanceof Error ? err.message : err);
-      }
+    const id = `commit-${theme}`;
+    try {
+      const r = await generateImage(styleFor(theme) + COMMIT_ART, ["openai"], { transparent: true });
+      fs.writeFileSync(path.join(dir, `${id}.${r.ext}`), r.data);
+      console.log(`- ${id} (${r.model})`);
+    } catch (err) {
+      failed.push(id);
+      console.warn(`- ${id} 실패:`, err instanceof Error ? err.message : err);
     }
   }
   return failed;
