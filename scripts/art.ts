@@ -18,6 +18,7 @@
  * 사용: npx tsx scripts/art.ts <repo> <date>
  *       npx tsx scripts/art.ts --try "<묘사>" [gemini|openai]   # 한 장만 만들어 보기
  */
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -233,6 +234,33 @@ export async function generateImage(
   throw last;
 }
 
+/**
+ * 배경이 덜 지워진 그림인가 (10/18). 투명 배경을 시켜도 가끔 뿌연 연기 같은 반투명 배경이 남는다 —
+ * 거짓말 탐정 10/18 편의 초상화 두 장 그림이 회색 안개 판 위에 놓여 나갔다. 깨끗한 그림은 픽셀이 거의
+ * 다 완전히 투명하거나 완전히 불투명하고, 반투명은 가장자리뿐이다. 그때 재 보니 반투명 픽셀이 문제
+ * 그림은 58%, 나머지 그림은 0.2–2%, 은은한 빛 번짐이 있는 그림이 12%였다 — 25%를 넘으면 버린다.
+ * ffmpeg으로 알파만 128×128로 줄여 센다 (러너에 이미 있다). 알파가 없는 그림(jpg)은 재지 않는다
+ */
+const HAZE_MAX = 0.25;
+
+export function hazyBackground(data: Buffer, ext: string): boolean {
+  if (ext !== "png") return false;
+  try {
+    const alpha = execFileSync(
+      "ffmpeg",
+      ["-v", "error", "-i", "pipe:0", "-vf", "alphaextract,scale=128:128", "-f", "rawvideo", "-pix_fmt", "gray", "pipe:1"],
+      { input: data, maxBuffer: 1 << 20 },
+    );
+    if (alpha.length === 0) return false;
+    let half = 0;
+    for (const v of alpha) if (v > 10 && v < 217) half++;
+    return half / alpha.length > HAZE_MAX;
+  } catch {
+    // 잴 수 없으면 막지 않는다 — 예전처럼 쓴다
+    return false;
+  }
+}
+
 /** 대본의 art 프롬프트들을 이미지로. 실패는 장면 단위로 건너뛴다(치명적 아님) */
 export async function generateArt(repo: string, date: string): Promise<void> {
   if (providerOrder().length === 0) {
@@ -268,18 +296,29 @@ export async function generateArt(repo: string, date: string): Promise<void> {
     const hit = findSimilarArt(index, theme, style, art);
     if (hit) {
       const data = await blobGet(`${ART_DIR}/${hit.entry.id}.${hit.entry.ext}`);
-      if (data) {
+      if (data && hazyBackground(data, hit.entry.ext)) {
+        console.warn(`[art] ${name} 다시 쓰려던 그림의 배경이 덜 지워져 있어 새로 그립니다`);
+      } else if (data) {
         fs.writeFileSync(path.join(dir, `${name}.${hit.entry.ext}`), data);
         console.log(`[art] ${name}.${hit.entry.ext} 비슷한 그림을 다시 씀 (낱말 겹침 ${hit.score.toFixed(2)})`);
         continue;
       }
     }
     try {
-      const r = await generateImage(styleFor(theme) + art, undefined, { transparent: true });
+      let r = await generateImage(styleFor(theme) + art, undefined, { transparent: true });
+      // 배경이 덜 지워졌으면 한 번 더 그린다. 두 번째도 그러면 그 문장은 함께 고른 아이콘·모티프로 간다
+      if (hazyBackground(r.data, r.ext)) {
+        console.warn(`[art] ${name} 배경이 덜 지워져 한 번 더 그립니다`);
+        r = await generateImage(styleFor(theme) + art, undefined, { transparent: true });
+        if (hazyBackground(r.data, r.ext)) throw new Error("두 번 그려도 배경이 덜 지워졌습니다");
+      }
       fs.writeFileSync(path.join(dir, `${name}.${r.ext}`), r.data);
       console.log(`[art] ${name}.${r.ext} 생성 (${r.provider} ${r.model})`);
       const id = createHash("sha256").update(`${theme}|${style}|${art}`).digest("hex").slice(0, 16);
       await blobPut(`${ART_DIR}/${id}.${r.ext}`, r.data);
+      // 같은 묘사로 다시 그린 그림은 같은 id라 Blob 파일을 덮어쓴다 — 목록에도 한 줄만 남긴다
+      const at = index.findIndex((e) => e.id === id);
+      if (at >= 0) index.splice(at, 1);
       index.push({ id, ext: r.ext, theme, style, art, palette: paletteOf(theme) });
       added = true;
     } catch (err) {
