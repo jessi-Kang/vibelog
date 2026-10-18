@@ -11,6 +11,7 @@
  */
 import { hideHosts, resolveHomepage } from "./homepage";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { generateArt } from "./art";
@@ -21,6 +22,8 @@ import { record } from "./record";
 import { posterAtSec, renderShort } from "./render";
 import { makeSmall } from "./small-video";
 import {
+  segmentsJsonPath,
+  shortsDir,
   shortsJsonPath,
   timingJsonPath,
   type ShortsScript,
@@ -70,6 +73,54 @@ async function loadScript(repo: string, date: string): Promise<ShortsScript> {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+/**
+ * 화면 녹화를 Blob에 두고 다시 쓴다 (10/18). 다시 만들기(regen)는 대본·목소리는 저장된 것을 쓰면서
+ * 화면만 그날 사이트를 새로 찍어서, 9월 편을 다시 만들자 10월 글·쇼츠·실행 기록이 화면에 나왔다 —
+ * 그 편이 말하는 날의 화면이 아니다. 처음 찍은 녹화를 남겨 두고, 대본이 고른 화면이 같으면 그것을
+ * 받아 쓴다. 키는 문장마다 고른 화면(screen·find·shot)이다 — 대본을 새로 써서 화면이 바뀌면 새로 찍는다.
+ * 녹화 길이가 모자라면(목소리 틈이 늘어 영상이 길어지면) 새로 찍는다.
+ */
+function recordingBase(script: ShortsScript, repo: string, date: string, lang: "ko" | "en"): string {
+  const stops = script.lines.map((l) => [l.screen ?? "", (lang === "en" ? (l.findEn ?? l.find) : l.find) ?? "", l.shot ?? ""]);
+  const key = createHash("sha256").update(JSON.stringify({ lang, steps: script.demo.steps, stops })).digest("hex").slice(0, 16);
+  return `shorts/${repo}/${date}.${lang}.rec.${key}`;
+}
+
+function recordingFile(repo: string, date: string, lang: "ko" | "en"): string {
+  return path.join(process.cwd(), shortsDir(repo), lang === "ko" ? `${date}.webm` : `${date}.en.webm`);
+}
+
+async function saveRecording(script: ShortsScript, repo: string, date: string, lang: "ko" | "en", sec: number): Promise<void> {
+  const base = recordingBase(script, repo, date, lang);
+  const segFile = path.join(process.cwd(), segmentsJsonPath(repo, date, lang));
+  await Promise.all([
+    blobPut(`${base}.webm`, fs.readFileSync(recordingFile(repo, date, lang))),
+    blobPut(`${base}.json`, JSON.stringify({ sec, segments: fs.existsSync(segFile) ? fs.readFileSync(segFile, "utf8") : null })),
+  ]);
+}
+
+async function restoreRecording(script: ShortsScript, repo: string, date: string, lang: "ko" | "en", need: number): Promise<boolean> {
+  const base = recordingBase(script, repo, date, lang);
+  const meta = await blobGet(`${base}.json`);
+  if (!meta) return false;
+  try {
+    const { sec, segments } = JSON.parse(meta.toString("utf8")) as { sec: number; segments: string | null };
+    if (sec < need) {
+      console.log(`[shorts] 저장해 둔 화면 녹화(${lang})가 ${sec}초라 ${need}초에 모자랍니다 — 새로 찍습니다`);
+      return false;
+    }
+    const webm = await blobGet(`${base}.webm`);
+    if (!webm) return false;
+    fs.mkdirSync(path.dirname(recordingFile(repo, date, lang)), { recursive: true });
+    fs.writeFileSync(recordingFile(repo, date, lang), webm);
+    if (segments) fs.writeFileSync(path.join(process.cwd(), segmentsJsonPath(repo, date, lang)), segments);
+    console.log(`[shorts] 저장해 둔 화면 녹화를 씁니다 (${lang}) — 그날 찍은 화면이 그대로 나갑니다`);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export async function runShorts(
   repo: string,
   date: string,
@@ -103,8 +154,11 @@ export async function runShorts(
           "utf8",
         ),
       );
+      const need = Math.ceil(timing.duration) + 2;
+      if (await restoreRecording(script, repo, date, lang, need)) continue;
       console.log(`[shorts] 화면 녹화 (${lang})`);
-      await record(repo, date, Math.ceil(timing.duration) + 2, lang);
+      await record(repo, date, need, lang);
+      await saveRecording(script, repo, date, lang, need);
     }
   } else {
     console.warn("[shorts] demo.url 없음 — 플레이스홀더로 렌더");
