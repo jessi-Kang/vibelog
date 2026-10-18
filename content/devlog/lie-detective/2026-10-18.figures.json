@@ -1,0 +1,1016 @@
+[
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "전에는 원본 파일 없이 글 설명만 AI에게 가서 다른 얼굴이 나왔고, 지금은 원본이 넘어갔는지 먼저 확인해 넘어갔으면 그리고 아니면 멈춥니다.",
+  "altEn": "Before, only the text description reached the AI and a different face came out; now it first checks the original was sent, drawing if yes and stopping if no.",
+  "caption": "원본 파일이 안 넘어가면 아예 그리지 않습니다",
+  "captionEn": "If the original file isn't sent, nothing gets drawn",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 310",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "원본 파일 없이 그리던 전과, 원본 전달을 먼저 확인하는 지금의 흐름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전: 원본 파일이 안 감"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "width": "100",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글 설명만"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "122",
+      "y1": "78",
+      "x2": "142",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "148,78 140,73 140,83",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "58",
+      "width": "60",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "180",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "212",
+      "y1": "78",
+      "x2": "232",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,78 230,73 230,83",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "58",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "다른 얼굴"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "122",
+      "x2": "370",
+      "y2": "122",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "154",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금: 먼저 확인"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "원본이 갔나?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "190",
+      "x2": "232",
+      "y2": "190",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,190 230,185 230,195",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "181",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "예"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "170",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "그림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "85",
+      "y1": "212",
+      "x2": "85",
+      "y2": "242",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "85,248 80,240 90,240",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "235",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "아니오"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "250",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "275",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "멈춤"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 310",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before, drawing without the original file; now, checking the original was sent first"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before: original not sent"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "58",
+      "width": "100",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Text only"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "122",
+      "y1": "78",
+      "x2": "142",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "148,78 140,73 140,83",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "58",
+      "width": "60",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "180",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "212",
+      "y1": "78",
+      "x2": "232",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,78 230,73 230,83",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "58",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Different face"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "122",
+      "x2": "370",
+      "y2": "122",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "154",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now: check first"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Original sent?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "152",
+      "y1": "190",
+      "x2": "232",
+      "y2": "190",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "238,190 230,185 230,195",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "181",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Yes"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "240",
+      "y": "170",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "305",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Draw"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "85",
+      "y1": "212",
+      "x2": "85",
+      "y2": "242",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "85,248 80,240 90,240",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "235",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "No"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "250",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "275",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Stop"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "원본 얼굴에 실패한 그림의 입 모양만 잘라 붙여 하나의 그림으로 합쳤습니다.",
+  "altEn": "Only the mouth from the failed image is cut out and placed on the original face to make one image.",
+  "caption": "눈매는 원본 그대로, 입만 실패작에서 가져왔습니다",
+  "captionEn": "The eyes stay original; only the mouth comes from the failed image",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "원본 얼굴과 실패한 그림의 입을 합친 그림"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "65",
+      "cy": "85",
+      "r": "42",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "50",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "80",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "52",
+      "y1": "102",
+      "x2": "78",
+      "y2": "102",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "93",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "26",
+      "fill": "var(--color-muted)"
+     },
+     "text": "+"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "85",
+      "r": "42",
+      "fill": "none",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "71",
+      "x2": "188",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "202",
+      "y1": "78",
+      "x2": "218",
+      "y2": "71",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M180 98 Q195 112 210 98",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "247",
+      "y1": "85",
+      "x2": "267",
+      "y2": "85",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "274,85 266,80 266,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "325",
+      "cy": "85",
+      "r": "42",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "310",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "340",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M310 98 Q325 112 340 98",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "원본 얼굴"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실패작의 입"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "합친 그림"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The original face combined with the mouth from the failed image"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "65",
+      "cy": "85",
+      "r": "42",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "50",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "80",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "52",
+      "y1": "102",
+      "x2": "78",
+      "y2": "102",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "130",
+      "y": "93",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "26",
+      "fill": "var(--color-muted)"
+     },
+     "text": "+"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "85",
+      "r": "42",
+      "fill": "none",
+      "stroke": "var(--color-line)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "71",
+      "x2": "188",
+      "y2": "78",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "202",
+      "y1": "78",
+      "x2": "218",
+      "y2": "71",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M180 98 Q195 112 210 98",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "247",
+      "y1": "85",
+      "x2": "267",
+      "y2": "85",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "274,85 266,80 266,90",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "325",
+      "cy": "85",
+      "r": "42",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "310",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "ellipse",
+     "attrs": {
+      "cx": "340",
+      "cy": "75",
+      "rx": "4",
+      "ry": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M310 98 Q325 112 340 98",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3",
+      "stroke-linecap": "round"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Original face"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Failed mouth"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "160",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Combined"
+    }
+   ]
+  }
+ }
+]

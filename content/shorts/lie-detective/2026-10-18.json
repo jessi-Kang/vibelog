@@ -1,0 +1,687 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-18",
+  "day": 2,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "승인한 얼굴이 딴사람이 됐습니다.",
+      "en": "My approved face became someone else.",
+      "keywords": [
+        "딴사람이"
+      ],
+      "keywordsEn": [
+        "someone else"
+      ],
+      "koLines": [
+        "승인한 얼굴이",
+        "딴사람이 됐습니다."
+      ],
+      "enLines": [
+        "My approved face",
+        "became someone else."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "AI가 원본 파일을 못 받았습니다.",
+      "en": "The AI never got the original file.",
+      "keywords": [
+        "원본 파일을"
+      ],
+      "keywordsEn": [
+        "original file."
+      ],
+      "koLines": [
+        "AI가 원본 파일을",
+        "못 받았습니다."
+      ],
+      "enLines": [
+        "The AI never got",
+        "the original file."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "그림 부탁",
+          "다른 얼굴",
+          "같은 얼굴",
+          "글 설명만",
+          "원본 파일"
+        ],
+        "labelsEn": [
+          "Image request",
+          "New face",
+          "Same face",
+          "Text only",
+          "Original file"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "글 설명만 보고 새로 그린 겁니다.",
+      "en": "It redrew from the text description alone.",
+      "keywords": [
+        "글 설명만"
+      ],
+      "keywordsEn": [
+        "text description"
+      ],
+      "koLines": [
+        "글 설명만 보고",
+        "새로 그린 겁니다."
+      ],
+      "enLines": [
+        "It redrew from",
+        "the text description alone."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "글 설명만 읽고",
+          "상상해서 그려",
+          "다른 얼굴"
+        ],
+        "labelsEn": [
+          "Reads text only",
+          "Imagines it",
+          "A new face"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file-text",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2M9 9h1m-1 4h6m-6 4h6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:brain",
+            "paths": [
+              {
+                "d": "M15.5 13a3.5 3.5 0 0 0-3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1-7 0v-1.8"
+              },
+              {
+                "d": "M17.5 16a3.5 3.5 0 0 0 0-7H17"
+              },
+              {
+                "d": "M19 9.3V6.5a3.5 3.5 0 0 0-7 0M6.5 16a3.5 3.5 0 0 1 0-7H7"
+              },
+              {
+                "d": "M5 9.3V6.5a3.5 3.5 0 0 1 7 0v10"
+              }
+            ]
+          },
+          {
+            "name": "tabler:user-question",
+            "paths": [
+              {
+                "d": "M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h3.5m5.5 7v.01M19 19a2.003 2.003 0 0 0 .914-3.782a1.98 1.98 0 0 0-2.414.483"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 원본이 넘어갔는지 먼저 봅니다.",
+      "en": "Now it first checks the original was sent.",
+      "keywords": [
+        "먼저 봅니다."
+      ],
+      "keywordsEn": [
+        "first checks"
+      ],
+      "koLines": [
+        "이제 원본이 넘어갔는지",
+        "먼저 봅니다."
+      ],
+      "enLines": [
+        "Now it first checks",
+        "the original was sent."
+      ],
+      "icon": {
+        "name": "tabler:file-check",
+        "paths": [
+          {
+            "d": "M14 3v4a1 1 0 0 0 1 1h4"
+          },
+          {
+            "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"
+          },
+          {
+            "d": "m9 15l2 2l4-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "안 넘어갔으면 아예 그리지 않습니다.",
+      "en": "If it wasn't, nothing gets drawn.",
+      "keywords": [
+        "그리지 않습니다."
+      ],
+      "keywordsEn": [
+        "nothing"
+      ],
+      "koLines": [
+        "안 넘어갔으면",
+        "아예 그리지 않습니다."
+      ],
+      "enLines": [
+        "If it wasn't,",
+        "nothing gets drawn."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "원본 확인",
+          "그린다",
+          "안 그린다",
+          "있으면",
+          "없으면"
+        ],
+        "labelsEn": [
+          "Check original",
+          "Draw",
+          "Don't draw",
+          "If sent",
+          "If missing"
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "첫 그림은 게임 주인공의 안도한 표정입니다.",
+      "en": "First up: my game hero's relieved expression.",
+      "keywords": [
+        "안도한 표정입니다."
+      ],
+      "keywordsEn": [
+        "relieved expression."
+      ],
+      "koLines": [
+        "첫 그림은",
+        "게임 주인공의 안도한 표정입니다."
+      ],
+      "enLines": [
+        "First up:",
+        "my game hero's relieved expression."
+      ],
+      "art": "a single portrait sketch of a person with a relieved face resting on an easel",
+      "icon": {
+        "name": "tabler:mood-happy",
+        "paths": [
+          {
+            "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m6-3h.01M15 9h.01"
+          },
+          {
+            "d": "M8 13a4 4 0 1 0 8 0z"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "그래도 눈매가 달라져 검수에서 떨어졌습니다.",
+      "en": "The eyes still changed, and it failed review.",
+      "keywords": [
+        "눈매가 달라져"
+      ],
+      "keywordsEn": [
+        "eyes still changed"
+      ],
+      "koLines": [
+        "그래도 눈매가 달라져",
+        "검수에서 떨어졌습니다."
+      ],
+      "enLines": [
+        "The eyes still changed,",
+        "and it failed review."
+      ],
+      "art": "two portrait sketches side by side with the same face but slightly different eyes",
+      "icon": {
+        "name": "tabler:eye",
+        "paths": [
+          {
+            "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"
+          },
+          {
+            "d": "M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "실패한 그림의 입만 잘라 원본 얼굴에 붙였습니다.",
+      "en": "So I put the failed image's mouth on the original face.",
+      "keywords": [
+        "입만"
+      ],
+      "keywordsEn": [
+        "mouth"
+      ],
+      "koLines": [
+        "실패한 그림의 입만 잘라",
+        "원본 얼굴에 붙였습니다."
+      ],
+      "enLines": [
+        "So I put the failed image's mouth",
+        "on the original face."
+      ],
+      "art": "a pair of scissors placing a small cut-out mouth onto a portrait sketch",
+      "icon": {
+        "name": "tabler:scissors",
+        "paths": [
+          {
+            "d": "M3 7a3 3 0 1 0 6 0a3 3 0 1 0-6 0m0 10a3 3 0 1 0 6 0a3 3 0 1 0-6 0m5.6-8.4L19 19M8.6 15.4L19 5"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "승인하면 나머지 표정도 한 장씩 만듭니다.",
+      "en": "If I approve it, I'll make the rest one by one.",
+      "keywords": [
+        "한 장씩"
+      ],
+      "keywordsEn": [
+        "one by one."
+      ],
+      "koLines": [
+        "승인하면 나머지 표정도",
+        "한 장씩 만듭니다."
+      ],
+      "enLines": [
+        "If I approve it,",
+        "I'll make the rest one by one."
+      ],
+      "art": "a row of portrait cards being laid down one after another",
+      "motif": "stack"
+    },
+    {
+      "scene": "end",
+      "ko": "그림은 한 장마다 돈이 듭니다.",
+      "en": "Every image costs money.",
+      "keywords": [
+        "돈이"
+      ],
+      "keywordsEn": [
+        "costs money."
+      ],
+      "koLines": [
+        "그림은 한 장마다",
+        "돈이 듭니다."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "원본이 안 넘어갔다",
+    "titleEn": "The original never arrived",
+    "before": "글 설명만 보고 얼굴을 새로 그림",
+    "after": "원본이 넘어간 걸 확인한 뒤에만 그림",
+    "beforeEn": "Redrew the face from text alone",
+    "afterEn": "Draws only after the original is confirmed"
+  },
+  "commits": [
+    [
+      "8b7ecae",
+      "chore: main의 CLAUDE.md를 preview에 병합하고 중복된 비공개 규칙 정리"
+    ],
+    [
+      "66f9f9e",
+      "docs: 승인 기록과 작업 지침의 대화 인용을 제품 사실로 바꿈"
+    ],
+    [
+      "f58995f",
+      "docs: 커밋 규칙에 대화 비공개 원칙과 커밋 전 점검표 추가"
+    ],
+    [
+      "10157cf",
+      "docs: CLAUDE.md를 만들어 커밋 규칙과 대화 비공개 규칙을 넣는다"
+    ],
+    [
+      "351e391",
+      "docs: 차해원 승인 표정·제스처 원본의 실제 파일 체크섬과 이관 경로 기록"
+    ],
+    [
+      "aefd33d",
+      "chore: 차해원 승인 표정·제스처 ZIP 자동 보관과 체크섬 검증 절차 추가"
+    ],
+    [
+      "f426617",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "aedcd78",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "2dcfe91",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "192f0c3",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "ddcb8a8",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "5d483b2",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "3b463ba",
+      "docs: 글로벌 캐릭터 화풍 프롬프트를 README·Codex·시트 제작 가이드에 연결"
+    ],
+    [
+      "7514be3",
+      "docs: 승인된 B안 화풍을 글로벌 프롬프트와 편집·표정·제스처 템플릿으로 고정"
+    ],
+    [
+      "b4b67f7",
+      "asset: 남지후 E01 산출물 해시 재현성 보정"
+    ],
+    [
+      "9952be8",
+      "asset: 남지후 E01 안도 컷 원본 보존 보정"
+    ],
+    [
+      "7d89e3d",
+      "asset: 남지후 E00 원본 추출 및 E01 단일 편집 미통과 기록"
+    ],
+    [
+      "f0c617b",
+      "docs: Codex 인수인계 및 문서 허브에 상세 제작 절차와 8인 페르소나 바이블 연결"
+    ],
+    [
+      "3b13074",
+      "docs: Codex 인수인계 및 문서 허브에 상세 제작 절차와 8인 페르소나 바이블 연결"
+    ],
+    [
+      "fca4664",
+      "docs: Codex 인수인계 및 문서 허브에 상세 제작 절차와 8인 페르소나 바이블 연결"
+    ],
+    [
+      "d66326d",
+      "docs: Codex 인수인계 및 문서 허브에 상세 제작 절차와 8인 페르소나 바이블 연결"
+    ],
+    [
+      "ab016c1",
+      "docs: Codex 인수인계 및 문서 허브에 상세 제작 절차와 8인 페르소나 바이블 연결"
+    ],
+    [
+      "0097b5b",
+      "docs: 여덟 캐릭터의 상세 페르소나와 표정 열두 종·제스처 열두 종 연기 디렉션 정리"
+    ],
+    [
+      "fa4539a",
+      "docs: Codex 실행용 캐릭터 제작 절차를 입력부터 검수·비용·우회책까지 상세 정의"
+    ],
+    [
+      "ebde32d",
+      "docs: Codex 인수인계 진입점과 실제 저장소 원본 등록 상태 정리"
+    ],
+    [
+      "3898b60",
+      "docs: Codex 인수인계 진입점과 실제 저장소 원본 등록 상태 정리"
+    ],
+    [
+      "f308744",
+      "docs: Codex 인수인계 진입점과 실제 저장소 원본 등록 상태 정리"
+    ],
+    [
+      "d0f566b",
+      "docs: Codex 시작 시 읽을 저장소 작업 규칙과 인수인계 파일 연결"
+    ],
+    [
+      "d1dbb71",
+      "docs: Codex 인수인계용 승인 자산·실패 이력·미완료 작업 및 실행 순서 기록"
+    ],
+    [
+      "02661ab",
+      "chore: 캐릭터 비용 차단 회귀 테스트를 GitHub Actions에 연결"
+    ],
+    [
+      "4e6a76b",
+      "docs: 이미지 유료 호출 이전 비용 게이트·컷 재사용·실패 중단을 제작 절차에 통합"
+    ],
+    [
+      "365623a",
+      "docs: 이미지 유료 호출 이전 비용 게이트·컷 재사용·실패 중단을 제작 절차에 통합"
+    ],
+    [
+      "40e173a",
+      "docs: 이미지 유료 호출 이전 비용 게이트·컷 재사용·실패 중단을 제작 절차에 통합"
+    ],
+    [
+      "a6357de",
+      "docs: 이미지 유료 호출 이전 비용 게이트·컷 재사용·실패 중단을 제작 절차에 통합"
+    ],
+    [
+      "27772b4",
+      "chore: 생성 비용 보호용 컷별 예약·실패 차단 검사와 회귀 테스트 추가"
+    ],
+    [
+      "7be6e32",
+      "chore: 생성 비용 보호용 컷별 예약·실패 차단 검사와 회귀 테스트 추가"
+    ],
+    [
+      "ccb91af",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "deed30a",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "a386ff2",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "24065a8",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "91978b3",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "f801bf1",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "105ecc8",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "cd4e114",
+      "chore: 글로벌 12종 규격을 제작 스크립트와 기존 가이드에 연결"
+    ],
+    [
+      "036ca22",
+      "design: 정면 중립 기준과 감정·제스처 각 12종을 글로벌 제작 규격으로 확정"
+    ],
+    [
+      "969043b",
+      "docs: 감정 시트 실행 게이트와 제작 차단 스크립트를 모든 진입 문서에 연결"
+    ],
+    [
+      "30e30e1",
+      "docs: 감정 시트 실행 게이트와 제작 차단 스크립트를 모든 진입 문서에 연결"
+    ],
+    [
+      "11d0a5c",
+      "docs: 감정 시트 실행 게이트와 제작 차단 스크립트를 모든 진입 문서에 연결"
+    ],
+    [
+      "ef292a4",
+      "design: 남지후 감정 시트 제작을 차단 상태로 기록하고 원본 편집 전제 명시"
+    ],
+    [
+      "045ecd4",
+      "feat: 캐릭터 표정 제작의 원본 체크섬·작업 방식 사전 차단 스크립트 추가"
+    ],
+    [
+      "c8dede3",
+      "docs: 원본 참조 편집과 개별 컷 검수를 강제하는 감정 시트 실행 절차 수립"
+    ],
+    [
+      "0e5d1fe",
+      "docs: 승인 PNG 여덟 장의 GitHub 원본 보관과 검증 완료 상태 반영"
+    ],
+    [
+      "c93a2f8",
+      "docs: 승인 PNG 여덟 장의 GitHub 원본 보관과 검증 완료 상태 반영"
+    ],
+    [
+      "97af7ad",
+      "docs: 승인 PNG 여덟 장의 GitHub 원본 보관과 검증 완료 상태 반영"
+    ],
+    [
+      "43cd3f7",
+      "docs: 승인 PNG 여덟 장의 GitHub 원본 보관과 검증 완료 상태 반영"
+    ],
+    [
+      "c4768b0",
+      "docs: 승인 PNG 여덟 장의 GitHub 원본 보관과 검증 완료 상태 반영"
+    ],
+    [
+      "63568e1",
+      "chore: 승인 캐릭터 압축본을 검증하고 개별 파일로 분리하는 작업 자동화"
+    ],
+    [
+      "b24055a",
+      "Add files via upload"
+    ],
+    [
+      "6b15e55",
+      "docs: 주연 서사와 최신 승인 차해원 시트의 원본 식별 정보 반영"
+    ],
+    [
+      "7fbafad",
+      "docs: 주연 서사와 최신 승인 차해원 시트의 원본 식별 정보 반영"
+    ],
+    [
+      "a17a842",
+      "docs: 주연 서사와 최신 승인 차해원 시트의 원본 식별 정보 반영"
+    ],
+    [
+      "c7c830f",
+      "docs: 주연 서사와 최신 승인 차해원 시트의 원본 식별 정보 반영"
+    ],
+    [
+      "e653329",
+      "docs: 주연 서사와 최신 승인 차해원 시트의 원본 식별 정보 반영"
+    ],
+    [
+      "b432425",
+      "asset: 승인된 여덟 캐릭터 PNG 원본의 실제 체크섬과 최신 차해원 기준 식별"
+    ],
+    [
+      "fe4e7a5",
+      "docs: 차해원과 남지후의 장기 주연 서사를 시리즈 공용 바이블로 정리"
+    ],
+    [
+      "47ba8a3",
+      "docs: 캐릭터 제작 진입점을 시리즈·에피소드 소유 문서로 변경"
+    ],
+    [
+      "2c1b7f8",
+      "docs: 캐릭터 제작 진입점을 시리즈·에피소드 소유 문서로 변경"
+    ],
+    [
+      "e4ce2d5",
+      "docs: 캐릭터 제작 진입점을 시리즈·에피소드 소유 문서로 변경"
+    ],
+    [
+      "7950a02",
+      "design: 고정 주연과 에피소드 전용 캐릭터 소유·복사 규칙 구조화"
+    ],
+    [
+      "cbce11b",
+      "docs: 고정 주연의 CASE001 현장 장면을 사건별 연기 파일로 이관"
+    ],
+    [
+      "01bfddd",
+      "docs: 시리즈 공용 연기 바이블에서 CASE001 전용 장면 분리"
+    ],
+    [
+      "39a8b60",
+      "docs: 시리즈 주연과 CASE001 등장인물 설정 자산의 소유 범위 분리"
+    ],
+    [
+      "950a0fa",
+      "docs: 시리즈 주연과 CASE001 등장인물 설정 자산의 소유 범위 분리"
+    ],
+    [
+      "79d13ca",
+      "docs: 시리즈 주연과 CASE001 등장인물 설정 자산의 소유 범위 분리"
+    ],
+    [
+      "af9e5af",
+      "docs: 시리즈 주연과 CASE001 등장인물 설정 자산의 소유 범위 분리"
+    ],
+    [
+      "a7ea870",
+      "docs: 인물별 성격 연기 매트릭스를 차기 에피소드 제작 문서에 연결"
+    ],
+    [
+      "9720b16",
+      "docs: 인물별 성격 연기 매트릭스를 차기 에피소드 제작 문서에 연결"
+    ],
+    [
+      "d5754e4",
+      "design: CASE001 여덟 인물의 성격별 연기 차별화 매트릭스 작성"
+    ],
+    [
+      "3779fc9",
+      "docs: 성격 기반 애니메이션 시트와 플레이어 관찰 단서를 제작 흐름에 연결"
+    ],
+    [
+      "7d78362",
+      "docs: 성격 기반 애니메이션 시트와 플레이어 관찰 단서를 제작 흐름에 연결"
+    ]
+  ],
+  "commitCount": 80,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "AI에게 승인한 인물 그림을 고쳐 달라고 했더니 얼굴이 딴사람이 됐습니다. 알고 보니 원본 파일이 넘어가지 않고 있었습니다.",
+    "en": "I asked the AI to edit an approved character image, and the face became someone else. It turned out the original file was never sent."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#인디게임",
+    "#AI그림",
+    "#gamedev",
+    "#devlog",
+    "#추리게임"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-18.poster.jpg?v=mvdwkioz",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-18.ko.mp4?v=mvdwkm4s",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-18.ko.sm.mp4?v=mvdwksbb",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-18.en.poster.jpg?v=mvdwls16",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-18.en.mp4?v=mvdwlv1b",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-18.en.sm.mp4?v=mvdwm0kq"
+  }
+}
