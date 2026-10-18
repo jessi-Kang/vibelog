@@ -25,10 +25,10 @@
     "repoUrl": "https://github.com/jessi-Kang/lie-detective",
     "language": "JavaScript",
     "lastActivity": "2026-10-18",
-    "weekCommits": 14,
-    "todayCommits": 3,
+    "weekCommits": 6,
+    "todayCommits": 0,
     "totalCommits": 164,
-    "countsDate": "2026-10-18",
+    "countsDate": "2026-10-19",
     "theme": "highlighter"
   },
   {
@@ -57,10 +57,10 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-18",
-    "weekCommits": 119,
-    "todayCommits": 2,
+    "weekCommits": 112,
+    "todayCommits": 0,
     "totalCommits": 563,
-    "countsDate": "2026-10-18"
+    "countsDate": "2026-10-19"
   },
   {
     "slug": "apart",
@@ -92,7 +92,7 @@
     "weekCommits": 7,
     "todayCommits": 0,
     "totalCommits": 262,
-    "countsDate": "2026-10-18",
+    "countsDate": "2026-10-19",
     "theme": "paper"
   },
   {
@@ -129,7 +129,7 @@
     "weekCommits": 3,
     "todayCommits": 0,
     "totalCommits": 1078,
-    "countsDate": "2026-10-18",
+    "countsDate": "2026-10-19",
     "theme": "blueprint",
     "hidden": true,
     "alias": "A"
@@ -147,7 +147,7 @@
     "weekCommits": 1,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-18",
+    "countsDate": "2026-10-19",
     "theme": "highlighter",
     "hidden": true,
     "alias": "C"
@@ -181,7 +181,7 @@
     "weekCommits": 1,
     "todayCommits": 0,
     "totalCommits": 3,
-    "countsDate": "2026-10-18",
+    "countsDate": "2026-10-19",
     "theme": "blueprint",
     "hidden": true,
     "alias": "B"
