@@ -1,0 +1,1074 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "실행 기록에는 프로젝트가 6개라고 나오지만 줄은 5개뿐이고, 거짓말 탐정 줄이 빠져 있습니다.",
+  "altEn": "The run log says 6 projects but shows only 5 lines, and the Lie Detective line is missing.",
+  "caption": "프로젝트는 6개인데 줄은 5개뿐이었습니다",
+  "captionEn": "6 projects, but only 5 lines",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 280",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "실행 기록에 프로젝트 6개 중 5줄만 있고 거짓말 탐정 줄이 빠진 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "실행 기록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "32",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "프로젝트 6개"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "50",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "61",
+      "width": "150",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "86",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "97",
+      "width": "190",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "122",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "133",
+      "width": "120",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "158",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "169",
+      "width": "170",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "194",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "205",
+      "width": "140",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "294",
+      "y1": "50",
+      "x2": "294",
+      "y2": "222",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "141",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "줄 5개"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "236",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "150",
+      "y": "255",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "거짓말 탐정 — 빠짐"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 280",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The run log has only 5 lines for 6 projects, with the Lie Detective line missing"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "32",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Run log"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "32",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "6 projects"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "50",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "61",
+      "width": "150",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "86",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "97",
+      "width": "190",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "122",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "133",
+      "width": "120",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "158",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "169",
+      "width": "170",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "194",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "34",
+      "y": "205",
+      "width": "140",
+      "height": "6",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "294",
+      "y1": "50",
+      "x2": "294",
+      "y2": "222",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "141",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "5 lines"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "236",
+      "width": "260",
+      "height": "28",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "150",
+      "y": "255",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Lie Detective — missing"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "기본 브랜치만 읽어서 새 커밋이 0개로 세어지고, 실제 작업이 쌓인 preview 브랜치는 읽지 않았습니다.",
+  "altEn": "Only the default branch was read, so no new commits were counted, while the work piled up on the unread preview branch.",
+  "caption": "작업은 preview에 쌓였는데, 기본 브랜치만 보고 있었습니다",
+  "captionEn": "The work was on preview, but only the default branch was being read",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "기본 브랜치만 읽고 작업이 쌓인 preview 브랜치는 읽지 않아 새 커밋이 0개로 세어진 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "50",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기본 브랜치"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "50",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "읽던 곳"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "72",
+      "x2": "370",
+      "y2": "72",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "72",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "70",
+      "cy": "72",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "100",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "새 커밋 0개"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M80 72 C100 72 100 170 130 170 L370 170",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "175",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "preview"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "150",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "170",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "190",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "210",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "230",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "250",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "270",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "290",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "310",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "330",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "350",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "212",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "작업은 전부 여기 — 읽지 않음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 240",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Only the default branch was read; the preview branch holding the work was not, so no new commits were counted"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "50",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "default branch"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "50",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "read here"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "72",
+      "x2": "370",
+      "y2": "72",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "72",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "70",
+      "cy": "72",
+      "r": "5",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "100",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "new commits: none"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M80 72 C100 72 100 170 130 170 L370 170",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "175",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "preview"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "150",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "170",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "190",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "210",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "230",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "250",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "270",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "290",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "310",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "330",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "350",
+      "cy": "170",
+      "r": "5",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "212",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "all the work is here — not read"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 1,
+  "alt": "브랜치마다 마지막 커밋 시각을 비교해, 가장 최근인 preview 브랜치를 읽습니다.",
+  "altEn": "Each branch's last commit time is compared, and the most recent one, preview, gets read.",
+  "caption": "이제는 마지막 커밋이 가장 최근인 브랜치를 읽습니다",
+  "captionEn": "Now the branch with the newest last commit gets read",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "마지막 커밋 시각을 비교해 가장 최근인 preview 브랜치를 읽는 모습"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "width": "350",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "54",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "기본 브랜치"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "354",
+      "y": "54",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "마지막 커밋 오래전"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "86",
+      "width": "350",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "112",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "preview"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "354",
+      "y": "112",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "마지막 커밋 최근"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "130",
+      "x2": "195",
+      "y2": "156",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,154 202,154 195,166",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "이 브랜치를 읽음"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 210",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Last commit times are compared and the most recent branch, preview, gets read"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "28",
+      "width": "350",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "54",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "default branch"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "354",
+      "y": "54",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "last commit: long ago"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "86",
+      "width": "350",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "112",
+      "font-family": "var(--font-mono)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "preview"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "354",
+      "y": "112",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "last commit: recent"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "130",
+      "x2": "195",
+      "y2": "156",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "188,154 202,154 195,166",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "192",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "read this branch"
+    }
+   ]
+  }
+ }
+]

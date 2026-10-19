@@ -1,16 +1,12 @@
 {
-  "at": "2026-10-19T14:02:08.484Z",
+  "at": "2026-10-19T18:47:26.608Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 0 active"
-    },
-    {
-      "text": "skip     · vibelog 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · vibelog only 3 of 3 commits have a body — a post comes at 5"
+      "text": "collect  · 6 repos, 2 active"
     },
     {
       "text": "skip     · apart 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
@@ -27,6 +23,59 @@
     {
       "text": "skip     · portfolio-tmp 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
       "textEn": "skip     · portfolio-tmp only 1 of 1 commit have a body — a post comes at 5"
+    },
+    {
+      "text": "safety   · vibelog 재료 5개 통과 · Jev 토큰 4,058",
+      "textEn": "safety   · vibelog 5 inputs passed · Jev tokens 4,058"
+    },
+    {
+      "text": "generate · vibelog/2026-10-19.md (ko, en) · 토큰 in 15,778 · out 8,475 · cache 6,325",
+      "textEn": "generate · vibelog/2026-10-19.md (ko, en) · tokens in 15,778 · out 8,475 · cache 6,325"
+    },
+    {
+      "text": "review   · vibelog/2026-10-19 막힌 문장 6개 → 다시 씀 → 남은 것 4개 · 토큰 in 4,513 · out 2,080",
+      "textEn": "review   · vibelog/2026-10-19 6 unclear → rewritten → 4 left · tokens in 4,513 · out 2,080"
+    },
+    {
+      "text": "figures  · vibelog/2026-10-19 3장 · 토큰 in 1,723 · out 9,378",
+      "textEn": "figures  · vibelog/2026-10-19 3 figures · tokens in 1,723 · out 9,378"
+    },
+    {
+      "text": "safety   · lie-detective 재료 94개 통과 · Jev 토큰 64,533",
+      "textEn": "safety   · lie-detective 94 inputs passed · Jev tokens 64,533"
+    },
+    {
+      "text": "generate · lie-detective/2026-10-19.md (ko, en) · 토큰 in 58,926 · out 7,824 · cache 12,650",
+      "textEn": "generate · lie-detective/2026-10-19.md (ko, en) · tokens in 58,926 · out 7,824 · cache 12,650"
+    },
+    {
+      "text": "review   · lie-detective/2026-10-19 막힌 문장 6개 → 다시 씀 → 남은 것 5개 · 토큰 in 4,012 · out 1,427",
+      "textEn": "review   · lie-detective/2026-10-19 6 unclear → rewritten → 5 left · tokens in 4,012 · out 1,427"
+    },
+    {
+      "text": "figures  · lie-detective/2026-10-19 2장 · 토큰 in 1,487 · out 5,667 · cache 1,646",
+      "textEn": "figures  · lie-detective/2026-10-19 2 figures · tokens in 1,487 · out 5,667 · cache 1,646"
+    },
+    {
+      "text": "shorts   · vibelog/2026-10-19 (ko, en) · 대본 토큰 in 12,007 · out 13,299 · cache 8,718",
+      "textEn": "shorts   · vibelog/2026-10-19 (ko, en) · script tokens in 12,007 · out 13,299 · cache 8,718"
+    },
+    {
+      "text": "listen   · vibelog/2026-10-19 막힌 문장 5개 → 다시 씀 → 남은 것 3개 · 토큰 in 2,391 · out 2,036",
+      "textEn": "listen   · vibelog/2026-10-19 5 unclear → rewritten → 3 left · tokens in 2,391 · out 2,036"
+    },
+    {
+      "text": "warn     · vibelog/2026-10-19 데모 화면 중복 — 같은 자리를 두 번 보여줍니다 (/, 정류장 3개)",
+      "textEn": "warn     · vibelog/2026-10-19 duplicate demo screen — same view shown twice (/, 3 stops)",
+      "kind": "fail"
+    },
+    {
+      "text": "shorts   · lie-detective/2026-10-19 (ko, en) · 대본 토큰 in 11,517 · out 9,416 · cache 8,718",
+      "textEn": "shorts   · lie-detective/2026-10-19 (ko, en) · script tokens in 11,517 · out 9,416 · cache 8,718"
+    },
+    {
+      "text": "listen   · lie-detective/2026-10-19 막힌 문장 2개 → 다시 씀 → 남은 것 3개 · 토큰 in 2,376 · out 1,732",
+      "textEn": "listen   · lie-detective/2026-10-19 2 unclear → rewritten → 3 left · tokens in 2,376 · out 1,732"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

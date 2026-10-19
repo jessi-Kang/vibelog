@@ -1,0 +1,708 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "짧은 장면 6개를 이은 26초 인트로를, 행동 하나로 짠 12초 인트로로 다시 만든 것을 길이로 비교한 그림",
+  "altEn": "A length comparison of the first 26-second intro stitched from short clips and the rebuilt 12-second intro built around one action",
+  "caption": "멈춘 장면을 이어 붙이는 대신, 행동 하나로 다시 짰습니다",
+  "captionEn": "Instead of stitching frozen scenes, I rebuilt it around one action",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "짧은 장면 6개를 이은 26초 인트로와 행동 하나로 만든 12초 인트로의 길이 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "처음 만든 인트로"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "80",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "140",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "200",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "260",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "320",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "125",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "26초 · 장면 6개"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "새로 만든 인트로"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "162",
+      "height": "44",
+      "rx": "4",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "196",
+      "y": "197",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "12초 · 행동 하나"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The first 26-second intro of stitched clips compared with the 12-second intro built on one action"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "First intro"
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "20",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "80",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "140",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "200",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "260",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "320",
+        "y": "55",
+        "width": "50",
+        "height": "44",
+        "rx": "4"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "125",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "26 sec · stitched clips"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "158",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Rebuilt intro"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "width": "162",
+      "height": "44",
+      "rx": "4",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "194",
+      "y": "197",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "12 sec · one action"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "카메라가 지후에서 시작해 탁자 위 사진을 따라간 뒤 해원에서 끝나는 경로를 보여 주는 그림",
+  "altEn": "The camera path starting on Jihoo, following the photo across the table, and ending on Haewon",
+  "caption": "두 사람을 한꺼번에 담는 대신, 카메라가 사진을 따라 건너갑니다",
+  "captionEn": "Instead of framing both at once, the camera travels with the photo",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 215",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "카메라가 지후에서 시작해 사진을 따라가고 해원에서 끝나는 경로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "24",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "카메라 이동"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M70 52 Q195 22 316 50",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "322,52 306,40 308,55",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "70",
+      "cy": "80",
+      "r": "18",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "98",
+      "width": "36",
+      "height": "22",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "320",
+      "cy": "80",
+      "r": "18",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "302",
+      "y": "98",
+      "width": "36",
+      "height": "22",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "120",
+      "width": "310",
+      "height": "14",
+      "rx": "3",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "108",
+      "width": "30",
+      "height": "12",
+      "rx": "2",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "140",
+      "y1": "100",
+      "x2": "240",
+      "y2": "100",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "248,100 238,95 238,105",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "지후"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "사진"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "해원"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "시작"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "따라감"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "끝"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 215",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The camera starts on Jihoo, follows the photo, and ends on Haewon"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "24",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Camera move"
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M70 52 Q195 22 316 50",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "322,52 306,40 308,55",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "70",
+      "cy": "80",
+      "r": "18",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "98",
+      "width": "36",
+      "height": "22",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "320",
+      "cy": "80",
+      "r": "18",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "302",
+      "y": "98",
+      "width": "36",
+      "height": "22",
+      "rx": "6",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "120",
+      "width": "310",
+      "height": "14",
+      "rx": "3",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "180",
+      "y": "108",
+      "width": "30",
+      "height": "12",
+      "rx": "2",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "140",
+      "y1": "100",
+      "x2": "240",
+      "y2": "100",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "248,100 238,95 238,105",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Jihoo"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Photo"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "165",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Haewon"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "70",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "start"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "follow"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "320",
+      "y": "195",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "end"
+    }
+   ]
+  }
+ }
+]

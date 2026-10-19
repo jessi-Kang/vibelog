@@ -1,0 +1,367 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-19",
+  "day": 23,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "프로젝트 하나가 기록에서 사라졌습니다",
+      "en": "One project vanished from the log",
+      "keywords": [
+        "사라졌습니다"
+      ],
+      "keywordsEn": [
+        "vanished"
+      ],
+      "koLines": [
+        "프로젝트 하나가",
+        "기록에서",
+        "사라졌습니다"
+      ],
+      "enLines": [
+        "One project",
+        "vanished",
+        "from the log"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "홈 화면엔 프로젝트마다 한 줄씩 남습니다.",
+      "en": "The home page shows one line per project.",
+      "keywords": [
+        "한 줄씩"
+      ],
+      "keywordsEn": [
+        "one line"
+      ],
+      "koLines": [
+        "홈 화면엔 프로젝트마다",
+        "한 줄씩 남습니다."
+      ],
+      "enLines": [
+        "The home page shows",
+        "one line per project."
+      ],
+      "screen": "/",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "거짓말 탐정이라는 제 프로젝트만 빠졌습니다.",
+      "en": "Only my project, Lie Detective, was missing.",
+      "keywords": [
+        "빠졌습니다."
+      ],
+      "keywordsEn": [
+        "missing."
+      ],
+      "koLines": [
+        "거짓말 탐정이라는",
+        "제 프로젝트만 빠졌습니다."
+      ],
+      "enLines": [
+        "Only my project, Lie Detective,",
+        "was missing."
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "프로젝트 6개",
+          "홈의 줄 5개",
+          "5"
+        ],
+        "labelsEn": [
+          "6 projects",
+          "5 lines",
+          "5"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "커밋, 즉 작업 저장을 103개나 했는데요.",
+      "en": "It had saved 103 commits of work.",
+      "keywords": [
+        "103개나"
+      ],
+      "keywordsEn": [
+        "103 commits"
+      ],
+      "koLines": [
+        "커밋, 즉 작업 저장을",
+        "103개나 했는데요."
+      ],
+      "enLines": [
+        "It had saved",
+        "103 commits of work."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "거짓말 탐정",
+          "103개",
+          "0개",
+          "올린 커밋",
+          "세어진 커밋"
+        ],
+        "labelsEn": [
+          "Lie Detective",
+          "103",
+          "0",
+          "Pushed",
+          "Counted"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "저는 기본 브랜치, 즉 첫 갈래만 셌습니다.",
+      "en": "I only counted the default branch, the main line.",
+      "keywords": [
+        "기본 브랜치,"
+      ],
+      "keywordsEn": [
+        "default branch,"
+      ],
+      "koLines": [
+        "저는 기본 브랜치,",
+        "즉 첫 갈래만 셌습니다."
+      ],
+      "enLines": [
+        "I only counted the default branch,",
+        "the main line."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "기본 브랜치만 읽음",
+          "커밋 0개",
+          "줄이 안 남음",
+          "이름이 사라짐"
+        ],
+        "labelsEn": [
+          "Default branch only",
+          "0 commits",
+          "No line logged",
+          "Name vanishes"
+        ],
+        "icons": [
+          {
+            "name": "tabler:git-branch",
+            "paths": [
+              {
+                "d": "M5 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0M5 6a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M7 8v8m2 2h6a2 2 0 0 0 2-2v-5"
+              },
+              {
+                "d": "m14 14l3-3l3 3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:git-commit",
+            "paths": [
+              {
+                "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:ghost",
+            "paths": [
+              {
+                "d": "M5 11a7 7 0 0 1 14 0v7a1.78 1.78 0 0 1-3.1 1.4a1.65 1.65 0 0 0-2.6 0a1.65 1.65 0 0 1-2.6 0a1.65 1.65 0 0 0-2.6 0A1.78 1.78 0 0 1 5 18zm5-1h.01M14 10h.01"
+              },
+              {
+                "d": "M10 14a3.5 3.5 0 0 0 4 0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 가장 최근에 커밋한 브랜치를 읽습니다.",
+      "en": "Now it reads the branch with the latest commit.",
+      "keywords": [
+        "가장 최근에"
+      ],
+      "keywordsEn": [
+        "latest commit"
+      ],
+      "koLines": [
+        "이제 가장 최근에",
+        "커밋한 브랜치를 읽습니다."
+      ],
+      "enLines": [
+        "Now it reads the branch",
+        "with the latest commit."
+      ],
+      "art": "a hand reaching past bare branches to pick the newest sprouting twig on a tree",
+      "icon": {
+        "name": "tabler:git-branch",
+        "paths": [
+          {
+            "d": "M5 18a2 2 0 1 0 4 0a2 2 0 1 0-4 0M5 6a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M7 8v8m2 2h6a2 2 0 0 0 2-2v-5"
+          },
+          {
+            "d": "m14 14l3-3l3 3"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "글을 안 쓴 프로젝트도 줄에 이유를 씁니다.",
+      "en": "Projects without a post now write why on their line.",
+      "keywords": [
+        "이유를"
+      ],
+      "keywordsEn": [
+        "write why"
+      ],
+      "koLines": [
+        "글을 안 쓴 프로젝트도",
+        "줄에 이유를 씁니다."
+      ],
+      "enLines": [
+        "Projects without a post",
+        "now write why on their line."
+      ],
+      "screen": "/",
+      "find": "지난 실행",
+      "findEn": "last run",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "오늘 밤 거짓말 탐정 글이 나오는지 보겠습니다.",
+      "en": "Tonight I'll see if a Lie Detective post comes out.",
+      "keywords": [
+        "거짓말 탐정 글이"
+      ],
+      "keywordsEn": [
+        "Lie Detective post"
+      ],
+      "koLines": [
+        "오늘 밤 거짓말 탐정 글이",
+        "나오는지 보겠습니다."
+      ],
+      "enLines": [
+        "Tonight I'll see if",
+        "a Lie Detective post comes out."
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "end",
+      "ko": "빠진 한 줄이 문제를 알려 줬습니다.",
+      "en": "One missing line gave the problem away.",
+      "keywords": [
+        "빠진 한 줄이"
+      ],
+      "keywordsEn": [
+        "One missing line"
+      ],
+      "koLines": [
+        "빠진 한 줄이",
+        "문제를 알려 줬습니다."
+      ],
+      "enLines": [
+        "One missing line",
+        "gave the problem away."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "프로젝트가 기록에서 빠졌다",
+    "titleEn": "A project went missing",
+    "before": "커밋 103개가 0개로 세어짐",
+    "after": "가장 최근 브랜치를 읽음",
+    "beforeEn": "103 commits counted as zero",
+    "afterEn": "Reads the latest branch"
+  },
+  "commits": [
+    [
+      "78b3f35",
+      "fix: 새 커밋이 없는 레포도 실행 기록에 이유를 남긴다"
+    ],
+    [
+      "4ef0a84",
+      "fix: 기본 브랜치가 아닌 곳에서 작업한 커밋도 읽는다"
+    ],
+    [
+      "4c5a1c7",
+      "fix: 배경이 덜 지워진 쇼츠 그림을 걸러 다시 그린다"
+    ],
+    [
+      "9156b8d",
+      "feat: 쇼츠 화면 녹화를 저장해 두고 다시 만들 때 그대로 쓴다"
+    ],
+    [
+      "8e4311e",
+      "feat: 보고 있는 페이지의 메뉴를 다시 누르면 그 페이지를 새로 연다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "78b3f35",
+      "fix: record a reason in run history for repos with no new commits"
+    ],
+    [
+      "4ef0a84",
+      "fix: read commits made on non-default branches too"
+    ],
+    [
+      "4c5a1c7",
+      "fix: filter out shorts drawings with incompletely removed backgrounds and redraw them"
+    ],
+    [
+      "9156b8d",
+      "feat: save shorts screen recordings and reuse them when regenerating"
+    ],
+    [
+      "8e4311e",
+      "feat: reopen the current page when its menu item is clicked again"
+    ]
+  ],
+  "commitCount": 5,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "커밋 103개를 올린 프로젝트가 실행 기록에서 통째로 빠졌습니다. 기본 브랜치만 읽던 탓이었고, 이제 가장 최근에 커밋한 브랜치를 읽습니다.",
+    "en": "A project with 103 commits vanished from the run log. I was only reading the default branch, so now it reads the most recently committed one."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#브랜치",
+    "#버그수정",
+    "#devlog",
+    "#git",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-19.poster.jpg?v=mvfll64p",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-19.ko.mp4?v=mvfll80o",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-19.ko.sm.mp4?v=mvfllgnl",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-19.en.poster.jpg?v=mvflmupu",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-19.en.mp4?v=mvflmwnh",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-19.en.sm.mp4?v=mvfln49t"
+  }
+}

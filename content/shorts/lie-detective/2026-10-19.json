@@ -1,0 +1,1176 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-19",
+  "day": 3,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "26초 인트로가 멈춰 보였습니다",
+      "en": "My 26-second intro looked frozen",
+      "keywords": [
+        "멈춰"
+      ],
+      "keywordsEn": [
+        "frozen"
+      ],
+      "koLines": [
+        "26초 인트로가",
+        "멈춰 보였습니다"
+      ],
+      "enLines": [
+        "My 26-second intro",
+        "looked frozen"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "AI로 만든 영상 6개를 이어 붙였죠.",
+      "en": "It was 6 AI-made clips stitched together.",
+      "keywords": [
+        "6개를"
+      ],
+      "keywordsEn": [
+        "6 AI-made clips"
+      ],
+      "koLines": [
+        "AI로 만든 영상 6개를",
+        "이어 붙였죠."
+      ],
+      "enLines": [
+        "It was 6 AI-made clips",
+        "stitched together."
+      ],
+      "art": "six short film strips taped together end to end",
+      "stat": "6개",
+      "statEn": "6 clips",
+      "icon": {
+        "name": "tabler:movie",
+        "paths": [
+          {
+            "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4-2v16m8-16v16M4 8h4m-4 8h4m-4-4h16m-4-4h4m-4 8h4"
+          }
+        ]
+      },
+      "motif": "tile"
+    },
+    {
+      "scene": "build",
+      "ko": "사진을 건네는 행동 하나로 다시 짰습니다.",
+      "en": "I rebuilt it around one action: passing a photo.",
+      "keywords": [
+        "행동 하나로"
+      ],
+      "keywordsEn": [
+        "one action"
+      ],
+      "koLines": [
+        "사진을 건네는 행동 하나로",
+        "다시 짰습니다."
+      ],
+      "enLines": [
+        "I rebuilt it around",
+        "one action: passing a photo."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "영상 6개",
+          "26초, 멈춤",
+          "행동 하나",
+          "12초"
+        ],
+        "labelsEn": [
+          "6 clips",
+          "26s, frozen",
+          "One action",
+          "12s"
+        ],
+        "icons": [
+          {
+            "name": "tabler:movie",
+            "paths": [
+              {
+                "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm4-2v16m8-16v16M4 8h4m-4 8h4m-4-4h16m-4-4h4m-4 8h4"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:photo",
+            "paths": [
+              {
+                "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+              },
+              {
+                "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+              }
+            ]
+          },
+          null
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "게임 주인공 지후가 사진을 밀어 건넵니다.",
+      "en": "Jihoo, one of the game's leads, slides over a photo.",
+      "keywords": [
+        "밀어"
+      ],
+      "keywordsEn": [
+        "slides"
+      ],
+      "koLines": [
+        "게임 주인공 지후가",
+        "사진을 밀어 건넵니다."
+      ],
+      "enLines": [
+        "Jihoo, one of the game's leads,",
+        "slides over a photo."
+      ],
+      "art": "a hand sliding a photograph across a table toward another person",
+      "icon": {
+        "name": "tabler:photo",
+        "paths": [
+          {
+            "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+          },
+          {
+            "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+          },
+          {
+            "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "해원이 눈으로 확인하면 12초가 끝납니다.",
+      "en": "Haewon checks it, and the 12 seconds are up.",
+      "keywords": [
+        "눈으로"
+      ],
+      "keywordsEn": [
+        "checks"
+      ],
+      "koLines": [
+        "해원이 눈으로 확인하면",
+        "12초가 끝납니다."
+      ],
+      "enLines": [
+        "Haewon checks it,",
+        "and the 12 seconds are up."
+      ],
+      "art": "a person leaning over a table examining a photograph closely",
+      "stat": "12초",
+      "statEn": "12 seconds",
+      "icon": {
+        "name": "tabler:eye",
+        "paths": [
+          {
+            "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"
+          },
+          {
+            "d": "M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 두 사람을 한 화면에 담게 했습니다.",
+      "en": "At first, I kept both people in one frame.",
+      "keywords": [
+        "한 화면에"
+      ],
+      "keywordsEn": [
+        "one frame"
+      ],
+      "koLines": [
+        "처음엔 두 사람을",
+        "한 화면에 담게 했습니다."
+      ],
+      "enLines": [
+        "At first, I kept",
+        "both people in one frame."
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "화면에 담기는 폭",
+          "두 사람",
+          "한 사람씩"
+        ],
+        "labelsEn": [
+          "What fits in frame",
+          "Two people",
+          "One at a time"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "카메라가 움직이자 한 사람이 밀려났습니다.",
+      "en": "When the camera moved, one got pushed off screen.",
+      "keywords": [
+        "밀려났습니다."
+      ],
+      "keywordsEn": [
+        "pushed off screen"
+      ],
+      "koLines": [
+        "카메라가 움직이자",
+        "한 사람이 밀려났습니다."
+      ],
+      "enLines": [
+        "When the camera moved,",
+        "one got pushed off screen."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "카메라 이동",
+          "화면 안",
+          "화면 밖",
+          "한 사람",
+          "다른 사람"
+        ],
+        "labelsEn": [
+          "Camera moves",
+          "In frame",
+          "Off screen",
+          "One person",
+          "The other"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "카메라가 손과 사진을 따라가게 했습니다.",
+      "en": "So the camera follows the hand and the photo.",
+      "keywords": [
+        "따라가게"
+      ],
+      "keywordsEn": [
+        "follows"
+      ],
+      "koLines": [
+        "카메라가 손과 사진을",
+        "따라가게 했습니다."
+      ],
+      "enLines": [
+        "So the camera follows",
+        "the hand and the photo."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "지후",
+          "건네는 손",
+          "사진",
+          "해원"
+        ],
+        "labelsEn": [
+          "Jihoo",
+          "Passing hand",
+          "Photo",
+          "Haewon"
+        ],
+        "icons": [
+          {
+            "name": "tabler:user",
+            "paths": [
+              {
+                "d": "M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:hand-finger",
+            "paths": [
+              {
+                "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 1 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+              },
+              {
+                "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+              }
+            ]
+          },
+          {
+            "name": "tabler:photo",
+            "paths": [
+              {
+                "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+              },
+              {
+                "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:user",
+            "paths": [
+              {
+                "d": "M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "이제 동작과 음악이 잘 맞는지 다듬겠습니다.",
+      "en": "Now I'll tune how the motion fits the music.",
+      "keywords": [
+        "동작과 음악이"
+      ],
+      "keywordsEn": [
+        "motion",
+        "music"
+      ],
+      "koLines": [
+        "이제 동작과 음악이",
+        "잘 맞는지 다듬겠습니다."
+      ],
+      "enLines": [
+        "Now I'll tune how",
+        "the motion fits the music."
+      ],
+      "art": "a metronome standing beside a small dancing figurine mid-step",
+      "icon": {
+        "name": "tabler:music",
+        "paths": [
+          {
+            "d": "M3 17a3 3 0 1 0 6 0a3 3 0 0 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 0 0-6 0"
+          },
+          {
+            "d": "M9 17V4h10v13M9 8h10"
+          }
+        ]
+      },
+      "motif": "refine"
+    },
+    {
+      "scene": "end",
+      "ko": "대사 없이 12초면 충분했습니다.",
+      "en": "No dialogue, and 12 seconds was enough.",
+      "keywords": [
+        "대사 없이"
+      ],
+      "keywordsEn": [
+        "No dialogue"
+      ],
+      "koLines": [
+        "대사 없이",
+        "12초면 충분했습니다."
+      ],
+      "enLines": [
+        "No dialogue,",
+        "and 12 seconds was enough."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "한 사람이 밀려났다",
+    "titleEn": "One of them fell out of frame",
+    "before": "카메라가 움직이면 한 사람이 화면 밖으로 밀려남",
+    "after": "카메라가 지후에서 손과 사진을 따라 해원으로",
+    "beforeEn": "When the camera moved, one person got pushed off screen",
+    "afterEn": "The camera follows the hand and photo from Jihoo to Haewon"
+  },
+  "commits": [
+    [
+      "a7c4189",
+      "docs: 인트로 현행 소스와 재제작 경로 갱신"
+    ],
+    [
+      "53a1933",
+      "asset: 독립 음악과 고정 로고를 연결한 세로 인트로 제작"
+    ],
+    [
+      "3e5bf09",
+      "asset: 탁자 위 전달 동작의 연속 모션 보관"
+    ],
+    [
+      "839bc9b",
+      "asset: 연속 동작 수정 원본과 접점 검수 자료 보관"
+    ],
+    [
+      "e3a5061",
+      "design: 사진 집기와 관찰 동작의 접점 연속성 검수 보강"
+    ],
+    [
+      "ea5848d",
+      "asset: 사진 전달을 따라 이동하는 단독 구도 모션 원본 보관"
+    ],
+    [
+      "1710e0a",
+      "design: 사진 전달을 따라 단독 구도로 이동하는 촬영 요청 기록"
+    ],
+    [
+      "1bf56cf",
+      "asset: 시트 기반 연속 모션 원본과 재제작 요청 기록 보관"
+    ],
+    [
+      "6d80f6b",
+      "asset: 원본 시트 참조와 연속 장면 소스 제작 기준 고정"
+    ],
+    [
+      "a3853ea",
+      "asset: 고정 로고와 하강 배경을 구성하고 연속 장면 재편집 기준 정리"
+    ],
+    [
+      "c5899a5",
+      "asset: 컷별 카메라 이동과 세로 고해상도 비교본 구성"
+    ],
+    [
+      "7c2dd89",
+      "asset: 인트로 전환과 테이블 배경의 로고 마무리 구성"
+    ],
+    [
+      "8737746",
+      "asset: 두 주인공 모션과 음악을 연결한 세로형 인트로 제작"
+    ],
+    [
+      "ad5456c",
+      "asset: 인트로 배경과 투명 소품 소스 9종 제작"
+    ],
+    [
+      "3c6df14",
+      "design: 인트로 배경 작화와 음악 편집 방향 정리"
+    ],
+    [
+      "8f3bda1",
+      "asset: 두 주인공 인트로의 세로형 러프 보드 8컷 제작"
+    ],
+    [
+      "7eca4e3",
+      "design: 두 주인공의 세로형 인트로 스토리보드 설계"
+    ],
+    [
+      "5ef979f",
+      "design: 타이틀 자산을 분리하고 편집 가능한 화면 구성 정리"
+    ],
+    [
+      "fcadf5a",
+      "design: 관찰선 로고를 적용한 세로형 타이틀 배치 시안 제작"
+    ],
+    [
+      "2a40ce6",
+      "design: 세로형 인트로 구도와 관찰선 로고 기준 정리"
+    ],
+    [
+      "eaf912b",
+      "design: 관찰과 진술을 주제로 로고와 인트로 시안 제작"
+    ],
+    [
+      "f080421",
+      "docs: 립싱크 기준 영상과 전신 발화 미채택 범위 확정"
+    ],
+    [
+      "755a15b",
+      "asset: 전신 질문 발화의 참고 영상과 검수 범위 보관"
+    ],
+    [
+      "b531f51",
+      "asset: 전신 발화의 입 벌어짐을 줄인 수정 후보 보관"
+    ],
+    [
+      "b6e2f09",
+      "asset: 전신 질문 발화 시안과 개구량 검수 이력 보관"
+    ],
+    [
+      "1af6503",
+      "asset: 질문 립싱크 수정 원본과 무음 검수본 보관 완료"
+    ],
+    [
+      "1871a78",
+      "asset: 질문 발화의 입술 모양 수정 시안과 전후 비교 보관"
+    ],
+    [
+      "53a2aa2",
+      "docs: 질문 초상의 발화 동기 비교 기준 확정"
+    ],
+    [
+      "cef66e5",
+      "asset: 차분한 질문 립싱크와 원본 음성 검수본 보관"
+    ],
+    [
+      "376496e",
+      "design: 차분한 질문 발화를 위한 립싱크 입력 명세 추가"
+    ],
+    [
+      "a2d7eca",
+      "chore: 립싱크 검수본의 재생용 업로드 기록 연결"
+    ],
+    [
+      "2e0b43d",
+      "asset: 절제된 질문 발화 립싱크 시안과 음성 검수본 보관"
+    ],
+    [
+      "1fbf9f4",
+      "design: 확정 음성을 재사용하는 질문 립싱크 검수 명세 추가"
+    ],
+    [
+      "3c8fa10",
+      "asset: 실제 질문 진입과 복귀 모션에 채택 음성 연결"
+    ],
+    [
+      "69d060e",
+      "fix: 음성을 포함한 모션 영상의 마지막 표본 추출 오류 수정"
+    ],
+    [
+      "60fa22c",
+      "asset: 질문 진입 모션을 보관하고 복귀 구간 제작 진행"
+    ],
+    [
+      "bf6cfde",
+      "asset: 주연 질문 동작 진입 구간 제작 요청과 원본 기준 보관"
+    ],
+    [
+      "31877ac",
+      "asset: 주연 음성과 표정 및 자세의 타이밍 검토 영상 제작"
+    ],
+    [
+      "a6745f9",
+      "asset: 지후 Robust 감정 세트를 연결 검토 기준으로 확정"
+    ],
+    [
+      "90ef09d",
+      "asset: 지후 Robust 감정 음성과 두 초 간격 미리듣기 보관"
+    ],
+    [
+      "c579998",
+      "feat: 지후의 채택된 Robust 중립을 기준으로 감정 음성 제작"
+    ],
+    [
+      "52974e5",
+      "asset: 지후 Robust 중립을 후속 연기 기준으로 확정"
+    ],
+    [
+      "e2de2c7",
+      "asset: 지후 Nathan Robust 중립 수정본과 참조 상태 연결"
+    ],
+    [
+      "57dbf4b",
+      "asset: 해원 현재 감정 연기 채택과 잔여 호흡음 메모 반영"
+    ],
+    [
+      "db17ad3",
+      "feat: 지후 중립 음성을 높은 안정성과 차분한 발성으로 제작"
+    ],
+    [
+      "46eed5a",
+      "asset: 낮은 긴장 이완을 지시한 안도 수정본 연결"
+    ],
+    [
+      "cd282fe",
+      "feat: 안도의 밝기를 낮추도록 대사와 발성 지시 조정"
+    ],
+    [
+      "62703ae",
+      "asset: 절제된 감정 상한과 날카로운 불편함 비교본 반영"
+    ],
+    [
+      "0d89d3d",
+      "feat: 불쾌한 경계 표현을 짧은 대사와 날카로운 발성으로 제작"
+    ],
+    [
+      "bf7e15d",
+      "asset: 불편함 수정본 미채택과 연기 방향 재검토 상태 반영"
+    ],
+    [
+      "f5df9e0",
+      "asset: 감정 미리듣기 사이에 두 초의 무음 간격 적용"
+    ],
+    [
+      "43945a1",
+      "asset: 감정별 시작 지시를 적용한 안도와 불편함 수정본 연결"
+    ],
+    [
+      "4e37439",
+      "feat: 안도와 불편함의 시작 발성 지시를 구분"
+    ],
+    [
+      "e977e98",
+      "asset: 단일 발성 지시로 만든 나머지 감정 수정본 보관"
+    ],
+    [
+      "5e52af7",
+      "feat: 채택된 단일 발성 지시를 나머지 감정에 적용"
+    ],
+    [
+      "fd26e33",
+      "asset: 감정 일관성 미달 결과를 분리하고 질문 수정본 연결"
+    ],
+    [
+      "b151f22",
+      "feat: 질문 연기의 중간 지시를 줄인 단일 수정본 제작"
+    ],
+    [
+      "862a494",
+      "asset: 해원 커스텀 감정 음성과 연속 미리듣기 연결"
+    ],
+    [
+      "d27fe6f",
+      "feat: 채택한 커스텀 중립을 기준으로 감정 음성 확장"
+    ],
+    [
+      "aa703c7",
+      "asset: 해원 Robust 수정본을 중립 연기 기준으로 확정"
+    ],
+    [
+      "98f8ede",
+      "asset: 해원 Robust 중립 수정본을 현재 음성에 연결"
+    ],
+    [
+      "82acc86",
+      "feat: 해원 중립 연기를 높은 안정성과 절제된 발성으로 조정"
+    ],
+    [
+      "fe357a5",
+      "asset: 해원 현재 음성을 커스텀 V4 최대 유사도 샘플로 교체"
+    ],
+    [
+      "4db389b",
+      "feat: 커스텀 음성 식별자를 고정해 선택 검증 보강"
+    ],
+    [
+      "e09eaef",
+      "feat: 계정 음성의 최대 유사도 중립 샘플 생성 추가"
+    ],
+    [
+      "5724873",
+      "asset: 주연 감정 음성 보관과 연기 참조 연결"
+    ],
+    [
+      "aa3d4d5",
+      "feat: 음성 태그의 공식 근거 분류와 사전 검사 추가"
+    ],
+    [
+      "c33c508",
+      "feat: 중립 음성을 재사용하는 V4 감정 확장 작업 추가"
+    ],
+    [
+      "f391353",
+      "design: 중립 음성 기준을 고정하고 감정 확장 단계로 전환"
+    ],
+    [
+      "3c5db0c",
+      "asset: 중립 연기 조정본의 검수와 후속 음성 계획 연결"
+    ],
+    [
+      "b4a6e2e",
+      "feat: 동일 음성의 절제된 중립 연기 비교 생성 추가"
+    ],
+    [
+      "88e1309",
+      "design: V4 음성 기준과 캐릭터 제작 후속 단계 정리"
+    ],
+    [
+      "5e51a2c",
+      "asset: 두 모델의 음성 비교 결과와 검수 기록 연결"
+    ],
+    [
+      "b1053df",
+      "feat: 두 음성을 V2와 V4 모델로 비교 생성"
+    ],
+    [
+      "d64915d",
+      "feat: 공식 음성 라이브러리를 사용하는 샘플 생성 작업 추가"
+    ],
+    [
+      "0516ab9",
+      "asset: 미채택 음성을 활성 연출 연결에서 제외"
+    ],
+    [
+      "d1895d5",
+      "asset: 주연 캐릭터의 동작 연결 영상과 검수 기록 추가"
+    ],
+    [
+      "259c08d",
+      "docs: 음성 견적 확인 범위를 명확히 표시"
+    ],
+    [
+      "ac728ba",
+      "design: 상황별 표정과 제스처의 연출 조합 정리"
+    ],
+    [
+      "c5473b1",
+      "asset: 주연 캐릭터의 한국어 음성 샘플 보관"
+    ],
+    [
+      "e8d6885",
+      "asset: 자료 전달 컷과 주연 제스처 12종 비교표 보관"
+    ],
+    [
+      "bca7c3d",
+      "asset: 두 주연의 이동과 방향 전환 제스처와 검수 기록 보관"
+    ],
+    [
+      "04ebdc1",
+      "asset: 두 주연의 감정 억제 제스처와 검수 기록 보관"
+    ],
+    [
+      "1eaef68",
+      "asset: 두 주연의 고유 습관 제스처와 검수 기록 보관"
+    ],
+    [
+      "1cc05c1",
+      "asset: 두 주연의 방어와 거절 제스처와 검수 기록 보관"
+    ],
+    [
+      "033565f",
+      "asset: 두 주연의 놀람 반응 제스처와 검수 기록 보관"
+    ],
+    [
+      "15cdf5b",
+      "asset: 두 주연의 관찰 제스처와 검수 기록 보관"
+    ],
+    [
+      "f4878c2",
+      "asset: 두 주연의 생각 제스처와 검수 기록 보관"
+    ],
+    [
+      "ce78b1c",
+      "asset: 두 주연의 질문 제스처와 검수 기록 보관"
+    ],
+    [
+      "eab32ff",
+      "asset: 두 주연의 설명 제스처와 검수 기록 보관"
+    ],
+    [
+      "16e29bd",
+      "asset: 두 주연의 경청 제스처와 검수 기록 보관"
+    ],
+    [
+      "91fb0dc",
+      "design: 승인 전신을 기준으로 인물별 제스처 계획 정리"
+    ],
+    [
+      "d1c235b",
+      "asset: 두 주연의 고해상도 정면 전신 이미지 보관"
+    ],
+    [
+      "ffe4d49",
+      "docs: 공개 개발 기록의 정보 보호 기준 강화"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "a7c4189",
+      "docs: update intro current source and regeneration path"
+    ],
+    [
+      "53a1933",
+      "asset: create vertical intro linking independent music and fixed logo"
+    ],
+    [
+      "3e5bf09",
+      "asset: archive continuous motion of handoff action on table"
+    ],
+    [
+      "839bc9b",
+      "asset: archive continuous motion fix source and contact review materials"
+    ],
+    [
+      "e3a5061",
+      "design: reinforce contact continuity review of photo pickup and observation actions"
+    ],
+    [
+      "ea5848d",
+      "asset: archive standalone composition motion source following photo handoff"
+    ],
+    [
+      "1710e0a",
+      "design: record shooting request for standalone composition moving along photo handoff"
+    ],
+    [
+      "1bf56cf",
+      "asset: archive sheet-based continuous motion source and regeneration request record"
+    ],
+    [
+      "6d80f6b",
+      "asset: fix sheet reference and continuous scene source production standard"
+    ],
+    [
+      "a3853ea",
+      "asset: compose fixed logo and descending background, organize continuous scene re-edit standard"
+    ],
+    [
+      "c5899a5",
+      "asset: compose per-cut camera movement and vertical high-res comparison"
+    ],
+    [
+      "7c2dd89",
+      "asset: compose intro transition and table background logo finish"
+    ],
+    [
+      "8737746",
+      "asset: create vertical intro linking two lead character motions and music"
+    ],
+    [
+      "ad5456c",
+      "asset: create 9 intro background and transparent prop sources"
+    ],
+    [
+      "3c6df14",
+      "design: organize intro background art and music editing direction"
+    ],
+    [
+      "8f3bda1",
+      "asset: create 8-cut vertical rough board for two-lead intro"
+    ],
+    [
+      "7eca4e3",
+      "design: design vertical intro storyboard for two leads"
+    ],
+    [
+      "5ef979f",
+      "design: separate title assets and organize editable screen layout"
+    ],
+    [
+      "fcadf5a",
+      "design: create vertical title layout draft applying observation-line logo"
+    ],
+    [
+      "2a40ce6",
+      "design: organize vertical intro composition and observation-line logo standard"
+    ],
+    [
+      "eaf912b",
+      "design: create logo and intro drafts themed on observation and statement"
+    ],
+    [
+      "f080421",
+      "docs: confirm lip-sync reference video and full-body speech exclusion scope"
+    ],
+    [
+      "755a15b",
+      "asset: archive reference video and review scope for full-body question speech"
+    ],
+    [
+      "b531f51",
+      "asset: archive revised candidate reducing mouth opening in full-body speech"
+    ],
+    [
+      "b6e2f09",
+      "asset: archive full-body question speech draft and mouth-opening review history"
+    ],
+    [
+      "1af6503",
+      "asset: archive question lip-sync revision source and completed silent review version"
+    ],
+    [
+      "1871a78",
+      "asset: archive revised mouth shape draft for question speech with before/after comparison"
+    ],
+    [
+      "53a2aa2",
+      "docs: confirm speech motivation comparison standard for question portrait"
+    ],
+    [
+      "cef66e5",
+      "asset: archive calm question lip-sync and original audio review version"
+    ],
+    [
+      "376496e",
+      "design: add lip-sync input spec for calm question speech"
+    ],
+    [
+      "a2d7eca",
+      "chore: link playback upload record for lip-sync review version"
+    ],
+    [
+      "2e0b43d",
+      "asset: archive restrained question speech lip-sync draft and audio review version"
+    ],
+    [
+      "1fbf9f4",
+      "design: add question lip-sync review spec reusing confirmed audio"
+    ],
+    [
+      "3c8fa10",
+      "asset: connect adopted audio to actual question entry and return motion"
+    ],
+    [
+      "69d060e",
+      "fix: fix last-sample extraction error in motion video containing audio"
+    ],
+    [
+      "60fa22c",
+      "asset: archive question entry motion and proceed with return section production"
+    ],
+    [
+      "bf6cfde",
+      "asset: archive production request and original standard for lead question action entry section"
+    ],
+    [
+      "31877ac",
+      "asset: create timing review video for lead voice, expression, and posture"
+    ],
+    [
+      "a6745f9",
+      "asset: confirm Jihu Robust emotion set as connection review standard"
+    ],
+    [
+      "90ef09d",
+      "asset: archive Jihu Robust emotion audio and 2-second-interval preview"
+    ],
+    [
+      "c579998",
+      "feat: produce emotion voices based on Jiho's adopted Robust neutral"
+    ],
+    [
+      "52974e5",
+      "asset: finalize Jiho Robust neutral as the basis for follow-up acting"
+    ],
+    [
+      "e2de2c7",
+      "asset: link Jiho Nathan Robust neutral revision and reference state"
+    ],
+    [
+      "57dbf4b",
+      "asset: adopt Haewon's current emotion acting and reflect remaining breath-sound notes"
+    ],
+    [
+      "db17ad3",
+      "feat: produce Jiho neutral voice with high stability and calm delivery"
+    ],
+    [
+      "46eed5a",
+      "asset: link Ando revision directing low tension and relaxation"
+    ],
+    [
+      "cd282fe",
+      "feat: adjust Ando's brightness via line and delivery directions"
+    ],
+    [
+      "62703ae",
+      "asset: reflect restrained emotional ceiling and sharp discomfort comparison"
+    ],
+    [
+      "0d89d3d",
+      "feat: produce unpleasant wary expression with short line and sharp delivery"
+    ],
+    [
+      "bf7e15d",
+      "asset: reflect discomfort revision not adopted and acting direction under review"
+    ],
+    [
+      "f5df9e0",
+      "asset: apply two-second silence gap between emotion previews"
+    ],
+    [
+      "43945a1",
+      "asset: link Ando and discomfort revisions with per-emotion start directions applied"
+    ],
+    [
+      "4e37439",
+      "feat: separate opening delivery directions for Ando and discomfort"
+    ],
+    [
+      "e977e98",
+      "asset: archive other emotion revisions made with single delivery direction"
+    ],
+    [
+      "5e52af7",
+      "feat: apply adopted single delivery direction to remaining emotions"
+    ],
+    [
+      "fd26e33",
+      "asset: separate results with inconsistent emotion and link question revision"
+    ],
+    [
+      "b151f22",
+      "feat: produce single question-acting revision with reduced mid-line directions"
+    ],
+    [
+      "862a494",
+      "asset: link Haewon custom emotion voice and continuous preview"
+    ],
+    [
+      "d27fe6f",
+      "feat: extend emotion voices based on adopted custom neutral"
+    ],
+    [
+      "aa703c7",
+      "asset: finalize Haewon Robust revision as neutral acting basis"
+    ],
+    [
+      "98f8ede",
+      "asset: link Haewon Robust neutral revision to current voice"
+    ],
+    [
+      "82acc86",
+      "feat: adjust Haewon neutral acting with high stability and restrained delivery"
+    ],
+    [
+      "fe357a5",
+      "asset: replace Haewon current voice with custom V4 maximum similarity sample"
+    ],
+    [
+      "4db389b",
+      "feat: strengthen selection validation by fixing custom voice identifier"
+    ],
+    [
+      "e09eaef",
+      "feat: add maximum-similarity neutral sample generation for account voice"
+    ],
+    [
+      "5724873",
+      "asset: archive Juyeon emotion voice and link acting reference"
+    ],
+    [
+      "aa3d4d5",
+      "feat: add official-basis classification and pre-check for voice tags"
+    ],
+    [
+      "c33c508",
+      "feat: add V4 emotion extension task reusing neutral voice"
+    ],
+    [
+      "f391353",
+      "design: fix neutral voice basis and shift to emotion extension stage"
+    ],
+    [
+      "3c5db0c",
+      "asset: review and link neutral acting adjustment and follow-up voice plan"
+    ],
+    [
+      "b4a6e2e",
+      "feat: add restrained neutral acting comparison generation for same voice"
+    ],
+    [
+      "88e1309",
+      "design: organize V4 voice basis and character production follow-up stages"
+    ],
+    [
+      "5e51a2c",
+      "asset: link two-model voice comparison results and review record"
+    ],
+    [
+      "b1053df",
+      "feat: generate two voices compared across V2 and V4 models"
+    ],
+    [
+      "d64915d",
+      "feat: add sample generation task using official voice library"
+    ],
+    [
+      "0516ab9",
+      "asset: exclude non-adopted voice from active directing links"
+    ],
+    [
+      "d1895d5",
+      "asset: add lead character motion linked video and review record"
+    ],
+    [
+      "259c08d",
+      "docs: clearly indicate scope of voice quote verification"
+    ],
+    [
+      "ac728ba",
+      "design: organize situational expression and gesture directing combinations"
+    ],
+    [
+      "c5473b1",
+      "asset: archive lead character Korean voice sample"
+    ],
+    [
+      "e8d6885",
+      "asset: Archive cut-delivery shot and 12-gesture comparison table for lead characters"
+    ],
+    [
+      "bca7c3d",
+      "asset: Archive movement and direction-change gestures with review records for both leads"
+    ],
+    [
+      "04ebdc1",
+      "asset: Archive emotion-suppression gestures with review records for both leads"
+    ],
+    [
+      "1eaef68",
+      "asset: Archive signature habit gestures with review records for both leads"
+    ],
+    [
+      "1cc05c1",
+      "asset: Archive defense and refusal gestures with review records for both leads"
+    ],
+    [
+      "033565f",
+      "asset: Archive surprise-reaction gestures with review records for both leads"
+    ],
+    [
+      "15cdf5b",
+      "asset: Archive observation gestures with review records for both leads"
+    ],
+    [
+      "f4878c2",
+      "asset: Archive thinking gestures with review records for both leads"
+    ],
+    [
+      "ce78b1c",
+      "asset: Archive questioning gestures with review records for both leads"
+    ],
+    [
+      "eab32ff",
+      "asset: Archive explanation gestures with review records for both leads"
+    ],
+    [
+      "16e29bd",
+      "asset: Archive listening gestures with review records for both leads"
+    ],
+    [
+      "91fb0dc",
+      "design: Organize per-character gesture plan based on approved full-body reference"
+    ],
+    [
+      "d1c235b",
+      "asset: Archive high-resolution front full-body images of both leads"
+    ],
+    [
+      "ffe4d49",
+      "docs: Strengthen privacy standards in public development records"
+    ]
+  ],
+  "commitCount": 94,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "멈춰 보이던 26초 인트로를 사진 한 장을 건네는 12초 영상으로 다시 만들었습니다. 대사 없이 두 주인공이 어떻게 같이 일하는지 보여 줍니다.",
+    "en": "I remade a frozen-looking 26-second intro as a 12-second clip built around passing a single photo. It shows how the two leads work together without a word."
+  },
+  "hashtags": [
+    "#인디게임",
+    "#게임개발",
+    "#AI영상",
+    "#데브로그",
+    "#gamedev",
+    "#indiedev",
+    "#devlog",
+    "#vibelog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-19.poster.jpg?v=mvfluvri",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-19.ko.mp4?v=mvfluxii",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-19.ko.sm.mp4?v=mvflv4i0",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-19.en.poster.jpg?v=mvflwbm3",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-19.en.mp4?v=mvflwczc",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-19.en.sm.mp4?v=mvflwk1l"
+  }
+}
