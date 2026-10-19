@@ -741,7 +741,7 @@ async function main(): Promise<void> {
         ? `본문을 쓴 커밋이 아직 ${a.ruleCommits}개 (전체 ${a.newCommits}개) — ${MIN_HUMAN_COMMITS}개가 모이면 글을 씁니다`
         : a.botCommits > 0
           ? "봇이 남긴 커밋뿐이라 글을 쓰지 않습니다"
-          : "";
+          : "지난 실행 뒤 새 커밋이 없습니다";
     const why = a.hasActivity
       ? "생성 대상"
       : reason
@@ -751,15 +751,18 @@ async function main(): Promise<void> {
       `- ${a.repo}: 커밋 ${a.commits.length}(봇 ${a.botCommits} 제외), PR ${a.mergedPRs.length}, ` +
         `devlog ${a.devlogFiles.length} → ${why}`,
     );
-    // 새 커밋이 있었는데 안 쓴 밤은 홈에도 이유를 남긴다 — "왜 글이 없지"를
-    // 로그를 안 열고 알 수 있게. 아무 일도 없던 레포는 줄을 안 만든다.
-    if (!a.hasActivity && (a.newCommits > 0 || a.botCommits > 0)) {
+    // 글을 안 쓴 레포는 전부 홈에 이유를 남긴다 — "왜 글이 없지"를 로그를 안 열고
+    // 알 수 있게. 새 커밋이 0개인 레포도 줄을 만든다: 줄을 안 만들던 때, 기본 브랜치가
+    // 아닌 곳에 커밋 103개가 쌓인 거짓말 탐정이 실행 기록에서 이름째 사라져 아무도 몰랐다 (10/19)
+    if (!a.hasActivity) {
       runLines.push({
         text: `skip     · ${a.repo} ${reason}`,
         textEn: `skip     · ${a.repo} ${
           a.newCommits > 0
             ? `only ${a.ruleCommits} of ${a.newCommits} commit${a.newCommits === 1 ? "" : "s"} have a body — a post comes at ${MIN_HUMAN_COMMITS}`
-            : `only bot commits — no post`
+            : a.botCommits > 0
+              ? `only bot commits — no post`
+              : `no new commits since the last run`
         }`,
       });
     }
