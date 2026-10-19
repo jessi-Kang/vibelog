@@ -40,7 +40,11 @@ h1 { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
 /* 지금 사이트처럼 용어는 button — 한 덩어리로 묶여 줄 안에서 끊기지 않는다 */
 .now .t { display: inline-block; }
 .just.on p { text-align: justify; text-align-last: start; }
+.en.j:not(.on) p { text-align: start; }
 .normal p { word-break: normal; }
+.en p { hyphens: auto; }
+.en.j p { text-align: justify; text-align-last: start; }
+h2.sec { font-size: 1.2rem; margin: 20px 0 0; }
 /* 줄 끝을 눈으로 보이게 — 오른쪽 여백 끝선 */
 .edge .phone { background-image: linear-gradient(to left, transparent 19px, rgba(255,180,84,.35) 19px, rgba(255,180,84,.35) 20px, transparent 20px); }
 .check { display: flex; gap: 8px; align-items: center; font-size: .9rem; color: var(--muted); margin-left: 8px; }
@@ -87,7 +91,29 @@ h1 { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
       <p class="note">오른쪽 끝은 가장 고르지만 낱말 가운데서 끊깁니다 — "이름조 / 차", "기본 브랜 / 치"처럼. 조사가 떨어져 나가는 일을 막으려고 keep-all을 넣었으니, 그 문제가 그대로 돌아옵니다. 비교용으로만 둡니다.</p>
     </section>
   </div>
+
+  <h2 class="sec">영어 본문 (C안 적용 뒤)</h2>
+  <p class="lede">영어는 하이픈으로 낱말을 나눠 끊습니다(지금 사이트). 그래도 낱말이 길어 줄 끝이 들쭉날쭉합니다. 하이픈이 있으면 양쪽 맞춤의 띄어쓰기 벌어짐이 작아져, 영어 책·잡지처럼 끝을 맞출 수 있습니다. 10/19 거짓말 탐정 글의 영어 문단입니다. 하이픈은 폰 브라우저에서 보입니다.</p>
+  <div class="row">
+    <section class="opt">
+      <div class="tag">지금 <b>하이픈 + 왼쪽 맞춤</b></div>
+      <div class="scroll"><div class="phone en" lang="en" data-en></div></div>
+      <p class="note">끊긴 낱말에는 하이픈이 붙지만 줄 끝은 낱말 길이만큼 들쭉날쭉합니다.</p>
+    </section>
+    <section class="opt">
+      <div class="tag">D <b>하이픈 + 양쪽 맞춤 (360 이상)</b> <span class="rec">추천</span></div>
+      <div class="scroll"><div class="phone en j just on" lang="en" data-en></div></div>
+      <p class="note">남는 폭을 띄어쓰기에 나눠 오른쪽 끝을 맞춥니다. 문단 마지막 줄은 왼쪽 맞춤입니다. 한국어 B안처럼 360 미만에서는 왼쪽 맞춤으로 돌아갑니다.</p>
+    </section>
+  </div>
 </div>
+
+<template id="en">
+  <h2>What I did</h2>
+  <p>I made a 12-second vertical intro video for the game's first screen. The two leads, Jihoo and Haewon, pass a photo across a table and check it. I added a separately made music track and the game logo. I also made a draft title screen using the same logo.</p>
+  <h2>Why</h2>
+  <p>When someone first opens the game on their phone, I wanted to show what these two do and how they work together, without any dialogue. My first intro was 26 seconds long. It stitched together six short AI-generated motion clips. But every scene felt frozen. Transition effects and small camera moves didn't fix that. So I rebuilt the scene around a single action, handing over a photo and checking it, and made it again as a 12-second video.</p>
+</template>
 
 <template id="body">
   <h2>왜</h2>
@@ -99,6 +125,8 @@ h1 { font-size: 1.6rem; margin: 0; letter-spacing: -.01em; }
 <script>
   const tpl = document.getElementById("body");
   document.querySelectorAll("[data-body]").forEach((el) => el.appendChild(tpl.content.cloneNode(true)));
+  const enTpl = document.getElementById("en");
+  document.querySelectorAll("[data-en]").forEach((el) => el.appendChild(enTpl.content.cloneNode(true)));
   const btns = document.querySelectorAll(".widths button");
   btns.forEach((b) => b.addEventListener("click", () => {
     document.documentElement.style.setProperty("--w", b.dataset.w + "px");
