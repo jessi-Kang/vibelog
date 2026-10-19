@@ -346,7 +346,8 @@ export function PostClient({
             </p>
           )}
           {parsed ? (
-            <section className="flex flex-col gap-8">
+            // lang — 영어 본문은 하이픈으로 끊는다 (app/globals.css의 .post-body)
+            <section lang={en ? "en" : "ko"} className="flex flex-col gap-8">
               {s.did && (
                 <div>
                   <H>{headings.did}</H>
@@ -404,7 +405,7 @@ export function PostClient({
               )}
             </section>
           ) : (
-            <div className="prose-devlog post-body">
+            <div lang={en ? "en" : "ko"} className="prose-devlog post-body">
               <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
                 {keepBackslashes(post.body)}
               </ReactMarkdown>

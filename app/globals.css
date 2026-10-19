@@ -172,6 +172,11 @@ html {
 .post-body :where(p, li) {
   word-break: normal;
 }
+/* 영어 본문은 낱말 가운데를 글자 단위로 자르면 읽을 수 없으니, 사전에 맞춰 하이픈을 넣어 끊는다.
+   본문 감싸개의 lang="en"이 있어야 브라우저가 영어 사전을 쓴다 (html은 lang="ko") */
+.post-body:lang(en) :where(p, li) {
+  hyphens: auto;
+}
 .term-word {
   word-break: keep-all;
 }
