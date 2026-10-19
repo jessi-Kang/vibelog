@@ -1,13 +1,32 @@
 {
-  "at": "2026-10-18T16:05:52.571Z",
+  "at": "2026-10-19T14:02:08.484Z",
   "lines": [
     {
-      "text": "npx tsx scripts/shorts.ts lie-detective/2026-10-18",
+      "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "shorts   · lie-detective/2026-10-18 다시 만듦 (ko, en) — 대본 그대로",
-      "textEn": "shorts   · lie-detective/2026-10-18 remade (ko, en) — same script"
+      "text": "collect  · 6 repos, 0 active"
+    },
+    {
+      "text": "skip     · vibelog 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · vibelog only 3 of 3 commits have a body — a post comes at 5"
+    },
+    {
+      "text": "skip     · apart 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · apart only 3 of 3 commits have a body — a post comes at 5"
+    },
+    {
+      "text": "skip     · Anchor 본문을 쓴 커밋이 아직 3개 (전체 3개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · Anchor only 3 of 3 commits have a body — a post comes at 5"
+    },
+    {
+      "text": "skip     · agency 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · agency only 1 of 1 commit have a body — a post comes at 5"
+    },
+    {
+      "text": "skip     · portfolio-tmp 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · portfolio-tmp only 1 of 1 commit have a body — a post comes at 5"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
