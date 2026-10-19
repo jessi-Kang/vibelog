@@ -25,7 +25,8 @@ import { Thumb } from "./shorts-grid";
 import { Card, EmptyState, SectionHeader, ShortMark } from "./ui";
 import { DevlogCompactEntry } from "./vibelog";
 import { HiddenChip } from "./private-data";
-import { PostFigure as Figure } from "./post-figure";
+import { PostFigure as Figure, PostVideoFigure } from "./post-figure";
+import type { PostVideo } from "@/lib/post-video";
 import {
   splitParas,
   type FigSection,
@@ -75,6 +76,8 @@ export interface PostData {
   body: string; // 섹션 파싱 실패 시 폴백
   /** 문단 사이에 들어가는 삽화 (검증 통과분만) */
   figures?: PostFigure[];
+  /** 사람이 붙인 영상 (lib/post-video.ts) */
+  videos?: PostVideo[];
   short?: {
     template: string;
     duration?: number;
@@ -138,13 +141,15 @@ function Md({ children }: { children: string }) {
 function Body({
   md,
   figures,
+  videos = [],
   en,
 }: {
   md: string;
   figures: PostFigure[];
+  videos?: PostVideo[];
   en: boolean;
 }) {
-  if (!figures.length) return <Md>{md}</Md>;
+  if (!figures.length && !videos.length) return <Md>{md}</Md>;
   const paras = splitParas(md);
   return (
     <>
@@ -159,6 +164,11 @@ function Body({
                 node={en ? f.nodeEn : f.node}
                 caption={en ? f.captionEn : f.caption}
               />
+            ))}
+          {videos
+            .filter((v) => v.after === i)
+            .map((v, j) => (
+              <PostVideoFigure key={`v${j}`} video={v} en={en} />
             ))}
         </div>
       ))}
@@ -202,6 +212,8 @@ export function PostClient({
   const s = en ? post.sectionsEn : post.sections;
   const figsOf = (k: FigSection): PostFigure[] =>
     (post.figures ?? []).filter((f) => f.section === k);
+  const videosOf = (k: FigSection): PostVideo[] =>
+    (post.videos ?? []).filter((v) => v.section === k);
   const parsed = Boolean(post.sections.did || post.sections.why);
   // 판정은 lib/has-fail.ts 하나로 — 첫 문장이 "없었습니다"여도 뒤에 이야기가
   // 이어지면 본문(과 삽화)을 그대로 보여 준다
@@ -351,19 +363,19 @@ export function PostClient({
               {s.did && (
                 <div>
                   <H>{headings.did}</H>
-                  <Body md={s.did} figures={figsOf("did")} en={en} />
+                  <Body md={s.did} figures={figsOf("did")} videos={videosOf("did")} en={en} />
                 </div>
               )}
               {s.why && (
                 <div>
                   <H>{headings.why}</H>
-                  <Body md={s.why} figures={figsOf("why")} en={en} />
+                  <Body md={s.why} figures={figsOf("why")} videos={videosOf("why")} en={en} />
                 </div>
               )}
               {post.intro && s.built && (
                 <div>
                   <H>{headings.built}</H>
-                  <Body md={s.built} figures={figsOf("built")} en={en} />
+                  <Body md={s.built} figures={figsOf("built")} videos={videosOf("built")} en={en} />
                 </div>
               )}
               {!post.intro && (
@@ -382,6 +394,7 @@ export function PostClient({
                   <Body
                     md={s.fail as string}
                     figures={figsOf("fail")}
+                    videos={videosOf("fail")}
                     en={en}
                   />
                 )}
@@ -390,7 +403,7 @@ export function PostClient({
               {s.next && (
                 <div>
                   <H>{headings.next}</H>
-                  <Body md={s.next} figures={figsOf("next")} en={en} />
+                  <Body md={s.next} figures={figsOf("next")} videos={videosOf("next")} en={en} />
                 </div>
               )}
               {/* 그 밖의 소식 — 이야기 하나에 못 담은 큰 작업 (docs/post-other-work.html A안). 본문 이야기(뭘 했나→왜→삽질→다음)가 끝난 뒤, git log 바로 위에 둔다 —

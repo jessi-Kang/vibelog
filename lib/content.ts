@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import type { PostFigure } from "../scripts/figure-types";
+import { cleanVideos, type PostVideo } from "./post-video";
 import { firstTermsOnly, plainTerms, termsOnly } from "./term-marker";
 import { aliasName, hiddenSlugs, isHiddenProject } from "./hidden-projects";
 
@@ -81,6 +82,8 @@ export interface DevlogEntry {
   short?: ShortsMeta; // 이 글의 쇼츠 (있으면)
   /** 책 삽화처럼 문단 사이에 들어가는 그림. 검증을 통과한 것만 실린다 */
   figures?: PostFigure[];
+  /** 사람이 붙인 영상 — <date>.videos.json (lib/post-video.ts) */
+  videos?: PostVideo[];
   /** 이 글이 이어 가는 같은 레포 지난 글의 날짜 (frontmatter continues). 그 글이 있을 때만 */
   continues?: string;
   /**
@@ -313,6 +316,15 @@ function readFigures(dir: string, mdFile: string): PostFigure[] {
   }
 }
 
+/** <date>.videos.json — 없으면 빈 배열 */
+function readVideos(dir: string, mdFile: string): PostVideo[] {
+  try {
+    return cleanVideos(JSON.parse(fs.readFileSync(path.join(dir, mdFile.replace(/\.mdx?$/, ".videos.json")), "utf8")));
+  } catch {
+    return [];
+  }
+}
+
 export function getDevlogs(repo?: string, opts: ContentOpts = {}): DevlogEntry[] {
   const devlogDir = path.join(CONTENT_DIR, "devlog");
   if (!fs.existsSync(devlogDir)) return [];
@@ -361,6 +373,7 @@ export function getDevlogs(repo?: string, opts: ContentOpts = {}): DevlogEntry[]
       // 삽화는 사이드카 JSON이다 — SVG를 frontmatter에 넣으면 글이 안 읽힌다.
       // 파이프라인이 검증을 통과한 것만 쓴다 (scripts/figure-types.ts).
       const figures = readFigures(dir, f);
+      const videos = readVideos(dir, f);
       entries.push({
         repo: r,
         date,
@@ -392,6 +405,7 @@ export function getDevlogs(repo?: string, opts: ContentOpts = {}): DevlogEntry[]
         ...(shas ? { shas } : {}),
         ...(shasEn ? { shasEn } : {}),
         ...(figures?.length ? { figures } : {}),
+        ...(videos.length ? { videos } : {}),
         ...(typeof data.continues === "string" ? { continues: data.continues } : {}),
         day: intro ? 0 : dayNo,
         ...(intro ? { intro: true } : {}),

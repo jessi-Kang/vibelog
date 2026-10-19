@@ -12,6 +12,7 @@
  * (본문 글자는 안 줄어든다). 책 삽화가 본문 단보다 좁은 것과 같다.
  */
 import React from "react";
+import type { PostVideo as Video } from "../lib/post-video";
 import {
   FIG_ATTRS,
   FIG_TAGS,
@@ -77,6 +78,38 @@ export function PostFigure({
       >
         {kids.filter((c) => c.tag !== "title").map((c, i) => draw(c, i))}
       </svg>
+      {caption && (
+        <figcaption
+          className="w-full text-center font-mono text-xs leading-relaxed text-muted"
+          style={{ maxWidth: FIG_W, wordBreak: "keep-all" }}
+        >
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+/**
+ * 글에 끼운 영상 (lib/post-video.ts) — 삽화와 같은 바탕판에 놓는다. 세로 영상은 폰 화면을
+ * 다 덮지 않게 높이를 화면의 70%까지만 쓰고, 자동 재생하지 않는다 (소리가 있는 영상이다).
+ */
+export function PostVideoFigure({ video, en }: { video: Video; en: boolean }) {
+  const caption = en ? (video.captionEn ?? video.caption) : video.caption;
+  return (
+    <figure className="my-7 -mx-5 flex flex-col items-center gap-3 bg-panel px-5 pb-4 pt-6 max-[359px]:-mx-4 max-[359px]:px-4 md:mx-0 md:rounded-lg md:px-6">
+      <video
+        src={video.src}
+        poster={video.poster}
+        width={video.width}
+        height={video.height}
+        controls
+        playsInline
+        preload="none"
+        aria-label={caption}
+        className="block h-auto max-h-[70vh] w-auto max-w-full rounded-md bg-bg"
+        style={{ aspectRatio: `${video.width} / ${video.height}` }}
+      />
       {caption && (
         <figcaption
           className="w-full text-center font-mono text-xs leading-relaxed text-muted"

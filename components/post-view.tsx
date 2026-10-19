@@ -69,6 +69,7 @@ export function PostView({ d, all, hidden = false }: { d: DevlogEntry; all: Devl
           hasEn: Boolean(d.bodyEn),
           body: d.body,
           figures: d.figures,
+          videos: d.videos,
           intro: d.intro,
           project: {
             name: project?.name ?? d.repo,

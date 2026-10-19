@@ -35,6 +35,7 @@ content/projects.json       Action이 생성·갱신. 레포 메타 기반
 content/devlog/<repo>/<date>.md   Action이 생성. frontmatter manual: true면 덮어쓰지 않음
 content/state.json          레포별 마지막 처리 커밋 SHA / 시각
 content/devlog/<repo>/<date>.figures.json  글 삽화 (검증 통과분만, 노드 트리). 없으면 삽화 없음
+content/devlog/<repo>/<date>.videos.json   사람이 붙이는 영상(게임 인트로 등) — 파이프라인이 쓰지 않는다. 파일은 public/media/<repo>/에만 두고 이 사이트 주소만 받는다 (lib/post-video.ts), 삽화와 같은 판에 문단 사이로 들어간다
 scripts/figures.ts          글 → 삽화 SVG 생성 + 검증 + 한 번 재작성 (scripts/figure-types.ts가 계약·파서)
 scripts/check-figures.ts    삽화 검사기 — 저장분 재검증 + 공격 입력 19종 + 고정 모델 답
 scripts/figures-backfill.ts 이미 발행된 글에 삽화 붙이기 (Run workflow의 `figures` 입력: all 또는 repo/date)
