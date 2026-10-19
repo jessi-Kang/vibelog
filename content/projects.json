@@ -1,5 +1,38 @@
 [
   {
+    "slug": "lie-detective",
+    "color": "#6FD3F2",
+    "name": "거짓말 탐정",
+    "nameEn": "Lie Detective",
+    "serviceName": "거짓말 탐정",
+    "serviceNameEn": "Lie Detective",
+    "about": "현장을 살피고 사진을 찍고 인물에게 직접 질문하며 사건을 푸는 모바일 추리 게임입니다.",
+    "aboutEn": "A mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
+    "icon": {
+      "name": "tabler:spy",
+      "paths": [
+        {
+          "d": "M3 11h18M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M4 17a3 3 0 1 0 6 0a3 3 0 1 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-4 0h4"
+        }
+      ]
+    },
+    "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
+    "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
+    "status": "building",
+    "stack": [
+      "JavaScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/lie-detective",
+    "branch": "preview",
+    "language": "JavaScript",
+    "lastActivity": "2026-10-20",
+    "weekCommits": 121,
+    "todayCommits": 16,
+    "totalCommits": 294,
+    "countsDate": "2026-10-20",
+    "theme": "highlighter"
+  },
+  {
     "slug": "vibelog",
     "name": "바이브 로그",
     "nameEn": "Vibelog",
@@ -29,39 +62,6 @@
     "todayCommits": 2,
     "totalCommits": 566,
     "countsDate": "2026-10-20"
-  },
-  {
-    "slug": "lie-detective",
-    "color": "#6FD3F2",
-    "name": "거짓말 탐정",
-    "nameEn": "Lie Detective",
-    "serviceName": "거짓말 탐정",
-    "serviceNameEn": "Lie Detective",
-    "about": "현장을 살피고 사진을 찍고 인물에게 직접 질문하며 사건을 푸는 모바일 추리 게임입니다.",
-    "aboutEn": "A mobile mystery game where you search the scene, take photos, and question people yourself to solve a case.",
-    "icon": {
-      "name": "tabler:spy",
-      "paths": [
-        {
-          "d": "M3 11h18M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M4 17a3 3 0 1 0 6 0a3 3 0 1 0-6 0m10 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0m-4 0h4"
-        }
-      ]
-    },
-    "description": "AI 자유 심문과 증거 조사를 결합한 인터랙티브 추리 게임. 현장을 탐색하고 단서를 분석해 사건의 진실을 밝혀내세요.",
-    "descriptionEn": "An interactive detective game combining AI-powered free interrogation and evidence investigation, where you explore crime scenes and analyze clues to uncover the truth behind the case.",
-    "status": "building",
-    "stack": [
-      "JavaScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/lie-detective",
-    "branch": "preview",
-    "language": "JavaScript",
-    "lastActivity": "2026-10-20",
-    "weekCommits": 117,
-    "todayCommits": 12,
-    "totalCommits": 290,
-    "countsDate": "2026-10-20",
-    "theme": "highlighter"
   },
   {
     "slug": "apart",
