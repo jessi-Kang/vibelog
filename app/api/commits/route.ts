@@ -30,9 +30,10 @@ export const revalidate = 300;
 export async function GET() {
   const date = todayKst();
   // 숨긴 프로젝트도 센다 — 이름이 나오지 않는 숫자다 (lib/hidden-projects.ts)
+  // 수집이 읽는 브랜치를 같이 센다 — 기본 브랜치가 아닌 곳에서 작업하는 레포가 있다 (lib/work-branch.ts)
   const repos = getAllProjects()
-    .map((p) => repoOf(p.repoUrl))
-    .filter((r): r is string => r !== null);
+    .map((p) => ({ repo: repoOf(p.repoUrl), branch: p.branch }))
+    .filter((r): r is { repo: string; branch: string | undefined } => r.repo !== null);
 
   try {
     const midnight = `${date}T00:00:00+09:00`;
@@ -43,8 +44,8 @@ export async function GET() {
     // 한 레포를 못 읽어도(토큰 권한·비공개) 나머지는 센다 — 하나 때문에 통계 전체가 저장값으로 떨어지지 않게
     const week = (
       await Promise.all(
-        repos.map((repo) =>
-          humanTimesSince(repo, weekStart).catch((e) => {
+        repos.map(({ repo, branch }) =>
+          humanTimesSince(repo, weekStart, branch).catch((e) => {
             console.error(`[commits] ${repo}: ${e instanceof Error ? e.message : e}`);
             return [] as string[];
           }),

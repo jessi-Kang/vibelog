@@ -27,6 +27,8 @@ export interface Project {
   status: ProjectStatus;
   stack: string[];
   repoUrl: string;
+  /** 읽는 브랜치 — 기본 브랜치가 아닐 때만 적힌다 (lib/work-branch.ts) */
+  branch?: string;
   homepage?: string;
   language?: string;
   lastActivity: string; // ISO date

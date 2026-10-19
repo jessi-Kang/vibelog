@@ -56,9 +56,11 @@ export async function planNameIfChanged(
   owner: string,
   repo: string,
   lastPlanSha: string | undefined,
+  /** 수집이 읽는 작업 브랜치 — 없으면 기본 브랜치 (lib/work-branch.ts) */
+  branch?: string,
 ): Promise<PlanNameResult> {
-  const { data: meta } = await octokit.rest.repos.get({ owner, repo });
-  const { data: tree } = await octokit.rest.git.getTree({ owner, repo, tree_sha: meta.default_branch, recursive: "true" });
+  const ref = branch ?? (await octokit.rest.repos.get({ owner, repo })).data.default_branch;
+  const { data: tree } = await octokit.rest.git.getTree({ owner, repo, tree_sha: ref, recursive: "true" });
   const plans = tree.tree
     .filter(
       (t) =>

@@ -7,6 +7,7 @@
 import { Octokit } from "@octokit/rest";
 import { PIPELINE_BOT_EMAIL, humanCommitTimes, isBotCommit } from "../lib/bot-commit";
 import { HIDDEN_TOPIC } from "../lib/hidden-projects";
+import { pickWorkBranch } from "../lib/work-branch";
 
 export interface RepoCommit {
   sha: string;
@@ -74,6 +75,8 @@ export interface RepoActivity {
   language: string | null;
   repoUrl: string;
   pushedAt: string;
+  /** 읽은 브랜치 — 기본 브랜치가 아닐 때만 (lib/work-branch.ts) */
+  branch?: string;
   vibelogJson: VibelogJson | null;
   readme: string;
   commits: RepoCommit[];
@@ -195,10 +198,11 @@ export async function getCommits(
   repo: string,
   since: string,
   until?: string,
+  branch?: string,
 ): Promise<RepoCommit[]> {
   const data: Awaited<ReturnType<typeof octokit.rest.repos.listCommits>>["data"] = [];
   for (let page = 1; page <= COMMIT_PAGES; page++) {
-    const { data: part } = await octokit.rest.repos.listCommits({ owner, repo, since, ...(until ? { until } : {}), per_page: 100, page });
+    const { data: part } = await octokit.rest.repos.listCommits({ owner, repo, since, ...(until ? { until } : {}), ...(branch ? { sha: branch } : {}), per_page: 100, page });
     data.push(...part);
     if (part.length < 100) break;
   }
@@ -247,6 +251,7 @@ export async function getCommitTimes(
   owner: string,
   repo: string,
   since: string,
+  branch?: string,
 ): Promise<string[]> {
   const out: string[] = [];
   for (let page = 1; page <= HOURS_PAGES; page++) {
@@ -254,6 +259,7 @@ export async function getCommitTimes(
       owner,
       repo,
       since,
+      ...(branch ? { sha: branch } : {}),
       per_page: 100,
       page,
     });
@@ -261,6 +267,47 @@ export async function getCommitTimes(
     if (data.length < 100) break; // 마지막 장
   }
   return out;
+}
+
+/**
+ * 가장 최근에 사람 커밋이 올라온 브랜치 (lib/work-branch.ts). 브랜치마다 끝 커밋을
+ * 한 번씩 묻는다 — 브랜치가 많아도 밤·30분 인식에서 레포당 수십 번이라 한도에 여유가 있다.
+ * 못 읽으면 기본 브랜치.
+ */
+export async function getWorkBranch(
+  octokit: Octokit,
+  owner: string,
+  repo: string,
+  defaultBranch: string,
+): Promise<string> {
+  try {
+    const branches = await octokit.paginate(octokit.rest.repos.listBranches, { owner, repo, per_page: 100 });
+    // 끝 커밋이 같은 브랜치는 한 번만 묻는다 (기본 브랜치에서 갓 나온 세션 브랜치들)
+    const bySha = new Map<string, string[]>();
+    for (const b of branches) bySha.set(b.commit.sha, [...(bySha.get(b.commit.sha) ?? []), b.name]);
+    const tips = (
+      await Promise.all(
+        [...bySha].map(async ([sha, names]) => {
+          // 끝 커밋이 봇이면(밤마다 자동 커밋이 쌓이는 레포) 그 아래 가장 새 사람 커밋의 시각으로 본다
+          const { data } = await octokit.rest.repos.listCommits({ owner, repo, sha, per_page: 20 });
+          const human = data.find(
+            (c) =>
+              !isBotCommit({
+                author: c.author?.login ?? undefined,
+                authorName: c.commit.author?.name ?? undefined,
+                authorEmail: c.commit.author?.email ?? undefined,
+              }),
+          );
+          const date = human?.commit.committer?.date ?? human?.commit.author?.date ?? "";
+          const bot = !human;
+          return names.map((name) => ({ name, date, bot }));
+        }),
+      )
+    ).flat();
+    return pickWorkBranch(defaultBranch, tips);
+  } catch {
+    return defaultBranch;
+  }
 }
 
 export async function getMergedPRs(
@@ -576,6 +623,11 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     // 선언으로 쳤는데, Website는 "주소 지정"과 겸직이라 다른 세션이 레포를
     // 정리하며 주소만 채워도 live로 승격되는 사고가 났다 (apart — 주소를
     // 비웠는데 다시 채워져 live 복귀). 강제 지정은 vibelog.json status로.
+    // 읽을 브랜치 — 기본 브랜치가 아니라 가장 최근에 사람 커밋이 올라온 곳 (lib/work-branch.ts)
+    const defaultBranch = r.default_branch ?? "main";
+    const branch = await getWorkBranch(octokit, owner, repo, defaultBranch);
+    const sha = branch === defaultBranch ? {} : { sha: branch };
+
     const released = await octokit.rest.repos
       .listReleases({ owner, repo, per_page: 1 })
       .then((res) => res.data.length > 0)
@@ -595,7 +647,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
     // 100개를 넘던 날 "이번 주"와 "오늘"이 똑같이 100으로 잘렸다.
     const countCommits = (author?: string) =>
       octokit.rest.repos
-        .listCommits({ owner, repo, ...(author ? { author } : {}), per_page: 1 })
+        .listCommits({ owner, repo, ...sha, ...(author ? { author } : {}), per_page: 1 })
         .then((r) => {
           const m = r.headers.link?.match(/[?&]page=(\d+)>; rel="last"/);
           return m ? Number(m[1]) : r.data.length;
@@ -615,7 +667,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       totalCommits,
       commitTimes,
     ] = await Promise.all([
-      getCommits(octokit, owner, repo, since),
+      getCommits(octokit, owner, repo, since, undefined, sha.sha),
       getMergedPRs(octokit, owner, repo, since),
       getDevlogFiles(octokit, owner, repo, since),
       getReadme(octokit, owner, repo),
@@ -625,6 +677,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
         owner,
         repo,
         new Date(Date.now() - HOURS_DAYS * 24 * 3600 * 1000).toISOString(),
+        sha.sha,
       ).catch(() => [] as string[]),
     ]);
 
@@ -657,6 +710,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       language: r.language ?? null,
       repoUrl: r.html_url,
       pushedAt: r.pushed_at ?? "",
+      ...(sha.sha ? { branch: sha.sha } : {}),
       vibelogJson,
       readme,
       commits,

@@ -41,14 +41,19 @@ export async function ghGet(path: string): Promise<Response> {
   throw new Error(`GitHub ${res.status} ${path}`);
 }
 
+/** 읽을 브랜치의 쿼리 조각 — 없으면 기본 브랜치 (수집이 projects.json에 적는다, lib/work-branch.ts) */
+export function branchQuery(branch?: string): string {
+  return branch ? `sha=${encodeURIComponent(branch)}&` : "";
+}
+
 /** per_page=1의 Link 헤더 마지막 페이지 번호가 총 개수 (collect.ts와 같은 기법) */
 export function countFromLink(res: Response, bodyLen: number): number {
   const last = res.headers.get("link")?.match(/[?&]page=(\d+)>;\s*rel="last"/);
   return last ? Number(last[1]) : bodyLen;
 }
 
-export async function countSince(repo: string, since?: string): Promise<number> {
-  const q = since ? `since=${encodeURIComponent(since)}&` : "";
+export async function countSince(repo: string, since?: string, branch?: string): Promise<number> {
+  const q = (since ? `since=${encodeURIComponent(since)}&` : "") + branchQuery(branch);
   const res = await ghGet(`/repos/${repo}/commits?${q}per_page=1`);
   return countFromLink(res, ((await res.json()) as unknown[]).length);
 }
@@ -57,11 +62,11 @@ export async function countSince(repo: string, since?: string): Promise<number> 
  * 사람 커밋의 시각 목록 — 봇 커밋은 뺀다 (lib/bot-commit.ts). 봇 커밋도 페이지를
  * 차지하므로 넉넉히 받는다: vibelog는 파이프라인 커밋만 하루 50개 안팎이었다
  */
-export async function humanTimesSince(repo: string, since: string, pages = 10): Promise<string[]> {
+export async function humanTimesSince(repo: string, since: string, branch?: string, pages = 10): Promise<string[]> {
   const out: string[] = [];
   for (let page = 1; page <= pages; page++) {
     const res = await ghGet(
-      `/repos/${repo}/commits?since=${encodeURIComponent(since)}&per_page=100&page=${page}`,
+      `/repos/${repo}/commits?${branchQuery(branch)}since=${encodeURIComponent(since)}&per_page=100&page=${page}`,
     );
     const data = (await res.json()) as ApiCommit[];
     out.push(...humanCommitTimes(data));
@@ -71,10 +76,10 @@ export async function humanTimesSince(repo: string, since: string, pages = 10): 
 }
 
 /** 누적 사람 커밋 수 — 전부 받아 세기엔 많아서, 전체에서 파이프라인 커밋 수를 뺀다 */
-export async function humanTotal(repo: string): Promise<number> {
+export async function humanTotal(repo: string, branch?: string): Promise<number> {
   const bot = await ghGet(
-    `/repos/${repo}/commits?author=${encodeURIComponent(PIPELINE_BOT_EMAIL)}&per_page=1`,
+    `/repos/${repo}/commits?${branchQuery(branch)}author=${encodeURIComponent(PIPELINE_BOT_EMAIL)}&per_page=1`,
   );
   const botCount = countFromLink(bot, ((await bot.json()) as unknown[]).length);
-  return Math.max(0, (await countSince(repo)) - botCount);
+  return Math.max(0, (await countSince(repo, undefined, branch)) - botCount);
 }

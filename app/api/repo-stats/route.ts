@@ -10,7 +10,7 @@ import { HEATMAP_DAYS, addDays, todayKst } from "@/lib/commit-hours";
 import { getProject } from "@/lib/content";
 import { hasDb } from "@/lib/db";
 import { viewer } from "@/lib/session";
-import { ghGet, humanTimesSince, humanTotal, repoOf } from "@/lib/github-server";
+import { branchQuery, ghGet, humanTimesSince, humanTotal, repoOf } from "@/lib/github-server";
 
 export interface RepoStats {
   total: number;
@@ -36,9 +36,9 @@ export async function GET(req: Request) {
     const weekStart = `${addDays(todayKst(), -(HEATMAP_DAYS - 1))}T00:00:00+09:00`;
     // 커밋 수는 사람 커밋만 — 홈 통계와 같은 기준 (lib/bot-commit.ts)
     const [latestRes, week, total] = await Promise.all([
-      ghGet(`/repos/${repo}/commits?per_page=1`),
-      humanTimesSince(repo, weekStart),
-      humanTotal(repo),
+      ghGet(`/repos/${repo}/commits?${branchQuery(project?.branch)}per_page=1`),
+      humanTimesSince(repo, weekStart, project?.branch),
+      humanTotal(repo, project?.branch),
     ]);
     const latest = (await latestRes.json()) as {
       commit?: { committer?: { date?: string }; author?: { date?: string } };

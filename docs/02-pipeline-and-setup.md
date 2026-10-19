@@ -269,6 +269,11 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
 
 ### 글이 나오는 조건
 
+커밋은 레포의 기본 브랜치가 아니라 **사람 커밋이 가장 최근인 브랜치**에서 읽는다
+(`lib/work-branch.ts`). 프로젝트 레포에서 작업 브랜치를 따로 두어도 사용자가 할 일은 없다.
+기본 브랜치만 읽던 때, 거짓말 탐정은 작업을 `preview`에만 올려 하루 103개 커밋이 새 커밋 0개로
+세어졌다 (10/19). 모든 브랜치를 합치지는 않는다 — 스쿼시 병합이면 같은 작업이 두 번 세어진다.
+
 봇 커밋과 GitHub의 "Initial commit"은 글의 재료가 아니라서 아예 빼고 센다.
 **제목과 본문(40자 이상)을 다 쓴 사람 커밋이 5개 이상 모여야** 글과 쇼츠를 만든다
 (`scripts/collect.ts`의 `isBotCommit`, `followsCommitRule`, `enoughForPost`,

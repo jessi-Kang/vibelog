@@ -295,6 +295,8 @@ async function updateProjects(
     status: (a.vibelogJson?.status === "paused" ? "resting" : a.vibelogJson?.status) ?? autoStatus(a),
     stack: a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
     repoUrl: a.repoUrl,
+    // 읽은 브랜치가 기본 브랜치가 아니면 적는다 — 홈·프로젝트의 실시간 커밋 수가 같은 곳을 센다 (lib/work-branch.ts)
+    ...(a.branch ? { branch: a.branch } : {}),
     // 주소는 live일 때만 공개 파일에 쓴다 — 이 레포는 공개라 projects.json도 공개다.
     // 녹화용 실제 주소는 .private/에 따로 둔다 (scripts/homepage.ts)
     ...(publicHomepageOf(a) ? { homepage: publicHomepageOf(a) } : {}),
@@ -580,7 +582,8 @@ async function rewritePosts(arg: string): Promise<void> {
       const until = await commitDate(post.shas[0][0]);
       const prevSha = prev?.shas?.[0][0];
       const since = prevSha ? await commitDate(prevSha) : new Date(new Date(until).getTime() - 7 * 86400000).toISOString();
-      const commits = (await getCommits(octokit, owner, repo, since, until))
+      // 글의 커밋이 있는 브랜치 — 수집이 마지막으로 적은 작업 브랜치 (lib/work-branch.ts)
+      const commits = (await getCommits(octokit, owner, repo, since, until, getProject(repo)?.branch))
         .filter(isMaterialCommit)
         .filter((c) => !prevSha || !c.sha.startsWith(prevSha));
       const mergedPRs = (await getMergedPRs(octokit, owner, repo, since)).filter((p) => p.mergedAt <= until);
@@ -685,6 +688,7 @@ async function main(): Promise<void> {
         a.vibelogJson?.status ?? autoStatus(a),
         a.vibelogJson?.stack ?? (a.language ? [a.language] : []),
         a.theme ?? "",
+        a.branch ?? "",
       ]);
     const prevMeta = (p: Record<string, unknown> | undefined) =>
       p &&
@@ -695,6 +699,7 @@ async function main(): Promise<void> {
         p.status,
         p.stack ?? [],
         p.theme ?? "",
+        p.branch ?? "",
       ]);
     // 자정이 지나 카운트 기준 날짜가 어제가 됐으면 하루 1번 재계산해 쓴다 —
     // "오늘 커밋"이 0으로 리셋된 뒤 이른 아침 커밋도 첫 배치에서 잡힌다.
@@ -912,7 +917,7 @@ async function main(): Promise<void> {
     // 소개 글을 이 실행에서 썼으면 거기서 이미 기획서를 읽었다. vibelog.json name은 언제나 이긴다
     if (!hasIntro(a.repo) || intros.has(a.repo) || a.vibelogJson?.name) continue;
     try {
-      const r = await planNameIfChanged(octokit, a.owner, a.repo, state[a.repo]?.planSha);
+      const r = await planNameIfChanged(octokit, a.owner, a.repo, state[a.repo]?.planSha, a.branch);
       if (r.status === "same") continue;
       state[a.repo] = { ...state[a.repo], planSha: r.planSha };
       if (r.status !== "found") continue;
