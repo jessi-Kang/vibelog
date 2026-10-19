@@ -1,5 +1,18 @@
 [
   {
+    "slug": "vibelog",
+    "name": "바이브 로그",
+    "nameEn": "Vibelog",
+    "icon": {
+      "name": "tabler:notebook",
+      "paths": [
+        {
+          "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
+        }
+      ]
+    }
+  },
+  {
     "slug": "apart",
     "name": "아파트 감별사",
     "nameEn": "Apartment Authenticator",
@@ -12,19 +25,6 @@
       ]
     },
     "color": "#B9A7FF"
-  },
-  {
-    "slug": "vibelog",
-    "name": "바이브 로그",
-    "nameEn": "Vibelog",
-    "icon": {
-      "name": "tabler:notebook",
-      "paths": [
-        {
-          "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
-        }
-      ]
-    }
   },
   {
     "slug": "lie-detective",
