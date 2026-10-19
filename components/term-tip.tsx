@@ -30,7 +30,7 @@ interface Pos {
 
 export function TermTip({ note, children }: { note: string; children?: ReactNode }) {
   const id = useId();
-  const btn = useRef<HTMLButtonElement>(null);
+  const btn = useRef<HTMLSpanElement>(null);
   const tip = useRef<HTMLSpanElement>(null);
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<Pos | null>(null);
@@ -101,18 +101,27 @@ export function TermTip({ note, children }: { note: string; children?: ReactNode
 
   return (
     <>
-      <button
+      {/* button이 아니라 글자 — button은 한 덩어리라 줄 안에서 끊기지 않아, 용어 앞 줄 끝이
+          통째로 비었다 (10/20). 그래서 button의 역할(키보드 열기·포커스)을 직접 단다 */}
+      <span
         ref={btn}
-        type="button"
+        role="button"
+        tabIndex={0}
         aria-expanded={open}
         aria-describedby={open ? id : undefined}
         onClick={toggle}
-        className={`cursor-pointer bg-transparent p-0 text-left [font:inherit] underline decoration-dotted decoration-1 underline-offset-[3px] transition-colors duration-150 ${
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        }}
+        className={`cursor-pointer underline decoration-dotted decoration-1 underline-offset-[3px] transition-colors duration-150 ${
           open ? "text-accent decoration-accent" : "text-ink decoration-muted hover:decoration-ink"
         }`}
       >
         {children}
-      </button>
+      </span>
       {open &&
         createPortal(
           <span

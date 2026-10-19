@@ -166,6 +166,15 @@ html {
 .prose-devlog p {
   margin: 0.6em 0;
 }
+/* 글 본문은 글자 단위로 끊는다 — 낱말 단위(keep-all)로만 끊던 때는 긴 낱말이 통째로 다음 줄로
+   넘어가 폰에서 줄마다 오른쪽이 크게 비었다 (10/20, 시안 docs/post-body-wrap.html C안).
+   제목·요약·카드는 그대로 keep-all이다. 용어와 그 조사는 .term-word로 묶어 띄어쓰기에서만 끊는다 */
+.post-body :where(p, li) {
+  word-break: normal;
+}
+.term-word {
+  word-break: keep-all;
+}
 .prose-devlog ul,
 .prose-devlog ol {
   margin: 0.6em 0;

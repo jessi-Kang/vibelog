@@ -122,7 +122,7 @@ const REMARK: PluggableList = [[remarkGfm, { singleTilde: false }], remarkTerms]
 
 function Md({ children }: { children: string }) {
   return (
-    <div className="text-md leading-[1.75] text-ink-soft [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
+    <div className="post-body text-md leading-[1.75] text-ink-soft [&_a]:text-accent [&_code]:rounded-sm [&_code]:bg-panel2 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[.9em] [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
       <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
         {keepBackslashes(children)}
       </ReactMarkdown>
@@ -404,7 +404,7 @@ export function PostClient({
               )}
             </section>
           ) : (
-            <div className="prose-devlog">
+            <div className="prose-devlog post-body">
               <ReactMarkdown remarkPlugins={REMARK} components={mdComponents}>
                 {keepBackslashes(post.body)}
               </ReactMarkdown>
