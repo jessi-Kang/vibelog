@@ -2,10 +2,10 @@
   {
     "section": "did",
     "after": 0,
-    "src": "/media/lie-detective/2026-10-19-intro.mp4",
-    "poster": "/media/lie-detective/2026-10-19-intro.jpg",
-    "caption": "최종 채택한 24초 인트로 (음악 포함)",
-    "captionEn": "The final 24-second intro, with music",
+    "src": "/media/lie-detective/2026-10-19-intro-12s.mp4",
+    "poster": "/media/lie-detective/2026-10-19-intro-12s.jpg",
+    "caption": "사진을 건네는 12초 인트로 (음악 포함)",
+    "captionEn": "The 12-second intro where the photo is passed, with music",
     "width": 720,
     "height": 1280
   }
