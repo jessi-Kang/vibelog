@@ -1,0 +1,434 @@
+{
+  "template": "fail",
+  "music": "playful",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-20",
+  "day": 4,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "게임 인트로 속 사진이 거꾸로였습니다",
+      "en": "The photo in my game intro was upside down",
+      "keywords": [
+        "거꾸로였습니다"
+      ],
+      "keywordsEn": [
+        "upside down"
+      ],
+      "koLines": [
+        "게임 인트로 속",
+        "사진이",
+        "거꾸로였습니다"
+      ],
+      "enLines": [
+        "The photo in",
+        "my game intro",
+        "was upside down"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "인트로에선 탁자 건너편으로 사진을 건넵니다.",
+      "en": "In the intro, a photo is handed across a table.",
+      "keywords": [
+        "탁자 건너편으로"
+      ],
+      "keywordsEn": [
+        "across a table"
+      ],
+      "koLines": [
+        "인트로에선 탁자 건너편으로",
+        "사진을 건넵니다."
+      ],
+      "enLines": [
+        "In the intro, a photo",
+        "is handed across a table."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "빈 사무실",
+          "사진 건네기",
+          "사진 보기",
+          "게임 로고"
+        ],
+        "labelsEn": [
+          "Empty office",
+          "Photo handoff",
+          "Studying it",
+          "Game logo"
+        ],
+        "icons": [
+          {
+            "name": "tabler:building",
+            "paths": [
+              {
+                "d": "M3 21h18M9 8h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"
+              }
+            ]
+          },
+          {
+            "name": "tabler:hand-move",
+            "paths": [
+              {
+                "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 0 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+              },
+              {
+                "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13M2.541 5.594a13.5 13.5 0 0 1 2.46-1.427M14 3.458a13.4 13.4 0 0 1 3.685 1.612"
+              }
+            ]
+          },
+          {
+            "name": "tabler:photo-search",
+            "paths": [
+              {
+                "d": "M15 8h.01M11.5 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v5.5"
+              },
+              {
+                "d": "M15 18a3 3 0 1 0 6 0a3 3 0 1 0-6 0m5.2 2.2L22 22M3 16l5-5c.928-.893 2.072-.893 3 0l2 2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:device-gamepad-2",
+            "paths": [
+              {
+                "d": "M12 5h3.5a5 5 0 0 1 0 10H10l-4.015 4.227a2.3 2.3 0 0 1-3.923-2.035l1.634-8.173A5 5 0 0 1 8.6 5z"
+              },
+              {
+                "d": "m14 15l4.07 4.284a2.3 2.3 0 0 0 3.925-2.023l-1.6-8.232M8 9v2m-1-1h2m5 0h2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "AI는 사진 속 그림을 카메라 쪽에 맞췄습니다.",
+      "en": "The AI drew the picture on the photo facing the camera.",
+      "keywords": [
+        "카메라 쪽에"
+      ],
+      "keywordsEn": [
+        "facing the camera"
+      ],
+      "koLines": [
+        "AI는 사진 속 그림을",
+        "카메라 쪽에 맞췄습니다."
+      ],
+      "enLines": [
+        "The AI drew the picture on the photo",
+        "facing the camera."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "사진 속 그림",
+          "바로 보임",
+          "거꾸로",
+          "카메라",
+          "건너편 사람"
+        ],
+        "labelsEn": [
+          "Photo picture",
+          "Right way up",
+          "Upside down",
+          "Camera",
+          "Person across"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "영상은 새로 만들지 않았습니다.",
+      "en": "I didn't make the video again.",
+      "keywords": [
+        "새로"
+      ],
+      "keywordsEn": [
+        "again"
+      ],
+      "icon": {
+        "name": "tabler:video-off",
+        "paths": [
+          {
+            "d": "m3 3l18 18m-6-10v-1l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-.675.946"
+          },
+          {
+            "d": "M10 6h3a2 2 0 0 1 2 2v3m0 4v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "장면마다 그림만 돌려 다시 얹었습니다.",
+      "en": "In each shot, I rotated only the picture and laid it back.",
+      "keywords": [
+        "그림만"
+      ],
+      "keywordsEn": [
+        "only the picture"
+      ],
+      "koLines": [
+        "장면마다 그림만 돌려",
+        "다시 얹었습니다."
+      ],
+      "enLines": [
+        "In each shot, I rotated",
+        "only the picture and laid it back."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "종이 자리 따라가기",
+          "그림만 돌리기",
+          "다시 얹기"
+        ],
+        "labelsEn": [
+          "Track the paper",
+          "Rotate the picture",
+          "Lay it back"
+        ],
+        "icons": [
+          {
+            "name": "tabler:focus-2",
+            "paths": [
+              {
+                "d": "M11.5 12a.5.5 0 1 0 1 0a.5.5 0 1 0-1 0",
+                "filled": true
+              },
+              {
+                "d": "M5 12a7 7 0 1 0 14 0a7 7 0 1 0-14 0m7-9v2m-9 7h2m7 7v2m7-9h2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:rotate",
+            "paths": [
+              {
+                "d": "M19.95 11a8 8 0 1 0-.5 4m.5 5v-5h-5"
+              }
+            ]
+          },
+          {
+            "name": "tabler:stack-push",
+            "paths": [
+              {
+                "d": "m6 10l-2 1l8 4l8-4l-2-1M4 15l8 4l8-4M12 4v7"
+              },
+              {
+                "d": "m15 8l-3 3l-3-3"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "사진을 쥔 손가락은 원래 영상 그대로입니다.",
+      "en": "The fingers holding the photo stayed as they were.",
+      "keywords": [
+        "원래 영상 그대로입니다."
+      ],
+      "keywordsEn": [
+        "stayed as they were."
+      ],
+      "koLines": [
+        "사진을 쥔 손가락은",
+        "원래 영상 그대로입니다."
+      ],
+      "enLines": [
+        "The fingers holding the photo",
+        "stayed as they were."
+      ],
+      "art": "a hand passing a photograph across a table, fingers resting on the edge of the paper",
+      "icon": {
+        "name": "tabler:hand-finger",
+        "paths": [
+          {
+            "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 1 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+          },
+          {
+            "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 탁자 건너편에서도 똑바로 보입니다.",
+      "en": "Now it reads right way up from across the table.",
+      "keywords": [
+        "똑바로"
+      ],
+      "keywordsEn": [
+        "right way up"
+      ],
+      "koLines": [
+        "이제 탁자 건너편에서도",
+        "똑바로 보입니다."
+      ],
+      "enLines": [
+        "Now it reads right way up",
+        "from across the table."
+      ],
+      "art": "a person leaning over a table, studying a photograph held in both hands",
+      "icon": {
+        "name": "tabler:photo-check",
+        "paths": [
+          {
+            "d": "M15 8h.01M11.5 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v7"
+          },
+          {
+            "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l4 4"
+          },
+          {
+            "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l.5.5M15 19l2 2l4-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "24초 영상을 이제 게임에 넣습니다.",
+      "en": "Next, the 24-second video goes into the game.",
+      "keywords": [
+        "게임에"
+      ],
+      "keywordsEn": [
+        "into the game"
+      ],
+      "koLines": [
+        "24초 영상을",
+        "이제 게임에 넣습니다."
+      ],
+      "enLines": [
+        "Next, the 24-second video",
+        "goes into the game."
+      ],
+      "stat": "24초",
+      "statEn": "24 seconds",
+      "icon": {
+        "name": "tabler:device-gamepad-2",
+        "paths": [
+          {
+            "d": "M12 5h3.5a5 5 0 0 1 0 10H10l-4.015 4.227a2.3 2.3 0 0 1-3.923-2.035l1.634-8.173A5 5 0 0 1 8.6 5z"
+          },
+          {
+            "d": "m14 15l4.07 4.284a2.3 2.3 0 0 0 3.925-2.023l-1.6-8.232M8 9v2m-1-1h2m5 0h2"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "그림 한 장만 돌리면 되는 일이었습니다.",
+      "en": "All it took was turning one picture.",
+      "keywords": [
+        "한 장만"
+      ],
+      "keywordsEn": [
+        "one picture"
+      ],
+      "koLines": [
+        "그림 한 장만 돌리면",
+        "되는 일이었습니다."
+      ],
+      "enLines": [
+        "All it took was",
+        "turning one picture."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "사진이 거꾸로 보였다",
+    "titleEn": "The photo was upside down",
+    "before": "받는 사람 쪽에서 사진이 거꾸로",
+    "after": "그림만 돌려 다시 얹음",
+    "beforeEn": "Upside down for the person receiving it",
+    "afterEn": "Rotated only the picture and laid it back"
+  },
+  "commits": [
+    [
+      "7b30772",
+      "docs: 최종 인트로 채택 기준과 파일 식별값 확정"
+    ],
+    [
+      "e9e092b",
+      "fix: 타이틀 배경의 테이블 옆 밝은 틈 제거"
+    ],
+    [
+      "7c6f78a",
+      "fix: 인트로를 얼굴에서 사진으로 이어지는 구도로 수정"
+    ],
+    [
+      "444ad65",
+      "asset: 사진 방향과 타이틀 이동을 반영한 전체 인트로 편집"
+    ],
+    [
+      "ea0ab8d",
+      "fix: 사진의 읽기 방향을 인물 시점에 맞게 보정"
+    ],
+    [
+      "d7edaba",
+      "asset: 전체 인트로의 도입과 관찰 장면 소스 제작"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "7b30772",
+      "docs: finalize intro adoption criteria and file identifiers"
+    ],
+    [
+      "e9e092b",
+      "fix: remove bright gap beside table in title background"
+    ],
+    [
+      "7c6f78a",
+      "fix: adjust intro so it flows from face to photo"
+    ],
+    [
+      "444ad65",
+      "asset: edit full intro reflecting photo orientation and title movement"
+    ],
+    [
+      "ea0ab8d",
+      "fix: correct photo reading direction to match character's viewpoint"
+    ],
+    [
+      "d7edaba",
+      "asset: create source for full intro opening and observation scene"
+    ]
+  ],
+  "commitCount": 6,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "AI로 만든 게임 인트로에서 건네받은 사진이 거꾸로였습니다. 영상을 다시 만들지 않고 사진 속 그림만 돌려 고쳤습니다.",
+    "en": "In my AI-made game intro, the handed-over photo was upside down for the receiver. Instead of remaking the video, I rotated only the picture on it."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#게임개발",
+    "#인디게임",
+    "#AI영상",
+    "#gamedev",
+    "#indiegame",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-20.poster.jpg?v=mvgrpte3",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-20.ko.mp4?v=mvgrpv9z",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-20.ko.sm.mp4?v=mvgrq2a8",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-20.en.poster.jpg?v=mvgrr7gn",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-20.en.mp4?v=mvgrr9l1",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-20.en.sm.mp4?v=mvgrrgcv"
+  }
+}

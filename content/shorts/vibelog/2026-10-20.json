@@ -1,0 +1,398 @@
+{
+  "template": "before-after",
+  "music": "calm",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-20",
+  "day": 24,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "폰에서 글 오른쪽이 텅 비었습니다",
+      "en": "On phones, every line left a gap",
+      "keywords": [
+        "텅 비었습니다"
+      ],
+      "keywordsEn": [
+        "a gap"
+      ],
+      "koLines": [
+        "폰에서 글",
+        "오른쪽이",
+        "텅 비었습니다"
+      ],
+      "enLines": [
+        "On phones,",
+        "every line",
+        "left a gap"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "한글을 띄어쓰기에서만 끊고 있었습니다.",
+      "en": "Korean text only broke at spaces.",
+      "keywords": [
+        "띄어쓰기에서만"
+      ],
+      "keywordsEn": [
+        "only broke"
+      ],
+      "koLines": [
+        "한글을 띄어쓰기에서만",
+        "끊고 있었습니다."
+      ],
+      "enLines": [
+        "Korean text",
+        "only broke at spaces."
+      ],
+      "art": "a long word block sliding off the end of a narrow shelf and dropping onto the shelf below, leaving an empty space behind",
+      "icon": {
+        "name": "tabler:text-wrap",
+        "paths": [
+          {
+            "d": "M4 6h16M4 18h5m-5-6h13a3 3 0 0 1 0 6h-4l2-2m0 4l-2-2"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 글자 사이 어디서든 줄을 바꿉니다.",
+      "en": "Now it can break between any letters.",
+      "keywords": [
+        "글자 사이"
+      ],
+      "keywordsEn": [
+        "between any"
+      ],
+      "koLines": [
+        "이제 글자 사이",
+        "어디서든 줄을 바꿉니다."
+      ],
+      "enLines": [
+        "Now it can break",
+        "between any letters."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "띄어쓰기에서만",
+          "오른쪽이 빔",
+          "글자 사이 어디서든",
+          "끝까지 참"
+        ],
+        "labelsEn": [
+          "Only at spaces",
+          "Gap on the right",
+          "Between any letters",
+          "Filled to the end"
+        ],
+        "icons": [
+          {
+            "name": "tabler:space",
+            "paths": [
+              {
+                "d": "M4 10v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:letter-case",
+            "paths": [
+              {
+                "d": "M14 15.5a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0M3 19V8.5a3.5 3.5 0 0 1 7 0V19m-7-6h7m11-1v7"
+              }
+            ]
+          },
+          null
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "본문이 줄 끝까지 꽉 찹니다.",
+      "en": "Body text now fills every line.",
+      "keywords": [
+        "끝까지"
+      ],
+      "keywordsEn": [
+        "fills"
+      ],
+      "koLines": [
+        "본문이 줄 끝까지",
+        "꽉 찹니다."
+      ],
+      "enLines": [
+        "Body text now",
+        "fills every line."
+      ],
+      "screen": "/about",
+      "shot": "whole"
+    },
+    {
+      "scene": "fail",
+      "ko": "다만 조사가 혼자 떨어질 수 있었습니다.",
+      "en": "But a Korean particle could end up alone.",
+      "keywords": [
+        "혼자"
+      ],
+      "keywordsEn": [
+        "Korean particle"
+      ],
+      "koLines": [
+        "다만 조사가",
+        "혼자 떨어질 수 있었습니다."
+      ],
+      "enLines": [
+        "But a Korean particle",
+        "could end up alone."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "글자마다 끊기",
+          "용어가 갈림",
+          "조사만 떨어짐",
+          "중간에서",
+          "조사 앞에서"
+        ],
+        "labelsEn": [
+          "Break anywhere",
+          "Term split",
+          "Particle alone",
+          "Mid-term",
+          "Before particle"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "어려운 용어는 뒤 조사와 묶었습니다.",
+      "en": "So hard terms stay tied to their particles.",
+      "keywords": [
+        "뒤 조사와"
+      ],
+      "keywordsEn": [
+        "tied"
+      ],
+      "koLines": [
+        "어려운 용어는",
+        "뒤 조사와 묶었습니다."
+      ],
+      "enLines": [
+        "So hard terms stay tied",
+        "to their particles."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "용어 / 를",
+          "조사만 다음 줄",
+          "용어를",
+          "함께 넘어감"
+        ],
+        "labelsEn": [
+          "Term / particle",
+          "Particle drops",
+          "Term + particle",
+          "Move together"
+        ],
+        "icons": [
+          {
+            "name": "tabler:unlink",
+            "paths": [
+              {
+                "d": "M17 22v-2m-8-5l6-6m-4-3l.463-.536a5 5 0 0 1 7.071 7.072L18 13m-5 5l-.397.534a5.07 5.07 0 0 1-7.127 0a4.97 4.97 0 0 1 0-7.071L6 11m14 6h2M2 7h2m3-5v2"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:link",
+            "paths": [
+              {
+                "d": "m9 15l6-6m-4-3l.463-.536a5 5 0 0 1 7.071 7.072L18 13m-5 5l-.397.534a5.07 5.07 0 0 1-7.127 0a4.97 4.97 0 0 1 0-7.071L6 11"
+              }
+            ]
+          },
+          null
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "줄이 바뀌면 둘이 함께 넘어갑니다.",
+      "en": "When the line breaks, both move together.",
+      "keywords": [
+        "함께"
+      ],
+      "keywordsEn": [
+        "both move"
+      ],
+      "koLines": [
+        "줄이 바뀌면",
+        "둘이 함께 넘어갑니다."
+      ],
+      "enLines": [
+        "When the line breaks,",
+        "both move together."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "용어 / 를",
+          "조사만 다음 줄",
+          "용어를",
+          "함께 넘어감"
+        ],
+        "labelsEn": [
+          "Term / particle",
+          "Particle drops",
+          "Term + particle",
+          "Move together"
+        ],
+        "icons": [
+          {
+            "name": "tabler:unlink",
+            "paths": [
+              {
+                "d": "M17 22v-2m-8-5l6-6m-4-3l.463-.536a5 5 0 0 1 7.071 7.072L18 13m-5 5l-.397.534a5.07 5.07 0 0 1-7.127 0a4.97 4.97 0 0 1 0-7.071L6 11m14 6h2M2 7h2m3-5v2"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:link",
+            "paths": [
+              {
+                "d": "m9 15l6-6m-4-3l.463-.536a5 5 0 0 1 7.071 7.072L18 13m-5 5l-.397.534a5.07 5.07 0 0 1-7.127 0a4.97 4.97 0 0 1 0-7.071L6 11"
+              }
+            ]
+          },
+          null
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "폰에서 여러 글을 열어 확인하겠습니다.",
+      "en": "Next, I'll check many posts on a phone.",
+      "keywords": [
+        "여러 글을"
+      ],
+      "keywordsEn": [
+        "many posts"
+      ],
+      "koLines": [
+        "폰에서 여러 글을",
+        "열어 확인하겠습니다."
+      ],
+      "enLines": [
+        "Next, I'll check",
+        "many posts on a phone."
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "end",
+      "ko": "오른쪽 빈 곳, 이제 없습니다.",
+      "en": "No more gaps on the right.",
+      "keywords": [
+        "이제"
+      ],
+      "keywordsEn": [
+        "No more"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "조사가 혼자 떨어진다",
+    "titleEn": "Particles left alone",
+    "before": "글자마다 끊으면 조사만 다음 줄로",
+    "after": "용어와 조사를 묶어서 함께 넘김",
+    "beforeEn": "Breaking anywhere left particles alone",
+    "afterEn": "Terms and particles now move together"
+  },
+  "commits": [
+    [
+      "942a5ed",
+      "feat: 거짓말 탐정 10/19 글에 최종 인트로 영상을 붙인다"
+    ],
+    [
+      "9550a75",
+      "docs: 글 본문에 양쪽 맞춤을 쓰지 않는다고 적는다"
+    ],
+    [
+      "3e041e6",
+      "docs: 영어 본문 줄 끝 맞춤 시안을 더한다"
+    ],
+    [
+      "af0daca",
+      "fix: 영어 본문도 줄 끝이 덜 비게 하이픈으로 끊는다"
+    ],
+    [
+      "f42207f",
+      "fix: 글 본문을 글자 단위로 끊어 폰에서 줄 끝이 비지 않게 한다"
+    ],
+    [
+      "f6fbae2",
+      "docs: 글 본문 줄 끝이 비는 문제의 해결안 시안을 남긴다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "942a5ed",
+      "feat: attach final intro video to the 10/19 Liar Detective post"
+    ],
+    [
+      "9550a75",
+      "docs: note that post body text is not justified"
+    ],
+    [
+      "3e041e6",
+      "docs: add draft for line-end justification in English body text"
+    ],
+    [
+      "af0daca",
+      "fix: hyphenate English body text to reduce ragged line endings"
+    ],
+    [
+      "f42207f",
+      "fix: break post body text by character so line endings don't go blank on phones"
+    ],
+    [
+      "f6fbae2",
+      "docs: leave draft notes on the fix for blank line endings in post body"
+    ]
+  ],
+  "commitCount": 6,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "폰에서 글 오른쪽이 줄마다 비던 것을 고쳤습니다. 이제 한국어 본문은 줄 끝까지 글자가 찹니다.",
+    "en": "On phones, every line of a post ended in a big gap. Now Korean body text fills each line to the end."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#모바일",
+    "#줄바꿈",
+    "#웹개발",
+    "#devlog",
+    "#webdev",
+    "#typography"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-20.poster.jpg?v=mvgrh2fq",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-20.ko.mp4?v=mvgrh5bb",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-20.ko.sm.mp4?v=mvgrhd8t",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-20.en.poster.jpg?v=mvgripgt",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-20.en.mp4?v=mvgris8q",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-20.en.sm.mp4?v=mvgriz32"
+  }
+}

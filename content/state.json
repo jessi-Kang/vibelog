@@ -1,9 +1,9 @@
 {
   "vibelog": {
-    "lastSha": "78b3f3568eaa534c0a7891ee6374227488ecb562",
-    "lastRun": "2026-10-19T18:30:08.391Z",
-    "lastDate": "2026-10-19",
-    "daySince": "2026-10-17T14:04:31.173Z",
+    "lastSha": "942a5ed91e96114411be4b1bd1ceb474ce92e9bd",
+    "lastRun": "2026-10-20T14:03:53.247Z",
+    "lastDate": "2026-10-20",
+    "daySince": "2026-10-19T18:30:08.391Z",
     "planSha": ""
   },
   "apart": {
@@ -34,10 +34,10 @@
     "introDeferredAt": "2026-10-16T15:27:17Z"
   },
   "lie-detective": {
-    "lastSha": "a7c4189c44328d17cc5872467019c69aeee2a10f",
-    "lastRun": "2026-10-19T18:32:30.178Z",
-    "lastDate": "2026-10-19",
-    "daySince": "2026-10-18T14:04:26.923Z",
+    "lastSha": "7b30772988ad10751b85a7182ff5ecc21965f40e",
+    "lastRun": "2026-10-20T14:05:57.732Z",
+    "lastDate": "2026-10-20",
+    "daySince": "2026-10-19T18:32:30.178Z",
     "planSha": ""
   }
 }

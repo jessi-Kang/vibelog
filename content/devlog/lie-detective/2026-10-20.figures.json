@@ -1,0 +1,758 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "24초 인트로가 빈 사무실, 확인하고 건네기, 받은 사람이 들여다보기, 뒤로 빠지며 로고의 순서로 이어지고, 이 가운데 건네는 장면만 지난번의 12초 장면이라는 것을 보여 주는 그림.",
+  "altEn": "The 24-second intro runs from an empty office, to checking and handing over the photo, to the receiver studying it, to pulling back to the logo, and only the handoff is the earlier 12-second shot.",
+  "caption": "지난번의 12초 장면 앞뒤에 새 장면을 붙여 24초가 됐습니다.",
+  "captionEn": "New shots before and after the earlier 12-second shot make up 24 seconds.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "24초 인트로의 장면 순서와 지난번 12초 장면의 위치"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "40",
+      "y1": "60",
+      "x2": "40",
+      "y2": "240",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "60",
+      "r": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "120",
+      "r": "9",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "180",
+      "r": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "240",
+      "r": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "65",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "빈 사무실"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "125",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "확인하고 건네기"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "185",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "받은 사람이 들여다봄"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "245",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "뒤로 빠지며 로고"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "65",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "새 장면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "125",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "지난번 12초"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "185",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "새 장면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "245",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "새 장면"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "268",
+      "x2": "370",
+      "y2": "268",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "292",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전체 24초"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The shot order of the 24-second intro and where the earlier 12-second shot sits"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "40",
+      "y1": "60",
+      "x2": "40",
+      "y2": "240",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "60",
+      "r": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "120",
+      "r": "9",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "180",
+      "r": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "40",
+      "cy": "240",
+      "r": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "65",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Empty office"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "125",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Check, hand over"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "185",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Receiver studies it"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "64",
+      "y": "245",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Pull back to logo"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "65",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "new shot"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "125",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "earlier 12 s"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "185",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "new shot"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "245",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "new shot"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "268",
+      "x2": "370",
+      "y2": "268",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "370",
+      "y": "292",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Total 24 s"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "위에서 내려다본 탁자에서, 처음에는 사진 속 그림이 아래쪽 카메라를 향해 있어 건너편의 받는 사람에게는 거꾸로였고, 그림만 돌려 받는 사람 쪽으로 바로 서게 고친 모습.",
+  "altEn": "Seen from above the table: at first the picture faced the camera below, so it was upside down for the receiver across the table; rotating only the picture made it upright for the receiver.",
+  "caption": "종이 테두리와 손가락은 그대로 두고, 종이 위 그림만 돌렸습니다.",
+  "captionEn": "The paper's edges and fingers stayed; only the picture on it was rotated.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "카메라 쪽을 향하던 사진 속 그림을 받는 사람 쪽으로 돌린 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "받는 사람 · 탁자 건너편"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "56",
+      "r": "14",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "85",
+      "width": "350",
+      "height": "160",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "115",
+      "width": "100",
+      "height": "90",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "90",
+      "y": "135",
+      "width": "40",
+      "height": "30",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "85,165 135,165 110,188",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "20",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "115",
+      "width": "100",
+      "height": "90",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "255,158 305,158 280,132",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "260",
+      "y": "158",
+      "width": "40",
+      "height": "30",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "처음: 거꾸로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "그림만 돌림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "178",
+      "y": "262",
+      "width": "34",
+      "height": "22",
+      "rx": "3",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "273",
+      "r": "6",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "308",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "카메라"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The picture on the photo, which faced the camera, rotated to face the receiver"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Receiver · far side of table"
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "56",
+      "r": "14",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "85",
+      "width": "350",
+      "height": "160",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "60",
+      "y": "115",
+      "width": "100",
+      "height": "90",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "90",
+      "y": "135",
+      "width": "40",
+      "height": "30",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "85,165 135,165 110,188",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "168",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "20",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "115",
+      "width": "100",
+      "height": "90",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "255,158 305,158 280,132",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "260",
+      "y": "158",
+      "width": "40",
+      "height": "30",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "110",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Upside down"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "280",
+      "y": "232",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Picture rotated"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "178",
+      "y": "262",
+      "width": "34",
+      "height": "22",
+      "rx": "3",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "195",
+      "cy": "273",
+      "r": "6",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "308",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Camera"
+    }
+   ]
+  }
+ }
+]

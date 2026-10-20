@@ -1,0 +1,816 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "폰 화면에서 고치기 전에는 줄마다 오른쪽이 비어 있고, 고친 뒤에는 줄 끝까지 글자가 차 있는 모습.",
+  "altEn": "On a phone screen, before the fix each line leaves empty space on the right; after the fix the lines fill to the end.",
+  "caption": "전에는 줄마다 오른쪽이 비었고, 이제는 줄 끝까지 찹니다.",
+  "captionEn": "Before, every line left a gap on the right; now the lines fill to the edge.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "고치기 전에는 줄마다 오른쪽이 비고, 고친 뒤에는 줄 끝까지 글자가 찬 모습"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "160",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "40",
+      "width": "160",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-muted)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "58",
+        "width": "96",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "80",
+        "width": "120",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "102",
+        "width": "80",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "124",
+        "width": "130",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "146",
+        "width": "70",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "168",
+        "width": "110",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "190",
+        "width": "90",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "212",
+        "width": "60",
+        "height": "10",
+        "rx": "3"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-ink-soft)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "58",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "80",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "102",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "124",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "146",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "168",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "190",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "212",
+        "width": "70",
+        "height": "10",
+        "rx": "3"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 260",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before the fix each line leaves a gap on the right; after the fix the lines fill to the end"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-muted)",
+      "text-anchor": "middle"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "28",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)",
+      "text-anchor": "middle"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "width": "160",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "40",
+      "width": "160",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-muted)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "58",
+        "width": "96",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "80",
+        "width": "120",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "102",
+        "width": "80",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "124",
+        "width": "130",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "146",
+        "width": "70",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "168",
+        "width": "110",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "190",
+        "width": "90",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "32",
+        "y": "212",
+        "width": "60",
+        "height": "10",
+        "rx": "3"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "var(--color-ink-soft)"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "58",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "80",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "102",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "124",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "146",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "168",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "190",
+        "width": "136",
+        "height": "10",
+        "rx": "3"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "222",
+        "y": "212",
+        "width": "70",
+        "height": "10",
+        "rx": "3"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 2,
+  "alt": "용어 뒤 조사 '을'만 다음 줄로 떨어진 경우와, 용어와 조사를 묶어 함께 다음 줄로 넘긴 경우를 비교한 그림.",
+  "altEn": "A comparison: the particle '을' dropping alone to the next line, versus the term and particle kept together and moved to the next line.",
+  "caption": "용어와 바로 뒤 조사는 한 덩어리로 묶어 같이 넘깁니다.",
+  "captionEn": "A term and the particle right after it now move to the next line together.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 290",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "조사만 떨어진 줄바꿈과 용어와 조사를 묶은 줄바꿈 비교"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "조사만 떨어짐"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "42",
+      "width": "350",
+      "height": "90",
+      "rx": "12",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "36",
+      "y": "62",
+      "width": "194",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "240",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "말풍선"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "240",
+      "y1": "80",
+      "x2": "288",
+      "y2": "80",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "2 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "114",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "을"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "62",
+      "y": "102",
+      "width": "238",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "묶어서 함께"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "182",
+      "width": "350",
+      "height": "90",
+      "rx": "12",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "36",
+      "y": "202",
+      "width": "264",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "254",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "말풍선을"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "260",
+      "x2": "84",
+      "y2": "260",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "2 3"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "242",
+      "width": "220",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 290",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A line break that strands the particle versus one that keeps term and particle together"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Particle stranded"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "42",
+      "width": "350",
+      "height": "90",
+      "rx": "12",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "36",
+      "y": "62",
+      "width": "200",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "246",
+      "y": "74",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "term"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "246",
+      "y1": "80",
+      "x2": "280",
+      "y2": "80",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "2 3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "114",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "을"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "62",
+      "y": "102",
+      "width": "238",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "170",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Kept together"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "182",
+      "width": "350",
+      "height": "90",
+      "rx": "12",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "36",
+      "y": "202",
+      "width": "264",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "36",
+      "y": "254",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "term을"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "36",
+      "y1": "260",
+      "x2": "70",
+      "y2": "260",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "2 3"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "104",
+      "y": "242",
+      "width": "226",
+      "height": "12",
+      "rx": "3",
+      "fill": "var(--color-muted)"
+     }
+    }
+   ]
+  }
+ }
+]
