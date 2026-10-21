@@ -1,0 +1,1378 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "대화 화면의 배치: 위쪽에 메뉴 버튼, 가운데에 인물, 아래쪽에 대화 글과 버튼이 놓인 휴대폰 세로 화면.",
+  "altEn": "Layout of the conversation screen: a menu button at the top, the character in the middle, and dialogue and buttons at the bottom of a vertical phone screen.",
+  "caption": "대화 화면의 자리 배치. 시안마다 아래쪽 대화 글과 버튼을 담는 재질이 다릅니다.",
+  "captionEn": "Where things sit on the conversation screen. Each draft changes the material holding the dialogue and buttons.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "휴대폰 세로 화면에 메뉴 버튼, 인물, 대화 글, 버튼이 위에서 아래로 놓인 모습"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "20",
+      "width": "130",
+      "height": "260",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "32",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "105",
+      "cy": "112",
+      "r": "18",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M78 176 Q78 134 105 130 Q132 134 132 176 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "188",
+      "width": "106",
+      "height": "42",
+      "rx": "4",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "62",
+      "y1": "203",
+      "x2": "146",
+      "y2": "203",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "62",
+      "y1": "216",
+      "x2": "124",
+      "y2": "216",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "56",
+      "y": "244",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "84",
+      "y": "244",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "112",
+      "y": "244",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "244",
+      "width": "14",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "166",
+      "y1": "42",
+      "x2": "194",
+      "y2": "42",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "136",
+      "y1": "130",
+      "x2": "194",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "162",
+      "y1": "209",
+      "x2": "194",
+      "y2": "209",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "162",
+      "y1": "254",
+      "x2": "194",
+      "y2": "254",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "48",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "메뉴 버튼"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "136",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인물"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "대화 글"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "260",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "버튼"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A vertical phone screen with a menu button, the character, dialogue, and buttons from top to bottom"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "20",
+      "width": "130",
+      "height": "260",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "32",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "105",
+      "cy": "112",
+      "r": "18",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M78 176 Q78 134 105 130 Q132 134 132 176 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "188",
+      "width": "106",
+      "height": "42",
+      "rx": "4",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "62",
+      "y1": "203",
+      "x2": "146",
+      "y2": "203",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "62",
+      "y1": "216",
+      "x2": "124",
+      "y2": "216",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "56",
+      "y": "244",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "84",
+      "y": "244",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "112",
+      "y": "244",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "140",
+      "y": "244",
+      "width": "14",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "166",
+      "y1": "42",
+      "x2": "194",
+      "y2": "42",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "136",
+      "y1": "130",
+      "x2": "194",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "162",
+      "y1": "209",
+      "x2": "194",
+      "y2": "209",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "162",
+      "y1": "254",
+      "x2": "194",
+      "y2": "254",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "48",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Menu button"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "136",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Character"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "215",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Dialogue"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "202",
+      "y": "260",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Buttons"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "고치기 전에는 인물 얼굴이 메뉴 버튼 밑에 붙고 종이와 수첩의 두 줄 테두리가 맞물렸고, 고친 뒤에는 인물을 내리고 종이와 수첩 사이를 띄워 버튼을 한 줄에 모았다.",
+  "altEn": "Before: the character's face sat right under the menu button and the double borders of the paper and notebook ran into each other. After: the character moved down, a gap separates paper and notebook, and the buttons sit in one row.",
+  "caption": "인물만 아래로 내리고, 종이와 수첩 사이를 띄워 테두리가 맞물리지 않게 했습니다.",
+  "captionEn": "Only the character moved down, and a gap keeps the paper and notebook borders from colliding.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 370",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "고치기 전과 후의 대화 화면 비교: 인물 위치와 종이·수첩 사이 간격"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "40",
+      "width": "150",
+      "height": "260",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "50",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "100",
+      "cy": "90",
+      "r": "16",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M76 160 Q76 112 100 108 Q124 112 124 160 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "37",
+      "y": "170",
+      "width": "126",
+      "height": "50",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "41",
+      "y": "174",
+      "width": "118",
+      "height": "42",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "37",
+      "y": "220",
+      "width": "126",
+      "height": "68",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "41",
+      "y": "224",
+      "width": "118",
+      "height": "60",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "35",
+      "y1": "220",
+      "x2": "165",
+      "y2": "220",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "35",
+      "y1": "216",
+      "x2": "165",
+      "y2": "216",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "35",
+      "y1": "224",
+      "x2": "165",
+      "y2": "224",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "236",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "120",
+      "y": "240",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "62",
+      "y": "262",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "128",
+      "y": "264",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "176",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "40",
+      "width": "150",
+      "height": "260",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "335",
+      "y": "50",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "290",
+      "cy": "118",
+      "r": "16",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M266 174 Q266 140 290 136 Q314 140 314 174 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "227",
+      "y": "182",
+      "width": "126",
+      "height": "42",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "237",
+      "y1": "198",
+      "x2": "340",
+      "y2": "198",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "237",
+      "y1": "211",
+      "x2": "314",
+      "y2": "211",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "227",
+      "y": "236",
+      "width": "126",
+      "height": "54",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "231",
+      "y": "240",
+      "width": "118",
+      "height": "46",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "222",
+      "y1": "230",
+      "x2": "358",
+      "y2": "230",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "238",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "266",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "294",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "322",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "326",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "위로 쏠림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "350",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "선이 맞물림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "326",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인물만 내림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "350",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "사이를 띄움"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 370",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before and after of the conversation screen: character position and the gap between paper and notebook"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "26",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "17",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "40",
+      "width": "150",
+      "height": "260",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "50",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "100",
+      "cy": "90",
+      "r": "16",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M76 160 Q76 112 100 108 Q124 112 124 160 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "37",
+      "y": "170",
+      "width": "126",
+      "height": "50",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "41",
+      "y": "174",
+      "width": "118",
+      "height": "42",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "37",
+      "y": "220",
+      "width": "126",
+      "height": "68",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "41",
+      "y": "224",
+      "width": "118",
+      "height": "60",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "35",
+      "y1": "220",
+      "x2": "165",
+      "y2": "220",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "35",
+      "y1": "216",
+      "x2": "165",
+      "y2": "216",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "35",
+      "y1": "224",
+      "x2": "165",
+      "y2": "224",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "52",
+      "y": "236",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "120",
+      "y": "240",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "62",
+      "y": "262",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "128",
+      "y": "264",
+      "width": "22",
+      "height": "14",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "176",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "18",
+      "fill": "var(--color-muted)"
+     },
+     "text": "→"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "40",
+      "width": "150",
+      "height": "260",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "335",
+      "y": "50",
+      "width": "20",
+      "height": "20",
+      "rx": "4",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "290",
+      "cy": "118",
+      "r": "16",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M266 174 Q266 140 290 136 Q314 140 314 174 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "227",
+      "y": "182",
+      "width": "126",
+      "height": "42",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "237",
+      "y1": "198",
+      "x2": "340",
+      "y2": "198",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "237",
+      "y1": "211",
+      "x2": "314",
+      "y2": "211",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "227",
+      "y": "236",
+      "width": "126",
+      "height": "54",
+      "fill": "var(--color-bg)",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "231",
+      "y": "240",
+      "width": "118",
+      "height": "46",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "222",
+      "y1": "230",
+      "x2": "358",
+      "y2": "230",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "1.5",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "238",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "266",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "294",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "322",
+      "y": "254",
+      "width": "22",
+      "height": "18",
+      "rx": "3",
+      "fill": "none",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "326",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Top-heavy"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "350",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Lines clash"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "326",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Character down"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "350",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Gap added"
+    }
+   ]
+  }
+ }
+]

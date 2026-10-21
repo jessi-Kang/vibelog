@@ -1,0 +1,419 @@
+{
+  "template": "ship-it",
+  "music": "calm",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-21",
+  "day": 5,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "게임 화면 시안을 3개 그렸습니다",
+      "en": "I drew 3 game screen drafts",
+      "keywords": [
+        "3개"
+      ],
+      "keywordsEn": [
+        "3"
+      ],
+      "koLines": [
+        "게임 화면",
+        "시안을",
+        "3개 그렸습니다"
+      ],
+      "enLines": [
+        "I drew 3",
+        "game screen drafts"
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "UI, 그러니까 화면의 창과 버튼을 그렸습니다.",
+      "en": "I drew the UI, the boxes and buttons on screen.",
+      "keywords": [
+        "창과 버튼을"
+      ],
+      "keywordsEn": [
+        "boxes and buttons"
+      ],
+      "koLines": [
+        "UI, 그러니까 화면의",
+        "창과 버튼을 그렸습니다."
+      ],
+      "enLines": [
+        "I drew the UI,",
+        "the boxes and buttons on screen."
+      ],
+      "icon": {
+        "name": "tabler:layout-board",
+        "paths": [
+          {
+            "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 3h8m0 6h8M12 4v16"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "게임 속 인물을 그린 화풍 그대로입니다.",
+      "en": "It's the same style as the game's character art.",
+      "keywords": [
+        "화풍 그대로입니다."
+      ],
+      "keywordsEn": [
+        "same style"
+      ],
+      "koLines": [
+        "게임 속 인물을 그린",
+        "화풍 그대로입니다."
+      ],
+      "enLines": [
+        "It's the same style",
+        "as the game's character art."
+      ],
+      "art": "a paintbrush drawing a small character and a round button with the same strokes",
+      "icon": {
+        "name": "tabler:brush",
+        "paths": [
+          {
+            "d": "M3 21v-4a4 4 0 1 1 4 4z"
+          },
+          {
+            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
+          },
+          {
+            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "시안 3개는 재질이 다 다릅니다.",
+      "en": "The 3 drafts use different materials.",
+      "keywords": [
+        "재질이"
+      ],
+      "keywordsEn": [
+        "different"
+      ],
+      "koLines": [
+        "시안 3개는",
+        "재질이 다 다릅니다."
+      ],
+      "enLines": [
+        "The 3 drafts",
+        "use different materials."
+      ],
+      "art": "three different writing surfaces standing side by side",
+      "stat": "3개",
+      "statEn": "3 drafts",
+      "icon": {
+        "name": "tabler:stack-2",
+        "paths": [
+          {
+            "d": "M12 4L4 8l8 4l8-4zm-8 8l8 4l8-4M4 16l8 4l8-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "하나는 글을 종이에, 버튼을 수첩에 뒀습니다.",
+      "en": "One puts the text on paper, the buttons in a notebook.",
+      "keywords": [
+        "종이에,",
+        "수첩에"
+      ],
+      "keywordsEn": [
+        "on paper,",
+        "in a notebook."
+      ],
+      "koLines": [
+        "하나는 글을 종이에,",
+        "버튼을 수첩에 뒀습니다."
+      ],
+      "enLines": [
+        "One puts the text on paper,",
+        "the buttons in a notebook."
+      ],
+      "art": "an open field notebook lying beside a clipboard and a single sheet of paper",
+      "icon": {
+        "name": "tabler:notebook",
+        "paths": [
+          {
+            "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "종이와 수첩의 테두리가 맞물려 지저분했습니다.",
+      "en": "The paper and notebook borders ran into each other.",
+      "keywords": [
+        "맞물려"
+      ],
+      "keywordsEn": [
+        "ran into each other."
+      ],
+      "koLines": [
+        "종이와 수첩의 테두리가",
+        "맞물려 지저분했습니다."
+      ],
+      "enLines": [
+        "The paper and notebook borders",
+        "ran into each other."
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "종이 테두리",
+          "수첩 테두리",
+          "엉킨 선"
+        ],
+        "labelsEn": [
+          "Paper border",
+          "Notebook border",
+          "Tangled lines"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "종이와 수첩 사이를 띄워서 풀었습니다.",
+      "en": "I left a gap between the paper and notebook.",
+      "keywords": [
+        "띄워서"
+      ],
+      "keywordsEn": [
+        "a gap"
+      ],
+      "koLines": [
+        "종이와 수첩 사이를",
+        "띄워서 풀었습니다."
+      ],
+      "enLines": [
+        "I left a gap between",
+        "the paper and notebook."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "붙여 놓기",
+          "선이 엉킴",
+          "사이 띄우기",
+          "깔끔함"
+        ],
+        "labelsEn": [
+          "Side by side",
+          "Lines tangle",
+          "Add a gap",
+          "Clean"
+        ],
+        "icons": [
+          {
+            "name": "tabler:layout-rows",
+            "paths": [
+              {
+                "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 6h16"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:spacing-vertical",
+            "paths": [
+              {
+                "d": "M4 20v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2M4 4v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4m-4 8H8"
+              }
+            ]
+          },
+          null
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "이제 시안을 고를 차례입니다.",
+      "en": "Next, I pick one draft.",
+      "keywords": [
+        "고를"
+      ],
+      "keywordsEn": [
+        "pick"
+      ],
+      "art": "a hand pulling one card out of a fanned row of cards",
+      "icon": {
+        "name": "tabler:square-check",
+        "paths": [
+          {
+            "d": "M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+          },
+          {
+            "d": "m9 12l2 2l4-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "고른 모양으로 실제 화면을 그립니다.",
+      "en": "Then I draw the real screens in that style.",
+      "keywords": [
+        "실제 화면을"
+      ],
+      "keywordsEn": [
+        "real screens"
+      ],
+      "koLines": [
+        "고른 모양으로",
+        "실제 화면을 그립니다."
+      ],
+      "enLines": [
+        "Then I draw the real screens",
+        "in that style."
+      ],
+      "art": "a rough pencil sketch on a desk turning into a finished drawing",
+      "icon": {
+        "name": "tabler:pencil",
+        "paths": [
+          {
+            "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "어떤 시안이 될지 저도 궁금합니다.",
+      "en": "I'm curious which one wins, too.",
+      "keywords": [
+        "어떤 시안이"
+      ],
+      "keywordsEn": [
+        "which one"
+      ],
+      "koLines": [
+        "어떤 시안이 될지",
+        "저도 궁금합니다."
+      ],
+      "enLines": [
+        "I'm curious",
+        "which one wins, too."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "테두리가 엉켰다",
+    "titleEn": "Borders clashed",
+    "before": "종이와 수첩의 두 줄 테두리가 맞물림",
+    "after": "둘 사이를 띄우고 버튼은 한 줄로",
+    "beforeEn": "Double borders of paper and notebook ran together",
+    "afterEn": "A gap between them, buttons in one row"
+  },
+  "commits": [
+    [
+      "f316642",
+      "docs: 인물 중심 게임 UI 사례 조사와 구조 권고 보관"
+    ],
+    [
+      "77742f3",
+      "design: UI 아이콘 의미와 종이 수첩 배치 간격 정리"
+    ],
+    [
+      "2f5fd70",
+      "design: 얇은 기록지와 수첩 받침판을 조합한 UI 시안 개선"
+    ],
+    [
+      "4a4adb1",
+      "design: 대화 화면의 인물 중심 위치를 아래로 조정"
+    ],
+    [
+      "6813233",
+      "design: 캐릭터 화풍의 UI 컨셉 세 안과 분리 소스 제작"
+    ],
+    [
+      "a125058",
+      "design: 세로형 조사 화면 구조와 UI 제작 규격 정리"
+    ],
+    [
+      "0f0b581",
+      "docs: 캐릭터 세로 프로필 제작 기준과 필수 참조 연결"
+    ],
+    [
+      "8ae07aa",
+      "asset: 성격이 드러나는 세로 프로필과 배치 소스 정리"
+    ],
+    [
+      "95f3333",
+      "asset: 세로 프로필과 분리형 배경 소스 보관"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "f316642",
+      "docs: archive case study of character-focused game UI and structure recommendations"
+    ],
+    [
+      "77742f3",
+      "design: clarify UI icon meanings and paper notebook layout spacing"
+    ],
+    [
+      "2f5fd70",
+      "design: improve UI mockup combining thin record sheet and notebook stand"
+    ],
+    [
+      "4a4adb1",
+      "design: adjust character-centered position of dialogue screen downward"
+    ],
+    [
+      "6813233",
+      "design: three UI concept options in character art style and separated source assets"
+    ],
+    [
+      "a125058",
+      "design: organize vertical investigation screen structure and UI production specs"
+    ],
+    [
+      "0f0b581",
+      "docs: link character vertical profile production criteria and required references"
+    ],
+    [
+      "8ae07aa",
+      "asset: organize vertical profiles and layout sources showing personality"
+    ],
+    [
+      "95f3333",
+      "asset: archive vertical profiles and separated background sources"
+    ]
+  ],
+  "commitCount": 9,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "추리 게임의 대화 화면을 인물 그림과 같은 화풍으로, 재질이 다른 시안 3개로 그려 봤습니다. 종이와 수첩의 테두리가 엉킨 문제는 둘 사이를 띄워서 풀었습니다.",
+    "en": "I drew 3 UI drafts for my detective game's dialogue screen, in the same style as the character art. When the paper and notebook borders clashed, a simple gap fixed it."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#게임개발",
+    "#인디게임",
+    "#UI디자인",
+    "#gamedev",
+    "#indiedev",
+    "#UIdesign",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-21.poster.jpg?v=mvi6vxle",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-21.ko.mp4?v=mvi6w01d",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-21.ko.sm.mp4?v=mvi6w59s",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-21.en.poster.jpg?v=mvi6x61s",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-21.en.mp4?v=mvi6x7xd",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-21.en.sm.mp4?v=mvi6xczm"
+  }
+}
