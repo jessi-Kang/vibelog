@@ -1,18 +1,5 @@
 [
   {
-    "slug": "vibelog",
-    "name": "바이브 로그",
-    "nameEn": "Vibelog",
-    "icon": {
-      "name": "tabler:notebook",
-      "paths": [
-        {
-          "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
-        }
-      ]
-    }
-  },
-  {
     "slug": "lie-detective",
     "name": "거짓말 탐정",
     "nameEn": "Lie Detective",
@@ -25,6 +12,19 @@
       ]
     },
     "color": "#6FD3F2"
+  },
+  {
+    "slug": "vibelog",
+    "name": "바이브 로그",
+    "nameEn": "Vibelog",
+    "icon": {
+      "name": "tabler:notebook",
+      "paths": [
+        {
+          "d": "M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"
+        }
+      ]
+    }
   },
   {
     "slug": "apart",
