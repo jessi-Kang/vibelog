@@ -25,10 +25,10 @@
     "homepage": "https://vibelog.space",
     "language": "TypeScript",
     "lastActivity": "2026-10-22",
-    "weekCommits": 62,
+    "weekCommits": 60,
     "todayCommits": 0,
     "totalCommits": 576,
-    "countsDate": "2026-10-22"
+    "countsDate": "2026-10-23"
   },
   {
     "slug": "lie-detective",
@@ -58,9 +58,9 @@
     "language": "JavaScript",
     "lastActivity": "2026-10-22",
     "weekCommits": 147,
-    "todayCommits": 11,
+    "todayCommits": 0,
     "totalCommits": 320,
-    "countsDate": "2026-10-22",
+    "countsDate": "2026-10-23",
     "theme": "highlighter"
   },
   {
@@ -82,18 +82,17 @@
     },
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "live",
+    "status": "building",
     "stack": [
       "TypeScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
     "language": "TypeScript",
     "lastActivity": "2026-10-19",
-    "weekCommits": 3,
+    "weekCommits": 2,
     "todayCommits": 0,
     "totalCommits": 263,
-    "countsDate": "2026-10-22",
+    "countsDate": "2026-10-23",
     "theme": "paper"
   },
   {
@@ -130,7 +129,7 @@
     "weekCommits": 3,
     "todayCommits": 0,
     "totalCommits": 1078,
-    "countsDate": "2026-10-22",
+    "countsDate": "2026-10-23",
     "theme": "blueprint",
     "hidden": true,
     "alias": "A"
@@ -148,7 +147,7 @@
     "weekCommits": 1,
     "todayCommits": 0,
     "totalCommits": 2,
-    "countsDate": "2026-10-22",
+    "countsDate": "2026-10-23",
     "theme": "highlighter",
     "hidden": true,
     "alias": "C"
@@ -182,7 +181,7 @@
     "weekCommits": 1,
     "todayCommits": 0,
     "totalCommits": 3,
-    "countsDate": "2026-10-22",
+    "countsDate": "2026-10-23",
     "theme": "blueprint",
     "hidden": true,
     "alias": "B"
