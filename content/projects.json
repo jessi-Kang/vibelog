@@ -82,12 +82,11 @@
     },
     "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
     "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "live",
+    "status": "building",
     "stack": [
       "TypeScript"
     ],
     "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
     "language": "TypeScript",
     "lastActivity": "2026-10-19",
     "weekCommits": 2,
