@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-21T14:11:29.012Z",
+  "at": "2026-10-22T14:18:44.549Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
@@ -29,28 +29,28 @@
       "textEn": "skip     · portfolio-tmp only 1 of 1 commit have a body — a post comes at 5"
     },
     {
-      "text": "safety   · lie-detective 재료 9개 통과 · Jev 토큰 6,192",
-      "textEn": "safety   · lie-detective 9 inputs passed · Jev tokens 6,192"
+      "text": "safety   · lie-detective 재료 14개 통과 · Jev 토큰 9,729",
+      "textEn": "safety   · lie-detective 14 inputs passed · Jev tokens 9,729"
     },
     {
-      "text": "generate · lie-detective/2026-10-21.md (ko, en) · 토큰 in 19,703 · out 6,808 · cache 6,325",
-      "textEn": "generate · lie-detective/2026-10-21.md (ko, en) · tokens in 19,703 · out 6,808 · cache 6,325"
+      "text": "generate · lie-detective/2026-10-22.md (ko, en) · 토큰 in 24,610 · out 7,838 · cache 6,325",
+      "textEn": "generate · lie-detective/2026-10-22.md (ko, en) · tokens in 24,610 · out 7,838 · cache 6,325"
     },
     {
-      "text": "review   · lie-detective/2026-10-21 막힌 문장 5개 → 다시 씀 → 남은 것 4개 · 토큰 in 3,933 · out 1,205",
-      "textEn": "review   · lie-detective/2026-10-21 5 unclear → rewritten → 4 left · tokens in 3,933 · out 1,205"
+      "text": "review   · lie-detective/2026-10-22 막힌 문장 6개 → 다시 씀 → 남은 것 6개 · 토큰 in 3,844 · out 1,438",
+      "textEn": "review   · lie-detective/2026-10-22 6 unclear → rewritten → 6 left · tokens in 3,844 · out 1,438"
     },
     {
-      "text": "figures  · lie-detective/2026-10-21 2장 · 토큰 in 1,782 · out 10,714",
-      "textEn": "figures  · lie-detective/2026-10-21 2 figures · tokens in 1,782 · out 10,714"
+      "text": "figures  · lie-detective/2026-10-22 2장 · 토큰 in 1,755 · out 8,082",
+      "textEn": "figures  · lie-detective/2026-10-22 2 figures · tokens in 1,755 · out 8,082"
     },
     {
-      "text": "shorts   · lie-detective/2026-10-21 (ko, en) · 대본 토큰 in 10,604 · out 10,596 · cache 8,718",
-      "textEn": "shorts   · lie-detective/2026-10-21 (ko, en) · script tokens in 10,604 · out 10,596 · cache 8,718"
+      "text": "shorts   · lie-detective/2026-10-22 (ko, en) · 대본 토큰 in 10,357 · out 7,875 · cache 8,718",
+      "textEn": "shorts   · lie-detective/2026-10-22 (ko, en) · script tokens in 10,357 · out 7,875 · cache 8,718"
     },
     {
-      "text": "listen   · lie-detective/2026-10-21 막힌 문장 5개 → 다시 씀 → 남은 것 2개 · 토큰 in 2,393 · out 1,489",
-      "textEn": "listen   · lie-detective/2026-10-21 5 unclear → rewritten → 2 left · tokens in 2,393 · out 1,489"
+      "text": "listen   · lie-detective/2026-10-22 막힌 문장 2개 → 다시 씀 → 남은 것 2개 · 토큰 in 2,390 · out 1,193",
+      "textEn": "listen   · lie-detective/2026-10-22 2 unclear → rewritten → 2 left · tokens in 2,390 · out 1,193"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

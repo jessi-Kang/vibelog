@@ -1,0 +1,506 @@
+{
+  "template": "before-after",
+  "music": "ship-it",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-22",
+  "day": 6,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "버튼이 그림을 가렸습니다.",
+      "en": "The buttons were hiding the pictures.",
+      "keywords": [
+        "가렸습니다."
+      ],
+      "keywordsEn": [
+        "hiding"
+      ],
+      "koLines": [
+        "버튼이",
+        "그림을 가렸습니다."
+      ],
+      "enLines": [
+        "The buttons were",
+        "hiding the pictures."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "그림을 보며 단서를 찾는 게임입니다.",
+      "en": "It's a game of finding clues in pictures.",
+      "keywords": [
+        "단서를"
+      ],
+      "keywordsEn": [
+        "finding clues"
+      ],
+      "koLines": [
+        "그림을 보며",
+        "단서를 찾는 게임입니다."
+      ],
+      "enLines": [
+        "It's a game of",
+        "finding clues in pictures."
+      ],
+      "art": "a magnifying glass hovering over a small framed picture of a crime scene",
+      "icon": {
+        "name": "tabler:search",
+        "paths": [
+          {
+            "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "아래쪽 메뉴를 없애고 위로 옮겼습니다.",
+      "en": "I moved the bottom menu to the top instead.",
+      "keywords": [
+        "위로 옮겼습니다."
+      ],
+      "keywordsEn": [
+        "to the top"
+      ],
+      "koLines": [
+        "아래쪽 메뉴를 없애고",
+        "위로 옮겼습니다."
+      ],
+      "enLines": [
+        "I moved the bottom menu",
+        "to the top instead."
+      ],
+      "art": "a row of buttons sliding from the bottom edge of a phone up to its top edge",
+      "icon": {
+        "name": "tabler:layout-navbar",
+        "paths": [
+          {
+            "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 3h16"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이제 그림이 화면을 꽉 채웁니다.",
+      "en": "Now the pictures fill the whole screen.",
+      "keywords": [
+        "꽉 채웁니다."
+      ],
+      "keywordsEn": [
+        "fill the whole screen."
+      ],
+      "koLines": [
+        "이제 그림이",
+        "화면을 꽉 채웁니다."
+      ],
+      "enLines": [
+        "Now the pictures",
+        "fill the whole screen."
+      ],
+      "art": "a smartphone whose entire face is filled by one large picture",
+      "icon": {
+        "name": "tabler:device-mobile",
+        "paths": [
+          {
+            "d": "M6 5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm5-1h2m-1 13v.01"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "키보드가 올라와도 그림 크기는 그대로입니다.",
+      "en": "With the keyboard up, the picture stays the same size.",
+      "keywords": [
+        "그림 크기는"
+      ],
+      "keywordsEn": [
+        "stays"
+      ],
+      "koLines": [
+        "키보드가 올라와도",
+        "그림 크기는 그대로입니다."
+      ],
+      "enLines": [
+        "With the keyboard up,",
+        "the picture stays the same size."
+      ],
+      "icon": {
+        "name": "tabler:keyboard",
+        "paths": [
+          {
+            "d": "M2 8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm4 2v.01m4-.01v.01m4-.01v.01m4-.01v.01M6 14v.01M18 14v.01M10 14l4 .01"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "고쳐도 브라우저가 옛 화면을 띄웠습니다.",
+      "en": "Even after fixes, the browser showed the old screen.",
+      "keywords": [
+        "옛 화면을"
+      ],
+      "keywordsEn": [
+        "old"
+      ],
+      "koLines": [
+        "고쳐도 브라우저가",
+        "옛 화면을 띄웠습니다."
+      ],
+      "enLines": [
+        "Even after fixes,",
+        "the browser showed the old screen."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "화면 다시 열기",
+          "옛 화면",
+          "새 화면",
+          "받아 둔 파일",
+          "고친 파일"
+        ],
+        "labelsEn": [
+          "Reopen screen",
+          "Old screen",
+          "New screen",
+          "Saved file",
+          "Fixed file"
+        ],
+        "pick": 1
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "받아 둔 옛 파일을 다시 쓴 거죠.",
+      "en": "It was reusing an old file it had saved.",
+      "keywords": [
+        "옛 파일을"
+      ],
+      "keywordsEn": [
+        "old file"
+      ],
+      "koLines": [
+        "받아 둔 옛 파일을",
+        "다시 쓴 거죠."
+      ],
+      "enLines": [
+        "It was reusing",
+        "an old file it had saved."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "화면을 고쳐도",
+          "받아 둔 파일",
+          "옛 화면"
+        ],
+        "labelsEn": [
+          "Screen fixed",
+          "Saved old file",
+          "Old screen"
+        ],
+        "icons": [
+          {
+            "name": "tabler:pencil",
+            "paths": [
+              {
+                "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:file",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:device-mobile",
+            "paths": [
+              {
+                "d": "M6 5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm5-1h2m-1 13v.01"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그래서 버전 번호를 바꿔 새로 받게 했습니다.",
+      "en": "So I change the version number to force a fresh download.",
+      "keywords": [
+        "버전 번호를"
+      ],
+      "keywordsEn": [
+        "version number"
+      ],
+      "koLines": [
+        "그래서 버전 번호를 바꿔",
+        "새로 받게 했습니다."
+      ],
+      "enLines": [
+        "So I change the version number",
+        "to force a fresh download."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "같은 번호",
+          "옛 화면",
+          "새 번호",
+          "새 화면"
+        ],
+        "labelsEn": [
+          "Same number",
+          "Old screen",
+          "New number",
+          "New screen"
+        ],
+        "icons": [
+          {
+            "name": "tabler:hash",
+            "paths": [
+              {
+                "d": "M5 9h14M5 15h14M11 4L7 20M17 4l-4 16"
+              }
+            ]
+          },
+          {
+            "name": "tabler:history",
+            "paths": [
+              {
+                "d": "M12 8v4l2 2"
+              },
+              {
+                "d": "M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"
+              }
+            ]
+          },
+          {
+            "name": "tabler:hash",
+            "paths": [
+              {
+                "d": "M5 9h14M5 15h14M11 4L7 20M17 4l-4 16"
+              }
+            ]
+          },
+          {
+            "name": "tabler:refresh",
+            "paths": [
+              {
+                "d": "M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 실제 휴대폰에서 확인하겠습니다.",
+      "en": "Next, I'll test it on a real phone first.",
+      "keywords": [
+        "실제 휴대폰에서"
+      ],
+      "keywordsEn": [
+        "real phone"
+      ],
+      "koLines": [
+        "다음은 실제 휴대폰에서",
+        "확인하겠습니다."
+      ],
+      "enLines": [
+        "Next, I'll test it",
+        "on a real phone first."
+      ],
+      "icon": {
+        "name": "tabler:device-mobile-check",
+        "paths": [
+          {
+            "d": "M11.5 21H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9.5M11 4h2m-1 13v.01M15 19l2 2l4-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "그림이 화면의 주인공이 됐습니다.",
+      "en": "The pictures are the star of the screen now.",
+      "keywords": [
+        "주인공이"
+      ],
+      "keywordsEn": [
+        "the star"
+      ],
+      "koLines": [
+        "그림이",
+        "화면의 주인공이 됐습니다."
+      ],
+      "enLines": [
+        "The pictures are",
+        "the star of the screen now."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "고쳐도 옛 화면이 떴다",
+    "titleEn": "Fixed, but the old screen showed",
+    "before": "브라우저가 받아 둔 옛 파일을 다시 씀",
+    "after": "파일이 바뀌면 버전 번호도 바뀜",
+    "beforeEn": "The browser reused the old saved file",
+    "afterEn": "The version number changes with the file"
+  },
+  "commits": [
+    [
+      "6d28024",
+      "docs: 조사 소품의 입체 제작과 화풍 검수 절차 정리"
+    ],
+    [
+      "c1617e3",
+      "asset: 조사 소품의 표면 표현과 모바일 셀 렌더 완성"
+    ],
+    [
+      "ca4208c",
+      "asset: 조사 소품의 입체 모델과 화풍 렌더 원본 보관"
+    ],
+    [
+      "e1a8b7a",
+      "asset: 웹 모델 제작용 입력 패키지와 검수 안내 추가"
+    ],
+    [
+      "099e541",
+      "asset: 조사 소품 방향별 원본과 렌더 검수 기록 보관"
+    ],
+    [
+      "05dc868",
+      "docs: 조사 소품의 육면 관찰과 렌더 제작 명세 보완"
+    ],
+    [
+      "d00a0a0",
+      "docs: 채택 UI 구조와 투명 헤더 구현 방향 기록"
+    ],
+    [
+      "5c2fd32",
+      "fix: UI 수정본의 캐시 식별과 화자 인덱스 표시 개선"
+    ],
+    [
+      "c72d611",
+      "docs: 탱글 타워를 중심으로 UI 참고 기준 구체화"
+    ],
+    [
+      "fb62469",
+      "fix: 모바일 대화의 중복 이동과 입력 크기 변화 수정"
+    ],
+    [
+      "68c642e",
+      "design: 이미지 중심 무대와 상단 드로워로 모바일 구조 재편"
+    ],
+    [
+      "f8cb925",
+      "feat: 모바일 조사 흐름을 검토하는 와이어프레임 페이지 추가"
+    ],
+    [
+      "422331f",
+      "docs: 세로형 플레이 화면 중심으로 UI 조사 기준 보완"
+    ],
+    [
+      "62ca132",
+      "docs: 참고 게임별 UI 사진과 비교 갤러리 정리"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6d28024",
+      "docs: Organize 3D production and art style review process for investigation props"
+    ],
+    [
+      "c1617e3",
+      "asset: Complete surface expression and mobile cell render for investigation props"
+    ],
+    [
+      "ca4208c",
+      "asset: Store 3D models and art style render originals for investigation props"
+    ],
+    [
+      "e1a8b7a",
+      "asset: Add input package and review guide for web model production"
+    ],
+    [
+      "099e541",
+      "asset: Store directional originals and render review records for investigation props"
+    ],
+    [
+      "05dc868",
+      "docs: Supplement six-side observation and render production spec for investigation props"
+    ],
+    [
+      "d00a0a0",
+      "docs: Record adopted UI structure and transparent header implementation direction"
+    ],
+    [
+      "5c2fd32",
+      "fix: Improve cache identification and speaker index display in UI revision"
+    ],
+    [
+      "c72d611",
+      "docs: Refine UI reference criteria centered on Tangle Tower"
+    ],
+    [
+      "fb62469",
+      "fix: Fix duplicate navigation and input size shift in mobile dialogue"
+    ],
+    [
+      "68c642e",
+      "design: Restructure mobile layout around image-centered stage and top drawer"
+    ],
+    [
+      "f8cb925",
+      "feat: Add wireframe page for reviewing mobile investigation flow"
+    ],
+    [
+      "422331f",
+      "docs: Supplement UI investigation criteria centered on vertical play screen"
+    ],
+    [
+      "62ca132",
+      "docs: Organize UI screenshot and comparison gallery by reference games"
+    ]
+  ],
+  "commitCount": 14,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "휴대폰 게임 화면에서 그림을 가리던 아래쪽 버튼을 위로 치우고, 그림이 화면 전체에 깔리게 바꿨습니다. 고쳐도 옛 화면이 뜨던 문제는 파일 버전 번호로 해결했습니다.",
+    "en": "I moved the bottom buttons that were squeezing the pictures in my mobile game up to the top, so the pictures now fill the screen. The old screen kept showing after fixes, so I made the file version number change with each edit."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#개발일지",
+    "#게임개발",
+    "#모바일UI",
+    "#indiedev",
+    "#gamedev",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-22.poster.jpg?v=mvjmkztk",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-22.ko.mp4?v=mvjml1si",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-22.ko.sm.mp4?v=mvjml8gw",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-22.en.poster.jpg?v=mvjmmayv",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-22.en.mp4?v=mvjmmd3c",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-22.en.sm.mp4?v=mvjmmjsq"
+  }
+}
