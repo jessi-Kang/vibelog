@@ -108,10 +108,10 @@ function groundLine(id: string, g: Grounding): RunLine {
   const tail = used ? ` · ${fmtTally(used)}` : "";
   const tailEn = used ? ` · ${fmtTally(used, "en")}` : "";
   if (g.before == null) return { text: `ground   · ${id} 검사 못 함${tail}`, textEn: `ground   · ${id} check failed${tailEn}`, kind: "fail" };
-  if (g.before === 0) return { text: `ground   · ${id} 재료보다 구체적인 문장 없음${tail}`, textEn: `ground   · ${id} nothing beyond the commits${tailEn}` };
+  if (g.before === 0) return { text: `ground   · ${id} 커밋 메시지보다 구체적인 문장 없음${tail}`, textEn: `ground   · ${id} nothing beyond the commits${tailEn}` };
   const after = g.after == null ? "다시 검사 못 함" : `남은 것 ${g.after}개`;
   const afterEn = g.after == null ? "recheck failed" : `${g.after} left`;
-  return { text: `ground   · ${id} 재료보다 구체적인 문장 ${g.before}개 → 다시 씀 → ${after}${tail}`, textEn: `ground   · ${id} ${g.before} beyond the commits → rewritten → ${afterEn}${tailEn}` };
+  return { text: `ground   · ${id} 커밋 메시지보다 구체적인 문장 ${g.before}개 → 다시 씀 → ${after}${tail}`, textEn: `ground   · ${id} ${g.before} beyond the commits → rewritten → ${afterEn}${tailEn}` };
 }
 
 function checkLine(
@@ -620,7 +620,7 @@ async function rewritePosts(arg: string): Promise<void> {
       const out = await checkSafety([devlog.title, devlog.titleEn, devlog.summary ?? "", devlog.summaryEn ?? "", devlog.ko, devlog.en].join("\n\n"));
       if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
       if (meta.private && devlog.grounding.before !== 0 && devlog.grounding.after !== 0) {
-        throw new Error("재료보다 구체적인 문장이 남아 비공개 레포의 글을 다시 쓰지 않았다");
+        throw new Error("커밋 메시지보다 구체적인 문장이 남아 비공개 레포의 글을 다시 쓰지 않았다");
       }
       await writeDevlog(repo, date, devlog, input.material);
       console.log(`- ${id} 다시 씀: ${devlog.title} · ${fmtTally(takeUsage("generate"))}`);
@@ -890,7 +890,7 @@ async function main(): Promise<void> {
         // 그 검사를 못 했으면 비공개 레포의 글은 내지 않는다 — 공개 레포는 파일까지 누구나 보지만,
         // 비공개 레포에서 새는 길은 이 글뿐이다 (10/23 게임 증거물이 글 제목에 나갔다)
         if (a.private && devlog.grounding.before !== 0 && devlog.grounding.after !== 0) {
-          const why = devlog.grounding.after == null ? "재료보다 구체적인지 검사하지 못해" : `재료보다 구체적인 문장이 ${devlog.grounding.after}개 남아`;
+          const why = devlog.grounding.after == null ? "커밋 메시지보다 구체적인지 검사하지 못해" : `커밋 메시지보다 구체적인 문장이 ${devlog.grounding.after}개 남아`;
           console.warn(`- ${a.repo}/${date} ${why} 글을 내지 않음`);
           takeUsage("generate");
           takeUsage("ground");
