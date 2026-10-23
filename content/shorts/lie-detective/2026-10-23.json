@@ -1,0 +1,532 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-23",
+  "day": 7,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "이제 휴대폰으로 물건을 돌려 봅니다",
+      "en": "Now you can turn objects on your phone.",
+      "keywords": [
+        "돌려"
+      ],
+      "keywordsEn": [
+        "turn"
+      ],
+      "koLines": [
+        "이제 휴대폰으로",
+        "물건을 돌려 봅니다"
+      ],
+      "enLines": [
+        "Now you can turn",
+        "objects on your phone."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "조사 소품은 현장에서 살펴보는 물건입니다.",
+      "en": "A prop is an object you examine at the scene.",
+      "keywords": [
+        "조사 소품은"
+      ],
+      "keywordsEn": [
+        "A prop"
+      ],
+      "koLines": [
+        "조사 소품은",
+        "현장에서 살펴보는 물건입니다."
+      ],
+      "enLines": [
+        "A prop is an object",
+        "you examine at the scene."
+      ],
+      "art": "a magnifying glass hovering over a small object lying on a table",
+      "icon": {
+        "name": "tabler:zoom-in",
+        "paths": [
+          {
+            "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "각도마다 그림이 한 장씩 있습니다.",
+      "en": "There is one picture for each angle.",
+      "keywords": [
+        "각도마다"
+      ],
+      "keywordsEn": [
+        "each angle"
+      ],
+      "koLines": [
+        "각도마다 그림이",
+        "한 장씩 있습니다."
+      ],
+      "enLines": [
+        "There is one picture",
+        "for each angle."
+      ],
+      "art": "a fan of cards, each showing the same small cup drawn from a different angle",
+      "icon": {
+        "name": "tabler:photo",
+        "paths": [
+          {
+            "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+          },
+          {
+            "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+          },
+          {
+            "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "손가락으로 끌면 다음 각도로 바뀝니다.",
+      "en": "Drag a finger and it switches to the next angle.",
+      "keywords": [
+        "끌면"
+      ],
+      "keywordsEn": [
+        "Drag",
+        "next angle"
+      ],
+      "koLines": [
+        "손가락으로 끌면",
+        "다음 각도로 바뀝니다."
+      ],
+      "enLines": [
+        "Drag a finger and it switches",
+        "to the next angle."
+      ],
+      "art": "a fingertip dragging sideways across a phone, turning a small object on it",
+      "icon": {
+        "name": "tabler:hand-finger",
+        "paths": [
+          {
+            "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 1 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+          },
+          {
+            "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "두 손가락으로 벌리면 확대됩니다.",
+      "en": "Spread two fingers and it zooms in.",
+      "keywords": [
+        "확대됩니다"
+      ],
+      "keywordsEn": [
+        "zooms in"
+      ],
+      "koLines": [
+        "두 손가락으로",
+        "벌리면 확대됩니다."
+      ],
+      "enLines": [
+        "Spread two fingers",
+        "and it zooms in."
+      ],
+      "art": "two fingertips spreading apart on a phone as a small object grows larger",
+      "icon": {
+        "name": "tabler:zoom-in",
+        "paths": [
+          {
+            "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "계속 끌면 뒷면까지 거꾸로 넘어갑니다.",
+      "en": "Keep dragging and it rolls upside down to the back.",
+      "keywords": [
+        "뒷면까지",
+        "거꾸로"
+      ],
+      "keywordsEn": [
+        "upside down"
+      ],
+      "koLines": [
+        "계속 끌면 뒷면까지",
+        "거꾸로 넘어갑니다."
+      ],
+      "enLines": [
+        "Keep dragging and it rolls",
+        "upside down to the back."
+      ],
+      "art": "a small object flipping over in mid-air so its upside-down back side faces forward",
+      "icon": {
+        "name": "tabler:flip-vertical",
+        "paths": [
+          {
+            "d": "M3 12h18M7 16h10L7 21zm0-8h10L7 3z"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "각도를 바꾸면 화면이 하얗게 번쩍였습니다.",
+      "en": "Every time the angle changed, the screen flashed white.",
+      "keywords": [
+        "하얗게 번쩍였습니다."
+      ],
+      "keywordsEn": [
+        "flashed white."
+      ],
+      "koLines": [
+        "각도를 바꾸면",
+        "화면이 하얗게 번쩍였습니다."
+      ],
+      "enLines": [
+        "Every time the angle changed,",
+        "the screen flashed white."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "보던 그림 지움",
+          "하얀 화면",
+          "새 그림 뜸"
+        ],
+        "labelsEn": [
+          "Erase current",
+          "Blank screen",
+          "New one shows"
+        ],
+        "icons": [
+          {
+            "name": "tabler:eraser",
+            "paths": [
+              {
+                "d": "M19 20H8.5l-4.21-4.3a1 1 0 0 1 0-1.41l10-10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41L11.5 20m6.5-6.7L11.7 7"
+              }
+            ]
+          },
+          {
+            "name": "tabler:square",
+            "paths": [
+              {
+                "d": "M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+              }
+            ]
+          },
+          {
+            "name": "tabler:photo",
+            "paths": [
+              {
+                "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+              },
+              {
+                "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "이제 새 그림이 뜰 때까지 보던 그림을 둡니다.",
+      "en": "Now the old picture stays until the new one shows.",
+      "keywords": [
+        "보던 그림을 둡니다."
+      ],
+      "keywordsEn": [
+        "the old picture stays"
+      ],
+      "koLines": [
+        "이제 새 그림이 뜰 때까지",
+        "보던 그림을 둡니다."
+      ],
+      "enLines": [
+        "Now the old picture stays",
+        "until the new one shows."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "먼저 지움",
+          "번쩍임",
+          "그대로 둠",
+          "바로 바뀜"
+        ],
+        "labelsEn": [
+          "Erase first",
+          "Flash",
+          "Keep it",
+          "Smooth switch"
+        ],
+        "icons": [
+          {
+            "name": "tabler:eraser",
+            "paths": [
+              {
+                "d": "M19 20H8.5l-4.21-4.3a1 1 0 0 1 0-1.41l10-10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41L11.5 20m6.5-6.7L11.7 7"
+              }
+            ]
+          },
+          {
+            "name": "tabler:bolt",
+            "paths": [
+              {
+                "d": "M13 3v7h6l-8 11v-7H5z"
+              }
+            ]
+          },
+          {
+            "name": "tabler:photo",
+            "paths": [
+              {
+                "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+              },
+              {
+                "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:check",
+            "paths": [
+              {
+                "d": "m5 12l5 5L20 7"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "돌리는 느낌이 자연스러운지 더 보겠습니다.",
+      "en": "Next, I'll check if turning it feels natural.",
+      "keywords": [
+        "자연스러운지"
+      ],
+      "keywordsEn": [
+        "feels natural."
+      ],
+      "koLines": [
+        "돌리는 느낌이",
+        "자연스러운지 더 보겠습니다."
+      ],
+      "enLines": [
+        "Next, I'll check if",
+        "turning it feels natural."
+      ],
+      "art": "a hand holding a phone and slowly tilting it while a small object turns on the screen",
+      "icon": {
+        "name": "tabler:device-mobile",
+        "paths": [
+          {
+            "d": "M6 5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm5-1h2m-1 13v.01"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "뒷면을 찍으면 사진에도 거꾸로 남습니다.",
+      "en": "Snap the back, and the photo stays upside down too.",
+      "keywords": [
+        "거꾸로"
+      ],
+      "keywordsEn": [
+        "upside down"
+      ],
+      "koLines": [
+        "뒷면을 찍으면",
+        "사진에도 거꾸로 남습니다."
+      ],
+      "enLines": [
+        "Snap the back, and the photo",
+        "stays upside down too."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "화면이 번쩍였다",
+    "titleEn": "The screen flashed",
+    "before": "각도를 바꿀 때마다 화면이 하얗게 번쩍임",
+    "after": "새 그림이 올 때까지 지금 그림을 둠",
+    "beforeEn": "The screen flashed white on every angle change",
+    "afterEn": "The current picture stays until the new one arrives"
+  },
+  "commits": [
+    [
+      "a9e3dc4",
+      "feat: 상하 관찰 순환과 뒤집힌 방향 촬영 추가"
+    ],
+    [
+      "b440218",
+      "fix: 관찰 이미지 전환 중 화면 깜빡임 제거"
+    ],
+    [
+      "977d6de",
+      "docs: 관찰 페이지 접속 경로와 배포 검증 기록"
+    ],
+    [
+      "f61e25f",
+      "feat: 모바일 일러스트 관찰 페이지 제공"
+    ],
+    [
+      "d0c66a8",
+      "asset: 일러스트 관찰 시안과 구조 검토 기록 보관"
+    ],
+    [
+      "2e61a81",
+      "asset: 소품의 재질 방향과 접촉 깊이 보완"
+    ],
+    [
+      "d65e3d6",
+      "asset: 소품 렌더 실행 기록 보관"
+    ],
+    [
+      "1106a34",
+      "asset: 소품 후면의 형상과 일러스트 표현 보정"
+    ],
+    [
+      "bafc388",
+      "asset: 소품 후면의 원화와 렌더 비교판 보관"
+    ],
+    [
+      "5dff61c",
+      "asset: 소품의 원화 매핑과 일러스트 선 렌더 적용"
+    ],
+    [
+      "360f526",
+      "docs: 소품의 미술 품질과 매핑 상태 판정 정정"
+    ],
+    [
+      "928d214",
+      "docs: 소품 제작 단계와 원본 참조 상태 연결"
+    ],
+    [
+      "216998a",
+      "asset: 조사 소품의 구조 보정과 셀 렌더 패키지 제작"
+    ],
+    [
+      "02f10a4",
+      "asset: 소품 수정 원본과 검토 보류 상태 보관"
+    ],
+    [
+      "59ac0ef",
+      "docs: 조사 오브젝트의 구조와 관찰 제작 정의 보강"
+    ],
+    [
+      "ede54ea",
+      "design: 조사 소품의 장착 구조와 관찰 시안 재설계"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "a9e3dc4",
+      "feat: add up-down observation cycle and flipped-direction capture"
+    ],
+    [
+      "b440218",
+      "fix: remove screen flicker during observation image transition"
+    ],
+    [
+      "977d6de",
+      "docs: document observation page access path and deployment verification"
+    ],
+    [
+      "f61e25f",
+      "feat: serve mobile illustration observation page"
+    ],
+    [
+      "d0c66a8",
+      "asset: archive illustration observation concept and structure review notes"
+    ],
+    [
+      "2e61a81",
+      "asset: refine material direction and contact depth of prop"
+    ],
+    [
+      "d65e3d6",
+      "asset: archive prop render run log"
+    ],
+    [
+      "1106a34",
+      "asset: correct shape and illustration expression on prop back side"
+    ],
+    [
+      "bafc388",
+      "asset: archive original art and render comparison board for prop back side"
+    ],
+    [
+      "5dff61c",
+      "asset: apply original art mapping and illustration line render to prop"
+    ],
+    [
+      "360f526",
+      "docs: correct art quality and mapping status assessment for prop"
+    ],
+    [
+      "928d214",
+      "docs: link prop production stage and original reference status"
+    ],
+    [
+      "216998a",
+      "asset: fix investigation prop structure and produce cell render package"
+    ],
+    [
+      "02f10a4",
+      "asset: archive prop revision originals and review-hold status"
+    ],
+    [
+      "59ac0ef",
+      "docs: reinforce structure and observation production definition of investigation object"
+    ],
+    [
+      "ede54ea",
+      "design: redesign mounting structure and observation concept for investigation prop"
+    ]
+  ],
+  "commitCount": 16,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "조사 소품 그림을 휴대폰에서 손가락으로 돌리고, 키우고, 찍을 수 있게 했습니다. 각도를 바꿀 때마다 화면이 번쩍이던 문제도 고쳤습니다.",
+    "en": "You can now turn, zoom, and photograph a prop's picture on your phone with your fingers. I also fixed the white flash on every angle change."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#게임개발",
+    "#추리게임",
+    "#indiedev",
+    "#gamedev",
+    "#mobilegame"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-23.poster.jpg?v=mvldwqr4",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-23.ko.mp4?v=mvldwsie",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-23.ko.sm.mp4?v=mvldwzjs",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-23.en.poster.jpg?v=mvldy2f6",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-23.en.mp4?v=mvldy4gr",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-23.en.sm.mp4?v=mvldyau6"
+  }
+}

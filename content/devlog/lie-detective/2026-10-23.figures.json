@@ -1,0 +1,938 @@
+[
+ {
+  "section": "did",
+  "after": 1,
+  "alt": "물건 그림을 위아래로 계속 끌면 앞면에서 점점 기울어 옆선이 되었다가 거꾸로 뒤집힌 뒷면이 나오는 모습",
+  "altEn": "Dragging the object picture up or down keeps tilting it from the front, through its edge, to a back side that shows upside down",
+  "caption": "계속 끌면 앞면을 지나 뒷면까지, 뒷면은 거꾸로 보입니다",
+  "captionEn": "Keep dragging and it rolls past the front to the back, which shows upside down",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "위아래로 계속 끌면 물건이 앞면에서 기울어 뒷면까지 넘어가고, 뒷면은 거꾸로 보인다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "40",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "위아래로 계속 끌기"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "70",
+      "width": "60",
+      "height": "80",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "55,92 70,124 40,124",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "92",
+      "y1": "110",
+      "x2": "108",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "114,110 106,105 106,115",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "120",
+      "y": "90",
+      "width": "60",
+      "height": "40",
+      "rx": "5",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "150,99 165,116 135,116",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "187",
+      "y1": "110",
+      "x2": "203",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "209,110 201,105 201,115",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "106",
+      "width": "60",
+      "height": "8",
+      "rx": "2",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "282",
+      "y1": "110",
+      "x2": "298",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "304,110 296,105 296,115",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "310",
+      "y": "70",
+      "width": "60",
+      "height": "80",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "340,128 355,96 325,96",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "55",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "앞면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "340",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "뒷면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "340",
+      "y": "202",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "거꾸로"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 220",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Dragging up or down keeps tilting the object from the front over to the back, which shows upside down"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "40",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Keep dragging up or down"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "25",
+      "y": "70",
+      "width": "60",
+      "height": "80",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "55,92 70,124 40,124",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "92",
+      "y1": "110",
+      "x2": "108",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "114,110 106,105 106,115",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "120",
+      "y": "90",
+      "width": "60",
+      "height": "40",
+      "rx": "5",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "150,99 165,116 135,116",
+      "fill": "var(--color-ink-soft)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "187",
+      "y1": "110",
+      "x2": "203",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "209,110 201,105 201,115",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "215",
+      "y": "106",
+      "width": "60",
+      "height": "8",
+      "rx": "2",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "282",
+      "y1": "110",
+      "x2": "298",
+      "y2": "110",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "304,110 296,105 296,115",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "310",
+      "y": "70",
+      "width": "60",
+      "height": "80",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "340,128 355,96 325,96",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "55",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Front"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "340",
+      "y": "180",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Back"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "335",
+      "y": "202",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "upside down"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "전에는 지금 그림을 지운 뒤 빈 화면이 끼어들었고, 고친 뒤에는 다음 그림이 준비될 때까지 지금 그림을 그대로 둔다",
+  "altEn": "Before, the current picture was erased and a blank screen appeared; after the fix, the current picture stays until the next one is ready",
+  "caption": "다음 그림이 준비될 때까지 지금 그림을 지우지 않아 번쩍임이 사라졌습니다",
+  "captionEn": "Keeping the current picture until the next is ready removed the flash",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 280",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "고치기 전에는 그림 사이에 빈 화면이 끼었고, 고친 뒤에는 지금 그림이 다음 그림 전까지 남는다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "15",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전: 먼저 지우고 기다림"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "45",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "지금 그림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "118",
+      "y1": "73",
+      "x2": "136",
+      "y2": "73",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "142,73 134,68 134,78",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "45",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "빈 화면"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "73",
+      "x2": "266",
+      "y2": "73",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,73 264,68 264,78",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "275",
+      "y": "45",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다음 그림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "15",
+      "y": "150",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후: 준비될 때까지 그대로"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "165",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "지금 그림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "118",
+      "y1": "193",
+      "x2": "136",
+      "y2": "193",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "142,193 134,188 134,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "165",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "지금 그림"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "193",
+      "x2": "266",
+      "y2": "193",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,193 264,188 264,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "275",
+      "y": "165",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다음 그림"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "257",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "옆 각도 그림은 미리 받아 둠"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 280",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Before the fix a blank screen came between pictures; after it, the current picture stays until the next one is ready"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "15",
+      "y": "30",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before: erase, then wait"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "45",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Current"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "118",
+      "y1": "73",
+      "x2": "136",
+      "y2": "73",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "142,73 134,68 134,78",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "45",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "5 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Blank"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "73",
+      "x2": "266",
+      "y2": "73",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,73 264,68 264,78",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "275",
+      "y": "45",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "79",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Next"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "15",
+      "y": "150",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After: keep until ready"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "165",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "65",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Current"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "118",
+      "y1": "193",
+      "x2": "136",
+      "y2": "193",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "142,193 134,188 134,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "165",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Current"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "248",
+      "y1": "193",
+      "x2": "266",
+      "y2": "193",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "272,193 264,188 264,198",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "275",
+      "y": "165",
+      "width": "100",
+      "height": "56",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "325",
+      "y": "199",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Next"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "257",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Neighbor angles fetched early"
+    }
+   ]
+  }
+ }
+]
