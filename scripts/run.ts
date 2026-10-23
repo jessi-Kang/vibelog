@@ -31,6 +31,8 @@ import { followsCommitRule } from "./commit-rule";
 import { planNameIfChanged, type PlanName } from "./plan-name";
 import { enoughForPost, githubClient } from "./collect";
 import { fmtReadability } from "./readability";
+import { blobDelPrefix } from "./blob-cache";
+import { purgeArt } from "./art";
 import type { Grounding } from "./generate";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
@@ -579,11 +581,30 @@ async function rewritePosts(arg: string): Promise<void> {
     const [repo, date] = id.split("/");
     const post = repo && date ? getDevlog(repo, date) : undefined;
     const file = post ? devlogPath(repo, date) : "";
-    if (!post || post.intro || isProtected(file) || !post.shas?.length) {
+    // 내린 글(파일을 지운 글)도 다시 쓸 수 있다 — 그날이 그 레포의 마지막 발행이면 state.json의
+    // 처리 위치가 그 글의 마지막 커밋이다 (10/23 단서를 드러내 내린 글을 새 장치로 다시 쓰려고)
+    const st = repo ? loadState()[repo] : undefined;
+    const lastSha = post?.shas?.[0]?.[0] ?? (!post && st?.lastDate === date ? st.lastSha : undefined);
+    if (!lastSha || post?.intro || (post && isProtected(file))) {
       console.error(`- ${id}: 다시 쓸 글이 아니다 (없음·소개 글·manual·원료 없음)`);
       failed++;
       continue;
     }
+    // 옛 쇼츠의 영상·포스터·낭독·녹화·대본 초안을 지운다 — 사이트에서 내려도 주소로는 열렸다.
+    // 영상은 다시 만들면 덮어쓰지만 낭독·녹화는 대본이 바뀌면 이름이 달라 남는다
+    const gone = await blobDelPrefix(`shorts/${repo}/${date}.`).catch((err: Error) => {
+      console.warn(`- ${id}: 옛 쇼츠 파일 지우기 실패 — ${err.message}`);
+      return 0;
+    });
+    // 내린 글의 쇼츠 그림 — content/art-purge.json에 적은 그림을 목록과 함께 지우고 비운다
+    const purgeFile = path.join(CONTENT_DIR, "art-purge.json");
+    let artGone = 0;
+    if (fs.existsSync(purgeFile)) {
+      const ids: string[] = JSON.parse(fs.readFileSync(purgeFile, "utf8"));
+      artGone = await purgeArt(ids).catch(() => 0);
+      if (artGone === ids.length) fs.writeFileSync(purgeFile, "[]\n");
+    }
+    console.log(`- ${id}: 옛 쇼츠 파일 ${gone}개, 그림 ${artGone}장 지움`);
     try {
       const commitDate = async (sha: string) => {
         const { data } = await octokit.rest.repos.getCommit({ owner, repo, ref: sha });
@@ -592,7 +613,7 @@ async function rewritePosts(arg: string): Promise<void> {
       const prev = getDevlogs(repo)
         .filter((d) => !d.intro && d.date < date && d.shas?.length)
         .sort((x, y) => y.date.localeCompare(x.date))[0];
-      const until = await commitDate(post.shas[0][0]);
+      const until = await commitDate(lastSha);
       const prevSha = prev?.shas?.[0][0];
       const since = prevSha ? await commitDate(prevSha) : new Date(new Date(until).getTime() - 7 * 86400000).toISOString();
       // 글의 커밋이 있는 브랜치 — 수집이 마지막으로 적은 작업 브랜치 (lib/work-branch.ts)
@@ -602,7 +623,7 @@ async function rewritePosts(arg: string): Promise<void> {
         .filter(isMaterialCommit)
         .filter((c) => !prevSha || !c.sha.startsWith(prevSha));
       const mergedPRs = (await getMergedPRs(octokit, owner, repo, since)).filter((p) => p.mergedAt <= until);
-      console.log(`- ${id}: 창 ${since} – ${until}, 커밋 ${commits.length}개 (지금 글은 ${post.shas.length}개), PR ${mergedPRs.length}`);
+      console.log(`- ${id}: 창 ${since} – ${until}, 커밋 ${commits.length}개 (지금 글은 ${post?.shas?.length ?? "없음 — 내린 글"}${post ? "개" : ""}), PR ${mergedPRs.length}`);
       const a = {
         repo,
         owner,

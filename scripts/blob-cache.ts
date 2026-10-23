@@ -50,3 +50,23 @@ export async function blobDel(pathname: string): Promise<void> {
     // 지우지 못한 초안은 다음 다시 만들기가 쓴다 — 그 실행이 끝나면 다시 지운다
   }
 }
+
+/**
+ * 이름이 prefix로 시작하는 파일을 전부 지운다 — 지운 개수. 다시 쓰는 글의 옛 쇼츠 영상·낭독·녹화가
+ * 주소로 계속 열리지 않게 한다 (scripts/run.ts --rewrite). 토큰이 없으면 0.
+ */
+export async function blobDelPrefix(prefix: string): Promise<number> {
+  if (!hasToken()) return 0;
+  const { list, del } = await import("@vercel/blob");
+  let cursor: string | undefined;
+  let n = 0;
+  do {
+    const page = await list({ prefix, cursor, limit: 1000 });
+    if (page.blobs.length) {
+      await del(page.blobs.map((b) => b.url));
+      n += page.blobs.length;
+    }
+    cursor = page.hasMore ? page.cursor : undefined;
+  } while (cursor);
+  return n;
+}

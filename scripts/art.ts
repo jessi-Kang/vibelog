@@ -23,7 +23,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { shortsDir, shortsJsonPath, type ShortsScript } from "./shorts-types";
-import { blobGet, blobPut } from "./blob-cache";
+import { blobDel, blobGet, blobPut } from "./blob-cache";
 import { noteUsage } from "./usage";
 
 /** Gemini — Interactions API. Nano Banana 2.1 → Nano Banana 2 */
@@ -343,6 +343,20 @@ type ArtEntry = { id: string; ext: string; theme: string; style: ArtStyle; art: 
  */
 function paletteOf(theme: string): number {
   return THEME_PAPER[theme]?.light ? 2 : 1;
+}
+
+/**
+ * 그림 목록에서 ids의 그림을 지운다 — 파일과 목록의 줄(그림 설명이 적혀 있다) 둘 다. 지운 개수.
+ * 목록은 고정 주소의 공개 파일이라, 내린 글의 그림 설명이 거기 남아 있으면 그대로 읽힌다 (10/23).
+ * 다음 대본이 비슷한 장면을 고를 때 그 그림을 다시 쓰는 일도 막는다.
+ */
+export async function purgeArt(ids: string[]): Promise<number> {
+  if (!ids.length) return 0;
+  const index = await loadArtIndex();
+  const gone = index.filter((e) => ids.includes(e.id));
+  for (const e of gone) await blobDel(`${ART_DIR}/${e.id}.${e.ext}`);
+  if (gone.length) await blobPut(ART_INDEX, JSON.stringify(index.filter((e) => !ids.includes(e.id))));
+  return gone.length;
 }
 
 async function loadArtIndex(): Promise<ArtEntry[]> {
