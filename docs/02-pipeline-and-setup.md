@@ -98,7 +98,7 @@ vibelog/
 │                                #   (+ 검수용 MotifSheet · DiagramSheet)
 └─ .github/workflows/
     ├─ devlog.yml                # 밤 발행 (23:00 + 백업 23:45·01:00·03:00) + workflow_dispatch
-    ├─ projects.yml              # 30분마다 새 프로젝트 인식만
+    ├─ projects.yml              # 1시간마다 새 프로젝트 인식만
     └─ deploy-guard.yml          # Vercel 웹훅 누락 자가 복구
 ```
 
@@ -140,7 +140,7 @@ vibelog/
   숨긴 글·프로젝트 페이지는 `/private/p/<id>`·`/private/projects/<slug>`에 따로 있고, 방문자 화면에는
   그 주소로 가는 링크가 없다. 주소를 알고 직접 들어오면 볼 때마다 로그인을 확인해 관리자가 아니면
   404를 낸다 — "권한 없음"을 보이면 거기 무언가 숨어 있다는 사실이 드러난다. 글은 계속 쌓이고,
-  topic을 떼면 30분 안에 지난 글까지 공개된다. `vibelog.json`의 `"hide": true`는 이것과 다르다 —
+  topic을 떼면 1시간 안에 지난 글까지 공개된다. `vibelog.json`의 `"hide": true`는 이것과 다르다 —
   그 레포를 아예 수집하지 않는다 (카드도 잔디도 없다).
 - (선택) `devlog/YYYY-MM-DD.md` — Stop 훅이 남기는 세션 요약
 

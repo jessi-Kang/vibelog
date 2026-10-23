@@ -29,7 +29,7 @@
 
 ## 새 프로젝트 등록
 
-레포에 **topic `vibelog` 하나** 달면 끝입니다. 30분 안에 카드가 올라오고,
+레포에 **topic `vibelog` 하나** 달면 끝입니다. 1시간 안에 카드가 올라오고,
 기획서나 코드가 처음 올라온 밤에 그것을 읽고 쓴 **소개 글**이 첫 글로 나옵니다
 (기획서 한 편만 있어도 됩니다). 그다음부터는 커밋이 5개 모인 밤마다 글과 영상이 나옵니다.
 서비스 이름은 기획서를 따르고, 기획서가 바뀐 밤에 다시 읽습니다. 영상은 로그인 없이 볼 수 있는
@@ -96,7 +96,7 @@ video/src/              Remotion 컴포넌트 — 템플릿 3종 · 테마 5종
                         (+ 검수용 MotifSheet · DiagramSheet — 발행에는 안 쓴다)
 .github/workflows/
   devlog.yml            밤 23:00 발행 (백업 23:45 · 01:00 · 03:00)
-  projects.yml          30분마다 새 프로젝트 인식
+  projects.yml          1시간마다 새 프로젝트 인식
   art-try.yml           그림 API 확인·시안 (손으로만 돌린다)
   deploy-guard.yml      Vercel 웹훅 누락 자가 복구
 vercel.json             crons — 위 둘을 제때 띄운다 (GitHub 예약은 예비)

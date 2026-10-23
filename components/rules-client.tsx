@@ -221,16 +221,10 @@ export function RulesClient({
             </table>
           </div>
           <p className="m-0 text-sm leading-relaxed text-muted">
-            {lang === "ko" ? "커밋할 때 이 규칙을 기계로 검사하는 코드는 " : "The check that enforces this at commit time is "}
-            <a
-              href="https://github.com/jessi-Kang/vibelog/blob/claude/file-analysis-dpnhw1/scripts/quote-rule.ts"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent underline-offset-2 hover:underline"
-            >
-              scripts/quote-rule.ts
-            </a>
-            {lang === "ko" ? "에 있습니다." : "."}
+            {/* 코드로 가는 링크를 두던 자리 — 레포가 비공개가 되어 방문자에게 404로 열렸다 (10/23) */}
+            {lang === "ko"
+              ? "이 레포에서는 커밋할 때마다 이 규칙을 기계로 검사합니다."
+              : "In this repo, every commit is checked against this rule automatically."}
           </p>
         </div>
 
@@ -333,8 +327,8 @@ export function RulesClient({
           </ol>
           <p className="m-0 text-sm leading-relaxed text-muted">
             {lang === "ko"
-              ? "30분 안에 프로젝트 인식이 topic을 읽고, 그 레포의 다음 쇼츠부터 새 테마로 나옵니다. 이미 만든 쇼츠는 그대로입니다."
-              : "Within 30 minutes the project scan picks up the topic, and the repo's next Short uses the new theme. Shorts already made stay as they are."}
+              ? "1시간 안에 프로젝트 인식이 topic을 읽고, 그 레포의 다음 쇼츠부터 새 테마로 나옵니다. 이미 만든 쇼츠는 그대로입니다."
+              : "Within an hour the project scan picks up the topic, and the repo's next Short uses the new theme. Shorts already made stay as they are."}
           </p>
         </div>
       </section>

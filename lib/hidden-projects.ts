@@ -1,7 +1,7 @@
 import projects from "../content/projects.json";
 
 /**
- * 공개하기 전까지 사이트에서 숨기는 프로젝트 — 레포에 topic `vibelog-hidden`을 달면 30분 안에
+ * 공개하기 전까지 사이트에서 숨기는 프로젝트 — 레포에 topic `vibelog-hidden`을 달면 1시간 안에
  * 프로젝트 인식(projects.yml)이 projects.json에 hidden을 적고, 사이트가 그 프로젝트의 이름·카드·
  * 프로젝트 페이지·글·쇼츠·피드·사이트맵을 뺀다. topic을 떼면 다음 인식에 다시 보인다 (10/17).
  *

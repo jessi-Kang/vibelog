@@ -330,7 +330,7 @@ async function updateProjects(
     countsDate: todayKST(),
     // 쇼츠 테마 — script.ts가 이 값을 읽어 렌더에 넘긴다
     ...(a.theme ? { theme: a.theme } : {}),
-    // topic vibelog-hidden — 사이트가 이름·글·쇼츠를 숨긴다. topic을 떼면 다음 인식(30분 안)에 다시 보인다
+    // topic vibelog-hidden — 사이트가 이름·글·쇼츠를 숨긴다. topic을 떼면 다음 인식(1시간 안)에 다시 보인다
     // 방문자에게는 이름 대신 "미공개 프로젝트 <alias>"로 보인다 (lib/hidden-projects.ts)
     ...(isHidden(a) ? { hidden: true, alias: aliases[a.repo] } : {}),
     };

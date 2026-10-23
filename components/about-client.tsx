@@ -47,8 +47,8 @@ const SECTIONS: Section[] = [
         en: "No human makes the posts or the videos. Only on days when the quality isn't right do I press one button to have them remade.",
       },
       {
-        ko: "새 프로젝트를 등록하는 데 필요한 건 [[repo]]에 붙이는 [[topic]] 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. topic을 달면 30분 안에 카드가 생기고, 이유까지 적은 커밋이 5개 모인 밤부터 제작기가 쌓입니다.",
-        en: "Registering a new project takes one label (a [[repo]] [[topic]]) — nothing gets installed in the project itself. Add the topic and a card appears within 30 minutes; the build log starts piling up on the first night with five commits that explain why.",
+        ko: "새 프로젝트를 등록하는 데 필요한 건 [[repo]]에 붙이는 [[topic]] 하나뿐입니다. 프로젝트 쪽에는 아무것도 설치하지 않습니다. topic을 달면 1시간 안에 카드가 생기고, 이유까지 적은 커밋이 5개 모인 밤부터 제작기가 쌓입니다.",
+        en: "Registering a new project takes one label (a [[repo]] [[topic]]) — nothing gets installed in the project itself. Add the topic and a card appears within an hour; the build log starts piling up on the first night with five commits that explain why.",
       },
     ],
     // 커밋이 곧 글이 되는 구조라, 어떤 규칙으로 커밋을 쓰는지가 이 섹션의 나머지 절반이다

@@ -77,7 +77,7 @@ auth.ts                     댓글 로그인(Google, Auth.js) — 세션에 메�
 lib/comments.ts             댓글 규칙(누가 무엇을 보고 하는가) — app/api/comments·notifications·me가 부른다. lib/db.ts(Neon), lib/mail.ts(Resend), lib/comment-draft.ts(AI 초안)
 components/comments.tsx     글 아래 댓글, components/notify-bell.tsx 머리글 알림 종
 .github/workflows/devlog.yml   밤 발행 23:00 KST + 백업 23:45/01:00/03:00 (중복은 SCHEDULE_GUARD가 차단) + workflow_dispatch
-.github/workflows/projects.yml 30분 — 새 프로젝트 인식만 (run.ts --projects-only)
+.github/workflows/projects.yml 1시간 — 새 프로젝트 인식만 (run.ts --projects-only)
 vercel.json                 crons — 위 둘을 제때 띄우는 진짜 시계
 app/api/cron/{devlog,projects}  Vercel Cron이 부르는 띄우기 라우트 (lib/dispatch.ts)
 app/api/commits             홈 통계·잔디의 실시간 값 (5분 캐시)
@@ -88,11 +88,11 @@ video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 
 새 프로젝트를 시작한다고 하면 (또는 "새 프로젝트" 얘기가 나오면) 아래를 안내한다:
 
-1. 레포에 topic `vibelog` 달기 — 등록의 전부. 30분 안에 projects.yml이 카드로 올린다.
+1. 레포에 topic `vibelog` 달기 — 등록의 전부. 1시간 안에 projects.yml이 카드로 올린다.
 2. description 채우기 — 카드에 그대로 쓴다. 나중에 채워도 인식 배치가 반영한다. homepage는 자동 — 배포(Vercel 등)가 GitHub Deployments에 남긴 주소를 감지한다. About Website를 채우면 그게 우선(커스텀 도메인용).
 3. **그 레포 CLAUDE.md에 커밋 규칙 블록 복붙** — 문구는 `docs/02-pipeline-and-setup.md` §3 "커밋 메시지 규약 문구". 블록 끝의 **대화 비공개** 부분까지 함께 붙인다 — 커밋 메시지가 그대로 공개 글이 되므로, 대화에서 나온 말이 커밋에 들어가면 그날 밤 발행된다. 커밋 메시지가 글·쇼츠의 원료라서 이게 품질을 결정한다. **본문 없이 제목 한 줄만 쓴 커밋은 글을 쓸 만한 커밋으로 치지 않으므로**, 이 블록이 없으면 글이 아예 나오지 않을 수 있다.
 4. (선택) 테마 고르기 — topic `vibelog-theme-<이름>` 하나 추가. (선택) `vibelog.json`.
-5. (선택) 공개 전까지 숨기기 — topic `vibelog-hidden` 추가. 방문자에게는 "미공개 프로젝트 A" 카드만 보이고 글·쇼츠는 빠진다(잔디·커밋 수는 센다). 관리자로 로그인하면 전부 보인다. 글은 계속 쌓이고, 떼면 30분 안에 지난 글까지 한꺼번에 보인다.
+5. (선택) 공개 전까지 숨기기 — topic `vibelog-hidden` 추가. 방문자에게는 "미공개 프로젝트 A" 카드만 보이고 글·쇼츠는 빠진다(잔디·커밋 수는 센다). 관리자로 로그인하면 전부 보인다. 글은 계속 쌓이고, 떼면 1시간 안에 지난 글까지 한꺼번에 보인다.
 
 첫 글은 레포에 기획서나 코드가 올라온 밤 23:00 실행이 그것을 읽고 쓰는 **소개 글**이다 — 기획서 한 편만 있는 레포도 된다 (`scripts/intro.ts`). 그다음 글은 규칙에 맞는 사람 커밋이 5개 모인 밤에 나온다 (첫 수집은 최근 7일 커밋). 정식 공개 전(live가 아닌) 프로젝트의 쇼츠는 사이트 화면 없이 그림·다이어그램만으로 나간다 — 공개 전 화면은 녹화하지 않는다. live가 되면 그날부터 사이트를 녹화하고, 그때는 로그인 없이 볼 수 있는 화면이 둘 이상이어야 쇼츠가 나온다.
 
@@ -135,7 +135,7 @@ video/                      (2단계) Remotion 프로젝트, 템플릿 3종
 - **문서 업데이트를 요청받으면 정해진 작업을 한다**: `README.md` · `docs/*.md` · `CLAUDE.md`를 지금 코드에 맞게 최신화한다. 구조·워크플로·규칙이 바뀐 자리를 찾아 고치고, 끝난 단계는 완료로 표시하고, 사본이 갈라진 곳은 실물을 가리키게 한다.
 
 - **잠깐 난 실패로 실행 전체를 죽이지 않는다.** GitHub 클라이언트는 `scripts/collect.ts`의 `githubClient` 한 곳에서 만들고 5xx는 두 번까지 다시 묻는다 (10/14 인식 실행이 GitHub 500 한 번에 죽어 실패 메일이 왔다). 결과 푸시가 다른 실행과 부딪혀 거절되면 다시 받아 와 세 번까지 올린다 (devlog.yml·projects.yml, 10/11).
-- **자동 실행의 시계는 Vercel Cron이다** (`vercel.json` → `app/api/cron/*` → `workflow_dispatch`). GitHub 예약은 못 믿는다 — 30분 주기 projects.yml이 실제로 4시간 간격으로 돌았고(9/12 실측) devlog의 23:00 회차는 통째로 안 떴다. 워크플로의 `schedule:`은 그 시계가 죽었을 때의 예비로 남겨 둔다. 실행 자체는 그대로 Actions에서 한다 (ffmpeg·Playwright·Remotion을 45분까지 돌린다). Vercel 환경변수 둘이 필요하다 — `GH_PAT`(Actions: write)와 `CRON_SECRET`(없거나 틀리면 라우트가 401로 거절 — 설정 상태는 응답이 아니라 Vercel 함수 로그에만 남긴다). 예약을 대신 부르는 호출은 `guard: true`를 넣어 이중 발행을 막는다. **가드는 날짜 버킷이 아니라 마지막 발행으로부터의 간격(12시간)으로 본다** — 날짜로 보던 때, 03:00 예정 백업이 3시간 6분 밀려 06:06에 뜨면서 `publishDateKST`의 경계(06:00)를 넘겨 "다음 밤" 회차로 계산됐고, 일곱 시간 전에 끝난 발행이 날짜가 달라 안 걸려 새벽 여섯 시에 커밋 하나짜리 글·영상이 나갔다 (9/15 실측).
+- **자동 실행의 시계는 Vercel Cron이다** (`vercel.json` → `app/api/cron/*` → `workflow_dispatch`). GitHub 예약은 못 믿는다 — 30분 주기 projects.yml이 실제로 4시간 간격으로 돌았고(9/12 실측) devlog의 23:00 회차는 통째로 안 떴다. 워크플로의 `schedule:`은 그 시계가 죽었을 때의 예비로 남겨 둔다. **레포가 비공개라 Actions 시간이 한 달 한도 안에서 나간다** (10/23부터 vibelog를 포함해 전부 비공개) — 그래서 프로젝트 인식은 1시간마다, 그 예비 예약은 6시간마다만 돈다. 실행을 늘리기 전에 [사용량](https://github.com/settings/billing)을 본다. 실행 자체는 그대로 Actions에서 한다 (ffmpeg·Playwright·Remotion을 45분까지 돌린다). Vercel 환경변수 둘이 필요하다 — `GH_PAT`(Actions: write)와 `CRON_SECRET`(없거나 틀리면 라우트가 401로 거절 — 설정 상태는 응답이 아니라 Vercel 함수 로그에만 남긴다). 예약을 대신 부르는 호출은 `guard: true`를 넣어 이중 발행을 막는다. **가드는 날짜 버킷이 아니라 마지막 발행으로부터의 간격(12시간)으로 본다** — 날짜로 보던 때, 03:00 예정 백업이 3시간 6분 밀려 06:06에 뜨면서 `publishDateKST`의 경계(06:00)를 넘겨 "다음 밤" 회차로 계산됐고, 일곱 시간 전에 끝난 발행이 날짜가 달라 안 걸려 새벽 여섯 시에 커밋 하나짜리 글·영상이 나갔다 (9/15 실측).
 - **홈 프로젝트 카드에는 위쪽 상태색 띠를 두지 않는다** — 흔한 AI 디자인처럼 보였다 (10/11, C안). 상태(● LIVE 등)는 카드 맨 아래 줄 맨 앞에 두고, 이름 줄에는 아이콘과 이름만 둔다 (`components/vibelog.tsx`). 프로젝트 목록 아래에 두던 "topic 하나면 등록" 안내 문구도 뺐다 — 방문자가 할 수 있는 일이 아니었고 내용도 낡았다.
 - **홈의 통계 줄과 잔디는 한 덩어리다** (`components/home-stats.tsx`). 데스크톱(1024부터)은 숫자 34px·이름 13px(한글 글꼴, 시안 `docs/home-stats-size.html` A안), 잔디 칸 덩어리의 세로 가운데에 놓되 숫자가 무거워 위로 쏠려 보이므로 4px(태블릿 2px) 내려 눈에 보이는 가운데에 맞춘다 — 잔디 밑 시각 눈금 줄(9px+간격 6px)은 가운데 맞춤 높이에서 뺀다. 오늘·이번 주 커밋은 방문 시점 실시간 — **우리 `/api/commits`**가 센다(서버에서 5분 캐시. 레포당 두 번: 오늘 커밋 **시각 목록** + 이번 주 **수**, per_page=1 Link 헤더 기법). 방문자 브라우저가 GitHub를 직접 부르던 때는 IP당 시간당 60회 한도에 걸려 403이 났다. 오늘 숫자와 잔디의 오늘 줄이 같은 목록에서 나오므로 둘이 어긋날 수 없다. "이번 주"는 잔디와 같은 창(오늘 포함 7일, KST 자정 기준)이다. 셈은 `lib/commit-hours.ts`에 모으고 `components/commit-heatmap.tsx`는 그리기만 한다. 실패하면 파이프라인 저장값 폴백 — 이때 "오늘"은 `countsDate`가 오늘일 때만 (KST 자정 리셋). "마지막 활동"의 오늘/어제도 클라이언트 판정(`LastActive`).
 - 숫자 표기: 1,000 이상은 천 단위 콤마. UI의 카운트·통계는 `lib/format.ts`의 `fmtNum`을 쓴다 (로케일 고정 — 서버·클라이언트가 갈리면 hydration이 깨진다).
