@@ -31,6 +31,7 @@ import { followsCommitRule } from "./commit-rule";
 import { planNameIfChanged, type PlanName } from "./plan-name";
 import { enoughForPost, githubClient } from "./collect";
 import { fmtReadability } from "./readability";
+import type { Grounding } from "./generate";
 import { checkDemoScreens } from "./check-screens";
 import { hideHosts, isPublicStatus, savePrivateHomepages } from "./homepage";
 import { assignColors } from "../lib/project-color";
@@ -101,6 +102,18 @@ async function screenInput(a: RepoActivity): Promise<{ material: RepoActivity | 
  * 문장이 걸렸는지 로그를 안 열고 보이게. 검사가 실패해도 글·영상은 나갔으므로
  * fail은 검사를 못 한 경우에만 붙인다.
  */
+/** "ground · repo/date 재료보다 구체적인 문장 2개 → 다시 씀 → 남은 것 0개" — 문장은 적지 않는다 */
+function groundLine(id: string, g: Grounding): RunLine {
+  const used = takeUsage("ground");
+  const tail = used ? ` · ${fmtTally(used)}` : "";
+  const tailEn = used ? ` · ${fmtTally(used, "en")}` : "";
+  if (g.before == null) return { text: `ground   · ${id} 검사 못 함${tail}`, textEn: `ground   · ${id} check failed${tailEn}`, kind: "fail" };
+  if (g.before === 0) return { text: `ground   · ${id} 재료보다 구체적인 문장 없음${tail}`, textEn: `ground   · ${id} nothing beyond the commits${tailEn}` };
+  const after = g.after == null ? "다시 검사 못 함" : `남은 것 ${g.after}개`;
+  const afterEn = g.after == null ? "recheck failed" : `${g.after} left`;
+  return { text: `ground   · ${id} 재료보다 구체적인 문장 ${g.before}개 → 다시 씀 → ${after}${tail}`, textEn: `ground   · ${id} ${g.before} beyond the commits → rewritten → ${afterEn}${tailEn}` };
+}
+
 function checkLine(
   label: "review " | "listen ",
   id: string,
@@ -583,7 +596,9 @@ async function rewritePosts(arg: string): Promise<void> {
       const prevSha = prev?.shas?.[0][0];
       const since = prevSha ? await commitDate(prevSha) : new Date(new Date(until).getTime() - 7 * 86400000).toISOString();
       // 글의 커밋이 있는 브랜치 — 수집이 마지막으로 적은 작업 브랜치 (lib/work-branch.ts)
-      const commits = (await getCommits(octokit, owner, repo, since, until, getProject(repo)?.branch))
+      // 비공개 레포는 파일 경로를 넘기지 않는다 (collect.ts getCommits의 withFiles)
+      const { data: meta } = await octokit.rest.repos.get({ owner, repo });
+      const commits = (await getCommits(octokit, owner, repo, since, until, getProject(repo)?.branch, !meta.private))
         .filter(isMaterialCommit)
         .filter((c) => !prevSha || !c.sha.startsWith(prevSha));
       const mergedPRs = (await getMergedPRs(octokit, owner, repo, since)).filter((p) => p.mergedAt <= until);
@@ -591,6 +606,7 @@ async function rewritePosts(arg: string): Promise<void> {
       const a = {
         repo,
         owner,
+        private: meta.private,
         description: getProject(repo)?.description ?? "",
         readme: await getReadme(octokit, owner, repo),
         commits,
@@ -603,6 +619,9 @@ async function rewritePosts(arg: string): Promise<void> {
       const devlog = await generateDevlog(input.material, date, { recent: recentPosts(repo, date) });
       const out = await checkSafety([devlog.title, devlog.titleEn, devlog.summary ?? "", devlog.summaryEn ?? "", devlog.ko, devlog.en].join("\n\n"));
       if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
+      if (meta.private && devlog.grounding.before !== 0 && devlog.grounding.after !== 0) {
+        throw new Error("재료보다 구체적인 문장이 남아 비공개 레포의 글을 다시 쓰지 않았다");
+      }
       await writeDevlog(repo, date, devlog, input.material);
       console.log(`- ${id} 다시 씀: ${devlog.title} · ${fmtTally(takeUsage("generate"))}`);
       await writeFigures(repo, date, devlog, []);
@@ -867,6 +886,21 @@ async function main(): Promise<void> {
         // 안전 검사 ② — 완성된 글을 발행하기 전에 본다. 걸리면 그날 글을 내지 않는다
         const out = await checkSafety([devlog.title, devlog.titleEn, devlog.summary ?? "", devlog.summaryEn ?? "", devlog.ko, devlog.en].join("\n\n"));
         if (out.flags.length > 0) throw new SafetyBlockError("글", out.flags);
+        // 재료(커밋·PR·세션 요약)가 밝히지 않은 것을 구체적으로 밝힌 문장이 다시 쓴 뒤에도 남았거나,
+        // 그 검사를 못 했으면 비공개 레포의 글은 내지 않는다 — 공개 레포는 파일까지 누구나 보지만,
+        // 비공개 레포에서 새는 길은 이 글뿐이다 (10/23 게임 증거물이 글 제목에 나갔다)
+        if (a.private && devlog.grounding.before !== 0 && devlog.grounding.after !== 0) {
+          const why = devlog.grounding.after == null ? "재료보다 구체적인지 검사하지 못해" : `재료보다 구체적인 문장이 ${devlog.grounding.after}개 남아`;
+          console.warn(`- ${a.repo}/${date} ${why} 글을 내지 않음`);
+          takeUsage("generate");
+          takeUsage("ground");
+          runLines.push({
+            text: `block    · ${a.repo}/${date} ${why} 글을 내지 않았습니다 (비공개 레포)`,
+            textEn: `block    · ${a.repo}/${date} withheld — the post named more than the commits did (private repo)`,
+            kind: "fail",
+          });
+          continue;
+        }
         await writeDevlog(a.repo, date, devlog, input.material);
         console.log(`- ${a.repo}/${date}.md 생성: ${devlog.title}`);
         const genUsed = takeUsage("generate");
@@ -875,6 +909,7 @@ async function main(): Promise<void> {
           textEn: `generate · ${a.repo}/${date}.md (ko, en) · ${fmtTally(genUsed, "en")}`,
         });
         runLines.push(checkLine("review ", `${a.repo}/${date}`, devlog.readability, "review"));
+        runLines.push(groundLine(`${a.repo}/${date}`, devlog.grounding));
         published.push(a.repo);
         await writeFigures(a.repo, date, devlog, runLines);
       } catch (err) {

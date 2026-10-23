@@ -77,6 +77,8 @@ export interface RepoActivity {
   pushedAt: string;
   /** 읽은 브랜치 — 기본 브랜치가 아닐 때만 (lib/work-branch.ts) */
   branch?: string;
+  /** 비공개 레포인가 — 파일 경로를 글 재료로 넘기지 않고, 재료보다 구체적인 글은 내지 않는다 */
+  private?: boolean;
   vibelogJson: VibelogJson | null;
   readme: string;
   commits: RepoCommit[];
@@ -199,6 +201,13 @@ export async function getCommits(
   since: string,
   until?: string,
   branch?: string,
+  /**
+   * 바뀐 파일 경로를 붙일까. 비공개 레포는 붙이지 않는다 — 파일 이름이 레포 밖으로 나가는
+   * 유일한 길이 글이다. 커밋 메시지는 "조사 소품"이라고만 썼는데, 경로의 소품 폴더 이름과
+   * 부품별 그림 파일 이름을 보고 글이 게임의 증거물을 짚어 냈다 (10/23). 이 주석에도 그 이름은 적지 않는다.
+   * 커밋 메시지는 공개된다는 규칙을 아는 사람이 고른 말만 글의 재료가 되게 한다.
+   */
+  withFiles = true,
 ): Promise<RepoCommit[]> {
   const data: Awaited<ReturnType<typeof octokit.rest.repos.listCommits>>["data"] = [];
   for (let page = 1; page <= COMMIT_PAGES; page++) {
@@ -210,7 +219,7 @@ export async function getCommits(
   for (const [i, c] of data.entries()) {
     // 파일 목록은 커밋별 추가 호출이 필요하다. 최근 COMMIT_FILES개만 (목록은 최신순)
     let files: string[] = [];
-    if (i < COMMIT_FILES) {
+    if (withFiles && i < COMMIT_FILES) {
       try {
         const { data: detail } = await octokit.rest.repos.getCommit({
           owner,
@@ -667,7 +676,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       totalCommits,
       commitTimes,
     ] = await Promise.all([
-      getCommits(octokit, owner, repo, since, undefined, sha.sha),
+      getCommits(octokit, owner, repo, since, undefined, sha.sha, !r.private),
       getMergedPRs(octokit, owner, repo, since),
       getDevlogFiles(octokit, owner, repo, since),
       getReadme(octokit, owner, repo),
@@ -711,6 +720,7 @@ export async function collect(state: State, date?: string): Promise<RepoActivity
       repoUrl: r.html_url,
       pushedAt: r.pushed_at ?? "",
       ...(sha.sha ? { branch: sha.sha } : {}),
+      private: Boolean(r.private),
       vibelogJson,
       readme,
       commits,
