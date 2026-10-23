@@ -289,7 +289,7 @@ const GROUND_SYSTEM = `당신은 공개 블로그 글의 검수자입니다. 아
 - 재료가 일반적인 이름으로만 부른 것을 구체적인 물건·인물·장소·내용으로 바꿔 부른 문장
   (재료는 "조사 소품"인데 글은 그 소품이 무엇인지 이름을 댄 경우)
 - 재료에 없는 생김새·구조·이야기 속 역할을 덧붙인 문장
-- 게임이라면 단서·증거·정답·범인·비밀처럼 플레이어가 직접 찾아야 할 내용을 재료보다 더 밝힌 문장
+- 게임이라면 단서·증거·정답·범인·비밀처럼 플레이어가 직접 찾아야 할 내용을 재료(커밋 메시지)보다 더 밝힌 문장
 
 고르지 않는 것: 재료에 같은 뜻이 적힌 문장, 쉬운 말로 풀어 쓴 것, 만든 과정·도구·화면 이야기.
 없으면 빈 배열을 냅니다. 확실한 것만 고릅니다.
@@ -311,7 +311,7 @@ function publicMaterial(a: DevlogMaterial): string {
  * 썼는데 글이 파일 이름에서 게임의 증거물을 짚어 제목에 올렸다). 읽기 검사와 같은 작은
  * 모델이 재료와 글을 같이 읽는다. 걸리면 같은 한 번의 다시 쓰기에서 일반적인 이름으로 되돌린다.
  */
-/** 재료보다 구체적인 문장 수 — 첫 원고(before)와 다시 쓴 뒤(after). 검사가 실패하면 null */
+/** 커밋 메시지보다 구체적인 문장 수 — 첫 원고(before)와 다시 쓴 뒤(after). 검사가 실패하면 null */
 export interface Grounding {
   before: number | null;
   after: number | null;
@@ -336,7 +336,7 @@ function rewriteAsk(unclear: Unclear[]): string {
     "- 독자는 [[용어|설명]] 표시를 \"용어(설명)\"로 읽었습니다. 고칠 때는 표시를 그대로 씁니다.",
     "- 이야기에 꼭 필요하지 않은 내부 설명(기준값, 프로그램이 안에서 판단하는 방식)이면 고치지 말고 뺍니다.",
     "- 기술 용어(커밋, 레포, 배포, 도구 이름 등)는 다른 말로 바꾸거나 빼지 않습니다. 설명이 필요하면 처음 나올 때 표시로 붙입니다: \"[[커밋|작업을 한 덩어리씩 저장하는 지점]]\".",
-    `- \`${GROUND_TAG}\`가 붙은 문장은 재료보다 구체적으로 밝힌 것입니다. 재료가 쓴 일반적인 이름으로 되돌리거나 그 내용을 빼고, 제목·요약·영어(en)에서도 같은 것을 지웁니다.`,
+    `- \`${GROUND_TAG}\`가 붙은 문장은 커밋 메시지보다 구체적으로 밝힌 것입니다. 커밋 메시지가 쓴 일반적인 이름으로 되돌리거나 그 내용을 빼고, 제목·요약·영어(en)에서도 같은 것을 지웁니다.`,
     "- 재료에 없는 사실을 새로 넣지 않습니다. 첫 문장 길이와 섹션 구조 규칙은 그대로입니다.",
     "- 영어(en)도 같이 맞춥니다.",
     "같은 JSON 형식 하나만 출력합니다.",
@@ -382,12 +382,12 @@ export async function generateDevlog(
     reviewError = err.message;
     return [] as Unclear[];
   });
-  // 재료보다 구체적인 문장 — 검사가 실패하면 null. 비공개 레포는 run.ts가 이것을 보고 막는다
+  // 커밋 메시지보다 구체적인 문장 — 검사가 실패하면 null. 비공개 레포는 run.ts가 이것을 보고 막는다
   const grounded = await reviewGrounding(activity, draft).catch((err: Error) => {
     console.warn(`[ground] 검사 실패: ${err.message}`);
     return null;
   });
-  // 재료보다 구체적인 문장을 앞에 둔다 — 합칠 때 8개에서 잘리므로
+  // 커밋 메시지보다 구체적인 문장을 앞에 둔다 — 합칠 때 8개에서 잘리므로
   const unclear = mergeUnclear(grounded ?? [], mergeUnclear(reviewed, styleUnclear(`${draft.title}\n${plainTerms(draft.ko)}`)));
   if (unclear.length === 0) {
     return {

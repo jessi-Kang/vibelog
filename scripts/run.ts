@@ -102,7 +102,7 @@ async function screenInput(a: RepoActivity): Promise<{ material: RepoActivity | 
  * 문장이 걸렸는지 로그를 안 열고 보이게. 검사가 실패해도 글·영상은 나갔으므로
  * fail은 검사를 못 한 경우에만 붙인다.
  */
-/** "ground · repo/date 재료보다 구체적인 문장 2개 → 다시 씀 → 남은 것 0개" — 문장은 적지 않는다 */
+/** "ground · repo/date 커밋 메시지보다 구체적인 문장 2개 → 다시 씀 → 남은 것 0개" — 문장은 적지 않는다 */
 function groundLine(id: string, g: Grounding): RunLine {
   const used = takeUsage("ground");
   const tail = used ? ` · ${fmtTally(used)}` : "";
