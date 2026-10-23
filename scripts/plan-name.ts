@@ -11,6 +11,7 @@
  * 이름은 바꿀 뿐 소개 글·설명·아이콘은 건드리지 않는다. vibelog.json name이 있으면 그게 언제나 이긴다
  * (run.ts updateProjects).
  */
+import { createHash } from "node:crypto";
 import Anthropic from "@anthropic-ai/sdk";
 import type { Octokit } from "@octokit/rest";
 import { NOT_PLAN, PLAN_EXT, planRank, SKIP_DIR, SKIP_FILE, TEMPLATE_README } from "./intro";
@@ -72,7 +73,9 @@ export async function planNameIfChanged(
     )
     .sort((a, b) => planRank(a.path!) - planRank(b.path!) || (b.size ?? 0) - (a.size ?? 0))
     .slice(0, MAX_PLANS);
-  const planSha = plans.map((t) => `${t.path}:${t.sha}`).join(",");
+  // 파일 경로는 남기지 않고 해시 하나로 줄인다 — state.json은 공개라, 비공개 레포의 기획서 파일
+  // 이름(예: 증거물 설계 문서)이 그대로 드러났다 (10/23)
+  const planSha = createHash("sha1").update(plans.map((t) => `${t.path}:${t.sha}`).join(",")).digest("hex");
   if (planSha === (lastPlanSha ?? "")) return { status: "same" };
   if (!plans.length) return { status: "none", planSha };
 

@@ -4,14 +4,14 @@
     "lastRun": "2026-10-20T14:03:53.247Z",
     "lastDate": "2026-10-20",
     "daySince": "2026-10-19T18:30:08.391Z",
-    "planSha": ""
+    "planSha": "7e50f48f5da5697239ab5d9c78f8ed383d08d6fd"
   },
   "apart": {
     "lastSha": "298310896f8efd206cd837dfd51447ff855e6e02",
     "lastRun": "2026-10-15T14:06:08.226Z",
     "lastDate": "2026-10-15",
     "daySince": "2026-10-11T14:05:43.746Z",
-    "planSha": ""
+    "planSha": "2eb4da133bbbb54fe51e43b39718711468f9adb3"
   },
   "Anchor": {
     "lastSha": "f6532933ff03d7dd159ed053092847f65b1688c8",
@@ -24,7 +24,7 @@
     "lastRun": "2026-09-24T14:03:31.462Z",
     "lastDate": "2026-09-24",
     "daySince": "2026-09-17T14:01:20.080Z",
-    "planSha": ""
+    "planSha": "dd4a44d6e93cd8c224e7dc93da0fa31167a6db90"
   },
   "agency": {
     "lastSha": "c7cc41742884d3903d5a4684376aab1dbbb59c32",
@@ -38,6 +38,6 @@
     "lastRun": "2026-10-23T14:03:51.589Z",
     "lastDate": "2026-10-23",
     "daySince": "2026-10-22T14:12:06.070Z",
-    "planSha": ""
+    "planSha": "abeb927e0851e7d92141e2799ec9632e9f16009b"
   }
 }
