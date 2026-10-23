@@ -9,13 +9,13 @@
  * 필요 환경변수: ANTHROPIC_API_KEY, ELEVENLABS_API_KEY, ELEVENLABS_VOICE_ID
  * 선택: BLOB_READ_WRITE_TOKEN (없으면 업로드 생략, mp4는 로컬에만 남음)
  */
-import { hideHosts, resolveHomepage } from "./homepage";
+import { hideHosts, isPublicStatus, resolveHomepage } from "./homepage";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { generateArt } from "./art";
-import { generateScript } from "./script";
+import { generateScript, getProjectMeta } from "./script";
 import { generateAudio } from "./audio";
 import { blobDel, blobGet, blobPut } from "./blob-cache";
 import { record } from "./record";
@@ -142,9 +142,13 @@ export async function runShorts(
   console.log(`[shorts] 내레이션·음악 생성`);
   await generateAudio(repo, date, ["ko", "en"]);
 
-  // live 전 사이트는 대본 JSON에 주소가 없다 — 녹화할 때만 비공개 파일에서 찾는다
-  const demoUrl = script.demo.url || (await resolveHomepage(repo));
-  if (demoUrl) {
+  // live 전 사이트는 녹화하지 않는다 (10/23) — 대본도 화면을 고르지 않는다 (script.ts).
+  // 지난 대본을 다시 렌더할 때도 같다: 화면을 고른 문장은 플레이스홀더로 나간다
+  const live = isPublicStatus(getProjectMeta(repo).status);
+  const demoUrl = live ? script.demo.url || (await resolveHomepage(repo)) : "";
+  if (!live) {
+    console.log("[shorts] 정식 공개 전 — 화면을 녹화하지 않습니다");
+  } else if (demoUrl) {
     // 언어별로 따로 녹화 — 사이트를 그 언어 모드로 켜서, 영어 영상에
     // 한국어 화면이 나오지 않게 한다
     for (const lang of ["ko", "en"] as const) {

@@ -447,7 +447,8 @@ function lineSplit(key: "koLines" | "enLines", raw: unknown, text: string): Reco
   return lineStarts(text.split(/\s+/), lines) ? { [key]: lines } : {};
 }
 
-function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
+/** screens가 거짓이면(live 전) 화면을 가리키는 필드를 모두 버린다 — 모델이 지시를 어겨도 녹화로 이어지지 않게 */
+function validateLines(raw: unknown, screenPaths: Set<string>, screens = true): ShortsLine[] {
   if (!Array.isArray(raw) || raw.length < 4) {
     throw new Error("lines가 너무 적습니다");
   }
@@ -524,14 +525,14 @@ function validateLines(raw: unknown, screenPaths: Set<string>): ShortsLine[] {
       // 경로는 힌트일 뿐이고 녹화기가 find만으로 사이트를 돌며 그 화면을
       // 찾아낸다 (record.ts). screen이 있을 때만 통과시키던 탓에, 경로를 적지
       // 않고 find만 고른 문장은 가리킬 것을 잃고 카드로 떨어졌다.
-      ...(typeof l.find === "string" && l.find.trim()
+      ...(screens && typeof l.find === "string" && l.find.trim()
         ? { find: l.find.trim().slice(0, 30) }
         : {}),
-      ...(typeof l.findEn === "string" && l.findEn.trim()
+      ...(screens && typeof l.findEn === "string" && l.findEn.trim()
         ? { findEn: l.findEn.trim().slice(0, 30) }
         : {}),
       // 연출은 내용이 정한다 (로테이션 폐지)
-      ...(l.shot === "whole" || l.shot === "focus" || l.shot === "compare"
+      ...(screens && (l.shot === "whole" || l.shot === "focus" || l.shot === "compare")
         ? { shot: l.shot }
         : {}),
       // 다이어그램 — 어휘에 있고 라벨 수가 맞는 것만 (자유 작도 금지)
@@ -737,7 +738,7 @@ function dayNumber(repo: string, date: string): number {
   return (idx === -1 ? dates.length : idx) + 1;
 }
 
-function getProjectMeta(repo: string): ProjectMeta {
+export function getProjectMeta(repo: string): ProjectMeta {
   try {
     const projects: ProjectMeta[] = JSON.parse(
       fs.readFileSync(
@@ -820,7 +821,8 @@ export async function generateScript(
   // 사이트는 대본 JSON에도, 마지막 장면의 주소 버튼에도, 실행 기록에도 주소를 남기지
   // 않는다 — 이 레포와 실행 기록은 공개다 (scripts/homepage.ts)
   const demoUrl = await resolveHomepage(repo, meta.homepage);
-  const shownUrl = isPublicStatus(meta.status) ? demoUrl : "";
+  const live = isPublicStatus(meta.status);
+  const shownUrl = live ? demoUrl : "";
   // 레포가 고른 테마 — 알 수 없는 값은 기본(terminal)으로
   const theme = SHORTS_THEMES.includes(
     meta.theme as (typeof SHORTS_THEMES)[number],
@@ -830,13 +832,16 @@ export async function generateScript(
 
   // 실제 사이트의 화면 목록 — 대본이 데모 문장마다 내용에 맞는 화면(screen)을
   // 고르게 한다. 없으면 기존 방식(투어를 시간순으로 자름)으로 폴백.
-  const screens = await siteScreens(demoUrl);
+  // live 전 사이트에는 들어가지 않는다 — 화면을 읽지도 녹화하지도 않고, 그림·다이어그램만으로
+  // 만든다 (10/23). 공개 전 화면이 쇼츠에 나가면 되돌릴 수 없다. 거짓말 탐정은 배포 보호에 막혀
+  // 로그인 화면만 찍혔지만, 보호를 풀면 그날 밤부터 게임 화면이 녹화되는 구조였다
+  const screens = live ? await siteScreens(demoUrl) : [];
   // 화면이 홈 하나뿐이거나(로그인·랜딩만) 배포 주소가 없으면 대본을 쓰지 않는다.
   // Anchor는 첫 화면이 로그인이라 홈 말고는 못 들어가는데, 밤마다 대본을 두 번
   // 쓰고(빈 화면 재작성) "빈 화면이 남아 영상을 만들지 않습니다"로 끝났다 —
   // 9/20부터 매번 $0.15–0.3을 버렸다. 쇼츠는 실제 화면 녹화가 소재다
   // (CLAUDE.md). 소재가 없으면 돈을 쓰기 전에 멈춘다.
-  if (screens.length < 2) {
+  if (live && screens.length < 2) {
     throw new NoScreensError(
       demoUrl
         ? `로그인 없이 볼 수 있는 화면이 첫 화면 하나뿐이라 쇼츠를 만들지 않습니다${shownUrl ? ` (${shownUrl})` : ""}`
@@ -858,8 +863,8 @@ export async function generateScript(
         d.length ? " (가급적 다른 종류로)" : ""
       }`;
     })(),
-    demoUrl && !shownUrl
-      ? "배포 URL: (정식 공개 전이라 비공개 — 대본·자막에 사이트 주소를 쓰지 않는다)"
+    !live
+      ? "배포 URL: (정식 공개 전 — 사이트 화면을 보여 주지 않는다. 모든 문장에 screen·find·shot을 넣지 말고, 대본·자막에 사이트 주소도 쓰지 않는다. 문장마다 diagram·art·icon·motif 중 맞는 것으로 채운다)"
       : `배포 URL: ${demoUrl || "(없음 — demo 장면에서는 화면 이야기를 짧게)"}`,
     ...(screens.length >= 2
       ? [
@@ -950,6 +955,7 @@ export async function generateScript(
   let lines = validateLines(
     parsed.lines,
     new Set(screens.map((sc) => sc.path)),
+    live,
   );
 
   // 두 가지를 본다. 빈 화면이 될 문장(화면도 그림도 없음)과, 처음 듣는 사람이
@@ -1004,8 +1010,12 @@ export async function generateScript(
         ...blanks.map((l) => `  - #${lines.indexOf(l)} [${l.scene}] ${l.ko}`),
         "",
         "각 문장에 대해 하나를 고르세요 —",
-        "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
-        "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
+        ...(live
+          ? [
+              "① 그 문장이 화면에서 보여줄 만한 것을 말한다면 find(+필요하면 screen,",
+              "   shot)를 넣는다. find는 그 문장이 말하는 것을 화면에서 찾을 말입니다.",
+            ]
+          : ["① (정식 공개 전이라 사이트 화면은 쓰지 않는다 — screen·find를 넣지 않는다)"]),
         "② 원리·구조·전후를 말한다면 diagram을 넣는다 (다섯 종류, 개수 제한 없음).",
         "③ 둘 다 아니고 무언가 하나를 크게 보여 줘야 하면 art(은유 그림 묘사, 영어 한 문장)를 넣고,",
         "   실패할 때를 위해 icon이나 motif도 하나 같이 넣는다.",
@@ -1023,9 +1033,16 @@ export async function generateScript(
         "아래 문장은 바로 앞 문장처럼 아이콘이나 모티프만 있어, 화면 가운데 그림 하나가 연달아 나옵니다.",
         ...runs.map((l) => `  - #${lines.indexOf(l)} [${l.scene}] ${l.ko}`),
         "",
-        "되도록 화면(screen/find)·다이어그램·그림(art) 중 하나로 바꾸세요. 사이트에서 보여 줄 수 있는 것을",
-        "말하면 화면을, 원리를 말하면 다이어그램을 고릅니다. 정말 그럴 것이 없으면 그대로 둡니다 — 억지로 맞지 않는",
-        "화면을 붙이지 않습니다.",
+        ...(live
+          ? [
+              "되도록 화면(screen/find)·다이어그램·그림(art) 중 하나로 바꾸세요. 사이트에서 보여 줄 수 있는 것을",
+              "말하면 화면을, 원리를 말하면 다이어그램을 고릅니다. 정말 그럴 것이 없으면 그대로 둡니다 — 억지로 맞지 않는",
+              "화면을 붙이지 않습니다.",
+            ]
+          : [
+              "되도록 다이어그램이나 그림(art)으로 바꾸세요 (정식 공개 전이라 사이트 화면은 쓰지 않습니다).",
+              "원리를 말하면 다이어그램을 고릅니다. 정말 그럴 것이 없으면 그대로 둡니다.",
+            ]),
         "",
       );
     }
@@ -1090,7 +1107,7 @@ export async function generateScript(
     noteUsage("script", retry.usage);
     cutCheck(retry, "다시 쓴 대본");
     parsed = { ...parsed, lines: applyReplace(parsed.lines, parseJson(readText(retry))) };
-    lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)));
+    lines = validateLines(parsed.lines, new Set(screens.map((sc) => sc.path)), live);
     blanks = blankScenes(lines);
     longs = longHooks(lines);
     runs = graphicRuns(lines);
