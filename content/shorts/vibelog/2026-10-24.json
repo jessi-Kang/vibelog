@@ -1,0 +1,499 @@
+{
+  "template": "fail",
+  "music": "tense",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-10-24",
+  "day": 25,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "AI가 게임 단서를 글에 흘렸습니다.",
+      "en": "My AI leaked game clues in a post.",
+      "keywords": [
+        "단서를"
+      ],
+      "keywordsEn": [
+        "clues"
+      ],
+      "koLines": [
+        "AI가 게임 단서를",
+        "글에 흘렸습니다."
+      ],
+      "enLines": [
+        "My AI leaked",
+        "game clues in a post."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "커밋 메시지는 제가 남기는 작업 메모입니다.",
+      "en": "Commit messages are the work notes I leave.",
+      "keywords": [
+        "작업 메모입니다."
+      ],
+      "keywordsEn": [
+        "work notes"
+      ],
+      "koLines": [
+        "커밋 메시지는",
+        "제가 남기는 작업 메모입니다."
+      ],
+      "enLines": [
+        "Commit messages are",
+        "the work notes I leave."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "커밋 메시지",
+          "AI가 읽고",
+          "공개 글"
+        ],
+        "labelsEn": [
+          "Commit messages",
+          "AI reads them",
+          "Public post"
+        ],
+        "icons": [
+          {
+            "name": "tabler:git-commit",
+            "paths": [
+              {
+                "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:robot",
+            "paths": [
+              {
+                "d": "M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6-4v2m-3 8v9m6-9v9M5 16l4-2m6 0l4 2M9 18h6M10 8v.01M14 8v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:article",
+            "paths": [
+              {
+                "d": "M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm4 2h10M7 12h10M7 16h10"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "거기 없던 증거물이 글 제목에 나왔습니다.",
+      "en": "Evidence they never named showed up in the title.",
+      "keywords": [
+        "없던 증거물이"
+      ],
+      "keywordsEn": [
+        "never named"
+      ],
+      "koLines": [
+        "거기 없던 증거물이",
+        "글 제목에 나왔습니다."
+      ],
+      "enLines": [
+        "Evidence they never named",
+        "showed up in the title."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "증거물",
+          "일반적인 이름",
+          "그대로 밝힘",
+          "커밋 메시지",
+          "글 제목"
+        ],
+        "labelsEn": [
+          "Evidence",
+          "General name",
+          "Spelled out",
+          "Commit message",
+          "Post title"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "AI가 바뀐 파일 이름까지 보고 있었습니다.",
+      "en": "The AI was also seeing the changed file names.",
+      "keywords": [
+        "파일 이름까지"
+      ],
+      "keywordsEn": [
+        "file names"
+      ],
+      "koLines": [
+        "AI가 바뀐 파일 이름까지",
+        "보고 있었습니다."
+      ],
+      "enLines": [
+        "The AI was also seeing",
+        "the changed file names."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "바뀐 파일 이름",
+          "AI가 읽고",
+          "증거물을 알아냄",
+          "제목에 씀"
+        ],
+        "labelsEn": [
+          "Changed file names",
+          "AI reads them",
+          "Figures out evidence",
+          "Puts it in title"
+        ],
+        "icons": [
+          {
+            "name": "tabler:file",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:robot",
+            "paths": [
+              {
+                "d": "M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6-4v2m-3 8v9m6-9v9M5 16l4-2m6 0l4 2M9 18h6M10 8v.01M14 8v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:search",
+            "paths": [
+              {
+                "d": "M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:heading",
+            "paths": [
+              {
+                "d": "M7 12h10M7 5v14M17 5v14m-2 0h4M15 5h4M5 19h4M5 5h4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "비공개 레포는 AI에게 파일 이름을 안 줍니다.",
+      "en": "Private repos no longer give the AI file names.",
+      "keywords": [
+        "파일 이름을"
+      ],
+      "keywordsEn": [
+        "file names"
+      ],
+      "koLines": [
+        "비공개 레포는",
+        "AI에게 파일 이름을 안 줍니다."
+      ],
+      "enLines": [
+        "Private repos no longer",
+        "give the AI file names."
+      ],
+      "art": "a closed folder sliding past a small robot that cannot see inside",
+      "icon": {
+        "name": "tabler:file-off",
+        "paths": [
+          {
+            "d": "m3 3l18 18M7 3h7l5 5v7m0 4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "다른 AI가 커밋 메시지와 글을 나란히 읽습니다.",
+      "en": "A second AI reads the post beside the commit messages.",
+      "keywords": [
+        "다른 AI가",
+        "나란히"
+      ],
+      "keywordsEn": [
+        "second AI",
+        "beside"
+      ],
+      "koLines": [
+        "다른 AI가 커밋 메시지와",
+        "글을 나란히 읽습니다."
+      ],
+      "enLines": [
+        "A second AI reads the post",
+        "beside the commit messages."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "글을 쓴다",
+          "커밋 메시지와 대조",
+          "더 말하면 다시 쓴다"
+        ],
+        "labelsEn": [
+          "Write the post",
+          "Check against commits",
+          "Rewrite if it says more"
+        ],
+        "icons": [
+          {
+            "name": "tabler:pencil",
+            "paths": [
+              {
+                "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:git-commit",
+            "paths": [
+              {
+                "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:refresh",
+            "paths": [
+              {
+                "d": "M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "메시지에 없는 말이 남으면 글을 안 냅니다.",
+      "en": "If anything not in the messages remains, no post goes out.",
+      "keywords": [
+        "없는 말이"
+      ],
+      "keywordsEn": [
+        "no post"
+      ],
+      "koLines": [
+        "메시지에 없는 말이 남으면",
+        "글을 안 냅니다."
+      ],
+      "enLines": [
+        "If anything not in the messages",
+        "remains, no post goes out."
+      ],
+      "icon": {
+        "name": "tabler:file-x",
+        "paths": [
+          {
+            "d": "M14 3v4a1 1 0 0 0 1 1h4"
+          },
+          {
+            "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2m-7-9l4 4m0-4l-4 4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "어젯밤 글과 쇼츠는 바로 지웠습니다.",
+      "en": "Last night's post and short were deleted right away.",
+      "keywords": [
+        "바로"
+      ],
+      "keywordsEn": [
+        "right away"
+      ],
+      "koLines": [
+        "어젯밤 글과 쇼츠는",
+        "바로 지웠습니다."
+      ],
+      "enLines": [
+        "Last night's post and short",
+        "were deleted right away."
+      ],
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "next",
+      "ko": "내린 글을 다시 써서 단서가 빠졌는지 보겠습니다.",
+      "en": "Next, I'll rewrite that post and check it comes out clean.",
+      "keywords": [
+        "다시 써서"
+      ],
+      "keywordsEn": [
+        "rewrite"
+      ],
+      "koLines": [
+        "내린 글을 다시 써서",
+        "단서가 빠졌는지 보겠습니다."
+      ],
+      "enLines": [
+        "Next, I'll rewrite that post",
+        "and check it comes out clean."
+      ],
+      "art": "a pencil rewriting a page that has an empty gap where something was erased",
+      "icon": {
+        "name": "tabler:pencil",
+        "paths": [
+          {
+            "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "이제 글은 제가 적은 만큼만 말합니다.",
+      "en": "Now posts say only what I wrote down.",
+      "keywords": [
+        "적은 만큼만"
+      ],
+      "keywordsEn": [
+        "only"
+      ],
+      "koLines": [
+        "이제 글은",
+        "제가 적은 만큼만 말합니다."
+      ],
+      "enLines": [
+        "Now posts say only",
+        "what I wrote down."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "글이 단서를 흘렸다",
+    "titleEn": "The post leaked clues",
+    "before": "AI가 파일 이름으로 증거물을 알아냄",
+    "after": "비공개 레포는 파일 이름을 안 넘김",
+    "beforeEn": "The AI guessed the evidence from file names",
+    "afterEn": "Private repos no longer pass file names"
+  },
+  "commits": [
+    [
+      "3a5a58e",
+      "docs: 레포를 다시 공개하며 비공개 전제로 쓴 문장을 고친다"
+    ],
+    [
+      "4493d63",
+      "chore: 레포 비공개에 맞춰 Actions 사용 시간을 줄이고 깨지는 링크를 뺀다"
+    ],
+    [
+      "881d3e5",
+      "fix: 정식 공개 전 프로젝트는 쇼츠에 사이트 화면을 쓰지 않는다"
+    ],
+    [
+      "6154517",
+      "feat: 내린 글도 다시 쓰고 옛 쇼츠 파일과 그림을 같이 지운다"
+    ],
+    [
+      "d8ee201",
+      "fix: 다시 쓰기 지시도 커밋 메시지를 기준으로 맞춘다"
+    ],
+    [
+      "1b7daf8",
+      "fix: 구체적으로 써도 되는 기준을 커밋 메시지 하나로 좁힌다"
+    ],
+    [
+      "6708781",
+      "fix: 비공개 레포의 파일 이름이 글로 새지 않게 하고 재료 검사를 더한다"
+    ],
+    [
+      "da77bce",
+      "fix: 게임 단서를 드러낸 거짓말 탐정 10/23 글과 쇼츠를 내린다"
+    ],
+    [
+      "e03cb57",
+      "docs: 대화 비공개 규칙을 비공개 레포와 제작 문서에도 맞게 고친다"
+    ],
+    [
+      "6ca8076",
+      "asset: 인트로 영상을 글 날짜에 맞게 다시 붙인다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "3a5a58e",
+      "docs: rewrite sentences that assumed the repo was private, now that it is public again"
+    ],
+    [
+      "4493d63",
+      "chore: reduce Actions usage and remove broken links to match the private repo"
+    ],
+    [
+      "881d3e5",
+      "fix: do not use site screens in Shorts for projects before official release"
+    ],
+    [
+      "6154517",
+      "feat: rewrite taken-down posts and delete old Shorts files and images together"
+    ],
+    [
+      "d8ee201",
+      "fix: align rewrite instructions with the commit message as the reference"
+    ],
+    [
+      "1b7daf8",
+      "fix: narrow the criteria for writing specifics to a single commit message"
+    ],
+    [
+      "6708781",
+      "fix: prevent private repo file names from leaking into posts and add a material check"
+    ],
+    [
+      "da77bce",
+      "fix: take down the 10/23 Liar Detective post and Shorts that revealed game clues"
+    ],
+    [
+      "e03cb57",
+      "docs: update private-chat rules for the private repo and production docs"
+    ],
+    [
+      "6ca8076",
+      "asset: re-attach intro video to match the post date"
+    ]
+  ],
+  "commitCount": 10,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "공개 전 게임의 데브로그가 플레이어가 찾을 증거물을 제목에 밝혔습니다. AI가 파일 이름까지 보고 있던 것이 원인이라, 비공개 레포는 파일 이름을 넘기지 않고 다른 AI가 글을 한 번 더 검사하게 했습니다.",
+    "en": "A devlog for an unreleased game named the evidence players should find, right in the title. The AI was reading file names too, so private repos no longer pass them on, and a second AI now checks every post."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#AI",
+    "#devlog",
+    "#삽질",
+    "#buildinpublic",
+    "#인디게임"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-24.poster.jpg?v=mvmhg1re",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-24.ko.mp4?v=mvmhg3zk",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-24.ko.sm.mp4?v=mvmhghk9",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-24.en.poster.jpg?v=mvmhj9jq",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-24.en.mp4?v=mvmhjba0",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-10-24.en.sm.mp4?v=mvmhjp4o"
+  }
+}

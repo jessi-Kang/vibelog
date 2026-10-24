@@ -1,0 +1,536 @@
+{
+  "lang": "en",
+  "duration": 34.054,
+  "sentences": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 2.171,
+      "words": [
+        {
+          "text": "My",
+          "start": 0,
+          "end": 0.186
+        },
+        {
+          "text": "AI",
+          "start": 0.244,
+          "end": 0.534
+        },
+        {
+          "text": "leaked",
+          "start": 0.627,
+          "end": 0.848
+        },
+        {
+          "text": "game",
+          "start": 0.894,
+          "end": 1.091
+        },
+        {
+          "text": "clues",
+          "start": 1.115,
+          "end": 1.37
+        },
+        {
+          "text": "in",
+          "start": 1.416,
+          "end": 1.486
+        },
+        {
+          "text": "a",
+          "start": 1.521,
+          "end": 1.544
+        },
+        {
+          "text": "post.",
+          "start": 1.614,
+          "end": 2.171
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "start": 2.775,
+      "end": 4.946,
+      "words": [
+        {
+          "text": "Commit",
+          "start": 2.775,
+          "end": 3.053
+        },
+        {
+          "text": "messages",
+          "start": 3.123,
+          "end": 3.529
+        },
+        {
+          "text": "are",
+          "start": 3.576,
+          "end": 3.669
+        },
+        {
+          "text": "the",
+          "start": 3.704,
+          "end": 3.773
+        },
+        {
+          "text": "work",
+          "start": 3.82,
+          "end": 4.005
+        },
+        {
+          "text": "notes",
+          "start": 4.063,
+          "end": 4.272
+        },
+        {
+          "text": "I",
+          "start": 4.319,
+          "end": 4.354
+        },
+        {
+          "text": "leave.",
+          "start": 4.47,
+          "end": 4.946
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "start": 5.725,
+      "end": 8.21,
+      "words": [
+        {
+          "text": "Evidence",
+          "start": 5.725,
+          "end": 6.167
+        },
+        {
+          "text": "they",
+          "start": 6.1899999999999995,
+          "end": 6.305999999999999
+        },
+        {
+          "text": "never",
+          "start": 6.352,
+          "end": 6.561
+        },
+        {
+          "text": "named",
+          "start": 6.642999999999999,
+          "end": 6.968
+        },
+        {
+          "text": "showed",
+          "start": 7.036999999999999,
+          "end": 7.27
+        },
+        {
+          "text": "up",
+          "start": 7.304,
+          "end": 7.385999999999999
+        },
+        {
+          "text": "in",
+          "start": 7.432,
+          "end": 7.49
+        },
+        {
+          "text": "the",
+          "start": 7.525,
+          "end": 7.594999999999999
+        },
+        {
+          "text": "title.",
+          "start": 7.641,
+          "end": 8.21
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "start": 9.325,
+      "end": 11.809000000000001,
+      "words": [
+        {
+          "text": "The",
+          "start": 9.325,
+          "end": 9.452000000000002
+        },
+        {
+          "text": "AI",
+          "start": 9.510000000000002,
+          "end": 9.789000000000001
+        },
+        {
+          "text": "was",
+          "start": 9.847000000000001,
+          "end": 9.952000000000002
+        },
+        {
+          "text": "also",
+          "start": 9.998000000000001,
+          "end": 10.219000000000001
+        },
+        {
+          "text": "seeing",
+          "start": 10.288,
+          "end": 10.544
+        },
+        {
+          "text": "the",
+          "start": 10.59,
+          "end": 10.66
+        },
+        {
+          "text": "changed",
+          "start": 10.706,
+          "end": 10.972999999999999
+        },
+        {
+          "text": "file",
+          "start": 11.008,
+          "end": 11.264
+        },
+        {
+          "text": "names.",
+          "start": 11.298000000000002,
+          "end": 11.809000000000001
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "start": 12.625,
+      "end": 15.307,
+      "words": [
+        {
+          "text": "Private",
+          "start": 12.625,
+          "end": 12.974
+        },
+        {
+          "text": "repos",
+          "start": 13.008,
+          "end": 13.357
+        },
+        {
+          "text": "no",
+          "start": 13.426,
+          "end": 13.508
+        },
+        {
+          "text": "longer",
+          "start": 13.565999999999999,
+          "end": 13.821
+        },
+        {
+          "text": "give",
+          "start": 13.868,
+          "end": 14.03
+        },
+        {
+          "text": "the",
+          "start": 14.052999999999999,
+          "end": 14.123
+        },
+        {
+          "text": "AI",
+          "start": 14.181,
+          "end": 14.436
+        },
+        {
+          "text": "file",
+          "start": 14.506,
+          "end": 14.762
+        },
+        {
+          "text": "names.",
+          "start": 14.796,
+          "end": 15.307
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "start": 15.857000000000001,
+      "end": 18.91,
+      "words": [
+        {
+          "text": "A",
+          "start": 15.857000000000001,
+          "end": 15.938
+        },
+        {
+          "text": "second",
+          "start": 16.054,
+          "end": 16.356
+        },
+        {
+          "text": "AI",
+          "start": 16.414,
+          "end": 16.67
+        },
+        {
+          "text": "reads",
+          "start": 16.786,
+          "end": 16.995
+        },
+        {
+          "text": "the",
+          "start": 17.029999999999998,
+          "end": 17.099
+        },
+        {
+          "text": "post",
+          "start": 17.157,
+          "end": 17.424
+        },
+        {
+          "text": "beside",
+          "start": 17.471,
+          "end": 17.761
+        },
+        {
+          "text": "the",
+          "start": 17.796,
+          "end": 17.866
+        },
+        {
+          "text": "commit",
+          "start": 17.9,
+          "end": 18.144
+        },
+        {
+          "text": "messages.",
+          "start": 18.201999999999998,
+          "end": 18.91
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "start": 19.46,
+      "end": 23.036,
+      "words": [
+        {
+          "text": "If",
+          "start": 19.46,
+          "end": 19.623
+        },
+        {
+          "text": "anything",
+          "start": 19.704,
+          "end": 20.145
+        },
+        {
+          "text": "not",
+          "start": 20.203,
+          "end": 20.343
+        },
+        {
+          "text": "in",
+          "start": 20.389,
+          "end": 20.447
+        },
+        {
+          "text": "the",
+          "start": 20.482,
+          "end": 20.552
+        },
+        {
+          "text": "messages",
+          "start": 20.598000000000003,
+          "end": 21.062
+        },
+        {
+          "text": "remains,",
+          "start": 21.12,
+          "end": 21.678
+        },
+        {
+          "text": "no",
+          "start": 21.794,
+          "end": 21.956
+        },
+        {
+          "text": "post",
+          "start": 22.049,
+          "end": 22.316000000000003
+        },
+        {
+          "text": "goes",
+          "start": 22.374000000000002,
+          "end": 22.560000000000002
+        },
+        {
+          "text": "out.",
+          "start": 22.618000000000002,
+          "end": 23.036
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "start": 23.64,
+      "end": 26.473000000000003,
+      "words": [
+        {
+          "text": "Last",
+          "start": 23.64,
+          "end": 23.884
+        },
+        {
+          "text": "night's",
+          "start": 23.942,
+          "end": 24.174
+        },
+        {
+          "text": "post",
+          "start": 24.232,
+          "end": 24.580000000000002
+        },
+        {
+          "text": "and",
+          "start": 24.638,
+          "end": 24.801000000000002
+        },
+        {
+          "text": "short",
+          "start": 24.859,
+          "end": 25.184
+        },
+        {
+          "text": "were",
+          "start": 25.242,
+          "end": 25.393
+        },
+        {
+          "text": "deleted",
+          "start": 25.428,
+          "end": 25.788
+        },
+        {
+          "text": "right",
+          "start": 25.834,
+          "end": 26.02
+        },
+        {
+          "text": "away.",
+          "start": 26.043,
+          "end": 26.473000000000003
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "start": 27.285,
+      "end": 30.757,
+      "words": [
+        {
+          "text": "Next,",
+          "start": 27.285,
+          "end": 27.831
+        },
+        {
+          "text": "I'll",
+          "start": 27.959,
+          "end": 28.145
+        },
+        {
+          "text": "rewrite",
+          "start": 28.191000000000003,
+          "end": 28.562
+        },
+        {
+          "text": "that",
+          "start": 28.586000000000002,
+          "end": 28.713
+        },
+        {
+          "text": "post",
+          "start": 28.783,
+          "end": 29.155
+        },
+        {
+          "text": "and",
+          "start": 29.271,
+          "end": 29.468
+        },
+        {
+          "text": "check",
+          "start": 29.526,
+          "end": 29.712
+        },
+        {
+          "text": "it",
+          "start": 29.77,
+          "end": 29.828
+        },
+        {
+          "text": "comes",
+          "start": 29.874000000000002,
+          "end": 30.072
+        },
+        {
+          "text": "out",
+          "start": 30.107,
+          "end": 30.234
+        },
+        {
+          "text": "clean.",
+          "start": 30.281000000000002,
+          "end": 30.757
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "start": 31.36,
+      "end": 34.054,
+      "words": [
+        {
+          "text": "Now",
+          "start": 31.36,
+          "end": 31.546
+        },
+        {
+          "text": "posts",
+          "start": 31.639,
+          "end": 32.150000000000006
+        },
+        {
+          "text": "say",
+          "start": 32.301,
+          "end": 32.556000000000004
+        },
+        {
+          "text": "only",
+          "start": 32.626000000000005,
+          "end": 32.870000000000005
+        },
+        {
+          "text": "what",
+          "start": 32.928,
+          "end": 33.079
+        },
+        {
+          "text": "I",
+          "start": 33.125,
+          "end": 33.148
+        },
+        {
+          "text": "wrote",
+          "start": 33.206,
+          "end": 33.404
+        },
+        {
+          "text": "down.",
+          "start": 33.439,
+          "end": 34.054
+        }
+      ]
+    }
+  ]
+}

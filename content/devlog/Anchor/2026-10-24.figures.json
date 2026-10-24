@@ -1,0 +1,928 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "대화에서 커밋을 거쳐 데브로그로 나가는 흐름에서, 대화와 커밋 사이에서 정한 것과 이유만 걸러져 넘어가는 그림.",
+  "altEn": "A flow from conversation to commit to devlog, where only the decision and its reason pass from the conversation into the commit.",
+  "caption": "커밋은 매일 밤 공개되니, 대화에서는 정한 것과 이유만 넘깁니다",
+  "captionEn": "Commits go public every night, so only the decision and why pass through",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "대화에서 커밋으로는 정한 것과 이유만 넘어가고, 커밋은 매일 밤 데브로그로 공개된다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "40",
+      "width": "100",
+      "height": "60",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대화"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "40",
+      "width": "100",
+      "height": "60",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "280",
+      "y": "40",
+      "width": "100",
+      "height": "60",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "데브로그"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "110",
+      "y1": "70",
+      "x2": "135",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "145,70 135,64 135,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "245",
+      "y1": "70",
+      "x2": "270",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "280,70 270,64 270,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "124",
+      "y1": "50",
+      "x2": "124",
+      "y2": "90",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "127",
+      "y": "135",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "정한 것과 이유만"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "135",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "매일 밤 공개"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 170",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Only the decision and why pass from conversation into the commit, and commits go public every night as the devlog"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "40",
+      "width": "100",
+      "height": "60",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Chat"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "40",
+      "width": "100",
+      "height": "60",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commit"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "280",
+      "y": "40",
+      "width": "100",
+      "height": "60",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "76",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Devlog"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "110",
+      "y1": "70",
+      "x2": "135",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "145,70 135,64 135,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "245",
+      "y1": "70",
+      "x2": "270",
+      "y2": "70",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "280,70 270,64 270,76",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "124",
+      "y1": "50",
+      "x2": "124",
+      "y2": "90",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "127",
+      "y": "135",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "decision + why only"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "135",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "public nightly"
+    }
+   ]
+  }
+ },
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "고치기 전 문서에는 따옴표 속 말과 말한 사람이 있었고, 고친 뒤에는 정한 내용과 정한 때만 남은 전후 비교.",
+  "altEn": "Before and after: the docs once held quoted words and the speaker, and now hold only what was decided and when.",
+  "caption": "따옴표와 말한 사람을 빼도 뜻은 그대로입니다",
+  "captionEn": "Dropping the quotes and the speaker leaves the meaning unchanged",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "문서에서 따옴표 속 말과 말한 사람을 빼고 정한 내용과 정한 때만 남겼다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "35",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "35",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "50",
+      "width": "170",
+      "height": "110",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "따옴표 속 말"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "말한 사람"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "105",
+      "x2": "200",
+      "y2": "105",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "210,105 200,99 200,111",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "50",
+      "width": "170",
+      "height": "110",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "정한 내용"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "정한 때"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 190",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The docs dropped quoted words and the speaker, keeping only what was decided and when"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "35",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "35",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "50",
+      "width": "170",
+      "height": "110",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "quoted words"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "speaker"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "180",
+      "y1": "105",
+      "x2": "200",
+      "y2": "105",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "210,105 200,99 200,111",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "50",
+      "width": "170",
+      "height": "110",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "what was decided"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "130",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "when"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "공개 레포든 비공개 레포든 커밋 메시지는 똑같이 매일 밤 공개 글로 나간다는 것을 보여 주는 두 갈래가 하나로 모이는 그림.",
+  "altEn": "Two branches, public repo and private repo, both lead to commit messages that become a public post every night.",
+  "caption": "레포가 공개든 비공개든, 커밋 메시지는 매일 밤 공개됩니다",
+  "captionEn": "Public repo or private, commit messages go public every night",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "공개 레포와 비공개 레포 모두 커밋 메시지를 거쳐 매일 밤 공개 글이 된다"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "20",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "공개 레포"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "20",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "비공개 레포"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "95",
+      "y1": "70",
+      "x2": "158",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "165,130 154,127 161,120",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "295",
+      "y1": "70",
+      "x2": "232",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "225,130 236,127 229,120",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "130",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋 메시지"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "180",
+      "x2": "195",
+      "y2": "220",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,230 189,220 201,220",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "230",
+      "width": "220",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "261",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "매일 밤 공개 글"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Both public and private repos lead to commit messages that become a public post every night"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "20",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Public repo"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "210",
+      "y": "20",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Private repo"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "95",
+      "y1": "70",
+      "x2": "158",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "165,130 154,127 161,120",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "295",
+      "y1": "70",
+      "x2": "232",
+      "y2": "124",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "225,130 236,127 229,120",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "110",
+      "y": "130",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "161",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commit messages"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "180",
+      "x2": "195",
+      "y2": "220",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "195,230 189,220 201,220",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "85",
+      "y": "230",
+      "width": "220",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "261",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Public post every night"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,544 @@
+{
+  "template": "before-after",
+  "music": "calm",
+  "theme": "blueprint",
+  "repo": "Anchor",
+  "date": "2026-10-24",
+  "day": 7,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "대화 원문이 문서에 남아 있었습니다.",
+      "en": "My AI chats were left in the docs.",
+      "keywords": [
+        "대화 원문이"
+      ],
+      "keywordsEn": [
+        "AI chats"
+      ],
+      "koLines": [
+        "대화 원문이",
+        "문서에",
+        "남아 있었습니다."
+      ],
+      "enLines": [
+        "My AI chats",
+        "were left",
+        "in the docs."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "AI와 한 대화가 따옴표째 8군데 있었습니다.",
+      "en": "My chats with AI were there, quotes and all, in 8 places.",
+      "keywords": [
+        "따옴표째",
+        "8군데"
+      ],
+      "keywordsEn": [
+        "quotes and all",
+        "8 places"
+      ],
+      "koLines": [
+        "AI와 한 대화가",
+        "따옴표째 8군데 있었습니다."
+      ],
+      "enLines": [
+        "My chats with AI were there,",
+        "quotes and all, in 8 places."
+      ],
+      "art": "a stack of paper documents with speech bubbles poking out between the pages",
+      "stat": "8군데",
+      "statEn": "8 places",
+      "icon": {
+        "name": "tabler:quote",
+        "paths": [
+          {
+            "d": "M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6q0 4-4 5m13-7h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6q0 4-4 5"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "커밋, 그러니까 작업 메모는 매일 밤 공개됩니다.",
+      "en": "Commits, my work notes, go public every night.",
+      "keywords": [
+        "매일 밤"
+      ],
+      "keywordsEn": [
+        "every night"
+      ],
+      "koLines": [
+        "커밋, 그러니까 작업 메모는",
+        "매일 밤 공개됩니다."
+      ],
+      "enLines": [
+        "Commits, my work notes,",
+        "go public every night."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "AI와 대화",
+          "문서·커밋",
+          "매일 밤 글",
+          "공개"
+        ],
+        "labelsEn": [
+          "AI chat",
+          "Docs & commits",
+          "Nightly post",
+          "Public"
+        ],
+        "icons": [
+          {
+            "name": "tabler:message-chatbot",
+            "paths": [
+              {
+                "d": "M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-5l-5 3v-3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zM9.5 9h.01m4.99 0h.01"
+              },
+              {
+                "d": "M9.5 13a3.5 3.5 0 0 0 5 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:git-commit",
+            "paths": [
+              {
+                "d": "M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"
+              }
+            ]
+          },
+          {
+            "name": "tabler:article",
+            "paths": [
+              {
+                "d": "M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm4 2h10M7 12h10M7 16h10"
+              }
+            ]
+          },
+          {
+            "name": "tabler:world",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8"
+              },
+              {
+                "d": "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "그래서 따옴표를 빼고 정한 내용만 남겼습니다.",
+      "en": "So I cut the quotes and kept only what was decided.",
+      "keywords": [
+        "정한 내용만"
+      ],
+      "keywordsEn": [
+        "what was decided"
+      ],
+      "koLines": [
+        "그래서 따옴표를 빼고",
+        "정한 내용만 남겼습니다."
+      ],
+      "enLines": [
+        "So I cut the quotes",
+        "and kept only what was decided."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "대화 원문",
+          "따옴표째 남음",
+          "정한 내용",
+          "뜻은 그대로"
+        ],
+        "labelsEn": [
+          "Chat quotes",
+          "Left verbatim",
+          "Decisions",
+          "Same meaning"
+        ],
+        "icons": [
+          {
+            "name": "tabler:quote",
+            "paths": [
+              {
+                "d": "M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6q0 4-4 5m13-7h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6q0 4-4 5"
+              }
+            ]
+          },
+          {
+            "name": "tabler:file-alert",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2m-5-4h.01M12 11v3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:file-check",
+            "paths": [
+              {
+                "d": "M14 3v4a1 1 0 0 0 1 1h4"
+              },
+              {
+                "d": "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2"
+              },
+              {
+                "d": "m9 15l2 2l4-4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:check",
+            "paths": [
+              {
+                "d": "m5 12l5 5L20 7"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "커밋 규칙에도 대화를 옮기지 말라고 적었습니다.",
+      "en": "The commit rules now say: don't copy the chat.",
+      "keywords": [
+        "옮기지 말라고"
+      ],
+      "keywordsEn": [
+        "don't copy"
+      ],
+      "koLines": [
+        "커밋 규칙에도",
+        "대화를 옮기지 말라고 적었습니다."
+      ],
+      "enLines": [
+        "The commit rules now say:",
+        "don't copy the chat."
+      ],
+      "art": "a rulebook lying open with one rule circled by a pen",
+      "icon": {
+        "name": "tabler:checklist",
+        "paths": [
+          {
+            "d": "M9.615 20H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8m-3 5l2 2l4-4M9 8h4m-4 4h2"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 규칙이 필요한 이유를 이렇게 썼습니다.",
+      "en": "At first I wrote the rule's reason like this.",
+      "keywords": [
+        "필요한 이유를"
+      ],
+      "keywordsEn": [
+        "the rule's reason"
+      ],
+      "koLines": [
+        "처음엔 규칙이 필요한 이유를",
+        "이렇게 썼습니다."
+      ],
+      "enLines": [
+        "At first I wrote",
+        "the rule's reason like this."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "대화 옮기지 않기",
+          "왜 필요한가",
+          "레포가 공개라서"
+        ],
+        "labelsEn": [
+          "Don't copy chats",
+          "Why?",
+          "Repo is public"
+        ],
+        "icons": [
+          {
+            "name": "tabler:message-off",
+            "paths": [
+              {
+                "d": "M8 9h1m4 0h3m-8 4h5M8 4h10a3 3 0 0 1 3 3v8c0 .577-.163 1.116-.445 1.573M18 18h-5l-5 3v-3H6a3 3 0 0 1-3-3V7c0-1.085.576-2.036 1.439-2.562M3 3l18 18"
+              }
+            ]
+          },
+          {
+            "name": "tabler:help",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9 5v.01"
+              },
+              {
+                "d": "M12 13.5a1.5 1.5 0 0 1 1-1.5a2.6 2.6 0 1 0-3-4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:world",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8"
+              },
+              {
+                "d": "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "레포, 그러니까 코드 저장소가 공개라서라고요.",
+      "en": "Because the repo, the code storage, is public.",
+      "keywords": [
+        "공개라서라고요."
+      ],
+      "keywordsEn": [
+        "is public."
+      ],
+      "koLines": [
+        "레포, 그러니까 코드 저장소가",
+        "공개라서라고요."
+      ],
+      "enLines": [
+        "Because the repo,",
+        "the code storage, is public."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "공개 레포",
+          "이유가 맞음",
+          "숨긴 레포",
+          "이유가 틀림"
+        ],
+        "labelsEn": [
+          "Public repo",
+          "Reason holds",
+          "Hidden repo",
+          "Reason breaks"
+        ],
+        "icons": [
+          {
+            "name": "tabler:world",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8"
+              },
+              {
+                "d": "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"
+              }
+            ]
+          },
+          {
+            "name": "tabler:check",
+            "paths": [
+              {
+                "d": "m5 12l5 5L20 7"
+              }
+            ]
+          },
+          {
+            "name": "tabler:lock",
+            "paths": [
+              {
+                "d": "M5 13a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"
+              },
+              {
+                "d": "M11 16a1 1 0 1 0 2 0a1 1 0 0 0-2 0m-3-5V7a4 4 0 1 1 8 0v4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:x",
+            "paths": [
+              {
+                "d": "M18 6L6 18M6 6l12 12"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "숨긴 레포의 커밋도 매일 밤 공개됩니다.",
+      "en": "Even a hidden repo's commits go public every night.",
+      "keywords": [
+        "숨긴 레포의"
+      ],
+      "keywordsEn": [
+        "hidden repo's"
+      ],
+      "koLines": [
+        "숨긴 레포의 커밋도",
+        "매일 밤 공개됩니다."
+      ],
+      "enLines": [
+        "Even a hidden repo's commits",
+        "go public every night."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "커밋",
+          "공개",
+          "공개",
+          "공개 레포",
+          "숨긴 레포"
+        ],
+        "labelsEn": [
+          "Commits",
+          "Public",
+          "Public",
+          "Public repo",
+          "Hidden repo"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "남은 대화 원문을 찾는 방법도 적어 뒀습니다.",
+      "en": "I also wrote down how to find leftover chat quotes.",
+      "keywords": [
+        "찾는 방법도"
+      ],
+      "keywordsEn": [
+        "how to find"
+      ],
+      "koLines": [
+        "남은 대화 원문을",
+        "찾는 방법도 적어 뒀습니다."
+      ],
+      "enLines": [
+        "I also wrote down how to find",
+        "leftover chat quotes."
+      ],
+      "art": "a magnifying glass hovering over a stack of papers",
+      "icon": {
+        "name": "tabler:file-search",
+        "paths": [
+          {
+            "d": "M14 3v4a1 1 0 0 0 1 1h4"
+          },
+          {
+            "d": "M12 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v4.5"
+          },
+          {
+            "d": "M14 17.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0m4.5 2L21 22"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "정한 것과 이유만 남깁니다.",
+      "en": "Only the decisions and the reasons stay.",
+      "keywords": [
+        "이유만"
+      ],
+      "keywordsEn": [
+        "the reasons"
+      ],
+      "enLines": [
+        "Only the decisions",
+        "and the reasons stay."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "규칙의 이유가 틀렸다",
+    "titleEn": "The rule had the wrong reason",
+    "before": "레포가 공개라서 필요하다",
+    "after": "커밋이 매일 밤 공개 글이 되어서",
+    "beforeEn": "Needed because the repo is public",
+    "afterEn": "Needed because commits become public posts every night"
+  },
+  "commits": [
+    [
+      "7494cda",
+      "docs: 현황 문서의 누가 말했다는 서술을 상태 서술로 바꾼다"
+    ],
+    [
+      "1a872bb",
+      "docs: 대화 비공개 규칙을 비공개 레포와 제작 문서에도 맞게 고친다"
+    ],
+    [
+      "cdd402c",
+      "docs: TEAM 문서에 남은 대화 원문을 풀어 쓰고 원문 전달은 레포 밖에서만 하게 적는다"
+    ],
+    [
+      "32ae88b",
+      "docs: 문서에 옮겨 적힌 대화 원문을 결정과 이유로 풀어 쓴다"
+    ],
+    [
+      "64308ba",
+      "docs: 커밋 규칙에 본문 기준과 대화 비공개 규칙을 더한다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "7494cda",
+      "docs: change the attributed statements in the status doc to state descriptions"
+    ],
+    [
+      "1a872bb",
+      "docs: update the conversation privacy rule to also apply to private repos and production docs"
+    ],
+    [
+      "cdd402c",
+      "docs: rewrite the conversation excerpts left in TEAM docs and state that raw transcripts may only be shared outside the repo"
+    ],
+    [
+      "32ae88b",
+      "docs: rewrite transcribed conversation excerpts in docs as decisions and reasons"
+    ],
+    [
+      "64308ba",
+      "docs: add body guidelines and a conversation privacy rule to the commit conventions"
+    ]
+  ],
+  "commitCount": 5,
+  "handle": "Anchor",
+  "captions": {
+    "ko": "AI와 나눈 대화가 따옴표째 문서에 남아 있었습니다. 커밋은 매일 밤 공개 글이 되니까, 정한 내용과 이유만 남기기로 했습니다.",
+    "en": "My chats with AI were sitting in the docs, quotes and all. Since commits become public posts every night, now only the decisions and reasons stay."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#devlog",
+    "#커밋",
+    "#AI코딩",
+    "#Claude",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-10-24.poster.jpg?v=mvmi13d8",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-10-24.ko.mp4?v=mvmi156w",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-10-24.ko.sm.mp4?v=mvmi1mpj",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-10-24.en.poster.jpg?v=mvmi63tu",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-10-24.en.mp4?v=mvmi65yu",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/Anchor/2026-10-24.en.sm.mp4?v=mvmi6lia"
+  }
+}

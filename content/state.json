@@ -1,10 +1,10 @@
 {
   "vibelog": {
-    "lastSha": "942a5ed91e96114411be4b1bd1ceb474ce92e9bd",
-    "lastRun": "2026-10-20T14:03:53.247Z",
-    "lastDate": "2026-10-20",
-    "daySince": "2026-10-19T18:30:08.391Z",
-    "planSha": "7e50f48f5da5697239ab5d9c78f8ed383d08d6fd"
+    "lastSha": "3a5a58e109ad890d44500eb936e0ed542a37bfc4",
+    "lastRun": "2026-10-24T14:04:39.521Z",
+    "lastDate": "2026-10-24",
+    "daySince": "2026-10-20T14:03:53.247Z",
+    "planSha": "01f3107deabf7192b8853a34bab3d54868ee64ba"
   },
   "apart": {
     "lastSha": "298310896f8efd206cd837dfd51447ff855e6e02",
@@ -14,10 +14,10 @@
     "planSha": "2eb4da133bbbb54fe51e43b39718711468f9adb3"
   },
   "Anchor": {
-    "lastSha": "f6532933ff03d7dd159ed053092847f65b1688c8",
-    "lastRun": "2026-09-27T14:03:23.041Z",
-    "lastDate": "2026-09-27",
-    "daySince": "2026-09-25T14:03:49.413Z"
+    "lastSha": "7494cda41f0e1c637c766e516f12a0629f0e1d7b",
+    "lastRun": "2026-10-24T14:09:43.156Z",
+    "lastDate": "2026-10-24",
+    "daySince": "2026-09-27T14:03:23.041Z"
   },
   "portfolio-tmp": {
     "lastSha": "d8e247566e7ee61dbd5dce9853718bafbf2587d1",
@@ -31,13 +31,13 @@
     "lastRun": "2026-09-24T14:06:06.025Z",
     "lastDate": "2026-09-24",
     "daySince": "2026-09-17T14:01:22.944Z",
-    "introDeferredAt": "2026-10-16T15:27:17Z"
+    "introDeferredAt": "2026-10-23T15:14:01Z"
   },
   "lie-detective": {
-    "lastSha": "a9e3dc4fb8da4a695427f8e347a1e02f8f75cd49",
-    "lastRun": "2026-10-23T14:03:51.589Z",
-    "lastDate": "2026-10-23",
-    "daySince": "2026-10-22T14:12:06.070Z",
-    "planSha": "abeb927e0851e7d92141e2799ec9632e9f16009b"
+    "lastSha": "99d629976f5e4f3fe19b2efae9999e34aa436429",
+    "lastRun": "2026-10-24T14:07:32.022Z",
+    "lastDate": "2026-10-24",
+    "daySince": "2026-10-23T14:03:51.589Z",
+    "planSha": "46e50813c4e3680adacaa07ef20b2dd66e9d8995"
   }
 }

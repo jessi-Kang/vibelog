@@ -1,0 +1,1060 @@
+[
+ {
+  "section": "did",
+  "after": 1,
+  "alt": "AI가 쓴 글을 다른 AI가 커밋 메시지와 대조하고, 더 많이 말했으면 다시 쓰게 하며, 그래도 남으면 그날은 글을 내지 않는 흐름도.",
+  "altEn": "Flowchart: a second AI checks the post against the commit messages, sends it back for a rewrite if it says more, and if such a sentence still remains, no post goes out that day.",
+  "caption": "커밋 메시지보다 더 말한 문장이 있으면 다시 쓰고, 비공개 레포는 그래도 남으면 그날 내지 않습니다.",
+  "captionEn": "If a sentence says more than the commits, it's rewritten. For a private repo, if one still remains, nothing goes out that day.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "AI가 쓴 글을 다른 AI가 커밋 메시지와 대조해, 더 말했으면 다시 쓰고 그래도 남으면 그날은 내지 않는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "20",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "47",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI가 글을 씀"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "64",
+      "x2": "105",
+      "y2": "82",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,82 105,90 111,82",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "90",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "117",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "다른 AI가 대조"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "134",
+      "x2": "105",
+      "y2": "156",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,156 105,164 111,156",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "105,164 190,200 105,236 20,200",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "더 말했나?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "190",
+      "y1": "200",
+      "x2": "222",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "222,194 230,200 222,206",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "210",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "예"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "178",
+      "width": "140",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "다시 씀"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "300,178 300,112 198,112",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "198,106 190,112 198,118",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "236",
+      "x2": "105",
+      "y2": "254",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,254 105,262 111,254",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "256",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "아니오"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "262",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "287",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "글을 냄"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "300",
+      "y1": "222",
+      "x2": "300",
+      "y2": "254",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "294,254 300,262 306,254",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "247",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "그래도 남으면"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "262",
+      "width": "140",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "287",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "그날 안 냄"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 320",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A second AI checks the post against the commit messages; if it says more it is rewritten, and if that still remains no post goes out that day"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "20",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "47",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI writes post"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "64",
+      "x2": "105",
+      "y2": "82",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,82 105,90 111,82",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "90",
+      "width": "170",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "117",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Second AI checks"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "134",
+      "x2": "105",
+      "y2": "156",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,156 105,164 111,156",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "105,164 190,200 105,236 20,200",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Says more?"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "190",
+      "y1": "200",
+      "x2": "222",
+      "y2": "200",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "222,194 230,200 222,206",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "210",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "yes"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "178",
+      "width": "140",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "205",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Rewrite"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "300,178 300,112 198,112",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "198,106 190,112 198,118",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "105",
+      "y1": "236",
+      "x2": "105",
+      "y2": "254",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "99,254 105,262 111,254",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "115",
+      "y": "256",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "no"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "262",
+      "width": "130",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "287",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Publish"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "300",
+      "y1": "222",
+      "x2": "300",
+      "y2": "254",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "294,254 300,262 306,254",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "292",
+      "y": "247",
+      "text-anchor": "end",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "still there"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "230",
+      "y": "262",
+      "width": "140",
+      "height": "40",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "300",
+      "y": "287",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "No post today"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "비공개 레포 안에서 커밋 메시지만 AI에게 가고 파일 이름은 막혔으며, 밖으로 나가는 길은 공개 글 하나뿐인 그림.",
+  "altEn": "Inside the private repo, only commit messages reach the AI and file names are blocked; the public post is the only way out.",
+  "caption": "AI가 증거물을 알아낸 단서는 파일 이름이었습니다. 이제 비공개 레포는 파일 이름을 넘기지 않습니다.",
+  "captionEn": "The AI figured out the evidence from file names. Private repos no longer pass them along.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "비공개 레포에서 파일 이름은 AI에게 넘기지 않고, 커밋 메시지만 넘겨 공개 글 하나로만 밖에 나간다"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "34",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "비공개 레포"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "8",
+      "y": "44",
+      "width": "236",
+      "height": "186",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "6 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "60",
+      "width": "130",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "87",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "커밋 메시지"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "150",
+      "width": "130",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "177",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "파일 이름"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "218",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "AI에게 안 넘김"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "150,172 160,172 160,127",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "153",
+      "y1": "145",
+      "x2": "167",
+      "y2": "159",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "167",
+      "y1": "145",
+      "x2": "153",
+      "y2": "159",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "150,82 160,82 160,127 168,127",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "168,122 176,127 168,132",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "200",
+      "cy": "127",
+      "r": "24",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "132",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "224",
+      "y1": "127",
+      "x2": "254",
+      "y2": "127",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "254,121 262,127 254,133",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "321",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "밖으로 나가는 길"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "262",
+      "y": "105",
+      "width": "118",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "321",
+      "y": "132",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "공개 글"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "In a private repo, file names are not passed to the AI; only commit messages are, and the public post is the only way out"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "14",
+      "y": "34",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Private repo"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "8",
+      "y": "44",
+      "width": "236",
+      "height": "186",
+      "rx": "8",
+      "fill": "none",
+      "stroke": "var(--color-line-strong)",
+      "stroke-dasharray": "6 4"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "60",
+      "width": "130",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "87",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Commit msgs"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "150",
+      "width": "130",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "177",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "File names"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "85",
+      "y": "218",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "not sent to AI"
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "150,172 160,172 160,127",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2",
+      "stroke-dasharray": "4 3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "153",
+      "y1": "145",
+      "x2": "167",
+      "y2": "159",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "167",
+      "y1": "145",
+      "x2": "153",
+      "y2": "159",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "3"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "150,82 160,82 160,127 168,127",
+      "fill": "none",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "168,122 176,127 168,132",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "200",
+      "cy": "127",
+      "r": "24",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "200",
+      "y": "132",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "224",
+      "y1": "127",
+      "x2": "254",
+      "y2": "127",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "254,121 262,127 254,133",
+      "fill": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "321",
+      "y": "95",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "only way out"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "262",
+      "y": "105",
+      "width": "118",
+      "height": "44",
+      "rx": "6",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "321",
+      "y": "132",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink)"
+     },
+     "text": "Public post"
+    }
+   ]
+  }
+ }
+]

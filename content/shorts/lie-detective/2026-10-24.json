@@ -1,0 +1,644 @@
+{
+  "template": "before-after",
+  "music": "calm",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-24",
+  "day": 8,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "메뉴를 열면 인물이 가려졌습니다.",
+      "en": "Opening the menu hid the character.",
+      "keywords": [
+        "가려졌습니다."
+      ],
+      "keywordsEn": [
+        "hid"
+      ],
+      "koLines": [
+        "메뉴를 열면",
+        "인물이 가려졌습니다."
+      ],
+      "enLines": [
+        "Opening the menu",
+        "hid the character."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "전에는 글자 뒤에 불투명한 띠를 깔았습니다.",
+      "en": "Before, I laid opaque bars behind the text.",
+      "keywords": [
+        "불투명한 띠를"
+      ],
+      "keywordsEn": [
+        "opaque bars"
+      ],
+      "koLines": [
+        "전에는 글자 뒤에",
+        "불투명한 띠를 깔았습니다."
+      ],
+      "enLines": [
+        "Before, I laid opaque bars",
+        "behind the text."
+      ],
+      "art": "a heavy curtain drawn halfway across a framed portrait",
+      "icon": {
+        "name": "tabler:layout-navbar",
+        "paths": [
+          {
+            "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 3h16"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제는 뒤의 장면을 흐리게만 보여 줍니다.",
+      "en": "Now the scene behind just shows through, blurred.",
+      "keywords": [
+        "흐리게만"
+      ],
+      "keywordsEn": [
+        "shows through,"
+      ],
+      "koLines": [
+        "이제는 뒤의 장면을",
+        "흐리게만 보여 줍니다."
+      ],
+      "enLines": [
+        "Now the scene behind",
+        "just shows through, blurred."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "불투명한 띠",
+          "인물이 가려짐",
+          "흐린 장면",
+          "인물이 보임"
+        ],
+        "labelsEn": [
+          "Opaque bars",
+          "Character hidden",
+          "Blurred scene",
+          "Character visible"
+        ],
+        "icons": [
+          {
+            "name": "tabler:layout-navbar",
+            "paths": [
+              {
+                "d": "M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm0 3h16"
+              }
+            ]
+          },
+          {
+            "name": "tabler:user-off",
+            "paths": [
+              {
+                "d": "M8.18 8.189a4.01 4.01 0 0 0 2.616 2.627m3.507-.545a4 4 0 1 0-5.59-5.552M6 21v-2a4 4 0 0 1 4-4h4c.412 0 .81.062 1.183.178m2.633 2.618c.12.38.184.785.184 1.204v2M3 3l18 18"
+              }
+            ]
+          },
+          {
+            "name": "tabler:blur",
+            "paths": [
+              {
+                "d": "M12 21a9 9 0 0 0 2.32-.302a9 9 0 0 0 1.74-16.733A9 9 0 1 0 12 21m0-18v17m0-8h9m-9-3h8m-8-3h6m-6 12h6m-6-3h8"
+              }
+            ]
+          },
+          {
+            "name": "tabler:user",
+            "paths": [
+              {
+                "d": "M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "메뉴 옆으로 인물이 흐릿하게 남습니다.",
+      "en": "The character stays visible beside the menu, just blurred.",
+      "keywords": [
+        "흐릿하게"
+      ],
+      "keywordsEn": [
+        "stays visible"
+      ],
+      "koLines": [
+        "메뉴 옆으로",
+        "인물이 흐릿하게 남습니다."
+      ],
+      "enLines": [
+        "The character stays visible",
+        "beside the menu, just blurred."
+      ],
+      "art": "a person's silhouette seen through frosted glass beside an open notebook",
+      "icon": {
+        "name": "tabler:blur",
+        "paths": [
+          {
+            "d": "M12 21a9 9 0 0 0 2.32-.302a9 9 0 0 0 1.74-16.733A9 9 0 1 0 12 21m0-18v17m0-8h9m-9-3h8m-8-3h6m-6 12h6m-6-3h8"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "닫기 한 번이면 대화 화면으로 돌아옵니다.",
+      "en": "One tap on Close takes you back to the conversation.",
+      "keywords": [
+        "한 번이면"
+      ],
+      "keywordsEn": [
+        "One tap"
+      ],
+      "koLines": [
+        "닫기 한 번이면",
+        "대화 화면으로 돌아옵니다."
+      ],
+      "enLines": [
+        "One tap on Close",
+        "takes you back to the conversation."
+      ],
+      "icon": {
+        "name": "tabler:x",
+        "paths": [
+          {
+            "d": "M18 6L6 18M6 6l12 12"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 흐림 위에 짙은 색도 깔았습니다.",
+      "en": "At first, I added a dark color on top of the blur.",
+      "keywords": [
+        "짙은 색도"
+      ],
+      "keywordsEn": [
+        "dark color"
+      ],
+      "koLines": [
+        "처음엔 흐림 위에",
+        "짙은 색도 깔았습니다."
+      ],
+      "enLines": [
+        "At first, I added a dark color",
+        "on top of the blur."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "장면 흐리기",
+          "짙은 색 깔기",
+          "배경이 가려짐"
+        ],
+        "labelsEn": [
+          "Blur the scene",
+          "Add a dark color",
+          "Background covered"
+        ],
+        "icons": [
+          {
+            "name": "tabler:blur",
+            "paths": [
+              {
+                "d": "M12 21a9 9 0 0 0 2.32-.302a9 9 0 0 0 1.74-16.733A9 9 0 1 0 12 21m0-18v17m0-8h9m-9-3h8m-8-3h6m-6 12h6m-6-3h8"
+              }
+            ]
+          },
+          {
+            "name": "tabler:palette",
+            "paths": [
+              {
+                "d": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"
+              },
+              {
+                "d": "M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:eye-off",
+            "paths": [
+              {
+                "d": "M10.585 10.587a2 2 0 0 0 2.829 2.828"
+              },
+              {
+                "d": "M16.681 16.673A8.7 8.7 0 0 1 12 18q-5.4 0-9-6q1.908-3.18 4.32-4.674m2.86-1.146A9 9 0 0 1 12 6q5.4 0 9 6q-1 1.665-2.138 2.87M3 3l18 18"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 그 색이 배경을 또 가렸습니다.",
+      "en": "But that color covered the background again.",
+      "keywords": [
+        "또 가렸습니다."
+      ],
+      "keywordsEn": [
+        "again."
+      ],
+      "koLines": [
+        "그런데 그 색이",
+        "배경을 또 가렸습니다."
+      ],
+      "enLines": [
+        "But that color covered",
+        "the background again."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "글자 뒤 짙은 색",
+          "글자가 잘 보임",
+          "배경이 가려짐",
+          "좋은 점",
+          "문제"
+        ],
+        "labelsEn": [
+          "Dark color behind text",
+          "Text is readable",
+          "Background covered",
+          "Upside",
+          "Problem"
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그래서 색을 빼고 흐림을 약하게 했습니다.",
+      "en": "So I removed the color and made the blur lighter.",
+      "keywords": [
+        "색을 빼고"
+      ],
+      "keywordsEn": [
+        "removed the color"
+      ],
+      "koLines": [
+        "그래서 색을 빼고",
+        "흐림을 약하게 했습니다."
+      ],
+      "enLines": [
+        "So I removed the color",
+        "and made the blur lighter."
+      ],
+      "diagram": {
+        "kind": "numberline",
+        "labels": [
+          "흐림 세기",
+          "강하게",
+          "약하게"
+        ],
+        "labelsEn": [
+          "Blur strength",
+          "Strong",
+          "Light"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음은 인물 뒤에 보일 배경 그림입니다.",
+      "en": "Next is the background art behind the character.",
+      "keywords": [
+        "배경 그림입니다."
+      ],
+      "keywordsEn": [
+        "background art"
+      ],
+      "koLines": [
+        "다음은 인물 뒤에 보일",
+        "배경 그림입니다."
+      ],
+      "enLines": [
+        "Next is the background art",
+        "behind the character."
+      ],
+      "art": "an artist's easel holding an unfinished sketch of an empty room behind a seated figure",
+      "icon": {
+        "name": "tabler:photo",
+        "paths": [
+          {
+            "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+          },
+          {
+            "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+          },
+          {
+            "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "이제 메뉴 뒤에서도 인물이 보입니다.",
+      "en": "Now the character shows even behind the menu.",
+      "keywords": [
+        "인물이"
+      ],
+      "keywordsEn": [
+        "character"
+      ],
+      "koLines": [
+        "이제 메뉴 뒤에서도",
+        "인물이 보입니다."
+      ],
+      "enLines": [
+        "Now the character shows",
+        "even behind the menu."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "배경이 또 가려졌다",
+    "titleEn": "The scene got covered again",
+    "before": "짙은 색이 배경을 가렸다",
+    "after": "약한 흐림이 천천히 옅어진다",
+    "beforeEn": "A dark color covered the background",
+    "afterEn": "A light blur that fades out slowly"
+  },
+  "commits": [
+    [
+      "99d6299",
+      "docs: 공간별 인터뷰 배경을 탐색 배경과 함께 설계"
+    ],
+    [
+      "5a74714",
+      "docs: 의뢰 창구와 시리즈 협력 조연의 관계를 보강"
+    ],
+    [
+      "e75e3d5",
+      "docs: 공간 제작 단계별 통과 조건과 증빙을 명시"
+    ],
+    [
+      "4f798b2",
+      "docs: 에피소드 공간과 탐색 배경의 제작 순서 정리"
+    ],
+    [
+      "fe898e5",
+      "feat: 대화 기록과 즐겨찾기를 장면 메뉴에 연결"
+    ],
+    [
+      "a8a2683",
+      "fix: 메뉴 종료 동작과 메인 복귀 흐름을 통일"
+    ],
+    [
+      "c086a6a",
+      "design: 메인 장면과 이어지는 메뉴와 공통 헤더 적용"
+    ],
+    [
+      "a43d846",
+      "fix: 메뉴 중첩을 없애고 색인 화면의 색상을 정돈"
+    ],
+    [
+      "4a3c73d",
+      "fix: 색인 메뉴의 가독성과 스크롤 겹침 개선"
+    ],
+    [
+      "6f952f5",
+      "design: 드로워와 파생 메뉴의 세 가지 시안 제공"
+    ],
+    [
+      "1267064",
+      "design: 수첩 UI와 인터뷰 신원 자막을 적용"
+    ],
+    [
+      "05b55d2",
+      "design: 블러 전이를 완화하고 화자 인덱스를 간결하게 정리"
+    ],
+    [
+      "9efc5b3",
+      "fix: 색상 덮개를 제거하고 실제 장면 블러만 적용"
+    ],
+    [
+      "86af30b",
+      "design: 이미지 중심 화면에 블러 그라데이션 가독성 레이어 적용"
+    ],
+    [
+      "3156dba",
+      "asset: WAN 기반 대화 대기 루프를 제작하고 보관"
+    ],
+    [
+      "7d79bfc",
+      "asset: 대화 대기용 정면 기준 이미지를 보관"
+    ],
+    [
+      "58bccca",
+      "asset: 대화 기본 표정의 수정 시안과 연기 기준 보관"
+    ],
+    [
+      "a6e75a6",
+      "feat: 캐릭터 반복 영상의 모바일 검토 화면 제공"
+    ],
+    [
+      "c61f4b0",
+      "asset: 대화 대기용 캐릭터 반복 영상을 제작하고 보관"
+    ],
+    [
+      "3079a8d",
+      "docs: 공개 개발 기록의 식별 정보 제외 범위 보강"
+    ],
+    [
+      "63ce049",
+      "design: 증거 관찰의 기본 배경을 회색 책상으로 설정"
+    ],
+    [
+      "8c0da84",
+      "feat: 고화질 책상 배경과 확대 시 초점 표현 연결"
+    ],
+    [
+      "892a864",
+      "design: 조사 책상 배경과 자동 그림자 검토안 추가"
+    ],
+    [
+      "6685251",
+      "chore: 확정 실패 생성물을 작은 검토 자료로 정리"
+    ],
+    [
+      "08785b7",
+      "docs: 제작 문서의 승인 기록을 상태 중심 서술로 정리"
+    ],
+    [
+      "4ebc0e8",
+      "docs: 레포 공개 범위 서술을 실제 비공개 상태에 맞춤"
+    ],
+    [
+      "f3ab6d1",
+      "fix: 관찰 회전 방향과 손가락 중심 확대 보정"
+    ],
+    [
+      "e700c29",
+      "asset: 공통 단면으로 소품 측면 네 방향 재제작"
+    ],
+    [
+      "6d0820b",
+      "fix: 후면 관찰 순서와 배경색 조작 개선"
+    ],
+    [
+      "4f5d673",
+      "asset: 관찰 소품 투명 배경과 제작 기준 보강"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "99d6299",
+      "docs: Design interview backgrounds per space alongside exploration backgrounds"
+    ],
+    [
+      "5a74714",
+      "docs: Strengthen the relationship between request desk and series collaboration support"
+    ],
+    [
+      "e75e3d5",
+      "docs: Specify pass conditions and evidence for each space production stage"
+    ],
+    [
+      "4f798b2",
+      "docs: Organize production order for episode spaces and exploration backgrounds"
+    ],
+    [
+      "fe898e5",
+      "feat: Link chat history and bookmarks to the scene menu"
+    ],
+    [
+      "a8a2683",
+      "fix: Unify menu exit behavior and return flow to main"
+    ],
+    [
+      "c086a6a",
+      "design: Apply main scene, following menus, and shared header"
+    ],
+    [
+      "a43d846",
+      "fix: Remove menu nesting and refine index screen colors"
+    ],
+    [
+      "4a3c73d",
+      "fix: Improve index menu readability and fix scroll overlap"
+    ],
+    [
+      "6f952f5",
+      "design: Provide three drawer and derived menu mockups"
+    ],
+    [
+      "1267064",
+      "design: Apply notebook UI and interview identity subtitles"
+    ],
+    [
+      "05b55d2",
+      "design: Soften blur transitions and simplify speaker index"
+    ],
+    [
+      "9efc5b3",
+      "fix: Remove color overlay and apply only real scene blur"
+    ],
+    [
+      "86af30b",
+      "design: Apply blur gradient readability layer to image-focused screens"
+    ],
+    [
+      "3156dba",
+      "asset: Create and store WAN-based dialogue idle loop"
+    ],
+    [
+      "7d79bfc",
+      "asset: Store front-facing reference image for dialogue idle"
+    ],
+    [
+      "58bccca",
+      "asset: Store revised base dialogue expression mockups and acting reference"
+    ],
+    [
+      "a6e75a6",
+      "feat: Provide mobile review screen for character loop video"
+    ],
+    [
+      "c61f4b0",
+      "asset: Create and store character loop video for dialogue idle"
+    ],
+    [
+      "3079a8d",
+      "docs: Strengthen scope of identifying information excluded from public dev log"
+    ],
+    [
+      "63ce049",
+      "design: Set gray desk as default background for evidence observation"
+    ],
+    [
+      "8c0da84",
+      "feat: Link high-resolution desk background and focus effect on zoom"
+    ],
+    [
+      "892a864",
+      "design: Add investigation desk background and auto-shadow review options"
+    ],
+    [
+      "6685251",
+      "chore: Organize failed final-generation outputs into small review materials"
+    ],
+    [
+      "08785b7",
+      "docs: Describe production document approval records in status-focused terms"
+    ],
+    [
+      "4ebc0e8",
+      "docs: Align repository visibility description with actual private status"
+    ],
+    [
+      "f3ab6d1",
+      "fix: Correct observation rotation direction and finger-centered zoom"
+    ],
+    [
+      "e700c29",
+      "asset: Re-create four-direction side views of props from shared cross-section"
+    ],
+    [
+      "6d0820b",
+      "fix: Improve back-side observation order and background color controls"
+    ],
+    [
+      "4f5d673",
+      "asset: Reinforce transparent background and production standards for observation props"
+    ]
+  ],
+  "commitCount": 30,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "메뉴를 열면 인물 그림이 띠에 가려지던 문제를, 뒤의 장면을 흐리게 보여 주는 방식으로 바꿨습니다. 짙은 색을 깔았다가 또 가려진 삽질도 함께 담았습니다.",
+    "en": "Opening the menu used to hide the character behind opaque bars, so now the scene behind stays visible, just blurred. Including the detour where a dark backing color covered it all over again."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#lie-detective",
+    "#게임개발",
+    "#인디게임",
+    "#gamedev",
+    "#UIdesign",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-24.poster.jpg?v=mvmhpc2i",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-24.ko.mp4?v=mvmhpdpf",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-24.ko.sm.mp4?v=mvmhpo73",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-24.en.poster.jpg?v=mvmhrp1w",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-24.en.mp4?v=mvmhrr3c",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-24.en.sm.mp4?v=mvmhs261"
+  }
+}
