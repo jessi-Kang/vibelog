@@ -5,8 +5,8 @@ name: projects
 # projects.json을 다시 쓰고 커밋한다. 글·쇼츠·state.json은 devlog.yml 몫.
 on:
   # 시계는 Vercel Cron(1시간마다)이다. 이 예약은 그 시계가 죽었을 때의 예비라 6시간마다만 —
-  # 레포가 비공개가 되어 Actions 시간이 한 달 한도 안에서 나가므로 (10/23), 예비가 매시간 같이
-  # 돌면 같은 일을 두 번 하고 시간을 두 배로 쓴다
+  # 예비가 매시간 같이 돌면 같은 일을 두 번 하고 Actions 시간을 두 배로 쓴다 (10/23 레포를 잠시
+  # 비공개로 돌렸을 때 한 달 한도를 넘을 뻔해 줄였다)
   schedule:
     - cron: "23 */6 * * *"
   workflow_dispatch:
