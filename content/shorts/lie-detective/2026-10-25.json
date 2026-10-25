@@ -1,0 +1,421 @@
+{
+  "template": "ship-it",
+  "music": "ship-it",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-10-25",
+  "day": 9,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "방을 오가도 보던 자리가 남습니다.",
+      "en": "Switch rooms, and your view stays put.",
+      "keywords": [
+        "남습니다."
+      ],
+      "keywordsEn": [
+        "stays put."
+      ],
+      "koLines": [
+        "방을 오가도",
+        "보던 자리가",
+        "남습니다."
+      ],
+      "enLines": [
+        "Switch rooms,",
+        "and your view",
+        "stays put."
+      ]
+    },
+    {
+      "scene": "build",
+      "ko": "게임 속 사건 현장을 손가락으로 둘러봅니다.",
+      "en": "In my game, you swipe around a crime scene.",
+      "keywords": [
+        "사건 현장을"
+      ],
+      "keywordsEn": [
+        "crime scene."
+      ],
+      "koLines": [
+        "게임 속 사건 현장을",
+        "손가락으로 둘러봅니다."
+      ],
+      "enLines": [
+        "In my game, you swipe",
+        "around a crime scene."
+      ],
+      "art": "a single fingertip swiping across a tiny room seen from above",
+      "icon": {
+        "name": "tabler:hand-finger",
+        "paths": [
+          {
+            "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 1 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+          },
+          {
+            "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "오늘은 다른 방으로 건너가게 했습니다.",
+      "en": "Today you can walk into another room.",
+      "keywords": [
+        "다른 방으로"
+      ],
+      "keywordsEn": [
+        "another room."
+      ],
+      "koLines": [
+        "오늘은 다른 방으로",
+        "건너가게 했습니다."
+      ],
+      "enLines": [
+        "Today you can walk",
+        "into another room."
+      ],
+      "art": "a small figure stepping through a doorway into the next room",
+      "icon": {
+        "name": "tabler:door",
+        "paths": [
+          {
+            "d": "M14 12v.01M3 21h18M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "미니맵, 그러니까 작은 지도를 눌러도 됩니다.",
+      "en": "Tapping the minimap, a small map, works too.",
+      "keywords": [
+        "미니맵,"
+      ],
+      "keywordsEn": [
+        "minimap,"
+      ],
+      "koLines": [
+        "미니맵, 그러니까 작은 지도를",
+        "눌러도 됩니다."
+      ],
+      "enLines": [
+        "Tapping the minimap,",
+        "a small map, works too."
+      ],
+      "icon": {
+        "name": "tabler:map",
+        "paths": [
+          {
+            "d": "m3 7l6-3l6 3l6-3v13l-6 3l-6-3l-6 3zm6-3v13m6-10v13"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "돌아오면 보던 방향과 확대가 그대로입니다.",
+      "en": "Come back, and your angle and zoom are still there.",
+      "keywords": [
+        "그대로입니다."
+      ],
+      "keywordsEn": [
+        "still there."
+      ],
+      "koLines": [
+        "돌아오면 보던 방향과",
+        "확대가 그대로입니다."
+      ],
+      "enLines": [
+        "Come back, and your angle",
+        "and zoom are still there."
+      ],
+      "art": "a bookmark tucked between the pages of an open book",
+      "icon": {
+        "name": "tabler:bookmark",
+        "paths": [
+          {
+            "d": "M18 7v14l-6-4l-6 4V7a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "그런데 휴대폰에선 눌러도 반응이 없었습니다.",
+      "en": "But on a phone, tapping did nothing.",
+      "keywords": [
+        "반응이 없었습니다."
+      ],
+      "keywordsEn": [
+        "did nothing."
+      ],
+      "koLines": [
+        "그런데 휴대폰에선 눌러도",
+        "반응이 없었습니다."
+      ],
+      "enLines": [
+        "But on a phone,",
+        "tapping did nothing."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "메뉴를 누름",
+          "손가락을 뗌",
+          "반응 없음"
+        ],
+        "labelsEn": [
+          "Tap the menu",
+          "Lift finger",
+          "Nothing happens"
+        ],
+        "icons": [
+          {
+            "name": "tabler:hand-finger",
+            "paths": [
+              {
+                "d": "M8 13V4.5a1.5 1.5 0 0 1 3 0V12m0-.5v-2a1.5 1.5 0 1 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12"
+              },
+              {
+                "d": "M17 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+              }
+            ]
+          },
+          {
+            "name": "tabler:hand-stop",
+            "paths": [
+              {
+                "d": "M8 13V5.5a1.5 1.5 0 0 1 3 0V12m0-6.5v-2a1.5 1.5 0 1 1 3 0V12m0-6.5a1.5 1.5 0 0 1 3 0V12"
+              },
+              {
+                "d": "M17 7.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2h.208a6 6 0 0 1-5.012-2.7L7 19q-.468-.718-3.286-5.728a1.5 1.5 0 0 1 .536-2.022a1.87 1.87 0 0 1 2.28.28L8 13"
+              }
+            ]
+          },
+          {
+            "name": "tabler:ban",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m2.7-6.3l12.6 12.6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "게임은 손을 떼면 누르다 만 걸로 봤습니다.",
+      "en": "The game read lifting your finger as giving up.",
+      "keywords": [
+        "누르다 만 걸로"
+      ],
+      "keywordsEn": [
+        "giving up."
+      ],
+      "koLines": [
+        "게임은 손을 떼면",
+        "누르다 만 걸로 봤습니다."
+      ],
+      "enLines": [
+        "The game read lifting",
+        "your finger as giving up."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "손을 뗌",
+          "누름",
+          "누르다 맒",
+          "원래 뜻",
+          "게임이 읽은 뜻"
+        ],
+        "labelsEn": [
+          "Finger lifted",
+          "Tap",
+          "Gave up",
+          "Meant",
+          "Game read"
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "지금 배경은 방 구조만 있는 임시 모형입니다.",
+      "en": "For now, the backgrounds are just a temporary model.",
+      "keywords": [
+        "임시 모형입니다."
+      ],
+      "keywordsEn": [
+        "temporary model."
+      ],
+      "koLines": [
+        "지금 배경은 방 구조만 있는",
+        "임시 모형입니다."
+      ],
+      "enLines": [
+        "For now, the backgrounds",
+        "are just a temporary model."
+      ],
+      "art": "a bare model of a small room with empty walls and an open doorway",
+      "icon": {
+        "name": "tabler:box",
+        "paths": [
+          {
+            "d": "m12 3l8 4.5v9L12 21l-8-4.5v-9zm0 9l8-4.5M12 12v9m0-9L4 7.5"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "다음엔 실제 배경 그림을 입히겠습니다.",
+      "en": "Next, I'll put real background art on it.",
+      "keywords": [
+        "실제 배경 그림을"
+      ],
+      "keywordsEn": [
+        "real background art"
+      ],
+      "koLines": [
+        "다음엔 실제",
+        "배경 그림을 입히겠습니다."
+      ],
+      "enLines": [
+        "Next, I'll put",
+        "real background art on it."
+      ],
+      "art": "a paintbrush painting walls onto a bare model of a small room",
+      "icon": {
+        "name": "tabler:brush",
+        "paths": [
+          {
+            "d": "M3 21v-4a4 4 0 1 1 4 4z"
+          },
+          {
+            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
+          },
+          {
+            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "그다음엔 휴대폰으로 직접 돌아다녀 볼게요.",
+      "en": "Then I'll walk the rooms myself on a phone.",
+      "keywords": [
+        "직접 돌아다녀"
+      ],
+      "keywordsEn": [
+        "myself"
+      ],
+      "koLines": [
+        "그다음엔 휴대폰으로",
+        "직접 돌아다녀 볼게요."
+      ],
+      "enLines": [
+        "Then I'll walk the rooms",
+        "myself on a phone."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "눌러도 반응이 없었다",
+    "titleEn": "Taps did nothing",
+    "before": "손을 떼면 누르다 만 걸로 읽었다",
+    "after": "끝까지 누른 것과 끌어 나간 것을 나눴다",
+    "beforeEn": "Lifting a finger read as giving up",
+    "afterEn": "Full taps and slide-offs are now told apart"
+  },
+  "commits": [
+    [
+      "f9b9bee",
+      "fix: 모바일 탐색 메뉴의 정상 탭 복구"
+    ],
+    [
+      "0d3c641",
+      "feat: 공간 이동과 탐색 시점 복원 구현"
+    ],
+    [
+      "a917a82",
+      "design: 공간과 관찰의 제작 설계 검수 완료"
+    ],
+    [
+      "724a93e",
+      "fix: 카메라 검토 화면의 인물 선택과 공간 전환 수정"
+    ],
+    [
+      "62c6512",
+      "fix: 관찰 접근 방식과 공간 권한의 정의 충돌 해결"
+    ],
+    [
+      "14f219c",
+      "feat: 공간 배치와 관찰 조건의 시야 대조 추가"
+    ],
+    [
+      "ba65202",
+      "fix: 평면도 표기가 구조 요소에 가려지는 문제 수정"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "f9b9bee",
+      "fix: restore normal tab in mobile navigation menu"
+    ],
+    [
+      "0d3c641",
+      "feat: implement spatial movement and navigation viewpoint restoration"
+    ],
+    [
+      "a917a82",
+      "design: complete review of space and observation production design"
+    ],
+    [
+      "724a93e",
+      "fix: fix person selection and space switching on camera review screen"
+    ],
+    [
+      "62c6512",
+      "fix: resolve definition conflict between observation approach and spatial permissions"
+    ],
+    [
+      "14f219c",
+      "feat: add sightline comparison for spatial layout and observation conditions"
+    ],
+    [
+      "ba65202",
+      "fix: fix floor plan labels being obscured by structural elements"
+    ]
+  ],
+  "commitCount": 7,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "추리 게임에서 방을 오가도 보던 방향과 확대가 그대로 남게 했습니다. 휴대폰에서 눌러도 반응이 없던 문제도 고쳤습니다.",
+    "en": "In my mystery game, your view and zoom now stay put when you move between rooms. I also fixed taps doing nothing on phones."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#게임개발",
+    "#추리게임",
+    "#indiedev",
+    "#gamedev",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-25.poster.jpg?v=mvnwobse",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-25.ko.mp4?v=mvnwod1z",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-25.ko.sm.mp4?v=mvnwolzk",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-25.en.poster.jpg?v=mvnwq9j8",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-25.en.mp4?v=mvnwqbl0",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-10-25.en.sm.mp4?v=mvnwqjsm"
+  }
+}

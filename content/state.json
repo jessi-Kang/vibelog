@@ -34,10 +34,10 @@
     "introDeferredAt": "2026-10-23T15:14:01Z"
   },
   "lie-detective": {
-    "lastSha": "99d629976f5e4f3fe19b2efae9999e34aa436429",
-    "lastRun": "2026-10-24T14:07:32.022Z",
-    "lastDate": "2026-10-24",
-    "daySince": "2026-10-23T14:03:51.589Z",
+    "lastSha": "f9b9beea5e9c165d7349776a1194ec7a0ecf99f0",
+    "lastRun": "2026-10-25T14:06:18.024Z",
+    "lastDate": "2026-10-25",
+    "daySince": "2026-10-24T14:07:32.022Z",
     "planSha": "46e50813c4e3680adacaa07ef20b2dd66e9d8995"
   }
 }

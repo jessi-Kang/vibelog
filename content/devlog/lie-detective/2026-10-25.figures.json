@@ -1,0 +1,864 @@
+[
+ {
+  "section": "why",
+  "after": 0,
+  "alt": "방 A에서 방 B에 갔다가 방 A로 돌아올 때, 화면이 처음 모습으로 돌아가는 경우와 보던 자리가 그대로 남는 경우를 나란히 보여 주는 그림.",
+  "altEn": "A diagram of going from Room A to Room B and back to Room A, comparing a screen that resets with one that keeps your view where you left it.",
+  "caption": "돌아왔을 때 처음 모습이면 흐름이 끊기고, 그대로면 이어서 봅니다.",
+  "captionEn": "Coming back to a reset screen breaks the flow; coming back to your old view lets you pick up where you left off.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "방을 오갔다 돌아올 때 화면이 처음 모습으로 돌아가는 경우와 보던 자리가 그대로 남는 경우의 비교"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "20",
+      "width": "90",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "방 A"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "107",
+      "y1": "45",
+      "x2": "141",
+      "y2": "45",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "141,40 149,45 141,50",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "20",
+      "width": "90",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "방 B"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "242",
+      "y1": "45",
+      "x2": "276",
+      "y2": "45",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "276,40 284,45 276,50",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "285",
+      "y": "20",
+      "width": "90",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "방 A"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "330",
+      "y1": "70",
+      "x2": "102",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "330",
+      "y1": "70",
+      "x2": "287",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "130",
+      "width": "165",
+      "height": "80",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "처음 모습으로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "어디까지 봤지?"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "130",
+      "width": "165",
+      "height": "80",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "보던 자리 그대로"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "방향·확대 유지"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 230",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Comparing a screen that resets with one that keeps your view when you go to another room and come back"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "20",
+      "width": "90",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Room A"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "107",
+      "y1": "45",
+      "x2": "141",
+      "y2": "45",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "141,40 149,45 141,50",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "150",
+      "y": "20",
+      "width": "90",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Room B"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "242",
+      "y1": "45",
+      "x2": "276",
+      "y2": "45",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "276,40 284,45 276,50",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "285",
+      "y": "20",
+      "width": "90",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "51",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Room A"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "330",
+      "y1": "70",
+      "x2": "102",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "330",
+      "y1": "70",
+      "x2": "287",
+      "y2": "130",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "130",
+      "width": "165",
+      "height": "80",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Back to start"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Lost my place"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "130",
+      "width": "165",
+      "height": "80",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "162",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Right where I was"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "190",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Facing, zoom kept"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "누르기가 그 자리에서 손가락을 뗀 경우와 끌어서 빠져나간 경우로 갈라지고, 앞쪽은 누름으로 인정되고 뒤쪽은 취소되는 그림. 고치기 전에는 앞쪽도 취소로 처리됐다.",
+  "altEn": "A diagram where a press splits into lifting in place, which counts as a tap, and sliding off, which cancels; before the fix, lifting in place was also canceled.",
+  "caption": "끝까지 누르고 뗀 것과 끌어서 빠져나간 것을 따로 알아보게 고쳤습니다.",
+  "captionEn": "The fix tells a full tap apart from a press where the finger slides off.",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "누르기가 그 자리에서 뗀 경우와 끌어서 빠져나간 경우로 갈라지는 흐름, 그리고 고치기 전에는 제대로 누른 것도 취소됐다는 표시"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "135",
+      "y": "20",
+      "width": "120",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "누르기"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "64",
+      "x2": "100",
+      "y2": "110",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "64",
+      "x2": "290",
+      "y2": "110",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "110",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "그 자리에서 뗌"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "110",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "끌어서 빠져나감"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "160",
+      "x2": "100",
+      "y2": "192",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "94,192 100,200 106,192",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "160",
+      "x2": "290",
+      "y2": "192",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "284,192 290,200 296,192",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "200",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "230",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "누름 인정"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "200",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "230",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "취소"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "282",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "고치기 전: 취소로 처리"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A press splits into lifting in place or sliding off, with a note that before the fix even proper taps were canceled"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "135",
+      "y": "20",
+      "width": "120",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "48",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Press"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "64",
+      "x2": "100",
+      "y2": "110",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "64",
+      "x2": "290",
+      "y2": "110",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "1.5"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "110",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Lift in place"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "110",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "140",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Slide off"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "100",
+      "y1": "160",
+      "x2": "100",
+      "y2": "192",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "94,192 100,200 106,192",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "290",
+      "y1": "160",
+      "x2": "290",
+      "y2": "192",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "284,192 290,200 296,192",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "15",
+      "y": "200",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "230",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-accent)"
+     },
+     "text": "Tap counts"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "200",
+      "width": "170",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "290",
+      "y": "230",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "16",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Canceled"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "100",
+      "y": "282",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Before fix: canceled"
+    }
+   ]
+  }
+ }
+]
