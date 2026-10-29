@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-28T14:03:56.521Z",
+  "at": "2026-10-29T14:01:39.173Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
@@ -9,8 +9,8 @@
       "text": "collect  · 6 repos, 0 active"
     },
     {
-      "text": "skip     · vibelog 봇이 남긴 커밋뿐이라 글을 쓰지 않습니다",
-      "textEn": "skip     · vibelog only bot commits — no post"
+      "text": "skip     · vibelog 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · vibelog only 2 of 2 commits have a body — a post comes at 5"
     },
     {
       "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
