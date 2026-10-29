@@ -1,5 +1,38 @@
 [
   {
+    "slug": "apart",
+    "color": "#B9A7FF",
+    "name": "아파트 감별사",
+    "nameEn": "Apartment Authenticator",
+    "serviceName": "아파트 감별사",
+    "serviceNameEn": "Apartment Authenticator",
+    "about": "진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
+    "aboutEn": "A daily quiz where you tell real apartment names from ones made up by AI.",
+    "icon": {
+      "name": "tabler:building-community",
+      "paths": [
+        {
+          "d": "m8 9l5 5v7H8v-4m0 4H3v-7l5-5m1 1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17h-8m0-14v.01M17 7v.01M17 11v.01M17 15v.01"
+        }
+      ]
+    },
+    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
+    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
+    "status": "live",
+    "stack": [
+      "TypeScript"
+    ],
+    "repoUrl": "https://github.com/jessi-Kang/apart",
+    "homepage": "https://apt-game.app",
+    "language": "TypeScript",
+    "lastActivity": "2026-10-30",
+    "weekCommits": 1,
+    "todayCommits": 0,
+    "totalCommits": 268,
+    "countsDate": "2026-10-30",
+    "theme": "paper"
+  },
+  {
     "slug": "vibelog",
     "name": "바이브 로그",
     "nameEn": "Vibelog",
@@ -29,39 +62,6 @@
     "todayCommits": 0,
     "totalCommits": 589,
     "countsDate": "2026-10-30"
-  },
-  {
-    "slug": "apart",
-    "color": "#B9A7FF",
-    "name": "아파트 감별사",
-    "nameEn": "Apartment Authenticator",
-    "serviceName": "아파트 감별사",
-    "serviceNameEn": "Apartment Authenticator",
-    "about": "진짜 아파트 이름과 AI가 지은 이름을 가려내는 데일리 퀴즈입니다.",
-    "aboutEn": "A daily quiz where you tell real apartment names from ones made up by AI.",
-    "icon": {
-      "name": "tabler:building-community",
-      "paths": [
-        {
-          "d": "m8 9l5 5v7H8v-4m0 4H3v-7l5-5m1 1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17h-8m0-14v.01M17 7v.01M17 11v.01M17 15v.01"
-        }
-      ]
-    },
-    "description": "\"이거 진짜 있는 아파트야, AI가 지어낸 거야?\" 데일리 퀴즈 '아파트 감별사' ",
-    "descriptionEn": "\"Is this a real apartment or AI-generated?\" Daily Quiz 'Apartment Authenticator'",
-    "status": "live",
-    "stack": [
-      "TypeScript"
-    ],
-    "repoUrl": "https://github.com/jessi-Kang/apart",
-    "homepage": "https://apt-game.app",
-    "language": "TypeScript",
-    "lastActivity": "2026-10-28",
-    "weekCommits": 1,
-    "todayCommits": 0,
-    "totalCommits": 267,
-    "countsDate": "2026-10-30",
-    "theme": "paper"
   },
   {
     "slug": "lie-detective",
