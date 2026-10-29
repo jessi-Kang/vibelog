@@ -10,16 +10,5 @@
         ]
       }
     ]
-  },
-  "extraKnownMarketplaces": {
-    "im-not-ai": {
-      "source": {
-        "source": "github",
-        "repo": "epoko77-ai/im-not-ai"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "humanize-korean@im-not-ai": true
   }
 }
