@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-30T14:01:40.317Z",
+  "at": "2026-10-31T14:01:37.531Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
@@ -13,12 +13,12 @@
       "textEn": "skip     · vibelog only 2 of 2 commits have a body — a post comes at 5"
     },
     {
-      "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · apart only 4 of 4 commits have a body — a post comes at 5"
+      "text": "skip     · lie-detective 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · lie-detective only 1 of 1 commit have a body — a post comes at 5"
     },
     {
-      "text": "skip     · lie-detective 지난 실행 뒤 새 커밋이 없습니다",
-      "textEn": "skip     · lie-detective no new commits since the last run"
+      "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
+      "textEn": "skip     · apart only 4 of 4 commits have a body — a post comes at 5"
     },
     {
       "text": "skip     · Anchor 지난 실행 뒤 새 커밋이 없습니다",
