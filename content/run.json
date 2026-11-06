@@ -1,12 +1,12 @@
 {
-  "at": "2026-11-05T14:01:39.484Z",
+  "at": "2026-11-06T14:04:14.293Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 0 active"
+      "text": "collect  · 6 repos, 1 active"
     },
     {
       "text": "skip     · vibelog 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
@@ -15,10 +15,6 @@
     {
       "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
       "textEn": "skip     · apart only 4 of 4 commits have a body — a post comes at 5"
-    },
-    {
-      "text": "skip     · lie-detective 본문을 쓴 커밋이 아직 1개 (전체 1개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · lie-detective only 1 of 1 commit have a body — a post comes at 5"
     },
     {
       "text": "skip     · Anchor 지난 실행 뒤 새 커밋이 없습니다",
@@ -31,6 +27,15 @@
     {
       "text": "skip     · portfolio-tmp 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
       "textEn": "skip     · portfolio-tmp only 2 of 2 commits have a body — a post comes at 5"
+    },
+    {
+      "text": "safety   · lie-detective 재료 5개 통과 · Jev 토큰 3,568",
+      "textEn": "safety   · lie-detective 5 inputs passed · Jev tokens 3,568"
+    },
+    {
+      "text": "block    · lie-detective/2026-11-06 커밋 메시지보다 구체적인 문장이 3개 남아 글을 내지 않았습니다 (비공개 레포)",
+      "textEn": "block    · lie-detective/2026-11-06 withheld — the post named more than the commits did (private repo)",
+      "kind": "fail"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
