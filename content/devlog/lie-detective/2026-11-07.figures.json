@@ -1,0 +1,806 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "둘러보기 화면과 대화 화면, 두 휴대폰 화면 뒤에 같은 방이 그려져 있고 대화 화면에는 인물이 서 있습니다.",
+  "altEn": "Two phone screens, one for looking around and one for talking, both show the same room behind them, with a character standing in the talk screen.",
+  "caption": "두 화면 뒤에는 같은 방이 보여야 합니다",
+  "captionEn": "Both screens need to show the same room",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 290",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "둘러보기 화면과 대화 화면 뒤에 같은 방이 보이는 모습"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "20",
+      "width": "130",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "20",
+      "width": "130",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "60",
+        "width": "90",
+        "height": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "48",
+        "y1": "36",
+        "x2": "60",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "162",
+        "y1": "36",
+        "x2": "150",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "48",
+        "y1": "196",
+        "x2": "60",
+        "y2": "130"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "162",
+        "y1": "196",
+        "x2": "150",
+        "y2": "130"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "240",
+        "y": "60",
+        "width": "90",
+        "height": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "228",
+        "y1": "36",
+        "x2": "240",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "342",
+        "y1": "36",
+        "x2": "330",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "228",
+        "y1": "196",
+        "x2": "240",
+        "y2": "130"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "342",
+        "y1": "196",
+        "x2": "330",
+        "y2": "130"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "305",
+      "cy": "125",
+      "r": "13",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M285 196 Q285 150 305 148 Q325 150 325 196 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "248",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "둘러보기 화면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "248",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "대화 화면"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "278",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "뒤에는 같은 방"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 290",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "The same room shown behind both the look-around screen and the talk screen"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "40",
+      "y": "20",
+      "width": "130",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "20",
+      "width": "130",
+      "height": "200",
+      "rx": "14",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "g",
+     "attrs": {
+      "fill": "none",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     },
+     "children": [
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "60",
+        "y": "60",
+        "width": "90",
+        "height": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "48",
+        "y1": "36",
+        "x2": "60",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "162",
+        "y1": "36",
+        "x2": "150",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "48",
+        "y1": "196",
+        "x2": "60",
+        "y2": "130"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "162",
+        "y1": "196",
+        "x2": "150",
+        "y2": "130"
+       }
+      },
+      {
+       "tag": "rect",
+       "attrs": {
+        "x": "240",
+        "y": "60",
+        "width": "90",
+        "height": "70"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "228",
+        "y1": "36",
+        "x2": "240",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "342",
+        "y1": "36",
+        "x2": "330",
+        "y2": "60"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "228",
+        "y1": "196",
+        "x2": "240",
+        "y2": "130"
+       }
+      },
+      {
+       "tag": "line",
+       "attrs": {
+        "x1": "342",
+        "y1": "196",
+        "x2": "330",
+        "y2": "130"
+       }
+      }
+     ]
+    },
+    {
+     "tag": "circle",
+     "attrs": {
+      "cx": "305",
+      "cy": "125",
+      "r": "13",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "path",
+     "attrs": {
+      "d": "M285 196 Q285 150 305 148 Q325 150 325 196 Z",
+      "fill": "var(--color-panel2)",
+      "stroke": "var(--color-ink-soft)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "105",
+      "y": "248",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Look-around screen"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "285",
+      "y": "248",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Talk screen"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "278",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Same room behind both"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "처음에는 색감만 비교해 추천했다가 거두었고, 지금은 방 모양과 인물과의 화풍을 따로따로 확인합니다.",
+  "altEn": "At first a draft was recommended by color alone and then withdrawn; now room shape and style match are checked separately.",
+  "caption": "색감 하나로 고르던 것을 두 가지 확인으로 나눴습니다",
+  "captionEn": "One color-only judgment became two separate checks",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "색감만 보던 비교에서 방 모양과 화풍을 따로 확인하는 방식으로 바뀐 과정"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "처음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "55",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "색감만 비교"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "77",
+      "x2": "212",
+      "y2": "77",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "222,77 210,70 210,84",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "225",
+      "y": "55",
+      "width": "145",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "297",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "추천"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "255",
+      "y1": "77",
+      "x2": "340",
+      "y2": "77",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "297",
+      "y": "124",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "거둠"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "148",
+      "x2": "370",
+      "y2": "148",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "182",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "지금"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "197",
+      "width": "165",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "227",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "방 모양"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "197",
+      "width": "165",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "227",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "인물과 화풍"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "280",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "따로따로 확인"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 300",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "From comparing by color alone to checking room shape and style separately"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "40",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "At first"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "55",
+      "width": "150",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "95",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Color only"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "172",
+      "y1": "77",
+      "x2": "212",
+      "y2": "77",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "222,77 210,70 210,84",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "225",
+      "y": "55",
+      "width": "145",
+      "height": "44",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "297",
+      "y": "83",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Recommend"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "250",
+      "y1": "77",
+      "x2": "345",
+      "y2": "77",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "297",
+      "y": "124",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Withdrawn"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "20",
+      "y1": "148",
+      "x2": "370",
+      "y2": "148",
+      "stroke": "var(--color-line)",
+      "stroke-dasharray": "4 4"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "20",
+      "y": "182",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Now"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "20",
+      "y": "197",
+      "width": "165",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "102",
+      "y": "227",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Room shape"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "205",
+      "y": "197",
+      "width": "165",
+      "height": "48",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "287",
+      "y": "227",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Style match"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "280",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Checked separately"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,436 @@
+{
+  "template": "fail",
+  "music": "calm",
+  "theme": "highlighter",
+  "repo": "lie-detective",
+  "date": "2026-11-07",
+  "day": 10,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "추천한 배경 시안을 거뒀습니다.",
+      "en": "I took back my pick for the background.",
+      "keywords": [
+        "거뒀습니다."
+      ],
+      "keywordsEn": [
+        "took back"
+      ],
+      "koLines": [
+        "추천한 배경 시안을",
+        "거뒀습니다."
+      ],
+      "enLines": [
+        "I took back",
+        "my pick for",
+        "the background."
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "처음엔 색감만 보고 시안을 골랐습니다.",
+      "en": "At first I picked a draft by color alone.",
+      "keywords": [
+        "색감만"
+      ],
+      "keywordsEn": [
+        "color alone."
+      ],
+      "koLines": [
+        "처음엔 색감만 보고",
+        "시안을 골랐습니다."
+      ],
+      "enLines": [
+        "At first I picked a draft",
+        "by color alone."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "시안 여러 장",
+          "색감만 비교",
+          "하나 추천"
+        ],
+        "labelsEn": [
+          "Several drafts",
+          "Color only",
+          "One pick"
+        ],
+        "icons": [
+          {
+            "name": "tabler:photo",
+            "paths": [
+              {
+                "d": "M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"
+              },
+              {
+                "d": "m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"
+              },
+              {
+                "d": "m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"
+              }
+            ]
+          },
+          {
+            "name": "tabler:palette",
+            "paths": [
+              {
+                "d": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"
+              },
+              {
+                "d": "M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:thumb-up",
+            "paths": [
+              {
+                "d": "M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1za4 4 0 0 0 4-4V6a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1-2 2h-7a3 3 0 0 1-3-3"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "인물 그림 옆에 두니 화풍이 달랐습니다.",
+      "en": "Next to the character art, the style was off.",
+      "keywords": [
+        "화풍이"
+      ],
+      "keywordsEn": [
+        "style was off."
+      ],
+      "koLines": [
+        "인물 그림 옆에 두니",
+        "화풍이 달랐습니다."
+      ],
+      "enLines": [
+        "Next to the character art,",
+        "the style was off."
+      ],
+      "diagram": {
+        "kind": "fork",
+        "labels": [
+          "추천한 시안",
+          "좋아 보임",
+          "화풍이 다름",
+          "색감만",
+          "인물 옆에"
+        ],
+        "labelsEn": [
+          "My pick",
+          "Looks good",
+          "Style off",
+          "Color only",
+          "Next to characters"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "그래서 이제 두 가지를 따로 확인합니다.",
+      "en": "So now I check two things separately.",
+      "keywords": [
+        "두 가지를",
+        "따로"
+      ],
+      "keywordsEn": [
+        "two things",
+        "separately."
+      ],
+      "koLines": [
+        "그래서 이제 두 가지를",
+        "따로 확인합니다."
+      ],
+      "enLines": [
+        "So now I check",
+        "two things separately."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "색감만 비교",
+          "화풍이 다름",
+          "인물 그림 옆에",
+          "화풍까지 확인"
+        ],
+        "labelsEn": [
+          "Color only",
+          "Style off",
+          "Next to characters",
+          "Style checked"
+        ],
+        "icons": [
+          {
+            "name": "tabler:palette",
+            "paths": [
+              {
+                "d": "M12 21a9 9 0 0 1 0-18c4.97 0 9 3.582 9 8c0 1.06-.474 2.078-1.318 2.828S17.693 15 16.5 15H14a2 2 0 0 0-1 3.75A1.3 1.3 0 0 1 12 21"
+              },
+              {
+                "d": "M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4-3a1 1 0 1 0 2 0a1 1 0 1 0-2 0m4 3a1 1 0 1 0 2 0a1 1 0 1 0-2 0"
+              }
+            ]
+          },
+          {
+            "name": "tabler:alert-triangle",
+            "paths": [
+              {
+                "d": "M12 9v4m-1.637-9.409L2.257 17.125a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636-2.87L13.637 3.59a1.914 1.914 0 0 0-3.274 0M12 16h.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:user",
+            "paths": [
+              {
+                "d": "M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
+              }
+            ]
+          },
+          {
+            "name": "tabler:checks",
+            "paths": [
+              {
+                "d": "m7 12l5 5L22 7M2 12l5 5m5-5l5-5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "배경 속 방의 모양, 그리고 화풍입니다.",
+      "en": "The room's shape in the background, and the art style.",
+      "keywords": [
+        "방의 모양,",
+        "화풍입니다."
+      ],
+      "keywordsEn": [
+        "room's shape",
+        "art style."
+      ],
+      "koLines": [
+        "배경 속 방의 모양,",
+        "그리고 화풍입니다."
+      ],
+      "enLines": [
+        "The room's shape in the background,",
+        "and the art style."
+      ],
+      "icon": {
+        "name": "tabler:checklist",
+        "paths": [
+          {
+            "d": "M9.615 20H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8m-3 5l2 2l4-4M9 8h4m-4 4h2"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "방이 밋밋해서 더 자세히 그렸습니다.",
+      "en": "The room looked plain, so I drew it in more detail.",
+      "keywords": [
+        "더 자세히"
+      ],
+      "keywordsEn": [
+        "more detail."
+      ],
+      "koLines": [
+        "방이 밋밋해서",
+        "더 자세히 그렸습니다."
+      ],
+      "enLines": [
+        "The room looked plain,",
+        "so I drew it in more detail."
+      ],
+      "art": "a pencil sketching display walls and walkways into an empty room seen from the front",
+      "icon": {
+        "name": "tabler:pencil",
+        "paths": [
+          {
+            "d": "M4 20h4L18.5 9.5a2.828 2.828 0 1 0-4-4L4 16zm9.5-13.5l4 4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "부분마다 재질을 달리하고 설비도 넣었습니다.",
+      "en": "Each part got its own texture, plus built-in fixtures.",
+      "keywords": [
+        "재질을",
+        "설비도"
+      ],
+      "keywordsEn": [
+        "own texture,",
+        "built-in fixtures."
+      ],
+      "koLines": [
+        "부분마다 재질을 달리하고",
+        "설비도 넣었습니다."
+      ],
+      "enLines": [
+        "Each part got its own texture,",
+        "plus built-in fixtures."
+      ],
+      "icon": {
+        "name": "tabler:brush",
+        "paths": [
+          {
+            "d": "M3 21v-4a4 4 0 1 1 4 4z"
+          },
+          {
+            "d": "M21 3A16 16 0 0 0 8.2 13.2M21 3a16 16 0 0 1-10.2 12.8"
+          },
+          {
+            "d": "M10.6 9a9 9 0 0 1 4.4 4.4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "next",
+      "ko": "배경은 그림 여러 장을 겹쳐 만듭니다.",
+      "en": "A background is several images stacked together.",
+      "keywords": [
+        "여러 장을"
+      ],
+      "keywordsEn": [
+        "several images"
+      ],
+      "koLines": [
+        "배경은 그림 여러 장을",
+        "겹쳐 만듭니다."
+      ],
+      "enLines": [
+        "A background is several images",
+        "stacked together."
+      ],
+      "art": "several see-through sheets, each holding one part of a room, stacked into a single picture",
+      "motif": "stack"
+    },
+    {
+      "scene": "next",
+      "ko": "다음엔 이 레이어 구성부터 봅니다.",
+      "en": "Next, I'll review how those layers are set up.",
+      "keywords": [
+        "레이어 구성부터"
+      ],
+      "keywordsEn": [
+        "layers"
+      ],
+      "koLines": [
+        "다음엔",
+        "이 레이어 구성부터 봅니다."
+      ],
+      "enLines": [
+        "Next, I'll review",
+        "how those layers are set up."
+      ],
+      "icon": {
+        "name": "tabler:stack-2",
+        "paths": [
+          {
+            "d": "M12 4L4 8l8 4l8-4zm-8 8l8 4l8-4M4 16l8 4l8-4"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "end",
+      "ko": "색감보다 화풍이 먼저였습니다.",
+      "en": "Style came before color.",
+      "keywords": [
+        "화풍이"
+      ],
+      "keywordsEn": [
+        "Style"
+      ]
+    }
+  ],
+  "demo": {
+    "url": "",
+    "steps": []
+  },
+  "failCard": {
+    "title": "추천한 시안을 거뒀다",
+    "titleEn": "I took back my pick",
+    "before": "색감만 보고 시안을 추천",
+    "after": "인물 그림 옆에서 화풍까지 확인",
+    "beforeEn": "Picked a draft by color alone",
+    "afterEn": "Checked the style next to the characters"
+  },
+  "commits": [
+    [
+      "53a27f5",
+      "docs: 실제 전시 공간 사례로 배경 구성 기준 보강"
+    ],
+    [
+      "2a945c3",
+      "asset: 공간 디테일 설계와 원화 검토본 구체화"
+    ],
+    [
+      "3891dd2",
+      "asset: 배경 화풍 검수 기준을 바로잡고 보정 진단본 보관"
+    ],
+    [
+      "00ba392",
+      "asset: 배경 화풍 비교 시안과 모바일 검토본 보관"
+    ],
+    [
+      "948037c",
+      "chore: 확정 실패 생성물의 원본 용량 정리"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "53a27f5",
+      "docs: reinforce background composition criteria with real exhibition space examples"
+    ],
+    [
+      "2a945c3",
+      "asset: refine spatial detail design and original artwork review draft"
+    ],
+    [
+      "3891dd2",
+      "asset: correct background style review criteria and archive calibration diagnostic draft"
+    ],
+    [
+      "00ba392",
+      "asset: archive background style comparison drafts and mobile review draft"
+    ],
+    [
+      "948037c",
+      "chore: clean up original file size of failed final generation outputs"
+    ]
+  ],
+  "commitCount": 5,
+  "handle": "lie-detective",
+  "captions": {
+    "ko": "색감만 보고 추천한 게임 배경 시안을, 인물 그림 옆에 두고 다시 따졌습니다. 화풍이 달라 추천을 거두고 배경을 더 자세히 그렸습니다.",
+    "en": "I picked a game background draft by color alone, then put it next to the character art. The style didn't match, so I took back the pick and redrew the space in more detail."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#게임개발",
+    "#인디게임",
+    "#배경아트",
+    "#gamedev",
+    "#indiedev",
+    "#devlog"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-11-07.poster.jpg?v=mw6h9t0k",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-11-07.ko.mp4?v=mw6h9v55",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-11-07.ko.sm.mp4?v=mw6ha2nu",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-11-07.en.poster.jpg?v=mw6hbb8y",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-11-07.en.mp4?v=mw6hbd63",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/lie-detective/2026-11-07.en.sm.mp4?v=mw6hbjwt"
+  }
+}
