@@ -1,16 +1,20 @@
 {
-  "at": "2026-11-07T14:08:55.123Z",
+  "at": "2026-11-08T14:01:52.572Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 1 active"
+      "text": "collect  · 6 repos, 0 active"
     },
     {
       "text": "skip     · vibelog 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
       "textEn": "skip     · vibelog only 2 of 2 commits have a body — a post comes at 5"
+    },
+    {
+      "text": "skip     · lie-detective 지난 실행 뒤 새 커밋이 없습니다",
+      "textEn": "skip     · lie-detective no new commits since the last run"
     },
     {
       "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
@@ -27,34 +31,6 @@
     {
       "text": "skip     · portfolio-tmp 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
       "textEn": "skip     · portfolio-tmp only 2 of 2 commits have a body — a post comes at 5"
-    },
-    {
-      "text": "safety   · lie-detective 재료 5개 통과 · Jev 토큰 3,568",
-      "textEn": "safety   · lie-detective 5 inputs passed · Jev tokens 3,568"
-    },
-    {
-      "text": "generate · lie-detective/2026-11-07.md (ko, en) · 토큰 in 12,145 · out 6,156 · cache 6,639",
-      "textEn": "generate · lie-detective/2026-11-07.md (ko, en) · tokens in 12,145 · out 6,156 · cache 6,639"
-    },
-    {
-      "text": "review   · lie-detective/2026-11-07 막힌 문장 6개 → 다시 씀 → 남은 것 6개 · 토큰 in 3,272 · out 1,386",
-      "textEn": "review   · lie-detective/2026-11-07 6 unclear → rewritten → 6 left · tokens in 3,272 · out 1,386"
-    },
-    {
-      "text": "ground   · lie-detective/2026-11-07 커밋 메시지보다 구체적인 문장 없음 · 토큰 in 2,382 · out 4",
-      "textEn": "ground   · lie-detective/2026-11-07 nothing beyond the commits · tokens in 2,382 · out 4"
-    },
-    {
-      "text": "figures  · lie-detective/2026-11-07 2장 · 토큰 in 1,478 · out 6,101",
-      "textEn": "figures  · lie-detective/2026-11-07 2 figures · tokens in 1,478 · out 6,101"
-    },
-    {
-      "text": "shorts   · lie-detective/2026-11-07 (ko, en) · 대본 토큰 in 6,899 · out 11,412 · cache 8,847",
-      "textEn": "shorts   · lie-detective/2026-11-07 (ko, en) · script tokens in 6,899 · out 11,412 · cache 8,847"
-    },
-    {
-      "text": "listen   · lie-detective/2026-11-07 막힌 문장 3개 → 다시 씀 → 남은 것 3개 · 토큰 in 2,378 · out 1,618",
-      "textEn": "listen   · lie-detective/2026-11-07 3 unclear → rewritten → 3 left · tokens in 2,378 · out 1,618"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",
