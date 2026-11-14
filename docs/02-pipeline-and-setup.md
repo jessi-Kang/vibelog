@@ -275,8 +275,8 @@ vercel.json crons ──▶ /api/cron/devlog   ──▶ workflow_dispatch devlo
   "시크릿 없음 / 토큰 없음"을 본문으로 알려 줬는데, 익명 방문자에게 자동 발행이
   살아 있는지를 말해 주는 셈이라 레드팀 점검에서 걷어냈다. 설정이 들어갔는지는
   [Vercel 함수 로그](https://vercel.com/jessikang/vibelog/logs)의 `[cron] 인증 실패 —
-  CRON_SECRET 있음/없음 / GH_PAT 있음/없음` 줄로 본다. 비밀값은 걸리는 시간이 새지 않는
-  방식(`timingSafeEqual`)으로 비교한다. 아무나 부르면 Actions 분을 태울 수 있으니
+  CRON_SECRET 있음/없음 / GH_PAT 있음/없음` 줄로 본다. 비밀값은 비교에 걸리는 시간으로
+  값을 짐작할 수 없는 방식(`timingSafeEqual`)으로 비교한다. 아무나 부르면 Actions 분을 태울 수 있으니
   시크릿 없이는 아예 띄우지 않는다.
 - `guard: true`는 워크플로의 `SCHEDULE_GUARD`를 켠다. 마지막 발행이 12시간
   안이면 조용히 끝나므로 백업 회차가 겹쳐도 이중 발행·TTS 중복 비용이 없다.
