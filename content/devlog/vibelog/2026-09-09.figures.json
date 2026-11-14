@@ -4,8 +4,8 @@
   "after": 0,
   "alt": "설정 파일 안의 한 줄이 잘못되자 파일 전체가 무효로 취급된 모습.",
   "altEn": "One wrong line inside the configuration file, and the whole file is treated as invalid.",
-  "caption": "한 줄 때문에 책 전체가 반품됐습니다.",
-  "captionEn": "One line, and the whole book came back.",
+  "caption": "설정 파일의 한 줄 때문에 파일 전체가 무효가 됐습니다.",
+  "captionEn": "One line in the config file made the whole file invalid.",
   "node": {
    "tag": "svg",
    "attrs": {

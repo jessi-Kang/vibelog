@@ -750,10 +750,10 @@
  {
   "section": "next",
   "after": 0,
-  "alt": "기존 설계 문서와 새 기획 문서 자리가 두 집으로 갈라질 위험",
+  "alt": "기존 설계 문서와 새 기획 문서가 두 곳에 나뉠 위험",
   "altEn": "The existing design document and the tool's new planning place risk becoming two homes",
-  "caption": "문서가 두 집으로 갈라지지 않게.",
-  "captionEn": "Keep the documents from splitting into two homes.",
+  "caption": "설계 문서와 기획 문서가 두 곳에 나뉘지 않게.",
+  "captionEn": "Keep design and planning documents in one place.",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -835,7 +835,7 @@
       "font-size": "15",
       "fill": "var(--color-warn)"
      },
-     "text": "두 집으로 갈라지지 않게"
+     "text": "두 곳에 나뉘지 않게"
     }
    ]
   },

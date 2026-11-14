@@ -2,7 +2,7 @@
  {
   "section": "why",
   "after": 0,
-  "alt": "사람이 접수한 이름이 검사와 승인을 거쳐, 12시간과 하루 30건이라는 관문을 지나 새벽 출제로 가는 흐름",
+  "alt": "사람이 접수한 이름이 검사와 승인을 거쳐, 12시간과 하루 30건이라는 조건을 지나 새벽 출제로 가는 흐름",
   "altEn": "A submitted name passes checks and approval, then two gates — 12 hours and 30 a day — before going out each morning",
   "caption": "접수한 이름은 12시간을 기다리고, 하루 30건까지만 나갑니다.",
   "captionEn": "A submitted name waits 12 hours, and at most 30 go out a day.",
@@ -16,7 +16,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "사람이 지은 이름이 관문을 지나 퀴즈로 나가는 흐름"
+     "text": "사람이 지은 이름이 검토를 거쳐 퀴즈로 나가는 흐름"
     },
     {
      "tag": "rect",

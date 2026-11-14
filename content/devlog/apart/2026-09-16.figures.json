@@ -326,8 +326,8 @@
   "after": 0,
   "alt": "가짜 이름은 49.6%가 띄어 쓴 이름인데 실제 단지는 15.9%뿐이어서, 빈칸만 봐도 76%를 맞힐 수 있었다.",
   "altEn": "49.6% of fake names had a space against 15.9% of real ones, so checking only for a blank was right 76% of the time.",
-  "caption": "이름을 읽지 않고도 정답이 새어 나왔습니다.",
-  "captionEn": "The answer leaked without reading the name.",
+  "caption": "이름을 읽지 않고 빈칸만 봐도 정답을 맞힐 수 있었습니다.",
+  "captionEn": "You could get the answer from the blank alone, without reading the name.",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -972,8 +972,8 @@
   "after": 0,
   "alt": "실제 단지 15,837건에 견주면 가짜 504건은 아주 가느다란 막대이고, 그중 일부는 실제로 존재하는 이름이 되어 빠진다.",
   "altEn": "Next to 15,837 real complexes, 504 fakes is a sliver of a bar, and some of them drop out by turning out to exist.",
-  "caption": "줄어드는 쪽은 언제나 가느다란 쪽입니다.",
-  "captionEn": "The side that shrinks is always the thin one.",
+  "caption": "실제 단지 15,837건에 견주면 가짜는 504건뿐이고, 그중 일부가 실제 이름이 되어 빠집니다.",
+  "captionEn": "Against 15,837 real complexes there are only 504 fakes, and some of them drop out as real names.",
   "node": {
    "tag": "svg",
    "attrs": {

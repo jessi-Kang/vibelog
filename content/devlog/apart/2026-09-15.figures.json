@@ -176,8 +176,8 @@
   "after": 0,
   "alt": "전에는 부산에서 한 번 실패하자 나머지 세 지역이 시작도 못 했고, 후에는 실패한 지역만 건너뛰는 그림",
   "altEn": "Before, one failure at Busan stopped the other three regions; after, only the failed region is skipped",
-  "caption": "한 번 흔들리면 전부 멈추던 것 → 그 지역만 건너뜀",
-  "captionEn": "One hiccup used to stop everything; now only that region is skipped",
+  "caption": "오류가 한 번 나면 전부 멈추던 것 → 그 지역만 건너뜀",
+  "captionEn": "One error used to stop everything; now only that region is skipped",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -957,7 +957,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "→ 나눠 받기"
+     "text": "→ 하루씩 받음"
     },
     {
      "tag": "text",

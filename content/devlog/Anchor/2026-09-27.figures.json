@@ -4,8 +4,8 @@
   "after": 0,
   "alt": "첫 방문부터 첫 학습까지 13번 눌렀고 목표는 17번 이하였다",
   "altEn": "It took 13 taps from first visit to first lesson, against a target of 17 or fewer",
-  "caption": "목표보다 짧게 끝난 첫 걸음",
-  "captionEn": "The first walk came in under target",
+  "caption": "첫 방문부터 첫 학습까지 13번, 목표는 17번 이하",
+  "captionEn": "13 taps from first visit to first lesson, against a target of 17",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -198,8 +198,8 @@
   "after": 0,
   "alt": "다음을 누르면 있어야 할 화면이 없어 엉뚱한 곳으로 보내진다",
   "altEn": "Pressing next leads to a screen that does not exist, so it sends you somewhere else",
-  "caption": "목적지는 비어 있고, 발길만 옆으로 샜다",
-  "captionEn": "The destination is empty, so the path veers aside",
+  "caption": "다음 버튼이 없는 화면을 가리켜 엉뚱한 곳으로 갔습니다",
+  "captionEn": "The next button pointed to a missing screen, so it went somewhere else",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -436,10 +436,10 @@
  {
   "section": "next",
   "after": 0,
-  "alt": "첫 학습이 5분 안에 끝나는지는 기계가 못 재고 사람이 써 봐야 안다",
+  "alt": "첫 학습이 5분 안에 끝나는지는 자동 검사로 잴 수 없고 사람이 써 봐야 안다",
   "altEn": "Whether the first lesson fits in 5 minutes cannot be measured by a machine, only by a person using it",
-  "caption": "시간은 사람이 재야 답이 나온다",
-  "captionEn": "Only a person can answer this one",
+  "caption": "5분 기준은 사람이 직접 써 봐야 잴 수 있습니다",
+  "captionEn": "The 5 minute mark can only be checked by a person using the app",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -450,7 +450,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "5분이라는 기준은 기계가 재지 못하고 사람이 답한다"
+     "text": "5분이라는 기준은 자동 검사로 잴 수 없고 사람이 답한다"
     },
     {
      "tag": "circle",
@@ -483,7 +483,7 @@
       "font-size": "16",
       "fill": "var(--color-muted)"
      },
-     "text": "기계 → 못 잼"
+     "text": "검사 → 못 잼"
     },
     {
      "tag": "text",

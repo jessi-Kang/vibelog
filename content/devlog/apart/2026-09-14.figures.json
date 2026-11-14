@@ -358,8 +358,8 @@
   "after": 3,
   "alt": "로그인 요구가 마지막에 있으면 지은 것이 날아가고, 첫 화면에 있으면 그대로 남는다는 비교 그림.",
   "altEn": "If the sign-in wall comes last, your work is gone; if it comes first, nothing is lost.",
-  "caption": "같은 벽이라도 어디에 세우느냐가 다릅니다.",
-  "captionEn": "Same wall, different place to stand it.",
+  "caption": "로그인을 먼저 요구하면 지은 이름이 남습니다.",
+  "captionEn": "Ask for sign-in first and the names you made stay.",
   "node": {
    "tag": "svg",
    "attrs": {

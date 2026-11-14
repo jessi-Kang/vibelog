@@ -392,7 +392,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "글자 수가 새어 나감"
+     "text": "글자 수가 보임"
     }
    ]
   },
@@ -506,7 +506,7 @@
       "font-size": "15",
       "fill": "var(--color-ink-soft)"
      },
-     "text": "leaks the length"
+     "text": "shows the length"
     }
    ]
   }

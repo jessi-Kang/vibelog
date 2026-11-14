@@ -4,8 +4,8 @@
   "after": 0,
   "alt": "오늘의 AI와 내일의 AI 사이는 기억이 끊겨 있고, 두 쪽 모두 프로젝트 안의 글에서 기준을 받아옵니다.",
   "altEn": "Today's AI and tomorrow's AI are cut off from each other, and both draw their standards from writing kept inside the project.",
-  "caption": "기억은 끊기지만, 글로 박아 두면 남습니다.",
-  "captionEn": "Memory is wiped; writing stays.",
+  "caption": "AI는 작업이 끝나면 기억이 지워지고, 글로 적어 둔 기준만 남습니다.",
+  "captionEn": "The AI forgets when a session ends; only written standards stay.",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -340,10 +340,10 @@
  {
   "section": "fail",
   "after": 0,
-  "alt": "위쪽은 집마다 우편함을 단 모습이고, 아래쪽은 우체부 1명이 동네를 도는 모습입니다.",
+  "alt": "위쪽은 프로젝트마다 수집 장치를 둔 모습이고, 아래쪽은 이 블로그가 매일 밤 프로젝트를 차례로 읽는 모습입니다.",
   "altEn": "Above, every house has its own mailbox; below, 1 mail carrier walks the whole neighborhood.",
-  "caption": "집마다 우편함 대신, 우체부 1명이 걷어갑니다.",
-  "captionEn": "Instead of a mailbox per house, 1 carrier picks it all up.",
+  "caption": "프로젝트마다 설치하지 않고, 이 블로그가 매일 밤 읽어 옵니다.",
+  "captionEn": "Nothing installed per project; this blog reads them every night.",
   "node": {
    "tag": "svg",
    "attrs": {
@@ -354,7 +354,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "프로젝트마다 수집 장치를 두는 방식에서 우체부 1명이 걷어가는 방식으로"
+     "text": "프로젝트마다 수집 장치를 두는 방식에서 이 블로그가 매일 밤 읽어 오는 방식으로"
     },
     {
      "tag": "text",
@@ -612,7 +612,7 @@
       "font-size": "15",
       "fill": "var(--color-accent)"
      },
-     "text": "우체부 1명이 매일 밤"
+     "text": "블로그가 매일 밤 읽음"
     }
    ]
   },
@@ -626,7 +626,7 @@
     {
      "tag": "title",
      "attrs": {},
-     "text": "From a collector in every project to 1 mail carrier picking everything up"
+     "text": "From a collector in every project to this blog reading them every night"
     },
     {
      "tag": "text",
@@ -884,7 +884,7 @@
       "font-size": "15",
       "fill": "var(--color-accent)"
      },
-     "text": "1 carrier, every night"
+     "text": "read every night"
     }
    ]
   }
