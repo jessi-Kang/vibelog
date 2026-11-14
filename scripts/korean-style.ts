@@ -63,6 +63,10 @@ export interface StyleRule {
   level: Level;
   /** 왜 걸리는지와 어떻게 고치는지 — 사람과 모델이 같이 읽는다 */
   why: string;
+  /** 이 문장이면 걸리지 않는다 — 같은 말이 맞게 쓰이는 경우를 거른다 */
+  skip?: (sentence: string) => boolean;
+  /** 약이지만 글·대본 지시문에 "덜 쓴다"로 넣는다 — 틀린 말이 아니라 매일 같은 틀이 문제인 말 */
+  prompt?: boolean;
 }
 
 export const STYLE_RULES: StyleRule[] = [
@@ -142,6 +146,47 @@ export const STYLE_RULES: StyleRule[] = [
     re: /없던\s?일(이|로|처럼)/g,
     level: "strong",
     why: "결과를 부풀린 관용구입니다. 실제로 한 일을 씁니다: '글을 지웠습니다', '바꾼 것을 되돌렸습니다'.",
+  },
+  {
+    id: "셈이다",
+    re: /셈이(다|었|죠)|셈입니다|셈이었습니다/g,
+    level: "strong",
+    why: "일어난 일을 비유로 한 번 더 감싸 결론처럼 닫는 말입니다. 앞 문장이 이미 사실을 말했으면 빼고, 아니면 결과를 그대로 씁니다: '짧은 이름만 보고 골라도 거의 맞았습니다'.",
+  },
+  {
+    id: "구멍",
+    re: /구멍/g,
+    level: "strong",
+    why: "약점을 구멍에 빗댄 말입니다. 무엇이 가능했는지 씁니다: '로그인 없이도 결과를 볼 수 있었습니다'.",
+  },
+  {
+    // 실제로 잰 속도("3초 빨랐습니다")는 맞는 말이라 숫자가 있는 문장은 거른다
+    id: "앞지르기 비유",
+    re: /보다\s?(더\s?)?(빨랐|빨리 |앞섰)|한\s?발\s?(늦|앞)|발\s?빠르게/g,
+    level: "strong",
+    skip: (sentence) => /\d/.test(sentence),
+    why: "두 일을 경주처럼 견주어 극적으로 닫는 말입니다. 실제로 잰 속도가 아니면 순서를 그대로 씁니다: '그림이 준비되기 전에 화면이 바뀌었습니다'.",
+  },
+  {
+    id: "알고 보니",
+    re: /알고\s?보니/g,
+    level: "weak",
+    prompt: true,
+    why: "삽질 이야기를 매번 같은 말로 엽니다. 원인을 바로 씁니다: '원인은 한도가 계정 전체를 합친 값이라는 것이었습니다'.",
+  },
+  {
+    id: "손보다",
+    re: /손봤|손을\s?봤|손보았/g,
+    level: "weak",
+    prompt: true,
+    why: "무엇을 어떻게 바꿨는지 감추는 말입니다. 바꾼 것을 씁니다: '버튼 아이콘을 카메라 모양으로 바꿨습니다'.",
+  },
+  {
+    id: "통째로",
+    re: /통째로/g,
+    level: "weak",
+    prompt: true,
+    why: "맞는 말이지만 거의 매일 나와 버릇처럼 읽힙니다. 꼭 필요할 때만 씁니다.",
   },
   // ── 이 레포에서 만든 말 ──
   {
@@ -255,7 +300,9 @@ export function findStyleHits(text: string, opts: { quoted?: boolean } = {}): St
       rule.re.lastIndex = 0;
       let m: RegExpExecArray | null;
       while ((m = rule.re.exec(line))) {
-        hits.push({ rule, match: m[0].trim(), sentence: sentenceAround(raw, m.index), line: i + 1 });
+        const sentence = sentenceAround(raw, m.index);
+        if (rule.skip?.(sentence)) continue;
+        hits.push({ rule, match: m[0].trim(), sentence, line: i + 1 });
       }
     }
   });
@@ -264,7 +311,8 @@ export function findStyleHits(text: string, opts: { quoted?: boolean } = {}): St
 
 /** 모델에게 보여 줄 짧은 목록 — 글·대본 지시문과 읽기 검사에 넣는다 */
 export function styleRulesForPrompt(): string {
-  return STYLE_RULES.filter((r) => r.level === "strong" && !r.id.match(/^(문턱|손잡이|거는 문|헛실행|속사정|사게 두지|넘어가기 장치)$/))
-    .map((r) => `- ${r.id}: ${r.why}`)
-    .join("\n");
+  const strong = STYLE_RULES.filter((r) => r.level === "strong" && !r.id.match(/^(문턱|손잡이|거는 문|헛실행|속사정|사게 두지|넘어가기 장치)$/))
+    .map((r) => `- ${r.id}: ${r.why}`);
+  const sparing = STYLE_RULES.filter((r) => r.prompt).map((r) => `- ${r.id} (덜 쓴다): ${r.why}`);
+  return [...strong, ...sparing].join("\n");
 }
