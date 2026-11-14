@@ -1,16 +1,12 @@
 {
-  "at": "2026-11-13T14:01:28.526Z",
+  "at": "2026-11-14T14:09:56.227Z",
   "lines": [
     {
       "text": "npx tsx scripts/run.ts",
       "kind": "cmd"
     },
     {
-      "text": "collect  · 6 repos, 0 active"
-    },
-    {
-      "text": "skip     · vibelog 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
-      "textEn": "skip     · vibelog only 2 of 2 commits have a body — a post comes at 5"
+      "text": "collect  · 6 repos, 1 active"
     },
     {
       "text": "skip     · apart 본문을 쓴 커밋이 아직 4개 (전체 4개) — 5개가 모이면 글을 씁니다",
@@ -31,6 +27,34 @@
     {
       "text": "skip     · portfolio-tmp 본문을 쓴 커밋이 아직 2개 (전체 2개) — 5개가 모이면 글을 씁니다",
       "textEn": "skip     · portfolio-tmp only 2 of 2 commits have a body — a post comes at 5"
+    },
+    {
+      "text": "safety   · vibelog 재료 7개 통과 · Jev 토큰 5,450",
+      "textEn": "safety   · vibelog 7 inputs passed · Jev tokens 5,450"
+    },
+    {
+      "text": "generate · vibelog/2026-11-14.md (ko, en) · 토큰 in 17,557 · out 5,892 · cache 7,639",
+      "textEn": "generate · vibelog/2026-11-14.md (ko, en) · tokens in 17,557 · out 5,892 · cache 7,639"
+    },
+    {
+      "text": "review   · vibelog/2026-11-14 막힌 문장 7개 → 다시 씀 → 남은 것 2개 · 토큰 in 3,433 · out 2,112",
+      "textEn": "review   · vibelog/2026-11-14 7 unclear → rewritten → 2 left · tokens in 3,433 · out 2,112"
+    },
+    {
+      "text": "ground   · vibelog/2026-11-14 커밋 메시지보다 구체적인 문장 없음 · 토큰 in 4,132 · out 478",
+      "textEn": "ground   · vibelog/2026-11-14 nothing beyond the commits · tokens in 4,132 · out 478"
+    },
+    {
+      "text": "figures  · vibelog/2026-11-14 2장 · 토큰 in 1,374 · out 5,867",
+      "textEn": "figures  · vibelog/2026-11-14 2 figures · tokens in 1,374 · out 5,867"
+    },
+    {
+      "text": "shorts   · vibelog/2026-11-14 (ko, en) · 대본 토큰 in 10,101 · out 6,995 · cache 9,743",
+      "textEn": "shorts   · vibelog/2026-11-14 (ko, en) · script tokens in 10,101 · out 6,995 · cache 9,743"
+    },
+    {
+      "text": "listen   · vibelog/2026-11-14 막힌 문장 1개 → 다시 씀 → 남은 것 2개 · 토큰 in 2,561 · out 1,516",
+      "textEn": "listen   · vibelog/2026-11-14 1 unclear → rewritten → 2 left · tokens in 2,561 · out 1,516"
     },
     {
       "text": "publish  · content 커밋 → vercel 자동 배포",

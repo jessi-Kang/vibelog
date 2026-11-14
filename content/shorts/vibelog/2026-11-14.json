@@ -1,0 +1,409 @@
+{
+  "template": "fail",
+  "music": "calm",
+  "theme": "terminal",
+  "repo": "vibelog",
+  "date": "2026-11-14",
+  "day": 26,
+  "lines": [
+    {
+      "scene": "hook",
+      "ko": "글에 이상한 비유가 계속 나왔습니다",
+      "en": "My posts kept using strange metaphors",
+      "keywords": [
+        "비유가"
+      ],
+      "keywordsEn": [
+        "strange"
+      ],
+      "koLines": [
+        "글에 이상한",
+        "비유가 계속",
+        "나왔습니다"
+      ],
+      "enLines": [
+        "My posts kept",
+        "using strange",
+        "metaphors"
+      ]
+    },
+    {
+      "scene": "fail",
+      "ko": "피해야 할 낱말 목록으로 막으려 했습니다.",
+      "en": "I tried blocking them with a list of words.",
+      "keywords": [
+        "낱말 목록으로"
+      ],
+      "keywordsEn": [
+        "list of words."
+      ],
+      "koLines": [
+        "피해야 할 낱말 목록으로",
+        "막으려 했습니다."
+      ],
+      "enLines": [
+        "I tried blocking them",
+        "with a list of words."
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "labels": [
+          "AI가 쓴 글",
+          "낱말 목록과 비교",
+          "목록의 말을 막음"
+        ],
+        "labelsEn": [
+          "AI-written post",
+          "Check word list",
+          "Block listed words"
+        ],
+        "icons": [
+          {
+            "name": "tabler:robot",
+            "paths": [
+              {
+                "d": "M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6-4v2m-3 8v9m6-9v9M5 16l4-2m6 0l4 2M9 18h6M10 8v.01M14 8v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:list-search",
+            "paths": [
+              {
+                "d": "M11 15a4 4 0 1 0 8 0a4 4 0 1 0-8 0m7.5 3.5L21 21M4 6h16M4 12h4m-4 6h4"
+              }
+            ]
+          },
+          {
+            "name": "tabler:ban",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m2.7-6.3l12.6 12.6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "fail",
+      "ko": "비유는 목록에 없는 새 말로 나왔습니다.",
+      "en": "But new metaphors showed up off the list.",
+      "keywords": [
+        "새 말로"
+      ],
+      "keywordsEn": [
+        "off the list."
+      ],
+      "koLines": [
+        "비유는 목록에 없는",
+        "새 말로 나왔습니다."
+      ],
+      "enLines": [
+        "But new metaphors",
+        "showed up off the list."
+      ],
+      "diagram": {
+        "kind": "sets",
+        "labels": [
+          "피할 낱말 목록",
+          "새로 나온 비유",
+          "일부만"
+        ],
+        "labelsEn": [
+          "Banned words",
+          "New metaphors",
+          "Few"
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이제 AI가 처음 읽는 사람처럼 읽습니다.",
+      "en": "Now an AI reads like a first-time reader.",
+      "keywords": [
+        "처음 읽는 사람처럼"
+      ],
+      "keywordsEn": [
+        "first-time reader."
+      ],
+      "koLines": [
+        "이제 AI가",
+        "처음 읽는 사람처럼 읽습니다."
+      ],
+      "enLines": [
+        "Now an AI reads",
+        "like a first-time reader."
+      ],
+      "diagram": {
+        "kind": "beforeafter",
+        "labels": [
+          "낱말 목록",
+          "새 말은 통과",
+          "처음 읽는 AI",
+          "멈춘 문장"
+        ],
+        "labelsEn": [
+          "Word list",
+          "New ones pass",
+          "First-time AI reader",
+          "Stuck lines"
+        ],
+        "icons": [
+          {
+            "name": "tabler:list",
+            "paths": [
+              {
+                "d": "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01"
+              }
+            ]
+          },
+          null,
+          {
+            "name": "tabler:robot",
+            "paths": [
+              {
+                "d": "M6 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zm6-4v2m-3 8v9m6-9v9M5 16l4-2m6 0l4 2M9 18h6M10 8v.01M14 8v.01"
+              }
+            ]
+          },
+          {
+            "name": "tabler:alert-circle",
+            "paths": [
+              {
+                "d": "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m9-4v4m0 4h.01"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "scene": "build",
+      "ko": "이해가 안 되거나 빗댄 문장을 골라냅니다.",
+      "en": "It flags confusing lines and metaphors.",
+      "keywords": [
+        "빗댄 문장을"
+      ],
+      "keywordsEn": [
+        "metaphors."
+      ],
+      "koLines": [
+        "이해가 안 되거나",
+        "빗댄 문장을 골라냅니다."
+      ],
+      "enLines": [
+        "It flags confusing lines",
+        "and metaphors."
+      ],
+      "art": "a reader stopping at one marked line in an open book",
+      "icon": {
+        "name": "tabler:file-search",
+        "paths": [
+          {
+            "d": "M14 3v4a1 1 0 0 0 1 1h4"
+          },
+          {
+            "d": "M12 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v4.5"
+          },
+          {
+            "d": "M14 17.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0m4.5 2L21 22"
+          }
+        ]
+      }
+    },
+    {
+      "scene": "demo",
+      "ko": "이미 올라간 글 58편도 다시 읽었습니다.",
+      "en": "I reread all 58 published posts too.",
+      "keywords": [
+        "58편도"
+      ],
+      "keywordsEn": [
+        "58"
+      ],
+      "koLines": [
+        "이미 올라간 글",
+        "58편도 다시 읽었습니다."
+      ],
+      "enLines": [
+        "I reread all 58",
+        "published posts too."
+      ],
+      "stat": "58편",
+      "statEn": "58 posts",
+      "screen": "/log",
+      "shot": "whole"
+    },
+    {
+      "scene": "demo",
+      "ko": "비유가 든 문장 60곳 가까이를 고쳤습니다.",
+      "en": "I fixed close to 60 such sentences.",
+      "keywords": [
+        "60곳 가까이를"
+      ],
+      "keywordsEn": [
+        "close to 60"
+      ],
+      "koLines": [
+        "비유가 든 문장",
+        "60곳 가까이를 고쳤습니다."
+      ],
+      "enLines": [
+        "I fixed close to 60",
+        "such sentences."
+      ],
+      "stat": "60곳",
+      "statEn": "60 sentences",
+      "screen": "/",
+      "find": "최근 데브로그",
+      "findEn": "Recent devlogs",
+      "shot": "focus"
+    },
+    {
+      "scene": "next",
+      "ko": "오늘 밤 글에 비유가 남았는지 읽어 보겠습니다.",
+      "en": "Tonight I'll read new posts for any metaphors.",
+      "keywords": [
+        "오늘 밤"
+      ],
+      "keywordsEn": [
+        "Tonight"
+      ],
+      "koLines": [
+        "오늘 밤 글에 비유가",
+        "남았는지 읽어 보겠습니다."
+      ],
+      "enLines": [
+        "Tonight I'll read new posts",
+        "for any metaphors."
+      ],
+      "icon": {
+        "name": "tabler:eye",
+        "paths": [
+          {
+            "d": "M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"
+          },
+          {
+            "d": "M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"
+          }
+        ]
+      },
+      "motif": "watch"
+    },
+    {
+      "scene": "end",
+      "ko": "이제 글은 비유 없이 일어난 일을 씁니다.",
+      "en": "Now the posts say what happened, no metaphors.",
+      "keywords": [
+        "비유 없이"
+      ],
+      "keywordsEn": [
+        "no metaphors."
+      ],
+      "koLines": [
+        "이제 글은 비유 없이",
+        "일어난 일을 씁니다."
+      ],
+      "enLines": [
+        "Now the posts say what happened,",
+        "no metaphors."
+      ]
+    }
+  ],
+  "demo": {
+    "url": "https://vibelog.space",
+    "steps": []
+  },
+  "failCard": {
+    "title": "막아도 비유가 나왔다",
+    "titleEn": "Metaphors got through",
+    "before": "낱말 목록으로 비유를 막음",
+    "after": "처음 읽는 AI가 멈춘 문장을 고름",
+    "beforeEn": "Blocked metaphors with a word list",
+    "afterEn": "A first-time AI reader flags stuck lines"
+  },
+  "commits": [
+    [
+      "6c64f78",
+      "fix: 이미 나간 글에서 다른 것에 빗댄 문장을 일어난 일 그대로 고쳐 쓴다"
+    ],
+    [
+      "11a7741",
+      "feat: 글과 대본에서 비유를 쓰지 않고 정리하는 부사로 닫지 않게 한다"
+    ],
+    [
+      "64efa73",
+      "feat: 검사나 숫자를 사람처럼 거짓말한다고 쓰는 비유를 막는다"
+    ],
+    [
+      "57318bf",
+      "feat: 비유로 닫는 말과 매일 같은 틀의 말을 한국어 표현 검사에 더한다"
+    ],
+    [
+      "ad56502",
+      "feat: 일어난 일을 부풀린 관용구를 한국어 표현 검사에 더한다"
+    ],
+    [
+      "0099e82",
+      "chore: 한글 윤문 플러그인을 프로젝트 설정에서 뺀다"
+    ],
+    [
+      "98a7c46",
+      "chore: 한글 AI 티를 찾는 윤문 플러그인을 프로젝트에 등록한다"
+    ]
+  ],
+  "commitsEn": [
+    [
+      "6c64f78",
+      "fix: rewrite already-published sentences that use metaphors to describe something else, restating what actually happened"
+    ],
+    [
+      "11a7741",
+      "feat: stop writing metaphors in posts and scripts, and avoid closing with filler adverbs"
+    ],
+    [
+      "64efa73",
+      "feat: block metaphors that describe tests or numbers as lying like a person"
+    ],
+    [
+      "57318bf",
+      "feat: add checks to the Korean expression linter for metaphor-based closing lines and repetitive stock phrasing"
+    ],
+    [
+      "ad56502",
+      "feat: add checks to the Korean expression linter for idioms that exaggerate what happened"
+    ],
+    [
+      "0099e82",
+      "chore: remove the Korean copy-editing plugin from project settings"
+    ],
+    [
+      "98a7c46",
+      "chore: register the Korean AI-style detection copy-editing plugin in the project"
+    ]
+  ],
+  "commitCount": 7,
+  "handle": "vibelog.space",
+  "captions": {
+    "ko": "낱말 목록으로 막아도 비유는 새 말로 계속 나왔습니다. 이제 AI가 처음 읽는 사람처럼 글을 읽고 빗댄 문장을 골라내며, 이미 올라간 글 58편도 고쳤습니다.",
+    "en": "A banned-word list couldn't stop metaphors from showing up in new words. Now an AI reads each post like a first-time reader and flags them, and I fixed all 58 published posts too."
+  },
+  "hashtags": [
+    "#vibelog",
+    "#데브로그",
+    "#AI글쓰기",
+    "#devlog",
+    "#AIwriting",
+    "#글쓰기",
+    "#buildinpublic"
+  ],
+  "media": {
+    "poster": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-11-14.poster.jpg?v=mwghdxvn",
+    "ko": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-11-14.ko.mp4?v=mwghe0p4",
+    "koSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-11-14.ko.sm.mp4?v=mwghe8ac",
+    "posterEn": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-11-14.en.poster.jpg?v=mwghfj9w",
+    "en": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-11-14.en.mp4?v=mwghfmqx",
+    "enSm": "https://h8u1vv414tvr8zxq.public.blob.vercel-storage.com/shorts/vibelog/2026-11-14.en.sm.mp4?v=mwghftga"
+  }
+}

@@ -1,0 +1,718 @@
+[
+ {
+  "section": "did",
+  "after": 0,
+  "alt": "AI가 쓴 글이 검사를 거치고, 비유가 든 문장이 나오면 다시 쓰는 쪽으로 돌아가는 흐름",
+  "altEn": "A post written by AI goes through a check, and a sentence with a metaphor sends it back to be rewritten",
+  "caption": "검사에서 비유가 나오면 그 문장을 다시 씁니다",
+  "captionEn": "When the check finds a metaphor, that sentence is rewritten",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "AI가 쓴 글이 검사를 거쳐 올라가고, 비유가 든 문장은 다시 쓰도록 돌아가는 흐름"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "40",
+      "width": "100",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI가 씀"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "40",
+      "width": "100",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "검사"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "280",
+      "y": "40",
+      "width": "100",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "올라감"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "112",
+      "y1": "65",
+      "x2": "137",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "143,65 135,60 135,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "247",
+      "y1": "65",
+      "x2": "272",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "278,65 270,60 270,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "195,92 195,140 60,140 60,100",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "60,93 55,102 65,102",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "127",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "비유 있으면 다시 씀"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 200",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "A post written by AI goes through a check before going up, and a sentence with a metaphor is sent back to be rewritten"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "10",
+      "y": "40",
+      "width": "100",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "60",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "AI writes"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "145",
+      "y": "40",
+      "width": "100",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-accent)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "195",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Check"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "280",
+      "y": "40",
+      "width": "100",
+      "height": "50",
+      "rx": "8",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "330",
+      "y": "70",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Published"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "112",
+      "y1": "65",
+      "x2": "137",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "143,65 135,60 135,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "247",
+      "y1": "65",
+      "x2": "272",
+      "y2": "65",
+      "stroke": "var(--color-muted)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "278,65 270,60 270,70",
+      "fill": "var(--color-muted)"
+     }
+    },
+    {
+     "tag": "polyline",
+     "attrs": {
+      "points": "195,92 195,140 60,140 60,100",
+      "fill": "none",
+      "stroke": "var(--color-warn)",
+      "stroke-width": "2"
+     }
+    },
+    {
+     "tag": "polygon",
+     "attrs": {
+      "points": "60,93 55,102 65,102",
+      "fill": "var(--color-warn)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "127",
+      "y": "172",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "Metaphor → rewrite"
+    }
+   ]
+  }
+ },
+ {
+  "section": "fail",
+  "after": 0,
+  "alt": "낱말 목록으로 막던 방식은 목록에 없는 새 비유를 놓쳤고, 바꾼 방식은 처음 읽는 AI가 멈춘 문장을 골라낸다",
+  "altEn": "The word list missed new metaphors that weren't on it; the new check has an AI read like a first-time reader and pick out where it got stuck",
+  "caption": "낱말 목록 대신, 처음 읽는 사람처럼 읽다가 멈춘 문장을 고릅니다",
+  "captionEn": "Instead of a word list, an AI reads like a newcomer and flags where it got stuck",
+  "node": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "낱말 목록 방식과 처음 읽는 AI 방식의 비교"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "15",
+      "x2": "195",
+      "y2": "235",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "전: 낱말 목록"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "후: 처음 읽는 AI"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "50",
+      "width": "135",
+      "height": "100",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "68",
+      "width": "80",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "90",
+      "width": "95",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "112",
+      "width": "70",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "새 비유는"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "207",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "목록에 없음"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "50",
+      "width": "150",
+      "height": "100",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "66",
+      "width": "115",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "86",
+      "width": "100",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "231",
+      "y": "102",
+      "width": "128",
+      "height": "16",
+      "rx": "3",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "126",
+      "width": "90",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "멈춘 문장을"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "207",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "골라냄"
+    }
+   ]
+  },
+  "nodeEn": {
+   "tag": "svg",
+   "attrs": {
+    "viewBox": "0 0 390 250",
+    "role": "img"
+   },
+   "children": [
+    {
+     "tag": "title",
+     "attrs": {},
+     "text": "Comparing the word-list check with the first-time-reader AI check"
+    },
+    {
+     "tag": "line",
+     "attrs": {
+      "x1": "195",
+      "y1": "15",
+      "x2": "195",
+      "y2": "235",
+      "stroke": "var(--color-line)",
+      "stroke-width": "1"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "Before: word list"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "32",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-muted)"
+     },
+     "text": "After: reader AI"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "30",
+      "y": "50",
+      "width": "135",
+      "height": "100",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "68",
+      "width": "80",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "90",
+      "width": "95",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "45",
+      "y": "112",
+      "width": "70",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "New metaphors"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "97",
+      "y": "207",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-warn)"
+     },
+     "text": "not on the list"
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "220",
+      "y": "50",
+      "width": "150",
+      "height": "100",
+      "rx": "6",
+      "fill": "var(--color-panel)",
+      "stroke": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "66",
+      "width": "115",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "86",
+      "width": "100",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "231",
+      "y": "102",
+      "width": "128",
+      "height": "16",
+      "rx": "3",
+      "fill": "var(--color-accent-soft)",
+      "stroke": "var(--color-accent)"
+     }
+    },
+    {
+     "tag": "rect",
+     "attrs": {
+      "x": "235",
+      "y": "126",
+      "width": "90",
+      "height": "8",
+      "rx": "3",
+      "fill": "var(--color-line-strong)"
+     }
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "185",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "Picks sentences"
+    },
+    {
+     "tag": "text",
+     "attrs": {
+      "x": "295",
+      "y": "207",
+      "text-anchor": "middle",
+      "font-family": "var(--font-sans)",
+      "font-size": "15",
+      "fill": "var(--color-ink-soft)"
+     },
+     "text": "where it got stuck"
+    }
+   ]
+  }
+ }
+]
